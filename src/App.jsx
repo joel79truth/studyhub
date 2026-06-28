@@ -3,13 +3,14 @@ import Home from './pages/Home';
 import PastPapers from './pages/PastPapers';
 import Profile from './pages/Profile';
 import Login from './pages/Login';
-import Programs from './pages/Programs';
+import Programs from './pages/programs';
 import ProgramDetail from './pages/ProgramDetail.jsx';
 import Quiz from './pages/Quiz.jsx';               // ✅ import with capital Q
 import ProtectedRoute from './components/ProtectedRoute';
 import Upload from './pages/Upload'; 
 import Course from './pages/Course.jsx'
 import Settings from './pages/Settings'
+import Request from './pages/Request';   // match the file: Request.jsx
 function App() {
   return (
     <BrowserRouter>
