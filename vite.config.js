@@ -6,17 +6,17 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:3000',   // local backend only
+        target: 'http://localhost:3000',
         changeOrigin: true,
         secure: false,
       }
     }
   },
-  // 👇 Add this for the production preview server
   preview: {
     allowedHosts: [
-      'studyhub-backend-opdd.onrender.com',  // exact host from the error
-      '.onrender.com'                         // any future Render subdomain
-    ]
+      'studyhub-backend-opdd.onrender.com',
+      '.onrender.com'
+    ],
+    historyApiFallback: true      // ← add this
   }
 })
