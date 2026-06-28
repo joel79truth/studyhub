@@ -1,0 +1,236 @@
+.settings-page {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 24px 20px 80px;
+  background: #f4f6fb;
+  min-height: 100vh;
+}
+
+.settings-header {
+  margin-bottom: 28px;
+}
+.settings-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.settings-header h1 i {
+  color: #4f46e5;
+}
+.text-muted {
+  color: #6b7280;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #4f46e5;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 0.95rem;
+  border: none;
+  background: none;
+  padding: 4px 0;
+  margin-bottom: 12px;
+}
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.settings-message {
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+.settings-message.success {
+  background: #d1fae5;
+  color: #065f46;
+}
+.settings-message.error {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.settings-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 20px 24px;
+  border: 1px solid #edf2f7;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+}
+.settings-card h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+}
+
+.settings-group {
+  margin-bottom: 16px;
+}
+.settings-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 4px;
+  font-size: 0.95rem;
+}
+.settings-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: border 0.15s;
+  background: #f9faff;
+}
+.settings-input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  background: #fff;
+}
+.settings-input.disabled {
+  background: #f3f4f6;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+.field-note {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.settings-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  display: inline-block;
+}
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ccc;
+  transition: 0.3s;
+  border-radius: 26px;
+}
+.toggle-slider::before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+.toggle-switch input:checked + .toggle-slider {
+  background: #4f46e5;
+}
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(22px);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.btn-primary {
+  background: #4f46e5;
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #4338ca;
+  box-shadow: 0 8px 24px rgba(79, 70, 229, 0.25);
+}
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.btn-danger {
+  background: #ef4444;
+  color: #fff;
+}
+.btn-danger:hover {
+  background: #dc2626;
+}
+
+.settings-footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.85rem;
+  color: #9ca3af;
+  padding: 10px 0;
+}
+
+/* Dark mode overrides (applied automatically when .dark is on <html>) */
+html.dark .settings-page {
+  background: #111827;
+}
+html.dark .settings-card {
+  background: #1f2937;
+  border-color: #374151;
+}
+html.dark .settings-input {
+  background: #374151;
+  border-color: #4b5563;
+  color: #f3f4f6;
+}
+html.dark .settings-input:focus {
+  background: #1f2937;
+  border-color: #6366f1;
+}
+html.dark .settings-input.disabled {
+  background: #374151;
+  color: #9ca3af;
+}
+html.dark .settings-header h1,
+html.dark .settings-card h2,
+html.dark .settings-group label,
+html.dark .settings-toggle span {
+  color: #f3f4f6;
+}
+html.dark .text-muted,
+html.dark .field-note,
+html.dark .settings-footer {
+  color: #9ca3af;
+}
+html.dark .settings-message.success {
+  background: #065f46;
+  color: #d1fae5;
+}
+html.dark .settings-message.error {
+  background: #7f1d1d;
+  color: #fecaca;
+}
+html.dark .back-link {
+  color: #818cf8;
+}

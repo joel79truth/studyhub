@@ -1,0 +1,2659 @@
+[
+  {
+    "id": "0SY8AqtTdwVQKAs4JvkU4Q66q1k2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in agriculture general",
+    "updatedAt": {
+      "_seconds": 1770276845,
+      "_nanoseconds": 162000000
+    }
+  },
+  {
+    "id": "0vLUDKB4aWa9vDwSXfE8SR7y3br1",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1772103672,
+      "_nanoseconds": 732000000
+    }
+  },
+  {
+    "id": "1SvsmNMX9oVyTjb3LRcs722IoN53",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "2",
+    "program": "Diploma in irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1772171671,
+      "_nanoseconds": 791000000
+    }
+  },
+  {
+    "id": "1tUGAqVqQ5W4kdoDu7j2tSnWucf1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Irrigation",
+    "updatedAt": {
+      "_seconds": 1776783923,
+      "_nanoseconds": 498000000
+    }
+  },
+  {
+    "id": "24IAhMgOHBTkWftK7VJSGdrM5iV2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "DIPLOMA IN AGRICULTURE",
+    "updatedAt": {
+      "_seconds": 1771924566,
+      "_nanoseconds": 910000000
+    }
+  },
+  {
+    "id": "2IUtMlTZ2kNT2y71YVlLcRf9Pf02",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "2",
+    "program": "bachelor of science in environmental sciences",
+    "updatedAt": {
+      "_seconds": 1772105888,
+      "_nanoseconds": 136000000
+    }
+  },
+  {
+    "id": "2U05uLfbTNeNyQeaR1rnzDLw5VE3",
+    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocIa9b0Rt9enBa0DsUFTSJjswc1VebI_4zKw2D_2fuLiCaGv7MQ=s96-c",
+    "uid": "2U05uLfbTNeNyQeaR1rnzDLw5VE3",
+    "createdAt": {
+      "_seconds": 1770051589,
+      "_nanoseconds": 566000000
+    },
+    "provider": "google",
+    "name": "Galatia Gawani",
+    "email": "galatiagawani277@gmail.com",
+    "role": "Student",
+    "year": "Year 2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1770051631,
+      "_nanoseconds": 764000000
+    }
+  },
+  {
+    "id": "2VqJau7lmVUIV25SOWiCCywWJ7H2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Environmental management",
+    "updatedAt": {
+      "_seconds": 1775121187,
+      "_nanoseconds": 807000000
+    }
+  },
+  {
+    "id": "3Ac8bXAgtkZMZldYFr8LbaqE04A2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "FOOD NUTRITION",
+    "updatedAt": {
+      "_seconds": 1773236336,
+      "_nanoseconds": 516000000
+    }
+  },
+  {
+    "id": "3gMHQIBei1dPlt70XIc9xkopaTu1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1772727189,
+      "_nanoseconds": 503000000
+    }
+  },
+  {
+    "id": "4T9IxYsTiIMvNx5446Ikdg2Xrw53",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "2",
+    "program": "Bachelor of Science in Environmental Science",
+    "updatedAt": {
+      "_seconds": 1777400685,
+      "_nanoseconds": 767000000
+    }
+  },
+  {
+    "id": "4znri27W2wQet1Ndq89lVFkbzdY2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "2",
+    "program": "bachelor of science in natural and applied sciences",
+    "updatedAt": {
+      "_seconds": 1772877399,
+      "_nanoseconds": 369000000
+    }
+  },
+  {
+    "id": "57E1U8EPLEVrr7zF1mhqoKLSG5l1",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1774507498,
+      "_nanoseconds": 451000000
+    }
+  },
+  {
+    "id": "59Pxod3yBXaeZehYCIC90K5CwC03",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "Semester 3",
+    "program": "Irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1770814234,
+      "_nanoseconds": 212000000
+    }
+  },
+  {
+    "id": "5Sk02PIaXbTckYLWf3h0IeTBzA13",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "5",
+    "program": "Diploma in food, nutrition and livelihood security",
+    "updatedAt": {
+      "_seconds": 1770449506,
+      "_nanoseconds": 16000000
+    }
+  },
+  {
+    "id": "5sEmQRpM4vOq2bN0lu6qDhPoIv43",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "2",
+    "program": "BSc in environmental management",
+    "updatedAt": {
+      "_seconds": 1772097299,
+      "_nanoseconds": 778000000
+    }
+  },
+  {
+    "id": "698racSfRbM2qVlqmG3AVov1yWw2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in Irrigation Engineering / Irrigation Technology",
+    "updatedAt": {
+      "_seconds": 1777092871,
+      "_nanoseconds": 159000000
+    }
+  },
+  {
+    "id": "6QCBN8A8MmOWA4gPDmdq2WYn0453",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "2",
+    "program": "Bachelor of arts in textile and fashion design",
+    "updatedAt": {
+      "_seconds": 1770263420,
+      "_nanoseconds": 594000000
+    }
+  },
+  {
+    "id": "6V97j41pD0MZYXklLEbOx7k7gz33",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in animal health",
+    "updatedAt": {
+      "_seconds": 1772700292,
+      "_nanoseconds": 286000000
+    }
+  },
+  {
+    "id": "6l1qU8e5ZbZTi3F4PwiIIkINaQw2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "4",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1770275985,
+      "_nanoseconds": 424000000
+    }
+  },
+  {
+    "id": "7nZEoUJcAYe9NFR4mbhRCCfhVqi2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "Semester 1",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1772727790,
+      "_nanoseconds": 115000000
+    }
+  },
+  {
+    "id": "9WZNiZul1mReOuPco3a0ptBeOIr1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Agriculture general",
+    "updatedAt": {
+      "_seconds": 1773170098,
+      "_nanoseconds": 769000000
+    }
+  },
+  {
+    "id": "9gtjXr4C8Zdborantvf66flyCOm2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "First semester",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1772728479,
+      "_nanoseconds": 814000000
+    }
+  },
+  {
+    "id": "9rvePIYoVUMh6JGnOnlHn4IZjlr1",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "truthjoel165@gmail.com",
+    "program": "Diploma in Irrigation Engineering",
+    "updatedAt": {
+      "_seconds": 1777003173,
+      "_nanoseconds": 284000000
+    }
+  },
+  {
+    "id": "A3rvDFMAkwfyqgqXuLewL60x7dT2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "One",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1772729295,
+      "_nanoseconds": 576000000
+    }
+  },
+  {
+    "id": "AakvIjEfhOUrVGLmgFAocgozfOl1",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "Semester 3",
+    "program": "Diploma in Agriculture Education",
+    "updatedAt": {
+      "_seconds": 1771528634,
+      "_nanoseconds": 101000000
+    }
+  },
+  {
+    "id": "Aik1aaTOI0cMbulc3PmV2KHrBO22",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "2",
+    "program": "Bged",
+    "updatedAt": {
+      "_seconds": 1772096469,
+      "_nanoseconds": 26000000
+    }
+  },
+  {
+    "id": "B1amjLYajWXU6C8Mn8EuUri3MfG3",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "General agriculture",
+    "updatedAt": {
+      "_seconds": 1774964588,
+      "_nanoseconds": 307000000
+    }
+  },
+  {
+    "id": "BRdveNVizpfnanMCUawDsnCZg0k2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in Irrigation Engineering / Irrigation Technology",
+    "updatedAt": {
+      "_seconds": 1780300398,
+      "_nanoseconds": 126000000
+    }
+  },
+  {
+    "id": "BpCOhAJb64asfIg5CDxUFLlhJr43",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in Irrigation Engineering / Irrigation Technology",
+    "updatedAt": {
+      "_seconds": 1777019977,
+      "_nanoseconds": 84000000
+    }
+  },
+  {
+    "id": "C3GFG3rpPWMhZ8cwVapwmze7UUI3",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in food nutrition and livelihood security",
+    "updatedAt": {
+      "_seconds": 1772433534,
+      "_nanoseconds": 550000000
+    }
+  },
+  {
+    "id": "C3tV2Se1ggRdDv8lXdywyxG08Em1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1773201483,
+      "_nanoseconds": 152000000
+    }
+  },
+  {
+    "id": "CFPgUZyvc4e0S3wIzDWwnCTibK42",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Irrigation",
+    "updatedAt": {
+      "_seconds": 1774507963,
+      "_nanoseconds": 22000000
+    }
+  },
+  {
+    "id": "CbnBSIRAQ8Ygf7TqSEhj5Jj1TvD3",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "4",
+    "program": "Diploma in food nutrition and livelihood security",
+    "updatedAt": {
+      "_seconds": 1770266569,
+      "_nanoseconds": 839000000
+    }
+  },
+  {
+    "id": "ChwyW38sBcOXwaZesmQLvQo6YJA2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1774312808,
+      "_nanoseconds": 934000000
+    }
+  },
+  {
+    "id": "DJayNiAeFTNH6wQWJYb1E8VR5Vt1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "Semister one",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1773171782,
+      "_nanoseconds": 413000000
+    }
+  },
+  {
+    "id": "DKQ2nVUrL4Ue9WmWoI8ZA5x7tZr1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1776990303,
+      "_nanoseconds": 300000000
+    }
+  },
+  {
+    "id": "DbDprh2orrR5NopZMiWvlmfRjtu1",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "Semester 4",
+    "program": "DiPLOMA IRRIGATION INGINEERING",
+    "updatedAt": {
+      "_seconds": 1772823357,
+      "_nanoseconds": 921000000
+    }
+  },
+  {
+    "id": "DcanUo5k5mWUHqzHlObVYixw8cs2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Agriculture",
+    "updatedAt": {
+      "_seconds": 1770291133,
+      "_nanoseconds": 54000000
+    }
+  },
+  {
+    "id": "DlO2QN1yAKPh1DvQUZgLd4C4XUK2",
+    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocL-8WvaCVhh7hZEtSX-HmUTHRYCfbZ0p-01SwNgAMXqcmKg9A=s96-c",
+    "uid": "DlO2QN1yAKPh1DvQUZgLd4C4XUK2",
+    "createdAt": {
+      "_seconds": 1770049680,
+      "_nanoseconds": 498000000
+    },
+    "provider": "google",
+    "name": "Maya Kumalembe",
+    "email": "kumembemaya@gmail.com",
+    "role": "Student",
+    "year": "Year 2",
+    "profileCompleted": true,
+    "semester": "Semester 3",
+    "program": "Diploma in agriculture general",
+    "updatedAt": {
+      "_seconds": 1770049708,
+      "_nanoseconds": 621000000
+    }
+  },
+  {
+    "id": "EzQCmJoU3tRUWgVVNgxld9CXcFj1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Deploma in environmental management",
+    "updatedAt": {
+      "_seconds": 1775119314,
+      "_nanoseconds": 127000000
+    }
+  },
+  {
+    "id": "FWflRyFZvKefHMqiiU2fAJfaqtX2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Irrigation",
+    "updatedAt": {
+      "_seconds": 1774509889,
+      "_nanoseconds": 120000000
+    }
+  },
+  {
+    "id": "FlWveFkiJFfaTtl7003k9eVzVBn2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Agricultural general",
+    "updatedAt": {
+      "_seconds": 1773170802,
+      "_nanoseconds": 613000000
+    }
+  },
+  {
+    "id": "GFkqb9QM47WLHUlWb7vH3jKNU9f1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "alfredlukejnr@gmail.com",
+    "program": "Bachelor of science diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1773170181,
+      "_nanoseconds": 98000000
+    }
+  },
+  {
+    "id": "Gu7RBTOr4LbZYdglvMDKbe7fA6E3",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "Semester 3",
+    "program": "Animal health and production",
+    "updatedAt": {
+      "_seconds": 1771946487,
+      "_nanoseconds": 537000000
+    }
+  },
+  {
+    "id": "H4QZVtsmKGN9F6HTT9JyNHfFN1n1",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1774508219,
+      "_nanoseconds": 891000000
+    }
+  },
+  {
+    "id": "H9gmvE1asLaQ7tavFg365LhcJOE2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "One",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1773209118,
+      "_nanoseconds": 799000000
+    }
+  },
+  {
+    "id": "HTp1aUn5BZeEE5lYYlCElbFG5FH3",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in agri-general",
+    "updatedAt": {
+      "_seconds": 1772779688,
+      "_nanoseconds": 371000000
+    }
+  },
+  {
+    "id": "HY5VW6ur3weUmffrNmR2D1aU2he2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Agriculture general",
+    "updatedAt": {
+      "_seconds": 1773352903,
+      "_nanoseconds": 516000000
+    }
+  },
+  {
+    "id": "HjJFUOgi51fToD5Vys85VWh2lHG2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "education",
+    "updatedAt": {
+      "_seconds": 1770291803,
+      "_nanoseconds": 374000000
+    }
+  },
+  {
+    "id": "I4FJy76JjiXdtxppEvOPhhgjZOl2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "4",
+    "program": "Bachelor of science in applied science",
+    "updatedAt": {
+      "_seconds": 1772100194,
+      "_nanoseconds": 627000000
+    }
+  },
+  {
+    "id": "IUhvWKBDR0blz6A0WMf9hmUbelJ2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in agriculture education",
+    "updatedAt": {
+      "_seconds": 1772100143,
+      "_nanoseconds": 113000000
+    }
+  },
+  {
+    "id": "J6aHQCN7FcWptoA0bLjlHiDYwGy2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "Semister one",
+    "program": "Environmental management",
+    "updatedAt": {
+      "_seconds": 1775120381,
+      "_nanoseconds": 369000000
+    }
+  },
+  {
+    "id": "JZIsHOMsyrYxnuCbuPem5ha3jAv2",
+    "email": "truthjoel165@gmail.com",
+    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocKgkQ4KHfxV1qxm6Dn1rdc9yjZusN-vtsGwQ7fkfxMBYff_sQ=s96-c",
+    "uid": "JZIsHOMsyrYxnuCbuPem5ha3jAv2",
+    "provider": "google",
+    "name": "truth",
+    "role": "Student",
+    "year": "Year 2",
+    "profileCompleted": true,
+    "semester": "3",
+    "createdAt": {
+      "_seconds": 1769190929,
+      "_nanoseconds": 649000000
+    },
+    "program": "Diploma In  irrigation Engineering",
+    "updatedAt": {
+      "_seconds": 1769190938,
+      "_nanoseconds": 88000000
+    }
+  },
+  {
+    "id": "JxPWxvQd9zSlOLLW6nQeMdqZPxq1",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in Agriculture",
+    "updatedAt": {
+      "_seconds": 1772566108,
+      "_nanoseconds": 832000000
+    }
+  },
+  {
+    "id": "KDQn0IMAGgczaaS3PCEywws4rpd2",
+    "role": "Student",
+    "year": "2",
+    "lecturerVerified": false,
+    "profileCompleted": true,
+    "semester": "truthjoel165@gmail.com",
+    "program": "Diploma in  Irrigation Engineering",
+    "updatedAt": {
+      "_seconds": 1776487246,
+      "_nanoseconds": 590000000
+    }
+  },
+  {
+    "id": "KE47c5E7YiXdNFQDGRYVjFlwE683",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in environmental management",
+    "updatedAt": {
+      "_seconds": 1775117363,
+      "_nanoseconds": 264000000
+    }
+  },
+  {
+    "id": "KktGWEQbdKRYddgW0WDcBaIuMxC3",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1772953823,
+      "_nanoseconds": 782000000
+    }
+  },
+  {
+    "id": "LDcWiEe2K5ZVZxxm0Uzjz3PiBb73",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in Agriculturalgeneral",
+    "updatedAt": {
+      "_seconds": 1772728311,
+      "_nanoseconds": 225000000
+    }
+  },
+  {
+    "id": "LgdFZbUci7PiQTU5vZrNAjFN7rN2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1773175931,
+      "_nanoseconds": 50000000
+    }
+  },
+  {
+    "id": "LrLUr78lPWNH7qZGHLTe17gdFQq1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1773309168,
+      "_nanoseconds": 665000000
+    }
+  },
+  {
+    "id": "M9PDgVOayTPjQId5WuSve8ld0Jy1",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "Semester 3",
+    "program": "Irrigation engeenering",
+    "updatedAt": {
+      "_seconds": 1771792372,
+      "_nanoseconds": 381000000
+    }
+  },
+  {
+    "id": "MTNXAT0WJhS3Ym2ZUGv3TGeqyMp2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1770264287,
+      "_nanoseconds": 847000000
+    }
+  },
+  {
+    "id": "MZxfuYC8lPgOpPsgUjlchlA4uNU2",
+    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocJhQBl3SbzCefjdntHzQY4lFsUF4v3rrB1kJB3w-g40LiGyIw=s96-c",
+    "uid": "MZxfuYC8lPgOpPsgUjlchlA4uNU2",
+    "createdAt": {
+      "_seconds": 1768849890,
+      "_nanoseconds": 833000000
+    },
+    "provider": "google",
+    "name": "Mrs Mlongoti",
+    "email": "mrsmlongoti3@gmail.com",
+    "role": "Student",
+    "year": "Year 2",
+    "profileCompleted": true,
+    "semester": "2",
+    "program": "Basics",
+    "updatedAt": {
+      "_seconds": 1768849912,
+      "_nanoseconds": 625000000
+    }
+  },
+  {
+    "id": "N9QK9NYlHlNJW89NCRfuMDVYuuD3",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "Semester one",
+    "program": "Agri general",
+    "updatedAt": {
+      "_seconds": 1773172100,
+      "_nanoseconds": 542000000
+    }
+  },
+  {
+    "id": "NWtB9QHAjOUynUQzlXCwrGbtJHJ3",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in Irrigation Engineering",
+    "updatedAt": {
+      "_seconds": 1771909008,
+      "_nanoseconds": 105000000
+    }
+  },
+  {
+    "id": "NjsCkaKl6Xf9RGHM7yQlxwStyEl2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1773331303,
+      "_nanoseconds": 371000000
+    }
+  },
+  {
+    "id": "NxtAR95aV6RYsFtwxXDnY9OqaY42",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in agricultural education",
+    "updatedAt": {
+      "_seconds": 1772524836,
+      "_nanoseconds": 942000000
+    }
+  },
+  {
+    "id": "O2czFaQjNLQlPXBIyKXRU2pA04o1",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "5",
+    "program": "Irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1770269307,
+      "_nanoseconds": 214000000
+    }
+  },
+  {
+    "id": "O7aw8XQJEjRgL6mORzdczY5WrVz1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "One",
+    "program": "Agriculture general",
+    "updatedAt": {
+      "_seconds": 1773172093,
+      "_nanoseconds": 314000000
+    }
+  },
+  {
+    "id": "OG9qE0zWlWVRN08MLXT9LkdZgey1",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "Semester 3",
+    "program": "Diploma in Irrigation Engineering",
+    "updatedAt": {
+      "_seconds": 1777048865,
+      "_nanoseconds": 732000000
+    }
+  },
+  {
+    "id": "OZp2lkstFaOloDMv5pBN9nCMaos2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1773232684,
+      "_nanoseconds": 562000000
+    }
+  },
+  {
+    "id": "PahxJd2dg5brWLy0Ay1VCbuurKt1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "2",
+    "program": "Bachelor of Education Science (Agriculture & Biology)",
+    "updatedAt": {
+      "_seconds": 1777818467,
+      "_nanoseconds": 275000000
+    }
+  },
+  {
+    "id": "Pkv1vADdevd57C1fAfoFa1429S82",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "4",
+    "program": "Computer",
+    "updatedAt": {
+      "_seconds": 1772097310,
+      "_nanoseconds": 250000000
+    }
+  },
+  {
+    "id": "Q7J69IJaeBVhoudj3WYxp0skMf92",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "5",
+    "program": "Diploma in agriculture education",
+    "updatedAt": {
+      "_seconds": 1770243043,
+      "_nanoseconds": 561000000
+    }
+  },
+  {
+    "id": "RU0toNFDurccxzLSo9F5UvpOkpn1",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Bachelor of Education Science (Agriculture & Biology)",
+    "updatedAt": {
+      "_seconds": 1780724774,
+      "_nanoseconds": 627000000
+    }
+  },
+  {
+    "id": "RU3ZhC11GAYwwqswAShouQrSoKg1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1774300726,
+      "_nanoseconds": 741000000
+    }
+  },
+  {
+    "id": "RZBWw8YdWAhOu1oO43VN1C2p2Nr2",
+    "role": "Student",
+    "year": "2",
+    "lecturerVerified": false,
+    "profileCompleted": true,
+    "semester": "truthjoel165@gmail.com",
+    "program": "Diploma in Irrigation Engineering",
+    "updatedAt": {
+      "_seconds": 1776486740,
+      "_nanoseconds": 783000000
+    }
+  },
+  {
+    "id": "RsoiuBsE4NeXFf2JAL1WTVkNVB33",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "2",
+    "program": "Basics",
+    "updatedAt": {
+      "_seconds": 1770239491,
+      "_nanoseconds": 909000000
+    }
+  },
+  {
+    "id": "SjPUbqwQMHYioQKycQ2IysVRWs32",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Bachelor of computer science",
+    "updatedAt": {
+      "_seconds": 1776765073,
+      "_nanoseconds": 706000000
+    }
+  },
+  {
+    "id": "TEyG8qEer5eWfhbHsGiLrP7cE1m1",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "semester 4",
+    "program": "diploma in Animal healthy and production",
+    "updatedAt": {
+      "_seconds": 1772096717,
+      "_nanoseconds": 453000000
+    }
+  },
+  {
+    "id": "TEyfkeWZMpTBfd11YCiZYadClYy2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "5",
+    "program": "Education science",
+    "updatedAt": {
+      "_seconds": 1776565261,
+      "_nanoseconds": 595000000
+    }
+  },
+  {
+    "id": "U8rOdSfR3Yg530bvtx1QveDWP8F2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "semester 1",
+    "program": "Diploma in Agro food processing",
+    "updatedAt": {
+      "_seconds": 1775121940,
+      "_nanoseconds": 2000000
+    }
+  },
+  {
+    "id": "UNY3BiqWxBh6Gd6SD1nIW3tnIoW2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1773202352,
+      "_nanoseconds": 491000000
+    }
+  },
+  {
+    "id": "UNqT4o0wBygsx3ymU6G94CNniEI3",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1773293043,
+      "_nanoseconds": 64000000
+    }
+  },
+  {
+    "id": "UUASFbBaqyOXjExk7xYR8csThJj1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1774339442,
+      "_nanoseconds": 361000000
+    }
+  },
+  {
+    "id": "UkbOj1ncZBcEql8uvCzZwX6ZXjT2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in Agriculture",
+    "updatedAt": {
+      "_seconds": 1774951078,
+      "_nanoseconds": 29000000
+    }
+  },
+  {
+    "id": "V8HWzTIGO8dk3pKGGEhyTn1d1263",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "2",
+    "program": "Bachelor of science in environmental management",
+    "updatedAt": {
+      "_seconds": 1773069096,
+      "_nanoseconds": 104000000
+    }
+  },
+  {
+    "id": "VMSYfxKFFyaPmLSwUgqPAS70GHH3",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in agro food processing",
+    "updatedAt": {
+      "_seconds": 1776112124,
+      "_nanoseconds": 352000000
+    }
+  },
+  {
+    "id": "VVCQ2GgocITu08PozR7DbRz2KL03",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Environmental management",
+    "updatedAt": {
+      "_seconds": 1776717242,
+      "_nanoseconds": 111000000
+    }
+  },
+  {
+    "id": "VjNBRhEuxfbDsBnu5GTrvg97cEd2",
+    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLYGyWmnK02-RZkRVbDIB7J7KoImFNughsi1QjbicD-pZxKyw=s96-c",
+    "uid": "VjNBRhEuxfbDsBnu5GTrvg97cEd2",
+    "createdAt": {
+      "_seconds": 1769161039,
+      "_nanoseconds": 846000000
+    },
+    "provider": "google",
+    "name": "Uchindami Njolwa",
+    "email": "uchindaminjolwa@gmail.com",
+    "role": "Student",
+    "year": "Year 1",
+    "profileCompleted": true,
+    "semester": "Semester 2",
+    "program": "Diploma in food nutrition",
+    "updatedAt": {
+      "_seconds": 1769161111,
+      "_nanoseconds": 494000000
+    }
+  },
+  {
+    "id": "WmAtcDrxNhNzZxgz1taWFA7uKm93",
+    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocI1kgGKw5m26KHQLacrGsjb8GsXML5LK0hjAO1K1mtPeFJ_q3s=s96-c",
+    "uid": "WmAtcDrxNhNzZxgz1taWFA7uKm93",
+    "createdAt": {
+      "_seconds": 1769876569,
+      "_nanoseconds": 256000000
+    },
+    "provider": "google",
+    "name": "Yohane Maloyah",
+    "email": "maloyahyohane4@gmail.com",
+    "role": "Student",
+    "year": "Year 1",
+    "profileCompleted": true,
+    "semester": "Semester 2",
+    "program": "Bachelor of Development economics",
+    "updatedAt": {
+      "_seconds": 1769876619,
+      "_nanoseconds": 630000000
+    }
+  },
+  {
+    "id": "WssRYWz4SlO8wghVlocTPH5Hzy82",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1772696444,
+      "_nanoseconds": 935000000
+    }
+  },
+  {
+    "id": "WyhjfP82JiRmSxsUKaWTwGKAe2h1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in Agriculture",
+    "updatedAt": {
+      "_seconds": 1773202318,
+      "_nanoseconds": 131000000
+    }
+  },
+  {
+    "id": "X4D5z51Ar7S3z2j6QlmMq9vxYO13",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "Three",
+    "program": "Diploma in Agriculture general",
+    "updatedAt": {
+      "_seconds": 1774851114,
+      "_nanoseconds": 616000000
+    }
+  },
+  {
+    "id": "XcXb9gHuBldw0Fn7qRuKvoQuwug2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "DIPLOMA IN AGRICULTURE  EDUCATION",
+    "updatedAt": {
+      "_seconds": 1775752915,
+      "_nanoseconds": 943000000
+    }
+  },
+  {
+    "id": "YVCkZyCcYQQz2TonZNfHNhAR2px1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "One",
+    "program": "Diploma in Agriculture",
+    "updatedAt": {
+      "_seconds": 1772727356,
+      "_nanoseconds": 953000000
+    }
+  },
+  {
+    "id": "YnQSr9P4ZeVoKZwefiPLZJQq0a22",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1772650485,
+      "_nanoseconds": 107000000
+    }
+  },
+  {
+    "id": "Z0K6BTxYmwQ3awMzf301czqj4bq1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in ENVIRONMENTAL MANAGEMENT",
+    "updatedAt": {
+      "_seconds": 1772691111,
+      "_nanoseconds": 833000000
+    }
+  },
+  {
+    "id": "ZE3HJfLGkbPnO1B8fJl4slBSNOT2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Environmental Management",
+    "updatedAt": {
+      "_seconds": 1772620869,
+      "_nanoseconds": 260000000
+    }
+  },
+  {
+    "id": "ZH2RqskOnhhuBBtJMzYEx5Gyv0k2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "6",
+    "program": "Diploma in Agro food processing",
+    "updatedAt": {
+      "_seconds": 1772097137,
+      "_nanoseconds": 787000000
+    }
+  },
+  {
+    "id": "ZMEvbJh7HcYXlXO9zZCIBkxyGkk1",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in Irrigation Engineering / Irrigation Technology",
+    "updatedAt": {
+      "_seconds": 1777260297,
+      "_nanoseconds": 165000000
+    }
+  },
+  {
+    "id": "aDERfXUCN5cR7y8YfBsALdocb6B3",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "4",
+    "program": "Diploma in Irrigation Engineering / Irrigation Technology",
+    "updatedAt": {
+      "_seconds": 1782359393,
+      "_nanoseconds": 423000000
+    },
+    "program_id": 15,
+    "semester_num": 4
+  },
+  {
+    "id": "adJX8iaXv2efuXOdBm2oiCW7cq42",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "2",
+    "program": "Applied  science",
+    "updatedAt": {
+      "_seconds": 1775544767,
+      "_nanoseconds": 756000000
+    }
+  },
+  {
+    "id": "anhwABS3q7bwR3zSGuNUEdsmJ5n1",
+    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLLVNIGvNgc-4xZ_JW5tEVb3GKCTn3M-0A2_t5PnlQFByB1ArNx=s96-c",
+    "uid": "anhwABS3q7bwR3zSGuNUEdsmJ5n1",
+    "createdAt": {
+      "_seconds": 1768983472,
+      "_nanoseconds": 512000000
+    },
+    "provider": "google",
+    "name": "Elrah",
+    "email": "muchoseelrah@gmail.com",
+    "role": "Student",
+    "year": "Year 1",
+    "profileCompleted": true,
+    "semester": "Semester 1",
+    "program": "Diploma in environmental management",
+    "updatedAt": {
+      "_seconds": 1768983505,
+      "_nanoseconds": 186000000
+    }
+  },
+  {
+    "id": "aylT362TcKOaAvd0w3wnClNuFyg2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "2",
+    "program": "Bachelor of arts in Development economics",
+    "updatedAt": {
+      "_seconds": 1772096811,
+      "_nanoseconds": 881000000
+    }
+  },
+  {
+    "id": "b2fTqpoKvXarIF1bqCzrZOlltt42",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "truthjoel165@gmail.com",
+    "program": "Diploma in Irrigation  Engineering",
+    "updatedAt": {
+      "_seconds": 1776532460,
+      "_nanoseconds": 499000000
+    }
+  },
+  {
+    "id": "bLCrwuQ7KROMdxJgVaFmq9y1EYH2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Bachelor of Education Science (Agriculture & Biology)",
+    "updatedAt": {
+      "_seconds": 1780735570,
+      "_nanoseconds": 388000000
+    }
+  },
+  {
+    "id": "bgLCyjdgJeSF20K1T3vVRS66R233",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Bachelor of science in irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1773321793,
+      "_nanoseconds": 756000000
+    }
+  },
+  {
+    "id": "bhm47h6OtncmEVprlyAuHVtFwcL2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1773294905,
+      "_nanoseconds": 453000000
+    }
+  },
+  {
+    "id": "bpKdsmmV8lhsjEXMmafMAZBL8N43",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in Irrigation Engineering / Irrigation Technology",
+    "updatedAt": {
+      "_seconds": 1777263493,
+      "_nanoseconds": 46000000
+    }
+  },
+  {
+    "id": "cZx8gfoI0yZ7Ci4BUSiQpPaLTP82",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1772735794,
+      "_nanoseconds": 985000000
+    }
+  },
+  {
+    "id": "cts9pXIl69gU6vVQYzIVUWXtKny1",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1774507906,
+      "_nanoseconds": 652000000
+    }
+  },
+  {
+    "id": "cu6DBeHg7sahyZFNArqJuKujFhv1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Animal health and production",
+    "updatedAt": {
+      "_seconds": 1772650654,
+      "_nanoseconds": 347000000
+    }
+  },
+  {
+    "id": "d71r2CmlG4TjZrbb0x4SPmQjXrr2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Bachelor of Science in Agriculture",
+    "updatedAt": {
+      "_seconds": 1780251269,
+      "_nanoseconds": 858000000
+    }
+  },
+  {
+    "id": "dGTtgojn1xfGQiz1L7qcDoKdeLj1",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in Irrigation Engineering / Irrigation Technology",
+    "updatedAt": {
+      "_seconds": 1777264913,
+      "_nanoseconds": 901000000
+    }
+  },
+  {
+    "id": "dXYRASwBNyMQTFpl3kGPD2jwo5H3",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1772729405,
+      "_nanoseconds": 165000000
+    }
+  },
+  {
+    "id": "dj4vy70khkQp0Cxza0bZM9Pz5Nl1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1773742655,
+      "_nanoseconds": 788000000
+    }
+  },
+  {
+    "id": "dkahvg6TRmhYAWUxlGFEkdRqU5o2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "2",
+    "program": "Bachelor of Science in Agriculture",
+    "updatedAt": {
+      "_seconds": 1771410133,
+      "_nanoseconds": 381000000
+    }
+  },
+  {
+    "id": "dwpf2gM2YXPKCNNFyDvOYtXsyKa2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in Irrigation Engineering / Irrigation Technology",
+    "updatedAt": {
+      "_seconds": 1777350137,
+      "_nanoseconds": 136000000
+    }
+  },
+  {
+    "id": "e0R66HB0V2NVJQpQvqamnXyAItC3",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "2",
+    "program": "Crop sciences",
+    "updatedAt": {
+      "_seconds": 1772101201,
+      "_nanoseconds": 325000000
+    }
+  },
+  {
+    "id": "fIzyKSk0Affk24pTPv1zibd1NoF3",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Environmental management",
+    "updatedAt": {
+      "_seconds": 1775569083,
+      "_nanoseconds": 904000000
+    }
+  },
+  {
+    "id": "fvBxPIRWjqMe3ullSmG7PCdWgZ12",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in land administration",
+    "updatedAt": {
+      "_seconds": 1772852243,
+      "_nanoseconds": 376000000
+    }
+  },
+  {
+    "id": "g188ZkxPQnQHt5zT2zI8NQBhwY72",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "2",
+    "program": "Bachelor of Science in Natural and Applied Sciences",
+    "updatedAt": {
+      "_seconds": 1777745848,
+      "_nanoseconds": 454000000
+    }
+  },
+  {
+    "id": "g7SoCGuwAsfYNbGUZc95jO3qNcI3",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "food nutrition and livelihood security",
+    "updatedAt": {
+      "_seconds": 1775300497,
+      "_nanoseconds": 140000000
+    }
+  },
+  {
+    "id": "gJIF2Aq2WlTGltwmWTY6fmo0l2g1",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "4",
+    "program": "Bachelor of science in crop science",
+    "updatedAt": {
+      "_seconds": 1772168419,
+      "_nanoseconds": 809000000
+    }
+  },
+  {
+    "id": "gMX3DFeuogdBJ4Yk2fB4HN87wFZ2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in Agriculture",
+    "updatedAt": {
+      "_seconds": 1773183672,
+      "_nanoseconds": 764000000
+    }
+  },
+  {
+    "id": "ggQKVaOF26NxCmGhRlYt4N1KtxC3",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1773321385,
+      "_nanoseconds": 430000000
+    }
+  },
+  {
+    "id": "h9FR94gxOuQZRGuya4HQwDZPM5R2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Bachelor of science in environmental science",
+    "updatedAt": {
+      "_seconds": 1777219597,
+      "_nanoseconds": 382000000
+    }
+  },
+  {
+    "id": "hTW21ATWIyWJv0xtxmB4R7HXgNh1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in agriculture general",
+    "updatedAt": {
+      "_seconds": 1773203943,
+      "_nanoseconds": 320000000
+    }
+  },
+  {
+    "id": "hyriw46zXqWvenHoyRrxv4lvrcB2",
+    "role": "Student",
+    "year": "2",
+    "lecturerVerified": false,
+    "profileCompleted": true,
+    "semester": "truthjoel165@gmail.com",
+    "program": "Diploma in Irrigation Engineering",
+    "updatedAt": {
+      "_seconds": 1776486324,
+      "_nanoseconds": 635000000
+    }
+  },
+  {
+    "id": "iTCzsPxBQTWHoTVybBaaoJSjpnI2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Agriculture",
+    "updatedAt": {
+      "_seconds": 1773170944,
+      "_nanoseconds": 505000000
+    }
+  },
+  {
+    "id": "ig4UjflHZHeJeqtkGWsUjMCAYPz2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "Semester 3",
+    "program": "Diploma in Irrigation Engineering",
+    "updatedAt": {
+      "_seconds": 1772297643,
+      "_nanoseconds": 648000000
+    }
+  },
+  {
+    "id": "iyhT9O6ZFgUyLYneO2F1JGg5SvO2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in Agriculture (General)",
+    "updatedAt": {
+      "_seconds": 1777475418,
+      "_nanoseconds": 362000000
+    }
+  },
+  {
+    "id": "jChdKnqXwqNZWyzXqhttQStAuCs2",
+    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocL8DmrZuLPlj2yAqWvVJ08kYzfuNMk6FC8lMZLqBm3YQmbcdvk=s96-c",
+    "uid": "jChdKnqXwqNZWyzXqhttQStAuCs2",
+    "createdAt": {
+      "_seconds": 1769393650,
+      "_nanoseconds": 644000000
+    },
+    "provider": "google",
+    "name": "David Chimphamba",
+    "email": "davidchimphamba7079@gmail.com",
+    "role": "Student",
+    "year": "Year 1",
+    "profileCompleted": true,
+    "semester": "Semester 2",
+    "program": "Diploma in irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1769393738,
+      "_nanoseconds": 801000000
+    }
+  },
+  {
+    "id": "jK5FwoPzuAVB4oaXqnzWSSqGJ992",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1772440635,
+      "_nanoseconds": 988000000
+    }
+  },
+  {
+    "id": "jLJwyo0H3vO8VTFNQVY3OC7AKbh2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in Agriculture",
+    "updatedAt": {
+      "_seconds": 1776657365,
+      "_nanoseconds": 163000000
+    }
+  },
+  {
+    "id": "jQaHY3U5hUhgKdVnyuiUka9KDLj2",
+    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocL8AuPVrSO4O3cTdra7HxxcleSmXGG5SH22sFNfsiLPHdJ9NA=s96-c",
+    "uid": "jQaHY3U5hUhgKdVnyuiUka9KDLj2",
+    "createdAt": {
+      "_seconds": 1768524607,
+      "_nanoseconds": 325000000
+    },
+    "provider": "google",
+    "name": "Byden Timothy",
+    "email": "timothybyden@gmail.com",
+    "role": "Student",
+    "year": "Year 2",
+    "profileCompleted": true,
+    "semester": "Three",
+    "program": "Diploma in environmental management",
+    "updatedAt": {
+      "_seconds": 1768524710,
+      "_nanoseconds": 492000000
+    }
+  },
+  {
+    "id": "jXX4HHZkKTYZE96Hzst68xBua8p2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "Semester 1",
+    "program": "Diploma in Land Administration",
+    "updatedAt": {
+      "_seconds": 1772823101,
+      "_nanoseconds": 132000000
+    }
+  },
+  {
+    "id": "jx2TZutDHBR70JjADLeX31Y5tfZ2",
+    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocJULAGw_h4bosUdyftMeeQCdQkEytCWTzixuG4oeMUQNfsUtJ4=s96-c",
+    "uid": "jx2TZutDHBR70JjADLeX31Y5tfZ2",
+    "createdAt": {
+      "_seconds": 1770083310,
+      "_nanoseconds": 333000000
+    },
+    "provider": "google",
+    "name": "Kelvin Mtambalika",
+    "email": "mtambalikakellz@gmail.com",
+    "role": "Student",
+    "year": "Year 2",
+    "profileCompleted": true,
+    "semester": "Semester 3",
+    "program": "Diploma in Land administration",
+    "updatedAt": {
+      "_seconds": 1770083363,
+      "_nanoseconds": 446000000
+    }
+  },
+  {
+    "id": "kCIxRPTFFcMfX2gS5XYPacqeOna2",
+    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLPcKpDb0_s1dsOFejkU3Cc5Wptgm-yr6lZyjk_ugNPOKCDTgw=s96-c",
+    "uid": "kCIxRPTFFcMfX2gS5XYPacqeOna2",
+    "createdAt": {
+      "_seconds": 1768880075,
+      "_nanoseconds": 967000000
+    },
+    "provider": "google",
+    "name": "Kingsley Volta",
+    "email": "voltakingsley@gmail.com"
+  },
+  {
+    "id": "kEcvvf9bcVUruA6BrCOJCwfW1sg2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "2",
+    "program": "Bachelor of Science in Agriculture",
+    "updatedAt": {
+      "_seconds": 1779564607,
+      "_nanoseconds": 774000000
+    }
+  },
+  {
+    "id": "kEoCuYzHA9ZpPux9pcTtGCF7hat2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1773171041,
+      "_nanoseconds": 179000000
+    }
+  },
+  {
+    "id": "kH18u2sZwiVl1ySkLrfN6mMkr1v1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "Semester 46",
+    "program": "Land administration",
+    "updatedAt": {
+      "_seconds": 1773656455,
+      "_nanoseconds": 611000000
+    }
+  },
+  {
+    "id": "kSLG3pty2ZMt8rMI8NcWPhutjFa2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "DIPLOMA IN AGRICULTURE",
+    "updatedAt": {
+      "_seconds": 1772736783,
+      "_nanoseconds": 163000000
+    }
+  },
+  {
+    "id": "kZLdeRsLPYbGko2Bdo1O0rKAgSZ2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in Agriculture",
+    "updatedAt": {
+      "_seconds": 1773170031,
+      "_nanoseconds": 893000000
+    }
+  },
+  {
+    "id": "kbTuIikBHaeH5mSR4bZRQAiw1cv2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in Irrigation Engineering / Irrigation Technology",
+    "updatedAt": {
+      "_seconds": 1777344642,
+      "_nanoseconds": 581000000
+    }
+  },
+  {
+    "id": "keeNdwhjCmQ3C9IuHjsvnM2i2I33",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "proskevinniekatema@gmail.com",
+    "program": "Animal Health and productuon",
+    "updatedAt": {
+      "_seconds": 1772651203,
+      "_nanoseconds": 986000000
+    }
+  },
+  {
+    "id": "kwJRt2B2cwfuxeoMiS5wrevK75D3",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "4",
+    "program": "Bachelor of science in horticulture and landscape design",
+    "updatedAt": {
+      "_seconds": 1770277313,
+      "_nanoseconds": 506000000
+    }
+  },
+  {
+    "id": "linu7PHsxbRmIBGHnPRUp3iNmBd2",
+    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocJC_4ekZTlnaTq6d3R1NlrdLG9OtxZSC6E0GGVsUs6iZKT6aA=s96-c",
+    "uid": "linu7PHsxbRmIBGHnPRUp3iNmBd2",
+    "createdAt": {
+      "_seconds": 1768550338,
+      "_nanoseconds": 542000000
+    },
+    "provider": "google",
+    "name": "Martin Hocker",
+    "email": "martinhocker23@gmail.com",
+    "role": "Student",
+    "year": "Year 2",
+    "profileCompleted": true,
+    "semester": "3",
+    "updatedAt": {
+      "_seconds": 1768550413,
+      "_nanoseconds": 155000000
+    },
+    "program": "Diploma in  Irrigation Engineering"
+  },
+  {
+    "id": "lkAQ8GUnraRKqbo3HEf7Q8mHnNs1",
+    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocJBuG7cCbmX6gds8EM2AP4D1tVe9PBDaTw1vlKqKpSgltp_QQ=s96-c",
+    "uid": "lkAQ8GUnraRKqbo3HEf7Q8mHnNs1",
+    "createdAt": {
+      "_seconds": 1768511697,
+      "_nanoseconds": 940000000
+    },
+    "provider": "google",
+    "name": "Dennis Mlongoti",
+    "email": "mlongotidennis0@gmail.com",
+    "role": "Student",
+    "year": "Year 4",
+    "profileCompleted": true,
+    "semester": "2",
+    "program": "Basics",
+    "updatedAt": {
+      "_seconds": 1768511718,
+      "_nanoseconds": 811000000
+    }
+  },
+  {
+    "id": "lxbbiy4ez6SbMns8lrYRQ4QOEDe2",
+    "role": "Student",
+    "year": "3",
+    "profileCompleted": true,
+    "semester": "5",
+    "program": "Diploma in Environmental Management",
+    "updatedAt": {
+      "_seconds": 1780737569,
+      "_nanoseconds": 107000000
+    }
+  },
+  {
+    "id": "mhUK9P4xzcMTjJrFH1bEza4lkSc2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in Agriculture Education",
+    "updatedAt": {
+      "_seconds": 1774319606,
+      "_nanoseconds": 780000000
+    }
+  },
+  {
+    "id": "moSbwFFFSoUCIjY24ATcqcI1w9y1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1772650887,
+      "_nanoseconds": 884000000
+    }
+  },
+  {
+    "id": "mos9kzmj0FXQ3ufhhszW6w0DYy52",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Irrigation technology",
+    "updatedAt": {
+      "_seconds": 1775465919,
+      "_nanoseconds": 688000000
+    }
+  },
+  {
+    "id": "nrkN8lDv15acx0P00G1pDLJ1lX53",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1773171159,
+      "_nanoseconds": 473000000
+    }
+  },
+  {
+    "id": "oStAJlFA57bMRBRMjl915pWdkRg2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1774509871,
+      "_nanoseconds": 667000000
+    }
+  },
+  {
+    "id": "oWDgWgHAkKOJyj7b6c9fyO2NABs2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "Semester one",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1773205852,
+      "_nanoseconds": 203000000
+    }
+  },
+  {
+    "id": "oWPMJHwEWZPuVasVzApqhMmIND52",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1772473653,
+      "_nanoseconds": 480000000
+    }
+  },
+  {
+    "id": "obKyffUxHtNUciS77gL01E3wBsg1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in education agriculture",
+    "updatedAt": {
+      "_seconds": 1772182849,
+      "_nanoseconds": 527000000
+    }
+  },
+  {
+    "id": "pB1MeqYWvuYtJiQUjaQ6uqTizUP2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in nutrition and food nutrition",
+    "updatedAt": {
+      "_seconds": 1772136150,
+      "_nanoseconds": 998000000
+    }
+  },
+  {
+    "id": "pRlVQ9cyEbRGCb1wKuj0JJxvYRW2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1773216371,
+      "_nanoseconds": 394000000
+    }
+  },
+  {
+    "id": "pSprRr6GIefQ5NRgDV92LpTkeRD3",
+    "name": "Joel Mlongoti",
+    "email": "truthjoel165@gmail.com",
+    "program": "Diploma irrigation engineering",
+    "year": "Year 1",
+    "semester": "Semester 2",
+    "createdAt": "2025-10-11T03:12:39.824Z"
+  },
+  {
+    "id": "pUn1XIIa4uVHPVCoXhr9virAe4a2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "Semester one",
+    "program": "Diploma in Animal health and production",
+    "updatedAt": {
+      "_seconds": 1774339086,
+      "_nanoseconds": 757000000
+    }
+  },
+  {
+    "id": "pflu29qq4iTwP0S0cpXKore5urm2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1773171977,
+      "_nanoseconds": 334000000
+    }
+  },
+  {
+    "id": "pgNOeB0pncNd2OrOJOq8v7xzAau1",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "kanjuzielijah@gmail.com",
+    "program": "Food nutritional",
+    "updatedAt": {
+      "_seconds": 1773837587,
+      "_nanoseconds": 700000000
+    }
+  },
+  {
+    "id": "pkcLk8iBVuPOhHtrK5BHkSPictS2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Deploma in animal health and production",
+    "updatedAt": {
+      "_seconds": 1775120351,
+      "_nanoseconds": 969000000
+    }
+  },
+  {
+    "id": "pqhz5r92WyNopAnUzy7V1jrydwS2",
+    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocIkGZ04RN0HtRil-C_d2aDpUTyJ-1wum2S-0c8Fq9lFBWbLxw=s96-c",
+    "uid": "pqhz5r92WyNopAnUzy7V1jrydwS2",
+    "createdAt": {
+      "_seconds": 1770052313,
+      "_nanoseconds": 213000000
+    },
+    "provider": "google",
+    "name": "Chisomo Mhango",
+    "email": "mhangochisomo04@gmail.com",
+    "role": "Student",
+    "year": "Year 2",
+    "profileCompleted": true,
+    "semester": "Semester 3",
+    "program": "Diploma in land administration",
+    "updatedAt": {
+      "_seconds": 1770052374,
+      "_nanoseconds": 837000000
+    }
+  },
+  {
+    "id": "q0bbNVylUGPO21zDs3z43gClfbx2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in Irrigation Engineering / Irrigation Technology",
+    "updatedAt": {
+      "_seconds": 1777345500,
+      "_nanoseconds": 979000000
+    }
+  },
+  {
+    "id": "q2g92vEMZ7QzIIu9NUoFoTtIWgp1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1773174508,
+      "_nanoseconds": 420000000
+    }
+  },
+  {
+    "id": "qhD2adaJM8SBohjT2uds9JTsxG13",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "truthjoel165@gmail.com",
+    "program": "Diploma in Irrigation Engineering",
+    "updatedAt": {
+      "_seconds": 1776532946,
+      "_nanoseconds": 3000000
+    }
+  },
+  {
+    "id": "qrQXPVLzRvZn7vZLWg9CrUeaZ6t2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in Agriculture",
+    "updatedAt": {
+      "_seconds": 1773170123,
+      "_nanoseconds": 589000000
+    }
+  },
+  {
+    "id": "qtvoAtbwpoQ90D6CNE2qFEA7xTg1",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in Food, Nutrition and Livelihood Security",
+    "updatedAt": {
+      "_seconds": 1779795100,
+      "_nanoseconds": 395000000
+    }
+  },
+  {
+    "id": "r6Xmt3x2yRX40whQ1DOEobZFsKl1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "Semester 1",
+    "program": "Irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1773321582,
+      "_nanoseconds": 170000000
+    }
+  },
+  {
+    "id": "rnsTH2WIqBhbUYn6fPBPwbowvXL2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in Irrigation Engineering",
+    "updatedAt": {
+      "_seconds": 1774754455,
+      "_nanoseconds": 905000000
+    }
+  },
+  {
+    "id": "sIIVfVCzdkaJS4Aa3vH4woRu6Ay2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1773825390,
+      "_nanoseconds": 907000000
+    }
+  },
+  {
+    "id": "sTvd7PSlQbhasOE6Av0rGAtjFyg1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1773171041,
+      "_nanoseconds": 913000000
+    }
+  },
+  {
+    "id": "sZ5DKIYdBnZXEnS4azhCFL3Fazy1",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "4",
+    "program": "Bachelor of Science in agricultural economics",
+    "updatedAt": {
+      "_seconds": 1770320161,
+      "_nanoseconds": 532000000
+    }
+  },
+  {
+    "id": "sgsBZHbzgCY8bYg8laEyLfcEZzg2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Environmental management",
+    "updatedAt": {
+      "_seconds": 1775118497,
+      "_nanoseconds": 302000000
+    }
+  },
+  {
+    "id": "t2wjtCYwlYdjzs7ZZM1ELrsdO693",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "takondwakaipaband@gmail.com",
+    "program": "diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1773170139,
+      "_nanoseconds": 422000000
+    }
+  },
+  {
+    "id": "t4jQdEXvaxMS6g5vL08zTpdw3To1",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in environmental management",
+    "updatedAt": {
+      "_seconds": 1770268254,
+      "_nanoseconds": 36000000
+    }
+  },
+  {
+    "id": "tGU4d5swjiOcoj4vZcluoHE8AZZ2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "One",
+    "program": "Diploma in Agriculture",
+    "updatedAt": {
+      "_seconds": 1772727256,
+      "_nanoseconds": 470000000
+    }
+  },
+  {
+    "id": "tPrf1bKS7jY3aaxQpSfWyRcJPu52",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in Agriculture",
+    "updatedAt": {
+      "_seconds": 1773292729,
+      "_nanoseconds": 177000000
+    }
+  },
+  {
+    "id": "tphhTcoaTxSalTDEU646pul0EYp2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "diploma in environmental management",
+    "updatedAt": {
+      "_seconds": 1772700118,
+      "_nanoseconds": 531000000
+    }
+  },
+  {
+    "id": "tpwbrrmrwSSdlRCPh6X19jcwS1w2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1773215794,
+      "_nanoseconds": 923000000
+    }
+  },
+  {
+    "id": "tvtTOnNKtMTMciuCl4mjkHzIj862",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "2",
+    "program": "Education science",
+    "updatedAt": {
+      "_seconds": 1772465157,
+      "_nanoseconds": 278000000
+    }
+  },
+  {
+    "id": "u7S9HhIWKPZ0p7k49cAvz2w4uy63",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1774124872,
+      "_nanoseconds": 816000000
+    }
+  },
+  {
+    "id": "u8o0nBa8U5YRzXttc8VOmhb9YWD2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Agriculture general",
+    "updatedAt": {
+      "_seconds": 1773173220,
+      "_nanoseconds": 259000000
+    }
+  },
+  {
+    "id": "uZq7Klh9PzUlCOlCivGbECw8CBG3",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in Irrigation Engineering / Irrigation Technology",
+    "updatedAt": {
+      "_seconds": 1777263432,
+      "_nanoseconds": 920000000
+    }
+  },
+  {
+    "id": "uaUGovNhWegHbwYeWgLtUeVrrNU2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Agriculture general",
+    "updatedAt": {
+      "_seconds": 1773175277,
+      "_nanoseconds": 241000000
+    }
+  },
+  {
+    "id": "v8AChcf9ZVRx1hn87ojLuG567dg1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "2",
+    "program": "Computer science",
+    "updatedAt": {
+      "_seconds": 1772099304,
+      "_nanoseconds": 48000000
+    }
+  },
+  {
+    "id": "vARi0vHbXoOvQyglp8r0AosofXu1",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Bachelor of Science in Natural and Applied Sciences",
+    "updatedAt": {
+      "_seconds": 1781645957,
+      "_nanoseconds": 730000000
+    }
+  },
+  {
+    "id": "vXZjyFSVWPdeE1pBSaFL2VFuqN43",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "yamikansuman@gemail.com",
+    "program": "Deploma in irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1774300811,
+      "_nanoseconds": 82000000
+    }
+  },
+  {
+    "id": "vo7yRkJQ9pbnZ0aZHUX7UmRO3nH3",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "2",
+    "program": "Bachelor of Science in Environmental Science",
+    "updatedAt": {
+      "_seconds": 1781142147,
+      "_nanoseconds": 763000000
+    }
+  },
+  {
+    "id": "wBJOXUYhRGWHyIe1SoDfeWiytD83",
+    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocIFa-425mKOEpL4uNN9N14kNx19-v4vmOzYjdvCJiscnaWGpQ=s96-c",
+    "uid": "wBJOXUYhRGWHyIe1SoDfeWiytD83",
+    "createdAt": {
+      "_seconds": 1768758518,
+      "_nanoseconds": 853000000
+    },
+    "provider": "google",
+    "name": "blessings",
+    "email": "b57086371@gmail.com",
+    "role": "Student",
+    "year": "Year 2",
+    "profileCompleted": true,
+    "semester": "semester 4",
+    "program": "Diploma in land administration",
+    "updatedAt": {
+      "_seconds": 1768758747,
+      "_nanoseconds": 863000000
+    }
+  },
+  {
+    "id": "wiThsVQklTRLl6TSd9MjJlNsXwi1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Land administration",
+    "updatedAt": {
+      "_seconds": 1773170759,
+      "_nanoseconds": 201000000
+    }
+  },
+  {
+    "id": "wwANJO2mwRcfVrX9G8UIXC9khBK2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "General Agriculture",
+    "updatedAt": {
+      "_seconds": 1773201631,
+      "_nanoseconds": 74000000
+    }
+  },
+  {
+    "id": "xP04IX0T6fhsjin17zQiGfeJxiy2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in Irrigation Engineering / Irrigation Technology",
+    "updatedAt": {
+      "_seconds": 1777348230,
+      "_nanoseconds": 973000000
+    }
+  },
+  {
+    "id": "xQk3OkIix1b8iLBDcfc0KBX5cL23",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "kanyikar626@gmail.com",
+    "program": "Diploma in agriculture",
+    "updatedAt": {
+      "_seconds": 1773230428,
+      "_nanoseconds": 919000000
+    }
+  },
+  {
+    "id": "xhM34GexoCRPlnggaeWC8CFiTVk1",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Agro-food Processing",
+    "updatedAt": {
+      "_seconds": 1775899981,
+      "_nanoseconds": 718000000
+    }
+  },
+  {
+    "id": "xmBsmwoZ3APK2xNiMyBy31k8I1B2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Irrigation engineering",
+    "updatedAt": {
+      "_seconds": 1772727181,
+      "_nanoseconds": 376000000
+    }
+  },
+  {
+    "id": "yIyuLziZG9eNVjdtiZMvvYk8xEj1",
+    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocJJ5dCAudg8xmKqzlk_gj-GGWXDCR1NpvXNqg0wzP57RsnrIw=s96-c",
+    "uid": "yIyuLziZG9eNVjdtiZMvvYk8xEj1",
+    "createdAt": {
+      "_seconds": 1768592548,
+      "_nanoseconds": 880000000
+    },
+    "provider": "google",
+    "name": "Phantom Mind",
+    "email": "phantommind265@gmail.com",
+    "role": "Student",
+    "year": "Year 3",
+    "profileCompleted": true,
+    "semester": "Semester 6",
+    "program": "Bachelor of Science in agriculture",
+    "updatedAt": {
+      "_seconds": 1768592611,
+      "_nanoseconds": 27000000
+    }
+  },
+  {
+    "id": "yJfP326CmiNQ9K3g5O3Oj3XfwWB3",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Land Administration",
+    "updatedAt": {
+      "_seconds": 1773847775,
+      "_nanoseconds": 475000000
+    }
+  },
+  {
+    "id": "yRDwcz5b4tdxtArSw4N2lJtzAB92",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in food nutrition and livelihood security",
+    "updatedAt": {
+      "_seconds": 1770259326,
+      "_nanoseconds": 541000000
+    }
+  },
+  {
+    "id": "yYBDV8jw80MsvQ1veYu6ksaqunG2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "3",
+    "program": "Diploma in Irrigation Engineering / Irrigation Technology",
+    "updatedAt": {
+      "_seconds": 1777346806,
+      "_nanoseconds": 157000000
+    }
+  },
+  {
+    "id": "z42YeiJwL0bl5Sy7h7veeEw77No2",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in Agriculture",
+    "updatedAt": {
+      "_seconds": 1772696751,
+      "_nanoseconds": 524000000
+    }
+  },
+  {
+    "id": "zCUH0WoeSMdllGq99cK97Tv47MH3",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma In Agriculture",
+    "updatedAt": {
+      "_seconds": 1772799058,
+      "_nanoseconds": 237000000
+    }
+  },
+  {
+    "id": "zHmRUBjZ9zfluiBgc4jmjeDUGJ42",
+    "role": "Student",
+    "year": "1",
+    "profileCompleted": true,
+    "semester": "2",
+    "program": "Environmental management",
+    "updatedAt": {
+      "_seconds": 1774592449,
+      "_nanoseconds": 172000000
+    }
+  },
+  {
+    "id": "zQYDDEv2PjYqvFu4KzuUPDlKNqp2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "environmental management",
+    "updatedAt": {
+      "_seconds": 1776455628,
+      "_nanoseconds": 348000000
+    }
+  },
+  {
+    "id": "zpHjMwCiDRTIPkpVB1TYd2czbqv2",
+    "role": "Student",
+    "year": "2",
+    "profileCompleted": true,
+    "semester": "1",
+    "program": "Diploma in irrigation Engineering",
+    "updatedAt": {
+      "_seconds": 1770264737,
+      "_nanoseconds": 752000000
+    }
+  }
+]
