@@ -1,0 +1,22 @@
+{
+  "name": "StudyHub LUANAR",
+  "short_name": "StudyHub",
+  "description": "Home for notes. 3.7 GPA target.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#1E90FF",
+  "theme_color": "#1E90FF",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
