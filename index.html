@@ -19,7 +19,15 @@
 
   <body>
     <div id="root"></div>
-
+<script>
+  // Catch all unhandled errors and show them on the page
+  window.onerror = function (msg, url, line, col, error) {
+    document.body.innerHTML = '<div style="color:red;padding:20px;font-size:18px;">❌ JS Error: ' + msg + '<br>At: ' + url + ':' + line + ':' + col + '</div>';
+  };
+  window.addEventListener('unhandledrejection', function (e) {
+    document.body.innerHTML = '<div style="color:red;padding:20px;font-size:18px;">❌ Promise Rejection: ' + e.reason + '</div>';
+  });
+</script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
