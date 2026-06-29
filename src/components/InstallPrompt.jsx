@@ -1,69 +1,86 @@
 import { useState, useEffect } from 'react';
+import { Download } from 'lucide-react';
 
 export default function InstallPrompt() {
   const [installEvent, setInstallEvent] = useState(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [status, setStatus] = useState('checking...');
 
   useEffect(() => {
+    if (!('serviceWorker' in navigator)) {
+      setStatus('No SW support');
+      return;
+    }
+
+    navigator.serviceWorker.ready
+      .then(() => setStatus('SW ready'))
+      .catch(err => setStatus('SW error: ' + err.message));
+
     const handler = (e) => {
       e.preventDefault();
       setInstallEvent(e);
-      setIsVisible(true);
+      setStatus('Prompt ready');
     };
 
     window.addEventListener('beforeinstallprompt', handler);
 
     if (window.matchMedia('(display-mode: standalone)').matches || navigator.standalone) {
-      setIsVisible(false);
+      setStatus('Already installed');
+      return () => window.removeEventListener('beforeinstallprompt', handler);
     }
 
     window.addEventListener('appinstalled', () => {
-      setIsVisible(false);
       setInstallEvent(null);
+      setStatus('Installed!');
     });
 
-    return () => window.removeEventListener('beforeinstallprompt', handler);
+    // If after 5 seconds the prompt hasn't fired, show what we know
+    const timeout = setTimeout(() => {
+      if (!installEvent) setStatus(prev => prev + ' | no prompt yet');
+    }, 5000);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handler);
+      clearTimeout(timeout);
+    };
   }, []);
 
   const handleInstall = () => {
     if (!installEvent) return;
     installEvent.prompt();
-    installEvent.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted install');
-      }
-      setInstallEvent(null);
-      setIsVisible(false);
-    });
+    installEvent.userChoice.then(() => setInstallEvent(null));
   };
 
-  if (!isVisible) return null;
-
   return (
-    <div style={{
-      position: 'fixed',
-      bottom: '20px',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      background: '#1e293b',
-      color: 'white',
-      padding: '12px 24px',
-      borderRadius: '12px',
-      display: 'flex',
-      alignItems: 'center',
-      gap: '12px',
-      zIndex: 9999,
-      boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
-    }}>
-      <span>Install this app for quick access</span>
-      <button onClick={handleInstall}
-        style={{ background: '#3b82f6', border: 'none', color: 'white', padding: '8px 16px', borderRadius: '8px', cursor: 'pointer' }}>
-        Install
-      </button>
-      <button onClick={() => setIsVisible(false)}
-        style={{ background: 'transparent', border: 'none', color: '#94a3b8', fontSize: '18px', cursor: 'pointer' }}>
-        ✕
-      </button>
-    </div>
+    <>
+      {/* Tiny debug text – remove after testing */}
+      <div style={{
+        position: 'fixed',
+        top: 2,
+        left: 2,
+        fontSize: '8px',
+        color: '#666',
+        background: 'rgba(255,255,255,0.7)',
+        padding: '2px 6px',
+        zIndex: 99999,
+        borderRadius: '4px'
+      }}>
+        {status}
+      </div>
+
+      {installEvent && (
+        <button
+          onClick={handleInstall}
+          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 
+                     flex items-center gap-2 px-4 py-2 
+                     bg-white/90 backdrop-blur-md border border-gray-200 
+                     rounded-full shadow-lg hover:shadow-xl 
+                     text-sm font-medium text-gray-700 hover:text-gray-900 
+                     transition-all duration-200 active:scale-95"
+        >
+          <Download size={16} />
+          <span>Install App</span>
+        </button>
+      )}
+    </>
   );
 }
