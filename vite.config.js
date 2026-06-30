@@ -18,9 +18,8 @@ export default defineConfig({
       '.onrender.com'
     ],
     historyApiFallback: true,
-    // 👇 Add this
     headers: {
-      'manifest.json': {
+      '/manifest.json': {            // ← leading slash fixed
         'Content-Type': 'application/manifest+json'
       }
     }
