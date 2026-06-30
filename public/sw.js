@@ -1,4 +1,4 @@
-const CACHE_NAME = 'studyhub-v3'; // bumped version to ensure update
+const CACHE_NAME = 'studyhub-v3';
 
 self.addEventListener('install', event => {
   event.waitUntil(
@@ -16,7 +16,7 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-  // Only handle GET requests – POST requests cannot be cached
+  // Never cache POST requests (API calls)
   if (event.request.method !== 'GET') {
     event.respondWith(fetch(event.request));
     return;
@@ -25,7 +25,6 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     fetch(event.request)
       .then(response => {
-        // Cache a copy of the response
         const responseClone = response.clone();
         caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseClone));
         return response;

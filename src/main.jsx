@@ -7,19 +7,18 @@ import App from './App.jsx'
 window.__INSTALL_EVENT__ = null;
 
 window.addEventListener('beforeinstallprompt', (e) => {
+  alert('✅ Install prompt is ready!');   // ← temporary popup
   e.preventDefault();
   window.__INSTALL_EVENT__ = e;
 });
 
-// Mark as installed so we never show the button again
 window.addEventListener('appinstalled', () => {
   localStorage.setItem('studyhub_installed', 'true');
   window.__INSTALL_EVENT__ = null;
 });
 
-// ✅ Register service worker for PWA
+// ✅ Clean service worker registration
 if ('serviceWorker' in navigator) {
-  // Unregister old workers first
   navigator.serviceWorker.getRegistrations().then(regs => {
     regs.forEach(reg => reg.unregister());
   }).then(() => {
@@ -35,4 +34,4 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
   </StrictMode>
-)
+);
