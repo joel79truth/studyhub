@@ -13,10 +13,15 @@ export default defineConfig({
     }
   },
   preview: {
-  allowedHosts: [
-    'studyhub-backend-opdd.onrender.com',
-    '.onrender.com'
-  ],
-  historyApiFallback: true
-}
+    allowedHosts: [
+      'studyhub-backend-opdd.onrender.com',
+      '.onrender.com'
+    ],
+    historyApiFallback: {
+      rewrites: [
+        { from: /^\/manifest\.webmanifest$/, to: '/manifest.webmanifest' },
+        { from: /./, to: '/index.html' }
+      ]
+    }
+  }
 })
