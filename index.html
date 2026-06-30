@@ -19,6 +19,37 @@
 
   <body>
     <div id="root"></div>
+    <script>
+  (async function() {
+    const msgs = [];
+    const base = window.location.origin;
+
+    try {
+      const r = await fetch(base + '/manifest.json');
+      const ct = r.headers.get('content-type');
+      if (!r.ok) msgs.push('❌ manifest HTTP ' + r.status);
+      else if (!ct || !ct.includes('application/manifest+json')) msgs.push('❌ manifest MIME: ' + ct);
+      else msgs.push('✅ manifest OK');
+    } catch(e) { msgs.push('❌ manifest fetch failed'); }
+
+    for (const size of [192, 512]) {
+      try {
+        const r = await fetch(base + '/icons/icon-' + size + '.png');
+        msgs.push(r.ok ? '✅ icon-' + size + '.png' : '❌ icon-' + size + '.png missing');
+      } catch(e) { msgs.push('❌ icon-' + size + '.png error'); }
+    }
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.ready
+        .then(() => msgs.push('✅ SW active'))
+        .catch(() => msgs.push('⚠️ SW not active'));
+    } else {
+      msgs.push('❌ No SW support');
+    }
+
+    setTimeout(() => alert('📋 PWA Check:\n\n' + msgs.join('\n')), 1000);
+  })();
+</script>
 <script>
   // Catch all unhandled errors and show them on the page
   window.onerror = function (msg, url, line, col, error) {
