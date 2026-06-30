@@ -3,20 +3,30 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
-// 🔁 Remove any existing service workers before registering the new one
+// 🌍 Store the install prompt event globally
+window.__INSTALL_EVENT__ = null;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  window.__INSTALL_EVENT__ = e;
+});
+
+// Mark as installed so we never show the button again
+window.addEventListener('appinstalled', () => {
+  localStorage.setItem('studyhub_installed', 'true');
+  window.__INSTALL_EVENT__ = null;
+});
+
+// ✅ Register service worker for PWA
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.getRegistrations().then(registrations => {
-    registrations.forEach(reg => reg.unregister());
+  // Unregister old workers first
+  navigator.serviceWorker.getRegistrations().then(regs => {
+    regs.forEach(reg => reg.unregister());
   }).then(() => {
-    // Now register the new service worker after a tiny delay
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/sw.js')
-        .then(registration => {
-          console.log('SW registered:', registration.scope);
-        })
-        .catch(error => {
-          console.error('SW registration failed:', error);
-        });
+        .then(reg => console.log('SW registered:', reg.scope))
+        .catch(err => console.error('SW failed:', err));
     });
   });
 }
@@ -24,5 +34,5 @@ if ('serviceWorker' in navigator) {
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
-  </StrictMode>,
+  </StrictMode>
 )

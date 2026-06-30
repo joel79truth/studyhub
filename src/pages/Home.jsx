@@ -174,6 +174,23 @@ const Home = () => {
   const scrollContainerRef = useRef(null);
   const authSubscriptionRef = useRef(null);
 
+  // ========== INSTALL BUTTON STATE ==========
+  const [showInstallButton, setShowInstallButton] = useState(false);
+
+  // ========== CHECK INSTALL STATUS ==========
+  useEffect(() => {
+    // Never show if already installed
+    if (
+      localStorage.getItem('studyhub_installed') === 'true' ||
+      window.matchMedia('(display-mode: standalone)').matches ||
+      navigator.standalone
+    ) return;
+
+    // Show the button after a tiny delay (lets the page settle)
+    const timer = setTimeout(() => setShowInstallButton(true), 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
   // Calculate exam countdown
   const calculateExamCountdown = useCallback(() => {
     const examDate = new Date(2026, 5, 17);
@@ -222,32 +239,27 @@ const Home = () => {
         .from('profiles')
         .select('*')
         .eq('id', authUser.id)
-        .maybeSingle();   // safe, no 406
+        .maybeSingle();
 
       if (error) throw error;
 
       if (!profile) {
-        // No profile yet – redirect to login to complete profile
         console.warn('No profile found – redirecting to login');
         window.location.href = '/login';
         return;
       }
 
-      // Set user data for display
       setUserData({
         displayName: authUser.user_metadata?.full_name || authUser.email,
         email: authUser.email,
         program: profile.program,
         semester: profile.semester,
-        // you can add more fields here
       });
 
-      // Load files using the program from the profile
       if (profile.program) {
         loadFiles(profile.program);
       }
 
-      // Simple streak logic (adjust to your needs)
       const today = new Date().toDateString();
       const lastActive = profile.last_active ? new Date(profile.last_active).toDateString() : null;
       let newStreak = profile.streak || 0;
@@ -260,7 +272,6 @@ const Home = () => {
         newStreak = 1;
       }
 
-      // Optionally update the profile with new streak and last_active
       await supabase
         .from('profiles')
         .upsert({ id: authUser.id, streak: newStreak, last_active: new Date().toISOString() });
@@ -292,7 +303,6 @@ const Home = () => {
 
     checkSession();
 
-    // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
         if (session?.user) {
@@ -699,6 +709,38 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      {/* ========== INSTALL BUTTON – Slim, fixed, disappears after install ========== */}
+      {showInstallButton && (
+        <button
+          onClick={async () => {
+            const installEvent = window.__INSTALL_EVENT__;
+            if (installEvent) {
+              installEvent.prompt();
+              const { outcome } = await installEvent.userChoice;
+              if (outcome === 'accepted') {
+                localStorage.setItem('studyhub_installed', 'true');
+                setShowInstallButton(false);
+              }
+            } else {
+              // Manual fallback
+              alert('Tap the browser menu (⋮) → "Add to Home screen"');
+            }
+          }}
+          className="fixed bottom-20 right-4 z-50 
+                     flex items-center gap-1.5 px-3 py-1.5 
+                     bg-white/80 backdrop-blur-sm border border-gray-300 
+                     rounded-full shadow-sm hover:shadow-md 
+                     text-xs font-medium text-gray-600 hover:text-gray-800 
+                     transition-all duration-200 active:scale-95"
+          aria-label="Install App"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M12 5v14M5 12l7 7 7-7M21 21H3"/>
+          </svg>
+          <span>Install App</span>
+        </button>
+      )}
     </div>
   );
 };
