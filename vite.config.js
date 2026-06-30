@@ -17,6 +17,12 @@ export default defineConfig({
       'studyhub-backend-opdd.onrender.com',
       '.onrender.com'
     ],
-    historyApiFallback: true      // ← add this
+    historyApiFallback: true,
+    // 👇 Add this
+    headers: {
+      'manifest.json': {
+        'Content-Type': 'application/manifest+json'
+      }
+    }
   }
 })
