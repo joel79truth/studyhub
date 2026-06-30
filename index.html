@@ -6,8 +6,8 @@
     <!-- App icon in browser -->
     <link rel="icon" type="image/png" href="/icons/icon-192.png" />
 
-    <!-- PWA settings -->
-    <link rel="manifest" href="/manifest.json" />
+    <!-- PWA settings – now using .webmanifest -->
+    <link rel="manifest" href="/manifest.webmanifest" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -25,7 +25,7 @@
     const base = window.location.origin;
 
     try {
-      const r = await fetch(base + '/manifest.json');
+      const r = await fetch(base + '/manifest.webmanifest');
       const ct = r.headers.get('content-type');
       if (!r.ok) msgs.push('❌ manifest HTTP ' + r.status);
       else if (!ct || !ct.includes('application/manifest+json')) msgs.push('❌ manifest MIME: ' + ct);

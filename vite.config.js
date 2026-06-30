@@ -13,15 +13,10 @@ export default defineConfig({
     }
   },
   preview: {
-    allowedHosts: [
-      'studyhub-backend-opdd.onrender.com',
-      '.onrender.com'
-    ],
-    historyApiFallback: true,
-    headers: {
-      '/manifest.json': {            // ← leading slash fixed
-        'Content-Type': 'application/manifest+json'
-      }
-    }
-  }
+  allowedHosts: [
+    'studyhub-backend-opdd.onrender.com',
+    '.onrender.com'
+  ],
+  historyApiFallback: true
+}
 })
