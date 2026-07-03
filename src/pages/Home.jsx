@@ -3,7 +3,7 @@ import { supabase } from '../supabase';
 import { BottomNav } from '../components/BottomNav';
 import { useNavigate } from 'react-router-dom';
 
-// Loading Skeleton (smaller to match new card size)
+// ========== Loading Skeleton ==========
 const LoadingSkeleton = () => (
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
     {[1, 2, 3, 4, 5, 6].map((i) => (
@@ -23,7 +23,7 @@ const LoadingSkeleton = () => (
   </div>
 );
 
-// Course Card Component (compact)
+// ========== Course Card ==========
 const CourseCard = ({ file }) => {
   const fileUrl = file.url || (file.file_path ? 
     supabase.storage.from("notes").getPublicUrl(file.file_path).data.publicUrl : null);
@@ -105,7 +105,7 @@ const CourseCard = ({ file }) => {
   );
 };
 
-// Stats Card Component (compact)
+// ========== Stats Card ==========
 const StatsCard = ({ icon, title, value, subtitle, gradient }) => (
   <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl p-3 hover:shadow-lg transition-all duration-200 hover:-translate-y-1">
     <div className="flex items-center justify-between mb-1">
@@ -119,7 +119,7 @@ const StatsCard = ({ icon, title, value, subtitle, gradient }) => (
   </div>
 );
 
-// Main Home Component
+// ========== Home Component ==========
 const Home = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
@@ -135,13 +135,10 @@ const Home = () => {
   const scrollContainerRef = useRef(null);
   const authSubscriptionRef = useRef(null);
 
-  // Session loading spinner
   const [sessionLoading, setSessionLoading] = useState(true);
-
-  // Install button state
   const [showInstallButton, setShowInstallButton] = useState(false);
 
-  // Check install status (never show if already installed)
+  // Install button
   useEffect(() => {
     if (
       localStorage.getItem('studyhub_installed') === 'true' ||
@@ -152,7 +149,7 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Calculate exam countdown
+  // Exam countdown
   const calculateExamCountdown = useCallback(() => {
     const examDate = new Date(2026, 5, 17);
     const now = new Date();
@@ -169,7 +166,7 @@ const Home = () => {
     }
   }, []);
 
-  // Load files from Supabase
+  // Load files
   const loadFiles = useCallback(async (program) => {
     if (!program) return;
     try {
@@ -190,7 +187,7 @@ const Home = () => {
     }
   }, []);
 
-  // Load user profile from Supabase profiles table
+  // Load user profile
   const loadUserProfile = useCallback(async (authUser) => {
     try {
       const { data: profile, error } = await supabase
@@ -200,7 +197,6 @@ const Home = () => {
         .maybeSingle();
       if (error) throw error;
       if (!profile) {
-        console.warn('No profile found – redirecting to login');
         navigate('/login', { replace: true });
         return;
       }
@@ -213,11 +209,12 @@ const Home = () => {
       if (profile.program) {
         loadFiles(profile.program);
       }
+      // Streak logic
       const today = new Date().toDateString();
       const lastActive = profile.last_active ? new Date(profile.last_active).toDateString() : null;
       let newStreak = profile.streak || 0;
       if (lastActive === today) {
-        // streak unchanged
+        // unchanged
       } else if (lastActive === new Date(Date.now() - 86400000).toDateString()) {
         newStreak += 1;
       } else {
@@ -234,21 +231,8 @@ const Home = () => {
     }
   }, [loadFiles, calculateExamCountdown, navigate]);
 
-  // Initial session check – redirect to /login if not authenticated
+  // --- Session listener (no getSession, only onAuthStateChange) ---
   useEffect(() => {
-    const checkSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (session?.user) {
-        setUser(session.user);
-        await loadUserProfile(session.user);
-      } else {
-        navigate('/login', { replace: true });
-      }
-      setSessionLoading(false);
-    };
-
-    checkSession();
-
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
         if (session?.user) {
@@ -259,25 +243,20 @@ const Home = () => {
           setUserData(null);
           navigate('/login', { replace: true });
         }
+        setSessionLoading(false);
       }
     );
-
     authSubscriptionRef.current = subscription;
-
     return () => {
-      if (authSubscriptionRef.current) {
-        authSubscriptionRef.current.unsubscribe();
-      }
+      if (authSubscriptionRef.current) authSubscriptionRef.current.unsubscribe();
     };
   }, [loadUserProfile, navigate]);
 
-  // Handle scroll to hide welcome banner
+  // Scroll
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
-    const handleScroll = () => {
-      setIsScrolled(container.scrollTop > 50);
-    };
+    const handleScroll = () => setIsScrolled(container.scrollTop > 50);
     container.addEventListener('scroll', handleScroll);
     return () => container.removeEventListener('scroll', handleScroll);
   }, []);
@@ -297,26 +276,18 @@ const Home = () => {
     ? names[0][0] 
     : names[0][0] + names[names.length - 1][0];
 
-  const handleNavigation = (path) => {
-    navigate(path);
-  };
+  const handleNavigation = (path) => navigate(path);
 
-  // Session loading screen
+  // --- Loading spinner ---
   if (sessionLoading) {
     return (
       <div className="h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50">
         <div className="text-center">
           <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-sm text-gray-500">Loading your account...</p>
+          <p className="text-sm text-gray-500">Loading your account…</p>
         </div>
       </div>
     );
-  }
-
-  // If not logged in, immediately redirect (backup safety net)
-  if (!user && !userData) {
-    navigate('/login', { replace: true });
-    return null;
   }
 
   // ==================== MAIN LOGGED‑IN VIEW ====================
@@ -409,7 +380,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* ===== MAIN CONTENT – NO SIDE PADDING ON MOBILE ===== */}
+      {/* ===== MAIN CONTENT ===== */}
       <div className="px-4 lg:px-6 space-y-4 lg:space-y-6">
         {/* Stats Cards */}
         <div className="grid grid-cols-2 gap-3 lg:gap-4">
@@ -489,7 +460,7 @@ const Home = () => {
         />
       )}
 
-      {/* Mobile Sidebar – now with solid white background */}
+      {/* Mobile Sidebar */}
       <div className={`
         lg:hidden fixed top-0 left-0 h-full w-64 bg-white border-r border-border
         transform transition-transform duration-300 ease-in-out z-50 flex flex-col
@@ -522,10 +493,7 @@ const Home = () => {
           <ul className="space-y-2">
             <li>
               <button 
-                onClick={() => {
-                  handleNavigation('/upload');
-                  setSidebarOpen(false);
-                }}
+                onClick={() => { handleNavigation('/upload'); setSidebarOpen(false); }}
                 className="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg hover:from-blue-600 hover:to-purple-700 transition-all text-left"
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -537,10 +505,7 @@ const Home = () => {
             </li>
             <li>
               <button 
-                onClick={() => {
-                  handleNavigation('/course');
-                  setSidebarOpen(false);
-                }}
+                onClick={() => { handleNavigation('/course'); setSidebarOpen(false); }}
                 className="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-accent transition-all text-left text-foreground/80"
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -552,10 +517,7 @@ const Home = () => {
             </li>
             <li>
               <button 
-                onClick={() => {
-                  handleNavigation('/timetable');
-                  setSidebarOpen(false);
-                }}
+                onClick={() => { handleNavigation('/timetable'); setSidebarOpen(false); }}
                 className="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-accent transition-all text-left text-foreground/80"
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -569,10 +531,7 @@ const Home = () => {
             </li>
             <li>
               <button 
-                onClick={() => {
-                  handleNavigation('/request');
-                  setSidebarOpen(false);
-                }}
+                onClick={() => { handleNavigation('/request'); setSidebarOpen(false); }}
                 className="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-accent transition-all text-left text-foreground/80"
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -584,10 +543,7 @@ const Home = () => {
             </li>
             <li>
               <button 
-                onClick={() => {
-                  handleNavigation('/profile');
-                  setSidebarOpen(false);
-                }}
+                onClick={() => { handleNavigation('/profile'); setSidebarOpen(false); }}
                 className="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-accent transition-all text-left text-foreground/80"
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -599,10 +555,7 @@ const Home = () => {
             </li>
             <li>
               <button 
-                onClick={() => {
-                  handleNavigation('/settings');
-                  setSidebarOpen(false);
-                }}
+                onClick={() => { handleNavigation('/settings'); setSidebarOpen(false); }}
                 className="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-accent transition-all text-left text-foreground/80"
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -622,7 +575,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* ========== INSTALL BUTTON – Slim, fixed, disappears after install ========== */}
+      {/* ========== INSTALL BUTTON ========== */}
       {showInstallButton && (
         <button
           onClick={async () => {

@@ -7,51 +7,40 @@ export async function setupDeepLinkHandler() {
     App.addListener('appUrlOpen', async (data) => {
       const url = data.url;
 
+      // Only handle our custom scheme
       if (url.startsWith('com.studyhub.luanar://')) {
-        if (url.includes('access_token=')) {
+        // Extract the authorization code from the query string
+        const urlObj = new URL(url);
+        const code = urlObj.searchParams.get('code');
+
+        if (code) {
           try {
-            const fragment = url.includes('#') ? url.split('#')[1] : '';
-            const params = new URLSearchParams(fragment);
-            const access_token = params.get('access_token');
-            const refresh_token = params.get('refresh_token');
-
-            if (access_token && refresh_token) {
-              const { error } = await supabase.auth.setSession({
-                access_token,
-                refresh_token,
-              });
-
-              if (error) {
-                console.error('setSession failed:', error.message);
-                // Optionally show an alert, but for production we'll just log
-              } else {
-                // Session stored – reload the app so it picks up the new session
-                window.location.href = '/';
-              }
+            // Exchange the code for a session (this is the missing step)
+            const { error } = await supabase.auth.exchangeCodeForSession(code);
+            if (!error) {
+              // Session created – reload to pick it up
+              window.location.href = '/';
+            } else {
+              console.error('exchangeCodeForSession failed:', error.message);
             }
           } catch (err) {
-            console.error('Failed to parse deep link', err);
+            console.error('Failed to exchange code:', err);
           }
+        } else {
+          console.log('No code found in URL:', url);
         }
       }
     });
 
-    // Handle cold start (app was launched from a deep link)
+    // Handle cold start (app was launched with a deep link)
     const { value } = await App.getLaunchUrl();
     if (value?.url?.startsWith('com.studyhub.luanar://')) {
-      if (value.url.includes('access_token=')) {
-        const fragment = value.url.includes('#') ? value.url.split('#')[1] : '';
-        const params = new URLSearchParams(fragment);
-        const access_token = params.get('access_token');
-        const refresh_token = params.get('refresh_token');
-        if (access_token && refresh_token) {
-          const { error } = await supabase.auth.setSession({
-            access_token,
-            refresh_token,
-          });
-          if (!error) {
-            window.location.href = '/';
-          }
+      const urlObj = new URL(value.url);
+      const code = urlObj.searchParams.get('code');
+      if (code) {
+        const { error } = await supabase.auth.exchangeCodeForSession(code);
+        if (!error) {
+          window.location.href = '/';
         }
       }
     }
