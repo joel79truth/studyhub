@@ -119,43 +119,6 @@ const StatsCard = ({ icon, title, value, subtitle, gradient }) => (
   </div>
 );
 
-// Login Prompt Modal
-const LoginPrompt = ({ onLogin, onStay }) => (
-  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-    <div className="bg-card rounded-2xl p-6 max-w-sm w-full mx-4 shadow-2xl border border-border">
-      <div className="text-center">
-        <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-          <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
-        </div>
-        <h2 className="text-2xl font-bold mb-2 text-foreground">Welcome to StudyHub LUANAR</h2>
-        <p className="text-muted-foreground mb-6">
-          Please log in to access your personalized dashboard, view your courses, and track your progress.
-        </p>
-        <div className="flex flex-col gap-3">
-          <button
-            onClick={onLogin}
-            className="w-full py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-medium hover:from-blue-600 hover:to-purple-700 transition-all shadow-lg"
-          >
-            Log In
-          </button>
-          <button
-            onClick={onStay}
-            className="w-full py-3 bg-transparent border border-border rounded-xl font-medium hover:bg-accent transition-colors text-foreground"
-          >
-            Stay on Home
-          </button>
-        </div>
-        <p className="text-xs text-muted-foreground mt-4">
-          Don't have an account? <button onClick={onLogin} className="text-blue-600 hover:underline">Sign up</button>
-        </p>
-      </div>
-    </div>
-  </div>
-);
-
 // Main Home Component
 const Home = () => {
   const navigate = useNavigate();
@@ -168,25 +131,23 @@ const Home = () => {
   const [daysDelta, setDaysDelta] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showLoginPrompt, setShowLoginPrompt] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const scrollContainerRef = useRef(null);
   const authSubscriptionRef = useRef(null);
 
-  // ========== INSTALL BUTTON STATE ==========
+  // Session loading spinner
+  const [sessionLoading, setSessionLoading] = useState(true);
+
+  // Install button state
   const [showInstallButton, setShowInstallButton] = useState(false);
 
-  // ========== CHECK INSTALL STATUS ==========
+  // Check install status (never show if already installed)
   useEffect(() => {
-    // Never show if already installed
     if (
       localStorage.getItem('studyhub_installed') === 'true' ||
       window.matchMedia('(display-mode: standalone)').matches ||
       navigator.standalone
     ) return;
-
-    // Show the button after a tiny delay (lets the page settle)
     const timer = setTimeout(() => setShowInstallButton(true), 1000);
     return () => clearTimeout(timer);
   }, []);
@@ -196,7 +157,6 @@ const Home = () => {
     const examDate = new Date(2026, 5, 17);
     const now = new Date();
     const diffDays = Math.ceil((examDate - now) / (1000 * 60 * 60 * 24));
-    
     if (diffDays > 0) {
       setDaysLeft(diffDays);
       setDaysDelta('days left until exams');
@@ -212,7 +172,6 @@ const Home = () => {
   // Load files from Supabase
   const loadFiles = useCallback(async (program) => {
     if (!program) return;
-    
     try {
       setLoading(true);
       const { data, error } = await supabase
@@ -221,7 +180,6 @@ const Home = () => {
         .ilike("program", program.trim())
         .order("uploaded_at", { ascending: false })
         .limit(6);
-
       if (error) throw error;
       setFiles(data || []);
     } catch (err) {
@@ -240,65 +198,53 @@ const Home = () => {
         .select('*')
         .eq('id', authUser.id)
         .maybeSingle();
-
       if (error) throw error;
-
       if (!profile) {
         console.warn('No profile found – redirecting to login');
-        window.location.href = '/login';
+        navigate('/login', { replace: true });
         return;
       }
-
       setUserData({
         displayName: authUser.user_metadata?.full_name || authUser.email,
         email: authUser.email,
         program: profile.program,
         semester: profile.semester,
       });
-
       if (profile.program) {
         loadFiles(profile.program);
       }
-
       const today = new Date().toDateString();
       const lastActive = profile.last_active ? new Date(profile.last_active).toDateString() : null;
       let newStreak = profile.streak || 0;
-
       if (lastActive === today) {
-        // already active today, streak unchanged
+        // streak unchanged
       } else if (lastActive === new Date(Date.now() - 86400000).toDateString()) {
         newStreak += 1;
       } else {
         newStreak = 1;
       }
-
       await supabase
         .from('profiles')
         .upsert({ id: authUser.id, streak: newStreak, last_active: new Date().toISOString() });
-
       setStreak(newStreak);
       calculateExamCountdown();
     } catch (err) {
       console.error('Error loading profile:', err);
-      setIsLoggedIn(false);
-      setShowLoginPrompt(true);
+      navigate('/login', { replace: true });
     }
-  }, [loadFiles, calculateExamCountdown]);
+  }, [loadFiles, calculateExamCountdown, navigate]);
 
-  // Initial session check and auth state listener
+  // Initial session check – redirect to /login if not authenticated
   useEffect(() => {
     const checkSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session?.user) {
         setUser(session.user);
-        setIsLoggedIn(true);
-        setShowLoginPrompt(false);
         await loadUserProfile(session.user);
       } else {
-        setLoading(false);
-        setIsLoggedIn(false);
-        setShowLoginPrompt(true);
+        navigate('/login', { replace: true });
       }
+      setSessionLoading(false);
     };
 
     checkSession();
@@ -307,15 +253,11 @@ const Home = () => {
       async (event, session) => {
         if (session?.user) {
           setUser(session.user);
-          setIsLoggedIn(true);
-          setShowLoginPrompt(false);
           await loadUserProfile(session.user);
         } else {
           setUser(null);
           setUserData(null);
-          setIsLoggedIn(false);
-          setShowLoginPrompt(true);
-          setLoading(false);
+          navigate('/login', { replace: true });
         }
       }
     );
@@ -327,17 +269,15 @@ const Home = () => {
         authSubscriptionRef.current.unsubscribe();
       }
     };
-  }, [loadUserProfile]);
+  }, [loadUserProfile, navigate]);
 
   // Handle scroll to hide welcome banner
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
-
     const handleScroll = () => {
       setIsScrolled(container.scrollTop > 50);
     };
-
     container.addEventListener('scroll', handleScroll);
     return () => container.removeEventListener('scroll', handleScroll);
   }, []);
@@ -361,50 +301,22 @@ const Home = () => {
     navigate(path);
   };
 
-  // If not logged in and prompt is shown, show modal + minimal view
-  if (!isLoggedIn && showLoginPrompt) {
+  // Session loading screen
+  if (sessionLoading) {
     return (
-      <>
-        <LoginPrompt 
-          onLogin={() => navigate('/login')}
-          onStay={() => setShowLoginPrompt(false)}
-        />
-        <div className="h-screen overflow-y-auto bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center">
-          <div className="text-center p-8">
-            <h1 className="text-3xl font-medium text-foreground">StudyHub LUANAR</h1>
-            <p className="text-muted-foreground mt-2">Please log in to see your dashboard</p>
-          </div>
+      <div className="h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50">
+        <div className="text-center">
+          <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-sm text-gray-500">Loading your account...</p>
         </div>
-        <BottomNav />
-      </>
+      </div>
     );
   }
 
-  // Logged out but dismissed prompt – minimal guest view
-  if (!isLoggedIn && !showLoginPrompt) {
-    return (
-      <div className="h-screen overflow-y-auto bg-gradient-to-br from-blue-50 to-purple-50 pb-16 lg:pb-0">
-        <div className="flex flex-col items-center justify-center min-h-[60vh] p-8">
-          <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mb-6">
-            <svg className="w-10 h-10 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
-            </svg>
-          </div>
-          <h2 className="text-2xl font-bold text-foreground mb-2">You're viewing as a guest</h2>
-          <p className="text-muted-foreground text-center max-w-md">
-            Log in to access your courses, track your streak, and get personalized recommendations.
-          </p>
-          <button 
-            onClick={() => navigate('/login')}
-            className="mt-6 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-medium hover:from-blue-600 hover:to-purple-700 transition-all shadow-lg"
-          >
-            Log In Now
-          </button>
-        </div>
-        <BottomNav />
-      </div>
-    );
+  // If not logged in, immediately redirect (backup safety net)
+  if (!user && !userData) {
+    navigate('/login', { replace: true });
+    return null;
   }
 
   // ==================== MAIN LOGGED‑IN VIEW ====================
@@ -723,7 +635,6 @@ const Home = () => {
                 setShowInstallButton(false);
               }
             } else {
-              // Manual fallback
               alert('Tap the browser menu (⋮) → "Add to Home screen"');
             }
           }}
