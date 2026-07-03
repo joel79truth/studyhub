@@ -6,6 +6,7 @@ export async function setupDeepLinkHandler() {
 
     App.addListener('appUrlOpen', async (data) => {
       const url = data.url;
+
       if (url.startsWith('com.studyhub.luanar://')) {
         if (url.includes('access_token=')) {
           try {
@@ -13,8 +14,20 @@ export async function setupDeepLinkHandler() {
             const params = new URLSearchParams(fragment);
             const access_token = params.get('access_token');
             const refresh_token = params.get('refresh_token');
+
             if (access_token && refresh_token) {
-              await supabase.auth.setSession({ access_token, refresh_token });
+              const { error } = await supabase.auth.setSession({
+                access_token,
+                refresh_token,
+              });
+
+              if (error) {
+                console.error('setSession failed:', error.message);
+                // Optionally show an alert, but for production we'll just log
+              } else {
+                // Session stored – reload the app so it picks up the new session
+                window.location.href = '/';
+              }
             }
           } catch (err) {
             console.error('Failed to parse deep link', err);
@@ -23,6 +36,7 @@ export async function setupDeepLinkHandler() {
       }
     });
 
+    // Handle cold start (app was launched from a deep link)
     const { value } = await App.getLaunchUrl();
     if (value?.url?.startsWith('com.studyhub.luanar://')) {
       if (value.url.includes('access_token=')) {
@@ -31,7 +45,13 @@ export async function setupDeepLinkHandler() {
         const access_token = params.get('access_token');
         const refresh_token = params.get('refresh_token');
         if (access_token && refresh_token) {
-          await supabase.auth.setSession({ access_token, refresh_token });
+          const { error } = await supabase.auth.setSession({
+            access_token,
+            refresh_token,
+          });
+          if (!error) {
+            window.location.href = '/';
+          }
         }
       }
     }
