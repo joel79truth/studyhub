@@ -7,6 +7,25 @@ const LECTURER_SECRET = "LUANAR-FACULTY-2026";
 export default function Login() {
   const navigate = useNavigate();
 
+  // ── Handle OAuth code returned from deep link ──
+  useEffect(() => {
+    const code = window.__OAUTH_CODE__;
+    if (code) {
+      window.__OAUTH_CODE__ = null; // clear it so we don't reuse
+      (async () => {
+        const { error } = await supabase.auth.exchangeCodeForSession(code);
+        if (error) {
+          console.error('OAuth exchange error:', error.message);
+          // Optionally show an error, but just redirect to login to let user try again
+          navigate('/login', { replace: true });
+        } else {
+          // Session created – go to Home; the auth listener there will handle profile checks
+          navigate('/', { replace: true });
+        }
+      })();
+    }
+  }, [navigate]);
+
   // ─── State ──────────────────────────────────────────────
   const [loginMode, setLoginMode] = useState('email'); // 'email' or 'phone'
   const [showProfileForm, setShowProfileForm] = useState(false);
@@ -138,36 +157,36 @@ export default function Login() {
     }
   };
 
-  // ─── Google Sign‑In (uses custom scheme for native app) ──
- // ─── Google Sign‑In (native app) ──
-const handleGoogleSignIn = async () => {
-  setLoading(true);
-  setError('');
-  try {
-    const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: 'com.studyhub.luanar://auth/callback',
-      },
-    });
+  // ─── Google Sign‑In (native + web fallback) ──
+  const handleGoogleSignIn = async () => {
+    setLoading(true);
+    setError('');
+    try {
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: 'com.studyhub.luanar://auth/callback',
+        },
+      });
 
-    if (error) throw error;
+      if (error) throw error;
 
-    if (data?.url) {
-      // Dynamically import the Browser plugin (native only)
-      try {
-        const { Browser } = await import('@capacitor/browser');
-        await Browser.open({ url: data.url });
-      } catch {
-        // Fallback for web – open in new tab
-        window.open(data.url, '_blank');
+      if (data?.url) {
+        // Open the system browser for Google consent
+        try {
+          const { Browser } = await import('@capacitor/browser');
+          await Browser.open({ url: data.url });
+        } catch {
+          // Fallback for web
+          window.open(data.url, '_blank');
+        }
       }
+    } catch (err) {
+      setError('Google sign‑in error: ' + err.message);
+      setLoading(false);
     }
-  } catch (err) {
-    setError('Google sign‑in error: ' + err.message);
-    setLoading(false);
-  }
-};
+  };
+
   // ─── Phone OTP Login ──────────────────────────────────
   const handleSendOtp = async () => {
     if (!phone) {
@@ -231,7 +250,7 @@ const handleGoogleSignIn = async () => {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) {
       setError('Session expired. Please login again.');
-      navigate('/login', { replace: true });   // go back to login
+      navigate('/login', { replace: true });
       return;
     }
 
