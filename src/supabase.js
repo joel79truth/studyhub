@@ -1,18 +1,37 @@
 import { createClient } from '@supabase/supabase-js';
-import { Preferences } from '@capacitor/preferences';
 
-// Adapter using the official Capacitor Preferences API (secure on device)
-const NativePreferencesAdapter = {
+// Try to load Capacitor Preferences – only works in a Capacitor environment
+let CapacitorPreferences = null;
+try {
+  const { Preferences } = require('@capacitor/preferences');
+  CapacitorPreferences = Preferences;
+} catch {
+  // Not running inside Capacitor (web / development)
+}
+
+// Adapter that uses Capacitor Preferences on native, and localStorage on web
+const storageAdapter = {
   getItem: async (key) => {
-    const { value } = await Preferences.get({ key });
-    return value || null;
+    if (CapacitorPreferences) {
+      const { value } = await CapacitorPreferences.get({ key });
+      return value || null;
+    }
+    return localStorage.getItem(key);
   },
   setItem: async (key, value) => {
-    await Preferences.set({ key, value });
+    if (CapacitorPreferences) {
+      await CapacitorPreferences.set({ key, value });
+    } else {
+      localStorage.setItem(key, value);
+    }
   },
   removeItem: async (key) => {
-    await Preferences.remove({ key });
-  }
+    if (CapacitorPreferences) {
+      await CapacitorPreferences.remove({ key });
+    } else {
+      localStorage.removeItem(key);
+    }
+  },
 };
 
 const supabaseUrl = "https://qosudbigoxwzbdqkdecz.supabase.co";
@@ -20,7 +39,7 @@ const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 
 export const supabase = createClient(supabaseUrl, supabaseKey, {
   auth: {
-    storage: NativePreferencesAdapter,
+    storage: storageAdapter,
     autoRefreshToken: true,
     persistSession: true,
   }

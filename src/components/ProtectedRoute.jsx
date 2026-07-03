@@ -4,28 +4,32 @@ import { supabase } from '../supabase';
 
 export default function ProtectedRoute({ children }) {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [authReady, setAuthReady] = useState(false); // wait until first state known
 
   useEffect(() => {
-    const checkSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      setUser(session?.user || null);
-      setLoading(false);
-    };
-
-    checkSession();
-
-    // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user || null);
+    // Subscribe to auth state changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      setUser(session?.user ?? null);
+      // Mark that we have received the first auth state event
+      if (!authReady) setAuthReady(true);
     });
 
-    return () => {
-      subscription?.unsubscribe();
-    };
-  }, []);
+    // Also check initial session (may fire before the listener)
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+      setAuthReady(true);
+    });
 
-  if (loading) return <div>Loading...</div>;
-  if (!user) return <Navigate to="/login" />;
+    return () => subscription?.unsubscribe();
+  }, []); // no dependency needed for authReady
+
+  if (!authReady) {
+    return <div>Loading...</div>; // or a spinner
+  }
+
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+
   return children;
 }

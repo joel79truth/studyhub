@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { supabase } from '../supabase';
 import { BottomNav } from '../components/BottomNav';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';   // ← added Navigate
 
 // ========== Loading Skeleton ==========
 const LoadingSkeleton = () => (
@@ -197,6 +197,7 @@ const Home = () => {
         .maybeSingle();
       if (error) throw error;
       if (!profile) {
+        // Profile missing → let the Login page handle profile completion
         navigate('/login', { replace: true });
         return;
       }
@@ -231,18 +232,20 @@ const Home = () => {
     }
   }, [loadFiles, calculateExamCountdown, navigate]);
 
-  // --- Session listener (no getSession, only onAuthStateChange) ---
+  // --- Session listener (no premature redirect) ---
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
         if (session?.user) {
           setUser(session.user);
           await loadUserProfile(session.user);
-        } else {
+        } else if (event === 'SIGNED_OUT') {
+          // Only redirect on explicit sign-out, not on transient nulls
           setUser(null);
           setUserData(null);
-          navigate('/login', { replace: true });
         }
+        // For any other event (e.g., INITIAL_SESSION with null session)
+        // we let the render logic decide based on user state
         setSessionLoading(false);
       }
     );
@@ -250,7 +253,7 @@ const Home = () => {
     return () => {
       if (authSubscriptionRef.current) authSubscriptionRef.current.unsubscribe();
     };
-  }, [loadUserProfile, navigate]);
+  }, [loadUserProfile]);  // removed navigate from deps to avoid loop
 
   // Scroll
   useEffect(() => {
@@ -288,6 +291,11 @@ const Home = () => {
         </div>
       </div>
     );
+  }
+
+  // If no user after session check, redirect to login (replaces previous aggressive listener redirect)
+  if (!user) {
+    return <Navigate to="/login" replace />;
   }
 
   // ==================== MAIN LOGGED‑IN VIEW ====================

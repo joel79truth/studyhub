@@ -16,11 +16,15 @@ export default function Login() {
         const { error } = await supabase.auth.exchangeCodeForSession(code);
         if (error) {
           console.error('OAuth exchange error:', error.message);
-          // Optionally show an error, but just redirect to login to let user try again
           navigate('/login', { replace: true });
         } else {
-          // Session created – go to Home; the auth listener there will handle profile checks
-          navigate('/', { replace: true });
+          // Now get the user and run the same profile creation/check as other logins
+          const { data: { user } } = await supabase.auth.getUser();
+          if (user) {
+            await handleAuthSuccess(user);
+          } else {
+            navigate('/login', { replace: true });
+          }
         }
       })();
     }
