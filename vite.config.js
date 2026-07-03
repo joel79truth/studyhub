@@ -23,5 +23,14 @@ export default defineConfig({
         { from: /./, to: '/index.html' }
       ]
     }
-  }
+  },
+  build: {
+    rolldownOptions: {
+      external: ['@capacitor/app', '@capacitor/browser'],
+      output: {
+        codeSplitting: true,
+      },
+    },
+    chunkSizeWarningLimit: 1000,
+  },
 })

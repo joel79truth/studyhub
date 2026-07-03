@@ -34,3 +34,5 @@ dist-ssr
 "backend/.env" 
 ".env" 
 "backend/.env" 
+.env 
+backend/.env 
