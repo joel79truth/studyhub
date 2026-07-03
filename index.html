@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <!-- App icon in browser -->
     <link rel="icon" type="image/png" href="/icons/icon-192.png" />
 
@@ -19,65 +18,6 @@
 
   <body>
     <div id="root"></div>
-  <script>
-  (async function() {
-    const msgs = [];
-    const base = window.location.origin;
-
-    // 1. Manifest
-    try {
-      const r = await fetch(base + '/manifest.webmanifest');
-      const ct = r.headers.get('content-type');
-      if (!r.ok) msgs.push('❌ manifest HTTP ' + r.status);
-      else if (!ct || !ct.includes('application/manifest+json')) msgs.push('❌ manifest MIME: ' + ct);
-      else msgs.push('✅ manifest OK');
-    } catch(e) { msgs.push('❌ manifest fetch failed'); }
-
-    // 2. Icons – check dimensions
-    for (const size of [192, 512]) {
-      const url = base + '/icons/icon-' + size + '.png';
-      try {
-        const img = new Image();
-        img.src = url;
-        await new Promise((resolve, reject) => {
-          img.onload = () => {
-            if (img.naturalWidth === size && img.naturalHeight === size) {
-              msgs.push('✅ icon-' + size + '.png (' + size + 'x' + size + ')');
-            } else {
-              msgs.push('❌ icon-' + size + '.png is ' + img.naturalWidth + 'x' + img.naturalHeight + ' (needs ' + size + 'x' + size + ')');
-            }
-            resolve();
-          };
-          img.onerror = () => reject();
-          setTimeout(() => reject(new Error('timeout')), 5000);
-        });
-      } catch(e) {
-        msgs.push('❌ icon-' + size + '.png missing or error');
-      }
-    }
-
-    // 3. Service Worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.ready
-        .then(() => msgs.push('✅ SW active'))
-        .catch(() => msgs.push('⚠️ SW not active'));
-    } else {
-      msgs.push('❌ No SW support');
-    }
-
-    // 4. Display
-    alert('📋 PWA Check:\n\n' + msgs.join('\n'));
-  })();
-</script>
-<script>
-  // Catch all unhandled errors and show them on the page
-  window.onerror = function (msg, url, line, col, error) {
-    document.body.innerHTML = '<div style="color:red;padding:20px;font-size:18px;">❌ JS Error: ' + msg + '<br>At: ' + url + ':' + line + ':' + col + '</div>';
-  };
-  window.addEventListener('unhandledrejection', function (e) {
-    document.body.innerHTML = '<div style="color:red;padding:20px;font-size:18px;">❌ Promise Rejection: ' + e.reason + '</div>';
-  });
-</script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
