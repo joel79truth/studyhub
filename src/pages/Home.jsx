@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { supabase } from '../supabase';
 import { BottomNav } from '../components/BottomNav';
-import { useNavigate, Navigate } from 'react-router-dom';   // ← added Navigate
+import { useNavigate, Navigate } from 'react-router-dom';
 
 // ========== Loading Skeleton ==========
 const LoadingSkeleton = () => (
@@ -123,6 +123,7 @@ const StatsCard = ({ icon, title, value, subtitle, gradient }) => (
 const Home = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+  const [authReady, setAuthReady] = useState(false);
   const [userData, setUserData] = useState(null);
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -135,19 +136,32 @@ const Home = () => {
   const scrollContainerRef = useRef(null);
   const authSubscriptionRef = useRef(null);
 
-  const [sessionLoading, setSessionLoading] = useState(true);
-  const [showInstallButton, setShowInstallButton] = useState(false);
+  // Profile completion state
+  const [showProfileForm, setShowProfileForm] = useState(false);
+  const [program, setProgram] = useState('');
+  const [semester, setSemester] = useState('');
+  const [year, setYear] = useState('');
+  const [role, setRole] = useState('');
+  const [lecturerCode, setLecturerCode] = useState('');
+  const [programs, setPrograms] = useState([]);
+  const [fieldErrors, setFieldErrors] = useState({ program: false, semester: false, year: false, role: false, code: false });
+  const [profileSubmitting, setProfileSubmitting] = useState(false);
 
-  // Install button
-  useEffect(() => {
-    if (
-      localStorage.getItem('studyhub_installed') === 'true' ||
-      window.matchMedia('(display-mode: standalone)').matches ||
-      navigator.standalone
-    ) return;
-    const timer = setTimeout(() => setShowInstallButton(true), 1000);
-    return () => clearTimeout(timer);
-  }, []);
+  const LECTURER_SECRET = "LUANAR-FACULTY-2026";
+
+  // Load programmes
+  const loadPrograms = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('programs')
+        .select('id, name, campus, level')
+        .order('name', { ascending: true });
+      if (error) throw error;
+      setPrograms(data || []);
+    } catch (err) {
+      console.error('Failed to load programs:', err);
+    }
+  };
 
   // Exam countdown
   const calculateExamCountdown = useCallback(() => {
@@ -187,7 +201,7 @@ const Home = () => {
     }
   }, []);
 
-  // Load user profile
+  // Load user profile – never redirects to login
   const loadUserProfile = useCallback(async (authUser) => {
     try {
       const { data: profile, error } = await supabase
@@ -196,11 +210,21 @@ const Home = () => {
         .eq('id', authUser.id)
         .maybeSingle();
       if (error) throw error;
-      if (!profile) {
-        // Profile missing → let the Login page handle profile completion
-        navigate('/login', { replace: true });
+
+      if (!profile || !profile.program) {
+        // Profile missing or incomplete → show form inside Home
+        setShowProfileForm(true);
+        setUserData({
+          displayName: authUser.user_metadata?.full_name || authUser.email,
+          email: authUser.email,
+          program: null,
+          semester: null,
+        });
         return;
       }
+
+      // Profile complete
+      setShowProfileForm(false);
       setUserData({
         displayName: authUser.user_metadata?.full_name || authUser.email,
         email: authUser.email,
@@ -210,16 +234,17 @@ const Home = () => {
       if (profile.program) {
         loadFiles(profile.program);
       }
+
       // Streak logic
       const today = new Date().toDateString();
       const lastActive = profile.last_active ? new Date(profile.last_active).toDateString() : null;
       let newStreak = profile.streak || 0;
-      if (lastActive === today) {
-        // unchanged
-      } else if (lastActive === new Date(Date.now() - 86400000).toDateString()) {
-        newStreak += 1;
-      } else {
-        newStreak = 1;
+      if (lastActive !== today) {
+        if (lastActive === new Date(Date.now() - 86400000).toDateString()) {
+          newStreak += 1;
+        } else {
+          newStreak = 1;
+        }
       }
       await supabase
         .from('profiles')
@@ -228,11 +253,11 @@ const Home = () => {
       calculateExamCountdown();
     } catch (err) {
       console.error('Error loading profile:', err);
-      navigate('/login', { replace: true });
+      // do not redirect, just stay and maybe show error
     }
-  }, [loadFiles, calculateExamCountdown, navigate]);
+  }, [loadFiles, calculateExamCountdown]);
 
-  // --- Session listener (no premature redirect) ---
+  // Auth listener
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
@@ -240,22 +265,31 @@ const Home = () => {
           setUser(session.user);
           await loadUserProfile(session.user);
         } else if (event === 'SIGNED_OUT') {
-          // Only redirect on explicit sign-out, not on transient nulls
           setUser(null);
           setUserData(null);
+          setShowProfileForm(false);
         }
-        // For any other event (e.g., INITIAL_SESSION with null session)
-        // we let the render logic decide based on user state
-        setSessionLoading(false);
+        setAuthReady(true);
       }
     );
+
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        setUser(session.user);
+        loadUserProfile(session.user);
+      } else {
+        setUser(null);
+      }
+      setAuthReady(true);
+    });
+
     authSubscriptionRef.current = subscription;
     return () => {
       if (authSubscriptionRef.current) authSubscriptionRef.current.unsubscribe();
     };
-  }, [loadUserProfile]);  // removed navigate from deps to avoid loop
+  }, [loadUserProfile]);
 
-  // Scroll
+  // Scroll listener
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
@@ -281,8 +315,51 @@ const Home = () => {
 
   const handleNavigation = (path) => navigate(path);
 
-  // --- Loading spinner ---
-  if (sessionLoading) {
+  // Profile form submission
+  const handleProfileSubmit = async (e) => {
+    e.preventDefault();
+    setFieldErrors({ program: false, semester: false, year: false, role: false, code: false });
+
+    let valid = true;
+    if (!program) { setFieldErrors(prev => ({ ...prev, program: true })); valid = false; }
+    if (!semester) { setFieldErrors(prev => ({ ...prev, semester: true })); valid = false; }
+    if (!year) { setFieldErrors(prev => ({ ...prev, year: true })); valid = false; }
+    if (!role) { setFieldErrors(prev => ({ ...prev, role: true })); valid = false; }
+    if (role === 'Lecturer' && lecturerCode !== LECTURER_SECRET) {
+      setFieldErrors(prev => ({ ...prev, code: true }));
+      valid = false;
+    }
+    if (!valid) return;
+
+    setProfileSubmitting(true);
+    try {
+      const { error } = await supabase
+        .from('profiles')
+        .upsert({
+          id: user.id,
+          program,
+          semester,
+          year_of_study: year,
+          role,
+          profile_complete: true,
+          updated_at: new Date().toISOString(),
+        }, { onConflict: 'id' });
+
+      if (error) throw error;
+
+      // Reload profile
+      await loadUserProfile(user);
+      setShowProfileForm(false);
+    } catch (err) {
+      console.error('Profile update error:', err);
+      alert('Failed to save profile. Please try again.');
+    } finally {
+      setProfileSubmitting(false);
+    }
+  };
+
+  // Spinner while auth state is loading
+  if (!authReady) {
     return (
       <div className="h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50">
         <div className="text-center">
@@ -293,12 +370,78 @@ const Home = () => {
     );
   }
 
-  // If no user after session check, redirect to login (replaces previous aggressive listener redirect)
+  // If no user at all → go to login
   if (!user) {
     return <Navigate to="/login" replace />;
   }
 
-  // ==================== MAIN LOGGED‑IN VIEW ====================
+  // ========== PROFILE COMPLETION FORM ==========
+  if (showProfileForm) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50 p-4">
+        <div className="w-full max-w-md bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/50">
+          <h2 className="text-2xl font-bold text-center text-gray-800">✍️ Complete your profile</h2>
+          <p className="text-sm text-center text-gray-500 mb-6">Just a few details to personalise your dashboard</p>
+          <form onSubmit={handleProfileSubmit}>
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Programme of study <span className="text-red-500">*</span></label>
+              <select value={program} onChange={(e) => setProgram(e.target.value)} onFocus={loadPrograms}
+                className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.program ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}>
+                <option value="">— Select programme —</option>
+                {programs.map((p) => (
+                  <option key={p.id} value={p.name}>{p.name} ({p.campus})</option>
+                ))}
+              </select>
+              {fieldErrors.program && <p className="text-red-500 text-xs mt-1">Program is required</p>}
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Semester <span className="text-red-500">*</span></label>
+              <select value={semester} onChange={(e) => setSemester(e.target.value)}
+                className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.semester ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}>
+                <option value="">Select semester</option>
+                {[1,2,3,4,5,6,7,8].map(s => <option key={s} value={s}>Semester {s}</option>)}
+              </select>
+              {fieldErrors.semester && <p className="text-red-500 text-xs mt-1">Select your semester</p>}
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Year of study</label>
+              <select value={year} onChange={(e) => setYear(e.target.value)}
+                className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.year ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}>
+                <option value="">Select year</option>
+                {[1,2,3,4].map(y => <option key={y} value={y}>Year {y}</option>)}
+              </select>
+              {fieldErrors.year && <p className="text-red-500 text-xs mt-1">Year is required</p>}
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Role <span className="text-red-500">*</span></label>
+              <select value={role} onChange={(e) => setRole(e.target.value)}
+                className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.role ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}>
+                <option value="">Choose role</option>
+                <option value="Student">Student</option>
+                <option value="Lecturer">Lecturer</option>
+              </select>
+              {fieldErrors.role && <p className="text-red-500 text-xs mt-1">Role is mandatory</p>}
+            </div>
+            {role === 'Lecturer' && (
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 mb-1">Lecturer authorization code</label>
+                <input type="password" value={lecturerCode} onChange={(e) => setLecturerCode(e.target.value)}
+                  className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.code ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+                  placeholder="Enter secure code" />
+                {fieldErrors.code && <p className="text-red-500 text-xs mt-1">Invalid lecturer code</p>}
+              </div>
+            )}
+            <button type="submit" disabled={profileSubmitting}
+              className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium py-3 rounded-lg transition-all disabled:opacity-70">
+              {profileSubmitting ? 'Saving…' : '🚀 Access Dashboard'}
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
+  // ==================== MAIN DASHBOARD ====================
   return (
     <div 
       ref={scrollContainerRef}
@@ -582,37 +725,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-      {/* ========== INSTALL BUTTON ========== */}
-      {showInstallButton && (
-        <button
-          onClick={async () => {
-            const installEvent = window.__INSTALL_EVENT__;
-            if (installEvent) {
-              installEvent.prompt();
-              const { outcome } = await installEvent.userChoice;
-              if (outcome === 'accepted') {
-                localStorage.setItem('studyhub_installed', 'true');
-                setShowInstallButton(false);
-              }
-            } else {
-              alert('Tap the browser menu (⋮) → "Add to Home screen"');
-            }
-          }}
-          className="fixed bottom-20 right-4 z-50 
-                     flex items-center gap-1.5 px-3 py-1.5 
-                     bg-white/80 backdrop-blur-sm border border-gray-300 
-                     rounded-full shadow-sm hover:shadow-md 
-                     text-xs font-medium text-gray-600 hover:text-gray-800 
-                     transition-all duration-200 active:scale-95"
-          aria-label="Install App"
-        >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M12 5v14M5 12l7 7 7-7M21 21H3"/>
-          </svg>
-          <span>Install App</span>
-        </button>
-      )}
     </div>
   );
 };

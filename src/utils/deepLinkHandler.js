@@ -1,35 +1,43 @@
+import { supabase } from '../supabase';
+
 export async function setupDeepLinkHandler() {
   try {
     const { App } = await import('@capacitor/app');
 
+    // Handle deep link when app is already running
     App.addListener('appUrlOpen', async (data) => {
-      const url = data.url;
-
-      if (url.startsWith('com.studyhub.luanar://')) {
-        // Extract the authorization code
-        const urlObj = new URL(url);
-        const code = urlObj.searchParams.get('code');
-
-        if (code) {
-          // Store the code globally so Login.jsx can pick it up
-          window.__OAUTH_CODE__ = code;
-          // Navigate to the login page (which will process the code)
-          window.location.href = '/login';
-        }
-      }
+      await processDeepLink(data.url);
     });
 
-    // Cold start – same logic
+    // Cold start: app launched via deep link
     const { value } = await App.getLaunchUrl();
-    if (value?.url?.startsWith('com.studyhub.luanar://')) {
-      const urlObj = new URL(value.url);
-      const code = urlObj.searchParams.get('code');
-      if (code) {
-        window.__OAUTH_CODE__ = code;
-        window.location.href = '/login';
-      }
+    if (value?.url) {
+      await processDeepLink(value.url);
     }
-  } catch (e) {
-    // Not running in Capacitor
+  } catch {
+    // Not in Capacitor environment — nothing to do
+  }
+}
+async function processDeepLink(url) {
+  if (!url.startsWith('com.studyhub.luanar://')) return;
+
+  try {
+    const urlObj = new URL(url);
+    const code = urlObj.searchParams.get('code');
+    if (!code) return;
+
+    const { error } = await supabase.auth.exchangeCodeForSession(code);
+    if (error) {
+      console.error('OAuth exchange error:', error.message);
+      window.location.replace('/login');
+      return;
+    }
+
+    // Instead of forcing multiple raw refreshes, push directly to root base.
+    // The ProtectedRoute system will now catch the new session smoothly without an infinite loop.
+    window.location.replace('/'); 
+  } catch (err) {
+    console.error('Deep link processing error:', err);
+    window.location.replace('/login');
   }
 }

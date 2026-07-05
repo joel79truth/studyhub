@@ -4,27 +4,51 @@ import { supabase } from '../supabase';
 
 export default function ProtectedRoute({ children }) {
   const [user, setUser] = useState(null);
-  const [authReady, setAuthReady] = useState(false); // wait until first state known
+  const [authReady, setAuthReady] = useState(false);
 
   useEffect(() => {
-    // Subscribe to auth state changes
+    let isMounted = true;
+
+    // 1. Conclusively check the current session state first
+    const initializeAuth = async () => {
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (isMounted) {
+          setUser(session?.user ?? null);
+          setAuthReady(true); // Conclusively marked ready after the active check resolves
+        }
+      } catch (err) {
+        console.error("Auth check failed:", err);
+        if (isMounted) {
+          setUser(null);
+          setAuthReady(true);
+        }
+      }
+    };
+
+    initializeAuth();
+
+    // 2. Continuous subscription for subsequent session changes (Sign out, Token refresh, etc.)
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      setUser(session?.user ?? null);
-      // Mark that we have received the first auth state event
-      if (!authReady) setAuthReady(true);
+      if (isMounted) {
+        setUser(session?.user ?? null);
+        setAuthReady(true); 
+      }
     });
 
-    // Also check initial session (may fire before the listener)
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null);
-      setAuthReady(true);
-    });
+    return () => {
+      isMounted = false;
+      subscription?.unsubscribe();
+    };
+  }, []);
 
-    return () => subscription?.unsubscribe();
-  }, []); // no dependency needed for authReady
-
+  // Visual anchor: Holds the screen layout stable until Supabase finishes reading local storage
   if (!authReady) {
-    return <div>Loading...</div>; // or a spinner
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
   }
 
   if (!user) {

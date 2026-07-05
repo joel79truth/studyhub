@@ -11,14 +11,17 @@ import Upload from './pages/Upload';
 import Course from './pages/Course.jsx';
 import Settings from './pages/Settings';
 import Request from './pages/Request';
-import InstallPrompt from './components/InstallPrompt';   // ✅ import
+import InstallPrompt from './components/InstallPrompt';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* Pass through Login normally */}
         <Route path="/login" element={<Login />} />
+
+        {/* Secure your main core home dashboard using the exact same protector layout */}
+        <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path="/papers" element={<ProtectedRoute><PastPapers /></ProtectedRoute>} />
         <Route path="/course" element={<ProtectedRoute><Course /></ProtectedRoute>} />
         <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
@@ -30,7 +33,7 @@ function App() {
         <Route path="/upload" element={<ProtectedRoute><Upload /></ProtectedRoute>} />
         <Route path="/quiz" element={<ProtectedRoute><Quiz /></ProtectedRoute>} />
       </Routes>
-      <InstallPrompt />   {/* ✅ added here */}
+      <InstallPrompt />
     </BrowserRouter>
   );
 }
