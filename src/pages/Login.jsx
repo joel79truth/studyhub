@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+import { SocialLogin } from '@capgo/capacitor-social-login';
 import { supabase } from '../supabase';
 
 export default function Login() {
@@ -67,87 +67,61 @@ export default function Login() {
       console.log('📱 Is native Capacitor platform?', isCapacitor);
 
       if (isCapacitor) {
-        // Initialize Google Auth
-        console.log('🔧 Initializing GoogleAuth...');
-        await GoogleAuth.initialize({
-          clientId: '985257842533-buh0i8r3jb1gtu1rbod1lql940ckn0hk.apps.googleusercontent.com',
-          scopes: ['profile', 'email'],
-          grantOfflineAccess: true,
-        });
-        console.log('✅ GoogleAuth initialized');
+        // No initialization needed for SocialLogin (or call SocialLogin.initialize if required)
+        console.log('🔧 Initializing SocialLogin...');
+        await SocialLogin.initialize({}); // or with config if needed
+        console.log('✅ SocialLogin initialized');
 
         // Trigger sign-in
-        console.log('🔄 Calling GoogleAuth.signIn()...');
-        const result = await GoogleAuth.signIn();
+        console.log('🔄 Calling SocialLogin.login() with google provider...');
+        const result = await SocialLogin.login({
+          provider: 'google',
+          options: {
+            scopes: ['profile', 'email'],
+            clientId: '985257842533-buh0i8r3jb1gtu1rbod1lql940ckn0hk.apps.googleusercontent.com', // your web client ID
+          },
+        });
         console.log('📦 Full Google sign-in result:', JSON.stringify(result, null, 2));
         console.log('📦 Result keys:', Object.keys(result));
-        console.log('📦 result.authentication?', result.authentication ? 'yes' : 'no');
 
-        // Extract ID token from all possible locations
+        // Extract ID token
         console.log('🔍 Extracting ID token...');
         let idToken = null;
-
-        // Try common fields for different plugin versions
         if (result.idToken) {
-          console.log('✅ Found token at result.idToken (type:', typeof result.idToken, ', length:', result.idToken.length, ')');
+          console.log('✅ Found token at result.idToken');
           idToken = result.idToken;
-        } else if (result.authentication?.idToken) {
-          console.log('✅ Found token at result.authentication.idToken');
-          idToken = result.authentication.idToken;
-        } else if (result.credential) {
-          console.log('✅ Found token at result.credential');
-          idToken = result.credential;
-        } else if (result.token) {
-          console.log('✅ Found token at result.token');
-          idToken = result.token;
-        } else if (result.id_token) {
-          console.log('✅ Found token at result.id_token');
-          idToken = result.id_token;
+        } else if (result.credential?.idToken) {
+          console.log('✅ Found token at result.credential.idToken');
+          idToken = result.credential.idToken;
+        } else if (result.accessToken && result.idToken === undefined) {
+          // Some plugins return only accessToken; for Supabase we need idToken
+          // If idToken is not present, we cannot proceed. We'll log an error.
+          console.error('❌ ID token not found. Result object:', result);
+          throw new Error('Google sign‑in did not return an ID token. Available keys: ' + Object.keys(result).join(', '));
         }
 
-        // Log token details
-        if (idToken) {
-          console.log('🔑 ID token exists');
-          console.log('   - Type:', typeof idToken);
-          console.log('   - Length:', idToken.length);
-          console.log('   - First 30 chars:', idToken.substring(0, 30) + '...');
-          console.log('   - Is JWT?', idToken.startsWith('eyJ'));
-        } else {
+        // Validate token
+        if (!idToken) {
           console.error('❌ ID token is null/undefined!');
-          console.log('⚠️  Dumping entire result object for inspection:');
-          console.dir(result);
-          throw new Error('No ID token received from Google. Available keys: ' + Object.keys(result).join(', '));
+          throw new Error('No ID token received from Google.');
         }
+        console.log('🔑 ID token exists. Length:', idToken.length);
+        console.log('   - First 30 chars:', idToken.substring(0, 30) + '...');
+        console.log('   - Is JWT?', idToken.startsWith('eyJ'));
 
-        // Validate token before sending to Supabase
-        if (idToken.length < 100) {
-          console.error('❌ Token too short, possibly not a JWT. Token:', idToken);
-          throw new Error('Google returned an invalid ID token (too short).');
-        }
-
-        // Send to Supabase with CORRECT parameter name
+        // Send to Supabase
         console.log('🔄 Sending ID token to Supabase...');
-        console.log('   - Provider: google');
-        console.log('   - Token length:', idToken.length);
-        console.log('   - Token preview:', idToken.substring(0, 50) + '...');
-
         const { data, error: supabaseError } = await supabase.auth.signInWithIdToken({
           provider: 'google',
-          token: idToken, // ✅ CORRECT: use 'token', NOT 'idToken'
+          token: idToken,
         });
-
         if (supabaseError) {
           console.error('❌ Supabase returned error:', supabaseError);
-          console.error('   - Message:', supabaseError.message);
-          console.error('   - Status:', supabaseError.status);
-          console.error('   - Full error:', JSON.stringify(supabaseError, null, 2));
           throw supabaseError;
         }
-
         console.log('✅ Supabase sign-in successful!');
         console.log('   - User:', data?.user?.email);
         navigate('/', { replace: true });
-
       } else {
         // Web fallback
         console.log('🌐 Running on web, using OAuth redirect...');
