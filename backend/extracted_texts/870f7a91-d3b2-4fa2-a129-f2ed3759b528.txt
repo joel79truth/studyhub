@@ -1,0 +1,516 @@
+
+
+Bio 310: Biochemistry
+Course Lecturer: Maxwell F.J. Chilije
+
+Course Contents
+Topic 1:    Biochemical components of the 
+cell
+a) Carbohydratesb) Amino acids and proteinsc) Lipidsd) Nucleic acids
+Topic 2:    Enzymes
+Properties, mode of action, co)factors and basic ki
+netics
+Topic 3:    Respiration
+»  Anaerobic respiration (glycolysis)»  Tricarboxylic acid cycle»  Correlation between structure and function of mito
+chondria
+»  Electron transport chain and oxidative phosphoryla
+tion
+»  Energy production in working and resting muscle
+
+Course Contents continued
+Topic 4:    Photosynthesis
+a) Structure and function of chloroplastsb) Energy production in light reactionsc) C
+3
+and C
+4
+metabolism
+Topic 5:    Amino acid, Protein and Lipid Metabolism
+a) Deamination and transaminationb) The urea cyclec) Β)oxidationd) Ketone bodies ande) Gluconeogenesis
+Topic 6:    Metabolic Regulation
+a) Regulation of synthesis and activity of enzymes
+
+Assessment
+In this course assessment will be by:a)  Practical work
+•  Very important part of Biochemistry•  Practical questions may be asked in examinations•  Will make up 
+25%
+of total marks
+b)  Essay and tests 
+•  There will probably be one essay and a test•  Will contribute 
+15%
+of total marks
+c)  End of Semester Examination
+•  3 hours long•  Problem solving questions•  Essay questions•  Will make up 
+60%
+of the whole grade
+
+A Guide to Outside Reading
+1.   Voet, D. and Voet, J.G. (1990). 
+Biochemistry.
+John Wiley and Sons, NY.
+2.   Stryer, L. (1981, 1988, 2007) 
+Biochemistry.
+(2
+nd
+, 3
+rd
+and ! Editions)
+3.   Lehninger, A.L. (1982). 
+Principles of Biochemistry.
+Worth Publishers, 
+Inc., NY.
+4.   Conn, E.E. and Stumpf, P.K. (1976). 
+Outlines of Biochemistry.
+4
+th
+Edition. John Wiley and Sons, Inc., NY.
+5.   Wood, E.J. and Pickering, W.R. (1986). 
+Introducing Biochemistry. 
+John 
+Wiley and Sons, Inc., NY(This is a basic overview text)
+6.   Lodish, H., Berk, A., Kaiser, C.A., Krieger, M., 
+Scott, M.P., Bretscher, A., 
+Ploegh, H. and Matsudaira, P. (2008).  
+Molecular Cell Biology
+. W.H. 
+Freeman and Company, NY.
+7.   Becker, W.M. (1986). 
+The World of the Cell.
+Benjamin and Cummings 
+Publishing Co.., Inc., California.
+
+A Guide to Outside Reading
+Pictures are taken from:Lehninger PRINCIPLES OF BIOCHEMISTRY. 
+(4th Edition) 
+−2005 by: David L. Nelson & Michael M. Cox. W.H. Freeman and Comp., New YorkBIOCHEMISTRY 
+(5th Edition) −2002 by: Jeremy M Berg, John 
+L Tymoczko & Lubert Stryer. W.H. Freeman and Comp., New YorkBIOCHEMISTRY 
+(3rd Edition) −2003 by: Donald Voet & Judith 
+G Voet. John Wiley and Sons
+
+Biochemistry
+•
+deals with the chemical processes and compounds of
+ living organisms, 
+from viruses, bacteria, fungi, plants, to invertebr
+ates and vertebrates
+•
+applies the tools and concepts of chemistry to liv
+ing systems
+•
+analyzes the structure and physical properties and
+ the function of 
+biological molecules
+•
+also studies the interaction between molecules in 
+living organisms
+•
+analyzes the mechanisms and products of all reacti
+ons involved
+•
+is the study of the structure and function of orga
+nic molecules, proteins, 
+carbohydrates, lipids, and specialized chemical com
+pounds that make 
+up living cells
+•
+tries to understand the processes of life
+Definition
+: 
+Biochemistry is a branch of science that provides
+ molecular 
+explanations for life processes. It is the chemistr
+y of life. 
+
+The Cell as the basic unit of Life
+Cell
+Organs
+Tissues
+Organelles
+Biomolecules
+(aa/proteins, 
+CHOs etc)
+ChemicalElements
+C,H,O.N,P
+Whole
+Organism
+Animal/Plant
+
+The Universal Features of Living 
+Cells
+
+Fundamental difference between 
+“cytoplasm”and “cytosol”
+
+There is a structural hierarchy in the 
+molecular organization of cells
+
+Predominant elements
+In cells of living tissue we may have the following
+ composition
+–    Carbon
+25%
+–    Hydrogen
+49%
+–    Oxygen
+25%
+–    Nitrogen
+0.27%
+–    S & P
+0.02 – 0.1%
+Elements which occur as ions in living things
+–    Na
++
+–    K
++
+–    Ca
+2+
+–    Mg
+2+
+–    Cl
+)
+Trace elements (useful as co)factors)
+–    Fe, Cu, Co, Mn, B, V, Si, and Mo etc.
+
+Carbohydrates and Glycobiology
+Source: Photosynthesis in plants• CARBOHYDRATE
+=
+SACCHARIDE (< Greek 
+sakcharon
+)
+=SUGAR=C
+n
+H
+2n
+O
+n 
+(Empirical formula)
+• Exceptions to the empirical formula
+– Deoxyribose (C
+5
+H
+10
+O
+4
+)
+– Glucosamine (C
+6
+H
+13
+O
+5
+N)
+Functions:
+Energy sources) have highly reduced carbons(CH
+2
+O)n + O
+2
+CO
+2
++ Energy +H
+2
+O
+Structural materials
+) Cellulose in plants
+) Cell walls of bacteria) Exoskeleton of most arthropods
+
+Properties of Carbohydrates
+• Characterized by a 
+ketone
+group (Ketoses)
+•  or an 
+aldehyde
+group (Aldoses)
+•   and hydroxyl (
+OH
+) groups
+NB. You have polyhydroxyaldehydes and   
+polyhydroxyketones
+
+Properties of Carbohydrates
+ALDOSES 
+(carbonyl group at the end of the 
+chain: 
+aldehyde 
+) 
+aldehyde
+KETOSES 
+(carbonyl group at any other 
+position: 
+ketone 
+) 
+ketone
+
+Properties of Carbohydrates
+•  Nomenclature
+• Triose
+) three carbon atoms
+• Tetrose
+) four carbon atoms
+• Pentose
+) five carbon atoms
+• Hexose
+) six carbon atoms
+•  It is important to know the reactions that take pl
+ace at 
+aldehyde, ketone and hydroxyl groups
+•  In carbohydrates we have
+– Monosaccharide: single unit of sugar (monomer)– Disaccharides– Oligosaccharides– Polysaccharides
+
+Monosaccharides
+•  Carbon atoms range from three (3) to seven (7)•  Cannot be hydrolysed•  Most occuring in nature are pentoses and hexoses
+– Pentoses: ribose
+deoxyribose
+– Hexoses: glucose
+fructoseGalactose
+Glucose 
+(See later)
+•  C
+6
+H
+12
+O
+6
+•  Aldohexose sugar•  Most important monosacharide found in living system
+s
+•  Present in both plant and animal tissues
+
+CARBON –some facts
+• Carbon atoms have a 
+characteristic tetrahedral arrangement of their four single bonds.
+• Carbon)carbon single bonds 
+have freedom of rotation 
+
+CARBON –some facts
+•  When a carbon atom has 
+four different substituentgroups (A, B, X & Y), they can be arranged in two ways that represent 
+non-
+superimposable
+mirror 
+images of each other (called "
+enantiomers
+")
+
+Monosaccharides have 
+asymetriccenters
+•  Monosaccharides have several asymmetric 
+("
+CHIRAL
+") carbon atoms 
+•  They occur in optically active isomeric forms.•  The simplest aldose is glyceraldehyde. 
+It contains one chiral center, and occurs in two optical isomers or 
+enantiomers.
+•
+BY CONVENTION
+: 
+one of them is called the D)isomer, the other the L)isomer 
+D-isomer
+: OH to the right
+(<
+Latin, Dexter
+) 
+L-isomer
+: OH to the left
+(<
+Latin, Laevus
+) 
+
+Monosaccharides have 
+asymmetric centers
+• To represent three)dimensional sugar structures on
+ 
+paper, we often use: 
+Fisher projection formulas 
+BY CONVENTION:Horizontal
+bonds project 
+out of the plane 
+of the 
+paper,
+Vertical
+bonds project 
+behind the plane 
+of the paper. 
+
+Molecules with n
+chiral centers 
+can have 2
+n
+stereoisomers 
+Reference 
+carbon atom
+The stereoisomers of monosaccharides can be divided into two groups that differ in the configuration at the chiral center that is 
+most 
+distant
+from the carbonyl 
+carbon.The latter chiral center is called 
+the reference carbon 
+atom
+.
+
+Stereoisomers
+BY CONVENTION:The sugar is called a 
+D-sugar 
+when the −OH at the reference carbon is 
+on the 
+right 
+in the Fischer projection formula
+The sugar is called an 
+L-sugar 
+when the −OH at the reference carbon is 
+on 
+the left 
+in the Fischer projection formula
+Most hexoses of living organisms are D)isomers.
+
+Series of Ketoses D-Ketoses: 
+•Carbon atoms in red are chiral centers. •Sugars in boxes are the most common in nature 
+
+Series of Ketoses D-Aldoses:
+
+Epimers
+• Two sugars that differ only in the configuration 
+around one single carbon atom are called: 
+epimers
+
+The common monosaccharides have 
+cyclic structures 
+• In aqueous solutions, sugars with four, five or 
+more C)atoms in the backbone predominantly occur as cyclic (ring) structures.
+• The formation of these ring structures is based 
+on a general reaction between 
+aldehydes
+(
+ketones
+) and alcohols (
+OH
+), to form 
+Hemiacetals 
+(
+hemiketals
+) respectively. 
+
+The common monosaccharides have 
+cyclic structures 
+•These hemiacetals/hemiketals contain a 
+new asymmetric 
+carbon atom
+, thus they can exist in two stereoisomeric forms 
+
+Example:
+Formation of the two cyclic forms of D-glucose
+•  In solution, the ring structure 
+is in equilibrium with the open (straight)chain) form.
+•  The carbonyl carbon atom is 
+called the 
+anomeric
+carbon 
+atom.
+•  The stereoisomers are 
+designated the α)(
+alpha
+) 
+and β)(
+beta
+) anomers.
+•  The interconversion of α)and 
+β)anomers is called 
+mutarotation
+. 
+
+Rules for ring formation 
+Example: D)glucose
+1. Number the C)atoms in Fischer projection:
+Anomeric carbon atom (C1)
+reference carbon atom (C5) 
+C2)5 are asymmetric
+2. Check the position of the −OH at the reference C
+)atom.
+(You will need this information later) 
+
+Rules for ring formation 
+3.
+Convert the Fischer projection
+into the Haworth projectionby starting to write down themolecule in the following way:
+Reference carbon
+Anomeric carbon
+heavy line, meaning that this bond is nearest to the observer
+TailHead
+HeadTail
+
+Rules for ring formation 
+4
+. Place the −OH groups at the correct positions (
+i.e. above or below the 
+plane of the emerging sugar ring
+), taking into account that:
+5
+. Start counting from the anomericcarbon atom to tra
+ce the −OH to be 
+used for ring closure.This will be determined by the kind of ring (5), or
+ 6)ring) that will be 
+formed.
+6
+. Circularly permute the groups on the last carbon 
+atom, in such a way that 
+the future ring oxygen is facing to the right: 
+future ring oxygen, if a 6-ring is to be formed
+
+Rules for ring formation 
+7
+. Close the ring, and rewritethe structure:
+
+Rules for ring formation 
+8
+. Finally determine whether the −OH group at 
+the anomeric carbon atom is above, or below the plane of the ring:
+in an α
+-sugar
+, the −OH group is 
+cis
+compared to the −OH group at the reference carbon atom*in a β
+-sugar
+, the −OH group is 
+trans
+compared to the −OH group at the 
+reference carbon atom**
+Look back to the Fischer projection
+!! 
+
+Sugar ring formation 
+•  Six)membered sugar rings are called 
+PYRANOSES
+•  Five)membered sugar rings are called 
+FURANOSES
+A six)membered aldopyranose ring is more stable than 
+a five)membered
+aldofuranose ring, and thus predominates in an aldoh
+exose solution
+
+Is the Haworth saccharideprojection a true 
+representation of the real 3 D structure of the sug
+ar? 
+NO, because sugar rings are not planar
+A pyranose ring tends to adopt a "
+chair
+"
+conformation in solution
+
+Is the Haworth projection a true 
+representation of the real 3-D structure of the sug
+ar? 
+NO, because sugar rings are not planar
+Substituents on the ring carbons may either be:
+axial
+(ax, 
+i.e.
+// with the 
+vertical axis through the ring), or equatorial 
+(eq, 
+i.e.
+projecting roughly 
+┴
+to this axis).In general, substituents in equatorial positions are less sterically hindered by neighbouring substituents, and conformations with their bulky substituents in equatorial positions thus are favoured
+An example of a chair 
+conformation of 
+α)D)glucopyranose
+
+Let’s end here for today

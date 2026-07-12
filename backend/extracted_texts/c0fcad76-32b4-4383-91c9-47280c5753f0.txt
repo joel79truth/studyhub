@@ -1,0 +1,316 @@
+
+
+10.3.1
+https://math.libretexts.org/@go/page/41331
+10.3: Trigonometric Equations
+In the previous section on trigonometric identities we worked with equations that would be true for all values of a particular angle 
+ These are sort of like the algebraic equations whose solution set is "all real numbers," like   In this
+section, we will solve trigonometric equations whose solution set involves only certain values for the angle in question. Because of
+the cyclical nature of the angles we're working with, there will often be an infinite number of solutions although not "all real
+numbers."
+Example 1 
+Here's an example. Suppose that we consider the equation  Whether we use technology, a table or reasoning to solve
+this equation, it's clear that one solution is  However, remember from the beginning of Chapter 2 that the sine function is
+positive in Quadrant . That means that a second quadrant angle with a reference angle of  also has a sine equal to  Recall
+the ASTC diagram from Chapter 2 :
+So, the sine function is positive in Quadrants I and . This means that in addition to a solution of  there is another solution in
+Quadrant . As mentioned above, this second quadrant solution has a reference angle of 
+To find this angle, we simply subtract  
+In Quadrant  we subtract the reference angle from  
+θ.2x+10=2(x+1)+8.
+sinx=0.5.
+.30
+∘
+Π30
+∘
+0.5.
+Π,30
+∘
+Π30
+∘
+−=180
+∘
+30
+∘
+150
+∘
+Π,180
+∘
+
+10.3.2
+https://math.libretexts.org/@go/page/41331
+In Quadrant , we add the reference angle to 
+In Quadrant , we subtract the reference angle from  
+So, the solutions to the equation  between  and  are  In this chapter we will consider mainly
+solutions with this restriction: 
+The infinite solutions to this equation can be expressed as: 
+Let's look at another example: 
+Example 2 
+Find all solutions of the given equation for  
+ 
+Using a calculator to find  we find that it returns an answer of  So this is the solution to the equation that lies
+in QuadrantI. The tangent function is also positive in Quadrant , so we should also consider the third quadrant angle with a
+reference angle of 
+In Quadrant , we add the reference angle to  
+ so our solutions for this equation are  
+Often, calculators are programmed to return an angle value that is not between 
+Example 3 
+Find all solutions of the given equation for  
+ 
+Solving this on a TI calculator would generally return a value of  However,  is clearly not between  and , so
+we need to use this information to find the solutions that are between  and 
+With the calculator returning a vlue of  we know that the reference angle for all answers will be  Knowing this, we
+can say that the sine is negative in Quadrants III and IV, so we'll need angles in those quadrants with reference angles of 
+Π180
+∘
+ΠV360
+∘
+sinx=0.50
+∘
+360
+∘
+x=,30
+∘
+150
+∘
+≤x<0
+∘
+360
+∘
+(10.3.1)
++n⋅ and +n⋅30
+∘
+360
+∘
+150
+∘
+360
+∘
+(10.3.2)
+≤x<0
+∘
+360
+∘
+tanx=4
+(4),tan
+−1
+x≈75.96
+∘
+Π
+75.96
+∘
+Π180
+∘
++=,180
+∘
+75.96
+∘
+255.96
+∘
+x≈,75.96
+∘
+255.96
+∘
+≤x<0
+∘
+360
+∘
+≤x<0
+∘
+360
+∘
+sinx=−0.25
+−.14.5
+∘
+−14.5
+∘
+0
+∘
+360
+∘
+0
+∘
+360
+∘
+−,14.5
+∘
+.14.5
+∘
+14.5
+∘
+
+10.3.3
+https://math.libretexts.org/@go/page/41331
+In Quadrant  we'll add  to the reference angle:  
+In Quadrant  we'll subtract the reference angle from  
+So, 
+Some trigonometric equations have no real number solutions. The equation  has no real number solutions. Recall that the
+sine ratio was originally defined as the ratio of the side opposite an angle to the hypotenuse. The hypotenuse is always the longest
+side in a right triangle so there is no way the sine function could be greater than 1 if we're working with real-valued angles.
+However, in the same way that complex numbers are used to solve equations like  complex-valued angles can be used to
+solve equations such as  We won't go into this here, however, there is a relatively straightforward way to solve these
+equations. 
+If you encounter an equation like  and are solving for values of   then the proper response is "no
+solution" or "no real solution." However, remember that the tangent function can take any value between  and 
+Example 4 
+Solving an equation that includes a reciprocal trigonometric function simply involves the extra step of finding the reciprocal: 
+Find all solutions of the given equation for  
+ 
+The trick here is to restate the equation so that we can use the preprogrammed values from a calculator to find the solution. 
+If  then  Finding  gives a solution of  
+The cosine and the secant are both positive in Quadrant , so we'll also want a fourth quadrant angle whose reference angle is 
+In Quadrant , we'll subtract the reference angle from  
+Example 5 
+Solving a quadratic trigonometric equation often involves the use of the quadratic formula: 
+Π180
+∘
++=180
+∘
+14.5
+∘
+194.5
+∘
+Π:−=360
+∘
+360
+∘
+14.5
+∘
+345.5
+∘
+x≈,194.5
+∘
+345.5
+∘
+sinx=2
+=−7,x
+2
+sinx=2
+cosx=3x≤x<,0
+∘
+360
+∘
+−∞∞
+≤x<0
+∘
+360
+∘
+secx=12
+secx=12cosx=.
+1
+12
+()cos
+−11
+12
+x≈85.2
+∘
+ΠV
+85.2
+∘
+Π360
+∘
+−≈360
+∘
+85.2
+∘
+274.8
+∘
+x≈,85.2
+∘
+274.8
+∘
+(10.3.3)
+
+10.3.4
+https://math.libretexts.org/@go/page/41331
+Find all solutions of the given equation for  
+ 
+Using the quadratic formula we arrive at approximate values for  of  
+The solution  yields no real solutions, so we will focus on solving  
+Finding  gives us an answer of  This means our answers will lie in Quadrants III and IV with reference
+angles of  In Quadrant III we'll say  In Quadrant ,  we'll  subtract  the  reference  angle  from 
+ 
+Exercises 3.3 
+Find all solutions for  Round all angle measures to the nearest  of a degree. 
+1.  
+2.  
+3.  
+4.  
+5.  
+6.  
+7.  
+8.  
+9.  
+10.  
+11.  
+12.  
+13.  
+14.  
+15.  
+16. 
+This page titled 10.3: Trigonometric Equations is shared under a CC BY-NC-SA 4.0 license and was authored, remixed, and/or curated by
+Richard W. Beveridge.
+3.3: Trigonometric Equations by Richard W. Beveridge is licensed CC BY-NC-SA 3.0.
+≤x<0
+∘
+360
+∘
+2x−sinx−2=0sin
+2
+sinxsinx≈−0.7808,1.2808
+sinx≈1.2808sinx≈−0.7808
+(−0.7808)sin
+−1
+≈−.51.3
+∘
+.51.3
+∘
++≈.180
+∘
+51.3
+∘
+231.3
+∘
+IV
+:−≈360
+∘
+360
+∘
+51.3
+∘
+308.7
+∘
+So,x≈,231.3
+∘
+308.7
+∘
+≤x<0
+∘
+360
+∘
+10
+th 
+cosx−0.75=0
+sinx+0.432=0
+3sinx−5=0
+sinx−4=0
+3secx+8=0
+4cscx+9=0
+3−5sinx=4sinx+1
+4cosx−5=cosx−3
+3x+2tanx=0tan
+2
+4x−cosx=0cos
+2
+3x+5cosx−2=0cos
+2
+2x−7cotx+3=0cot
+2
+2x−tanx−10=0tan
+2
+2x+5sinx+3=0sin
+2
+2x−5cosx−5=0cos
+2
+3x−sinx−1=0sin
+2

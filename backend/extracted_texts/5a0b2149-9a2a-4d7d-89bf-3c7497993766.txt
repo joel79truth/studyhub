@@ -1,0 +1,7692 @@
+
+
+PHYSICS
+
+WHAT IS PHYSICS?
+Physics is a branch of science that 
+involves the study of the physical world: 
+energy, matter, and how they are related.
+
+PHYSICALQUANTITIES 
+AND UNINTS
+Physical quantities, Units of measure, Dimensions, 
+Accuracy 
+
+PHYSICAL QUANTITIES
+A physical quantity is a measurable (perceived) 
+property of something,  observable without 
+changing the composition or identity of that 
+thing. 
+Examples of physical quantities:
+a.Mass –measured in Kilogram (kg)
+b.Energy –measured in Joules (j)
+c.Pressure–measured in Pascal (Pa)
+
+d.Weight –measured in Newton (N)
+e.Volume -measured in cubic meters (m
+3
+)
+g.Density -measured in kilograms per cubic 
+metre(kg/m
+3
+)
+h.Distance: measured in metres(m)
+i.Area: measured in square-metres(m
+2
+)
+j.Time: measured in seconds (s)
+k.Capacity: measured in litres, (l)
+l.Power : measured in Watts (W)
+
+THE THREE FUNDAMENTAL QUANTITIES
+a.Time(T)
+b.Length(L)
+c.Mass(M)
+
+SEVEN BASE QUANTITIES AND THEIR UNITS
+BASE QUANTITYUNIT
+NAMESYMBOL
+Masskilogramkg
+Lengthmeterm
+Time Second s
+Electric current Ampere A
+Temperature Kelvin k
+Amount of substance moles mol
+Luminous intensity Candela Cd
+
+THE DIMENSIONS OF THE SEVEN BASE 
+QUANTITIES AND THEIR UNITS
+BASE QUANTITYDMENSION
+NAMESYMBO
+L
+MassMassM
+LengthLengthL
+Time TimeT
+Electric Current Electric CurrentI
+Temperature TemperatureΘ
+Amount of 
+Substance 
+Amount of SubstanceN
+Luminous Intensity Luminous IntensityJ
+
+DERIVED QUANTITIES
+DERIVED 
+QUANTITY 
+UNIT
+NAME SYMBOL AND BASE UNITS
+ForceNewton N═kg m/ s
+2
+Pressure Pascal Pa═kg /m
+2
+Power Watts W═kgm
+2
+/s
+3
+Energy, work Joule J=kgm
+2
+/s
+2
+Electric Charge Coulomb C=As
+Electromotive 
+force
+Volt V=kgm
+2
+s
+-3
+A
+-1
+
+DERIVED QUANTITIES 
+(continued...)
+Resistance Ohm Ω=kgm
+2
+s
+-1
+A
+-2
+Conductance Siemens S=kg-1m
+-2
+s
+3
+A
+2
+Inductance HenryH=kgm
+2
+s
+-2
+A
+2
+Capacitance Farad F=kg
+-1
+m
+-2
+s
+4
+A
+2
+Magnetic flux Weber Wb=kgm
+2
+s
+-2
+A
+-1
+Magnetic flux Density Tesla T=kgs
+-2
+A
+-1
+
+UNITS OF MEASURE
+A unit of measure is a well known  value of a 
+quantity used to compare with unknown values 
+of the quantity.
+A quantity’s value known with sufficient 
+accuracy in a unit of measure is called the 
+standardfor that unit of measure.
+Example:
+A meter is the unit length and is equal to 
+1/299 797 458 of the distance traveled by 
+light in vacuum in one second.
+
+Practice:
+The description of the standard for mass, 
+the kilogram has been revised recently (in 
+2018). Discuss the Old description and the 
+New description of the standard for mass.
+Describe the standard for Length, the metre
+Describe the standard for time, the second
+
+UNITS OF MEASURE (continued...)
+There are two common systems of units: 
+the SI units(SystèmeInternational d’ Unites). 
+It includes units such as the metre, Joule, 
+Second 
+and there also is  the British engineering 
+system (imperial system of units)
+it includes the foot, Btu, second
+
+SI UNITS
+The SI units are intended to facilitate 
+international trade and communications and 
+to facilitate analysis and exchange of 
+scientific findings and information.
+The SI units employ precise standards of units 
+of measure and a consistent conversion 
+system, that are internationally accepted.
+
+SI UNITS (continued...)
+Practice:
+Explain the advantages of the 
+SI system of units against the 
+Imperial system of units
+
+PREFIXES
+Prefixes are used with the unit symbol to indicate decimal multiples or 
+sub multiples of the units.
+Sub
+multiple
+PrefixSymbolMultiple PrefixSymbol
+10
+-2
+centi-c 10
+2
+Kilo-k
+10
+-3 
+milli-m10
+3
+Mega-M
+10
+-6 
+micro-μ 10
+6
+Giga-G
+10
+-9
+nano-n10
+9
+Tera-T
+10
+-12
+pico-P
+10
+-15
+femto-f
+10
+-18
+atto-a
+
+UNITY BRACKETS IN UNIT CONVERSION
+A bracket of value 1 is called a unity 
+bracket
+Multiplying a quantity with a bracket of 
+value 1 containing the right combination 
+of the units in question, changes the 
+units of the quantity
+
+UNITY BRACKETS IN UNIT CONVERSION 
+(continued...)
+Example:
+Convert 170mm to m
+Solution:
+The units in question are mm and m
+1푚=1000푚푚,
+
+1푚
+1000푚푚
+=1
+170푚푚=170푚푚
+1푚
+1000푚푚
+170푚푚=
+170푚
+1000
+ퟏퟕퟎ풎풎=ퟎퟏퟕퟎ풎
+
+Converting nonlinear units
+In units with powers a unit is  repeatedly 
+multiplied by itself. Converting such units must 
+involve converting each of the factor-units
+
+Example:
+Convert1cm
+2  
+to m
+2 
+.
+Solution:
+1푐푚
+2
+=1푐푚×1푐푚
+1푐푚×1푐푚=1푐푚
+1푚
+100푐푚
+×1푐푚
+1푚
+100푐푚
+1푐푚
+2
+=(1푐푚×1푐푚)×
+1푚
+100푐푚
+1푚
+100푐푚
+1푐푚
+2
+=1푐푚
+2
+(1×1)푚
+2
+100
+2
+푐푚
+2
+1푐푚
+2
+=
+
+Practice:
+Convert 7푚
+3
+푡표푚푚
+3
+
+Converting CompoundUnits
+Compound units are composed of (derived 
+from) more than one different units.
+Converting such units involves converting at 
+least one of the component units
+
+Example 1:
+Convert 29Nm to Ncm
+Solution:
+The units are Nm and Ncm
+It is only m that is changing, to cm
+
+100푐푚
+1푚
+=1
+29푁푚=29푁푚
+100푐푚
+1푚
+29푁푚=2900푁푐푚
+
+Example 2:
+Convert 13 m/s to Km/h
+Solution:
+The units are m/s and Km/h
+Both mand s are changing, to Km and h 
+respectively
+
+
+1퐾푚
+1000푚
+=1
+and 
+3600푠
+1ℎ
+=1
+13m/s=13m/s
+1퐾푚
+1000푚
+3600푠
+1ℎ
+13m/s=13
+1퐾푚
+1ℎ
+36
+10
+13m/s=46.8km/h
+Practice:
+Convert 1200푚
+3
+/푠푡표퐿/min
+
+DIMENSIONS AND 
+DIMENSIONAL ANALYSIS
+The dimensions of the physical quantities 
+indicate how a quantity is related to the 
+fundamental quantities and the base 
+quantities.
+The fundamental quantities are denoted by 
+M, L, T.
+
+Example:1
+Find the dimensions for area.
+Solution:
+Area is obtained by multiplying one length by 
+another length and thus has dimensions
+A=푙×푏
+A=푙×[푏]
+퐴=퐿×퐿
+[푨]=푳
+ퟐ
+
+Example:2
+Find the dimensions for density.
+Solution:
+Density is mass divided by volume and 
+therefore
+ρ=
+푚
+푣
+=푚푣
+−1
+휌=푚푣
+−1
+푣=퐿
+3
+푚=푀
+[흆]=푴푳
+−ퟑ
+
+Rules for Dimensional analysis
+Dimensional analysis involves the 
+assessment of physical quantities and 
+relationships between physical quantities 
+in terms of the base quantities and the 
+fundamental quantities. 
+
+The rules for dimensional analysis are:
+a.Terms have the same dimensions
+b.Similar quantities have the same 
+dimensional value on both sides of an 
+equation
+c.Numerical constants, quantities without 
+units, angles, and arguments of functions  
+have no dimensions
+(ퟐퟎ ̊log(풑)+풂)풎
+풙
+풗
+풚
+=풌풕풃풎풗
+ퟑ
+
+Applications of Dimensional Analysis
+Deriving a formula
+Checking the correctness of a formula
+Determining the units of a constant in an 
+expression or in an equation
+Checking the for correctness of a 
+calculation
+
+Example:
+In the equation 휔
+2
+푟=푎,ωstands for 
+angular velocity, 푟stand for radius, and 푎
+stands for acceleration. Determine 
+whether the equation is correct or is 
+incorrect.
+
+Solution:
+휔
+2
+푟=푎
+푎=[휔]
+2
+푟
+휔
+2
+=
+휃
+2
+푡
+2
+[흎]
+ퟐ
+=푻
+−ퟐ
+....
+.휃푖푠푑푖푚푒푛푠푖표푛푙푒푠푠
+풓=푳
+풂=푳푻
+−ퟐ
+푳푻
+−ퟐ
+=(푻
+−ퟐ
+)(퐋)
+푳푻
+−ퟐ
+=퐋푻
+−ퟐ
+Thedimensions on 
+theLHSof the 
+equation equalthe
+dimensions on the
+RHSof the equation, 
+therefore the
+equation is correct.
+
+Example:
+The electrical resistance R, of a uniform 
+conductor is related to the properties of 
+the conductor by the formula;  푅=휌
+푙
+퐴
+;
+where 푙stands for the length of the 
+conductor, and A stands forthe cross-
+sectional area of the conductor. 
+Determine:
+a.The dimensions of the constant 휌
+b.Determine the SI units of the constant 
+휌
+
+Solution: a
+The dimensions for 휌
+푹=흆
+풍
+푨
+푹=
+푽
+푰
+푉=
+푊
+푞
+= 
+퐹푆
+푞
+V=((m푙t
+-2
+)(푙))(It)
+-1
+V=m푙
+2
+t
+-3
+퐼
+−1
+[푉]=[푚][푙]
+2
+[푡]
+−3
+퐼
+−1
+[푉]=푀퐿
+2
+푇
+−3
+퐼
+−1
+[푅]=
+푀퐿
+2
+푇
+−3
+퐼
+−1
+퐼
+[푹]=푴푳
+ퟐ
+푻
+−ퟑ
+푰
+−ퟐ
+[A]=푳
+ퟐ
+[풍]=L
+푹=흆
+풍
+푨
+푀퐿
+2
+푇
+−3
+퐼
+−1
+=[휌]
+퐿
+퐿
+2
+푀퐿
+2
+푇
+−3
+퐼
+−1
+= [휌]퐿
+−1
+[휌]= 푀퐿
+2
+푇
+−3
+퐼
+−2
+퐿
+[흆]= 푴푳
+ퟑ
+푻
+−ퟑ
+푰
+−ퟐ
+
+Solution: b.
+The SI unit for ρ
+[푅]=푀퐿
+2
+푇
+−3
+퐼
+−2
+......(from a.)
+[휌]= 푀퐿
+3
+푇
+−3
+퐼
+−2
+......(from a.)
+[휌]= (푀퐿
+2
+푇
+−3
+퐼
+−2
+)(퐿)
+흆=Ωm
+
+Example:
+In the Van der Waals equation,
+푷+
+풂풏
+풗
+ퟐ
+풗−풏풃=풏푹푻; 푃stands for 
+pressure, 푣stands for volume, 푅stands for the 
+gas constant, 푇stans for absolute temperature 
+and n stands for number of moles. What are 
+the dimensions of each of the constants 푎and 
+푏?
+
+Solutions:
+The dimensions for 푏in푃+
+푎푛
+푣
+2
+푣−푛푏=
+푛푅푇
+푣=푏.....푛푖푠푑푖푚푒푛푠푖표푛푙푒푠푠,푖푡ℎ푎푠푛표푢푛푖푡푠
+푣=퐿
+3
+풃=푳
+ퟑ
+
+The dimensions for 
+ain푃+
+푎푛
+푣
+2
+푣−푛푏=
+푛푅푇
+푃=
+[푎]
+[푣]
+2
+......(n is 
+dimensionless)
+푷=[풂][풗]
+−ퟐ
+푣=퐿
+3
+[풗]
+−ퟐ
+=푳
+−ퟔ
+푃=
+퐹
+퐴
+[푃]=
+(푀퐿푇
+−2
+)
+퐿
+2
+푷=푴푳
+−ퟏ
+푻
+−ퟐ
+푴푳
+−ퟏ
+푻
+−ퟐ
+=[풂]푳
+−ퟔ
+푎=
+(푀퐿
+−1
+푇
+−2
+)
+퐿
+−6
+푎=푀퐿
+−1
+푇
+−2
+퐿
+6
+풂=푴푻
+−ퟐ
+푳
+ퟓ
+
+Example:
+The period 푇, of a simple pendulum is 
+expected to depend on the length 푙, of 
+the pendulum, the mass 푚, of the 
+pendulum and the acceleration due to 
+gravity g, sustaining the pendulum’s 
+oscillation. Find the simplest formula for 
+the period of a simple pendulum.
+
+푇∝푙
+푎
+푚
+푏
+푔
+푐
+푇=푘푙
+푎
+푚
+푏
+푔
+푐
+푇=[푙]
+푎
+푚
+푏
+푔
+푐
+푇=퐿
+푎
+푀
+푏
+(퐿푇
+−2
+)
+푐
+푇=퐿
+푎
+푀
+푏
+퐿
+푐
+푇
+−2푐
+푻=푳
+풂+풄
+푴
+풃
+푻
+−ퟐ풄
+푇=푇
+−2푐
+2푐=1
+풄=−
+ퟏ
+ퟐ
+퐿
+0
+=퐿
+푎+푐
+푎+푐=0
+퐶=−
+1
+2
+푎−
+1
+2
+=0
+풂=
+ퟏ
+ퟐ
+푀
+0
+=푀
+푏
+b=ퟎ
+
+푇=
+푘푙
+ 
+12
+푚
+0
+푔
+ 
+−12
+푻=풌
+ 
+풍
+품
+
+Limitations of Dimensional Analysis
+It is not possible to determine the value 
+of a numerical value in a formula by 
+dimensional analysis
+It is not possible to locate where an error 
+occurred in a calculation by dimensional 
+analysis
+It is not possible to locate  the error in a 
+formula
+
+MEASUREMENT AND 
+ACURACY
+Measuring, Accuracy, Precision, Error
+
+Measuring
+To measure is to compare a 
+quantity with an unknown value 
+to a quantity with a known value 
+that is of similar kind to the 
+quantity with the unknown 
+value.
+A measuring device must have a 
+property that is affected by the 
+quantity that it measures
+
+Accuracy Error and Precision 
+Accuracy is the degree of closeness on a 
+measured value to the true value of the 
+measured quantity.
+Erroris the departure of the measured 
+value from the true value of the 
+measured quantity.
+Precisionis the closeness of values of 
+repeated measurements. 
+Precision is independent of accuracy
+
+Accuracy and Precision 
+Precision indicates how 
+reproducible the same 
+measurement is under equivalent 
+circumstances. 
+Accuracy of a measurement 
+indicates how close the observed 
+value is to the true value of the 
+measured quantity.
+
+
+
+Sources of Error
+Observer
+Measuring instrument
+Environment
+Representative sample
+
+Types of Error
+Systematic Error:
+Involves inaccuracies that tend to occur 
+more on one direction than on the 
+opposite direction.  
+The inaccuracies form a consistent 
+pattern
+The error is difficult to identify
+The error can not be reduced by taking 
+an average of repeated measurements
+
+Forms of Systematic Error:
+Anoffset Systematic erroroccurs when 
+measurementsconsistently differ from the 
+true values by a constant value
+It’s also called an additive error or a zero-
+setting error.
+
+
+
+Ascale factor Systematic 
+errorinvolevs measurements 
+consistently differingfrom the 
+true value proportionally
+It’s also referred to as a 
+correlational systematic error 
+or a multiplier error.
+The proportionality factor may 
+be linear or exponential
+
+
+
+Reducing Systematic Error
+Systematicerrors can be reducedby:
+Triangulation
+Using multiple techniques to record 
+observations so that you are not relying 
+on only one instrument or method.
+
+Regular calibration
+Calibrating an instrument means comparing 
+what the instrument records with the most 
+accuratevalue of theknown, standard of the 
+quantity. 
+You can also calibrate observers in terms of 
+how they code or record data
+by usingstandard protocols and routine 
+checks to avoid observer carelessness.
+
+Randomization
+Randomsampling methodshelp ensure 
+that your sample doesn’t systematically 
+differ from the population.
+
+Random Error:
+Involves inaccuracies that occur in both 
+the positive direction and the negative 
+direction with equal probability. 
+The error is easy to identify 
+The error can be reduced by taking an 
+average of repeated measurements.
+
+
+
+Reducing RandomError
+Random error is almost always present in 
+measurement, even in highly controlled 
+settings. 
+Random error canbereducedusing the 
+following methods.
+Take repeated measurements
+A simple way to increase precision is by 
+taking repeated measurements and using 
+their average
+
+Increase sample size
+Large samples have less random error than 
+small samples. 
+That’s because the errors in different 
+directions cancel each other out more 
+efficiently when you have more data 
+points. 
+Collecting data from a large sample 
+increases precision.
+
+Control variables
+Carefully controlling anyextraneous 
+variablesthat could impact 
+measurements. 
+This removesmajor sources of random 
+error.
+
+Random Error and SystematicError
+Random error mainlyaffectsprecision, 
+How reproducible the same 
+measurement is under equivalent 
+circumstances. 
+In contrast, systematic error affects 
+theaccuracyof a measurement, 
+How close the observed value is to the 
+true value of the measured quantity.
+
+More 
+Random Error
+Less error
+More 
+systematic 
+error
+•High accuracy
+•High precision
+•High accuracy
+•Low precision
+•Low accuracy
+•High precision
+
+Example: 
+Supposethat you use a stop watch to 
+measure the time required for ten oscillations 
+of a pendulum. 
+One source of error will be your reaction time 
+in starting and stopping the watch. 
+During one measurement you may start early 
+and stop late; on the next you may reverse 
+these errors. 
+These are random errors if both situations are 
+equally likely. 
+
+Repeatedmeasurements produce a series of
+values of timethat are all slightly different. 
+They vary in a random manner, about an 
+average value.
+If a systematic error is also included,for 
+example, your stop watch is not starting from 
+zero, then your measurements will vary, not 
+about the average value, but about a 
+displaced value.
+
+Timeinterval for ten oscillations
+0
+0.5
+1
+1.5
+2
+2.5
+3
+3.5
+4
+4.5
+01234567
+Time (s)
+Run
+
+Error in Measurements
+Every instrument of measurement based 
+on a physical quantity has some degree of 
+uncertainty.
+Presenting measurement with associated 
+errors gives a basis for determining 
+reliability of the measurements.
+
+This uncertainty affects the accuracy of 
+the instrument’s output.
+The instrument whose scale’s smallest 
+divisions are smaller has a small 
+uncertain range of values between 
+successivevalues graduated on the scale 
+This implies  less uncertainty or greater 
+accuracy than the instrument whose 
+scale’s smallest divisions are larger
+
+
+
+Example:
+Recordthe heights according to the scale
+Solution:
+1871-5, 165
+1896-1900, 
+170
+1921-5, 175
+1946-50, 175
+1971-5, 180
+
+The Limit of Accuracy (Limiting Error)
+Measured values always have an uncertainty, 
+The values on the scale of a measuring 
+instrument can not exactly match the true 
+values of the measured quantities.
+When recording or using measured values, 
+it is important to consider the  reasonable 
+range of values within which the true value 
+of the measured quantity lies. 
+
+For example, if a kitchen unit is 600 mm 
+wide to the nearest 10 mm, it could actually 
+be any width from 595 mm up to 605 mm –so 
+it might not fit into a gap that is exactly 600 
+mm wide. 
+To describe range of values within which the 
+true value of the measured quantity lies, we 
+use it’s lower and upper bounds.
+
+The Lower Bound
+Thelower boundis the smallest value 
+that canround up to the valueon the 
+scale nearest to the measured value.
+Thelower boundis the smallest value 
+that canround up to the nearest value-of 
+the-smallest-divisionon the scale.
+The smallest-division is also called the 
+degree of accuracyorresolution of 
+measuring the instrument
+
+Theupper bound
+Theupper boundis the smallestvalue that 
+can beround upto thenext valueon the 
+scale nearest to the measured value.
+Theupper boundis the smallest value that 
+can beround up to the value next  to and 
+greater than the value-of the-smallest-
+divisionnearestto the measured valueon 
+the scale.
+
+Example:
+The upper bound and the lower bound for 
+a mass recorded as 70 kg on a scale with 
+a degree of accuracy of 10kg:
+a mass of 70 kg, rounded to the nearest 
+10 kg, 
+has a lower bound of 65 kg, 
+because 65 kg is the smallest mass that 
+rounds to 70 kg. 
+
+The upper bound is 75 kg, because 75 
+kg is the smallest mass that would 
+round up to 80kg.
+This can be shown as an error interval 
+(usinginequality symbols):
+65kg≤weight<75kg.
+
+
+To calculate upper and lower bounds
+
+For the upper limit,halve the degree of 
+accuracy, then add this to the value on the 
+scale nearestto the measured valueand 
+
+For the lower limit,subtract the half of the 
+degree of accuracyfrom the value on the 
+scale nearestto the measured value.
+
+The half of the degree of accuracy is the
+limiting error (the limit of accuracy)
+
+The limiting error is presented wit the 
+±
+sign
+For example 0.7 
+
+Examples:
+Work out the limit of accuracy for the
+measurements.
+32 cm, measured on a scale with the 
+least division of 1cm:
+The degree of accuracy is to the 
+nearest 1 cm.
+1cm÷2=0.5cm
+Upper bound =32+0.5=32.5cm
+Lower bound =32−0.5=31.5cm
+Limit of accuracy =±0.5cm
+
+140 cm, measured to the nearest 10 cm:
+The degree of accuracy is nearest 10 cm.
+10cm÷2=5cm
+Upper bound =140+5=145cm
+Lower bound =140−5=135cm
+8.4 cm, measured to the nearest 0.1 cm:
+The degree of accuracyis nearest 0.1 
+cm.
+0.1cm÷2=0.05cm
+Upper bound =8.4+0.05=8.45cm
+
+The degree of accuracy determines the 
+number of significant figures and decimal 
+places of the measured value:
+Example:
+Write thereading of 2A taken from each of 
+the ammetersin the diagram with the 
+appropriate number of significant figures for 
+the ammeter’s degree of accuracy.
+
+
+
+Error Analysis and Presentation
+Truevalue:
+For a large number of readings, the 
+arithmetic mean  푎, of the measured values 
+(readings) very closely approximate the true 
+value of the measured quantity 
+ 푎=
+1
+푛
+ 
+푖=1
+푖=푛
+푎
+푖
+Absolute  error Is the difference in the 
+magnitudes of true value and the measured 
+value of a physical quantity
+∆푎
+푖
+= 푎−푎푖
+
+Mean absolute error is the arithmetic 
+mean of all absolute errors in the 
+measured
+∆푎=
+1
+푛
+ 
+푖=1
+푖=푛
+∆푎
+푖
+This means the measurement’s value a, 
+lies between 푎−∆푎and  푎+∆푎. 
+a= 푎±∆푎
+
+Relative  error
+±
+∆푎
+ 
+푎
+Percentage error. 
+±
+∆푎
+ 
+푎
+×100
+Relative Error can also be calculated as a 
+percentage of: 
+the Full-scale deflection (fsd)
+the Expected value
+
+Presentation of Error
+The error associated with a measurement is 
+written following the measured value of a 
+quantity.
+Examples:
+a.Fractional error:
+ퟐퟑퟓ±ퟎ.ퟑ풎풍
+b.Percentage error:
+ퟓퟎퟎ풌푵±ퟏퟕ%
+c.Error interval:
+ퟔퟓ풌품≤ퟕퟎ풌품≤ퟕퟓ풌품.
+
+•Practice:
+•Present the reading on the ammeter in 
+the diagram with it’s associated error:
+i.as fractionalerror
+ii.as a percentage of the ammeter’s full-
+scale deflection
+
+Propagation of Error
+When measured values are used in 
+calculations, the mathematical operations 
+involved in thecalculations affect the size 
+of the errors associated with the measured 
+values. 
+We will discuss Propagation of error in:
+Addition and Subtraction
+Multiplication and Division
+And powers
+
+Propagation of Error in Addition and 
+Subtraction
+When adding or subtracting two values 
+of measured quantities with their 
+associated errors, a ±Δaand b ±Δb, 
+If the sum isQ ±ΔQ , 
+then 푄±Δ푄=(푎±Δ푎)+(푏±Δ푏)
+∴푄=푎+푏푎푛푑
+Δ푄=(Δ푎+Δ푏)
+Where Q represents the sum and ΔQ 
+represents its associated error 
+
+Similarly, when subtracting.
+IfQ ±ΔQ = (a ±Δa) –(b ±Δb) 
+Then Q = (a –b) and 
+ΔQ = (Δa+Δb) 
+whether we are adding or 
+subtracting, the associated 
+errors are always added.
+
+Propagation of Error in Multiplication and 
+Division
+When  multiplying measurements a and b, 
+with their uncertainties,
+(a ±Δa) and (b ±Δb) are multiplied, 
+the product with its absolute error is 
+P ±ΔP = (a ±Δa) (b ±Δb) 
+Where P = a ×b 
+and ΔP = 
+∆푎
+푎
++ 
+∆푏
+푏
+Then P ±ΔP = ab ±(
+∆푎
+푎
++ 
+∆푏
+푏
+) 
+
+Practice:
+Show that 푎±Δ푎푏±Δ푏=
+∆푎
+푎
++
+∆푏
+푏
+
+Similarly if we divide two quantity values; a 
+by b 
+So that Q is the quotient and ΔQ is the 
+absolute error of the quotient
+푄±Δ푄=
+푎
+푏
+±(
+∆푎
+푎
++
+∆푏
+푏
+)
+
+Propagation of Error in Powers
+Error in power of a quantity 
+If Δais the absolute error in the 
+measurement of the quantity 푎, 
+the measurement  is presented as 푎±Δ푎.
+If 퐸±Δ퐸=푎±Δ푎
+2
+=푎±Δ푎푎±Δ푎
+then E = 푎
+2
+=푎×푎
+∴Δ퐸=±
+Δ푎
+푎
++
+Δ푎
+푎
+∴Δ퐸=±2
+Δ푎
+푎
+
+In general
+if
+then
+
+VECTORS
+Vector Quantities, Vectors’ Combination, Vector 
+Components, 
+
+A VECTOR QUANTITY
+A Vector quantity is a quantity that has both 
+magnitude and direction
+A vector quantity can not be described 
+completely with only magnitude
+Both magnitude and direction are required 
+to completely describe a vector quantity
+A Scalar quantity is a quantity that has 
+magnitude only 
+Only magnitude is necessary to completely 
+describe a scalar quantity
+
+Distance and Displacement
+Distance  is the length 
+of a path taken 
+between two points.
+Distance is a scalar 
+quantity.
+Displacement is the 
+distance in a particular 
+direction.
+Displacement is a 
+vector quantity.
+
+Vector Notation
+A vector quantity can be indicated by the 
+following notation:
+A letter with a right arrow accent;푏,퐵
+A bold letter;푩, n
+Two uppercase letters with a common right 
+arrow accent 푀푁
+
+The magnitudeof a vector quantity is 
+indicated in the following notation: 
+
+ 
+퐴
+ 푎
+푀푁
+푎
+퐴
+푨
+풂
+
+Vector Representation
+Avector is represented by its magnitude and 
+direction
+Direction: the orientation in which the 
+vector acts
+Magnitude: the size (or absolute value ) of 
+the vector
+
+Avector can be represented by: 
+The value of its magnitude and a description 
+of its direction. 
+For Example:
+50N to the North
+25m at 25
+o
+below the horizontal
+An arrow
+The name and magnitude of the vector are 
+indicated together with the arrow
+
+2.1 Scalars and Vectors | University Physics Volume 1 (lumenlearning.com)
+
+Vector Relationships
+Vectors can be related in the following 
+ways:
+Coplanar vectors:
+Vectors acting along the same imaginary 
+flat surface
+Concurrent vectors:
+Vectors acting at the same point
+Colinear vectors:
+Vectors acting along the same straight 
+
+Vector Relationships
+
+Types of Vectors
+Free Vectors are quantities with both 
+magnitude and direction but without a 
+particular position and a specific point of 
+action in space. 
+Examplesof free vectors:
+angular velocity of a rigid body, 
+torque on a rigid body, 
+velocity of a particle moving in a straight 
+line
+
+Sliding Vectors are quantities 
+with both magnitude and 
+direction and have a specific 
+straight line of action in space 
+but do not have a fixed point of 
+application in space.
+Examples of sliding vectors 
+force applied on a rigid body, 
+velocity of a fluid in a  
+straight pipe 
+
+FixedVectorsare quantities with both 
+magnitude and direction and have a 
+specific point of application in space. If 
+the line of action is changed, the overall 
+effect is changed 
+Examples of fixed vectors: 
+A force on a deformed body, a
+force on a point body, 
+momentum of a point body, 
+a force applied to the end of a spring.
+
+Vector Translation
+In a plane, vectors can be moved without 
+hanging their meaning if their magnitude 
+and direction (orientation) does not 
+change
+
+Direction of Actionof a Vector
+The direction in which vector is 
+acting can be represented by:
+An arrowhead
+The arrowhead on a narrow 
+representing a vector points 
+in the direction of action of 
+the vector
+
+A positive sign or a negative sign
+For parallel or antiparallel vectors 
+directions of the vectors relative to each 
+other can be represented with the signs.
+The signs can also be used with reference
+tothe vertical and horizontal 
+orientations 
+Vertical vector: 
+Upward: +,  Downwards: -
+Horizontal vector: 
+Rightwards: +, Leftwards: -
+
+Cardinal points:
+Angles are measured between the cardinal a 
+point, N, or S, or E, or W,  and a vector
+Angles can also be measured from the north 
+in a clock wise direction. 
+N=0
+o
+, S=180
+o
+, W= 270
+o 
+, E= 
+Angles are also measured from any of the 
+cardinal points in a either the clock-wise 
+direction or the counter clock-wise 
+direction  
+Example: 
+S50E, read as fifty degrees east of south
+
+,
+
+An angle between a reference point and the 
+vector:
+The reference points include: 
+a cardinal point or 
+another vector or the 
+positive X-axis
+
+If theangle is measured from the positive x-
+axis is called the standard angle
+The angle is positive if it is measured in the 
+counter clock-wise direction
+The angle is negative if it is measured in the 
+clock-wise direction.
+
+
+
+Practice:
+a.Represent 8cm S50
+o
+Eusing an arrow.
+b.Referto the vector in the preceding diagram:
+i.Write the vectors 퐵and 
+ 
+퐶, each with 
+vector 
+ 
+퐴as its reference point
+ii.Givethe direction of vector 퐵using both 
+cardinal point notations
+
+Example:
+If  B is 5kmat 60°, Find the magnitude 
+and direction of -B 
+
+VECTORADDITION
+ResultantVector:
+A vector that has the same effect as other 
+vectors acting together
+
+VECTORADDITION
+Properties of vector addition:
+Commutative:
+P+Q=Q+P
+Associative:
+(P+Q)+R=P+(Q+R)
+Additive identity:
+P+0=P
+0+P=P
+
+Adding Parallel and Antiparallel Vectors
+Vectors that are either parallel or antiparallel 
+to each other can be combined by 
+algebraically adding their magnitudes taking 
+into account their signs for direction.
+The negative of a vector is a vector of the 
+same magnitude as a given vector but acting 
+in the opposite direction to that of the given 
+vector
+
+
+
+Exercise:
+1.Add the following vectors:
+a.R=-54N and T=16N
+b.S=-345cm and L= -17cm
+2.Which of the following horizontal vectors act leftwards
+a.Q=o.14Pa
+b.W=-700N
+c.T=16N
+d.R=-35m/s
+
+Adding Vectors in a Plane
+Vectors that are neither parallel nor 
+antiparallel are added using principles of 
+geometry
+Vector Polygon
+When  vectors connected head to tail form 
+an incomplete polygon, their resultant is 
+the vector that completes the polygon, 
+acting in the general direction of the 
+vectors forming the incomplete polygon.
+
+•푫+푨+푪+푩=푹, This is a vector-sum, 
+different from ordinary addition. The 
+addition follows the rules of geometry on the 
+polygon that the vectors form.
+•푫+푨+푪+푩≠푹, a sum of the 
+magnitudes does not give the magnitude of 
+the resultant vector
+
+If  the vectors, connected head to tailform a 
+complete polygon, their resultant is zero.
+푫+푨+푪+푩+(−푹)completes the polygon 
+with vectors arranged head-to-tail,  
+−푹=−푫−푨−푪−푩, 
+∴푫+푨+푪+푩+(−푹)=0
+
+Triangle Rule
+The Triangle rule is a special case of the 
+vector polygon
+
+The resultant will be the same as subtracting 퐵fron 
+ 
+퐴
+
+The triangle rule can as well be used to 
+add more than two vector in succession 
+as shown in the figure 
+
+The triangle rule can as well be used to 
+add more than two vector in succession 
+as shown in the figure 
+
+Example:
+If  B is 5Pa at 60°, Find the magnitude 
+and direction of -B 
+
+Parallelogram Rule
+Trigonometric calculations or scale diagrams can 
+be applied to findthe resultant vector 
+graphically
+Parallelogram Rule
+
+Analytical Method of Adding Vectors
+The magnitude and direction of the 
+resultant vector are obtained by 
+geometrical and trigonometrical 
+calculations on the relationships 
+between the vectors.
+The relation ships between the vectors 
+must be set by the rules of vector 
+addition.
+
+A and B form a triangle
+From the properties of a parallelogram, the angle 휑between 
+ 
+퐴and 퐵in 
+the triangle is 
+휑=(360
+o
+-(60
+o 
++60
+o
+))/2=120
+o
+Applying the cosine rule and sine rule we can calculate the magnitude 
+and the direction of the resultant vector 푅
+흋
+
+Example:
+If 
+ 
+퐹
+퐴
+=3푁푎푡−30°and 
+ 
+퐹
+퐵
+=5푁푎푡−150°, 
+using the triangle rule, find their resultant
+
+Example:
+Find the resultant of the displacements M= 
+32m E and N= 55m S
+
+Example:
+If 
+ 
+퐴=3푇and 퐵=5Tand the angle 
+between them is 60°,determinetheir 
+resultantgraphically
+
+Graphical Method of Adding Vectors
+Accurate graphical representations of 
+vectors drawn to scale.
+The direction of a vector is represented 
+by the direction of the arrow head  of the 
+arrow representing the vector.
+The magnitude a the vector is 
+represented to scale by the length of the 
+arrow representing the vector.
+
+Example:
+The vectors 
+ 
+퐴and 퐵shown in the figure are 
+velocities in 푚/푠. 
+
+a.Using a scale of ퟐ풄풎∶ퟏ풎/풔, find the lengths 
+퐴and 퐵, representing the magnitudes of the 
+velocities 
+ 
+퐴and 퐵
+b.Draw a scale diagram of a head-to-tail 
+combination of the velovities
+ 
+퐴and 퐵
+c.From the Scale diagram, measure the length
+and directionangleof the resultant of the 
+vectors 
+ 
+퐴and 퐵
+d.Using the scale diagram, convert the measured 
+length of the resultant velocity from cm to 
+m/s, to find the magnitude of the resultant 
+velocity
+e.Write down the magnitude and direction of the 
+resultant velocity
+
+a.Using a scale of ퟐ풄풎∶ퟏ풎/풔, find the lengths 
+퐴and 퐵, representing the magnitudes of the 
+velocities 
+ 
+퐴and 퐵
+b.Draw a scale diagram of a head-to-tail 
+combination of the velocities 
+ 
+퐴and 퐵
+c.From the Scale diagram, measure the length
+and directionangleof the resultant of the 
+vectors 
+ 
+퐴and 퐵
+d.Using the ퟐ풄풎∶ퟏ풎/풔scale, convert the 
+measured length of the resultant velocity from 
+cm to m/s, to find the magnitude of the 
+resultant velocity
+e.Write down the magnitude and direction of the 
+resultant velocity as Xm/s, Y
+o
+
+Solutions:
+a.Lengthsof A and B, to the scale of 2푐푚:1푚/푠
+i.Lengthof A, to the scale of 2푐푚:1푐푚/푠
+•
+ 
+퐴=10.0푚/푠
+•Scale; 2푐푚∶1푚/푠
+•
+ 
+퐴=10푚/푠×
+2푐푚
+1푚/푠
+•푨=ퟐퟎ풄풎
+
+ii.Lengthof B, to the scale of 2푐푚:1푚/푠
+•퐵=7.0푚/푠
+•Scale; 2푐푚∶1푚/푠
+•퐵=7.0푚/푠×
+2푐푚
+1푚/푠
+•푩=ퟏퟒ풄풎
+•Completethe remaining parts
+
+Practice:
+A=5m, B=4m, C=3m, D=8m. Use a scale 
+diagram with a scale of 2푐푚:1푚/푠, to find 
+their resultant displacement R, 
+
+
+
+VECTOR COMPONENTS
+Every vector has an effect in each of the 
+vertical and horizontal orientations
+A component of a vector in the vertical 
+orientation or in the horizontal orientation, 
+is the vector’s effect in that orientation. 
+
+Thus a vector푂퐴, in the  xy-coordinate system 
+can be described by a pair of 
+itsvectorcoordinates.
+푂퐴=(푂퐴)
+푥
+,(푂퐴)
+푦
+Thex-coordinate of 
+vectoris itsx-
+component
+They-coordinate of 
+vectoris itsy-
+component. 
+
+Following vector addition, a vectorcan be 
+expressed as the vector a sum of its vector 
+components:
+풂=풂
+푦
++풂
+푥
+
+The
+The resultant to the components of  a 
+vector is the vector. 
+ 
+퐴=
+ 
+퐴
+푦
++
+ 
+퐴
+푥
+ 
+퐴
+푦
+ 
+퐴
+푥
+ 
+퐴
+푦
+ 
+퐴
+푥
+ 
+퐴
+푦
+ 
+퐴
+푥
+
+A vector Component in Terms of the 
+Vector
+
+ 
+퐴=
+ 
+퐴
+푦
++
+ 
+퐴
+푥
+cos(휃)=
+ 
+퐴
+푥
+ 
+퐴
+
+ 
+퐴
+푥
+=
+ 
+퐴푐표푠(휃).... (i)
+sin(휃)=
+ 
+퐴
+푦
+ 
+퐴
+
+ 
+퐴
+푦
+=
+ 
+퐴푠푖푛(휃).... (ii)
+(i) and (ii) are true 
+onlywhen 휃is 
+measured as standard 
+angle 
+ 
+퐴
+푦
+ 
+퐴
+푥
+ 
+퐴
+푦
+ 
+퐴
+푥
+휃
+휃
+
+When 휃is measured from any other point of 
+reference:
+푨
+푐표푚푝표푛푒푛푡
+=푨푐표푠(휃), 
+when 푨
+푐표푚푝표푛푒푛푡
+is adjucentto 휃
+푨
+푐표푚푝표푛푒푛푡
+=푨sin(휃), 
+when 푨
+푐표푚푝표푛푒푛푡
+is opposite to 휃
+
+The sign of a component can be 
+determined by inspecting its direction on 
+a sketch of the vector and its components
+Pointing up: Positive
+Pointing down: Negative
+Pointing right: Positive
+Pointing left:Negative
+
+Exercise
+If a is 50N at an angle 훾=
+30°to the left of the y-
+axis calculate the 
+magnitudes of its x and y 
+components
+Determine the standard 
+angle  for t a
+Calculate the vertical  and 
+horizontal components for 
+a using the standard angle 
+휃
+
+Finding a Vector from its Comonents
+Magnitude
+Since 
+ 
+퐴
+푦
+and 
+ 
+퐴
+푦
+are perpendicular,
+Then the magnitude of 
+ 
+퐴is
+푨=푨
+풚
+ퟐ
++푨
+풙
+ퟐ
+, (by Pythagoras Theorem)
+
+Direction
+Since
+퐴
+푦
+퐴
+푥
+=tan휃, 
+The direction of 
+ 
+퐴is
+휽=퐭퐚퐧
+−ퟏ
+푨
+풚
+푨
+풙
+ 
+퐴
+푦
+ 
+퐴
+푥
+휃
+
+There are always two angles separated by 
+180°thathavethesamevalueoftan
+Thus the equation
+휃=tan
+−1
+ 
+퐴
+푦
+ 
+퐴
+푥
+, has two solutions
+
+It is important 
+to inspect a 
+sketch of the 
+vectors when 
+calculating the 
+angle for 
+direction
+
+Practice:
+The displacement퐵shown in the figure, has 
+a magnitude of 33푘푚and is acting at an 
+angle 휃=140°.
+
+a.Find the magnitudes of its vertical and 
+components respectively
+b.Calculate the resultant of the component 
+found in a.
+c.Compare the resultant found in b. to the 
+displacement 퐵
+
+Vector Componentsfor an InclinedFrame of 
+Reference
+The component of 
+the weight parallel 
+to the plane has the 
+magnitude of 
+푭
+풘
+퐬퐢퐧휽
+The component of 
+the weight 
+perpendicular to the 
+plane has the 
+magnitude of 
+
+Practice:
+A box weighing 359푁, is on a frictionless 
+ramp that is inclined at 30°. A 100푁force 
+is pulling the box up along the ramp as 
+shown.In which direction will the box 
+move along the ramp?
+
+ComponentMethod of Vector Addition
+Vectorscan be added by:
+Addingtheir vertical components together 
+and their horizontal components together
+to produce the vertical component and the 
+horizontal component of the resultant vector.
+Then the vertical component and the 
+horizontal component of the resultant 
+vector arecombined to find the resultant 
+vector. 
+
+
+
+Solution:
+•Find thevertical 
+componentsfor each of 
+the forces 
+•Add the vertical 
+components of the 
+forces
+•Findthe horizontal 
+components for each of 
+the forces
+•Add the horizontal 
+components of the 
+forces
+A
+D
+C
+B
+E
+Example:
+Determine the resultant 
+of the forces shown in 
+the figure.
+
+
+
+d.Calculatethe 
+resultant of the 
+combined vertical 
+components and 
+the combined 
+horizontal 
+components
+
+The magnitude of the 
+resultant vector:
+푅=푅
+푦
+2
++푅
+푥
+2
+∴푅=
+(−3.2푁)
+2
++(5.7푁)
+2
+∴푅=6.5N
+The direction of 
+the resultant 
+vector:
+휙=tan
+−1
+−3.2
+5.7
+∴휙=-29
+휃=360°−29°
+∴휃=331°
+∴푅=6.5푁,−29°
+Or 푅=6.5푁,331°
+
+Unit Vector
+Aunit Vectoris:
+Avector of magnitude unity, also called 
+direction vector
+ 푣=
+푉
+푉
+Avertical unit vector is represented by  푗
+Ahorizontal unit vector is represented by  푖
+
+ 
+퐴
+푥
+ 푖+ 퐵
+푦
+ 푗=푉
+
+ 
+퐴푥
+2
++퐵푦
+2
+= 푉,3m 푖+4m 푗=5m
+
+
+
+Mechanics I
+Kinematics, Dynamics, Work, Energy, Power
+
+KINEMATICS
+Linear Motion, Projectile motion, Agular Motion
+
+Mechanics I
+Kinematics, Dynamics, Work, Energy, Power
+
+KINEMATICS
+Linear Motion, Projectile motion, Agular Motion
+
+LINEAR MOTION
+(Uniformly accelerated motion)
+Conditions of  Linear Motion:
+a.Straight line motion
+No change in direction
+b.Constant acceleration
+No change in direction 
+(Uniformly accelerated)
+Velocity can change
+
+Displacement
+Change in position(from a reference point)
+푆=푥
+푓
+−푥
+푖
+, Horizontal motion
+∆푆=푥
+푓
+−푥
+푖
+=푆
+푓
+−푆
+푖
+
+Velocity
+Displacementper unit time
+푉=
+푆
+푡
+Average Velocity 
+
+ 
+푉=
+1
+2
+푉
+푓
++푉
+푖
+.... Onlyfor linear 
+motion.
+
+Acceleration 
+Change in velocity per unit time
+푎=
+∆푉
+∆푡
+푎=
+(푉
+푓
+−푉
+푖
+)
+(푡
+푓
+−푡
+푖
+)
+푽
+풇
+=푽
+풊
++풂풕..... (i)
+
+Displacement 
+Change in position
+푉=
+∆푠
+∆푡
+푉=
+∆푥
+∆푡
+, horizontal 
+motion∆푠=∆푥
+푆=푉푡.....only for 
+constant velocity
+푆=
+ 
+푉t .....for 
+nonconstant velocity
+∴
+ 
+푉=
+1
+2
+푉
+푓
++푉
+푖
+∴푺=
+ퟏ
+ퟐ
+푽
+풇
++푽
+풊
+풕....(ii)
+Displacement-Time Graph
+
+If 푡is unknown in (ii), 푺=
+ퟏ
+ퟐ
+푽
+풇
++푽
+풊
+풕
+푡can be substituted with 
+(푉
+푓
+−푉
+푖
+)
+푎
+=푡
+................ ....From (i), 푽
+풇
+=푽
+풊
++풂풕
+∆푆=
+1
+2
+푉
+푓
++푉
+푖
+(푉
+푓
+−푉
+푖
+)
+푎
+푽
+풇
+ퟐ
+=푽
+풊
+ퟐ
++ퟐ풂∆푺, ....(iii)
+푉
+푓
+2
+=푉
+푖
+2
++2푎(푆
+푓
+−푆
+푖
+), ... ∆푆=(푆
+푓
+−푆
+푖
+)
+
+If 푽
+풇
+is unknown in (ii), ∆푺=
+ퟏ
+ퟐ
+푽
+풇
++푽
+풊
+풕
+푽
+풇
+can be substituted with (i), 푽
+풊
++풂풕=
+푽
+풇
+∆푆=
+1
+2
+(푉
+푖
++푎푡)+푉
+푖
+푡
+∆푺=푽
+풊
+풕+
+ퟏ
+ퟐ
+풂풕
+ퟐ
+, .... (iv)
+The equations (i) to (iv) are called the 
+kinematic equations of linear motion
+푽
+풇
+=푽
+풊
++풂풕
+ 
+푽=
+ퟏ
+ퟐ
+푽
+풇
++푽
+풊
+∆푺=
+ퟏ
+ퟐ
+푽
+풇
++푽
+풊
+풕
+푽
+풇
+ퟐ
+=푽
+풊
+ퟐ
++ퟐ풂∆푺
+∆푺=푽
+풊
+풕+
+ퟏ
+ퟐ
+풂풕
+ퟐ
+
+Example:
+A motorcyclist heading east through a small 
+city accelerates  after he passes the signpost 
+marking the city limits. His acceleration is a 
+constant 4.0 m/s
+2
+. At time t = 0, he is 5.0 m 
+east of the signpost, moving east at 15 m/s. 
+(a) Find his position and velocity at time t=2.0s. 
+(b) Where is the motorcyclist when his velocity 
+is 25 m/s? 
+Solutions:
+
+Solution:
+We take the signpost as the origin of coordinates (푥=0), 
+We choose the positive 푥-Axis to point east.
+At the initial time, 푡=0.
+The initial Position is 푥
+표
+=5.0푚
+The initial 푥-velocity is 푣
+표푥
+=15푚/푠.
+The constant x-acceleration is 푎
+푥
+=4.0푚/푆
+2
+.
+The unknown target variables in part (a) are the position 푥and 
+the 푥-velocity푣
+푥
+at the later time 푡=2.0푠;
+The target variable in part (b) is the value Of 푥when 푣
+푥
+=
+
+Solution (a)
+Distance 풙, at 풕=ퟐ.ퟎ풔
+푥=(푥푏푒푓표푟푒
+푡ℎ푒푝표푠푡
+)+(푥
+푎푓푡푒푟푡ℎ푒푝표푠푡
+)
+푥
+푏푒푓표푟푒푡ℎ푒푝표푠푡
+=푣
+표푥
+푡+
+1
+2
+푎
+푥
+푡
+2
+푥
+푎푓푡푒푟푡ℎ푒푝표푠푡
+=푥
+표
+=5푚
+∴푥=푥
+표
++(푣
+표푥
+푡+
+1
+2
+푎
+푥
+푡
+2
+)
+∴푥=5푚+(15푚/푠)(2.0푠)+
+1
+2
+(4.0푚/
+푠
+2
+)(2.0푠)
+2
+∴풙=ퟒퟑ풎
+The motor cyclist travelled 43m east in 2.0s
+
+Velocity 풗
+풙
+, at 풕=ퟐ.ퟎ풔
+푣
+푥
+=푣
+표푥
++푎
+푥
+푡
+푣
+푥
+=15푚/푠+(4.0푚/푠
+2
+)(2.0푠)
+풗
+풙
+=ퟐퟑ풎/풔
+At t=2.0s, the motor cyclist was travelling 
+at 23m/s due east
+
+Solution (b)
+Displacement 풙, at 풗
+풙
+=ퟐퟓ풎/풔
+푣
+푥
+2
+=푣
+표푥
+2
++2푎
+푥
+푥−푥
+표
+푥=푥
+표
++
+푣
+푥
+2
+−푣
+표푥
+2
+2푎
+푥
+푥=5푚+
+(25
+ 
+푚푠)
+2
+−(15
+ 
+푚푠)
+2
+2(
+ 
+4.0푚푠
+2
+)
+풙=ퟓퟓ퐦
+The motor cyclist had travelled 55m due 
+east upon reaching a speed of 25m/s.
+
+Exercise:
+A car is traveling at 20.0m/s when the 
+driver slams on the brakes and brings it to 
+a straight-line stop in 4.2s. (a) what is its 
+average acceleration? (b) what was the 
+average velocity of the car? (c) how far 
+did the car travel with the brakes on?
+
+Graphs of Linear Motion
+Motioncan be described graphically. 
+It is easy to understand the motion of a body 
+when it is presented on a graph. 
+We will consider Displacement-Time graphs 
+and Velocity-Time graphs 
+
+Displacement –Time Graph
+Theinstantaneous 
+velocity is given by 
+the value of the 
+gradient as the 
+time interval 
+approaches zero
+Displacement –Time Graph
+
+The instantaneous 
+velocity is also 
+given by gradient of 
+the tangent to the 
+curve at a given 
+time
+The gradient of a 
+straight line joining 
+two points on the 
+curve equals the 
+average velocity for 
+the time interval
+Displacement –Time Graph
+
+For a constant velocity, the graph is 
+of a straight
+If the velocity is zero, (at rest) 
+the straight line is horizontal
+If the motion has an acceleration, 
+the graph forms acurve
+Curvedup for an acceleration
+Curveddown for a deceleration
+
+•Constant velocity in 
+the positive 
+direction, starting 
+from rest
+•Lowest Constant 
+velocity in the 
+positive direction
+•Accelerating in the 
+Positive Direction
+•Lower Constant 
+velocity in the 
+positive 
+direction
+
+•Accelerating in the 
+negative direction 
+•Constant Velocity in 
+the negative 
+direction 
+•Constant Velocity in the 
+negative direction. 
+•Decreasing positive 
+displacement, then 
+changing to increasing 
+negativedisplacement
+•Decelerating in the 
+negative direction 
+
+Velocity –Time Graph
+For a constant 
+acceleration the 
+graph is of a straight 
+line
+If the acceleration 
+is zero, the line is 
+horizontal
+The area under the 
+velocity-time graph 
+over a time interval, 
+∆푡equals the 
+displacement 
+covered in that time
+Velocity time-graph
+
+The area under 
+the V-T graph 
+equals the 
+displacement.
+풂
+풙
+=
+∆풗
+풙
+∆풕
+∆풗
+풙
+∆풕
+
+The area under the V-
+T graph equals the 
+displacement.
+
+
+
+
+
+
+
+The velocity can be 
+estimated by counting 
+the number of the 
+rectangles or squares 
+under the graph.
+Counting fractions 
+accordingly i.e., 
+½,¼,.푒푡푐...
+Multiplying the number 
+of the rectangles and 
+their lengths and 
+heights to find the 
+displacement.
+
+Exercise:
+Determine the total displacement in for the 
+journey presented in the Velocity-Time graph
+
+
+
+Travel graphs
+A travel graphshows the 
+distance travelled away from a 
+set point against the time. 
+It helps to identify the speed at 
+which they have travelled, 
+points at which they were 
+stationary (not moving), and 
+when they are returning to the 
+starting point.
+Travel graph
+
+In part 1, the car is moving 
+away from the starting point 
+with a constant speed
+In part 2, the cat has stopped
+In part 3, the car is again 
+moving away from the 
+starting point with a  higher 
+constant speed than in part 1
+In part 4 the car has sopped 
+again for a longer time than 
+in part 2
+In part 5 the car is returning 
+to the starting point with a 
+constant speed
+
+Example: 
+The Distance-Time graph  
+shows a trains journey 
+(a)Calculate the speed of 
+the train on the last section 
+of the journey, from 70 to 
+100 minutes. (b) Circle the 
+part of the journey that the 
+train travels fastest.(c) 
+Explain your answer
+푆푝푒푒푑=
+푑푖푠푡푎푛푐푒
+푡푖푚푒
+푆푝푒푒푑=
+100min−70min
+80푠−60푠
+=
+30푚푖
+20푚푖푛
+Distance time Graph for a Train’s Journey
+
+Practice:
+Chisomovisited his aunt and 
+then returned home. The 
+distance-time graph shows 
+information about Chisomoʼs
+journey.(a) Write down the 
+time that he started his 
+journey. (b) At 2:50pm he 
+stopped for a rest. How many 
+minutes was this rest? (c) He 
+stayed with his aunt for 30 
+minutes and then returned 
+home. Work out his average 
+speed on the journey home. 
+(d) Work out the total distance 
+he that travelled.
+•Distance time Graph for a Roy’s 
+Journey
+
+Practice
+Bethany drove to a family meal and then 
+back home. The meal was at a restaurant 
+that is 70 kilometresfrom her home. 
+Bethany left home at 10:00 and arrived at 
+the restaurant at 11:30. She stayed at the 
+family meal for 2 hours. Bethany then drove 
+home at a speed of 35 kilometresper hour. 
+Show this information on the distance-time 
+graph.
+
+Practice:
+Teddy leaves home at 13:00. He drives at 
+an average speed of 60km/h for 2½ hours 
+after which he stops for 30 minutes. He 
+then drives home at an average speed of 
+50km/h (a) Show this information on a 
+distance-time graph. (b) A film starts at 
+18:45. Does Teddy get home in time for the 
+start of the film? Explain your answer.
+
+Free Fall and terminal 
+Velocity
+
+ANGULAR MOTION
+For a body moving in a 
+circular path, the 
+direction of its velocity 
+is always changing
+The direction of its 
+acceleration is always 
+changing
+Boththe velocity and 
+the acceleration are 
+not constant
+
+therefore, the 
+Kinematic equations for 
+linear motion do not 
+apply for circular 
+motion.
+The of change of the 
+angle subtended by a 
+body in circularmotion 
+at the centre of its 
+circular path, does does
+not change direction, 
+and can be accelerated 
+
+therefore, for the angular 
+motion of the body in 
+circular motion can be 
+considered as a uniformly 
+accelerated motion.
+Correspondingly, the 
+principles of the kinematic 
+equations for linear motion 
+can apply to the angular 
+motion of the body in 
+circular motion 
+푽
+풇
+=푽
+풊
++풂풕
+푺=
+ퟏ
+ퟐ
+푽
+풇
++푽
+풊
+풕
+푺=푽
+풊
+풕+
+ퟏ
+ퟐ
+풂풕
+ퟐ
+푽
+풇
+ퟐ
+=푽
+풊
+ퟐ
++ퟐ풂푺
+
+Directionin angular motion
+
+
+
+
+
+Angular Displacement 
+Angular Displacement is the 
+angle subtended by the motion 
+of the body at the centre of the 
+circular path.
+denoted by 휃.
+휽=
+∆풔
+풓
+S: arc length, 휽: the a angle
+SI Unit : Radian
+Otherunits: revolution and 
+degree
+=1rev
+
+Angular Velocity
+Changein angular 
+displacement per unit 
+time
+It is also called Angular 
+frequency
+흎=
+∆휽
+∆풕
+SI unit: rad/s, or 풔
+−ퟏ
+Otherunits: rev/s
+
+Tangential Velocity
+Velocityalong a 
+circular path.
+It is always tangent to 
+the circular path
+푣
+푡
+=
+푆
+푟
+,      but 휃=
+푠
+푟
+푠=휃푟
+풗
+풕
+=흎풓
+SI Unit: m/s
+
+Angular Acceleration
+The change in angular 
+acceleration per unit 
+time
+It occurs in parallel to 
+the angular velocity
+휶=
+흎
+풕
+SI unit: rad/s
+
+Tangential Acceleration
+푎
+푇
+=
+푆
+푟
+but 휃=
+푠
+푟
+풂
+푻
+=흎풓
+SI Unit: m/s
+2
+
+Centripetal Acceleration
+The acceleration 
+that keeps a body 
+moving in a circular 
+path.
+It always acts 
+towards the centre 
+of the circular path
+
+The triangles ABC 
+and RPQ are similar
+∆푣is in the same 
+direction as the 
+centripetal 
+acceleration
+∴
+∆푣
+푣
+=
+∆푟
+푟
+∆푠≅∆푟
+
+∆푣
+푣
+=
+∆푠
+푟
+
+∴∆푣=
+풗∆풔
+푟
+푎
+푐
+=
+∆푣
+푡
+∴푎
+푐
+=
+(
+푣∆푠
+푟
+)
+t
+∴푎
+푐
+=
+푣∆푠
+푟푡
+
+∆푠
+푡
+=∆푣
+∴풂
+풄
+=
+풗
+ퟐ
+풓
+, ............(I)
+푎
+푐
+in terms of ω:
+푎
+푐
+=
+푣
+2
+푟
+and 
+푣=휔푟
+∴푎
+푐
+=
+휔
+2
+푟
+2
+푟
+∴푎
+푐
+=흎
+ퟐ
+풓, 
+.......(II)
+
+Practice: 
+Acar’s wheel of radius 25푐푚rolls at 
+20.0푟푎푑/푠, without slipping. How fast is 
+the car travelling? 
+
+Kinematic Equations for Angular Motion
+For constant angular acceleration angular 
+motion follows the same principles as 
+uniformly accelerated linear motion
+The kinematic equations for angular 
+motion are similar to the kinematic 
+equations for uniformly accelerated 
+linear motion with angular variablesof 
+motion corresponding to linear variables 
+of motion
+
+Linear Motion
+푽
+풇
+=푽
+풊
++풂풕
+푺=
+ퟏ
+ퟐ
+푽
+풇
++푽
+풊
+풕
+푺=푽
+풊
+풕+
+ퟏ
+ퟐ
+풂풕
+ퟐ
+푽
+풇
+ퟐ
+=푽
+풊
+ퟐ
++ퟐ풂푺
+Angular Motion
+흎
+풇
+=흎
+풊
++휶풕
+휽=
+ퟏ
+ퟐ
+흎
+풇
++흎
+풊
+풕
+휽=흎
+풊
+풕+
+ퟏ
+ퟐ
+휶풕
+ퟐ
+흎
+풇
+ퟐ
+=흎
+풊
+ퟐ
++ퟐ휶휽
+
+Practice:
+Amotorised pulley of radius 5.0cm spinning 
+clock-wise at 0.5rpm sloes down uniformly to 
+0.33rpm in 2.0s.
+a.What is the angular acceleration of the 
+motor?
+b.How many revolutions does it make in this 
+time?
+c.What length of the belt does it wind in this 
+time?
+
+Motion in Two Dimensions
+Motion in the Vertical Plane:
+Motionin the vertical plane, occurs under, at 
+leasta constant acceleration
+The acceleration due to gravity (g)
+The acceleration due to gravity (g) always 
+cats downwards
+g≅−9.81푚/푠
+2
+The total downward acceleration can be 
+either g or a+g
+
+From a point of reference:
+Upwards:
+Aacceleration  is positive
+Displacementis positive
+Velocityis positive
+Downwards:
+acceleration  is negative
+displacements is negative
+velocity is negative
+
+Example:
+Acannon ball leaves the barrel of a 
+cannon at ground level with a velocity of 
+20m/s vertically upwards ,calculate:
+a.The cannon ball’s maximum height
+b.The cannon ball’s flight time
+
+Solution a.:
+Its maximum height is ℎ
+푚푎푥
+=푆
+푓
+We are considering motion from the ground 
+∴푆
+푖
+=0
+푣
+푖
+=20
+ 
+푚푠
+When it reaches its maximum height  it will 
+stop before falling 
+∴푣
+푓
+=0
+It is falling due to gravity ∴푎=푔=
+−9.81
+ 
+푚푠
+2
+
+We know푣
+푓
+,푣
+푖
+푎푛푑푎, we want to find ∆푆
+∴푣
+푓
+2
+=푣
+푖
+2
++2푎∆푆will be use full
+푣
+푓
+2
+=푣
+푖
+2
++2푎(푆
+푓
+−푆
+푖
+),  ......note that∆푆=푆
+푓
+−
+푆
+푓
+∴푆
+푓
+= 
+푣
+푓
+2
+−푣
+푖
+2
+2푎
++푆
+푖
+∴푆
+푓
+= 
+(20
+ 
+푚푠)−0
+2(−9.81
+ 
+푚푠
+2
+)
++0
+∴푺
+풇
+=ퟏ.ퟎퟐ풎, 
+∴The cannon ball reached a maximum height 
+of ퟏ.ퟎퟐ풎
+
+Solution b.:
+Since it has returned to the ground, ∆푆=0
+푣
+푖
+=20
+ 
+푚푠
+∴It is falling due to gravity ∴푎=푔=
+−9.81
+ 
+푚푠
+2
+We know 푣
+푖
+,∆푆푎푛푑푎. We want to find 푡
+
+∴∆푆=푣
+푖
+푡+
+1
+2
+푎푡
+2
+will be use full
+∴0=20
+ 
+푚푠+
+1
+2
+(−9.81
+ 
+푚푠
+2
+)푡
+2
+This quadratic equation can be solved to find 
+the value of 푡
+For the two solutions, the feasible solution is 
+the solution that is not negative or not too 
+big for the situation of the problem.
+Solve the quadratic equation for 푡and 
+choose the feasible answer.
+
+In two dimensions, motion can be described in 
+terms of its horizontal and vertical 
+components as follows
+
+Practice :
+Aplayer kicks a cocker ball with a 
+velocity 푣=18푚/푠at 20°
+a. Find the resolve the velocity into its 
+vertical and horizontal components
+b. Neglecting air resistance,
+i. what maximum height will the ball reachif 
+it experiences a downward acceleration of 
+10m/s
+2
+ii. How long will ittake to fall to the ground?
+iii. how far will it have travelled when it falls 
+to the ground?
+
+For a moving body, the 
+following variables have 
+vertical and horizontal 
+components
+Displacement 
+Velocity 
+Acceleration
+Each of the variables is 
+related to its 
+components as a vector 
+relates to its components
+A Vectorand Its  
+Componrnts
+ 푎= 푎
+푦
++푎
+푥
+ 푎
+푦
+= 푎sin(휃)
+ 푎
+푥
+= 푎cos(휃)
+ 푎=
+ 푎
+푦
+2
++ 푎
+푥
+2
+휃=tan
+−1
+푎
+푦
+푎
+푥
+
+PROJECTILE MOTION
+The path that the object follows is called its 
+trajectory. 
+Projectile motion only occurs when there is 
+one force applied at the beginning on the 
+trajectory, after which the only force acting 
+on the moving body is gravity. 
+Thus the only accelerationacting on the 
+moving body is the acceleration due to gravity, 
+푔. 
+
+In Projectile motion, an object moves with 
+horizontal symmetry and vertical symmetry
+because it has a constant acceleration. 
+The motion of a projectile has a vertical 
+component and a horizontal component
+
+VelocityComponents
+An ideal projectile experiences a constant 
+downward acceleration due to gravity and 
+no acceleration in the horizontal orientation
+푎
+푥
+=0,
+∴∆푉
+푥
+=0
+푎
+푦
+=푔=−9.81푚/푠,
+∴∆푉
+푦
+≠0
+
+푉=푉
+푦
++푉
+푥
+푉
+푦
+=푉sin(휃)
+푉
+푥
+=푉cos(휃)
+푉=푉
+푦
+2
++푉
+푥
+2
+휃=tan
+−1
+푉
+푦
+푉
+푥
+
+
+
+Range of a Projectile
+
+Maximum Height of a 
+Projectile
+
+Flight-time of a Projectile
+
+DYNAMICS
+Force, Newton’s Laws of motion Mass and Weight, Frictional force
+
+Forceand Mass
+Aforce is that which can cause an object to 
+undergo change, initsstate of motion.
+The SI unit for force isNewtons(N). 
+to change a state of motion is to change 
+speed and / or  direction
+(that isto accelerate, 
+thiscan cause a flexible object to deform.)
+A force is vector quantity.
+
+Net force and Balanced Forces
+The resultant to all the forces acting on a 
+body is called the Net Force ( 푭
+풏풆풕
+)
+Forces are balancedif their net force is zero
+.푭
+풏풆풕
+=−ퟐퟎퟎ푵+ퟐퟎퟎ푵
+.푭
+풏풆풕
+=ퟎ
+퐅=ퟐퟎퟎ푵
+퐅=ퟐퟎퟎ푵
+
+Afree body diagramrepresents a sketch of the 
+relative magnitudes and directions of all the 
+external forces acting on a body, shown with
+The body isolated from is surroundings. The 
+body is considered as a point object
+
+Newton’s First Law of Motion
+Newton’s first law of motion describes the 
+nature of a state of motion of a body
+“A body will remain at rest or in constant 
+motion in a straight line unless it is acted 
+upon by an external unbalanced force” 
+the external force acting must bea non-zero 
+net force.
+This implies that a bodycannot start, stop, or 
+change direction spontaneously, it requires a
+force from the outside to cause such a change.
+https://byjus.com/physics/laws-of-
+motion/#:~:text=The%20first%20law%20of%20motion%20implies%20that%20things,is%20also%20known%20as%20the%20law%20of%20inertia.
+
+This property of massive bodies to resist 
+changes in their state of motion is called 
+inertia.
+
+Inertia is directly proportional to mass
+The first law of motion is also known as the law 
+of inertia.
+
+Weight and Mass:
+The weight, 퐹
+푤
+is the force of gravity 
+acting on a body.
+Weight of a body is directly proportional 
+to the mas of the body.
+The mas of a body is constant
+The weight of a body varies with the 
+strength of the gravitational field in which 
+the body is
+
+The force of gravity on the surface of the 
+Earth is six times greater than the force of 
+gravity on the surface of the moon  of the 
+moon
+
+Newton’s Second Law of Motion
+•Newton’s second law of motion describes 
+what happens to amassive body when 
+acted upon by an external force.
+•The Law is stated as:
+“The rate of change of momentum of a body 
+is directly proportional to the net external 
+force acting in the body  and acts in the 
+direction of the net external force” 
+
+퐹
+푛푒푡
+∝
+∆푃
+∆푡
+.
+∴퐹
+푛푒푡
+=푘
+∆푃
+∆푡
+.
+푘=1.
+∴퐹
+푛푒푡
+=
+∆푃
+∆푡
+.
+∆푃=푚
+푓
+푣
+푓
+−푚
+푖
+푣
+푖
+.
+∴푭
+풏풆풕
+=
+풎
+풇
+풗
+풇
+−풎
+풊
+풗
+풊
+풕
+.
+For Constant mass:
+푚
+푖
+=푚
+푓
+=푚.
+∴퐹
+푛푒푡
+=
+푚푣
+푓
+−푣
+푖
+푡
+.
+∴퐹
+푛푒푡
+=푚푎.
+
+In this case the law is stated as: 
+“the acceleration of a body is directly 
+proportional to the net external force 
+acting on the body and takes place in the 
+direction of the net external force” 
+풂=
+푭
+풏풆풕
+풎
+
+Practice:
+Suppose a bike with a rider on it having a 
+total mass of 63 kg brakes and reduces its 
+velocity from 8.5 m/s to 0 m/s in 3.0 
+second. What is the magnitude of the 
+braking force?
+
+Newton’s Third Law of Motion
+Newton’s third law of motion 
+describes what happens to the 
+body when it exerts a force on 
+another body.
+Newton’s third law of motion
+States that:
+“For every action force there is 
+an equal and opposite reaction 
+force”
+
+When two bodies interact, they apply 
+forces on each other that are equal in 
+magnitude and opposite in direction.
+The forces can not balance each other 
+because they act on different bodies
+Examples of cases in which a reaction 
+force is acting on a body
+Gun recoil
+Rocketpropulsion
+Normal reaction force
+
+The Normal Reaction Force, (푭
+푵
+)is a 
+force that a surface exerts on another 
+surface that it is in contact with and it acts 
+perpendicular to the surfaces
+The Normal 
+Reaction 
+Force, 
+balanced 
+with weight
+푭=풎품
+푭
+푵
+
+The normal reaction force is not a 
+reaction to the force of gravity:
+The body is at resting on the floor in A and 
+in B, thus퐹
+푛푒푡
+=0.
+In B:
+ 
+퐹
+푛푒푡
+=
+ 
+퐹
+퐴
++
+ 
+퐹
+푁
++
+ 
+퐹
+푤
+=0.
+∴퐹
+퐴
++퐹
+푁
+−퐹
+푤
+=0.
+∴
+ 
+퐹
+푁
+=
+ 
+퐹
+퐴
+−
+ 
+퐹
+푤
+.
+In A:
+ 
+퐹
+푛푒푡
+=
+ 
+퐹
+푁
++
+ 
+퐹
+푤
+=0.
+∴퐹
+푁
+−퐹
+푤
+=0.
+∴
+ 
+퐹
+푁
+=−
+ 
+퐹
+푤
+.
+AB
+퐹
+푁
+퐹
+푁
+
+If the body is resting on 
+the plane,
+퐹
+푛푒푡
+=0
+퐹
+푛푒푡
+=퐹
+푁
+−푚푔cos휃
+0=퐹
+푁
+−푚푔cos휃
+퐹
+푁
+=−푚푔cos휃
+
+Practice:
+In figure A and in figure B, find the magnitude 
+of the Normal Reaction Force acting on the 
+block resting on the table 
+
+Practice:
+A 65kg worker stands on a weighing 
+scale in an elevator. Findthe normal 
+reaction force on the worker when the 
+elevator is:
+a.at rest
+b.moving upwards at a constant 
+velocity
+c.accelerating upwards at 4m/s
+2
+d.accelerating down wards at 4m/s
+2
+
+Hint:
+When a body is 
+accelerating up 
+wards, m푎>0
+퐹
+푛푒푡
+=푚푎
+but
+퐹
+푛푒푡
+=퐹
+푁
+−푚푔
+퐹
+푁
+−푚푔=ma
+푭
+푵
+=ma+ 풎품
+F
+N
+F
+net
+= F
+N
+-mg = ma
+F
+net
+
+A Summary of Newton’s  Laws of Motion
+https://byjus.com/physics/laws-of-motion/#third-law-of-motion
+
+Reading Assignment:
+The atwoodmachine
+Dot-product and cross-product
+
+Impulse
+Impulse represents the effect of force acting 
+over time to change the momentum of an 
+object. 
+It is denoted by the symbol J 
+SI Unit : Newton-seconds, Nsor kg m/s.
+Impulse is always equal to the average net 
+force that acts on an object for a durationof 
+time. 
+
+ 
+푱=푭⋅Δ푡
+J: impulse,F: the average force,  Δ푡: the 
+average force
+
+Impulse-Momentum Theorem
+The Impulse-Momentum theorem establishes
+the relation between the two concepts. 
+
+ 
+퐽=
+ 
+퐹⋅Δ푡
+퐹
+푛푒푡
+=
+푚
+푓
+푣
+푓
+−푚
+푖
+푣
+푖
+푡
+, Newton’s second law of motion
+∴
+ 
+퐽=
+푚
+푓
+푣
+푓
+−푚
+푖
+푣
+푖
+푡
+∙푡
+∴
+ 
+퐽=푚
+푓
+푣
+푓
+−푚
+푖
+푣
+푖
+∴
+ 
+퐽=Δ푃, 
+this result lads to the Impulse-Momentum 
+theorem
+
+The theorem states that:
+”the change in the momentum of 
+abody is equalto the amount of 
+impulse exerted on it.”
+
+Example:
+Abody weighs 3.0 kg and has a velocity of 5 
+m/s before colliding with arock and 
+stopping. 
+Find the impulseon the body.
+퐽=Δ푃=푃
+2
+–푃
+1
+∴Δ푃=푚푣
+2
+–푚푣
+1
+∴퐽=푚푣
+2
+–푚푣
+1
+∴퐽=(3.0푘푔)(0푚/푠)–(3.0푘푔)(5푚/푠)
+퐽15푘푔/
+
+Practice:
+In the preceding example, what will be 
+the magnitude of the average impact 
+force if the body:
+a.stopped instantaneously?
+b.took 12s to stop during the impact?
+c.took 120s to stop during the impact?
+
+Linear Momentum 
+The LimearMomentumof a body is equal 
+to the product of the velocity and mass 
+of the body
+푃=푚 푣
+Linear Momentum is a vector quantity
+The Momentumof a body acts in the 
+same direction as the velocity of the 
+body
+SI Unit: 
+
+Conservation of Linear 
+Momentum
+Momentum is conserved in Mechanically 
+Isolated Systems. In such systems:
+Net external force is zero
+퐹
+푛푒푡
+=0
+Onlyconservative forces act on the 
+system
+
+Conservation of Linear 
+Momentum
+Conservative 
+force
+Workdone is path 
+independent
+Examples:
+Gravitational force
+Electric force
+Spring force
+Nonconservative force
+Workdone is path 
+dependent
+Examples:
+Frictional force
+Airresistance
+Tension
+
+Conservation of Linear Momentum
+The law of conservation of momentum
+“If the net external force on a system of 
+bodies is zero, the vector sum of the 
+momenta of the objects on the system 
+remains constant.”
+Momentaof individual bodies can change 
+but the total momentum of the system of 
+bodies remains constant
+
+ 
+푚
+푖
+푣
+푖
+=
+ 
+푚
+푓
+푣
+푓
+If퐹=0
+
+Momentum In Interaction of Bodies
+The total momentum of a systembefore an 
+event is equal to the total momentum of the 
+system after the event
+푚
+퐴푖
+ 푣
+퐴푖
++푚
+퐵푖
+ 푣
+퐵푖
++⋯=푚
+퐴푓
+ 푣
+퐴푓
++푚
+퐵푓
+ 푣
+퐵푓
++⋯
+The velocities can be along the x, y and z 
+axes
+The event can be a collision or an explosion
+
+Explosions
+Asingle body disintegrates into more than one 
+body
+The total of the momentaof the individual 
+bodies equals the momentum of the original 
+body
+푚 푣=푚
+퐴
+ 푣
+퐴
++푚
+퐵
+ 푣
+퐵
++⋯
+푚=푚
+퐴
++푚
+퐵
++⋯
+
+Collisions
+Colliding bodies transfer momentum between 
+each other
+The collisions between bodies can be partly 
+inelastic or partly elastic
+The collisions between bodies can be 
+perfectly inelastic
+The collisions between bodies can be 
+perfectly elastic
+
+PartlyInelastic Collision
+Colliding bodies deform without rebounding 
+completely
+Colliding bodies may stick together 
+Momentaof individual bodies change but the total 
+momentum remains constant  
+푚
+퐴푖
+ 푣
+퐴푖
++푚
+퐵푖
+ 푣
+퐵푖
++⋯=푚
+퐴푓
+ 푣
+퐴푓
++푚
+퐵푓
+ 푣
+퐵푓
++⋯
+
+Kinetic Energy in Inelastic 
+Collisions
+The total translational kinetic energy of the system 
+of bodies  is not conserved. 
+∆퐸
+푘푡
+≠0
+
+1
+2
+푚
+퐴푖
+ 푣
+퐴푖
+2
++
+1
+2
+푚
+퐵푖
+ 푣
+퐵푖
+2
++⋯≠
+1
+2
+푚
+퐴푓
+ 푣
+퐴푓
+2
++
+1
+2
+푚
+퐵푓
+ 푣
+퐵푓
+2
++⋯
+
+Perfectly Inelastic Collision:
+The collidingbodies do not rebound after colliding
+The collidingbodies stick together      
+푚
+퐴푖
+ 푣
+퐴푖
++푚
+퐵푖
+ 푣
+퐵푖
++⋯=푚 푣
+푚=푚
+퐴푓
++ 푚
+퐵푓
++⋯
+
+Perfectly Elastic collision
+The momenta of individual bodies change but 
+the total momentum remains constant
+푚
+퐴푖
+ 푣
+퐴푖
++푚
+퐵푖
+ 푣
+퐵푖
++⋯=푚
+퐴푓
+ 푣
+퐴푓
++푚
+퐵푓
+ 푣
+퐵푓
++⋯
+
+Kinetic Energy During Elastic Collisions
+The total translational kinetic energy of the 
+system of bodies remains constant  
+∆퐸
+푘푡
+=0
+
+1
+2
+푚
+퐴푖
+ 푣
+퐴푖
+2
++
+1
+2
+푚
+퐵푖
+ 푣
+퐵푖
+2
++⋯=
+1
+2
+푚
+퐴푓
+ 푣
+퐴푓
+2
++
+1
+2
+푚
+퐵푓
+ 푣
+퐵푓
+2
++
+⋯
+
+Coefficient of Restitution
+For a collision between two bodies moving 
+along a straight line, 
+푒=
+푣
+2푥푓
+−푣
+1푥푓
+푣
+1푥푖
+−푣
+2푥푖
+푣
+2푥푓
+−푣
+1푥푓
+is the relative speed of 
+recession
+푣
+1푥푖
+−푣
+2푥푖
+is the relative speed of approach
+푒=1for perfectly elastic collisions
+푒<1for inelastic collisions
+0when bodies stick together after 
+
+Practice:
+[schaum’soutlines’ college physics]
+
+Frictional Force
+Frictional force, 푭
+풇
+is a force that opposes 
+relative motion or attempted relative motion 
+between two surfaces thar are in contact.
+The smoother the surfaces in contact, the 
+smaller the frictional force
+
+Frictional force and Applied force
+
+Static Frictional force acts when the body is 
+at rest
+It is always equal in magnitude but 
+opposite in direction  to the force 
+attempting to cause motion
+It varies with the applied force
+
+The Limiting Frictional Force is the 
+maximum static frictional force.
+It acts at the instant when motion 
+begins 
+Kinetic frictional force acts when the 
+body is in motion
+It is constant and always opposite in 
+direction to the force causing the 
+motion
+
+Frictional force is directly proportional 
+to the normal reaction force between 
+the surfaces in contact
+퐹
+푓
+=휇퐹
+푁
+휇is the coefficient of friction
+휇
+푠
+is the coefficient of static friction
+휇
+푘
+is the coefficient of kinetic friction
+휇
+푘
+< 휇
+푠
+
+Practice:
+A workerpushes large boxof mass 
+75.0 kg  across the floor. The 
+coefficient of kinetic friction is μ
+k
+= 
+0.52. The worker exerts a force of 
+400.0 N forward. 
+a.What is the magnitude of the 
+force of friction?
+b.What is the acceleration of the 
+box?
+
+Example:
+A350 kg bag started moving upon being 
+pulled along a road with a force 400.0N. 
+What is the coefficient of friction 
+between the road and the bag:
+a.if the road is horizontal?
+b.if the road is inclined at 45
+o
+?
+
+Solution a:
+퐹
+푓
+=휇
+푠
+∙퐹
+푁
+∴휇
+푠
+=
+퐹
+푓
+퐹
+푁
+The applied force is 퐹=400.0푁, 
+퐹was applied at the verge of the motion
+∴퐹
+푓
+=퐹
+the bag is vertically resting on the road
+∴
+ 
+퐹
+푛푒푡푦
+=
+ 
+퐹
+푁
++
+ 
+퐹
+푊
+=0
+∴
+ 
+퐹
+푁
+=−
+ 
+퐹
+푊
+
+
+ 
+퐹
+푊
+=mg
+The mass of the bag is 푚=350푘푔
+∴
+ 
+퐹
+푊
+=350푘푔×9.81푚/푠
+2
+∴
+ 
+퐹
+푁
+=−(350푘푔×−9.81푚/푠
+2
+)
+∴휇
+푠
+=
+400.0푁
+(350푘푔×9.81푚/푠
+2
+)
+∴휇
+푠
+=
+Solution b: to be completed as a practice 
+exercise 
+
+TORQUE
+Torque is the turning or twisting effect of a 
+force,
+Torque is a vector quantity.
+A torque 휏,is produced by a force
+ 
+퐹acting 
+at a distance 푟from the pivot pointand 
+perpendicularto 푟
+The pivot point is the axis of rotation
+r is the Moment arm,it is the displacement 
+from the axis of  rotation to the point of 
+application of the force causing the rotation and 
+is perpendicular to the force. 
+
+
+
+From the definition of the cross product, 
+torqueis perpendicular to the plane 
+containingthe moment arm and the 
+force
+| 휏|=| 푟×
+ 
+퐹|=푟퐹푠푖푛휃
+ 휏=푙퐹
+푙is the moment arm for 퐹
+For a given set of force and moment arm, 
+Maximum torque is achieved when 휃=
+90°
+
+Directionof a torque
+
+Counter clockwise rotation 
+results from a positive torque
+Anegative torque produces a 
+clockwise rotation
+The direction of a torque can 
+be determined by the right 
+hand rule
+
+Net Torque
+The individual torques add to produce a 
+net torque about anaxisof rotation. 
+Withthe appropriate sign (+or -) is 
+assigned to the magnitudes of individual 
+torques about a specified axisof rotation, 
+the net torque about the axisof rotation
+is the sum of the individual torques:
+ 휏
+푛푒푡
+=
+ 
+푖
+ 휏
+푖
+
+A Couple
+Noncolinear antiparallel forces of equal 
+magnitude constitute a couple
+푙
+1
+푙
+2
+푑
+퐹
+1
+퐹
+2
+
+Acouple acting alone will always produce 
+rotational motion
+The net torque of a couple can not be zero
+ 휏
+퐴
++ 휏
+퐵
+≠0
+
+A couple ca not produce translational motion
+The resultant force of a couple is zero
+A couple can not be represented by a single 
+force
+A couple can not produce translational 
+motion
+
+ 
+퐹+
+ 
+퐹=0
+
+The Net Torque of a Couple
+ 휏
+푛푒푡
+= 휏
+1
++ 휏
+2
+∴ 휏
+푛푒푡
+=퐹
+1
+푙
+1
++퐹
+2
+푙
+2
+퐹
+1
+=퐹
+2
+=퐹
+∴ 휏
+푛푒푡
+=퐹(푙
+1
++푙
+2
+)
+푙
+1
++푙
+2
+=푑
+∴ 휏
+푛푒푡
+=퐹푑
+∴The net torque due to a couple is 
+independent of the position of the axis of 
+rotation
+
+
+
+Practice:
+Four forces are shown inthe following figure 
+at particular locations and orientations.
+a.Withrespect to a givenxy-coordinate 
+system,findthe torque due to each force 
+about the origin,
+b.Use your results to find the net torque about 
+the origin.
+
+
+
+Practice:
+A large ocean-going ship 
+runs aground, and lies 
+at an angle of 10°. If a 
+horizontal righting force 
+of 5.0×10
+5
+푁is applied 
+at a point 10푚from the 
+contact point up along 
+the side of the ship. 
+What is the torque 
+about the point of 
+contact of the ship with 
+the ground?
+
+MECHANICAL EQUILIBRIUM 
+The net external force on a body in 
+mechanical equilibrium is zero
+퐹
+푛푒푡
+=0
+∴푎=0
+∴휏
+푛푒푡
+=0
+∴훼=0
+At rest-(Static Equilibrium)
+In constant motion –(Dynamic equilibrium)
+
+States of Equilibrium
+
+neutral equilibrium:
+a state of equilibrium that is independent of 
+a system’s displacements from its original 
+position
+stable equilibrium:
+a system, when displaced, experiences a net 
+force or torque in a direction opposite to 
+the direction of the displacement
+unstable equilibrium:
+a system, when displaced, experiences a net 
+force or torque in the same direction as the 
+displacement from equilibrium
+
+Static Equilibrium
+A body in Static Equilibrium is 
+at rest and not turning
+can not undergo Translational 
+motion
+can not undergo Rotational 
+motion
+
+
+
+Conditions for Static Equilibrium
+The net force on the 
+centre of mass of the 
+body must be zero
+
+ 
+푖
+ 
+퐹
+푖
+=푚 푎
+퐶푀
+=0
+The net torque acting 
+about and axis of 
+rotation of the body 
+must be zero
+
+ 
+푖
+ 휏
+푖
+=퐼 훼=0
+along the x, y and z axes
+
+Concurrent Forces on a Body 
+in Static Equilibrium
+Concurrent forces can nor 
+produce a torque
+Notnecessary to consider 
+torque
+Concurrent forces can Produce 
+Translational motion
+The net force must be zero
+
+Example:
+A rope extends between two poles. A 90-N boy hangs from it as shown in 
+the figure.Find the tensions in the two parts of the rope.
+
+Freebody diagram
+
+∴∴
+∴, ... (I)
+∴
+∴, ... (II)
+simultaneously, solve equations 퐼푎푛푑(퐼퐼)to find 
+퐹
+푇1
+푎푛푑퐹
+푇2
+
+Coplanar Forces on a Body in Static 
+Equilibrium
+Coplanarforces can produce a torque
+Net torque torquemust be zero
+Coplanarforces can Produce Translational 
+motion
+The net force must be zero
+
+In the figure, a 300kg bar of uniform 
+composition bar is supported by the forces 푁
+2
+and 푁
+3
+. forces 푁
+1
+and 푁
+4
+are applied at the 
+ends of the bar.  Find the magnitudes of 
+푁
+2
+and 푁
+3
+if 푁
+1
+=200푁, 푁
+4
+=150푁, 푟
+1
+=
+4.5푚,r
+2
+=1.5m, r
+3
+=3m.
+Example:
+
+푁
+2
++푁
+3
+=푁
+1
++푚푔+푁
+4
+푁
+2
++푁
+3
+=200푁+(300푘푔×9.81푚푠
+−2
+)+150푁
+푁
+2
++=200푁+300푘푔×9.81푚푠
+−2
++150푁−푁
+3
+,...(I)
+휏
+1
++휏
+3
+=휏
+4
++휏
+2
+, ..with axis of rotation at the 
+centre of gravity
+푵
+ퟏ
+×풓
+ퟏ
++푵
+ퟑ
+×풓
+ퟑ
+=푵
+ퟒ
+×풓
+ퟒ
++푵
+ퟐ
+×풓
+ퟐ
+푟
+4
+=푟
+1
+, ... equidistant from centre of gravity
+200푁×4.5푚+푵
+ퟑ
+×3푚=150푁×4.5푚+푵
+ퟐ
+×
+15푚
+
+휏
+1
++휏
+3
+=휏
+4
++휏
+2
+, ..with axis of rotation at the 
+centre of gravity
+푵
+ퟏ
+×풓
+ퟏ
++푵
+ퟑ
+×풓
+ퟑ
+=푵
+ퟒ
+×풓
+ퟒ
++푵
+ퟐ
+×풓
+ퟐ
+푟
+4
+=푟
+1
+, ... equidistant from centre
+200푁×4.5푚+푵
+ퟑ
+×3푚=150푁×4.5푚+푵
+ퟐ
+×
+1.5푚
+푵
+ퟑ
+=
+150푁×4.5푚+푵
+ퟐ
+×1.5푚−200푁×4.5푚
+3푚
+,...(II)
+simultaneously, solve equations 퐼푎푛푑(퐼퐼)to 
+find 푁
+2
+푎푛푑푁
+3
+
+CENTRE OF MASS ANDCENTRE OF GRAVITY
+Centre of mass
+The point at which 
+the entire mass of a 
+body can be 
+considered to 
+concentrate
+Centre of Gravity
+The point at which 
+the entire weight of 
+a body can be 
+considered to act
+The terms "center of mass" and "center of 
+gravity" are used to represent the unique 
+pointsin forobject or system which can be 
+used to describe the system's response to 
+external forces and torques.
+
+
+
+Locating Centre of Mass
+Symmetrical and 
+Uniformly Composed 
+Body
+The centre of mass 
+coincides with the 
+geometrical centre of 
+the body
+ABody in a Uniform 
+Gravitational Field
+The centre of mass 
+coincides with the 
+centre of gravity
+
+Calculating the Location of 
+Centre of Mass or Centre of 
+Gravity
+A body supported above or below its 
+centre of gravity is in equilibrium
+퐶퐺
+푚
+2
+푚
+1
+푚
+2
+푔푚
+1
+푔
+퐿−푟푟
+퐿
+
+푚
+1
+and 푚
+2
+constitute a body
+Their connecting bar is massless
+distancetoCGfrom푚
+1
+푟=푟
+퐶퐺
+휏
+푛푒푡
+=0
+∴푚
+1
+푔×푟=푚
+2
+푔×(퐿−푟)
+∴푚
+1
+푔×푟=푚
+2
+푔×(퐿−푟)
+∴푚
+1
+푔×푟=푚
+2
+푔×퐿−푚
+2
+푔×푟
+∴푚
+1
+푔×푟+푚
+2
+푔×푟=푚
+2
+푔×퐿
+∴(푚
+1
++푚
+2
+)푔×푟=푚
+2
+푔×퐿
+
+∴푟=
+푚
+2
+푔×퐿
+(푚
+1
++푚
+2
+)푔
+푟=푟
+퐶퐺
+∴풓
+푪푮
+=
+푚
+2
+푔
+(푚
+1
++푚
+2
+)푔
+×퐿, From 푚
+1
+Similarly for Centre of mass
+∴풓
+푪풎
+=
+푚
+2
+(푚
+1
++푚
+2
+)
+퐿, From 푚
+1
+
+From an external point:
+The total torque of individual point masses at 
+different positions equals the torque that 
+would be produced if all the weight of the 
+masses is located at the centre of gravity
+풐
+
+휏
+퐶퐺
+=휏
+1
++휏
+2
++...
+푚
+1
++푚
+2
++⋯푔푟
+퐶퐺
+=푚
+1
+푔푟
+1
++푚
+2
+푔푟
+2
++⋯
+푟
+퐶퐺
+=
+푚
+1
+푔푟
+1
++푚
+2
+푔푟
+2
++⋯
+푚
+1
++푚
+2
++⋯푔
+=
+ 
+푖
+푚
+푖
+푔푟
+푖
+ 
+푖
+푚
+푖
+푔
+
+The concept of the center of mass is that of a 
+weightedaverage of the masses,factored by 
+themasses’ displacements from the 
+reference point.
+In one plane, thisis similar tothe balancing 
+of a seesaw about a pivot point with respect 
+to the torques produced.
+The location of  the centre of mass is given by
+푟
+퐶푚
+=
+푚
+1
+푟
+1
++푚
+2
+푟
+2
++⋯
+푚
+1
++푚
+2
++⋯
+=
+ 
+푖
+푚
+푖
+푟
+푖
+ 
+푖
+푚
+푖
+
+The location of centre of mass or the 
+centre of gravity cam be specified in two 
+or in three dimensions  using coordinates 
+(푥,푦)or (푥,푦,푧)respectively.
+
+For centre of gravity
+퐶퐺=푋
+퐶퐺
+,푌
+퐶퐺
+푋
+퐶퐺
+=
+푚
+1
+푔푥
+1
++푚
+2
+푔푥
+2
++⋯
+푚
+1
++푚
+2
++⋯푔
+푌
+퐶퐺
+=
+푚
+1
+푔푦
+1
++푚
+2
+푔푦
+2
++⋯
+푚
+1
++푚
+2
++⋯푔
+
+For centre of mass:
+퐶푚=푋
+퐶푚
+,푌
+퐶푚
+푋
+퐶푚
+= 
+푚
+1
+푥
+1
++푚
+2
+푥
+2
++⋯
+푚
+1
++푚
+2
++⋯
+푌
+퐶푚=
+푚
+1
+푦
+1
++푚
+2
+푦
+2
++⋯
+푚
+1
++푚
+2
++⋯
+
+Practice:
+Find the centre of mass 푋
+퐶푀
+for the masses in the figure
+
+Practice:
+Find the centre of mass, CM for the masses in the figure
+
+Locating Centre of Gravity using a 
+Plumb Line
+Using a plumb line:
+
+
+
+Stability
+
+
+
+
+
+ELASTIC PROPERTIES OF MATERIALS
+For the design of machines and structures,
+themechanical properties and thus 
+behaviourof materials under load is very 
+important. 
+A material subjected to a load either 
+deforms, 
+yields, or 
+breaks, 
+We are interested in knowing how a 
+particular material will behave under 
+applied load.
+
+Elasticity
+Elasticity is the ability of a body  to return 
+to its original size and shape when the 
+forces that deformed it are removed. 
+It is a property of a material.
+Other properties include:
+A plasticity
+A brittleness
+A ductility
+Malleability
+Ductility
+
+Plastic Material
+A plastic material does not 
+change is final shape after the 
+deforming stress is removed.
+It deforms permanently
+
+Malleable material
+A material that has the 
+ability to undergo a large  
+permanent deform 
+before breaking under 
+compressive stress.
+A malleable material can 
+be easily formed into 
+thin sheets by 
+hammering or rolling. 
+
+A ductile material
+A ductile material has the ability to undergo 
+a large  permanent deform before breaking 
+under tensile stress. 
+A ductile material can easily be stretched 
+into a wire when pulled as shown in the 
+figure. 
+Recall pulling is applying tensile stress.
+Copper is among the most ductile metals
+
+Brittle material
+A brittle material fractures with 
+no plastic deformation. The 
+material in the figure below 
+marked with 
+(a) shows what a brittle material 
+will look when broken due to a 
+stress. 
+A brittle material has low 
+ductility. 
+A stress-strain curve for brittle 
+and ductile materials is shown 
+in the figure that follows
+
+Brittle material: (a)
+Elastic material: (b)
+Ductile material (c)
+
+stress
+The Stress (σ) experienced within a solid is the 
+magnitude of the ratio of the force (F), to the 
+area (A) over which the force acts:
+휎=
+퐹
+퐴
+The SI unit : Pa, 1푃푎=1푁/푚
+2
+.
+Thus, if a cane supports a load, the stress at 
+any point within the cane is the load divided 
+by the cross-sectional area at that point; 
+The narrowest regions experience the greatest 
+stress.
+
+There are at least three ways a 
+stress can appear:
+Tensile Stress
+The  external force per unit area 
+of the material resulting in the 
+stretching of the material.
+푠ℎ푒푎푟푠푡푟푒푠푠=
+푇푒푛푠푖푙푒푓표푟푐푒
+푎푟푒푎
+Compressive Stress
+The external force per unit area 
+that deforms the material such 
+that the volume of the material 
+decreases.
+푠ℎ푒푎푟푠푡푟푒푠푠
+
+Shear Stress
+The external force per unit area that is 
+responsible for the deformation of the 
+material such that the shape of the material 
+is changed.
+푠ℎ푒푎푟,푠푡푟푒푠푠=
+푆ℎ푒푎푟푖푛푔푓표푟푐푒
+푎푟푒푎
+
+strain
+Strain(ε)  is the amount of 
+deformation experienced by 
+the body in the direction of 
+force causing the 
+deformation, per initial 
+dimensions of the body.
+it is the fractional 
+deformation resulting from a 
+stress.
+The dimension can be 
+Length, 
+A
+
+Types of Strain
+Tensile Strain
+tensile strain is produced when a body increases in 
+length as applied forces  stretch it.
+Volume strain, 휀
+푉
+=
+∆푉
+푉
+표
+Length strain, 휀
+푉
+=
+∆퐿
+퐿
+표
+Compressive Strain
+compressive strain is produced when a body decreases 
+in length when a force  compress it.
+Volume, 푠푡푟푎푖푛=
+푑푉
+푉
+length,푠푡푟푎푖푛=
+∆퐿
+퐿
+표
+
+Shear Strain
+Shear strain is produced when the shape of a 
+body changes when force  shears it.
+for a simple shearing force producing a 
+displacement ∆푦perpendicular to 푥,
+푠ℎ푒푎푟푠푡푟푎푖푛,휏=
+∆푦
+∆푥
+=
+∆ℎ
+∆푥
+
+Stress-Strain Curve
+We can learn about the elastic properties of 
+materials by studying the stress-strain 
+relationships, under different stress loads, in 
+these materials.
+The material’s stress-strain curve gives its 
+stress-strain relationship. 
+In a stress-strain curve, the stress is plotted 
+against its corresponding strain values. 
+An example of a stress-strain curve is given 
+as follows.
+
+
+
+The different regions in the stress-strain diagram are:
+(A) Proportional Limit
+It is the region in the stress-strain curve that obeys 
+Hooke’s Law. In this limit, the stress-strain ratio 
+gives us a proportionality constant known as 
+Young’s modulus. The point OA in the graph 
+represents the proportional limit.
+(B) Elastic Limit
+It is the point in the graph up to which the 
+material returns to its original position when the 
+load acting on it is completely removed. Beyond 
+this limit, the material doesn’t return to its 
+original position, and a plastic deformation starts 
+to appear in it.
+
+(C) Yield Point
+The yield point is defined as the point at which the 
+material starts to deform plastically. After the yield 
+point is passed, permanent plastic deformation occurs. 
+There are two yield points 
+(i) upper yield point 
+(ii) lower yield point.
+(D) Ultimate Stress Point
+It is a point that represents the maximum stress that a 
+material can endure before failure. Beyond this point, 
+failure occurs. Also called ULTIMATE STRENGTH
+(E) Fracture or Breaking Point
+It is the point in the stress-strain curve at which the 
+failure of the material takes place.
+
+Stress-Strain Graphs for Brittle and 
+Ductile Materials
+The brittle material 
+breaks at the elastic 
+limit
+The ductile material 
+under goes a lot more 
+plastic deformation 
+than elastic 
+deformation before 
+breaking
+
+Hooke’s Law
+“Withinthe limit of proportionality, strain is 
+directly proportional to the stress causing 
+it”
+An elastic body is said to be Hookean if it 
+obeys Hooke’s Law.
+휎∝휀
+
+Young’s Modulus
+For tensile forces and compressive forces, the 
+constant of proportionality is the modulus of 
+elasticity 푌,The Young’s Modulus (Y)
+∴휎=푌휀
+∴푌=
+휎
+휀
+Thus on a Stress-Strain graph, 
+푌=(thegradientwithinthelimitifproportionality)
+
+
+
+Example:
+
+Example:
+
+Factor of Safety (FoS)
+Factor of Safety is the ratio of  a material’s 
+(or structure’s) maximum strength(Ultimate 
+strength) t0 the load that it will experience in 
+normal use (design Load).
+퐹표푆=
+푈푙푡푖푚푎푡푒푆푡푟푒푛푔푡ℎ
+퐷푒푠푖푔푛퐿표푎푑
+A structure's factor of safety is a measure of 
+how much extra strength is built into it to 
+withstand expected stress and provide a 
+higher level of safety.
+
+A structure's factor of safety must be larger 
+than one for it to be considered safe. 
+If 퐹표푆=1, then ∴퐹표푆=푈푙푡푖푚푎푡푒푠푡푟푒푛푔푡ℎ
+If 퐹표푆<1, the structure could collapse at 
+any time, even before it reaches the design 
+load.
+Since  퐹표푆=
+푈푙푡푖푚푎푡푒푆푡푟푒푛푔푡ℎ
+퐷푒푠푖푔푛퐿표푎푑
+∴푈푙푡푖푚푎푡푒푆푡푟푒푛푔푡ℎ=퐷푒푠푖푔푛퐿표푎푑×퐹표푆
+
+CIRCULAR MOTION AND GRAVITATION
+
+ENERGY AND WORK
+Work, Energy, Work-Energy Theorem Conservation Of 
+Mechanical Energy, Power
+
+WORK
+Workgives a measure of change in the 
+state of a body or a system that occurs 
+when a body is moved by an external 
+force acting in the direction of the 
+displacement of the body 
+푾=푭∙푺
+When the applied force acts in the 
+opposite direction to the motion of a 
+body, the theforce does negative work
+
+.
+
+.
+
+Work Done by A  Constant Force
+Workis done only when a force causes 
+motion
+Work done by a force is equal to the 
+product of  the force causing motion and 
+the displacement resulting from the motion 
+occurringin the direction of action of the 
+force
+푊=
+ 
+퐹∙
+ 
+푆
+∴푊=
+ 
+퐹
+ 
+푆퐶표푠(휃), ... Dotproduct
+SI Unit: Joule, J
+
+Work Done by a Torque
+푊=
+ 
+퐹∙
+ 
+푆, translational motion
+In angular motion: 
+푆=휃푟
+∴푊=퐹∙휃푟
+∴푊=퐹푟휃
+퐹푟=휏
+∴푾=흉∙휽
+
+Newton’s Second Law of Motion for 
+Rotational Motion
+moment of 
+inertia
+퐹=푚푎
+휏=퐹×푟
+∴퐹×푟=푚푎푟
+∴휏=푚푎푟
+푎=훼푟
+∴휏=푚훼푟푟
+∴휏=푚푟
+2
+훼
+In 휏=푚푟
+2
+훼,
+푚푟
+2
+is the moment of 
+inertia, I 
+Iis a rotational 
+equivalent of mass, m
+For a point body,푰=
+풎풓
+ퟐ
+∴흉=푰휶
+
+Energy
+Energy is the ability to do work.
+SI Unit: Joule (J)
+Other Units: Kilowatt-Hour, (kWH), 
+1푘푊퐻=3.6푀퐽
+Calorie (cal.) 
+1푐푎푙.=418400퐽
+There are different types of energy that a body 
+can possess:
+Internal energy and Mechanical Energy
+
+Mechanical Energy
+Kinetic Energy
+Energy that a body 
+possesses due to 
+its motion
+Potential Energy
+Energy that a body 
+possesses due to 
+its position and 
+shape
+
+Kinetic Energy
+Translational Kinetic 
+Energy
+Energy that a body 
+possesses due to 
+its movement from  
+place to place
+퐸
+푘푡
+=
+1
+2
+푚푣
+2
+Rotational Kinetic 
+Energy
+Energy that a body 
+possesses due to 
+its rotation about 
+an axis
+퐸
+푘푟표푡
+=
+1
+2
+퐼휔
+2
+
+Work-Energy Theorem
+Work relates to displacement, and 
+displacement relates to kinetic energy. 
+The work energy theorem relates the net work 
+done on a body to the change in the kinetic 
+energy of the body.
+It is stated as: 
+“the net work done on arigidbody is equal to 
+change in kinetic energy of the body”
+퐸
+푘푓
+–퐸
+푘푖
+=푊
+푛푒푡
+Work Energy Theorem and It's Applications -Definition, Formula, Limitations and Solved Examples (vedantu.com)
+
+Negative Work
+When a body does 
+work it loses 
+energy
+∆푊<0, for the 
+body
+Positive Work
+When energy is 
+done on a body the 
+body gains energy
+∆푊<0, for the 
+body
+
+Example:
+A1500kg car is travelling on a 
+straight horizontalroad at 
+36.0m/s. The brakes are applied 
+with a braking force of 4000N. How 
+far does the car travel while 
+braking?
+
+Solution:
+퐸
+푘푓
+−퐸
+푘푖
+=푊
+푛푒푡
+∴
+1
+2
+푚푣
+푓
+2
+−
+1
+2
+푚푣
+푖
+2
+=퐹∙푥
+∴
+1
+2
+1500푘푔×0−
+1
+2
+1500푘푔×36.0푚/푠
+2
+=4000푁∙푥
+∴푥=
+
+Potential Energy
+Potential Energy of 
+Position
+The energy that a 
+body  posseses due 
+to its position in a 
+force field
+퐸
+푝
+=푚푔ℎ
+Potential Energy of 
+Strain
+The energy that a 
+body  posseses 
+due to changes in 
+its shape and size
+퐸
+푠
+=
+1
+2
+퐾푆
+2
+
+Conservation of Mechanical Energy
+The Law of Conservation of Mechanical 
+Energy states that:
+“if the only forces acting on a system are 
+associated with potential energy, the 
+total mechanical energy of the system 
+remains constant”
+퐸=퐸
+푘
++퐸
+푝
+퐸=퐶표푛푠푡푎푛푡
+∴퐸
+푘
++퐸
+푝
+=퐶표푛푠푡푎푛푡
+
+퐸
+푖
+=퐸
+푓
+퐸
+푘푡푖
++퐸
+푘푟푖
++퐸
+푝푖
++퐸
+푠푖
+=퐸
+푘푡푓
++퐸
+푘푟푓
++퐸
+푝푓
++
+퐸
+푠푓
+
+1
+2
+푚푣
+푖
+2
++
+1
+2
+퐼휔
+푖
+2
++푚푔ℎ
+푖
++
+1
+2
+퐾푆
+푖
+2
+=
+1
+2
+푚푣
+푓
+2
++
+1
+2
+퐼휔
+푓
+2
++
+푚푔ℎ
+푓
++
+1
+2
+퐾푆
+푓
+2
+Assumingno rotational motion and no strain:
+
+1
+2
+푚푣
+푖
+2
++푚푔ℎ
+푖
+=
+1
+2
+푚푣
+푓
+2
++푚푔ℎ
+푓
+퐸
+푘푡
++퐸
+푝
+=푐표푛푠푡푎푛푡
+
+1
+2
+푚푣
+2
++푚푔ℎ=퐶표푛푠푡푎푛푡
+E=Constant
+
+Energy interchange
+Energy is a state function
+The change in the 
+energy of a system 
+does not depend of the 
+path that the energy 
+changing process 
+takes.
+The change in the 
+energy of a system 
+depends on the final 
+state of the system
+In an isolated 
+system:
+퐸
+푘푡
++퐸
+푝
+=퐶표푛푠푡푎푛푡
+∴when kinetic 
+energy increases the 
+potential energy 
+decreases
+when potential energy 
+increases the kinetic 
+energy decreases
+
+Maximum Velocity of a FallingBody
+푣
+푓
+=푣
+푚푎푥
+When ℎ
+푓
+=0, 퐸=퐸
+푘
+
+1
+2
+푚푣
+푖
+2
++푚푔ℎ
+푖
+=
+1
+2
+푚푣
+푓
+2
++푚푔ℎ
+푓
+∴
+1
+2
+푚푣
+푖
+2
++푚푔ℎ
+푖
+=
+1
+2
+푚푣
+푚푎푥
+2
++0
+∴푣
+푚푎푥
+2
+=
+1
+2
+푚푣
+푖
+2
++푚푔ℎ
+푖
+1
+2
+푚
+∴푣
+푚푎푥
+2
+=2푔ℎ
+푖
+∴풗
+풎풂풙
+=±ퟐ품풉
+풊
+
+Maximum Displacementof a BodyMoving
+AgainstGravity
+ℎ
+푓
+=ℎ
+푚푎푥
+When 푣
+푓
+=0, 퐸=퐸
+푝
+
+1
+2
+푚푣
+푖
+2
++푚푔ℎ
+푖
+=
+1
+2
+푚푣
+푓
+2
++푚푔ℎ
+푓
+
+1
+2
+푚푣
+푖
+2
++푚푔ℎ
+푖
+=0+푚푔ℎ
+푚푎푥
+To be completed as practice work
+풉
+풎풂풙
+=
+
+FinalVelocity
+
+1
+2
+푚푣
+푖
+2
++푚푔ℎ
+푖
+=
+1
+2
+푚푣
+푓
+2
++푚푔ℎ
+푓
+
+1
+2
+푚푣
+푓
+2
+=
+1
+2
+푚푣
+푖
+2
++
+푚푔ℎ
+푖
+−푚푔ℎ
+푓
+푣
+푓
+2
+=
+1
+2
+푚푣
+푖
+2
++푚푔ℎ
+푖
+−푚푔ℎ
+푓
+1
+2
+푚
+푣
+푓
+2
+=푣
+푖
+2
++2푔ℎ
+푖
+−2푔ℎ
+푓
+푣
+푓
+2
+=푣
+푖
+2
++2푔(ℎ
+푖
+−ℎ
+푓
+)
+푣
+푓
+=
+푣
+푖
+2
++2푔(ℎ
+푖
+−ℎ
+푓
+)
+
+Example:
+
+Power 
+Power is the time rate of doing 
+work
+푃=
+푊
+푡
+, average power
+SI Unit: Watt (W)
+1푊=1퐽/푠
+Other units: Horse power
+
+Preactice:
+
+Power and Velocity
+푃=
+푊
+푡
+푊=
+ 
+퐹∙
+ 
+푆
+푃=
+ 
+퐹∙
+ 
+푆
+푡
+
+푠
+푡
+=푣
+푃=
+ 
+퐹∙ 푣
+The force 
+ 
+퐹does work against, and 
+balances with the force acting 
+against the motion
+If  푣is constant then 
+ 
+퐹
+푛푒푡
+=0
+∴퐹=(푓표푟푐푒푎푐푡푖푛푔푎푔푎푖푛푠푡푡ℎ푒푚표푡푖on)
+If the body accelerates,  
+ 
+퐹
+푛푒푡
+≠0
+∴the work is done by 
+ 
+퐹
+푛푒푡
+
+Example:
+The lorry has mass 3500 kg and is 
+travelling at a constant speed of 9.4 m s-
+1. The force due to air resistance is 
+negligible.Calculate the useful power 
+from the engine to move the lorry up the 
+road.
+
+푃=푭∙풗
+푭푑표푒푠푤표푟푘푎푔푎푖푛푠푡푭
+푊ǁ
+=푚푔sin휃
+The velocity is constant ∴푭
+푛푒푡
+=0
+∴F=푚푔sin휃
+푃=푚푔sin휃∙푣
+푃=3500×9.81푚/푠
+2
+sin(14.5)×9.4푚/푠
+푷=ퟖퟏ풌푾
+
+SIMPLE MACHINES 
+Machines, Mechanical Advantage, Velocity Ratio, 
+Efficiency 
+
+A Machine
+A machine is a device by which the direction, 
+magnitude and method of application of a force is 
+changed in order to achievean advantage in doing 
+work.
+Gettinga large output force for a small input force
+Gettinga large output displacement force for a small 
+input displacement
+Gettinga high output speed for a low input speed
+
+
+
+Types of Machines
+
+
+
+
+
+Mechanical Advantage
+The ratio of the input force to the output 
+force
+푀퐴=
+퐹
+푖푛
+퐹
+표푢푡
+
+THE PRINCIPLE OF WORK 
+In a continuously operating machine,input 
+work is equal to the sum of output work and 
+the work done against friction and other 
+retarding forces.
+푊
+푖푛
+=푊
+표푢푡
++푊
+퐹
+∴퐹
+푖푛
+∙푆
+푖푛
+=퐹
+표푢푡
+∙푆
+표푢푡
++푊
+퐹
+푾
+풐풖풕
+<푾
+풊풏
+
+Velocity Ratio
+An ideal machine does not experience friction 
+or other retarding forces
+∴푊
+푖푛
+=푊
+표푢푡
+∴퐹
+푖푛
+∙푆
+푖푛
+=퐹
+표푢푡
+∙푆
+표푢푡
+
+퐹
+표푢푡
+퐹
+푖푛
+=
+푆
+푖푛
+푆
+표푢푡
+
+푆
+푖푛
+푆
+표푢푡
+=푀퐴푓표푟푎푛푖푑푒푎푙푀푎푐ℎ푖푛푒,퐼푀퐴
+
+푆
+푖푛
+푆
+표푢푡
+is the velocity ratio, VR of a machine. VR=
+푆
+푖푛
+푆
+표푢푡
+
+Practice:
+
+Velocity Ratio of a Pulley
+푆
+푖푛
+=푡ℎ푒푙푒푛푔푡ℎ표푓푟표푝푒푝푢푙푙푒푑푡ℎ푟표푢푔ℎ푡ℎ푒푝푢푙푙푒푦
+푆
+표푢푡
+=푡ℎ푒푑푖푠푡푎푛푐푒푚표푣푒푑푏푦푡ℎ푒푙표푎푑
+푉푅=
+푆
+푖푛
+푆
+표푢푡
+∴푽푹=
+풅
+풓풐풑풆
+풅
+풍풐풂풅
+
+Mechanical Advantage of a Pulley
+퐹
+푖푛
+=푡ℎ푒force, 퐹pulling out the rope
+퐹
+표푢푡
+=푠푢푚표푓푓표푟푐푒푠표푛푟표푝푒푠푒푐푡푖표푛푠푙푖푓푡푖푛푔푡ℎ푒푙표푎푑
+
+Mechanical Advantage of a Pulley
+Force on the entire rope is tension force, 퐹
+푇
+Therefore, the force on each  rope section is 퐹
+푇
+Number of  rope sections supporting the load : 푁
+푟
+푀퐴=
+푁
+푟
+퐹
+푇
+퐹
+푇
+∴푴푨=푵
+풓
+
+Reading Assignment:
+Mechanical advantage of :
+a Lever
+an Inclined Plane
+a Screw
+Velocity Ratio of:
+a Lever
+an Inclined Plane
+a Screw
+
+Gear Drive
+A gear drive is 
+comprised of Cog
+Wheels connected by 
+their teeth to transmit 
+motion while changing 
+the speed and direction 
+or the direction of the 
+motion.
+
+Belt Drive
+A Belt drive is 
+comprised of pulleys 
+connected by a bely to 
+transmit motion while 
+changing the speed and 
+direction or the 
+direction of the motion.
+
+Reading Assignment:
+1.Determine the mechanical 
+advantage of:
+a.Abelt drive
+b.Agear drive
+2.Determine the velocityratio of:
+a.Abelt drive
+b.Agear drive
+
+Efficiency of a Machine
+The ratio of output 
+work to the input 
+work
+푒푓푓=
+푊
+표푢푡
+푊
+푖푛
+As a percentage
+푒푓푓=
+푊
+표푢푡
+푊
+푖푛
+×100%
+푊=퐹∙푆
+∴푒푓푓=
+퐹
+표푢푡
+∙푆
+표푢푡
+퐹
+푖푛
+∙푆
+푖푛
+
+퐹
+표푢푡
+퐹
+푖푛
+=푀퐴
+
+푆
+표푢푡
+푆
+푖푛
+=
+1
+푉푅
+∴풆풇풇=
+푴푨
+푽푹
+As a percentage
+풆풇풇=
+푴푨
+푽푹
+×ퟏퟎퟎ%
+
+FLUID MECHANICS
+
+FLUID STATICS
+Pressure, Pressure measurement, Hydrostatic 
+Pressure, Pascal’s Principle, Archimedes’ Principle  
+
+A Fluid
+A fluid is any 
+substance 
+that cam flow
+Liquids and 
+Gases 
+
+Pressure
+Pressure is the force exerted per unit area
+푃=
+퐹
+퐴
+, average pressure
+Si Unit: Pascal (Pa), 1Pa=N/m
+2
+:
+Standard atmospheric pressure: 1.01×10
+5
+푃푎
+Other Units: 
+atm,1푎푡푚=(1.013×10
+5
+푃푎)
+mmHg,(760푚푚퐻푔=1푎푡푚)
+Bar : 
+Torr :
+
+Hydrostatic Pressure
+Pressureat a point in a fluid 
+acts equally in all directions
+Pressure due to a liquid column
+푃=
+퐹
+퐴
+퐹=푚푔
+∴푃=
+푚푔
+퐴
+푚=휌푉
+∴푃=
+휌푉푔
+퐴
+푉=퐴ℎ
+∴푃=
+휌퐴ℎ푔
+퐴
+∴푃=휌ℎ푔
+∴Pressure in fluids 
+is independentof 
+area, 
+it is dependent on 
+height
+
+
+
+
+
+Example:
+
+Example:
+A dam is 500 m wide, 
+and the water is 80.0m 
+deep at the dam. (a) 
+What is the average 
+pressure on the dam 
+due the water (b) 
+Calculate the force 
+exerted against the 
+dam
+
+Solution: (a)
+The average pressure 
+ 
+푃due to the weight of the 
+water is the pressure at the average depth 
+ 
+ℎ
+Since pressure increases linearly with depth: 
+
+ 
+ℎ=
+표+80푚
+2
+=40.0푚
+The average pressure due to the weight of the 
+fluid is
+
+ 
+푃=
+ 
+ℎ휌푔.
+∴
+ 
+푃=40푚×10
+3
+푘푔/푚
+3
+×9.81푚/푠
+2
+∴
+ 
+푷=ퟑퟗퟑ풌푷푨
+
+Solution: (b)
+
+
+ 
+퐹=
+ 
+푃퐴=
+The average pressure on the dam is:
+
+ 
+푃=393푘푃퐴, as found in (a)
+The area of the dam is 
+퐴=80.0푚×500푚=4.00×104m
+2
+∴
+ 
+퐹=(3.92×10
+5
+푁/푚
+2
+)(4.00×10
+4
+푚
+2
+)
+∴
+ 
+푭=ퟏ.ퟓퟕ×ퟏퟎ
+ퟏퟎ
+푵
+
+Example:
+Calculate the average density of the 
+atmosphere, given that it extends to an 
+altitude of 120푘푚. 
+푃=ℎ 휌푔
+∴ 휌=
+푃
+ℎ푔
+∴ 휌=
+1.01×10
+5
+푁/푚
+2
+120×10
+3
+푚×9.81푚/푠
+2
+∴
+ 
+흆=ퟖ.ퟓퟗ×ퟏퟎ
+−ퟐ
+풌품/풎
+ퟑ
+
+Practice:
+Calculate the depth below the surface of 
+water at which the pressure due to the 
+weight of the water equals 1.00푎푡푚.
+
+Measuring Pressure
+Absolutepressure
+Gauge pressure 
+Atmosphericpressure
+푃
+푎푏푠
+=푃
+푎푡푚
++푃
+푔푎푢푔푒
+
+
+
+Measuring Pressure
+Manometers
+Amanometer measures 
+the difference between 
+the absolute pressure and 
+the atmospheric pressure 
+which is gauge pressure
+푃
+푎푏푠
+=푃
+푎푡푚
++푃
+푔푎푢푔푒
+푃
+푔푎푢푔푒
+=휌푔ℎ
+∴푃
+푎푏푠
+=푃
+푎푡푚
++휌푔ℎ
+
+Barometers
+Mercurybarometer
+Aneroidbarometer
+
+Pascal’s Principle
+“When pressure at any point in a 
+confined incompressible fluid  
+changes by some amount, the 
+pressure on any other part of the 
+fluid changes by the same amount”
+
+The Hydraulic Lift
+
+Forces:
+∆푃
+1
+=∆푃
+2
+∆푃=
+퐹
+퐴
+∴
+퐹
+1
+퐴
+1
+=
+퐹
+2
+퐴
+2
+∴퐹
+1
+=
+퐴
+1
+퐴
+2
+퐹
+2
+∴푭
+풊
+∝푨
+풊
+Displacements:
+푊
+1
+=푊
+2
+푊=퐹∙푆
+∴퐹
+1
+∙푆
+1
+=퐹
+2
+∙푆
+2
+
+퐹
+2
+퐹
+1
+=
+푆
+1
+푆
+2
+∴푆
+1
+=
+퐹
+2
+퐹
+1
+푆
+2
+
+퐹
+1
+퐴
+1
+=
+퐹
+2
+퐴
+2
+∴
+퐹
+2
+퐹
+1
+=
+퐴
+2
+퐴
+1
+•∴푆
+1
+=
+퐴
+2
+퐴
+1
+푆
+2
+•∴푺
+풊
+∝
+ퟏ
+푨
+풊
+
+Example:
+
+Archimedes' Principle
+“A body partly or wholly immersed in a fluid 
+is buoyed up by a force equal in magnitude 
+to the weight of the fluid that the body 
+displaces”
+퐹
+퐵
+=푚
+푓
+푔
+푚=휌푉푔
+퐹
+퐵
+=휌
+푓
+푉
+푓
+푔
+
+
+
+Net Upward Force
+퐹
+푛푒푡
+=퐹
+퐵
+−퐹
+푊
+퐹
+퐵
+=휌
+푓
+푉
+푓
+푔
+퐹
+푊
+=휌
+표
+푉
+표
+푔
+∴푭
+풏풆풕
+=흆
+풇
+푽
+풇
+품−흆
+풐
+푽
+풐
+품
+
+If the body is  wholly immersed in the fluid
+푉
+푓
+=푉
+표
+∴퐹
+퐵
+=휌
+푓
+푉
+표
+푔
+∴퐹
+푛푒푡
+=휌
+푓
+푉
+표
+푔−휌
+표
+푉
+표
+푔
+∴푭
+풏풆풕
+=푽
+풐
+품(흆
+풇
+−흆
+풐
+)
+
+Practice:
+the volume of the Iron block is 
+0.5m
+3
+Determinethe net forceand give 
+acommenton your answer
+퐹
+퐵
+퐹
+푊
+
+Example:
+
+Example:
+
+Example:
+A piece of alloy has a measured mass of 86 
+g in air and 73 g when immersed in water. 
+Find its volume and its density.
+Solution:
+휌
+표
+=
+푚푎푠푠푖푛푎푖푟
+푉
+표
+We can use the relationship between the 
+buoyant force and the apparent change in 
+mass to find the value of 푉
+표
+
+The object is completely immersed
+∴푉
+표
+=푉
+푤
+=푉
+퐹
+퐵
+=(푤푒푖푔ℎ푡표푓푑푖푠푝푙푎푐푒푑푤푎푡푒푟)
+∴퐹
+퐵
+=휌
+푤
+푉푔
+퐹
+푩
++퐹
+푇
+=푚푔
+∴퐹
+퐵
+=푚푔−퐹
+푻
+퐹
+푻
+=(Apparentweight)
+∴퐹
+푩
+=(Weight in air)–(Apparentweight)
+
+∴퐹
+퐵
+=0.086푘푔×9.81푚/푠
+2
+−0.073푁×9.81푚/푠
+2
+퐹
+퐵
+=0.013푘푔×9.81푚/푠
+2
+퐹
+퐵
+=휌
+푤
+푉푔
+∴0.013푘푔×9.81푚/푠
+2
+=1000kg/푚
+3
+×푉×
+9.81푚/푠
+2
+∴푽=ퟏ.ퟑ×ퟏퟎ
+−ퟓ
+휌
+표
+=
+푚푎푠푠푖푛푎푖푟
+푉
+휌
+표
+=
+
+Practice:
+1.What must be the volume V of a 5.0푘푔
+balloon filledwith helium(휌
+퐻푒
+=0.178푘푔/
+푚
+3
+),ifitisto lift a 30푘푔load? Use 휌
+air
+=
+1.29kg/m
+3
+2.Find the density 휌of a fluid at a depth ℎin 
+terms of itadensity 휌
+표
+, at the surface
+
+Practice:
+A piece of pure gold(휌=19.3푔/푐푚
+3
+) is 
+suspected to have a hollow center. It has a 
+mass of 38.25 g when measured in air and 
+36.22 g in water. What is the volume of the 
+central hole in the gold?
+
+SeeCollege Physics (Shaum’soutlines) pp154
+
+Example:
+
+Archimedes’ Principle and Floatation
+Afluid of higher density, contains more mass and 
+hence greater weight for the displaced fluid’s 
+volume. 
+퐹
+퐵
+=퐹
+푊푓
+∴퐹
+푊푓
+>퐹
+푊표
+∴퐹
+퐵
+=푉
+표
+before 푉
+푓
+=푉
+표
+, thus the body will float
+Similarly, in a less dense fluid, the object will 
+sink.
+
+The extent to which a floating object is 
+submerged depends on how the object’s 
+density is related to that of the fluid.
+We can derive a quantitative expression for 
+the fraction submerged by considering 
+density. 
+The fraction submerged is 
+푉
+푠푢푏
+푉
+표
+=
+푉
+푓
+푉
+표
+but 휌=
+푚
+푉
+,푎푛푑푎푡푓푙표푎푡푎푡푖표푛푚
+표
+=푚
+푓
+=푚
+∴
+푉
+푠푢푏
+푉
+표
+=
+푚
+푓
+/휌
+푓
+푚
+표
+/
+ 
+휌
+표
+=
+푚/휌
+푓
+푚/
+ 
+휌
+표
+∴
+푉
+푠푢푏
+=
+ 
+휌
+표
+
+Specific Gravity
+We use the last relationship, 
+푉
+푠푢푏
+푉
+표
+=
+ 
+휌
+표
+휌
+푓
+to 
+measure densities. This is done by measuring 
+the fraction of a floating object that is 
+submerged 
+This is done using a hydrometer. It is useful to 
+define the ratio of the density of an object to a 
+fluid (usually water) as specific gravity:
+Sg=
+ 
+휌
+휌
+푤
+where ρ ̄ is the average density of the object or substance and ρ
+w
+is the 
+density of water at 4.00°C. 
+If an object’s specific gravity is exactly 1, it 
+will remain suspended in the fluid.
+
+One of the devices for 
+measuring specific gravity is 
+a Hydrometer
+The glass hydrometer in the 
+figure  is floating in a fluid of 
+specific gravity 0.87. 
+The glass hydrometer is filled 
+with air and weighted with lead 
+at the bottom. 
+It floats highest in the densest 
+fluids 
+it  has been calibrated and 
+labeled so that specific gravity 
+can be read from it directly.
+
+Example:
+A 60.0kg woman floats in freshwater with 
+97.0% of her volume submerged when her 
+lungs are full of air. What is her average
+density?
+Solution:
+푠푢푏푚푒푟푔푒푑푓푟푎푐푡푖표푛=
+ 
+휌
+표
+휌
+푓
+ 휌
+표
+=(푠푢푏푚푒푟푔푒푑푓푟푎푐푡푖표푛)휌
+푓
+ 휌
+표
+=0.970(1000kg/m
+3 
+= 970kg/m
+3
+
+Surface Tension
+
+Surface Tension
+Cohesive forces between molecules cause the 
+surface of a liquid to contract to the smallest 
+possible surface area. 
+This general effect is causes surface tension. 
+
+Molecules on the surface are pulled inward by 
+the cohesive forces, reducing the surface 
+area.
+Molecules inside the liquid experience zero 
+net force, since they have neighbors attracting 
+them from all sides.
+
+The surface molecules pull each other together 
+by the cohesive forces while being pressed 
+together due to the cohesive forces between 
+them and the molecules inside the liquid
+There fore it is hard for an object to break 
+through a liquid surface
+
+The liquid surface acts like a stretched elastic 
+sheet. 
+The cohesive forces along the liquid surface 
+forma a tension force along the surface 
+Some insects can walk on water
+An iron needle can rest on the surface of water
+
+
+
+The iron needle cannot float, because its 
+density is greater than that of water. 
+Its weight is supported by the upward 
+components of the cohesive forces in the 
+stretched surface
+
+Definition of Surface Tension
+Surface tension is proportional to the strength 
+of the cohesive forces
+The cohesive force varies with the type of 
+liquid. 
+Surface tension 훾, is defined as:
+the force F per unit length L exerted by a 
+stretched liquid membrane:
+휸=
+푭
+푳
+∴푭=휸푳, is the tension force 
+SI Unit forSurface Tension: N/m
+
+The weight w, of the needleis supported by 
+the upward components of the surface tension 
+force
+푭
+푾
+=휸푳풔풊풏휽, 
+where L is the part of the circumference of the 
+needle in contact with the water.
+
+Example:
+A needle has a length of 3.2 cmisplaced 
+gently on the surface of the water (γ=
+0.073푁/푚) in a glass, this needle will float if it is 
+not too heavy. What is the weight of  the 
+heaviest needle that can rest on the surface of 
+water?
+
+The needle is at rest
+∴
+ 
+퐹=0
+∴
+ 
+퐹=퐹
+푊
++퐹
+1
++퐹
+2
+퐹
+1
+=훾퐿cos(휃)
+퐹
+2
+=훾퐿cos(휃)
+∴퐹
+푊
++훾퐿cos(휃)+훾퐿cos(휃)=0
+∴퐹
+푊
+=훾퐿cos(휃)+훾퐿cos(휃)
+∴퐹
+푊
+=2(훾퐿cos(휃))
+
+The surface will curve to be almost vertical 
+when supporting the heaviest weight it can
+∴휃=0
+∴퐹
+푊
+=2(0.073푁/푚)(32푐푚
+1푚
+100푐푚
+)cos(0)
+∴푭
+푾
+=ퟒ.ퟕ×ퟏퟎ
+−ퟑ
+푵
+∴The weight of the heaviest needle that 
+can rest on the surface of the water is 
+4.7×10
+−3
+푁
+
+Measuring Surface Tension
+The liquid film exerts 
+a force F, on the 
+movable wire in an 
+attempt to reduce its 
+surface area.
+The magnitude of this 
+force depends on the 
+surface tension of the 
+liquid and can be 
+measured accurately.
+
+퐹=훾퐿, since there are 
+two liquid surfaces of 
+length 푙, attached to the 
+wire.
+L = 2l
+∴푭=휸푳=휸(ퟐ풍)
+This force remains nearly 
+constant as the film is 
+stretched, until the film 
+approaches its breaking 
+point.
+
+LiquidSurface 
+Tension
+(N/m)
+Benzene (20 
+°C)
+0.029
+Blood (37°C)0.058
+Glycerin(20°C)0.063
+Mercury (20°C)0.47
+Water (20°C)0.073
+Water (100°C)0.059
+
+Surface tension is the reason why liquids form 
+bubbles and droplets. 
+The inward surface tension force causes 
+bubbles to be approximately spherical
+and raises the pressure of the gas trapped 
+inside a bubble relative to atmospheric pressure 
+outside. 
+
+.
+
+Pressure Inside a Soap Bubble and a 
+Liquid Drop
+A soap bubble has two spherical surfaces 
+(inside and outside) with a thin  layerof
+liquidin-between.
+Thepressureinsideasoapbubbleisgreater
+thanthaton theoutside.
+
+Thisdifferenceinpressure(gauge pressure), depends
+onthesurfacetension,of  the liquid and the radius 
+R, of the bubble. 
+Assuming:
+no pressureontheoutsideofthebubbleis  (P
+o 
+=0),
+thesoapbubble is stationary 
+∴Accordingto Newton’s second law of motion,F=0
+itiscut  intotwohalves.
+
+The Figureshows a free-body diagram for the 
+right half of a bubble, on which  two forces act
+
+The magnitude of  the force due to each surface of 
+the film is 
+휸(ퟐ흅푹)
+circumference=ퟐ훑퐑
+푭
+푷
+=푷
+풊
+(흅푹
+ퟐ
+)
+푭
+푻
+=−ퟐ휸(ퟐ흅푹)
+
+The bubble has two surfaces
+∴The total  tension force 퐹
+푇
+is
+푭
+푻
+=−ퟐ휸(ퟐ흅푹).
+the minus signdenotes that this force 
+points to the left. 
+The film is assumed to be so thin that its 
+inner and outer radii are nearly the same
+
+For force due to the air pressure inside the 
+bubble:
+At each point on the surface of the bubble, the 
+force due to the air pressure is perpendicular to 
+the surface and is  directed outward. 
+When these  forces are added to obtain the total 
+force 퐹
+푃
+due to the air pressure, all the 
+components  cancel, except those pointing to the 
+right
+∴푭
+풊
+=푷
+풊
+(
+흅푹
+ퟐ
+)
+
+Recall that 
+ 
+퐹=0
+
+ 
+퐹=퐹
+푇
++퐹
+푖
+∴−ퟐ휸ퟐ흅푹+푷
+풊
+흅푹
+ퟐ
+=ퟎ
+∴P
+i 
+= 4/R
+Force due to  
+surfacetension
+pressure inside  
+bubble
+
+In real cases, 푃
+표
+≠0. 
+However, this result still gives the difference  
+between the inside and outside pressures, so 
+that wehave
+푷
+풊
+−푷풐=
+ퟒ휸
+푹
+(Spherical soapbubble)
+This result tells us that the difference in 
+pressure (gauge pressure), it depends on the 
+surface tension and the  radius of the sphere.
+
+A spherical drop of liquid has only one surface, 
+rather than  two surfaces, 
+∴푷
+풊
+−푷풐=
+ 
+ퟒ휸
+푹
+ퟐ
+∴푷
+풊
+−푷풐=
+ퟐ휸
+푹
+∴푃
+푔푎푢푔푒
+∝
+1
+푟
+This is why when air is allowed to flow between two 
+balloons of unequal size, the smaller balloon tends 
+to collapse, filling the larger balloon.
+
+∴푃
+푔푎푢푔푒
+∝
+1
+푟
+This is why when air is allowed to flow between two 
+balloons of unequal size, the smaller balloon tends 
+to collapse, filling the larger balloon.
+
+.
+
+
+
+CapillaryAction
+Surface tension arises because of cohesive forces. 
+When a liquid is in contact with a solid  surface, 
+adhesive forces act between the molecules of the 
+liquid surface and the molecules of the solid surface.
+Adhesive forces are 
+intermolecular forces 
+between two different 
+molecules
+Cohesive forces are 
+intermolecular forces 
+between two different 
+molecules
+
+Competition between the forces of adhesion 
+and affects the interaction between liquids 
+and solid surfaces. 
+The contact angle θ is related to the relative 
+strength of the cohesive and adhesive forces. 
+
+The larger the strength of the cohesive force 
+relative to the adhesive force, the larger θ is 
+Thus the more the liquid tends to form a droplet. 
+The smaller θ is, the smaller the relative strength
+Thus the adhesive force is able to flatten the drop. 
+
+c
+
+The tendency of a fluid to be raised or 
+suppressed in a narrow tube, or capillary tube, 
+is called capillary action.
+
+
+
+When a capillary tube is placed vertically into a 
+liquid capillary action will raise or suppress the 
+liquid inside the tube.
+If θ is less than 90º , the liquid will be raised
+if θ is greater than 90º , the liquidwill be 
+suppressed. 
+
+Mercury, has a very large surface tension and a 
+large contact angle with glass. 
+When placed in a tube, the surface of a column 
+of mercury curves downward
+The curved surface of a fluid in a tube is called 
+a meniscus. 
+surface tension tends to reduce the surface 
+area.
+Thus surface tension thus flattens the curved 
+liquid surface in a capillary tube. 
+This results in a downward force in mercury 
+and an upward force in Water.
+
+The height to which capillary action can raise 
+or suppress a liquid in a tube is limited by the
+weight of the liquid. 
+This height h, is given by
+풉=
+ퟐ휸풄풐풔(휽)
+흆품풓
+From the formula, 풉∝휸.
+풉∝
+ퟏ
+풓
+, since a smaller tube holds less mass. 
+풉∝
+ퟏ
+흆
+, since a larger density means a greater 
+mass in the same volume.
+
+
+
+.
+
+FLUID DYNAMICS
+Ideal Fluid, Conservation of Mass, Conservation of 
+Mechanical Energy
+
+Ideal Fluid
+Incopressible
+Constantdensity
+Streamlined flow
+AllParts of the fluid 
+flow in the same 
+general direction
+Nonviscous
+Allparts of the fluid 
+move at the same 
+velocity
+
+Work Done by a Fluid
+푊=퐹∙∆푆
+퐹=푃퐴
+∴푊=푃퐴∙∆푆
+퐴∙∆푆=푉
+∴푾=푷∆푽
+Example:
+Calculate the power output 
+of the heart if, in each 
+heartbeat, it pumps 75 mL 
+of blood at an average 
+pressure of 100 mmHg. 
+Assume 65 heartbeats per 
+minute.
+See College Physics, Schaum’sOutlines, pp159
+
+
+
+Conservation of Matter in a Fluid
+Flow rate is the volume of fluid that 
+passes a point per unit time
+퐽=
+푉
+푡
+푉=퐴푆, a fluid flowing through a conduit
+∴퐽=
+퐴푆
+푡
+
+푆
+푡
+=퐴푣
+∴푱=푨풗
+
+For a fluid flowing continuously in a conduit :
+There is no loss of fluid
+There is no gain of fluid
+
+∴the flow rate is the same at every point 
+in the conduit
+Rregardless of the cross-sectional area 
+at any point in the conduit
+∴퐽=푐표푛푠푡푎푛푡
+퐽=퐴푣
+∴퐴푣=퐶표푛푠푡푎푛푡
+∴푨
+ퟏ
+풗
+ퟏ
+=푨
+ퟐ
+풗
+ퟐ
+TheEquation of Continuity
+
+Example:
+Exactly 250 mL of fluidflowsout of a 
+tube whose inner diameter is 7.0 mm in 
+41 s. What is the average speed of the 
+fluidin the tube?
+
+Example:
+A 14 cm inner diameter water main 
+furnishes water (through intermediate 
+pipes) to a 1.00 cm inner diameterfaucet 
+pipe. If the average speed in the faucet 
+pipe is 3.0 cm/s, what will be the 
+average speed it causes in the water 
+mainin m/s?
+
+Conservation of Mechanical 
+Energy in a Fluid
+Bernoulli's 
+Theorem
+The theorem is a statement of 
+conservation of mechanical energy 
+in fluids. The theorem states that:
+“The sum of  Pressure, potential 
+energy per unit volume and kinetic 
+energy per unit volume for a 
+continuously flowing incompressible 
+fluid is constant”
+
+
+
+
+푃푉
+푉
++
+1
+2
+푚푣
+2
+푉
++
+푚푔ℎ
+푉
+=퐶표푛푠푡푎푛푡
+푚=휌푉
+∴
+푃푉
+푉
++
+1
+2
+휌푉푣
+2
+푉
++
+휌푉푔ℎ
+푉
+=퐶표푛푠푡푎푛푡
+∴푃+
+1
+2
+휌푣
+2
++휌푔ℎ=퐶표푛푠푡푎푛푡
+∴푷
+ퟏ
++
+ퟏ
+ퟐ
+흆풗
+ퟏ
+ퟐ
++흆품풉
+ퟏ
+=푷
+ퟐ
++
+ퟏ
+ퟐ
+흆풗
+ퟐ
+ퟐ
++흆품풉
+ퟐ
+Bernoulli's Equation
+
+Example:
+The pipe shown in the figurehas at section 1, a 
+pressure of200 kPa. When oil of density 800 
+kg/m
+3
+flowsat a rate of 0.030 m
+3
+/s, findthe 
+pressure at point 2.viscous effectsare negligible
+
+
+
+Horizontal Flow
+Allparts of the fluid flow at the same height
+ℎ
+1
+=ℎ
+2
+=ℎ
+
+Horizontal Flow
+푃
+1
++
+1
+2
+휌푣
+1
+2
++휌푔ℎ
+1
+=푃
+2
++
+1
+2
+휌푣
+2
+2
++휌푔ℎ
+2
+ℎ
+1
+=ℎ
+2
+=ℎ
+∴푃
+1
++
+1
+2
+휌푣
+1
+2
++휌푔ℎ=푃
+2
++
+1
+2
+휌푣
+2
+2
++휌푔ℎ
+∴푃
+1
++
+1
+2
+휌푣
+1
+2
+=푃
+2
++
+1
+2
+휌푣
+2
+2
+∴푃
+1
+−푃
+2
+=
+1
+2
+휌(푣
+2
+2
+−푣
+1
+2
+)
+a푛푑푃+
+1
+2
+휌푣
+2
+=퐶표푛푠푡푎푛푡
+∴the greater the pressure , the lower the velocity
+
+Applications of horizontal 
+flow of a fluid include:
+a.Curvedpath of a spinning 
+ball
+b.Aerofoil lift
+c.Venturi Meter
+d.Carburator
+e.Pitot tube
+
+
+
+
+
+
+
+Venturi Meter
+
+Differential manometer implementation of 
+a Venturi meter
+
+Example:
+A venturi meter equipped 
+with a deferential 
+mercury manometer is 
+shown in the figure. At 
+the inlet, point 1, the 
+diameter is 12 cm, while 
+at the throat, point 2, the 
+diameter is 6.0 cm. What 
+is the flow rate J, of 
+water through the meter 
+if the mercury manometer 
+reading is 22 cm? 
+The density of 
+mercury is 13.6 
+g/cm
+3
+:
+
+From the manometer reading we obtain
+
+Torricelli's Theorem
+The theorem simplifies the 
+Bernoulli’s theorem for a liquid 
+in a vessel open to the 
+atmosphere at two points with 
+greatly different sized cross-
+sectional areas of the 
+openings. 
+
+It states that:
+“For a liquid in an open-top tank that 
+has an orifice at a point below the liquid 
+surface the pressure at the orifice is 
+equal to the pressure at the surface of 
+the liquid in the tank and the downward 
+velocity of the liquid in the tank is 
+negligible compared to outward velocity 
+of the liquid at the orifice ”
+
+
+
+∴푃
+1
++
+1
+2
+휌푣
+1
+2
++휌푔ℎ
+1
+=푃
+2
++
+1
+2
+휌푣
+2
+2
++휌푔ℎ
+2
+푃
+1
+=푃
+2
+=푃
+푎푡푚
+푣
+1
+≪푣
+2
+∴푃
+푎푡푚
++
+1
+2
+휌(0)+휌푔ℎ
+1
+=푃
+푎푡푚
++
+1
+2
+휌푣
+2
+2
++
+휌푔ℎ
+2
+휌푔ℎ
+1
+=
+1
+2
+휌푣
+2
+2
++휌푔ℎ
+2
+푣
+2
+2
+=
+휌푔(ℎ
+1
+−ℎ
+2
+)
+1
+2
+휌
+풗
+ퟐ
+=ퟐ품(풉
+ퟏ
+−풉
+ퟐ
+)
+
+Example:
+What volume of water 
+will escape per minute 
+from an open-top tank 
+through an opening 
+3.0 cm in diameter 
+that is 5.0 m below 
+the water level in the 
+tank?
+
+.
+
+Practice:
+A water tank springs a leak at position 2 in the figure, where the water 
+pressure is 500 kPa. What is the velocity of escape of the water through 
+the hole?
+SeeCollege Physics pp160, (Schaum’soutlines)
+
+
+
+Areal Fluid
+A real fluid is not exempt 
+from the effect of the real 
+world conditions in which it 
+flows. 
+Among these effects are: 
+viscous drag and 
+turbulence.
+
+Shear Rate
+Shear rate is the rate at which a fluid is 
+sheared during flow. 
+It is the rate at which fluid layers or 
+laminae move past each other. 
+Shear rate is determined by both the 
+geometry and speed of the flow. 
+
+Viscosity is the resistance to flow. 
+There is friction between the layers of a fluid. 
+As the upper plate moves with velocityv
+2
+, 
+some of that motion is transferred downward 
+from layer to layer, until the stationary plate is 
+reached. 
+
+The stationary plate has speed or velocityv
+1
+, 
+equal to zero. 
+The distance between plates ish
+The shear rate is gives the variation in velocity 
+from the top plate to the bottom plate :
+ 훾=
+푑푣
+푑ℎ
+, 
+ 훾=
+푣
+ℎ
+,  푓표푟푎푙푖푛푒푎푟푑푟표푝푖푛푣푒푙표푐푖푡푦
+SI Unit: s
+-1
+or 1/s.
+https://www.labcompare.com/10-Featured-Articles/338534-What-is-Shear-Rate-and-Why-is-it-Important/
+
+Shear Stress
+Aforce F, applied to the top fluid layer of a fluid, 
+is translated downward through the layers. 
+The shear stress, τ, is the force per area of the 
+fluid layer
+흉=
+푭
+푨
+
+Viscosity
+The Viscosity or  the coefficient of 
+viscosity (η) of a fluid is a measure of the 
+magnitude of shear stress required to 
+produce a shear rate of one. 
+stress per unit shear rate
+휂=
+휏
+ 
+훾
+휏=휂 훾
+
+SI unit: Poiseuille, (Pl)
+1푃푙=푃푎·푠.=푁·푠/푚
+2
+=푘푔/푚·푠,
+Other units: 
+푃표푖푠푒,푃.1푃=0.1푃푙,
+Centipoise, 푐푃.1푐푃=10
+−
+3
+푃푙.
+A viscous fluid, such as tar, has a 
+large η.
+
+Viscosity is constant for Simple (Newtonian) 
+liquids, 
+at constant temperature and pressure 
+without chemical reactions or phase 
+changes, 
+The viscosity remains constant with changing 
+shear rate. 
+
+Most fluids are non-Newtonian
+their viscosities are a function of shear rate. 
+Thus viscosity is affected by changing: 
+the geometry, (such as the distance 
+between the two plates, shown in the 
+figure), 
+and/or the speed of flow.
+The “apparent viscosity” is denoted asη
+A
+.
+
+Applications 
+Shear rate may significantly affect the 
+viscosity of many materials. 
+This, in turn, must be considered when 
+designing pumping, mixing, and spraying 
+systems. 
+It is important in designing various materials 
+for consumer use, such as creams, ointments 
+or lotions. 
+A high viscosity may help an ointment stay in 
+place once it is applied, while a lower 
+viscosity may help a cream spread more easily.
+
+A cone-plate 
+rheometer is 
+used to 
+measure 
+shear rate or 
+viscosity
+
+Viscous Drag
+As the force F acts on the top layer, the friction 
+between the top layer and the second layer 
+would drag the second layer along. 
+This will continue down through to the bottom
+The bottom slab moves less than the layer 
+above it. 
+
+The coefficient of viscosity depends on:
+the applied force, 
+the surface area of the fluid layers, 
+how fast the slabs are moving in response to 
+the applied force and one other factor 
+the coefficient of viscosity, η. 
+The relationship is given by the equation:
+퐹=휂퐴
+푑푣
+푑푥
+
+퐹=휂퐴
+푑푣
+푑푥
+where
+퐹is force in newtons (푁)
+휂is the coefficient of viscosity in netwon-
+seconds-per-square meter (푁⋅푠/푚
+2
+)
+퐴is the surface area in square meters (푚
+2
+)
+
+푑푣
+푑푥
+is the instantaneous velocity of the fluid 
+with respect to thickness of the layers in 
+meters-per-second-per-meter (푚/푠/푚)
+Thus 
+푑푣
+푑푥
+= 훾, ∴푭=휼푨
+ 
+휸, 
+This is the Newton’s equation for viscosity
+
+With the applied force in the positive direction, 
+viscous drag  is in the opposite direction. 
+∴퐹
+퐷
+=−휂퐴
+푑푣
+푑푥
+, 
+Or 
+푭
+푫
+=−휼푨
+ 
+휸
+
+Poiseuille’s Law
+“The velocity of the steady flow of a fluid 
+through a narrow tube varies directly as the 
+pressure and the radius of the tube and 
+inversely as the length of the tube and  the 
+coefficient of viscosity of the fluid.”
+Consequently, fluid flow through a cylindrical 
+pipe of length L and cross-sectional radius r 
+,(where퐿≪푟), is given by:
+
+Turbulence
+Whether the flow of a fluid will be laminar or 
+turbulent depends on the ratio of the inertial 
+forces to viscous forces acting on the fluid.
+The ratio is the Reynolds Number, given by:
+푁
+푅
+=
+퐼푛푒푟푡푖푎푙푓표푟푐푒푠
+푉푖푠푐표푢푠푓표푟푐푒푠
+Simlifyingto:
+푵
+푹
+=
+흆풗푫
+휼
+,푁
+푅
+is dimensionless
+Turbulent flow occurs if 푵
+푹
+for the flow exceeds 
+about 2000 for pipes or about 10 for obstacles.

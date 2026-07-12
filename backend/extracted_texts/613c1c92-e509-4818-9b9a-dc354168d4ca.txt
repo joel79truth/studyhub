@@ -1,0 +1,988 @@
+
+
+http://www.unaab.edu.ng 
+ 
+ 1
+COURSE CODE:  VPC 302 
+COURSE TITLE:  Introductory Veterinary Pharmacology 
+NUMBER OF UNITS: 3 UNITS 
+COURSE DURATION: TWO HOURS PER WEEK 
+ 
+ 
+COURSE DETAILS: 
+Course Coordinator:  Dr. Olubukola Tolulope Adenubi D.V.M., M.Sc. 
+Email:   bukioguns@yahoo com 
+Office Location:  Dept. of Veterinary Physiology and Pharmacology, 
+COLVET 
+Other Lecturers:    Prof. R.O.A. Arowolo, Dr. J.O. Olukunle,  
+Dr. K.T. Biobaku    
+ 
+ 
+ 
+ 
+Introduction  to the  evolution  and  principles  of veterinary  pharmacology  and  toxicology, 
+sources, nomenclature   and   presentation   of   drugs,   routes   of   drug   administration, 
+pharmacokinetics   and   pharmacodynamics; adverse   drug   reactions   and   interactions, 
+introduction to neuropharmacology, introductory toxicology. 
+ 
+ 
+ 
+This is a compulsory course for all veterinary medical students in the University. In view 
+of this, students are expected to participate in all the course activities and have minimum 
+of 75% attendance to be able to write the final examination. 
+ 
+ 
+Aliu, Y.O (2007). Veterinary Pharmacology (1st edition).  
+Boothes M. (2001).  Veterinary Pharmacology and Therapeutics  for small animals. 
+Nicholas  H.B. (1988). Veterinary  Pharmacology  and  Therapeutics.  IOWA  University 
+Press. 
+Wanamaker B.P and Kathy L.M (2009). Applied Pharmacology for Veterinary  
+Technicians  333 -335. 
+COURSE DETAILS: 
+COURSE CONTENT: 
+COURSE REQUIREMENTS: 
+READING LIST: 
+
+http://www.unaab.edu.ng 
+ 
+ 2
+E 
+ 
+HISTORICAL DEVELOPMENT OF PHARMACOLOGY 
+ Ever since it was realized that a large number of diseases that afflict animals and 
+man  were  caused  by  bacteria,  scientists  have  been  looking  for  substances  that 
+would kill the bacteria but leave the infected subject unharmed. 
+ The  evolution  of pharmacology can  be  traced  through  3  distinct  periods;  a  pre-
+Ehrlich  era  before  1891;  the  period  of  Paul  Ehrlich  (1854-1915),  and  the  period 
+after 1935 highlighted by the discovery of sulphonamides and antibiotics. 
+ Pre-Ehrlich   era: The   Chinese   were   aware,   over   3,500   years   ago,  of   the 
+therapeutic  properties  of  moldy  curd  of  soybean.  They  applied  this  material  as 
+standard treatment for carbuncles, boils and similar infections.  
+ The powdered bark of cinchona has been used since 1630 to treat malaria.  
+ In 1877, Louis Pasteur and Joubert first described the concept of antibiosis. They 
+noted that the anthrax  bacilli grew rapidly when  inoculated  into sterile urine, but 
+failed  to  multiply  and  soon  died  if  one  of  the  ‘common’  bacteria  of  the  air  was 
+introduced into the urine culture at the same time.  
+ Ehrlich era: Towards the end of the 19
+th
+ century, a German  bacteriologist, Paul 
+Ehrlich   (1854-1915),   observed   that   certain vital   dyes   like   methylene   blue 
+specifically  killed  and  stained  certain  bacterial  cells.  He  reasoned  that  chemical 
+substances might be produced that could unite with and destroy parasitic agents of 
+diseases without injuring the host cells. He aptly called these chemical substances 
+‘magic  bullets’.  In  1891,  he  demonstrated  the  efficacy  of  methylene  blue  in  the 
+treatment of human malaria.  
+ The  first  real  step  forward  was  the  preparation  of  arsphenamine,  an  organic 
+arsenical  by  Ehrlich  and  co-workers  in  1900.  This  substance  was  of  value  in 
+treating syphilis and trypanosomosis. Ehrlich  is regarded as the  father of  modern 
+antimicrobial  chemotherapy;  he  was  awarded  a  Noble  prize  in  1908  with  a 
+Russian bacteriologist, Elli Metchnikoff.  
+ Little progress was made in the next thirty years. But there were many antiseptics 
+and   disinfectants   introduced   that   could   eradicate   infections   when   applied 
+LECTURE NOTES 
+
+http://www.unaab.edu.ng 
+ 
+ 3
+topically;  their  systemic  use  was  precluded  by  their  toxic  reactions  or  tissue 
+injury. 
+ Post  Ehrlich  era: In  1929,  Alexander  Fleming  of  St  Mary’s  Hospital,  London, 
+whilst  studying  variants  of Staphylococcus found  one  of  his  culture  plates 
+contaminated  with  a  fungus  (later  identified  as Penicillum  notatum);  the  fungus 
+destroyed  surrounding  bacterial  colonies.  His  efforts  to  extract  the  bacteriolytic 
+substances failed.  
+ In 1935, Gerhard Domaqk reported that the red azo dye, prontosil protected mice 
+against  infection  by  certain  bacteria.  Bovet,  Nitti  and  Trefoues  proved  that 
+prontosil   owed   its   therapeutic   efficacy   to   its   conversion   in   the   body   to 
+sulphanilamide. This was a milestone in the history of pharmacology. 
+ In  1940,  Chain,  Falk  and  Florey  of  Oxford  succeeded  in  producing  significant 
+quantities of the first penicillins from culture of Penicillin notatum. 
+  In  1944,  after  more  than  10,000  microorganisms  had  been  screened,  Waksman 
+and  his  colleagues  reported  the  isolation  of  streptomycin  from Streptomycin 
+griseus, found in a diagnostic culture from a chicken’s throat. Waksman also first 
+defined the term ‘antibiotic’ as a chemical substance produced by microorganisms 
+(bacteria,  fungi,  and  actinomycetes)  having  the  property  of  destroying  other 
+micro-organisms or inhibiting their growth in high dilution. 
+ 
+NOMENCLATURE AND PRESENTATION OF DRUGS, 
+All drugs have at least three names: 
+a. Chemical name 
+b. Non- proprietary/ Generic name 
+c. Proprietary/ Trade/ Brand name 
+Drugs are presented as solid, semi-solid, liquid, aerosol or gaseous forms. 
+Immediate Release Drug Formulations 
+Solid Dosage Forms: 
+Tablets 
+ A mixture of active drug and inert binding materials or excipients, usually in 
+powder form, pressed or compacted into a solid. 
+
+http://www.unaab.edu.ng 
+ 
+ 4
+ Some tablets are in the shape of capsules, and are called “caplets”  
+Wettable Powder 
+ Drug dosage form in fine particles. 
+ Could be sprinkled on feed or dissolved in drinking water. 
+ It is commonly used in poultry. 
+Suppository 
+ Inserted as a solid into the rectum (rectal suppository), vagina (vaginal 
+suppository) or urethra (urethral suppository), where it dissolves inside the body 
+to deliver the drug. 
+ Used to deliver both systemically-acting and locally-acting medications. 
+Capsule 
+ Hard gelatin e.g ampicillin capsule for dry, powdered ingredients or miniature 
+pellets. 
+ Soft gelatin e.g garlic capsule. 
+ Primarily used for oils and for active ingredients that are dissolved or suspended 
+in oil. 
+ 
+Semi solid Dosage Forms: 
+ Examples are ointments, creams and gels commonly used to treat dermatological 
+diseases. 
+ Ointments are homogeneous, viscous, semi-solid, greasy, thick oil, intended for 
+external application to the skin or mucous membranes. 
+Liquid Dosage Forms:  
+Suspension 
+ Formulation of two-phase system composed of a finely divided solid that is 
+dispersed in a liquid phase, which is usually water. 
+ Suspensions are common as oral drug preparations.  
+ Never administer intravenously. 
+Emulsion 
+ Aqueous suspension of insoluble liquid substance usually with emulsifying 
+agent to stabilize the preparation. 
+
+http://www.unaab.edu.ng 
+ 
+ 5
+ Usually administered orally or topically. 
+Solutions 
+ Oral Solution: Aqueous preparation of drug for oral use. The drug is in true 
+solution. 
+ Parenteral Solution: Sterile and pyrogen free aqueous preparation for injection. 
+Drugs may also be dissolved in oil for prolonged absorption. 
+ Ophthalmic Solution: Sterile hypotonic aqueous solution of drug for 
+administration into the eye. 
+Tinctures 
+ Tinctures vary in strength. Examples are tincture of iodine, opium, belladonna 
+and digitalis. 
+Liniment 
+ Liquid preparation of a drug in which the drug is dissolved or suspended in 
+dilute alcohol or water. They often contain dissolved or  emulsified oils and 
+are applied to the skin by rubbing or massage. 
+Lotion 
+ Usually an oil in water base which contains insoluble medicinal agents in 
+suspension and is applied to the skin without rubbing following which the 
+solvent evaporates leaving a film of drug. 
+Aerosol 
+ The drug exists as liquid or solid particles so small as to remain suspended in air 
+for long periods. 
+ Aerosol generators may produce particles in 1-5μm ranges. 
+ For therapeutic purpose, aerosols are introduced in the body by inhalation. 
+ 
+Controlled-Release Drug Delivery Systems 
+Synonyms: Sustained; Modified; Prolonged; Slow; Gradual and Extended Forms 
+ Provide an initial therapeutic dose immediately following administration and 
+subsequently followed by a gradual release of the drug over a prolonged period 
+of time. 
+
+http://www.unaab.edu.ng 
+ 
+ 6
+ Extend the duration of pharmacological response compared to the conventional 
+single dose formulation. 
+ They produce therapeutic blood level quickly and maintain such levels without 
+the usual “peak –and-valley” effect of a normal dosage form. 
+ Examples: enteric coated tablets, sub dermal implants, depot antibiotics etc. 
+  
+ROUTES OF DRUG ADMINISTRATION 
+Enteral: Oral and rectal 
+Parenteral: intramuscular, intravenous, subcutaneous, intrammamary, intrathecal etc 
+PHARMACOKINETICS 
+DRUG ABSORPTION  
+The passage of drug from its site of non-intravascular administration into the blood.  
+The factors that may affect the absorption process include the following:  
+ Mechanism of absorption  
+ pH and ionization status of the drug  
+ Absorptive surface area  
+ Blood supply to the area  
+ Solubility of the drug  
+ Dosage form  
+ Status of the GI tract  
+ Interaction with other medications.  
+1. Mechanism of absorption:- 
+ Drugs pass across cellular membranes through three common methods.  
+a) Passive transport 
+b) The drug may pass through pores  
+
+http://www.unaab.edu.ng 
+ 
+ 7
+c)   Active transport  
+2. pH and ionization status of the drug: 
+ Many drugs can pass through a cell membrane only if they are non-ionized (not 
+positively or negatively charged). 
+ Most drugs exist either as ionized or non-ionized 
+ The pH of the drug and the pH of the area in which the drug is located can 
+determine the degree to which a drug becomes ionized and thus is absorbed. 
+3. Absorptive surface of the area: 
+As the absorptive surface of the area of drug placement increases, so does the rate of 
+absorption. One of the largest absorptive surfaces in the body is found in the small 
+intestine, because of the efficient design of the villi that maximizes the surface area. 
+4. Blood supply to the area: 
+  The rate of absorption of the drug is dependent on the perfusion rate to that area. 
+Therefore, if the perfusion rate is high it means the rate of absorption of the drug is low. 
+Drugs are absorbed faster in the muscles than subcutaneously.  
+5. Solubility of the drug: 
+The lipid (fat) solubility of a drug tends to be directly proportional to the degree 
+of drug non-ionization. The degree of lipid solubility of a drug often is expressed as its 
+lipid partition co-efficient. 
+6. Drug absorption and formulation of the drug: 
+The absorption of a drug depends on the formulation of the drug. Various inert 
+ingredients such as carriers (vehicles), binding agents and coatings are used to prepare 
+dosage forms. These substances have major effect on the rate at which the formulation 
+
+http://www.unaab.edu.ng 
+ 
+ 8
+dissolve. Drug depot and patches are associated with prolonged or sustained – release 
+formulation in veterinary medicine.  
+7. Status of the gastrointestinal tract: 
+ When drugs are orally administered, the condition of the gastrointestinal tract can 
+have a major influence on the rate and extent of drug absorption. Factors such as degree 
+of intestinal motility, emptying time of the stomach, irritation or inflammation of mucosa 
+etc can affect the rate and extent of absorption of medications.  
+DRUG DISTRIBUTION: 
+The process by which a drug is carried from its site of absorption to its site of action. 
+Highly lipid soluble drugs e.g. halothane given by intravenous injection or by inhalation 
+respectively, initially get distributed to organs with high blood flow (e.g. brain, heart, 
+kidney). Later, less vascular but more bulky tissue like muscles, fat, visceral take up the 
+drug, plasma concentration falls and the drug is then withdrawn from the highly 
+vascularized sites into the blood stream. If the site of action of the drug was in one of the 
+highly perfused organs (e.g. brain), redistribution results in its termination of action. For 
+example, thiopentone causes unconsciousness in 10-20 seconds after administration and 
+consciousness returns in 20-30 minutes. 
+Volume of distribution:  
+The volume of distribution of a drug (V
+d
+) is the volume of the body fluid 
+compartment in which it appears to distribute with a concentration equal to that of the 
+plasma. 
+
+http://www.unaab.edu.ng 
+ 
+ 9
+ A drug that is water soluble (e.g. penicillin sodium) does not enter cells and are 
+therefore restricted in distribution, while drugs that are lipid soluble have wide range of 
+distribution e.g. xylazine can pass freely into all the fluids compartments. 
+Other examples such as warfarin are bound to the protein in the plasma namely 
+albumin and have a small volume of distribution 0.1-0.2L/kg. 
+Apparent volume of distribution:  
+Basic drugs (e.g. amphetamine) are readily taken up by tissues and thus have volume of 
+distribution larger than volume of the entire body, hence the term apparent volume of 
+distribution.  
+The factors that affect distribution of a drug are as follows  
+ Drug lipid solubility  
+ Degree of ionization at physiologic pH 
+ Extent of binding to plasma and tissue protein and extents of blood perfusion 
+from one place to the other. 
+ Barriers of tissues or compartment.  
+ADVERSE DRUG REACTIONS AND INTERACTIONS 
+ No useful drug produces just a single effect. Both desirable and undesirable 
+additional effects occur, and so whenever a drug is given, a risk is taken. 
+ Adverse drug effect or reaction is any undesirable or unintended consequence of 
+drug administration. 
+ The severity of adverse reactions has been graded as –  
+ Mild/ minor adverse reactions: requires no antidote, therapy, nor is prolongation 
+of hospitalization necessary. 
+ Moderate adverse reactions: this requires a change in drug therapy or dosage 
+regimen, although not necessarily cessation of the drug. 
+
+http://www.unaab.edu.ng 
+ 
+ 10
+ Severe adverse reactions: potentially life-threatening, causes permanent damage, 
+requires discontinuation of the drug and specific treatment of the adverse reaction. 
+ Lethal adverse reactions: directly or indirectly contributes to the death of the 
+patient. 
+ 
+Prevention of adverse drug reactions 
+Adverse drug reactions can be minimized but not altogether eliminated by observing the 
+following practices;  
+ Avoiding all inappropriate use of drugs in the context of patient’s clinical 
+condition. 
+ Using appropriate dose, route and frequency of drug administration based on 
+patient’s specific variables. 
+ Taking into consideration previous history of drug reactions including allergic 
+diseases. 
+ Ruling out possibility of drug interactions when more than one drug is prescribed, 
+ Carrying out appropriate laboratory monitoring (e.g prothrombin time with 
+warfarin). 
+Predictable, dose-related drug reactions 
+Although animals show considerable species and individual variation in their response to 
+drugs, most drug toxicity is related to the amount of drug administered, and can occur as 
+side-effects, secondary-effects or over-dosage toxicity. 
+Side-effects: These are unwanted, but often unavoidable drug effects that are predictable 
+from the drug’s pharmacological effects, and occur within therapeutic doses. For 
+example, atropine is used in peptic ulcer for its anti-secretory action, and produces 
+dryness of the mouth as a side-effect. This makes atropine useful in pre-anaesthetic 
+medication to dry salivary and bronchiolar secretions. A side-effect may be based on a 
+different phase of action, e.g, the antihistamine, promethazine produces sedation 
+(drowsiness) which is unrelated to its anti-allergic action, but makes antihistamines useful 
+in motion sickness. Thus, an effect may be therapeutic in one context but be a side-effect 
+in another. Oestrogens used in anal adenoma in male dogs can be expected to have a 
+feminizing effect, and this is unrelated to their anti-ovulatory action. 
+
+http://www.unaab.edu.ng 
+ 
+ 11
+ 
+Many drugs have been developed from observation of side-effects, e.g, sulphonamides 
+used as antimicrobial were found to produce hypoglycaemia, copious urine flow and 
+acidosis as side-effects. This directed research resulting in the development of oral 
+hypoglycaemic sulphonylureas (e.g tolbutamide) and the carbonic anhydrase inhibitor, 
+acetazolamide. 
+ 
+Secondary-effects: These are direct consequences of a primary action of the drug, e.g 
+suppression of gastrointestinal bacterial flora by oral tetracyclines resulting in diarrhoea. 
+This paves the way for superinfection with yeasts and fungi. Also chronic corticosteroid 
+therapy weakens host defense mechanisms so that the animal becomes more susceptible 
+to infection. 
+ 
+Over-dosage toxicity: This is predictable toxic effect that occurs with dosage in excess 
+of the therapeutic range. Some over-dosage toxicity may occur because of drug 
+accumulation caused by the patient’s ineffective renal excretion or hepatic metabolism. 
+Lethal dose 50 (LD
+50
+): This is a dose that kills 50% of the animals. 
+Effective dose 50 (ED
+50
+):  A dose that produces the desired effect in 50% of the subjects 
+is termed the ED50.  
+The therapeutic index (or margin of safety): The ratio of LD
+50
+ to ED
+50
+ and is a guide 
+to the drug’s safety. It is desirable that the therapeutic index (TI) be large. With most 
+drugs, the TI is high (e.g, isometamidium in rats has a TI of 23), but with some drugs, 
+this value may be small. For example, digoxin has TI values of 2-2.5 in dogs. 
+Unpredictable, non-dose-related drug reactions 
+Allergic (or hypersensitivity) reactions: These are immune-mediated, unexpected 
+reactions to a drug that are unrelated to the pharmacological actions of the drug and are 
+largely independent of dosage. Allergic reactions do not appear to have a high incidence 
+in veterinary medicine (perhaps <10% of all drug-related adverse effects). Nevertheless, 
+hypersensitivity reactions to some drugs can lead to serious and even fatal consequences. 
+They occur in a small percentage of the animals or human population exposed to the drug 
+and cannot be produced in others at any dose. Prior sensitization is needed and a latent 
+period of at least 1-2 weeks is required after the first exposure. The drug or its metabolite 
+
+http://www.unaab.edu.ng 
+ 
+ 12
+acts as an antigen or more commonly hapten and induce production of 
+antibody/sensitized lymphocytes. Following subsequent injection of the drug (e.g, 
+penicillins, cephalosporins, phenothiazines, immune sera) with its antigenic properties, a 
+violent antigen-antibody reaction occurs with widespread release of histamine and other 
+chemical mediators of inflammation (serotonin, leukotrienes especially LT-C4, D4,) 
+dopamine, heparin, plasma kinins and prostaglandins). Active immunization is almost 
+free from this risk. 
+Idiosyncratic reaction 
+This is a genetically determined abnormal reactivity to a chemical. It is largely restricted 
+to certain patients with a particular genotype. For example, thin-skinned or white-skinned 
+horses may exhibit exaggerated cholinergic response (panting, profuse salivation, 
+sweating, urination, defaecation, muscle tremors, abdominal discomfort and prostration) 
+to an injection of imidocarb. Although these reactions are inevitable, when they occur 
+unexpectedly for the first time, they may be circumvented by injecting atropine prior to 
+the treatment of such horses with imidocarb. In addition, certain uncharacteristic or 
+bizarre drug effects due to peculiarities of an individual animal or species occur and for 
+which no genotype has been described. For example, the phenothazine cause prolapse of 
+the penis in the horse, which may persist for several days. A related but distinct effect 
+(priapism) has been reported for acepromazine in horses. Priapism, involving persistent 
+engorgement and turgidity of the penis has been described, with turgidity and oedema 
+lasting several days.  
+Photosensitization 
+This is a cutaneous disorder resulting from drug-induced sensitization of the skin to 
+sunlight (UV radiation). The reactions are of two types: phototoxic and photoallergic. 
+In phototoxic reaction, drug or its metabolite accumulates in the skin, absorbs light and 
+undergoes a photochemical reaction followed by a photobiological reaction. This results 
+in local tissue damage (sunburn-like erythema, oedema, blister, hyperpigmentation and 
+desquamation). Drugs involved in acute phototoxic reactions include tetracyclines 
+
+http://www.unaab.edu.ng 
+ 
+ 13
+(especially demeclocycline) and tar products. Drugs causing chronic and low-grade 
+sensitization include nalidixic acid, flouroquinolones, thiazides, and phenothiazines. In 
+cattle, photosensitization has been observed with the sulphoxide metabolite of 
+phenothiazine. It occurs 2-3 days post-treatment with the anthelmintic, and when the 
+cattle are exposed to bright sunlight. The affected animals usually show keratitis and 
+corneal ulceration. 
+Photoallergic reaction: The drug or its metabolite induces a cell-mediated immune 
+response. The reaction takes the form of an immediate flare and wheal on exposure to 
+sun. Drugs involved include sulphonamides, sulphonylureas, griseofulvin, and 
+chlorpromazine. 
+Target organ toxicity 
+Local irritation: This may manifest as pain, tissue necrosis or damage caused at the site 
+of administration of the drug. Aqueous solution of diminazene aceturate injected in 
+combination with phenazone as Berenil ® causes severe pain at intramuscular site of 
+administration, while isometamidium can induce severe  tissue necrosis if injected 
+subcutaneously, or a dose higher than 0.8 mg/kg is given by deep intramuscular injection. 
+Local gastric irritation with vomiting is encountered when aspirin is administered orally 
+to dogs. 
+Specific organotoxicity: When a drug is concentrated in any site, the chances of 
+localized toxicity are increased. This can occur in the kidney, where the excreted drug is 
+rapidly concentrated by reabsorption of water from the proximal tubule. Degenerative 
+change in the renal tubule has been recorded following the use of many drugs such as 
+mercurial diuretics, antibiotics (e.g, aminoglycosides, amphotericin B, bacitracin) and 
+antiprotozoal agents (eg, imidocarb). Acetylated metabolities of sulphonomides are liable 
+to precipitate in the urinary tract and cause crystalluria, particularly in hot weather or 
+where water intake is low. The liver is a second very common site of damage because it 
+receives drugs in high concentration via the portal vein and also due to its role in drug 
+metabolism. Carbon tetrachloride causes centrilobular fatty change in the sheep even 
+after a recommended dose. 
+
+http://www.unaab.edu.ng 
+ 
+ 14
+Medullary depression or myocardial sensitization to adrenaline is common among the 
+anaesthetics; CNS stimulation, even leading to convulsions, is a feature of local 
+anaesthetic (eg procaine) toxicity. Occasionally, the use of a drug is followed by 
+disturbances of the formed elements of blood, either as they circulate or by bone-marrow 
+depression. In cats, long-term exposure to chloramphenicol has produced bone marrow 
+depression. 
+Drug-induced (iatrogenic) illness 
+Drug-induced (or iatrogenic) disease is caused by drugs, which persist even after the 
+offending drugs have been withdrawn and largely eliminated. Examples of iatrogenic 
+diseases include peptic ulcer induced by salicylates and corticosteroids; Parkinsonism 
+caused by phenothiazine and other antipsychotics, and hepatitis caused by isoniazid. 
+Teratogenicity 
+This refers to capacity of a drug to cause a derangement in foetal development (i.e a 
+dsymorphorgenic effect) when administered to a pregnant animal. The placenta does not 
+strictly constitute a strong barrier and any drug can cross it to a greater or lesser extent. 
+The embryo is one of the most dynamic biological systems, and in contrast to mature 
+animals, drug effects are often irreversible. The thalidomide disaster in Europe (1958-61) 
+focused attention on this type of adverse effect. Thalidomide was introduced in Europe in 
+1857 and, based on animal tests, was promoted as a “safe and effective sedative”. It was 
+prescribed to pregnant women for giving relief from morning sickness (nausea and 
+vomiting). In 1961, the first reports were published suggesting that thalidomide produced 
+a rare birth defect called phocomelia (shortening or seal-like limbs) or amelia (complete 
+absence of the limbs), when taken between the 24
+th
+ and 36
+th
+ day of pregnancy. 
+Chemically induced teratogenic and/or embryotoxic effects have been described in 
+domestic animals. Cats fed high levels of griseofulvin throughout pregnancy have 
+delivered kittens with micro-opththalmia. Parbendazole is reported to be teratogenic in 
+sheep when given between days 16 and 24 of pregnancy producing arthrogryposis and 
+other limb distortions. In domestic animals, the foetus is most likely to be affected by the 
+
+http://www.unaab.edu.ng 
+ 
+ 15
+induction of abortion due to drugs administered in late pregnancy (e.g, purgatives, 
+corticosteroids, prostaglandins) administered in  late pregnancy. 
+Carcinogenicity 
+Carcinogenicity refers to the capacity of a drug to induce or promote neoplastic change. 
+Chemical carcinogenesis is well recognized but generally takes several years (10-40) to 
+develop. For example, oestrogens administered to pregnant women have induced vaginal 
+adenocarcinoma in their daughters some 25 years later. Griseofulvin fed at high levels 
+(0.5-2.5% of the diet) for 400 days produced liver tumours in mice. Anticancer drugs (e.g 
+cyclophosphamide) have been implicated in chemical carcinogenesis. 
+Mutagenicity 
+Many carcinogens can damage somatic and germ cells to cause chromosome aberrations 
+to appear in the progeny. Therefore, mutagenicity testing, which is more rapid and 
+cheaper than conventional carcinogenicity testing, has been developed to detect genetic 
+(ie, mutagenic) changes in cells or organisms. Many anticancer agents including 
+alkylating agents (eg cyclophosphamide) and purine analogues (eg, 6-mercaptopurine) 
+have been shown to elicit mutagenic changes. 
+Benefit-to-Risk Ratio 
+In every therapeutic endeavour, risks must be weighed against benefits for each particular 
+clinical situation. Drug therapy is justified only if the possible benefits outweigh the 
+possible risk after considering the qualitative and quantitative impact of using a drug and 
+the likely outcome if the drug is withheld. This is the benefit-to-risk assessment. 
+Phenylbutazone, for example, occasionally causes death in horses, but is this sufficiently 
+frequent to discourage its use in the treatment or prevention of trauma? Diethylstiboestrol 
+is a useful growth promoter, but its use has been banned in European countries because of 
+reports of its ability to induce cancer in man and animals. Oxytetracycline has caused 
+fatal colitis in horses, yet it is a broad-spectrum antibiotic of long half-life. The value of 
+the animal would surely be sufficient to sway the clinician to an alternative remedy, 
+unless the infection is life threatening and is known to be sensitive only to 
+
+http://www.unaab.edu.ng 
+ 
+ 16
+oxytetracycline. If the veterinary clinician decides in favour of therapy, he has also to 
+make a cost-benefit decision in the case of food-producing animals. 
+Preclinical safety and toxicity testing 
+While no chemical can be certified as completely “safe” (or free of risk), it is possible to 
+estimate the risk associated with exposure to the chemical under specified conditions if 
+appropriate tests are performed.  
+Acute toxicity study: Large single doses are given to enable determination of median 
+lethal dose, maximum tolerated dose, the toxic symptoms developed in the test animals, 
+and the time they appear. At least 3 species of animals (one not a rodent), and 
+administration is usually more than once. 
+Subacute and chronic toxicity study: Effects of daily doses varying from the expected 
+therapeutic doses to levels high enough to produce toxicity in susceptible organs. These 
+studies usually last for 90 days (subchronic toxicity), or the lifetime of the test animal (i.e 
+2 years in a rodent or longer in non-rodents). At the end of the study, the animals are 
+sacrificed and pathologic examinations are conducted to determine target organ toxicity; 
+effects on reproductive functions in rats and rabbits, including mating behaviour, fertility, 
+parturition, teratology, perinatal and postnatal effects, lactation, etc, immunotoxic, 
+mutagenic, carcinogenic or teratogenic potential and an assessment of the drug’s irritant 
+and sensitizing properties. 
+In vitro toxicity tests: There is a growing interest in in vitro toxicity tests that provide a 
+more rapid, cost-effective predictive test for drug toxicity. The greatest emphasis has 
+been in the area of mutagenicity, with the most popular test being the Ames bioassay. A 
+chemical shown to be a mutagen would also have the potential to be a carcinogen in 
+mammalian experimentation. 
+Clinical evaluation: Clinical evaluation (or target animal studies) of new drugs is 
+conducted in 4 phases.   
+
+http://www.unaab.edu.ng 
+ 
+ 17
+Phase 1: the effects of the new drug as a function of dosage are established in healthy 
+target animals. 
+Phase 2: the drug is studied in target animal patients to determine its efficacy in the 
+treatment of, or prophylaxis against, the disease or symptoms for which the drug is 
+intended. 
+Phase 3: more widespread clinical trials that may move from the realm of clinical 
+investigators to practicing clinicians are carried out to establish efficacy and safety in 
+disease animals.  
+Phase 4: is the study of the actual use of the drug in veterinary practice. 
+DRUG INTERACTIONS 
+Drug interactions are said to occur when the pharmacologic response to one drug is 
+altered by the presence of a second drug. The expected response may be increased or 
+decreased or result in adverse reactions as a result of the interaction. There are several 
+mechanisms by which drugs may interact in vivo.  
+Drug interactions may be classified as  
+ Pharmacokinetic drug interactions - plasma or tissue levels of a drug are altered 
+by the presence of another drug. 
+ Pharmacodynamic drug interactions - the action or effect of one drug is altered by 
+a second drug. 
+ Pharmaceutical interactions (or drug incompatibilities) result from chemical or 
+physical reactions of drugs mixed in vitro. 
+Direct drug interactions: Direct interaction result from chemical or physical 
+incompatibility, and may occur in vivo or in vitro. In the treatment of excessive bleeding  
+evoked by heparin (an acid drug) with intravenous injection of protamine sulphate (a 
+strong base), the protamine combines with heparin to form a stable salt that prevents any 
+
+http://www.unaab.edu.ng 
+ 
+ 18
+further anticoagulant activity of heparin. Gentamicin is inactivated by carbenicillin when 
+the two are mixed together in vitro for intravenous infusion. Because of the possibility of 
+this type of drug interaction, it is generally considered poor practice to mix drugs or 
+vehicles in the same syringe. 
+Interactions affecting absorption: Because a large number of drugs are administered 
+orally, the rate or extent of absorption of drug from the gastrointestinal tract may be 
+altered by drugs that increase gastric motility (eg, metoclopramide), or conversely by 
+drugs that delay gastric emptying (eg, anticholinergic drugs such as atropine). 
+Tetracyclines can combine with polyvalent ions such as calcium, magnesium, aluminium 
+and iron to form complexes that are poorly absorbed. Milk and milk products, and 
+numerous antacids can markedly reduce the absorption of tetracyclines, and should not be 
+co-administered orally. Antidiarrhoeal preparations are capable of adsorbing co-
+administered drugs. For example, a kaolin (hydrated aluminium silicate) pectin mixture 
+can produce erratic absorption of lincomycin when the two are given simultaneously. The 
+bioavailability of diminazene aceturate following intramuscular administration alone as 
+Ganaseg® is 95% when administered in combination with phenazone (a pain killer) as 
+Berenil ®, its bioavailability is reduced to 50%. 
+Interactions affecting distribution: Drugs may compete for binding sites on the plasma 
+or tissue proteins, or may displace previously bound drug. Displacement from plasma or 
+tissue binding site would tend to increase the blood concentration of the displaced drug. 
+Phenylbutazone (an anti-inflammatory agent) may compete with phenytoin for binding to 
+albumin. Similarly, phenylbutazone is able to displace warfarin (an anticoagulant) from 
+its binding site and enhance the free circulating concentration of the anticoagulant. The 
+displacement is responsible for many cases of warfarin poisoning. Sulphonamides 
+(chemotherapeutic agents) are able to displace sulphonylureas (oral antidiabetic agents) 
+and cause severe hypoglycaemia. Such a mechanism may contribute to the elevation of 
+serum digoxin concentration by concurrent quinidine therapy. 
+Interactions at drug receptor sites: Drugs may interact at receptor sites in a competitive 
+manner, eg, morphine-naloxone, or by interference with the pathway to the receptor site. 
+
+http://www.unaab.edu.ng 
+ 
+ 19
+Some of the most commonly recognized interactions (both therapeutically useful and 
+potentially dangerous), come into this group. For example, aminoglycoside antibiotics 
+(streptomycin, neomycin, gentamicin) produce skeletal neuromuscular blockade, similar 
+to that which occurs with tubocurarine or gallamine. The mechanism involves 
+competition with acetylcholine for its receptors at the skeletal neuromuscular junction. 
+Thus, combinations of aminoglycosides and non-depolarizing neuromuscular blockers 
+can lead to excessive muscle relaxation. Cardiac glycosides act by inhibiting the enzyme 
+transporter Na+/K+-ATPase that regulates the transport of Na+ and K+ across the 
+myocardial cell membrane. The inhibition of the pump results in decrease in the 
+concentration of intracellular K+. This effect is likely to be responsible, at least in part, 
+for the increased toxic effects of glycosides to patients also receiving diuretics. It is 
+generally recommended that potassium supplement be considered for all, especially 
+congestive heart failure patients being treated with cardiac glycosides. 
+Interactions altering metabolism: Some drugs are able to stimulate the production of 
+drug-metabolizing enzymes. Drug interactions, usually involving a loss of therapeutic 
+activity, may result from the consequent increase in the rate of metabolism. This type of 
+interaction is particularly important when the drugs are involved in the maintenance of 
+vital functions, such as control of blood pressure, clotting or sugar levels. Phenobarbitone 
+is one of the most well known enzyme-inducing drugs. Clinically significant interaction 
+can occur when it is used in combination with phenytoin in the treatment of epilepsy. 
+Adjustment of phenytoin dosage in these circumstances may be required to avoid 
+therapeutic failure. Phenobarbitone has also been shown to reduce the therapeutic 
+efficacy of concurrent administration of phenylbutazone or phenytoin. 
+Drug metabolism may be inhibited by the presence of other drugs. This would result in 
+prolonging of the biological half-life of the drug and an increase in therapeutic efficacy. 
+Of course, potentiation of toxicity is also possible. Drugs that are most likely to be 
+involved in clinically important interactions of this type are these with a low therapeutic 
+index, where inhibition of metabolism is likely to cause toxic effects. Chloramphenicol is 
+a potent inhibitor of microsomal protein synthesis. Thus, other drugs administered 
+concurrently show marked increases in potency. For example, the duration of 
+
+http://www.unaab.edu.ng 
+ 
+ 20
+pentobarbitone-induced anaesthesia in cats and dogs is greatly prolonged following 
+chloramphenicol therapy. The potentiation effect can still be seen 3 weeks after cessation 
+of chloramphenicol administration in dogs. 
+Interactions affecting renal excretion: The renal excretion of drugs can be altered by 
+concurrent drug therapy. Drugs that alter blood flow to the kidney modify the renal 
+clearance of other drugs. For example, water or osmotic diuresis increases drug excretion 
+rates. Also, since only free drug is filtered at the glomerulus, drugs that displace others 
+from protein-binding sites may increase the rate of renal excretion of the displaced drug. 
+Furthermore,  competition for tubular transport carries will also alter the excretion of 
+competing drugs. For example, probenecid interferes with active tubular secretion of 
+penicillin, thereby prolonging its duration of action. Drugs that alter urinary pH can alter 
+the extent of tubular reabsorption of ionisable drugs. Drugs that acidify the urine such as 
+ascorbic acid or ammonium chloride increase the urinary excretion of weak bases (e.g 
+amphetamine, diazepam). 
+INTRODUCTION TO NEUROPHARMACOLOGY 
+ 
+The Nervous System is divided into two anatomical divisions: 
+ The Central Nervous System (C.N.S) - the brain and spinal cord 
+ The Peripheral Nervous System (P.N.S) - the neurons located outside the brain 
+and spinal cord, that is, any nerve that enters or leaves the C.N.S. The PNS is 
+further divided into the efferent nerves that carry signals away from the brain and 
+spinal cord to the peripheral tissues and the afferent division, whose neurons bring 
+information from the periphery to C.N.S.  
+ The efferent division of the P.N.S. can be further divided into two major 
+functional subdivisions: The Somatic and the Autonomic Nervous System. 
+ The Somatic efferents are involved in voluntarily controlled body functions such 
+as contraction of skeletal muscles in locomotion or posture. 
+
+http://www.unaab.edu.ng 
+ 
+ 21
+ The Autonomic Nervous System (ANS) functions involuntarily to regulate 
+essential body functions. 
+The Autonomic Nervous System (ANS) 
+The ANS is composed primarily of visceral motor (efferent) neurons that innervate 
+smooth muscles of the viscera, cardiac muscles, vasculature, and the exocrine glands. 
+The Autonomic Efferent Neurons 
+The efferent neurons of the ANS are anatomically divided into two namely: 
+1. Sympathetic (or thoracolumbar). 
+2. Parasympathetic (or  Craniosacral) 
+Both the sympathetic and the parasympathetic neurones emerge from the brain stem or 
+spinal cord and terminate in the motor ganglia. The function of the ganglia is that it relays 
+information between the preganglionic neurone and the postganglionic neuron. The 
+preganglionic fibres of the sympathetic nervous system are short. They end in ganglia 
+adjacent to the spinal cord. The only exception is the adrenal medulla’s preganglionic 
+fibre which is analogous to a postganglionic fibre, because it releases epinephrine and 
+norepinephrine directly. These neurotransmitters are released into the blood stream when 
+stimulated by preganglionic fibers. It is important to note that the postganglionic 
+sympathetic fibres are long like the preganglionic fibers of the Parasympathetic 
+Nervous System which are generally long, while the postganglionic fibres are short. 
+The physiologic functions of the two systems usually oppose one another to bring about a 
+state of balance. When the balance is disrupted, drug therapy may be indicated to restore 
+the original balance necessary for homeostasis.  
+The Sympathetic (adrenergic) Nervous System Receptors 
+
+http://www.unaab.edu.ng 
+ 
+ 22
+The receptors are divided into 
+1. Alpha-1 
+2. Alpha-2 
+3. Beta-1 
+4. Beta-2 
+5. Dopaminergic 
+Generally the alpha-1 and alpha-2 are stimulatory and the beta receptors are inhibitory.  
+The Parasympathetic Nervous System Receptors 
+The Parasympathetic (cholinergic) Nervous System receptors are nicotinic and 
+muscarinic receptors.  
+Neurotransmitters: 
+The primary neurotransmitters of the adrenergic sites are norepinerphrine, 
+epinerphrine, and dopamine. Epinephrine stimulates the alpha and beta receptors and is 
+a potent stimulator of the heart and a powerful dilator of the bronchioles. 
+Acetylcholine is the neurotransmitter at the sympathetic postganglionic fibre of the sweat 
+glands and blood vessels. The neurotransmitter for cholinergic sites is acetylcholine. 
+Acetylcholine combines with both nicotinic and muscarinic receptors.  
+Cholinergic sites are found in both the sympathetic and parasympathetic nervous 
+Systems. The nicotinic receptors are found in all the Autonomic ganglia, in the 
+Adrenal medulla and at the neuromuscular junction of the somatic nervous system. 
+The muscarinic receptors are found at the synapse of postganglionic fibres of the 
+parasympathetic nervous system and at few of the sympathetic postganglionic 
+fibres. 
+
+http://www.unaab.edu.ng 
+ 
+ 23
+How Drugs Affect the Autonomic Nervous System 
+1. Mimicking neurotransmitters 
+2. Interfering with neurotransmitter release 
+3. Interfering with the breakdown or reuptake of neurotransmitters at the synapse  
+4. Blocking the attachment of neurotransmitters to receptors. 
+Classes of Autonomic Nervous System Agents 
+Cholinergic agents are drugs that stimulate receptors sites mediated by acetylcholine. 
+This is achieved by the drug mimicking the action of acetylcholine. This could be done in 
+two ways:  
+1) The drug might have a direct action  
+2) The drug might have an indirect  action on the receptors 
+The drug is said to have a direct action on the receptors when it sensitizes the receptor by 
+mimicking acetylcholine. The drug is said to be indirectly acting when it inhibits the 
+breakdown of acetylcholine. The cholinergic drugs (agents) are also called 
+parasympathomimetic drugs. 
+Clinical Uses  
+1. Aids in diagnosis of myasthenia gravis  
+2. Reduce the intraocular pressure of the glaucoma  
+3. Stimulate GI motility  
+4. Treat urinary retention  
+5. Control vomiting  
+6. Act as an antidote for neuromuscular blockers. 
+ 
+
+http://www.unaab.edu.ng 
+ 
+ 24
+Examples of Direct-acting Cholinergic Agents 
+1. Carbamylcholine:- It had been used to treat atony of the gastrointestinal tract and 
+to stimulate uterine contraction in swine.  
+2. Bethanechol (urecholine):- Used in G.I and urinary tract atony.  
+3. Pilocarpine:- It is used to treat glaucoma by reducing the intraocular pressure.  
+4. Metoclopramide:- It is used to control vomiting.  
+Indirect-acting Cholinergic (Anticholinesterase) Agents  
+1. Endophonium:  Is used to diagnose myasthenia gravis.  
+2. Neostigmine:  These products are used to treat urinary retention, GI atony and as 
+antidote to neuro-muscular blocking agents.  
+3. Organophophate Compounds:  These are commonly used as insecticide dips 
+and may result in toxicity if not appropriately used.  
+4. Demecarium: This is used in the preventive management of glaucoma.  
+Side effects of cholinergic drugs  
+Bradycardia, hypotension, lacrimation, diarrhoea, vomiting.  
+Cholinergic Blocking Agents (Anticholinergics)  
+Cholinergic blocking agents are drugs that oppose the effect of acetylcholine and this 
+group of drugs elicit their effect at the muscarinic receptors of the Parasympathetic 
+Nervous System.  
+Examples:  
+1. Atropine:  It is used as a pre-anaesthetic drug to dry secretions and prevent 
+bradycardia. It is also used to treat organophosphate poisoning. 
+      2. Scopolamine:  This is used in anti diarrhea medication.  
+
+http://www.unaab.edu.ng 
+ 
+ 25
+3. Methscopolamine: Similar to the effect of Scopolamine.   
+4. Glycopyrrolate:   Is a quaternary ammonium compound with action similar to 
+atropine, but has provides longer action than atropine and is used as a preanaesthetic 
+agent. 
+5.  Aminopentamide: Is used to control diarrhea in dogs and cats.  
+6.  Pralidoxime (2-PAM): A cholinesterase reactivator used to treat organophosphate 
+intoxication. 
+Side effects: 
+Drowsiness, disorientation, tachycardia, photophobia, constipation, anxiety, burning at 
+site of injection. 
+Adrenergic (Sympathomimetic Agents)  
+Adrenergic agents are agents that mimick the action of epinephrine or norepinephrine. 
+Adrenergic agents are classified as catecholamines or non-catecholamines and either of 
+these categories can be classified according to the specific receptor types activated 
+namely: 
+1.  Alpha -1 
+2.  Alpha -2 
+3.  Beta -1 
+4.  Beta -2 
+Examples  
+1. Epinephrine (Adrenaline):   Used to increase heart rate and cardiac output and 
+constriction of the blood vessels in the skin. 
+
+http://www.unaab.edu.ng 
+ 
+ 26
+2. Norepinephrine:   Stimulates alpha receptors. It influences vasopressor effect 
+and raises the blood pressure. 
+3. Isoproterenol:  It is a beta stimulator it is used as a bronchodilator.  
+4. Dopamine:  Dopamine is a precursor of epinephrine and norephinephrine. It is 
+dose dependent and to treat shock and congestive heart failure.  
+5. Ephedrine, Terbutaline, Albuterol: these are beta agonists and are 
+brochodilators.  
+6. Phenylpropanolamine (prolamine): Is used to treat urinary incontinence in 
+dogs.  
+Side effects:  
+   Tachycardia, hypertension, nervousness, cardiac arrhythmias, pulmonary oedema.  
+Adrenergic Blocking Agents   
+Adrenergic blocking agents are used to disrupt the activity of sympathetic nervous 
+system.    The adrenergic blocking agents are classified as: 
+a) Alpha blockers  
+b) Beta blockers  
+c) Ganglionic blockers  
+Alpha Blockers  
+ Alpha blockers have limited use in veterinary medicine  
+ The most frequently used in veterinary medicine is Phenoxybenzamine  
+1) Phenoxybenzamine could be used in 
+a)  Laminitis treatment in horses  
+b)  Urethral obstruction in cats. 
+
+http://www.unaab.edu.ng 
+ 
+ 27
+2) Tranquilizers (acepromazine, droperidol) - These tranquilizers act as alpha blockers 
+and cause vasodilation. 
+3)  Prazosin:- is used as an hypotensive agent. 
+4)  Yohimbine:- used to treat xylazine toxicity. 
+ 5)  Atipamezole:- this is a reversal agent of medetomidine 
+Side effects of alpha receptor blockers 
+ Hypotension, tachycardia, muscle tremors (phenoxybenzamine), seizures 
+(acepromazine). 
+Beta blockers 
+Used to treat glaucoma, arrhythmias, and hypertrophic cardiomyopathy. 
+Examples 
+1. Propranolol:- is used to treat cardiac arrhythmia and hypertrophic 
+cardiomyopathy. 
+2. Timolol:-  is an ophthalmic preparation that is to treat glaucoma. 
+3. Atenolol:- used in a similar way to propranolol. 
+Side effects of B-Blockers 
+Bradycardia, hypotension, worsening heart failure, bronchoconstriction. 
+ 
+INTRODUCTORY TOXICOLOGY; SOURCES AND TYPES OF POISON, 
+ANTIDOTAL THERAPY 
+ 
+Definitions: 
+ Toxicology: It is the science or study of poisons on biologic systems, 
+including their properties, actions and effects. Also their detection and 
+identification, the treatment and prevention of the conditions produced by 
+them. 
+ Toxicant: Any poisonous agent 
+
+http://www.unaab.edu.ng 
+ 
+ 28
+ Toxins/Biotoxins: Poisons produced by biologic sources e.g venom, plant 
+toxins. 
+ Toxicosis/ Poisoning/ Intoxication: Any disease produced by a toxicant 
+ Acute toxicosis: Effects during the first 24 hours 
+ Chronic toxicosis: Effects produced by prolonged exposure (> 3months) 
+ Toxicity: Refers to the amount of a toxicant necessary to produce a 
+detrimental effect. 
+ Hazard: Describes the likelihood of poisoning under conditions of use. 
+ Toxicant accumulation/ biomagnifications: Occurs when absorption exceeds 
+the ability of the body to destroy or excrete a xenobiotic compound. 
+ Ecotoxicology: The study of the relationship of potentially toxic chemicals in 
+living organisms and their environment. 
+ Tolerance: The ability of an organism to show less response to a specific dose 
+of a chemical than it demonstrated on a previous exposure; refers to acquired 
+and not innate resistance. 
+ LD 
+50
+: The dose that is lethal to 50% of a test sample or population. 
+Expression of toxicant concentrations are in ppb or ppm in feedstuff, water, 
+air, tissue etc. Other expressions of dose are maximum nontoxic dose, 
+maximum tolerated dose, approximate lethal dose.  
+Toxicology as a discipline 
+ It is a multifaceted science 
+ It contributes to, and draws from fields such as chemistry, pharmacology, 
+pathology, psychology, clinical medicine, botany etc. 
+ Is toxicology a chemical or biological science? 
+Who are toxicologists? 
+ Toxicologists are persons trained in the knowledge of poisons. 
+ They may have been trained solely in this specialty or more often than not, 
+they were trained as veterinarians, physicians, chemists, physiologists, 
+pharmacologists, entomologists, botanists, agronomists and some other 
+specialties. 
+
+http://www.unaab.edu.ng 
+ 
+ 29
+ The common factor is an interest in learning more about the undesirable 
+effects of substances and energies on living organisms and their environment. 
+Veterinary Toxicologist 
+ A person having special knowledge of the poisons affecting the animals and 
+birds in which man is interested for his economic gain or pleasure, and of 
+those substances which, when present in animal products, could injure the 
+health of the people consuming them. 
+ He is also concerned with the determination of the safety of drugs, chemicals 
+and energies intended for direct use by people (the best qualified to evaluate 
+the results of animal experiment action which usually preceed human usage). 
+Environmental Toxicology 
+ Chemicals released into the environment abound there to elicit their 
+deleterious effects on the ecology where man, animals and other organisms 
+interact. 
+ The delicate interactions is altered by these chemicals with devastating effects 
+on man and animals. 
+Factors affecting the activity of poisons 
+Exposure-related, biologic or chemical factors regulate absorption, metabolism and 
+elimination and accordingly, influence the clinical consequences. 
+Factors related to exposure: 
+ Dose 
+ Duration and frequency of exposure 
+ Route of exposure 
+ Time of exposure 
+ Environmental factors e.g temperature, humidity etc 
+Biologic factors: 
+ Species of animal  
+ Age and size of animal  
+ Sex and hormonal factor of animal  
+ Nutritional and dietary factor 
+ Health status 
+
+http://www.unaab.edu.ng 
+ 
+ 30
+Chemical factors: 
+ Chemical nature of the toxicant 
+ Vehicle/Carrier 
+Diagnosis 
+ History 
+ Clinical signs 
+ P/M lesions 
+ Laboratory examinations 
+ Bioassay/ Animal inoculation 
+Treatment of Poisoning 
+General Considerations: 
+ Each clinical case of poisoning presents individual problems 
+ More often than not, approach to treatment is determined by  
+i. Nature of poison involved 
+ii. Condition of the patient 
+Principles of therapy: 
+1. Prevention of further absorption 
+2. Supportive or symptomatic treatment 
+3. Specific antidote 
+Prevention of further absorption: 
+-  Remove the source of poison or remove the animals from the area in which the poison 
+exist. 
+-  Limit the absorption of material already in or on the animal for topical chemicals. 
+Wash the animal or remove contaminated hair or wool. 
+-  For ingested toxicants: 
+ Induce vomiting eg apomorphine 
+ Gastric lavage is useful in smaller animals 
+ Rumenotomy in ruminants 
+ Purgation when slow-acting poisons are involved. 
+ Activated charcoal serves to adsorb poison in the stomach 
+ 
+
+http://www.unaab.edu.ng 
+ 
+ 31
+Supportive Therapy: 
+-  Control of seizures 
+-  Maintenance of respiration 
+-  Treatment for shock 
+-  Correction of electrolyte and fluid balance 
+-  Control of cardiac function 
+-  Alleviation of pain 
+Specific Treatment (Antidotal therapy): 
+-  This is application of drugs to reverse or neutralize the effect of the poison.  
+-  Specific antidotes for the treatment of poisoning are highly desirable but rather rare. 
+-  Some antidotes form complexes with the toxicant (e.g the oximes bind with 
+organophosphates), others block or compete for receptor sites e.g vitamin K competes 
+with the receptor for coumarin anticoagulants such as warfarin and a few affect 
+metabolism of the toxicant e.g ferric to ferrous reduction with methylene blue in nitrate 
+poisoning. 
+ 
+  
+ 
+ 

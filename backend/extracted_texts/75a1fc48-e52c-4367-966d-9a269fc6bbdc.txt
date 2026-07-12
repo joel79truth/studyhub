@@ -1,0 +1,2197 @@
+
+
+Mauricio A. Elzo, University of Florida, 1996, 2005, 2006, 2010.  [1-1] 
+ 
+ANIMAL BREEDING NOTES 
+CHAPTER 1 
+DEFINITIONS AND ELEMENTARY MATRIX OPERATIONS 
+ 
+Definitions 
+Matrix:  set of numbers arranged by rows and columns.  For example, suppose that three bulls 
+have the following numbers of progeny in two herds: 
+                              Bulls                              
+Herds           1               2               3           
+1               4               6               1               
+2               5               8               3               
+ 
+These numbers of progeny per bull can define a rectangular matrix A with 2 rows and 3 
+columns: 
+ A
+2×3
+ ~ 
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+ 3 8 5 
+ 1 6 4 
+ 
+The dimension of A is defined in terms of its number of rows and columns.  Thus, the matrix A 
+has dimension 2 × 3.  Each number in A
+2×3
+ is called an entry or element. 
+In general,  
+ A
+r×c
+ ~ 
+⎥
+⎥
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎢
+⎢
+⎣
+⎡
+ 
+a
+  
+a
+ 
+a
+ 
+     
+ 
+a
+  
+a
+ 
+a
+ 
+ 
+a
+  
+a
+ 
+a
+ 
+rcr2r1
+2c2221
+1c1211
+K
+MMMM
+K
+K
+ ~ {a
+ij
+}
+r×c
+ 
+where a
+ij
+ ~ ij
+th
+ element of A
+r×c
+. 
+
+ [1-2] 
+ 
+Square matrix:  matrix where the number of rows (r) is equal to number of columns (c).  For 
+instance, 
+ B
+2×2
+ ~ 
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎣
+⎡
+b
+ 
+b
+ 
+ 
+b
+ 
+b
+ 
+2221
+1211
+ ~ B
+2
+ ~    {b
+ij
+}
+2
+  is a square matrix. 
+The following are square matrices that have special structures: 
+a)   Diagonal   matrix:  offdiagonal elements are zero: 
+    D
+2
+ ~ 
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎣
+⎡
+ 
+d
+ 0 
+ 0 
+d
+ 
+22
+11
+ ~ diag {d
+ii
+}
+2
+ 
+b)   Identity   matrix:  offdiagonal elements are zero and diagonal elements are 1's. 
+     I
+2
+ ~ 
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+ 1 0 
+ 0 1 
+ 
+c)   Upper (lower) triangular matrix:  elements below (above) the diagonal are zero: 
+     U ~ 
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎣
+⎡
+u
+ 0 
+ 
+u
+ 
+u
+ 
+22
+1211
+ 
+     L  ~ 
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎣
+⎡
+  
+ 0 
+2221
+11
+ll
+l
+ 
+Vector:  array of numbers forming a single column (column vector) or a single row (row vector). 
+ For example: 
+     y ~ 
+⎥
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎢
+⎣
+⎡
+ 
+y
+ 
+ 
+y
+ 
+ 
+y
+ 
+3
+2
+1
+ is a column vector and, 
+     x ~ 
+[] 
+x
+ 
+x
+ 
+x
+ 
+321
+ is a row vector. 
+Scalar:  a single number, e.g., 5.  A scalar can be considered to be 1 × 1 matrix. 
+
+ [1-3] 
+ 
+ 
+Summation notation: 
+ 
+∑
+=
+n
+1  i
+v
+i 
+ ~ v
+1
+ + v
+2
+ + v
+3
+ + ... + v
+n
+ 
+ 
+∑∑
+==
+n
+1 j 
+m
+1  i
+ 
+a
+ij
+ ~ a
+11
+ + a
+12
+ + ... a
+1n
+ + a
+21
+ + a
+22
+ + ... + a
+2n
+ + ... + a
+m1 
++ a
+m2
+ + ... + a
+mn
+ 
+ 
+∑
+=
+m
+1  k
+a
+ik
+ b
+kj
+ ~ a
+i1
+b
+1j
+ + a
+i2
+b
+2j
+ + ... + a
+im
+b
+mj
+ 
+Transpose of a matrix:  matrix obtained by interchanging the rows of the original matrix.  
+Thus, the transpose of A
+r×c
+, denoted as AN
+c×r
+, is: 
+  AN
+c×r
+ ~ 
+⎥
+⎥
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎢
+⎢
+⎣
+⎡
+ 
+a
+  
+a
+ 
+a
+ 
+     
+ 
+a
+  
+a
+ 
+a
+ 
+ 
+a
+  
+a
+ 
+a
+ 
+rc2c1c
+r22212
+r12111
+K
+MMMM
+K
+K
+ 
+Symmetric matrix (square matrix only):  An arbitrary matrix A is said to be symmetric if A ~ 
+AN.  Thus, 
+            A      symmetric      Y {a
+ij
+ ~ a
+ji
+} . 
+Examples of symmetric matrices are: 
+  D
+2
+ ~ 
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎣
+⎡
+d
+ 0 
+ 0 
+d
+ 
+22
+11
+,         I
+2
+ ~ 
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+ 1 0 
+ 0 1 
+,  and    B
+2
+ ~ 
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+ 8 4 
+ 4 6 
+. 
+ 
+Matrix operations 
+Addition:  Defined only for matrices of the same dimensions, 
+
+ [1-4] 
+ 
+  A
+r×c
+      +      B
+r×c
+ ~    {a
+ij
+ + b
+ij
+}
+r×c
+ 
+Subtraction:  for A
+r×c
+ and B
+r×c
+ 
+  A B B ~    {a
+ij
+ B b
+ij
+} 
+Scalar multiplication:  for an arbitrary scalar c and matrix A
+r×c
+, 
+  cA ~   {ca
+ij
+} ~    {b
+ij
+} 
+Results:  for matrices A, B and C of equal dimension and scalars c and d, 
+a)   (A + B) + C  ~  A + (B + C), 
+b)   A + B  ~  B + A, 
+c)   c(A + B)  ~  cA + cB, 
+d)   (c + d) A  ~  cA + dA, 
+e)   (A + B)N  ~  AN + BN, 
+f)   (cd)A      ~  c(dA), and 
+g)   (cA)N  ~  cAN. 
+Matrix multiplication:  The product of matrix A
+u×v
+ times matrix B
+m×n
+  exists if and only if the 
+number of columns of A (i.e., v) is equal to the number of rows of B (i.e., m).  If so, the resulting 
+matrix C is an u × n matrix whose ij
+th
+ element (c
+ij
+) is equal to the sum of the products of the 
+elements in the i
+th
+ row of A by the elements in the j
+th
+ column of B, i.e., 
+  C  ~  AB exists if v ~ m, and {c
+ij
+} ~
+⎟
+⎟
+⎠
+⎞
+⎜
+⎜
+⎝
+⎛
+∑
+b
+ 
+a
+ 
+kjik
+m
+1=k
+ 
+For example, 
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎣
+⎡
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎣
+⎡
+ 
+bbb
+ 
+ 
+bbb
+ 
+  
+aa
+ 
+ 
+aa
+ 
+232221
+131211
+2221
+1211
+ ~ 
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎣
+⎡
+ 
+ba
+ + 
+ba
+|
+ba
+ + 
+ba
+|
+ba
+ + 
+ba
+ 
+ 
+ba
+ + 
+ba
+|
+ba
+ + 
+ba
+ |
+ba
+ + 
+ba
+ 
+232213212222122121221121
+231213112212121121121111
+ 
+
+ [1-5] 
+ 
+Numerically, 
+  
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+ 021
+ 103 
+ 
+ 31 
+ 12 
+ ~ 
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+ 166 
+ 227 
+ 
+ 
+Remarks: 
+a)   AA      ~  A
+2
+ exists only for square matrices. 
+b)   If AB exists it does not imply that BA exists, unless dim A ~ reciprocal of dim B, e.g., A
+3×4
+ 
+and B
+4x3
+.  A special case is the multiplication of a matrix by its transpose, i.e., 
+   AAN and ANA always exists. 
+c)   if   A   ~ square and symmetric, then 
+   ANA  ~  AAN  ~  A
+2
+. 
+Results:  for matrices A, B and C of appropriate dimensions and a scalar c, 
+a)   c(AB)      ~  (cA)B, 
+b)   A(BC)      ~  (AB)C, 
+c)   A(B + C)  ~  AB + AC, 
+d)   (B + C)A  ~  BA + CA, and 
+e)   (AB)N  ~  BNAN. 
+Vector multiplication:  for matrices A
+r×c
+ and B
+c×n
+ and vectors y
+c×1
+ and x
+c×1
+ 
+a)   y
+1×c
+N x
+c×1
+  ~  p
+1×1
+ is a scalar, 
+b)   x
+c×1
+ y
+1×c
+N  ~  P
+c×c
+ is a matrix, 
+c)   A
+r×c
+ x
+c×1
+  ~  p
+r×1
+ is a column vector, and 
+d)   y
+1×c
+N B
+c×n
+  ~  p
+1×n
+N is a row vector. 
+
+ [1-6] 
+ 
+Examples: 
+a) 
+[]
+11        
+ 1 
+ 2 
+ 1 
+ 1   4   2=
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎣
+⎡
+ 
+b) 
+[]
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎣
+⎡
+=
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎣
+⎡
+ 142 
+ 284 
+ 142 
+        1   4   2 
+ 1 
+ 2 
+ 1 
+ 
+c) 
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+=
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎣
+⎡
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+ 3 
+ 3 
+        
+ 1 
+ 2 
+ 1 
+ 
+ 110 
+ 011 
+ 
+d) 
+[][]
+5   4   2        
+ 100 
+ 110 
+ 001 
+ 1   4   2=
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎣
+⎡
+ 
+Trace of a matrix (square matrix only):  sum of the diagonal elements.  For an arbitrary square 
+matrix A
+n
+, 
+  tr A
+n
+ ~ 
+a
+ 
+ii
+n
+1  i
+∑
+=
+ 
+Note:  If A
+n
+ ~ I
+n
+, then tr I
+n
+ ~ n. 
+Results:  for matrices A and B of appropriate dimensions and a scalar c, 
+a)   tr (A + B)  ~  tr (A) + tr (B), 
+b)   tr   (AN)  ~  tr (A), 
+c)   tr(cA)      ~  c tr (A), 
+d)   tr(AB)      ~  tr (BA)  ~ 
+ba
+ 
+jiij
+n
+1 j 
+n
+1  i
+ 
+∑∑
+==
+,  and 
+
+ [1-7] 
+ 
+e)   tr   (AAN)  ~ 
+a
+ 
+2
+ij
+n
+1 j 
+n
+1  i
+∑∑
+==
+   if A is a square matrix. 
+Partitioned matrices 
+Frequently matrices are handled more easily in a partitioned form.  For instance, A
+m×n
+ can be 
+partitioned as: 
+  A ~ 
+[] 
+A
+  |  
+A
+ 
+21
+ 
+where  A
+1
+ ~    m × n
+1
+,  A
+2
+ ~ m × n
+2
+,  and n
+1
+ + n
+2
+ ~ n. 
+Example: 
+  A ~ []
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎣
+⎡
+=
+ 2|10 
+ 3|21 
+         
+A
+|
+A
+ 
+21
+ 
+Finer partitioning of matrices are also possible.  Thus, A could be partitioned into four 
+submatrices: 
+  A 
+~ 
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎣
+⎡
+ 
+AA
+ 
+ 
+AA
+ 
+2221
+1211
+|
+|
+     and           A
+N ~ 
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎣
+⎡
+ ’
+A
+’
+A
+ 
+ ’
+A
+’
+A
+ 
+2212
+2111
+|
+|
+ 
+Example: 
+  A 
+~ 
+⎥
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎢
+⎣
+⎡
+ 2|10 
+--|----
+ 3|21 
+            and            AN ~ 
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎣
+⎡
+ 2|3 
+--|--
+ 1|2 
+ 0|1 
+ 
+Partitioned matrix operations 
+Addition and Subtraction:  submatrices must be of the same order. 
+  A + B 
+~ 
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎣
+⎡
+ 
+B
+ + 
+AB
+ + 
+A
+ 
+ 
+B
+ + 
+AB
+ + 
+A
+ 
+22222121
+12121111
+|
+|
+ 
+
+ [1-8] 
+ 
+Example: 
+  
+⎥
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎢
+⎣
+⎡
+=
+⎥
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎢
+⎣
+⎡
+⎥
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎢
+⎣
+⎡
+ 3|21 
+ --|----
+ 3|31 
+        
+ 1|11 
+ --|----
+ 0|10 
+  +  
+ 2|10 
+ --|----
+ 3|21
+ 
+ 
+Multiplication:  submatrices must be conformable for multiplication.  For example, let 
+  A 
+~ 
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎣
+⎡
+ 
+AA
+ 
+ 
+AA
+ 
+2221
+1211
+   and         B   ~ 
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎣
+⎡
+ 
+B
+ 
+ 
+B
+ 
+2
+1
+ 
+Then, the product AB in partitioned form is: 
+  AB  
+~ 
+⎥
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎢
+⎣
+⎡
+=
+⎥
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎢
+⎣
+⎡
+ 
+C
+ 
+---
+ 
+C
+ 
+        
+ 
+B
+ 
+A
+ + 
+B
+ 
+A
+ 
+-------------
+ 
+BA
+ + 
+B
+ 
+A
+ 
+2
+1
+222121
+212111
+ 
+The product AB exists in partitioned form if A
+11
+B
+1
+, A
+12
+B
+2
+, A
+21
+B
+1
+ and A
+22
+B
+2
+ exist and if A
+11
+B
+1
+ 
+and A
+12
+B
+2
+ as well as A
+21
+B
+1
+ and A
+22
+B
+2
+ are conformable for addition.  Thus, 
+  number of columns of A
+11
+ and A
+21
+ ~   number of rows of B
+1
+,  and 
+  number of columns of A
+12
+ and A
+22
+ ~   number of rows of B
+2
+. 
+Example: 
+  
+⎥
+⎥
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎢
+⎢
+⎣
+⎡
+⎥
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎢
+⎣
+⎡
+ 1    0 
+-----
+ 1    1 
+ 1    0 
+ 
+ 2|10 
+ --|----
+ 3|21 
+ ~ 
+[][][]
+[][][]
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎣
+⎡
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+ 
+1    0 2  +  
+ 11 
+ 10 
+ 1    0 
+-------------------
+ 1    0 3  +  
+ 11 
+ 10 
+ 2    1 
+ 
+
+ [1-9] 
+ 
+         ~ 
+[][]
+[][ ]
+ 
+ 2    0  +  1    1 
+--------------
+ 3    0  +  3    2 
+⎥
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎢
+⎣
+⎡
+ 
+         = 
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎣
+⎡
+ 3    1 
+-----
+ 6    2 
+ 
+ 
+Partitioned matrices can be multiplied as if the submatrices were real numbers, provided that the 
+partition of the columns of the first matrix is the same as the partition of the rows of the second 
+matrix.  Thus, the product of any two conformable matrices A and B in partitioned form is: 
+  
+⎥
+⎥
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎢
+⎢
+⎣
+⎡
+=
+⎥
+⎥
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎢
+⎢
+⎣
+⎡
+⎥
+⎥
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎢
+⎢
+⎣
+⎡
+ 
+CCC
+ 
+ 
+CCC
+ 
+ 
+CCC
+ 
+        
+ 
+BBB
+ 
+ 
+BBB
+ 
+ 
+BBB
+ 
+ 
+ 
+AAA
+ 
+ 
+AAA
+ 
+ 
+AAA
+ 
+vwvv
+w
+w
+uwuu
+w
+w
+vuvv
+u
+u
+K
+MMMM
+K
+K
+K
+MMMM
+K
+K
+K
+MMMM
+K
+K
+21
+22221
+11211
+21
+22221
+11211
+21
+22221
+11211
+ 
+where  C
+ij
+ ~  
+B
+ 
+A
+ 
+kjik
+n
+1  k
+∑
+=
+. 
+Direct sum:  defined for matrices of any order.  The direct sum of matrices A
+m×n
+ and B
+r×c
+ is: 
+  A 
+r B ~ 
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎣
+⎡
+  B0 
+ 0  A 
+21
+12
+ ~ C
+m+r, n+c
+  (block-diagonal), 
+where, 
+         0
+12
+ ~ m × c  null matrix, and 
+    0
+21
+ ~ r × n  null matrix. 
+Example: 
+
+ [1-10] 
+ 
+  
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎣
+⎡
+=
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+⊕
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+ 3|0    0    0 
+ 2|0    0    0 
+---|--------
+ 0|6    5    1 
+ 0|4    0    3 
+        
+ 3 
+ 2 
+    
+ 651 
+ 403
+ 
+ 
+Results: 
+1)   A   
+r (BA)  ~  0  if  A ~ 0. 
+2)   (A   
+r B) + (C r D)  ~  (A + C) r (B + D)  if conformability for addition is satisfied, i.e., order 
+A 
+~ order C and order B ~ order D. 
+3)   (A   
+r B)(C r D)  ~  AC r BD  if matrices are conformable for multiplication, i.e., the number 
+of columns of A equals the number of rows of B and, the number of columns of B is the same 
+as the number of rows of D. 
+Direct product:  also called Kronecker product.  Matrices can be of any order.  The direct 
+product of matrices A
+m×n
+ and B
+r×c
+ is: 
+  A * B 
+~ 
+⎥
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎢
+⎣
+⎡
+ B
+a
+B
+a
+ 
+ 
+ B
+a
+B
+a
+ 
+mnm1
+1n11
+K
+MMM
+K
+ ~ C
+mr×nc
+ 
+Example: 
+  
+[]
+⎥
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎢
+⎣
+⎡
+=
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+ 18    12|6      4 
+-------|------
+ 3      2 |12    8 
+         32   *  
+ 62 
+ 14 
+ 
+ 
+Results: 
+
+ [1-11] 
+ 
+1)   for any matrixes A and B 
+  (A * B)
+N  ~  AN * BN 
+2)   for vectors u and v 
+  u
+N * v  ~  v * uN  ~  vuN 
+  
+[][][]
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+=
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+=
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+=
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+=
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+=
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+ 84 
+ 63 
+     2    1  
+ 4 
+ 3 
+    
+ 84 
+ 63 
+     2    1  * 
+ 4 
+ 3 
+    
+ 84 
+ 63 
+    
+ 4 
+ 3 
+  *   2    1 
+ 
+3)   for a diagonal matrix of order r and a matrix A, 
+  D * A  
+~  d
+1
+A r d
+2
+A r 
+...
+ r d
+r
+A 
+4)   for partitioned matrices A and B, 
+     
+[]  *  B   A A
+21
+ ~ 
+[]. B*  A   B*  A 
+21
+ 
+  
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎣
+⎡
+ 20 
+ 14 
+  *  
+ 3|1 
+ 2|2 
+ 
+~ 
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+ 20 
+ 14 
+  *  
+3
+2
+   |   
+   |   
+ 20 
+ 14 
+  * 
+1
+2
+ 
+   
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎣
+⎡
+ 60 |20 
+ 312|14 
+ 40 |40 
+ 28 |28 
+ ~ 
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎣
+⎡
+ 60 |20 
+ 312|14 
+ 40 |40 
+ 28 |28 
+ 
+5)   for partitioned matrices A and B, 
+    
+[] 
+B    
+ 
+B
+   *A  
+21
+ ≠ 
+[]
+. 
+B
+*  A
+B
+*  A 
+21
+| 
+  
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎣
+⎡
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+ 2|0 
+ 1|4 
+  *  
+ 31 
+ 22 
+ ≠ 
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+2
+1
+ *  
+ 31 
+ 22 
+|
+  |  
+0
+4
+  *  
+ 31 
+ 22 
+ 
+
+ [1-12] 
+ 
+   
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎣
+⎡
+ 6    0 |2    0 
+ 3    12|1    4 
+ -----|-----
+ 4    0 |4    0 
+ 2    8 |2    8 
+ ≠ 
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎦
+⎤
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎣
+⎡
+ 6    2 |0     0 
+ 3    1|12   4 
+ -----|-----
+ 4    4 |0    0 
+ 2    2 |8    8 
+ 
+6)   If matrices A and B as well as C and D are conformable for multiplication, 
+       (A * B)(C * D) 
+~   (AC * BD) 
+  
+[][]
+⎟
+⎟
+⎠
+⎞
+⎜
+⎜
+⎝
+⎛
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+⎟
+⎟
+⎠
+⎞
+⎜
+⎜
+⎝
+⎛
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+  1   *  
+ 2 
+ 4 
+    2   *  
+ 31 
+ 12 
+ 
+ ~ [][]
+⎟
+⎟
+⎠
+⎞
+⎜
+⎜
+⎝
+⎛
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+  1   2   *  
+ 2 
+ 4 
+ 
+ 31 
+ 12 
+ 
+ 
+       
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+ 2 
+ 4 
+ 
+ 62 
+ 24 
+  ~ 
+[]
+ 2   *  
+ 10 
+ 10 
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+ 
+         
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+ 20 
+ 20 
+  ~ 
+⎥
+⎦
+⎤
+⎢
+⎣
+⎡
+ 20 
+ 20 
+ 
+ 
+Determinants 
+Scalar function (polynomial) of the elements of a square matrix.  The determinant of a 
+rectangular matrix is undefined and does not exist. 
+The determinant of a matrix A
+n×n
+ is called an n-order determinant, and it is written as: 
+    det A 
+~ │A│ 
+Evaluating (or reducing or expanding) a determinant 
+The determinant of the (square) matrix A
+n×n
+ is: 
+   
+│A│ ~ a
+11
+           if n ~ 1 
+
+ [1-13] 
+ 
+   │A│ ~ 
+∑
+=
+n
+1 j 
+ a
+ij
+ │A
+ij
+│(B1)
+i+j
+  for any row i    if n > 1, or 
+     
+~ 
+∑
+=
+n
+1  i
+ a
+ij
+ │A
+ij
+│(B1)
+i+j
+  for any column j   if n > 1 
+where 
+    A
+ij
+ ~   (nB1) × (nB1) submatrix of A obtained by deleting the i
+th
+ row and the j
+th
+ 
+column of A, 
+   
+│A
+ij
+│ ≡    minor of element a
+ij
+ in │A│, 
+ 
+│A
+ij
+│(B1)
+i+j
+ ≡    cofactor of element a
+ij
+ in │A│, i.e., it is a signed minor. 
+Examples: 
+1)   1 × 1 matrix 
+  
+│3│ ~   3   
+2)   2 × 2 matrix 
+  
+ 31 
+ 24 
+ ~   (4)(3)   ! (2)(1) 
+     
+~   10   
+3)   3 × 3 matrix 
+  
+ 601 
+ 042 
+ 123 
+  ~ 
+)
+1( 
+ 01 
+ 2 3 
+  0 + 
+)
+1( 
+ 61 
+ 13 
+  4 + 
+)
+1( 
+ 60 
+ 12 
+ 2
+3 + 22 + 21 + 2
+−−−
+ 
+      
+~ B2 (12 B 0)  +  4 (18 B 1)  +  0 
+      
+~   44   
+This computational method is called expansion by the elements of a row (or a column) or 
+
+ [1-14] 
+ 
+expansion by minors. 
+ 
+Remarks:
+ 
+1)   Interchanging two rows or two columns of a determinant changes its sign. 
+2)   If a scalar is a factor of a row it is also a factor of the determinant. 
+3)   If a row of a determinant is a multiple of another row, the determinant is zero. 
+4)   Adding a multiple of a row to another row of a determinant does not change its value. 
+5)   The determinant of λA, where λ is a scalar and A an n×n matrix is λ
+n
+│A│, e.g.,  
+  
+│BA│  ~  (B1)
+n
+│A│ 
+6)   for   A
+n×n
+ 
+  
+│AN│  ~  │A│ 
+7)   for   A
+n×n
+ and B
+n×n
+ 
+  
+│AB│  ~  │A││B│ 
+8)   if   A
+n×n
+ is diagonal 
+  
+│A│  ~  a
+11
+ a
+22
+  ...  a
+nn
+ 
+9)   for   A
+n×n
+, define: 
+  A  ≡  singular if 
+│A│ ~ 0 
+  A  ≡  nonsingular if 
+│A│=/   0     
+ 
+References 
+Goldberger, A. S. 1964.  Econometric Theory.  John Wiley and Sons, Inc., NY. 
+Searle, S. R. 1966.  Matrix Algebra for the Biological Sciences (including Applications in 
+
+ [1-15] 
+ 
+Statistics).  John Wiley and Sons, Inc., NY. 
+Searle, S. R. 1982.  Matrix Algebra Useful for Statistics.  John Wiley and Sons, Inc., NY. 

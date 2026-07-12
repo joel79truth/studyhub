@@ -1,0 +1,404 @@
+
+
+9/6/2024
+LUANAR_Introduction to Agricultural Economics1
+INTRODUCTION TO AGRICULTURAL ECONOMICS
+(NAAE 32101)
+Presented By:
+Department of Agriculture & Food systems
+Faculty of Natural Resources & Life Sciences
+LUANAR-Natural Resources College
+Intro. to Agricultural Economics1
+COURSE DETAILS
+LECTURE HOURS/Week2
+PRACTICAL HOURS/Week1
+CREDIT HOURS2.5
+METHOD OF ASSESSMENT
+Continuous Assessment 
+(Assignments, Tests, Mid-Semester 
+Exam)
+40%
+End of Semester Examination 60%
+Intro. to Agricultural Economics2
+COURSE AIM & OUTCOMES
+AIM
+To introduce students to the basic principles and theories of microeconomics
+used in the agricultural sector (production of crops, livestock and other
+agricultural areas)
+OUTCOMES:
+Upon successful completion of this course, the students should be able to:
+Explain the basic concepts and analytical techniques of microeconomic theory
+Apply the analytical techniques of microeconomic theory in solving problems
+of the agricultural sector
+Intro. to Agricultural Economics3
+LECTURE TOPICS
+Nature and Scope of Agricultural Economics
+(What is Economics? What is
+Agricultural Economics? Scarcity and the Science of Economics; Basic Economic
+Problem: Society’s unlimited economic wants; Factors of Production: Land, Capital,
+Labour, and Entrepreneurial ability; Questions that agricultural economists attempt to
+answer: Economic perspective: Rational Behaviour; Marginal benefits and marginal costs;
+Trade-Offs and Opportunity Costs; Economic Methodology-Steps followed in economic
+methodology; Policy Economics- Basic steps in policy formulation; Economic Growth and
+Economic Development: Agricultural Sector Growth and Development; Economic
+Systems; The Circular Flow Model)
+Demand for Agricultural Products
+(Individual and Market demand; Derivation of
+demand curve; Determinants of Demand and the Demand Function; Elasticity of demand;
+Determinants of Price Elasticity of Demand)
+Supply of Agricultural Products
+(Individual and Market Supply; Determinants of
+Supply; Characteristics of Agricultural Supply; Agricultural Supply and the objective of the
+Farm: The supply function; Elasticity & Determinants of Elasticity of Supply)
+Intro. to Agricultural Economics4
+LECTURE TOPICS
+Theory of Consumer Behaviour and Utility maximization
+(The Situation of a 
+Typical Consumer; The Concept of Utility; Approaches to the Study of Consumer 
+Behaviour and Utility Maximisation; The Budget Line and Indifference Curve)
+Agricultural Resource Use
+(
+The demand for an input: Marginal Productivity theory of
+input demand and Competitive factor markets; Demand curve of the firm for one variable
+input, Demand curve of the firm for several variable inputs and Market demand curve for
+an input; The market supply of inputs; The Theory of Equilibrium in Factor Markets:
+Equilibrium in a competitive factor market, Factor market with monopoly power and
+Factor market with monopsony power; The economics of Size in Farming)
+Market Mechanisms for Agricultural Products
+(
+Functions & Efficiency of Markets;
+Price Determination in Agricultural Markets-Market Prices, Economic Functions of Prices,
+Major Factors Influencing Farm Prices; Market Equilibrium-Surpluses and Deficits
+(shortages), Equilibrium Price and Quantity; Government Intervention on Commodity
+Pricing: Price Ceilings & Shortages, Price Floors & Surpluses; Fluctuations in Agricultural
+Prices: Factors that Cause Fluctuations in Agricultural Commodity Prices; Cobweb
+Theorem).
+Intro. to Agricultural Economics5
+READINGS:
+PRESCRIBED READINGS(Available in the Library)
+McConnell, R.C., Brue, S.L. & Flynn, S.Economics.23
+rd
+Edition,
+New York, USA, McGrall-Hill Companies Inc.
+Gans, J., King, S. & Stonecash, R.Principles of Economics (2012).
+5
+th
+Edition.
+Collander, D.C.Economics. 5
+th
+Edition.
+Intro. to Agricultural Economics6
+
+9/6/2024
+LUANAR_Introduction to Agricultural Economics2
+READINGS...
+RECOMMENDED READINGS (Available in the Library):
+Cramer, G.L., Clarence W.J and Southgate, D.D. Agricultural Economics
+and Agribusiness, 8
+th
+Ed.
+Rickets, C. & Ricketts, K. Agribusiness: Fundamentals & Applications.
+2
+nd
+Edition.
+Hill, B. An introduction to Economics for Students of Agriculture. 2
+nd
+Edition.
+Intro. to Agricultural Economics7
+Economics is...
+Defined differently by different people....
+...study of allocation of scarce & limited resources among competing
+alternatives.
+...study of how scarce & limited resources (land, labor, capital, and
+management) are allocated among different and competing choices to
+best satisfy human wants.
+Intro. to Agricultural Economics8
+Resources/Capitals
+Resources are the inputs that individuals/families or nations use to produce
+outputs/products (goods & services).
+Resources are classifiedinto:
+Natural resources (land & mineral deposits),
+Human resources (labour services provided by labourers & managers
+for production of goods & services & Entrepreneurial /Management
+skills),
+Financial resources
+Physical resources
+Social resources
+Resources are considered scarce because of tendencies for society or
+individuals to demandmore resources than what are available.
+Resources or goods that are not scarce are calledfree resources or free goods (e.g.
+Sunlight/ air).
+Scarcity of resources is the foundation of the study of economics.
+Intro. to Agricultural Economics9
+Scarcity:
+Scarcityrefers to the fixed quantity of resources that are available
+to meet societal needs.
+Scarcity-A situation where there are not enough resources
+available to satisfy people’s needs or wants.
+Scarcity of resources limits options & demands making ofchoices-
+because people/individuals can not have everything at a time, they
+must make choices as to what they will have and what they will not
+have (sacrifice).
+Scarcity is a relative concept-All nations/individuals face the
+problem of scarcity. The difference lies in the degree to which
+resource scarcity exists and the forms that it takes.
+Intro. to Agricultural Economics10
+Needs & Wants
+Needs: things that are crucial to sustain a living.
+E.g. food, clothing and shelter.
+Wantsare things we can live without/ are not crucial to daily living.
+E.g. A basic tractor is a need to a farmer, but a tractor with air conditioner
+and radio may be a want.
+Context matters when differentiating needs and wants.
+Society and Human wants are insatiable(unlimited, unsatisfied):-Human
+wants cannot be satisfied no matter how much or how many goods we have.
+Intro. to Agricultural Economics11
+Choices
+Scarcity of resources forces consumers & producers to make choices.
+Choices have a time dimension-choices consumers/businesses make today have
+an effect on how they will live in the future.
+Choices one makes also have an associatedcost,calledOpportunity Cost.
+Opportunity costrefers to the foregone benefits linked with the next best
+alternative/choice in a set of choices available to decisionmakers.
+Example:
+The opportunity cost of going to college now is the income you are currently
+foregoing/sacrificing by not getting a job now.
+The opportunity cost of a consumer withdrawing MK10,000 out of his or her
+savings account to buy a bag is the interest income this money would have
+earned if left in the savings account.
+The bottom line is that economic benefits must exceed the costs, including
+foregone income (opportunity cost).
+Intro. to Agricultural Economics12
+
+9/6/2024
+LUANAR_Introduction to Agricultural Economics3
+Microeconomics & Macroeconomics
+Microeconomics is a branch of economics that focuses on the
+actions or behavior of individual agents or groups of agents.
+The prefixmicromeans “small,” indicating that microeconomics
+studies the economy on a small scale.
+Microeconomics is concerned with behaviour & decisions of
+individual economic units/entities/markets that make up the economy.
+E.g. behaviour & decisions ofindividual farmers (producers/suppliers),
+households (consumers), government entities, agricultural buyers, and
+entrepreneurs.
+Intro. to Agricultural Economics13
+Macroeconomics & Microeconomics...
+Macroeconomics:
+The prefixmacromeans “large,” indicating that macroeconomics is
+the study of the economy on a large scale or nationally.
+Macroeconomics looks at the aggregate (total) performances of all
+the markets in the national economy and is concerned with the
+choices made by large sub-sectors of the economy.
+Macroeconomics focuses on broad aggregates, e.g.:
+Growth of the nation’s gross domestic product (GDP),
+Trade-offs between unemployment and inflation.
+Trade balance (exports minus imports).
+Exchange rate (currency devaluation, depreciation/appreciation)
+Intro. to Agricultural Economics14
+Positive Versus Normative Economics
+Positive Economics:
+Focuses on facts & cause-and-effect relationships
+Explains economic behaviour using scientific explanations. Concerned with “What 
+is?”
+Is a basis for development of public policy.
+E.g.: the rate of inflation in the past one year has been increasing as compared to 
+the financial year 2022/23 
+Normative Economics:
+Involves value judgements about what the economy should be-focuses on what 
+economic policies and goals should be implemented.
+Expresses subjective feelings  of how things should be like
+E.g.: The Government of Malawi should put in place measures to reduce cost of gas 
+to curb depletion of trees.
+Intro. to Agricultural Economics15
+Agriculture Economics
+Is an applied field of economics, which applies principles of choice in the use
+of scarce resources such as land, labour, capital and management in farming
+and allied activities.
+Helps farmers, consumers and development practitioners to efficiently utilise
+resources (e.g. land, labour and finances).
+...
+To be a productive agricultural economist, one must first understand basic
+economic principles.
+Agricultural economics uses theoretical concepts of economics to provide
+answers to challenges of agriculture and agribusinesses.
+Intro. to Agricultural Economics16
+Questions of Agricultural Economics...
+What to produce?:The first major decision relates to the quantity and the
+range of goods to be produced. Since resources are limited we must choose
+between different alternative collections of goods and services that may be
+produced.
+How to produce?:Having decided quantity and type of goods to produce,
+we must next determine the techniques of production to be usede.g. labour
+intensive or capital intensive.
+For whom to produce?:This means how the national product is to be
+distributed, i.e. who should get what & how much?
+Are the resources efficiently used?:There is to be no wastage or misuse
+of resourcessince they are limited & scarce.
+Is there full employment of resources?:An economy must endeavor to
+achieve full employment not only of labour but of all resources.
+Is the sector/economy growing?:An economy should keep on expanding
+or developing to maintain conditions of stability. The economy’s productive
+capacity must continueto expand to provide people’s needs of people.
+Intro. to Agricultural Economics17
+Role of Agricultural Economics
+Provides guidance to farmers (e.g. what to produce, how to produce, what to sell
+and how to sell) to maximize benefits to the farmers.
+Deals with optimal selection of land, labour and equipment for a farm; optimal
+choice of crops to be grown & of livestock to be kept.
+Provides guidance to government institutions for proper participation in the
+agriculture sector (e.g. aids in designing taxation policy, agricultural export policy,
+agricultural subsidy policies etc).
+Concerned with distribution and/or consumption of resources, goods and
+services within a society.
+Intro. to Agricultural Economics18
+
+9/6/2024
+LUANAR_Introduction to Agricultural Economics4
+Role of Agricultural Economists:
+Microeconomic Level:
+Concerned with mobilization & use of resources in the production,
+processing, distribution and consumption of products in the agricultural
+system:
+Production economists examine demand of resources by businesses & their
+supply response.
+Market economists focus on the flow of agri. products through market
+channels to their final destination and the determination of prices at each
+stage.
+Financial economists are concerned with financing needs of businesses and
+the supply of capital (finances) to these firms.
+Resource economists focus on the use and preservation of natural resources.
+Public/Policy  economists  are  interested  on  various  government
+policies/programs to farmers.
+Intro. to Agricultural Economics19
+Role of Agricultural Economists:
+Macroeconomic Level:
+Interested in how agriculture & agribusinesses can participate in
+national & global markets.
+Analyses how events taking place in other economic sectors affect
+agribusiness firms and agriculture in general-to formulate effective
+policies and interventions.
+For example, agricultural economists employed by the Reserve Bank of Malawi
+and Ministry of Finance analyse how changes in monetary policy affect the
+price of various food commodities.
+Macroeconomists employed by multinational food companies examine foreign
+trade arrangements for marketing of food and fiber products
+For example, one could ask:How could Malawian Agribusinesses take advantage of the
+African Continental Free TradeArea (AfCFTA)?
+Intro. to Agricultural Economics20
+Scientific Method in Studying Economics
+Economics adopts scientific method to explain how the world works:
+1. Observes real world behaviour and outcomes.
+2. Based on observations, formulates hypothesis-possible explanations of
+cause & effects
+3. Collects & analyses data to test the formulated hypotheses (in step 2).
+4. Based on results in step # 3, accepts, rejects or modifies the hypothesis
+5. Continues to test the hypothesis against facts. If more evidence supports the
+hypothesis, the hypothesis becomesan economic theory/principle.
+Economic Principles are:
+Generalizations-expressed as behaviour of typical/average economic actors
+(consumers or producers)
+Usage of “other-things-equal assumption”(ceteris paribus)-holding all other
+factors constant.
+Intro. to Agricultural Economics21
+Marginal Analysis
+Economists are frequently concerned with understanding additional
+output/benefits as a result of using a unit of input.
+For instance, a micro-economist may be interested with changes in output of
+agricultural production with usage of one additional bag (50Kg) of fertilizer
+(input) by a farmer.
+A macroeconomist, on the other hand, may focus on how a change in the tax
+rate on personal income may change the nation’s output, interest rates, inflation,
+and the government budget deficit.
+The key word in these examples ischange.
+Thus, economists are interested in understanding how changes, for
+examplein price of inputs, changes in quantity of outputs supplied,
+affect other prices and quantities in the economy, and how these
+situations affect economic well-being of consumers, businesses, and
+the economy as a whole.
+Intro. to Agricultural Economics22
+Economic Systems
+Economic System: Defined as institutional means (arrangements put in place)
+by which resources are employed (used) to satisfy human/societal needs and
+desires.
+(Institutionsrefer to laws, policies, practices, habits, ethics and customs of
+the nation’s citizens)
+Prominenteconomic systems include:
+Capitalism
+Socialism/Communism
+Mixed.
+Traditional
+The major distinctive feature of these systems isthe degree of control of
+economic resources-
+Economic resources can be controlled by Private Economic units/entities or
+Government entities or by both.
+Intro. to Agricultural Economics23
+Capitalism
+Private individuals have free control over their time and other economic
+resources, and determine exactly how to use those assets, with few
+legal controls by government.
+It is a self-regulating system which excludes government from economic
+decisions(there is little or no government participation in economic
+activities).
+Capitalism depends on the will and desires of those involved in the
+system.
+Market forces ofdemand & supplydetermine prices, allocate
+resources, and distribute income.
+Market prices indicate the value of resources and economic goods.
+Owners of businesses are calledCapitalists
+Intro. to Agricultural Economics24
+
+9/6/2024
+LUANAR_Introduction to Agricultural Economics5
+Socialism/Communism
+The basis of socialism as an economic system is public ownership of
+all productive resources.
+Government or “state” directs all decisions regarding utilization of
+resources (both human and nonhuman) by various sectors of the
+economy.
+Decisions are centralized by government planners.
+Prices of most essential goods and services are largely set by the
+government and administered to consumers and farmers.
+Example:The MCP-led government under Dr. H. Kamuzu Banda
+largely pursued Socialist economic policies.
+Intro. to Agricultural Economics25
+Mixed Economic System
+This system combines aspects of Capitalism and Socialism
+(Development State Policy).
+That is, market forces (ofDemand and Supply) are not entirely free to
+determine price in some markets but are free in other markets.
+The government’s intervention in the agricultural sector, for example,
+is well known(FISP, Setting of minimum/Maximum prices for
+agricultural produce).
+Intro. to Agricultural Economics26
+Traditional System
+In a traditional system, things are done without any proper formal
+system and without any prescribed or known pattern.
+Economic decisions are based on customs, religious beliefs and culture
+that has been passed from generation to generation.
+Examples:
+Nomadic life of Massai People
+Bushmen of Kalahari desert
+Intro. to Agricultural Economics27
+Some Economic Terminologies and Concepts...
+1. Scarcity, 
+2. Resources, 
+3. Needs/Wants
+4. Opportunity Cost
+5. Interest rate
+6. Gross National/Domestic Product
+7. Demand/Supply
+8. Elasticity
+9. Marginal Analysis
+10.Employment
+11.Inflation
+12.Depreciation
+13.Devaluation
+14.Economic/Accounting profit
+15.Investment
+16.Rate of return
+17.Exchange rate
+18.Balance of Payment
+19.Trade Balance
+20.Exports/Imports.
+28Intro. to Agricultural Economics

@@ -1,0 +1,516 @@
+
+
+
+
+Polysaccharides
+Polysaccharide or Glycan is the name 
+given into a macromolecule 
+consisting of a large number of 
+monosaccharide (glycose)
+These are joined by the glycosidic
+linkage
+They can be linear, branched or 
+cyclic.
+
+Polysaccharides
+They have reducing sugar one end (Reducing 
+polysaccharides) or non reducing sugars 
+both sides.
+◦A reducing sugar is any sugar that is capable of 
+acting as a reducing agent because it has a free 
+aldehyde group or a free ketone group. 
+◦A non-reducing sugar is a carbohydrate that is 
+not oxidized by a weak oxidizing agent
+All monosaccharidesare reducing sugars, 
+along with some disaccharides, some 
+oligosaccharides, and some polysaccharides.
+
+Polysaccharides
+Examples of sugars that are non reducing 
+sugars
+
+Nomenclature of Polysaccharides
+Revisit Oligosaccharides
+However it follows general principles. Some 
+are:
+1.Generic name: Polysaccharide (glycan) 
+2.Polysacchridescomposed of one kind of 
+monosaccharide are homopolysaccharides
+(monoglycan)
+3.If two different monomeric units are 
+present, they are called 
+heteropolysaccharidesor heterogylcan.
+
+Nomenclature of Polysaccharides
+4.Glycan from single type glycoseis 
+named by replacing suffix “ose” by “an”-
+Example: 
+Glucose = Glucan(starch and cellulose), 
+Xylose = Xylan
+Galactose= Galactan
+5.“D” and “L” for configurationalseries of 
+the monomer must be shown
+-4)DGlc(α1-3)DGlc(α1-4)DGlc(α1-3)DGlc(α1-
+
+Nomenclature of Polysaccharides
+6.A polysaccharide (glycan) composed 
+entirely of glycuronicacid residues is 
+named by replacing “icacid” by “an.”
+◦The generic name for this glycuronicacid is 
+therefore “glycuronan.”
+◦Example:  Pecticacid (D–Galacturonicacid)
+Is called: 
+D-Galacturonan
+
+Nomenclature of Polysaccharides
+7.When substitution occurs in a glycan, each 
+substituted type of residue is made of the name 
+and placed in alphabetical
+8.When major linkage contained in the 
+homoglycanis known, an indication of it may be 
+included in the name
+9.When the glycan with a principal chain of only 
+one type of sugar residue, it is written last, with 
+the other sugar residues present listed in 
+alphabetical order. 
+However, when no single type of sugar residue 
+constitutes the principal chain, all sugar residues 
+should be given alphabetically, and the name 
+terminated with the glycan.
+
+Nomenclature of Polysaccharides
+8. Polymers containing covalently bound 
+monosaccharide and amino-acid 
+residues are termed glycoproteins, 
+proteoglycans, and peptidoglycans
+
+Structure of Polysaccharides
+Polysaccharides, like oligosaccharides, consist of 
+monosaccharidesbound to each other by 
+glycosidiclinkages. 
+Their acidic hydrolysis yields monosaccharides. 
+Enzymatic hydrolysis provides oligosaccharides
+
+Polysaccharides (glycans) can consist of one 
+type of sugar structural unit (homoglycans) 
+or of several types of sugar units 
+(heteroglycans).
+The monosaccharidesmay be joined:
+◦in a linear pattern (as in celluloseand amylose)
+◦in a branched fashion (amylopectin, glycogen, 
+guaran).
+Structure of Polysaccharides
+
+Amylose
+
+WHAT IS AMYLOSE?
+Amylose is a linear polysaccharide 
+structure that is formed when D-glucose 
+molecules are joined together.
+It occurs when one carbon atom of one 
+glucose combines with four carbon atom 
+of another glucose molecule by a 
+glycosidicbond.
+These molecules are tightly packed 
+together and they do not form any 
+branches. 
+
+Amylose
+It is the crystallizableform of starch, 
+consisting of long unbranched 
+polysaccharide chains
+It is one of the two components of starch, 
+making up approximately 20-30%. 
+Amylose is more resistant to digestion 
+than other starch molecules and is 
+therefore an important form of resistant 
+starch
+
+Amylose
+It is relatively soluble in water
+Consists of a chain of a few thousand to 
+over a million Glucose units linked 
+through α-1,4 glycosidicbonds (Extension 
+of maltose).
+Amylose is broken down by salivary 
+amylase
+In the laboratory it can be broken down 
+by acid hydrolysis method
+
+Structure of Amylose
+
+Cellulose
+
+WHAT IS CELLULOSE?
+Cellulose is a structural polysaccharide 
+where D-glucose are joined together. 
+The glucose molecules are joined 
+together by β(1→4) glycosidicbonds and 
+they are unbranched due to the rigid 
+structure.
+The molecule formed is insoluble in 
+water and it is quite common in green 
+plants with the cell walls. 
+
+Structure of Cellulose
+
+Similarities between Amylose 
+and Cellulose 
+Both are polysaccharides
+Both occur in plants
+Both have an unbranched chain
+Both form glycosidicbonds during the 
+condensation reaction
+
+Core Difference between 
+Amylose and Cellulose
+Amylose can be digested by the human 
+digestive system while cellulose cannot be 
+digested by the human digestive system.
+Amylose is used in making thickening and 
+binding agents while cellulose for 
+paperboard and paper production
+Amylose turn brown iodine solution to 
+blue-black while cellulose reacts with 
+anthronein sulphuricacid to form a 
+colored compound
+
+Core Difference between 
+Amylose and Cellulose
+The significance of amylose is plant energy 
+storage while cellulose is a structural 
+carbohydrate
+The bond presence in amylose is α(1→4) 
+glycosidicbonds while that of cellulose is 
+β(1→4) linked D-glucose units
+Amylose has no exact chemical formula 
+while that of cellulose is (C
+6
+H
+10
+O
+5
+)
+n
+Amylose has a linear polymer with 300 to 
+several thousand units of glucose while 
+cellulose is a straight-chain polymer with 
+3000 to several thousand units of glucose
+
+Core Difference between 
+Amylose and Cellulose
+Amylose is a storage polysaccharide while 
+cellulose is a structural polysaccharide
+Amylose is a linear helical carbohydrate 
+polymer made of α-D-glucose units while 
+cellulose is an organic polysaccharide 
+comprising a linear chain
+Amylose has less crystalline and 
+amorphous regions while cellulose has a 
+more crystalline and amorphous region.
+
+Amylopectin
+
+Amylopectin
+Branched chain polysaccharide, usually larger than 
+amylose; 
+◦up to 100 million Glucose units
+Has α-1,4 glycosidiclinks and α-1,6 glycosidic
+linkages
+Branch points occur every 24-30 glucose residues
+Relatively insoluble in water and has colloidal 
+properties
+Gives red-violet color when reacted with iodine
+Qualifies starch as the main energy store
+Hydrolysis yields –Isomaltoseand maltose
+
+Structure of Amylopectin
+
+MODIFIED STARCHES
+Starch properties and those of amylose 
+and amylopectin can be improved or 
+“tailored” by physical and chemical 
+methods to fit or adjust the properties to 
+a particular application or food product
+Modified starch is a food additive which is 
+prepared by treating starch or starch 
+granules, causing them to be partial 
+degraded
+
+USES OF MODIFIED STARCHES
+As Thickening agent
+As Stabilizers
+As Emulsifiers
+As Dusting agent
+As Drying aids
+In Pharmaceuticals
+As Binders in 
+coated paper
+As Clouding agent
+As Suspending 
+agent
+As freeze-thaw 
+stability
+Improve 
+appearance
+Adjust viscosity of a 
+food product
+etc
+
+Modified Starch
+1.Mechanically 
+Damaged Starches
+2.Extruded Starches
+3.Dextrins
+4.Pre-gelatinized 
+Starch
+5.Thin –Boiling 
+Starch
+6.Starch Ethers
+7.Starch Esters
+8.Cross –Linked 
+Starches
+9.Oxidized Starches
+10.Cationic starches
+11.Acetylated 
+starches
+12.Grafted starches
+13.etc
+These   include:
+
+a. Mechanically Damaged Starches
+Starch represents 67-68% of whole grain 
+wheat and between 78-82% of the flour 
+produced from milling.
+When starch granules are damaged by 
+grinding or by application of pressure at 
+various water contents, the amorphous 
+portion is increased, resulting in:
+◦improved dispersibilityand swellabilityin cold 
+water, 
+◦a decrease in the gelatinization temperature by 
+5–10 ◦C, and 
+◦an increase in enzymatic vulnerability. 
+
+a. Mechanically Damaged Starches
+In bread dough made from flour 
+containing damaged starch, for instance, 
+the uptake of water is faster and higher 
+and amylose degradation greater.
+Damaged starch (DS) is important in 
+bread making: 
+◦it absorbs 4 times its weight in water as 
+compared to 0.4 for native starch
+
+b.Dextrin
+Formed by roasting the starch with HCl
+Dextrinationis the heating of powdered 
+starch (in presence of acid) at different 
+temperature and with different reaction 
+times.
+Heating of starch (<15% of water) to 
+100–200 ◦C with small amounts of acidic 
+or basic catalysts causes more or less 
+extensive degradation. 
+
+b. Dextrin
+White and yellow powders are obtained 
+which deliver clear or turbid, highly sticky 
+solutions of varying viscosity. 
+These products are used as adhesives in 
+sweets and as fat substitutes.
+◦Also in paper and textile based industry
+
+Modified Starch
+Reading Assignment on other examples
+1.Extruded 
+Starches
+2.Pre-gelatinized 
+Starch
+3.Thin –Boiling 
+Starch
+4.Starch Ethers
+5.Starch Esters
+6.Cross –Linked 
+Starches
+7.Oxidized Starches
+8.Cationic starches
+9.Acetylated 
+starches
+10.Grafted starches
+11.etc
+
+CHARACTERISTICS OF STARCH
+Starches have the capacity to go through 
+the following processes:
+◦Dextrinization
+◦Gelatinisation
+◦Gel formation
+◦Retrogradation
+◦etc
+
+STARCH DEXTRINIZATION
+Dextrinisationis the process involving the 
+browning of starch foods when subjected 
+to dry heat.
+It is the break down of starch into 
+dextrins
+It changes the properties 
+of starch as a result of 
+heat application.
+◦It is a non-enzymatic 
+browning
+
+STARCH GELATINISATION
+What happens when starch is heated in a 
+liquid?
+◦Tiny granules of starch do not dissolve when 
+mixed in liquid instead forms suspension.
+◦Gelatinisationoccurs when they absorb liquid 
+when heated 
+◦Starch granules gets swell up when heating 
+continues
+◦Then the granules burst releasing the starch 
+which forms a gel with the liquid
+This thickens the liquid.
+
+STARCH GELATINISATION
+This is a process of breaking down the 
+intermolecular bonds of starch molecules 
+in the presence of water and heat 
+allowing the hydrogen bonding sites to 
+engage more water.
+It is the process where starch and water 
+are subjected to heat causingthe starch 
+granules to swell. 
+◦This gives the system a viscous and 
+transparent texture. 
+
+STARCH GELATINISATION
+This process occurs when starch granules 
+are heated in a liquid, causing them to 
+swell and burst, which results in the liquid 
+thickening.
+The result of the reaction is a gel, which is 
+used in sauces, puddings, creams, porridge, 
+pasta and other food products, providing 
+a pleasing
+
+GEL FORMATION OF STARCH
+Gelation is the process of formation of a 
+gel from a system with polymers
+
+GEL 
+FORMATION 
+
+STARCH GELATION
+
+RETROGRADATION
+Retrogradationis a reaction that takes 
+place when the amylose and amylopectin 
+chains in cooked, gelatinized starch realign 
+themselves as the cooked starch cools. 
+◦It is a process in which amylose and 
+amylopectin chains disaggregate in gelatinized 
+starch paste re-associate to form more 
+ordered structures
+
+RETROGRADATION
+This is collective processes of dissolved 
+starch becoming less soluble are. 
+Retrogradationof cooked starch involves 
+amyloseand amylopectin(Polymer 
+constituents)
+Amylose undergoing retrogradationat a 
+much more rapid rate than does 
+amylopectin. 
+◦Retrogradationis an ongoing process which 
+involves rapid recrystallization of amylose 
+followed by a slow one of amylopectin
+
+The rate of retrogradationdepends on 
+several variables which include:
+◦The molecular ratio of amylose to 
+amylopectin; (structures of the amylose and 
+amylopectin molecules)
+◦Storage temperature; 
+◦Starch concentration; 
+◦Presence and concentration of other 
+ingredients, such as surfactants and salts. 
+◦compositions such as water content, lipids 
+and anti-staling enzymes 
+RETROGRADATION
+
+Starch retrogradationleads to
+◦bread staling (change in texture and 
+flavor during storage)
+◦loss of viscosity 
+◦decrease the storage stability
+◦decrease the starch digestibility
+◦precipitation in soups and sauces,  etc
+EFFECTS OF RETROGRADATION
+
+RETROGRATION PROCESS
+
+BREAD STALING
+Staling is a chemical and physical process 
+in bread and other foods that reduces 
+their palatability
+It becomes and Leathery
+
+Staling is the decrease in the palatability 
+of cookies, cakes and bread that does not 
+include microbial contamination. 
+◦It is a change in both chemical and physical 
+attributes that give bread products a dry, 
+leathery texture. 
+It is a major problem in the baking 
+industry.
+
+What causes staling?
+It is caused mainly by 
+◦starch retrogradation
+This is the recrystallisationof the starch molecules
+Starch undergoes swelling or gelatinization when 
+heated in the presence of water
+◦Water migration and redistribution
+◦Protein –starch interaction
+◦Gluten transformation (Gluten cross-links in 
+the structure of the baked product)
+
+It is usually characterized by:
+Loss of aroma
+Loss of moisture and flavor
+Loss in product freshness
+Changes in mouth feel
+Development of crumbliness
+Toughening of the crust
+Firming of the crumb
+Characteristics of Bread Staling
+
+Prevention of Staling
+Storage temperatures (18 –25
+o
+C)
+Prevent Moisture migration and loss
+Processing factors such as: 
+◦lowering baking temperatures
+◦larger loaf volumes reduces staling
+Enzymes: 
+◦heat stable αamylase, lipase, lipoxygenase, 
+protesae, pullulanase, non starch 
+polysaccharide  modifying enzymes
+
+Prevention of Staling
+Ingredients 
+◦fats, wheat gluten, high protein flour and sugar
+Surface active agents (Lipids) as emulsifiers 
+Packaging
+Soy addition
+Malting and fermentation
+Incorporation of high fiber flours
+Reheating
+
+Prevention of Staling
+
+END OF LECTURES

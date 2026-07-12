@@ -1,0 +1,99 @@
+
+
+COURSE TITLE: HYDROLOGY AND AGROMETEOROLOGY 
+ 
+1. PROGRAMME    : Diploma in Irrigation Engineering 
+2. PRESENTED TO    : Faculty of Life Sciences and Natural Resources 
+3. PRESENTED BY    : Department of Land and Water Resources  
+4. SUBJECT     : Hydrology 
+5. YEAR OF STUDY    : 2  
+6. SEMESTER OF STUDY    : 2 
+7. COURSE TITLE     : Hydrology and Agrometeorology 
+8. MODULE CODE    : NHYD22201 
+9. DURATION    : 16 weeks  
+10. LECTURE HOURS PER WEEK  : 2 
+11. TUTORIAL HOURS PER WEEK  : 1 
+12. PRACTICAL HOURS PER WEEK  : 1 
+13. STUDENT INDEPENDENT LEARNING HOURS PER WEEK: 2 
+14. TOTAL CREDITS     : 3.0 
+15. PREREQUISITE COURSES   : Physics, Geography and Mathematics  
+16. COREQUISITE COURSES   : Fluid Mechanics and Hydraulics  
+17. DELIVERY METHODS  
+17.1 Mode of delivery     : Both face to face and ODL  
+17.2 Teaching methods     : Lectures, tutorials and practicals  
+17.3 Assessment weighting    : 40% Continuous Assessment and  
+60% End of Semester Examination 
+18. AIM(S) OF MODULE  
+To enable students to understand and apply hydrological analysis in the design of irrigation systems.  
+19. LEARNING OUTCOMES  
+ Upon successful completion of this course, students should be able to: 
+
+a. Understand the hydrological cycle and apply the water budget model in irrigation system 
+development  
+b. Know the various types of precipitation 
+c. Understand the different abstractions from precipitation 
+d. Conduct stream flow measurement  
+e. Apply hydrologic concepts in the design of irrigation and water engineering projects 
+f. Understand the basic hydrologic steps that are applied when establishing an irrigation 
+system  
+ 
+  
+20. TOPICS OF STUDY 
+ 
+20.1 Lectures  
+a. Introduction to hydrology  
+• Hydrologic cycle  
+• Water budget equation  
+• World water balance  
+• Hydrological applications in engineering  
+• Sources of hydrological data  
+b. Precipitation  
+• Forms of precipitation  
+• Annual rainfall in Malawi  
+• Measurement of rainfall  
+• Classification of rain gauges  
+• Adequacy of rain gauge stations  
+• Estimation of missing data  
+• Presentation of rainfall data 
+• Frequency of point rainfall  
+• Plotting position  
+
+c. Abstractions from precipitation  
+• Evaporation  
+• Interception  
+• Depression storage  
+d. Stream flow measurement  
+• Measurement of stage  
+• Area-velocity method of discharge measurement  
+• Runoff  
+• Hydrographs 
+• Runoff volume  
+e. Overview of water resource areas and units in Malawi  
+• Basic hydrological steps in establishing an irrigation scheme 
+- Irrigation scheme identification  
+- Water source location  
+- Identification of appropriate WRA or WRU  
+- Identification of a gauging station in proximity to the water source 
+f. Design flood estimation  
+• Regional flood frequency method  
+• Rational method 
+ 
+20.2 PRACTICALS 
+• Spatial analysis and catchment delineation in QGIS 
+• Hydrological analysis using HEC-HMS  
+• SWAT Model analysis  
+• Determination of run off coefficients using landuse shapefiles in QGIS 
+21. PRESCRIBED TEXTS 
+Subramanya, K. (2013). Engineering hydrology, 4e. Tata McGraw-Hill Education. 
+ 
+
+22. RECOMMENDED READINGS 
+ 
+Bekiashev, K. A., & Serebriakov, V. V. (1981). World Meteorological Organization (WMO). In International 
+Marine Organizations (pp. 540-552). Springer, Dordrecht. 
+Eslamian, S. (Ed.). (2014). Handbook of engineering hydrology: fundamentals and applications. CRC 
+Press. 
+Musy, A., Hingray, B., & Picouet, C. (Eds.). (2014). Hydrology: a science for engineers. CRC press. 
+Te Chow, V., Maidment, D. R., & Mays, L. W. (1962). Applied hydrology. Journal of Engineering 
+Education, 308, 1959. 
+ 

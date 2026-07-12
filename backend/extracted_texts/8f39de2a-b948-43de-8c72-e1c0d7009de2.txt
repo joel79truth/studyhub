@@ -1,0 +1,203 @@
+
+
+PHYSICAL PROPERTIES OF 
+SOIL
+
+Soil physical properties 
+The main soil physical properties are: 
+•Soil Profile
+•Soil Texture
+•Soil Structure
+•Soil Consistence/Soil Strength
+•Soil Color
+•Soil Permeability
+•Soil Temperature
+•Soil Density
+
+Soil profile
+R
+
+Soil texture 
+Textureindicates the relative content of particles of various sizes, such as sand, silt and clay in 
+thesoil.
+Textureinfluences the ease with whichsoilcan be worked, the amount of water and air it holds, and 
+the rate at which water can enter and move throughsoil. 
+Particles greater than 2mm are not referred to as soil:
+Example: 2.0 –7.5mm = gravel
+  7.5 – 25mm = cobbles
+  25 – 60 mm = stones
+  Over 60 mm = boulders
+Source
+Soil particles/separates
+SandSiltClay
+USDA. US Dept of Agriculture.
+2mm – 50m50m – 2m2m
+BSI = British Standards Institute
+2mm – 60m60m – 2m2m
+
+TEXTURAL CLASSIFICATION - TRIANGULATION
+
+Determination of soil particles (sizes)
+HOW TO DETERMINE THE AMOUNT OF 
+SAND, SILT AND CLAY (Particle size 
+analysis)
+i. By sieving
+Used to separate soil particles 2mm and 
+rock particles 2mm
+Problem: very fine particles are difficult to 
+separate using this method
+
+ii. Sedimentation
+Putting the soil in a fluid container and the 
+different soil particles are going to settle down at 
+different rates.
+Large particles will fall through a liquid faster than 
+do small particles.
+
+Importance of knowing soil texture
+Characteristic sandsiltclay
+Water holding capacitylowmediumhigh
+Total pore spaceLeastMediumHighest
+Pore sizeLargeMediumVery fine
+Air/water movementVery goodMediumSlow
+TillageEasyMediumDifficult
+FertilityPoorMediumHigh
+Shrinkage/swellingnonemediumVery high
+
+Suitability of different crops 
+Sandy soil
+Tubers: yams, sweet potato, coconuts, cassava, g/nut
+Millet, pineapple, cashew-nut
+Loam soil
+Fruits, vegetables, maize, wheat, bananas, coffee, tea, 
+legumes
+Clay soil
+Sugarcane, finger-millet, rice 
+
+Soil structure
+Soil structure is the arrangement and binding together of soil particles 
+into larger clusters, called aggregates
+1Granularandcrumbstructuresare individual particles of sand, silt 
+and clay grouped together in small, nearly spherical grains. Water 
+circulates very easily through such soils. They are commonly found in 
+the A-horizon of the soil profile
+2 Blockystructuresare soil particles that cling together in nearly square 
+or angular blocks having more or less sharp edges. They are commonly 
+found in the B-horizon where clay has accumulated
+
+3Prismaticand columnar structuresare soil particles which have 
+formed into vertical columns or pillars separated by miniature, but 
+definite, vertical cracks. Water circulates with greater difficulty and 
+drainage is poor. They are commonly found in the B-horizon.
+4 Platy structureis made up of soil particles aggregated in thin 
+plates or sheets piled horizontally on one another. Plates often 
+overlap, greatly impairing water circulation. They are commonly 
+found in forest soils, in A- horizon.
+
+Importance of soil aggregation 
+✓Increasing stability against erosion
+✓Maintaining porosity and soil water movement, 
+✓Improving fertility. 
+•The quality of soil structure will decline under most forms 
+ofcultivation—the associated mechanical mixing of the soil. 
+•it also exposes organic matter to a greater rate of decay 
+andoxidation.
+•A further consequence of continued cultivation and traffic is the 
+development ofcompacted, impermeable layers or pans within 
+the profile.
+
+The decline of soil structure underirrigationis usually related to the breakdown of 
+aggregates and dispersion ofclay material as a result of rapid wetting. 
+A wide range of practices are undertaken to improve soil structure. For instance,
+•Increasing organic matter in the soil; 
+•Reducing or eliminatingtillage; 
+•avoiding soil disturbance during periods of excessive dry or wet when soils may 
+accordingly tend to shatter or smear; 
+•Ensuring sufficient ground cover to protect the soil from raindrop impact. 
+In irrigated land it is e recommended to 
+➢apply gypsum (CaSO4) to displace sodium (Na) cations with calcium 
+➢avoid rapid wetting
+➢and avoid disturbing soils when too wet or dry
+
+Soil Consistence
+•Describes the physical condition of soil at various water content as its response/ 
+resistance to deformation
+•It is a physical property of soil that results from the combination of texture, OM 
+content and water content
+•Depending upon the amount of water, the soil may be hard, friable or sticky
+•Soils generally work best when they have a friable consistence: this means that there 
+is just enough water for the formation of a caste when a quantity of soil is squeezed in 
+the hand.
+•Friable state is where cultivation is supposed to take place. If it is possible to plant, 
+time to plant would be at the friable state. The soil responds well to deformation
+
+SOIL COLOUR
+Soil colour is usually due to 3 main pigments:
+➢black—from organic matter
+➢red—from iron andaluminium oxides
+➢white—fromsilicates and salt.
+Colour can be a useful indicator of some of the general properties of a soil, as 
+well as some of the chemical processes that are occurring beneath the surface.
+
+SOIL PERMIABILITY
+This is a measure of the soils ability to allow fluids and air to pass through it. 
+Thepermeability testis a measure of the rate of the flow of water throughsoil. In thistest, 
+water is forced by a known constant pressure through asoilspecimen of known dimensions 
+and the rate of flow is determined.
+Average permeability for different soil textures in cm/hour
+Sand5.0
+Sandy loam2.5
+Loam1.3
+Clay loam0.8
+Silty clay0.25
+Clay0.05
+
+SOIL TEMPERATURE 
+Soil temperature is the measurement of the warmth in the soil 
+Ideal soil temperature for planting most plants are 18 to 24 Degrees Celsius 
+Mean annual soil temperatures are 2 – 4 Degrees Celsius warmer than air temperatures 
+Soil temperature is important as it affects
+•Chemical reactions in the soil
+•Growth of plants
+•Decomposition of organic matter
+Management of soil temperature
+➢Regulating soil moisture content
+➢Mulching
+➢Intercropping 
+
+SOIL DENSITY
+Soil compaction occurs when soil particles are pressed together, reducing pore 
+space between them.  One way to quantify the change is by measuring the bulk 
+density and the particle density. 
+PARTICLE DENSITY (
+p
+)
+Mass per unit volume of the dry soil solids.  It is measured as mass of 
+grains/Volume of particles Units: g/cm
+3.  
+Pycnometer method can be used to 
+determine particle density.
+BULK DENSITY (
+b
+)
+Is the dry weight of soil per unit volume. Bulk density considers both the solids 
+and the pore space; whereas, particle density considers only the mineral solids.
+It is measured as mass of solids/total volume [Volume of solids+ Air+ water]
+As the pore space decrease in a soil, the bulk density is increased. 
+
+SOIL PROPERTIES 
+PHYSICAL CHEMICALS
+CHEMICAL PROPERTIES
+BIOLOGICAL PROPORTIES OF SOIL
+SOIL FERTILITY 
+FERTLIZERS
+INORGANIC FERTILIZER
+ORGANIC FARTILIZER
+SOIL EROSION AND CONSERVATION
+ESTIMATING SOIL LOSS
+PHYSICAL SOIL AND WATER CONSERVATION MEASURES
+BOILOGICAL CONSERVATION MEASURES 
+LAND USE CAPABILITY CLASSIFICATION AND LAND USE PLANNING
+VILLAGE BASED CATCHMENT CONSERVATION
+
+FEEDBACK?

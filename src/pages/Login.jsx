@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { SocialLogin } from '@capgo/capacitor-social-login';
+import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 import { supabase } from '../supabase';
 
 export default function Login() {
@@ -12,21 +12,30 @@ export default function Login() {
   const [phone, setPhone] = useState('');
   const [error, setError] = useState('');
 
-  // Email sign‑in
+  // ─── Email sign‑in ──────────────────────────────────
   const handleEmailSignIn = async (e) => {
     e.preventDefault();
-    if (!email || !password) { setError('Please enter email and password'); return; }
-    if (password.length < 6) { setError('Password must be at least 6 characters'); return; }
+    if (!email || !password) {
+      setError('Please enter email and password');
+      return;
+    }
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters');
+      return;
+    }
     setLoading(true);
     setError('');
     try {
+      console.log('📧 Attempting email sign-in:', email);
       const { data, error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) {
         if (error.message.includes('Invalid login credentials')) {
           const confirm = window.confirm('No account found. Create a new one?');
           if (confirm) {
+            console.log('📝 Creating new account...');
             const { data: signUpData, error: signUpError } = await supabase.auth.signUp({ email, password });
             if (signUpError) throw signUpError;
+            console.log('✅ Sign-up successful');
             navigate('/', { replace: true });
           } else {
             setError('Sign‑in cancelled.');
@@ -35,97 +44,202 @@ export default function Login() {
           throw error;
         }
       } else {
+        console.log('✅ Email sign-in successful');
         navigate('/', { replace: true });
       }
     } catch (err) {
+      console.error('❌ Email sign-in error:', err);
       setError('Email sign‑in error: ' + err.message);
     } finally {
       setLoading(false);
     }
   };
 
-  // Google sign‑in
+  // ─── Google sign‑in with detailed logging ─────────
   const handleGoogleSignIn = async () => {
     setLoading(true);
     setError('');
+    console.log('🚀 Starting Google sign-in process...');
+
     try {
+      // Check platform
       const isCapacitor = typeof window !== 'undefined' && window.Capacitor?.isNativePlatform?.();
+      console.log('📱 Is native Capacitor platform?', isCapacitor);
 
       if (isCapacitor) {
-        const result = await SocialLogin.login({
+        // Initialize Google Auth
+        console.log('🔧 Initializing GoogleAuth...');
+        await GoogleAuth.initialize({
+          clientId: '985257842533-buh0i8r3jb1gtu1rbod1lql940ckn0hk.apps.googleusercontent.com',
+          scopes: ['profile', 'email'],
+          grantOfflineAccess: true,
+        });
+        console.log('✅ GoogleAuth initialized');
+
+        // Trigger sign-in
+        console.log('🔄 Calling GoogleAuth.signIn()...');
+        const result = await GoogleAuth.signIn();
+        console.log('📦 Full Google sign-in result:', JSON.stringify(result, null, 2));
+        console.log('📦 Result keys:', Object.keys(result));
+        console.log('📦 result.authentication?', result.authentication ? 'yes' : 'no');
+
+        // Extract ID token from all possible locations
+        console.log('🔍 Extracting ID token...');
+        let idToken = null;
+
+        // Try common fields for different plugin versions
+        if (result.idToken) {
+          console.log('✅ Found token at result.idToken (type:', typeof result.idToken, ', length:', result.idToken.length, ')');
+          idToken = result.idToken;
+        } else if (result.authentication?.idToken) {
+          console.log('✅ Found token at result.authentication.idToken');
+          idToken = result.authentication.idToken;
+        } else if (result.credential) {
+          console.log('✅ Found token at result.credential');
+          idToken = result.credential;
+        } else if (result.token) {
+          console.log('✅ Found token at result.token');
+          idToken = result.token;
+        } else if (result.id_token) {
+          console.log('✅ Found token at result.id_token');
+          idToken = result.id_token;
+        }
+
+        // Log token details
+        if (idToken) {
+          console.log('🔑 ID token exists');
+          console.log('   - Type:', typeof idToken);
+          console.log('   - Length:', idToken.length);
+          console.log('   - First 30 chars:', idToken.substring(0, 30) + '...');
+          console.log('   - Is JWT?', idToken.startsWith('eyJ'));
+        } else {
+          console.error('❌ ID token is null/undefined!');
+          console.log('⚠️  Dumping entire result object for inspection:');
+          console.dir(result);
+          throw new Error('No ID token received from Google. Available keys: ' + Object.keys(result).join(', '));
+        }
+
+        // Validate token before sending to Supabase
+        if (idToken.length < 100) {
+          console.error('❌ Token too short, possibly not a JWT. Token:', idToken);
+          throw new Error('Google returned an invalid ID token (too short).');
+        }
+
+        // Send to Supabase with CORRECT parameter name
+        console.log('🔄 Sending ID token to Supabase...');
+        console.log('   - Provider: google');
+        console.log('   - Token length:', idToken.length);
+        console.log('   - Token preview:', idToken.substring(0, 50) + '...');
+
+        const { data, error: supabaseError } = await supabase.auth.signInWithIdToken({
           provider: 'google',
-          options: {
-            clientId: '985257842533-l24cit0aloaqociulgcp2ghd36kgf2oc.apps.googleusercontent.com',
-          },
+          token: idToken, // ✅ CORRECT: use 'token', NOT 'idToken'
         });
 
-        if (result?.result?.token) {
-          const { data, error: supabaseError } = await supabase.auth.signInWithIdToken({
-            provider: 'google',
-            idToken: result.result.token,
-          });
-          if (supabaseError) throw supabaseError;
-          navigate('/', { replace: true });
-        } else {
-          throw new Error('Native token acquisition failed or was cancelled.');
+        if (supabaseError) {
+          console.error('❌ Supabase returned error:', supabaseError);
+          console.error('   - Message:', supabaseError.message);
+          console.error('   - Status:', supabaseError.status);
+          console.error('   - Full error:', JSON.stringify(supabaseError, null, 2));
+          throw supabaseError;
         }
+
+        console.log('✅ Supabase sign-in successful!');
+        console.log('   - User:', data?.user?.email);
+        navigate('/', { replace: true });
+
       } else {
+        // Web fallback
+        console.log('🌐 Running on web, using OAuth redirect...');
         const { data, error } = await supabase.auth.signInWithOAuth({
           provider: 'google',
           options: { redirectTo: window.location.origin }
         });
-        if (error) throw error;
+        if (error) {
+          console.error('❌ Web OAuth error:', error);
+          throw error;
+        }
+        console.log('🔄 OAuth redirect initiated');
       }
     } catch (err) {
-      console.error('Google sign-in error:', err);
+      console.error('❌ Google sign-in catch block:', err);
+      console.error('   - Error name:', err.name);
+      console.error('   - Error message:', err.message);
+      console.error('   - Error stack:', err.stack);
       setError('Google sign-in error: ' + err.message);
     } finally {
       setLoading(false);
+      console.log('🏁 Google sign-in process finished');
     }
   };
 
-  // Phone OTP
+  // ─── Phone OTP ─────────────────────────────────────
   const handleSendOtp = async () => {
-    if (!phone) { setError('Enter phone number'); return; }
+    if (!phone) {
+      setError('Enter phone number');
+      return;
+    }
     const fullPhone = '+265' + phone.replace(/^0+/, '');
-    if (!/^\+265[0-9]{9}$/.test(fullPhone)) { setError('Invalid Malawi number'); return; }
+    if (!/^\+265[0-9]{9}$/.test(fullPhone)) {
+      setError('Invalid Malawi number');
+      return;
+    }
     setLoading(true);
     setError('');
     try {
+      console.log('📱 Sending OTP to', fullPhone);
       const { error } = await supabase.auth.signInWithOtp({ phone: fullPhone });
       if (error) throw error;
       const code = window.prompt('Enter 6‑digit OTP sent to ' + fullPhone);
       if (code && code.length === 6) {
-        const { error: verifyError } = await supabase.auth.verifyOtp({ phone: fullPhone, token: code, type: 'sms' });
+        console.log('🔢 Verifying OTP...');
+        const { error: verifyError } = await supabase.auth.verifyOtp({
+          phone: fullPhone,
+          token: code,
+          type: 'sms'
+        });
         if (verifyError) throw verifyError;
+        console.log('✅ OTP verified');
         navigate('/', { replace: true });
       } else {
         setError('Invalid OTP or cancelled');
       }
     } catch (err) {
+      console.error('❌ Phone auth error:', err);
       setError('Phone auth error: ' + err.message);
     } finally {
       setLoading(false);
     }
   };
 
-  // Session listener
+  // ─── Session listener ──────────────────────────────
   useEffect(() => {
     let isMounted = true;
+    console.log('🔍 Checking existing session...');
     supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session?.user && isMounted) navigate('/', { replace: true });
+      if (session?.user && isMounted) {
+        console.log('✅ Existing session found, navigating home');
+        navigate('/', { replace: true });
+      } else {
+        console.log('ℹ️  No active session');
+      }
     });
+
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      console.log('🔄 Auth state changed:', event);
       if ((event === 'SIGNED_IN' || event === 'USER_UPDATED') && session?.user && isMounted) {
+        console.log('✅ User signed in, navigating home');
         navigate('/', { replace: true });
       }
     });
+
     return () => {
       isMounted = false;
       subscription?.unsubscribe();
     };
   }, [navigate]);
 
+  // ─── Render ────────────────────────────────────────
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50 p-4">
       <div className="w-full max-w-md bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/50">

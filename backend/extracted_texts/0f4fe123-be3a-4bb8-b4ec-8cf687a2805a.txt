@@ -1,0 +1,584 @@
+
+
+9.5.1
+https://math.libretexts.org/@go/page/41327
+9.5: Combining the Transformations
+In the previous sections, we have seen how the various transformations act on the trigonometric functions and we have worked
+with the first three (amplitude, period and vertical shift) in combination with each other. Combining the phase shift with the other
+transformations is tricky because of the way that the period and the phase shift interact with each other. 
+Now we have two standard equations for the sinusoid: 
+and 
+ and  the amplitude and the vertical shift affect the  -axis, while  and  affect the  -axis. 
+ 
+Let's look at an example in which we need to combine a change in the period of the graph with a phase shift.
+Example 1 
+Graph at least one period of the given function. Indicate the important values along the  and  axes. 
+ 
+The transformations in this example only affect the  -axis. The period of the function is  So, the function will
+complete one full cycle over a distance of  along the  -axis.
+However, because of the phase shift, this graph will not start at 0 and end at  We need to find the new starting point that is
+caused by the phase shift. So, we take what is called the "argument," or what it is we're finding the cosine of:  and set that
+equal to zero. 
+This is our new starting point. To identify the critical values along the  -axis, we'll need to determine how far each "jump  would
+be given a period of  
+So, each subsequent critical value along the  -axis will be a distance of  from the previous one. If we start at our new starting
+point for this function  then if we add  a total of 4 times, we will arrive at each of the five critical values for this function.
+So, each subsequent critical value along the  -axis will be a distance of  from the previous one. If we start at our new starting
+point for this function  then if we add  a total of 4 times, we will arrive at each of the five critical values for this function 
+So the critical values along the  -axis would be: 
+y=Asin(Bx+C)+D(9.5.1)
+y=Acos(Bx+C)+D(9.5.2)
+AD,yBCx
+xy
+y=cos(4x+π)
+x==.
+2π
+B
+2π
+4
+π
+2
+π
+2
+x
+.
+π
+2
+(4x+π)
+4x+π=0
+4x=−π
+x=−
+π
+4
+(9.5.3)
+x
+′′
+π
+2
+∗=
+π
+2
+1
+4
+π
+8
+(9.5.4)
+x
+π
+8
+−,
+π
+4
+π
+8
+x
+π
+8
+−,
+π
+4
+π
+8
+−+=−+=−
+π
+4
+π
+8
+2π
+8
+π
+8
+π
+8
+−+=0
+π
+8
+π
+8
+0+=
+π
+8
+π
+8
++==
+π
+8
+π
+8
+2π
+8
+π
+4
+(9.5.5)
+x
+−,−,0,, and 
+π
+4
+π
+8
+π
+8
+π
+4
+(9.5.6)
+
+9.5.2
+https://math.libretexts.org/@go/page/41327
+Notice that the distance between the starting point  and the ending point  is equal to the period we found at the beginning of
+the problem, which was  Now let's graph the function:
+since there were no changes to the  -axis, the amplitude for the function is 1 and the vertical shift is 0. Along the  -axis, we see a
+positive sine function that starts  then goes up to  back down through (0,0) to  and back up to 
+to complete one full cycle of the graph.
+Let's look at an example in which there are some changes to the  -axis as well as the  -axis.
+Example 2 
+Graph at least one period of the given function. Be sure to identify critical values along the  and  axes. 
+Remember which coefficients affect which axis in graphing: 
+ 
+In this example, the amplitude is  since there is no coefficient in front of the cosine function. The vertical shift is  which will
+shift the function down a distance of 2.5 on the  -axis. So, the mid-line or "zero" points of the graph will be at  the
+maximum  value will be -1.5 and the minimum  value will be -3.5
+Along the  -axis, the period for the graph will be  since the coefficient  in this problem is  To find the new starting
+point, we'll take the argument of the cosine function and set it equal to zero. 
+So, our new starting point will be at  To determine the other critical values along the  -axis, we can find out how far each
+"jump" between the critical values would be. To do this, we take the period  and divide it by 4 (or multiply by 
+ 
+Now we can add this value to our new starting point four times to determine the other critical values along the  -axis.
+−
+π
+4
+π
+4
+.
+π
+2
+yx
+at(−,0)
+π
+4
+(−,1),
+π
+8
+(,−1)
+π
+8
+(,0)
+π
+4
+yx
+xy
+y=−+cos(3x−π)
+5
+2
+(9.5.7)
+1,−,
+5
+2
+y−2.5,
+yy
+x=,
+2π
+B
+2π
+3
+B3.
+3x−π=0
+3x=π
+x=π∗=
+1
+3
+π
+3
+(9.5.8)
+.
+π
+3
+x
+()
+2π
+3
+)
+1
+4
+∗==
+2π
+3
+1
+4
+2π
+12
+π
+6
+(9.5.9)
+x
++=+==
+π
+3
+π
+6
+2π
+6
+π
+6
+3π
+6
+π
+2
++==
+3π
+6
+π
+6
+4π
+6
+2π
+3
++=
+4π
+6
+π
+6
+5π
+6
++=π
+5π
+6
+π
+6
+(9.5.10)
+
+9.5.3
+https://math.libretexts.org/@go/page/41327
+So the critical values along the  -axis would be: 
+Again, notice that the distance along the  -axis from the starting point to the ending point is the period:  Now let's graph the
+function:
+Let's look at one more example. 
+Example 3 
+Sometimes the coefficient  appears factored out of the argument as it does in the problem below.
+Graph at least one period of the given function. Be sure to include the critical values along the  and  axes. 
+ 
+First let's see how the  and  axes are affected by the transformations in this problem.
+The amplitude in this problem is 4 and the vertical shift is -1 
+The period for this graph is  Notice that the value of  is 2 in this example, even though it's been factored out from
+the rest of the argument.
+The new starting point for the graph is actually easier to find in problems of this type. If we take the argument as it is and set it
+equal to zero: 
+we can divide through on both sides by 2 to cancel out the factor of  : 
+x
+,,,, and 
+2π
+6
+3π
+6
+4π
+6
+5π
+6
+6π
+6
+(9.5.11)
+ or 
+,,,, and π
+π
+3
+π
+2
+2π
+3
+5π
+6
+(9.5.12)
+x.
+2π
+3
+B
+xy
+y=4sin2(x+)−1
+π
+3
+xy
+y=4sin2(x+)−1
+π
+3
+(9.5.13)
+==π.
+2π
+B
+2π
+2
+B
+2(x+)=0
+π
+3
+(9.5.14)
+B
+
+9.5.4
+https://math.libretexts.org/@go/page/41327
+So, the new starting point for the function is  
+Now let's find the rest of the critical values along the  -axis. The period for this graph is  so the "jump " between the critical
+values along the  -axis will be: 
+To find the rest of the critical values we'll need to add  to the starting point of the graph  four times: 
+So the critical values along the  -axis would be: 
+Or 
+Now that we've addressed each of the four transformations let's use this information to draw the graph. First the  -axis - the
+amplitude is 4 and the vertical shift is -1:
+Now, let's fill in the information for the  -axis. The critical values along the  -axis  and 
+=
+2(x+)
+π
+3
+2
+0
+2
+x+=0
+π
+3
+x=−
+π
+3
+(9.5.15)
+−
+π
+3
+xπ,
+x
+π∗=
+1
+4
+π
+4
+(9.5.16)
+π
+4
+(−)
+π
+3
+−+=−+=−
+π
+3
+π
+4
+4π
+12
+3π
+12
+π
+12
+−+==
+π
+12
+3π
+12
+2π
+12
+π
+6
++=
+2π
+12
+3π
+12
+5π
+12
++==
+5π
+12
+3π
+12
+8π
+12
+2π
+3
+(9.5.17)
+x
+−,−,,, and 
+4π
+12
+1π
+12
+2π
+12
+5π
+12
+8π
+12
+(9.5.18)
+−,−,,, and 
+π
+3
+π
+12
+π
+6
+5π
+12
+2π
+3
+(9.5.19)
+y
+xxare−,−,,,
+π
+3
+π
+12
+π
+6
+5π
+12
+2π
+3
+
+9.5.5
+https://math.libretexts.org/@go/page/41327
+The function we're graphing is a positive sine function, so it will start at the "midline" or zero value (which in this case is -1 ), go
+up to the maximum, back through the mid-line to the minimum and back to the mid-line:
+Determine the Amplitude, Period, Vertical Shift and Phase Shift for each function and graph at least one complete period. Be sure
+to identify the critical values along the  and  axes.
+1.  
+2.  
+3.  
+4.  
+5.  
+6.  
+7.  
+ 
+ 
+ 
+11. 
+12.  
+13.  
+ 
+15.  
+16.  
+ 
+18. 
+In problems  determine an equation for the function that is shown.
+xy
+y=sin(x+)
+π
+2
+y=sin(x−π)
+y=3cos(x−)
+π
+2
+y=cos(x+π)
+1
+2
+y=3+cos(x−)
+π
+4
+y=−2+sin(x+)
+π
+6
+y=sin(2x−π)
+8.y=sin(4x+)
+π
+4
+9.y=2cos(+π)
+x
+2
+10.y=−3sin(6x−π)
+y=−sin(2x+)
+1
+3
+π
+4
+y=cos(−π)
+1
+2
+x
+2
+y=2sin(2x−)−1
+π
+3
+14.y=1+2cos(3x+)
+π
+2
+y=3cos2(x+)
+π
+6
+y=−4sin2(x+)
+π
+2
+17.y=sin(x+)
+1
+2
+π
+4
+y=3+2sin3(x+)
+π
+2
+19−22,
+
+9.5.6
+https://math.libretexts.org/@go/page/41327
+Match the function to the appropriate graph 
+23.  
+24.  
+25.  
+26.  
+27.  
+28.  
+29.  
+30. 
+y=−cos2x
+y=sinx−2
+1
+2
+y=2cos(x+)
+π
+2
+y=−3sinx−1
+1
+2
+y=sin(x−π)−2
+y=−cos(x−)
+1
+2
+π
+4
+y=sin3x
+1
+3
+y=cos(x−)
+π
+2
+
+9.5.7
+https://math.libretexts.org/@go/page/41327
+Determine the Amplitude, Period, Vertical Shift and Phase Shift for each function and graph at least one complete period. Be sure
+to identify the critical values along the  and  axes. 
+31.  
+32.  
+33.  
+ 
+35.  
+36.  
+37.  
+38. 
+This page titled 9.5: Combining the Transformations is shared under a CC BY-NC-SA 4.0 license and was authored, remixed, and/or curated by
+Richard W. Beveridge.
+2.5: Combining the Transformations by Richard W. Beveridge is licensed CC BY-NC-SA 3.0.
+xy
+y=2cos(2x+)−1
+π
+2
+y=−4cos(3x−2π)
+y=sin(2x−)
+π
+4
+34.y=−sin(3x+π)
+y=3cos(x+)+1
+π
+3
+y=−2sin(3x−)+4
+π
+2
+y=−sin(x−)−2
+1
+2
+π
+2
+y=2−cos(2x−)
+π
+3

@@ -1,0 +1,2572 @@
+
+
+GOVERNMENT OF MALAWI
+NATIONAL AGRICULTURE 
+EXTENSION AND ADVISORY 
+SERVICES POLICY  
+2025
+
+
+
+2025
+NATIONAL AGRICULTURE 
+EXTENSION AND ADVISORY 
+SERVICES POLICY 
+GOVERNMENT OF MALAWI
+
+MINISTRY OF AGRICULTURE  
+P.O. BOX 30134
+LILONGWE 3
+MALAWI  
+Tel: +265 1 789 033
+Email: agriculture@agriculture.gov.mw
+Website: https://agriculture.gov.mw/ 
+
+Ministry of Agriculture | v
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+TABLE OF CONTENTS
+FOREWORD .......................................................................................................................  vii
+PREFACE ............................................................................................................................   ix
+ACRONYMS ........................................................................................................................    x
+GLOSSARY ......................................................................................................................... xii
+CHAPTER 1: INTRODUCTION ..........................................................................................   1
+1.1 Historical Background ...........................................................................................................     1
+1.2 Current Status ..........................................................................................................................    3
+1.3 Linkage with other relevant Policies and Legislation ............................................   5
+1.4 Problem Statement  ..............................................................................................................     8
+1.5 Purpose of the Policy ...........................................................................................................    8
+CHAPTER 2:  BROAD POLICY DIRECTIONS ................................................................    
+2.1 Policy Goal .................................................................................................................................    9
+2.2 Policy Outcomes .....................................................................................................................    9
+2.3 Policy Objectives ....................................................................................................................   9
+2.4 Guiding Principles and Core Values ...............................................................................   10
+CHAPTER 3: POLICY PRIORITY AREAS .......................................................................  11
+3.1. Policy Priority Area 1: Agriculture Extension Capacity Development ...........    11
+3.2. Policy Priority Area 2: Knowledge Management .....................................................   12
+3.3. Policy Priority Area 3: Farmer Organisation and Empowerment ....................  14
+3.4. Policy Priority Area 4: Agriculture Commercialisation and  
+ Market Linkages  .....................................................................................................................  14
+3.5. Policy Priority Area 5: Food and Nutrition .................................................................   15
+3.6. Policy Priority Area 6: Youth and Agriculture Development .............................   16
+3.7. Policy Priority Area 7: Cross Cutting Issues  .............................................................   17
+
+vi | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+CHAPTER 4: IMPLEMENTATION ARRANGEMENTS ..................................................  19
+4.1  Institutional Arrangements  ...............................................................................................  19
+4.2  Implementation Plan .............................................................................................................  23
+4.3     Monitoring and Evaluation Plan ......................................................................................  23
+ANNEXES ...........................................................................................................................  24
+Annex 1: National Agriculture Extension and Advisory Services  
+      Policy Implementation Plan .......................................................................................  25
+Annex 2: Monitoring and Evaluation Plan ...............................................................................  33
+
+Ministry of Agriculture | vii
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+FOREWORD
+Government recognises the significant role extension and advisory services play in 
+the promotion of agriculture transformation in the country. Government supports 
+the contribution of the agriculture sector to Malawi’s socio–economic development. 
+It  is  in  this  vein  that  the  Government  has  revised  the  old  National  Agriculture  
+Extension and Advisory Services Policy (NAEASP) with the aim of providing a new 
+policy direction.
+The  revised  NAEASP  seeks  to  improve  the  delivery  of  extension  and  advisory  
+services in Malawi to effectively support the contribution of the agriculture sector 
+to  national  development.  The  Policy  is  necessary  to  guide  all  stakeholders  in  
+agriculture  extension  and  advisory  services  sub-sector  in  the  country  to  provide  
+high  quality,  demand-driven,  inclusive  and  market-led  agriculture  extension  and  
+advisory services.
+The provision of agriculture extension and advisory services is currently challenged 
+by  a  number  of  factors  such  as  poor  collaboration,  coordination  and  lack  of  
+expertise and professionalism among service providers. This necessitates a robust 
+policy framework that can inspire efficiency, effectiveness and professionalism of 
+service providers for agriculture transformation in the country.
+The revised NAEASP is aligned to the aspirations of the Malawi 2063, which is the 
+overarching  development  blueprint  for  Malawi.  The  NAEASP  also  builds  on  the  
+National Agriculture Policy.
+The Government is strongly committed to translating the Policy into tangible actions 
+and  services  to  promote  agriculture  extension  and  advisory  services  reforms  in  
+the agriculture sector. I, therefore, appeal to stakeholders in the agriculture sector 
+to be more proactive and vigilant in supporting implementation of the Policy for 
+effective delivery of agriculture extension and advisory services in the country. 
+Honourable Samuel Dalitso Kawale, M.P.
+MINISTER OF AGRICULTURE
+
+
+
+Ministry of Agriculture | ix
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+PREFACE
+The  Government  acknowledges  that  improved  delivery  of  agriculture  extension  
+and advisory services is fundamental to agricultural development in Malawi. This 
+contributes  to  increased  agriculture  productivity  through  access  to  information,  
+acquiring  knowledge  and  skills  for  implementing  research-proven  agriculture  
+technologies  and  good  agriculture  practices  by  farmers  and  other  stakeholders.  
+Improved  delivery  of  agriculture  extension  and  advisory  services  is  therefore  
+instrumental in achieving the agriculture sector’s transformation goals of ensuring 
+that  the  nation  enjoys  food,  income  and  nutrition  security.  The  importance  of  
+agriculture extension to agriculture transformation necessitates the development 
+and implementation of a robust Agriculture Extension and Advisory Services Policy 
+in the country. 
+The predecessor Agriculture Extension Policy namely “Agriculture Extension in the 
+New  Millennium:  Towards  Pluralistic  and  Demand-driven  Services  in  Malawi”  was  
+developed in the year 2000. The Ministry of Agriculture led a review of the Policy 
+to address gaps and accommodate emerging issues in agriculture extension and 
+advisory services at national and international levels. Implementation of the revised 
+Policy will build on past successes including involvement of non-state actors   in 
+the delivery of extension services and consequently increased financial resources 
+for  agriculture  extension  and  advisory  services.  However,  limited  coordination  
+in  provision  of  services,  low  coverage  due  to  the  unavailability  of  qualified  staff,  
+poor  marketing  arrangements,  and  unorganized  farmers  among  others  affected  
+implementation of the old Policy and the revised Policy has put in place strategies 
+to address these challenges. 
+The  revised  Policy  has  been  developed  through  a  consultative  process  that  
+involved key stakeholders such as Farmer Organisations (FOs), Non-Governmental 
+Organisations (NGOs), the Private Sector and Government Ministries, Departments 
+and Agencies  (MDAs). The Policy is aligned to the Malawi 2063 and its First 10-Year 
+Implementation Plan (MIP-1) pillar of agriculture productivity and commercialisation. 
+It is also linked to the National Agriculture Policy (NAP). At international level, the 
+Policy contributes to realization of agreements as enshrined in the Comprehensive 
+African  Agricultural  Development  Programme  (CAADP)  and  the  Sustainable  
+Development Goals (SDGs). 
+Dickxie Verson Kampani
+SECRETARY FOR AGRICULTURE
+
+x | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+ACRONYMS
+ACB    : Agriculture Communication Branch
+ADD   : Agricultural Development Division
+ASP    : Area Stakeholder Panel
+ASWAp : Agriculture Sector Wide Approach
+BES    : Block Extension Systems
+CAADP : Comprehensive African Agricultural Development Programme
+CBO   : Community Based Organisation
+COVID-19    : Corona Virus Disease of 2019
+DAECC : District Agriculture Extension Coordinating Committee
+DAESS : Decentralised Agriculture Extension Services System 
+DHS    : Demographic Health Survey
+DSP    : District Stakeholder Panel
+EAD    : Environmental Affairs Department
+EPA    : Extension Planning Area
+FBO    : Farmer Based Organisation
+FOs    : Farmer Organisations
+FUM   : Farmers’ Union of Malawi
+GDP    : Gross Domestic Product
+GoM   : Government of Malawi
+HIV/AIDS : Human Immunodeficiency Virus / Acquired Immune Deficiency      
+    Syndrome
+ICT     : Information and Communication Technologies
+IRDP   : Integrated Rural Development Programmes
+M&E    : Monitoring and Evaluation
+MAFECO : Malawi Federation of Cooperatives
+MBS    : Malawi Bureau of Standards
+MCCCI : Malawi Confederation of Chambers of Commerce and Industry
+MITC  : Malawi Investment and Trade Centre
+
+Ministry of Agriculture | xi
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+MIP-1  : Malawi 2063 First 10-Year Implementation Plan 
+MNS   : Multi-sector Nutrition Strategy
+MoA   : Ministry of Agriculture
+MoE    : Ministry of Energy
+MoF    : Ministry of Finance
+MoGCDSW  :Ministry of Gender, Community Development and Social Welfare
+MoH   : Ministry of Health
+MoI     : Ministry of Information and Digitalisation 
+MoTI  : Ministry of Trade and Industry
+MoJ    : Ministry of Justice
+MoLGCU : Ministry of Local Government, Culture and Unity 
+MoY  : Ministry of Youth and Sports
+MSMEs : Micro, Small and Medium Enterprises
+NAEASP : National Agriculture Extension and Advisory Services Policy
+NAMIS : National Agriculture Management Information System
+NAP    : National Agriculture Policy
+NASFAM : National Smallholder Farmers’ Association of Malawi
+NGOs  : Non-Governmental Organisations
+NSP    : National Stakeholder Panel
+RDP    : Rural Development Project
+RTC    : Residential Training Centre
+SDGs  : Sustainable Development Goals
+SMEDI : Small and Medium Enterprises Development Institute
+T&V    : Training and Visit System
+TEVETA : Technical, Entrepreneurial and Vocational Education and Training
+
+xii | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+GLOSSARY 
+AgricultureThe art and science of growing crops and rearing 
+livestock to provide food and other products. 
+Agriculture ExtensionThe process of disseminating knowledge, skills, and 
+technologies to farmers, agricultural workers and 
+rural communities with the objective of sustainably 
+improving agricultural productivity.
+Demand-driven 
+Extension
+Extension services that allow clients to perform an 
+active role in the identification of extension and 
+advisory services required to respond to needs.
+Extension AgentA person employed by a private or public 
+organisation to assist farmers on various methods of 
+farming.
+Food and Nutrition 
+Security
+A situation where all people have reliable access 
+to   a sufficient quantity of affordable, safe and 
+nutritious food to meet their dietary needs.
+Gender EqualityEntails the concept that all human beings, both 
+men and women, are free to develop their personal 
+abilities and make choices without the limitations 
+set by stereotypes, rigid gender roles, or prejudices.
+Market-Oriented 
+Extension Services
+Agriculture extension services that focus on 
+supporting farmers to link and adapt to the needs of 
+the market.
+Non-State ActorIndividuals or organisations that provide agriculture 
+extension and advisory services but are not 
+necessarily part of government. These range from 
+private extension providers, Farmer Organisations, 
+Non-Governmental Organisations, agro-dealers, 
+input suppliers.
+Private SectorThis refers to the part of the national economy that 
+is owned and run by private individuals or groups 
+in order to generate profits and is not controlled by 
+the state.
+
+Ministry of Agriculture | 1
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+CHAPTER 1 
+The  Government  of  Malawi  has  revised  the  National  Agriculture  Extension  and  
+Advisory Services Policy (NAEASP) to provide a new policy direction and guidance 
+on effective provision of agriculture extension and advisory services for the next 
+five years from 2025 to 2030. The Policy is premised on aspirations of providing 
+quality  and  relevant  agriculture  extension  and  advisory  services  for  increased  
+agriculture productivity and improved agriculture marketing. The implementation 
+of the predecessor Policy on agriculture extension resulted in some positive changes 
+of  attitude  and  practices  among  agriculture  stakeholders  towards  agriculture  
+extension and advisory services. However, some gaps were noted in the Policy and 
+have been addressed in the revised Policy.
+The revised Policy identifies seven key priority areas in order to achieve its goal, 
+outcomes and objectives. These priority areas are: Agriculture Extension Capacity 
+Development; Knowledge Management; Farmer Organisation and Empowerment; 
+Agriculture Commercialisation and Market Linkage; Food and Nutrition; Youth and 
+Agriculture Development; and Cross Cutting Issues.
+1.1 Historical Background  
+In 1950, the Colonial Government reviewed prevailing agriculture policies to 
+avoid a repeat of the 1948/1949 famine. The review defined agriculture policy 
+objectives  and  one  of  which  was  the  agriculture  extension  and  advisory  
+services. Relevant to agriculture extension was the development of a more 
+coherent  national  extension  and  training  system.  The  system  provided  
+farmers and extension workers with support at national, regional, divisional, 
+district, sub-district and village levels. The system embraced four dimensions 
+of agriculture development defined at that time as the ‘Master Farmer; Staff 
+and Farmer Training; Public Relations Unit (PRU), Agriculture Communication 
+Branch (ACB); and the National Soil and Water Conservation Unit. To achieve 
+objectives  for  each  dimension,  the  agriculture  extension  system  employed  
+coercive  approaches  up  to  the  time  Malawi  got  independence  from  the  
+Colonial Government in 1964.
+After Malawi’s independence, some elements of the extension system in force 
+at that time were changed. The coercive approaches to agriculture extension 
+services  were  replaced  with  more  educative  and  persuasive  approaches  
+supported by agriculture radio programmes, agriculture extension aids and 
+mobile  van  programmes.  The  ‘Master  Farmers’  approach  philosophy  was  
+retained with slight changes from ‘Master Farmers’ to ‘Progressive Farmers’. 
+One of the critiques that time was that the ‘Master Farmers’ approach served 
+and  benefitted  relatively  few  farmers,  such  that  a  majority  of  the  farmers  
+lacked access to agriculture extension and advisory services.
+INTRODUCTION
+
+2 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+In  response  to  the  highlighted  shortfall,  the  Government  of  Malawi  (GoM)  
+conceived and implemented group approaches to reach out to more farmers 
+through  the  ‘Integrated  Rural  Development  Programmes  (IRDP)’  between  
+the  1970s  and  the  1980s.  The  group  approaches  to  agriculture  extension  
+and  advisory  services  were  reinforced  in  1981.  During  that  period,  the  
+Government adopted the modified Training and Visit (T&V) system known 
+as  ‘Block  Extension  System  (BES)’.  The  dominant  feature  of  the  BES  was  
+its top-down approach to agriculture extension and advisory services. This 
+was characterised by Government domination in decision-making regarding 
+farmers’ choices for enterprises and mode of production. The T&V system, 
+therefore, left no room for farmer participation in decision-making regarding 
+what  to  produce.  This  was  consistent  with  the  centralised  Government  
+service provision and non-democratic political climate during those years.
+The  adoption  of  democratic  governance  in  1993  led  to  decentralisation  
+reforms  in  the  country,  and  reinforced  market  liberalisation  reforms  that  
+had begun in the 1980s. Agriculture extension systems and approaches had 
+to  reform  in  compliance  with  the  prevailing  socio-political  and  economic  
+principles   of   development.   Some   global   and   national   institutions   of   
+development  advocated  for  change  from  top-down  agriculture  extension  
+systems  and  approaches  to  ‘Demand-Driven  and  Market-led’  systems  and  
+approaches, hence the genesis of demand-driven agriculture extension and 
+advisory services in Malawi during the decade spanning 1990 to 2000.
+Beside  the  described  reforms  in  the  1990s,  many  Non-Governmental  
+Organisations   (NGOs)   with   no   extension   orientation,   mainly   relief   
+organisations redefined their interests to embrace agriculture extension as an 
+alternative development pathway to working with Government and agrarian 
+communities  in  Malawi.  These  stakeholders  began  providing  agriculture  
+extension  and  advisory  services  through  community  and  Government  
+established structures such as Agricultural Development Divisions (ADDs), 
+Rural  Development  Projects  (RDPs),  Extension  Planning  Areas  (EPAs),  
+Agriculture  Sections,  Agriculture  Blocks  and  Villages.  All  these  changes  
+influenced  development  and  subsequent  adoption  of  the  Demand-Driven  
+and Pluralistic Agriculture Extension Services Policy in the New Millennium of 
+2000. The Policy was designed to support changes in attitudes and practices 
+among service providers, financiers, and clients of agriculture extension and 
+advisory services in Malawi.
+
+Ministry of Agriculture | 3
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+1.2 Current Status 
+Agriculture extension and advisory services remain pluralistic and demand-
+driven.   Experiences   of   farmers   and   extension   service   providers   with   
+pluralistic, demand-driven extension and advisory services have been both 
+exciting and frustrating. Over 100 non-state organisations, including private 
+companies,  Non-Governmental  Organisations  and  the  civil  society,  across  
+the country are providing agriculture extension and advisory services. This 
+development  has  created  opportunities  for  farmers  and  other  clients  to  
+choose  their  preferred  extension  service  providers.  However,  analysis  of  
+capacity  and  performance  of  agriculture  extension  service  providers  has  
+revealed  a  number  of  challenges  including  use  of  unqualified  extension  
+officers that has resulted in low standards. 
+In  terms  of  programme  implementation,  there  is  weak  coordination  and  
+harmonisation  of  interventions.  This  is  manifested  in  conflicting  messages  
+for agriculture technologies, use of unapproved technologies, and inability of 
+clients to participate in decision-making on innovations. Financial resources 
+are made available to support implementation of agriculture extension and 
+advisory  services,  however,  there  is  weak  accountability  on  utilisation  of  
+resources by service providers.
+The public sector has the technical capacity to provide agriculture extension 
+and advisory services because most of the staff have undergone professional 
+development training from government accredited institutions. On the other 
+hand, most extension staff from other private companies, Non-Governmental 
+Organisations and the civil society lack basic professional training in provision 
+of agriculture extension and advisory services. Despite Government having 
+relatively well qualified staff compared to other organisations, staffing levels 
+in  the  public  sector  have  remained  low  and  this  is  reflected  in  the  current  
+high farmer to extension worker ratio which ranges between 1:2,500-3,000 
+against the recommended ratio of 1:750. This challenge is further compounded 
+by  haphazard  use  of  Government  agriculture  extension  staff  by  non-state  
+actors, hence derailing implementation of Government agriculture extension 
+programmes.
+The public sector has a network of agriculture extension and advisory services 
+infrastructure across the country, which play a vital role in the provision of 
+standard  agriculture  extension  and  advisory  services  to  farmers.  Over  the  
+years, public agriculture extension infrastructure has been heavily dilapidated 
+due to poor management and non-maintenance. This has somehow weakened 
+provision of agriculture extension and advisory services to farmers. At times, 
+staff retention rate has been negatively affected by low working morale with 
+extension staff houses and offices in dilapidated and poor state. In addition 
+to  dilapidated  infrastructure,  there  is  poor  mobility  of  frontline  agriculture  
+extension staff, which negatively affects timely delivery of their services. This 
+is due to the fact that most agriculture extension workers are still using push 
+bikes and are unable to serve more farmers and those in hard-to-reach areas.
+
+4 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Agriculture   commercialisation   remains   largely   under-developed   in   the   
+country  because  emphasis  has  been  on  improving  agriculture  production  
+and productivity with little emphasis on strategic agribusiness development. 
+This  is  further  constrained  by  poor  market  systems  as  trading  of  most  
+agriculture commodities is through unstructured and unregulated markets.  
+Medium  and  large-scale  farmers  remain  un-serviced  because  there  are  no  
+dedicated agriculture extension and advisory services due to emphasis on 
+support to smallholder farmers. 
+Most  of  the  farmers  operate  as  individuals  with  limited  technical  and  
+management capacity. As individuals, they have limited access to agriculture 
+extension and advisory services and fail to participate in agriculture markets. 
+Most Farmer Organisations (FOs) currently fail to access and provide services 
+to their members due to organisational challenges and limited capacity to 
+do so in other cases.
+Currently,  there  is  growing  interest  among  agriculture  extension  service  
+providers  to  improve  women,  youth,  persons  with  disabilities  and  other  
+vulnerable groups’ participation in decision-making and implementation of 
+agriculture development programmes and projects. However, women, youth, 
+persons with disabilities and other vulnerable groups have low access to, and 
+control over agriculture production resources and services such as extension, 
+farm implements, technology, inputs, land and credit as compared to men. In 
+addition, their participation in decision-making in farmer organisations and 
+institutions is limited. 
+Other crossing cutting issues such as HIV/AIDS and climate change continue 
+to  pose  a  serious  challenge  in  the  delivery  of  agriculture  extension  and  
+advisory services in Malawi. Climate change and variability cause significant 
+losses  in  agriculture  production,  hence  the  need  for  agriculture  extension  
+and advisory services to play a role in adapting to, and mitigating its impact.  
+
+Ministry of Agriculture | 5
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+1.3 Linkage with other relevant Policies and 
+Legislation 
+The National Agriculture Extension and Advisory Services Policy (NAEASP) 
+is linked to other key policies and pieces of legislation as follows:  
+a. National Policies and Strategies  
+i. The Malawi 2063 and its First 10-Year Implementation Plan (MIP-1): 
+NAEASP is aligned to broad development goals and vision for Malawi 
+as articulated in the Malawi 2063 and its First 10-Year Implementation 
+Plan.  In  the  Malawi  2063,  the  Policy  contributes  to  the  attainment  
+of  the  outcomes  and  objectives  of  the  agriculture  productivity  
+and  commercialisation  pillar.  Specifically,  this  Policy  contributes  to  
+attaining the vision by developing an effective agriculture extension 
+and advisory services system.
+ii. National  Agriculture  Policy:  NAEASP  recognises  importance  of  
+enhancing  provision  of  agriculture  extension  and  advisory  services  
+delivery  for  the  attainment  of  the  six  priority  areas  of  the  National  
+Agriculture Policy.
+iii. National    Multi-Sector    Nutrition    Policy:    NAEASP    promotes    
+implementation  of  nutrition  sensitive  agriculture  programmes  and  
+gender  equality,  equity,  protection,  participation  and  empowerment  
+for  improved  nutrition  that  will  directly  contribute  to  attainment  of  
+goals of the National Multi-Sector Nutrition Policy.
+iv. National   Gender   Policy:   The   National   Gender   Policy   aims   at   
+mainstreaming gender in the national development process in order to 
+enhance participation of women, men, girls, and boys for sustainable 
+and equitable development. NAEASP highlights the key strategies on 
+gender mainstreaming to be implemented in the agriculture sector.
+v.  National Youth Policy: The goal of the National Youth Policy is to create 
+an enabling environment for youth to develop to their full potential in 
+order to contribute significantly to personal and sustainable national 
+development. NAEASP provides guidance on the matter of agriculture 
+extension for the respective strategies of the National Youth Policy to 
+fully benefit the youth in agriculture. 
+vi. National   Decentralisation   Policy:   The   National   Decentralisation   
+Policy promotes devolution of decision-making powers to the people 
+at  local  level.  NAEASP  promotes  development  and  strengthening  
+of  decentralised  extension  service  delivery  in  line  with  the  National  
+Decentralisation Policy. 
+vii. National Trade Policy: NAEASP is aligned to the National Trade Policy 
+in  that  it  flags  and  provides  guidance  on  marketing  of  agricultural  
+produce. 
+viii. National Climate Change Management Policy: NAEASP draws from 
+the National Climate Change Management Policy to provide practical 
+guidance on operationalisation of various actions to address climate 
+change issues in the agriculture sector.
+
+6 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+ix. National  ICT  Policy:  NAEASP  is  aligned  to  the  National  ICT  Policy  
+in that it provides guidelines regarding operationalisation of the ICT-
+based services in agriculture extension and advisory services for this 
+country.
+x. National Irrigation Policy: NAEASP is linked to the National Irrigation 
+Policy in that it provides a framework for integrating irrigation-related 
+initiatives  into  broader  agricultural  extension  programmes  such  as  
+training   and   capacity   building,   technical   assistance,   information   
+dissemination and access to resources by all farmers disaggregated 
+by gender.
+xi. Agriculture Land Resources Management Policy: NAEASP is aligned 
+to the Agriculture Land Resources Management Policy in that it will 
+encourage  the  production  of  a  variety  of  nutritious  and  safe  foods  
+on  agricultural  land  in  a  sustainable  manner.  This  will  ensure  the  
+continued  production  of  diverse,  nutritious,  and  safe  foods  through  
+the  participation  of  women  and  vulnerable  groups  in  agricultural  
+programmes.
+xii. National  Livestock  Development  Policy:  NAEASP  is  aligned  to  the  
+National Livestock Development Policy in that it provides guidance in 
+livestock innovation, technology development and dissemination and 
+calls  for  empowerment  of  the  youth,  women  and  other  vulnerable  
+groups in livestock sub-sector.
+xiii. National Fertiliser Policy: NAEASP is aligned to the National Fertiliser 
+Policy in that it addresses issues of capacity building for frontline staff 
+and farmers to improve best practices for fertiliser use efficiency and 
+profitability.
+xiv. National Seed Policy: NAEASP is aligned to the National Seed Policy 
+in  that  it  promotes  farmers’  access  to  and  education  on  improved  
+high-quality seeds that maximises yield.
+xv. National Export Strategy II (NES II): NAEASP is aligned to the NES 
+II  in  that  it  supports  capacity  building  for  expansion  of  supply  of  
+agricultural products from farmers. 
+xvi. National  Community  Development  Policy:  The  NAEASP  is  aligned  
+to  the  National  Community  Development  Policy  in  that  it  promotes  
+consumption of diversified and nutritious foods.
+b. Legal Instruments 
+i. The Constitution: NAEASP is aligned to Chapter 3:13 of the Constitution 
+of the Republic of Malawi in that among others, it promotes gender 
+equality and adequate nutrition.
+ii. Local  Government  Act  (CAP  22:01):    NAEASP  is  aligned  to  the  
+Local  Government  Act  in  that  it  delegates  authority  to  the  local  
+governments to provide Agriculture Extension and Advisory Services 
+through formulation of by-laws in accordance with other related laws.
+
+Ministry of Agriculture | 7
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+iii. Environmental Management Act (CAP 60:02): NAEASP is aligned to 
+the  Environmental  Management  Act  in  that  it  provides  for  capacity  
+building for the protection and management of the environment and 
+proper utilisation of natural resources.    
+c. International Agreements and Protocols 
+NAEASP  is  linked  to  international  agreements  and  protocols.  Some  of  
+them are as follows:
+i. United Nations Sustainable Development Goals (SGDs): NAEASP is 
+linked to the United Nations Sustainable Development Goals (SDGs) 
+number  1,  no  poverty;  number  2,  zero  hunger;  number  5,  gender  
+equality;  number  6,  clean  water  and  sanitation;  number  8,  decent  
+work and economic growth; number 12, responsible consumption and 
+production; and number 13, climate action. 
+ii. African Union Agenda 2063:  NAEASP is linked to the African Union 
+Agenda 2063; 
+Goal number 2 - end hunger to achieve food security and improved 
+nutrition and promote sustainable agriculture; 
+Goal  number  5  -  achieve  gender  equality  and  empower  all  women  
+and girls; 
+Goal  number  12  -  ensure  sustainable  consumption  and  production  
+patterns; and; 
+Goal number 13 - take urgent action to combat climate change and 
+its impacts.
+iii. Comprehensive   African   Agricultural   Development   Programme      
+(CAADP):  NAEASP  is  directly  aligned  to  all  the  four  pillars  of  the  
+CAADP   specifically   through   provision   of   Agricultural   Support   
+Services, Capacity Development, Multi-Stakeholder Partnerships and 
+Agricultural Extension and Advisory Services.
+iv. The Southern African Development Community Regional Agricultural 
+Policy (SADC-RAP): NAEASP is aligned to the SADC-RAP in that it 
+contributes  to  the  attainment  of  enhancing  sustainable  agricultural  
+production,   productivity   and   competitiveness   objective   through   
+increased  farmer  adoption  of  sustainable  agriculture  technologies  
+and innovation.
+
+8 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+1.4 Problem Statement 
+The   provision   of   agriculture   extension   and   advisory   services   is   still   
+experiencing  challenges  despite  implementation  of  the  previous  Policy,  
+“Agriculture  Extension  Policy  in  the  New  Millennium”.  The  review  of  the  
+previous Policy revealed inadequate human resources, inadequate and poor 
+transport facilities for frontline staff, poor extension infrastructure, equipment 
+and  poor  management  and  coordination  of  extension  services  among  
+stakeholders. It also revealed low financing, weak regulatory framework, weak 
+farmer  organisation,  under-developed  agriculture  value  chains  and  market  
+linkages,  inadequate  dietary  diversification,  low  participation  of  youth  in  
+agriculture, gender and social inclusion issues, climate change and increased 
+environmental management challenges among farmers and stakeholders. 
+To alleviate the above-mentioned problems, the Government and its partners 
+is implementing a number of interventions to improve delivery of agricultural 
+extension  and  advisory  services;  however,  this  is  done  in  an  environment  
+where  the  guiding  policy  is  not  adequately  addressing  current  emerging  
+issues as it was developed long ago, in the year 2000.
+1.5 Purpose of the Policy  
+Agriculture extension and advisory services play pivotal role in most aspects 
+of  agriculture  development  that  necessitates  a  robust  extension  policy  
+direction  to  inspire  efficiency  and  effectiveness  of  service  providers  for  
+agriculture  transformation.  The  Policy,  therefore,  provides  a  framework  for  
+maximising agriculture extension clients’ access to high-quality and relevant 
+services; and promotes collaboration among service providers and clients for 
+increased adoption of agriculture technologies, good agriculture practices, 
+good agribusiness management practices, and marketing to inspire increased 
+production and productivity for the food, nutrition, and income security in 
+Malawi.
+This  Policy  broadens  the  agenda  of  agricultural  extension  and  advisory  
+interventions from a mere focus and obsession with agriculture production 
+with  smallholder  farmers  to  a  broader  range  of  interventions  including  
+emerging and commercial farmers.
+
+Ministry of Agriculture | 9
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+CHAPTER 2   
+2.1 Policy Goal
+The goal of the National Agriculture Extension and Advisory Services Policy is 
+to develop and promote quality farmer and client-driven inclusive agriculture 
+extension  and  advisory  services  for  increased  and  sustainable  agriculture  
+productivity, household and national income and nutrition security.
+2.2 Policy Outcomes
+The Policy has the following outcomes:  
+i. Increased  farmer  adoption  of  sustainable  agriculture  technologies  and  
+innovation;
+ii. Improved dietary diversification among farmers of all gender categories;
+iii. Improved socio-economic status of women, youth and other vulnerable 
+groups in agriculture; and
+iv. Increased agro-based incomes of farmers and other value chain actors.
+2.3 Policy Objectives
+The objectives of the Policy are to:
+i. Build institutional and human professional and management capacity for 
+effective provision of agriculture extension and advisory services;
+ii. Promote  implementation  of  innovative  and  digital  agriculture  extension  
+systems and approaches;
+iii. Increase  farmers’  access  to  appropriate  and  up-to-date  agriculture  
+extension and advisory services;
+iv. Improve  coordination  and  collaboration  in  the  provision  of  agriculture  
+extension and advisory services among stakeholders; 
+v. Increase agro-processing, value addition and access to reliable agriculture 
+markets; 
+vi. Increase availability and consumption of diversified and nutritious foods 
+among farming households; and 
+vii. Increase access, ownership and control over productive agriculture assets 
+and benefits by women, youth and other vulnerable groups. 
+BROAD POLICY DIRECTIONS
+
+10 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+2.4  Guiding Principles and Core Values 
+The  implementation  of  the  National  Agriculture  Extension  and  Advisory  
+Services Policy is guided by the following principles and core values:
+i. Accountability:  Providers  of  agriculture  extension  and  advisory  
+services shall be obliged and willing to accept their responsibility for 
+their action, decisions, and the resulting consequences to clients and 
+other stakeholders. 
+ii. User-Pay:  The  Government  is  obliged  to  provide  public  goods  and  
+services.  Clients  of  agriculture  extension  and  advisory  services,  
+however, are expected to contribute to goods and services that are 
+private in nature to ensure fairness, equity, and efficiency in resource 
+allocation and to promote accountability among users for successful 
+implementation of the current Policy.
+iii. Equity:   Provision  of  agriculture  extension  and  advisory  services  
+will  ensure  the  upholding  of  fairness  and  justice  across  different  
+stakeholders.
+iv. Equality: Agriculture extension and advisory services providers shall 
+not discriminate against farmers or any other stakeholder on grounds 
+of  race,  colour,  sex,  language,  religion,  political  or  other  opinion,  
+nationality,  ethnic  or  social  origin,  disability,  property,  birth  or  other  
+status.
+v. Pluralism: Government shall allow many players with right professional 
+capacity to perform their appropriate roles in provision of agriculture 
+extension  and  advisory  services  within  the  government’s  stipulated  
+standards and country’s legal framework.
+vi. Professionalism: All service providers shall demonstrate commitment 
+to  excellence,  integrity  and  respect  in  the  provision  of  agriculture  
+extension  and  advisory  services,  leading  to  trust,  credibility  and  
+success. 
+vii. Participatory: Stakeholders  shall  be  actively  involved  in  decision-
+making  and  action  to  ensure  that  the  Policy  is  relevant,  responsive  
+and inclusive. This will promote ownership and sustainability.
+viii. Result-Oriented: Emphasis will focus on achieving specific outcomes 
+and impacts from extension activities.
+ix. Budget  Alignment:  Agriculture  extension  and  advisory  services  
+budgets shall be aligned to the Policy priority areas.
+
+Ministry of Agriculture | 11
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+CHAPTER 3
+The National Agriculture Extension and Advisory Services Policy has seven priority 
+areas namely: 
+1. Agriculture Extension Capacity Development;
+2. Knowledge Management;
+3. Farmer Organisation and Empowerment;
+4. Agriculture Commercialisation and Market Linkages;
+5. Food and Nutrition;
+6. Youth and Agriculture Development; and 
+7.   Cross Cutting Issues.
+3.1. Policy Priority Area 1: Agriculture Extension 
+Capacity Development
+Agriculture  extension  capacity  development  involves  training  and  building  
+capabilities of agricultural extension personnel to help improve agricultural 
+production and productivity. The Government of Malawi and its stakeholders 
+support  well-established  institutions  and  systems  of  delivering  agriculture  
+extension  and  advisory  services.  This  is  primarily  done  through  a  network  
+of  Government  extension  workers  with  specialties  in  different  fields  of  
+agriculture placed in strategic areas to support farmers across the country. 
+The empowered institutions play a great role in operationalisation of demand-
+driven   agriculture   extension   and   advisory   services   through   planning,   
+implementation and monitoring and evaluation of agriculture programmes.
+Provision  of  agriculture  extension  and  advisory  services  in  the  country,  
+however,  is  facing  both  institutional  and  human  resources  challenges  that  
+adversely affect efficient and effective execution of agriculture programmes. 
+Despite Government efforts to improve the capacity of agriculture extension 
+services, there is still inadequate infrastructure; equipment; human resources; 
+skills  and  mobility  for  frontline  staff;  weak  coordination  and  management;  
+inadequate  financing  of  agricultural  extension  programmes  and  weak  
+regulatory  framework  for  effective  delivery  of  agriculture  extension  and  
+advisory services. 
+POLICY PRIORITY AREAS
+
+12 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Policy  Statement  1:  The  Policy  will  ensure  that  agriculture  extension  
+institutions and infrastructure are developed to enhance their efficiency 
+and effectiveness
+Strategies
+i. Promote  agriculture  extension  institutions  to  support  planning  and  
+implementation of services;
+ii. Improve  coordination  and  management  of  agriculture  extension  and  
+advisory services;
+iii. Promote modern infrastructure development;
+iv. Improve   regulatory   framework   for   effective   delivery   of   agriculture   
+extension and advisory services;
+v. Improve mobility of agriculture extension and advisory services officers 
+at all levels;
+vi. Promote agriculture innovation system; 
+vii. Promote private extension services; and
+viii. Strengthen various mechanisms for financing extension programmes.
+Policy   Statement   2:   The   Policy   will   ensure   that   staff   development   
+programmes  to  continuously  address  needs  of  clients  in  the  dynamic  
+agriculture extension and advisory services sub-sector are advocated
+Strategies
+i. Enhance staffing of agricultural extension and advisory services providers; 
+and 
+ii. Strengthen professional, technical and managerial capacity of agriculture 
+extension and advisory services providers.
+3.2. Policy Priority Area 2: Knowledge Management
+Knowledge  management  is  a  systematic  process  of  capturing,  organising,  
+distributing  and  effectively  using  knowledge  and  information  to  improve  
+agricultural  practices,  enhanced  decision-making  and  foster  innovation  
+among farmers, extension workers and other relevant stakeholders. Proper 
+presentation  of  information  about  new  technologies  is  important  for  
+effective dissemination of the technologies to farmers for their appreciation 
+and  understanding.  Knowledge  and  information  are  essential  for  farmers  
+to  successfully  respond  to  opportunities  and  challenges  in  the  agriculture  
+sector. Thus, technology packaging and dissemination ensure that new and 
+important  information  about  modern  farming  technologies  and  markets  is  
+delivered to farmers in a clear and simple form. 
+
+Ministry of Agriculture | 13
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Analysis  of  the  current  situation  reveals  that  adoption  of  technologies  by  
+farmers  is  relatively  low.  Some  technologies’  messages  are  not  properly  
+packaged  for  dissemination  and  as  a  result,  there  is  limited  information  
+among  the  farmers.  There  are  many  less  informed  farmers  due  to  poor  
+access to agriculture information, use of messages that are not tailored for 
+specific  beneficiaries  and  under  utilisation  of  Information  Communication  
+Technologies  (ICTs).  Besides,  a  lack  of  a  knowledge  management  system  
+results in poor servicing of farmers and tracking of the impact of disseminated 
+messages. The situation has been brought about due to poor linkage between 
+researchers and extension agents. 
+Policy Statement 1: The Policy will ensure that knowledge management is 
+improved to ease presentation, understanding and delivery of extension 
+and advisory services
+Strategies 
+i. Promote   research-extension-farmer   linkages   at   different   levels   of   
+implementation;
+ii. Improve  knowledge  of  technologies  among  agriculture  extension  and  
+advisory services providers; and
+iii. Promote farmer access to well-packaged technologies’ messages through 
+different methods and techniques.
+Policy Statement 2: The Policy will ensure that dissemination of different 
+technologies using ICT and interpersonal media is enhanced for increased 
+adoption
+Strategies 
+i. Promote  ICT-based  extension  and  advisory  services  for  accelerated  
+access to technologies;
+ii. Facilitate development and dissemination of diverse and farmer-tailored 
+agriculture messages;
+iii. Enhance participatory development of agriculture messages;
+iv. Enhance  the  delivery  of  agriculture  messages  through  interpersonal  
+methods; and
+v. Promote the use of locally adapted communication strategies.
+Policy statement 3: The Policy will ensure that effective data capturing, 
+processing and storage of available information on different technologies 
+at all levels is promoted
+Strategies 
+i. Strengthen capturing, processing and documentation of agriculture data 
+and information; 
+ii. Strengthen  linkages  and  networking  among  extension  stakeholders  in  
+knowledge management; and
+iii. Improve access to timely agriculture information and technologies.
+
+14 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+3.3. Policy Priority Area 3: Farmer Organisation and 
+Empowerment
+Farmer  organisation  refers  to  a  collective  group  of  farmers  who  come  
+together  to  achieve  common  goals  related  to  their  agriculture  activities.  
+These  include  farmer  clubs,  cooperatives,  anchor  farmers,  associations  
+and  any  other  grouping  of  farmers.  Well-developed  farmer  organisations  
+facilitate  the  use  of  social  and  human  capital  for  agriculture  development.  
+The organisations ease farmers’ access to agriculture extension and advisory 
+services as well as input and output markets. Besides, they encourage the 
+sharing of messages, information, knowledge and skills among members of 
+the organisations.
+Currently, most farmers work individually, as a result, they have limited access 
+to  agriculture  information  and  extension  services.  This  constrains  farmers’  
+participation  in  agriculture  value  chains.  In  addition,  they  have  limited  
+bargaining power to negotiate for better services including marketing. 
+Policy  Statement:  The  Policy  will  ensure  that  capacity  development  
+programmes for farmers and their organisations are implemented
+Strategies
+i. Facilitate  formation  and  development  of  farmer  groups  into  business-
+oriented farmer organisations; 
+ii. Enhance  capacity  of  farmers  to  organise,  mobilise,  engage  service  
+providers for agriculture extension and auxiliary services;
+iii. Strengthen technical and managerial capacity of farmer organisations; 
+iv. Promote  participation  of  youth,  women  and  other  vulnerable  gender  
+categories in farmer organisations management; and
+v. Promote  public  private  partnerships  on  farmer  organisation  capacity  
+development.
+3.4. Policy Priority Area 4: Agriculture 
+Commercialisation and Market Linkages 
+Agriculture  commercialisation  and  market  linkages  enhance  value  chain  
+players’  ability  to  intensify  use  of  productivity-enhancing  technologies  to  
+achieve  maximum  output  for  markets  and  consumption.  Both  facilitate  
+investments  in  production,  agro-processing,  transportation,  storage  and  
+warehousing. 
+Agriculture commercialisation and market linkages remain under-developed 
+in  the  country  because  of  emphasis  on  promoting  adoption  of  agriculture  
+technologies  among  smallholder  subsistence  farmers.  As  a  result,  there  is  
+little emphasis on promoting agriculture extension strategies that promote 
+mass production, agro-processing, storage and warehousing of agriculture 
+commodities. This is aggravated by low staff capacity to provide agriculture 
+extension and advisory services to emerging and commercial farmers.
+
+Ministry of Agriculture | 15
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Policy Statement 1: The Policy will ensure that agriculture 
+commercialisation is promoted
+Strategies 
+i. Build  staff  capacity  in  agriculture  extension  approaches  and  methods  
+that promote market-led mass production, agro-processing, storage and 
+warehousing of agriculture commodities;
+ii. Enhance private sector investments in agribusiness including mega farms;
+iii. Develop innovative financial products for farmers of all gender categories;
+iv. Promote   agri-preneurship   among   farmers   of   all   gender   categories   
+including youth and other value chain actors; 
+v. Build  institutional  and  farmer  capacity  in  agro-processing  and  value  
+addition; and 
+vi. Promote access to financial services by farmers of all gender categories.
+Policy  Statement  2:    The  Policy  will  ensure  that  markets  and  market  
+linkages are in place
+Strategies 
+i. Promote development of agriculture market infrastructure;
+ii. Strengthen  contract  farming  arrangements  between  producers  and  
+buyers;
+iii. Build capacity of staff and farmer organisation in marketing; and
+iv. Promote development of regulated markets and market linkages.
+3.5. Policy Priority Area 5: Food and Nutrition
+Adequate  nutrition  is  essential  for  all  Malawians  and  is  achieved  when  
+the  food  consumed  can  provide  all  the  nutrients  to  meet  the  daily  body  
+requirements. The agriculture sector has the mandate of ensuring adequate 
+dietary intake for all, especially the vulnerable groups through programmes 
+that promote stable availability, access, proper processing, preservation and 
+consumption  of  diversified,  safe  and  nutritious  foods  from  all  the  six  food  
+groups. This Policy will ensure that agriculture investments and productivity 
+translate into improved nutrition outcomes. 
+Over the past two decades, progress has been made in improving nutrition 
+status  suggesting  that  investment  in  nutrition  in  Malawi  is  paying  off.  For  
+instance, the percentage of children under five years of age who are stunted 
+decreased  from  47.1%  to  37.1%  according  to  the  2015/2016  Demographic  
+Health  Survey  (DHS).  Similarly,  the  prevalence  of  vitamin  A  deficiency  
+decreased  from  59%  to  4%  (Malawi  Micronutrient  Survey  –  MNS  2015/16).  
+Despite  the  registered  improvements,  there  is  still  poor  progress  in  other  
+nutrition  indicators  such  as  minimum  acceptable  diet.  Achieving  adequate  
+dietary  intake  has  been  a  challenge  due  to  low  availability  and  access  to  
+diverse nutritious foods and low education levels.
+
+16 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Policy  Statement:  The  Policy  will  ensure  that  interventions  on  nutrition  
+education and surveillance are promoted
+Strategies
+i. Promote diversified production of nutritious and safe foods;
+ii. Promote food safety technologies that reduce post-harvest losses in food 
+production, preservation, processing and storage;
+iii. Scale-up nutrition education and behaviour change; 
+iv. Enhance improved dietary practices; and 
+v. Strengthen food surveillance system for effective implementation of the 
+food and nutrition programme.
+3.6. Policy Priority Area 6: Youth and Agriculture 
+Development
+Malawi’s  population  highly  constitutes  the  youth  who  are  generally  more  
+open  to  adopting  new  technologies  and  innovative  practices.  Integrating  
+modern  technologies  into  agriculture  to  attract  youth  participation  can  
+boost productivity and sustainability.
+The agriculture sector is often perceived as labor-intensive, low-paying and 
+lacking in innovation, which deters young people. This is further escalated by 
+the scarcity of extension and advisory services tailored to their needs. 
+Policy  Statement:  The  Policy  will  ensure  that  youth  participation  in  
+agriculture extension and advisory services and development programmes 
+is promoted
+Strategies
+i. Promote effective youth involvement and decision-making in agriculture 
+programmes;
+ii. Support training for out-of-school youth in agricultural production, agro-
+processing and marketing;
+iii. Promote  modernisation  of  agriculture  through  introduction  of  modern  
+farming technologies to attract the youth;
+iv. Promote business incubation centres for youth in agriculture; and
+v. Support agriculture technical vocational education training for youth.
+
+Ministry of Agriculture | 17
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+3.7. Policy Priority Area 7: Cross Cutting Issues  
+Cross cutting issues refer to broad, overarching factors that affect all aspects 
+of  agricultural  development  and  extension  services.  The  Policy  identifies  
+three  key  cross  cutting  issues  in  the  delivery  of  agriculture  extension  and  
+advisory services. These are Gender; HIV and AIDS; and Climate Change and 
+Environment.
+High gender disparities among different gender categories slows agricultural 
+growth.  Statistics  indicate  that  women  perform  over  70%  of  agriculture  
+tasks  and  produce  80%  of  food  consumed  at  household  level.  Despite  
+their  contribution,  women  and  other  vulnerable  groups  continue  to  be  
+disadvantaged in multiple ways. Women have limited access to ownership 
+and control over productive assets and benefits in the sector. On the other 
+hand,  HIV  and  AIDS  has  exacerbated  existing  agriculture  development  
+challenges where women are more affected by the pandemic than men due 
+to unequal power relations and unequal division of labour. As such, women 
+and  other  vulnerable  groups  are  unable  to  effectively  contribute  to  food,  
+nutrition and income security.
+The  growing  demand  for  food  as  a  result  of  the  increasing  population  
+require intensification and the clearing of forest land in order to grow crops 
+and rear livestock to meet the food and income requirements. This coupled 
+with weak land and soil management practices has resulted in deforestation 
+and  increasing  temperatures  resulting  in  frequent  incidences  of  droughts  
+and  floods  which  result  in  loss  of  assets,  shortage  of  food  and  unsafe  
+drinking water. This pushes the most vulnerable groups to turn to negative 
+and  unsustainable  coping  mechanisms  like  charcoal  burning  and  selling  of  
+production resources. 
+Policy statement 1: The Policy will ensure that gender, HIV and AIDS are 
+integrated in the agriculture extension and advisory services 
+Strategies 
+i. Promote  access,  ownership  and  control  over  productive  resources  for  
+women and other vulnerable groups;
+ii. Promote agriculture education and technical training for women, persons 
+with disabilities and other vulnerable groups;
+iii. Support  agribusiness  entrepreneurship  among  women,  persons  with  
+disabilities and other vulnerable groups;
+iv. Facilitate  access  to  finance  for  women  and  other  vulnerable  groups  in  
+agriculture;
+v. Promote  participation  of  women  and  vulnerable  groups  in  agriculture  
+and environment management programmes;
+vi. Promote  agriculture  programmes  and  projects  that  are  responsive  to  
+gender and HIV and AIDS at the workplace and community levels; and
+vii. Prioritize capacity development for gender and HIV responsive extension 
+for all staff and farmers in the agriculture sector.  
+
+18 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Policy  statement  2:  The  Policy  will  ensure  that  climate  change  and  
+environment  are  integrated  in  the  agriculture  extension  and  advisory  
+services 
+Strategy 
+Promote implementation of Climate Smart Agriculture (CSA) among farmers 
+of all gender categories.
+
+Ministry of Agriculture | 19
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+CHAPTER 4
+4.1  Institutional Arrangements 
+The   National   Agriculture   Extension   and   Advisory   Services   Policy   is   
+implemented by various stakeholders with varying roles and responsibilities 
+as follows:
+i. The Office of the President and Cabinet
+The Office of the President and Cabinet is responsible for provision of 
+overall direction and guidance in the implementation, monitoring, and 
+review of the Policy.
+ii. Ministry responsible for Agriculture
+The Ministry is responsible for: 
+a.  Ensuring  coordination  and  collaboration  with  other  key  service  
+providers and stakeholders during implementation; 
+b.  Coordinating  and  ensuring  that  standards  in  the  provision  of  
+agriculture  extension  and  advisory  services  are  set  and  enforced  
+for professional and quality services; and 
+c.  Supervising,  monitoring  and  evaluating  implementation  of  this  
+Policy.
+iii. Ministry responsible for Trade  
+The Ministry is responsible for ensuring that agriculture 
+commercialisation including trade facilitation, and cooperative 
+development interventions are implemented alongside other extension 
+and advisory services.
+iv. Ministry responsible for Industry  
+The Ministry is responsible for ensuring that agriculture 
+commercialisation including enterprise development, value addition 
+and related investments are made to respond to demand for these in 
+agriculture extension and advisory services.
+v. Ministry responsible for Local Government
+The Ministry is responsible for:
+a. Coordinating with the Ministry of Agriculture and local authorities 
+for  effective  implementation  of  the  decentralization  drive  at  local  
+level; and
+b. Creating an enabling environment for smooth operationalisation of 
+agriculture extension and advisory services at local level.
+IMPLEMENTATION ARRANGEMENTS
+
+20 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+vi. Ministry responsible for Justice
+The Ministry is responsible for:
+a. Guiding development of the regulatory framework to ensure that it 
+is compliant with Malawi’s laws; and 
+b.   Drafting,   reviewing   and   amending   agriculture   extension   and   
+advisory services legislations.
+vii. Ministry responsible for Lands
+The Ministry is responsible for providing clients, especially farmers, with 
+policy guidance on land related matters such as interpretation of land 
+laws which require coordinated sensitisation to farming community.
+viii. Ministry responsible for Finance 
+The Ministry is responsible for:
+a.   Financing   public   agriculture   extension   and   advisory   services   
+programmes; and
+b.   Facilitating   and   monitoring   resource   mobilisation   for   public   
+agriculture extension and advisory services programmes
+ix.  Ministry responsible for Economic Planning and Development
+The Ministry is responsible for:
+a. Facilitating development and appraisal of agriculture extension and 
+advisory services programmes/projects; and
+b. Data collection and analysis through National Statistical Office.
+x.  Ministry responsible for Gender and Community Services
+The Ministry is responsible for providing policy direction and oversight 
+on gender, community development and social welfare. 
+xi.  Ministry responsible for Health 
+The Ministry is responsible for providing policy and technical guidance 
+on  health  issues  especially  on  nutrition  and  HIV  and  AIDS  and  other  
+pandemics like COVID-19.
+xii.  Ministry responsible for Education
+The Ministry is responsible for coordinating educational and research 
+issues especially with the academia and training institutions.
+xiii. Ministry responsible for Labour 
+The Ministry is responsible for coordinating and supporting technical, 
+vocational   and   entrepreneurship   interventions   to   enhance   youth   
+participation in agribusiness development projects and programmes.
+xiv. Ministry responsible for Youth 
+The  Ministry  is  responsible  for  coordinating  promotion  of  youth  
+participation  in  agribusiness  by  collaborating  with  the  Ministry  of  
+Agriculture and stakeholders in the agriculture sector.
+
+Ministry of Agriculture | 21
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+xv. Ministry    responsible    for    Environment,    Climate    Change    and    
+Meteorological Services
+The Ministry is responsible for: 
+a.  Provision  of  up-to-date  climate  and  weather-related  information;  
+and 
+b. Provision of technical expertise to develop, promote, raise awareness 
+and  monitor  the  formulation,  implementation,  and  reporting  of  
+intervention on environment, natural resources and climate change 
+including carbon trading. 
+xvi. Department responsible for Human Resource and Management
+The Department is responsible for:
+a. Facilitating recruitment of public agriculture extension and advisory 
+services staff;
+b.   Facilitating   development   of   public   agriculture   extension   and   
+advisory services staff; and
+c. Conducting functional review of agriculture extension and advisory 
+services.
+xvii. Department responsible for Statutory Corporation
+The   Department   is   responsible   for   effective   participation   of   all   
+agriculture  related  parastatals  in  agricultural  extension  and  advisory  
+services   programmes   including   Agriculture   Development   Market   
+Corporation  (ADMARC),  Smallholder  Farmers’  Fertilizer  Revolving  
+Fund of Malawi (SFFRFM) and National Food Reserve Agency (NFRA).
+xviii. National Planning Commission
+The National Planning Commission is responsible for:
+a. Incorporating issues on Agriculture Extension Services in medium 
+term development plans; and
+b. Overseeing implementation of the National Agriculture Extension 
+and Advisory Services Policy.
+xix. National Commission for Science and Technology
+The National Commission for Science and Technology is responsible for:
+a. Promoting, supporting, coordinating and regulating research; and 
+b. Development and application of science and technology.   
+xx. Malawi Investment and Trade Centre (MITC)
+The Centre is responsible for supporting implementation of the current 
+Policy  by  linking  up  potential  commercial  investors  with  agriculture  
+extension and advisory service providers.
+xxi. Academia and Research Institutions
+The academia and research institutions are responsible for:
+a. Conducting studies to assess impact of various agriculture extension 
+approaches,  strategies,  and  interventions  used  in  the  course  of  
+implementing the current Policy;
+
+22 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+b.  Developing  models,  designing  and  running  some  professional  
+courses in support of Policy implementation;
+c. Generating and refining technology; and
+d. Establishment of agricultural incubation centers.
+xxii. National Assembly
+The National Assembly is responsible for enacting legislation to support 
+the  regulatory  framework  for  agriculture  extension  and  advisory  
+services  standards  and  their  enforcement  by  responsible  institutions  
+in the country.
+xxiii. Local Authorities
+The Local Authorities are responsible for:
+a. Implementing and monitoring of the Policy within the 
+decentralisation framework at council level, that is, staff 
+recruitment, promotion, equipment and descent housing; and  
+b. Developing and enforcing bye-laws to support implementation of 
+the Policy at local council level.
+xxiv. Decentralised Agriculture Extension Services System Structures
+The  Decentralised  Agriculture  Extension  Services  Systems  (DAESS)  
+structures  is  responsible  for  Policy  implementation,  collaboration,  
+coordination and feedback on service provision.
+xxv. Farmer Organisations
+Farmer Organisations are responsible for:
+a.  Ensuring  that  their  members  are  aware  of  developments  in  the  
+sector,   including   information   on   agriculture   technologies   and   
+service providers; and
+b.  Ensuring  that  their  members  have  access  to  quality  agriculture  
+extension and advisory services.
+xxvi. Civil Society Organisations
+The Civil Society is responsible for:
+a. Implementing and monitoring of the Policy; and                 
+b. Ensuring that non-state actors share information regarding services 
+and budgets for coordination purposes.
+xxvii. Development Partners
+Development  Partners  are  responsible  for  technical  and  financial  
+support  for implementation of the Policy.
+xxviii.  Private Sector
+The   private   sector   is   responsible   for   mobilising   resources   for   
+implementation and monitoring of agricultural extension and advisory 
+services  programmes  through  Malawi  Confederation  of  Chambers  of  
+Commerce and Industry (MCCCI). 
+
+Ministry of Agriculture | 23
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+4.2  Implementation Plan  
+Annex 1 presents an outline of the implementation plan for the Policy which 
+specifies  specific  goals,  objectives,  strategies,  the  responsible  entities  and  
+the timelines for implementation.
+4.3 Monitoring and Evaluation Plan  
+Annex  2  presents  an  outline  of  the  monitoring  and  evaluation  plan  for  
+the  Policy  which  specifies  targets  for  a  set  of  indicators  through  which  
+performance in achieving specific outputs related to the goals and objectives 
+of the Policy will be assessed. The Policy will be reviewed where necessary, 
+with a comprehensive review being done in the fifth year of implementation.
+
+ANNEXES 
+
+Ministry of Agriculture | 25
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Annex 1: National Agriculture Extension and Advisory Services Policy 
+Implementation Plan
+Objective
+Strategy
+Responsibility
+Timeframe
+Policy Priority Area 1: Agriculture Extension Capacity DevelopmentPolicy statement 1: The Policy will ensure that agriculture extension institutions and infrastructure are developed to enhance their efficiency and effectiveness
+To build institutional and human capacity for effective provision of agriculture extension and advisory services
+Promote agriculture extension institutions to support implementation of services
+MoA
+, District Councils, Development Partners, 
+NGOs, FBOs, CBOs, DAECCs, FOs, DSPs, Religious Organisations, Private Organisations, ASPs, NSP
+2025-2030
+Improve coordination and management of agriculture extension and advisory services
+MoA
+, District Councils, Development Partners, 
+NGOs, FBOs, CBOs, DAECCs, FOs, DSPs, Private Organisations, and ASPs, NSP
+2025-2030
+Promote modern infrastructure development
+MoA
+, District Councils, Development Partners, 
+NGOs, FBOs, CBOs, DAECCs, FOs, Private Organisations, Academia
+2025-2029
+Promote agriculture innovation system
+MoA
+, District Councils, Development Partners, 
+NGOs, FBOs, CBOs, DAESS platforms, FOs, Private Organisations, Academia
+2025-2030
+Promote Private Extension Services
+MoA
+, Development Partners, NGOs, Academia, 
+Private Organizations
+2025-2030
+Improve regulatory framework for effective delivery of agriculture extension and advisory services
+MoA
+, District Councils, Ministry of Justice, Malawi 
+National Assembly 
+2026-2028
+Improve mobility of agriculture extension and advisory services officers at all levels
+MoA
+, District Councils, Development Partners, 
+NGOs, FOs, Religious Organisations, Private Organisations
+2025-2028
+Strengthen various mechanisms for financing extension programmes 
+MoA, 
+District Councils, Development Partners, 
+NGOs, FOs, Religious Organisations, Private Organisations
+2025-2029
+
+26 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Responsibility
+Timeframe
+Policy statement 2. The Policy advocates staff development programmes to continuously address needs of clients in the dynamic agriculture extension and advisory services sub-sector
+To build institutional and human capacity for effective provision of agriculture extension and advisory services
+Enhance staffing of agriculture extension and advisory services providers
+MoA
+, District Councils, NGOs, FOs, Religious 
+Organisations, Private Organisations
+2025-2030
+Strengthen professional, technical and managerial capacity of agriculture extension and advisory services providers
+MoA
+, District Councils, NGOs, FBOs, CBOs, 
+DAECCs, FOs, DSPs, Private Organisations 
+2025-2030
+Policy Priority Area 2: Knowledge ManagementPolicy Statement 1: The Policy will ensure that knowledge management, is improved to ease presentation, understanding and delivery of extension and advisory services 
+To promote implementation of innovative agriculture extension methods and approaches
+Promote research extension farmer linkages at different levels of implementation 
+MoA
+, District Councils, NGOs, FBOs, CBOs, 
+DAECCs, FOs, DSPs, Religious Organisations, Private Organisations, Academia, National Commission for Science and Technology  
+2025-2030
+Improve knowledge of technologies among agriculture extension and advisory services providers
+MoA
+, District Councils, NGOs, FBOs, CBOs, 
+DAECCs, FOs, DSPs, Religious Organisations, Private Organisations and Academia
+2025-2030
+Promote farmer access to well-packaged technologies through different methods and techniques
+MoA
+, District Councils, NGOs, FBOs, CBOs, 
+DAECCs, FOs, DSPs, Religious Organisations, Private Organisations, Academia
+2025-2030
+
+Ministry of Agriculture | 27
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Responsibility
+Timeframe
+Policy Statement 2: The Policy will ensure that dissemination of different technologies using ICT and interpersonal media is enhanced for increased adoption
+To increase farmers’ access to appropriate and up to date agriculture extension and advisory services messages and information 
+ 
+Promote ICT-based extension and advisory services for accelerated access to technologies
+MoA
+, District Councils, NGOs, FBOs, CBOs, 
+DAECCs, FOs, DSPs, Religious Organisations, Private Organisations, Academia
+2025-2028
+Facilitate development and dissemination of diverse and farmer-tailored agriculture information and messages
+MoA
+, District Councils, NGOs, FBOs, CBOs, 
+DAECCs, FOs, DSPs, Religious Organisations, Private Organisations, Academia
+2025-2030
+Enhance participatory development of agriculture messages
+MoA
+, District Councils, NGOs, FBOs, CBOs, 
+DAECCs, FOs, DSPs, Religious Organisations, Private Organisations, Academia
+2025-2030
+Enhance delivery of agriculture messages through interpersonal methods
+MoA
+, MoLG, District Councils, NGOs, FBOs, CBOs, 
+DAECCs, FOs, DSPs, Religious Organisations, Private Organisations 
+2025-2030
+Promote use of locally adapted communication strategies 
+MoA, 
+MoLG, District Councils, NGOs, FBOs, CBOs, 
+DAECCs, FOs, DSPs, Religious Organisations, Private Organisations
+2025-2030
+Policy statement 3: The Policy will ensure that effective data capturing, processing and storage of available information on different technologies at all levels is promoted
+To increase farmers’ access to appropriate and up to date agriculture extension and advisory services messages
+Strengthen capturing, processing and documentation of agriculture data and information
+MoA
+, District Councils, NGOs, FBOs, CBOs, 
+DAECCs, FOs, DSPs, Religious Organisations, Private Organisations, Academia
+2025-2027
+To improve coordination and collaboration in provision of agriculture extension and advisory services among stakeholders
+Strengthen linkages and networking among extension stakeholders in knowledge management
+MoA
+, District Councils, NGOs, FBOs, CBOs, 
+DAECCs, FOs, DSPs, Religious Organisations, Private Organisations, Academia
+2025-2030
+Improve access to timely agriculture information and technologies
+MoA
+, District Councils, NGOs, FBOs, CBOs, 
+DAECCs, FOs, DSPs, Religious Organisations, Private Organisations, Academia
+2025-2030
+
+28 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Responsibility
+Timeframe
+Policy Priority Area 3: Farmer Organization and EmpowermentPolicy Statement 1: The Policy will ensure that capacity development programmes for farmers and their organizations are implemented
+To build institutional and human capacity for effective provision of agriculture extension and advisory services
+Facilitate formation and development of farmer groups into business-oriented farmer organisations
+MoA
+, MoTI, MoL, MoY, District 
+Councils, Development Partners, NGOs, FBOs, CBOs, DAECCs, FOs, DSPs, Religious Organisations
+2025-2030
+Enhance capacity of farmers to organise, mobilise, engage service providers for agriculture extension and auxiliary services
+MoA
+, MoTI, MoL, MoY, District 
+Councils, Development Partners, NGOs, FBOs, CBOs, DAECCs, FOs, DSPs, Religious Organisations
+2025-2030
+Strengthen technical and managerial capacity of farmer organisations 
+MoA
+, MoTI, District Councils, 
+Development Partners, NGOs, FBOs, CBOs, DAECCs, FOs, DSPs, Religious Organisations, Private Organisations
+2025-2030
+Promote participation of youth, women and other vulnerable gender categories in farmer organisations management
+MoA
+, MoY, MoGCDSW, MoI, 
+District Councils, Development Partners, NGOs, FBOs, CBOs, DAECCs, FOs, DSPs, Religious Organisations, Private Organisation
+2025-2030
+
+Ministry of Agriculture | 29
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Responsibility
+Timeframe
+Policy Priority Area 4: Agriculture Commercialisation and Market Linkages Policy Statement 1: The Policy will ensure that agriculture commercialisation is promoted 
+To increase agro-processing, value addition and access to reliable agriculture markets
+Build staff capacity in agriculture ex
+-
+tension approaches and methods that promote market-led mass production, agro-processing, storage and ware
+-
+housing of agriculture commodities
+MoA,
+   MoTI, MoLGCU, MoGCDSW, MoL, MoY, MoJ, 
+MoF, MoE, NGOs, FOs, Religious Organisations, MITC, Private Sector
+2025-2030
+Enhance private sector investments in agribusiness including mega farm 
+Private Sector
+, MITC, MoA, 
+ MoTI, MoLGCU, 
+MoGCDSW, MoL, MoY, MoJ, MoF, MoE, NGOs, FOs, Religious Organisations
+2025-2030
+Develop innovative financial products for farmers of all gender categories
+Private Sector
+, MITC, MoA, MoTI, MoLGCU, 
+MoGCDSW, MoJ, MoF, MoE, NGOs, FBOs, CBOs, Religious Organisations
+2025-2030
+Promote agri-preneurship among farmers of all gender categories including the youth and other value chain actors
+MoA
+, Private Sector, MITC, MoI, MoLGCU, 
+MoGCDSW, MoJ, MoL, MoY, MoF, MoE, NGOs, FBOs, CBOs, FOs, Religious Organisations, Academia
+2025-2030
+Build institutional and farmer capacity in agro-processing and value addition
+MoTI
+, MoA, Private Sector, MITC, MoLGCU, 
+MoGCSW, MoJ, MoF, MoE, EAD, MBS, NGOs, FBOs, CBOs, FOs, DSPs, Religious Organisations
+2025-2030
+Promote access to financial services by farmers of all gender categories
+Private Sector
+, MITC, MoA, MoI, MoLGCU, 
+MoGCDSW, MoL, MoY, MoJ, MoF, MoE, NGOs, FBOs, CBOs, Religious Organisations
+2025-2030
+
+30 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Responsibility
+Timeframe
+Policy Statement 2: The Policy will ensure that markets and market linkages are in place
+To increase agro-processing, value addition and access to reliable agriculture markets
+Promote development of agriculture market infrastructure
+MoTI
+, Private Sector, MITC, MoA, MoLGCU, 
+MoGCDSW, MoY, MoL, MoJ, MoF, MoE, NGOs, FOs, FUM, NASFAM, MAFECO, FBOs, CBOs, ADMARC, Religious Organisations
+2025-2028
+Strengthen contract farming arrangements between producers and buyers
+MoA
+, Private Sector, MITC,MoTI, MoLGCU, 
+MoGCSW, MoY, MoJ, MoL, MoF, MoE, NGOs, FOs, FUM, NASFAM,  MAFECO
+2025-2030
+Build capacity of staff and farmer organisation in marketing
+MoTI
+, Private Sector, MITC, MoA, District Councils, 
+MoGCDSW, MoY, MoJ, MoF, MoE, NGOs, FOs, FUM, NASFAM, MAFECO
+2025-2030
+Promote development of regulated markets and market linkages
+MoTI
+, Private Sector, MITC, MoA, District Councils, 
+MoGCDSW, MoY, MoJ, MoF, MoE, NGOs, CBOs, DSPs, FOs, FUM, NASFAM, MAFECO
+2025-2028
+Policy Priority Area 5: Food and NutritionPolicy Statement 1: The Policy will ensure that interventions on nutrition education and surveillance are promoted
+To increase availability and consumption of diversified and nutritious foods among farming households
+Promote diversified production of nutritious and safe foods
+MoA
+, MoH, District Councils, Research Institutions, 
+NGOs, FBOs, CBOs, FOs, Religious Organisations
+2025-2030
+Promote food safety technologies that reduce post-harvest losses in food production, preservation, processing and storage
+MoA
+, MoH, District Councils, Research Institutions, 
+NGOs, FOs, CBOs, MBS
+2025-2028
+Scale-up nutrition education and behaviour change
+MoA
+, MoH, District Councils, Research Institutions, 
+NGOs and FOs, FBOs, CBOs 
+2025-2030
+Enhance improved dietary practices
+MoA
+, MoH, District Councils, Research Institutions, 
+NGOs, FOs, FBOs, CBOs
+2025-2030
+Strengthen food surveillance system for effective implementation of the food and nutrition program
+MoA, 
+MoH, District Councils, Research Institutions, 
+NGOs, FOs, CBOs
+2025-2030
+
+Ministry of Agriculture | 31
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Responsibility
+Timeframe
+Policy Priority Area 6: Youth and Agriculture Development
+Policy Statement: The Policy will ensure promotion of youth participation in agriculture extension services and development programmes
+To increase access, ownership and control over productive agriculture assets and benefits by youths 
+Promote effective youth involvement and decision-making in agriculture programmes
+MoA
+, MoY, MoGCSW, Ministry of Industry, District 
+Councils, Development Partners, CSOs, NGOs, Private Sector, Academia
+2025-2030
+Support training for out-of-school youth in agricultural production, agro-processing and marketing
+MoA
+, MoY, MoL, MoGCDSW, Ministry of Industry, 
+District Councils, Development Partners, CSOs, NGOs, Private Sector, Academia
+2025-2030
+Promote modernisation of agriculture through introduction of modern technologies to attract the youth 
+MoA
+, MoY, MoGCSW, MoL, MoI, District Councils, 
+Development Partners, CSOs, NGOs, Private Sector, Research Institutions
+2025-2030
+Promote business incubation centres for youth in agriculture 
+MoY
+, MoA, MoL, MoGCDSW, MoI, District Councils, 
+Development Partners, NGOs, FOs, Private Sector, SMEDI, Academia
+2025-2028
+Support agriculture technical vocational education training for youth 
+TEVETA
+, MoA, MoL, MoY, MoGCDSW, MoI, District 
+Councils, Development Partners, NGOs, Private Sector, Academia
+2025-2030
+
+32 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Responsibility
+Timeframe
+Policy Priority Area 7: Cross Cutting Issues  Policy statement 1: The Policy will ensure that gender, HIV and AIDS are integrated in the agriculture extension and advisory services
+To increase access, ownership and control over productive agriculture assets and benefits by women and vulnerable groups
+Promote access, ownership and control over productive resources for women and other vulnerable groups
+MoA
+, MoY, MoGCSW, Ministry of Trade and 
+Industry, MoL, District Councils, NGOs, CBOs, FBOs, Religious Organisations
+2025-2030
+Promote agriculture education and technical training for women, persons with disabilities and other vulnerable groups 
+MoA
+, MoL, MoY, MoGCDSW, MoI, Ministry of 
+Lands, District Councils, Development Partners, CSOs, NGOs, TEVETA, Academia
+2025-2030
+Support agribusiness entrepreneurship among women, persons with disabilities and other vulnerable groups
+MoA
+, MoGCDSW, MoID, MoT, MoL, Ministry of 
+Lands, District Councils, Development Partners, CSOs, NGOs, Private Sector, Academia
+2025-2030
+Facilitate access to finance for women and other vulnerable groups in agriculture
+MoA
+, MoY, MoGCDSW, MoID, District Councils, 
+Development Partners, CSOs, NGOs
+2025-2030
+Promote participation of women and vulnerable groups in agriculture and environmental management programmes
+MoA
+, MoYS, MoGCDSW, MoL, Ministry of Lands, 
+District Councils, Development Partners, EAD, CBOs, NGOs
+2025-2030
+Promote agriculture programmes and projects that are responsive to gender and HIV at the workplace and community levels 
+MoA
+, MoY, MoGCDSW, Ministry of Trade and 
+Industry, Ministry of Lands, District Councils, Development Partners, NGOs, FOs, FBOs, Religious Organisations
+2025-2030
+Prioritise capacity development for gender and HIV responsive extension for all staff and farmers in the agricul
+-
+ture sector
+MoA
+, MoY, MoGCDSW, Ministry of Industry, 
+Ministry of Lands, District Councils, EAD, Development Partners, NGOs, FOs, FBOs, Religious Organisations
+2025-2030
+Policy statement 2: The Policy will ensure that climate change and environment are integrated in the agriculture extension and advisory services 
+To increase farmers’ access to appropriate and up-to-date agriculture extension and advisory services messages and information  
+Promote implementation of cli
+-
+mate-smart agriculture among farmers of all gender categories
+MoA
+, MoY, MoGCDSW, Ministry of Industry, 
+Ministry of Lands, District Councils, EAD, Development Partners, NGOs, FOs, FBOs, Religious Organisations, Department of Climate Change and Meteorological Services
+2025-2030
+
+Ministry of Agriculture | 33
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Annex 2: Monitoring and Evaluation Plan 
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Policy Priority Area 1: Agriculture Extension Capacity DevelopmentPolicy Outcome: Increased farmer adoption of sustainable agriculture technologiesPolicy statement 1: The Policy will ensure that agriculture extension institutions and infrastructure are developed to enhance their efficiency and effectivenessTo build institutional and human capacity for effective provi
+-
+sion of agriculture extension and advi
+-
+sory services
+Promote agriculture extension in
+-
+stitutions to support plan
+-
+ning and im
+-
+plementation of services
+National Agriculture Stakeholder Panel (NASP)  functional  
+Number of functional National Agriculture Stakeholder Panel (NASP)
+1
+1
+Annual reports from Department of Agriculture Extension Services
+The district councils are fully supporting the DAESS structuresDAESS structures are able to mobilise their own resources for implementation of their action plans
+District Agriculture Stakeholder Panels (DASP) functional  
+Number of functional District Agriculture Stakeholder Panels (DASP)
+28
+14
+Annual reports from Department of Agriculture Extension Services
+District Agriculture Coordination Committees (DAECC) functional  
+Number of functional District Agriculture Extension Coordination Committees (DAECC)
+28
+20
+Annual reports from Department of Agriculture Extension Services
+Agriculture Service Committees functional  
+Number of functional Agriculture Service Committees
+28
+28
+Annual reports from Department of Agriculture Extension Services
+Agriculture Area Stakeholder Panels  functional   
+Number of functional Agriculture Area Stakeholder Panels (AASP)
+433
+431
+Annual reports from Department of Agriculture Extension Services
+Village Agriculture Stakeholder Panels  functional   
+Number of functional Village Agriculture Stakeholder Panels (VASP)
+6,004
+3,001
+Annual reports from Department of Agriculture Extension Services
+
+34 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Village Agriculture Committees functional  
+Number of functional Village Agriculture Committees (VAC)
+35,411
+17,706
+Annual reports from Department of Agriculture Extension Services
+Improve coordination and management of agriculture extension and advisory services
+Agriculture extension stakeholders with Memorandum of Understanding with the Ministry of Agriculture registered
+Percentage of registered agriculture extension stakeholders with Memorandum of Understanding with the Ministry of Agriculture 
+100%
+40%
+Stakeholder meeting reports and supervisions reports
+Availability of standards to regulate service provision 
+Quarterly stakeholders’ coordination and joint planning meetings conducted
+Number of quarterly stakeholders’ coordination and joint planning meetings conducted at each level
+20
+4
+Stakeholder meeting reports and supervisions reports
+Availability of resources
+Promote modern infrastructure development 
+Agricultural Residential Training Centres (RTCs) rehabilitated
+Number of Residential Training Centres rehabilitated
+8
+2
+Annual reports from Department of Agriculture Extension Services
+Agricultural Residential Training Centres (RTCs) upgraded
+Number of Residential Training Centres upgraded
+4
+0
+Annual reports from Department of Agriculture Extension Services
+Agricultural Development Divisions’ offices upgraded
+Number of Agricultural Development Divisions’ offices upgraded
+8
+3
+Annual reports from Department of Agriculture Extension Services
+
+Ministry of Agriculture | 35
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Village Agriculture Committees functional  
+Number of functional Village Agriculture Committees (VAC)
+35,411
+17,706
+Annual reports from Department of Agriculture Extension Services
+Improve coordination and management of agriculture extension and advisory services
+Agriculture extension stakeholders with Memorandum of Understanding with the Ministry of Agriculture registered
+Percentage of registered agriculture extension stakeholders with Memorandum of Understanding with the Ministry of Agriculture 
+100%
+40%
+Stakeholder meeting reports and supervisions reports
+Availability of standards to regulate service provision 
+Quarterly stakeholders’ coordination and joint planning meetings conducted
+Number of quarterly stakeholders’ coordination and joint planning meetings conducted at each level
+20
+4
+Stakeholder meeting reports and supervisions reports
+Availability of resources
+Promote modern infrastructure development 
+Agricultural Residential Training Centres (RTCs) rehabilitated
+Number of Residential Training Centres rehabilitated
+8
+2
+Annual reports from Department of Agriculture Extension Services
+Agricultural Residential Training Centres (RTCs) upgraded
+Number of Residential Training Centres upgraded
+4
+0
+Annual reports from Department of Agriculture Extension Services
+Agricultural Development Divisions’ offices upgraded
+Number of Agricultural Development Divisions’ offices upgraded
+8
+3
+Annual reports from Department of Agriculture Extension Services
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Extension Planning Area Offices maintained with power and housing facilities
+Number of Extension Planning Area offices maintained
+31
+4
+Annual reports from Department of Agriculture Extension Services
+Relevant equipment supplied to RTCs
+Number of RTCs supplied with relevant equipment
+12
+5
+Annual reports from the Department of Agriculture Extension Services  
+Availability of resources
+Relevant equipment supplied to Agricultural Development Divisions’ offices
+Number of Agricultural Development Divisions’ offices with relevant equipment
+8
+0
+Annual reports from Department of Agriculture Extension Services
+Relevant equipment supplied to Extension Planning Area Offices
+Number of functional Extension Planning Area offices supplied with relevant ICT equipment
+31
+0
+Annual reports from Department of Agriculture Extension Services
+
+36 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Improve regulatory framework for effective delivery of agriculture extension and advisory services
+Agribusiness Strategy developed
+Number of Agribusiness Strategies developed
+1
+0
+Agribusiness Strategy
+Readiness and commitment of all agriculture stakeholders to input into strategic documents
+Agriculture Sector Gender, HIV and AIDS Strategy reviewed 
+Number of Agriculture Sector Gender, HIV and AIDS Strategies reviewed
+1
+0
+Agriculture Sector Gender, HIV and AIDS Strategy
+Laws to regulate agriculture extension and advisory services enacted
+Number of laws to regulate agriculture extension and advisory services enacted
+1
+1
+Act of parliament for Agriculture Extension and Advisory Services
+Improve mobility of agriculture extension and advisory services officers at all levels
+Motorbikes for frontline staff procured
+Number of motorbikes for frontline staff procured
+1,500
+800
+Annual joint sector review reports
+Availability of funds
+Vehicles for field operations procured
+Number of vehicles for field operations procured
+41
+20
+Annual reports from the Department of Agriculture Extension Services  
+Mobile vans for field operations procured
+Number of mobile vans for field operations procured
+5
+6
+Annual reports from the Department of Agriculture Extension Services  
+Outdoor concert stage track/live broadcast promotion vehicle
+Number of outdoor concert track/live promotion vehicle
+1
+0
+Procurement reports from the Department of Agriculture Extension Services 
+Availability of funds
+Promote Agriculture Innovation Systems
+Agriculture innovation platforms functional
+Number of functional innovation platforms
+402
+25
+Annual reports from the Department of Agriculture Extension Services
+Willingness of other players to participate in other platforms
+Agriculture innovations developed
+Number of innovations developed
+20
+10
+
+Ministry of Agriculture | 37
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Promote private extension services following government set standards
+Standards for provision of private extension service developed and provided 
+Number of standards developed and promoted
+1
+0
+Annual reports from the Department of Agriculture Extension Services
+Availability of Agriculture Extension and advisory services Act
+Institutionalise provision of private extension service  
+Number of players providing private extension services
+30
+10
+Annual reports from the Department of Agriculture Extension Services
+Demand by mega farmers for private extensionWillingness of other players to provide private extension to farmers
+Improve financing for extension services
+Strengthen various mechanisms for financing extension programmes
+Agriculture extension fund order operational
+Agriculture extension fund order in operation
+1
+1
+Annual reports from the Department of Agriculture Extension Services
+Government commitment to continue with the Fund Order arrangement
+Grants for extension programmes provided
+Number of grants for extension programmes provided
+10
+2
+Annual reports from the Department of Agriculture Extension Services
+Willingness of donor partners to fund extension
+Farmer-led financing mechanisms established
+Number of farmer-led financing mechanisms established
+10
+2
+Annual reports from the Department of Agriculture Extension Services
+Farmer willingness to pay subscriptions
+Agriculture extension PPPs established
+Number of agriculture extension PPPs established
+10
+2
+Annual reports from the Department of Agriculture Extension Services
+Willingness of partners to fund extension
+
+38 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Policy statement 2: The Policy will ensure that staff development programmes continuously address needs of clients in the dynamic agriculture extension and advisory services sub-sector are advocatedTo build institutional and human capacity for effective provision of agriculture extension and advisory services
+Enhance staffing of agricultural extension and advisory services providers
+Agricultural extension and advisory services personnel recruited
+Percentage of vacancies of agricultural extension personnel filled  
+100%
+70%
+Recruitment reports 
+Availability of funds
+Department of Agriculture Extension Services adequately staffed
+Vacancy rate 
+100%
+70%
+Staff return report from Department of Agriculture Extension Services  
+Availability of funds 
+Strengthen professional, technical and managerial capacity of agriculture extension and advisory services providers
+Agriculture extension staff holding managerial positions trained
+Percentage of agriculture extension staff holding managerial positions trained
+80%
+10%
+Training reports from the Department of Agriculture Extension Services
+Availability of resources for trainings
+Subject matter specialists trained
+Percentage of subject matter specialists trained
+80%
+40%
+Frontline extension workers trained  
+Percentage of frontline extension workers trained  
+80%
+50%
+
+Ministry of Agriculture | 39
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Policy Priority Area 2: Knowledge ManagementPolicy Outcome: Increased farmer adoption of sustainable agriculture technologiesPolicy Statement 1: The Policy will ensure that knowledge management, is improved to ease presentation, understanding and delivery of agriculture extension and advisory services To promote implementation of innovative agriculture extension methods and approaches 
+Promote re
+-
+search exten
+-
+sion farmer linkages at different levels of implementa
+-
+tion
+Farmer field days conducted
+Number of farmer field days conducted
+14,090
+2,114
+Department of Agriculture Research Services reports
+Good collaboration between research, extension and farmers
+Research dissemination meetings conducted
+Number of research dissemination meetings conducted
+50
+5
+Joint on-farm trials conducted
+Number of joint on- farm trials conducted
+50
+5
+Improve knowledge of technologies among agriculture extension and advisory services providers
+Agriculture extension workers trained in up-coming modern farming technologies, methods and approaches 
+Percentage of extension workers trained in up-coming modern farming technologies, methods and approaches 
+70%
+20%
+Training reports
+Availability of resources for trainings
+Agriculture extension tours undertaken
+Number of agriculture extension tours undertaken
+140
+40
+Back to office reports
+Availability of resources
+Promote farmer access to well-packaged technologies through different methods and techniques
+Farmers reached with agriculture extension messages
+Percentage of farmers reached with agriculture extension messages
+80%
+57%
+Department of Agriculture Extension Services reports
+Readiness of farmers to receive and use the  messages                     Availability of well-packaged technologies
+
+40 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Policy Statement 2: The Policy will ensure that dissemination of different technologies using ICT and interpersonal media is enhanced for increased adoptionTo increase farmers’ access to appropriate and up to date agriculture extension and advisory services messages
+Promote ICT-based extension and advisory services for accelerated access to technologies
+ICT based agriculture extension and advisory services established
+Number of ICT based agriculture extension and advisory services established
+14
+6
+Department of Agriculture Extension Services reports
+Financial and human resourcesPolitical will
+Facilitate development and dissemination of diverse and farmer-tailored agriculture messages
+Farmer-tailored agriculture information and messages developed and disseminated
+Number of farmer-tailored agriculture and message developed and disseminated
+120
+40
+Department of Agriculture Extension Services reports
+Financial supportPolitical will
+Enhance participatory development of agriculture messages
+Participatory meetings on message development conducted
+Number of participatory meetings on message development conducted
+100
+8
+Department of Agriculture Extension Services Annual reports  
+Collaboration among stakeholders and availability of resources
+Agriculture extension messages co-developed
+Number of agriculture extension messages co-developed
+60
+8
+Department of Agriculture Extension Services Annual reports  
+
+Ministry of Agriculture | 41
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Enhance the delivery of agricultural messages through interpersonal methods
+Community meetings conducted  
+Number of community meetings conducted
+33,825
+6,512
+Minutes of the meetings, Ministry of Agriculture annual reports 
+Financial supportPolitical will
+Agricultural call centres established  
+Number of agricultural call centres established
+2
+1
+Department of Agriculture Extension Services reports
+Interactive radio programmes produced and aired   
+Number of interactive radio programmes produced and aired  
+25
+12
+Radio programmes recorded
+Interactive radio episodes produced and aired
+Number of interactive radio episodes produced and aired
+300
+72
+Radio episodes produced and aired
+Agricultural video programmes produced and aired 
+Number agricultural video programmes produced and aired
+75
+15
+Videos produced
+Multimedia campaigns conducted  
+Number of multimedia campaigns conducted
+20
+4
+Department of Agriculture Extension Services annual reports
+
+42 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Promote the use of locally adapted communication strategies
+Community radio programmes produced and aired
+Number of community radio programmes produced and aired
+56
+12
+Reports, number of locally adapted communication research
+Financial supportPolitical will
+Radio listening clubs established and maintained
+Number of radio listening clubs established and maintained
+615
+518
+Department of Agriculture Extension Services annual reports
+Agriculture Resource Centres (ARCs) established and maintained
+Number of Agriculture Resource Centres (ARCs) established and maintained
+206
+52
+Department of Agriculture Extension Services annual reportsDepartment of Agriculture Extension Services annual reports
+Drama clubs engaged on agriculture extension services and advisory services
+Number of drama clubs engaged on agriculture extension and advisory services 
+234
+12
+
+Ministry of Agriculture | 43
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Policy statement 3:  The Policy will ensure that effective data capturing, processing and storage of available information on different technologies at all levels is promoted  To increase farmers’ access to appropriate and up to date agriculture extension and advisory services messages
+Strengthen capturing, processing and documentation of agriculture data and information
+Agriculture extension database linked to NAMIS
+Number of agriculture extension databases linked to NAMIS
+1
+0
+Department of Agriculture Extension Services reports
+Availability of financial and human resources
+To improve coordination and collaboration in provision of agriculture extension and advisory services among stakeholders
+Strengthen linkages and networking among extension stakeholders in knowledge management
+Agriculture knowledge sharing forums conducted
+Number of agriculture knowledge sharing forums conducted
+20
+5
+Department of Agriculture Extension Services reports
+Availability of financial resourcesWillingness of stakeholders
+Stakeholders’ joint review meetings conducted
+Number of stakeholders’ joint review meetings conducted
+10
+5
+Joint review meeting reports
+Joint stakeholder supervision visits conducted
+Number of joint stakeholder supervision visits conducted
+10
+4
+Joint supervision visits reports 
+Improve access to timely agriculture information and technologies
+Agriculture extension information and technologies timely accessed by farmers
+Percentage of farmers reached with timely agriculture extension information and technologies
+80%
+57%
+Annual survey reports on access to extension services
+Availability of resources
+
+44 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Policy Priority Area 3: Farmer Organisation and EmpowermentPolicy Outcome: Increased agro-based incomes of farmers and other value chain actors of all gender categoriesPolicy Statement 1: The Policy will ensure that capacity development programmes for farmers and their organisations are implementedTo build institutional and human capacity for effective provision of agriculture extension and advisory services
+Facilitate formation and development of farmer groups into business-oriented farmer organisations
+Farmer groups formed
+Number of farmer groups formed
+4,000
+2,000
+Reports, database of farmer organisation
+Availability of resources
+Farmer organisations trained in cooperative and association management
+Number of farmer organisations trained in cooperative and association management
+1,200
+1,000
+Reports, database of farmer organisation
+Availability of resourcesWillingness of farmers to reorganize into business-oriented farmer organisations All members have aligned interests and objectives
+Farmer groups legally registered
+Number of farmer groups legally registered
+1,200
+1,000
+Reports, database of farmer organisation
+Farmer organisation database developed
+Number of farmer organisation database developed
+1
+1
+Reports, database of farmer organisation
+Farmer groups trained in group development and organisational management
+Number of farmer groups trained in group development and organisational management
+4,000
+2,000
+Reports, database of Farmer organisation
+Improved literacy levels for members of farmer organisations
+Number of farmer organisation strengthened in record keeping, procurement and financial literacy
+2,000
+1,500
+Reports, compendium of best practices
+Availability of funds
+
+Ministry of Agriculture | 45
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Farmer learning routes conducted
+Number of farmer learning routes conducted
+1,250
+700
+Reports, compendium of best practices
+Willingness of farmers
+Enhance capacity of farmer organisations in resource mobilisation and engagement of service providers for agriculture extension and advisory services
+Farmer groups trained in agribusiness services from extension workers
+Number of farmer groups trained in agribusiness services from extension workers
+2,000
+500
+Reports, database of farmer organisation
+Availability of functional District Agriculture Extension Services System structures
+Farmer organisations linked to various agriculture and other service providers
+Number of farmer organisations linked to various agriculture and other service providers
+620
+350
+Reports, database of farmer organisation
+Farmer organisations involved in contract management and negotiations
+Number of farmer organisations on contract management and negotiations
+1,200
+1,000
+Reports, database of farmer organisations
+Strengthen technical and managerial capacity of farmer organisations
+Farmer groups trained in business management, book keeping and accounting, procurement procedures
+Number of farmer groups trained in business management, book keeping and accounting, procurement procedures
+4,000
+2,000
+Reports, database of farmer organisations
+Availability of resourcesWillingness of farmers to improve their capacity in business managementImproved literacy levels for members of farmers organisation
+
+46 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Groups under mentorship and coaching programmes 
+Number of groups under mentorship and coaching programmes
+400
+100
+Reports from groups under mentorship 
+Willingness of groups to avail themselves for coaching and mentorship programs
+Promote public private partnership in farmer organisation capacity development
+Public private partnerships in farmer organisations developed
+Number of public private partnership arrangements with farmer organisation in capacity buildings, matching grants and loans
+5
+1
+Reports from Ministry of Agriculture, Department of Agriculture Extension Services and Ministry of Trade and Industry
+Availability of resources and policy environment that promotes PPP
+Promote participation of youth, women and other vulnerable gender categories in farmer organisation management
+Youth, women and other vulnerable gender categories participating in farmer organisation management
+Percentage of youth, women and other vulnerable gender categories participating in farmer organisation management
+40%
+15%
+Reports, database of farmer organisations, surveys on youth and women participation in leadership
+Availability of resourcesImproved literacy of youths and women in leadership position
+Farmer groups trained in gender and women empowerment
+Number of farmer groups trained in gender and women empowerment
+4,000
+2,000
+Farmer training reports
+Availability of resourcesWillingness of youths and vulnerable gender categories to join farmer groups
+
+Ministry of Agriculture | 47
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Policy Priority Area 4: Agriculture Commercialisation and Market LinkagesPolicy Outcome: Increased agro-based incomes of farmers and other value chain actors of all gender categoriesPolicy Statement 1: The Policy will ensure that agriculture commercialisation is promotedTo increase agro-processing, value addition and access to reliable agriculture markets
+Build staff capacity in agriculture extension approaches and methods that promote market-led mass production, agro-processing, storage and warehousing of agriculture commodities
+Staff trained in agriculture extension approaches and methods that promote market-led mass production, agro-processing, storage and warehousing of agriculture commodities
+Number of staff trained in agriculture extension approaches and methods that promote market-led mass production, agro-processing, storage and warehousing of agriculture commodities
+750
+150
+Training reports from Ministry of Agriculture and Ministry of Trade and Industry
+Availability of resources
+Enhance private sector, including mega farm, investments in agribusiness
+Private sector led agricultural investments 
+Number of private investors in agriculture
+60
+12
+Reports from Ministry of Trade and Industry
+Conducive macroeconomic environment for investors
+FOs engaged in agro-processing and value addition
+Number of FOs engaged in agro-processing and value addition
+100
+30
+Reports from Ministry of Trade and Industry
+Willingness of farmers to join FosGood governance of FOs
+Private investors engaged in agro-processing and value addition
+Number of private investors engaged in agro-processing and value addition
+40
+12
+Reports from Ministry of Trade and Industry
+Availability of raw materialsReliable power supply
+
+48 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Develop innovative financial products for farmers of all gender categories
+Financial services provided to FOs by commercial banks
+Number of commercial banks providing financial services to FOs
+15
+5
+Reports from Commercial Banks and Bankers Association of MalawiDepartment of Agriculture Extension Services reports
+Affordable interest rates offered by Commercial Banks
+Financial products targeting FOs developed
+Number of financial products targeting FOs developed
+6
+2
+Insurance premiums targeting FOs developed
+Number of FOs covered with insurance premiums
+100
+10
+Financial products
+Promote agri-preneurship among farmers of all gender categories including the youth and other value chain actors
+Value chain actors including the youth engaged in agri-preneurship 
+Number of value chain actors including the youth engaged in agri-prenuership 
+320
+60
+Database of agri-preneurs, training reports
+Availability of affordable resources
+Build institutional and farmer capacity in agro-processing and value addition
+FOs trained in agro-processing and value addition
+Number of FOs trained in agro-processing and value addition
+100
+30
+Training Reports, database of FOs
+Affordability of equipment for agro-processing and value addition
+Promote access to financial services by farmers of all gender categories
+Financial services accessed by FOs
+Number of FOs linked/accessing financial services
+220
+100
+Department of Agriculture Extension Services reportsReports from Commercial Banks and Bankers Association of Malawi
+Availability of various sources of financeAffordable interest rates offered by Commercial Banks
+
+Ministry of Agriculture | 49
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Policy Statement 2: The Policy will ensure that markets and market linkages are in placeTo increase Agro-processing, value addition and access to reliable agriculture markets
+Promote development of agriculture market infrastructure
+Structured markets established
+Number of structured markets established
+8
+4
+Structured markets reports
+Prioritised value chains are well supported by all chain players
+Strengthen contract farming arrangements between producers and buyers
+Contract Farming Law enacted
+Number of Contract Farming Laws
+1
+0
+Contract Farming Law reports, signed contracts
+Availability of resources
+Contracts signed between producers and buyers 
+Number of contracts signed between producers and buyers
+1,000
+400
+Build capacity of staff and farmer organisations in marketing
+Staff trained in marketing
+Number of staff trained in marketing
+250
+50
+Department of Agriculture Extension Services reports
+Availability of Contract Farming Law
+FOs trained in marketing 
+Number of FOs trained in marketing
+920
+300
+Department of Agriculture Extension Services reports
+Availability of Contract Farming Law
+FOs linked to markets 
+Number of FOs linked to markets
+920
+300
+Department of Agriculture Extension Services reports
+Promote development of regulated markets and market linkages
+Regulated markets developed
+Number of regulated markets developed
+10
+2
+Department of Agriculture Extension Services reports, regulated markets
+Availability of Laws and Regulations for markets
+
+50 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Policy Priority Area 5: Food and NutritionPolicy Outcome: Improved dietary diversification among farmers of all gender categoriesPolicy Statement 1: The Policy will ensure that interventions on nutrition education and surveillance are promotedTo increase availability and consumption of diversified and nutritious foods among farming households
+Promote diversified production of nutritious and safe foods
+Production of nutritious and safe foods diversified by households
+Percentage of households practicing diversified production of nutritious and safe foods
+60%
+30%
+APES reports
+Farmers will be able to access diverse types of seed for nutritious crops
+Promote food safety technologies that reduce post-harvest losses in food production, preservation, processing and storage
+Production technologies promoting food safety disseminated
+Number of food production technologies disseminated
+5
+3
+Ministry of Agriculture annual reports
+Availability of resources for training farmersWillingness to use technologies
+Food storage technologies disseminated
+Number of food storage technologies disseminated
+8
+5
+Food processing technologies disseminated
+Number of food processing technologies disseminated
+8
+4
+Department of Agriculture Extension Services annual reports
+Food preservation technologies disseminated
+Number of food preservation technologies disseminated
+6
+2
+Department of Agriculture Extension Services annual reports
+
+Ministry of Agriculture | 51
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Scale-up nutrition education and behaviour change
+Staff trained in nutrition education and behaviour change
+Number of staff trained in nutrition education and behaviour change
+700
+200
+Training reports
+Availability of resources for training such as funds, training materialsWillingness of farmers to attend the training
+Farmers trained in nutrition education
+Number of farmers trained in nutrition education
+70,000
+21,000
+Training reports
+Nutrition education and behaviour change campaigns conducted
+Number of nutrition education and behaviour change campaigns conducted
+40
+20
+Departmental annual reports
+Availability of resources
+Enhance improved dietary practices
+Households reached with dietary diversification messages
+Percentage of households reached with dietary diversification messages
+80%
+40%
+Availability of resources for disseminating messages
+Strengthen food and nu
+-
+trition surveil
+-
+lance system for effective implemen
+-
+tation of the food and nutri
+-
+tion program
+Staff trained in food and nutrition surveillance
+Number of staff trained in food and nutrition surveillance
+700
+100
+Nutrition surveillance reports
+Availability of competent staff
+Food and nutrition sentinel sites established
+Number of food and nutrition sentinel sites established  
+280
+70
+Food and nutrition surveillance conducted
+Number of households participating in food and nutrition surveillance
+2,800
+280
+
+52 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Policy Priority Area 6: Youth and Agriculture DevelopmentPolicy Outcome: Improved socio-economic status of women, youth and other vulnerable groups in agriculturePolicy Statement: The Policy will ensure promotion of youth participation in agriculture extension services and development programmesTo increase access, ownership and control over productive agriculture assets and benefits by youths 
+Promote effective youth involvement and decision-making in agriculture programmes
+Youth involved in decision making in agriculture programmes
+Percentage of youth involved in decision making in agriculture programmes 
+50%
+25%
+Ministry of Agriculture reports 
+Availability of funds Willingness of the youth
+Support training for out-of-school youth in agricultural production, agro-processing and marketing
+Out-of-school youth trained in agriculture production, agro-processing and marketing
+Percentage of out-of-school youth trained in agriculture production, agro-processing and marketing 
+50%
+15%
+Ministry of Agriculture reports 
+Availability of fundWillingness of the youth
+Promote modernization of agriculture through the introduction of modern farming technologies to attract the youth
+Youth friendly modern agriculture technologies disseminated
+Number of youth friendly modern agriculture technologies disseminated 
+10
+ 4
+Ministry of Agriculture reports 
+Availability of funds
+Youth aware of modern agriculture technologies
+Percentage of youths aware on modern agriculture technologies
+60%
+30%
+Ministry of Agriculture reports
+Availability of resources
+
+Ministry of Agriculture | 53
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Modern farming technologies adopted
+Percentage of youth adopting the modern farming technologies
+40%
+10%
+Ministry of Agriculture reports
+Willingness of the youth
+Agricultural finance accessed by the youth
+Percentage of the youth accessing agricultural finance
+40%
+10%
+Ministry of Agriculture reports
+Availability of financial institutionsAvailability of funds
+Promote business incubation centres for the youth in agriculture
+Agriculture business incubation centres for the youth established
+Number of agriculture business incubation centres for the youth established
+30
+4
+Ministry of Agriculture reports 
+Availability of funds Stakeholder commitment
+Support agriculture technical vocational education training for youth
+Youth trained in agricultural vocational education
+Percentage of youth trained in agricultural vocational education 
+25%
+5 %
+Ministry of Agriculture, TEVET reports 
+Availability of funds Stakeholder commitment
+
+54 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Policy Priority Area 7: Cross Cutting Issues Policy Outcome: Improved economic status of women, youth and other vulnerable groups in agriculturePolicy Statement 1: The Policy will ensure that gender, HIV and AIDS are integrated in the agriculture extension and advisory servicesTo increase access, ownership and control over productive agriculture assets and benefits by women and vulnerable groups
+Promote access, ownership and control over productive resources for women and other vulnerable groups
+Agricultural productive resources accessed by women and other vulnerable groups 
+Proportion of women and other vulnerable groups accessing agricultural productive resources
+80%
+50%
+Ministry of Agriculture reports
+Availability of funds
+Ownership and control over productive resources and benefits by women and other vulnerable groups increased
+Proportion of women and other vulnerable groups with increased   ownership and control over productive resources and benefits
+60%
+25%
+Ministry of Agriculture reports
+Promote agriculture education and technical training for women, persons with disabilities and other vulnerable groups
+Good Agriculture Practices (GAPs) implemented by women, persons with disabilities and other vulnerable groups
+Proportion of vulnerable groups implementing GAPs
+70%
+35%
+Ministry of Agriculture reports
+Different extension approaches implemented by vulnerable groups
+Proportion of vulnerable groups implementing different extension approaches and methods
+70%
+35%
+
+Ministry of Agriculture | 55
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Support agri
+-
+business en
+-
+trepreneurship among women, persons with disabilities and other vulnera
+-
+ble groups
+Agricultural enterprises owned by women, persons with disabilities and other vulnerable groups
+Percentage of women owning agricultural enterprises
+50%
+25%
+Percentage of persons with disabilities and other vulnerable groups owning agricultural enterprises
+30%
+15%
+Facilitate access to finance for women and other vulnerable groups in agriculture
+Agricultural finance accessed by women and other vulnerable groups
+Proportion of women in agriculture with access to finance
+60%
+27%
+Proportion of persons with disability in agriculture with access to finance
+40%
+5%
+Promote participation of women and vulnerable groups in agriculture programmes
+ 
+Women and other vulnerable groups participating in agriculture programmes
+Proportion of women in agriculture programmes 
+90%
+60%
+Proportion of persons with disability participating in agriculture programmes
+50%
+10%
+
+56 | Ministry of Agriculture
+NATIONAL AGRICULTURE EXTENSION AND ADVISORY SERVICES POLICY | 2025
+Objective
+Strategy
+Output
+Performance indicator
+Target
+Baseline
+Means of Verification
+Assumptions/Risks
+Promote agriculture programmes and projects that are responsive to gender and HIV at the workplace and community levels 
+Agricultural programmes and projects responsive to gender and HIV and AIDS implemented at workplace and community levels
+Percentage of agriculture programmes and projects responsive to gender and HIV at workplace and community levels
+100%
+70%
+Prioritise capacity development for gender, and HIV responsive extension for all staff and farmers in the agriculture sector
+Staff trained in implementation of gender and HIV responsive agriculture extension
+Proportion of staff trained in implementation of gender and HIV responsive agriculture extension
+100%
+60%
+Ministry of Agriculture reports 
+Availability of funds
+Farmers trained in implementation of gender and HIV responsive agriculture extension
+Proportion of farmers trained in implementation of gender and HIV responsive agriculture extension
+70%
+30%
+Ministry of Agriculture reports 
+Availability of funds
+Policy Statement 2: The Policy will ensure that   climate change and environment are integrated in the agriculture extension and advisory servicesTo increase farmers’ access to appropriate and up-to-date agriculture extension and advisory services messages and information
+Promote im
+-
+plementation of Climate Smart Agri
+-
+culture (CSA) among farmers of all gender categories
+Climate Smart Agriculture (CSA) interventions implemented by farmers 
+Proportion of farmers implementing Climate Smart Agriculture (CSA) interventions
+80%
+40%
+Ministry of Agriculture reports 
+Availability of funds
+
+
+
+DEPARTMENT OF AGRICULTURE EXTENSION SERVCICES 
+AGRICULTURE COMMUNICATION BRANCH
+P.O. BOX 30145
+LILONGWE 3 
+MALAWI.   
+2025

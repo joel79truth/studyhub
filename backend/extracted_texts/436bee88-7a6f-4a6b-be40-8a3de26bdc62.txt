@@ -1,0 +1,62 @@
+
+
+Questions  
+1. The soil loss tolerance for an area at a certain hill slope averages 6 tonnes per hectare. The soil 
+depth is 0.28m. The crop grown needs 0.16m minimum soil depth. If the soil bulk density is 
+16,000 tonnes/ha and soil loss life span is 30 years. What is the mean annual soil loss? 
+2. Medium slope 6 to 12 % with cover (soil) poor due to immature crop C = 0.6. Time of 
+concentration = 60 minutes. i.e. 24 inch/hr, return period = 110 years. Area of the bond 200 m 
+to 100 m, calculate runoff. Use Malawi general tables. 
+3. A catchment area is a residential area, with a surface of 12 ha, a gradient of 0.02, and a rainfall 
+intensity of 100 mm/h, calculate the design peak runoff rate. 
+4. A farmer grows maize on field with soil factor of 0.325. Erosivity Index is estimated to be 385. 
+She uses rotation of 1
+st
+ corn, after meadow and incorporated residue when ploughing, hence 
+from a table or graphs, the rotation that the farmer uses has a ‘C’ value of 21.8%. The combined 
+LS factor is 0.8. Recommend a conservation measure to sustain soil allowable loss of 9.6 
+tons/ha/yr. 
+5. Calculate discharge in ideal conditions for a completely filled, rectangular, smooth concrete 
+drain of 1.5 m by 0.7 m, with a gradient of 0.005. 
+6. Design a 120m long bench terrace for a sandy loam soil with an average slope of 16%. The entire 
+width of the terrace acts as a channel which is provided with a uniform gradient of 0.6%. Rainfall 
+intensity for a 10-year recurrence interval and the time of concentration is 24 cm/hr. 
+(The time of concentration is the time needed for water to flow from the most remote point in 
+the watershed to the watershed outlet.) 
+7. The runoff coefficient for a field is 0.5. Time of concentration in the field is 60 minutes. Two 
+200m long bunds are spaced at 100m spaced based on design rainfall storm return period of 10 
+years. Estimate runoff of the field. 
+8. The soil loss tolerance for an area in Blantyre District is 6 tonnes per hectare. The crop grown 
+needs 0.15m minimum soil depth. If the soil bulk density is 105 tonnes per hectare and the 
+mean annual soil loss 4 tonnes/ha. What is the potential soil depth? 
+9. A farmer grows maize on sandy loam soils with the following characteristics: 
+silt & very fine sand     =       45% 
+sand                               =       30% 
+OM                                  =       3% 
+Soil structure                 =       3% 
+Soil permeability           =     Slow to moderate 
+The field is on a 4% slope & has a slope length of 164 ft. The Erosivity Index for the area is 320 & 
+the estimated soil allowable loss is 9.6 tons/ha/yr Assuming that the farmer uses contouring, 
+recommend a cropping pattern. 
+ 
+Note: 1m = 3.28 ft., 1ft = 0.305m 
+ 
+10. Another farmer with similar soil characteristics grows maize on a 5% slope & 60m length field. 
+Erosivity Index is estimated to be 385. This farmer uses rotation of 1st corn, after meadow and 
+incorporated residue when ploughing.  
+Recommend a conservation measure to sustain soil allowable loss of 9.6 tons/ha/yr. 
+ 
+
+11. A standard dimensional bund is to be designed on sandy loam soil. Find the slope of the bund. 
+Assume maximum allowable velocity of 2.50 – 2.75 ft./sec.  
+a. Assume triangular shape with side slope 1:4 
+b. Depth of flow is assumed to be 0.23 m (bund) 
+12. A storm water drain is to be constructed on a 0.5 percent slope to intercept 0.83 m3/sec of 
+surface runoff. The most erodible soils are sandy loams.  
+Can standard dimensions be used? 
+c. Assume standard trapezoidal drain with slope of 1:3 
+d. Depth of flow is 0.25 m (average) & bottom width is 4m 
+13. The results of peak surface runoff from the field given in the on the use of rational equation 
+indicated that there would be a peak surface runoff of 1.54 m3 /sec. Assume that the slope at 
+the bottom of the field (water way outlet) is 0.5 per cent and soils are mostly sandy loams. 
+Find the dimensions of a trapezoidal water way with side slope of 1:4. 

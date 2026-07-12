@@ -1,0 +1,1594 @@
+
+
+1
+ANTIBIOTICS
+Antibiotics
+Antibiotics are chemical substances 
+produced by microorganisms (fungi, 
+actinomycetes, bacteria) that suppress 
+the growth of other microorganisms, and 
+may eventually destroy them.
+
+2
+ANTIBIOTICS
+Classification 
+1. According to the source
+Antibiotics have been isolated from 
+three types of microorganisms.
+(i) Antibiotics from fungi:
+Penicllin from Penicillium notatum and
+penicillin chrysogenum; 
+griseofulvinfromPenicillium greseofulvin
+and others.
+
+3
+ANTIBIOTICS
+(ii)Antibiotics from actinomycetes
+Streptomycin from Streptomyces griseus;
+chlortetracycline from Streptomyces aureofacines; 
+oxytetracycline from Streptomyces  rimosus; 
+chloramphenicol from Streptomyces venezuelae; 
+erythromycin from Streptomyces erythreus
+
+4
+ANTIBIOTICS
+(iii)Antibiotics from bacteria 
+bacitracin from Bacillus subtilis;
+polymixins from Bacillus polymyxaand        
+others. 
+
+5
+ANTIBIOTICS
+2. According to the Mode of Action
+(i)Inhibitors of bacterial wall synthesis
+penicillins, 
+cephalosporins, 
+bacitracin, and others.
+
+6
+ANTIBIOTICS
+(ii) Inhibitors of protein synthesis
+aminoglycosides, 
+tetracyclines, 
+chloramphenicol, 
+macrolides and others.
+
+7
+ANTIBIOTICS
+(iii) Inhibitors of cell membrane function
+polymixins, 
+nystatin, 
+amphotericin B.
+
+8
+ANTIBIOTICS
+(iv) Inhibitors of nucleic acid synthesis and 
+metabolism  
+greseofulvin, 
+actinomycin
+rifampicin
+fluoroquinolones
+
+9
+Cell membrane
+THFA
+PABA
+Cell wall
+DNA
+MRA
+Inhibitors of
+Metabolism
+-Sulphonamide
+-Trimethoprim
+Inhibitors of 
+cell wall synthesis
+-beta lactams
+-vancomycin
+Inhibitors of
+protein synthesis
+-tetracycline
+-aminoglycosides
+-macrolides
+-clindamycin 
+-chloramphenicol
+Inhibitors of DNA 
+synthesis or function
+-fluoroquinolones, griseofulvin
+-rifampicin, 
+Site of action of antibiotics
+Inhibitors of cell 
+membrane function
+-polymixins
+-nystatin
+-amphotericin -B 
+
+10
+ANTIBIOTICS
+3. According to the Antibacterial 
+Spectrum
+(i) Narrow –spectrum antibiotics 
+penicillins, streptomycin. erythromycin, 
+lincomycin, polymixin B, vancomycin and 
+others.
+(ii) Broad –spectrum antibiotics
+chloramphenicol, tetracyclines, kanamycin, 
+cephalosporins, ampicillin, amoxycillin and 
+others.
+
+11
+ANTIBIOTICS
+INHIBITORS OF BACTERIAL CELL WALL 
+SYNTHESIS
+The most important of this group are the 
+penicillins and the cephalosporins,
+designated as Beta-lactam antibiotics (see 
+fig).
+
+12
+ANTIBIOTICS
+PENICILLINS
+•Comprise of substances some of which are 
+natural productswhile others are 
+semisyntheticcompounds. 
+•They have a common chemical nucleus, 6-
+aminopenicillanic acid (6-APA), and a common 
+mode of antibacterial action, i e by the inhibition 
+of cell wall mucopeptide synthesis.
+
+13
+ANTIBIOTICS
+HISTORY
+•Penicilin was discovered by Sir Alexander 
+Fleming in 1928 when he saw that colonies of 
+staphylcocci were lysed when contaminated by a 
+mould.
+•The mould was later classified as penicillium 
+notatum.
+•Crude penicillin G became available for limited 
+therapeutic trials in 1941.
+
+14
+ANTIBIOTICS
+•Up to 1959 biosynthesis of penicillins 
+depended  upon growth of Penicillium 
+notatum and Penicillium chrysogenum.
+•The natural penicilin G has several 
+shortcomings:
+(i) It is acid labile therefore destroyed 
+on oral administration.  
+
+15
+ANTIBIOTICS
+(ii) It is destroyed by beta-lactamase 
+enzymes.
+(iii) Has a narrow bacterial spectrum.
+(iv) Is rapidly excreted from the body.
+(v) It poorly penetrates into 
+compartments like the CSF.
+(vi) It is antigenic.
+
+16
+ANTIBIOTICS
+•These factors led to the search for better 
+compounds.
+•In 1958 the basic penicillin nucleus, 6-
+aminopenicillanic acid was  isolated.
+•It is possible to synthetically add side chains to 
+produce a range of penicillins that collectively 
+overcome the first four shortcomings of penicillin 
+G. 
+
+17
+ANTIBIOTICS
+Chemistry
+•The basic structure is a sulphur containing 
+thiazolidine ring fused to a beta-lactam 
+ring, forming 6-aminopenicillinic acid (6-
+APA), the so called penicillin nucleus, 
+upon which the antibacterial activity 
+depends (see Fig).
+•The side chain determines the individual 
+penicillin characteristics.
+
+18
+H           H            H    S            CH3
+RNCC C      
+CH3
+CNC      H
+OCOOH
+Beta –lactam ring
+6 –aminopenicillanic acid
+R –group determines the drug’s stability 
+to enzymatic or acidic hydrolysis
+and affects its bacterial spectrum
+Structure of beta-lactam antibiotics
+
+19
+ANTIBIOTICS
+•Bacterial beta-lactamase(penicillinase) 
+and acids such as gastric acid hydrolyse 
+penillin to Penicilloic acidby breaking the 
+beta-lactam ring.
+•Penicilloic acid has no antibacterial 
+activity, but is allergenic.
+
+20
+ANTIBIOTICS
+•Penicillin G has benzyl side chain, 
+substituting it with phenoxymethylor 
+phenoxyethylgroups increased acid 
+stability, hence oral penicillins. 
+•The addition of an alpha-NH3 group led to 
+production of broad spectrum penicillins 
+like ampicillin, amoxycillin.
+
+21
+ANTIBIOTICS
+Units of Penicillin
+•IU of penicillin is the specific penicillin 
+activity contained in 0.6mcg of the 
+crystalline sodium salt of penicillin G 
+(benzyl penicillin).  
+•One milligram of pure sodium penicillin G 
+is equivalent to 1667 units (for penicillins 
+derived from 6-APA).
+
+22
+ANTIBIOTICS
+Mode of Action
+•Beta-lactam antibiotics (penicillins, 
+cephalosporins) prevent the normal 
+synthesis of the bacterial cell wall. 
+•By selectively inhibiting the synthesis of 
+mucopeptidein the bacterial wall of 
+multiplying bacteria.
+
+23
+ANTIBIOTICS
+•The bacteria cell wall construction and cell 
+division continues, but the resulting cells have 
+defective cell walls.
+•The defective cells with defective walls are 
+subject to lysis as result of osmotic forces.
+•Bacterial resistance to penicillins is due to beta-
+lactamases which split the beta-lactam ring, 
+rendering penicillin inactive.
+
+24
+ANTIBIOTICS
+Pharmacokinetics of Penicillin G 
+Preparations
+Absorption
+Three main types of penicillin G are available:
+(i)Penicillin G for oral use
+(ii)Aqueous penicillin G for parenteral use
+(iii)Depot preparations as suspensions for 
+parenteral use
+
+25
+ANTIBIOTICS
+•Penicillin G is erratically absorbed from GIT 
+(15-20%).
+•Most of it destroyed by gastric acid before 
+reaching the duodenum, site of maximum 
+absorption.
+•Should be taken on an empty stomach to 
+minimise destruction by acid, and prevent 
+delay in absorption.
+
+26
+ANTIBIOTICS
+•Parenteral administration is preferably by 
+IM injection.
+•Is rapidly absorbed from site of injection, 
+peak plasma levels attained within 20 
+mins.
+•Intravenous injection used in life 
+threatening infections.
+
+27
+ANTIBIOTICS
+Distribution, Metabolism and Excretion
+•Penicillin G is highly bound to plasma 
+proteins.
+•High concentration is achieved in kidney 
+and urinary tract.
+•90% of drug is excreted unchanged by the 
+kidneys. Is also excreted in milk.
+
+28
+ANTIBIOTICS
+Probenecid (Benemid)
+•Was developed to delay rapid renal 
+excretion of penicillin when administered 
+together.
+•Probenecid competes with penicillin for the 
+tubular transport system that transports 
+the antibiotic from blood to tubular fluid
+
+29
+ANTIBIOTICS
+Therapeutic Use of Penicillin G and 
+Phenoxypenicillins (Penicillin V)
+•Penicillin G 250,000U/5ml or procaine 
+penicillin G 300,000U/ml are drugs of 
+choice in pneumonia, given by IM 300,000 
+–600,000 units 12 hourly for 7-10 days.
+•Penicillin V 125/ 250/500mg tablets: useful 
+in tonsillitis, pharyngitis, and endocarditis 
+given orally, 500mg qid for 10 days.
+
+30
+ANTIBIOTICS
+•Penicillin V 125mg/5ml powder: 25-
+50mg/kg/day in 3-6 divided doses in 
+children
+•Penicillin G given intravenously is drug of 
+choice in pneumococcal menengitis 
+300,000 –8 mil U per day.
+•In gas gangrene Penicillin G is drug of 
+choice 10 -20 mil U per day.
+
+31
+ANTIBIOTICS
+•In gonorrhoea Benzylpenicillin 600/1200mg/vial 
+is used 4.8 mil U as single dose together with 1g 
+Probenecid orally.
+•In syphilis Benzathine penicillin G (long acting 
+penicillin G) 300,000/600,000U/lm:  is used 2.4 
+mil U IM as single dose or aqueous penicillin G 
+600,000 U IM daily for 8 days
+
+32
+ANTIBIOTICS
+Toxicity
+•Penicillins are least toxic of all antibiotics 10-
+15 % incidence.
+•Hypersensitivity reactions –1-5 %,  it is 
+unpredictable mainly due to exposure to 
+penicillin dust, topical application, oral and 
+parenteral preparations of penicillin 
+–urticaria, angioedema, anaphlactic 
+shock, asthma, hypotension.
+
+33
+ANTIBIOTICS
+•Should be assumed that once 
+hypersensitivity reaction occurs patient will 
+react to all other drugs in the class.
+•Hypersensitivity reactions are treated 
+using  adrenaline, or antihistamines or 
+corticosteriods
+
+34
+ANTIBIOTICS
+Broad-spectrum Penicillins
+The main ones areAmpicillinand Amoxycillin.
+Ampicillin 
+•Apart form those covered by Penicillin G, ampicllin is 
+also active against E.coli, Proteus mirabilis, H. Fluenza, 
+and Salmonella.
+•Ampicillin taken orally is poorly and slowly absorbed.
+•Should be taken on empty stomach.
+•After normal dose peak blood levels attained after 2hrs.
+
+35
+ANTIBIOTICS
+Preparations and dosage:
+•Ampicillin capsules 250/500mg: 250 mg every 
+6hours.
+•Powder for suspension 125/250mg/5ml: 
+50mg/kg/day in divided doses 6hrly.
+•Powder for Injection 125/250mg; 1,2,10g/vial
+IV/IM 25-50mg/kg/day in divided doses.
+
+36
+ANTIBIOTICS
+•The half life is between 1-1.5hrs and distributes 
+to 40% of body weight.
+•Within 6hrs 30% of dose is excreted  mostly 
+unchanged in urine. 
+•Mostly indicated for chronic bronchitis, otitis 
+media, urinary tract infections and menengitis
+
+37
+ANTIBIOTICS
+Amoxycillin
+•Is a derivative of amplicillin with same  
+antibacterial spectrum but is more active against 
+Strep. faecalis and Salmonella species. 
+•Twice as well absorbed orally than ampicillin, 
+and twice peak plasma levels 
+
+38
+ANTIBIOTICS
+•Presence of food does not interfere with 
+absorption.
+•Peak blood levels reached within 2hrs
+•The half-life and plasma protein binding is same 
+as ampicillin. 
+
+39
+ANTIBIOTICS
+Preparations and dosage:
+•Capsules 250/500mg: 250-500mg every 8 
+hrs.
+•Powder for oral suspension 
+125/250mg/5ml:
+25-50mg/kg/day every 8 hrs.
+•Injection powder 500mg and 1g vials. IM 
+or IV 500mg tid.
+
+40
+ANTIBIOTICS
+Pinicillinase-resistant Penicillins
+•Most staphylococci resistant to Penicillin G 
+because they produce penicillinaseswhich 
+disrupt the beta-lactam ring.
+•In penicillinase-resistant penicillinsthe 
+access of this enzyme to beta-lactam ring is 
+hindered by the molecular geometry of the drug.
+
+41
+ANTIBIOTICS
+•The drugs in this group include Methicillin, 
+Cloxacillin, Flucloxacillin. .
+•Dosage: Methicillin 1,4,6,10g/vial:  IM/IV 4-
+6g/day in divided doses every 4-
+6hrs. 
+Cloxacillin  capsules 250mg–Oral 
+250mg-1g every 6hrs on empty 
+stomach.
+
+42
+ANTIBIOTICS
+Powder for oral suspension 
+125mg/ml: 50-100mg/kg/day in 
+divided doses 6hrly.
+Powder for Injection 
+250/500mg/vial: 250-500mg 4-6 
+hourly
+
+43
+ANTIBIOTICS
+Flucloxacillin capsules 250mg:  Oral 
+250mg-500mg every 6hrs, is better 
+absorbed than cloxacillin.
+Powder for suspension 125mg/ml: 25-
+50mg/kg/day 6hrly.
+Powder for Injection 250/500mg/vial: 
+250/500mg 6hourly
+
+44
+ANTIBIOTICS
+Cephalosporins
+•They are structurally and 
+pharmacologically related to penicillins. 
+•They are water soluble, broad spectrum, 
+semi-synthetic, bactericidal antibiotics.
+•Derived from 7-aminocephalosporanic 
+acid (7-ACA).
+
+45
+HH       
+S         H
+R1CNCC   H
+OCNC    CH2R2
+C
+O                    
+COOH
+7-amino-cephalosporanic acid
+Semi-synthetic cephalosporins are prepared by
+attaching different chemical groups at R1and R2 
+Structural features of cephalosporins
+
+46
+ANTIBIOTICS
+Antibacterial spectrum
+•Cephalosporins and related compounds 
+are divided into first,second,and third 
+generation agents. 
+•Differentiation is primarily based on their 
+pharmacokinetics and antibacterial 
+spectrum.
+
+47
+ANTIBIOTICS
+•From first to third generation exhibits:
+-broadening gram-ve spectrum
+-loss of efficacy against gram +ve      
+organisms
+-greater efficacy against resistant 
+organisms
+
+48
+ANTIBIOTICS
+Mode of action
+•They inhibit mucopeptide synthesis in the 
+bacterial cell wall, making it defective and 
+osmotically unstable.
+•They are usually bactericidal depending 
+on dose, tissue concentration, and 
+organism susceptibility.
+
+49
+ANTIBIOTICS
+Pharmacokinetics
+•Cephalexin, cephradine, cefadroxiland 
+cefaclorare well absorbed from the gut.
+•Absorption may be delayed by food but 
+absolute amount of the drug absorbed is 
+not affected.
+
+50
+ANTIBIOTICS
+•Cephalosporins are widely distributed in 
+most tissues and fluids, with maximum 
+concentration in liver and kidney.
+•First and second generation agents do not 
+readily diffuse into CSF except 
+cefuroxime.
+•Most of them and their metabolites are
+excreted via the kidneys.
+
+51
+ANTIBIOTICS
+Beta-lactam resistance
+•First generation cephalosporins are 
+inactivated by beta-lactamase producing 
+organisms.
+•Newer agents cefuroxime, ceftriaxone, 
+cefotaxime, cefotetan etc show high 
+stability in presence of penicillinases and
+cephalosporinases.
+
+52
+ANTIBIOTICS
+Therapeutic uses
+Cephalosporins are indicated for: preoperative, 
+intraoperative, and postoperative prophylaxis to 
+reduce incidence of infection in surgery likely to 
+be contaminated e g gastrointestinal surgery, 
+cesarean section, vaginal hysterectomy etc
+
+53
+ANTIBIOTICS
+•They are alternatives in patients who 
+cannot tolerate penicillins.
+•They are also drug of choice in menengitis 
+caused by gram –ve bacteria because of 
+their good penetration of the CSF.
+
+54
+ANTIBIOTICS
+First generation
+Cephalexin capsules 250mg: oral 250-
+500mg 6 hrly
+Oral suspension 125mg/5ml: 
+25mg/kg/day 6hrly.
+Cephradine capsules 250mg:oral250-
+500mg  6 hrly
+Powder for Injection 1g/vial
+IM/IV 1-2g 6 hrly
+
+55
+ANTIBIOTICS
+Second generation
+Cefaclor capsules 250mg: oral250mg 8hrly
+Oral suspension 125mg/ml: 
+20mg/kg/day in 3 divided dose.
+Cefuroxime Tablets 250/500mg: oral 250-
+500mg bid
+Powder for injection 1.5g/vial:
+IM/IV 1-3g 8hourly al
+Oral suspension 125mg/5ml: 
+125mg bid
+
+56
+ANTIBIOTICS
+Third Generation
+Cefotaxime 500mg/vial: IM/IV1-2g 4 hrly
+Ceftriaxone 1, 2g/vial IM/IV  1-2g  12 to 
+24hrly
+
+57
+ANTIBIOTICS
+Adverse reactions
+•Gastrointestinal disturbances and 
+hypersensitivity can occur.
+•Cross sensitivity with penicillins.
+•Agranulocytosis, haemolytic anaemia, 
+leucopenia, thrombocytopenia have been 
+reported.
+
+58
+ANTIBIOTICS
+•They are nephrotoxic and cause acute 
+tubular necrosis.
+•Treatment alters normal flora in the colon 
+and can cause and can permit overgrowth 
+of Clostridia.
+
+59
+ANTIBIOTICS
+Drug interactions
+•Bacteriostatic agents interfere with the 
+bactericidal action of cephalosporins.
+•Probenecid administered concurrently with 
+cephalosporins increases and prolongs plasma 
+levels by competitively inhibiting renal secretion.
+•Concomitant administration with 
+aminoglycosides increases nephrotoxicity.
+
+60
+ANTIBIOTICS
+Other Inhibitors of Bacterial Wall 
+Synthesis
+Apart from penicilins and cephalosporins 
+other agents like bacitracin, cycloserine, 
+and vancomycinalso inhibit  the 
+synthesis of bacterial cell wall.
+
+61
+ANTIBIOTICS
+Bacitracin
+•Bacitracin is a generic name for a group of 
+at least four separate bactericidal 
+polypeptide antibiotics. 
+•Originally isolated from Bacillus subtilis.
+
+62
+ANTIBIOTICS
+•Effective against gram +ve organisms, 
+especially common skin pathogens like 
+staphylococci, streptococci and neisseria.
+•Inactive against most gram –ve bacteria. 
+
+63
+ANTIBIOTICS
+•Bacitracin interferes with bacterial wall 
+synthesis by preventing the formation of 
+the peptidoglycon chains that are crossed 
+to form rigid bacterial cell wall.
+•No longer used parenterally because of 
+nephrotoxicity.
+
+64
+ANTIBIOTICS
+•It is safe when used topically, but 
+hypersensitivity reactions like allergic 
+dermatitis may occur.  
+•For topical use combination of bacitracin 
+with neomycin or polymyxin B widens 
+spectrum of activity.
+
+65
+ANTIBIOTICS
+•Such combinations are effective in the 
+treatment of topical ulcers, sycosis 
+(inflammation of hair follicles), external 
+otitis, pyodermas (any septic skin lesions), 
+infected traumatic and surgical wound and 
+impetigo (acute infection of the skin).   
+•Ophthalmic preparations are useful in 
+treating superficial eye infections like 
+conjuctivitis and infected corneal ulcers.
+
+66
+ANTIBIOTICS
+Cycloserine
+•A broad spectrum bactericidal antibiotic 
+produced by Streptomyces archidaceous. 
+•Its use is restricted to treatment of 
+tuberculosis.
+•Orally cycloserine is rapidly absorbed and 
+freely distributed to the tissues and CSF. 
+.  
+
+67
+ANTIBIOTICS
+•Limitation of its use is potential CNS 
+toxicity.
+•In prolonged therapy plasma drug levels 
+should be periodically checked.
+•Given in doses of 15mg/kg body weight, 
+orally with 250mg increments to reach 
+serum levels of 15-35mcg/ml
+
+68
+ANTIBIOTICS
+Vancomycin
+•Is a bactericidal glycopeptide antibiotic obtained 
+from Streptomyces orientalis.
+•Effective against gram +ve organisms.
+•Most potent antibiotic against Staphylcocci in
+colitis (inflammation of colon).
+
+69
+ANTIBIOTICS
+•Because of toxicity only used when less 
+toxic antibiotics have failed.
+•Allergic skin rashes and anaphylactic 
+reactions may occur.
+•Administered in doses of 1g IV twice aday.
+
+70
+ANTIBIOTICS
+Beta-lactamase Inhibitors
+•Some molecules can bind to beta-
+lactamasesand inactivate them.
+•Thus preventing destruction of beta-lactam 
+which are substrates to these enzymes.
+
+71
+ANTIBIOTICS
+i) Clavulanic acid-produced by Streptomyces 
+clavuligerus.
+•Well absorbed orally, and can also be given 
+parenterally. 
+•It has been combined with Amoxycillin (as jn 
+Augmentin; Co-Amoxiclav) for oral use and with 
+Ticarcillin for parenteral administration.
+
+ANTIBIOTICS
+72
+O
+N
+O
+COOH
+CH-CH2OH
+CLAVULANIC ACID
+ᵝ-lactam ring
+
+73
+ANTIBIOTICS
+Co-Amoxiclav products  ;
+Tablets:  375mg (amoxicillin 250mg + 
+clavulanic acid 125mg).
+: 625mg (amoxicillin 500mg + 
+clavulanic acid 125mg).
+Oral suspension: 156mg/5ml (amoxycillin 
+125mg + clavulanic acid 
+31mg) 
+
+74
+ANTIBIOTICS
+: 312mg (amoxycillin 250mg 
++ clavulanic acid 62mg).
+Injection : 600mg (amoxycillin 500mg + 
+clavulanic acid 100mg).
+: 1200mg (amoxycillin 
+1000mg + clavulanic acid 
+200mg).
+
+75
+ANTIBIOTICS
+Doses: expressed as Amoxycillin
+By mouth: 250mg tid, doubled in 
+severe infection.
+Children: 125 –250mg tid.
+Injection: IV or Infusion 1g tid: children 
+25mg/kg tid.
+
+76
+ANTIBIOTICS
+(ii) Sulbactam
+•Structurally resembling clavulanic acid.
+•Used orally or parenterally along with 
+beta-lactams such as ampicillin.
+
+77
+ANTIBIOTICS
+•Usual dose is 1-2g of ampicillin with 0.5-1g 
+sulbactam every 6 hours.
+•Combination successfully used in mixed 
+intra-abdominal and pelvic infection. 
+
+78
+ANTIBIOTICS
+Inhibitors of Protein Synthesis
+The antibiotics which  inhibit bacterial 
+protein synthesis include 
+aminoglycosides, tetracyclines, 
+chloramphenicol, maclorides, the 
+lincosamides. etc.
+
+79
+ANTIBIOTICS
+Aminoglycosides
+Named so because they are composed of 
+amino sugarsconnected by glycosidic 
+linkages.
+
+80
+ANTIBIOTICS
+•Most aminoglycosides prepared by natural 
+fermentation from various species of 
+Streptomyces, exception is gentamicin 
+which is fermented from 
+Micromonospora purpurea.
+•Aminoglycosides include:gentamycin, 
+streptomycin, kanamycin, neomycin, 
+tobramycin, framycetin
+
+81
+ANTIBIOTICS
+Antibacterial Spectrum
+•All aminoglycosides are bactericidal, and 
+active against gram +ve and mainly gram 
+–ve organisms.
+•Streptomycin and Kanamycin are also 
+active against Mycobacterium 
+tuberculosis.
+
+82
+ANTIBIOTICS
+Bacterial Resistance
+Bacteria frequently develop permanent 
+resistance to aminoglycosides by any of the 
+following:
+-the resistance (R) factor transmitted between bacteria.
+-development of ribosomes which do not bind aminoglycosides
+-acquisition of inactivating enzymes.
+-reduced permeability to the drug.
+
+83
+ANTIBIOTICS
+•Cross resistance is more common on prolonged 
+therapy.
+•Cross-resistance is usually complete within the 
+group.
+
+84
+ANTIBIOTICS
+Mode of Action
+•Aminoglycosides inhibit bacterial protein 
+synthesis and are bactericidal.
+•They act on the bacterial 30S ribosomal subunits 
+(but not human ribosomes) and distort the 
+messenger ribonucleic acid (mRNA) translation 
+of the genetic code.
+•Thereby preventing the formation of the normal 
+complex required to initiate protein synthesis.
+.
+
+85
+ANTIBIOTICS
+•Aminoglycosides also have strong 
+cationic chargeswhich combine with 
+anionic membrane groupsand damage 
+the bacterial cell wall membranes.
+•Potency is increased in alkaline pH, 
+therefore in UTI treatment, alkalinization of 
+urine is advisable
+
+86
+ANTIBIOTICS
+Pharmacokinetics
+•Aminoglycosides are poorly absorbed following 
+oral administration because they are charged 
+molecules.
+•The are given by injection to treat systemic 
+infections.
+•They are poorly bound to plasma protein (20-
+30%) and are widely distributed through out the 
+body except the CNSand the eye.
+
+87
+ANTIBIOTICS
+•They are excreted unchanged by 
+glomerular filtration. 
+
+88
+ANTIBIOTICS
+Adverse Reactions
+•The adverse reactions to aminoglycosides 
+are ototoxicity,  nephrotoxicity and 
+neuromuscular blockade.
+•In ototoxicityboth auditory and vestibular 
+divisions of the 8
+th
+cranial nerve are 
+affected.
+
+89
+ANTIBIOTICS
+Nephrotoxicity is dose related and tends to 
+occur first week of therapy. Neomycinis 
+the most nephrotoxic.
+Neuromuscular blockadecan lead to 
+paralysis, and respiratory arrest.
+Contraindicatedin renal and liver 
+insufficiency.
+
+90
+ANTIBIOTICS
+Therapeutic uses
+1. Streptomycin –major indication is in the 
+treatment of tuberculosis in combination with 
+Isoniazid, Ethambutol or Rifampicin.
+Also used in combination with Penicillin G or 
+Ampicillin in treatment of enterococci,  surgical 
+infections and mixed UTIs.
+Dosage: In TB treatment is 0.5-2.0g IM/day.
+Available as 1g vial.
+
+91
+ANTIBIOTICS
+2. Kanamycin –Useful in treating urinary 
+and biliary infections, pre-operative bowel 
+sterilization and tuberculosis.
+Dosage: Mostly given by IM but orally for 
+bowel sterilization.
+IM 15mg/Kg body weight in two 
+equally divided doses every12hrs.
+Orally up to 8g daily in divided doses.
+
+92
+ANTIBIOTICS
+3. Gentamicin
+•Most important member of the group and 
+used widely in serious infections. 
+•Is a broad spectrum bactericidal antibiotic 
+chemically related to streptomycin.
+
+93
+ANTIBIOTICS
+•First isolated from Micromonospora 
+purpuraein 1963.
+•Highly water soluble and stable in solution,
+•Effective against Salmonella, 
+H. Influenza, E. Coli, Shigella, 
+Pseudomonas aeruginosa etc.
+
+94
+ANTIBIOTICS
+•Suited  for treatment of UTIs. Alkalinisation 
+of urine increases efficacy of gentamicin.
+•Also used topically for skin infections and 
+in eye infections.
+
+95
+ANTIBIOTICS
+•But main use is in septicemia and
+neonatal sepsis, menengitis andother 
+CNS infections.
+•Main adverse reactions of gentamicin are 
+vestibular damage and nephrotoxicity.
+
+96
+ANTIBIOTICS
+Gentamicin products and doses:
+Injection:  40 and 80mg/ml IM or IV 3-5mg/kg 
+body daily in divided doses.
+Eye drops: 0.3% as sulphate single dose 
+(minims) or multi-dose: one 
+drop every 2 hours reduce 
+frequency as infection is 
+controlled.
+
+97
+ANTIBIOTICS
+Ear Drops: 0.3% as sulphate; 2-3 drops tid 
+and at night.
+Skin ointments/cream: used in various 
+combinations with antifungal and 
+corticosteroids.
+For use in mixed skin 
+infections.
+
+98
+ANTIBIOTICS
+4. Neomycin Sulphate
+•Because of toxicity used orally or topically. 
+•Used for bowel sterilization prior to surgery or 
+infections of the eye, ear, nose  or skin.
+Dosage:  
+Oral: Neomycin Sulphate tablets 
+500mg: 1g hourly for 4hrs     
+( bowel sterilization) 
+
+99
+ANTIBIOTICS
+Cream: Neomycin Sulphate 0.5% for bacterial skin  
+infection; 2-4 times daily for not more than 7 
+days.
+Eye drops/ointment: 0.5% neomycin sulphate; 2-3 
+drops 2-4 times aday.
+Is also used in different combinations with 
+antifungals and corticosteroids in ear and nose 
+drops and skin preparations,
+
+100
+ANTIBIOTICS
+Tetracyclines
+•The first member of this family was 
+Chlortetracycline derived from the soil 
+organism Streptomyces aureofaciens, 
+followed by Oxytetracycline produced from 
+Streptomyces rimosus.
+•Molecular modification of Chlortetracycline 
+produced Tetracycline.
+
+101
+ANTIBIOTICS
+•These three agents formed the first group 
+of broad-spectrum bacteriostatic 
+antibiotics.
+•Further investigations of mutant strains of 
+Streptomyces aureofaciens led to 
+discovery of a new group of antibiotics, the 
+demethlytetracyclines such as 
+minocycline, doxycyclineknown as 
+‘newer’ tetracyclines.
+
+102
+ANTIBIOTICS
+Antibacterial Spectrum
+The tetracyclines have a broad 
+antibacterial spectrum which covers gram 
+-ve and gram +ve bacteria.
+
+103
+ANTIBIOTICS
+Mode of Action
+•Tetracyclines enter bacterial cells by either 
+passive diffusion through pores or by an active 
+transport system.
+•Inside the cell they bind specifically to 30S 
+ribosomes, thereby blocking binding of transfer 
+RNA to the messenger RNA-ribosome complex, 
+thus inhibiting protein synthesis.  
+
+104
+ANTIBIOTICS
+•Tetracyclines also bind magnesium, 
+manganese and calcium and this chelating 
+action is probably also responsible for their 
+antibacterial action.
+
+105
+ANTIBIOTICS
+Bacterial Resistance
+•An increasing number of pathogens have 
+developed resistance such as 
+streptococci, pneumococci, staphylcocci.
+•Cross resistance develops within the 
+group. As a result their usefulness has 
+decreased.  
+
+106
+ANTIBIOTICS
+Pharmacokinetics
+•Tetracyclines are usually given orally but can be 
+given by IV or IM and by local application to eye 
+and skin.
+•Absorption from stomach and intestine is 
+variable and incomplete partially due to low 
+solubility and partially due to binding to Ca++, 
+Al+++, Fe+++, and Mg++ in food or drugs in the 
+GIT.
+
+107
+ANTIBIOTICS
+•Thus (except for doxycycline) absorption is 
+depressed by food.
+•There is a varying degree of plasma binding.
+•Plasma concentration shows a slow rise, a 
+prolonged plateau and a slow fall due to slow 
+absorption, high protein binding and 
+enterohepatic circulation of the drugs. 
+
+108
+ANTIBIOTICS
+•Body tissue and cavities penetration is 
+good but CSF levels are 20-25% of 
+plasma levels (for doxy and minocycline), 
+other tetracyclines do not penetrate into 
+CSF.  
+•Tetracyclines are laid down in growing 
+bones and teeth probably because of their 
+chelating with calcium.  
+
+109
+ANTIBIOTICS
+•On IV administration, are excreted 
+primarily in urine by glomerular filtration 
+the remainder is excreted in bile and 
+enterohepatic circulation.
+•Also excreted in milk during lactation.
+
+110
+ANTIBIOTICS
+Therapeutic Uses
+Clinical usefulness is due to their broad-
+spectrum activity. 
+The main indications are:
+I. First-line choice for:
+1. Acute chronic bronchitis
+2 .Non-specific urethritis
+3. Primary atypical pneumonia.
+4. Rickettsial infections (typhus).
+
+111
+ANTIBIOTICS
+5. Brucellosis (undulant fever caused 
+by brucella).
+6. Pustular acne (pus containing 
+pimples) (low dose prolonged 
+treatment).
+7. Trachoma
+8. Cholera
+
+112
+ANTIBIOTICS
+II.Second-line choice for:
+1. Syphilis (in penicillin-allergic patients 
+it is 1
+st
+choice).
+2. Anthrax
+3. Meningicoccal infections
+
+113
+ANTIBIOTICS
+•Because of their colour are used in several 
+yellow fluorescence diagnostic tests for 
+gastric and colonic cancer.
+•Also used to determine the rate of bone 
+turnover utilizing their calcium chelating 
+property.
+
+114
+ANTIBIOTICS
+•When used orally tetracyclines depress 
+bacterial flora in the colon. 
+•Riboflavin and folic acid deficiency can 
+occur with prolonged use, multivitamins 
+should be given.
+
+115
+ANTIBIOTICS
+Contraindications
+•Tetracyclines usually contraindicated 
+during pregnancy, lactation, in peptic 
+ulcers and hepatic disease.
+•Because bacteriostatic unsuitable for 
+patients with defective immunity.
+
+116
+ANTIBIOTICS
+Adverse Reactions
+•Generally have low toxicity at normal dose 
+level, side effects related to dose and 
+length of treatment.
+•In about 10% of patients, anorexia, GIT 
+upset, heartburn, nausea and vomiting, 
+flatulence, diarrhoea may be experienced.
+
+117
+ANTIBIOTICS
+•In 20-30% of patients get, black hairy 
+tongue, cheilosis (lips and angles of mouth 
+condition), anogenital pruritus, glossitis.
+•Superinfections can occur due to 
+depression of normal body flora, especially 
+if used simultaneously with 
+immunosuppressive agents.
+
+118
+ANTIBIOTICS
+•Long continued IV use may cause generalized 
+candidiasis, especially pulmonary candidiasis.
+•Hypersensitive reactions such as skin rashes of 
+all types, dermatitis and anaphylactic shock may 
+occur.
+•Because of deposition in growing bones and 
+teeth, can get brown staining of teeth and nails 
+and cause stunted growth in children.
+
+119
+ANTIBIOTICS
+•Tetracyclines can also cause 
+nephrotoxicity and fatty degeneration of 
+the liver.
+
+120
+ANTIBIOTICS
+Dosage and preparations:                                                
+Tetracycline, oxytet. and chlortet: 250mg 
+tablets or capsules: 250-500mg qid for 7days 
+orally.
+Skin Ointment: tetracycline hydrochloride 3%, for 
+cuts and bruises.
+Eye ointment: tetracycline hydrochloride 1%
+Doxycycline: 100mg capsules: 200mg first day, 
+then 100mg daily for 5-7 days orally.
+
+121
+ANTIBIOTICS
+Monocycline: 50mg capsules: 1 capsule daily 
+for acne.
+
+122
+ANTIBIOTICS
+Chloramphenicol
+•Chloramphenicol was isolated from 
+Streptomyces venezuelae (a soil organism) in 
+1947.
+•It is a potent, potentially toxic, broad spectrum 
+antibiotic.
+•Reserved for life-threatening infections caused 
+by H. Influenza, or K. Pneumoniae and typhoid 
+fever.
+
+123
+ANTIBIOTICS
+Antibacterial spectrum
+•Has a broad-spectrum of activity like 
+tetracyclines.
+•It is effective against many gram –ve and 
+gram +ve organisms and also exhibits 
+activity against Rickettsiae and 
+Salmonelloses
+
+124
+ANTIBIOTICS
+Mode of action
+•Chloramphenicol is primarily 
+bacteriostatic, and works by inhibiting 
+bacteria protein synthesis.
+•It binds to 50S subunit of the bacterial 70S 
+ribosomes, inhibiting peptidyltransferase 
+enzyme thereby blocking protein 
+synthesis
+
+125
+ANTIBIOTICS
+•Also inhibits mammalian mitochondrial 
+70S ribosomes (hence its toxicity).
+
+126
+ANTIBIOTICS
+Pharmacokinetics
+•The drug is well absorbed from the intestine 
+when given orally.
+•Peak plasma levels reached after 2-5hrs and t
+1/2
+is 1.5 –3.0hrs.
+•In neonates peak plasma levels are reached 
+after 6-12hrs and t1/2 is 24-48hrs, because the 
+immature’s reduced levels of enzyme 
+glucuronyl transferaseresponsible for 
+chloramphenicol conjugation.
+
+127
+ANTIBIOTICS
+•Plasma levels obtained from IV and IM 
+administration are similar as from oral.
+•Is 60% bound to plasma proteins and penetrates 
+tissue better than any other antibiotic. 
+•Enters eye, foetus, saliva, and sputum. CSF 
+levels are 30-50% of those of the plasma.
+
+128
+ANTIBIOTICS
+•Mostly metabolised in the liver by reduction, or 
+by conjugation to glucuronide.
+•Interacts with barbiturateswhich induce liver 
+microsomal enzymes and hence lower 
+chloramphenicol blood levels.
+•Chloramphenicol itself depresses microsomal 
+function and may impair metabolism of 
+phenytoin and tolbutamideincreasing their 
+action. 
+
+129
+ANTIBIOTICS
+•Chloramphenicol is mainly (90%) excreted 
+in the urine and 10% as unchanged. 
+•About 3% undergoes biliary excretion as 
+conjugated chloramphenicol and enters 
+enterohepatic circulation.
+
+130
+ANTIBIOTICS
+Therapeutic uses
+•Because of incidence of serious bone marrow 
+depressionChloramphenicol is restricted to 
+infections not treatable with other agents.
+•Accepted indications are enteric fever and H. 
+influenzae meningitis. 
+Is also used topically for eye and infections on 
+skin.
+
+131
+ANTIBIOTICS
+Adverse reactions
+•Bone marrow depression due to haemotoxicity 
+as a result of inhibition of mitochondrial protein 
+synthesis and is dose related, reversible on 
+stoppage of therapy.
+•Irreversible aplastic anaemia may occur and 
+may be fatal and unpredictable and is not 
+dose related.
+
+132
+ANTIBIOTICS
+•Hypersensitivity reactions may occur such 
+as skin rashes, fever, angioedema, 
+urticaria.
+•GIT disturbances such as nausea, 
+vomiting, glossitis, diarrhoea, etc.
+•Neonates and prematures may develop 
+‘grey syndrome’ due to cyanosis leading 
+to death within 4-5 days.
+
+133
+ANTIBIOTICS
+Dosage and preparations
+•Capsules 250mg for oral use 1.5-3.0g daily in 
+divided doses every 6-8hrs. 
+•Chloramphenicol palmitate suspension 
+125mg/5ml  given as 50mg/kg/day in divided 
+doses 6-8hrly.
+•Chloramphenicol sodium succinate 1g vials for 
+parenteral use. 50mg/kg/day in divided  doses.
+
+134
+ANTIBIOTICS
+•Chloramphenicol 3% skin ointment for cuts 
+and bruises.
+•Eye ointment:  Chloramphenicol 1% for 
+bacterial conjuctivitis. 
+•Eye drops: Chloramphenicol 0.5% single 
+dose or multi-dose.                
+
+135
+ANTIBIOTICS 
+Macrolides
+This group includes erythromycin, azithromycin, 
+clarithromycin etc.
+1.Erythromycin
+Isolated from Streptomyces erythreusin 1952. 
+Currently its use diminished due to bacterial 
+resistance.
+Primarily effective against gram +ve cocci, H. 
+influenza, rickettsiae etc and mycoplasma 
+pneumoniae
+
+136
+ANTIBIOTICS
+Mode of Action
+•Erythromycin is bound to the 50S subunit of the 
+ribosome and blocks the execution of 
+instructions coded by mRNA
+•Macrolides do not attach to human ribosome.
+•Erythromycin is a bacteriostatic drug, but in high 
+concentrations exerts bactericidal effect.
+
+137
+ANTIBIOTICS
+Pharmacokinetics
+•Erythromycin base is destroyed by gastric acid.
+•The acid resistant salts such as stearate or 
+estolate are well absorbed and produce good 
+plasma levels. 
+•The stearate has to be sugar coated to protect 
+from gastric acid.
+
+138
+ANTIBIOTICS
+•Peak plasma levels attained after 2-4hrs.
+•Distributed to most of the tissues except the 
+brain within 6hrs.
+•The t1/2 is 1.5-3.0hrs.
+•Only 20% of drug excreted by the kidneys, the 
+remainder is metabolised by demethylation, or 
+appears in the bile.
+
+139
+ANTIBIOTICS
+Therapeutic uses
+•Used as an alternative in penicillin-allergic 
+patients or in penicillin resistant gram +ve 
+pathogens.
+•Also useful in atypical pneumonia caused 
+by Mycoplasma pneumonia, syphilis or 
+infections with Haemophilus influenza.
+
+140
+ANTIBIOTICS
+•First line choiceas alternative to 
+penicillin in syphilis,  gonorrhea, 
+pneumococcal infections.
+•Second line choicein bronchitis, otitis 
+media and sinusitis, and chronic 
+prostatitis. 
+
+141
+ANTIBIOTICS
+Adverse Reactions
+•One of the safer antibiotics.
+•GIT disturbances and allergy are common 
+adverse reactions.
+•With oral therapy can get nausea, anorexia, 
+diarrhoea, glossitis, stomatitis.
+•Can get super infection with candida albicans 
+over prolonged therapy.
+
+142
+ANTIBIOTICS
+•Hypersensitivity reactions with fever, 
+lymphocytosis, headache, skin rashes are 
+sometimes seen.
+
+143
+ANTIBIOTICS
+Resistance
+Resistance to Erythromycin is becoming a serious 
+clinical problem because of:
+(i) the inability of the organism to take up the antibiotic.
+(ii)  decreased affinity of the 50S ribosomal subunit for 
+the antibiotic.
+(iii) a presence of a plasmid-associated erythromycin 
+esterase. 
+Both Clarithromycin and Azithromycin show cross-
+resistance with Erythromycin.
+
+144
+ANTIBIOTICS
+Dosage
+Erythromycin stearate 250mg capsules/tablets 
+given orally, 250-500mg qid for 7days 
+Erythromycin Ethyl Succinate 125mg/5ml 
+suspension, 4-6mg/kg/4-6hourly.
+Erythromycin  Lactobionate 1g/vial iv 300mg 
+6hrly.
+
+145
+ANTIBIOTICS
+2. Clarithromycin
+–Has a spectrum of antibacterial activity 
+similar to that of Erythromycin.
+–But is also effective against Haemophilus    
+influenza.
+–Its activity against intracellular pathogens 
+such as Chlamydia, Legion Ella is higher. 
+
+146
+ANTIBIOTICS
+Dose
+Oral:  Tablets : 250 -500mg bid for 7 –14 
+days.
+Suspension: 125 –250mg/5ml.
+IV: 500mg bid.
+Side effects: as for erythromycin.
+
+147
+ANTIBIOTICS
+3. Azithromycin
+Is more effective against respiratory 
+infections due to H influenza and 
+Mirabella catarrhalis.
+Is preferred treatment for urethritis 
+caused by Chlamydia trachomatis.
+
+148
+ANTIBIOTICS
+Dose: 500mg od for 3 days orally.
+Side effects: same as for erythromycin.
+
+149
+ANTIBIOTICS
+INHIBITORS OF CELL MEMBRANE 
+FUNCTION
+•The bacterial cytoplasmic membrane serves as: 
+-the site for cell wall synthesis.
+-an osmotic barrier.
+-an organ for selective intercellular 
+transport of essential cell nutrients.
+•Members of this group are polymyxins.
+
+150
+ANTIBIOTICS 
+Polymixins
+•Polymyxin is a generic name for six strongly 
+basic cyclic polypeptides (A, B, C, D, E and M).
+•All differing in their amino acid content.
+•Obtained from various strains of Bacillus 
+polymaxa. 
+
+151
+Only two, polymyxin B and E are 
+therapeutically useful.
+Polymyxin B
+Polymyxin B forms water soluble salts with 
+mineral acids. 
+The usual preparation  is polymyxin B 
+sulphate.
+ANTIBIOTICS 
+
+152
+ANTIBIOTICS 
+Antibacterial spectrum –polymyxin B 
+has a narrow spectrum limited to action 
+against gram –ve organisms.
+Particularly active against Ps. Aeruginosa, 
+E. coli, H. influenza, K. pneumonia, 
+salmonella and shigella.
+
+153
+ANTIBIOTICS 
+Mode of action 
+•Polymyxin B is bactericidal.
+•Binds with the phospholipid components of the 
+cytoplasmic membrane of susceptible bacteria.
+•It impairs the bacterial cell membrane function, 
+and causes leakage of small molecules ( e g 
+phosphate, nucleosides) from the bacteria.
+
+154
+ANTIBIOTICS 
+Pharmacokinetics 
+•Usually administered topically with no absorption 
+from site.
+•In CSF infection given by intrathecal injection, 
+can also be given by IV.
+•No absorption from GIT in adults, appreciable in 
+children.
+•Primarily cleared by the kidneys.
+
+155
+ANTIBIOTICS 
+Therapeutic uses 
+Second line choice agents in the treatment 
+of P. aerugenosa infections particularly of 
+the UTI, external ear, conjuctiva, 
+meninges, and in septicaemia.
+
+156
+ANTIBIOTICS 
+Adverse reactions
+•Minimal on topical application.
+•Oral therapy may cause nausea, vomiting, 
+and diarrhoea.
+•On IM administration can get facial 
+flushing, drug fever, skin rushes, urticaria.
+
+157
+ANTIBIOTICS 
+•The most serious adverse reaction after 
+parenteral administration is kidney 
+damage.
+•It interacts with cephalosporins, 
+chloramphenicol, heparin, and 
+tetracyclines and should not be mixed with 
+them when given by IV.
+
+158
+ANTIBIOTICS 
+Preparations and dosage
+•Polymyxin B sulphate is available for local, 
+oral, or systemic administration.
+•Frequently combined with other antibiotics
+(bacitracin and neomycin), and with 
+hydrocortisone for topical use.
+
+159
+ANTIBIOTICS 
+Oral dose: 4.0mg/kg daily in 3-4 divided 
+doses.
+IM/IV dose: 1.2-2.5mg/daily in 3-4 divided 
+doses.
+Intrathecally: 5mg/day with a 0.5 mg/ml 
+concentration.
+Topically: 0.25% cream or ointment.
+
+160
+ANTIBIOTICS
+(iv) Inhibitors of nucleic acid (DNA) 
+synthesis and metabolism
+fluoroquinolones, griseofulvin, 
+rifampicin etc
+(Covered under other topics)

@@ -1,0 +1,357 @@
+
+
+Contract Law and Quantity 
+Surveying
+TOPIC 3
+TENDERING PROCESS
+
+Offer
+•Anofferismadebytheclientto
+seekservicesfromanotherparty
+Tendering 
+process
+•Theofferneedstobe
+communicatedtotheother
+partyandthishappens
+throughthetendering
+process
+Contract
+•Theendproductof
+thetenderingprocess
+istheawardofthe
+contractafter
+selectingthe
+potentialbidder.
+
+TENDERING 
+•Tenderingisaprocessofmakingaformalofferto
+aparty/partiesforsupplyof
+materials/equipmentorexecutionofworks
+withinaspecifiedtime-frame.
+•Theprocurementteamwithsomeconsultation
+fromtheengineer(ontheclient’sside)prepare
+whatwecallaTenderDocument(TD)tobeused
+inthetenderingprocess
+•ATenderDocument(TD)givesageneral
+descriptionoftheworkstobeundertakenandmore
+specificinstructionsthebiddershouldfollow.
+
+Purpose of  a Tender Document
+Atenderdocumentservestwomainpurposesinthe
+tenderingprocessandtheseinclude:-
+•Tosupplyinformationtothepotentialbidderon
+thenatureoftheworktobeundertakenwith
+regardtoquantity,quality,conditionsappliedto
+thework,andqualificationcriteria.
+•Togatherinformationontechnicalcapacity,financial
+standing,litigationhistory,registrationdetailsofthe
+bidder,andfurtherinformationwhichmightbeneededby
+theclient
+
+Preparation of  Tender Document
+Theperson/teampreparingthetenderdocumentwill
+includethefollowingsections:
+a)Sectionsprovidingimportantinformationtothe
+bidder
+b)Sectionstobefilledbythebidderinordertoprovide
+someimportantinformationtotheclient
+
+Sections providing important information to the 
+bidder
+a)Instructiontobidders
+Thissectionofthetenderdocumentshouldprovidetheinformation
+necessaryforbidderstoprepareresponsivebids,inaccordanceto
+therequirementsoftheEmployer(Client)
+i)Clearexplanationonintendedworkstobeundertaken
+ii)Guidelinesonhowthebidshouldbeprepared(includingthe
+format)
+iii)Clearexplanationonbidsubmission(closingdateandtimeof
+submissionofthebiddingdocument,placeofsubmission)
+iv)Clearexplanationonbidevaluationcriteria
+v)Guidanceonawardofthecontract
+Note:Thebiddershallbearallcostsassociatedwithpreparationand
+submissionofitsBid,andtheEmployer/clientshallnotbe
+responsibleorliableforthosecosts,regardlessoftheoutcomeofthe
+Biddingprocess.
+
+ii.Conditionsofcontract
+•Allconditionsattachedtothecontractareoutlined
+onthissection.
+•Refertotopic2tochecksomeoftheexamplesof
+theseconditions.
+iii.Drawings
+•Theproduceddrawingsfortheintendedworks
+shouldbeavailabletobiddersatthetendering
+stagehencetheyshouldbeincludedinthetender
+document
+
+•On the part of  the bidders, they should cross-check 
+these drawings.An example of  important drawings is 
+shown below:
+
+iv.IncompleteBillsofQuantities(BoQ)
+•TheBiddershallfillinunitratesandpricesforallitemsof
+theWorksdescribedintheBillofQuantities
+Note:TheunitratesandpricesshallbequotedbytheBidderinthe
+BillofQuantities,entirelyinMalawianKwacha(MWK).
+Iftheratesshouldbequotedindollars,thebidder
+shouldproperlybeguided
+•TheBillsofQuantities(BoQ)isadescriptivelistofitemsof
+works,materialtobeusedintheproject,estimateofthequantity
+ofmaterialsrequired,unitpriceofeachitem/materialand
+totalpriceofitems.
+•Thequantitiesanddescriptionoftheworksarederivedfromthe
+drawingsandspecifications.
+•CheckanexampleoftheBoQinthenextslide
+
+Material descriptionQuantityUnit
+Unit Cost 
+(MK)
+Total Cost
+(MK)
+Storage tanks and other fittings
+Plastic tanks (5000 litres)3No
+Tank inlet3No
+Tank outlet3No
+SUBTOTAL
+Steel supporting  stand
+Angle iron bars (60 mm x 60mm *6mm) for 
+stand construction (6m each)
+12No
+Angle iron bars (100mm * 100* 6mm) for 
+stand construction (6m each)
+12No
+Rods8Packets
+Cutting disc8No
+Cement Bags4No
+SUBTOTAL
+Solar pump details
+Submersible solar pump including panels         
+( Max Power:1.7 KW, Max flow rate: 5 m
+3
+/hr,  
+Max head: 61.99 m)
+1No
+Base plate1No
+Busher fixed on the base plate1No
+MXI Joint Kit1No
+Pump cable 40m
+Pump cable accessories1No
+16mm cable (red)20m
+16mm cable (black)20m
+1.5mm (Earthing)10m
+Nylon rope40m
+SUBTOTAL
+HDPE pipes and other fittings
+50mm HDPE pipes (Class 10)85m
+40mm HDPE pipes (Class 10)220m
+32 mm HDPE pipes (Class 10)110m
+40mm HDPE Tee Connector4No
+32mm HDPE Tee Connector4No
+40mm HDPE Elbow6No
+32mm HDPE Elbow4No
+SUBTOTAL
+
+v. Technical specifications
+•Thebidderbyreadingthissection,wouldgetanideaof
+thestandardsexpectedbytheClientforaparticular
+work.
+Examples
+•Ifpipeswillberequired,suchspecificationswillinclude:
+typeofthepipe,class,diameter,thicknessetc
+•Ifapumpwillberequired,suchspecificationswill
+include:typeofthepump,pumpingrate,Maximumhead,
+powerrequirement
+•Ifconcreteormortarwillbeused,thestandardratiotobe
+usedneedtobespecified
+
+b) Sections to be filled by the bidder 
+•Thesesectionsrequirethebiddertoprovidesomeinformation
+whichishelpfulduringbidevaluationprocess.
+•Thesesectionsareoutlinedbelow:
+i.Formoftender
+•Thisformisfilledinbythebidderwhensubmittinghis/her
+tenderfiguretotheclient.
+•Thetenderfigureincludesthesumofthecontractor’sestimate
+fordoingthework(labourandmaterials)withadditionsfor
+overheadsandprofit.
+Example:
+Bid Price: The total price of  our Bid is: [insert the total price of  the 
+Bid in words and figures, indicating respective currencies];
+
+ii. Similar works performed as a prime 
+contractor
+•Thisformrequiresthecontractortoprovide
+informationontheworksofasimilarnature
+performedoverthelastfiveyearsor10years
+dependingontheclient’srequirements
+•Alsodetailsofworkunderwayorcommittedare
+included.
+•Theformwillappearasshownbelow:
+
+ProjectName
+andCountry
+Nameof
+Clientand
+Contact
+Person
+Typeof
+Work
+performed
+andyearof
+completion
+Valueof
+Contract
+Smallholder
+Irrigationand
+ValueAddition
+Project
+(SIVAP),
+Malawi
+Malawi 
+Government 
+(Ministry of  
+Agriculture,
+Irrigation and 
+Water 
+Development), 
+Director of  
+Irrigation
+Construction 
+ofNkhande
+Irrigation 
+Scheme, 
+Machinga 
+district, 2016
+K20,000,000
+
+iii. Contractor’s equipment
+This form requires the bidder to list various 
+information on equipment to be used for the intended 
+works
+Nameof
+Equipment
+Description
+andhowlong
+ithasbeen
+used(Years)
+Condition
+(new,good,
+poor)and
+number
+available
+Owned,
+Leased,orto
+bePurchased
+Concrete
+Mixer
+10m
+3
+Concrete 
+Mixer Truck
+New(1)Owned
+
+iv. Qualifications and experience of  key 
+personnel
+PositionName
+Yearsof
+Experience
+(General)
+Yearsof
+Experience
+inProposed
+Position
+Chief  
+Engineer
+Engineer......
+............
+12 years7 years
+Site 
+Engineer
+Mr ........8 years4 years
+
+v. Proposed subcontracts
+Bidders planning to subcontract more than 10 %of  total 
+volume of  work shall specify the activity (ies) or parts of  
+the Works to be subcontracted along with complete details 
+of  subcontractors as shown below:
+Sectionsof
+theWorks
+Valueof
+subcontract
+Subcontractor
+(Nameand
+Address)
+Experiencein
+SimilarWork
+Borehole 
+drilling
+K4, 500, 000Hydro-Boring 
+Drilling 
+Company, P.O 
+Box201, 
+Lilongwe, 
+Malawi
+5 years
+
+vi. Financial reports and financial resources
+•Thecontractorprovidesinformationonfinancesfor
+thelastfiveyears.
+•Thebankstatementservesthispurpose.
+•Copiesofsupportingdocumentsarealsoattached
+.
+
+vii. Litigation history
+•Thisformrequiresthebiddertoprovideinformation
+oncurrentlitigationhe/sheisinvolvedin.
+OtherParty
+Causeof
+Dispute
+Amount
+Involved
+None--
+
+viii. Proposed program/Schedule of  works
+•Thissectionrequeststhebiddertoprovideproposed
+programforcarryingoutthework.
+•Thepreparedplanofworks(workplan)shouldbe
+presentedonthissection
+•Thesectionshowstimewheneachandeveryactivity
+willstartandfinish
+
+•Beforebidsubmission,eligiblebidderswillbe
+requiredtoparticipateinsitevisitsattheirowncost
+•Thebidderfillsthisformtoconfirmthathe/shehas
+visitedthesiteandhasfamiliarizedhimself/herself
+withthenatureofworksonsite
+ix. Certificate of  site visit
+
+
+
+Stages involved in the tendering process
+•Preparation of  tender document (client responsibility)
+•Invitation for bids (it is usually pasted in the news papers)
+•Collection of  the tender document and preparation of  bids by bidders
+•Bidsubmission(Thebidsaresubmittedinsealedenvelopes,thesebidsare
+deliveredonthetimeanddatespecified.Anybidreceivedbytheclientafter
+thedeadlinewillbereturnedunopenedtothebidder)
+•Opening of  bids
+(The client  opens the bids in the presence of  bidder’s representatives who 
+choose to attend at the timeand placespecified)
+•Evaluation and selection of  a successful bidder
+(In order to qualify for the award of  a contract, a bidder must fulfill the 
+criteria for selection specified) 
+•Processing the “Notification of Intention to Award”
+•Processing the “letter of acceptance” and “contract agreement”
+•Award of  contract
+
+Assignment
+NRChasplanstohaveareservoirthatwillbe
+constructedclosetotheDemonstrationFarm.The
+institutionhasreceivedfundsfromthegovernmentof
+Israelfortheintendedworks.Thereareplanstoinvolvea
+wellexperiencedcontractortodotherequiredwork.
+Prepareaniceinvitationforbidsthatcanbepastedin
+thenewspaper.
+Hint:checkinpreviousnewspapersandnotehow
+“invitationforbids”arepresented.

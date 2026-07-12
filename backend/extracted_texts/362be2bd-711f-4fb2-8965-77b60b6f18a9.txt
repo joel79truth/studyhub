@@ -1,0 +1,143 @@
+
+
+Introduction to 
+Databases 
+HoweTOComputing 
+
+Knowledge Review 
+Can you write a question for this answer ? 
+
+History of a Database 
+▪Databases are not a new invention, they have existed for 
+thousands of years.
+▪Ancient cultures collected information about populations, 
+trade records, taxes etc...
+▪In 1086 William the Conqueror commissioned a complete 
+catalogue of everything in the country.  Every piece of land, 
+every man, woman, child, even the animals they owned.
+▪It was called the Doomsday book, meaning ‘judgement day’.
+
+Data vs Information 
+What does the word data mean?
+▪Data is unorganised raw facts that need processing 
+without which it is seemingly random and useless to 
+humans. 
+▪Information is a processed, 
+organised data presented 
+in a given context and is 
+useful to humans. 
+
+Databases 
+▪The world uses and needed to keep large amounts 
+of data. A company will store data about its 
+customers and staff, schools store data about the 
+students, hospitals hold data on patients, 
+supermarkets store data about stock levels and 
+customer buying patterns.
+▪In most cases, this data is stored on electronic 
+databases.  These allow the data to be analysed so 
+that patterns and trends can be found.
+
+Data types 
+▪Different types of data are represented in different ways inside a 
+computer and need varying amounts of memory to store them.
+Data type Definition Example 
+StringA collection of alphanumeric characters 
+(e.g. letters, numbers, symbols) 
+Hello World 
+Integer A whole number 55
+Real A Decimal number 0.78
+Boolean True or False True
+Char A single character of alphanumeric 
+characters
+M
+
+Database  key terms 
+▪A single item of data is stored in a named FIELD 
+▪A complete set of fields makes up a RECORD
+▪All the records are stored in a TABLE or ‘ENTITY’ 
+▪One or more tables then make up the database FILE
+
+Database  key terms 
+▪A database uses a primary key as a unique identifier 
+for each record in the table. It is usually a field that 
+is guaranteed to hold unique information for each 
+recorded. 
+
+Database  key terms 
+▪Some data within the table is repeated over and over 
+again.
+▪Repeated data in a database is generally considered 
+a bad thing. As It wastes space in the database and it 
+takes time to input, typing the same data over and 
+over which could leads to mistakes within the data. 
+This is know as Data redundancy.
+▪The solution is to split the data, the repeating data is 
+removed from the main table, and placed in a table 
+of its own to create a relational database. 
+
+Database  key terms 
+One table Student (contains data directly related to 
+students) and one table for Class (contains data directly 
+related to classes).
+Both tables are independent, and each one has its own 
+primary key.
+This has lead to no repeating-data so no data 
+redundancy within the Database.   
+
+Relational databases key terms  
+▪Relational databasesallow data to be stored in a 
+clear, organised manner across multiple tables. Links, 
+known as relationships, are formed to allow the data 
+to be shared across the tables.
+▪An ‘Entity’ is a group of closely related items about a 
+subject 
+▪Foreign keyis a link to a primary key on another 
+table in a relational database table. 
+
+Relational databases key terms  
+▪Relational databasesallow data to be stored in a 
+clear, organised manner across multiple tables. Links, 
+known as relationships, are formed to allow the data 
+to be shared across the tables.
+▪An ‘Entity’ is a group of closely related items about a 
+subject 
+▪Foreign keyis a link to a primary key on another 
+table in a relational database table. 
+
+Database Relationships  
+Relationship within a database is the link between the 
+tables. There are three relationships:
+▪One to one -e.g. One employee belongs to one 
+organization or One person has one passport
+▪One to many  -One customer to lots of products 
+▪Many to many -students and classes
+
+Revision Notes
+Open the Database revision 
+notes and complete the each 
+section with your own notes 
+and work examples.  
+Answers:
+1.Primary keys
+RunValuseID
+RunID
+Foreign Key:
+RunID
+2. One to Many
+3. Increase in database size
+Increase in data corruption
+Possible data inconsistency
+Increase in cost
+
+Additional reading and useful links
+▪https://www.bbc.co.uk/bitesize/guides/zfd2fg8/revision/1
+▪https://www.computerscience.gcse.guru/theory/what-is-a-database
+▪https://www.teach-ict.com/gcse_new/databases/terminology/miniweb/index.htm
+▪https://isaaccomputerscience.org/topics/databases
+
+Exam Question 
+
+SQL injection is a code injection technique that might destroy your 
+database.
+https://www.guru99.com/learn-sql-injection-with-practical-example.html

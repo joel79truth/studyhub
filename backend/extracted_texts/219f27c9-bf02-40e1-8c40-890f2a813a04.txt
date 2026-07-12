@@ -1,0 +1,463 @@
+
+
+  
+ 
+EXCEL 
+APPLICATIONS 
+Functions & Formular 
+By Sandy Kachale   
+Consulting Lecturer 
+ 
+
+Open excel, create data sets for ample applications of the following: 
+1. Describe cell referencing types in excel with examples 
+In Excel, cell referencing determines how a cell address behaves when copied or moved. There 
+are three main types of cell referencing: 
+1. Relative Cell Reference 
+ Definition: Changes based on the position where it is copied or moved. 
+ Example:  
+o Formula in B2: =A2+10 
+o If copied to B3, it changes to =A3+10. 
+2. Absolute Cell Reference 
+ Definition: Remains fixed when copied or moved by using $ symbols before the row and 
+column. 
+ Example:  
+o Formula in B2: =$A$1+10 
+o If copied to B3, it remains =$A$1+10. 
+3. Mixed Cell Reference 
+ Definition: Either the row or column is fixed while the other part changes. 
+ Types:  
+o Fixed column, changing row ($A1) 
+o Fixed row, changing column (A$1) 
+ Example:  
+o Formula in B2: =$A2+10 
+o If copied to C3, it changes to =$A3+10 (column remains A, row changes). 
+These referencing methods are useful in formulas, especially when working with large datasets. 
+2. HOW TO Sorting & filtering data IN EXCEL WITH EXAMPLES 
+Sorting & Filtering Data in Excel 
+Sorting and filtering are essential functions in Excel that help organize and analyze data 
+effectively. 
+ 
+
+1. Sorting Data in Excel 
+Sorting allows you to arrange data in ascending or descending order based on one or more 
+columns. 
+Steps to Sort Data: 
+1. Select the range of data you want to sort (e.g., A1:C10). 
+2. Go to the "Data" tab. 
+3. Click "Sort". 
+4. Choose the column you want to sort by. 
+5. Select either Ascending (A → Z) or Descending (Z → A). 
+6. Click OK. 
+Example: 
+Name Age Salary 
+John 25 5000 
+Alice 30 7000 
+Bob 22 4000 
+ Sorting by Age (Ascending):  
+o Bob → John → Alice 
+ Sorting by Salary (Descending):  
+o Alice → John → Bob 
+ 
+2. Filtering Data in Excel 
+Filtering allows you to display only specific data while hiding the rest. 
+Steps to Apply a Filter: 
+1. Select the dataset. 
+2. Go to the "Data" tab. 
+3. Click "Filter" (a small drop-down arrow appears on each column header). 
+4. Click the arrow in the column header and select the criteria (e.g., filter Age > 25). 
+5. Click OK to apply the filter. 
+Example: 
+
+Name Age Salary 
+John 25 5000 
+Alice 30 7000 
+Bob 22 4000 
+ Filter Age > 25:  
+o Only Alice appears. 
+ Filter Salary ≥ 5000:  
+o John and Alice appear. 
+ 
+Advanced Sorting & Filtering: 
+ Sort by multiple columns: Sort first by "Salary" and then by "Age." 
+ Custom Filters: Use options like “Greater than,” “Less than,” or “Contains.” 
+ Clear Filters: Click Data → Clear Filter to remove filters. 
+Sorting and filtering make it easier to manage large datasets and analyze information efficiently.  
+3. HOW TO Logical, Text, Date & Time IN EXCEL WITH EXAMPLES 
+Logical, Text, and Date & Time Functions in Excel with Examples 
+Excel provides various functions to handle logical operations, text manipulation, and date & 
+time calculations efficiently. 
+ 
+1. Logical Functions in Excel 
+Logical functions return TRUE or FALSE based on conditions. 
+Common Logical Functions: 
+Function Description Example 
+IF 
+Returns one value if condition is TRUE, another if 
+FALSE 
+=IF(A1>50, "Pass", 
+"Fail") 
+AND 
+Returns TRUE if all conditions are TRUE 
+=AND(A1>50, B1<100) 
+
+Function Description Example 
+OR 
+Returns TRUE if at least one condition is TRUE 
+=OR(A1>50, B1<100) 
+NOT 
+                                    Reverses a logical value                            
+=NOT(A1>50) 
+Example: 
+Score Result Formula 
+60 
+=IF(A1>50, "Pass", "Fail") → Pass 
+40 
+=IF(A2>50, "Pass", "Fail") → Fail 
+ 
+2. Text Functions in Excel 
+Text functions help manipulate text strings. 
+Common Text Functions: 
+Function Description Example 
+LEFT 
+Extracts a specific number of 
+characters from the start 
+=LEFT("Excel",2) → "Ex" 
+RIGHT 
+Extracts a specific number of 
+characters from the end 
+=RIGHT("Excel",2) → "el" 
+MID 
+Extracts a substring from the middle 
+=MID("Excel",2,2) → "xc" 
+LEN 
+Returns the length of a text string 
+=LEN("Excel") → 5 
+CONCATENATE / 
+TEXTJOIN 
+Combines multiple text strings 
+=TEXTJOIN(" 
+",TRUE,A1,B1) 
+Example: 
+Name Formula Result 
+John 
+=LEFT(A1,2) 
+"Jo" 
+ 
+
+3. Date & Time Functions in Excel 
+Date and time functions allow calculations with dates and times. 
+Common Date & Time Functions: 
+Function Description Example 
+TODAY 
+Returns the current date 
+=TODAY() 
+NOW 
+Returns the current date & time 
+=NOW() 
+YEAR 
+Extracts the year from a date 
+=YEAR("12/03/2023") → 2023 
+MONTH 
+Extracts the month from a date 
+=MONTH("12/03/2023") → 3 
+DAY 
+Extracts the day from a date 
+=DAY("12/03/2023") → 12 
+DATEDIF 
+Calculates the difference between two dates 
+=DATEDIF(A1, B1, "Y") (years) 
+TEXT 
+Formats date/time into text 
+=TEXT(A1, "DD-MMM-YYYY") 
+Example: 
+Date Formula Result 
+12/03/2023 
+=YEAR(A1) 
+2023 
+ 
+These functions help in decision-making, text processing, and date calculations, making Excel 
+a powerful tool for data handling! 
+4. HOW TO sum, average, rounddown, roundup, sumif, averageif IN EXCEL WITH 
+EXAMPLES  
+Mathematical & Statistical Functions in Excel with Examples 
+Excel provides powerful functions for calculations, including SUM, AVERAGE, 
+ROUNDDOWN, ROUNDUP, SUMIF, and AVERAGEIF. 
+ 
+
+1. SUM Function 
+The SUM function adds up numbers in a range. 
+Syntax: 
+=SUM(range) 
+Example: 
+A B 
+10 
+ 
+20 
+ 
+30 
+ 
+ Formula: =SUM(A1:A3) 
+ Result: 60 
+ 
+2. AVERAGE Function 
+The AVERAGE function calculates the mean (average) of a range. 
+Syntax: 
+=AVERAGE(range) 
+Example: 
+A B 
+10 
+ 
+20 
+ 
+30 
+ 
+ Formula: =AVERAGE(A1:A3) 
+ Result: 20 
+
+ 
+3. ROUNDDOWN Function 
+The ROUNDDOWN function rounds a number down to a specified number of decimal places. 
+Syntax: 
+=ROUNDDOWN(number, num_digits) 
+Example: 
+ Formula: =ROUNDDOWN(15.789, 1) 
+ Result: 15.7 
+ 
+4. ROUNDUP Function 
+The ROUNDUP function rounds a number up to a specified number of decimal places. 
+Syntax: 
+=ROUNDUP(number, num_digits) 
+Example: 
+ Formula: =ROUNDUP(15.789, 1) 
+ Result: 15.8 
+ 
+5. SUMIF Function 
+The SUMIF function adds values based on a condition. 
+Syntax: 
+=SUMIF(range, criteria, [sum_range]) 
+Example: 
+A B 
+10 A 
+
+A B 
+20 B 
+30 A 
+ Formula: =SUMIF(B1:B3, "A", A1:A3) 
+ Result: 10 + 30 = 40 
+ 
+6. AVERAGEIF Function 
+The AVERAGEIF function calculates the average based on a condition. 
+Syntax: 
+=AVERAGEIF(range, criteria, [average_range]) 
+Example: 
+A B 
+10 A 
+20 B 
+30 A 
+ Formula: =AVERAGEIF(B1:B3, "A", A1:A3) 
+ Result: (10 + 30) / 2 = 20 
+ 
+These functions simplify calculations in Excel, making it easier to handle large datasets 
+efficiently. 
+5. HOW TO min, max, count, stdev, countif, countblank, rank IN EXCEL WITH 
+EXAMPLES 
+Statistical & Counting Functions in Excel with Examples 
+Excel provides powerful functions for finding minimum, maximum, count, standard 
+deviation, and ranking values in datasets. 
+
+ 
+1. MIN Function 
+The MIN function returns the smallest number in a range. 
+Syntax: 
+=MIN(range) 
+Example: 
+A 
+10 
+20 
+30 
+ Formula: =MIN(A1:A3) 
+ Result: 10 
+ 
+2. MAX Function 
+The MAX function returns the largest number in a range. 
+Syntax: 
+=MAX(range) 
+Example: 
+A 
+10 
+20 
+30 
+ Formula: =MAX(A1:A3) 
+ Result: 30 
+
+ 
+3. COUNT Function 
+The COUNT function counts the number of numeric values in a range. 
+Syntax: 
+=COUNT(range) 
+Example: 
+A 
+10 
+20 
+Text 
+30 
+ Formula: =COUNT(A1:A4) 
+ Result: 3 (Ignores text) 
+ 
+4. STDEV Function 
+The STDEV function calculates the standard deviation of a dataset (spread of numbers from the 
+mean). 
+Syntax: 
+=STDEV(range) 
+Example: 
+A 
+10 
+20 
+30 
+
+ Formula: =STDEV(A1:A3) 
+ Result: 10 
+ 
+5. COUNTIF Function 
+The COUNTIF function counts values based on a specific condition. 
+Syntax: 
+=COUNTIF(range, criteria) 
+Example: 
+A 
+Apple 
+Banana 
+Apple 
+ Formula: =COUNTIF(A1:A3, "Apple") 
+ Result: 2 
+ 
+6. COUNTBLANK Function 
+The COUNTBLANK function counts the number of empty (blank) cells. 
+Syntax: 
+=COUNTBLANK(range) 
+Example: 
+A 
+10 
+30 
+ Formula: =COUNTBLANK(A1:A4) 
+
+ Result: 2 
+ 
+7. RANK Function 
+The RANK function assigns a rank to a number in a dataset. 
+Syntax: 
+=RANK(number, range, [order]) 
+ order = 0 (Descending, highest value is rank 1) 
+ order = 1 (Ascending, lowest value is rank 1) 
+Example: 
+A 
+50 
+30 
+80 
+ Formula: =RANK(A1, A1:A3, 0) 
+ Result: 2 (50 is the second highest) 
+ 
+Summary of Functions: 
+Function Purpose Example Formula Result 
+MIN 
+Smallest number in range 
+=MIN(A1:A3) 
+10 
+MAX 
+Largest number in range 
+=MAX(A1:A3) 
+30 
+COUNT 
+Counts numbers only 
+=COUNT(A1:A4) 
+3 
+STDEV 
+Standard deviation 
+=STDEV(A1:A3) 
+10 
+COUNTIF 
+Count values matching a condition 
+=COUNTIF(A1:A3, "Apple") 
+2 
+COUNTBLANK 
+Count empty cells 
+=COUNTBLANK(A1:A4) 
+2 
+
+Function Purpose Example Formula Result 
+RANK 
+Rank a value in a dataset 
+=RANK(A1, A1:A3, 0) 
+2 
+These functions help in data analysis, filtering, and ranking in Excel!  
+6. HOW TO fv, pv, pmt IN EXCEL WITH EXAMPLES 
+Financial Functions in Excel: FV, PV, and PMT with Examples 
+Excel provides built-in financial functions to calculate Future Value (FV), Present Value 
+(PV), and Payment (PMT) for financial analysis. 
+ 
+1. FV (Future Value) Function 
+The FV function calculates the future value of an investment based on periodic, constant 
+payments and a constant interest rate. 
+Syntax: 
+=FV(rate, nper, pmt, [pv], [type]) 
+ rate → Interest rate per period 
+ nper → Total number of payment periods 
+ pmt → Payment per period (if applicable) 
+ pv (optional) → Present value (initial investment) 
+ type (optional) → 0 (end of period) or 1 (beginning of period) 
+Example: 
+You invest $1000 at an annual interest rate of 5% for 5 years with no additional payments. 
+ Formula: =FV(5%/12, 5*12, 0, -1000, 0) 
+ Result: $1,276.45 
+ 
+2. PV (Present Value) Function 
+The PV function calculates the present value of an investment based on periodic payments and a 
+discount rate. 
+Syntax: 
+
+=PV(rate, nper, pmt, [fv], [type]) 
+ rate → Interest rate per period 
+ nper → Total number of payment periods 
+ pmt → Payment per period 
+ fv (optional) → Future value 
+ type (optional) → 0 (end of period) or 1 (beginning of period) 
+Example: 
+You want to know how much you need to invest today to get $5000 in 5 years at an 8% annual 
+interest rate. 
+ Formula: =PV(8%/12, 5*12, 0, 5000, 0) 
+ Result: -3,395.30 (You need to invest $3,395.30 today) 
+ 
+3. PMT (Payment) Function 
+The PMT function calculates the fixed payment required to repay a loan or investment. 
+Syntax: 
+=PMT(rate, nper, pv, [fv], [type]) 
+ rate → Interest rate per period 
+ nper → Total number of payments 
+ pv → Loan or investment amount 
+ fv (optional) → Future value (default is 0) 
+ type (optional) → 0 (end of period) or 1 (beginning of period) 
+Example: 
+You take a loan of $10,000 at an annual interest rate of 6% for 5 years, and you need to 
+calculate the monthly payment. 
+ Formula: =PMT(6%/12, 5*12, -10000, 0, 0) 
+ Result: $-193.33 (You must pay $193.33 per month) 
+ 
+Comparison of FV, PV, and PMT Functions: 
+
+Function Purpose Example 
+FV 
+Calculates future value of an 
+investment 
+=FV(5%/12, 60, 0, -1000, 0) → 
+$1,276.45 
+PV 
+Calculates present value needed for 
+future value 
+=PV(8%/12, 60, 0, 5000, 0) → -
+3,395.30 
+PMT 
+Calculates loan payments 
+=PMT(6%/12, 60, -10000, 0, 0) → 
+$-193.33 
+These functions help in loan calculations, investments, and financial planning in Excel! 
+__________________________________________________________________________ 

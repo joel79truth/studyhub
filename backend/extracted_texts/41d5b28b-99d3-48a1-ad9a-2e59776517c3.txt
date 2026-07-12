@@ -1,0 +1,90 @@
+
+
+Page 1 of 4 
+ 
+ 
+Knowledge, Innovation, Excellence 
+NRC CAMPUS 
+ 
+SEPTEMBER 20121 – DEFERED END OF SEMESTER EXAMINATION 
+PROGRAME: FOOD TECHNOLOGY 
+ 
+NERM312 – EXPERIMENTAL RESEARCH METHODOLOGY 
+ 
+                            Date: September, 2021         Time: 09:00-11:00 Hrs. 
+INSTRUCTIONS: 
+a) This paper contains 4 pages and 5 questions. Please check. 
+b)  Total marks: 100 
+c) Answer ALL Questions 
+d) You are free to use calculators 
+ 
+Question 1 
+
+Page 2 of 4 
+ 
+Explain the following terms as used in research (20 marks) 
+a) Research proposal 
+b) Research design 
+c) Random sampling 
+d) Randomization 
+e) Confounding factors 
+Question 2 
+For each of the following designs: 1. Factorial experimental design, 2. Randomized complete 
+block design,  
+a) describe a situation in food technology where the design would be more 
+appropriate 
+b) For each design use realistic data of your own and present the data in table form.  
+c) Show in the ANOVA table the sources of variation and its degree of freedom.  
+d) Calculate the sum of square for treatment (SST) for your data for design 2 only 
+(20 marks). 
+Let α = 0.05 
+Question 3 
+a) Four subjects participated in an experiment to compare three methods of relieving stress. 
+Each subject was placed in a stressful situation on three different occasions. Each time a 
+different method for reducing stress was used with the subject. The response variable is 
+
+Page 3 of 4 
+ 
+the amount of decrease in stress level as measured before and after the treatment 
+application. The results were as follows (20 marks) 
+ 
+Subjects 
+Treatment 
+A B C 
+1 16 26 22        
+2 16 20 23       
+3 17 21 22        
+4 28 29 36       
+                                77                                  96                                103     
+                               19.25                              24                               25.75              
+a) What is the hypothesis being tested here?  
+b) Can we conclude from these data that the three methods differ in effectiveness?  
+c) The researcher was accused that the subjects were not representative of the population 
+and therefore affected the outcome more than the methods. Do you agree? 
+d) Use Tukey’s to identify, if any, which subjects are different from the other. 
+Let α = 0.05. 
+Question 4 
+The following output was obtained from a computer program that performed a two factor ANOVA 
+on factorial experiment (20 marks) 
+Source df SS MS F 
+A  1 0.322  - - 
+B  - 80.554 40.2771 4.59 
+Interaction (A*B) - - - - 
+Error 12 8.7773 8.7773  
+Total 17    
+a) Fill in the blanks in the ANOVA table. 
+
+Page 4 of 4 
+ 
+b) How many levels were used for factor B? 
+c) How many replicates of the experiment were performed 
+d) What conclusion would you draw about the experiment 
+                  Let α = 0.05 
+Question 5 
+a) Describe the content of the following sections of a proposal. 
+i. Literature review                                                                               (5 marks) 
+ii. Problem statement                                                                             (5 marks) 
+b) Using a relevant example explain the weakness of using randomized complete design 
+during experimental research                                                                        (10 marks) 
+ 
+END OF QUESTION PAPER 

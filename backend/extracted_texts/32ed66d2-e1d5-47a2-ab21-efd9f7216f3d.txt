@@ -1,0 +1,2178 @@
+
+
+
+
+Polysaccharides
+Polysaccharide or Glycan is the name 
+given into a macromolecule 
+consisting of a large number of 
+monosaccharide (glycose)
+These are joined by the glycosidic
+linkage
+They can be linear, branched or 
+cyclic.
+
+Polysaccharides
+They have reducing sugar one end (Reducing 
+polysaccharides) or non reducing sugars 
+both sides.
+◦A reducing sugar is any sugar that is capable of 
+acting as a reducing agent because it has a free 
+aldehyde group or a free ketone group. 
+◦A non-reducing sugar is a carbohydrate that is 
+not oxidized by a weak oxidizing agent
+All monosaccharidesare reducing sugars, 
+along with some disaccharides, some 
+oligosaccharides, and some polysaccharides.
+
+Polysaccharides
+Examples of sugars that are non reducing 
+sugars
+
+Nomenclature of Polysaccharides
+Revisit Oligosaccharides
+However it follows general principles. Some 
+are:
+1.Generic name: Polysaccharide (glycan) 
+2.Polysacchridescomposed of one kind of 
+monosaccharide are homopolysaccharides
+(monoglycan)
+3.If two different monomeric units are 
+present, they are called 
+heteropolysaccharidesor heterogylcan.
+
+Nomenclature of Polysaccharides
+4.Glycan from single type glycoseis 
+named by replacing suffix “ose” by “an”-
+Example: 
+Glucose = Glucan(starch and cellulose), 
+Xylose = Xylan
+Galactose= Galactan
+5.“D” and “L” for configurationalseries of 
+the monomer must be shown
+-4)DGlc(α1-3)DGlc(α1-4)DGlc(α1-3)DGlc(α1-
+
+Nomenclature of Polysaccharides
+6.A polysaccharide (glycan) composed 
+entirely of glycuronicacid residues is 
+named by replacing “icacid” by “an.”
+◦The generic name for this glycuronicacid is 
+therefore “glycuronan.”
+◦Example:  Pecticacid (D–Galacturonicacid)
+Is called: 
+D-Galacturonan
+
+Nomenclature of Polysaccharides
+7.When substitution occurs in a glycan, each 
+substituted type of residue is made of the name 
+and placed in alphabetical
+8.When major linkage contained in the 
+homoglycanis known, an indication of it may be 
+included in the name
+9.When the glycan with a principal chain of only 
+one type of sugar residue, it is written last, with 
+the other sugar residues present listed in 
+alphabetical order. 
+However, when no single type of sugar residue 
+constitutes the principal chain, all sugar residues 
+should be given alphabetically, and the name 
+terminated with the glycan.
+
+Nomenclature of Polysaccharides
+8. Polymers containing covalently bound 
+monosaccharide and amino-acid 
+residues are termed glycoproteins, 
+proteoglycans, and peptidoglycans
+
+Structure of Polysaccharides
+Polysaccharides, like oligosaccharides, consist of 
+monosaccharidesbound to each other by 
+glycosidiclinkages. 
+Their acidic hydrolysis yields monosaccharides. 
+Enzymatic hydrolysis provides oligosaccharides
+
+Polysaccharides (glycans) can consist of one 
+type of sugar structural unit (homoglycans) 
+or of several types of sugar units 
+(heteroglycans).
+The monosaccharidesmay be joined:
+◦in a linear pattern (as in celluloseand amylose)
+◦in a branched fashion (amylopectin, glycogen, 
+guaran).
+Structure of Polysaccharides
+
+Amylose
+
+WHAT IS AMYLOSE?
+Amylose is a linear polysaccharide 
+structure that is formed when D-glucose 
+molecules are joined together.
+It occurs when one carbon atom of one 
+glucose combines with four carbon atom 
+of another glucose molecule by a 
+glycosidicbond.
+These molecules are tightly packed 
+together and they do not form any 
+branches. 
+
+Amylose
+It is the crystallizableform of starch, 
+consisting of long unbranched 
+polysaccharide chains
+It is one of the two components of starch, 
+making up approximately 20-30%. 
+Amylose is more resistant to digestion 
+than other starch molecules and is 
+therefore an important form of resistant 
+starch
+
+Amylose
+It is relatively soluble in water
+Consists of a chain of a few thousand to 
+over a million Glucose units linked 
+through α-1,4 glycosidicbonds (Extension 
+of maltose).
+Amylose is broken down by salivary 
+amylase
+In the laboratory it can be broken down 
+by acid hydrolysis method
+
+Structure of Amylose
+
+Cellulose
+
+WHAT IS CELLULOSE?
+Cellulose is a structural polysaccharide 
+where D-glucose are joined together. 
+The glucose molecules are joined 
+together by β(1→4) glycosidicbonds and 
+they are unbranched due to the rigid 
+structure.
+The molecule formed is insoluble in 
+water and it is quite common in green 
+plants with the cell walls. 
+
+Structure of Cellulose
+
+Similarities between Amylose 
+and Cellulose 
+Both are polysaccharides
+Both occur in plants
+Both have an unbranched chain
+Both form glycosidicbonds during the 
+condensation reaction
+
+Core Difference between 
+Amylose and Cellulose
+Amylose can be digested by the human 
+digestive system while cellulose cannot be 
+digested by the human digestive system.
+Amylose is used in making thickening and 
+binding agents while cellulose for 
+paperboard and paper production
+Amylose turn brown iodine solution to 
+blue-black while cellulose reacts with 
+anthronein sulphuricacid to form a 
+colored compound
+
+Core Difference between 
+Amylose and Cellulose
+The significance of amylose is plant energy 
+storage while cellulose is a structural 
+carbohydrate
+The bond presence in amylose is α(1→4) 
+glycosidicbonds while that of cellulose is 
+β(1→4) linked D-glucose units
+Amylose has no exact chemical formula 
+while that of cellulose is (C
+6
+H
+10
+O
+5
+)
+n
+Amylose has a linear polymer with 300 to 
+several thousand units of glucose while 
+cellulose is a straight-chain polymer with 
+3000 to several thousand units of glucose
+
+Core Difference between 
+Amylose and Cellulose
+Amylose is a storage polysaccharide while 
+cellulose is a structural polysaccharide
+Amylose is a linear helical carbohydrate 
+polymer made of α-D-glucose units while 
+cellulose is an organic polysaccharide 
+comprising a linear chain
+Amylose has less crystalline and 
+amorphous regions while cellulose has a 
+more crystalline and amorphous region.
+
+Amylopectin
+
+Amylopectin
+Branched chain polysaccharide, usually larger than 
+amylose; 
+◦up to 100 million Glucose units
+Has α-1,4 glycosidiclinks and α-1,6 glycosidic
+linkages
+Branch points occur every 24-30 glucose residues
+Relatively insoluble in water and has colloidal 
+properties
+Gives red-violet color when reacted with iodine
+Qualifies starch as the main energy store
+Hydrolysis yields –Isomaltoseand maltose
+
+Structure of Amylopectin
+
+SUMMARY ON STRUCTURES
+Cellulose
+
+MODIFIED STARCHES
+Starch properties and those of amylose 
+and amylopectin can be improved or 
+“tailored” by physical and chemical 
+methods to fit or adjust the properties to 
+a particular application or food product
+Modified starch is a food additive which is 
+prepared by treating starch or starch 
+granules, causing them to be partial 
+degraded
+
+USES OF MODIFIED STARCHES
+As Thickening agent
+As Stabilizers
+As Emulsifiers
+As Dusting agent
+As Drying aids
+In Pharmaceuticals
+As Binders in 
+coated paper
+As Clouding agent
+As Suspending 
+agent
+As freeze-thaw 
+stability
+Improve 
+appearance
+Adjust viscosity of a 
+food product
+etc
+
+Modified Starch
+1.Mechanically 
+Damaged Starches
+2.Extruded Starches
+3.Dextrins
+4.Pre-gelatinized 
+Starch
+5.Thin –Boiling 
+Starch
+6.Starch Ethers
+7.Starch Esters
+8.Cross –Linked 
+Starches
+9.Oxidized Starches
+10.Cationic starches
+11.Acetylated 
+starches
+12.Grafted starches
+13.etc
+These   include:
+
+a. Mechanically Damaged Starches
+Starch represents 67-68% of whole grain 
+wheat and between 78-82% of the flour 
+produced from milling.
+When starch granules are damaged by 
+grinding or by application of pressure at 
+various water contents, the amorphous 
+portion is increased, resulting in:
+◦improved dispersibilityand swellabilityin cold 
+water, 
+◦a decrease in the gelatinization temperature by 
+5–10 ◦C, and 
+◦an increase in enzymatic vulnerability. 
+
+a. Mechanically Damaged Starches
+In bread dough made from flour 
+containing damaged starch, for instance, 
+the uptake of water is faster and higher 
+and amylose degradation greater.
+Damaged starch (DS) is important in 
+bread making: 
+◦it absorbs 4 times its weight in water as 
+compared to 0.4 for native starch
+
+b.Dextrin
+Formed by roasting the starch with HCl
+Dextrinationis the heating of powdered 
+starch (in presence of acid) at different 
+temperature and with different reaction 
+times.
+Heating of starch (<15% of water) to 
+100–200 ◦C with small amounts of acidic 
+or basic catalysts causes more or less 
+extensive degradation. 
+
+b. Dextrin
+White and yellow powders are obtained 
+which deliver clear or turbid, highly sticky 
+solutions of varying viscosity. 
+These products are used as adhesives in 
+sweets and as fat substitutes.
+◦Also in paper and textile based industry
+
+Modified Starch
+Reading Assignment on other examples
+1.Extruded 
+Starches
+2.Pre-gelatinized 
+Starch
+3.Thin –Boiling 
+Starch
+4.Starch Ethers
+5.Starch Esters
+6.Cross –Linked 
+Starches
+7.Oxidized Starches
+8.Cationic starches
+9.Acetylated 
+starches
+10.Grafted starches
+11.etc
+
+CHARACTERISTICS OF STARCH
+Starches have the capacity to go through 
+the following processes:
+◦Dextrinization
+◦Gelatinisation
+◦Gel formation
+◦Retrogradation
+◦etc
+
+STARCH DEXTRINIZATION
+Dextrinisationis the process involving the 
+browning of starch foods when subjected 
+to dry heat.
+It is the break down of starch into 
+dextrins
+It changes the properties 
+of starch as a result of 
+heat application.
+◦It is a non-enzymatic 
+browning
+
+STARCH GELATINISATION
+What happens when starch is heated in a 
+liquid?
+◦Tiny granules of starch do not dissolve when 
+mixed in liquid instead forms suspension.
+◦Gelatinisationoccurs when they absorb liquid 
+when heated 
+◦Starch granules gets swell up when heating 
+continues
+◦Then the granules burst releasing the starch 
+which forms a gel with the liquid
+This thickens the liquid.
+
+STARCH GELATINISATION
+This is a process of breaking down the 
+intermolecular bonds of starch molecules 
+in the presence of water and heat 
+allowing the hydrogen bonding sites to 
+engage more water.
+It is the process where starch and water 
+are subjected to heat causingthe starch 
+granules to swell. 
+◦This gives the system a viscous and 
+transparent texture. 
+
+STARCH GELATINISATION
+This process occurs when starch granules 
+are heated in a liquid, causing them to 
+swell and burst, which results in the liquid 
+thickening.
+The result of the reaction is a gel, which is 
+used in sauces, puddings, creams, porridge, 
+pasta and other food products, providing 
+a pleasing
+
+GEL FORMATION OF STARCH
+Gelation is the process of formation of a 
+gel from a system with polymers
+
+GEL 
+FORMATION 
+
+STARCH GELATION
+
+RETROGRADATION
+Retrogradationis a reaction that takes 
+place when the amylose and amylopectin 
+chains in cooked, gelatinized starch realign 
+themselves as the cooked starch cools. 
+◦It is a process in which amylose and 
+amylopectin chains disaggregate in gelatinized 
+starch paste re-associate to form more 
+ordered structures
+
+RETROGRADATION
+This is collective processes of dissolved 
+starch becoming less soluble are. 
+Retrogradationof cooked starch involves 
+amyloseand amylopectin(Polymer 
+constituents)
+Amylose undergoing retrogradationat a 
+much more rapid rate than does 
+amylopectin. 
+◦Retrogradationis an ongoing process which 
+involves rapid recrystallization of amylose 
+followed by a slow one of amylopectin
+
+The rate of retrogradationdepends on 
+several variables which include:
+◦The molecular ratio of amylose to 
+amylopectin; (structures of the amylose and 
+amylopectin molecules)
+◦Storage temperature; 
+◦Starch concentration; 
+◦Presence and concentration of other 
+ingredients, such as surfactants and salts. 
+◦compositions such as water content, lipids 
+and anti-staling enzymes 
+RETROGRADATION
+
+Starch retrogradationleads to
+◦bread staling (change in texture and 
+flavor during storage)
+◦loss of viscosity 
+◦decrease the storage stability
+◦decrease the starch digestibility
+◦precipitation in soups and sauces,  etc
+EFFECTS OF RETROGRADATION
+
+RETROGRATION PROCESS
+
+BREAD STALING
+Staling is a chemical and physical process 
+in bread and other foods that reduces 
+their palatability
+It becomes and Leathery
+
+Staling is the decrease in the palatability 
+of cookies, cakes and bread that does not 
+include microbial contamination. 
+◦It is a change in both chemical and physical 
+attributes that give bread products a dry, 
+leathery texture. 
+It is a major problem in the baking 
+industry.
+
+What causes staling?
+It is caused mainly by 
+◦starch retrogradation
+This is the recrystallisationof the starch molecules
+Starch undergoes swelling or gelatinization when 
+heated in the presence of water
+◦Water migration and redistribution
+◦Protein –starch interaction
+◦Gluten transformation (Gluten cross-links in 
+the structure of the baked product)
+
+It is usually characterized by:
+Loss of aroma
+Loss of moisture and flavor
+Loss in product freshness
+Changes in mouth feel
+Development of crumbliness
+Toughening of the crust
+Firming of the crumb
+Characteristics of Bread Staling
+
+Prevention of Staling
+
+Prevention of Staling
+Storage temperatures (18 –25
+o
+C)
+Prevent Moisture migration and loss
+Processing factors such as: 
+◦lowering baking temperatures
+◦larger loaf volumes reduces staling
+Enzymes: 
+◦heat stable αamylase, lipase, lipoxygenase, 
+protesae, pullulanase, non starch 
+polysaccharide  modifying enzymes
+
+Prevention of Staling
+Ingredients 
+◦fats, wheat gluten, high protein flour and sugar
+Surface active agents (Lipids) as emulsifiers 
+Packaging
+Soy addition
+Malting and fermentation
+Incorporation of high fiber flours
+Reheating
+
+Physical and Chemical  Structures
+Functional and nutrition roles
+Cellulose derivates
+CELLULOSE
+(C
+6
+H
+10
+O
+5
+)
+n
+
+Cellulose
+Recall:
+Types of Polysaccharides
+Starch
+Cellulose
+Glycogen 
+Insulin
+Cellulose is the most 
+abundant organic compound
+It is the principal cell-wall 
+component of higher plants. 
+
+Cellulose
+Cellulose is the main constituent of plant cell walls, 
+where it usually occurs together with 
+hemicelluloses, 
+pectin
+lignin. 
+Cellulose is a high-molecular-weight, linear, insoluble 
+homopolymerof repeating β-D-glucopyranosylunits
+Heating  cellulose in acidic, hydrolysis to glucose 
+molecules 
+
+Properties of Cellulose
+Its properties include:
+Has no taste
+It is odorless
+It is hydrophilic
+Insoluble in water and some organic solvent
+It is Chiral
+It is biodegradable
+It has high melting points (467
+o
+C)
+
+STRUCTURE OF CELLULOSE
+
+CHEMICAL STRUCTURE AND FORMULA
+Consist of a linear chain of several hundred of D-glucose 
+joined by β(1 4) glycosidiclinkages
+Cellulose are poly(1,4-β-D-glucopyranoside)
+
+CHEMICAL STRUCTURE AND FORMULA
+Cellulose linearchains are held together by forming 
+hydrogen bonds
+Cellulose crystallizesas monoclinic, rod-like crystals. 
+
+Because of their linearity and stereoregularnature, cellulose 
+molecules associate over extended regions, forming 
+polycrystalline, fibrous bundles. 
+Crystallineregions are held together by large numbers of 
+hydrogen bonds. 
+CHEMICAL STRUCTURE AND FORMULA
+
+CHEMICAL STRUCTURE AND FORMULA
+
+CHEMICAL STRUCTURE AND FORMULA
+Cellulose is insoluble because, in order for it to 
+dissolve, most of these hydrogen bonds would have to 
+be released at once. 
+Cellulose can, however, through substitution, be converted 
+into water-soluble gums.
+Cellulose and its modified forms serve as dietary fiber 
+They do not contribute significant nourishment or calories as 
+they pass through the human digestive system. 
+
+Functions of Cellulose
+Structural role in both Plants and Animals
+Helps the plant to stand up right
+For manufacturing of paper, cotton fabrics and other 
+synthetics products
+Maintains health of the intestines (prevents colon cancer)
+Have vast application in food industry
+
+Functions of Cellulose
+In food industry, cellulose is used as:
+Fiber supplement
+As calorie Reducer
+Thickening
+Emulsifying
+Anti-caking
+Stabilizer
+Dispersing agent
+Gelling agent
+
+CELLULOSE DERIVATIVES
+These can be produced through:
+Alkylation:
+Cellulose can be alkylated into a number of derivatives with good swelling 
+properties and improved solubility.
+Such derivatives have a wide field of application
+Mechanical or Chemical processing
+Pharmaceutically used cellulose derivatives obtained by either of these or 
+both
+Hydroxylation
+The hydroxyl groups of cellulose can be partially or fully reacted with various 
+reagent to afford derivatives
+Additional treatment
+Pure cellulose additional treatment by HClproduced various cellulose 
+derivatives
+
+CELLULOSE DERIVATIVES
+The cellulose derivatives include
+Ester Cellulose
+Ether Cellulose
+Cellulose Nitrate (Celluloid)
+CarboxymethylCellulose 
+Alkyl Cellulose
+Hydroxyalkyl
+
+Ester Cellulose
+Important ones are: cellulose acetate, cellulose acetate-
+propionate and cellulose acetate-butyrate.
+Cellulose acetate is a crystal clear, tough and flexible plastic
+It is a stable cellulose derivative
+It is formed as follows:
+
+Ether Cellulose
+These are produced from wood pulp or cotton linters.
+The important ones are methyl cellulose and ethyl cellulose
+Methyl cellulose is simplest derivative
+Its methoxygroups have replaced the hydroxyl groups
+Other  commercially important ether cellulose include 
+hydroxylpropylcellulose, hydroxyethylcellulose, 
+carboxymethylcellulose.
+
+Celluloid
+Also called cellulose nitrate or nitrocellulose
+Formed when OH on cellulose has been replaced by nitro 
+group (NO
+2
+)
+It is highly combustible hence too hazardous
+Used as a inderin products like inks, coatings and adhesives.
+
+Advantages of using cellulose
+Good Lubrication
+Good binging properties
+Reduced friability and weight loss
+Excellent compressions and hard ness
+Improve stability of drug
+etc
+
+
+
+Individual polysaccharides
+PECTIN
+DEXTRANS 
+CARRAGEENANS 
+ALGINATES 
+AGAR 
+GUM ARABIC 
+
+PECTIN
+
+Introduction
+Pectin is a structural heteropolysaccharide
+contained in the primary cell walls of terrestrial 
+plants
+It is a white, amorphous, colloidal carbohydrate of 
+high molecular weight occurring in ripe fruits, 
+especially in apples, currants, etc.
+Due to its properties It is used in fruit jellies, 
+pharmaceuticals, and cosmetics
+
+Occurrence
+It is produced commercially from peels of citrus fruits and 
+from apple pomace. 
+20–40% in citrus fruit peel 
+10–20% in apple pomace.
+Extraction is achieved at pH 1.5–3 at 60–100 ◦C., in a 
+controlled manner
+Liquid pectin product
+Powered pectin product
+
+STRUCTURE
+Pectin is a polysaccharide mixture 
+with a complicated structure 
+containing at least 65% of 
+galacturonicacid (GalA). 
+
+Structure
+Three structural elements are involved in the 
+make-up of a pectin molecule: 
+STRUCTURAL
+ELEMENT
+COMPOSITION
+Homogalacturonan
+consisting of  (1 →4) linked α-D-GalA
+Galacturonan
+with differently arranged side chains (building blocks: 
+apiose, fucose, arabinose, xylose)
+Rhamnogalacturonan
+With aabackbone consisting of the disaccharide units 
+[→4)-α-D-GalA-(1 →2)-α-L-Rha-(1 →] its 
+rhamnoseresidues linked by arabinanand galactanchains
+
+STRUCTURE
+Pectin stability is highest at pH 3–4. 
+The glycosidiclinkage hydrolyzes
+in a stronger acidic medium.
+In an alkaline medium, both 
+linkages,(ester and glycosidic), are 
+split to the same extent, the 
+latter by an elimination reaction
+
+Gelling properties of pectin
+Gel a semi-rigid colloidal dispersion of a solid 
+with a liquid or gas, as jelly, glue, etc.
+A pectin-gel can be formed when the ingredients 
+are heated, thereby dissolving the pectin. 
+Upon cooling below gelling temperature, a gel 
+starts to form. 
+
+Gelling properties of pectin
+If gel formation is too strong,the extraction of the liquid 
+component occurs and produce a granular texture. 
+Weak gelling leads to excessively soft gels. 
+Pectinsgel according to specific parameters, such as
+sugar, 
+pH and 
+bivalent salts (especially Ca
+2+
+). 
+
+Gelling properties of pectin
+Gel formation by pectin is influenced by:
+The degree of esterification: the gelling is fast when the degree 
+is high
+The distribution of the ester groups in the pectin molecule
+pH: a thermally reversible gel is formed at about pH 3 and in 
+presence of Ca
+2+
+Molecular weight: gel forming ability is directly proportion to 
+weight 
+Temperature: decrease as temp increase above 50
+0
+C
+Effect of acylation: decrease with decrease in acylation
+
+USES OF PECTIN
+As a gelling agent
+Thickening agent
+As a stabilizer in food and drinks
+Reduces the gel strength of low calorie jams
+As fat substitute in baked goods
+Used as food additive
+
+Dextran(C
+18
+H
+32
+O
+16
+)
+Is a group of glucose polymer made by certain bacteria
+This is produced from saccharoseextracellularlyby 
+bacteria with the help of dextran sucrase
+The bacteria include: 
+Leuconostocmesenteroides, 
+Streptobacteriumdextranicum, 
+Streptococcus mutans
+etc
+
+Structure  and Properties
+Dextranis an α-1,6-glucan with several glucose side chains, 
+which are bound to the main chain of the macromolecule 
+primarily through 1,3-linkages but, in part, also by 1,4-
+and1,2-linkages
+
+STRUCTURE AND PROPERTIES
+On an average, 95% of the glucose residues are present in the 
+main chain. 
+Dextranis very soluble in water.
+They are also soluble in other organic solvent
+Their viscosity increases with molecular weight
+They are biodegradable
+They are neutral
+They are stable for more than 5 yrs
+They are easily filtered
+
+Uses of dextran
+Dextranis used mostly in medicine as a blood substitute.  
+(antiplateletto reduce blood viscosity)
+In the food industry it is used as a thickening and stabilizing 
+agent, as exemplified by its use in baking products, 
+confections, beverages and in the production of ice creams.
+Used in some eye drop as a lubricant
+Used in immobilization in biosensors
+
+Carrageenans
+Red sea weeds produce two types of galactans: 
+agar and agar-like polysaccharides, composed of 
+D-galactoseand 3,6-anhydro-L-galactoseresidues
+carrageenansand related polysaccharides, 
+composed of D-galactoseand 3,6-anhydro-D-
+galactose 
+Galactoseresidues are alternatively linked by 1 →3 and 1 
+→4 linkages.
+Carrageenansare isolated by hot water extraction under 
+mild alkaline conditions, followed by drying or isolate 
+precipitation
+
+STRUCTURE AND PROPERTIES
+Carrageenansare a complex mixture of various polysaccharides.
+They can be separated by fractional precipitation with potassium 
+ions
+Two major fractions are 
+κ(gelling and K
++
+-insoluble fraction) 
+λ(nongelling, K
++
+-soluble).
+
+STRUCTURE AND PROPETIES
+κ-Carrageenanis composed of D-galactose, 3,6-anhydro-D-
+galactose and ester-bound sulfate in a molar ratio of 6:5:7.
+A typical sequence of κ-carrgeenanis:
+
+STRUCTURE AND PROPETIES
+λ –Carrageenancontains as the basic building block β-
+DGalp-(1 → 4)-α-D-Galp
+The highsulfatecontent favors the formation of a 
+zigzagribbon-shaped conformation.
+Its structure is given as:
+
+Uses of carrageenan
+Carrageenanutilization in food processing is based on the ability 
+of the polymer 
+to gel,
+to increase solution viscosity and 
+to stabilize
+emulsions and 
+various dispersions. 
+Carrageenansprevent syneresisin fresh cheese
+It improve dough properties 
+Enable a higher amount of milk powder incorporation in baking. 
+
+Uses of carrageenan
+The gelling property in the presence of K+ salt is utilized in 
+desserts and canned meat. 
+Protein fiber texture is also improved.
+Protein sedimentation in condensed milk is prevented by 
+carrageenanswhich, like κ-casein,
+prevent milk protein coagulation by calcium ions.
+Carrageenansare also used to stabilize ice cream and clarify 
+beverages.
+
+
+
+BROWNING REACTIONS
+Enzymatic, Maillard, Caramelization
+
+Browning reactions
+Browningis the process of food turning brown due 
+to the chemical reactions that take place within
+Browning is one of the most important reactions 
+taking place during food processing and storage.
+Think of the follow?                 
+Old bananas
+Brown Bread
+Fried Steak
+Sugar caramel
+
+Browning reactions
+Browning is grouped into two:
+Enzymatic browning
+Non-enzymatic browning 
+Both can affect the quality of food in 
+either positive or negative ways, 
+depending on the type of food
+
+Enzymatic Browning
+This is a chemical process which occurs in fruits and 
+vegetables  as well as sea food by the enzyme 
+polyphenoloxidase, which results in brown 
+pigments.
+
+Enzymatic Browning
+The process accelerate at high temperatures and pH 
+between 5 to 7.
+Enzymatic browning common in
+Fruits –Apples, Pears, Peaches, apricots, bananas etc
+Vegetables –potatoes, lettuce, mushrooms, brinaletc
+Cereals –wheat flour, rice
+Sea food –shrimps, spiny lobster and crabs
+
+Enzymatic Browning
+This type of browning is detrimental to quality of 
+post-harvest storage fresh fruits, juices and some 
+shellfish
+However this browning is essential for the colourand 
+taste of tea, coffee and chocolate.
+Enzymatic Browning reaction involves:
+Polyphenols oxidase,
+Catechol oxidase 
+And other enzyme that create melaninsand 
+benzoquinone from natural phenols. 
+
+Enzymatic Browning Mechanism
+During enzymatic browning:
+phenolic compounds are oxidized to quinonesby 
+polyphenol oxidase to form a brown or grey lack 
+pigment called Melanin.
+Enzymatic browning requires exposure to oxygen 
+hence it is also called oxidation of food.
+The rate of enzymatic browning is reflected by the 
+amount of active polyphenoloxidasespresent in the 
+food
+
+Enzymatic Browning Mechanism
+Phenoliccompounds called polyphenolsare group 
+of chemical substances present in plants (fruits, 
+vegetables) which play an important role during 
+enzymatic browning, because they are substrates 
+for the browning-enzymes. 
+Phenoliccompounds are responsible for the colour
+of many plants, such as apples, they are part of the 
+taste and flavourof beverages (apple juice, tea), 
+and are important anti-oxidants in plants.
+
+Enzymatic Browning Mechanism
+Polyphenolsare normally complex organic 
+substances, which contain more than one phenol 
+group.
+Phenol group is given as:
+Its formula is C
+6
+H
+4
+OH or C
+6
+H
+5
+O
+
+Enzymatic Browning Mechanism
+An Example of a structure of a polyphenolis:
+During food processing and storage many 
+polyphenolsare unstaledue to the fact that they 
+undergo chemical and biochemical reactions
+Phenolicscan be Anthocyaninsand Flavonoids
+
+Enzymatic Browning Mechanism
+The most important is enzymatic oxidationcausing 
+browning of vegetables, fruits. 
+This reaction mostly occurs after cutting or other 
+mechanical treatment of product due to breaking 
+cells. 
+In the presence of oxygen from air, the enzyme 
+(polyphenoloxidasealso called phenolases) catalyzes 
+the first steps in the biochemical conversion of phenolics
+to produce quinones, which undergo further 
+polymerization to yield dark, insoluble polymers 
+referred to as melanins
+
+Enzymatic Browning Mechanism
+These melaninsform barriers and have 
+antimicrobial properties which prevent the spread 
+of infection or bruising in plant tissues. 
+Plants, which exhibit comparably high resistance to 
+climatic stress, have been shown to possess 
+relatively higher polyphenoloxidaselevels than 
+susceptible varieties. 
+
+Enzymatic Browning Mechanism
+Study this example in which melanin from simple 
+polyphenol(tyrosine) is formed
+
+Enzymatic Browning Mechanism
+Polyphenoloxidasecatalyses two basic reactions: 
+hydroxylation and 
+oxidation. 
+Both reactions utilize molecular oxygen (air) as a 
+co-substrate. 
+The reaction is not only dependent on the presence 
+of air, but also on the pH (acidity). 
+The reaction does not occur at acid (pH <5) or 
+alkaline (pH >8) conditions
+
+Prevention of Enzymatic Browning
+
+Prevention of Enzymatic Browning 
+The control of browning is one of the most important 
+issues in the food industry, as colouris a significant 
+attribute of food which influences consumer decision 
+and brown foods (especially fruits) are seen as 
+spoiled. 
+Several methods can be applied to avoid enzymatic 
+browning, based on either: 
+inactivating the enzyme (heat) or 
+by removing essential components (O
+2
+) from the product. 
+
+Prevention of Enzymatic Browning
+Each method aimed at targeting specific steps of 
+the chemical reaction. 
+The control of enzymatic browning has always been 
+a challenge for the food industry. 
+The use of chemicals to inhibit browning, such as sulfite 
+(a powerful antibrowningchemical) have been 
+reconsidered due to the potential hazards it causes 
+along with its activity.
+
+Prevention of Enzymatic Browning
+The following  are some of the control method:
+1.Blanching
+2.Refrigeration
+3.Freezing
+4.pH Change
+5.Dehydration
+6.Irradiation
+7.High pressure treatment
+8.Addition of inhibitors
+9.Ultrafiltration
+10.Ultrasonication
+11.Treatment with supercritical carbon dioxide
+
+Prevention of Enzymatic Browning
+Blanching 
+Blanching is a short heat 
+treatment to destroy or inactivate 
+enzymes before freezing of 
+products (mainly vegetables). 
+Enzyme activity may discolouror 
+toughen vegetables during 
+freezing, which results in quality 
+loss. 
+
+Prevention of Enzymatic Browning
+Blanching brightens the colour, softens the texture, 
+but has little effect on nutrient content or flavouras 
+it is a relatively short process. 
+The blanching temperature depends on the type of 
+enzyme which occurs in the product, but is generally 
+between 70 and 100 °C, sometimes higher when 
+more resistant enzymes are to be inactivated. 
+
+Prevention of Enzymatic Browning
+ENZYMEEFFECTINACTIVATION TEMPERATURE
+Lipolitycacyl hydrolaseRancidity~75
+LipoxygenaseRancidity~80
+PolyphenoloxidaseBrowning~100
+Peroxidase Deterioration~135
+The following are Inactivation temperatures of 
+some enzymes
+Blanching affect these inactivation temperatures
+
+Prevention of Enzymatic Browning
+
+Prevention of Enzymatic Browning
+1.Blanching in steam/ boiling
+Steam or boiling water blanching is a type of heat 
+treatment for controlling enzymatic browning in 
+canned or frozen fruits and vegetables. 
+It is scalding the vegetables or food in water or 
+steam for a short period of time. 
+The steam blanching is 1.5 times longer than boiling 
+water blanching. 
+
+Prevention of Enzymatic Browning
+2.Microwave blanching
+Microwave blanching may not be effective, since 
+research shows that some enzymes may not be 
+inactivated. 
+This could result in off-flavoursand loss of texture 
+and colour
+
+Prevention of Enzymatic Browning
+Refrigeration 
+Refrigeration and chilling are used to prevent 
+spoilage of vegetables and fruits during distribution 
+and retailing. 
+Chilling is applied often for broccoli, berries, 
+spinach, peas, bananas, mangoes, avocados, 
+tomatoes. 
+Chilled food are food stored at refrigerated temp.
+
+Prevention of Enzymatic Browning
+At temperatures below 7 °C the polyphenoloxidase
+enzyme activity is inhibited, but the enzyme is not 
+inactivated. 
+Temperature prevents enzymatic browning by 
+reducing rate of reaction
+Therefore the temperature should be well controlled.
+
+Prevention of Enzymatic Browning
+Freezing 
+Like refrigeration, freezing inhibits, but not 
+inactivates the enzyme. 
+After thawing, the enzyme activity will resume. 
+
+Prevention of Enzymatic Browning
+Change pH 
+The enzyme activity is pH dependent. 
+Lowering of the pH to 4.0 by the addition of citric, 
+ascorbic or other acids inhibits the enzyme activity. 
+During home-preparation of vegetables or fruits 
+lemon juice or vinegar is often sprinkled on the fruit 
+to prevent browning.
+This lemon Juice and other acids lower pH and 
+remove copper cofactor necessary for the 
+responsible enzymes to function. 
+
+Prevention of Enzymatic Browning
+Dehydratation/Dehydration
+Dehydratationis caused by the removing water 
+molecules from the product. 
+The PPO enzyme needs sufficient water to be 
+active. 
+By drying the enzyme is inhibited, but not 
+destroyed. 
+To avoid flavourand quality loss, dehydration 
+should not involve heat. 
+
+Prevention of Enzymatic Browning
+Common methods for dehydration are: 
+1.Freezing-drying when moisture is removed by 
+sublimation (the change from solid to gas). 
+Products are frozen and slowly dehydrated under vacuum. 
+2.Lowering water activity by adding water-binding 
+chemicals. 
+The most commonly used substances are salt (sodium 
+chloride), sucrose, and other sugars, glycerol, propylene 
+glycol and syrups or honey. 
+
+Prevention of Enzymatic Browning
+Irradiation 
+Irradiation, or as it is sometimes called "cold 
+pasteurization", is a process in which food is 
+submitted to ionized radiation in order to kill 
+bacteria and reduce the enzyme activity. 
+Irradiation is often applied in meats, seafood, fruits, 
+vegetables, and cereal grains for long-term 
+preservation. 
+
+Prevention of Enzymatic Browning
+Several types of irradiation methods are used in 
+food processing: 
+gamma rays, 
+X-rays and 
+accelerated electrons (electron beams). 
+Disadvantages of radiation are loss of nutrients and 
+(low) consumer acceptance. 
+Irradiation is thus rarely used. 
+
+Prevention of Enzymatic Browning
+High pressure treatment 
+High pressure treatment also called High Pressure 
+Processing (HPP) is a technique of food processing 
+where food is subjected to elevated pressures (500-
+700 atmosphere) to achieve microbial and enzyme 
+inactivation. 
+High pressure processing causes minimal changes in 
+foods. 
+
+Prevention of Enzymatic Browning
+Compared to thermal processing, HPP results in 
+foods with fresher taste, and better appearance, 
+texture and nutrition. 
+High pressure processing without heat eliminates 
+thermally induced cooked off-flavours. 
+The technology is especially beneficial for heat-
+sensitive products, but still very expensive
+
+Prevention of Enzymatic Browning
+Addition of inhibitors 
+Inhibitions can act in three ways: 
+Inactivation towards the enzyme (acting directly on the 
+enzyme) 
+Inactivation towards substrate (removing the substrate 
+like oxygen or phenoliccompounds) 
+Inactivation towards the product (changing the product 
+composition) 
+
+Prevention of Enzymatic Browning
+Large amount of inhibitors are applied in food 
+processing depending on the type of product and 
+process. 
+
+Prevention of Enzymatic Browning 
+Proteins can exert an inhibitory effect on PPO 
+activity by chelating the essential copper at the 
+active site of PPO through competitive inhibition, 
+inhibiting its activity
+Chelating: forming a type of bonding ion and molecule 
+to a metal ion  (Cu
+2+
+)
+
+Prevention of Enzymatic Browning
+Ultrafiltration
+Ultrafiltration is a membrane separation process, 
+driven by a pressure gradient. 
+The membrane separates liquid components according to 
+their size and structure. 
+Ultrafiltration is able to remove larger molecules like 
+polyphenoloxidase, but not lower-molecular-weight 
+components like polyphenols.
+
+Prevention of Enzymatic Browning
+Ultrasonication
+Ultrasonicationis an advanced method to inactivate 
+enzymes. 
+Ultrasonic sound waves are able to destroy large 
+molecules by liberating highly reactive radicals from 
+water.
+It is not yet applied on a large scale. 
+
+Prevention of Enzymatic Browning
+Treatment with supercritical carbon dioxide (SC-CO
+2
+) 
+Supercritical carbon dioxide treatment is mostly 
+applied to destroying micro-organisms but can also be 
+applied for enzyme inactivation, especially for 
+inactivation of PPO in shrimps, lobsters and potatoes. 
+Inactivation of the enzyme is a result of a decrease in 
+pH caused by production of carbonic acid (H
+2
+CO
+3
+) from 
+carbon dioxide. 
+
+Advantages of Enzymatic Browning
+It is known that the final product melanin has 
+antimicrobial properties, which prevents any infection 
+and inflammation to the plant or fruit
+Melanin also has antibacterial, antioxidant and 
+anticancer properties
+Enzymatic browning in some food, it is beneficial 
+because it increases colourand flavourlike in:
+Cocoa
+Tea
+Raisins
+Prunes 
+
+Disadvantages of Enzymatic Browning
+Affect nutritional qualities
+Sensory qualities like bad odour, taste and flavour
+Unappealing to consumer
+Decrease shelf life
+
+Non -Enzymatic Browning
+
+Non-enzymatic Browning
+Nonenzymaticbrowning is a process that produce 
+the brown pigmentation in foods, but without the 
+activity of enzymes
+
+Forms of Non-enzymatic browning
+There are two main forms of non-enzymatic  
+browning
+Maillardreaction 
+Caramelizationreaction
+These non enzymatic reactions usually involve sugar or 
+related compounds
+These reactions can produce brown, fluorescent, highly 
+cross-linked pigments (MelanoidinChromophores)
+
+Non -Enzymatic Browning
+Changes during non-enzymicbrowning sometimes 
+are desirable and sometimes undesirable:
+Produces flovor
+Produces color
+Produces toxic products
+Produce antioxidant products
+Loss and destroys nutrients
+Production of undesirable products such as 5-
+hydroxymethylfurfural (HMF)
+
+MaillardReaction
+It is the reaction between carbohydrates
+(reducing sugars) and proteins (amino 
+acids), 
+This reaction is responsible for changes in color, 
+flavor and nutritive in food
+It takes place between free amino groups (R-NH
+2
+) 
+carbonyl group (C=O). 
+The free amino groups is from amino acids, peptides, or 
+proteins and the carbonyl group of reducing sugars. 
+
+MaillardReaction
+The Maillardreactionis a complex series of 
+reactions between amino acids and reducing sugars, 
+usually at increased temperatures. 
+In the process, hundreds of different flavourcompounds 
+are created. 
+These compounds in turn break down to form yet more 
+new flavourcompounds, and so on. 
+Each type of food has a very distinctive set of 
+flavourcompounds that are formed during the 
+Maillardreaction. 
+
+MaillardReaction
+Maillardreactions are (partly) responsible for the 
+flavourof:
+bread, cookies, cakes, meat, beer, chocolate, popcorn, 
+cooked rice. 
+In many cases, such as in coffee, the flavouris a 
+combination of Maillardreactions and 
+caramelization. 
+However, caramelizationonly takes place above 
+120-150 °C, whereas Maillardreactions already 
+occur at room temperature. 
+
+MaillardReaction
+Factors that play a role in the Maillardformation 
+and thus in the final colourand aroma; 
+pH (acidity), 
+types of amino acids and sugars, 
+temperature, 
+time, 
+presence of oxygen, 
+water, 
+water activity (a
+w
+) and 
+other food components all are important. 
+
+MaillardReaction Mechanism
+The first step of the Maillardreaction is the reaction 
+of a reducing sugar, such as glucose, with an amino 
+acid. 
+This reaction forms a product called an Amadori
+compound or a Heyns–from RCHO or RCOR
+1
+
+MaillardReaction Mechanism
+Glucose reacts with amino group to produce a 
+glycosylaminewhich rearranges to Amadoricomp.
+OR
+
+MaillardReaction Mechanism
+Formation of Heyns
+OR
+
+MaillardReaction
+As in food generally over 5 different reactive 
+sugars and 20 reactive amino acids are present, 
+only the first step theoretically already results in 
+over 100 different reaction products
+The rate of this reaction depend on the size of the 
+sugar
+The larger the sugar, the slower it will react with amino 
+acids.
+
+MaillardReaction
+The pentose sugars (5 carbon atoms), such as ribose, 
+will react faster as hexose sugars (glucose, fructose) 
+and disaccharides (sugar, lactose). 
+From the amino acids lysine, with two amino groups, 
+reacts the fastest and causes darker colours. 
+Other amino acids are typtophanand arginine
+Cysteine, with a sulphurgroup, causes specific flavours, 
+but less colour. 
+Sugar alcohols or polyols(sorbitol, xylitol) do not 
+participate in the Maillardreaction.
+
+MaillardReaction
+The next steps differ, depending on the isomer of 
+the Amadoricompound. 
+Either the amino acid is removed, which results in 
+reactive compounds that are finally degraded to the 
+important flavourcomponents furfural and 
+hydroxymethylfurfural (HMF). 
+The other reaction is the so-called Amadori-
+rearrangement, which is the starting point of the main 
+browning reactions.
+
+MaillardReaction
+Formation of HMF
+Furfural and 
+hydroxymethylfurfural(HMF) are 
+characteristic flavourcompounds 
+of the Maillardreaction. 
+
+MaillardReaction
+Furfural is the result of a reaction with a pentose 
+sugar (such as ribose); HMF is the result of a 
+reaction with a hexose (glucose, saccharose). 
+
+MaillardReaction
+After the Amadori-rearrangement three 
+different main pathways can be distinguished : 
+Dehydratationreactions, 
+Fission, when the short chain hydrolytic products are 
+produced, for example diacetyland 
+pyruvaldehyde, 
+“Streckerdegradations” with amino acids or they 
+can be condensatedto aldols. 
+
+MaillardReaction
+Final product of maillard
+reaction are Melanoidins
+Melanoidinsare brown, 
+high molecular weight 
+heterogeneous polymers 
+that are formed when 
+sugars and amino acids 
+combine at high 
+temperatures and low 
+water activity. 
+
+MaillardReaction
+Melanoidinsare commonly present in foods that 
+have undergone some form of non-enzymatic 
+browning.
+In addition to change of clourand flavourthe 
+melanoidinsmay have some beneficial anti-oxidant 
+properties. 
+Maillardreactions also may reduce the nutritional 
+value of a product, as amino acids and 
+carbohydrates may be lost.
+
+MaillardReaction
+Some of the Maillardend-products may also 
+be toxic or carcinogenic. 
+One of the Maillardreaction products is 
+acrylamide, a potential toxic compound which is 
+only formed at temperatures above 180 °C, 
+especially in baked or fried products (French fries). 
+When frying below 180 °C acrylamide is not formed.
+Structure of acrylamide
+
+Study the following formation of acrylamide
+
+Check this !!!! Formation of 3-Deoxyhexosulose
+
+Summary on Maillard
+
+Maillardreaction Prevention
+Maillardreactions can not, or hardly, be prevented 
+when heating foods. 
+Only by removing the sugars or the amino acids, or 
+making the product very acid or alkaline, the 
+reactions can be prevented
+
+Colouredmolecule formed during MR
+
+Controlling Factors of MR Products
+Factors that influence the browning reaction are:
+Temperature
+pH
+Moisture level (H
+2
+O activity)–high rate when a
+w
+is 
+high/low moisture content
+Oxygen
+Metals
+Phosphates
+Sulfur dioxide
+Other inhihitors
+
+Sulfate Browning Inhibitors
+Principally sulfur dioxide or bisulfitecomponds
+react with HMF near the end of the decomposition 
+of the Amadoricompound and divert it to a non-
+reactive product, that is one that cannot be 
+converted into melanoidinpigments.
+
+Caramelization
+This is the reaction which leads to brown products when 
+sugars are heated dry or in solution
+Caramelisationis oxidation of sugar, a reaction which 
+involves the removal of water (steam) and break down of 
+sugar
+Caramelisationis responsible for many browning processes
+
+Caramelisation
+Caramelizationis a process involving the 
+pyrolysisof sugar.
+This is the process of removal of water from a 
+sugar (such as sucrose or glucose) followed by 
+isomerization and polymerisationsteps. 
+Pyrolysisis a thermochemicaldecomposition of organic 
+material at elevated temp in the absence of oxygen.
+
+Caramelization
+Caramelizationleads desirable colourand flavour
+in bakery's goods, coffee, beverages, beer and 
+peanuts.
+Undesirable effects of caramelizationare for example 
+burned sugar smell and blackening. 
+Caramelizationoccurs during dry heating and 
+roasting of foods with a high concentration of 
+carbohydrates (sugars). 
+
+CaramelizationMechanism
+The process of caramelizationstarts with the melting of the 
+sugar at high temperatures, followed by foaming (boiling). 
+At this stage saccharose(sugar) decomposes into glucose 
+and fructose. 
+This is followed by a condensation step, in which the 
+individual sugars lose water and react with each other to for 
+example difructose-anhydride. 
+
+CaramelizationMechanism
+The next step is the 
+isomerization of aldoses to 
+ketoses and further 
+dehydration reactions. 
+The last series of reactions 
+include both
+fragmentation reactions 
+(flavourproduction)
+polymerization reactions 
+(colourproduction). 
+
+Caramelization
+Caramelizationstarts at relatively high 
+temperatures as compared to the other browning 
+reactions, and depends on the type of sugar. 
+Different carbohydrates and other components in food 
+may influence:
+a.Caramelizationtemperature 
+b.Different steps and reactions,
+c.Final flavoursthat are produced, 
+d.Final coloursthat are produced. 
+
+Caramelization
+SugarTemperature (
+o
+C)
+Fructose110
+Galactose160
+Glucose160
+Maltose180
+Saccharose160
+Initial Caramelizationtemperatures of common 
+carbohydrates 
+
+Caramelization
+Baked goods made from honey or fructose syrup 
+thus are generally a bit darker than those made 
+with sugar. (WHY?)
+During caramelizationseveral flavourcomponents 
+as well as polymeric caramels are produced. 
+Caramels are complex mixture of various high 
+molecular weight components. 
+
+Caramelisation
+Caramels that are responsible for brown colourare 
+classified into three groups: 
+Caramelans(C
+24
+H
+36
+O
+18
+) 
+Caramelens(C
+36
+H
+50
+O
+25
+) 
+Caramelins(C
+125
+H
+188
+O
+80
+) 
+
+Caramelization
+These polymers are often used as coloursin 
+commercial food products
+Commercial caramels are produced directly by 
+heating sugar, or by heating sugar in the presence 
+of co-factors, such as ammonia or sulphite. 
+This results in caramels with different coloursor charged 
+caramels. 
+
+Caramelization
+These aspects are very important for the use of 
+different caramels in foods. 
+Caramels used to coloursoft drinks should be 
+negatively charged to prevent reaction with 
+phosphates which causes precipitation and loss of 
+colour. 
+On the other hand, caramels used for bakery goods 
+should be positively charged. 
+
+Caramelization
+Name of stageCaramelisation 
+temperature
+Description
+Thread Stage At 100-110
+o
+CThe sugar will form thin threads, which can be used to make 
+preserves and syrups.
+Soft Ball Stage At 115°CThe sugar forms a soft ball that can be flattened and molded into 
+fudge, fondant, pralines, and caramel candies. 
+Firm Ball StageAt 118°CThe sugar solidifies further into a more firm, sturdy ball, which is 
+used to make marshmallows, meringues, gummies, and toffee.
+Hard Ball StageAt 120–127°CThe sugar has been formed into a hard ball that holds its shape, 
+used to make nougat, toffee, and butterscotch.
+Soft Crack Stage At 130–143°C The sugar will form pliable but firm threads, which can be 
+stretched into chewier candies like nougat, butterscotch, and taffy.
+Hard Crack Stage At 150–154°CThe sugar has hardened into brittle, fragile threads, which are 
+used to create hard candy, candy brittle, and glazed fruits.
+Caramel Stage At 160–180°CThe caramelizationwill be complete, and the sugar will have 
+changed in color and flavor
+The different stages of caramel production all have distinct names, based 
+on the characteristics of the product: Main stages include:
+
+Caramelization
+
+Caramelization
+Caramelizationreactions also result in the formation 
+of flavours. 
+Diacetylis an important flavourcompound, produced 
+during the first stages of caramelization. 
+Diacetylis mainly responsible for a buttery or 
+butterscotch flavour. 
+Diacetylis not only produced by caramelization, it can 
+also be produced by bacteria in fermented products, 
+such as beer and yoghurt. 
+
+Caramelization
+Besides diacetylhundreds of other flavour
+compounds are produced for instance 
+furanslike hydroxymethylfurfural(HMF) and 
+hydroxyacetylfuran(HAF), 
+furanonessuch as hydroxydimethylfuranone(HDF), 
+dihydroxydimethylfuranone(DDF) and 
+maltolfrom disaccharides and hydroxymaltolfrom 
+monosaccharides. 
+
+Ascorbic Acid Browning
+When ascorbic acid is heated in the presence of 
+acids, furfural is formed.
+The furfural formed is either by itself or after 
+reacting with amino compounds, polymerisesto 
+brown product.
+This is common in citrus juices.
+Citrus juices, especially their concentrates, develop 
+browning which has been attributed to ascorbic acid 
+degradation. 
+
+
+
+READING ASSIGNMENT
+
+Post-Harvest Changes 
+in Fruit and Vegetables
+AND
+Coloursand Food 
+Colorants
+
+Post-Harvest Changes 
+in Fruit and Vegetables
+Changes during ripening–colour, flavour, texture
+Post-harvest physiology–climacteric and non-climacteric fruits,
+Controlling atmospheric storage
+
+
+
+Introduction
+Post-harvest physiologists distinguish three stages in the 
+life span of fruits and vegetables:
+maturation, 
+ripening, and 
+senescence. 
+Maturation is indicative of the fruit being ready for 
+harvest. 
+At this point, the edible part of the fruit or vegetable is 
+fully developed in size, although it may not be ready 
+for immediate consumption. 
+
+Introduction
+Ripening follows or overlaps maturation, rendering the 
+produce edible, as indicated by taste. 
+Senescence is the last stage, characterized by natural 
+degradation of the fruit or vegetable, as in loss of 
+texture, flavour, etc. (senescence ends at the death 
+of the tissue of the fruit). 
+
+Introduction
+Some typical maturity indexes include:
+Skin colour-Sugars
+Shape                                      -starch content
+Size                                          -Acidity
+Aroma
+Fruit opening
+Leaf changes
+Firmness
+Juice content
+Oil content and dry matter %
+
+Ripening of Fruits and 
+Vegetables
+
+Changes during Ripening
+Repining is a process in fruits 
+that causes them to become 
+more palatable.
+Several major changes take 
+place as fruits/vegetables 
+ripen,.
+
+Changes during Ripening
+They include:
+Changes in carbohydrate composition, resulting in sugar 
+accumulation and increased sweetness;
+Change in colour;
+Flesh softening and textural change;
+Formation of aroma volatiles;
+Accumulation of organic acids with associated 
+development of flavour.
+
+Colour
+During ripening many fruit change colour. 
+Bananas, berryfruitand stonefruitprovide good 
+examples where colouris a prime indicator of ripeness.
+Their bright colour, is particularly important visible 
+indicator of maturity and ripeness.
+Novel coloursare also used to market new varieties to 
+consumers, e.g. in kiwifruit, green-fleshed Actinidia
+deliciosa‘Hayward’ vs. yellow-fleshed A. chinensis
+‘Hort16A’ (Figure 11.18).
+
+Colour
+Unripe fruit in most cases is green in 
+colourwhich disappears as it get ripe
+This green colouris due largely to the 
+presence of chlorophylls.
+The development of different colours
+during ripening is due to the 
+disappearance chlorophyll pigments 
+and the synthesis of carotenoidsand 
+anthocyanins
+
+Colour
+Carotenoidsare naturally occurring substances 
+responsible for the bright colors of certain plants, 
+fruits & vegetables. 
+When added to food, carotenoidshave a similar 
+effect and provide yellow, orange and red color
+Carotenoidsare divided into two classes: the 
+hydrocarbon carotenes, e.g. lycopene(red) and 
+b-carotene (orange); or the oxygen-containing 
+xanthophylls, e.g. lutein(yellow).
+
+Colour
+By analogy with senescence in most green tissues such 
+as leaves, colourchange in fruit typically involves 
+chlorophyll loss and an increase in production of 
+yellow, orange, red or purple pigments. 
+The gold, orange and red coloursof many fruit such as 
+tomato and citrus are formed by enzymes in the 
+carotenoidbiosynthetic pathway (Tanaka et al. 2008)
+
+Colour
+Other red and purple pigments of the type seen in 
+grapes and boysenberries are anthocyanins, which 
+are products of the phenylpropanoidpathway
+Anthocyanin are water –soluble vacuolar pigments 
+that, depending on their pH, may appear red, purple, 
+or blue.
+They  are synthesisedin the cytosoland localisedin 
+vacuoles.
+
+Colour
+Their basic ring structure can be modified by 
+hydroxylation, methylationor glycosylationand their 
+specific colouris modified by pH, metal ions and co-
+pigments to produce the subtlety of coloursseen in 
+nature. 
+Like carotenoids, anthocyaninshave many human 
+health benefits and are widely used as natural food 
+colourants
+
+Flavour
+Flavouris the sensory impression of a food and is 
+determined y the chemical senses of taste and smell. 
+Flavouris the most important factor to be considered 
+in food processing.
+Therefore, maintainanceof the very best flavourand 
+aroma properties for fruits and vegetable its very 
+important
+
+Flavour
+Two main factors determine a fruit’s 
+characteristic flavour–
+the correct sugar/acid balance 
+and 
+the production of aroma volatile 
+compounds.
+These volatile compounds can 
+include a mixture of volatile acids, 
+aldehydes, alcohols, esters, 
+terpenoidsand aromatics.
+
+Texture
+During fruit ripening, softening and textural changes 
+(including the development of juiciness) take place
+The texture of ripe fruit differs drastically between 
+species, with crisp, hard apple and deformablysoft 
+avocado representing the extremes
+Excessive textural softening during ripening leads to 
+adverse effects/spoilage upon storage. 
+
+Texture 
+The major classes of cell wall polysaccharides that 
+undergo modifications during ripening are starch, 
+pectins, cellulose, and hemicelluloses. 
+Pectinsare the common and major components of 
+primary cell wall and middle lamella, contributing to 
+the texture and quality of fruits. 
+Their degradation during ripening seems to be 
+responsible for tissue softening of a number of fruits
+
+Post-harvest physiology 
+Postharvest physiology is the scientific study of the 
+physiology of living plant tissues after they have 
+denied further nutrition by picking.
+It has direct applications to postharvest handling in 
+establishing the storage and transport conditions that 
+best prolong shelf life.
+An example of the importance of the field to 
+postharvest handling is the discovery that ripening of 
+fruit can be delayed, and thus their storage 
+prolonged, by preventing fruit tissue respiration
+
+Post-harvest physiology
+Techniques like cold storage, gaseous storage and 
+waxy skin coatings prevents respiration
+Another well-known example is the finding that 
+ripening may be brought on by treatment with 
+ethylene.
+Ethylene is a small hydrocarbon gas.whichis naturally 
+occurring, but it can also occur as a result of 
+combustion and other processes. 
+Some fruit will produce ethylene as ripening begins. 
+(Apples and Pears)
+
+Post-harvest physiology
+Ethylene is responsible for the changes in texture, 
+softening, color, and other processes involved in 
+ripening. 
+Fruits such as cherries and blueberries do not produce 
+much ethylene and it doesn't influence their ripening. 
+Other effects of ethylene include:
+Aging hormone in plant
+Cause plant to die
+Loss of chlorophyll
+Stem shortening/bending
+
+Post-harvest physiology
+Ethylene gas is used commercially to ripen tomatoes, 
+bananas, pears, and a few other fruits postharvest. 
+Ethylene can be explosive if it reaches high 
+concentrations, so it has to be used cautiously
+
+Post-harvest physiology
+Fruits are grouped into two with respect to ethylene: 
+Climacteric 
+Non-climacteric
+Climacteric are those whose ripening is associated 
+with ethylene production and rise in cellular 
+respiration.
+They continue to ripen after harvesting
+Examples include apples, banana, melons, tomatoes 
+
+Post-harvest physiology
+These are harvested hard and green, but are fully 
+mature and ripened near consumption areas (fully 
+ripe = perishable)
+Small dose of ethylene is used to induce ripening 
+process under controlled conditions of temperature 
+and humidity.
+Climacteric is the final physiological process marking 
+end of maturity
+
+Post-harvest physiology
+Non –climacteric are those which ripens without the 
+release of  ethylene and boost in cellular respiration.
+These do not ripen further once harvested.
+They produce very small amount of ethylene and do 
+not respond to ethylene treatment
+Examples include: oranges, grapes, blackberry, 
+cashew
+
+Atmospheric storage
+A controlled atmosphereis a storage method in which 
+the concentrations of oxygen, carbon dioxide and 
+nitrogen, as well as the temperature and huumidityof 
+a storage room are regulated. 
+So-called CA storage is common today for apples and 
+pears and is being adapted to other fruits. 
+
+Controlled Atmospheric 
+storage
+Fruit life can be extended further by both refrigeration 
+and controlled atmosphere (CA) storage in which
+oxygen is kept at about 5 percent and 
+carbon dioxide at 1 to 3 percent, 
+while temperature is held at a level best suited to the 
+particular fruit. 
+Both dry commodities and fresh fruit and vegetables 
+can be stored in controlled atmospheres.
+
+Controlled Atmospheric 
+storage
+Ripening is delayed by reducing the level of oxygen 
+and increasing that of carbon dioxide in the cool 
+storage room so that the respiration is reduced. 
+Under controlled atmosphere conditions the quality 
+and the freshness of fruit and vegetables are retained
+Remember: The long-term storage of vegetables and 
+fruit involves inhibiting the ripening and ageing 
+processes, thus retaining flavor and quality. 
+
+Importance of Controlled 
+Atmospheric storage
+a.A considerable decrease in respiration rate, with a 
+reduction in climacteric maximum, accompanied by 
+an expansion of both pre-climacteric and post-
+climacteric periods
+b.A reduction in the effect of ethylene on metabolism 
+due to the interaction of O2 with ethylene, with a 
+consequent delay of appearance of senescence 
+symptoms
+c.An extension in storage life, which can even be 
+doubled, in as much as the over ripening is delayed
+
+Importance of Controlled 
+Atmospheric storage
+d.The preservation of an excellent firmness of flesh, due 
+to effect of CO2 concentration on the enzymes 
+acting on cellular membranes
+e.A high turgidity is achieved, such that fruits are more 
+juicy and crisp
+f.A smaller loss of acidity, sugars and vitamin C, so that 
+the nutritional and sensory quality is higher
+g.A limited degradation of chlorophyll, with a 
+consequent higher stability of colour
+
+Importance of Controlled 
+Atmospheric storage
+h.Some physiological alterations, such as chill  injuries, 
+spot, decay, browning, water core and scald are 
+prevented, or greatly limited
+i.Moulds can be reduced, in particular under low O 2, 
+high CO2 atmospheres
+j.A longer shelf life in the post storage trading, which 
+can even be trebled thanks to the protraction of the 
+effects on respiration and on the other metabolic 
+activities.
+
+Post -Harvest Changes in Fruits and 
+Vegetables
+
+Coloursand Food 
+Colorants
+Chlorophyll
+Carotenoids
+anthocyanin
+
+Coloursand Food Colorants
+Food coloring, or color additive, is any dye, pigment or 
+substance that imparts colourwhen it is added to 
+food/drink.
+Forms of food colorants include:
+liquids, 
+Powders
+Gels
+pastes
+Food coloring is used both in commercial food 
+production and in domestic cooking
+
+Coloursand Food Colorants
+Food colorants can be natural or artificial
+Natural food colorants include:
+Betanin(magenta dye)
+Anthocyanin(a red to le dye)
+Beta –carotenes (yellow to orange)
+Chlloorophylls(green)
+Synthetic or artificial food colorants include:
+Indigo carmine (blue)
+Allurared AC (Red)
+Quinolineyellow (Yellow)
+
+Uses of the food colorants
+Color additives are used in foods for many reasons 
+including:
+To make food more attractive, 
+appealing, 
+appetizing, and 
+informative
+Offset color loss due to exposure to light, air, temperature 
+extremes, moisture and storage conditions
+
+Chlorophyll
+
+Chlorophyll
+It is a basic component of plants and algae since it is 
+the green pigment involved in photosynthesis
+It is located in chloroplasts
+It is a magnesium nitro-carbon molecule 
+
+Chlorophyll
+There are two main types
+1.Chlorophyll a (C
+55
+H
+72
+O
+5
+N
+4
+Mg)
+It is the most common type
+2.Chlorophyll b (C
+55
+H
+70
+O
+6
+N
+4
+Mg)
+Less common than chlorophyll a
+Other types include:
+Chlorophyll c1 
+Chlorophyll c2 
+Chlorophyll d
+
+Chlorophyll
+It has the following properties
+Antioxident
+Anti cancer
+Energizing and purifying
+Deodorizer –neutralize body odor
+Cholesterol –reduce levels
+Anemia  -it is used in haemeglobin
+Kidney stones prevention
+Its anti-bacterial
+
+Chlorophyll
+
+Carotenoids
+An organic pigments with antioxidant functions
+
+Carotenoids
+These are called tetraterpenoids
+They are organic pigments that are produced by plants and 
+algae, as well as several bacteria and fungi
+They are found in chloroplast together with chlorophyll
+Naturally they occur as:
+Hydrocarbons
+Alcohols
+Glycosides
+Ethers
+Epoxides
+Aldehydes
+Acids and acid esters
+Ketones
+
+Carotenoids
+Structurally, carotenoidstake the form of a polyene
+hydrocarbon chain which is sometimes terminated by 
+rings, and may or may not have additional oxygen 
+atoms attached.
+
+Carotenoids
+They are grouped into two:
+Carotenes
+Xanthophylls
+Carotenes typically contain only carbon and 
+hydrogen and are in the subclass of  unsaturated 
+hydrocarbons.
+Carotenes are typically orange and yellow pigments 
+or reddish-orange  color.
+Carotenes are oxygen free (un-oxygenated) 
+carotenoids
+
+Carotenoids
+Within carotenes we have the 
+following types:
+Beta carotene –antioxidant, anticancer, 
+prevents heart disease. Found in carrot 
+Alpha carotenes –powerful antioxidant
+Lycopene–for red coloration in 
+tomatoes which has anticancer and 
+antioxidant properties and it reduces 
+cholesterol in blood 
+Cryptoxanthin–powerful antioxidant
+
+Carotenoids
+Xanthophylls are carotenoidsthat have a yellow 
+and brown color/pigment
+These are molecules which contain oxygen
+The important ones include:
+Lutein–fat soluble yellowish pigment which 
+protect plants from solar radiation.
+Zeaxanthin–similar properties to lutein
+Capsanthin–red pigment with antioxidant 
+properties
+
+Anthocyanin
+
+Anthocyanin
+These are blue, dark red or purple pigment 
+that plants contain
+They are found in some fruits such as blue 
+berries, raspberries, cherries, red cabbage 
+etc
+Anthocyaninshave the following properties:
+Ant –aging
+Antiviral property
+Hemostaticproperties
+Antioxidant properties
+
+Anthocyanin
+An anthocyaninhas a carbohydrate (sugar, usually 
+glucose) esterifiedat the 3 position. 
+An anthocyanidin, termed the aglycone, does not 
+have a sugar at the 3 position. 
+
+Anthocyanin
+Naturally occurring pigments from grapes always have 
+a sugar bonded at the 3 position, though other 
+compounds such as hydroxycinnamatesand acetate 
+may be involved. 
+The presence of this sugar helps the anthocyanin
+maintain solubility in water. 
+If the sugar is hydrolyzed or lost, the solubility 
+decreases and the molecule will be destabilized and 
+lost
+
+Anthocyanin
+All naturally occurring anthocyaninsare in equilibrium 
+between the color flavyliumcationand the colorless 
+hydrated form
+
+END OF THE ROAD

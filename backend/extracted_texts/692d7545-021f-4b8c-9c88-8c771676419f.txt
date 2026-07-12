@@ -1,0 +1,424 @@
+
+
+SOIL AND WATER CONSERVATION
+LILONGWE UNIVERSITY OF AGRICULTURE AND NATURAL 
+RESOURCES (LUANAR)
+NATURAL RESOURCES COLLEGE (NRC)
+EVANCE CHAIMA, Ph.D.
+
+COURSE ASSESSMENT 
+Continuous assessment
+•Practical sessions 
+•Group assignments
+•Individual assignments
+•Mid semester examinations 
+End of semester
+40%
+60%
+Percent
+Continuous assessment
+End of semester
+
+COURSE OUTLINE
+INTRODUCTION
+PRINCIPLES OF SOIL CONSERVATION
+INTEGRATED APPROACHES TO SOIL AND WATER CONSERVATION
+ROCKS
+SOIL GENESIS (ORIGIN OF SOIL)
+SOIL AND ITS COMPOSITION
+
+SOILPROPERTIES
+PHYSICALCHEMICALS
+CHEMICALPROPERTIES
+BIOLOGICALPROPORTIESOFSOIL
+SOILFERTILITY
+FERTLIZERS
+INORGANICFERTILIZER
+ORGANICFARTILIZER
+SOILEROSIONANDCONSERVATION
+ESTIMATINGSOILLOSS
+PHYSICALSOILANDWATERCONSERVATIONMEASURES
+BOILOGICALCONSERVATIONMEASURES
+LANDUSECAPABILITYCLASSIFICATIONANDLANDUSEPLANNING
+VILLAGEBASEDCATCHMENTCONSERVATION
+
+Recommended books
+•Bunderson W.T et al (2002) Land care practices in Malawi. Malawi Agroforestry 
+Extension Project
+•Barrow C. (1987) Water Resources and Agriculture Development in the Tropics
+
+INTRODUCTION
+
+Soil
+Soil is the biologically active and porous medium developed in the 
+uppermost layer of Earth’s crust. It serves as the reservoir of water and 
+nutrients and a medium for the filtration and breakdown of injurious 
+wastes. It also helps cycle carbon and other elements through the global 
+ecosystem.
+
+Water
+It is a clear, colorless, odorless, and tasteless liquid that 
+may also occur in various forms such as gas (water 
+vapor) and solid (ice).
+
+Importance of soils (FAO – UN)
+•Soils help adapt to climate change by reducing (GHG)in the atmosphere;
+•Soils allow for water infiltration, filtering pollutants and preventing them from 
+leaching into the groundwater;
+•Soils capture and store water for crops, whereas degraded soils retain less water;
+•Reducing surface evaporation and increasing water use efficiency and 
+productivity are also processes enhanced by healthy soils;
+•Soils provide fiber, fuel, medicinal products, and other ecosystem services;
+•Soils keep 25% of BD and they are a key part of the global cycles that make all life 
+possible.
+
+Importance of water
+•Domestic    Agricultural    Industrial 
+
+Production constraints faced by farmers due to poor conservation 
+practices
+Crop production 
+•Loss of fertility--     More fertilizers  
+•Loss of arable land--     Higher costs to restore the land 
+•Reduced agricultural output--   Losses 
+•Poor performance of the economy--   Poverty and underdevelopment
+Fish farming 
+•Pollution of water bodies--    Death of fish  
+•Sedimentation of water bodies--   Shallow water bodies (costly to restore)
+•Reduced fish & Aquaculture output--  Losses
+•Speedy decline of water levels--   Dig deeper (more costs)
+•Increased incidents of flooding/damages (ponds)-- Rebuilding (costly)
+
+Why conserve soil and water?
+Short term goals
+•Enhance soil fertility
+•Minimize soil loss
+•Increase water infiltration 
+Long term goals
+•Enhance global water balance (Water reserves)
+•Promote catchment conservation
+•Increase agricultural production
+•Improve economic performance (Household, community, National)
+•Biodiversity conservation and ecosystem preservation 
+•Climate change mitigation and adaptation
+
+THE HYDROLOGICAL CYCLE
+
+SOIL EROSION
+
+Soil Erosion
+•Soil erosion is defined as theaccelerated removal of topsoil from the 
+land surface through water, wind and tillage (FAO)
+•Soil erosion occurs naturally under all climatic conditions but it is 
+significantly increased and accelerated by unsustainable human 
+activities throughintensive agriculture, deforestation, overgrazing 
+and improper land use changes.
+•Soil erosion rates are much higher than soil formation rates, meaning 
+its loss and degradation is not recoverable within a human lifespan.
+•Note: Acceptable 2 – 5 Tons/Ha/yr
+•In Malawi Avg 15 Tons/Ha/yr (Range 10 -45)
+
+SOIL EROSION PROCESS 
+STAGE 1 – Dislodgement
+This involves disruption of soil structure and 
+detachment of soil particles.
+•Silt is usually preferentially dislodged and 
+transported.
+•Clay particles tend to be flocculated and 
+combined in aggregates which increase 
+their mass.
+•Sand particles are larger and heavy.
+
+STAGE 2 – Transportation/Runoff
+Detached soil particles move from initial point to a different 
+location due to influence of wind or water.
+The transportation take place in three ways:
+i) Suspension– When the particles of soil are very small (less 
+than 0.1 mm) they are carried over long distances
+ii) Saltation– In saltation soil particles of medium size (0.10-
+0.15 mm diameter) (is a specific type of particle transport by 
+fluids such as wind or water. It occurs when loose materials are 
+removed from a bed and carried by the fluid, before being 
+transported back to the surface. Examples include pebble 
+transport by rivers, sand drift over desert surfaces, soil blowing 
+over fields, and snow drift over smooth surfaces
+
+STAGE 2 – Transportation/Runoff
+Detached soil particles move from initial point to a different 
+location due to influence of wind or water.
+The transportation take place in three ways:
+iii) Soil Creep – This is rolling or sliding of soil particles along 
+the surface of the particles (0.5-1.0 mm diameter). 
+
+3. Deposition of soil particles
+The process by which sediment settles out of 
+the water or wind that is carrying it, and is 
+depositedin a new location.
+Occurs when the velocity and carrying capacity 
+of runoff decreases. 
+
+PRINCIPLES OF SOIL CONSERVATION
+i. Minimisation of the effects of the raindrop
+Interposing a buffer between the raindrops and the soil surface to absorb the energy of the 
+falling raindrops and prevent detachment and/or compaction of soil particles.
+ii. Minimisation of the volume and velocity of the flowing water.
+Making sure that that water can readily soak through the soil profile and conducting any 
+excess runoff safely away at non-erosive velocities.
+iii. Ensuring that annual rate of soil loss does not exceed the natural rate of soil 
+formation.
+Aligning types of uses with high risk of permitting erosion to areas of land with a small 
+hazard of being eroded. It is necessary to put into its best use for maximum productivity at 
+a minimum soil loss.
+
+Types of Soil Erosion
+
+Splash erosion
+•It occurs when raindrops hit bare soil. 
+•The raindrops impact breaks up soil 
+aggregates so that individual soil 
+particles form. 
+•The splashed particles spread from the 
+point of impact.
+
+Rill erosion
+•Rill erosionoccurs when runoff water forms 
+small channels as it concentrates down a 
+slope.
+•These rills can be up to 0.3m deep. 
+•Water to cut through the soil, creating small 
+channels.
+
+Sheet erosion
+•Sheet erosionoccurs as a shallow 'sheet' of 
+water flowing over the ground surface, 
+resulting in the removal of a uniform layer of 
+soil. 
+•Sheet erosion occurs when rainfall intensity is 
+greater than infiltration.
+•It often occurs on a gentle of flat terrain 
+
+Gully erosion
+•Gully erosionoccurs when water is channelled 
+across unprotected land and washes away the 
+soil along the drainage lines. 
+•Sparse ground cover caused by land clearing, 
+over-grazing, repeated cultivation, feral 
+animals or drought.
+•Concentrated runoff from steep ground 
+flowing into cleared drainage depressions.
+
+Stream Bank Erosion
+•It is the wearing away of the banks of a 
+stream or river. 
+•This is distinguished from changes on the bed 
+of the watercourse, which is referred to as 
+scour. 
+•Stream bank erosion damages the adjoining 
+agricultural lands, highways and bridges.
+
+Landslide
+•The movement of a mass of rock, debris, or earth down a slope. 
+•Sometimes referred to as mudflows or mudslides. 
+
+SOIL FORMATION
+ROCKS                                              WEATHERING                                         SOIL
+
+WEATHERING 
+Weathering is the breaking down of rocks into smaller particles known 
+as soil. 
+Weathering
+➢Physical weathering
+➢Chemical weathering
+➢Biological weathering
+➢Soil particles
+➢Plant nutrients
+➢Colour
+➢Profile
+
+SOIL AND ITS 
+COMPOSITION
+
+COMPOSITION OF A TYPICAL SOIL
+Mineral phase (45%)
+Composed of rocks and minerals. Products of weathering–
+sand(large), silt(medium), clay(tiny), gravel, or stones.
+Organic Matter (OM) phase (5%)
+Composed of plants or animal materials (living or dead)
+Pore spaces: (50%) – Macropoles and Micropoles 
+Liquid phase (25%)
+Part of the pore space occupied by water - medium in which 
+mineral nutrients (e.g. Na
++
+, K
++
+ )are dissolved.
+Air phase (25%)
+Part of the pore space occupied by air (O
+2
+, CO
+2
+, N2)
+Mineral 
+phase
+45%
+Organic 
+matter 
+phase
+5%
+Water phase
+25%
+Air phase
+25%
+
+Mineral particles
+
+Types of minerals
+Silicate (igneous/ primary)
+Formed from the precipitation of two major gases, basically 
+oxygen and silicon
+i.(SiO
+4
+)
+n
+ formed when the silicon tetrahedral are joined 
+each other by the oxygen e.g. quartz (sand)
+ii.Nesosilicate - Formed when tetrahedral are joined by 
+metallic ions such as Fe and Mg E.g. olivine 
+iii.Sorosilicate - Formed when silicon tetrahedral join each 
+other by oxygen in straight pairs. e.g. melilite
+iv.       Cyclosilicate - Formed when silicon tetrahedral join 
+each other by the oxygen in rings e.g. emerald
+
+v.Inosilicate - Formed by the combination of 
+tetrahedral into: Single chains e.g. pyroxene: 
+Double chains e.g. amphibole
+vi.Phyllosilicate - Formed when the tetrahedral 
+are combined in a sheet form muscovite and 
+Biotite.
+vii.Tectosilicate - Formed when Al replaces Si in 
+the tetrahedron through isomorphous 
+substitution E.g. orthoclase and plagioclase
+
+Non-silicate (secondary)
+Minerals formed after the primary minerals have broken down
+i. Carbonate- Ca combining with other minerals E.g. calcite (CaCO
+3
+), dolomite(CaMgCO
+3
+)
+ii. Oxides Minerals with oxide in it E.g. haematite (Fe
+2
+O
+3
+),  magnetite (FeO
+4
+) 
+iii. Hydroxides - Set of minerals with hydroxide in it e.g. gibbisite Al(OH)
+3
+iv. Sulphates - Minerals containing sulphur e.g.: gypsum (CaSO
+4
+.H2O) 
+v. Phosphate e.g. apatite
+vii Clay minerals e.g. montmorillonite, kaolinite, illite
+
+Soil water
+Soil acts as a sponge to take up and retain water. Movement of water into soil 
+is called infiltration, and the downward movement of water within the soil is 
+called percolation.
+IMPORTANCE
+➢Vital in soil formation
+➢A solvent of all nutrients 
+➢Temperature control (soil and atmosphere) 
+➢Biological activities (plants and animals)
+
+SOIL WATER STATUS
+Saturation – If pores are full of water and there is no air in the soil
+Field Capacity – The amount of water that is remaining in the soil after drainage.
+Permanent Wilting Point – When water is drawn from the soil by the plant roots so that even 
+the smallest pores are empty, a point is reached when the remaining water is held tightly by 
+adsorption and capillary that the roots cannot extract water at a sufficient rate. 
+Available Water Capacity
+This is the water range btwn FC and PWP. Availability depend on soil particles (clay sand silt).
+Total Available Water (TAW) = D x AWC
+   Where D  = depth of roots (m)
+   AWC      = Available Water Capacity of the soil (mm/m) 
+                                                 
+
+Water holding properties of different soils
+Texture class PWP (%)  FC (%)      Saturation (%)        AWC (mm/m)
+Clay  29.8   41.6  48.2   118
+Loam  12.8   25.1  46.4   123
+Sand  5.0   11.2  43.0   62
+
+Soil Air 
+▪25 – 60% of soil is pore space
+▪Soil air occupies volume of pore space which is not occupied by water
+▪All biological activities need oxygen and produce carbondioxide
+   N  O2  CO2
+Atmosphere  79  20.9  0.03 
+Soil air   79 – 80  18 – 19 0 .15 – 2.0
+O2 is due to photosynthesis. O2 will diffuse into the soil
+CO2 is due to microbial respiration. CO2 will diffuse into the atmosphere
+
+IMPORTANCE OF SOIL AIR
+1.plant roots need oxygen for respiration  and that process enables 
+plant roots to absorb nutrients
+2.microbial activities need oxygen
+•when oxygen is cut off, anaerobic activities take place in soil that 
+end up in production of toxic substances.
+Examples:
+❑CO
+2
+ + H
+2
+O → CH
+4
+❑H
+2
+S  is formed instead of SO
+2
+❑NO
+2
+ is formed instead of NO
+3
+❑Denitrification takes place
+❑Reduction takes place i.e. Fe is changed from Fe
+3+
+ to Fe
+2+
+
+Soil organic matter
+
+FACTORS THAT INFLUENCE SOIL TYPE 
+
+1. Parent material
+This is the material from which the soil comes from.  It influences both the 
+physical and chemical properties of the soil. 
+Most of the mineral matter comes from weathered bedrock or from other 
+inorganic materials such as peat, in bogs and marshes. 
+2. Climate
+Climate influences rate and type of soil formation. Climate has two major 
+components; moisture (precipitation) and temperature. 
+•When precipitation exceeds evaporation, leaching of the soil will occur. 
+•Temperature determines the rate of reactions; chemical and biological 
+activity that influence on weathering.
+
+3. Relief/Topography:
+Relief influences > thickness of the soil profile >run-off > percolation and 
+deposition > aspect and microclimate. 
+4. Biota/Living organisms: 
+Plants, animals and other organisms help create and enrich soil. The excrement 
+(waste)/dead animals adds nutrients and matter to the soil. 
+5. Time: 
+Over time soils acquire different features resulting from the addition of organic 
+matter and the activity of organisms. 
+
+COURSE OUTLINE
+INTRODUCTION
+PRINCIPLES OF SOIL CONSERVATION
+INTEGRATED APPROACHES TO SOIL AND WATER CONSERVATION
+ROCKS
+SOIL GENESIS (ORIGIN OF SOIL)
+SOIL AND ITS COMPOSITION
+
+FEEDBACK?

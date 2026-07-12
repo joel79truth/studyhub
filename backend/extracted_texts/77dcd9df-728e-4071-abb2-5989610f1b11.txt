@@ -1,0 +1,211 @@
+
+
+ 
+Page 1 of 5 
+ 
+EXPERIMENTAL RESEARCH METHODOLOGY (NERM 312) 
+Mid-semester exam 
+Date: 29
+th
+ June, 2021 
+(60 Marks) 
+Instructions                                                                            Time allocated: 14:00-15:30 (1:30 hour) 
+ Answer all questions in the spaces provided 
+ Write briefly but clearly 
+ Use statistics tables provided where necessary 
+ You may use a calculator 
+ 
+1. Define the following terms 
+a) Randomization (2 marks) 
+ 
+ 
+ 
+b) Nuisance factors (2 marks) 
+ 
+ 
+ 
+c) Research proposal (2 marks) 
+ 
+ 
+ 
+d) Regression analysis (2 marks) 
+ 
+ 
+ 
+e) Hypothesis (2 marks) 
+ 
+ 
+ 
+
+ 
+Page 2 of 5 
+ 
+2. The following output was obtained from SPSS that performed ANOVA to assess the iron level 
+from different sources of meat using a Completely Randomized Design.  
+Source SS df MS F 
+Among samples 21,261.83 - - - 
+Within samples - - 262.48  
+Total 58,009.05 143   
+ 
+a) Fill in the gap of ANOVA table (5 marks) 
+ 
+b) How many treatments were used for this study? (1 marks) 
+ 
+ 
+c) State the null hypothesis being tested here? (2 marks) 
+ 
+ 
+ 
+d) What conclusion can be drawn from this data? (4 marks) 
+ 
+ 
+ 
+ 
+e) Calculate and interpret the R
+2
+ (3 marks) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+Page 3 of 5 
+ 
+3. The world is going through unprecedented time due to numerous deaths from Covid-19. 
+Surprisingly, the number of deaths across countries are heterogeneous. This death 
+heterogeneity has been attributed to many factors. A study was carried out to test whether 
+some of those factors have a significant effect on Covid-19 mortality. Number of deaths were 
+regressed against multiple factors and analysis of variance was carried out and the SPSS 
+outputs are presented below.  
+ANOVA 
+Model Sum of 
+Squares 
+df Mean Square F Sig. 
+ 
+Regression 474790.365 4 118697.591 8.141 .000 
+Residual 874779.696 60 14579.662 
+  
+Total 1349570.062 64 
+   
+ 
+Model R R Square Adjusted R 
+Square 
+Std. Error of 
+the Estimate 
+   .309 120.746 
+ 
+ 
+Model Unstandardized Coefficients Standardized 
+Coefficients 
+t Sig. 
+B Std. Error Beta 
+ 
+(Constant) -706.792 167.624 
+ 
+-4.217 .000 
+Life expectancy (2019) 8.391 2.921 .404 2.873 .006 
+alcohol (litres per 
+capita) 
+1.447 4.379 .043 .330 .742 
+Diabetes  -15.994 6.799 -.294 -2.352 .022 
+Calories .084 .050 .257 1.672 .100 
+ 
+ 
+a) Write the general regression model for multiple regression (3 marks) 
+ 
+ 
+b) Mention the factors that were studied (4 marks) 
+ 
+ 
+ 
+c) State the hypothesis being tested. (2 marks) 
+ 
+ 
+
+ 
+Page 4 of 5 
+ 
+d) What conclusion can be drawn from this data? Use α = 0.05 (4 marks) 
+ 
+ 
+ 
+ 
+e) Which factors had significant effect? Justify your choice. Use α = 0.05 (3 marks) 
+ 
+ 
+ 
+ 
+f) Write the regression model for this analysis (2 marks) 
+ 
+ 
+ 
+ 
+g) Calculate the R
+2
+ (2 marks) 
+ 
+ 
+ 
+4. In a study of the relationship between smoking and blood fatty acids, the following data were 
+collected from samples of adult males who were nonsmokers, light smokers, moderate 
+smokers and heavy smokers.  
+Smoking status 
+Nonsmokers 
+Light 
+smokers 
+Moderate 
+smokers 
+Heavy 
+smokers 
+12 9 5 3 
+10 8 4 2 
+11 5 7 1 
+13 9 9 5 
+9 9 5 4 
+9 10 7 6 
+12 8 6 2 
+ 
+
+ 
+Page 5 of 5 
+ 
+a) Is there sufficient evidence to indicate that the four population differ with respect to mean 
+blood fatty acid concentration? Use α = 0.05 (10 marks) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+b) Which means are significantly different from each other? Show your work. Use α = 0.05 (5 
+marks) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+END OF EXAMINATION 

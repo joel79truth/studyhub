@@ -1,0 +1,129 @@
+
+
+390 
+ 
+Lilongwe University of Agriculture and Natural Resources 
+ 
+ PROGRAMME          : Bachelor of Science in Applied Sciences 
+ PRESENTED TO          : Senate 
+ PRESENTED BY          : Faculty of Life Sciences and Natural Resources 
+ SUBJECT              : Physics 
+ YEAR OF STUDY         : 3 
+ SEMESTER OF STUDY      : 1 
+ COURSE TITLE          : Geophysics 
+ COURSE CODE          : NGEP 33105 
+ DURATION           : 16 Weeks 
+ LECTURE HOURS PER WEEK  : 2  
+ TUTORIAL HOURS PER WEEK: 1  
+ PRACTICAL HOURS PER WEEK: 2  
+ STUDENT INDEPENDENT LEARNING HOURS PER WEEK: 6    
+ CREDIT HOURS         : 3.5  
+ PREREQUISITE COURSES    : Physics III (Modern physics and Quantum     
+mechanics) 
+ COREQUISITE COURSE : None 
+ DELIVERY METHODS 
+ MODE OF DELIVERY        : Face-to-face and ODL 
+
+391 
+ TEACHING METHODS   :     Lectures,     tutorials,     and 
+practicals/experiments 
+ ASSESSMENT WEIGHTING : Continuous Assessment:   40%  
+:  End of Semester Exam:  60% 
+ AIM(S) OF THE COURSE 
+To equip learners with knowledge of Geophysics to prepare them for industrial work 
+and for further studies in related areas 
+ 
+ LEARNING OUTCOMES 
+Upon successful completion of this course, students should be able to:  
+a. Discuss how earth's interior is inferred from geophysical methods. 
+b. examine the forward and inverse geophysical modelling. 
+c. State Newton's Universal law of gravity  
+d. examine Anderson theory of faulting  
+e. Explain the origin of earth's magnetic field. 
+f. discuss how gravitational and magnetic field strength is measured. 
+g. Solve geothermal problems. 
+h. Explain how velocity models can be estimated using seismic refraction. 
+ 
+ TOPICS OF STUDY 
+ Lectures/Theory 
+a. Introduction  
+• The physical basis for geophysical properties, How Earth’s interior is inferred from 
+geophysical methods, Forward and inverse geophysical modelling 
+b. Tectonics on a sphere  
+• Rotation vectors and rotation poles, Past and present-day plate motions, Plate 
+boundaries and their evolution over time 
+c. Gravity and geodesy  
+
+392 
+• Newton’s  Universal  Law  of  gravitation,  Gravitational  potential  and  Earth’s 
+gravitational field, Geodesy and lithospheric flexure. 
+d. Geomagnetism  
+• Origin of Earth’s magnetic field. Magnetic potential and dipole field strength. Rock 
+magnetism. Paleomagnetism and past plate motions. 
+e. Applications of potential-field data  
+• Instruments for measuring gravitational and magnetic field strength. Basic data 
+processing. Forward modelling and inversion. 
+f. Radioactivity and geochronology.  
+• Nuclear  decay  and  radioactivity.  General  theory  for  radiometric  age  dating. 
+Overview of geochronology methods. Age of the Earth.  
+g. Terrestrial heat flow  
+• Conductive  heat  flow.  Calculation  of  simple  geotherms.  Global  heat  flow, 
+continents versus oceans. 
+h. Applications of heat flow measurements  
+• The  adiabatic  and  melting  in  the  mantle.  Metamorphism:  geotherms  in  the 
+continental crust 
+i. Deep interior of the Earth. Internal structure of the Earth. Convection in the 
+mantle. Earth’s core. 
+j. Seismic waves  
+• Linear elasticity. Stress and strain. Basic principles of seismology: waves, rays, Snell’s 
+law, Huygens’ Principle. Reflection and refraction. Surface and body waves. 
+k. Earthquakes and global seismology  
+• Anderson’s theory of faulting. Earthquake magnitude scales. Probing Earth’s deep 
+interior using seismic waves. 
+l. Applied seismology. Seismic reflection method  
+
+393 
+• data acquisition and basic processing. Seismic refraction method to estimate velocity 
+models. 
+  Practicals/Lab Topics 
+h. Measuring  gravitational  and  magnetic  field  strength  using 
+instruments. 
+i. Processing and interpretation of potential-field data. 
+j. Radiometric age dating and geochronology. 
+k. Calculation of simple geotherms and global heat flow. 
+l. Seismic wave propagation and Snell's law. 
+m. Anderson's theory of faulting and earthquake magnitude scales. 
+n. Seismic reflection and refraction methods for estimating velocity 
+models. 
+Equipment and materials: 
+• Gravimeter and magnetometer for measuring field strength. 
+• Computer and software for processing and interpretation of 
+potential-field data. 
+• Radioactive isotopes and detectors for radiometric age dating. 
+• Thermometers and probes for measuring temperatures. 
+• Seismic instruments for measuring wave propagation. 
+• Seismic sources for generating waves. 
+• Tectonic models and maps. 
+• Lab  tools  such  as  glassware,  scales,  and  thermometers  for 
+geothermal experiments. 
+ 
+ PRESCRIBED TEXTS 
+Lowrie, W. (1997) Fundamentals of Geophysics. Cambridge University Press 
+Lowrie, W. (2007). Fundamentals of Geophysics, 2 Ed. Cambridge University Press.  
+
+394 
+Schon, J.H. (2004). Physical Properties of Rocks: Fundamentals and Principles of 
+Petrophysics. Pergamon 
+Stacey, F.D. and Davis P.M (2008). Physics of the earth, Cambridge University Press 
+ RECOMMENDED TEXTS/READINGS 
+American Geological Institute, National Association of Geoscience Teachers, Busch, 
+R.M. and Tasa, D.G., (2014), Laboratory manual in Physical Geology. 10th Ed. 
+Prentice Hall. 
+Lowrie, W. (2011). A Student's Guide to Geophysical Equations. Cambridge University 
+Press 
+Telford, W.M. (1990). Applied Geophysics. Cambridge University Press 
+ 
+ 
+ 
+ 
+The course specification was approved by Senate in August 2023 

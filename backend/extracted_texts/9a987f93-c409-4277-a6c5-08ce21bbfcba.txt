@@ -1,0 +1,158 @@
+
+
+a.
+State any five assumptionsofthe kinetic theory ofgases
+.
+Here are five key assumptionsof the kinetic theory of gases:
+1.
+Gasesconsist of alarge number of tiny particles(atomsor molecules)that are in
+constant, randommotion. These particlesare separated by distancesthat are large
+compared to their ownsize.
+2.
+The particlesare considered point masseswith negligible volume compared to the
+totalvolume of the container. The actualvolume occupied by the gasmolecules
+themselvesisinsignificant relative to the space they move in.
+3.
+Collisionsbetweengasparticlesand with the wallsof the container are perfectly
+elastic. Thismeansthat no kinetic energy islost during collisions- the totalkinetic
+energy before and after collisionremainsconstant.
+4.
+There are no intermolecular forcesbetweenthe gasparticlesexcept during collisions.
+The particlesdo not attract or repeleach other, and they move independently of one
+another betweencollisions.
+5.
+The average kinetic energy of gasparticlesisdirectly proportionalto the absolute
+temperatureof the gas. At agiventemperature, allgaseshave the same average kinetic
+energy per molecule, regardlessof the type of gas.
+These assumptionsformthe foundationfor deriving important gaslawsand relationships, such
+asthe idealgasequationand the relationship betweenpressure, volume, and temperature.
+b.
+Anair cylinder for a scuba diver contains150 molesofair at 15 ºC. The
+cylinder hasa volume of 0.012 .(The gasconstant R = .)
+I.
+Calculate the pressure inthe cylinder.
+II.
+Calculate volume ofthe gaswhenit isall released at atmospheric
+
+pressure of100 kPaand a temperature of25 ºC.
+Giveninformation:
+●
+Number of moles, n= 150 moles
+●
+Initialtemperature, T₁= 15°C = 15 + 273 = 288 K
+●
+Volume of cylinder, V₁= 0.012 m³
+●
+Gasconstant, R = 8.31J/(mol·K)
+●
+Atmospheric pressure, P₂= 100 kPa= 100,000 Pa
+●
+Finaltemperature, T₂= 25°C = 25 + 273 = 298 K
+Calculate the pressure inthe cylinder
+Using the idealgasequation:
+PV = nRT
+Rearranging for pressure:
+II. Calculate the volume whenreleased at atmospheric conditions
+Using the idealgasequationagain:
+PV = nRT
+For the released gas:
+
+Summary:
+●
+The pressure inthe cylinder isapproximately 29.9 MPa(about 295 atmospheres)
+●
+Whenreleased, the gasexpandsto avolume of 3.71m³
+c. A light ray movesfromice into ablock of diamond at . Calculate the angle of refractionin
+the diamond. Hint: Index of refractionof ice and diamond () respectively.
+Giveninformation:
+●
+Refractive index of ice, n_ice = 1.309
+●
+Refractive index of diamond, n_diamond = 2.419
+●
+Angle of incidence inice, θ_ice = 35°
+●
+Angle of refractionindiamond, θ_diamond = ?
+Using Snell'sLaw:
+
+Answer: The angle of refractioninthe diamond isapproximately 18.1°
+Note that the light ray bendstoward the normalasit entersthe denser medium(diamond),
+which iswhy the angle of refraction(18.1°) issmaller thanthe angle of incidence (35°).
+e. Two resistorsconnected inserieshave anequivalent resistance of . Whenthey are
+connected inparallel, their equivalent resistance is. Find the resistance of each resistor.
+Giveninformation:
+
+●
+Equivalent resistance inseries, R_s= 90 Ω
+●
+Equivalent resistance inparallel, R_p = 20 Ω
+●
+Unknownresistances: R₁and R₂
+Setting up the equations:
+For resistorsinseries:
+
+
+
+f.Figure 2, showselectric circuit designed by afirst- year student, use it to answer the
+following questions.
+Find the:
+i.
+Current ineach resistor.
+Power delivered to each resistor.
+Circuit Analysis:
+Thiscircuit hastwo voltage sources(24.0 V and 12.0 V) and three resistors(28.0 Ω, 12.0 Ω,
+and 16.0 Ω) arranged inacomplex configuration. I'lluse Kirchhoff'slawsto solve it.
+Setting up the equations:
+Let me define:
+●
+I₁= current through 28.0 Ω resistor (top branch)
+●
+I₂= current through 12.0 Ω resistor (middle branch)
+●
+I₃= current through 16.0 Ω resistor (bottombranch)
+Fromthe circuit, I₃flowsdownward and splitsinto I₁and I₂.
+Applying Kirchhoff'sCurrent Law(KCL):At the junctionpoint:
+
+
+
+
+
+
+
+g. Three- point chargesare arranged asshowninthe Figure 3. Find the magnitude and the
+directionof the electric force onthe particle at the
+origin.
+Giveninformation:
+●
+Charge at origin: q₁= +5.00 nC = 5.00 × 10⁻⁹C
+●
+Charge onx- axis: q₂= +6.00 nC = 6.00 × 10⁻⁹C at position(0.300 m, 0)
+●
+Charge ony- axis: q₃= - 3.00 nC = - 3.00 × 10⁻⁹C at position(0, - 0.100 m)
+●
+Coulomb'sconstant: k = 8.99 × 10⁹N·m²/C²
+Step 1: Force onq₁due to q₂(F₁₂)
+The distance betweenq₁and q₂:
+
+r
+12
+ =0.300 m
+The magnitude of force:
+
+
+
+Giveninformation:
+●
+Top charge: q₁= +3.00 nC = 3.00 × 10⁻⁹C
+●
+Left charge: q₂= - 2.00 nC = - 2.00 × 10⁻⁹C
+●
+Bottomcharge: q₃= +3.00 nC = 3.00 × 10⁻⁹C
+●
+Radius: r = 4.00 cm= 0.0400 m
+●
+Angles: 30.0° above and belowthe horizontal
+●
+Coulomb'sconstant: k = 8.99 × 10⁹N·m²/C²
+Step 1: Electric field due to q₁(top charge)
+Magnitude:

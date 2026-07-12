@@ -1,0 +1,835 @@
+
+
+ReviewArticle
+Howto choosea samplingtechniqueand determinesamplesize for
+research:A simplifiedguidefor researchers
+SirwanKhalidAhmed
+a,b,*
+a
+Ministryof Health,GeneralHealthDirectorateof Raparin,Rania,Sulaymaniyah,KurdistanRegion,46012,Iraq
+b
+Collegeof Nursing,Universityof Raparin,Rania,Sulaymaniyah,KurdistanRegion,46012,Iraq
+ARTICLEINFO
+Keywords:
+Sampling
+Samplesize
+Samplingtechnique
+Samplesize calculations
+Samplesize table
+Samplingprocess
+Probabilitysampling
+Non-probabilitysampling
+Quantitativeresearch
+Confidencelevel
+Marginerror
+Populationsize
+Effectsize
+Validity
+Reliability
+Surveyresearch
+Studydesign
+ABSTRACT
+An appropriatesamplingtechniquewiththe exactdeterminationof samplesize involvesa very vigorousse-
+lectionprocess,whichis actuallyvital for any empiricalresearch.It is obviousthat thesemethodologicalde-
+cisionswouldgreatlyaffectthe internaland externalvalidityand the overallgeneralizabilityof the study
+findings.This paperhas comprehensivelyupdatedthe guidelineson samplingmethodsand samplesize calcu-
+lation,hencegivingenoughevidencethat will be beneficialin assistingresearchersto advancethe credibilityand
+statisticalpowerof theirresearchwork.The differencesbetweenprobabilitysamplingtechniques,including
+simplerandomsampling,stratifiedsampling,and clustersampling,and non-probabilitymethods,such as con-
+veniencesampling,purposivesampling,and snowballsampling,havebeenfullyexplained.Probabilityis the
+only that can ensurethe generalizability,whilenon-probabilitysamplingis usefulin exploratorysituations.
+Anothersignificantprocessis the determinationof an optimalsamplesize, which,amongotherthings,has to
+take into accountthe total populationsize, effectsize, statisticalpower,confidencelevel,and marginof error.
+The papercontributesboth theoreticalguidanceand practicaltools that researchersneed in choosingappropriate
+strategiesfor samplingand validatingmethodologicallyappropriatesamplesize calculations.In sum,sucha
+papersets the standardfor best practicein researchmethodologythat will drivereliability,validity,and
+empiricalrigoracrossdiversestudies.
+1. Introduction
+The empiricalstudywill be accurateand validwhenthe proper
+sampletechniquewill be cautiouslyselected.Samplingtechnique
+involvethe selectionof a subsetfrom the largerpopulationand are core
+to research,sincethroughsampling,the natureand generalizabilityof
+findingsdependon it [1]. The successof any studywoulddependupon
+the appropriatenessof the samplingmethod.
+The rationalefor samplingmethodologiesis the capabilityof such
+proceduresto infer characteristicsaboutpopulationswithoutthe unre-
+alisticexpectationinherentin evaluatingan entiregroup.This is very
+importantand necessaryin caseswherecompleteenumerationbecomes
+impossiblefor a givenpopulationdue to such operationalissuesas time,
+resources,or accessrestrictions.A properlychosensamplewouldcap-
+ture and enhancethe externalvalidityand generalizabilityof the find-
+ings [2].
+It is generallydividedinto two:probabilityand non-probability
+sampling[1,3]. Probabilitysamplingincludesbasicrandomsampling,
+stratifiedsampling,and clustersampling,wheremethodsof selection
+dependon the randomizationprocessas a strengtheningprocessto
+reduceselectionbias.Thesemethodsboastof soundstatisticaltenets
+andareusuallyadoptedwhengeneralizationis  intended.
+Non-probabilitysamplingmethodsincludeconvenienceand purposive
+samplingwheneverrandomselectionis not feasibleor practical.These
+may be convenientfor practicalpurposes,but they will rapidlylead to
+biasesin the samplethat then will affectthe generalizationof results[4].
+The selectionof the samplingmethodis intrinsicallyidentifiedwith a
+few specificresearchgoals,somedemographicfeaturesof the target
+population,and somemethodologicallimitationsof the study.Proper
+selectionof samplingtechniquebearsgreatrelevanceto the validityand
+generalizationof the studyoutcomes.This calls for wide-rangingac-
+quaintancewith differentsamplingproceduresand theirconsequences
+on the part of the researcherwho intendsto be methodologicallycorrect.
+The articletriedto discussvariousapproachesto samplingin
+* Collegeof Nursing,Universityof Raparin,Rania,Sulaymaniyah,KurdistanRegion,46012,Iraq.
+E-mailaddresses:sirwan.k.ahmed@gmail.com, sirwan.kahmed@uor.edu.krd.
+Contentslists availableat ScienceDirect
+Oral OncologyReports
+journalhomepage:www.journals.elsevier.com/oral-oncology-reports
+https://doi.org/10.1016/j.oor.2024.100662
+Received22 September2024;Accepted23 September2024
+Oral Oncology Reports 12 (2024) 100662 
+Available online 26 September 2024 
+2772-9060/© 2024 The Author. Published by Elsevier Ltd. This is an open access article under the CC BY license ( http://creativecommons.org/licenses/by/4.0/ ). 
+
+researchmethodology,and determinethe mostappropriatesamplesize
+calculationsso that the researchermay choosethe best fit for a partic-
+ular researchsituation.This paperwill attemptto give a closelook at the
+pros and cons of the differentproceduresof samplingin promotingbest
+practicesof researchand enhancingempiricalvalidity.
+2. Samplingprocessin research
+The samplingprocessis one of the mostimportantpartsof the
+researchmethodology,throughwhichaccuracyand validityof findings
+froma studyare guaranteed[5]. This processstartswith the identifi-
+cationof a targetpopulation,whichcouldbe a total groupof personsor
+entitiesrelatingto the researchquestion.Definingclearlyand properly
+whatconstitutesa populationis highlyimportantto makesure that the
+sampledescribesthe groupunderstudy.Populationmeansthe defini-
+tion that shouldreflectsuchan attributelike demographicvariables,
+geographiclocation,and everyotherfeaturewhichcouldbe relevantfor
+research.
+Havingdefinedthe population,the next processis the choiceof a
+suitablesamplingmethod.In view of researchgoalsand resourcesand a
+need for generalization,researchershave to choosebetweenprobability
+and non-probabilitysamplingmethods.The justificationfor preference,
+if the objectiveis to makeinferencesaboutthe population,normally
+includesthe followingprobabilitysamplingmethods:simplerandom
+sampling,stratifiedsampling,clustersampling,and systematicsam-
+pling.Conveniencesampling,purposivesampling,and snowballsam-
+plingare someof the methodsgenerallyadoptedin non-probability
+methodsfor exploratorystudiesor whenthe populationis not
+accessible.
+Oncethe selectionof a samplingplan is effected,the size of this
+samplehas to be determinedby the researcher,and this is takenas vital
+for the reliabilityof the results.In calculatingsamplesize, severalfactors
+may be important:the size of the population,the effectsize one expects,
+the confidencelevel,and the marginof error.This can be achievedwith
+the help of statisticaltechniquesor tools in ordernot to have too smalla
+samplethat wouldyielduntrustworthyresults,or too largein which
+case resourceswill be wasted.
+Samplingselectionrefersto the stagewherethe chosensampling
+methodwill decidewhoor whichunitsin the populationshould
+constitutea study.This couldbe donethroughrandomnumbergener-
+ationor systematicselectionmethodsin the case of probabilitysam-
+pling.In non-probabilitysampling,it couldbe relatedto accessibleor
+particularcasesthat are relevantto the studyat hand.
+Finally,the researchermustanalyzethe dataobtainedfromthe
+sample,takinginto considerationthat no conclusioncan be madeif the
+samplingprocedureis not considered.In otherwords,it is to havein
+mindhow biasedthe samplecan be, or wherethe limitationis and
+whethergeneralizationto the wholepopulationis feasible.A formal
+samplingplan will enablethe researcherto enhancethe validityand
+reliabilityof the resultsand, thereforethe accuracyand meaningfulness
+of his conclusions.Stepsof Samplingprocessare presentedin Fig. 1.
+3. Samplingtechniques
+Differentiatingbetweenthe two,probabilitysamplingand non-
+probabilitysamplingare mainlytwo differentstrategiesadoptedin
+researchfor the selectionof participants[6]. Eachhas its own advan-
+tagesand disadvantages.Probabilitysamplingassuresthat everysubject
+fromthe populationcarriesa known,nonzeropossibilityof selection.
+The randomizationin this designreducesselectionbias and makesthe
+samplerepresentativeof the populationas a whole.Probabilitysam-
+plingprovidesthe researcherwith the chanceto makegeneralizations
+from the sampleto the populationand estimatethe samplingerrorwith
+a measureof confidence.Examplesof techniquesfallingunderthis
+categoryincludesimplerandomsampling,stratifiedsampling,and
+clustersampling.Whileprobabilitysamplingis accurate,it tendsto be
+cumbersomeand requiresmuchtime and resources,especiallywhenthe
+base of the populationbeingtargetedis very largeor scatteredsinceit is
+basedon a detailedlistingof the populationand selectionsmust be done
+usinga complexprocedure.
+On  the  contrary,non-probabilitysamplingencompassesno
+randomization;therefore,not all subjectsin the populationcarryan
+equalor knownprobabilityof selection.This is mainlyused whenit is
+not possiblefor the researchersto reachthe entirepopulationor when
+the resourcesand time are limited.Someof the non-probabilitysam-
+plingmethodsincludeconveniencesampling,purposivesampling,and
+snowballsampling,in whichthe judgmentof the researcheror the
+availabilityof participantsis dependedon. This lattermethod,while
+faster,inexpensive,and easierto carryout, has the liabilityof selection
+bias-thatis, the samplechosenmayeventuallycontainover-
+representationor underrepresentationof groups.Resultsfromnon-
+probabilitysamplingthereforehavelimitedgeneralizabilityto the
+population-at-large,and statisticalinferencecannotbe carriedout as
+confidently.It is, however,very usefulin exploratoryresearch,quali-
+tativestudies,and wherethe intentionis to studysomeof thosedifficult-
+to-reachsubgroupsratherthan to representthe wholepopulation.
+Wherethe researchsituationcalls for a high degreeof accuracyand
+generalizationof resultsto the wholepopulation,the preferenceis for
+probabilitysampling.Only in small-scaleor exploratorystudiescan one
+resortto non-probabilitysamplingwhenlogisticalconstraintsor focus
+groupsturn out to be moreimportantthanrepresentativeness.Both
+techniqueshavea placein research,but the choiceof one or the other
+dependsuponresearchobjectives,resources,and needsregardingsta-
+tisticalreliability.Fig. 2 and Table1 summarizeprobabilityand non-
+probabilitysamplingtechniquesin detail,togetherwitha numberof
+advantagesand disadvantagesassociatedwitheachtechnique.This
+shouldbe helpfulin enablingthe researcherto choosethe most
+Fig. 1.Samplingprocesssteps.
+S.K.Ahmed
+Oral Oncology Reports 12 (2024) 100662 
+2 
+
+appropriatesamplingmethodfor theirstudies.
+3.1.Probabilitysamplingmethods
+3.1.1.Simplerandomsampling
+The simplerandomsample,althoughverybasic,is an effective
+methodof ensuringthat everysinglememberof the populationwill have
+a chanceof beingselected.Followingdefinitionand compilationof a
+completelist of membersconstitutingthe population,the definingof the
+samplesize, then the actualrandomselectionusinga randomnumber
+generatoror drawingof lots commences.This is highlyvaluedbecauseit
+reducesselectionbias, althoughit mightbe very demandingin logistics,
+especiallywhenthe populationis so big or dispersed.
+3.1.2.Stratifiedsampling
+In stratifiedsampling,the populationwouldbe dividedinto distinct
+groups,commonlyknownas strata,basedon uniformcategoriessuch as
+age, sex, or education.Randomsampleswouldthen be takenfrom each
+stratumto derivea samplerepresentativeof the entirerangeof cate-
+gories.This will increasethe accuracyof the estimates,giventhat every
+subgroupis well-represented,therebymakingthis methodmoresuitable
+for populationswheregreatvariabilityin key characteristicsexists.
+However,it is difficultto meaningfullyform strataif detailedknowledge
+of the populationdoes not exist.
+3.1.3.Clustersampling
+Clustersamplingis a methodof simplifyingthe processof data
+collectionwherebya populationis dividedinto clusters,whichmay be
+geographiclocationsor institutions,and a randomselectionis taken
+fromthesefor study.All membersin the selectedclusterswill then be
+includedin the sample.It will be very usefulin large-scalestudieswhere
+compilinga completelist of the populationwouldbe highlyimpractical.
+Thoughclustersamplingis inexpensive,it mightintroducebiasesif the
+selectedclustersare not typicalof the overallpopulation.
+3.1.4.Systematicsampling
+In systematicsampling,everyK
+th
+individualis chosenin a contin-
+uous mannerfroma populationlist, startingfroma randompoint.It is
+efficientand quiteeasy to conductbecauseit is basedon a regular
+samplinginterval.Systematicsamplingmay be biased,however,if there
+is an inherentpatternin the populationthat coincideswith the sampling
+interval.
+3.1.5.Multi-stagesampling
+In multi-stagesampling,a populationis dividedinto a numberof
+stagesor levels.For example,in clustersampling- a complicatedform of
+multi-stagesampling- populationsare dividedinto largeclusters(for
+instance,regionsor institutions),fromwhichfurtherrandomsamples
+are drawnin successivestages.Oncegeographicareasare selected,for
+example,a randomsampleof individualswithineacharea couldbe
+selected.The stepwisestratificationis usefulin large-scalestudiesto
+systematicallyreducethe samplesize by narrowingdownthroughvast
+or dispersedpopulations.Whilethis may save costsand time,thereis a
+risk of increasedsamplingerrorat each stagein the selectionprocess,if
+the samplingat each levelis not representative.
+3.2.Non-probabilitysamplingmethods
+3.2.1.Conveniencesampling
+Of the variousmethodsof data collection,conveniencesampling
+involvesdrawingsamplesfrom that portionof the populationwhichthe
+researcherfindsmostaccessible[2]. This is a fast and cheapmethodof
+collectingdatawheneithertimeor resourcesare in shortsupply.
+However,in mostinstances,this methodintroducesbias,sincethe
+samplemay not be representativeand thus generalizationof the findings
+to the rest of the populationwill not be possible.
+3.2.2.Purposivesampling
+In purposivesampling,also knownas judgmentalor expertsampling,
+the participantsare selectedbasedon the judgmentof the researcher
+who decideswho will be mostusefulfor the data required[2]. This is
+normallyused in researchrequiringcertainpeoplewith somespecific
+characteristicsor expertise.Thoughthe methodcan resultin very pro-
+foundinsights,it carriesa veryhighrisk of bias on the part of the
+researcherand may not representthe wholepopulation.
+3.2.3.Snowballsampling
+Snowballsamplingis utilizedwhenone is studyinghiddenor hard-
+to-reachpopulations.In this case,participantsare requiredto refer
+thosethat also fit the criteriafor studyparticipants,makinga networkof
+referrals.This techniqueis usefulin exploratoryresearch.However,it
+has beencriticizedto lead to biasedsamplesbecausesamplesget ho-
+mogeneousover time due to socialnetworks.
+3.2.4.Quotasampling
+Quotasamplingrefersto the processwherebythe populationis
+dividedinto mutuallyexclusivesubgroupsfromwhichparticipantsare
+selected,ensuringthat certainquotaswithineach subgroupare filled.
+Quotasensurethat certaincharacteristicsof the populationexist within
+the sample;however,the actualselectionwithinthe subgroupremains
+non-random,hencebiasedand a less representativesample.
+Fig. 2.Samplingtechniquesin research.
+S.K.Ahmed
+Oral Oncology Reports 12 (2024) 100662 
+3 
+
+4. Samplesize determinationin research
+The samplesize determinationis vitalin researchfor validand
+reliableresults[7,8]. In the estimationof populationmeansor pro-
+portions,applyingthe correctformulaensuresthat the sampletaken
+representsthe populationand minimizeserror[9].
+4.1.Formulaforestimatingpopulationproportions
+Amongall formulasused in research,perhapsthe mostcommonis
+for estimatinga populationproportion[10]. A commonlyused formula
+is:
+n=
+Z
+2
+.p.(1 p)
+E
+2
+Where.
+•n=requiredsamplesize,
+•Z=z-valueassociatedwith the desiredconfidencelevel(e.g.,1.96
+for 95 % confidence),
+•p=estimatedpopulationproportion(usep¼0.5if unknownto
+maximizevariability),
+•E=marginof erroror desiredprecision.
+This formulais appliedwhena researcheris interestedin the pro-
+portionof a populationwitha particularattribute,suchas the per-
+centageof smokersor voters.A largersamplesize reducesthe marginof
+errorE and henceprovidesan estimatecloserto actuality.
+Table1
+Pros and Consof Probabilityand Non-ProbabilitySamplingtechniques.
+Sampling
+techniques
+ProsCons
+Simple
+Random
+Sampling
+1 It makesthe processfair for
+everypersonto havean
+equalopportunityto be
+selectedwithoutany bias.
+2 It is easy to perform
+statisticaltests on because
+of its randomnature.
+3 Selectionbias wouldbe less
+likelyto occur,with more
+reliableand generalizable
+findings.
+1 It requiresa full and accurate
+countof the population,
+whichsometimesis hard to
+obtain,especiallyin largeor
+mixedpopulations.
+2 It can becomeresource-
+intensiveand time-
+consuming,especiallyin the
+case of largepopulations.
+3 Unlessthe samplesize is
+sufficientlylarge,
+randomnesswill not capture
+rare subgroups.
+Systematic
+Sampling
+1 The methodis easierto
+applythan simplerandom
+samplingin large
+populations.
+2 The selectionis donein an
+orderlymanner,which
+helpsthe organization.
+3 Generally,moreeffective
+than simplerandom
+samplingin termsof time
+and resources.
+1 May bringbias if the periodic
+patternin the populationlist
+coincideswith the interval
+used for sampling,resulting
+in over-or under-
+representationof particular
+characteristics.
+2 Less randomthan simple
+randomsampling,thus it can
+reducethe diversityof the
+sample.
+Stratified
+Sampling
+1 Ensuringrepresentationof
+key subgroups,or strata,
+leadsto morepreciseand
+relevantestimates.
+2 It ensuresstatistical
+efficiencyis increasedand
+variabilitywithinstrata
+reduced,henceincreasing
+its reliability.
+3 Couldenhance
+comparabilitybetween
+differentstratato allow
+focusedinsight.
+1 In the formationof strata,
+thereis a needfor detailed
+knowledgeof population
+characteristics,whichmay
+not be available.
+2 Morecomplexto carryout
+and interpretthan
+straightforwardmethods,
+and demandsmoreadvance
+thinking
+Cluster
+Sampling
+1 Inexpensiveand effective
+for the geographically
+dispersedpopulationto
+reducecostsassociated
+with traveling.
+2 Savesresourcesand time to
+collectdata;hence,making
+big studiesviable.
+3 Usefulin caseswherethe
+completelist of the
+populationis not available
+and whenonly cluster
+informationis needed.
+1 Clustersmay not be
+homogenous,and this could
+increasethe variabilityof the
+clustersand distortthe
+results.
+2 Analysiscan be difficult
+whereclustersare poorly
+definedor differ
+significantly.
+Convenience
+Sampling
+1 Data collectionis fast and
+cheap;hence,one can get
+resultsin a very short
+period.
+2 Usefulin preliminary
+studiesor as a pilot test
+whentime/resourcesare
+scant.
+3 Relativelyeasy to conduct,
+especiallyin familiar
+settingssuch as hospitalsor
+communitycenters.
+1 Thereis a high risk of
+selectionbias, whichwill
+meanthe resultscannotbe
+generalizedacrossthe whole
+populationbecauseof poor
+externalvalidity.
+2 It may reflectonly the
+experiencesor viewsof a
+particulargroupand hence
+give biasedresults.
+Purposive
+Sampling
+1 One can studyissuesand
+populationsparticularly
+relevantto the research
+questionin greaterdepth.
+2 Appropriatefor qualitative
+research,especiallyin cases
+whencertaininformation
+aboutexperiencesor
+expertiseis needed.
+3 It allowsdata collection
+focusingon specificpeople
+1 Theymay be subjectto the
+biasesof the researcher
+himself;this is becausethe
+samplesmay not represent
+the overallpopulation
+highly,whichcan developan
+over-inclinationof the
+particularpointof view.
+2 The findingis hard to
+generalizedue to limitation
+Table1(continued)
+Sampling
+techniques
+ProsCons
+with rare knowledgeor
+experiences.
+on applicationto the wider
+population.
+Snowball
+Sampling
+1 The studydesignis
+especiallyusefulfor
+reachingthosehiddenor
+hard-to-reachpopulations,
+such as marginalized
+groups.
+2 The trust in populationsis
+the otherelementary
+outcome;it will lead to
+participationratesby
+increasinga person’s
+willingnessto share
+experiences.
+3 It is idealto carryout
+exploratoryresearchwhen
+one has little knowledge
+aboutthe populationunder
+study.
+1 A homogenoussamplemay
+result,wherebydiversitywill
+be reduced;hence,results
+will not be biased.
+2 Initialparticipants’networks
+are unrepresentativeof
+widerpopulations.
+Quota
+Sampling
+1 Assuresthat specific
+subgroupsare presentin
+the sample,whichis a
+primerequisitein research
+concernedwith such
+groups.
+2 It is helpfulin conducting
+marketresearchand
+opinionpolls by grasping
+severalopinions
+simultaneously.
+3 Can be implemented
+relativelyfast, thus
+allowingfor timelydata
+collection.
+1 Selectionis not random;
+therefore,the selectionmay
+introducebias because
+participantswouldbe
+selectedin an ‘available’
+basisratherthan randomly,
+whichwill createbiased
+outcomes.
+2 This impingeson the general
+applicabilityof the study
+itselfbecauseit cannot
+generalizesuch findingsto
+the largerpopulation.
+3 If the quotasare not well-set,
+then the selectionprocess
+mightget arbitrary,which
+couldcompromisedata
+quality.
+S.K.Ahmed
+Oral Oncology Reports 12 (2024) 100662 
+4 
+
+4.2.Formulaforestimatingpopulationmeans
+The formulafor samplesize in studiesdesignedto estimatea popu-
+lationmean,such as averageincomeor height,is givenby:
+n=
+Z
+2
+×σ
+2
+E
+2
+Where.
+•n=requiredsamplesize,
+•Z=z-valuecorrespondingto the confidencelevel (e.g.,1.96 for 95 %
+confidence),
+•
+σ=estimatedpopulationstandarddeviation,
+•E=marginof erroror allowabledifferencebetweenthe sample
+meanand the populationmean.
+This is an importantformulawhenone is workingwith continuous
+variables.The greaterthe dispersionin the population,
+σ, the largerthe
+samplethat will be neededin orderto havean accurateestimate.
+Similarly,the smallerthe marginof error,or the higherconfidencelevel,
+the greaterthe samplesize needed.
+4.3.Cochran’s samplesizeformula
+Cochran’s formulais normallyused whenthe populationis largeor
+infiniteand appliesto bothproportionsand means[11]. The general
+formulafor the calculation:
+n
+0
+=
+Z
+2
+.p.(1 p)
+E
+2
+Where.
+•n₀₀=initialsamplesize for largepopulations(beforeany adjustments
+for finitepopulations),
+•Z=z-value(e.g.,1.96 for 95 % confidence),
+•p=estimatedpopulationproportion(use 0.5 if unknown),
+•E=marginof error.
+Cochran’s formulais widelyappliedwhena surveyor a cross-
+sectionalstudyis used,in whichthe researcherexpectsthe population
+to be large.
+If the size of the populationis small-thatis, finite-thesamplesize has
+to be adjustedby the finitepopulationcorrection.This is donein the
+followingmanner:
+n
+adj
+=
+n
+0
+1+
+n
+0
+ 1
+N
+Where.
+•n
+adj
+=adjustedsamplesize,
+•n₀₀=initialsamplesize fromCochran’s formulaor the other
+formulas,
+•N=total populationsize.
+This will adjustthe samplesize, especiallywhenthe populationis
+small,to retainprecisionof resultswithoutover-sampling.
+4.4.Formulaforstratifiedsampling
+Stratifiedsamplingis usedwhena populationcan be dividedinto
+distinctsubgroups,or strata,such as age group,gender,or levelof ed-
+ucation.The samplesize for each stratumcan be determinedby the use
+of proportionalallocation:
+n
+h
+=
+N
+h
+N
+×n
+Where.
+•n
+h
+=samplesize for stratumh,
+•N
+h
+=populationsize for stratumh,
+•N=total populationsize,
+•n=overallsamplesize.
+This wouldensurethat the sampleis representativeof all subgroups
+in the populationof interest.Stratifiedrandomsamplingis usefulin a
+situationwherethe subgroupsare very differentfromone another.
+4.5.Yamane’s formula
+Yamane’s formula,1967,is one of the commonmethodsin survey
+researchusedto estimatean appropriatesamplesize for any given
+populationwithconcernfor precisionand practicality[12]. This for-
+mulaapproximatesthe samplesize basedon the total size of a popula-
+tion and desiredmarginof error.For usingthis method,95 % confidence
+levelsare considered;althoughit can be modifiedusingotherconfi-
+dencelevels.
+The formulafor Yamane’s samplesize calculationis:
+n=
+N
+1+N(e
+2
+)
+Where.
+•n=samplesize
+•N=populationsize
+•e=marginof error
+4.6.Theroleof tablesin samplesizedetermination
+One commonmeansof easingthe computationalburdenin deter-
+miningsamplesize is throughthe use of precalculatedtables.These
+tablesgenerallyprovidesamplesize estimatesfor precalculatedvalues
+of the marginof error,E; confidencelevel,Z; and estimatedproportion,
+p. Suchtablesprovidequickreferencepointsfor researcherswho may
+wantto estimatea requiredsamplesize for a certainaccuracywithout
+necessarilyhavingto computecomplicatedformulae(Tables2 and 3).
+4.7.Factorsaffectingsamplesize
+The samplesize of any studyis determinedby a numberof factors.
+First,thereis the size of the populationfromwhichthe sampleis to be
+drawn;largerpopulationsmay requirea differentapproachthan smaller
+ones.Second,the desiredconfidencelevelsignificantlyinfluences
+samplesize; the higherthe confidencelevel-95percentcomparedto 90
+percent,for example-thelargerthe samplesize must be. Otherimportant
+considerationsincludemarginof error-smallermarginsare associated
+with largersamplesizes to ensurefindingsindicativeof true parameters
+in a population.The variabilitywithinthe populationmightalso affect
+samplesize; the largerthe variability,the moreparticipants,generally
+speaking,one will have to capturethe rangein. It is equallyimportantto
+look at the effectsize and statisticalpower:with smallereffectsizes and
+high levelsof power,largersamplesare neededto detectmeaningful
+differences.Anystudydesign-cross-sectional,longitudinal,or
+experimental-willfurtherstipulatesamplesize requirements.Lastly,the
+expectedattritionrate-forexample,the numberof dropoutsor non-
+responses-maybe the reasonfor an adjustmentof the initialsample
+size to ensurea sufficientnumberof participantscompletethe study.
+The said factors,if consideredwithdue deliberation,will leada
+researcherto such a samplesize that is sufficientnot only to supportthe
+S.K.Ahmed
+Oral Oncology Reports 12 (2024) 100662 
+5 
+
+objectivesof the studybut also produceresultswhichare statistically
+significant.The factorsaffectingsamplesize are illustratedin Fig. 3.
+5. Conclusion
+The precisionof methodologyin researchdependson the selectionof
+propersamplingtechniquesand calculationof an adequatelypowered
+samplesize. Probabilitysampling,for example,stratifiedand cluster
+sampling,is thus fundamentalin thosestudiesthat tend to makesta-
+tisticallysignificantinferencesaboutthe widerpopulation.By contrast,
+non-probabilitysamplingmethodsofferpragmaticwayswhenone
+conductsexploratoryresearchor wherefull populationaccesscannotbe
+made.Precisecalculationof samplesize is a very importantstep in any
+researchproject.This factorhas a greatbearingon the statisticalpower
+and the precisionof conclusionsthat may be drawnfromany study.
+Undersizedsamplescannotyieldconclusiveresults,whereassamples
+that are too big are wastefulbecausethey will add nothingto the validity
+of the study.Confidencelevel,marginof error,and size of effectsremain
+someof the key determinantsthat help researchersensuretheir research
+designsfacilitatestrongfindings.In that respect,the methodological
+guidelinesincludewaysa researchercan contributeto the advanceof
+scientificknowledgeby settingup worksthat otherresearcherswill refer
+to as foundationalmanyyearsto come.This guidehopefullysets a
+benchmarkwith regardto researchmethodologyand thus servesas a
+referencepointfor scholarscommittedto the productionof workof the
+highestempiricaland theoreticalstandards,withan ultimateaim of
+globallyincreasingthe impactand citationpotentialof the research.
+Ethicalapproval
+The ethicalapprovalwas not required,as the studyconducteddid
+not involveany ethicalconcernsor issues.
+Funding
+This articledid not receiveany financialsupport.
+Dataavailability
+No data wereused in the researchdescribedin this article.
+CRediTauthorshipcontributionstatement
+SirwanKhalidAhmed:Conceptualization,Data curation,Supervi-
+sion, Writing–originaldraft.
+Declarationof competinginterest
+The authorsdeclarethat they haveno knowncompetingfinancial
+Table2
+Requiredsamplesizes for variouspopulationsizes at 95 % confidencelevel with
+differentmarginsof error(5 %, 3 %, and 1 %).
+•Varianceof the populationP=50 %
+•ConfidenceLevel=95 %
+Popultion
+size
+Requiredsample
+size (Marginof
+Error=5 %)
+Requiredsample
+size (Marginof
+Error=3 %)
+Requiredsample
+size (Marginof
+Error=1 %)
+50444850
+75637074
+100799199
+150108132148
+200132168196
+250151203244
+300168234291
+400196291384
+500217340475
+600234384565
+700246423652
+800260457738
+1000278516906
+15003066241297
+20003226961655
+30003417872286
+50003578793288
+10,0003709644899
+25,00037810236939
+50,00038110458057
+100,00038310568762
+250,00038410639249
+500,00038410659423
+1,000,00038410669513
+Source(Gill et al., 2010)[13].
+Table3
+Requiredsamplesizes for variouspopulationsizes at 99 % confidencelevel with
+differentmarginsof error(5 %, 3 %, and 1 %).
+•Varianceof the populationP=50 %
+•ConfidenceLevel=99 %
+Population
+size
+Requiredsample
+size (Marginof
+Error=5 %)
+Requiredsample
+size (Marginof
+Error=3 %)
+Requiredsample
+size (Marginof
+Error=1 %)
+50464950
+75677275
+100879599
+150122139149
+200154180198
+250181220246
+300206258295
+400249328391
+500285393485
+600314452579
+700340507672
+800362557763
+1000398647943
+15004598251375
+20004979571784
+300054111382539
+500058311423838
+10,00062015506228
+25,00064317099944
+50,000652177012,413
+100,000656180214,172
+250,000659182115,489
+500,000660182815,984
+1,000,000660183116,244
+Source(Gill et al., 2010)[13].
+Fig. 3.Factorsaffectingsamplesize.
+S.K.Ahmed
+Oral Oncology Reports 12 (2024) 100662 
+6 
+
+interestsor personalrelationshipsthat couldhave appearedto influence
+the workreportedin this paper.
+Acknowledgements
+Thanksto all the peer reviewersand editorsfor theiropinionsand
+suggestionsand for theirsupportof this research.
+References
+[1] Elfil M, NegidaA. Samplingmethodsin clinicalresearch;an educationalreview.
+Emerg(Tehran,Iran)2017;5:e52.https://sid.ir/paper/339768/en.
+[2] AndradeC. The inconvenienttruthaboutconvenienceand purposivesamples.
+IndianJ PsycholMed 2020;43:86–8. https://doi.org/10.1177/
+0253717620977000.
+[3] ShortenA, MoorleyC. Selectingthe sample.Evid Base Nurs 2014;17:32–3. https://
+doi.org/10.1136/eb-2014-101747.
+[4] RahmanMM. Samplesize determinationfor surveyresearchand non-probability
+samplingtechniques:a reviewand set of recommendations.J EntrepBus Econ
+2023;11(111):42–62. https://www.scientificia.com/index.php/JEBE/article/view
+?path=.
+[5] SureshK, V ThomasS, SureshG. Design,data analysisand samplingtechniquesfor
+clinicalresearch.Ann IndianAcadNeurol2011;14:287–90. https://doi.org/
+10.4103/0972-2327.91951.
+[6] TaherdoostH. Samplingmethodsin researchmethodology;how to choosea
+samplingtechniquefor research.Int J AcadRes Manag2016;5:18–27.
+[7] KrejcieR, MorganD. Determiningsamplesize for researchactivities.EducPsychol
+Meas1970;30:607–10. https://doi.org/10.1177/001316447003000308.
+[8] AltmanDG. Practicalstatisticsfor medicalresearch.first ed. New York:Chapman
+and Hall/CRC;1990.https://doi.org/10.1201/9780429258589.
+[9] Rodríguezdel
+ ́
+AguilaMM, Gonz
+ ́
+alez-RamírezAR. Samplesize calculation.Allergol
+Immunopathol2014;42:485–92. https://doi.org/10.1016/j.aller.2013.03.008.
+[10]DanielWW,CrossCL. Biostatistics:a foundationfor analysisin the healthsciences.
+tenthed. New York,NY, USA:JohnWiley&Sons;2018.
+[11]CochranWG. Samplingtechniques.seconded. Inc, New York:ohn Wileyand Sons;
+1963.
+[12]YamaneT. Statistics:an introductoryanalysis.seconded. New York:Harperand
+Row;1967.
+[13]Gill J, JohnsonP. Researchmethodsfor managers.Sage;2010.
+S.K.Ahmed
+Oral Oncology Reports 12 (2024) 100662 
+7 

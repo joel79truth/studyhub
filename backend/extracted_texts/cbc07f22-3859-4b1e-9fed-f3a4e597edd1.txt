@@ -1,0 +1,8499 @@
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Statistics Module 
+ 
+Module Code: LV-STS  
+ 
+Module Writer: 
+Symon B. Chibaya 
+Mathematics and Statistics Lecturer, Natural Resources College 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+                                                      2 
+ 
+TABLE OF CONTENTS 
+ 
+1. Module Objectives ..............................................................3 
+2. Basic Concepts of Statistics 
+1.1 Meaning of statistics.......................................................4 
+1.2 Using statistical data........................................................4 
+1.3 Types of statistics..........................................................5 
+1.4 Sources of statistical data.................................................5 
+1.5 Types of data variables...................................................5 
+3. Summarizing Data  
+2.1 Frequency distribution................................................ ...8 
+2.2 Graphical 
+presentation................................................................14 
+4.  Describing Data 
+1.1 Measures of central tendency............................................19 
+1.2 Measures of dispersion...................................................24 
+5. Probability Theory 
+4.1 Probability concepts...................................................30 
+4.2 Discrete probability distribution- Binomial distribution and Poisson  
+                 distribution...............................................................35 
+4.3 Normal probability distribution.......................................42 
+5 Sampling Methods and Sampling Distributions......................................49 
+6 Hypothesis Testing 
+6.1 Defining hypothesis....................................................54 
+6.2 Setting up hypothesis...................................................54 
+6.3 Test statistics............................................................56 
+6.4 Analysis of Variance [ANOVA]......................................59 
+ 
+7 Test of Proportions (Chi-Square Testing)....................................64 
+8 Simple Linear Regression and Correlation Analysis........................68 
+9 Appendix 
+           Table 1 The binomial Distribution.............................................80 
+           Table 2 F Distribution............................................................82 
+           Table 3 The Chi-Square Distribution..........................................85 
+           Table 4 Critical values for the PPMC..........................................87 
+10 References........................................................................88 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+                                                      3 
+MODULE OBJECTIVES 
+By the end of the course students should be able to: 
+a) describe concepts used in statistics 
+b) present statistical data in different formats 
+c) apply statistical tools in problem solving. 
+ 
+TOPIC 1: BASIC CONCEPTS OF STATISTICS 
+OBJECTIVES 
+By the end of this topic, you should be able to: 
+        (a). Define the term statistics. 
+        (b). State types of statistics. 
+        (c).List down sources of statistical data. 
+        (d).Describe types of data variables. 
+ 
+DEFINITION OF STATISTICS 
+Statistics is the science of conducting studies to collect, organizes, summarize, analyze 
+and draw conclusions from data. 
+Statistics is used to analyze the results of surveys and as a tool in scientific research to 
+make decisions based on controlled experiments. Other uses of statistics include 
+operations research, quality control, estimation and prediction. 
+ 
+TYPES OF STATISTICS 
+Statistics is divided into two types namely: 
+(a) descriptive statistics and  
+(b) inferential statistics 
+ 
+(a) DESCRIPTIVE STATISTICS  
+This consists of the collection, organization, summarization and presentation of data. For 
+example population census. 
+ 
+(b) INFERENTIAL STATISTICS 
+This uses probability. That is the chance of an event occurring. Here statisticians try to 
+make inferences from samples to population. 
+ 
+POPULATION 
+A population is a collection of all individuals, objects or measurements of interest. Most 
+of the time, due to the expense, size of population, medical concerns, e.t.c it is not 
+possible to use the entire population for a statistical study; therefore, researchers use 
+samples. 
+ 
+SAMPLE 
+It is a group of subjects (human or otherwise) from the  population. 
+Example 
+The following examples constitute a population. 
+The heights of students at Natural Resources College. 
+And its sample can be. 
+
+                                                      4 
+The heights of students in nutrition 12 class. 
+ 
+DATA 
+These are values that the variable can assume. 
+ 
+VARIABLES 
+A variable is a characteristics or attribute that can assume different values. 
+ 
+SOURCES OF STATISTICAL DATA 
+Sources of data can be internal or external. 
+ 
+INTERNAL DATA SOURCE 
+All types of organization will collect and keep data, which is therefore internal to the 
+organization. 
+ 
+ADVANTAGES OF INTERNAL DATA SOURCES 
+1. It will be cheaper 
+2. Readily available information can be used much more quickly. 
+3. It can be understood much more easily. 
+ 
+EXTERNAL SOURCES 
+The sources of statistical information 
+ 
+TYPES OF DATA VARIABLES 
+Variables can be classified as qualitative or quantitative. 
+Qualitative variables have non-numerical observations such as colour of hair, gender and 
+religious prefences, although, of course, each possible non-numerical value may be 
+associated with a numerical frequency.  
+Whereas quantitative variables are numerical and can be ranked. Some examples of 
+quantitative variables are age, height and weight. Quantitative variables can be further 
+classified into two groups: discrete and continuous. 
+Discrete variables can take whole numbers only. For example, number of children in a 
+family while continuous variables take any value. It can be a whole number or decimal 
+number. For example: height of students. 
+Classification of variables can be summarized as follows 
+ 
+                             Data 
+ 
+ 
+Qualitative                                Quantitative 
+ 
+ 
+         
+                                         Discrete                    Continuous 
+ 
+ 
+
+                                                      5 
+ 
+TYPES OF DATA 
+(a) PRIMARY DATA 
+If data is collected for a specific purpose then it known as primary data. For example: 
+population census. They are collected by a researcher himself or herself. 
+ 
+(b) SECONDARY DATA 
+Secondary data is data, which has been collected for some purpose other than for 
+which it is being used. For example if a company has to keep records of when 
+employees are sick and you use this information to tabulate the number of days 
+employees had malaria in a given month, then this information would be classified as 
+secondary data. Secondary data is collected and possibly processed by people other 
+than the researcher in question. In other words these are collected by others to be re-
+used by the researcher. 
+ 
+ 
+ 
+ 
+ 
+ 
+TUTORIAL 1: BASIC CONCEPTS OF STATISTICS 
+ 
+1. Define the term statistics 
+2. Distinguish between: 
+    (a) Inferential statistics and descriptive statistics 
+    (b) Sample and population 
+     (c) Qualitative data variables and quantitative data variables 
+3. Give two advantages of internal source of data. 
+ 
+TOPIC 2: SUMMARISING DATA 
+ 
+OBJECTIVES 
+By the end of this topic, you should be able to: 
+(a) Organize raw data into frequency distributions. 
+
+                                                      6 
+(b) Define the following terms; limits, boundaries and class width. 
+(c) Represent data in frequency distribution graphically using histograms, 
+frequency polygons and a cumulative frequency polygon 
+ 
+To describe situations, draw conclusions or make inferences about events, the 
+researcher/statistician must organize the data in some meaningful way. The most 
+convenient method of organizing data is to construct a frequency distribution. 
+ 
+FREQUENCY DISTRIBUTION 
+A frequency is the name given to the number of times a value occurs. 
+Example 
+Twenty-five army inductees were given a blood test to determine their blood type. The 
+data set is 
+     A   B  B  AB  O 
+     O  O  B  AB  B 
+     B  B  O  A     O 
+     AB  A  O  B  A 
+You can summarise the data in the example above with a frequency table or frequency 
+distribution. A frequency distribution is the organization of raw data in the table from 
+using classes and frequency. 
+Steps to be followed when constructing ungrouped frequency distribution for the above 
+raw data are as follows 
+1. Make a table as shown 
+ Class Tally Frequency 
+   A 
+   B 
+   AB 
+    O 
+2. Tally the data and place the results in the second column. 
+3. Count the tallies and place in the third column 
+Class  Tally            Frequency  
+A                   5 
+B               7 
+AB        9 
+O                    4 
+ 
+Example 
+A survey taken in a restaurant shows the number of cups of coffee consumed with 
+each meal. Construct an ungrouped frequency distribution. 
+0  2  2  1  1  2 
+3  5  3  2  2  2 
+1  0  1  2  4  2 
+0  1  0  1  4  4 
+2  2  0  1  1  5 
+ 
+ 
+
+                                                      7 
+ 
+Solution 
+Class       Tally             Frequency 
+   0                             5 
+   1                        8 
+   2                    10 
+   3                                   2 
+   4                                  3 
+   5                                     2 
+ 
+GROUPED FREQUENCY DISTRIBUTION 
+The following are the steps of constructing a frequency distribution for a grouped 
+data; 
+1. There should be between 5 and 20 classes 
+2. The classes must be equal in width. The following rule may be used to find 
+the required class interval width 
+      
+K
+SL
+W
+
+
+ 
+          Where W = class width 
+                      L  = the largest data 
+                      S  = the smallest data 
+                       K =number of classes 
+3. The class width should be an odd number. This ensures that the mid-point of 
+each class has the same value as the data. The class mid-point X
+m
+ is obtained 
+by adding the lower and upper boundaries and dividing by 2 or adding the 
+lower and upper limits and diving by 2. 
+            
+2
+limlimitupperitlower
+X
+m
+
+
+ 
+         Or 
+2
+boundaryupperboundarylower
+X
+m
+
+
+ 
+    The mid-point is the numerical location of the centre of the class and it is  
+    necessary for graphing. 
+4. The classes must be mutually exclusive. Mutually excusive classes have non-
+overlapping class limits so that data cannot be placed into two classes. 
+ 
+For example 
+     A                                   B 
+   10-20                       not 10-20 
+    21-31                            20-30 
+    32-42                            30-40 
+     43-53                           40-50 
+If a person is 40 years old, into which class of table B she or he should be placed? 
+5. The classes must be continuous. Even if there are no values in a class, the 
+class must be included in the frequency distribution. In other words, there 
+should be no gaps in the frequency distribution. The only exception occurs 
+when the class with a zero frequency is the first or last class. 
+
+                                                      8 
+6. The classes must be exhaustive. There should be enough classes to 
+accommodate all the data. 
+ 
+Example 
+The following data represents times (second) for 50 runners in a race. 
+246 238  246 251  240 
+243 245  243 241 248 
+244 246  249  246 245 
+244  248  240  243 249 
+242 245 239  244  245 
+245 248  248  249 248 
+250 242  243  245  242 
+242  246 246  245  247 
+244  240  245  247  248 
+247  250  247  248  250 
+Construct a grouped frequency distribution for the data. 
+           Solution 
+Procedure for constructing a group distribution 
+Step 1: determine the classes 
+Suppose we want to have 5 classes then 
+           
+K
+SL
+W
+
+
+ 
+               
+5
+238250
+
+     
+               =2.4 
+3
+ 
+ 
+A number is rounded up if there is any decimal remainder when dividing. For 
+example, 53
+4
+= 13.25 is rounded up to 15. 
+167.14685
+ is rounded up to 15. 
+Select a starting point for the lowest class limit. This can be the smallest data 
+value or any convenient number less than the smallest data value. In this class 137 
+is used. 
+Add the width to the lowest class limit taken as the starting point to get the next 
+lower limit of the next class. Keep adding until there are 5 classes as shown. 
+  137, 140, 143, 146, 149 
+Subtract one unit from the lower limit of the second class to get the upper limit of 
+the first class. Then add the width to each upper limit to get all the upper limits as 
+shown below. 
+    139, 142, 145, 148, 151 
+So the five classes are:  
+  137-139, 140-142, 143-145. 146-148, 149-151 
+Find the class boundaries by subtracting 0.5 from each lower class limit and 
+adding 0.5 to each upper class limit. i.e 236.5-239.5, 239.5-242.5-245.5, e.t.c 
+Find the mid-point of each class 
+Step 2. Tally the data. 
+Step3: Find the numerical frequency from tallies. 
+ 
+
+                                                      9 
+ 
+ 
+Example 
+The average quantitative GRE scores for the top 30 graduate schools or engineering are 
+listed below. Construct a frequency distribution with six classes 
+ 
+767 770  761  760  771  768  776 
+763 760  747  766  754  771  771 
+780 750  746  764  769  759  753 
+756 766  758  770  762  746 
+ 
+Solution 
+K
+SL
+W
+
+
+ 
+     =
+6
+746780
+ 
+    =5.667 
+6
+ 
+Smallest lower limit (starting point) is 145. Other lower limits are 751, 757,763, 769, 775 
+The upper limit of the first class is 751-1=750. Other upper limits are 756, 762, 768, 774, 
+780 
+ 
+ 
+ 
+ 
+Class limit Class boundaries Tally Frequency 
+745-750 
+751-756 
+757-762 
+763-768 
+769-774 
+775-780 
+744.5-750.5 
+750.5-756.5 
+756.5-762.5 
+762.5-768.5 
+767.5-774.5 
+774.5-780.5 
+ 
+ 
+ 
+ 
+ 
+ 
+4 
+7 
+7 
+11 
+2 
+1 
+ 
+CUMULATIVE FREQUENCY DISTRIBUTION 
+So far, we have discovered how to tabulate a frequency distribution. There is a further 
+way of presenting frequencies and that is by forming cumulative frequencies. This 
+technique conveys a considerable degree of information and involves adding up the 
+number of times (frequency) values less than or equal to a particular value occur. 
+Example 
+Class interval Class boundaries Mid-point Tally Frequency 
+137-139 
+140-142 
+143-145 
+146-148 
+148-151 
+136.5-139.5 
+139.5 -142.5 
+142.5-145.5 
+145.5-148.5 
+148.5-151.5 
+238 
+241 
+244 
+247 
+250 
+ 
+ 
+ 
+ 
+ 
+ 
+2 
+8 
+14 
+19 
+7 
+
+                                                      10 
+A survey was conducted in a certain town on people’s weights in kilograms. The 
+following are the results: 
+       Weight        Frequency                           
+32.0-32.7    1 
+35.0-35.7    3 
+       36.0-36.7      9 
+37.0-37.7     20 
+38.0-38.7     28 
+39.0-39.7     26 
+40.0-40.7     15 
+41.0-41.7     4 
+Calculate the cumulative frequency of the data. 
+ 
+Solution 
+Weight        Frequency     Cumulative frequency                         
+ 32.0-32.7     1                           0+1=1 
+35.0-35.7      3                           1+3=4 
+36.0-36.7      9                           4+6=13 
+37.0-37.7      20                     13+20=33 
+38.0-38.7     28                      33+28=61 
+39.0-39.7     26                       61+26=87 
+40.0-40.7     15                       87+15=102 
+41.0-41.7     4                           102+4=106 
+ 
+RELATIVE FREQUENCY DISTRIBUTIONS 
+RELATIVE FREQUENCY 
+Relative frequencies are the frequencies divided by the total number of observations. 
+Relative frequency=
+nsobservatioofnumberTotal
+frequencyactual
+      
+Example 
+The following data represents heights of students in cm 
+Height (cm)             Frequency 
+Under 165                  7 
+Under 170                  11 
+Under 175                  17 
+Under 180                  20 
+Under 185                  16 
+Under 190                   9 
+Construct a relative frequency distribution. 
+ 
+Solution 
+Height (cm)            Frequency                Relative frequency 
+Under 165                  7                            
+0875.0
+80
+7
+
+ 
+Under 170                  11                           
+1375.0
+80
+11
+
+ 
+
+                                                      11 
+Under 175                  17                            
+2125.0
+80
+17
+
+ 
+Under 180                  20                             
+25.0
+80
+20
+
+ 
+Under 185                  16                              
+2.0
+80
+16
+
+ 
+Under 190                   9                                
+1125.0
+80
+9
+
+ 
+ 
+CUMULATIVE RELATIVE FREQUENCY 
+We have seen how to calculate cumulative frequencies. Using the same logic, you 
+can obtain cumulative relative frequency in a particular class to that already arrived 
+at for previous class. 
+ 
+Example 
+Construct cumulative relative frequency distribution for the above example. 
+Solution 
+Height (cm)            Frequency            Relative frequency    Cumulative relative frequency 
+Under 165                  7                        
+0875.0
+80
+7
+
+         0+0.0875=0.0875 
+Under 170                  11                       
+1375.0
+80
+11
+
+        0.0875+0.1375=0.225 
+Under 175                  17                        
+2125.0
+80
+17
+
+        0.225+0.2125=0.4357 
+Under 180                  20                         
+25.0
+80
+20
+
+           0.4357+0.25=0.6875 
+Under 185                  16                          
+2.0
+80
+16
+
+            0.6875+0.2=0.8875 
+Under 190                   9                            
+1125.0
+80
+9
+
+      0.8875+0.1125=1.000 
+The reasons for constructing a frequency distribution are: 
+1. To organize the data in a meaningful way. 
+2. To enable the reader to determine the nature or shape of the distribution. 
+3. To facilitate computational procedures for measures of average and spread. 
+4. To enable the researcher to draw charts and graphs for the presentation of the 
+data. 
+5. To enable the reader to make comparison among different data sets. 
+ 
+GRAPHICAL PRESENTATION 
+After the data have been organized into a frequency distribution, they can be 
+presented in graphical form. The purpose of graphs in statistics is to convey the 
+data to the viewers in pictorial form. It is easer for most people to comprehend 
+the meaning of data presented graphically than presented numerically in tables or 
+frequency distributions. 
+
+                                                      12 
+The three most commonly used graphs are: 
+(a) histogram 
+(b) frequency polygon 
+(c) cumulative frequency graph or ogive (pronounced 0-jive) 
+ 
+THE HISTOGRAM 
+The word histogram is derived from Greek: histos- ‘anything set upright’ and 
+gramma ‘drawing’, record, writing. 
+The histogram is a graph that displays the data by using continuous vertical bars 
+(unless the frequency of class is 0) of various heights to represent the frequencies 
+of the classes. 
+ 
+Example 
+The annual exports of a group of small firms in Lilongwe are  
+Exports (K millions Number of firms 
+2-4 4 
+5-7 12 
+8-10 15 
+11-13 8 
+14-16 4 
+Construct a histogram to represent the data shown above. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Solution 
+Step 1: Construct a frequency distribution that has class boundaries. 
+ 
+Class Class boundaries Frequency 
+2-4 
+5-7 
+8-10 
+11-13 
+14-16 
+1.5-4.5 
+4.5-7.5 
+7.5-10.5 
+10.5-13.5 
+13.5-16.5 
+4 
+12 
+15 
+8 
+4 
+         Step 2: Draw and label the x-axis and y-axis. The x-axis is always the horizontal    
+                     axis and the y-axis is always the vertical axis. 
+         Step 3: Represent the frequency on the y axis and the class boundaries on the x- 
+                     axis. 
+          Step4: Using frequencies as the heights, draw vertical bars for each class. 
+
+                                                      13 
+                                  Frequency 
+ 
+                                           
+                                                                   
+NOTE: The frequency in each class is represented by the rectangles. However, it is 
+important to realize that it is not the height of the rectangle that represents the frequency 
+but the area with of the rectangle. 
+ 
+THE FREQUENCY POLYGON 
+The frequency polygon is a graph that displays data using lines that connect points 
+plotted for the frequencies at the mid-point of the classes. This is a very quick method of 
+drawing the shape of a frequency distribution. 
+Steps to be followed when drawing a frequency polygon are: 
+1. Draw a histogram. 
+2. Mark the mid-point at the top of each rectangle. 
+3. Join the mid-points with a ruler. 
+4. Extend the lines at each end of the histogram to the mid-points of the next 
+highest and lowest classes, which will have equal a frequency of zero. 
+NOTE: The lines are extended to the x-axis so that the area of the polygon will 
+equal that of the histogram it represents. 
+ 
+Example 
+Draw a frequency polygon it represents from the example above. 
+Solution 
+    
+Class Class boundaries Frequency Mid-point 
+2-4 
+5-7 
+8-10 
+11-13 
+14-16 
+1.5-4.5 
+4.5-7.5 
+7.5-10.5 
+10.5-13.5 
+13.5-16.5 
+4 
+12 
+15 
+8 
+4 
+3 
+6 
+9 
+12 
+15 
+ 
+
+                                                      14 
+          
+      OR 
+Step 1: Find the mid-points of each class. 
+Step 2: Draw the x-axis to represent scores. 
+Step 3: Draw the y-axis to represent frequencies. 
+Step 4: Plot the frequency against class mid-point. 
+Step 5: Join the crosses in order, that is the cross representing the first class should be 
+joined to the one representing the second class and so on. 
+Step 6: Include the two extreme points. 
+For instance, 
+   
+Class Class boundaries Frequency Mid-point 
+2-4 
+5-7 
+8-10 
+11-13 
+14-16 
+1.5-4.5 
+4.5-7.5 
+7.5-10.5 
+10.5-13.5 
+13.5-16.5 
+4 
+12 
+15 
+8 
+4 
+3 
+6 
+9 
+12 
+15 
+The mid-point before 3 is 3-3=0 and the mid-point after 15 is 15+3=18 
+ 
+ 
+ 
+      CUMULATIVE FREQUENCY POLYGON 
+      It can be used to represent the cumulative frequencies for the classes. 
+
+                                                      15 
+It is also called ogive. 
+The cumulative frequency polygon is plotted against the upper boundaries of the 
+corresponding class. In a cumulative frequency polygon, the cumulative frequencies 
+are joined together by straight lines whereas in a cumulative frequency curve; a 
+smooth curve joins the points. 
+ 
+Example 
+The lengths of 50 fish caught from the pond were measured and the following are the 
+results. 
+Length 20-22 23-25 26-28 29-31 
+Frequency 3 10 9 28 
+Construct a cumulative frequency polygon. 
+Solution 
+Class Class boundaries Frequency Cumulative frequency 
+20-22 
+23-25 
+26-28 
+29-31 
+19-5-22.5 
+22.5-25.5 
+25.5-28.5 
+28.5-31.5 
+ 
+3 
+10 
+9 
+28 
+3 
+13 
+22 
+50 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+TUTORIAL 2: SUMMARISAING DATA 
+1. 50 people were asked to record how many radio station they listen to in a week. The 
+results are shown below: 
+No. of radio station No. of listeners 
+0-9 
+10-19 
+20-29 
+2 
+32 
+10 
+
+                                                      16 
+30-39 6 
+ 
+(a).What is this table called? 
+(b).Draw a histogram 
+2. In a study of reaction times of dogs to a specific stimulus, an animal trainer obtained  
+    the following data, given in seconds. Construct a histogram, frequency polygon and  
+   ogive for the data. 
+Class limit Frequency 
+2.3-2.9 
+3.0-3.6 
+3.7-4.3 
+4.4-5.0 
+5.1-5.7 
+5.8-6.4 
+10 
+12 
+6 
+8 
+4 
+2 
+ 
+3. The number of calories per serving for selected ready-to-eat cereals is listed here. 
+Construct a frequency distribution using seven classes. Draw a histogram, frequency 
+polygon and ogive for the data. 
+130 190 140 80 100 120 220 110 100 
+210 130 100 90 210 200 120 180 120 
+190 210 120 200 130 180 260 100 160 
+190 240 80 120 90 190 200 210 190 180 
+115 210 110 225 190 130 
+ 
+ 
+TOPIC 3: DESCRIBING DATA 
+OBJECTIVES 
+By the end of this topic, you should be able to; 
+(a) Calculate mean, median and mode. 
+(b) Explain advantages and disadvantages of mean, mode and median. 
+(c) Explain the difference between sample deviation and population deviation 
+(d) Describe data using measures of variations such as the range, variance and 
+standard deviation. 
+ 
+Any set of measurement has two important properties namely: the central or typical value 
+and the spread about the value. 
+ 
+MEASURE OF CENTRAL TENDENCY 
+The main measures of the central tendency are: 
+Mean 
+Median 
+Mode 
+ 
+MEAN 
+The arithmetic mean of a set of values is the sum of values of the data dividing by the 
+total number of values. The symbol 
+
+x
+ (read as x-bar) represents the sample mean     
+
+                                                      17 
+n
+x
+n
+xxxx
+x
+n
+i
+i
+n
+
+
+
+
+
+
+1321
+...
+    where n represents the total number of values in the 
+sample. 
+ 
+For a population, the Greek letter 
+
+ (mu) is used for the mean. 
+N
+x
+N
+xxxx
+N
+i
+i
+N
+
+
+
+
+
+1321
+...
+
+ where N represents the total number of values in the 
+population. 
+If some values appear more than once, we may use the following formula. 
+                    
+
+
+
+
+f
+fx
+x
+ 
+ 
+Example 
+Find the mean of the following data: 
+20, 26, 40, 36, 23, 42, 35, 24, 30. 
+ 
+Solution 
+n
+x
+x
+
+
+
+ 
+    
+9
+302435422336402620
+
+ 
+     = 30.7 
+ 
+Example 
+The table below shows the frequency distribution of the number of days on which 100 
+employs of a firm were late for work in a given month. Using the data, find the mean 
+number of dates on which an employee is late in a month. 
+Number of days late Number of employees 
+1 
+2 
+3 
+4 
+5 
+32 
+25 
+18 
+14 
+11 
+ 
+ 
+Solution 
+x F fx 
+1 
+2 
+3 
+4 
+5 
+32 
+25 
+18 
+14 
+11 
+32 
+50 
+54 
+56 
+55 
+
+                                                      18 
+ 
+
+100f
+ 
+
+247fx
+ 
+But 
+
+
+
+
+f
+fx
+x
+ 
+          
+100
+247
+
+ 
+           =2.47 
+Therefore the mean number of days is 2.4 days. 
+ 
+MEAN FOR GROUPED DATA 
+Steps to be followed 
+1. Make a frequency distribution as shown below 
+Class   Frequency (f)   mid-point(X
+m
+)   f. X
+m
+        
+2. Find the mid-points of each class and place them in column 3 
+3. Multiply the frequency by the mid-point for each class and place the product in 
+column 4. 
+4. Find the sum of columns 2 and 4. In other ways, find 
+
+m
+fxandf
+ 
+ 
+ 
+5. Use the following formula in order to find the mean. 
+                
+
+
+
+
+f
+fx
+x
+ 
+ 
+Example 
+The marks scored by 500 candidates in an examination in which the maximum mark 
+was 50 were: 
+Mark range Frequency 
+1-5 
+6-10 
+11-15 
+16-20 
+21-25 
+26-30 
+31-35 
+36-40 
+41-45 
+46-50 
+10 
+41 
+72 
+83 
+94 
+81 
+71 
+27 
+13 
+8 
+Calculate a mean mark for these candidates. 
+ 
+Solution 
+Mark range Frequency Mid-point(x
+m
+) f.x
+m 
+1-5 
+6-10 
+11-15 
+16-20 
+10 
+41 
+72 
+83 
+3 
+8 
+13 
+18 
+30 
+328 
+936 
+1494 
+
+                                                      19 
+21-25 
+26-30 
+31-35 
+36-40 
+41-45 
+46-50 
+94 
+81 
+71 
+27 
+13 
+8 
+23 
+28 
+33 
+38 
+43 
+48 
+2162 
+2268 
+2343 
+1026 
+559 
+384 
+ 
+
+500f
+ 
+ 
+
+
+m
+fx
+11530 
+But 
+
+
+
+
+f
+fx
+x
+ 
+           
+500
+11530
+
+ 
+            =23.1 
+ 
+ADVANTAGES OF ARITHMETIC MEAN 
+1. It is easy to calculate. 
+2. It uses all the values. 
+3. It is used in computing other statistics such as variance. 
+ 
+DISADVANTAGRS OF ARITHMETIC MEAN 
+1. It is affected by extremely high or low values. 
+2. It can not be read from a graph. 
+ 
+MEDIAN 
+A statistic which is not affected by a few very unusual extreme scores is the median. 
+Median is the middle value when the values are arranged in order (either ascending or 
+descending order). When the data is ordered, it is called data array. 
+The median is used when one must determine whether the data values fall into the 
+upper or lower half in the distribution. 
+Steps in computing the median are: 
+1. Arrange the data in order. 
+2. Select the middle point. 
+ 
+NOTE: If the number of value (n) is odd, then the median is the value of the middle 
+value; if n is even, then the median is the value of the arithmetic mean of the two 
+middle values. 
+In other words, (a) if n is odd and M is the value of the median then: 
+          M= the value of the 
+th
+n
+
+
+
+
+
+
+
+2
+1
+ observation 
+(b) if n is even, the middle observations are 
+thth
+n
+theand
+n
+
+
+
+
+
+
+
+
+
+
+
+
+
+2
+1
+2
+observations and then  
+M= the values of the mean of these two observations 
+ 
+Example 
+
+                                                      20 
+Find the median of 4, 3, 5, 2, 11. 
+Solution 
+Arranging in ascending order, we have 
+2, 3, 4, 5, 11. 
+n= 5(odd) 
+Median = the value of  
+2
+15
+ 
+             =3
+rd
+ observation 
+             =4. 
+ 
+Example 
+ Six people take shoe sizes: 7, 9, 9, 8, 5, 6. What is the median? 
+ 
+Solution 
+Arranging in ascending order, we have 5, 6, 7, 8, 9, 9.and n= 6(even) 
+So M= the mean of 
+thth
+theand
+
+
+
+
+
+
+
+
+
+
+
+
+
+2
+16
+2
+6
+observations 
+         =the mean of 3
+rd
+ and 4
+th
+ observations 
+         =
+2
+87
+ 
+         = 7.5 
+ 
+ADVANTAGES OF MEDIAN 
+1. Its value is not distorted by extreme values. 
+2. All the observations are used to order the data even though only the middle one or 
+two middle observations are used in the calculation. 
+3. It can be illustrated graphically in a very simple way. 
+ 
+DISADVANTAGES OF MIDIAN 
+1. In a grouped frequency distribution, the value of the median within the median 
+class can only be an estimate. 
+2. It is of little use in calculating other statistical measures. 
+ 
+MODE 
+Mode is the most frequent data value or the value that occurs most often in a data set. 
+The mode is used when the most typical case is desired. 
+A set observations with one mode is called unimodal, a set of observations with two 
+modes is called bimodal while a set of observations with more than two modes is 
+called multimodal. 
+ 
+Example 
+The monthly salaries of a sample of doctors are: K35000, K58000, K50000, K49000, 
+K50000, K50000, K60000, K70400, K50000, K40000, K50000, K40000, K65000, 
+K55000. What is the modal (mode) monthly salary? 
+Solution 
+
+                                                      21 
+The value which occurs most often is K50000. 
+Therefore the modal salary is K50000. 
+Example 
+Find the modal class for the frequency distribution of miles that 20 runners ran in one 
+week. 
+Class Frequency 
+ 
+5.5-10.5 
+10.5-15.5 
+15.5-20.5 
+20.5-25.5 
+25.5-30.5 
+30.5-35.5 
+35.5-40.5 
+1 
+2 
+3 
+5 
+4 
+3 
+2 
+Solution  
+The modal class is 20.5-25.5 since it has the largest frequency. 
+ 
+ADVANTAGES OF THE MODE 
+1. It is not distorted by extreme values of the observations. 
+2. It is easy to calculate. 
+ 
+DISADVANTAGES OF THE MODE 
+1. It can not be used to calculate any further statistics. 
+2. It may have more than one value. 
+ 
+THE WEIGHTED MEAN 
+Sometimes, one must find the mean of a data set in which not all values are equally 
+represented. This type of mean is called weighted mean. 
+To find the weighted mean, multiple each value by its corresponding weight and 
+divide the sum of the products by the sum of the weights. 
+In other words 
+
+
+
+
+
+
+
+w
+wx
+www
+xwxwxw
+x
+n
+nn
+...
+...
+21
+2211
+ 
+                Where w
+1
+, w
+2
+, w
+3
+, ..., w
+n
+ are the weights and x
+1
+, x
+2
+,..., x
+n
+ are the value. 
+ 
+Example  
+A student received an A in English composition 1 (3 credits), a C in Introduction to 
+Psychology (3 credits), a B in Biology 1 (4 credits) and a D in Physical Education (2 
+credits). Assuming A=4 grade points, B= 3 grade points, C= 2 grade points, D= 1 
+grade point and F= 0 grade point. Find the students grade-point average. 
+ 
+Solution 
+Course Credits (w) Grade (X)  Wx 
+English composition 1 
+Introduction to Psychology 
+Biology 1 
+3 
+3 
+4 
+A(4 points) 
+C(2 points) 
+B(3 points) 
+12 
+6 
+12 
+
+                                                      22 
+Physical Education 2 D(1 point) 2 
+ 
+
+12w
+ 
+ 
+
+32wx
+ 
+ 
+But 
+
+
+
+
+w
+wx
+x
+ 
+          =
+12
+32
+ 
+          =2.7 
+ 
+MEASURES OF DISPERSION 
+In statistics, to describe the data set accurately, statisticians must know more than 
+measures of central tendency. We also need to know the spread of data. There are 
+several different measures of dispersion. The most important of these (which we will 
+describe in this section) are: 
+  Range 
+ Variance 
+ Standard deviation. 
+ 
+RANGE 
+A range is the deference between the highest value and the lowest value. 
+ 
+Example 
+The weights of the contents of several small bottles are (in grams): 4, 3, 6, 5, 7, 2 and 
+4. Find the range. 
+Solution 
+The lowest value is 2 and the highest value is 7. 
+Therefore range = 7-2 
+                          =5 
+ 
+ADVANTANGES OF THE RANGE 
+1.   It is easy to understand. 
+3. It is simple to calculate. 
+4. It is a good measure for comparison as it spans the whole distribution. 
+ 
+DISADVANTAGES OF THE RANGE 
+1. It uses only two of the observations and so can be distorted by extreme values 
+2. It can not be used in calculating other functions of the observations. 
+ 
+STANDARD DEVIATION AND VARIANCE 
+These two measures of dispersion can be discussed in the same section because the 
+standard deviation is the square root of the variance. 
+The variance is the average of the squares of the distance each value is from the 
+mean. The symbol for the population variance is 
+2
+
+(
+
+ is the Greek lowercase 
+sigma).  
+ 
+
+                                                      23 
+The formula for the population variance is 
+            
+
+N
+x
+
+
+
+2
+2
+
+
+ 
+           Where x= individual value 
+                      
+
+Population mean 
+                      N= population size 
+ 
+The standard deviation is the square root of the variance. The symbol for the 
+population standard deviation is 
+
+ and its formula is 
+            
+
+N
+x
+
+
+
+
+
+2
+ 
+ 
+The standard deviation is one of the measures used to describe the variability of a 
+distribution. It has an additional use which makes it more important than other measures 
+of dispersions. It is used as a unit to measure the distance between any two observations. 
+ 
+STEPS TO BE FOLLOWED IN CALCULATING STANDARD DEVIATIONS 
+1. Find the mean (
+
+) of the data. 
+2. Subtract the mean from each data value 
+
+x
+. 
+3. Square each result 
+
+2
+x
+ . The reason of squaring is to eliminate the negative 
+sign. 
+4. Find the sum of the squares, 
+
+
+
+2
+x
+. 
+5. Divide the sum by N to get the variance, 
+
+N
+x
+
+
+2
+
+. 
+6. Take the square root of the variance to get standard deviation, 
+
+N
+x
+
+
+2
+
+. The 
+reason of squaring is that since the distance were squared; the units of the 
+resultant numbers are squares of the units of the original raw data. Finding the 
+square root of the variance puts the standard deviation in the same unit as the raw 
+data. 
+ 
+Example 
+Find the variance and standard deviation for the following set: 
+     10, 66, 50, 30, 40, 20 
+Solution 
+The mean, 
+
+=
+6
+204030506610
+ 
+                    = 35 
+x 
+x-
+
+ 
+ 
+(x-
+
+)
+2 
+10 
+60 
+10-35=-25 
+60-35=25 
+625 
+625 
+
+                                                      24 
+50 
+30 
+40 
+20 
+50-35=15 
+30-35=-5 
+40-35=5 
+20-35=-15 
+225 
+25 
+25 
+225 
+   
+
+1750
+2
+
+
+x
+ 
+But  
+
+N
+x
+
+
+
+2
+2
+
+
+ 
+              =
+6
+1750
+ 
+              =291.7 
+Therefore, the variance is 291.7 
+                        
+And 
+
+N
+x
+
+
+
+
+
+2
+ 
+    Therefore, 
+
+    =
+7.291
+ 
+                           =17.1 
+Therefore, the standard deviation is 17.1 
+ 
+SAMPLE VARIANCE AND STANARD DEVIATION 
+The formula for finding sample variance and standard deviation are as follows; 
+  Variance, 
+
+11
+2
+2
+2
+2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+n
+n
+x
+x
+n
+xx
+s
+ 
+  Sample standard deviation, 
+
+11
+2
+2
+2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+n
+n
+x
+x
+or
+n
+xx
+s
+ 
+                        Where x= individual score 
+                                   
+
+x
+ = sample mean 
+                                    n = sample sizes 
+NOTE: Dividing by n-1 gives a slightly larger value and an unbiased estimate of the 
+population variance. 
+ 
+Example 
+Find the sample variance and standard deviation for three standard deviation for three 
+students earnings. The data are in Kwacha. 
+      3, 4, 5 
+Solution 
+ but 
+
+11
+2
+2
+2
+2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+n
+n
+x
+x
+n
+xx
+s
+ 
+
+                                                      25 
+     
+
+14412
+12543
+2
+2
+
+
+
+
+x
+x
+ 
+    
+50543
+2222
+
+
+x
+ 
+   
+
+13
+3
+144
+50
+1
+2
+2
+2
+
+
+
+
+
+
+
+
+n
+n
+x
+x
+s
+ 
+                                     =
+2
+4850
+ 
+                                     =1 
+(ii) The standard deviation is 
+11
+ 
+ 
+For the grouped data, we use the following steps; 
+1. Make a table as shown below and find the mid-point of each class. 
+        
+Class Frequency 
+Mid-point
+
+m
+x
+ f. 
+
+m
+x
+ f. 
+
+m
+x
+2 
+     
+2. Multiply the frequency by the mid-point of each class and place the product in 
+column 4. 
+3. Multiply the frequency by the square of the mid-point and place the product in 
+column 5 
+4. Find the sum of columns 2 (n), 4
+
+
+m
+xf.
+ and 5
+
+
+2
+.
+m
+xf
+. 
+5. Substitute in the formula and solve to get the variance. 
+                
+
+1
+.
+.
+2
+2
+
+
+
+
+
+n
+n
+xf
+xf
+s
+m
+m
+ 
+6. Take the square root to get the standard deviation. 
+ 
+Example 
+Find the sample variance and standard deviation for the following frequency 
+distribution. 
+Class limits Frequency 
+13-19 
+20-26 
+27-33 
+34-40 
+41-47 
+48-54 
+55-61 
+62-68 
+2 
+7 
+12 
+5 
+6 
+1 
+0 
+2 
+Solution 
+Class limits Frequency 
+Mid-point
+
+m
+x
+ f. 
+
+m
+x
+ f. 
+
+m
+x
+2
+ 
+13-19 2 16 32 512 
+
+                                                      26 
+20-26 
+27-33 
+34-40 
+41-47 
+48-54 
+55-61 
+62-68 
+7 
+12 
+5 
+6 
+1 
+0 
+2 
+23 
+30 
+37 
+44 
+51 
+58 
+65 
+161 
+360 
+185 
+264 
+51 
+0 
+130 
+ 
+3703 
+10800 
+6845 
+11616 
+2601 
+0 
+8450 
+   
+
+
+m
+xf.
+=1183 
+
+
+2
+.
+m
+xf
+=38327 
+ 
+ 
+ 
+ 
+135
+35
+1183
+38327
+2
+
+
+s
+ 
+270588.1126
+ 
+270588.1126s
+ 
+   =33.6 
+Therefore, the sample variance is 1126.3 and standard deviation is 33.6 
+ 
+TUTORIAL 3: DESCRIBING DATA 
+1. Find the mean, mode, median, variance and standard deviation of the following 
+set of  numbers; 
+(a) 2, 3, 5, 3, 3 
+(b) 3, 4, 5, 4, 5, 4, 5, 3, 4, 4      
+2.  Find the weighted mean of 20, 25, 30, 35 if they are assigned weightings of 
+(a) 1, 2, 3, 4 
+(b) 1, 3, 7, 9 respectively 
+3.   An instructor grades exams, 20%; term paper, 30%; final exam,50%. A student 
+had grade of 83, 72 and 90 respectively. Find the students final average. Use the 
+weighted mean. 
+4. In a class of 29 students, this distribution of quiz scores was recorded. 
+Class limit Frequency 
+0-2 
+3-5 
+6-8 
+9-11 
+12-14 
+1 
+3 
+5 
+14 
+6 
+     Find the mean, variance and standard deviation of the quiz. 
+5. A survey was made of the monthly earnings of four Agricultural assistance and 
+the results are recorded below 
+K18, 000, K19, 000, K20, 000 and K21, 000 
+Calculate the following 
+
+                                                      27 
+(a) sample variance 
+(b) Sample standard deviation. 
+ 
+TOPIC 4: PROBABILITY THEORY 
+OBJECTIVES 
+By the end of this topic, you should be able to; 
+(a) Determine sample space. 
+(b) Find the probability of an event, using classical probability. 
+(c) Calculate probabilities, applying rules of addition and multiplication. 
+(d) Distinguish between a discrete random variable and a continuous 
+random variable. 
+(e) Construct a probability distribution for a random variable. 
+(f) Find the mean, variance and standard deviation for the variable of a 
+binomial distribution. 
+(g) Find probabilities for outcomes of variables using the Poisson 
+distributions. 
+(h) Find the area under the standard normal distribution. 
+(i)  Calculate probabilities for normally distributed variable by 
+transforming it into a standard normal variable. 
+ 
+PROBABILITY CONCEPTS 
+(a) EXPERIMET/TRIAL 
+It is a repeated procedure whose outcome is attributed to chance. 
+ 
+(b) SAMPLE SPACE/PROBABILITY SPACE(S) 
+   It is a set of all possible outcomes of a trial. It is denoted by S 
+Examples of trials and sample space 
+(a) Tossing a coin once 
+S = 
+
+TH,
+ 
+(b) Tossing a die once 
+      
+
+6,5,4,3,2,1S
+ 
+ 
+(c) SAMPLE POINT 
+            It is any distinct element of the sample space. 
+ 
+(d) EVENT 
+It is any subset of a sample space. For example
+
+6,5,4,3,2,1S
+. One event is the 
+event of picking an even number. If A is an event of picking an even number then 
+
+6,4,2A
+ 
+Example 
+A die is tossed once. Find 
+(i) Sample space 
+(ii) Event of odd numbers. 
+(iii) Event of even numbers. 
+(iv) Event of prime numbers. 
+(v) Event of multiples of 3. 
+
+                                                      28 
+ 
+Solutions 
+(i) 
+
+6,5,4,3,2,1S
+ 
+(ii) 
+
+5,3,1A
+ 
+(iii) 
+
+6,4,2B
+ 
+(iv) 
+
+5,3,2,1C
+ 
+(v)  
+
+6,3D
+ 
+ 
+(e) MUTUALLY EXHAUSTIVE EVENTS 
+These are events which constitute the sample space. i.e. if 
+SBA
+ then A and 
+B are mutually exhaustive events. 
+ 
+(f) MUTUALLY EXCLUSIVE EVENTS 
+These are events which don’t have any elements in common. That is if 
+BA
+ø 
+then A and B are mutually excusive events. 
+ 
+(g) COMPLEMENT OF AN EVENT 
+The complement of an event A with respect to the sample space S is the set of 
+points in S not belonging to the subset A. 
+
+A
+ or 
+/
+A
+ is often used as a symbol for 
+not A. A and not A are referred to as complementary events. 
+ 
+(h) PROBABILITY OF AN EVENT 
+        The probability of any event E is           
+          
+spacesampletheinoutcomesofnumberTotal
+Einoutcomesofnimber
+ 
+This probability is denoted by 
+    
+
+
+
+Sn
+En
+EP
+ 
+ 
+Example 
+Suppose you toss a coin. Find probability that the outcome is head 
+Solution 
+    
+
+THS,
+ and 
+
+HE
+ 
+  But 
+
+
+
+Sn
+Hn
+HP
+ 
+                   
+2
+1
+
+ 
+ 
+Example 
+For a card is drawn from a standard pack of cards, find the probability of getting a 
+queen. 
+Solution 
+  n(S)= 52 and n(E)= 4  
+
+                                                      29 
+ but 
+
+
+
+Sn
+En
+EP
+ 
+                
+52
+4
+
+ 
+               
+13
+1
+
+ 
+Example 
+If a family has three children, find the probability that all the children are girls. 
+Solution 
+
+GGGGGBGBGBGGGBBBGBBBGBBBS,,,,,,,
+ 
+So n(S)= 8 and n(E)= 1  
+But 
+
+
+
+Sn
+En
+EP
+ 
+                
+8
+1
+
+ 
+The following are four basic probability rules 
+(a) The probability of any event is a number (either a fraction or decimal) 
+between and including 0 and 1. This is denoted by 
+
+10EP
+ 
+NOTE: Rule 1 states that probabilities can not be negative or greater than 1 
+(b) If an event E can not occur (i.e the event contains no members in the sample 
+space) then its probability is 0. 
+(c) If an event E is certain, then the probability of E is 1. 
+(d) The sum of the probabilities of the outcomes in the sample space is 1. 
+ 
+RULE FOR COMPLEMENTARY EVENTS 
+
+EPEP
+
+
+
+
+
+
+
+1
+ or 
+
+
+
+
+
+
+
+
+
+EPEP1
+ or 
+
+1
+
+
+
+
+
+
+
+
+EPEP
+ 
+ 
+Example 
+The weather bureau estimates the probability of rain tomorrow to be 0.42. What is 
+the probability that it does not rain? 
+Solution 
+P(no rain) = 1- P(rain) 
+                =1 – 0.41 
+                =0.58 
+ 
+TWO LAWS OF PROBABILITY 
+1.ADDITION LAW 
+                            
+
+                                                      30 
+   
+               Then 
+
+BPAPBAP
+. This is so if A and B are mutually exclusive  
+                Events. 
+ 
+ 
+ 
+ 
+ 
+Or                                   
+              
+            
+
+BAPBPAPBAP
+and B are not mutually exclusive events. 
+ 
+             Example 
+A card is picked at random from a standard pack of cards. What is the probability 
+it is 
+(a) a red heart or a club? 
+(b) red heart or a king? 
+Solution 
+There is no red heart that is a club. So P(r or c) = P(r)+P(c) 
+                                                                            =
+52
+13
+52
+13
+
+ 
+                                                                            =
+4
+1
+4
+1
+
+ 
+                                                                             = 
+2
+1
+ 
+(i) Some red hearts are kings 
+So P(r or k) = P(r) +P(k)-P
+
+kr
+ 
+                    =
+52
+1
+52
+4
+52
+13
+
+ 
+                    =
+52
+1413
+ 
+BB A 
+
+                                                      31 
+                    =
+52
+16
+ 
+       =
+13
+4
+ 
+ 
+Example  
+In a hospital unit there are 8 nurses and 5 physicians; 7 nurses and 3 physicians 
+are females. If a staff person is selected, find the probability that the subject is a 
+nurse or a male. 
+      Solution 
+The sample space is shown below 
+Staff female males Total 
+Nurses 
+physicians 
+7 
+3 
+1 
+2 
+8 
+5 
+Total 10 3 13 
+ 
+There is a nurse who is a male. So 
+         P(nurse or male) = P(nurse) + P(male)- P(nurse
+
+male) 
+                                    =
+13
+1
+13
+3
+13
+8
+
+ 
+                                    =
+13
+10
+ 
+ 
+MULTIPLICATION LAWS 
+1. When two events are independent, the probability of both occurring is  
+          
+
+BPAPBAP.
+ 
+ 
+Example 
+A coin is tossed and a die is rolled. Find the probability of getting a 4 on the die 
+and a head on the coin. 
+Solution 
+P(4 and head) = P(4).P(head) 
+                       =
+6
+1
+2
+1
+
+ 
+                       =
+12
+1
+ 
+ 
+Example 
+A card is drawn from a desk and replaced. Then a second card is drawn, find the 
+probability of getting a queen and the ace. 
+Solution 
+P(queen and ace)= P(queen).P(ace) 
+                           =
+52
+4
+52
+4
+
+ 
+
+                                                      32 
+                           =
+169
+1
+ 
+2. 
+
+ABPAPBAP/
+ 
+                      =
+
+BAPBP/
+ 
+But 
+
+
+
+BP
+BAP
+BAP
+
+/
+ when two events are dependent. 
+ 
+Example  
+A card is drawn from a deck and without replacement. Then a second card is 
+drawn. Find the probability of getting a queen and then ace. 
+Solution 
+P(queen 
+)ace
+= 
+51
+4
+52
+4
+
+ 
+                           =
+2652
+16
+ 
+Example 
+The world wide Insurance Company found that 53% of the residents of a city had 
+homeowners insurance with the company. Of these clients, 27% also had 
+automobile insurance with the company. If a resident is selected, find the 
+probability that the resident has both homeowners and automobile insurances with 
+the  World Wide Insurance Company. 
+Solution 
+Let homeowners insurance be H and automobile insurance be A. 
+So P(H) =.53   P(A/H) =0.27 
+P(H and A) = P(H).P(A/H) 
+                   =0.54 x 0.27 
+                   =0.1431 
+ 
+DISCRETE PROBABILTY DISTRIBUTION 
+RANDOM VARIABLES 
+A random variable is the numerical outcome of a random experiment, denoted by 
+X. If the experiment is repeated, different values of X will be obtained and these 
+values are denoted by small x. 
+If a variable can assume only a specific number of values, such as the outcome for 
+the roll of a die or the outcome for the toss of a coin, then the variable is called a 
+discrete variable. Discrete variables have values that can be counted. 
+ 
+DISCRETE PROBABILTY DISTRIBUTION 
+It consists of the values a random variable can assume and the corresponding 
+probabilities of the value. The probabilities are determined theoretically or by 
+observation. 
+ 
+Example 
+Construct a probability distribution for rolling a single die. 
+Solution 
+
+                                                      33 
+ 
+
+6,5,4,3,2,1S
+ 
+
+6
+1
+6
+6
+1
+5,
+6
+1
+4,
+6
+1
+3,
+6
+1
+2,
+6
+1
+1PandPPPPP
+ 
+So its distribution is 
+Outcome x 1 2 3 4 5 6 
+Probability P(x) 
+6
+1
+ 
+6
+1
+ 
+6
+1
+ 
+6
+1
+ 
+6
+1
+ 
+6
+1
+ 
+ 
+Probability distribution can be shown graphically by representing the values of x 
+on the x-axis and the probabilities P(x) on the y-axis. The graphical representation 
+of the above example is 
+ 
+ 
+           NOTE: In this probability distribution, the probabilities are between 0 and 1  
+            
+
+
+10xXP
+ 
+ 
+REQUIREMENT FOR A PROBABILITY DISTRIBUTION 
+1. The sum of the probabilities of all event in the sample must equal 1; that is 
+
+1)(xXP
+ 
+2. The probabilities of each event in the sample space must be between or equal 
+to 0 and 1. That is 
+1)(0xXP
+ 
+ 
+Example 
+Represent graphically the probability distribution for the sample space for tossing 
+three coins. 
+Number of heads 0 1 2 3 
+Probability P(X=x) 
+8
+1
+ 
+8
+3
+ 
+8
+3
+ 
+8
+1
+ 
+ 
+ 
+ 
+
+                                                      34 
+Solution 
+ 
+ 
+             Example 
+A random variable has the distribution shown in the following table 
+                        
+x 0 1 2 
+P(X=x) 
+4
+1
+ 
+ 
+4
+1
+ 
+(a) Find P(X=1) 
+(b) Represent graphically the probability distribution. 
+Solution 
+(a) P(X=1) = 1 -
+
+
+
+
+
+
+
+4
+1
+4
+1
+ since 
+
+1)(xXP
+ 
+                   =1
+2
+1
+
+ 
+                   =
+2
+1
+ 
+ 
+(b) Probability distribution is 
+ 
+ 
+
+                                                      35 
+ 
+BINOMIAL DISTRIBUTION 
+Many types of probability problems have only two outcomes or can be reduced to 
+two outcomes. Some examples of experiments where you have two outcomes are: 
+1. A win or loss in a football game. 
+2. A pass or fail in an examination. 
+3. A head or tail on a coin toss. 
+4. Effective or ineffective lecturer. 
+5. A correct or incorrect item. 
+Situations like these are called binomial experiments. 
+A binomial experiment is a probability that satisfies the following four 
+requirements; 
+(i) Each trial can have reduced to two outcomes that can be considered as either 
+success or failure. 
+(ii) There must be a fixed number of trials. 
+(iii) The outcome of each trial must be independent of each other. 
+(iv) The probability of success or failure must remain the same for each trial. 
+The outcome of a binomial; experiment and the corresponding probabilities of 
+these outcomes are called a binomial distribution. In a binomial experiment, the 
+probability of exactly x successes in n trials is 
+xnx
+qp
+xxn
+n
+xXP
+
+
+
+
+!)!(
+!
+)(
+ 
+    Where n= number of trials 
+              x= the number of successes in n trial 
+                    NOTE 
+nx0
+    
+                p= the numerical probability of success i.e P(S) 
+                q=The numerical probability of a failure i.e P(F)=1-P(S) 
+NOTE: n!=
+
+123...4(32)1nnnnn
+ 
+             0!=1 
+ 
+Example 
+Find (a) 3! and (b) 5! 
+Solutions  
+(a) 3!= 3x2x1 
+         =6 
+(b) 5!=5x4x3x2x1 
+         =120 
+ 
+Example 
+A survey found that one out of five Malawian say he or she has visited a doctor in 
+any given month. If 10 people are selected at random, find the probability that 
+exactly 3 will have visited a doctor last month. 
+Solution 
+n=10,  x=3,  p=
+5
+1
+ and q=
+)
+5
+1
+1(
+5
+4
+
+ 
+
+                                                      36 
+but  
+xnx
+qp
+xxn
+n
+xXP
+
+
+
+
+!)!(
+!
+)(
+ 
+                         =
+310
+5
+4
+5
+1
+!3)!310(
+!10
+3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+                         =
+73
+5
+4
+5
+1
+123!7
+!78910
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+                         =0.201 
+Example 
+It has been found that an average 5% of the eggs supplied at NRC market are 
+cracked. If you buy a box of 6 eggs what is the probability that it contains 2 or 
+more cracked eggs? 
+Solution 
+P=P(cracked)=0.05, q=P(not cracked)= 1- 0.05(0.95) and n=6 
+P(2 or more cracked)=1-P(less than 2 cracked) 
+                                =1- 
+
+)1()0(PP
+ 
+ 
+ 
+         =
+
+6
+95.01
+!1!6
+!6
+
+
+ 
+         =0.7351 
+
+161
+95.005.0
+!1)!16(
+!6
+)1(
+
+
+
+P
+ 
+        =
+
+5
+95.005.0
+!1!5
+!6
+
+
+ 
+        =
+
+5
+95.005.06
+ 
+        0.2321 
+Therefore P (2 or more cracked)=1-(0.7351+0.2321) 
+                                                   =1-0.9672 
+                                                   =0.033 to 3 d.p 
+For a binomial distribution 
+(a) mean=
+np
+ 
+(b) variance = 
+qpn..
+2
+
+or n.p.(1-p) 
+(c) standard deviation=
+qpn..
+ or 
+
+ppn1..
+ 
+                where n= number of trials 
+      p= P(S) 
+     q=P(F) 
+ 
+Example  
+A die is rolled 480 times. Find the mean, variance and standard deviation of the 
+number of 2 s that will be rolled. 
+Solution 
+
+060
+95.005.0
+!0)!06(
+!6
+)0(
+
+
+
+P
+
+                                                      37 
+Here p=P(2)=
+6
+1
+,so q=1- 
+6
+1
+ 
+                                 =
+6
+5
+  
+n= 480 
+(a) mean= n.p 
+               =480x
+6
+1
+ 
+               =80 
+(b) variance=n.p.q 
+                    =480 x 
+6
+1
+x 
+6
+5
+ 
+                    =66.7 
+(c) standard deviation =
+qpn..
+ 
+                                    =
+7.66
+ 
+                                    =8.2 
+ 
+Example 
+Let X be equal to the number of responses out of n=20 questions and let p equal 
+to the probability of a correct choice on a single question. A candidate in an 
+examination randomly select one of the 5 possible answers for each question and 
+hence that
+5
+1
+p
+. Find the mean, variance and standard deviation for the student 
+Solution 
+Given: n= 20 and 
+5
+1
+p
+. 
+                                        So q= 1-
+5
+1
+ 
+                                                 =
+5
+4
+ 
+(a) mean = n.p 
+               =20 x 
+5
+1
+ 
+               =4 
+(b) variance = n.p.q 
+                    =20 x 
+5
+4
+5
+1
+
+ 
+                    =3.2 
+(c) standard deviation= 
+qpn..
+ 
+                                   =
+2.3
+ 
+                                   =1.8 to 1 decimal place 
+ 
+
+                                                      38 
+POSSION DISTRIBUTION 
+The binomial distribution is useful in cases where we take a fixed sample size and 
+count the number of successes. Sometimes, we don’t have a definite sample size 
+and then the binomial distribution is of no use. In such cases we use another 
+theoretical distribution called the Poisson distribution 
+In a Poisson distribution, the probability of exactly r successes is 
+     
+r
+m
+m
+r
+e
+rP
+!
+)(
+
+
+ 
+               Where m = mean 
+                            r= number of events (successes) 
+                            e= 2.7183 
+ 
+WHEN TO USE THE POISSON DISTRIBUTION 
+(1) When n is large i. very large number of trials n
+30
+ 
+(2) p is small 
+(3) The independent variable occurs over a period of time, or a density of items is 
+distributed over a given area or volume. 
+ 
+Example 
+If there are 200 typographical randomly distributed in a 500 page manuscript, find 
+the probability that a given page contains exactly three errors. 
+Solution 
+Given: r =3 
+    But m= 
+500
+200
+ 
+               =0.4 
+and 
+r
+m
+m
+r
+e
+rP
+!
+)(
+
+
+ 
+        
+3
+4.0
+)4.0(
+!3
+7183.2
+)3(
+
+P
+ 
+                 =
+0072.0
+ 
+ 
+Example 
+A number of accidents per working week in a particular factory in Lilongwe are 
+known to follow a Poisson distribution with a mean 0.5. Find the probability that 
+in a particular week there will be (i) 2 accidents (ii) less than 3 accidents 
+Solution 
+(i) 
+r
+m
+m
+r
+e
+rP
+!
+)(
+
+
+ 
+    
+2
+5.0
+)5.0(
+!2
+7183.2
+)2(
+
+P
+ 
+              =0.08 
+(ii) P(less than 3 accidents)= P(0) +P(1)+P(2) 
+
+                                                      39 
+ 
+
+2
+5.0
+1
+5.0
+0
+5.0
+5.0
+!2
+7183.2
+5.0
+!1
+7183.2
+5.0
+!0
+7183.2
+)3(
+
+accidentsthanlessP
+ 
+                                                =0.6065 
+ 
+NORMAL PROBABILITY DISTRIBUTION 
+A normal distribution is a continuous, unimodal, symmetric bell shaped 
+distribution of a variable. For example 
+ 
+  
+ 
+ 
+PROPERTIES OT THE THEORETICAL NORMAL DISTRIBUTION 
+(i)The curve is bell-shaped 
+(ii) The mean, median and mode are equal and located at the center of the 
+distribution. 
+(iii) The curve is unimodal (has only one mode) 
+(iv) The curve is symmetrical about the mean. What this is that if you cut the 
+normal curve vertically at the centre, the two halves so formed are images of the 
+other. 
+(v) The curve is continuous, that is , there are no gaps or holes. For each value of 
+x, there is a corresponding value of y. 
+(vi) All the values of y are greater than zero and approaches zero as x approaches 
+
+ 
+  (vii) The area between the curve and the x-axis is 1 unit or 100% 
+The standard normal distribution is a normal distribution with a mean of 0 and a 
+standard deviation of 1. All normally distributed variables can be transformed into 
+the standard normally distributed variables by using the formula for the standard 
+score. 
+                      
+
+
+
+X
+Z
+ 
+                 Where Z = Z-score 
+                            X = value 
+                            
+
+ =mean 
+                            
+
+ = standard deviation 
+The Z score is actually the number of standard deviations that a particular X value 
+is away from the mean. 
+ 
+
+                                                      40 
+Example 
+A student scored 65 on a Mathematics test that had a mean of 50 and a standard 
+deviation of 10. Calculate his Z score. 
+Solution 
+    
+
+
+
+X
+Z
+ 
+       
+10
+5065
+
+ 
+        =
+10
+15
+ 
+        =1.5 
+ 
+AREA UNDER THE STANDARD NORMAL CURVE  
+ 
+                   
+ 
+ 
+          NOTE: (i) 
+)(
+1
+z
+Area under the curve between the ordinate at Z and the mean. 
+             (ii) P(x
+1
+ < x < x
+2
+)= Area under the curve between the ordinates 
+)(
+1
+x
+ and 
+)(
+2
+x
+ 
+Example 
+Find the area under the normal curve between Z= 0 and Z= 2.34 
+ 
+Solution 
+ 
+ 
+    Using the normal tables 
+1. Look for 2.3 in the first column 
+2. Look for 0.04 in the second column 
+3. Look for the value where the row of 2.3 and column of 0.04 meet. In 
+other words, they meet at 0.4904. 
+Therefore the area is 0.4904 
+Example  
+
+                                                      41 
+Find the area between Z=0 and Z= -1.75 
+              
+ 
+Since area is always positive then look for 1.75. 
+From the normal tables the area is 0.4599 
+ 
+Example 
+Find the area to the left of Z= -1.93 
+Solution 
+                    
+ 
+Look for 1.93. We get 0.4732 
+Area to the left of Z =-1.93 = 0.5000-Area between Z=0 and Z=-1.93 
+                                            =0.5000-0.4732 
+                                            =0.0268 
+NOTE: Area between Z=0 and 
+
+ is 0.5000 and area between Z=0 and -
+
+ is 0.5000 
+ 
+Example  
+Find the area between Z= 2.00 and Z=2.47 
+ 
+ 
+ 
+Solution 
+ 
+                          
+ 
+First step: Find the area between Z=0 and Z=2.47 i.e. 0.4932 
+Second step: Find the area between Z= 0 and Z=2.000 i.e. 0.4772 
+Third step: Find the difference of the two i.e. 0.4932- 0.4772 
+Therefore, the area is 0.060 
+NOTE: If the area is on the same side of Z=0, subtract the areas. 
+ 
+Example 
+Find the area between Z=1.68 and Z= -37 
+Solution 
+
+                                                      42 
+      
+ 
+First step: Find the area between Z=0 and Z=1.68 i.e. 0.4535 
+Second step: Find the area between Z= 0 and Z=-1.37 i.e. 0.4147 
+Third step: Find the sum of the two i.e. 0.4535 +0.4147 
+Therefore, the area is 0.8682 
+NOTE: If the areas are on opposite sides of Z=0, add the two areas. 
+ 
+NORMAL PROBABILITIES 
+AreazzzPxxxP)()(
+2121
+under the standard normal curve between the 
+ordinates at z
+1
+ and z
+2
+. 
+Example 
+Find the probability for each of the following 
+(a) P(0<z<2.32) 
+(b) P(z<1.65) 
+(c) P(z>1.91) 
+ 
+Solutions 
+ 
+(a) 
+ 
+ 
+ 
+ 
+P(0<z<2.32)= area between z=0 and z=2.32 
+                    =0.4898 (from normal tables) 
+(b) 
+                 
+           P(z<1.65) = area to left of z = 1.65 
+                     =0.5000 +0.4505 
+                     =0.9505 
+ 
+(c)  
+
+                                                      43 
+                
+                P(z>1.91) = area to the right of z = 1.91 
+                           =0.5000 – 0.4719 
+                           =0.0281 
+ 
+Example 
+The washing machine breaks down on average after 300 days, the standard deviation 
+being 50 days. Assume that the times taken for washing machines to breakdown are 
+normally distributed. What is the probability? 
+(a) that a given washing machine will break down in under 320 days? 
+(b) That the washing machine breaks down after more than 363 days? 
+(c) That a given washing machine breaks down somewhat between the 200
+th
+ and the 
+350
+th
+ day? 
+Solutions 
+(a) 
+
+
+
+X
+Z
+ 
+          =
+50
+300320
+ 
+          =0.4 
+P(z<0.4) 
+ 
+                
+ 
+      P(z<0.4)= area to the left of z=0.4 
+              =0.5000 + 0.1554 
+              =0.6554 
+(b) 
+50
+300363
+Z
+ 
+         = 1.26 
+         
+       P(z> 1.26) 
+
+                                                      44 
+      P(z>1.26)= are to the right of z=1.26 
+               =0.5000-0.3962 
+               =0.1038 
+(c) 
+50
+300350
+50
+300200
+21
+
+
+
+ZandZ
+ 
+           =-2                                      =1 
+P(-2<z<1) 
+         
+       P(-2<z<1)=P(2)+P(1) 
+                =0.4772+0.3413 
+                =0.8185 
+ 
+ 
+ 
+TUTORIAL 4: PROBABILITY THEORY 
+1. A bag contains 3 pens, 7 biros and 2 pencils. What is the probability that one 
+object selected at random is a pen? 
+2. Find the probability that a number chosen at random from the integers 
+between 10 and 20 inclusive is either a prime or a multiple of 5. 
+3. Three cards are drawn from an ordinary deck and not replaced. Find the 
+probability of these. 
+(a) Getting 3 jacks 
+(b) Getting an ace, a king and a queen. In order. 
+ 
+4. Determine whether each distribution is a probability distribution. 
+(a)   
+ 
+                          (b) 
+X 3 6 9 12 15 
+P(x) 
+9
+4
+ 
+9
+2
+ 
+9
+1
+ 
+9
+1
+ 
+9
+1
+ 
+(c)  
+X 3 6 8 
+P(x) -0.3 0.6 0.7 
+(d) 
+X 5 10 15 
+P(x) 1.2 0.3 0.5 
+ 
+X 1 3 5 7 9 11 
+P(x) 
+6
+1
+ 
+6
+1
+ 
+6
+1
+ 
+6
+1
+ 
+6
+1
+ 
+6
+1
+ 
+
+                                                      45 
+5. A die is tossed 100 times. Find the mean, variance and standard deviation of 
+the number of 2s that will be rolled. 
+6. The average number of phone inquiries per day at the poison control is four. 
+Find the probability it will receive five calls on a given day. Use Poisson 
+approximation. 
+7. Find the probabilities for each, using the standard normal distribution. 
+(a) P(0<z<1.69) 
+(b) P(-1.57<z<0) 
+(c) P(1.32<z<1.51) 
+(d) P(Z>2.59) 
+(e) P(z<-1.77) 
+(f) P(-0.05<z<1.10) 
+ 
+                 
+TOPIC 5: SAMPLING METHODS AND SAMPLING DISTRIBUTIONS 
+ 
+OBJECTIVES 
+By the end of this topic, you should be able to; 
+(a) State the four basic sampling techniques. 
+(b) Define sampling distribution. 
+(c) Calculate the standard error. 
+(d) Use the central limit theorem to solve problems involving sample means for larger 
+       samples 
+ 
+SAMPLING METHODS 
+To obtain samples that are unbiased i.e. give each subject in the population an equally 
+likely chance of being selected- statisticians use four basic methods of sampling: random. 
+Systematic, stratified and cluster sampling. 
+ 
+(a) RANDOM SAMPLING 
+The word random in statistics means a process by which every available item has an 
+equal chance of being chosen. Therefore, random sampling is a way in which a 
+sample may be obtained according to which each member of a population has an 
+equal chance of being included in the sample. 
+ 
+PROPERTIES OF RANDOM SAMPLING 
+(i) Unbiased: each unit has the same chance of being chosen 
+(ii) Independence: Selection of one unit has no influence of other units. 
+ 
+ADVANTAGES OF RANDOM SAMPLING 
+It always produces an unbiased sample. 
+ 
+DISADANTAGE OF RANDOM SAMPLING 
+ Sampling units may be difficult or expensive to contact. 
+ 
+(b) SYSTEMATIC SAMPLING 
+
+                                                      46 
+It is a sampling procedure that involves starting with a randomly chosen unit and then 
+selecting every k
+th
+ unit thereafter. For example, suppose there were 2000 subjects in 
+the population and a sample of 50 subjects were needed. Since 2000
+
+50 is 40, then 
+k=40 and every 40
+th
+ subject would be selected. However, the first subject (numbered 
+between 1 and 40) would be selected at random. Suppose subject 12 were first 
+selected then the sample would consists of the subjects whose numbers were 12, 52, 
+92, e.t.c. until 50 subjects were obtained. 
+ 
+ADVANTAGES OF SYSTEMATIC METHOD 
+This method is not time consuming. 
+ 
+DISADVANTEGE OF SYSTEMATIC METHOD 
+A major disadvantage occurs if the sampling frame (a list of every unit in the 
+population) is arranged so that sampling units with a particular characteristic occur at 
+regular intervals, causing over or under representation of this characteristic in the 
+sample. 
+ 
+(c) STRATIFIED SAMPLING 
+It is a sampling method/procedure that involves dividing the population into 
+subgroups called strata according to various homogeneous characteristics and 
+then drawing a simple sample from each stratum. 
+There are two types of population; 
+(i) Homogenous population: sampling units are all of the same kind and 
+can reasonably be dealt with in one group. 
+(ii) Heterogeneous population: sampling units are different from one 
+another and should be placed in several separate groups. 
+ 
+       ADVANTAGE OF STRATIFIED SAMPLING 
+       A sample is not distorted or biased by undue emphasis on extreme observations. 
+ 
+ DISADVANTEGES OF STRATIFIED SAMPLING 
+1. It is difficult to define the strata. 
+2. It can be time consuming. 
+3. It can be expensive method.  
+  
+(d) CLUSTER SAMPLING 
+  It is a procedure that involves grouping the population into small groups called 
+clusters and then observing everything in the sampled clusters. 
+ 
+ADVANTAGE OF CLUSTER SAMPLING 
+1. It reduces cost. 
+2. It increases speed in carrying out the survey. 
+ 
+DISADVANTAGES OF CLUSTER SAMPLING 
+The units within the sample may be homogenous. 
+ 
+
+                                                      47 
+SAMPLING DISTRIBUTIONS 
+Suppose a researcher selects 100 samples of a specific size from a large population 
+and computes the mean of the each of the 100 samples. These sample means 
+
+n
+xxxx...,,,
+32
+1
+ constitutes a sampling distribution of sample means. 
+A sampling distribution of a sample means is a distribution obtained by using the 
+means computed from random samples of a specific size taken from a population. 
+Properties of sampling distribution of sample means 
+1. The mean of the sampling distribution will be the same as the population mean.i.e 
+
+
+x
+ 
+2. The standard deviation of the sample means will be smaller than the standard 
+deviation of the population. This is so because the extreme values of 
+
+x
+ must be 
+smaller than the extreme values of x. The standard deviation, 
+
+x
+
+ of  
+
+x
+ depends upon 
+the size of the sample is defined as: 
+n
+x
+
+
+
+ 
+This standard deviation is called the standard error of the mean (SE) i.e. 
+n
+SE
+
+
+ 
+Example 
+What is the standard error for a sample of 100 with a standard deviation of 5? If you 
+increase the sample size to 200, what change on the standard error do you notice? 
+Solution 
+n
+SE
+
+
+ 
+       =
+100
+5
+ 
+       =
+10
+5
+ 
+       =0.5 
+n
+SE
+
+
+ 
+   =
+200
+5
+ 
+   =0.35 
+Observation: The larger the sample the smaller the standard error. 
+ 
+THE CENTRAL LIMIT THEOREM 
+It states that the sample mean 
+
+x
+ of n observations is normally distributed with the 
+mean 
+
+x
+
+ and standard deviation
+n
+x
+
+
+
+. 
+The Z-score can be found by using the following formula; 
+
+                                                      48 
+              
+n
+x
+Z
+
+
+
+
+ 
+NOTE: 
+
+x
+ is the sample mean and the denominator is the standard error of the mean. 
+ 
+Example 
+The final examination scores for MAT at NRC are normally distributed with mean 60 
+and standard deviation 10. A Lecturer teaches one of the sets of MAT and his class 
+has 22 students. What is the probability that the average final examination score for 
+his class is below 55? 
+ 
+ 
+Solution 
+n
+x
+Z
+
+
+
+
+   (Central limit theorem) 
+   =
+22
+10
+6055
+ 
+   =2.35 
+
+35.255
+
+
+
+
+
+
+
+
+zPxP
+ 
+                  = 0.5000 – 0.4906 (from normal tables) 
+                  =0.0094 
+                
+TUTORIAL 5: SAMPLING METHODS AND SAMPLING DISTRIBUTIONS 
+(1) List down four sampling methods, and give an explanation to each one. 
+(2) What is the mean of the sample means? 
+(3) What does the central limit theorem say about the distribution of the sample 
+means? 
+(4) In a sample of 400 people, 175 were males. Find the standard error of the 
+sample proportion. 
+(5) The average age of lawyers is 43.6 years, with a standard deviation of 5.1 years. 
+If a law firm employs 50 lawyers, find the probability that the average age 
+of the group is greater than 44.2 years odd. 
+ 
+ 
+TOPIC 6: HYPOTHESIS TESTING 
+OBJECTIVES 
+By the end of this topic, you should be able to; 
+(a) State the null and alternatives hypothesis. 
+(b) State the five steps used in hypothesis testing. 
+
+                                                      49 
+(c) Explain the relationship between type 1 and type 11 errors. 
+(d) Tests of hypothesis using the normal distribution. 
+(e) Use the one-way ANOVA technique to determine if there is a significant 
+difference among three or more means. 
+ 
+A hypothesis is a statement about the value of a population parameter. An example of a 
+hypothesis is fifty percent of eligible voters are below the age of twenty-five. 
+A statistical hypothesis is a conjecture about a population parameter. This conjecture may 
+or may not be true. 
+There are two types of statistical hypothesis for each situation: the null hypothesis and the 
+alternative hypothesis. 
+ 
+NULL HYPOTHESIS 
+It designated H
+0
+ and read H subzero. 
+It is a statistical hypothesis that states that there is no difference between a parameter and 
+a specific value. 
+H stands for hypothesis and the subscript zero stands for no difference. 
+H
+0
+: 
+
+the value of the population mean given in the problem and it shows that the 
+sample belongs to the population. 
+ 
+ 
+ALTERNATIVE HYPOTHESIS 
+It is symbolized by H
+1
+. 
+It is a statistical hypothesis that states the existence of a difference between a parameter 
+and a specific value. 
+The alternative hypothesis depends on the wording of the problem. The wording can 
+suggest one of the three possible meanings; 
+(a) The sample comes from a population and the mean of which is not equal to 
+
+ . In 
+other words, it may be smaller or larger. Then you take H
+1
+: 
+u
+. 
+For this alternative, you divide the critical region into two equal parts and put one 
+in each tail of the distribution as shown in the following figure. 
+ 
+ 
+This is called a two tailed. 
+(b) The sample comes from the population of the mean of which is larger than u
+0
+. 
+Then you take H
+1
+: u>u
+0
+ and put the whole of the critical region in the right-hand 
+tail of the distribution as shown below. 
+ 
+ 
+
+                                                      50 
+          This is called an right-tail test. 
+(c) The sample comes from a population with u smaller than u
+0
+ so that H
+1
+:u<u
+0
+ and 
+put the whole of the critical region in the left-hand of the distribution as shown 
+below. 
+ 
+ 
+ 
+Example 
+State the null and alternate hypothesis for each conjecture. 
+(a) A researcher thinks that if the expectant mothers use vitamin pills, the birth 
+weight of the babies will increase. The average birth weight of the population is 
+8.6 kg 
+(b) An engineer hypothesizes that the mean number of defects can be decreased in a 
+manufacturing process of compact disks by using robots instead of humans for 
+certain tasks. The mean number of defective disks per 1000 is 18. 
+(c) A Psychogist feels that playing soft music during a test will change the result of 
+the test. The Psychologist is not sure whether the grades will be higher or lower. 
+In the past, the mean of the score was 73. 
+Solutions 
+(a)
+6.8:
+0
+uH
+ 
+     
+6.8:
+1
+uH
+ 
+(b) 
+18:
+0
+uH
+ 
+      
+18:
+1
+uH
+ 
+(c) 
+73:
+1
+uH
+ 
+      
+73:
+0
+uH
+ 
+ 
+POSSIBLE OUTCOMES OF A HYPOTHESIS TEST 
+There are two possibilities for a correct decision and two possibilities for an incorrect 
+decision. There are two types of errors namely: type 1 and type 11. 
+A type 1 error occurs if one rejects the null hypothesis when it is true. A type 11 error 
+occurs if one does not reject the null hypothesis when it is false. 
+ 
+                                     H
+0 
+true                    H
+0 
+false 
+                 Reject H
+0
+ 
+      Do not reject H
+0
+ 
+ 
+ 
+TESTS OF HYPOTHESIS USING THE NORMAL DISTRIBUTION 
+In hypothesis testing, the following steps are recommended; 
+1. State the hypothesis. Be sure to state both the null and alternative hypothesis. 
+2. Stating the level of significance.  
+Error type 1 Correct decision 
+Correct decision Error type 11 
+
+                                                      51 
+The level of significance is the maximum probability of committing a type 1 
+error. 
+The critical region is the range of values of the test value that indicates that there 
+is a significant difference and that the null hypothesis should be rejected. 
+                   
+The shaded part is called critical region and the unshaded area is called noncritical 
+or acceptance region.             
+3. Standardizes x. i.e. 
+
+
+
+X
+Z
+ 
+4. Compare the standardized x to a fixed significance level. 
+5. Make a decision. Here is where you reject the null hypothesis if the standardize x 
+lies in the critical region or accept the null hypothesis if the standardized x lies in 
+the non-critical region. 
+     
+Example 
+A tomato plants all of the same variety have their height measured after a period of 
+growth in a green house. The heights are found to be normally distributed with the 
+mean 83 cm and variance 36 cm
+2
+. A tomato plant found growing outside the green 
+house measures 73.1 cm, after the same period of growth. Does this plant belong to 
+the same variety of tomato plants in the green house? 
+ 
+Solution 
+1. Formulate hypothesis 
+         H
+0
+: u =83 
+         H
+1
+: 
+83u
+               
+2. The level of significance is 5% 0r 0.05. 
+3. Standardize x 
+           
+
+
+
+X
+Z
+ 
+            Z=
+6
+831.73
+ 
+              = -1.65 
+4.  Comparing the standardized x to a significance level 
+-1.65 is between -1.96 and 1.69 
+5.  Make decision 
+  Accept H
+0
+ i.e. Yes it belongs to same variety.    
+ 
+ 
+ 
+ 
+ 
+
+                                                      52 
+Example 
+Over a long period, the weights of pots of jam made by a standard process have been 
+normally distributed with the mean 345g and standard deviation 2.8g. A pot produced 
+just before the process closed for the day weights 338.5g. Is the process working 
+correctly? 
+ 
+Solution 
+1. Formulate hypothesis 
+               H
+0
+: u =345 (yes it is working correctly) 
+               H
+1
+: 
+345u
+                
+2.   Decision rule 5% level of significance 
+ 
+3.   Standardize x 
+                
+               
+8.2
+3455.338
+Z
+ 
+                   = -2.32 
+4. Comparing the standardized x to a significance level 
+-2.32< -1.96 (outside acceptance region) 
+5.     Make decision 
+  Reject H
+0
+. In other words, it is not working correctly. 
+ 
+Example  
+A researcher reports that the average salary of assistant professors is more than K42, 
+000. A sample of 30 assistants’ professors has a mean salary of K43, 260. At 
+05.0
+ test the claim that assistant’s professors earn more than K42000 a month. 
+The standard deviation of the population is K5230. 
+Solution 
+1.  Formulate hypothesis 
+         H
+0
+: u 
+
+K42000 
+         H
+1
+: 
+42000Ku
+                
+2. Decision rule 5% level of significance 
+      
+3. Standardize x 
+           
+n
+x
+Z
+
+
+
+
+
+              (Central limit theorem since n
+30
+) 
+            Z=
+30
+5230
+000,42000,43
+ 
+              = 1.32 
+4.  Comparing the standardized x to a significance level 
+1.32< 1.65(It is not in the acceptance region) 
+5.  Make decision 
+
+                                                      53 
+  Reject H
+0
+. In other words, the assistants’ professors earn not more than K42, 000 
+ 
+For comparison of two variances or standard deviations, an F test is used. 
+2
+2
+2
+1
+s
+s
+F
+, the sampling distribution of the variance is called the F distribution. 
+ 
+CHARACTERISTICS OF THE F DISTRIBUTION 
+1. The value of F cannot be negative, because variances are always positive 
+2. The distribution is positively skewed. 
+3. The mean value of F is approximately equal to 1. 
+ 
+Example 
+Find the critical value for an F tests when
+05.0
+, the degrees of freedom for the 
+numerator are 15 and the degrees of freedom of the denominator are 21. 
+05.0
+  
+Solution 
+Since this test is a right-tailed with
+05.0
+, use the 0.05 tables. The d.f.N is listed on 
+the top, and the d.f. D is listed in the left column. The critical value is found where 
+the row and column intersect in the table. In this case, it is 2.18. See the figure below. 
+ 
+                                        
+05.0
+ 
+ 
+ 
+             
+                                                   d.f.N 
+                     d.f.D    1      2      . . .                      14       15 
+  
+                                  1 
+  
+                                  2 
+                   . 
+                                   . 
+                                20 
+                                21                                                         2.18 
+                                22 
+                . 
+                                   . 
+ 
+ 
+ 
+ 
+ANALYSIS OF VARIANCE (ANOVA) 
+      A statistical technique, which helps in making inference whether three or more 
+      samples might come from populations having the same mean; specifically, whether  
+      the differences among the samples might be caused by chance variation.  
+
+                                                      54 
+ANOVA technique uses two estimates of the population variance; the between-group 
+variance is the variance of the sample means; the within-group variance of the overall 
+variance of all the values. 
+When there is no difference in the means, the between-group variance estimate will 
+be equal to the within-group variance and the F test value will be approximately equal 
+to 1. The null hypothesis will not be rejected. 
+For a test of the difference among three or more means, the following hypothesis 
+should be used. 
+     H
+0
+: u
+1
+=u
+2
+=u
+3
+=...=u
+n
+ 
+     H
+1
+: At least one mean is different from the others. 
+The degree of freedom for this F test is 
+          d.f.N = k-1 where k is the number of groups 
+          d.f.D = N-k where N is the sum of the sample sizes of the groups. 
+The F-test to compare means is always right-tailed. 
+ 
+STEPS TO BE FOLLOWED 
+1. Find the mean and variance of each sample.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+22
+2
+2
+2
+1
+1
+,...,,,,
+k
+k
+sxsxsx
+ 
+2. Find the grand mean. 
+     
+N
+x
+x
+GM
+
+
+
+ 
+3. Find the between-group variance. 
+      
+1
+2
+2
+
+
+
+
+
+
+
+
+
+
+
+k
+xxn
+S
+GMi
+i
+B
+ 
+4. Find the within-group variance. 
+      
+
+
+
+
+
+
+
+1
+1
+2
+2
+i
+ii
+W
+n
+sn
+S
+ 
+5. Find the F-test value 
+     
+2
+2
+W
+B
+S
+S
+F
+ 
+ 
+Example 
+A researcher wishes to try three different techniques to lower the blood pressure of 
+individual diagnosed with high blood pressure. The subjects are randomly assigned to 
+three groups; the first group takes medication, the second group exercises and the 
+third group follows a special diet. After four weeks, the reduction in each person’s 
+blood pressure is recorded. At
+05.0
+, test the claim that there is no difference 
+among the means. The data are shown below. 
+ 
+ 
+ 
+ 
+ 
+
+                                                      55 
+Medication Exercise Diet 
+10 
+12 
+9 
+15 
+13 
+6 
+8 
+3 
+0 
+2 
+5 
+9 
+12 
+8 
+4 
+8.11
+1
+
+
+x
+ 
+8.3
+2
+
+
+x
+ 
+5.7
+3
+
+
+x
+ 
+7.5
+2
+1
+s
+ 
+2.10
+2
+2
+s
+ 
+3.10
+2
+3
+s
+ 
+ 
+Solution 
+1. Formulate hypothesis 
+        H
+0
+: u
+1
+=u
+2
+=u
+3
+=...=u
+n
+ 
+        H
+1
+: At least one mean is different from the others. 
+2. Find the critical value 
+      K = 3 and N = 15 
+      d.f.N= 3-1= 2 
+      d.f.D = N-k= 15-3=12 
+      The critical value is 3.89 (from F distribution table) 
+3. (a) mean and variance of each sample are shown in the table 
+       (b) Find the grand mean 
+            
+N
+x
+x
+GM
+
+
+
+ 
+                
+73.7
+12
+4...086131591210
+
+
+
+ 
+(c) Find the between-group variance, 
+ 
+1
+2
+2
+
+
+
+
+
+
+
+
+
+
+
+k
+xxn
+S
+GMi
+i
+B
+ 
+       
+
+07.80
+2
+13.160
+13
+73.76.7573.78.3573.78.115
+222
+
+
+
+
+
+ 
+(d)  Find the within-group variance. 
+        
+
+
+
+
+
+
+
+1
+1
+2
+2
+i
+ii
+W
+n
+sn
+S
+ 
+
+                                                      56 
+                
+
+
+17.8
+12
+8.104
+151515
+3.10152.10157.515
+222
+
+
+
+
+
+ 
+   (e). Find the F test value 
+              
+2
+2
+W
+B
+S
+S
+F
+ 
+                   
+17.9
+73.8
+07.80
+
+
+      
+4. 3.89< 9.19, reject the null hypothesis 
+5. There is enough evidence to reject the claim and conclude that at least one mean 
+is different from the others. 
+ 
+Example 
+A state employee wishes to see if there is a significant difference in the number of 
+employees at the interchanges of three state toll roads. The data is shown. 
+At
+05.0
+, can it be concluded that there is a significance difference in the average 
+number of employees at each interchange? 
+ 
+Pennsylvance 
+Turnpike 
+Green Bypass 
+Mon-Fayette Expressway 
+Beaker valley 
+Expressway 
+7 
+14 
+32 
+19 
+10 
+11 
+10 
+1 
+1 
+0 
+11 
+1 
+1 
+12 
+1 
+9 
+1 
+11 
+5.15
+1
+
+
+x
+ 
+0.4
+2
+
+
+x
+ 
+8.5
+3
+
+
+x
+ 
+9.81
+2
+1
+s
+ 
+6.25
+2
+2
+s
+ 
+0.29
+2
+3
+s
+ 
+ 
+Solution 
+1. State the hypothesis 
+        H
+0
+: u
+1
+=u
+2
+=u
+3
+=...=u
+n
+ 
+        H
+1
+: At least one mean is different from the others. 
+2.  Find the critical value 
+     K = 3 and N = 18 
+     d.f.N= 3-1= 2 
+     d.f.D = N-k= 18-3=15 
+     The critical value is 3.68 (from F distribution table) 
+2. (a) mean and variance of each sample are shown in the table 
+       (b) Find the grand mean 
+
+                                                      57 
+            
+N
+x
+x
+GM
+
+
+
+ 
+                     
+4.8
+18
+111...111110111011101932147
+
+
+
+ 
+   (c) Find the between-group variance 
+                       
+1
+2
+2
+
+
+
+
+
+
+
+
+
+
+
+k
+xxn
+S
+GMi
+i
+B
+ 
+                            
+
+59.229
+2
+18.459
+13
+4.88.564.80.464.85.156
+222
+
+
+
+
+
+ 
+(d) Find within-group variance 
+          
+
+
+
+
+
+
+
+1
+1
+2
+2
+i
+ii
+W
+n
+sn
+S
+ 
+                
+
+
+5.45
+15
+5.682
+161616
+0.29166.25169.8116
+222
+
+
+
+
+
+ 
+(e) Find the F test value 
+                  
+2
+2
+W
+B
+S
+S
+F
+ 
+                       
+05.5
+5.45
+59.229
+
+
+ 
+4. Make the decision: reject the null hypothesis. 
+5. Summarize the results: There is evidence that there is a difference among the 
+mean. 
+ 
+TUTORIAL 6: HYPOTHESIS TESTING 
+1. Explain the difference between a one-tailed and a two-tailed test. 
+2. State the null and alternative hypothesis for each conjecture, 
+(a) The average age of tax drivers in Lilongwe city 36.6 years. 
+(b) The average pulse rate of a female forest assistant is greater than 72 beats 
+per minute. 
+(c) The average bowling score of people who enrolled in a basic bowling is 
+less than 100. 
+3. List down the five steps a researcher has to follow when testing hypothesis. 
+
+                                                      58 
+4. Experience with a steel-belted radial tire produced rubber tire manufacture 
+indicates that, on average, a tire travels 50,000 km before it needs to be replaced. 
+In an effort to increase the amount of kilometers still further, the tire was 
+redesigned, and other changes were made. Two hundred tires were tested using 
+accelerated-life testing machines. It was found that average number of kilometers 
+traveled was 43,000 km. Using the 0.05 level of significance, ascertain whether 
+there has a significant increase in the mean number of km. 
+(a) State the null hypothesis and alternative hypothesis 
+(b) Is the test being used a one-tailed or two-tailed test? Explain 
+(c) Arrive at your decision. Explain the rationale underling your decision. 
+5. A survey claims that the average cost of a hotel room in Salima is K69.21. To test 
+the claim, a researcher selects a sample of 30 hotel rooms and finds that the 
+average cost is K68.43. The standard deviation of the population is K3.72. At 
+05.0
+, is there enough evidence to reject the claim? 
+6. The lengths (in feet) of a random sample of suspension bridges in the United 
+States, Europe and Asia are shown. At
+05.0
+, is there sufficient evidence to 
+conclude that there is a difference in mean lengths? 
+ 
+United States Europe Asia 
+4260 
+3500 
+2300 
+2000 
+1850 
+5238 
+4626 
+4347 
+3300 
+6529 
+4543 
+3668 
+3379 
+2874 
+ 
+ 
+7. The numbers (in thousands) of farms per state found in three regions of Malawi 
+are listed below. Test the claim at 
+05.0
+ that the mean number of forms is the 
+same across these regions. 
+       
+Northern Malawi Central Malawi Southern Malawi 
+48 
+57 
+24 
+10 
+38 
+95 
+52 
+64 
+64 
+ 
+29 
+40 
+40 
+68 
+TOPIC 7: TEST OF PROPORTIONS (CHI SQUARE TESTING) 
+OBJECTIVES 
+By the end of this topic, you should be able to; 
+(a) Use chi-squared tables 
+(b) Calculate the chi-squared statistic of a sample. 
+(c) State five steps in testing hypothesis using chi-squared test. 
+(d) Test proportions for homogeneity using chi-square. 
+This section explains how to conduct a chi-square test of homogeneity. The test is applied 
+to a single categorical variable from two different populations. It is used to determine 
+whether frequency counts are distributed identically across different populations. 
+
+                                                      59 
+The hypotheses in this case would be 
+                             H
+0
+ : p
+1
+=p
+2
+=p
+3
+=...=p
+n 
+                                          
+ H
+1 
+: At least one proportion is different from the others 
+ 
+Steps to be followed when using Chi Squared Test are as follows: 
+1. Formulate the hypotheses 
+2. Construct a contingency table. 
+    It is made up of R rows and C columns. It should be noted that row and column 
+    headings do not count in determing the number of rows and columns. 
+3. Determine the appropriate number of degrees of freedom (d.f). 
+    The degrees of freedom of any contingency table are (rows – 1) times (columns -1);  
+    that is d.f = (R-1) (C -1) 
+4. Compute the test value. To compute the test value, first find the expected values. For 
+each cell of the contingency table, use the formula 
+                              
+
+totalgrand
+sumcolumnsumrow
+EvalueExpected,
+ 
+    To find the test value, use the formula 
+                           
+
+
+
+
+E
+EO
+X
+2
+2
+ 
+                  Where X
+2
+ =Chi-Square 
+                               O= Observed frequency/ value 
+                                E= Expected frequency/ value 
+5. Make the decision 
+6. Summarize the results 
+ 
+ASSUMPTIONS FOR THE CHI-SQUARE HOMOGENEITY TESTS 
+a. The data are obtained from a random sample 
+b. The expected value in each cell must be 5 or more. 
+ 
+ 
+Example 
+A researcher selected a sample of 150 seniors from each of the three area high schools 
+and asked each senior, do you drive to school; in a car owned by either you or your 
+parents? The data are shown in the table. At 
+
+= 0.05, test the claim that the proportion of 
+students who drive their own or their parents cars is the same at all three schools. 
+ 
+                     School 1                    School 2                School 3       Total 
+        Yes             18                           22                           16               56 
+         No             32                           28                           34               94 
+        Total           50                           50                           50              150 
+     Solution 
+      Step 1     state the hypotheses 
+                     H
+0
+: p
+1
+= p
+2
+= p
+3 
+                     H
+1
+: At least one proportion is different from the others. 
+      Step 2    Construct a contingency table. It is in the question. 
+      Step 3    Degrees of freedom = (2 -1)(3-1)=2 
+
+                                                      60 
+                   The critical value is 5.991 
+      Step 4 Compute the test value 
+                    
+
+totalgrand
+sumcolumnsumrow
+EvalueExpected,
+ 
+                                                       
+67.18
+150
+5056
+1,1
+
+
+E
+, 
+67.18
+150
+5056
+2,1
+
+
+E
+, 
+67.18
+150
+5056
+3,1
+
+
+E
+ 
+                                                       
+33.31
+150
+5094
+1,2
+
+
+E
+, 
+33.31
+150
+5094
+2,2
+
+
+E
+, 
+33.31
+150
+5094
+3,2
+
+
+E
+ 
+                        
+                                But 
+
+
+
+
+E
+EO
+X
+2
+2
+ 
+                                             
+=
+
+33.31
+33.3134
+33.31
+33.3128
+33.31
+33.3132
+67.18
+67.1816
+67.18
+67.1822
+67.18
+67.1818
+222222
+
+
+
+
+
+
+
+
+
+
+
+ 
+                                             =1.596 
+   Step 5 Make decision 
+               The decision is not to reject the null hypotheses (1.596 < 5.991) 
+  Step 6 Summarize the results 
+              The proportions are equal 
+ 
+Example 
+A children’s playground equipment manufacturer read in a survey that 55% of all Malawi 
+playground injuries occur on the monkey bars. The manufacturer wishes to investigate 
+playground injuries in four different parts of the country to determine if the proportions 
+of accidents on the monkey bars are equal. The results are shown here. At 
+
+= 0.05, test 
+the claim that the proportions are equal. 
+ 
+                     Accidents        North       South      East   west 
+          On monkey bars        15              18           13     16 
+         Not on monkey bars   15              12           17     14 
+                          Total          30              30           30     30 
+Solution 
+Step 1 State the hypotheses 
+               H
+0
+: p
+1
+ =p
+2
+ =p
+3
+ =p
+4
+ 
+               H
+i
+: At least one proportion is different from the others 
+ 
+ 
+
+                                                      61 
+Step 2 Construct contingency table 
+                                    Accidents        North       South      East   west  Total 
+                            On monkey bars        15              18           13     16      62 
+                           Not on monkey bars   15              12           17     14      58 
+                                            Total          30              30           30     30      120 
+  Step 3 Degrees of freedom 
+                 d.f = (R-1)(C-1)= (2-1)
+
+(4-1) 
+                                           =3 
+             Therefore, the critical value is 7.81 
+ Step 4 Compute the test value 
+            
+
+totalgrand
+sumcolumnsumrow
+EvalueExpected,
+ 
+5.14
+120
+3058
+,5.14
+120
+3058
+,5.14
+120
+3058
+,5.14
+120
+3058
+5.15
+120
+30120
+,5.15
+120
+3062
+,5.15
+120
+3062
+,5.15
+120
+3062
+4,23,22,21,2
+4,13,12,11,1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+EEEE
+EEEE
+ 
+             
+But  
+
+
+
+
+E
+EO
+X
+2
+2
+ 
+              
+
+5.14
+5.1414
+5.14
+5.1417
+5.14
+5.1412
+5.14
+5.1415
+5.15
+5.1516
+5.15
+5.1513
+5.15
+5.1518
+5.15
+5.1515
+22222222
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+=1.735 
+Step 5 Make decision 
+           The decision is not to reject the null hypothesis 
+Step 6 Summarize the results. 
+       The proportions are equal 
+ 
+TUTORIAL 7: TEST OF PROPORTIONS (CHI_SQUARE TESTING) 
+1. How are the null and alternative hypotheses stated for the test of homogeneity of 
+proportions? 
+2. How are the expected values computed for each cell in the contingency table? 
+3. Calculate the value and give the number of degrees for X
+2
+ for these contingency 
+tables; 
+(a)                     Columns 
+Rows         1     2      3 
+1 35    16   84 
+2 120  92  206 
+(b)                   Columns 
+Rows           1   2    3 
+1 37  34   93 
+2 66  57  113 
+                                        Category 
+
+                                                      62 
+            Population          1     2      3    4 
+                 1                  31    40   17    3 
+                 2                  16    35    22   8 
+4. Test the hypothesis that the proportions is the same for all three age groups 
+                                       Age groups 
+                        25 and under    over 25 and under 50    50 and 0ver   Total 
+      Claim              40                       35                            60                   135 
+      No claim         60                       65                            40                   165 
+             Total            100                     100                           100                  300 
+5. Test the hypothesis that the proportions of individual in categories 1, 2, 3 and 4 
+are the same in populations 1 and 2. 
+                                  Category 
+          Population    1      2      3      4 
+               1            31    40    17      3 
+               2           16     35    22      8 
+ 
+ 
+TOPIC 8: LINEAR REGRESSION AND CORRELATION ANALYSIS 
+OBJECTIVES 
+By the end of this topic, you should be able to; 
+(a) Draw a scatter plot or diagram for a set of ordered pairs. 
+(b) Define the word correlation. 
+(c) State types of correlation. 
+(d) Compute correlation coefficient. 
+(e) Compute the equation of the regression line. 
+(f) Describe how correlation analysis is done. 
+ 
+Thus far, we have discussed statistical problems in which only one variable has been 
+measured. This topic deals with problems in which two variables are measured. Attempts 
+can then be made to discover whether or not there appears to be some form of connection 
+between the two variables. 
+ 
+SCATTER DIAGRAMS 
+Consider the following set of pairs of values 
+   
+x 1 2 3 4 5 6 
+y 2 3.5 3.75 4.0 4.5 5.5 
+These (x, y) pairs of values form an example of a bivariate distribution. When they are 
+plotted on graph paper as shown below, the result is called a scatter diagram, scatter 
+gram, or scatter plot. 
+
+                                                      63 
+ 
+A scatter diagram is a visual way to describe the nature of the relationship between the 
+independent and dependent. 
+ 
+Example 
+The marks of ten candidates in each of two examinations are given below. 
+Examination 
+1 
+8 10 18 23 29 32 35 38 42 48 
+Examination 
+2 
+10 12 20 20 25 30 29 31 36 35 
+Plot this information on a scatter diagram 
+Solution 
+ 
+ 
+
+                                                      64 
+CORRELATION 
+Correlation is a statistics method used to determine whether a relation between variables 
+exists. There are two types of correlations, namely: (a) linear correlation and (b) non-
+linear correlation. 
+ 
+LINEAR CORRELATION 
+The correlation is said to be linear when the relationship between the two variables is 
+linear. In other words, straight lines can represent all the points. There are two types of 
+linear correlations namely; positive and negative correlations. 
+
+                                                      65 
+ 
+POSITIVE LINEAR CORRELATION 
+The points have the appearance of clustering about a line that slopes up to the right. 
+ 
+NEGATIVE LINEAR CORRELATION 
+The points have the appearance of clustering about a line that slopes down to the right. 
+ 
+ 
+ 
+NON-LINEAR CORRELATION 
+Here a straight line cannot represent the points. 
+
+                                                      66 
+ 
+ 
+REGRESSION 
+Once a scatter diagram has been produced, the next problem is to determine the line to 
+which the points approximate. In order to determine the relationship between x and y, we 
+need to know what straight line to draw through the collection of points on the scatter 
+diagram. It will not go through all the points but will lie somewhat in the midst of the 
+collection of points and it will slope in the direction suggested by the points such a line is 
+called a regression line or line of best fit. 
+ 
+There are two methods for drawing a regression line –a graphing method and a 
+mathematical method. 
+ 
+(a) GRAPHICAL METHOD 
+It can be proved that the regression line must pass through 
+
+
+
+
+
+
+
+yx,
+i.e. at the point 
+whose coordinates are the means of x and y values. This point is called the mean 
+value 
+ 
+STEPS TO BE FOLLOWED WHEN USING GRAPHICAL METHOD 
+1. Calculate the means 
+
+x
+ and 
+
+y
+ of the two variables. 
+2. Plot the point corresponding to this pair of values on the scatter diagram. 
+3. Using a ruler, draw a straight line through the mean centre and lying as evenly as 
+you can judge, among the other points on the diagram. 
+ 
+Example 
+The following table gives the marks of eight students in each of two examinations in 
+Mathematics and Statistics. Construct a scatter diagram and draw a line of best fit. 
+Mathematics 39 61 49 64 42 72 52 57 
+statistics 44 62 54 70 46 76 60 64 
+ 
+    Solution 
+
+                                                      67 
+8
+5752724264496139
+
+
+x
+ 
+8
+6460764670546244
+
+
+y
+ 
+ 
+MATHEMATICAL METHOD 
+The equation of a straight line is usually given as y = mx + c where m is the gradient and 
+c is the y-intercept. In statistics, this equation can be written also as 
+y = a + bx  
+      Where a is the y-intercept and b the slope/gradient and it is called the equation of 
+regression line. 
+ If the equation of a regression line is y= mx + c then 
+   
+
+
+
+
+
+
+2
+2
+xxn
+yxxyn
+m
+ ,  
+
+xmyc
+ or 
+n
+xmy
+c
+
+
+
+ 
+  n= number of pairs of readings. 
+m and c are called regression coefficients. The main use of a regression line is to 
+calculate values of the dependent variables not observed in the data set. 
+ 
+Example 
+The following table shows the examination marks in Mathematics and Physics for 11 
+students. 
+Student A B C D E F G H I J 
+Mathematics 21 28 39 49 55 64 68 79 86 94 
+Physics 33 37 43 39 51 51 53 46 59 58 
+1. Plot these results on a graph 
+2. Find a regression line  
+3. Draw the regression line. 
+4. Estimate the Physics mark corresponding to a Mathematics mark of 50. 
+Solutions 
+ 
+8.57
+10
+578
+)(
+
+
+n
+x
+mathsx
+ 
+
+47
+10
+470
+
+
+
+n
+y
+physicsy
+ 
+Therefore, the mean center is (57.8, 47) 
+
+
+
+
+
+
+2
+2
+xxn
+yxxyn
+m
+ 
+
+                                                      68 
+22222222222
+57894867968645549392821(10
+470578)5894598646795368516451553949433937283721(10
+
+
+m
+    
+326.0
+54916
+17890
+3340843890010
+2716602895510
+
+
+
+
+ 
+ 
+      THE CORRELATION COEFFICIENT 
+To measure the strength, or intensity of the correlation in a particular case, we 
+calculate a linear correlation coefficient, which we indicate by the smaller letter r. 
+The formula for a linear correlation coefficient, r is  
+                                
+
+
+
+
+2
+2
+2
+2
+
+
+
+
+
+yynxxn
+yxxyn
+r
+ 
+                                Where n = number of data pairs 
+ 
+STEPS TO BE FOLLOWED WHEN CALCULATING CORRELATION 
+COEFFICIENT. 
+1. Make a table as shown below 
+         
+x y x
+2
+ y
+2 
+xy 
+     
+ 
+2. Find the values of x
+2
+, y
+2
+ and xy and place these values in the corresponding 
+columns of the table.    
+3. Substitute in the formula and solve for r. 
+ 
+Example 
+Suppose we are given the following pairs of x and y 
+    
+x 10 14 7 12 5 6 
+y 5 3 5 2 7 8 
+  Calculate r. 
+Solution 
+x y x
+2
+ y
+2 
+xy 
+10 5 100 25 50 
+14 3 196 8 42 
+7 5 49 25 35 
+12 2 144 4 24 
+5 7 25 49 35 
+6 8 36 64 48 
+
+54x
+ 
+
+30y
+ 
+550
+2
+
+
+x
+ 
+176
+2
+
+
+y
+ 
+
+234xy
+ 
+ 
+
+                                                      69 
+But 
+
+
+
+
+2
+2
+2
+2
+
+
+
+
+
+yynxxn
+yxxyn
+r
+ 
+    
+
+22
+301766545506
+30542346
+
+
+r
+ 
+    
+
+900105629163300
+16201404
+
+
+r
+ 
+     
+59904
+216
+r
+ 
+     
+24475
+216
+r
+ 
+     r = -0.88 to 2 d.p. 
+ 
+Example 
+Compute r for the data obtained in a study of age and systolic blood pressure of six 
+randomly selected subjects. The data are shown in the table below. 
+    
+subject Age x Pressure y 
+A 43 128 
+B 48 120 
+C 56 135 
+D 61 143 
+E 67 141 
+F 70 152 
+ 
+Solution 
+x y x
+2
+ y
+2 
+xy 
+43 128 1849 16384 5504 
+48 120 2304 14400 5760 
+56 135 3136 18225 7560 
+61 143 3721 20449 8723 
+67 141 4489 19881 9447 
+70 152 4900 23881 10640 
+
+345x
+ 
+
+819y
+ 
+
+20399
+2
+x
+ 
+
+112443
+2
+y
+ 
+
+47634xy
+ 
+        Here n =6 and 
+ 
+                
+
+
+
+
+2
+2
+2
+2
+
+
+
+
+
+yynxxn
+yxxyn
+r
+ 
+               
+)8191124436)(345203996(
+819345476346
+22
+
+
+r
+ 
+               r = 0.897 
+
+                                                      70 
+CHARACTERISTICS OF CORRELATION COFFICIENT 
+a. The correlation coefficient is always between -1 and +1 inclusive 
+b. A correlation coefficient of -1.0 occurs when there is perfect negative correlation 
+i.e. all the points lie exactly on a straight line sloping down from left to right. 
+c. A correlation of 0 occurs when there is no correlation. 
+d. A correlation of 1.0 occurs when there is a perfect positive correlation i.e. all the 
+points lie exactly on a straight line sloping upwards from left to right. 
+e. A correlation of between 0 and +1 or 0 and -1.0 indicates that the variables are 
+partially correlated. 
+ 
+CORRELATION ANALYSIS 
+Correlation - an analysis method used to decide whether there is a statistically 
+significant relationship between two variables. 
+ 
+In correlation analysis, you perform the following steps 
+1. Draw the scatter plot for the variables 
+2. Compute the value of the correlation coefficient 
+3. State the hypotheses 
+The hypotheses will be H
+0
+: p=0 means there is a correlation  
+                                   H
+1
+: p
+0
+ means that there is a significant correlation 
+between the variables in the population. 
+ Note: p is called population correlation coefficient. 
+ 
+4. Test the significance of the correlation at the given 
+
+ 
+       NOTES :(a) t test for the correlation coefficiency is 
+                     
+2
+1
+2
+r
+n
+rt
+
+
+
+  with degree of freedom equal to n-2 
+                     (b)  the two tailed critical values are used. These values are found in the   
+                           t distribution tables. 
+5. Give a grief explanation of the type of relationship. 
+ 
+ 
+Example 
+A researcher wishes to determine if a person’s age is related to the number of hours, 
+he or she exercises per week. The data for the sample are shown here. 
+         
+        
+ 
+ 
+(a) Draw the scatter diagram for the variables 
+(b) Compute the value of the correlation coefficient 
+(c) State the hypotheses of the correlation coefficient. 
+(d) Test the significance of the correlation coefficient at 
+05.0
+ 
+(e)  Give a brief explanation of the type of relationship. 
+ 
+   Solution 
+Age x 18 26 32 38 52 59 
+Hours y 10 5 2 3 1.5 1 
+
+                                                      71 
+(a)  
+ 
+ 
+(b)  
+X y x
+2
+ y
+2
+ Xy 
+18 
+26 
+32 
+38 
+52 
+59 
+10 
+5 
+2 
+3 
+1.5 
+1 
+324 
+676 
+1024 
+1444 
+2704 
+3481 
+100 
+25 
+4 
+9 
+2.25 
+1 
+180 
+130 
+64 
+114 
+78 
+59 
+
+225x
+ 
+
+5.22y
+ 
+9653
+2
+
+
+x
+ 
+
+2.141
+2
+y
+ 
+
+625xy
+ 
+ 
+n= 6 
+
+
+
+
+2
+2
+2
+2
+
+
+
+
+
+yynxxn
+yxxyn
+r
+ 
+   
+
+832.0
+25.2488736
+13125
+5.2225.141622596536
+5.222256256
+
+
+
+
+
+
+ 
+(c) Stating hypotheses 
+H
+0
+: p = 0 and H
+1: 
+0p
+ 
+(d) 
+2
+1
+2
+r
+n
+rt
+
+
+
+ 
+
+                                                      72 
+       
+
+999.2
+832.01
+26
+832.0
+2
+
+
+
+
+ 
+Since there are 6 – 2 =4 degree of freedom, so its critical value is 
+78.2
+ 
+(e). There is a significant between a person age and the number of hours he or she 
+exercises. 
+ 
+ 
+TUTORIAL 8: SIMPLE LINEAR REGRESSION AND CORRELATION ANALYSIS 
+      1.   The following table gives the marks of eight students in each of two examinations  
+           in Mathematics and Statistics. Construct a scatter diagram. 
+            Mathematics   39  61  49  64  42  72  52  57 
+            Statistics         44  62  54  70  46  76  60  64 
+2. The I.Q. scores and the corresponding scores in an arithmetic test of ten boys in a   
+     class are shown in the following table: 
+I.Q.                   96  98  104  110  117  123  126  128  130  132 
+Arithmetic test 27  20  50    38    57    68    54    63     78    89 
+(a). Plot this data in a scatter diagram. 
+(b). Calculate the mean I.Q and Arithmetic test 
+(c). Plot mean in the scatter diagram and call it M. 
+(d). Draw the line of best fit passing through M. 
+(e). Calculate the equation of line of best fit. 
+(f). Hence estimate the likely Arithmetic score of 
+      (i). a boy with an I.Q of 112. 
+      (ii).a boy with an I.Q of 140. 
+3. Then number of calories and the number of milligrams of cholesterol for random 
+sample of fast chicken sandwiches from seven restaurants are shown here. 
+ 
+Calories x 390 535 720 300 430 500 440 
+Cholesterol y 43 45 80 50 55 52 60 
+(c) Compute the scatter plot for the variables. 
+(d) Compute the value of the correlation coefficient. 
+(e) State the hypotheses. 
+(f) Test the significance of the correlation at 
+05.0
+ 
+(g) Give a brief explanation of the type of relationship. 
+ 
+ 
+THE BINOMIAL DISTRIBUTION 
+Area between 0 and z 
+ 
+
+                                                      73 
+  0.00  0.01  0.02  0.03  0.04  0.05  0.06  0.07  0.08  0.09  
+0.0 
+0.0000 0.0040 0.0080 0.0120 0.0160 0.0199 0.0239 0.0279 0.0319 0.0359 
+0.1 
+0.0398 0.0438 0.0478 0.0517 0.0557 0.0596 0.0636 0.0675 0.0714 0.0753 
+0.2 
+0.0793 0.0832 0.0871 0.0910 0.0948 0.0987 0.1026 0.1064 0.1103 0.1141 
+0.3 
+0.1179 0.1217 0.1255 0.1293 0.1331 0.1368 0.1406 0.1443 0.1480 0.1517 
+0.4 
+0.1554 0.1591 0.1628 0.1664 0.1700 0.1736 0.1772 0.1808 0.1844 0.1879 
+0.5 
+0.1915 0.1950 0.1985 0.2019 0.2054 0.2088 0.2123 0.2157 0.2190 0.2224 
+0.6 
+0.2257 0.2291 0.2324 0.2357 0.2389 0.2422 0.2454 0.2486 0.2517 0.2549 
+0.7 
+0.2580 0.2611 0.2642 0.2673 0.2704 0.2734 0.2764 0.2794 0.2823 0.2852 
+0.8 
+0.2881 0.2910 0.2939 0.2967 0.2995 0.3023 0.3051 0.3078 0.3106 0.3133 
+0.9 
+0.3159 0.3186 0.3212 0.3238 0.3264 0.3289 0.3315 0.3340 0.3365 0.3389 
+1.0 
+0.3413 0.3438 0.3461 0.3485 0.3508 0.3531 0.3554 0.3577 0.3599 0.3621 
+1.1 
+0.3643 0.3665 0.3686 0.3708 0.3729 0.3749 0.3770 0.3790 0.3810 0.3830 
+1.2 
+0.3849 0.3869 0.3888 0.3907 0.3925 0.3944 0.3962 0.3980 0.3997 0.4015 
+1.3 
+0.4032 0.4049 0.4066 0.4082 0.4099 0.4115 0.4131 0.4147 0.4162 0.4177 
+1.4 
+0.4192 0.4207 0.4222 0.4236 0.4251 0.4265 0.4279 0.4292 0.4306 0.4319 
+1.5 
+0.4332 0.4345 0.4357 0.4370 0.4382 0.4394 0.4406 0.4418 0.4429 0.4441 
+1.6 
+0.4452 0.4463 0.4474 0.4484 0.4495 0.4505 0.4515 0.4525 0.4535 0.4545 
+1.7 
+0.4554 0.4564 0.4573 0.4582 0.4591 0.4599 0.4608 0.4616 0.4625 0.4633 
+1.8 
+0.4641 0.4649 0.4656 0.4664 0.4671 0.4678 0.4686 0.4693 0.4699 0.4706 
+1.9 
+0.4713 0.4719 0.4726 0.4732 0.4738 0.4744 0.4750 0.4756 0.4761 0.4767 
+2.0 
+0.4772 0.4778 0.4783 0.4788 0.4793 0.4798 0.4803 0.4808 0.4812 0.4817 
+2.1 
+0.4821 0.4826 0.4830 0.4834 0.4838 0.4842 0.4846 0.4850 0.4854 0.4857 
+2.2 
+0.4861 0.4864 0.4868 0.4871 0.4875 0.4878 0.4881 0.4884 0.4887 0.4890 
+2.3 
+0.4893 0.4896 0.4898 0.4901 0.4904 0.4906 0.4909 0.4911 0.4913 0.4916 
+2.4 
+0.4918 0.4920 0.4922 0.4925 0.4927 0.4929 0.4931 0.4932 0.4934 0.4936 
+2.5 
+0.4938 0.4940 0.4941 0.4943 0.4945 0.4946 0.4948 0.4949 0.4951 0.4952 
+2.6 
+0.4953 0.4955 0.4956 0.4957 0.4959 0.4960 0.4961 0.4962 0.4963 0.4964 
+2.7 
+0.4965 0.4966 0.4967 0.4968 0.4969 0.4970 0.4971 0.4972 0.4973 0.4974 
+2.8 
+0.4974 0.4975 0.4976 0.4977 0.4977 0.4978 0.4979 0.4979 0.4980 0.4981 
+2.9 
+0.4981 0.4982 0.4982 0.4983 0.4984 0.4984 0.4985 0.4985 0.4986 0.4986 
+3.0 
+0.4987 0.4987 0.4987 0.4988 0.4988 0.4989 0.4989 0.4989 0.4990 0.4990 
+ 
+ 
+
+                                                      74 
+F DISTRIBUTION 
+F Table for alpha=.05 .  
+ 
+ 
+df
+2/
+df
+1 
+1 2  3  4  5  6  7  8  9  10  12  15  20  24  30  40  60  
+12
+0  
+IN
+F  
+1  
+16
+1.4
+47
+6 
+19
+9.5
+00
+0 
+21
+5.7
+07
+3 
+22
+4.5
+83
+2 
+23
+0.1
+61
+9 
+23
+3.9
+86
+0 
+23
+6.7
+68
+4 
+23
+8.8
+82
+7 
+24
+0.5
+43
+3 
+24
+1.8
+81
+7 
+24
+3.9
+06
+0 
+24
+5.9
+49
+9 
+24
+8.0
+13
+1 
+24
+9.0
+51
+8 
+25
+0.0
+95
+1 
+25
+1.1
+43
+2 
+25
+2.1
+95
+7 
+25
+3.2
+52
+9 
+25
+4.3
+14
+4 
+2  
+18.
+51
+28 
+19.
+00
+00 
+19.
+16
+43 
+19.
+24
+68 
+19.
+29
+64 
+19.
+32
+95 
+19.
+35
+32 
+19.
+37
+10 
+19.
+38
+48 
+19.
+39
+59 
+19.
+41
+25 
+19.
+42
+91 
+19.
+44
+58 
+19.
+45
+41 
+19.
+46
+24 
+19.
+47
+07 
+19.
+47
+91 
+19.
+48
+74 
+19.
+49
+57 
+3  
+10.
+12
+80 
+9.5
+52
+1 
+9.2
+76
+6 
+9.1
+17
+2 
+9.0
+13
+5 
+8.9
+40
+6 
+8.8
+86
+7 
+8.8
+45
+2 
+8.8
+12
+3 
+8.7
+85
+5 
+8.7
+44
+6 
+8.7
+02
+9 
+8.6
+60
+2 
+8.6
+38
+5 
+8.6
+16
+6 
+8.5
+94
+4 
+8.5
+72
+0 
+8.5
+49
+4 
+8.5
+26
+4 
+4  
+7.7
+08
+6 
+6.9
+44
+3 
+6.5
+91
+4 
+6.3
+88
+2 
+6.2
+56
+1 
+6.1
+63
+1 
+6.0
+94
+2 
+6.0
+41
+0 
+5.9
+98
+8 
+5.9
+64
+4 
+5.9
+11
+7 
+5.8
+57
+8 
+5.8
+02
+5 
+5.7
+74
+4 
+5.7
+45
+9 
+5.7
+17
+0 
+5.6
+87
+7 
+5.6
+58
+1 
+5.6
+28
+1 
+5  
+6.6
+07
+9 
+5.7
+86
+1 
+5.4
+09
+5 
+5.1
+92
+2 
+5.0
+50
+3 
+4.9
+50
+3 
+4.8
+75
+9 
+4.8
+18
+3 
+4.7
+72
+5 
+4.7
+35
+1 
+4.6
+77
+7 
+4.6
+18
+8 
+4.5
+58
+1 
+4.5
+27
+2 
+4.4
+95
+7 
+4.4
+63
+8 
+4.4
+31
+4 
+4.3
+98
+5 
+4.3
+65
+0 
+  
+6  
+5.9
+87
+4 
+5.1
+43
+3 
+4.7
+57
+1 
+4.5
+33
+7 
+4.3
+87
+4 
+4.2
+83
+9 
+4.2
+06
+7 
+4.1
+46
+8 
+4.0
+99
+0 
+4.0
+60
+0 
+3.9
+99
+9 
+3.9
+38
+1 
+3.8
+74
+2 
+3.8
+41
+5 
+3.8
+08
+2 
+3.7
+74
+3 
+3.7
+39
+8 
+3.7
+04
+7 
+3.6
+68
+9 
+7  
+5.5
+91
+4 
+4.7
+37
+4 
+4.3
+46
+8 
+4.1
+20
+3 
+3.9
+71
+5 
+3.8
+66
+0 
+3.7
+87
+0 
+3.7
+25
+7 
+3.6
+76
+7 
+3.6
+36
+5 
+3.5
+74
+7 
+3.5
+10
+7 
+3.4
+44
+5 
+3.4
+10
+5 
+3.3
+75
+8 
+3.3
+40
+4 
+3.3
+04
+3 
+3.2
+67
+4 
+3.2
+29
+8 
+8  
+5.3
+17
+7 
+4.4
+59
+0 
+4.0
+66
+2 
+3.8
+37
+9 
+3.6
+87
+5 
+3.5
+80
+6 
+3.5
+00
+5 
+3.4
+38
+1 
+3.3
+88
+1 
+3.3
+47
+2 
+3.2
+83
+9 
+3.2
+18
+4 
+3.1
+50
+3 
+3.1
+15
+2 
+3.0
+79
+4 
+3.0
+42
+8 
+3.0
+05
+3 
+2.9
+66
+9 
+2.9
+27
+6 
+9  
+5.1
+17
+4 
+4.2
+56
+5 
+3.8
+62
+5 
+3.6
+33
+1 
+3.4
+81
+7 
+3.3
+73
+8 
+3.2
+92
+7 
+3.2
+29
+6 
+3.1
+78
+9 
+3.1
+37
+3 
+3.0
+72
+9 
+3.0
+06
+1 
+2.9
+36
+5 
+2.9
+00
+5 
+2.8
+63
+7 
+2.8
+25
+9 
+2.7
+87
+2 
+2.7
+47
+5 
+2.7
+06
+7 
+10  
+4.9
+64
+6 
+4.1
+02
+8 
+3.7
+08
+3 
+3.4
+78
+0 
+3.3
+25
+8 
+3.2
+17
+2 
+3.1
+35
+5 
+3.0
+71
+7 
+3.0
+20
+4 
+2.9
+78
+2 
+2.9
+13
+0 
+2.8
+45
+0 
+2.7
+74
+0 
+2.7
+37
+2 
+2.6
+99
+6 
+2.6
+60
+9 
+2.6
+21
+1 
+2.5
+80
+1 
+2.5
+37
+9 
+
+                                                      75 
+  
+11  
+4.8
+44
+3 
+3.9
+82
+3 
+3.5
+87
+4 
+3.3
+56
+7 
+3.2
+03
+9 
+3.0
+94
+6 
+3.0
+12
+3 
+2.9
+48
+0 
+2.8
+96
+2 
+2.8
+53
+6 
+2.7
+87
+6 
+2.7
+18
+6 
+2.6
+46
+4 
+2.6
+09
+0 
+2.5
+70
+5 
+2.5
+30
+9 
+2.4
+90
+1 
+2.4
+48
+0 
+2.4
+04
+5 
+12  
+4.7
+47
+2 
+3.8
+85
+3 
+3.4
+90
+3 
+3.2
+59
+2 
+3.1
+05
+9 
+2.9
+96
+1 
+2.9
+13
+4 
+2.8
+48
+6 
+2.7
+96
+4 
+2.7
+53
+4 
+2.6
+86
+6 
+2.6
+16
+9 
+2.5
+43
+6 
+2.5
+05
+5 
+2.4
+66
+3 
+2.4
+25
+9 
+2.3
+84
+2 
+2.3
+41
+0 
+2.2
+96
+2 
+13  
+4.6
+67
+2 
+3.8
+05
+6 
+3.4
+10
+5 
+3.1
+79
+1 
+3.0
+25
+4 
+2.9
+15
+3 
+2.8
+32
+1 
+2.7
+66
+9 
+2.7
+14
+4 
+2.6
+71
+0 
+2.6
+03
+7 
+2.5
+33
+1 
+2.4
+58
+9 
+2.4
+20
+2 
+2.3
+80
+3 
+2.3
+39
+2 
+2.2
+96
+6 
+2.2
+52
+4 
+2.2
+06
+4 
+14  
+4.6
+00
+1 
+3.7
+38
+9 
+3.3
+43
+9 
+3.1
+12
+2 
+2.9
+58
+2 
+2.8
+47
+7 
+2.7
+64
+2 
+2.6
+98
+7 
+2.6
+45
+8 
+2.6
+02
+2 
+2.5
+34
+2 
+2.4
+63
+0 
+2.3
+87
+9 
+2.3
+48
+7 
+2.3
+08
+2 
+2.2
+66
+4 
+2.2
+22
+9 
+2.1
+77
+8 
+2.1
+30
+7 
+15  
+4.5
+43
+1 
+3.6
+82
+3 
+3.2
+87
+4 
+3.0
+55
+6 
+2.9
+01
+3 
+2.7
+90
+5 
+2.7
+06
+6 
+2.6
+40
+8 
+2.5
+87
+6 
+2.5
+43
+7 
+2.4
+75
+3 
+2.4
+03
+4 
+2.3
+27
+5 
+2.2
+87
+8 
+2.2
+46
+8 
+2.2
+04
+3 
+2.1
+60
+1 
+2.1
+14
+1 
+2.0
+65
+8 
+  
+16  
+4.4
+94
+0 
+3.6
+33
+7 
+3.2
+38
+9 
+3.0
+06
+9 
+2.8
+52
+4 
+2.7
+41
+3 
+2.6
+57
+2 
+2.5
+91
+1 
+2.5
+37
+7 
+2.4
+93
+5 
+2.4
+24
+7 
+2.3
+52
+2 
+2.2
+75
+6 
+2.2
+35
+4 
+2.1
+93
+8 
+2.1
+50
+7 
+2.1
+05
+8 
+2.0
+58
+9 
+2.0
+09
+6 
+17  
+4.4
+51
+3 
+3.5
+91
+5 
+3.1
+96
+8 
+2.9
+64
+7 
+2.8
+10
+0 
+2.6
+98
+7 
+2.6
+14
+3 
+2.5
+48
+0 
+2.4
+94
+3 
+2.4
+49
+9 
+2.3
+80
+7 
+2.3
+07
+7 
+2.2
+30
+4 
+2.1
+89
+8 
+2.1
+47
+7 
+2.1
+04
+0 
+2.0
+58
+4 
+2.0
+10
+7 
+1.9
+60
+4 
+18  
+4.4
+13
+9 
+3.5
+54
+6 
+3.1
+59
+9 
+2.9
+27
+7 
+2.7
+72
+9 
+2.6
+61
+3 
+2.5
+76
+7 
+2.5
+10
+2 
+2.4
+56
+3 
+2.4
+11
+7 
+2.3
+42
+1 
+2.2
+68
+6 
+2.1
+90
+6 
+2.1
+49
+7 
+2.1
+07
+1 
+2.0
+62
+9 
+2.0
+16
+6 
+1.9
+68
+1 
+1.9
+16
+8 
+19  
+4.3
+80
+7 
+3.5
+21
+9 
+3.1
+27
+4 
+2.8
+95
+1 
+2.7
+40
+1 
+2.6
+28
+3 
+2.5
+43
+5 
+2.4
+76
+8 
+2.4
+22
+7 
+2.3
+77
+9 
+2.3
+08
+0 
+2.2
+34
+1 
+2.1
+55
+5 
+2.1
+14
+1 
+2.0
+71
+2 
+2.0
+26
+4 
+1.9
+79
+5 
+1.9
+30
+2 
+1.8
+78
+0 
+20  
+4.3
+51
+2 
+3.4
+92
+8 
+3.0
+98
+4 
+2.8
+66
+1 
+2.7
+10
+9 
+2.5
+99
+0 
+2.5
+14
+0 
+2.4
+47
+1 
+2.3
+92
+8 
+2.3
+47
+9 
+2.2
+77
+6 
+2.2
+03
+3 
+2.1
+24
+2 
+2.0
+82
+5 
+2.0
+39
+1 
+1.9
+93
+8 
+1.9
+46
+4 
+1.8
+96
+3 
+1.8
+43
+2 
+  
+21  
+4.3
+24
+8 
+3.4
+66
+8 
+3.0
+72
+5 
+2.8
+40
+1 
+2.6
+84
+8 
+2.5
+72
+7 
+2.4
+87
+6 
+2.4
+20
+5 
+2.3
+66
+0 
+2.3
+21
+0 
+2.2
+50
+4 
+2.1
+75
+7 
+2.0
+96
+0 
+2.0
+54
+0 
+2.0
+10
+2 
+1.9
+64
+5 
+1.9
+16
+5 
+1.8
+65
+7 
+1.8
+11
+7 
+22  
+4.3
+00
+9 
+3.4
+43
+4 
+3.0
+49
+1 
+2.8
+16
+7 
+2.6
+61
+3 
+2.5
+49
+1 
+2.4
+63
+8 
+2.3
+96
+5 
+2.3
+41
+9 
+2.2
+96
+7 
+2.2
+25
+8 
+2.1
+50
+8 
+2.0
+70
+7 
+2.0
+28
+3 
+1.9
+84
+2 
+1.9
+38
+0 
+1.8
+89
+4 
+1.8
+38
+0 
+1.7
+83
+1 
+23  
+4.2
+79
+3 
+3.4
+22
+1 
+3.0
+28
+0 
+2.7
+95
+5 
+2.6
+40
+0 
+2.5
+27
+7 
+2.4
+42
+2 
+2.3
+74
+8 
+2.3
+20
+1 
+2.2
+74
+7 
+2.2
+03
+6 
+2.1
+28
+2 
+2.0
+47
+6 
+2.0
+05
+0 
+1.9
+60
+5 
+1.9
+13
+9 
+1.8
+64
+8 
+1.8
+12
+8 
+1.7
+57
+0 
+
+                                                      76 
+24  
+4.2
+59
+7 
+3.4
+02
+8 
+3.0
+08
+8 
+2.7
+76
+3 
+2.6
+20
+7 
+2.5
+08
+2 
+2.4
+22
+6 
+2.3
+55
+1 
+2.3
+00
+2 
+2.2
+54
+7 
+2.1
+83
+4 
+2.1
+07
+7 
+2.0
+26
+7 
+1.9
+83
+8 
+1.9
+39
+0 
+1.8
+92
+0 
+1.8
+42
+4 
+1.7
+89
+6 
+1.7
+33
+0 
+25  
+4.2
+41
+7 
+3.3
+85
+2 
+2.9
+91
+2 
+2.7
+58
+7 
+2.6
+03
+0 
+2.4
+90
+4 
+2.4
+04
+7 
+2.3
+37
+1 
+2.2
+82
+1 
+2.2
+36
+5 
+2.1
+64
+9 
+2.0
+88
+9 
+2.0
+07
+5 
+1.9
+64
+3 
+1.9
+19
+2 
+1.8
+71
+8 
+1.8
+21
+7 
+1.7
+68
+4 
+1.7
+11
+0 
+  
+26  
+4.2
+25
+2 
+3.3
+69
+0 
+2.9
+75
+2 
+2.7
+42
+6 
+2.5
+86
+8 
+2.4
+74
+1 
+2.3
+88
+3 
+2.3
+20
+5 
+2.2
+65
+5 
+2.2
+19
+7 
+2.1
+47
+9 
+2.0
+71
+6 
+1.9
+89
+8 
+1.9
+46
+4 
+1.9
+01
+0 
+1.8
+53
+3 
+1.8
+02
+7 
+1.7
+48
+8 
+1.6
+90
+6 
+27  
+4.2
+10
+0 
+3.3
+54
+1 
+2.9
+60
+4 
+2.7
+27
+8 
+2.5
+71
+9 
+2.4
+59
+1 
+2.3
+73
+2 
+2.3
+05
+3 
+2.2
+50
+1 
+2.2
+04
+3 
+2.1
+32
+3 
+2.0
+55
+8 
+1.9
+73
+6 
+1.9
+29
+9 
+1.8
+84
+2 
+1.8
+36
+1 
+1.7
+85
+1 
+1.7
+30
+6 
+1.6
+71
+7 
+28  
+4.1
+96
+0 
+3.3
+40
+4 
+2.9
+46
+7 
+2.7
+14
+1 
+2.5
+58
+1 
+2.4
+45
+3 
+2.3
+59
+3 
+2.2
+91
+3 
+2.2
+36
+0 
+2.1
+90
+0 
+2.1
+17
+9 
+2.0
+41
+1 
+1.9
+58
+6 
+1.9
+14
+7 
+1.8
+68
+7 
+1.8
+20
+3 
+1.7
+68
+9 
+1.7
+13
+8 
+1.6
+54
+1 
+29  
+4.1
+83
+0 
+3.3
+27
+7 
+2.9
+34
+0 
+2.7
+01
+4 
+2.5
+45
+4 
+2.4
+32
+4 
+2.3
+46
+3 
+2.2
+78
+3 
+2.2
+22
+9 
+2.1
+76
+8 
+2.1
+04
+5 
+2.0
+27
+5 
+1.9
+44
+6 
+1.9
+00
+5 
+1.8
+54
+3 
+1.8
+05
+5 
+1.7
+53
+7 
+1.6
+98
+1 
+1.6
+37
+6 
+30  
+4.1
+70
+9 
+3.3
+15
+8 
+2.9
+22
+3 
+2.6
+89
+6 
+2.5
+33
+6 
+2.4
+20
+5 
+2.3
+34
+3 
+2.2
+66
+2 
+2.2
+10
+7 
+2.1
+64
+6 
+2.0
+92
+1 
+2.0
+14
+8 
+1.9
+31
+7 
+1.8
+87
+4 
+1.8
+40
+9 
+1.7
+91
+8 
+1.7
+39
+6 
+1.6
+83
+5 
+1.6
+22
+3 
+  
+40  
+4.0
+84
+7 
+3.2
+31
+7 
+2.8
+38
+7 
+2.6
+06
+0 
+2.4
+49
+5 
+2.3
+35
+9 
+2.2
+49
+0 
+2.1
+80
+2 
+2.1
+24
+0 
+2.0
+77
+2 
+2.0
+03
+5 
+1.9
+24
+5 
+1.8
+38
+9 
+1.7
+92
+9 
+1.7
+44
+4 
+1.6
+92
+8 
+1.6
+37
+3 
+1.5
+76
+6 
+1.5
+08
+9 
+60  
+4.0
+01
+2 
+3.1
+50
+4 
+2.7
+58
+1 
+2.5
+25
+2 
+2.3
+68
+3 
+2.2
+54
+1 
+2.1
+66
+5 
+2.0
+97
+0 
+2.0
+40
+1 
+1.9
+92
+6 
+1.9
+17
+4 
+1.8
+36
+4 
+1.7
+48
+0 
+1.7
+00
+1 
+1.6
+49
+1 
+1.5
+94
+3 
+1.5
+34
+3 
+1.4
+67
+3 
+1.3
+89
+3 
+12
+0 
+3.9
+20
+1 
+3.0
+71
+8 
+2.6
+80
+2 
+2.4
+47
+2 
+2.2
+89
+9 
+2.1
+75
+0 
+2.0
+86
+8 
+2.0
+16
+4 
+1.9
+58
+8 
+1.9
+10
+5 
+1.8
+33
+7 
+1.7
+50
+5 
+1.6
+58
+7 
+1.6
+08
+4 
+1.5
+54
+3 
+1.4
+95
+2 
+1.4
+29
+0 
+1.3
+51
+9 
+1.2
+53
+9 
+in
+f 
+3.8
+41
+5 
+2.9
+95
+7 
+2.6
+04
+9 
+2.3
+71
+9 
+2.2
+14
+1 
+2.0
+98
+6 
+2.0
+09
+6 
+1.9
+38
+4 
+1.8
+79
+9 
+1.8
+30
+7 
+1.7
+52
+2 
+1.6
+66
+4 
+1.5
+70
+5 
+1.5
+17
+3 
+1.4
+59
+1 
+1.3
+94
+0 
+1.3
+18
+0 
+1.2
+21
+4 
+1.0
+00
+0 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+                                                      77 
+Right tail areas for the Chi-square Distribution 
+ 
+df\a
+rea 
+.995  .990  .975  .950  .900  .750  .500  .250  .100  .050  .025  .010  .005  
+1  
+0.000
+04 
+0.000
+16 
+0.000
+98 
+0.003
+93 
+0.015
+79 
+0.101
+53 
+0.454
+94 
+1.323
+30 
+2.705
+54 
+3.841
+46 
+5.023
+89 
+6.634
+90 
+7.879
+44 
+2  
+0.010
+03 
+0.020
+10 
+0.050
+64 
+0.102
+59 
+0.210
+72 
+0.575
+36 
+1.386
+29 
+2.772
+59 
+4.605
+17 
+5.991
+46 
+7.377
+76 
+9.210
+34 
+10.59
+663 
+3  
+0.071
+72 
+0.114
+83 
+0.215
+80 
+0.351
+85 
+0.584
+37 
+1.212
+53 
+2.365
+97 
+4.108
+34 
+6.251
+39 
+7.814
+73 
+9.348
+40 
+11.34
+487 
+12.83
+816 
+4  
+0.206
+99 
+0.297
+11 
+0.484
+42 
+0.710
+72 
+1.063
+62 
+1.922
+56 
+3.356
+69 
+5.385
+27 
+7.779
+44 
+9.487
+73 
+11.14
+329 
+13.27
+670 
+14.86
+026 
+5  
+0.411
+74 
+0.554
+30 
+0.831
+21 
+1.145
+48 
+1.610
+31 
+2.674
+60 
+4.351
+46 
+6.625
+68 
+9.236
+36 
+11.07
+050 
+12.83
+250 
+15.08
+627 
+16.74
+960 
+  
+6  
+0.675
+73 
+0.872
+09 
+1.237
+34 
+1.635
+38 
+2.204
+13 
+3.454
+60 
+5.348
+12 
+7.840
+80 
+10.64
+464 
+12.59
+159 
+14.44
+938 
+16.81
+189 
+18.54
+758 
+7  
+0.989
+26 
+1.239
+04 
+1.689
+87 
+2.167
+35 
+2.833
+11 
+4.254
+85 
+6.345
+81 
+9.037
+15 
+12.01
+704 
+14.06
+714 
+16.01
+276 
+18.47
+531 
+20.27
+774 
+8  
+1.344
+41 
+1.646
+50 
+2.179
+73 
+2.732
+64 
+3.489
+54 
+5.070
+64 
+7.344
+12 
+10.21
+885 
+13.36
+157 
+15.50
+731 
+17.53
+455 
+20.09
+024 
+21.95
+495 
+9  
+1.734
+93 
+2.087
+90 
+2.700
+39 
+3.325
+11 
+4.168
+16 
+5.898
+83 
+8.342
+83 
+11.38
+875 
+14.68
+366 
+16.91
+898 
+19.02
+277 
+21.66
+599 
+23.58
+935 
+10 
+2.155
+86 
+2.558
+21 
+3.246
+97 
+3.940
+30 
+4.865
+18 
+6.737
+20 
+9.341
+82 
+12.54
+886 
+15.98
+718 
+18.30
+704 
+20.48
+318 
+23.20
+925 
+25.18
+818 
+  
+11 
+2.603
+22 
+3.053
+48 
+3.815
+75 
+4.574
+81 
+5.577
+78 
+7.584
+14 
+10.34
+100 
+13.70
+069 
+17.27
+501 
+19.67
+514 
+21.92
+005 
+24.72
+497 
+26.75
+685 
+12 
+3.073
+82 
+3.570
+57 
+4.403
+79 
+5.226
+03 
+6.303
+80 
+8.438
+42 
+11.34
+032 
+14.84
+540 
+18.54
+935 
+21.02
+607 
+23.33
+666 
+26.21
+697 
+28.29
+952 
+13 
+3.565
+03 
+4.106
+92 
+5.008
+75 
+5.891
+86 
+7.041
+50 
+9.299
+07 
+12.33
+976 
+15.98
+391 
+19.81
+193 
+22.36
+203 
+24.73
+560 
+27.68
+825 
+29.81
+947 
+14 
+4.074
+67 
+4.660
+43 
+5.628
+73 
+6.570
+63 
+7.789
+53 
+10.16
+531 
+13.33
+927 
+17.11
+693 
+21.06
+414 
+23.68
+479 
+26.11
+895 
+29.14
+124 
+31.31
+935 
+15 
+4.6005.2296.2627.2608.54611.0314.3318.2422.3024.9927.4830.5732.80
+
+                                                      78 
+92 35 14 94 76 654 886 509 713 579 839 791 132 
+  
+16 
+5.142
+21 
+5.812
+21 
+6.907
+66 
+7.961
+65 
+9.312
+24 
+11.91
+222 
+15.33
+850 
+19.36
+886 
+23.54
+183 
+26.29
+623 
+28.84
+535 
+31.99
+993 
+34.26
+719 
+17 
+5.697
+22 
+6.407
+76 
+7.564
+19 
+8.671
+76 
+10.08
+519 
+12.79
+193 
+16.33
+818 
+20.48
+868 
+24.76
+904 
+27.58
+711 
+30.19
+101 
+33.40
+866 
+35.71
+847 
+18 
+6.264
+80 
+7.014
+91 
+8.230
+75 
+9.390
+46 
+10.86
+494 
+13.67
+529 
+17.33
+790 
+21.60
+489 
+25.98
+942 
+28.86
+930 
+31.52
+638 
+34.80
+531 
+37.15
+645 
+19 
+6.843
+97 
+7.632
+73 
+8.906
+52 
+10.11
+701 
+11.65
+091 
+14.56
+200 
+18.33
+765 
+22.71
+781 
+27.20
+357 
+30.14
+353 
+32.85
+233 
+36.19
+087 
+38.58
+226 
+20 
+7.433
+84 
+8.260
+40 
+9.590
+78 
+10.85
+081 
+12.44
+261 
+15.45
+177 
+19.33
+743 
+23.82
+769 
+28.41
+198 
+31.41
+043 
+34.16
+961 
+37.56
+623 
+39.99
+685 
+  
+21 
+8.033
+65 
+8.897
+20 
+10.28
+290 
+11.59
+131 
+13.23
+960 
+16.34
+438 
+20.33
+723 
+24.93
+478 
+29.61
+509 
+32.67
+057 
+35.47
+888 
+38.93
+217 
+41.40
+106 
+22 
+8.642
+72 
+9.542
+49 
+10.98
+232 
+12.33
+801 
+14.04
+149 
+17.23
+962 
+21.33
+704 
+26.03
+927 
+30.81
+328 
+33.92
+444 
+36.78
+071 
+40.28
+936 
+42.79
+565 
+23 
+9.260
+42 
+10.19
+572 
+11.68
+855 
+13.09
+051 
+14.84
+796 
+18.13
+730 
+22.33
+688 
+27.14
+134 
+32.00
+690 
+35.17
+246 
+38.07
+563 
+41.63
+840 
+44.18
+128 
+24 
+9.886
+23 
+10.85
+636 
+12.40
+115 
+13.84
+843 
+15.65
+868 
+19.03
+725 
+23.33
+673 
+28.24
+115 
+33.19
+624 
+36.41
+503 
+39.36
+408 
+42.97
+982 
+45.55
+851 
+25 
+10.51
+965 
+11.52
+398 
+13.11
+972 
+14.61
+141 
+16.47
+341 
+19.93
+934 
+24.33
+659 
+29.33
+885 
+34.38
+159 
+37.65
+248 
+40.64
+647 
+44.31
+410 
+46.92
+789 
+  
+26 
+11.16
+024 
+12.19
+815 
+13.84
+390 
+15.37
+916 
+17.29
+188 
+20.84
+343 
+25.33
+646 
+30.43
+457 
+35.56
+317 
+38.88
+514 
+41.92
+317 
+45.64
+168 
+48.28
+988 
+27 
+11.80
+759 
+12.87
+850 
+14.57
+338 
+16.15
+140 
+18.11
+390 
+21.74
+940 
+26.33
+634 
+31.52
+841 
+36.74
+122 
+40.11
+327 
+43.19
+451 
+46.96
+294 
+49.64
+492 
+28 
+12.46
+134 
+13.56
+471 
+15.30
+786 
+16.92
+788 
+18.93
+924 
+22.65
+716 
+27.33
+623 
+32.62
+049 
+37.91
+592 
+41.33
+714 
+44.46
+079 
+48.27
+824 
+50.99
+338 
+29 
+13.12
+115 
+14.25
+645 
+16.04
+707 
+17.70
+837 
+19.76
+774 
+23.56
+659 
+28.33
+613 
+33.71
+091 
+39.08
+747 
+42.55
+697 
+45.72
+229 
+49.58
+788 
+52.33
+562 
+30 
+13.78
+672 
+14.95
+346 
+16.79
+077 
+18.49
+266 
+20.59
+923 
+24.47
+761 
+29.33
+603 
+34.79
+974 
+40.25
+602 
+43.77
+297 
+46.97
+924 
+50.89
+218 
+53.67
+196 
+ 
+To index  
+
+                                                      79 
+The table should include values for p=0.1 so that a one-tailed test can be conducted at the 
+p=0.05 level, but we never do such tests in my class, so why clutter up the table? 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+                                                      80 
+REFERENCES 
+Bluman, A.G (2001). Elementary Statistics: A Step by Step Approach. New-York, 
+McGraw-Hill 
+Clarke, G.M. and Cooke,D.(1991). A Basic Course in Statistics. London: Edward Arnold. 
+Mendenhall, W; beaver, R.J; Beaver, B.M(2006). Introduction to Probability and 
+Statistics. 12
+th 
+Edition, Thomson Books/Cole, Belmont. 
+Saiti F.G. (2003). Mathematics, Module 9: Statistics 11. Domasi College of Education. 
+  

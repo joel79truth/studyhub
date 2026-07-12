@@ -1,0 +1,226 @@
+
+
+
+
+1. Randomized Complete Design (RCD)
+•Used when we are interested in comparing treatments (ie
+there could be four treatments; t = 4) so that for each of the 
+treatment we obtain a sample of observations.
+•Concerned with the comparison of treatment means: μ1, 
+μ2.......... μt (μ = mean)
+•The objective of the experiment is to make inferences about 
+the corresponding treatments.
+•This design assumes that there is only one factor that can 
+affect the results(not always true but will see later).
+•Uses one-way ANOVA
+•That factor is the treatment under study.
+
+Analysis of Variance (ANOVA) for CRD
+SourceSSdfMSF
+TreatmentsSSTt-1MST =SST/(t-1)MST/MSE
+ErrorSSEN-tMSE = SSE/(N-t)
+TotalTSSN-1
+TSS =  ∑푖푗(푦푖푗−ȳ..)2 
+SST = 푛∑(ȳi.− ȳ..)2
+SSE = TSS –SST ; 
+where 푦푖푗= individual observations, ȳi.= treatment mean; ȳ.. = grand mean
+
+Example
+•NRC forth year Food Technology students developed four different 
+biscuits that provide vitamin A. The biscuits were given to 16 people 
+for 6 months and thereafter the blood vitamin A levels of the 
+participants were measured and results presented in table below. Is 
+there evidence at α = 0.05 that the four biscuits provide different 
+vitamin A contents? Which of the biscuits increased blood vitamin A 
+level?
+ 
+푦푖푗 
+
+Questions to consider
+•Develop the H0 :hypothesis for this experiment
+•What is your conclusion? (Do you reject or fail to reject the H0) 
+•Explain your conclusion to a layman (who is not a statistician).
+•H
+0
+: mean1 = mean2 = mean3 = mean 4,  versus H
+a
+: Not all 
+means are equal
+•H
+0
+: μ
+1 
+≠μ
+2 
+≠μ
+3 
+≠μ
+4 
+versus H
+a
+: Not all μ
+i
+’s are equal
+
+ 
+푦푖푗 
+TSS =  ∑푖푗(푦푖푗−ȳ..)2  
+SST = 푛∑(ȳi.− ȳ..)2
+SSE = TSS –SST ; 
+where 푦푖푗= individual observations, ȳi.= treatment mean; ȳ.. = grand mean
+H
+0
+: μ
+1 
+= μ
+2 
+= μ
+3 
+= μ
+4 
+versus H
+a
+: Not all μ
+i
+’s are equal 
+TSS = 
+푖푗
+(푦푖푗−ȳ..)
+2 
+= (28-25)
+2 
++ (35 -25)
+2 
++......(18-25)
+2 
+= 692
+SST = 푛(ȳ
+i. 
+− ȳ..)
+2 
+= 4 [(27.75-25)
+2 
++ (25-25)
+2 
++ (27-25)
+2 
++ (20.25-25)
+2
+] =   136.5
+SSE = TSS –SST = 692 –136.5 = 555.5
+ȳ.. =
+
+•Critical F-value (F
+3,12
+) = 3.49 
+•0.98 < 3.49 we fail to reject H
+0. 
+There is no significant difference 
+between the mean values. Therefore we can confidently 
+conclude that all four biscuits provide the same amount of 
+vitamin A.
+345.50.98
+555.51246.29
+15
+SourceSSdfMSF
+Treatments136.5
+Error
+Total692
+
+Advantages of CRD
+•The design is completely easy to construct
+•The design is easy to analyze even though the sample sizes 
+might not be the same for each treatment.
+•The design can be used for any number of treatments
+Disadvantages of CRD
+•Best suited for situation in which there are relatively few 
+treatments, though can be used for any number of treatments
+•The experimental units to which treatment are applied might be 
+as homogenous as possible. Any extraneous sources of 
+variability will tend to inflate the error term, making it more 
+difficult to detect differences among the treatment means.
+
+Assignment 4: CRD
+NRC Soya yoghurt is a touted as a low glycemic food. The study 
+was designed to validate this claim by comparing it to other yoghurt 
+currently sold on the market and data is presented in the table 
+below. Each yogurt was given to four people and postprandial blood 
+glucose levels were measured after 2 hours. Which of the four 
+yoghurts has low glycemic index? Does the data support the claim? 
+Why?
+Yoghurt Type 
+ 
+Observations 
+ 
+1 2 3 4 
+NRC Yoghurt 98 97 99 96 
+LL Dairy Yoghurt 91 90 93 92 
+Suncrest Yoghurt 96 95 97 95 
+Ching’ombe 
+Yoghurt 
+95 96 99 98 
+ 
+
+Example:
+•A new experiment was evaluated at four rates of nitrogen 
+fertilizer to determine the plant height. Which fertilizer level(s) 
+resulted in significantly greater height?
+Fertilize levelMeans
+030282728.3
+2033373234
+4039373537
+6040383437.3
+156.33352.119.22
+45.2785.65
+201.611
+SourceSSdfMSF
+Treatments
+Error
+Total
+Tabulated F-value = 8.845
+Calculated F-value = 9.22
+
+Comparing pairs of treatment means (separating 
+means)
+•We determine which means differ by testing the difference between 
+all pairs of treatment means.
+•So far we have achieve to find whether different factors have an 
+effect on the response variable.
+•We do not know which factor (out of many factors or treatments 
+observed) has an effect. In many cases there may be only one factor 
+that may be significant that the ANOVA table is telling but we do not 
+know.
+•Separation of means will identify which factor(s) is(are) significant.
+•There are a lot of test you can use but for this class we are going to 
+use only two; Tukey’s test, Least Significant Difference (LSD) 
+test.
+
+Tukey’s test
+
+Least Significant Difference (LSD) test.
+Use LSD to 
+separate means from the example above
+ 
+LSD =t
+α/2, N
+-
+a
+ 
+t= t
+-
+distribution
+ 
+N = total number of 
+observation a = treatments 
+Note: 
+ 
+•
+ 
+LSD is more liberal while Turkeys is more conservative.
+ 
+•
+ 
+With LSD you are more likely to find significant differences 
+because the critical difference is small (0.914) than with Tukeys 
+(1.19)
+ 

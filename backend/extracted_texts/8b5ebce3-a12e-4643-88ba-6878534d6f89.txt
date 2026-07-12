@@ -1,0 +1,377 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CationExchange Capacity (CEC)
+Clay Particles and Humus
+-affect chemical properties of soil
+-complex structures with many negative charge 
+sites
+-negative charge sites attract positive ions 
+called cations
+
+Negative charge sites are referred to as . . .
+Cation exchange sites
++ attract cations from soil solution+ 
+CEC
+
+Force of attraction is called:
+Adsorption
+similar to force of a magnet holding iron filings
+CEC
+
+ADSORPTION
+
+Cations can move on and off particles . . .
+when one leaves, another replaces it
+This process is called cation exchange, and 
+cations involved are said to be exchangeable
+CEC
+
+The number of sites that a colloid(small 
+particle) of charged clay or humus (micelles) 
+contains is measured by the:
+Cation Exchange Capacityexpressed in 
+mEq/100g (older unit) or cmolc/kg
+CEC
+
+may range from:
+2.0 mEq/100g for sand
+to
+> 50 mEq/100g for some clays
+and
+humus 100-300 mEq/100g
+under certain soil conditions
+CEC
+
+How fertile can a soil be?
+Does applying more fertilizer always provide 
+more nutrients to plants?
+How much of the CEC is actually filled with 
+cations?
+CEC
+
+TheCationexchangecapacityofasoilisa
+measurementofitsabilitytobindorhold
+exchangeablecations.Inotherwords,itisa
+measureofthenumberofnegatively-charged
+bindingsitesinthesoil.
+Cations exchange Capacity(CEC)
+
+
+
+
+
+Milli-equivalents (Meq.) of Selected Cations 
+and Their Equivalent ppm
+Cation
+Atomic 
+Weight
+Valence
+Milli-
+equivalents
+Equivalent
+ppmLbs/acre
+H
++
+1111020
+Ca
+++
+40220200400
+Mg
+++
+24212120240
+K
++
+39139390780
+NH
+4
++
+18118180360
+Al
++++
+273990180
+Zn
+++
+65232.5325650
+Mn
+++
+55227.5275550
+Fe
+++
+56228280560
+Cu
+++
+64232320640
+Na
++
+23123230460
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Cation Exchange is determined by:
+1) strength of adsorption
+2) law of mass
+CEC
+
+
+
+
+
+Strength of adsorption is as follows:
+H
++
+and Al
+3+ 
+> Ca
+2+ 
+>Mg
+2+ 
+> K
++ 
+>NH
+4+
+> Na
++
+CEC
+
+
+
+
+
+
+
+Law of Mass
+the more of one ion available,
+the greater the chance of adsorption
+CEC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The proportion of the CEC occupied by basic 
+(+) nutrients such as Ca, Mg, K, Na, is called:
+Percent Base Saturation and is an indication of 
+the potential CEC of a given soil
+CEC
+
+Estimations that > 99% of cations in soil solution 
+are adsorbed . . .
+does notmean that percent base saturationis 
+99%
+CEC
+
+Example:
+A soil with CEC of 10 mEq/100g has 6 mEq/100g of 
+bases (Ca, Mg, K, Na) occupying exchange sites
+What is the percent base saturationof the soil?
+CEC
+
+CEC
+6 mEq/100g bases
+10 mEq/100g sites
+=  60 % base saturation
+
+CEC can give insight into soil quality and site 
+characteristics.
+Higher CEC likely indicates more clay, poor internal 
+drainage, limited structure and soil compaction in high 
+traffic areas.
+Low CEC is indicative of sandy textured soils prone to 
+drought that invariably needs more organic matter to 
+improve water holding capacity, but have open grainy 
+structure that resist compaction.
+CEC and Soil fertility 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Trends in soil pH
+as soils age by weathering and leaching, they tend to 
+become more acidic
+primary minerals that release alkaline materials are 
+replaced by neutral or slightly acidic secondary minerals
+leaching removes the carbonate minerals
+weathering occurs from the surface downwards so that 
+the A and B horizons will tend to be more acidic than 
+the C horizon
+
+Soil Analysis Ch574
+Significance of soil pH
+nutrient availability–the ability of plants to take up 
+nutrients is very much dependent on the soil pH
+
+Soil Analysis Ch575
+Significance of soil pH
+effect on soil organisms–soil organisms prefer different pH levels
+acid-sulfatesoils-soils that are rich in inorganic sulfideminerals, such as 
+pyrites, 
+can lead to the formation of excessive levels of sulfuric acid through 
+oxidation
+soil pH dives to very low levels
+causes solubilisation of toxic levels of aluminium, manganese and iron 
+from soil minerals
+plant preferences–most alkaline soils; a few which need acidic soils
+
+
+
+Buffering Capacity
+➢The ability of soil to resist change in 
+pH.
+➢The amount of H+ in the soil solution 
+is small compared with the “H
++
+,  Al 
+3
++
+” 
+adsorbed on the soil colloids 
+(reserve)
+➢Neutralization(bytheadditionof
+bases)ofthesolutionH+(H+is
+removedfromthesystem)resultsina
+rapidreplacementofH+fromthe
+exchangeableH+onthesoilcolloid.
+➢CaCO3 when added to soil will 
+neutralize H+.                       
+➢CaCO3 = Lime                      (dolomitic 
+= MgCO3 & CaCO3
+
+
+
+
+
+Soil pH management
+soils tend towards lower pH values as they age
+the main need for pH management is to making the soil more alkaline
+most common method by liming
+agricultural lime is a mixture dominated by CaCO3, but also containing 
+MgCO3 and Ca(OH)2
+comes from ground limestone, 
+add the nutrients calcium and magnesium to the soil
+dolomite lime has a higher proportion of magnesium carbonate
+to reduce pH , add Fe, S or peat
+
+Practice Problems for Cation 
+Exchange Capacity
+What is the valence of Ca and what is its milliequivalent weight if the atomic weight is 
+40?
+If a soil has 20 meqof CEC/100 g, how many milligrams of Ca
+2+
+will this equal? How 
+many grams?
+If a soil contains 5% organic matter and 10% kaolinite clay, what is a reasonable 
+estimate of its CEC per 100 g?
+A soil has a CEC of 24 meq/100 g.How many grams of Na
++
+will it take to saturate the 
+CEC?(At wtNa
++
+= 23)
+If a soil can hold 50 mg of Mg
+2+
+per 100 g, how many mg of K
++
+could it hold?
+A quantity of 100 g of soil has a CEC of 5 meq. How may negatively charged sites does 
+this soil have?
+A soil was determined to have 12.5 meq/100 g of CEC. How many cmole/kg would this 
+equal?
+
+Convert the following concentrations into parts per million (ppm):
+At wts:Ca
+2+
+= 40, H
++
+= 1, Mg
+2+
+= 24, K
++
+= 39
+.Convert 3 cmol/kg soil Ca
+2+
+into parts per million (ppm).

@@ -1,0 +1,617 @@
+
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+Lecture 1 : Introducing Internet of Things 
+Dr. Bibhas Ghoshal
+Assistant Professor 
+Department of Information Technology 
+Indian Institute of Information Technology Allahabad
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+Outline
+●
+Internet of Things – Basic concepts, Examples
+●
+History , Progression
+●
+Basic Idea of the IoT Ecosystem
+●
+IoT Architecture
+●
+Why IoT Now?
+●
+Summary of the course content
+●
+Module 1 : Enabling Technologies – Sensing, Processing, Communication
+●
+Module 2 : Communication Technologies
+●
+Module 3 : Cloud Computing for IoT
+●
+Module 4 : Data Analytics for IoT
+●
+Module 5 : Advanced Topics – Fog and Edge Computing, IoT security
+●
+Challenges and Research Directions 
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+Internet of Things
+    
+    Things, People and Cloud Services 
+    get connected via Internet to 
+    enable new use cases and business
+    models
+Figure source : Iman Khajenisiri et.al., A Review of Internet of Things Solution for Intelligent Energy Control in Buildings for Smart 
+City Applications, Energy Procedia, Volume 111, 2017
+      
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+Internet of Things : Applications
+   Let us Watch This !!!!!
+    
+    
+      
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+  
+    
+    
+      
+Internet of Things Applications
+            Source : TechTarget
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+  
+    
+    
+      
+Internet of Things Applications :  Smart Grid
+            Source : Internet
+Watch This : Smart Grids in India by TU Delft! :
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+  
+    
+    
+      
+Internet of Things Applications : Healthcare
+ Role of IoT in Healthcare
+          Source : Internet
+            Wearables
+    
+      Source : Internet
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+  
+    
+    
+      
+Internet of Things Applications : Industry 4.0
+ 
+Industrial Revolutions 
+Source : Internet
+           
+    
+      Source : Internet
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+  
+    
+    
+      
+Internet of Things Applications : Agriculture
+Source : Internet
+           
+    
+      
+Watch This :  Smart Agriculture Solution by Infosys
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+  
+    
+    
+      
+Internet of Things Applications : Smart City
+Source : Internet of Things is a revolutionary approach for future technology enhancement: 
+a review, Sachin Kumar et al. , Journal of Big Data, Springer, 2019
+           
+    
+      
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+  
+    
+    
+      
+Internet of Things Applications : 
+Smart Street Lights 
+                                                                 Source : Internet
+           
+    
+      
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+  Systems Lab  IIITA aims at providing IoT based smart city infrastructure in the form of 
+smart street lighting appending the Street Light National Program initiated by GoI in 2015 
+with the aim to promote energy efficiency in the country.
+Objectives : 
+1. Energy Saving : Intelligent Lighting System which uses smart LEDs offering varying degrees of 
+illumination based on surrounding environment ( surrounding light intensity, pedestrians, vehicles, 
+weather conditions)
+2. Easy and prompt maintenance with reduced manual labour , periodic status checks of each light 
+and automatic notification in case of fault
+3. Novel, generic and scalable  solution that can be implemented with any smart LED light  
+4. Additional services such as housing WLAN access points to deliver internet services selectively for 
+educational content, data source for data analysis of street light consumption
+ 
+    
+    
+      
+Smart Street Lights Project – Systems Lab IIITA
+           
+    
+      
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+  
+    
+    
+      
+Internet of Things Applications 
+ Source : Introduction to the Internet of Things, Marco Zennaro, Telecommunications/ICT4D 
+Lab, The Abdus Salam International Centre for Theoretical Physics, Trieste, Italy 
+           
+    
+      
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+  
+    
+    
+      
+Internet of Things Applications : Review
+                                                           Source : IoT Analytics
+           
+    
+      
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+  
+    
+    
+      
+Internet of Things : Connectivity of Devices
+ Source : Introduction to the Internet of Things, Marco Zennaro, Telecommunications/ICT4D 
+Lab, The Abdus Salam International Centre for Theoretical Physics, Trieste, Italy
+           
+    
+      
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+ First IoT Device : RFID (1940-1950), Major efforts in development for  Tracking and identifying      
+                               aircrafts in World War II ( Friends or Foe ) 
+ 1960 :  RFID was used for monitoring nuclear and other hazardous materials, RFID companies founded
+ 1973 : Mario W. Cadullo received the first US Patent for an active RFID tag 
+ 1980 : RFID research started, marks the beginning of transforming RFID into more widespread technology
+ 1990 : First UHF Reader invented, RFID usage expanded to shipments, Walmart introduces their RFID program 
+    
+    
+      
+History of Internet of Things 
+ Source : Internet
+           
+    
+      
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+ 
+    
+    
+      
+History of Internet of Things 
+ Source : Introduction to the Internet of Things, Marco Zennaro, Telecommunications/ICT4D 
+Lab, The Abdus Salam International Centre for Theoretical Physics, Trieste, Italy
+           
+    
+      
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+History of Internet of Things : Progression  
+           
+    
+      
+ 
+Progression in 1980’s : Cloud and Server Space ( Data moved to centralized server )
+Progression in 1990’s : Machine to Machine interaction
+          1995   : First cellular module built, First GPS network ( version 1 ) complete
+          1998   : IPv6 adds 2^128 new IP addresses
+          1999   : Kevin Ashton of MIT coins a new term IoT
+Progression in 2000-2010 : Fog oriented architectures ( Central Server to Regional Server located closer to Data    
+                                                                                             Server subnetwork )
+           2000  :  LG announces first smart fridge
+           2007  :  First iPhone released 
+           2008  :  First International Conference on IoT held
+           2009  :  Google started testing self driving cars
+Progression in 2010-onwards : High Processing power and Edge computing
+           
+           2013   :  Google glass is released
+           2014   :  Amazon releases Echo ( smart home market opens ) 
+           2015   :  GM, Uber, Tesla are testing self driving cars
+           2017-  :  IoT continues to grow, 
+    
+    
+      
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+IoT – Basic Idea
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+IoT Ecosystem
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+The Four Layered IoT Architecture
+                            Source : ITU-T
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+Why IoT Now?
+●
+Improved VLSI Technology – Miniaturization, MEMS Technology for Sensing
+                                                                           
+                                                                                                                                                                         Accelerometer               Gyroscope
+       
+                                                                         
+●
+Widespread Adoption of Intellectual Properties
+●
+Computing Economics -  Availability of System-on-Chips     
+                                                                                                                        
+●
+Data Analytics – Descriptive, Diagnostic, Predictive, Prescriptive
+●
+Fast connectivity
+●
+Rise of Cloud Computing – Provides scalability to the Big Data 
+                                                generated by IoT Devices
+                                                                                                                            
+                       
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+IoT Startup Landscape 2021 
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+What do we learn in this course ? 
+   Course Outline
+Module 1 : 
+1. IoT Fundamentals - Architecture, Elements of IoT – Sensors, Actuators, Processing Elements, 
+                                     Communication modules, cloud based infrastructure              
+2. IoT Enabling Technologies and APIs
+3. IoT Design Principles ( Hands-on sessions using different IoT Platforms )
+Module 2 :
+1. Communications used in IoT – Device-Device, Device – Gateway, Device – Cloud, Back-end sharing model 
+2. IoT Communication Protocols – 
+Link Layer : Ethernet (802.3), Wifi(802.11), Wimax(802.16), LR-PAN(802.15.4), 2G/3G/4G
+Network Layer  : IPv4, IPv6, 6LoWPAN
+Transport : TCP, UDP
+Application  : HTTP, CoAP, MQTT, XMPP
+3. Tutorial sessions on different application layer protocols – MQTT, CoAP
+   Course Outline
+Module 1 : 
+1. IoT Fundamentals - Architecture, Elements of IoT – Sensors, Actuators, Processing Elements, 
+                                     Communication modules, cloud based infrastructure              
+2. IoT Enabling Technologies and APIs
+3. IoT Design Principles ( Hands-on sessions using different IoT Platforms )
+Module 2 :
+1. Communications used in IoT – Device-Device, Device – Gateway, Device – Cloud, Back-end sharing model 
+2. IoT Communication Protocols – 
+Link Layer : Ethernet (802.3), Wifi(802.11), Wimax(802.16), LR-PAN(802.15.4), 2G/3G/4G
+Network Layer  : IPv4, IPv6, 6LoWPAN
+Transport : TCP, UDP
+Application  : HTTP, CoAP, MQTT, XMPP
+3. Tutorial sessions on different application layer protocols – MQTT, CoAP
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+What do we learn in this course ? 
+   Course Outline
+Module  3 : 
+1. Distributed Computing , Virtualization, Cloud Computing – Basic Idea, Service models – Infrastructure as a Service 
+(I-a-a-S),  Platform-as-a Service (P-a-a-S), Application/Software as a Service (S-a-a-S), Software Components, APIs, 
+Role of Cloud in IoT       
+2. Software Defined Networking (SDN )
+3. Social Internet of Things (SIoT) – Lysis Platform
+4. Hands on session on different cloud platforms for IoT – ThinkSpeak, Google Cloud
+Module  4:
+1. IoT Application Development – Solution Framework for Implementation of Data Acquisition, Device Integration 
+and Data Storage
+2. Data Analytics for IoT – Summary of different Machine learning and Deep Learning models, 
+3. Apache Hadoop, Map-Reduce, Apache Spark
+4. Tutorial sessions on Hadoop and Map-Reduce
+   Course Outline
+Module  3 : 
+1. Distributed Computing , Virtualization, Cloud Computing – Basic Idea, Service models – Infrastructure as a Service 
+(I-a-a-S),  Platform-as-a Service (P-a-a-S), Application/Software as a Service (S-a-a-S), Software Components, APIs, 
+Role of Cloud in IoT       
+2. Software Defined Networking (SDN )
+3. Social Internet of Things (SIoT) – Lysis Platform
+4. Hands on session on different cloud platforms for IoT – ThinkSpeak, Google Cloud
+Module  4:
+1. IoT Application Development – Solution Framework for Implementation of Data Acquisition, Device Integration 
+and Data Storage
+2. Data Analytics for IoT – Summary of different Machine learning and Deep Learning models, 
+3. Apache Hadoop, Map-Reduce, Apache Spark
+4. Tutorial sessions on Hadoop and Map-Reduce
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+What do we learn in this course ? 
+   Course Outline
+Module  5 : 
+1. Fault Tolerant in IoT based Systems
+2. IoT Security
+3. Challenges in Design of IoT Based Systems 
+4. Research problems related to IoT
+Resources : 
+1. Pethuru Raj and Anupama C. Raman (CRC Press) , The Internet of Things : Enabling Technologies, Platforms and Use Cases
+2. Arshdeep Bagha and Vijay Madisetti Internet of Things : A Hands-on Approach 
+3. IEEE  Internet of Things Journal
+4. IEEE Transactions on Mobile Computing
+Web : http://profile.iiita.ac.in/bibhas.ghoshal
+   Course Outline
+Module  5 : 
+1. Fault Tolerant in IoT based Systems
+2. IoT Security
+3. Challenges in Design of IoT Based Systems 
+4. Research problems related to IoT
+Resources : 
+1. Pethuru Raj and Anupama C. Raman (CRC Press) , The Internet of Things : Enabling Technologies, Platforms and Use Cases
+2. Arshdeep Bagha and Vijay Madisetti Internet of Things : A Hands-on Approach 
+3. IEEE  Internet of Things Journal
+4. IEEE Transactions on Mobile Computing
+Web : http://profile.iiita.ac.in/bibhas.ghoshal
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+Module 1 :  Design of IoT Based Systems
+Logical design of an IoT system refers to an abstract representation of the entities and processes 
+without going into the low-level specifics of the implementation.
+An IoT system comprises a number of functional blocks that provide the system the capabilities for 
+identification, sensing, actuation, communication and management.
+Source: Book website: http://www.internet-of-things-book.com
+Logical Design of IoT
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+Devices
+Device is a piece of equipment with the capabilities of communication and optional capabilities of sensing, actuation, 
+data capture, data storage and data processing. The devices collect various kinds of information and provide it to 
+the information and communication networks for further processing.
+Some devices also execute operations based on information received from the information and communication 
+networks.
+An IoT device may consist of several interfaces for connections to other devices,both wired and wireless. I/O interfaces for 
+sensors, 
+Interfaces for internet connectivity, Memory and storage interfaces, Audio/video interfaces
+                                     Source: ITU-T Y.2060
+Source: Book website: http://www.internet-of-things-book.com
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+Enabling Technologies
+Sensors and Actuators ( Usage and Calibration)
+Sensors
+                    
+                                                                                  
+                                     Source: Internet
+Actuators
+IoT Based Soil Watering System utilizing Sensors and Actuator
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+Enabling Technologies
+Microcontrollers
+Microcontroller                                                                                      IoT Hardware Platforms
+                    
+Arduino Uno                                                                                   Raspberry Pi                                                                                
+      
+                                                                                  
+                              Source: Internet
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+Module 2 : Connectivity Technologies in IoT
+Key aspects when considering network connectivity:
+   Range - are you deploying to a single office floor or an entire city?
+    Data Rate - how much bandwidth do you require? How often does your data change?
+    Power - is your sensor running on mains or battery?
+    Frequency - have you considered channel blocking and signal interference?
+    Security - will your sensors be supporting mission critical applications?
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+ Traditional Computing Components: 
+           
+                             All Components sit on the same computer
+ Distributed Computing :
+  
+      Cloud Computing  =  Innovative Application of Distributed Computing 
+Module 3 : Distributed and Cloud Computing 
+Data Storage
+1. Database
+2.File based
+Core Logic
+1. Application Specific
+       2. Algorithm Implementation
+User Interface
+1. GUI
+2. Command Line
+Data Storage
+1. Database
+2.File based
+Core Logic
+1. Application Specific
+       2. Algorithm Implementation
+User Interface
+1. GUI
+2. Command Line
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+Cloud Computing :  Virtualization
+●
+Consists of self contained components
+●
+Types of Virtualization : Desktop, Application, Network, Storage
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+Cloud Computing Service Model
+●
+Delivers components as Services
+●
+Pay-per-use model such as electricity, mobile network
+●
+Software as a Service (SaaS)
+●
+Platform as a Service (PaaS)
+●
+Infrastructure as a Service (IaaS)
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+Cloud Computing for IoT
+Cloud is an IoT enabler : 
+Huge amount of IoT Data needs storage, retrieval and management ( sustained services)
+Fast Analytics for Prediction and Critical Decision making
+Benefits of Cloud in IoT  :
+Scalability ;  Data Mobility;  Time to Market;  Security;  Cost effectiveness
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+IoT Platform Implementation  
+Source : http://www.xively.com                                          Source : www.thingspeak.com
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+Social Internet of Things (SIoT)
+                          +                                  =
+     
+               
+   
+Social Networks   +             Intelligent Objects                              =             Social Relation of  Objects
+●
+ Example 1 :   A set of mobile phones in a geographical area provide data on the radio coverage to the new 
+visitor.
+●
+ Example 2 : PCs in the same local area establish relationship to solve common setting problem such as 
+installing drivers 
+●
+ Example 3 : Cars of the same brand, make, year share data to  overcome a common electrical problem
+                                      
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+Module 4 : IoT Application Development
+Software Stack for IoT Architecture: Software stack for devices, gateway and 
+cloud
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+Module 5 : Data Analytics for IoT
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+Module 5 : Advanced Topics 
+1. Fog Computing
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+Module 5 : Advanced Topics 
+2. Edge Computing         
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+Module 5 : Advanced Topics 
+3. IoT Security 
+Security Principles :
+a. User / Devices 
+Secure Devices  (Hardware) – Device Intelligence, Edge processing
+b. Gateway and Connection
+       Secure Communication - Device initiated connection, Messaging control
+ 
+c. Cloud and Applications
+      Secure Cloud – Identification, Authentication and Encryption
+d. Secure Lifecycle Management
+      Remote control and updates of devices
+        
+
+Spring 2022
+Internet of Things
+Instructor : Dr. Bibhas Ghoshal
+Register yourself on Google Classroom
+For any queries : bibhas.ghoshal@iiita.ac.in
+Web : profile.iiita.ac.in/bibhas.ghoshal

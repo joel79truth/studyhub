@@ -1,0 +1,318 @@
+
+
+CHEMICAL PROPERTIES OF 
+SOIL
+
+✓CARBON –NITROGEN RATIO (C/N RATIO)
+✓CATION EXCHANGE CAPACITY (CEC)
+✓SALINITY
+✓SOIL pH
+
+CARBON NITROGEN RATIO (C:N Ratio)
+•Isaratioofmassofcarbontomassofnitrogeninasubstance.E.gC:Nratioof24:1.
+•TheC:Nratiodeterminesrateofresiduedecompositionandnitrogencycling.
+•Thehighertheratio,thelongerittakesforthematerialtodecomposeandvice
+versa.
+•OptimumC:Nratiois24:1fordesireddecompositionbecausemicrobesneedis8:1;for
+bodymaintenanceand16:partsofcarbonforenergy.
+•HigherC:Nratio(greaterthan24:1)intheresiduecausesmicrobestoimmobilizeNto
+reachitsoptimum.(DepleteavailableNinthesoil)
+•AcropthathasalowerC:Nratio,likelegumes,allowsdecompositiontotakeplacerather
+quicklyandtheexcessnitrogenbecomesavailableforplants.
+
+DECOMPOSITION OF OM
+Thedecompositioniscarriedoutasenzymaticbiochemicalprocessesbysoilmicroorganisms
+thatobtainthenecessaryenergyfromthesameresidues,andproducethemineral
+compoundsthataretobeabsorbedbyplantroots.
+
+Significance of the C/N ratio
+a.DeterminestheavailabilityofNtoplants
+•OnlysoilswhichhavelowC/NratiowillhaveNavailable
+forplantuse.
+b.DeterminestheamountofOMthatisgoingto
+accumulateinthesoil
+•RateofdecompositionisdeterminedbytheC/Nratio
+•SmallestC/Nratiomeansfasterdecompositionandvice
+versa
+
+CATION EXCHANGE CAPACITY (CEC)
+The nutrients present in the soil are in the form of positively 
+charged ions called CATIONS and negatively charged ions referred 
+to as ANIONS.
+•Cations: Ca
+++
+, Mg
++
+, Na
++
+, and K
++
+.Anions: Cl
+-
+, NO
+3
+-
+, and CO
+3
+-
+.
+Cationsareheldoradsorbedorattachedtosoilcolloidswhileas
+theanionsarefoundinthesoilsolution.
+Adynamicequilibriumexistsbetweenadsorbedcationsandthose
+insoilsolution.
+Cationadsorptionisreversibleifothercationsinsoilsolutionare
+sufficientlyconcentratedtodisplaceother.
+ThequantityofCEismeasuredperunitweightofsoil.CECofsoils
+dependsonbothorganicmattertypeofsilicateclays.
+
+Theclaymineralandorganicmattercomponentsofsoilhavenegativelycharged
+siteswhichadsorbpositivelychargedions(cations)byelectrostaticforce.
+Thiselectricalchargeiscriticaltothesupplyofnutrientstoplantsbecausemany
+nutrientsexistascations(e.g.magnesium,potassiumandcalcium).
+Generally,soilswithlargequantitiesofnegativechargearemorefertilebecause
+theyretainmorecations.
+ThemainionsassociatedwithCECinsoilsaretheexchangeablecations(Ca
+2+
+),
+(Mg
+2+
+),(Na
++
+)and(K
++
+).
+AssoilsbecomemoreacidicthesecationsarereplacedbyH
++
+,Al
+3+
+andMn
+2+
+
+FactorsaffectingCEC
+•Texture–finertexturedsoilstendtohavehigherCEC’sthancoarsetexturedsoils
+•SoilpH-highersoilpHisassociatedwithhigherCEC’s
+Importance of CEC to plant growth
+1.PlantsareabletogetrequirednutrientsthroughCECbecauseitisonlywhenthe
+nutrientsarereleasedandmadeavailableforuse.
+2.Forpropermodificationofacidicoralkalinesoilsinrelationtospecificcropgrowth.
+3.Forformationofsoilaggregatesbytheorganicmatterwhichactsaswarehousefor
+plantnutrients.
+
+SALINITY
+Salinesoilsaresoilswithhighconcentrationsofsolublesalts.Examplesofthesesaltsinclude;
+nitrates(NO
+3
+),sulphates(SO
+4
+),carbonates(CO
+3
+)andchlorides(Cl
+2
+).
+Soilsalinitylimitsplantgrowthduetothepresenceofsolublesaltsinsoilswhichholdwater
+moretightlythantheplantscanextractit.
+Asaresult,manyplantswillexhibitsymptomsofdroughtiness,butthesoilisoftenrelatively
+moist.
+Salinitycandevelopnaturally(primarysalinity)orbehuman-induced(secondarysalinity).
+Naturally-occurringsalinityresultsfromthelongtermcontinuousdischargeofsaline
+groundwaterorrecessionofoceansfromland.
+
+Factors that induce salinity
+a) Using poor quality water for irrigation. Once the water evaporates, there is build up of salts 
+in the soils.
+b) Frequent application of chemical fertilizers
+c) The parent material of the soil that contain a lot of salts and release them into the soil.
+d) Low rainfall and evaporation through capillary action
+e) Poor soil drainage
+
+Sodic Soils
+ThesearesoilswithhighamountsofsodiumegsoilsofChikwawaandMzimbaDistricts.
+Suchsoilshavedetrimentaleffectstoplantsbecauseofthetoxicityofsodium(Na
++
+)and
+hydroxyl(OH
+-
+).
+ThepHofsuchsoilsishighduetohydrolysisofthesodiumcarbonates.
+
+Saline–Sodicsoils
+Suchsoilscontainappreciablequantitiesofneutralsolublesaltsandenoughadsorbed
+sodiumionswhichseriouslyaffecttheplantsbecauseoftheirtoxicity.
+Soilsalinitycanbestbemanagedbyflushing/rinsingthesaltsoffwithmorefresh,clean
+water.
+Cropssuchasdatepalm,cottonarehighlytoleranttosalinitywhiletomatoandwheatare
+moderatelytolerant.
+
+SOIL PH 
+Itisameasureoftheacidityoralkalinityofthesoil.Soilcanbeacidic,neutral,orbasic(alkaline)and
+thisismeasuredinpHunits.
+ThepHscalerunsfrom1.0to14.0butmostsoilsfallwithin5.0to7.5withinextremesfrom4.0to9.0.
+Acidityiscausedbyhydrogenions(H+)alkalinityiscausedbyhydroxyl(OH-)ions.
+ApHf7.0isneutralmeaningthatH+ionsjustbalanceoutOH-ions.AspHdropsbelow7.0,theH+
+begintooutnumbertheOH-ions,andtheacidityincreases.
+Waterinthesoilcaneitherbeacidicoralkalinedependingonthetypeofthesoilparticlesandthe
+amountoforganicmatterpresent.
+Minutesilicateclaychargedparticlescarrynegativechargedparticlesandcationsareattractedto
+themegH+,Al3+,Ca2+,&Mg2+.
+
+Measuring soil pH
+ByUsingpHMeter
+ThepHmeterwhichgivesadirectreadingofthepH
+valuewhenglasselectrodesareinsertedinasolution.
+Universalindicator
+Ifyouareusingtheindicatorpapermethod,dipthe
+paperintotheliquidandobservethecolorchange.
+Ifyouareusingthesolutionyoutakepartoftheindicator
+mixwiththesoilsolutionandcanobservecolorchanges
+Litmuspaper
+Bluelitmuspaperturnsredunderacidconditions,and
+redlitmuspaperturnsblueunderalkalineconditions.
+
+Factors affecting soil pH                          
+Parent material
+SoilrichinSulphurtendtobeacidic.Whensuchsoilsarenotcultivated,theycontainalot
+H2S(hydrogensulphide).
+Oncecultivated,H2SundergoesoxidationtoformSulphuricacid.
+H2S+2O2H2SO4
+ThiswillraiseH+concentrationofthesoil.
+Ontheotherhand,soilsfromlimestoneorsodiumcarbonatestendtobealkaline.The
+calciumionsreplacethehydrogenandothercationsasaresultthesoil(clay)becomes
+higherinexchangeablecalciumandlowerinadsorbedhydrogenandoraluminium;this
+phenomenontendtoraise(minimize)thepH
+
+Leaching
+Heavyrainstendtowashcationsoutofthesoilresultingin(H
++
+)ionsreplacingMg
+++
+,Ca
+++
+,
+Na
++
+,andK
++
+ionswhicheventuallycausesthesoiltobemoreacidic.
+Thisisthereasonastowhysandysoilsaremoreacidicthanclaysoilsbecauseofthehigh
+rateofleaching.ThereismoreH
++
+producedasCO
+2
+continuestoreactwithwater.
+Badsoilmanagement
+Whencropsareharvestedandresiduesremoved,therequirednutrientsliketheMagnesium
+andCalciumareremovedtogetherandthesoilcolloidsarereplacedbyHydrogenions.
+Limingthesoilwilllessenacidity(raisespH).Manure,mostlycomposts,andmanychemical
+fertilizerswillincreasesoilacidityifusedforalongperiod.Forexample,whenammoniais
+beingoxidizedbysomespecificbacteriatherearenitratesformedandH+isdissicated
+NH4++2O2NO3-+H2O+2H+
+
+Biologicalactivities(rootsandmicrobialrespiration)
+Theprocessofdecayreleasehydrogenionsintothesoilasorganicmatterarebeingformed.
+Thepresenceofbacteriawillthereforehelptobreakdowntheorganicmatterintousable
+elementsbyplants.
+CO2  +  H2O              H2CO3                              HCO3-+  H+
+Fertilizereffects(acidsalts)
+Ammonium(NH
+4
+)acidifiesthesoilthandonitrates(NO
+3
+).Diammoniumphosphate(DAP)
+wasbannedbecauseitusedtoacidifysoil.
+(NH
+4
+)
+2
+SO
+4
++  4O
+2
+2NO
+3
++  H
+2
+SO
+4 
++ 2H
+2
+O
+
+Acidrains
+Intheatmosphere,thereareCO
+2
+,NH
+4
+,andsulphurwhichtendtoreactwithrainwaterand
+formH
+2
+CO
+3
+,HNO
+3
+,andH
+2
+.
+Pollution
+SomeofthecompoundsemittedfromfactoriesareSO
+4
+andNO
+2
+.Thesereactwithwater
+moleculesduringrainfallperiodsandthisgivesacidrainwhichmakesthesoilacidic.
+SO4      +     H2O                      H2SO4                   2H+          +           SO4-
+
+How pH affects crop production
+➢Availability of phosphorus is affected by pH range. P is mostly available within the range of 
+6.0 – 7.0. 
+➢pH affects the oxidation and reduction of elements in the soil.
+➢pH affects diseases in plants. Some pathogens survives under low pH. To eliminate this, 
+raise the pH of the soil.
+➢pH affects availability of micronutrients. pH has an effect on the availability of 
+micronutrients e.g  iron, manganese, zinc and boron  become increasingly less available as 
+acidity decreases. 
+➢ Affects microbial activities in the soil: most cannot thrive in very acid soils and this slows 
+down the conversion of unavailable organic forms of nitrogen, phosphorus, and sulphur to 
+available mineral forms.
+
+Factors affecting chemical properties of soil
+Soil composition
+The inorganic ( mineral ) and organic constituents of the soil tend to retain and release plant 
+nutrients. Addition of organic matter will therefore increase the water holding capacity and 
+the infiltration rate. There will be high CEC for exchangeable ions. There is also an 
+improvement in the microbial activities which improves soil aeration. Organic matter also 
+help to modify soil temperature and buffers soil pH
+ 
+Soil Structure and texture
+Structure and texture of the soil will affect the nutrient status of the soil by influencing its 
+physical, chemical and biological properties.
+Farming practices
+Availability or removal of the plant nutrients will affect the chemical properties of the soil, ie., 
+bush fires, overgrazing, over cultivation and crop removal when harvesting
+
+Soil Acidity
+The level of acid in the soil will affect the release of particular plant nutrients and some 
+microbial activities in the soil.
+Leaching
+Due to heavy rains, some mineral salts particularly nitrates are washed down the soil profile.
+Soil Erosion
+Some nutrients from the top parts of the soil are lost due to surface runoff
+Use of chemical fertilizers
+Some of the fertilizers are acid forming and these affect availability of other nutrients, eg 
+DAP.
+
+SOIL PROPERTIES 
+PHYSICAL CHEMICALS
+CHEMICAL PROPERTIES
+BIOLOGICAL PROPORTIES OF SOIL
+SOIL FERTILITY 
+FERTLIZERS
+INORGANIC FERTILIZER
+ORGANIC FARTILIZER
+SOIL EROSION AND CONSERVATION
+ESTIMATING SOIL LOSS
+PHYSICAL SOIL AND WATER CONSERVATION MEASURES
+BOILOGICAL CONSERVATION MEASURES 
+LAND USE CAPABILITY CLASSIFICATION AND LAND USE PLANNING
+VILLAGE BASED CATCHMENT CONSERVATION
+
+FEEDBACK?

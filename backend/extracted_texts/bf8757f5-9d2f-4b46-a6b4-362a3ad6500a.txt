@@ -1,0 +1,45 @@
+
+
+EXPERIMENTAL RESEARCH METHODOLOGY/ RESEARCH METHODS AND 
+EXPERIMENTAL DESIGN/ DESIGN AND ANALYSIS OF EXPERIMENTS 
+Due Date: 9
+th
+ October 2025 
+Assignment 1 
+Instructions: 
+ Work in existing groups based on your program of study. Class Reps that have 
+not submitted their program groups should do so 
+ Write names of group members who significantly contributed to the analysis of 
+the data. Privately report those that did not or rarely participated during group 
+work. The name of group leader should be bolded. Include student number. 
+ Show all steps involved during the calculation. Do not just write the answer 
+ The assignment should be typed. 
+Question 
+The  topography  of  adipose  tissue  (AT)  is  associated  with  metabolic  complications 
+considered  as  risk  factors  for  cardiovascular  disease.  It  is  important to  measure  the 
+amount of intra-abdominal AT as part of the evaluation of the cardiovascular-disease risk 
+of an individual. Computed tomography (CT), the only available technique that precisely 
+and reliably measures the amount of deep abdominal AT is costly and requires irradiation 
+of the subject. In addition, the technique is not available to many  physicians. Després 
+and his colleagues conducted a study to develop equations to predict the amount of deep 
+abdominal  AT  from  simple  anthropometric  measurements.  Their  subjects  were  men 
+between the ages of 18 and 42 years who were free from metabolic disease that would 
+require treatment. Among the measurements taken on each subject were deep abdominal 
+AT obtained by CT and waist circumference as shown in the data. A question of interest 
+is how well one can predict and estimate deep abdominal AT from a knowledge of waist 
+circumference 
+ 
+
+ 
+a) Use Microsoft excel, make a scatterplot of the data 
+b) Which of the variable(s) is a) independent variable b) dependent variable 
+c) Find the equation of the regression line and add this line to your plot 
+d) What is r
+2 
+for the equation? 
+e) State the null hypothesis being tested 
+
+f) Use  ANOVA  to  test  the  hypothesis.  Do  you  reject  or  fail  to  reject  the  null 
+hypothesis? Give reason. α = 0.05 
+ 
+ 

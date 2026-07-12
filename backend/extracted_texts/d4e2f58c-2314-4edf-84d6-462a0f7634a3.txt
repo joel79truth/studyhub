@@ -1,0 +1,356 @@
+
+
+Introduction to genetic parameters
+Part II
+Wilson Nandolo
++265 993 375 505
+wnandolo@luanar.ac.mw
+http://www.livestockinmalawi.com
+
+Repeatability (r)
+•Is the chance that an individual repeats its 
+records in its lifetime
+•Sometimes some traits are repeatedly measured 
+on the same individual
+•Each measurement is done at different 
+environments
+•E.g. milk production of a cow measured in several lactations, 
+number of piglets in a litter  of several furrowing, fruit harvests 
+from the same tree  over several years, forage harvests from the 
+same field over different  seasons
+•Two types of environments affect records 
+(measurements) of an individual
+•Permanent  Environment  and Temporal  Environment
+
+Environmental components
+•Can therefore be split into
+•Permanent (PE)
+•Temporary (TE)
+•Variance components are similarly split
+TE
+PE
+E
+V
+V
+V
++
+=
+General or permanentSpecial or temporary
+
+Repeatability (r)
+•This takes care of the genetics and permanent 
+environmental effects  (PE)
+•PE is the sum of environmental factors that 
+permanently influence performance of an 
+individual
+–e.g. foetal environment, feed availability during early 
+life of an animal, feeding during late pregnancy, soil 
+fertility on forage harvest, soil condition on quality of 
+fruits
+•PE affect all records (measurements) of an 
+individual, so is the G
+
+Repeatability (r)
+A + D + I
+PE + TE
+Affect all records 
+of an individual
+Sum of random 
+(temporal) 
+environmental 
+effects that only 
+affect one record 
+of an individual, 
+such as season, year
+EGP+=
+Affect all records 
+of an individual
+
+Repeatability (r)
+•Environmental variance is therefore
+•The numerator is also called the individual effect, 
+which affects every record measured on an 
+individual for the same trait
+TE
+PE
+E
+2
+2
+2
+σ
+σ
+σ
++
+=
+P
+PEG
+2
+22
+σ
+σσ
+r
++
+=
+
+Repeatability
+(
+)
+(
+)
+(
+)
+P
+PE
+G
+s
+Tempeffect
+s
+Permeffect
+ffects
+permanente
+V
+V
+V
+V
+V
+V
+r
++
+=
++
+=
+TE
+PE
+G
+P
+V
+V
+V
+V
++
++
+=
+Repeatability estimates how much of the variance of the phenotype  is 
+due to genetics and permanent environmental  effects,  vs environmental 
+effects  which will differ  for each expression  of  the trait
+
+Repeatability makes two records look 
+similar or  not similar
+•Due to both records being measured on 
+the same individual
+•And being similarly influenced by same G 
+and PE
+•Only differing due to TE that only affects 
+one record
+
+Repeatability makes two records look 
+similar or  not similar
+•Because of this, repeatability can be used 
+to predict future performance of an 
+individual based on current records
+1
+1
+1
+TE
+PE
+I
+D
+A
+TE
+PE
+G
+P
++
+=
+=
++
+=
++
++
+=
+2
+2
+2
+TE
+PE
+I
+D
+A
+TE
+PE
+G
+P
++
+=
+=
++
+=
++
++
+=
+
+Repeatability (r)
+•r will always be greater than or equal to h
+2
+•Since r includes all genetic plus environmental 
+variance
+
+Uses of Repeatability
+•As 
+•And r is above, an estimate of repeatability can act as an 
+upper estimate of h
+2
+•h
+2
+estimate requires much more data that may not be 
+available
+•So repeatability is helpful
+–Since it will estimate  probability or chance  of an individual 
+repeating  its performance  during its life
+p
+A
+V
+V
+h
+=
+2
+
+Uses of repeatability 
+•Can be used to indicate upper level of h
+2
+for a trait
+–Where it is difficult to measure h
+2
+•It improves precision of estimation of 
+breeding values
+–From repeated measurements
+•It acts as an adjustment factor to analysis 
+of variance
+
+Genetic Correlation of the 
+characteristics (traits) 
+•When two or more factors influence each other, 
+they are associated 
+•And we say they are correlated
+•The measure of this association is called 
+correlation coefficient
+•That is a measure of relationship between two 
+factors
+•The same applies to relationship between traits
+
+Relationship between traits
+•Easily observed relationships include
+–Animals with higher growth rates tend to be 
+fatter
+–Animals with higher birth weight tend to have 
+higher weaning weight
+–Maize stalks with tall green stems tend to have 
+big cobs
+
+Relationship between traits occurs due 
+to
+•The gene is pleiotrophic
+–Same gene influences two or more traits
+•Genes for each trait are tightly linked
+–They are located close together on a chromosome
+•Environmental conditions affecting both traits
+With this, association and hence correlation between 
+traits can be at Genetic and Environmental levels
+
+Genetic correlation of traits
+•When two or more factors influence each 
+other, they are said to be correlated. 
+•The measure of this association is called 
+the correlation coefficient. 
+•Typical instances of observed correlation 
+are:
+•animals with high growth rates tend to be 
+fatter
+•animals with higher birth weights tend to 
+have higher weaning weights
+16
+
+Causes of correlation of traits
+•Pleitropy
+–One gene influences more than one 
+trait
+•Linkage 
+–Genes are linked (they are inherited 
+together in most cases)
+•The traits are affected by the same 
+environmental conditions
+17
+
+Forms of correlation
+•Genetic correlation, r
+A
+–This is a measure of the association 
+between the breeding values of the two 
+traits. 
+–There is pleitropy if r
+A
+0.
+•Phenotypic correlation, r
+P
+–This measures the association between 
+observed traits.
+•Environmental correlation, r
+E.
+–This measures the association between 
+environmental effects.
+18
+
+Positive association
+Negative association
+No association
+19
+
+Parameters of association
+•The strength and the direction of association 
+of traits can be described by regression 
+coefficient, b, or the correlation coefficient, r.
+•r measures the degree to which traits are 
+related to each other and is measured on a 
+scale of -1 to +1. 
+•The closer the r is to 0, the weaker the 
+relationship between the traits. 
+•The sign of r shows whether the association is 
+positive or negative. 
+20
+
+Calculation of r
+•r is given  by 
+where
+x
+i
+and y
+i
+are the i
+th
+observations on the two 
+traits X and Y, respectively,  and bar x and bar 
+y are the means for the two traits.
+•If r = 0.5, the implication  is that if you increase one 
+trait byσ, the other trait will  increase by0.5σ.
+•Example 
+21
+
+Uses of genetic correlation
+•Knowledge of genetic correlation can be used 
+to help selection, such as
+–indirectly selecting for fertility  in males by 
+using scrotal circumference
+•predict change in one trait when selecting for 
+another
+•construct selection indices involving multiple 
+traits
+•Provide additional information source in 
+terms of predicting breeding values.
+22
+
+An example of genetic correlation in 
+goat milk
+Weight
+23
+
+end of presentation

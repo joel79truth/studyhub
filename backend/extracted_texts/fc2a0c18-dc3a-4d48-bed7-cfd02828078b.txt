@@ -1,0 +1,192 @@
+
+
+Chapter 3: Soil physical properties
+•Soil texture
+•Soil structure
+•Bulk density
+•Particle density
+•Porosity
+•Void ratio
+
+Soil texture
+Mineral particles vary in size in 
+the soil:
+Boulders > 256 mm
+Cobbles/stones: 64 – 256 mm
+Gravel: 2 – 64 mm
+Sand: 0.05 – 2 mm
+Silt : 0.002 – 0.05 mm
+Clay: < 0.002 mm
+•Soil texture is the relative proportion or percentage of sand, silt, and clay particles in a given soil 
+•Different soils have different textures due to differences in the relative percentages of sand, silt, 
+and clay
+•There are 12 soil textural classes
+
+Methods of determining soil texture
+
+a) Soil sedimentation test/Jar test
+Materials required:
+•Soil sample at least to fill 30 mℓ of the cylinder (100 mℓ)
+•Oven 
+•Sieve no. 10 
+•100 mℓ cylinder or any Jar
+•Ruler
+•Dish soap/detergent
+•Stop watch
+•Marker
+•Calculator
+•Soil sample data sheet
+•Soil textural triangle
+Note:
+In some cases, you can still use a cylinder or jar with a capacity 
+of more than 100 mℓ. Just make sure the soil fills 
+1
+3
+ of the total 
+volume of the jar or cylinder.
+
+Soil sedimentation test/Jar test
+Procedure:
+•Dry the sample in an oven for 24 hrs at a temperature of 105 °C
+•Use sieve no. 10 (having openings of 2 mm) to remove gravel 
+particles and other residues
+•Collect the sieved soil sample and fill it into a measuring cylinder up 
+to 30 mℓ
+•Add water up to the mark of 100 mℓ
+•Add 1 tea-spoon of dish soap/detergent
+•Shake the mixture for 3 - 5 minutes
+•Cover the top and keep it at a safe place for 24 hrs
+•After 24 hrs, observe the soil layers (there is an expectation to see 
+three (3) layers)
+•Measure the depth of each distinct layer (the bottom layer 
+represents sand, the middle layer represents silt, 
+     and the top layer represents clay)
+•Compute sand %, silt %, and clay %
+•Using the soil textural triangle, determine the soil textural class
+
+Example
+A site is experiencing poor soil drainage on some patches of the field. Upon consultation, it was 
+agreed to determine the texture of the soil and based on the results, proper recommendations should 
+be made on soil drainage improvement. Five soil samples (labelled A, B, C, D, and E) were picked 
+from different locations. The soil sedimentation test was carried out to determine the soil texture and 
+details are presented in the table below:
+a)Complete the table above with relevant information required
+b)Which location should be prioritized on improvement of soil drainage? Provide justifiable reasons.
+
+Application of soil textural triangle
+Based on the calculated percentages of sand, 
+silt, and clay, determine the texture of the soil 
+using the soil triangle 
+
+Example
+Question:
+Looking at the results above, which location should be prioritized on improvement of soil drainage? 
+Provide justifiable reasons.
+
+Application of TAL software to determine 
+soil texture
+https://download.cnet.com/texture-autolookup-tal/3001-2054_4-10144157.html?dt=internalDownload
+TAL(Texture AutoLookup) version 4.2 is a windows program used to determine soil textural classes of 
+a given soil sample
+Procedure:
+•Download TAL software from the link: https://download.cnet.com/texture-autolookup-tal/3001-
+2054_4-10144157.html?dt=internalDownload
+•Install the program on your computer
+•Open the program and enter the soil sample ID and percentages of sand, silt, and clay
+•The moment you enter percentages of sand, silt, and clay, the texture of the soil automatically 
+appears
+•There is also an option to view the generated soil textural triangle having points indicating 
+sample ID and the revealed texture of each soil sample
+
+Application of TAL software to determine 
+soil texture
+https://download.cnet.com/texture-autolookup-tal/3001-2054_4-10144157.html?dt=internalDownload
+100
+0
+0
+90
+10
+10
+80
+20
+20
+70
+30
+30
+60
+40
+40
+50
+50
+50
+40
+60
+60
+30
+70
+70
+20
+80
+80
+10
+90
+90
+0
+100
+100
+sand
+claysilt
+A
+B
+C
+D
+E
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+USDA:
+1: clay
+2: silty clay
+3: silty clay loam
+4: sandy clay
+5: sandy clay loam
+6: clay loam
+7: silt
+8: silt loam
+9: loam
+10: sand
+11: loamy sand
+12: sandy loam
+
+Relative range of soil particle percentages for 
+each soil texture
+
+b) Soil Texture by Feel Method
+The feel method involves the following steps:
+•Wetting the soil sample by drops of 
+water
+•Checking if a ball is formed
+•Checking if a ribbon is formed and 
+observe its length
+•Checking the grittiness and 
+smoothness of the soil
+Note: 
+The detailed procedure is outlined in the 
+presented flow-diagram
+
+Reading Assignment
+a)Discuss a linkage that exists between soil texture and soil water   
+holding capacity
+b)What is soil structure?
+c)Describe different types of soil structure
+d)How is the knowledge of soil texture and soil structure helpful in crop 
+production and forest management?

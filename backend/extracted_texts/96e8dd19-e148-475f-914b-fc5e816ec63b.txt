@@ -1,0 +1,211 @@
+
+
+Irrigation Equipment and Machinery   Sylvester Richard Chikabvumbwa 
+OVERVIEW OF IRRIGATION EQUIPMENT AND MACHINERY 
+The impact of using different machines and equipment in irrigation farming  
+Machines and equipment are of essence in irrigation farming as they tend to 
+ Improve scale of production 
+ Save labour  
+ Save time for other activities 
+ Improve  production  efficiency,  farming  standards,  quality  of  produce  and  standard  
+of living 
+ Eliminate drudgery 
+Discussion 
+ Suggest the negative effects of introducing irrigation equipment and machinery in 
+developing countries like Malawi 
+Why is there still low level of mechanisation in irrigation in Malawi? 
+Malawi still face low levels of mechanisation and use of advanced irrigation equipment due to 
+problems such as the ones below: 
+ Mechanisation favours large scale farming  as opposed to Malawi’s small scale farming 
+with little capital and fragmented fields. 
+ Lack of expertise to handle complicated machines due to low education levels in Malawi  
+ A poor economy to allow investing in importing machinery and equipment 
+ Local engineers have failed to develop  mechanisation technologies that are well suited to  
+people 
+ Inappropriate government policies 
+ Abundant cheap labour and fear of creating unemployment 
+ High capital cost of mechanisation technologies 
+Discussion 
+ Suggest ways that could be used to improve the use of irrigation equipment and 
+machinery in developing countries like Malawi. 
+ 
+ 
+ 
+ 
+ 
+  
+
+Irrigation Equipment and Machinery   Sylvester Richard Chikabvumbwa 
+WHAT TO COVER 
+ Surveying equipment 
+ Construction equipment 
+ Softwares used in irrigation 
+ Surface irrigation equipment 
+ Drip irrigation equipment 
+ Sprinkler irrigation equipment 
+ Pipe sizing 
+ Tank sizing and Rainwater harvesting tanks 
+ Pumps (Solar and Water pumps) 
+ Power sources 
+ 
+LESSON ONE: Brainstorm on the following softwares, equipment and machinery and 
+their uses 
+COMMON SOFTWARES USED IN IRRIGATION 
+ Surfer 
+ AutoCAD 
+ ArcMap  
+ ArcView GIS 
+ ClimWAT/CropWAT 
+ ETo Calculator 
+ Model Maker (IrriMaker, IrriExpress) 
+ IrriCAD 
+ Google Earth 
+COMMONLY USED SURVEYING EQUIPMENT IN IRRIGATION 
+ Dumpy Level 
+ Theodolite 
+ Total Station 
+ Differential GPS 
+ GPS 
+ Ranging rods 
+ Staff 
+ Tripod stands 
+ Tape measure 
+ Booking sheets 
+
+Irrigation Equipment and Machinery   Sylvester Richard Chikabvumbwa 
+ 
+COMMONLY USED CONSTRUCTION EQUIPMENT IN IRRIGATION 
+ Bulldozer 
+ Grader 
+ Scraper 
+ Landplane 
+ Excavator 
+ Dragline 
+ Lorry 
+ Tippers 
+ Poker vibrators 
+ Bowsers 
+ Tractor 
+ Dumper 
+ De-watering pumps 
+ Concrete mixers 
+ Rollers/compactors 
+ 
+SURFACE IRRIGATION EQUIPMENT 
+ Siphons 
+ PVC pipes 
+ Valves : Gate Valves 
+ Hydrants 
+ Spiles 
+ Tanks 
+ Pumps 
+DRIP IRRIGATION EQUIPMENT 
+ Tanks 
+ Pipes: Main pipes, Submains and Laterals 
+ Fittings:  Straight connectors, Elbows, Tees, Couplings, End caps, Takeoffs, 
+Emitters/drippers 
+ Valves: Gate and Ball 
+ Filters 
+SPRINKLER IRRIGATION EQUIPMENT 
+ Tanks 
+ Pipes: Main pipes, Submains, Risers  and Sprinklers 
+ Fittings:  Couplings 
+
+Irrigation Equipment and Machinery   Sylvester Richard Chikabvumbwa 
+ Valves: Gate  
+CONSTRUCTION EQUIPMENT 
+When an irrigation project is being undertaken, the following equipment would be available at 
+the site. 
+ Bulldozer: Used to carry out works such as bush clearing, movement of soil for short 
+distances, cutting thicker layers of soil during land levelling, levelling of anthills, making 
+drains and flood bunds. 
+ Scraper: Wheeled or crawled tractors pulling a wheeled bucket of up to 30 m
+3
+ volume. 
+The scraper cuts soil with a sharp blade at the front bottom of the bucket. The soil is 
+stored in the bucket and can be released at the required location. These are ideal for 
+carrying soil over long distances, for example during land levelling operations or to make 
+up canal embankments. 
+ Grader: A machine with a blade approximately half way its frame. It is used to construct 
+drains, roads, etc., and to carry out more accurate land levelling operations than a scraper 
+can do. Graders can be motorized or towed by a tractor. The latter are much slower in 
+carrying out the jobs and, depending on the job, a powerful tractor is required for towing 
+these graders. 
+ Dragline: A machine with a bucket attached to ropes. The bucket can be thrown over a 
+distance of up to 15 m away. Draglines are used for excavation works in construction 
+pits, for digging and cleaning canals, etc. 
+ Excavator: A machine with a bucket, which is hydraulically operated. It is usually 
+crawler mounted for ease of working in muddy conditions. It can carry out the same jobs 
+as the dragline although its reach is shorter, usually not exceeding 10 m. It is often used 
+for canal and pipe trench excavations and to load soil onto tippers. 
+ Land plane: Consists of a long-wheeled frame with a blade. The blade is tilted forwards 
+at the top. It is used for final land levelling and can be accurate to 2-3 cm. 
+ Loader with backhoe: A large tractor-like machine with buckets in front and behind. It 
+is used for excavations of canals and trenches for pipes, loading soil, etc. 
+ Lorry: Used to carry materials and equipment to the project site. 
+ Tipper: Used to carry materials and equipment to the project sites. They are suitable for 
+transporting soil, sand and coarse aggregate as the back of the truck can be hydraulically 
+lifted, thus facilitating easy offloading of bulky materials. 
+ Lowbed with horse: A large, flat trailer usually pulled by a heavy vehicle, the horse. It is 
+used to transport large machinery, such as bulldozers, scrapers and graders over long 
+distances to project sites. 
+ Tractor and trailer: Used for transporting materials and small equipment, usually within 
+the project area. 
+ Dumper: A small vehicle with a container in front. The capacity of the container can 
+vary from 300 to 1300 litres. It is used to carry materials, such as concrete, on the project 
+site. 
+ 
+
+Irrigation Equipment and Machinery   Sylvester Richard Chikabvumbwa 
+ Concrete mixer: Has a pan or drum driven by an engine and is used for mixing concrete. 
+The blades inside the pan or drum facilitate the mixing of the concrete. Some mixers have 
+weighing equipment attached, to mix the concrete by mass rather than by volume. The 
+size of the mixers can vary from as small as 35 litres yield to well over 100 litres yield 
+per mix. 
+ Poker: A mechanically-moved stick used for the compaction of concrete through 
+vibration. 
+ Bowser: A tank for storing water, fuel, etc., on project sites. Bowsers have varying 
+capacities and are normally mounted on wheels. 
+ Roller or compactor: A heavy cylinder, which is moved mechanically or by hand. It is 
+used for compacting soil. A compactor is also used for compacting the soil, using a 
+vibrating plate. 
+ De-watering pump: This is a small pump used to pump water away from the 
+construction site, for example trenches or construction pits.  
+ 
+ 
+
+Irrigation Equipment and Machinery   Sylvester Richard Chikabvumbwa 
+INDIVIDUAL ASSIGNMENT ONE 
+The following table shows some activities which are normally done when constructing a surface 
+irrigation scheme. The activities range from site establishment, construction of conveyance 
+structures, drainage structures and a fence. 
+No Activity Months No. 
+of 
+days 
+Resources required 
+Labour 
+required 
+Main Machines 
+required 
+  J F M A M    
+1 Site establishment      5   
+2 Procurement of materials and 
+transport to the site 
+     42   
+3 Setting out grid and irrigation 
+layout 
+     10   
+4 Canal construction (1500 m)      35   
+5 Land levelling (8 hectares)      30   
+6 Drains (1200 m)      5   
+7 Roads (1800 m)      6   
+8 Structures (10)      16   
+9 Fencing (2500 m)      10   
+10 Finishing, Clearing      11   
+ 
+a. Prepare a work plan of your choice for the activities using the number of days given 
+(include dates for each activity) 
+b. Name the main machines that would be required to conduct each activity 
+c. Estimate the number of labour required and number of machines required for each 
+activity within the required time (include both skilled and unskilled labour) 
+ 

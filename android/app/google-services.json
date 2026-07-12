@@ -1,0 +1,44 @@
+{
+  "project_info": {
+    "project_number": "985257842533",
+    "firebase_url": "https://studyhub-backend-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "studyhub-backend",
+    "storage_bucket": "studyhub-backend.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:985257842533:android:37c76bf00df66b23ad338c",
+        "android_client_info": {
+          "package_name": "com.studyhub.luanar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "985257842533-hirjngm8nrn6blj7tkv7v70j34j4psdk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.studyhub.luanar",
+            "certificate_hash": "f60115a18a3378abc3fe45cf965f6cdd9625217f"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8CGChEqpJOBt-HWKLANx4eUGVrqj61Dg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "985257842533-buh0i8r3jb1gtu1rbod1lql940ckn0hk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

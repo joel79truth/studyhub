@@ -1,0 +1,1353 @@
+
+
+Principles of 
+selection
+Wilson Nandolo
++265 993 375 505
+wnandolo@luanar.ac.mw
+
+Aim of this lecture
+•The lecture aims 
+at equipping 
+students with 
+basics of 
+selection as it is 
+applied to Genetic 
+improvement in 
+livestock
+2
+
+Learning objectives
+•At the end, you should be able to
+•Define selection
+•Define response to selection
+•List and describe factors influencing 
+response to selection
+•Describe the interaction between the 
+different factors influencing response to 
+selection
+3
+
+Genetic Improvement strategies
+•Two ways exist for a breeder to 
+change genetic properties of a 
+population
+•Choice of individuals to be used as 
+parents (Selection, most important 
+principle)
+•Control the way the parents are mate 
+(Inbreeding and crossbreeding, and 
+underlying strategies)
+4
+
+Defining selection
+•Selection simply means choosing the best for 
+breeding purposes
+•From Introduction to Genetics course, we 
+have been discussing and describing genetic 
+properties of a population that exist under 
+natural forces (random mating, no mutation, 
+no selection, no migration etc)
+•If we are to improve livestock, we have to 
+change some of these forces
+•And that is the work of breeding
+5
+
+Defining selection
+•Selection applies theories of 
+quantitative genetics 
+–By showing how to choose 
+individuals with best breeding 
+values for traits under 
+consideration
+–By predicting the outcome from 
+selection
+6
+
+Definition of selection
+•Selection is the differential contribution of 
+genetic material from one generation to the next. 
+•You allow some individuals to contribute their 
+genes to the production of the next progeny
+•Selection does not create new genes.
+•It just allows possessors of some genes to 
+produce more offspring than those that do not 
+possess the genes 
+–so that the frequency of the genes is increased.
+7
+
+Selection
+•Genetically a large population under 
+natural forces is in Hardy-Weinberg 
+Equilibrium
+–Gene of parentsAB
+–Frequenciespq
+–GenotypesAAABBB
+–Frequenciesp
+2
+2pqq
+2
+8
+
+Selection
+•When selection is taking place, say 
+against q
+2
+•Those individuals are not allowed to 
+contribute to the next generation
+•Random mating is violated
+•This will result in concentration of p
+2
+ 
+and declining q
+2
+9
+
+Selection
+•Selection therefore, concentrates 
+desirable genes in a population
+•The simplest form of selection is 
+choosing individuals on the basis of 
+their own phenotypic performance
+•Examples
+–Traits for good grazing, fast growth, feed 
+conversion, milk production etc
+10
+
+Kinds of selection
+•Natural
+•Artificial
+11
+
+Natural Selection
+•This selection is based on survival of the 
+fittest in a particular environment
+•Those that fit survive and contribute to the 
+next generation
+12
+
+How Nature selects
+•Through diseases
+–Some die of an outbreak 
+and some survive and 
+contribute to next 
+generation
+•Fertility levels
+–The more fertile leave more 
+progeny
+•Others are biologically 
+fertile but are shy and this 
+behaviour inhibits 
+contributing to next 
+generation (low libido, shy)
+13
+
+How Nature selects
+•Level of predation
+•In wild, weaker ones are caught, leaving 
+strong ones
+•This leads to natural selection against 
+weak individuals in a population
+•Other factors such as differences in 
+duration of sexual activities among 
+individuals in a population
+•Elimination of defective or detrimental 
+genes that arose due to mutation
+14
+
+How Nature selects
+•So in these ways, natural forces control 
+selection
+•There is however, a limit to which 
+nature can not hold or allow selection to 
+go on
+•Natural selection therefore, operates 
+more on fitness traits, i.e. traits of 
+survival and viability 
+•This leads to aspects of adaptation
+15
+
+Artificial Selection
+•This is selection practised by man
+•Human beings select individuals based on their 
+goals and objectives
+•Man makes effort to increase the frequency of 
+desirable genes in a herd or flock
+•So man locates and save individuals for 
+breeding purposes that have superior 
+performance, or those with ability to produce 
+superior performing offspring when mate to 
+individuals from other lines or breeds
+16
+
+Examples of Artificial Selection
+•You select Zebu cattle for longevity in 
+pasture, for high growth rates
+•You select individuals with more meat 
+(mascularity), high egg production, 
+high growth rates
+•That means you allow these 
+individuals with good traits to 
+contribute to next generation
+17
+
+Artificial Selection
+•While artificial selection is taking 
+place, nature is still controlling 
+(taking place)
+–Nature dictates the level of 
+performance you can go up to
+•Also for this selection to take place, 
+there is need to know your animals 
+very well
+–Hence the need for recording and 
+record keeping
+18
+
+Selection for different types of 
+allele relationships
+• Autosomal genes
+–Single autosomal genes
+•Epistatic autosomal genes
+•Alleles with complete dominance
+•The recessive phenotype
+•Genes showing incomplete dominance and additive 
+gene action 
+– Genes showing incomplete dominance 
+– Genes showing additive gene action 
+– Two or more autosomal genes
+• Sex-linked genes
+–Y-linked genes
+–X-linked genes
+19
+
+Selection for autosomal genes
+•If the desired trait is produced by a 
+homozygous genotype, 
+–it is possible to produce a true breeding 
+population by culling (selecting against) 
+the undesirable phenotypes.
+–This is difficult for a homozygous 
+dominant genotype. 
+•If the desired phenotype is coded for 
+by a heterozygous genotype, 
+–it is impossible to produce a true 
+breeding population by selection. 
+20
+
+Selection for epistatic autosomal 
+genes 
+•If the desired trait is produced by more than one 
+genotype and one or more of the genotypes are 
+heterozygous, 
+–it is also impossible to produce a true breeding 
+population by selection. 
+•Selection cannot fix a heterozygous phenotype 
+because heterozygotes do not breed true. 
+•The only way to produce 100% heterozygotes is 
+to breed the recessive genotype with the 
+dominant (homozygous) genotype
+21
+
+Selection for alleles with 
+complete dominance 
+•In this case, selection can 
+easily fix the recessive 
+phenotype and produce a 
+true-breeding population, 
+but it cannot fix the 
+dominant phenotype easily.
+22
+
+Selection for the recessive 
+phenotype 
+•This can be done in one 
+generation. 
+•You just cull the animals with 
+the dominant phenotype.
+23
+
+Selection for the dominant 
+phenotype 
+•This can be done indirectly by 
+culling the individuals with the 
+recessive phenotype.
+•The result is not 100% 
+desirable (why?).  
+24
+
+Selection for the dominant phenotype 
+•The effect of trying to concentrate the dominant 
+allele by eliminating the recessive allele through 
+selection against the recessive phenotype can be 
+determined by using this formula:
+Where 
+q
+0
+  =   initial frequency of the recessive allele, 
+q
+N 
+ =   the frequency of the recessive allele after n 
+generations, 
+N   =  number of generations. 
+•You can transpose the formula to get N.
+0
+0
+1Nq
+q
+q
+N
++
+=
+25
+
+Sample calculation
+•A farmer’s population of cattle 
+are 10% non-polled and she 
+wants to reduce the frequency 
+to 0.01%. 
+•How many generations is it 
+going to take for the farmer to 
+achieve this?
+26
+
+Sample calculation
+•Notice that the gene for horns is 
+recessive to that for no horns. 
+•The number of generations of 
+selection that would be necessary 
+to achieve this goal can be 
+calculated as follows:
+27
+
+Sample calculation
+ q
+0
+= √f(non-polled)
+= √.10
+=0.316
+q
+N
+= √ 0.0001
+=0.01
+N= (q
+0
+ - q
+N
+)/ q
+0
+q
+N
+= 
+ √.10 −√ 0.0001 
+(√.10 )(√ 0.0001)
+= 97
+28
+
+Sample calculation
+•Note that numbers are always 
+rounded up in these calculations, for 
+obvious reasons.
+•Note that it needs quite a long time to 
+reduce the frequency of the recessive 
+allele to 0.01%.
+29
+
+Notes 
+•Normally, the first few generations of 
+selection against the recessive allele lower 
+the frequency precipitously. 
+•But when the frequency is low, 
+–the rate of change is very small, and
+–the allelic frequency approaches zero 
+asymptotically because 
+–as the frequency of a recessive allele 
+decreases, the percentage of the recessive 
+alleles hidden by the dominant one increases. 
+•This explains why even for the rarest 
+autosomal genes, the number of carriers is 
+surprisingly high.
+30
+
+Progeny testing
+•Progeny testing  is the determination of the 
+genotype of an individual, or its breeding value, 
+based on the phenotypes of its offspring.
+•It may be used to identify and cull heterozygotes, 
+thereby increasing the frequency of the dominant 
+allele. 
+•In this technique, we use a test animal (an 
+animal whose genotype is known) 
+•The  test animal is mated to another animal 
+(whose genotype is not (completely) known) 
+•The phenotypic ratios of the offspring are 
+determined. 
+31
+
+Progeny testing
+•The technique distinguishes homozygous 
+dominant individual from heterozygous ones 
+•Because phenotypic ratios are determined by 
+probabilities, 
+–We must find the number of offspring that  
+must have the dominant phenotype, without 
+the recessive phenotype,
+–in order to reject the null hypothesis (that the 
+animal is not homozygous) and declare that 
+the animal is truly homozygous, 
+–depending on the selected confidence level. 
+•The more valuable the animal, the higher the 
+confidence interval.
+32
+
+Example
+•In cat fish, a cross between an albino and 
+a normal catfish with heterozygous 
+genotype (that is, a test cross) is 
+supposed to produce 50% albino and 50% 
+normal offspring. 
+•The probability, P, of producing N normally 
+pigmented offspring without producing an 
+albino is given by P=0.5
+N
+.
+•This means that depending on the value of 
+the animal, you can choose the 
+appropriate P and then calculate N. 
+33
+
+P=0.5
+N
+•Remember that statistically, the 
+implication is that N is the number of 
+normally pigmented offspring, without 
+any albino, with which you can 
+reasonably conclude, at the chosen 
+level of confidence, that the animal 
+under test truly has a homozygous 
+dominant genotype. 
+34
+
+P=0.5
+N
+•If the chosen level of confidence is 95%, 
+–and the null hypothesis is that the 
+individual under test is a heterozygote, 
+–P must be less than 0.05 for you to reject 
+the null hypothesis. 
+•Otherwise, you fail to reject the null 
+hypothesis and conclude that the 
+individual is a heterozygote.
+35
+
+Heterozygous test animal
+•Sometimes the test animal is a 
+heterozygote, in which case
+•Where does the 0.75 come 
+from? 
+N
+P75.0=
+36
+
+Calculation of N
+•Note that you can make N the 
+subject of the formula
+•That is, 
+ 
+where α is the critical 
+probability value and P is 
+the  probability for N = 1.
+1
+log
+log
+P
+N
+a
+=
+37
+
+Sample question
+•A farmer has a population of Himalayan and 
+albino rabbits. 
+•He wishes to have a population of Himalayan 
+rabbits only, which means that all the rabbits must 
+be dominant homozygotes for the Himalayan coat 
+colour. 
+•He can achieve this by culling the albinos in each 
+generation, but he knows that the decrease in the 
+frequency of the allele for albinism leads to an 
+increase of heterozygotes in the population, which 
+makes it harder to eliminate the recessive allele 
+through this way of selection. 
+38
+
+Sample question
+•Fortunately, the farmer has a Himalayan 
+buck he knows is a heterozygote. 
+•He decides to use this as a test animal in 
+progeny testing. This means that he is 
+going to mate other Himalayan does to 
+this buck. 
+•If one of the offspring from such a mating 
+is an albino, the doe is certainly a 
+heterozygote and must be culled. 
+•If all the offspring are Himalayans, the 
+doe may be a dominant homozygote. 
+39
+
+Sample question
+•However, she could also be a 
+heterozygote, such that the fact 
+that all the offspring are 
+Himalayans is purely due to chance. 
+•At 95% level of confidence, how 
+many Himalayan offspring, without 
+any albino, must be obtained from 
+a mating for the farmer to conclude 
+that a doe is a homozygote?
+40
+
+Answer
+•H
+o
+= the doe is a heterozygote
+•The cross is as shown below:
+41
+
+Answer
+•Hence P (Himalayan) = 0.75
+� (� 퐻푖푚푎푙푎�푎 ൭ 푤푖 ℎ표�  푎  푎푙푏푖 표) = 0.75
+�
+,
+•and
+� =
+log0.05
+log0.75
+ = 11
+•This means that when all 11 or more offspring are 
+Himalayans, 
+–the chances that this could happen due to chance alone are 
+remote and we reject the null hypothesis; 
+–we conclude that the doe must be a homozygote. 
+•Other homozygotes can also be obtained by using 
+albinos as test animals. 
+42
+
+Selection for genes showing incomplete 
+dominance and additive gene action
+•Selection can fix either the dominant 
+or the recessive phenotype in one 
+generation only.
+43
+
+Selection for genes showing 
+incomplete dominance
+•A single generation of selection will 
+produce a true breeding population 
+regardless of whether the desired 
+phenotype is dominant or  recessive.
+44
+
+Selection for genes showing 
+additive gene action
+•Same as for incomplete dominance 
+gene action
+45
+
+Selection for two or more 
+autosomal genes
+•Same as for single autosomal 
+gene.
+46
+
+Selection for sex-linked genes
+•Y-linked genes
+•X-linked genes
+47
+
+Y-linked genes
+•A single culling of the males 
+with the undesirable 
+phenotype will fix the desired 
+alleles and produce a true 
+breeding population.
+48
+
+X-linked genes
+•The efficiency of fixing an X-linked 
+phenotype is the same as that for 
+autosomal alleles. 
+•Recessive X-linked phenotypes can 
+be fixed in a single generation by 
+culling all individuals with the 
+dominant X-linked phenotype. 
+49
+
+X-linked genes
+•However, it is impossible to fix a dominant 
+X-linked phenotype by selection because 
+it is impossible to eliminate the recessive 
+X-linked allele by selection.
+•The effect of selection against a recessive 
+X-linked phenotype in an effort to eliminate 
+a recessive X-linked allele can be 
+determined by using a series of equations 
+outlined below
+50
+
+X-linked genes
+Where
+X
+q1
+ = frequency of the X-linked allele 
+after 1 generation of selection 
+ X
+q0 
+= initial frequency of the allele in 
+the population
+•Frequency in males,  f(X
+q1
+)= 0                                                      
+()
+()
+0
+0
+1
+1
+q
+q
+q
+X
+X
+Xf
++
+=
+51
+
+X-linked genes
+where M and F are the numbers of 
+males and females, respectively.
+•Selection will reduce the frequency of 
+the X-linked by one half every 
+generation. 
+()
+MF
+MX
+Xf
+q
+q
++
+=
+2
+2
+1
+1
+52
+
+X-linked genes
+•After the first generation of selection, the effect of 
+selection against the recessive X-linked 
+phenotype can be determined by 
+Where 
+X
+qn
+ is the frequency of the recessive allele 
+after n generations of selection  
+X
+q1
+ is the frequency of the allele after the first 
+generation of selection and 
+N is the number of generations of selection 
+after the first generation of selection.
+()
+N
+qqn
+XX5.0
+1
+=
+53
+
+X-linked genes
+•The only way to eliminate a recessive X-linked allele is 
+to progeny-test the females and to cull the 
+heterozygotes. 
+•The phenotype of the test male is important because 
+–it is the female that contributes the X-chromosome to her 
+sons and 
+–it is the sons’ phenotypes that are examined in an X-
+linked progeny. 
+•The female must be considered a heterozygote (the 
+null hypothesis). The progeny test sets up the 
+following:
+Dominant female x either male phenotype
+54
+
+X-linked genes
+•In this case we examine the females’ sons. 
+•If one son with the recessive phenotype is 
+observed, the female can be considered a 
+heterozygote and should be culled. 
+•When no sons with the recessive X-linked 
+phenotype are observed, 
+–you must establish an appropriate confidence 
+level at with which you can reject or fail to reject 
+the null hypothesis.
+55
+
+X-linked genes
+•The probability of producing a son 
+with the dominant X-linked 
+phenotype is 0.5 and 
+•the probability, P, of producing N 
+dominant X-linked sons without 
+producing any recessive X-linked 
+son is given by equation .
+N
+P5.0=
+56
+
+Response to selection
+•Definition
+•Factors
+•Calculation
+•Accuracy
+•Improvement 
+57
+
+Definition
+•This is genetic effect (merit or impact) of 
+selection
+•Selection does not create new genes but 
+allows possessors of some genes and gene 
+combination to produce more offspring than 
+individuals lacking these
+•It is practised to increase frequency of 
+desirable genes in a population and decrease 
+frequency of undesirable genes
+•The major effect of selection on a herd is to 
+change the average value of a trait from one 
+generation to the next
+58
+
+Definition
+•Assume A is a desirable gene for 
+colour
+•Assume a is undesirable gene for 
+colour
+•Parents AA x aa
+•F
+1
+ will have 50 % A; 50 % a
+•Mating F
+2
+1 AA, 2 Aa, 1aa
+59
+
+Definition
+•Assume you cull off all individuals 
+with aa in F
+2
+•The remaining genes would be 
+–4A
+–2a
+•Thus increasing the freq of A to 67 % 
+and decreasing the freq of a to 33 %
+60
+
+Definition
+•The same happens for genes for 
+fast and slow growth
+•Or for any other trait of interest
+•And thus change the average 
+from one generation to the next
+61
+
+Definition of response to selection
+Xp
+Xo
+Parents 
+generation
+Offspring 
+generation
+Truncation point
+Selected individuals as parents
+Average value for the offspring increases
+62
+
+Response to selection
+Xp
+Xo
+Parents 
+generation
+Offspring 
+generation
+Truncation point
+Selected individuals as parents
+Average value of the offspring increases
+The difference 
+between mean of 
+offspring and 
+mean of the 
+parent populations
+Mean of the selected
+63
+
+Response to selection, an example
+64
+
+Response to selection, an example
+Xp
+Mean of the selected
+Truncation point
+Parents 
+generation
+Selected individuals as parents
+65
+
+Response to selection
+66
+
+Factors affecting response to 
+selection
+•Response to selection per 
+generation depends on
+–Heritability for a particular trait
+–Selection differential
+–Genetic correlation of the 
+characteristics (traits)
+67
+
+Factors affecting response to 
+selection
+•Response to selection per annum or 
+over a period of time depends on
+–Heritability for a particular trait
+–Selection differential
+–Genetic correlation of the characteristics 
+(traits)
+–Generation interval
+68
+
+Response to selection
+•Per generation
+•Per period of time (one year)
+Measure of genetic 
+(breeding) value
+Measure of 
+superiority of 
+selected individuals
+Generation interval
+�=ℎ
+2
+�
+�=
+ℎ
+2
+�
+�
+69
+
+Selection differential
+qThe deviation of the average performance of 
+selected individuals from the population mean 
+from which the breeding animals were 
+selected
+� =�
+�
+−�
+�
+Mean performance of 
+selected parents
+Mean performance of 
+the population
+70
+
+Selection differential
+Mean phenotypic value of 
+selected parents
+Truncation point
+Individuals selected as parents
+Assume that individuals are selected as parents 
+only if their phenotypic value is greater than 
+truncation point 
+71
+
+Selection differential
+•Phenotypic superiority of selected parents is equal to 
+mean of selected minus population mean 
+Mean phenotypic value of 
+selected parents
+Truncation point
+�=9 � 푖 ൭
+72
+
+0
+2
+4
+6
+8
+10
+12
+14
+F
+r
+e
+q
+ 
+(
+%
+)
+12345678910111213
+Weight groups
+304 g
+Pop mean
+410g
+Selected
+SD = ?
+Weight at week 10 for local chickens
+No. selected 
+36.92 %
+Example
+73
+
+Response to Selection 
+•Assume h
+2
+ for live weight is 
+35 %
+–R = 0.35*S
+•This is R per generation
+74
+
+SD differs by sex
+•Since selection policy differs by sex
+•That is, numbers selected and periods of 
+turnover (or replacement) usually differ between 
+male and females
+•Fewer males are usually selected than females 
+in a population
+•More females that give single births are selected 
+than litter bearing females
+75
+
+SD differs by sex
+qSD is averaged if different proportions of males 
+and females are selected
+qThat is, you treat males and females separately
+2
+fm
+SS
+S
++
+=
+76
+
+SD differs by sex, an example
+•Mean of selected cocks is 2.7 kg, mean of 
+all cocks as candidates is 2.2 kg
+–S
+m
+ = 0.5 kg
+•Mean of selected hens is 1.8 kg, mean of 
+all hens as candidates is 1.1 kg
+– S
+f
+ = 0.7 kg
+•S = 0.6 kg
+77
+
+Factors influencing Selection differential
+•Is influenced by two parameters
+–The proportion selected (selection 
+intensity)
+–The standard deviation (measure of 
+the spread of the population)
+78
+
+Measure of the spread of the population
+qA more variable population will have 
+higher SD 
+79
+
+Selection intensity
+•Rather than determining SD directly 
+as shown, SD could be determined 
+from knowledge of a selection policy
+•This is by determining first selection 
+intensity (i) 
+80
+
+Selection intensity
+•In technical terms, Selection Intensity (i) is the 
+number of phenotypic standard deviation (σp) 
+units that selected animals are superior to the 
+mean of the population
+–This is the proportion of the population that is 
+selected for breeding
+•SD will depend on intensity of selection
+•The value of i decreases as p (proportion 
+selected) increases
+81
+
+Selection intensity
+These can be computed but are usually provided in table 
+or chart form according to proportions selected as 
+parents  
+Best selected
+Even the 
+worst 
+selected
+82
+
+Selection intensity
+•SD can therefore be calculated as 
+•For the chicken weights, 
+–i = (410 –304)/98.6  = 1.0
+–P = 36.92 % 
+–σ
+p
+ = 98.6
+–SD = ?
+•This shows how much better the 
+animals selected are than the 
+population mean
+83
+
+Selection intensity illustrated
+•I = 1.75, S = 8
+Std deviation units
+Phenotypic units for σp = 5
+575.1xpiS==s
+84
+
+Selection intensity
+•Differs between 
+males and 
+females
+•Due to different 
+proportions 
+selected
+s
+f
+s
+m
+2
+fm
+ii
+i
++
+=
+85
+
+Sample question
+•If 5% of pigs in a population of 
+pigs are selected based on their 
+ability to give larger litters, what is 
+the response to selection if the 
+standard deviation of litter size in 
+the population is 0.6 litters and 
+the heritability of litter size in pigs 
+is 10%?
+86
+
+Solution 
+•This means that the 
+offspring of these 
+selected individuals will 
+have litter sizes that are 
+about 0.123 above the 
+mean of the original 
+population.
+123.0
+)10.0)(6.0)(05.2(
+2
+=
+=
+=
+R
+R
+hiR
+P
+s
+0.00 
+0.50 
+1.00 
+1.50 
+2.00 
+2.50 
+0.0500.0750.1000.1500.2000.2500.3000.3500.4000.4500.500
+I
+n
+t
+e
+n
+s
+i
+t
+y
+,
+ 
+i
+Proportion Selected, p
+87
+
+Increasing rate of genetic gain
+•A high response to selection needs
+•Low proportion selected 
+–Increases i and SD
+•High phenotypic variation 
+–Makes animals selected better than the 
+average of population
+•High h
+2
+–So that superiority of animals is passed to 
+progeny
+88
+
+Increasing rate of genetic gain
+•R can easily be increased by 
+manipulating proportion selected
+–Increasing reproductive rate of animals
+•Increases size from which to select as 
+replacement
+•And hence high I and SD
+•It is however, difficult to change 
+population variation and h
+2
+89
+
+Increasing rate of genetic gain
+•Males tend to have higher reproductive 
+rates
+–This makes them to select few
+–And hence high i
+–And high R through males
+•Small sized species such as chickens have 
+very high reproductive rate
+–This makes it more offspring from which to 
+choose for replacement
+–And hence high i and R
+90
+
+Increasing rate of genetic gain
+•Proportion selected can be 
+manipulated and resulting in 
+increase reproductive rate through
+•AI in males
+•MOET in females
+•Rate of Genetic Gain is 
+proportional to i
+91
+
+Summary of h
+2
+ and S
+92
+
+Generation Interval
+•Often it is more important to predict R per 
+year
+•This more usefully describes the rate of 
+genetic improvement
+•And accounts for how quickly we can turn 
+over a generation
+•In order to do this we need to know the 
+generation interval of the animal (L or GI)
+• GI is the average age of parents when 
+progeny to be used for breeding are borne
+93
+
+Response to selection
+•Per generation
+•Per period of time (one year)
+ShR
+2
+=
+L
+Sh
+R
+2
+=
+94
+
+Generation Interval
+•If Response per generation for 20 week 
+old live weight in pig is 2 kg per generation
+•Generation is 3 years 
+–R
+t
+ = 2kg / 3 years
+–R
+t
+ = 0.67
+•R
+t
+ can be increased by minimising the GI
+L
+pih
+R
+t
+s
+2
+=
+95
+
+Response to selection
+•To maximise response per year
+Should be high, but can 
+do little to influence 
+this (is trait and 
+population specific)
+Should be high
+Should be high, leading to 
+large spread of BVs and 
+more superiority of 
+selected ones (Difficult 
+to influence)
+Should be as low as 
+possible
+L
+ih
+R
+t
+s
+2
+=
+96
+
+Generation Interval, Calculation
+•If all parents are bred only once, 
+and they drop their progeny at 2 
+years (2 years after they 
+themselves were dropped), then it 
+takes 2 years to cycle through 
+one generation
+2
+gen
+yr
+R
+R=
+97
+
+Generation Interval, Calculation
+•However, parents are usually bred 
+more than once
+•And breeding females are often kept 
+longer than males
+•So first calculate the average age of 
+parents when their progeny are borne
+98
+
+Generation Interval, Calculation
+•Assume you have cows calving at 2, 3, 4 and 5 
+years during its lifetime
+� =
+2 + 3 + 4 + 5
+4
+=3.5
+99
+
+Typical generation intervals
+AnimalGeneration interval
+Human beings20-30 years
+Sheep3 to 4 years
+Goats3 to 4 years
+Pigs1 to 3 years
+Cattle4 to 6 years
+100
+
+Generation Interval, Calculation
+•GI also differs between sex
+•Age of bulls (cocks or bucks) 
+need to be known
+•The GIs for two sexes need to be 
+averaged
+101
+
+GI Calculation, equal numbers
+•Equal numbers of bucks borne at 2 and 3 
+years are selected as parents
+–L
+m
+ = 2.5 years
+•Equal numbers of does borne at 2,3 & 4 
+years are selected as parents
+–L
+f
+ = 3.0 years
+•L
+average
+ = 2.75 years
+102
+
+Response to selection
+•Rt in full will be
+•One can manipulate GI by changing age structure of the 
+population
+–Use younger bulls
+–Reduce culling age of the animals
+ph
+LL
+ii
+R
+fm
+fm
+t
+s
+2
++
++
+=
+Please note the conflict between manipulating i and L
+A compromise is needed during selection policy 
+decision
+103
+
+An exercise 
+•A goat breeder has 180 doe flock for selection for 
+growth rate
+•Bucks are first selected at 2 years old but are 
+mated for 2 years only
+•Does are first selected at 2 years old but are 
+mated for 4 years
+•Each buck mates 30 does, kidding rate is 90 %, 
+equal sex ratio & no significant adult mortality
+•Trait heritability is 0.25 and sigma = 0.6kg / day
+•What is R
+year
+104
+
+Answer
+•From 180 does, 162 kids borne, 81 of each sex
+•For males, need to select 3 out of 81 each year (p = 3.7 %, i 
+= 2.18)
+•For females, need to select 45 out of 81 each year (p = 55 %, 
+i = 0.72)
+•Continue with L
+m
+ and L
+f  
+(hint = equal numbers per year)
+•R
+year
+ = expected increase by ..... per year
+Age structure of animals selected for breeding
+Age (yrs)2345Total
+Male336
+Female45454545180
+105
+
+Factors affecting response to selection
+•Heritability for a particular trait
+•Selection differential
+•Correlation of the characteristics 
+(traits)
+106
+
+Read more on the calculation of 
+generation intervals by sex and 
+based on replacement policy. 
+107
+
+End of presentation
+108

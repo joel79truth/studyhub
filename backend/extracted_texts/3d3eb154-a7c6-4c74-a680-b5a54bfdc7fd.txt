@@ -1,0 +1,753 @@
+
+
+Laws.Africa Legislation Commons
+Malawi
+Seed Act
+Chapter 67:06
+Legislation as at 31 December 2014
+FRBR URI: /akn/mw/act/1988/5/eng@2014-12-31
+There may have been updates since this file was created.
+PDF created on 21 February 2024 at 15:28.
+Collection last checked for updates: 31 December 2014.
+Check for updates
+About this collection
+The legislation in this collection has been reproduced as it was originally printed in the Government Gazette, with
+improved formatting and with minor typographical errors corrected. All amendments have been applied directly to
+the text and annotated. A scan of the original gazette of each piece of legislation (including amendments) is available
+for reference.
+ 
+This is a free download from the Laws.Africa Legislation Commons, a collection of African legislation that is digitised
+by Laws.Africa and made available for free.
+www.laws.africa
+info@laws.africa
+There is no copyright on the legislative content of this document.
+This PDF copy is licensed under a Creative Commons Attribution 4.0 License (CC BY 4.0). Share widely and freely.
+i
+
+Seed Act
+Contents
+Part I – Preliminary ............................................................................................................................................................................................   1
+1. Short title ....................................................................................................................................................................................................  1
+2. Interpretation .............................................................................................................................................................................................  1
+Part II – Administration ....................................................................................................................................................................................   2
+3. Controller of Seeds ..................................................................................................................................................................................  2
+4. Registers ......................................................................................................................................................................................................   2
+Part III – Registration of seed importers, seed cleaners and seed sellers .....................................................................................  2
+5. ***     ...................................................................................................................................................................................................................   2
+6. ***     ...................................................................................................................................................................................................................   3
+7. *** ....................................................................................................................................................................................................................  3
+8. ***     ...................................................................................................................................................................................................................   3
+9. ***     ...................................................................................................................................................................................................................   3
+10. *** .................................................................................................................................................................................................................  3
+11. *** .................................................................................................................................................................................................................  3
+12. *** .................................................................................................................................................................................................................  3
+13. *** .................................................................................................................................................................................................................  3
+14. *** .................................................................................................................................................................................................................  3
+Part IV – Seed tests ............................................................................................................................................................................................  3
+15. Establishment of seed testing stations .........................................................................................................................................  3
+16. Designation of official seed testers ................................................................................................................................................  3
+17. Registers of seed testers and seed testing stations ..................................................................................................................  4
+18. Prohibition against testing of prescribed seed except in seed testing stations .............................................................  4
+19. Delivery of samples for official test ...............................................................................................................................................  4
+20. Reports to be in forms prescribed ..................................................................................................................................................  4
+Part V – Seed inspection ..................................................................................................................................................................................  4
+21. Seed inspectors ......................................................................................................................................................................................  4
+22. Authority of seed inspectors may be general or limited ........................................................................................................  5
+23. Powers to take samples of seed ......................................................................................................................................................  5
+24. Powers to search premises and seize certain goods ................................................................................................................  5
+25. Prohibition against obstruction, etc., of seed inspectors ........................................................................................................  6
+Part VI – Licensing of seed sellers ...............................................................................................................................................................  6
+26. *** .................................................................................................................................................................................................................  6
+27. *** .................................................................................................................................................................................................................   6
+28. *** .................................................................................................................................................................................................................  6
+ii
+
+29. *** .................................................................................................................................................................................................................  6
+30. *** .................................................................................................................................................................................................................  6
+31. *** .................................................................................................................................................................................................................  6
+32. *** .................................................................................................................................................................................................................  6
+Part VII – Prescribed seed ................................................................................................................................................................................  6
+33. Power of Minister to declare seed to be prescribed seed ......................................................................................................  6
+34. Treating and cleaning of prescribed seed ....................................................................................................................................  7
+35. Duties of seller on sale of prescribed seed .................................................................................................................................  7
+36. Disposals sub-standard prescribed seed .......................................................................................................................................  8
+Part VIII – Import and export of seed .........................................................................................................................................................  8
+37. *** .................................................................................................................................................................................................................   8
+38. *** .................................................................................................................................................................................................................  8
+39. Conditions for importation of prescribed seed ..........................................................................................................................   8
+40. Testing of imported prescribed seed ..............................................................................................................................................  9
+41. Importation of trade samples ...........................................................................................................................................................  9
+42. Court may order forfeiture and disposal of illicit prescribed seed .....................................................................................  9
+Part IX – Certification of seed and production of seed for certification .........................................................................................  9
+43. Certification of seed .............................................................................................................................................................................  9
+44. Variety of certified seed ......................................................................................................................................................................  9
+45. Notification of intention to produce seed for certification ....................................................................................................  9
+46. Register of seed producers ..............................................................................................................................................................  10
+47. *** ...............................................................................................................................................................................................................  10
+48. *** ..............................................................................................................................................................................................................   10
+49. *** ..............................................................................................................................................................................................................   10
+50. Certification of seed by the Controller of Seeds .....................................................................................................................  10
+51. Certified seed of Malawi to be produced from approved seed ..........................................................................................  11
+52. Certificate to be produced on sale of Malawi Certified Seed .............................................................................................  11
+53. Certification of imported seed as Imported Certified Seed .................................................................................................  11
+54. Duties of seller on sale of certified, seed in sealed containers .........................................................................................  12
+55. Prohibition against sale of uncertified seed .............................................................................................................................  12
+56. Prohibition against sale of certified seed without possession of appropriate certificate .........................................   12
+Part X – Offences and miscellaneous provisions ..................................................................................................................................  13
+57. Failure to comply with Act or regulations .................................................................................................................................  13
+58. Prohibition against tampering with samples ............................................................................................................................  13
+59. Prohibition against altering, defacing or removing official records, etc. ........................................................................  13
+iii
+
+60. Prohibition against altering, etc., documents and marks .....................................................................................................  13
+61. Secrecy ....................................................................................................................................................................................................  13
+62. *** ..............................................................................................................................................................................................................   14
+63. Prohibition against sale of untested prescribed seed ...........................................................................................................  14
+64. Prohibition against sale of substandard prescribed seed ....................................................................................................  14
+65. Prohibition against sale of prescribed seed under name other than varietal name ...................................................  14
+66. Penalty .....................................................................................................................................................................................................  14
+67. Inspection of registers .......................................................................................................................................................................  14
+68. When Act not applicable to sale of prescribed seed .............................................................................................................  15
+69. Exemptions from the provisions of this Act .............................................................................................................................  15
+70. *** ..............................................................................................................................................................................................................   15
+71. Regulations ............................................................................................................................................................................................  15
+iv
+
+Seed Act  Malawi
+Malawi
+Seed Act
+Chapter 67:06
+Commenced on 13 January 1997
+[This is the version of this document at 31 December 2014.]
+[Note: This version of the Act was revised and consolidated in the Fifth Revised Edition of the Laws of Malawi (L.R.O.
+1/2018), by the Solicitor General and Secretary for Justice under the authority of the Revision of the Laws Act.]
+An Act to provide for the regulation and control of the production, sale, importation and exportation
+of seed for sowing, and for the testing and minimum standards of germination and purity thereof, and
+further to provide for the certification of seed and for matters incidental to or connected therewith
+Part I – Preliminary
+1.Short title
+This Act may be cited as the Seed Act.
+2.Interpretation
+In this Act, unless the context otherwise requires—
+"advertisement" includes any statement, picture, design or device—
+(a)published in any newspaper or other publication in general circulation to the public; or
+(b)contained in any handbill, circular or other matter which is distributed to members of the public
+through the post or brought to the notice of the public in any other manner;
+"certified seed" means any prescribed seed which is certified under the provisions of Part IX;
+"container" includes a bag, barrel, case, tin, package or any other container in which seed is placed or
+packed;
+"contract of sale" includes an agreement to sell;
+"Controller of Seeds" means the officer in the public service designated as such under the provisions of
+section 3;
+"Imported Certified Seed" means any prescribed seed certified in the country of its origin imported by a
+registered seed importer and certified as Imported Certified Seed under the provisions of Part IX;
+"label" includes any legend, work, mark, symbol or design applied or attached to, or accompanying, any
+seed or package of seed;
+"licensed seed seller" means any seed seller licensed under Part VI;
+"Malawi certified seed" means any prescribed seed produced in Malawi and certified as such under the
+provisions of Part IX;
+"official seed-tester" means any public officer designated as an official seed-tester under Part IV;
+"owner", in relation to any seed, includes any person having for the time being the possession, custody or
+control thereof;
+"prescribed seed" means any seed declared as such by an order made under section 33;
+By    Laws.Africa and contributors. Licensed under CC-BY. Share widely and freely. 1
+
+Seed Act  Malawi
+"purity" means analytical purity expressed as a percentage by weight;
+"seed" means the part of any plant, customarily referred to as seed, intended for planting and includes
+seed potatoes;
+"seed cleaner" means any person engaged in the trade or business of removing impurities from seed;
+"seed cleaning plant" includes any premises used for the removal of impurities from seed;
+"seed importer" means any person who, either exclusively or in conjunction with any other trade or
+business, imports seed into Malawi for resale;
+"seed inspector" means any person designated as seed inspector under section 21;
+"seed producer" means any person who, either exclusively or in conjunction with any other trade or
+business, produces seed for sale;
+"seed seller" means any person who, either exclusively or in conjunction with any other trade or business,
+sells seed for sowing;
+"seed-testing station" means any premises, suitably equipped for the purpose, where seed is tested for its
+purity and germination capacity;
+"sell" includes to exchange or barter or to offer, advertise, keep, expose, transmit, convey or deliver for or
+in pursuance of a sale, exchange or barter;
+"special variety" means any variety of prescribed seed which has been specified by the Minister pursuant
+to section 44 for the purposes of Part IX;
+"variety" means a subdivision of any kind which can be differentiated from other subdivisions of that kind
+by growth, plant, fruit or other characteristics and any uniform group which is a first generation hybrid
+reconstituted on each occasion by crossing two or more breeding stocks maintained by inbreeding.
+[9 of 1996]
+Part II – Administration
+3.Controller of Seeds
+(1)There shall be a Controller of Seeds for the purposes of this Act, who shall be an officer in the public
+service, and who, subject to the general and special directions of the Minister, shall be responsible
+for the administration of this Act.
+(2)The Controller of Seeds may, subject to the general or special directions of the Minister, delegate
+any of his powers or functions under this Act to any officer in the public service.
+4.Registers
+The Controller of Seeds shall keep and maintain all registers prescribed or required under this Act, each of
+which shall contain such particulars as are prescribed in respect of such register.
+[9 of 1996]
+Part III – Registration of seed importers, seed cleaners and seed sellers
+5.***
+[Repealed by 9 of 1996]
+By    Laws.Africa and contributors. Licensed under CC-BY. Share widely and freely. 2
+
+Seed Act  Malawi
+6.***
+[Repealed by 9 of 1996]
+7.***
+[Repealed by 9 of 1996]
+8.***
+[Repealed by 9 of 1996]
+9.***
+[Repealed by 9 of 1996]
+10.***
+[Repealed by 9 of 1996]
+11.***
+[Repealed by 9 of 1996]
+12.***
+[Repealed by 9 of 1996]
+13.***
+[Repealed by 9 of 1996]
+14.***
+[Repealed by 9 of 1996]
+Part IV – Seed tests
+15.Establishment of seed testing stations
+The Minister may establish and maintain, or designate one or more seed testing stations in Malawi.
+[9 of 1996]
+16.Designation of official seed testers
+Upon the establishment or designation of a seed testing station, and from time to time thereafter as
+occasion may require, the Minister shall, by notice published in the Gazette, designate an official seed
+tester or official seed testers, as the case may be, for each such seed testing station.
+[9 of 1996]
+By    Laws.Africa and contributors. Licensed under CC-BY. Share widely and freely. 3
+
+Seed Act  Malawi
+17.Registers of seed testers and seed testing stations
+The Controller of Seeds shall keep and maintain the following registers—
+(a)a register of official seed testers, which shall contain—
+(i)the name and address of each official seed tester appointed under this Act;
+(ii)such other particulars as may be prescribed;
+(b)a register of seed testing stations, which stations shall contain—
+(i)the name and address of each seed testing station established under this Act; and
+(ii)such other particulars as may be prescribed.
+18.Prohibition against testing of prescribed seed except in seed testing stations
+(1)Any person who, in any place which is not a seed testing station, tests or purports to test for the
+purposes of this Act any prescribed seed shall be guilty of an offence.
+(2)Upon the conviction of any person of an offence under subsection (1), the court may, in addition
+to any other penalty imposed, declare any machinery, equipment and chemicals and any
+prescribed seed found in the place concerned to be forfeited or order them to be destroyed without
+compensation.
+19.Delivery of samples for official test
+(1)Any person who has produced or acquired any prescribed seed which has not been tested may take
+a sample of the seed to a seed testing station together with a statement in writing specifying such
+particulars as may be prescribed.
+(2)The delivery of a sample of prescribed seed pursuant to subsection (1) shall be subject to payment
+of such fee as may be prescribed.
+(3)Upon receipt at the seed testing station of any sample taken pursuant to subsection (1), the official
+seed tester shall test the sample in the manner prescribed and shall furnish to the person who
+sought the test a report there of setting out the date upon which the test was made, the findings
+resultant thereon and such other particulars as may appear to the official seed tester necessary for,
+or relevant to, the report.
+[9 of 1996]
+20.Reports to be in forms prescribed
+Any reports, certificates or other documents issued or furnished by a seed testing station for the purposes
+of this Act shall be in the forms prescribed.
+Part V – Seed inspection
+21.Seed inspectors
+(1)There shall be seed inspectors licensed as such by the Minister for the purposes of this Act
+(2)An application for a licence as a seed inspector shall be made to the Minister in the prescribed form,
+and shall be accompanied with the prescribed fees.
+(3)The Minister shall cause a certificate of authority to be issued to each seed inspector.
+By    Laws.Africa and contributors. Licensed under CC-BY. Share widely and freely. 4
+
+Seed Act  Malawi
+(4)A seed inspector shall produce for inspection his certificate of authority upon the demand of any
+person affected by the exercise by him of any of his powers under this Act.
+[9 of 1996]
+22.Authority of seed inspectors may be general or limited
+The authority of a seed inspector issued under section 21 may be—
+(a)general, whereby the seed inspector shall be empowered to exercise all the powers of a seed
+inspector anywhere in Malawi; or
+(b)limited, either—
+(i)as to the specific powers exercisable by the seed inspector; or
+(ii)as to the place or district in which such powers are exercisable by the seed inspector.
+23.Powers to take samples of seed
+A seed inspector may take samples of any seed for any of the following purposes—
+(a)for test or examination to determine whether the seed is prescribed seed or restricted seed; or
+(b)for test to determine whether if the seed is prescribed seed it conforms to the standards of purity
+and germination prescribed therefor under this Act; or
+(c)for such other purposes as may be deemed necessary by the seed inspector in relation to the
+exercise of his powers under this Act.
+24.Powers to search premises and seize certain goods
+(1)A seed inspector may, for any of the purposes of this Act, and at all reasonable times, enter upon
+any land, building, premises or vehicle at or in which he has reasonable cause to believe that any
+prescribed seed or restricted seed is being stored, sold or transported for sale in contravention of
+this Act, or is being packed in packages or other containers which are marked or labelled, or are
+being marked or labelled, with any description, mark or date in contravention of this Act, and may,
+without liability for any payment to any person whosoever, take samples of the seed found therein
+and the owner of the land, building, premises or vehicle, or his agent or the person in custody or
+control thereof shall on demand furnish to the seed inspector a statement in writing containing
+such particulars with respect to the seed as may be required by the seed inspector who, further, may
+seize and remove therefrom and detain any prescribed seed or restricted seed or any package or
+container or any label, stamp or device for marking, stamping or labelling, or any book, record or
+document found therein, which would afford evidence of a contravention of this Act.
+(2)Every seed inspector shall, on demand by the owner, or the person having custody of such land,
+building, premises, plant or vehicle, produce his authority to enter upon such land, building,
+premises, plant or vehicle.
+(3)Any seed inspector who has seized and detained any item or thing pursuant to the authority under
+subsection (1), shall give to the person from whom such item or thing was seized a receipt for the
+seizure and detention thereof signed by such seed inspector.
+(4)Any prosecution for an offence arising from the findings of an inspection conducted under
+subsection (1) shall be instituted only with the consent of the Chief Public Prosecutor; and in the
+event of the Controller of Seeds being advised in writing by the Chief Public Prosecutor that no
+prosecution should be instituted, then any item or thing seized in the course of the inspection shall
+be returned to the owner thereof or to the person from whose custody it was taken within ten days
+from the date of the receipt by the Controller of Seeds of such advice.
+[9 of 1996]
+By    Laws.Africa and contributors. Licensed under CC-BY. Share widely and freely. 5
+
+Seed Act  Malawi
+25.Prohibition against obstruction, etc., of seed inspectors
+Any person who—
+(a)obstructs or impedes a seed inspector in the due exercise of his powers under this Act; or
+(b)refuses to furnish to a seed inspector, on request, any particulars or information to which the seed
+inspector is entitled under this Act; or
+(c)wilfully or recklessly gives to a seed inspector or an authorized officer any false or misleading
+particulars or information with respect to any fact or matter to which the seed inspector is entitled
+under this Act,
+shall be guilty of an offence.
+Part VI – Licensing of seed sellers
+26.***
+[Repealed by 9 of 1996]
+27.***
+[Repealed by 9 of 1996]
+28.***
+[Repealed by 9 of 1996]
+29.***
+[Repealed by 9 of 1996]
+30.***
+[Repealed by 9 of 1996]
+31.***
+[Repealed by 9 of 1996]
+32.***
+[Repealed by 9 of 1996]
+Part VII – Prescribed seed
+33.Power of Minister to declare seed to be prescribed seed
+The Minister may from time to time, by order published in the Gazette, declare any seed to be a prescribed
+seed, and for each kind specify minimum standards of germination and other characteristics of seed
+quality.
+[9 of 1996]
+By    Laws.Africa and contributors. Licensed under CC-BY. Share widely and freely. 6
+
+Seed Act  Malawi
+34.Treating and cleaning of prescribed seed
+(1)If, upon test made under Part IV, it is found and reported by an official seed tester that any
+prescribed seed does not conform to the prescribed standards of germination or purity, the owner
+thereof shall forthwith arrange for the prescribed seed to be treated or cleaned.
+(2)Where any prescribed seed has been treated or cleaned pursuant to subsection (1), the owner
+may request a seed inspector to take, and the seed inspector thereupon shall take, a further
+sample thereof as required under this Act, which sample shall be sent by the seed inspector to a
+seed testing station for further test, and the owner may, as often as he so desires, cause further
+treatments or cleanings of such prescribed seed to be effected and further tests to be made in like
+manner until such time as the prescribed seed is found and reported by the official seed tester to
+conform to the standards of germination and purity prescribed therefor.
+35.Duties of seller on sale of prescribed seed
+(1)Subject to the provisions of this Act, any person who sells, for sowing, any prescribed seed which
+has been tested in accordance with the provisions of this Act and found to conform to the standards
+prescribed shall—
+(a)if the prescribed seed is sold in sealed containers, cause to be printed or stamped upon each
+such container or upon a label attached thereto or enclosed therein in such a way as to be
+legible without opening the container, in clear and legible letters and figures—
+(i)the words "tested seed";
+(ii)the date upon which the prescribed seed was tested; and
+(iii)such other particulars as may be prescribed;
+(b)if the prescribed seed is sold in bulk quantities—
+(i)and the seller is the person who caused the test to be made, furnish to the buyer at
+the time of sale a statement in writing containing the name and address of the seed
+testing station where the test was made, the date of the test, and a declaration by the
+seller that the bulk quantity sold by him is all or part of that from which the sample
+tested was taken, together with such other particulars as may be prescribed;
+(ii)and the seller is not the person who caused the test to be made, furnish to the
+buyer at the time of sale a copy of the statement furnished, under the provisions of
+subparagraph (i), by the person who ensured such test to be made and shall endorse
+thereon a declaration that the bulk quantity sold by him is all or a part of that to
+which such statement was related at the time he procured the prescribed seed.
+(2)Any person who fails to comply with the requirements of subsection (1) shall be guilty of an
+offence.
+(3)The validity of a contract for the sale of prescribed seed, or the right to enforce such a contract,
+shall not be affected by non-compliance with this section.
+(4)For the purposes of this section—
+(a)the expression "in bulk quantities" includes any quantity of seed, but does not include seed
+which is packed and sold in sealed containers;
+(b)the word "sale" includes "gift".
+By    Laws.Africa and contributors. Licensed under CC-BY. Share widely and freely. 7
+
+Seed Act  Malawi
+36.Disposals sub-standard prescribed seed
+Subject to the provisions of section 34, if a sample of any prescribed seed is, upon test, found and reported
+by an official seed tester not to conform to the standards of germination and purity prescribed for such
+prescribed seed, the Controller of Seeds may—
+(a)if such prescribed seed has been seized and detained in accordance with the provisions of this Act—
+(i)subject, to such conditions, as to its sale use as he may impose, direct its return either to the
+owner thereof or to the person from whose custody or control it was taken and in so directing
+the Controller of Seeds may impose such conditions as to its sale or use as he may consider
+necessary; or
+(ii)order it to be destroyed without payment of compensation to the owner if, upon reasonable
+grounds, he is satisfied that it is in a state dangerous to public health or injurious to animals
+or plants;
+(b)if the prescribed seed has not been seized or detained in accordance with the provisions of this Act
+—
+(i)permit the owner thereof to retain the prescribed seed subject to such conditions as to its
+sale or use as the Controller of Seeds may impose;
+(ii)order it to be destroyed at the premises where located or to be seized by the Controller of
+Seeds and destroyed, in either case without payment of compensation, to the owner, if, upon
+reasonable grounds, he is satisfied that it is in a state dangerous to public health or injurious
+to animals or plants.
+Part VIII – Import and export of seed
+37.***
+[Repealed by 9 of 1996]
+38.***
+[Repealed by 9 of 1996]
+39.Conditions for importation of prescribed seed
+(1)No seed importer shall import any prescribed seed into Malawi unless—
+(a)such seed is not restricted seed;
+(b)such seed conforms to the standards of germination and purity and other requirements
+prescribed therefor;
+(c)if such seed is packed in a container, such container complies with the provisions of section
+35 as to the manner of labelling;
+(d)the genus, species and variety of such seed, and the country of its origin, is shown on an
+invoice or delivery note accompanying such seed at the time of its importation.
+(2)The Minister may exempt any seed importer, or any particular species, variety or class of prescribed
+seed, from subsection (1) and such exemption may be subject to such conditions as the Minister
+may, in his discretion, impose.
+By    Laws.Africa and contributors. Licensed under CC-BY. Share widely and freely. 8
+
+Seed Act  Malawi
+(3)A person who fails to comply with subsection (1) or with any condition imposed by the Minister
+under subsection (2) shall be guilty of an offence.
+[9 of 1996]
+40.Testing of imported prescribed seed
+(1)Upon importation into Malawi of any prescribed seed, the seed importer to whom the presented
+seed is consigned, shall, within seven days of its delivery to him, cause a sample thereof to be taken
+in the manner prescribed and sent for test to a seed testing station.
+(2)No person shall sell or otherwise dispose of imported prescribed seed prior to the neceipt, by the.
+seed importer who imported such prescribed seed, of a report on the test of the sample thereof from
+the seed testing station confirming that the imported prescribed seed conforms to the prescribed
+standards of germination and purity.
+(3)A person who contravenes or fails to comply with subsection (1) or (2) shall be guilty of an offence.
+[9 of 1996]
+41.Importation of trade samples
+Nothing contained in this Act shall be construed as prohibiting the importation by any seed importer, by
+post, of a sample of any prescribed seed not exceeding one kilogram and which is being imported into
+Malawi solely as a trade sample and its quantity is of no commercial value.
+[9 of 1996]
+42.Court may order forfeiture and disposal of illicit prescribed seed
+Upon the conviction of any person of an offence under this Part the court may, in addition to any other
+penalty imposed, declare any prescribed seed or restricted seed found in possession or under the control
+of the defendant and connected with the commission of the offence to be forfeited and may order it to be
+destroyed without compensation.
+Part IX – Certification of seed and production of seed for certification
+43.Certification of seed
+Subject to the provisions of this Part, seed may be certified by the Controller of Seeds—
+(a)in the case of seed produced in Malawi, as "Malawi Certified Seed"; or
+(b)in the case of imported seed, as "Imported Certified Seed".
+[9 of 1996]
+44.Variety of certified seed
+The Minister may, by order published in the Gazette, specify the variety or varieties of seed which may
+be cultivated for the purpose of producing seed for certification as Malawi Certified Seed or as Imported
+Certified Seed.
+[9 of 1996]
+45.Notification of intention to produce seed for certification
+(1)Any person who intends to produce seed for certification may notify the Controller of Seeds of his
+intention.
+By    Laws.Africa and contributors. Licensed under CC-BY. Share widely and freely. 9
+
+Seed Act  Malawi
+(2)The notification referred to in subsection (1) shall be made in the prescribed form and shall specify
+—
+(a)the variety or varieties of seed to be produced;
+(b)the location where the seed is to be produced;
+(c)the area in hectares that is to be planted; and
+(d)the name of the seed inspector who has been engaged to inspect the fields and to test the
+seed for certification, and shall be accompanied with the prescribed fees.
+(3)Notification under this section shall be valid for one season for the production of one crop only of a
+particular specified variety or varieties to which it relates.
+[9 of 1996]
+46.Register of seed producers
+For the purposes of this Part, the Controller of Seeds shall keep and maintain a register of seed producers
+which shall contain—
+(a)the name and addresses of all seed producers;
+(b)particulars of the specified variety or varieties to be grown by each seed producer;
+(c)particulars of the location and area of the land where each such specified variety is to be grown by
+each seed producer;
+(d)such other particulars as may be prescribed.
+[9 of 1996]
+47.***
+[Repealed by 9 of 1996]
+48.***
+[Repealed by 9 of 1996]
+49.***
+[Repealed by 9 of 1996]
+50.Certification of seed by the Controller of Seeds
+(1)Upon it being shown to the satisfaction of the Controller of Seeds that a particular seed lot—
+(a)is of a specified variety;
+(b)is of known derivation;
+(c)has been produced on the land designated in the register;
+(d)has been sown, cultivated and produced as prescribed;
+(e)has been inspected during cultivation as prescribed; and
+(f)has been tested in accordance with the provisions of this Act and found to conform to the
+standards of germination and purity,
+the Controller of Seeds may certify such seed as Malawi Certified Seed.
+By    Laws.Africa and contributors. Licensed under CC-BY. Share widely and freely. 10
+
+Seed Act  Malawi
+(2)Having certified any seed as Malawi Certified Seed the Controller of Seeds shall issue to the seed
+producer a certificate in the prescribed form in respect of such seed, and shall enter the particulars
+of such certification in the register of seed producers in relation to the seed producer concerned.
+[9 of 1996]
+51.Certified seed of Malawi to be produced from approved seed
+No seed producer shall use for the production of Malawi Certified Seed any variety of seed which has not
+been approved for such purpose by the Controller of Seeds.
+[9 of 1996]
+52.Certificate to be produced on sale of Malawi Certified Seed
+(1)Upon any sale of Malawi Certified Seed by any seed producer, he shall, at the time of such sale—
+(a)produce for inspection by the buyer the certificate issued under this Part in respect of such
+seed; and
+(b)furnish to the buyer a true copy of such certificate countersigned by him as the producer of
+such Malawi Certified Seed.
+(2)A seed producer who fails to comply with this section shall be guilty of an offence.
+[9 of 1996]
+53.Certification of imported seed as Imported Certified Seed
+(1)The Controller of Seeds may, upon application by a seed importer, certify as Imported Certified Seed
+any seed of specified variety which—
+(a)has been imported into Malawi by the applicant;
+(b)has been tested in accordance with the provisions of this Act;
+(c)has been certified as certified seed under the laws of the country of its origin;
+(d)is accompanied by a certificate which the Controller of Seeds considers acceptable for
+purposes of certification under this Part; and
+(e)is shown to the satisfaction of the Controller of Seeds to have been produced under
+conditions, and to conform to standards, equal to or higher than those prescribed for the
+production and certification of Malawi Certified Seed.
+(2)Where the Controller of Seed has certified any imported seed as Imported Certified Seed, he shall
+issue to the seed importer a certificate in the prescribed form in respect of such certification.
+[9 of 1996]
+(3)The Controller of Seeds shall keep and maintain a register of seed importers which shall contain—
+(a)the name and address of the seed importer;
+(b)the variety and quantity of seed imported;
+(c)the country of origin of the seed;
+(d)the date of testing in the country of origin;
+(e)the name of the certifying authority in the country of origin;
+(f)the number of the certificate; and
+By    Laws.Africa and contributors. Licensed under CC-BY. Share widely and freely. 11
+
+Seed Act  Malawi
+(g)such other particulars as may be prescribed.
+[9 of 1996]
+54.Duties of seller on sale of certified, seed in sealed containers
+(1)Any person who sells, for sowing, any certified seed in sealed containers shall cause to be pruned or
+stamped upon each such container or on a label attached thereto or enclosed therein in such a way
+as to be legible without opening the container, in clear and legible letters and figures—
+(a)in the case of Malawi Certified Seed—
+(i)the words "Malawi Certified Seed" in lieu of the words "tested seed" as required under
+section 35;
+(ii)the date of testing;
+(iii)the number of the certificate issued in respect thereof; and
+(iv)such other particulars as may be prescribed;
+(b)in the case of Imported Certified Seed—
+(i)the words "Imported Certified Seed" in lieu of the words "tested seed" as required
+under section 35;
+(ii)the date of testing;
+(iii)the number of the certificate issued in respect thereof; and
+(iv)such other particulars as may be prescribed.
+(2)Any person who fails to comply with this section shall be guilty of an offence.
+55.Prohibition against sale of uncertified seed
+Any person who—
+(a)sells as certified seed any seed which is not certified under this Act; or
+(b)for the purposes of sell, uses, in the description or name of any seed, the word "certified" or any
+cognate word in relation to seed which is not certified under this Act, shall be guilty of an offence.
+56.Prohibition against sale of certified seed without possession of appropriate certificate
+(1)Any person who sells in bulk quantities—
+(a)any Malawi Certified Seed or Imported Certified Seed, for sowing, without having in his
+possession or under his control, at the time of such sale, the certificate or a copy of the
+certificate issued or furnished under this Part in respect of such seed;
+(b)any Malawi Certified Seed or Imported Certified Seed, for sowing, and who fails to furnish the
+buyer, at the time of such sale, the prescribed certificate or a copy of certificate required to be
+so furnished under this Part in respect of such seed, shall be guilty of an offence.
+(2)The validity of a contract for the sale of certified seed, or the right to enforce such a contract, shall
+not be affected by non-compliance with this section.
+(3)For the purposes of this section, the expression "in bulk quantities" includes any quantity of seed
+taken, for the purpose of a particular sale, from any larger quantity of seed, but does not include
+seed which is packed and sold in sealed containers.
+By    Laws.Africa and contributors. Licensed under CC-BY. Share widely and freely. 12
+
+Seed Act  Malawi
+Part X – Offences and miscellaneous provisions
+57.Failure to comply with Act or regulations
+Any person who contravenes or fails to comply with any of the provisions of this Act, or regulations,
+requirements or conditions lawfully prescribed thereunder, shall be guilty of an offence.
+58.Prohibition against tampering with samples
+Any person who—
+(a)tampers with any seed so as to procure that any samples of such seed, taken under and for the
+purposes of this Act, does not correctly represent the bulk from which the sample was taken; or
+(b)otherwise tampers with any sample taken under this Act; or
+(c)with intent to deceive, causes or permits to be sent to any seed testing station to be tested, for the
+purposes of this Act, a sample of any seed which to his knowledge does not represent the bulk from
+which it was taken,
+shall be guilty of an offence.
+[9 of 1996]
+59.Prohibition against altering, defacing or removing official records, etc.
+Any person who, without lawful authority, alters, defaces or removes—
+(a)any register, index or other such official record maintained in pursuance of this Act or of any order
+or requirement made thereunder; or
+(b)any entry appearing in any such register, index or other such official record,
+shall be guilty of an offence.
+60.Prohibition against altering, etc., documents and marks
+Any person who, without lawful authority, alters or defaces—
+(a)any certificate, report record invoice, accounts or other document, prescribed, issued, furnished or
+kept under this Act or under any order, requirement, condition or regulation made thereunder; or
+(b)any label, note, docket or mark placed upon any container under this Act or under any order,
+requirement or condition made thereunder, or who removes any such label, note, docket or mark
+from any such container,
+shall be guilty of an offence.
+61.Secrecy
+Any person who—
+(a)is employed for the purposes of this Act, publishes or communicates to any person without lawful
+authority any information acquired by him in the course of his employment; or
+(b)is in possession of any information which to his knowledge has been disclosed in contravention of
+this Act, publishes or communicates that information to any other person,
+shall be guilty of an offence and be liable to a fine not exceeding K500 or to imprisonment not exceeding
+one year.
+By    Laws.Africa and contributors. Licensed under CC-BY. Share widely and freely. 13
+
+Seed Act  Malawi
+62.***
+[Repealed by 9 of 1996].
+63.Prohibition against sale of untested prescribed seed
+(1)Save as provided by section 68, no person shall sell any prescribed seed for sowing unless the said
+seed has previously been tested as provided by this Act, and upon such test has been found to be of
+the standards of germination and purity prescribed for such seed.
+(2)Any person who fails to comply with this section shall be guilty of an offence.
+(3)Upon the conviction of any person of an offence under this section, the court may, in addition to
+any other penalty imposed, declare any such untested prescribed seed found in the possession
+or under the control of the defendant to be forfeited or may order it to be destroyed without
+compensation.
+64.Prohibition against sale of substandard prescribed seed
+(1)If, upon test made pursuant to the provisions of this Act, any prescribed seed is not found to
+conform to the standards of germination and purity prescribed for such seed and is so reported in
+the report on such test furnished by an official seed tester, such prescribed seed shall not be sold
+by any person, for sowing, save with the consent in writing of the Controller of Seeds previously
+obtained, and subject to any conditions as regards such sale as the Controller of Seeds may impose.
+(2)Any person who sells any prescribed seed in contravention of subsection (1) shall be guilty of an
+offence.
+(3)Upon conviction of any person of an offence under this section, the court may, in addition to any
+other penalty imposed, declare any such sub-standard prescribed seed found in the possession
+or under the control of the defendant to be forfeited or may order it to be destroyed without
+compensation.
+65.Prohibition against sale of prescribed seed under name other than varietal name
+(1)Any person who sells, for sowing, any prescribed seed under a description other than its varietal
+name shall be guilty of an offence.
+(2)In this section, "varietal name" means the name given to a specific variety of seed by its originator
+or discoverer.
+66.Penalty
+(1)A person guilty of an offence under this Act for which a penalty has not been specified shall be
+liable to a fine of K5,000 and to imprisonment for one year.
+(2)Any regulations made under this Act may, notwithstanding the provisions of section 21 (e) of the
+General Interpretation Act, prescribe a fine of up to K2,000 and imprisonment for up to six months
+for an offence committed against any provision of such regulations.
+[9 of 1996]
+[Cap. 1:01]
+67.Inspection of registers
+All registers maintained by the Controller of Seeds under this Act shall, at all reasonable times, be open to
+the inspection by any person applying to the Controller of Seeds on payment of the prescribed fee.
+By    Laws.Africa and contributors. Licensed under CC-BY. Share widely and freely. 14
+
+Seed Act  Malawi
+68.When Act not applicable to sale of prescribed seed
+The provisions of this Act shall not apply—
+(a)to any sale of prescribed seed, which is not Malawi Certified Seed and which has been produced by a
+seed producer on his own land and is sold by him—
+(i)for sowing by the buyer, and not for purposes of resale; or
+(ii)to a seed cleaner in order that it may be cleaned before being sold for sowing:
+Provided that it is sold in a container or containers, upon which, or upon the label or labels
+attached to which, appear clearly and legibly the words "for cleaning purposes only";
+(iii)for use as food or as farm feed or for industrial purposes.
+(b)to any sale of prescribed seed, which is not certified seed, by or to a person exempted from the
+provisions of this Act by an order made by the Minister under section 69.
+[9 of 1996]
+69.Exemptions from the provisions of this Act
+The Minister may, from time to time, by order published in the Gazette, exempt any person or class of
+persons from the provisions of this Act.
+70.***
+[Repealed by 9 of 1996].
+71.Regulations
+The Minister may make regulations for the better carrying out of this Act and, without prejudice to the
+generality of the foregoing, such regulations may make provision for—
+(a)the forms of registers, notifications, certificates, licences and reports required to be prescribed
+under this Act and such other forms as the Minister deems proper to prescribe for the purposes of
+this Act;
+[9 of 1996]
+(b)the forms of records to be kept by the Controller of Seeds for the purposes of this Act;
+(c)the form of records to be kept and returns to be made by seed cleaners, seed importers, seed
+producers and seed sellers for purposes of this Act;
+[9 of 1996]
+(d)the qualifications of official seed testers under this Act;
+(e)standards of quality and performance of scientific equipment and the variety of such equipment
+to be maintained in any seed testing station, and the Minister may make provision for different
+standards and equipment for different seed testing stations;
+[9 of 1996]
+(f)the operation and management of seed testing stations, including the number of official seed
+testers to be attached to each such seed testing station and the forms of records to be kept by seed
+testing stations for the purposes of this Act;
+(g)the manner in which samples are to be taken under this Act, the forms to be used in and about the
+taking of such samples, and the fees and expenses to be paid for and in respect of the taking of such
+samples under particular circumstances;
+By    Laws.Africa and contributors. Licensed under CC-BY. Share widely and freely. 15
+
+Seed Act  Malawi
+(h)the methods to be employed by seed testing stations and official seed testers in the testing of
+prescribed seed;
+(i)the standards of germination and purity of specified varieties for purposes of certification as
+certified seed under Part IX;
+(j)the conditions under which prescribed seed for sowing intended for sale may be displayed for sale
+or stored by any seed producer, seed cleaner or seed seller;
+[9 of 1996]
+(k)the manner and methods of labelling, stamping, marking or sealing of containers in which any
+prescribed seed or certified seed is sold;
+(l)the prevention of the use of false or misleading statements in advertising any prescribed seed for
+sale;
+(m)the prohibition or restriction of the disposal, acquisition or use of any prescribed seed as farm feed
+or fertilizer;
+(n)standards of quality and performance of equipment and the variety of such equipment to be
+maintained at any seed cleaning plant;
+[9 of 1996]
+(o)the methods to be employed by seed cleaners in and about the cleaning of prescribed seed;
+(p)the inspection of land notified by a seed producer as land on which he intends to produce seed for
+certification as Malawi Certified Seed;
+[9 of 1996]
+(q)the examination and testing of any seed intended for use by a seed producer in the production of
+seed for certification as Malawi Certified Seed and the methods to be employed by seed producers in
+and about the cultivation and production of seed for such certification and further for the periodic
+inspection of growing crops intended for the production of seed for certification as Malawi Certified
+Seed;
+[9 of 1996]
+(r)the control, limitation or prohibition of the cultivation by a seed producer of any specified crops on
+land contiguous or adjacent to lands upon which seed intended for certification as Malawi Certified
+Seed is being grown by the seed producer;
+[9 of 1996]
+(s)the control of weeds on the land of any seed producer which is being used for the production of
+seed intended for certification as Malawi Certified Seed or on any other land of the seed producer
+adjacent or contiguous to such land;
+[9 of 1996]
+(t)the country or countries of origin of imported seed of any specified variety, and the certifying
+authority in such country or countries whose certificate thereof as certified seed may form the basis
+of an application by a seed importer for the certification of such seed as Imported Certified Seed
+under Part IX;
+[9 of 1996]
+(u)any fees payable under this Act;
+[9 of 1996]
+By    Laws.Africa and contributors. Licensed under CC-BY. Share widely and freely. 16
+
+Seed Act  Malawi
+(v)any thing or matter which this Act requires to be prescribed.
+[9 of 1996]
+By    Laws.Africa and contributors. Licensed under CC-BY. Share widely and freely. 17

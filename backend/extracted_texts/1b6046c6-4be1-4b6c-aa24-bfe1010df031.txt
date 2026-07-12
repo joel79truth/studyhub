@@ -1,0 +1,187 @@
+
+
+Unsaturated 
+hydrocarbons –
+Reactions of  alkenes-
+Part 2
+Dr FatemaJagot
+
+Halogenation of alkenes
+•Chlorine (Cl
+2
+) and bromine (Br
+2
+) react with alkenes at room 
+temperature by the addition of the halogen atoms to the two carbons 
+of the double bond.
+•Two new carbon-halogen bonds are formed.
+
+•A halogen molecule is electrophilic.
+•A nucleophile can react with a halogen molecule, displacing a halide 
+ion:
+•In this example, the nucleophile attacks the electrophilic nucleus of 
+one bromine atom, and the other bromine atom serves as a leaving 
+group, departing as a bromide ion.
+•Similarly, the pi electrons of an alkene can attack the halogen 
+molecule, expelling a halide ion. 
+
+Step 1:
+Mechanism of alkene halogenation
+Electrophilic addition of the halogen: the double bond attacks the 
+electrophilic nucleus of one halogen atom forming a new covalent bond 
+with that halogen atom, while the other halogen atom leaves with both 
+electrons from the X—X bond. At the same time, the halogen atom uses 
+its lone pair of electrons to form a bond with the second carbon atom of 
+the double bond. 
+This results in the formation of a haloniumion.
+
+A haloniumion is a three membered ring with a positive charge on the 
+halogen atom.
+Reactions with bromine form bromoniumions, with chlorine form 
+chloroniumions, etc.
+
+The haloniumion is extremely unstable and highly electrophilic.
+The nucleophilic halide ion, X
+-
+, generated in step 1, attacks the 
+electrophilic carbon of the haloniumion, causing the ring to break 
+open to form a stable halogenated product.
+Step 2:
+
+•For example, addition of Br
+2
+to propene:
+Step 1: 
+Step 2: 
+
+•The addition of halogens across the double bond of cycloalkenesis 
+stereoselective.
+•This means one stereoisomer is preferred over the other 
+stereoisomer.
+•The addition is anti-stereoselective, or takes place through anti-
+addition. The halogen atoms add on opposite faces of the double 
+bond, giving rise to the transisomer.
+
+•Practice exercise: Draw the mechanism for the addition of Br
+2
+to 2-
+butene.
+•Complete these reactions, giving the stereochemistry of the products:
+
+Hydrogenation of Alkenes
+•Hydrogen adds across a double bond to give an alkane.
+•This is a reduction reaction.
+•The process usually requires a catalyst containing Pd, Pt, or Ni.
+
+•The reaction is carried out by dissolving the alkene in ethanol or 
+another non-reacting organic solvent, adding the solid catalyst, and 
+exposing the mixture to hydrogen gas at pressures of about 1 –100 
+atm.
+•Catalytic reduction is stereoselective(which means the hydrogen 
+adds in a certain manner across a double bond). It takes place 
+through synaddition, where the hydrogens add to the same face 
+across the double bond resulting in a cisconfiguration.
+
+Carbocation Rearrangements
+•In certain cases, migration of a proton or an alkyl group with its 
+bonding pair of electrons, takes place from an adjacent carbon atom 
+to a positively charged carbon atom of a carbocation.
+•This is known as a rearrangement.
+•This occurs so as to form a more stable carbocation.
+•Affects which major product is formed in an addition reaction.
+
+•For example, in the addition of HClto 3,3-dimethyl-1-butene, only 
+17% of the expected product 2-chloro-3,3-dimethylbutane is formed.
+•The major product instead is 2-chloro-2,3-dimethylbutane.
+•Formation of rearranged product can be accounted for by the 
+following mechanism, the key step of which is a type of 
+rearrangement called a 1,2-shift.
+
+Mechanism of a 1,2-shift:
+Step 1: Add a proton: Proton transfer from the HCl(electrophile) to the 
+alkene (nucleophile) gives a 2°carbocation. 
+Step 2: Rearrangement of a bond: Migration of a methyl group with its 
+bonding electrons from an adjacent carbon gives a more stable 3°
+carbocation intermediate. The major movement is that of the bonding 
+electron pair with the methyl group following.
+
+Step 3: Reaction of a nucleophile and electrophile to form a new 
+covalent bond:Reaction of the 3°carbocation intermediate (an 
+electrophile) with chloride ion (a nucleophile) gives the rearranged 
+product.
+
+•The driving force for these rearrangememtsare the formation of 
+more stable carbocations.
+•The 3°carbocation is more stable than the 2°carbocation.
+•Rearrangements also occur in the acid-catalysed hydration of alkenes, 
+especially when a carbocation formed in the first step can rearrange 
+to a more stable carbocation.
+•For example, the acid-catalysed hydration of 3-methyl-1-butene gives 
+2-methyl-2-butanol. In this example, the group that migrates is a 
+hydrogen with its bonding pair of electrons.
+
+•Practice exercise: Propose a mechanism for the acid-catalysed 
+hydration of 3-methyl-1-butene to give 2-methyl-2-butanol.
+
+Alkynes
+
+Alkynes
+•Alkynes are unsaturated hydrocarbons that have one or more C     C
+bonds.
+•General formula; C
+n
+H
+2n-2
+•The simplest alkyne, ethyne, is also known as acetylene.
+•Acetylene is commonly used as a fuel in welding torches.
+•They are named by identifying the longest continuous chain in the 
+molecule containing a triple bond and adding the ending ‘yne’.
+•Same rules as those for naming alkenes.
+
+•The chain is numbered from the end closest to the triple bond, and the 
+position of the triple bond is given by its lower numbered carbon atom.
+•Substituents are given numbers to indicate their locations.
+4-methyl-2-pentyne
+
+Physical properties of alkynes:
+•They are relatively non-polar, similar to alkanes and alkenes.
+•Generally insoluble in water.
+•They are quite soluble in organic solvents such as ether, acetone, 
+chloroform, methanol.
+•Many alkynes have unpleasant odors.
+
+Reactions of Alkynes
+•The hydrogen bonded to a terminal alkyne is relatively acidic enough that it 
+can be deprotonated by a strong enough base such as sodium amide 
+(NaNH
+2
+):
+•This results in the formation of an acetylideanion.
+
+•The acetylideanion is a strong base and a strong nucleophile –it has 
+an unshared pair of electrons that it can donate to an electrophile to 
+form a new carbon—carbon bond.
+
+•Alkynes can be reduced to give alkenes and alkanes.
+•Treatment of an alkyne with hydrogen in the presence of a transition 
+metal catalyst, usually Pd, Pt, or Ni, results in the addition of two 
+moles of H
+2
+to the alkyne to form an alkane.
+•Reaction done at room temperature in the presence of a moderate 
+pressure of H
+2
+.
+
+•In the presence of a suitable catalyst, the reaction can be stopped 
+after the addition of one mole of H
+2
+, so that the alkyne is converted 
+to an alkene only.
+•The catalyst most commonly used for this purpose is Lindlar’s
+catalyst.
+•Lindlar’scatalystconsists of finely powdered palladium metal 
+deposited on solid calcium carbonate that has been specially 
+modified with lead salts.
+•Reduction of alkynes over Lindlar’scatalyst takes place through syn
+addition(same face addition) to give a cis-alkene.

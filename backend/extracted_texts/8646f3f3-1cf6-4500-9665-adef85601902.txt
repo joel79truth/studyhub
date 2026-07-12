@@ -1,0 +1,730 @@
+
+
+STRUCTURE AND 
+COMPOSITION OF 
+THE ATMOSPHERE
+SECTION  
+8
+Year 1
+Geography
+
+2
+STRUCTURE AND COMPOSITION OF THE ATMOSPHERESECTION 8
+THE EARTH AND ITS NEIGHBOURHOOD
+The Earth’s Atmosphere
+Introduction
+This section explores the atmosphere, covering its structure, composition, and 
+importance. It discusses weather and climate, highlighting the roles of atmospheric 
+gases in sustaining life. The section explains the difference between short-term weather 
+and long-term climate patterns, and examines elements like temperature, humidity, air 
+pressure, wind patterns, and rainfall. Understanding these topics helps us appreciate 
+the atmosphere’s contributions to human survival.
+The section also explores the instruments used to record the elements of weather and 
+calculate annual averages for rainfall and temperatures.
+At the end of this section, you will be able to:
+• Discuss the Physical Structure and Composition of the Earth’s Atmosphere. 
+• Explain the differences between weather and climate and the factors that affect them.
+• Calculate the annual and mean rainfall and temperature data of a station with appropriate 
+instruments for measuring the various elements of weather.
+Key Ideas 
+• The atmosphere is a mixture of gases surrounding the Earth. 
+• Some of the gases found in the atmosphere are oxygen, nitrogen, ozone, and water 
+vapour. 
+• Based on temperature and nature of the gases, the atmosphere consists of layers, namely 
+troposphere, stratosphere mesosphere and thermosphere. 
+• The atmosphere plays an important part in supporting life and protecting it from harmful 
+radiation from the Sun.
+• Weather is the condition experienced at specific place and time in terms of temperature, 
+humidity, cloud cover, wind, and precipitation. It can vary greatly from day to day and 
+even hour to hour, influencing our daily activities and plans.
+• Climate is the long-term pattern of temperatures, humidity, wind, and precipitation over 
+a region. Unlike weather which changes from day to day, it does not vary and uses the 
+averages of data collected over an extended period, often more than 30 years.
+• It is important to recognise the difference between the weather and climate for any place 
+on the surface of the Earth.
+• The factors that affect weather and climate include amount of solar radiation received at 
+any latitude, altitude, rotation of the Earth, and aspect.
+
+3
+STRUCTURE AND COMPOSITION OF THE ATMOSPHERESECTION 8
+STRUCTURE, COMPOSITION AND IMPORTANCE 
+OF THE ATMOSPHERE
+The Atmosphere
+The Earth’s atmosphere is a thin layer of air made up of gases like oxygen, nitrogen, 
+carbon dioxide, dust particles, and water vapor. Gravity holds these gases to the Earth. 
+The atmosphere is crucial for life, providing warmth, oxygen, and weather conditions 
+like rain and wind. It also protects us from the Sun’s harmful rays. Without the 
+atmosphere, life on Earth would not be possible.
+Structure of the Atmosphere
+The atmosphere is made up of different layers as you move up from the Earth’s surface. 
+Starting at the surface, the layers are the Troposphere, Stratosphere, Mesosphere, and 
+Thermosphere. Above the Thermosphere, around 500 km up, is the Exosphere. Each 
+layer has different constituents, conditions, and temperatures even though there are no 
+visible boundaries.
+Fig. 8.1: Structure of the Atmosphere, shown in different layers. 
+
+4
+STRUCTURE AND COMPOSITION OF THE ATMOSPHERESECTION 8
+Characteristics of each layer of the atmosphere
+The Troposphere:
+1. The troposphere extends 12-17 km high, containing all the tallest buildings, trees, 
+and mountains.
+2. It holds most gases like oxygen, nitrogen, water vapor, and dust, leading to weather 
+activities such as rain, clouds, thunderstorms, wind, and fog.
+3. The troposphere supports life due to its gas content.
+4. Weather is confined to this layer.
+5. Temperature decreases with altitude, explaining cooler conditions in higher areas 
+like Kwahu and Amedzofe in Ghana.
+6. Temperature drops by about 6.5°C for every 1000m increase in altitude, known as 
+the Environmental Lapse Rate.
+7. The troposphere is the densest layer, with convectional currents causing convectional 
+rainfall.
+8. The tropopause is the boundary between the troposphere and stratosphere.
+The Stratosphere: 
+1. The stratosphere extends from the tropopause up to 50 km.
+2. It contains ozone, which absorbs ultraviolet (UV) radiation from the Sun, protecting 
+the Earth’s surface.
+3. In the lower stratosphere, temperature remains constant around -60°C.
+4. In the upper stratosphere, temperature increases with height due to ozone absorbing 
+UV rays.
+5. The stratosphere is stable, free of clouds, but has high-speed jet streams.
+6. Its stability makes it ideal for aircraft, avoiding weather disturbances.
+7. The stratopause separates the stratosphere from the mesosphere above.
+The Mesosphere: 
+1. The mesosphere extends up to 85 km from the Earth’s surface, spanning about 30 
+km.
+2. Temperature decreases with height, dropping to about -90°C, making it the coldest 
+part of the atmosphere.
+3. Noctilucent (shining at night) clouds, made of ice crystals, occur here and are 
+visible during twilight in polar regions.
+4. Meteors burn up in this layer, creating shooting stars.
+5. The mesopause marks the boundary between the mesosphere and the thermosphere.
+The Thermosphere: 
+1. The thermosphere lies above the mesosphere, extending up to 400 km.
+2. It has an extremely low density of gas particles, resulting in high temperatures that 
+may not feel hot due to the low density.
+
+5
+STRUCTURE AND COMPOSITION OF THE ATMOSPHERESECTION 8
+3. Temperatures can rise to about 2000°C during the day and drop significantly at 
+night.
+4. The lower thermosphere or ionosphere, contains electrically charged particles that 
+interact with Earth’s magnetic field, enabling radio broadcasting.
+5. Charged particles in the thermosphere reflect radio, TV, satellite, and communication 
+signals.
+6. The thermopause marks the upper limit of the thermosphere.
+The Exosphere: 
+1. The exosphere is the top layer of the atmosphere and is around 10,000km thick, 
+extending halfway to the moon. 
+2. The density is so low here that any molecules that do exist rarely collide. 
+3. At the top of the exosphere is the vacuum of outer space.
+Altitude and Temperature Calculation 
+One of the characteristics of the lowest layer of the atmosphere, the troposphere, is 
+that there a reduction in temperature as height increases.  This is called the Normal or 
+Environmental Lapse Rate or ELR. It can be used to calculate temperatures at a given 
+altitude.
+How to calculate the temperature at a given altitude if you know the alti-
+tude and temperature at the base.
+Step 1: Take the altitude of the base.
+Step 2: Take the temperature at the base. 
+Step 3: Use the normal or environmental lapse rate to calculate the temperature differ-
+ence due to the change in altitude. (6.5°C for every 1000m or 1km ascent)
+Step 4: Given the altitude at the top subtract the base from this to find the height of 
+the mountain in metres and divide this height by 1000 then multiply by 6.5 to find the 
+temperature difference. The temperature at the top can be calculated by subtracting 
+this difference from the base temperature.
+Have a look at this worked example to make sure you understand.
+Worked Example 1
+Calculate the temperature at the top of a mountain 5000 metres high when the 
+temperature at the base of the mountain is 29°C.
+Fact 1 = Altitude or height of the mountain = 5000m
+Fact 2 = The temperature at the base of the mountain = 29°C
+Fact 3 = ELR = 6.5°C per 1000 metres
+
+6
+STRUCTURE AND COMPOSITION OF THE ATMOSPHERESECTION 8
+Thus, the difference in temperature between the base and top of the mountain 
+5000
+1000
+ = 5
+5 × 6.5 = 32.5°C
+To get the temperature at the top of the mountain, you must subtract 32.5°C from 
+29°C. To remember this always remind yourself that the temperature at the top of a 
+mountain is going to be colder than at the bottom.
+Thus, temperature at the height of 5000m = 29°C –32.5°C = –3.5°C
+So, the temperature at the top of the mountain is –3.5°C
+Worked Example 2
+The temperature at the base of Mt. Afadja is 30°C. If the height of the mountain is 
+1500m, what will be the temperature at the top? 
+Fact 1 = Altitude or height of the mountain = 1500m
+Fact 2 = The temperature at the base of the mountain = 30°C
+Fact 3 = ELR = 6.5°C per 1000 metres
+Thus, the difference in temperature between the base and top of the mountain is found 
+by;
+1500
+1000
+ = 1.5
+Multiply 1.5 by 6.5°C that is, 
+1.5 × 6.5 = 9.75°C
+To get the temperature at the top of the mountain subtract 9.75°C from 30°C
+Thus, temperature at the height of 1.500m = 30°C – 9.75°C = 20.25°C
+So, the temperature at the top of Mt. Afadja will be 20.25°C
+How to calculate the temperature at lower altitude or base of mountains 
+Step  1:  Determine the altitude difference between the base and the peak of the 
+mountain.
+Step  2:  Use the normal or environmental lapse rate to calculate the temperature 
+difference due to the change in altitude. (Thus, 6.5°C for every 1000m descent)
+Step 3:  Add the temperature difference to the temperature at the peak since temperature 
+increases with decreasing altitude.
+
+7
+STRUCTURE AND COMPOSITION OF THE ATMOSPHERESECTION 8
+Worked Example 1
+What is the temperature at sea level when the temperature at the summit, at 8000m, is 
+-27.5°C?
+Altitude or height of the mountain = 8000 metres
+To calculate the difference in temperature if the ELR per 1000m = 6.5°C
+8000 divided by 1000 = 8 (this means the temperature falls by 6.5
+o
+C eight times over 
+the ascent)
+Multiply 8 by 6.5°C
+8 × 6.5°C = 52°C  (this is the temperature difference between sea level and summit)
+Add 52°C to the temperature at the summit of the mountain (because temperatures 
+increase as altitude decreases).
+Therefore 52°C + -27.5°C = 24.5°C
+Therefore, the temperature at the base of the mountain will be = 24.5°C
+Worked Example 2
+The temperature at the summit of a mountain which is 4500m high is 15°C. what is the 
+temperature at sea level, the base of the mountain?
+The altitude height of the mountain is 4,500m.
+The temperature at the summit is 15°C.
+To calculate the difference in temperature if ELR per 1000m = 6.5°C
+4,500 divided by 1000 = 4.5
+Multiply 4.5 by 6.5°C. thus, 4.5 × 6.5°C = 29.25°C
+To get the temperature at the base, add 29.25°C to the temperature at the top of the 
+mountain, which is 29.25°C + 15°C = 44.25°C (because temperatures increase as 
+altitude decreases).
+Therefore, the temperature at the base of the mountain, at sea level will be 44.25°C
+Composition of the atmosphere
+The atmosphere is a mixture of gases. The main ones are nitrogen and oxygen which 
+together, constitute over 99% of all the gases in the atmosphere. Figure below gives a 
+comparative view of the proportion of the various gases in the atmosphere.
+
+8
+STRUCTURE AND COMPOSITION OF THE ATMOSPHERESECTION 8
+Fig 8.2: Proportions of gases in the atmosphere
+Proportion and Role of Atmospheric Gases
+It is important to know the proportion of gases in the Earth’s atmosphere and the role 
+each of these gases plays. 
+1. Nitrogen  (N
+2
+): Makes up about 78% of the atmosphere. Essential for life and 
+biochemical processes.
+2. Oxygen (O
+2
+): Comprises around 21% of the atmosphere. Vital for respiration and 
+combustion, mainly produced by plants.
+3. Argon  (Ar):  Accounts for approximately 0.93% of the atmosphere. Chemically 
+inert and does not react with other substances.
+4. Carbon Dioxide (CO
+2
+): Makes up about 0.04% of the atmosphere. Important for 
+the greenhouse effect and temperature regulation, released through respiration, 
+fossil fuel burning, and volcanic eruptions.
+5. Trace Gases (Ne, He, CH
+4
+): Exist in very small concentrations but can significantly 
+impact climate and atmospheric interactions. Ozone, for example, absorbs UV 
+radiation.
+6. Water Vapour (H
+2
+O): Ranges from nearly 0% to about 4% by volume. Crucial for 
+weather patterns and temperature regulation, mostly found in the lower atmosphere.
+Suspended particles like dust and pollutants from human activity that affect air quality, 
+climate, and cloud formation are also found in the atmosphere
+Click on this link to further read on the composition and structure of the atmosphere.
+https://nios.ac.in/media/documents/316courseE/ch9.pdf. 
+
+9
+STRUCTURE AND COMPOSITION OF THE ATMOSPHERESECTION 8
+In summary the atmosphere is important to humans for the following reasons:
+• Human Survival: Provides oxygen for respiration.
+• Radiation Protection: Ozone layer absorbs harmful UV radiation.
+• Temperature  Regulation: Greenhouse gases trap heat, maintaining Earth’s 
+temperature.
+• Weather and Climate: Enables weather patterns and forecasting.
+• Aviation and Space: Supports air travel and space exploration.
+• Communication: Facilitates radio, TV, and telecommunications.
+• Recreation and Sports: Enables activities like kite flying and skydiving.
+• Renewable Energy: Source of solar and wind energy for electricity.
+Activity 8.1
+1. Observe the diagram below and also follow the link, watch the video, and 
+undertake the following activities:
+https://youtu.be/Y0AOg_fPkog.
+i. Reproduce the diagram in your notebook. Identify each layer with 
+distinct colours and add the depth of each layer. 
+ii. Outline the importance of the Troposphere to humans.
+iii. Give one characteristic of the Stratosphere, Mesosphere and Thermo-
+sphere.
+iv. Write a letter to a friend which explains why it is important to study 
+these layers of the atmosphere.
+v. Using your knowledge from the video and the content from this section 
+explain the importance of the gases, nitrogen, oxygen and carbon 
+dioxide found in the Earth’s atmosphere. 
+vi. Describe the variations in temperature between the atmospheric layers.
+vii. Draw a pie chart to visualise the gas composition of the atmosphere.
+viii.Calculate the temperature at the top of Mount Edouka the second 
+highest mountain in Ghana with an elevation of 776m if the temperature 
+at sea level is 25
+o
+C.
+
+10
+STRUCTURE AND COMPOSITION OF THE ATMOSPHERESECTION 8
+WEATHER AND CLIMATE
+In your earlier discussion, you found out about the structure, composition, and 
+importance of the atmosphere. You also calculated temperatures at different altitudes 
+making use of the Environmental Lapse Rate. You will find that knowing the fact that 
+temperatures decrease with altitude will help you to understand some of the topics in 
+this section. This part of section 8 is about weather and climate.          
+Meaning of Weather and Climate
+Weather refers to the state of the atmosphere at a given time and place. It describes 
+conditions in the atmosphere, including temperature, precipitation, wind, humidity, 
+and pressure. Weather is the day-to-day variations in atmospheric conditions at a given 
+time and place. It varies from day to day and even from hour to hour. The study of 
+weather is called Meteorology and the person who studies and forecasts weather is 
+called a Meteorologist.
+Climate refers to long-term, average weather conditions prevailing in a particular 
+place, usually over 30 years. The study of climate is called Climatology and the person 
+who studies climate is called Climatologist.
+Difference between Weather and Climate
+The following table provides the differences between Weather and Climate:
+ThemeWeatherClimate
+DefinitionWeather is all about the current 
+conditions of the air around us, 
+right here and right now.
+Climate is the average weather 
+condition in a particular area 
+over a long period.
+DurationThe weather does not last long. 
+One minute it might be sunny, 
+then a few hours later it is 
+raining.
+Climate stays the same because 
+it describes the average 
+conditions observed over a much 
+longer time, usually above 30 
+years.
+Spatial (Area) 
+Coverage
+Weather conditions are 
+localised and specific to a 
+particular place or community.
+Climate describes the conditions 
+for regions or  larger areas of the 
+Earth.
+Variability 
+(Changeability)
+Weather can change fast, 
+sometimes even throughout 
+the same day.
+Climate does not change over 
+the years as it is based on annual 
+averages taken over many years.
+ScopeWeather forecasts give short-
+term atmospheric conditions, 
+typically up to a week in 
+advance, using meteorological 
+models and observations.
+Climate projections focus on 
+long-term trends and changes, 
+aiming to provide insights 
+into the general patterns and 
+conditions that are expected to 
+occur over decades or longer.
+
+11
+STRUCTURE AND COMPOSITION OF THE ATMOSPHERESECTION 8
+ThemeWeatherClimate
+ImpactWeather changes can have a 
+short-term effect on our daily 
+lives.
+Climate changes can have long-
+term effects on our environment 
+and our way of life.
+These are the similarities between weather and climate
+1. Study  of  Atmosphere: Both weather and climate involve studying the Earth’s 
+atmosphere, including temperature, humidity, wind, and precipitation.
+2. Solar Influence: Both are affected by the Sun’s energy, which drives atmospheric 
+processes and influences short-term weather and long-term climate.
+3. Data  Sources: Meteorologists and climatologists use similar tools like weather 
+stations, satellites, and radar to study atmospheric conditions.
+4. Impact on Humans: Weather affects daily activities like clothing and travel, while 
+climate influences agriculture, water resources, and where people can live.
+5. Geographical   Influence: Both are influenced by the Earth’s features like 
+mountains, oceans, and deserts.
+It is important to understand that several of the factors affecting weather also affect 
+climate for example, altitude, latitude, and being near to large water bodies like oceans.
+A. Factors Affecting Weather
+1. Temperature: Influences the warmth or coldness of air, especially with altitude.
+2. Humidity: The amount of moisture in the air, affecting precipitation and comfort 
+levels.
+3. Precipitation: Includes rain, snow, sleet, and hail, impacting visibility and ground 
+conditions.
+4. Wind: The movement of air, which can affect temperature and precipitation 
+patterns.
+5. Air  Pressure: Variations in atmospheric pressure can lead to different weather 
+conditions.
+6. Cloud Cover: Influences temperature and precipitation by blocking sunlight and 
+trapping heat.
+7. Geographical   Location: Proximity to oceans, mountains, and latitude can 
+significantly impact weather patterns.
+
+12
+STRUCTURE AND COMPOSITION OF THE ATMOSPHERESECTION 8
+B. Factors Affecting Climate
+1. Latitude: Determines the amount of solar energy received, influencing temperature 
+and seasons.
+2. Altitude: Higher altitudes have cooler temperatures. This is due to the lower air 
+pressure and density at higher elevations, which reduces the ability to retain heat.
+3. Proximity  to  Water  Bodies: Oceans and seas moderate temperatures, leading to 
+milder climates.
+4. Ocean Currents: Warm and cold currents can significantly affect coastal climates.
+5. Topography: Mountains can block air masses and create rain shadows, affecting local 
+climates.
+6. Vegetation: Forests and other vegetation can influence humidity and temperature.
+7. Human  Activities: Urbanisation, deforestation, and pollution can alter local and 
+global climates.
+In Ghana, the weather is primarily influenced by its tropical climate which is 
+characterised by two main seasons: the wet season and the dry season. The interaction 
+of two air masses with different characteristics creates the Intertropical Convergence 
+Zone (ITCZ). This plays an important role, shifting north and south throughout the 
+year, bringing rain in the wet season and dry conditions in the dry season. Additionally, 
+the Harmattan winds from the Sahara Desert can cause dry and dusty conditions, 
+particularly in the northern regions. Coastal areas experience more humidity and 
+moderate temperatures due to the influence of the Atlantic Ocean, while inland areas 
+can have more extreme temperature variations.
+Visit this link to learn more about the ITCZ and to see how it influences the weather 
+and climate of Ghana: https://www.youtube.com/watch?v=SGkvEk0-hoU 
+Fig. 8.3: Simple word cloud on factors affecting weather and climate
+
+13
+STRUCTURE AND COMPOSITION OF THE ATMOSPHERESECTION 8
+Activity 8.2
+1. Click on the links below to watch videos and answer the questions that 
+follows. They all explain the differences between weather and climate. You 
+can also visit the library or use the information in this section.
+• https://youtu.be/lD6KsSjoNOY. 
+• https://youtu.be/0geUS_j3gis. 
+• https://youtu.be/vH298zSCQzY. 
+• https://youtu.be/p9oOHFmg0cU. 
+a. What is weather?
+b. Outline the main differences between weather and climate.
+c. Explain the similarities between weather and climate.
+d. Describe the factors influencing both weather and climate.
+If you cannot access the video, check your school or local library, or look for 
+an internet café near your home.
+5. Start a weather journal or notebook.
+a. Record daily observations of weather elements such as rainfall, over 
+several weeks or months.
+b. Note any changes or patterns you observe in the weather data within 
+the three months.
+c. At the end of the monitoring period, analyse your journal entries to 
+identify trends and draw conclusions about the local weather and 
+climate.
+d. Share your conclusions with your friends.
+CALCULATION OF ANNUAL, MEAN RAINFALL 
+AND TEMPERATURE DATA
+In your earlier discussion, you learned about the atmosphere and the differences 
+between weather and climate. In this part, you will explore the instruments used 
+to record the elements of weather and calculate annual averages for rainfall and 
+temperatures.
+
+14
+STRUCTURE AND COMPOSITION OF THE ATMOSPHERESECTION 8
+Some Elements of Weather, their Measuring Instruments and Units of 
+Measurement
+The following table shows the instruments which are used to record the elements of 
+weather and their units of measurement: 
+ElementsMeasuring InstrumentsUnit of Measurement
+Temperature: It is the measure of 
+how hot or cold the air is.
+ThermometerDegrees Celsius (°C) or 
+degree Fahrenheit(°F)
+Rainfall: It is a form of water that 
+falls from the atmosphere. Rain 
+gauge/pluviometer Millimetres 
+(mm) or inches (in).
+Rain gauge/pluviometerMillimetres (mm) or 
+inches (in)
+Wind speed: It measures the rate 
+of fastness at which air moves.
+AnemometerMetres (m/s) per second 
+or kilometres per 
+hour(km/h) or knot
+Wind direction: It measures the 
+direction of movement of air.
+Wind vaneCardinal or compass 
+directions or degrees
+Air pressure: It is the force exerted 
+on a given area of the earth’s 
+surface by the weight of air above 
+it.
+BarometerMillibars (mb)
+Humidity: It is the amount of 
+moisture or water vapour present in 
+the air.
+Hygrometer (wet bulb 
+thermometer and dry 
+bulb thermometer)
+Percentage (%)
+Cloud cover: It is the amount 
+and type of cloud present in the 
+atmosphere.
+Eyes observation 
+Ceilometer
+Oktas or Percentage (%) 
+Metres or feet
+Sunshine: It is the direct or 
+indirect sunlight that reaches the 
+surface of the earth.
+Sunshine recorderHours or minutes
+Solar radiation: It is the energy 
+emitted by the sun in the form of 
+magnetic waves.
+PyranometerWatts per square metres
+Visibility: It is the clarity at 
+which objects can be seen in the 
+atmosphere.
+Visibility sensor/ 
+transmissometer
+Metres or kilometres
+
+15
+STRUCTURE AND COMPOSITION OF THE ATMOSPHERESECTION 8
+The following are examples of weather instruments:
+      
+Fig. 8.4: Rain Gauge/pluviometer    Fig. 8.5: Thermometer
+Fig. 8.6: Anemometer (Left) and Wind Vane (Right)
+         
+Fig. 8.7: Barometer      Fig. 8.8: Hygrometer (Dry and Wet Bulb)
+
+16
+STRUCTURE AND COMPOSITION OF THE ATMOSPHERESECTION 8
+  Fig. 8.9: Cloud observation in oktas
+     
+Fig. 8.10: Ceilometer                                Fig. 8.11: Sunshine Recorder
+      
+Fig. 8.12: Pyranometer                          Fig. 8.13: Transmissometer
+
+17
+STRUCTURE AND COMPOSITION OF THE ATMOSPHERESECTION 8
+Calculation of Annual, Mean Rainfall and Temperature 
+Data
+You are now familiar with the weather elements and the instruments used to measure 
+them. After taking your measurements and recording the information, you can use 
+the data to calculate the yearly average values for these elements. Below are examples 
+for rainfall and temperature based on monthly figures. Average temperature and total 
+rainfall for twelve months are used. 
+Calculate the Total Annual and Mean Rainfall and Mean Temperature and 
+Temperature Range of a Station (a station is the name given to the place 
+the data comes from)
+The following is the procedure for calculating the annual and mean rainfall and 
+temperature: 
+1. Total Annual Rainfall (TAR) is the sum of the amount of rainfall recorded in the 
+year.
+Thus, TAR = J + F + M + A + M + J + J + A + S + O + N + D
+2. Mean (Average) Annual Rainfall (MAR) is the average amount of rainfall over 
+the year.
+ Thus, MAR = J + F + M + A + M + J + J + A + S + O + N + D
+= J + F + M + A + M + J + J + A + S + O + N + D
+12
+3. Annual  Range  of  Temperature  (ART)  the difference between the highest and 
+lowest temperatures recorded over a specific period of one year.
+Thus, ART = Tmax − Tmin
+4. Mean Annual Temperature (MAT) is the average temperature of the year
+Thus, MAT
+=  J + F + M + A + M + J + J + A + S + O + N + D
+12
+Worked Example
+This table gives an information on temperature and rainfall data recorded for a station
+MonthJanFebMarAprMayJunJulAugSepOctNovDec
+Rain (mm)150190230270310350390430370310250190
+Temp (°C)
+262728293031323332313029
+
+18
+STRUCTURE AND COMPOSITION OF THE ATMOSPHERESECTION 8
+Calculate the:
+a. Total annual rainfall
+b. Mean annual rainfall
+c. Annual temperature range
+d. Mean annual temperature
+Solution
+a. Total annual rainfall:
+150+190+230+270+310+350+390+430+370+310+250+190 = 3,440 mm
+b. Mean annual rainfall:
+    =  3,440mm  = 287mm
+     12
+c. Annual range of temperature = 33°C − 26°C = 7°C
+d. Mean annual temperature = (26+27+28+29+30+31+32+33+32+31+30+29) 
+       12
+    = 358
+         12
+    = 29.83°C
+Activity 8.3
+Carefully study the table below which shows the monthly average rainfall and 
+temperature for Accra in Ghana.
+MonthJanFebMarAprMayJunJulAugSepOctNovDec
+Rain (mm)110150200250300350400450390340290240
+Temp 
+(°C)
+232425262728293029282726
+Calculate:
+a. Total annual rainfall
+b. Mean annual rainfall
+c. Annual range of temperature
+d. Mean annual temperature
+e. Draw a vertical bar graph to represent the rainfall for each month. On 
+the same graph but above the bars draw a line graph to represent the 
+temperature for each month. Make sure you place the line above the 
+bars by starting the temperature scale above the rainfall scale. If you are 
+not sure how to do this follow the link below which will explain.
+• https://www.youtube.com/watch?v=7qCDmm9Gkbo 
+f. Use your graph to describe any patterns you can see in the rainfall and 
+temperature distribution over the year.
+
+19
+STRUCTURE AND COMPOSITION OF THE ATMOSPHERESECTION 8
+Activity  8.4
+1. Visit the school library or search the internet for information on the 
+instruments used to measure the elements of weather. 
+2. Name the instruments used to measure each of these elements.
+3. Write an explanation of how each instrument works and the units used to 
+record the data it collects.
+What did I learn?
+
+20
+Review Questions
+REVIEW QUESTIONS 8.1: THE EARTH’S ATMOSPHERE
+1.Describe in a few sentences the Earth’s atmosphere.
+2.
+Identify the four most important gases in the Earth’s atmosphere and explain
+their importance.
+3.Identify and describe the four main layers of the Earth’s atmosphere.
+4.Wh
+y is the troposphere considered more important than the rest of the layers
+in the Earth’s atmosphere.
+5.What is the role of ozone layer in the atmosphere.
+6.Wh
+y are mountainous areas quite colder than lowland areas in Ghana?
+7.Calculate the temperature at the top of Aconcagua the highest peak in the
+Andes and the Western Hemisphere, with an elevation of 7000 metres if the
+temperature at sea level is 15°C
+8.
+Calculate the temperature at South Base Camp in Nepal located at an altitude
+of 5,400 metres if the temperature at the top of Mount Everest at an altitude of
+8850 metres is minus 20°C (-20°C).
+REVIEW QUESTIONS 8.2: WEATHER AND CLIMATE
+1.What is the meaning of weather?
+2.
+What is the meaning of
+ climate?
+3.
+What ar
+e the main differences between weather and climate?
+4.
+Describe the fact
+ors that influence weather.
+5.
+Describe the fact
+ors that influence climate.
+6.
+Explain how the movement of the Intertropical Convergence Zone (ICTZ)
+influences both the weather and climate of Ghana.
+REVIEW QUESTIONS 8.3: THE ELEMENTS OF WEATHER AND 
+CALCULATING ANNUAL AVERAGES FOR RAINFALL AND 
+TEMPERATURES 
+1.
+What is the name given to a person who studies weather?
+2.What is the name given to a person who studies climate?
+3.N
+ame the instruments used to measure rainfall, temperature, wind speed,
+solar radiation and humidity.
+4.
+What 
+are the units of measurement for rainfall, temperature, wind speed, solar
+radiation, and humidity?
+5.
+Explain how cloud cov
+er and sunshine are measured.
+
+21
+6.Study the following monthly averages for rainfall and temperature for Kumasi
+in Ghana
+MonthJanFebMarAprMayJunJulAugSepOctNovDec
+Rain
+(mm)
+24471001091251401191061531316726
+Temp
+(°C)
+272828272625242424252627
+Using the data above calculate:
+a.Total annual rainfall
+b.Mean annual rainfall
+c.Annual range of temperature
+d.Mean annual temperature
+
+22
+STRUCTURE AND COMPOSITION OF THE ATMOSPHERESECTION 8
+Extended Reading
+1.Dadson I. Y. (2019) Understanding Climatology. 3
+rd
+ Ed: Ghana: UCC Press
+2.
+Dadson 
+I. Y., Adu-Boahen K. & Owusu A. B. (2015) Essentials of Physical Geography. Ghana:
+UCC Press.
+3.Acheampong P. K. (2010). The Earth: Themes and Variations. Cape Coast: University of
+Cape Coast Press
+References
+•Ahrens C. D. (2003) Meteorology Today; An Introduction to Weather, Climate and the
+Environment 7
+th
+ Ed.  USA: Thomson Learning Inc.
+•Ahrens, C. D. (2023). Meteorology today: An introduction to weather, climate, and the
+environment (12th ed.). Cengage Learning.
+•Bunnet, R. B. and Okunrotifa, P. O.  (1986 and 1999) General Geography in Diagrams for
+West Africa   Hong Kong: Longman Group.
+•Dickson, K.B. & Acheampong P. K. (1991). Geography for Senior Secondary Schools,
+Macmillan Press: City
+•
+Henderson-
+Sellers A. & Robinson P. J. (2014, 1999, 1986). Contemporary Climatology. UK:
+Longman Group
+•
+P
+etersen, J., Sack, D., & Gabler, R. E. (2014). Fundamentals of Physical Geography. Cengage
+Learning: City
+•
+Tsibu, B. (2022). Physical Geography for Senior High Schools, Abundance of Grace Ent:
+Kumasi
+•National Aeronautics and Space Administration (NASA). (2023). Earth’s atmosphere. NASA
+Space Place. https://spaceplace.nasa.gov/earth-atmosphere/
+•
+Radeny, M., Desalegn, A., Mubiru, D., Kyazze, F., Mahoo, H., Recha, J., Kimeli, P., & Solomon,
+D.(2019). Indigenous knowledge for seasonal weather and climate forecasting across East
+Africa. Climatic Change, 156, 509–52
+•Str
+ahler and Strahler (1996) Introducing Physical Geography, USA: John Wiley and Sons Inc.
+
+23
+STRUCTURE AND COMPOSITION OF THE ATMOSPHERESECTION 8
+Acknowledgements
+List of Contributors
+NameInstitution
+ Dr. Kate Gyasi  UEW, Winneba  
+ Prof. Ishmael Yaw Dadson  UEW, Winneba  
+ Glago Frank Jerome  Akatsi College of Education
+ Susuana Adwoa Appiah  Tamale SHS, Tamale 

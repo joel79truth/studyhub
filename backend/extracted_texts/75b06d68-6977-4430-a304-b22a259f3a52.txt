@@ -1,0 +1,138 @@
+
+
+Haloalkanes
+Dr FatemaJagot
+
+•A haloalkane, commonly known as an alkyl halide, is a compound that 
+contains a halogen atom covalently bonded to an sp
+3
+hybridised 
+carbon atom.
+•Given the symbol RX, where X can be F, Cl, Br, or I.
+Haloalkanes
+
+IUPAC NAMES
+•Locate and name the parent chain containing the largest number of 
+carbon atoms.
+•Number the parent chain from the direction that gives the 
+substituent encountered first the lowest number.
+•Show halogen substituents by the prefixes fluoro-, chloro-, iodo-, and 
+bromo-, and list them in alphabetical order along with other 
+substituents. 
+
+For halo-alkyl 
+substituents, the 
+carbon bonded to 
+the parent chain is 
+numbered as carbon 
+1. Use a number to 
+indicate position of 
+halogen
+
+•In haloalkenes, the location of the double bond determines the 
+numbering of the parent hydrocarbon. In molecules containing 
+functional groups designated by a suffix (for example, ol, ene, oic
+acid), the location of the functional group indicated by the suffix 
+determines the numbering.
+
+Practice exercise 1: Draw the condensed structural formulae of the 
+following compounds:
+3-iodo-2-methylpentane
+cis-1-chloro-3-(chloromethyl)cyclohexane
+
+Classification of Haloalkanes
+•Alkyl halides are classified according to the nature of the carbon atom 
+which is bonded to the halogen.
+•If the carbon is bonded to oneother carbon atom, it is a primary(1°) 
+alkyl halide.
+•If the carbon is bonded to two other carbon atoms, it is a secondary 
+(2°) alkyl halide, and if the halogen-bearing carbon is bonded to three 
+other carbons, it is a tertiary(3°) alkyl halide. 
+Where Ris any carbon-
+containing group.
+
+Practice exercise 2: For each of the following compounds, give the 
+IUPAC name and classify the compound as a methyl, primary, 
+secondary, or tertiary alkyl halide.
+
+Uses of Haloalkanes
+•Solvents –alkyl halides are commonly used in industrial and 
+household solvents for example in cleaning agents, paint removers.
+•Reagents –many alkyl halides are used as starting materials for the 
+synthesis of many other complex substances.
+•Anaesthetics –ethyl chloride is used a topical anaesthetic for minor 
+procedures. The mixed alkyl halide CF
+3
+CHClBr, which goes by the 
+common name Halothane is used as an anaesthetic in surgical 
+procedures.
+•Refrigerants –chlorofluorocarbons (also known as Freons) are 
+fluorinated haloalkanescommonly used as refrigerant gas. Freon-22 
+or CHClF
+2
+is used in refrigerators and automotive air-conditioners.
+
+
+
+Structure of Haloalkanes
+•In an alkyl halide, the halogen atom is bonded to an sp
+3
+carbon atom.
+•The halogen is more electronegative than the carbon, thus the C—X  
+bond is polarized.
+•The electronegativitiesof the halogens increase in the order:
+•The C—X bond lengths increase as the halogen atoms become larger.
+
+Physical Properties of Haloalkanes
+1) Boiling Points:
+•There are two types of intermolecular forces that affect the boiling 
+points of alkyl halides: dispersion forces (London forces) and dipole-
+dipole forces.
+•The larger the surface area of the molecule, the stronger the 
+dispersion forces, the higher the boiling point.
+•Surface areas increase with molecular weight.
+•Surface areas decrease with increased branching of the molecule.
+
+The heavier the halogen atoms 
+are, the greater the surface 
+area for interaction, and the 
+higher the boiling point.
+Thus the boiling points of ethyl 
+halides increase in the order: 
+F<Cl<Br<I
+
+2) Densities
+•Like their boiling points, their densities also follow predictable trends.
+•Alkyl fluorides are less dense than water.
+•Alkyl chlorides that contain one chlorine atom are also less dense 
+than water.
+•Alkyl chlorides that contain two or more chlorine atoms are more 
+dense than water.
+•Alkyl bromides and alkyl iodides are more dense than water.
+
+Practice exercise 3: For each pair of compounds, indicate which 
+compound is likely to have the higher boiling point, and explain why.
+a)Isopropyl bromide (2-bromopropane) and n-butyl bromide 
+(bromobutane)
+b)Isopropyl chloride (2-chloropropane) and tert-butyl bromide (2-
+bromo-2-methylpropane)
+c)1-bromobutane and 1-chlorobutane
+
+Reactions of Haloalkanes
+•Alkyl halides can easily be converted to other functional groups.
+•The halogen can leave, carrying with it both electrons from the C—X 
+bond, leaving as a halide ion.
+•We say that halides are good leaving groups.
+•When another atom/ group of atoms replaces the halogen, the 
+reaction is a substitution.
+
+•In a nucleophilic substitution, a nucleophile replaces a leaving group 
+from a carbon atom, using its lone pair of electrons to form a new 
+bond with the carbon atom.
+•When the halide ion leaves with another atom or ion, a new pibond 
+forms, and the result is an elimination. In many eliminations, a 
+molecule of H—X is lost from the alkyl halide to form an alkene 
+(known as a dehydrohalogenation).
+Most nucleophiles act 
+as bases
+Basic

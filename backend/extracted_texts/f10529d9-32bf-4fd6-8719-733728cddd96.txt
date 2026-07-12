@@ -1,0 +1,1412 @@
+
+
+VIRUS 
+MATHEMATICS
+
+FLUID MECHANICS 
+AND 
+FLUID PROPERTIES 
+by
+Sam Banankhu
+(BSc. In Agricultural & Applied Economics)
+0884720038/0995224238
+29 December 2020THE VIRUS MATHEMATICS TEAM
+Released date: 29 December, 2020
+
+Fluids Mechanics and Fluid Properties
+What is fluid mechanics? 
+•“A Fluid is a substance which deforms continuously, or flows, when 
+subjected to shearing forces.”
+Condition of equilibrium: If a fluid is at rest there are no shearing 
+forces acting. All forces must be perpendicular to the planes which 
+they are acting.
+•As its name suggests it is the branch of applied mechanics concerned with 
+the statics and dynamics of fluids -both liquids and gases. The analysis of 
+the behavior of fluids is based on the fundamental laws of mechanics 
+which relate continuity of mass and energy with force and momentum 
+together with the familiar solid mechanics properties.
+
+Shearing forces 
+Because a fluid cannot resist the deformation force, it moves, it flows 
+under the action of the force. Its shape will change continuously as
+long as the force is applied.
+The deformation is caused by shearing 
+forces which act tangentially to a 
+surface. Referring to the figure below, 
+we see the force F acting tangentially 
+on a rectangular (solid lined) element 
+ABDC. This is a shearing force and 
+produces the (dashed lined) rhombus 
+element A’B’DC.
+A
+A’B
+CD
+B’
+F
+F
+Shearing force, F, acting on a fluid element.
+
+Shearing forces and deformation 
+How can we make use of these observations? We can start by 
+considering  a 3D rectangular element of fluid, like that in the figure 
+below. 
+풅풚
+풅풙
+풚
+풙
+풙
+풚
+풛
+풙
+푲풆풚
+휽
+Fluid element under a shear force
+휽
+
+Shear Stress and Shear Strain
+The shearing force F acts on the area(A)on the top of the element. 
+This area is given by
+퐴=푑푧×푑푥
+We can thus calculate the shear stress(흉) which is equal to force per 
+unit area i.e.
+푆ℎ푒푎푟푠푡푟푒푠(휏)=
+퐹
+퐴
+The deformationwhich this shear stress causes is measured by the size 
+of the angle 휽and is know as shear strain.
+푆ℎ푒푎푟푠푡푟푎푖푛휃=
+푥
+푦
+
+Rate of shear strain
+If the particle at point E (in the above figure) moves under the shear 
+stress to point E’ and it takes time 푡to get there, it has moved the 
+distance 푥. For small deformations we can write
+푅푎푡푒표푓푠ℎ푒푎푟푠푡푟푎푖푛=
+푠ℎ푒푎푟푠푡푟푎푖푛
+푡푖푚푒
+=
+휃
+푡
+.........푒푞1
+We can substitute the 휃with its formula 
+푥
+푦
+to have a simplified rate of 
+shear strain equationas shown in the next slide.
+In a solid shear strain, 휃, is constant for a fixed shear stress 휏.
+In a fluid 휃increases for as long as 휏is applied -the fluid flows.
+
+Rate of shear strain cont...
+푆ℎ푒푎푟푠푡푟푎푖푛휃=
+푥
+푦
+.........푒푞2
+Substituting
+푅푎푡푒표푓푠ℎ푒푎푟푠푡푟푎푖푛=
+푥
+푦
+÷푡=
+푥
+푦
+×
+1
+푡
+=
+푥
+푡푦
+Here we can factor out 
+1
+푦
+to be 
+푥
+푡
+×
+1
+푦
+since 푥is displacement and 푡is 
+time, then this can be regarded as velocity(푢).
+Hence the velocity of the particle at E is 
+푢=
+푥
+푡
+Substituting 푢in the rate of shear strain equation above we have,
+
+Rate of shear strain cont...
+푅푎푡푒표푓푠ℎ푒푎푟푠푡푟푎푖푛=푢×
+1
+푦
+=
+푢
+푦
+Where 푢is the velocity of a particle undergoing deformation and 푦is 
+the vertical deformation in meters.
+The term 
+푢
+푦
+is the change in velocity with respect to 푦, or the velocity 
+gradient, and may be written in the differential form 
+푑푢
+푑푦
+. Thus 
+푅푎푡푒표푓푠ℎ푒푎푟푠푡푟푎푖푛=
+푢
+푦
+=
+푑푢
+푑푦
+
+Newton’s law of viscosity
+The Law of Viscosity States;
+“shear stress is directly proportional to rate of shear strain”
+푆ℎ푒푎푟푠푡푟푒푠푠∝푅푎푡푒표푓푠ℎ푒푎푟푠푡푟푎푖푛
+휏∝
+푑푢
+푑푦
+Introducing the constant 휇
+휏=휇
+푑푢
+푑푦
+The constant of proportionality is known as the dynamic viscosity, μ, of the fluid, giving
+휏=μ
+푑푢
+푑푦
+This is known as Newton’s law of viscosity.
+
+Properties of fluid
+The properties outlines below are general properties of fluids which are 
+of interest in engineering. The symbol usually used to represent the 
+property is specified together with some typical values in SI units for 
+common fluids. Values under specific conditions (temperature, 
+pressure etc.) can be readily found in many reference books. The 
+dimensions of each unit is also given in the MLT system.
+
+Different types of Density 
+The density of a substance is the quantity of matter contained in a unit 
+volume of the substance. It can be expressed in three different ways.
+1.Mass density (휌)
+2.Specific Weight(휔표푟훾)
+3.Specific gravity or Relative Density 
+In order to understand how they are used in fluid, understand each 
+term differently with its respective units.
+
+Mass density (휌)
+Mass Density, 휌, is defined as the mass of substance per unit volume.
+퐷푒푛푠푖푡푦휌=
+푚푎푠푠
+푉표푙푢푚푒
+=
+푚
+푉
+=
+훾
+푔
+Units: Kilograms per cubic metre, 
+푘푔
+푚
+3
+표푟푘푔푚
+−3
+Dimensions: 푀퐿
+−3
+Typical values:
+푊푎푡푒푟=1000푘푔푚
+−3
+,푀푒푟푐푢푟푦=13546푘푔푚
+−3
+,
+퐴푖푟=1.23푘푔푚
+−3
+,푃푎푟푎푓푓푖푛푂푖푙=800푘푔푚
+−3
+(푎푡푝푟푒푠푠푢푟푒=1.013×10
+−5
+푁푚
+−2
+푎푛푑푇푒푚푝푒푟푎푡푢푟푒=4°퐶표푟288.15퐾.)
+
+Specific Weight(휔표푟훾)
+Specific Weight 휔, (sometimes 훾) is defined as the weight per unit volume.
+or
+The force exerted by gravity, g, upon a unit volume of the substance.
+The Relationship between 푔and 휔can be determined by Newton’s 2
+푛푑
+Law, since
+푤푒푖푔ℎ푡푝푒푟푢푛푖푡푣표푙푢푚푒=푚푎푠푠푝푒푟푢푛푖푡푣표푙푢푚푒×푔
+훾=휌푔
+Units: Newton’s per cubic metre, 푁/푚
+3
+(표푟푁푚
+−3
+)
+Dimensions: 푀퐿
+−2
+푇
+−2
+Typical  values:
+푊푎푡푒푟=9814푁푚
+−3
+,푀푒푟푐푢푟푦=132943푁푚
+−3
+,퐴푖푟=12.07푁푚
+−3
+,
+푃푎푟푎푓푓푖푛푂푖푙=7851푁푚
+−3
+
+Specific gravity or Relative Density 
+The specific gravity of a body is the dimensionless ratio of the weight of the body to 
+the weight of an equal volume of a substance taken as a standard.  Solids and 
+liquids are referred to water (20°C) as standard, while gases are often referred to 
+air free of carbon dioxide or hydrogen (0°C) as standard.
+푅푒푙푎푡푖푣푒푑푒푛푠푖푡푦=
+푤푒푖푔ℎ푡표푓푠푢푏푠푡푎푛푐푒
+푤푒푖푔ℎ푡표푓푒푞푢푎푙푣표푙푢푚푒표푓푤푎푡푒푟
+=
+푠푝푒푐푖푓푖푐푤푒푖푔ℎ푡표푓푠푢푏푠푡푎푛푐푒
+푠푝푒푐푖푓푖푐푤푒푖푔ℎ푡표푓푤푎푡푒푟
+=
+푑푒푛푠푖푡푦표푓푠푢푏푠푡푎푛푐푒
+푑푒푛푠푖푡푦표푓푤푎푡푒푟
+
+Relative Density continues....
+Units: None, since a ratio is a pure number.
+Dimensions: 1.
+Typical values: Water = 1, Mercury = 13.5, Paraffin Oil =0.8.
+Thus if the specific gravity of a given oil is 0.750, its specific weight is 
+(0.750)(9.79푘푁/푚
+3
+)=7.34푘푁/푚
+3
+. 
+
+Viscosity
+Viscosity, μ, is the property of a fluid, due to cohesion and interaction between molecules, 
+which offers resistance to sheer deformation. Different fluids deform at different rates 
+under the same shear stress. Fluid with a high viscosity such as syrup, deforms more slowly 
+than fluid with a low viscosity such as water.
+All fluids are viscous, “Newtonian Fluids” obey the linear relationship given by Newton’s 
+law of viscosity which we saw earlier.
+where 휏is the shear stress,
+휏=μ
+푑푢
+푑푦
+Units: 푁푚
+−2
+표푟푘푔푚
+−1
+푠
+−2
+Dimensions: 푀퐿
+−1
+푇
+−2
+푑푢
+푑푦
+is the velocity gradient or rate of shear strain, and has
+Units: 푟푎푑푖푎푛푠푠
+−1
+,
+Dimensions: 푡
+−1
+μis the “coefficient of dynamic viscosity” -see below.
+
+Coefficient of Dynamic Viscosity 휇
+The Coefficient of Dynamic Viscosity, μ, is defined as the shear force, per unit area, (or shear stress 
+휏), required to drag one layer of fluid with unit velocity past another layer a unit distance away.
+휇=휏÷
+푑푢
+푑푦
+=
+퐹표푟푐푒
+퐴푟푒푎
+÷
+푉푒푙표푐푖푡푦
+퐷푖푠푡푎푛푐푒
+=
+퐹표푟푐푒×푡푖푚푒
+퐴푟푒푎
+=
+푀푎푠푠
+퐿푒푛푔푡ℎ×푡푖푚푒
+Units: Newton seconds per square metre, 푁푠푚
+−2
+or Kilograms per meter per second, 푘푔푚
+−1
+푠
+−1
+(Although note that μ  is often expressed in Poise, P, where 
+10푃=1푘푔푚
+−1
+푠
+−1
+Typical values:
+푊푎푡푒푟=1.14×10
+−3
+푘푔푚
+−1
+푠
+−1
+,퐴푖푟=1.78×10푘푔푚
+−1
+푠
+−1
+,
+푀푒푟푐푢푟푦=1.552푘푔푚
+−1
+푠
+−1
+,푃푎푟푎푓푓푖푛푂푖푙=1.9푘푔푚
+−1
+푠
+−1
+
+Kinematic Viscosity (푣)
+Kinematic Viscosity, ν , is defined as the ratio of dynamic viscosity to 
+mass density.
+푣=
+휇
+휌
+Units: square metresper second, m s
+(Although note that ν is often expressed in  Stokes, St, where 10푆푡=
+1푚
+−2
+푠
+−1
+)
+Dimensions: 퐿
+−2
+푇
+−1
+Typical values:
+
+Pressure
+
+Pressure
+If the force exerted on each unit area of a boundary is the same, the 
+pressure is said to be uniform.
+푃푟푒푠푠푢푟푒푃=
+퐹표푟푐푒
+퐴푟푒푎
+=
+퐹
+퐴
+Units: Newton’s per square metre, 푁푚
+−2
+표푟푘푔푚
+−1
+푠
+−2
+(The same unit is also known as a Pascal, Pa, i.e.  1푃푎=1푁푚
+−2
+Dimensions: 푀퐿
+−1
+푇
+−2
+
+Pascal’s Law for Pressure At A Point
+By considering a small element of fluid in the form of a triangular prism which contains a 
+point 푃, we can establish a relationship between the three pressures P
+푥
+in the 푥
+direction, 푃
+푦
+in the 푦direction and 푃
+푠
+in the direction normal to the sloping face.
+The fluid is a rest, so we know there are no 
+shearing forces, and we know that all force 
+are acting at right angles to the surfaces .i.e.
+푃
+푠
+acts perpendicular to surface ABCD,
+푃
+푥
+acts perpendicular to surface ABFE and
+푃
+푦
+acts perpendicular to surface FECD. 
+And, as the fluid is at rest, in equilibrium, the 
+sum of the forces in any direction is zero.
+Recall first condition of equilibrium
+
+Applying conditions of equilibrium
+푭풐풓풄풆풔풙−풄풐풎풑풐풏풆풏풕풔풚−풄풐풎풑풐풏풆풏풕풔
+퐹
+푥
+푃
+푥
+×퐴푟푒푎
+퐴퐵퐹퐸
+푃
+푥
+훿푥훿푦00
+퐹
+푠
+−푃
+푠
+×퐴푟푒푎
+퐴퐵퐶퐷
+×sin휃−푃
+푠
+훿푦훿푧−푃
+푠
+×퐴푟푒푎
+퐴퐵퐶퐷
+×cos휃−푃
+푠
+훿푥훿푧
+퐹
+푦
+00
+푃
+푦
+×퐴푟푒푎
+퐸퐷퐶퐹
+푃
+푦
+훿푥훿푧
+푤푒푖푔ℎ푡0
+−푠푝푒푐푖푓푖푐푤푒푖푔ℎ푡
+×푣표푙푢푚푒표푓푒푙푒푚푒푛푡
+−휌푔×
+1
+2
+훿푥훿푦훿푧
+∑퐹
+푥
+=퐹
+푥
++퐹
+푠
++퐹
+푦
+=0
+푃
+푥
+훿푥훿푦−푃
+푠
+훿푦훿푧=0
+푃
+푥
+=푃
+푠
+∑퐹
+푦
+=퐹
+푥
++퐹
+푠
++퐹
+푦
++푤=0
+푃
+푦
+훿푥훿z−푃
+푠
+훿x훿푧=0
+푃
+푦
+=푃
+푠
+Note: 푃
+푥
+=푃
+푠
+=푃
+푦
+sin휃=
+훿푦
+훿푠
+,푎푛푑cos
+훿푥
+훿푠
+
+Pressure Vertically In A Fluid Under 
+Gravity
+From the figure we can see an element of fluid which is a 
+vertical column of constant cross sectional area, 퐴, 
+surrounded by the same fluid of mass density 휌. The pressure 
+at the bottom of the cylinder is 푃
+1
+at level 푧
+1
+, and at the top 
+is 푃
+2
+at level 푧
+2
+. The fluid is at rest and in equilibrium so all 
+the forces in the vertical direction sum to zero. i.e. we have
+Force due to 푃
+1
+on A (upward)  =푝
+1
+퐴
+Force due to 푃
+2
+on A (downward) =푃
+2
+퐴
+Force due to weight of element (downward) =푚푔
+But 퐹=휌푔퐴푧=휌푔푉
+Taking upward as positive, in equilibrium we have
+푃
+1
+퐴−푃
+2
+퐴=휌푔퐴(푧
+2
+−푧
+1
+)
+
+Pressure At The Same Level In A Static 
+Fluid (Horizontally)
+Consider the  horizontal cylindrical element of fluid in the figure below, with 
+cross-sectional area 퐴, in a fluid of density 휌, pressure 푃
+1
+at the left hand end 
+and pressure P
+2
+at the right hand end.
+The fluid is at equilibrium so the sum of the 
+forces acting in the x direction is zero.
+푝
+푙
+퐴=푝
+푟
+퐴
+
+Pressure in continuous fluid
+This result is the same for any continuous fluid. It is still true for two connected 
+tanks which appear not to have any direct connection, for example consider 
+the tank in the figure below.
+We have shown above that 푃
+푙
+=푃
+푟
+and 
+from the equation for a vertical 
+pressure change we have
+푃
+푙
+=푃
+푝
++휌푔푧
+And 
+푃
+푟
+=푃
+푞
++휌푔푧
+So
+푃
+푝
++휌푔푧=푃
+푞
++휌푔푧
+푃
+푝
+=푃
+푞
+This shows that the pressures at the 
+two equal levels, P and Q are the same.
+
+Pressure And Head
+In a static fluid of constant density we have the relationship 
+푑푝
+푑푧
+=−휌푔. This 
+can be integrated to give
+푝=−휌푔푧+푐표푛푠푡푎푛푡
+In a liquid with a free surface the pressure at any depth 푧measured from the 
+free surface so that 푧=−ℎ(see the figure below)
+This gives the pressure
+푃=휌푔ℎ+푐표푛푠푡푎푛푡
+At the surface of fluids we are normally 
+concerned with, the pressure is the 
+atmospheric pressure, 푃
+푎푡푚표푠푝ℎ푒푟푖푐
+So
+푃=휌푔ℎ+푃
+푎푡푚표푠푝ℎ푒푟푖푐
+
+Absolute, Atmospheric and Gauge 
+Pressure 
+As we live constantly under the pressure of the atmosphere, and everything else 
+exists under this pressure, it is convenient (and often done) to take atmospheric 
+pressure as the datum. So we quote pressure as above or below atmospheric.
+Pressure quoted in this way is known as gauge pressure i.e.
+The lower limit of any pressure is zero -that is the pressure in a perfect vacuum. 
+Pressure measured above this datum is known as absolute pressure i.e.
+
+Vertical height quoted as head of fluid
+As g is (approximately) constant, the gauge pressure can be given by stating the vertical 
+height of any fluid of density ρ  which is equal to this pressure.
+푃=휌푔ℎ
+This vertical height is known as headof fluid.
+Example 1. 
+
+Fluid Dynamics
+
+Uniform Flow, Steady Flow
+•uniform flow: If the flow velocity is the same magnitude and direction at every 
+point in the fluid it is said to be uniform.
+•non-uniform:If at a given instant, the velocity is not the same at every point the 
+flow is non-uniform. (In practice, by this definition, every fluid that flows near a 
+solid boundary will be non-uniform –as the fluid at the boundary must take the 
+speed of the boundary, usually zero. However if the size and shape of the of the 
+cross-section of the stream of fluid is constant the flow is considered uniform.)
+•steady:A steady flow is one in which the conditions (velocity, pressure and cross-
+section) may differ from point to point but DO NOT change with time.
+•unsteady:If at any point in the fluid, the conditions change with time, the flow is 
+described as unsteady. (In practice there is always slight variations in velocity and 
+pressure, but if the average values are constant, the flow is considered steady.
+
+Combining the above we can classify 
+any flow in to one of four type:
+1.Steady uniform flow. Conditions do not change with position in the stream or 
+with time. An example is the flow of water in a pipe of constant diameter at 
+constant velocity.
+2.Steady non-uniform flow. Conditions change from point to point in the stream 
+but do not change with time. An example is flow in a tapering pipe with 
+constant velocity at the inlet -velocity will change as you move along the length 
+of the pipe toward the exit.
+3.Unsteady uniform flow.At a given instant in time the conditions at every point 
+are the same, but will change with time. An example is a pipe of constant 
+diameter connected to a pump pumping at a constant rate which is then 
+switched off.
+4.Unsteady non-uniform flow. Every condition of the flow may change from 
+point to point and with time at every point. For example waves in a channel.
+
+Flow Rates
+
+PIPE FLOW
+The solution of pipe flow problems requires the applications of two 
+principles, the law of conservation of mass (continuity equation) and 
+the law of conservation of energy (Bernoulli’s equation)
+We will discuss about 
+1.Mass Flow Rate.
+2.Volume Flow Rate (Discharge)
+3.Velocity Heads.
+4.Flow Energy
+
+Conservation 
+Of Mass
+
+Mass Flow Rate (m)
+Measuring the weight of the 
+water in the bucket and dividing 
+this by the time taken to collect 
+this water gives a rate of 
+accumulation of mass. This is 
+know as the mass flow rate(m).
+Consider a liquid being pumped 
+into a tank as shown
+When a fluid flows at a constant rate in a pipe or duct, the mass flow rate must be the same 
+at all points along the length.
+If we want to measure the rate at which water is flowing along a pipe. A very simple way of 
+doing this is to catch all the water coming out of the pipe in a bucket over a fixed time 
+period.
+
+Mass Flow Rate Contie.....
+The mass flow rate at any section is 
+풎=흆푨풖
+풎
+Where 휌is mass density 
+푘푔
+푚
+3
+, 퐴is Area(푚
+2
+)of a pipe, 푢
+푚
+is the mean velocity
+푚
+푠
+of the fluid flowing in the pipe.
+In general, we can conclude to say
+푚푎푠푠푓푙표푤푟푎푡푒=
+푚푎푠푠표푓푓푙푢푖푑푖푛푡ℎ푒푝푖푝푒
+푡푖푚푒푡푎푘푒푛푡표푐표푙푙푒푐푡푡ℎ푒푓푙푢푖푑
+Units: 푘푔/푠
+Dimensions: 푀푇
+−1
+For the system shown the mass flow rate at (1), (2) and (3) must be the same so
+흆
+ퟏ
+푨
+ퟏ
+풖
+ퟏ
+=흆
+ퟐ
+푨
+ퟐ
+풖
+ퟐ
+=흆
+ퟑ
+푨
+ퟑ
+풖
+ퟑ
+
+Volume flow rate –Discharge(Q)
+From the equation of mass flow rate above, 
+흆
+ퟏ
+푨
+ퟏ
+풖
+ퟏ
+=흆
+ퟐ
+푨
+ퟐ
+풖
+ퟐ
+=흆
+ퟑ
+푨
+ퟑ
+풖
+ퟑ
+=풎
+The fluid flowing in a pipe is the same at all points. In the case of liquids the 
+density 휌is equal and cancels so 
+푨
+ퟏ
+풖
+ퟏ
+=푨
+ퟐ
+풖
+ퟐ
+=푨
+ퟑ
+풖
+ퟑ
+=푸
+In general, 
+푸=푨풖
+풎
+where 푄is volumetric flow rate 
+푚
+3
+푠
+, 퐴is Area (푚
+2
+)and 푢
+푚
+is mean velocity 
+푚
+푠
+Units: 푚
+3
+/푠
+Dimensions: 퐿
+3
+푇
+−1
+
+Volume flow rate –Discharge(Q)
+푉표푙푢푚푒퐹푙표푤푅푎푡푒(푄)=
+푉표푙푢푚푒표푓푓푙푢푖푑
+푡푖푚푒
+=
+V
+t
+=
+푚푎푠푠표푓푓푙푢푖푑
+푑푒푛푠푖푡푦×푡푖푚푒
+=
+푀
+휌푡
+=
+푚푎푠푠푓푙표푤푟푎푡푒
+푚푎푠푠푑푒푛푠푖푡푦
+=
+푚
+휌
+=퐴푟푒푎×푚푒푎푛푣푒푙표푐푖푡푦=퐴푢
+푚
+
+Discharge (Q) and Mean Velocity 
+If we know the size of a pipe, and we know the discharge, we can deduce the 
+mean velocity
+
+If the area of cross section of the pipe at point 푥is 퐴, and the mean velocity here is 
+푢
+푚
+. During a time 푡, a cylinder of fluid will pass point 푥with a volume 푨×풖
+풎
+×풕. 
+The volume per unit time (the discharge) will thus be
+So if the cross-section area, 퐴, is given  and the discharge, 푄is also given, then the 
+mean velocity, 푢
+푚
+, of the fluid is
+푀푒푎푛푣푒푙표푐푖푡푦푢
+푚
+=
+푉표푙푢푚푒푓푙표푤푟푎푡푒
+퐶푟표푠푠−푠푒푐푡푖표푛푎푟푒푎
+Note how carefully we have called this the mean velocity. This is because the velocity 
+in the pipe is not constant across the cross section.
+
+Continuity Equation 
+Matter cannot be created or destroyed -(it is simply changed in to a different 
+form of matter). This principle is know as the conservation of mass and we use 
+it in the analysis of flowing fluids.
+The principle is applied to fixed volumes, known as control volumes (or 
+surfaces), like that in the figure below:
+
+For any control volume the principle of conservation of mass says
+For steady flow there is no increase in the mass within the control volume, so
+This can be applied to a stream tube such as that 
+shown below. No fluid flows across the boundary 
+made by the streamlines so mass only enters and 
+leaves through the two ends of this stream tube 
+section.
+
+We can then write
+mass entering per unit time at end 1 =  mass leaving per unit time at end 2
+휌
+1
+훿퐴
+1
+푢
+1
+=휌
+2
+훿퐴
+2
+푢
+2
+Or for steady flow,
+The flow of fluid through a real pipe (or any other vessel) will vary due to the presence of a 
+wall -in this case we can use the mean velocity and write
+휌
+1
+퐴
+1
+푢
+푚1
+=휌
+2
+퐴
+2
+푢
+푚2
+=푐표푛푠푡푎푛푡=푚
+When the fluid can be considered incompressible, i.e. the density does not change,            
+휌
+1
+=휌
+2
+=휌so (dropping the m subscript)
+This equation is a very powerful tool in fluid mechanics and will be used repeatedly
+throughout the rest of this course.
+
+Conservation 
+Of Energy 
+
+Work and Energy Theorems
+We know that if we drop a ball it accelerates downward with an acceleration 
+푔=9.81푚/푠
+2
+(neglecting the frictional resistance due to air). We can calculate the speed of 
+the ball after falling a distance h by the formula 
+푣
+2
+=푢
+2
+−2푎푠
+(a = g and s = h). The equation could be applied to a falling droplet of water 
+as the same laws of motion apply
+A more general approach to obtaining the parameters of motion (of both 
+solids and fluids) is to apply the principle of conservation of energy. When 
+friction is negligible the
+
+Energy Forms
+FLOW ENERGY or PRESSURE ENERGY 
+This is the energy a fluid possesses by virtue of its pressure.
+The formula is 
+푭풍풐풘푬풏풆풓품풚=푷풓풆풔풔풖풓풆×푽풐풍풖풎풆
+푭.푬.=푷푽
+P is the pressure (푃푎푠푐푎푙푠표푟푁/푚
+2
+)  and  V is volume (푚
+3
+) 
+Units: Joules (J or Nm)
+
+Energy Forms
+POTENTIAL OR GRAVITATIONAL ENERGY
+This is the energy a fluid possesses by virtue of its altitude relative to a 
+datum level.
+The formula is 
+푷풐풕풆풏풕풊풂풍푬풏풆풓품풚=풎풂풔풔×품풓풂풗풊풕풚×풂풍풕풊풕풖풅풆
+푷.푬.=풎품풛
+m is mass (kg) 
+z is altitude (m) 
+Units: Joules (J or Nm)
+
+Energy Forms
+KINETIC ENERGY  
+This is the energy a fluid possesses by virtue of its velocity.
+The formula is  
+푲.푬.=½풎풖
+풎
+ퟐ
+푢
+푚
+is mean velocity (m/s), m is mass(kg)
+Units: Joules (J or Nm)  
+
+
+
+ENERGY HEAD
+If the energy terms are divided by the weight mg, the result is energy per Newton. 
+Examining the units closely we have J/N = Nm/N = metres.
+It is normal to refer to the energy in this form as the energy head. The three energy terms 
+expressed this way are as follows.
+퐹.퐸
+푊
+=
+푃푉
+푚푔
+=
+푃
+휌푔
+=ℎ
+푃.퐸
+푊
+=
+푚푔푧
+푚푔
+=푧
+퐾.퐸
+푊
+=
+ൗ
+1
+2
+푚푢
+푚
+2
+푚푔
+=
+푢
+푚
+2
+2푔
+
+ENERGY HEAD CONT....
+The flow energy term is called the pressure head and this follows since 
+earlier it was shown 
+푝
+휌푔
+=ℎ
+This is the height that the liquid would rise to in a vertical pipe 
+connected to the system.
+The potential energy term is the actual altitude relative to a datum.
+The term 
+풖
+풎
+ퟐ
+ퟐ품
+is called the kinetic head and this is the pressure head 
+that would result if the velocity is converted into pressure.
+
+TOTAL ENERGY HEADS
+Bernoulli’s equation is based on the conservation of energy. If no 
+energy is added to the system as work or heat then the total energy of 
+the fluid is conserved. Remember that internal (thermal energy) has 
+not been included.
+
+ILLUSTRATION OF FLOW
+
+Bernoulli’s equation
+The Total Energy Heads(H) at (1) and (2) on the diagram (figureabove) must be 
+equal so : 
+퐸
+푇
+=푃
+1
+푉
+1
++푚푔푧
+1
++
+1
+2
+푚푢
+1
+2
+=푃
+2
+푉
+2
++푚푔푧
+2
++
+1
+2
+푚푢
+2
+2
+Dividing by 푚푔gives the energy terms per unit weight
+Since 풑/흆품=풑풓풆풔풔풖풓풆풉풆풂풅풉then the total head is given by the following.
+
+This is the head form of the Bernoulli’sequationin which each term is an 
+energy head in metres. 풛is the potential or gravitational head and 풖
+ퟐ
+/ퟐ품is 
+the kinetic or velocity head and 풉is the pressure form. 
+For liquids the density is the same at both points so multiplying by 흆품gives 
+the pressure form. The total pressure is as follows. 
+h
+T
+andP
+T
+in the above two equations are constants, but will change as we 
+will be seeing in the next slide.
+
+Head loss 풉
+푳
+and pressure loss 푷
+푳
+In real systems there is friction in the pipe and elsewhere. This produces heat 
+that is absorbed by the liquid causing a rise in the internal energy and hence 
+the temperature. In fact the temperature rise will be very small except in 
+extreme cases because it takes a lot of energy to raise the temperature.
+If the pipe is long, the energy might be lost as heat transfer to the 
+surroundings. Since the equations did not include internal energy, the balance 
+is lost and we need to add an extra term to the right side of the equation to 
+maintain the balance. This term is either the head lost to friction ℎ
+퐿
+or the 
+pressure loss P
+퐿
+.
+
+The Equations Now Becomes
+Bernoulli’s Head Form
+Bernoulli’s PressureForm
+The total energy of the fluid (excluding internal energy) is no longer 
+constant.
+
+Notethatifoneofthepointsisafreesurfacethepressureisnormally
+atmosphericbutifgaugepressuresareused,thepressureandpressure
+headbecomeszero.Also,ifthesurfaceareaislarge(sayalargetank),
+thevelocityofthesurfaceissmallandwhensquaredbecomes
+negligiblesothekineticenergytermisneglected(madezero).Also
+whendealingwithfluidonthelevelground,altitudeiszero,hencethe
+potentialheadiszero.
+UseHeadFormequationwhengivenHeadloss
+UsePressureFormequationwhengivenPressureloss
+Tips on how to apply Bernoulli’s
+
+The diagram shows a pump delivering
+water through a pipe of 30푚푚bore to a
+tank. Find the pressure at point (1) when
+the flow rate is 1.4푑푚
+3
+/푠. The density
+of water is 1000푘푔/푚
+3
+. The loss of
+pressure due to friction is 50푘푃푎.
+Example1
+
+Solution
+퐴푟푒푎표푓푏표푟푒퐴=
+휋퐷
+2
+4
+=
+휋
+30
+1000
+2
+4
+=7.07×10
+−4
+푚
+2
+퐹푙표푤푟푎푡푒푄=
+1.4푑푚
+3
+푠
+=0.0014푚
+3
+/푠
+푀푒푎푛푣푒푙표푐푖푡푦푢
+1
+=
+푄
+퐴
+=
+0.0014푚
+3
+/푠
+0.000707푚
+2
+=1.98푚/푠
+Apply Bernoulli pressure form between point (1) and the surface of the tank.
+Make the low level the datum level and 푧
+1
+=0and 푧
+2
+=25푚. The pressure 
+on the surface is zero gauge pressure. 푃
+퐿
+=50000푃푎The velocity at (1) is 
+u
+1
+=1.98푚/푠and at the surface it is zero. 
+
+Now the information we have is
+푃
+1
+=?,푃
+2
+=0,푢
+1
+=1.98푚푠
+−1
+,푢
+2
+=0,휌=1000푘푔푚
+−3
+,푧
+1
+=0,푧
+2
+=25푚
+Substituting
+푃
+1
++0+
+1000kgm
+−3
+1.98ms
+−12
+2
+=0+1000kgm
+−3
+9.81ms
+−2
+25m+0+50000Pa
+푃
+1
++990푃푎=245250푃푎+50000푃푎
+푃
+1
+=294260푃푎
+푃
+1
+=294.26푘푃푎
+The pressureatpoint(1) is ퟐퟗퟒ.ퟐퟔ풌푷풂Gauge pressure 
+
+The diagram shows a tank that is drained by a horizontal pipe. Calculate the 
+pressure head at point (2) when the valve is partly closed so that the flow
+rate is reduced to 20푑푚
+3
+/푠. The pressure loss is equal to 2푚head. 
+Example2
+
+Solution
+Since point (1) is a free surface, ℎ
+1
+=0and 푢
+1
+is assumed negligible. 
+The datum level is point (2) so 푧
+1
+=15and 푧
+2
+=0. 
+퐴
+2
+=
+휋퐷
+2
+4
+=
+휋0.05푚
+2
+4
+=1.963×10
+−3
+푚
+2
+푄=20푑푚
+3
+푠
+−1
+=0.02푚
+3
+푠
+−1
+푢
+2
+=
+푄
+퐴
+2
+=
+0.02푚
+3
+푠
+−1
+1.963×10
+−3
+푚
+2
+=10.18푚푠
+−1
+Bernoulli’s equation in head form is as follows.
+
+The diagram shows a horizontal nozzle discharging into the atmosphere. 
+The inlet has a bore area of 600푚푚
+2
+and the exit has a bore area of 
+200푚푚
+2
+. Calculate the flow rate when the inlet pressure is 400 Pa. 
+Assume there is no energy loss.
+Example3
+
+Solution
+Apply Bernoulli pressure form between (1) and (2) 
+Using gauge pressure, P
+2
+=0and being horizontal the potential terms cancel. The 
+loss term is zero so the equation simplifies to the following. 
+From the continuity equation we have mean velocity as
+푢
+1
+=
+푄
+퐴
+1
+=
+푄
+0.0006푚
+2
+=1666.67푄
+푢
+2
+=
+푄
+퐴
+2
+=
+푄
+0.0002푚
+2
+=5000푄
+
+Putting this into Bernoulli’s equation we have the following. 
+400+
+10001666.67푄
+2
+2
+=
+10005000푄
+2
+2
+1.25×10
+10
+푄
+2
+−1.39×10
+9
+푄
+2
+=400
+1.11×10
+10
+푄
+2
+=400
+푄=
+400
+1.11×10
+10
+=1.90×10
+−4
+푚
+3
+푠
+−1
+Therefore, the volume flow rate 푸=ퟏ.ퟗퟎ×ퟏퟎ
+−ퟒ
+풎
+ퟑ
+/풔
+
+When a fluid flows in a pipe at a volumetric flow rate 푄푚
+3
+/푠the average velocity is 
+defined 
+푢
+푚
+=
+푄
+퐴
+A is the cross sectional area.
+The Reynolds number is defined as 
+휌is density, 퐷is diameter, 푣is kinematic viscosity, 휇is coefficient of dynamic viscosity 
+If you check the units of 푅
+푒
+you will see that there are none and that it is a 
+dimensionless number.
+When the flow is gradually increasing, the change from laminar to turbulent always 
+occurs at a Reynolds number of 2500 and when the flow is gradually reducing it 
+changes back again at a Reynolds number of 2000. Normally, 2000 is taken as the 
+critical value.
+CRITICAL VELOCITY -REYNOLDS 
+NUMBER
+
+Practice Questions
+
+Question 1.
+Water is conveyed at a volumetric flow rate of 4.8×10
+2
+푚
+3
+/푠through 
+a pipeline as show below. The internal diameter of the pipeline at 
+Section 2 is 5.84cm and loss in head is 4m. Determine the 
+diameter(cm) of the pipeline at Section 1 if all losses encountered 
+between the two sections are due to kinetic head loss.  (15 marks)
+
+Question 2.
+Tank of height 5m is full of water. There is a hole of cross section area 
+0.001푚
+2
+in the bottom. Calculate the flow rate of water coming out from 
+the hole. (8 marks)
+Suppose that two tanks, 1 and 2, each with a large opening at the top, 
+contain different liquids. A small hole is made in the side of each tank at the 
+same depth h below the liquid surface, but the hole in tank 1 has half the 
+cross-sectional area of the hole in tank 2.
+a)What is the ratio 푟
+1
+/푟
+2
+of the densities of the liquids if the mass flow rate 
+is the same for the two holes?
+b)What is the ratio 푅
+푉1
+/푅
+푉2
+of the volume flow rates from the two
+c)tanks?
+
+THE END

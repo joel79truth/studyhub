@@ -1,0 +1,152 @@
+
+
+Using
+Databases
+I N T R O D U C T I O N
+B I L L Y  C L A R K
+REFERENCE: Form 4, Unit 2. Pages 23-28. 
+Senior Secondary Computer Studies, Andrew Nasalangwa. 
+
+Learning 
+Objectives
+Students must be able to: 
+1 define the term database 
+2 describe types of databases 
+3 explain the benefits of databases 
+4 describe database models 
+5 state features of databases 
+6 name examples of database management software 
+(DBMS) 
+
+Introduction to databases
+Managing data as a resource is an 
+important task in any organisation 
+today. This is because data within 
+an organisation and its 
+environment forms part of the 
+strategic , tactical, operational 
+management and decision making. 
+In order to enhance convenient and 
+easy storage and retrieval of data, 
+we use databases. 
+A database is defined as a 
+collection of related data items 
+organised so as to provide 
+consistent and controlled access.
+
+Define the term database in your own 
+words...
+Use the diagram to help your 
+definition.
+A database is...
+database
+
+Types of databases
+There are two main types of databases:
+Manual database Electronic database
+
+Manual Database
+A manual database consists if a collection of repository 
+files and folders, each properly tagged and kept in 
+proper sequence in a cabinet. For example, in a school 
+the admission office stores all student file identified 
+using unique student admission numbers such as 
+201/2019, 202/2019 etc. However, as organisation data 
+and information grows manual organization becomes 
+difficult and time consuming resulting in issues.
+Can you identify some issue with type of database 
+management?
+
+Manual Database
+Redundancy –Redundancy refers to unnecessary 
+duplication of data in multiple files
+Lack of flexibility -It is difficult to search for a record.
+Lack of integrity -Poor storage and maintenance of 
+data may lead to unreliable and misleading reports.
+Lack of sharing data –Data or information in difference 
+manual files may not be available to other users.
+
+Electronic databases
+Electronic database refers to the use of electronic devices 
+such as computers to store and organise files for easy access. 
+For example, in Microsoft Windows, files are stored under 
+one folderon a storage media. Actually, the term folder as 
+used in Windows is a metaphor that refer to the way we keep 
+documents in a physical document wallet also referred to as 
+a ‘document folder’. 
+Can you give the advantages of an electronic database?
+
+Electronic databases
+The advantage of electronic database systems provide users 
+with tools for easy storage and access of data and 
+information.
+
+Database models
+A database model is a logical structure that determines how data is stored, organised and 
+manipulated by DBMS software (Database management software). Five common types of 
+database models are; hierarchical model, network model, relational model, object/relational 
+model and object orientated model. The most popular model is the relational database model.
+
+Hierarchical Model
+In the hierarchical model data is organised in hierarchical structure as seen in the image. For 
+example to access level data, the user has to access the root first and follow the path to the 
+level. A specific path leads to each item at lower levels. Hierarchical model is rarely used in 
+modern database systems, hence obsolete.
+◦Path
+Root
+Level 2 data item
+Level 2 data itemLevel 2 data item
+
+Network Model
+The network model allows each record to have multiple parent and child records. This forms 
+network structure as seen in the picture. In network models, access to a record can be through 
+multiple paths and from any record. This type of record access structure is what is referred to as 
+many to many relationship. Like the hierarchical model the network model is pretty much 
+obsolete.
+Canteen
+Customers
+Transactions
+Suppliers
+
+Relational Model
+This is the most popular type of database. This is a model where two tables can be linked 
+together such that a record from one table references to a record or records in another table. 
+For example Table 1 and 2 show the customer and order table that are related to each other 
+through customer number and customer ID. In this case, the orders table shows that customer 
+number 450 has three orders in the orders table.
+CustomernumberNameTelephone number
+900Mary Njemile02078907
+230Peter Onani0667896
+450Bat Masamba04456000
+Customer IDOrder IDDateAmount
+9003802/3/201490000
+4502342/3/20145000
+4501232/4/201412000
+4506674/4/201415000
+
+Object relational Model
+In software development, there is a shift from structured programming to object-orientated 
+programming an object is a representation of real world using state and behaviour. This shift 
+raised need for database model that stores and manipulates objects. Therefore object-relational 
+is an evolutionary hybrid model that has capabilities to handle both relational and object 
+orientated storage and manipulation of data
+
+Object orientated Model
+Object orientated models purely support storage, access and manipulation of objects. Although 
+currently not popular in the market, object orientated database management systems provides 
+unification of application and database development. This is different from current approaches 
+in RDBMS where a separate application has to be developed to access a database.
+
+Database structure
+For easy storage, retrieval and manipulation, RDBMS organise data into a structure called a 
+schema. A schema is an organisation structure made up of fields at the lowest level and 
+database at the highest level.
+
+Database structure definitions
+Field –A field is a set of characters or logical combination of characters that defines a single data 
+value
+Record –A record is a collection of related fields that represent a single data item.
+Table –A table is the equivalent of a file and contains a set of related records.
+Database –A database is a collection of related tables and each table consists of related records 
+made up of fields. This type of organisation is what is referred to as a database schema
+Question –State the five types of database models.

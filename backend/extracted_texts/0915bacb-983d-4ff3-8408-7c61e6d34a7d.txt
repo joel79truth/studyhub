@@ -1,0 +1,615 @@
+
+
+Data Structures and 
+Algorithms
+Introduction to Data Structures and Algorithms
+
+Data structures
+A data structure is a special format to store and organize data in order to 
+facilitate access and modifications.
+
+Data structures
+•General data structure types include arrays, files, linked lists, stacks, 
+queues, trees, graphs and so on.
+•Depending on the organization of  the elements, data structures are 
+classified into two types:
+•1) Linear data structures: Elements are accessed in a sequential order but it is 
+not compulsory to store all elements sequentially. Examples are Linked Lists, 
+Stacks and Queues.
+•2) Non –linear data structures: Elements of  this data structure are 
+stored/accessed in a non-linear order. Examples are Trees and graphs.
+
+Abstract Data Types (ADTs)
+•When data structures have been combined with their operations, we call 
+this Abstract Data Types (ADTs).
+•An ADT consists of  two parts:
+•1. Declaration of  data
+•2. Declaration of  operations
+•Commonly used ADTs include: Linked Lists, Stacks, Queues, Priority 
+Queues, Binary Trees, Dictionaries, Disjoint Sets (Union and Find), Hash 
+Tables, Graphs, and many others.
+
+Abstract Data Types (ADTs)
+•For example, stack uses LIFO (Last-In-First-Out) mechanism while 
+storing the data in data structures.
+•The last element inserted into the stack is the first element that gets 
+deleted.
+•Common operations of  it are: creating the stack, pushing an element 
+onto the stack, popping an element from stack, finding the current top 
+of  the stack, finding number of  elements in the stack, etc.
+
+What is an Algorithm?
+An algorithm is a step-by-step procedure for performing some task in a 
+finite amount of  time.
+
+Analysis of  Algorithms
+
+Analysing Algorithms
+•Analyzing an algorithm means predicting the resources that the 
+algorithm requires.
+•You might consider resources such as memory, communication 
+bandwidth, or energy consumption.
+•Most often, however, you’ll want to measure computational time.
+•If  you analyze several candidate algorithms for a problem, you can 
+identify the most efficient one.
+•There might be more than just one viable candidate, but you can often 
+rule out several inferior algorithms in the process.
+
+Why the Analysis of  Algorithms?
+•Algorithm analysis helps us to determine which algorithm is most 
+efficient in terms of  time and space consumed.
+•The goal of  the analysis of  algorithms is to compare algorithms (or 
+solutions) mainly in terms of  running time but also in terms of  other 
+factors (e.g., memory, developer effort, etc.)
+
+What is Running Time Analysis?
+•It is the process of  determining how processing time increases as the size 
+of  the problem (input size) increases.
+•Input size is the number of  elements in the input, and depending on the 
+problem type, the input may be of  different types.
+•The following are the common types of  inputs.
+•Size of  an array
+•Polynomial degree
+•Number of  elements in a matrix
+•Number of  bits in the binary representation of  the input
+•Vertices and edges in a graph.
+
+What is Running Time Analysis?
+•The running time of  an algorithm on a particular input is the number of  
+instructions and data accesses executed.
+•In general, the running time of  an algorithm or data structure operation 
+increases with the input size, although it may also vary for different 
+inputs of  the same size.
+•Also, the running time is affected by the hardware environment (e.g., the 
+processor, clock rate, memory, disk) and software environment (e.g., the 
+operating system, programming language) in which the algorithm is 
+implemented and executed.
+
+What is Running Time Analysis?
+•All other factors being equal, the running time of  the same algorithm on 
+the same input data will be smaller if  the computer has, say, a much 
+faster processor or if  the implementation is done in a program compiled 
+into native machine code instead of  an interpreted implementation run 
+on a virtual machine.
+
+How to Compare Algorithms
+•Execution times?Not a good measure as execution times are specific 
+to a particular computer.
+•Number of  statements executed?Not a good measure, since the 
+number of  statements varies with the programming language as well as 
+the style of  the individual programmer.
+•Ideal solution?Let us assume that we express the running time of  a 
+given algorithm as a function of  the input size n (i.e., f(n)) and compare 
+these different functions corresponding to running times. This kind of  
+comparison is independent of  machine time, programming style, etc.
+
+What is Rate of  Growth?
+•The rate at which the running time increases as a function of  input is 
+called rate of  growth.
+
+Types of  Analysis
+•To analyze the given algorithm, we need to know with which inputs the 
+algorithm takes less time (performing well) and with which inputs the 
+algorithm takes a long time.
+•In general, the first case is called the best case and the second case is 
+called the worst case for the algorithm.
+•Worst case
+•Defines the input for which the algorithm takes a long time (slowest time to 
+complete).
+•Input is the one for which the algorithm runs the slowest.
+
+Types of  Analysis
+•Best case
+•Defines the input for which the algorithm takes the least time (fastest time to 
+complete).
+•Input is the one for which the algorithm runs the fastest.
+•We also have Average case which provides a prediction about the running 
+time of  the algorithm.
+•Run the algorithm many times, using many different inputs that come from some 
+distribution that generates these inputs, compute the total running time (by 
+adding the individual times), and divide by the number of  trials.
+•Assumes that the input is random.
+•Lower Bound <= Average Time <= Upper Bound
+
+Types of  Analysis
+•For a given algorithm, we can represent the best, worst and average cases 
+in the form of  expressions.
+•As an example, let f(n) be the function which represents the given 
+algorithm.
+•Similarly for the average case, the expression defines the inputs with 
+which the algorithm takes the average running time (or memory).
+
+Analysis of  insertion sort 
+algorithm
+
+Analysis of  insertion sort Algorithm
+•Insertion sort algorithm proceeds by considering one element at a time, 
+placing the element in the correct order relative to those before it.
+•We start with the first element in the array, which is trivially sorted by 
+itself.
+•When considering the next element in the array, if  it is smaller than the 
+first, we swap them.
+•Next we consider the third element in the array, swapping it leftward 
+until it is in its proper order relative to the first two elements.
+•We continue in this manner with the fourth element, the fifth, and so on, 
+until the whole array is sorted.
+
+Analysis of  insertion sort Algorithm
+•We can express the insertion-sort algorithm in pseudocode, as shown 
+below:
+Algorithm InsertionSort(A):
+Input: An array A of n comparable elements
+Output: The array A with elements rearranged in 
+nondecreasing order
+for k from 1 to n−1 do
+Insert A[k] at its proper location within 
+A[0], A[1], . . ., A[k].
+
+Analysis of  insertion sort Algorithm
+•A Java implementation of  insertion-sort is shown below, using an outer 
+loop to consider each element in turn, and an inner loop that moves a 
+newly considered element to its proper location relative to the (sorted) 
+subarray of  elements that are to its left.
+
+Analysis of  insertion sort Algorithm
+/** Insertion-sort of an array of characters into nondecreasing order */
+public static void insertionSort(char[ ] data) {
+int n = data.length;
+for (int k = 1; k < n; k++) { // begin with second character
+char cur = data[k]; // time to insert cur=data[k]
+int j = k; // find correct index j for cur
+while (j > 0 && data[j−1] > cur) { // data[j-1] must go after cur
+data[j] = data[j−1]; // slide data[j-1] rightward
+j−−; // and consider previous j for cur
+}
+data[j] = cur; // this is the proper place for cur
+}
+}
+
+Analysis of  insertion sort Algorithm
+•If  an array is already sorted, the inner loop of  insertion-sort does only 
+one comparison, determines that there is no swap needed, and returns 
+back to the outer loop.
+•Figure below illustrates Insertion sort. Each row corresponds to an 
+iteration of  the outer loop, and each copy of  the sequence in a row 
+corresponds to an iteration of  the inner loop. The current element that is 
+being inserted is highlighted in the array, and shown as the cur value.
+
+Analysis of  insertion sort Algorithm
+
+Analysis of  insertion sort Algorithm
+•We’ll use a precise formula that uses the input size and all the statement 
+costs c
+k
+.
+•The input size is the number of  items in the input (number n of  items 
+being sorted).
+•The figure below shows the time cost of  each statement and the number 
+of  times each statement is executed.
+
+Analysis of  insertion sort Algorithm
+
+Analysis of  insertion sort Algorithm
+•For each i= 2, 3, ..., n, let t
+i
+denote the number of  times the while loop 
+test in line 5 is executed for that value of  i.
+•When a for or while loop exits in the usual way -because the test in the 
+loop header comes up FALSE -the test is executed one time more than 
+the loop body.
+•Because comments are not executable statements, assume that they take 
+no time.
+
+Analysis of  insertion sort Algorithm
+•The running time of  the algorithm is the sum of  running times for each 
+statement executed.
+•A statement that takes c
+k
+steps to execute and executes m times 
+contributes c
+k
+mto the total running time.
+•We usually denote the running time of  an algorithm on an input of  size 
+n by T(n).
+•To compute T(n), the running time of  INSERTION-SORT on an input 
+of  n values, we sum the products of  the cost and times columns, 
+obtaining
+
+Analysis of  insertion sort Algorithm
+•In INSERTION-SORT, the best case occurs when the array is already 
+sorted.
+•In this case, each time that line 5 executes, the value of  key -the value 
+originally in A[i]-is already greater than or equal to all values in A[1:i -1], 
+so that the while loop of  lines 5 -7 always exits upon the first test in line 
+5.
+
+Analysis of  insertion sort Algorithm
+•Therefore, we have that t
+i
+= 1 for i= 2, 3 ..., n, and the best-case 
+running time is given by
+•We can express this running time as an + bfor constants aand bthat 
+depend on the statement costs c
+k
+(where a = c
+1
++ c
+2
++ c
+4
++ c
+5
++ c
+8
+and b 
+= -(c
+2
++ c
+4
++ c
+5
++ c
+8
+) ).
+•The running time is thus a linear function of  n.
+
+Analysis of  insertion sort Algorithm
+•The worst case arises when the array is in reverse sorted order -that is, it 
+starts out in decreasing order.
+•The procedure must compare each element A[i] with each element in the 
+entire sorted subarray A[1:i –1], and so t
+i
+= ifor i= 2, 3, ..., n.
+•The procedure finds that A[j] > key every time in line 5, and the while 
+loop exits only when j reaches 0.
+
+Analysis of  insertion sort Algorithm
+•Noting that
+•and
+
+Analysis of  insertion sort Algorithm
+•we find that in the worst case, the running time of  INSERTION-SORT 
+is
+
+Analysis of  insertion sort Algorithm
+•We can express this worst-case running time as an
+2
++ bn + c for 
+constants a, b, and c that again depend on the statement costs c
+k
+(now, a 
+= c
+5
+/2 + c
+6
+/2 + c
+7
+/2, b = c
+1
++ c
+2
++ c
+4
++ c
+5
+/2 -c
+6
+/2 -c
+7
+/2 + c
+8
+, and 
+c = -(c
+2
++ c
+4
++ c
+5
++ c
+8
+)).
+•The running time is thus a quadratic function of  n.
+•Typically, as in insertion sort, the running time of  an algorithm is fixed 
+for a given input, although we’ll also see some interesting “randomized” 
+algorithms whose behavior can vary even for a fixed input.
+
+Experimental Studies
+•One way to study the efficiency of  an algorithm is to implement it and 
+experiment by running the program on various test inputs while 
+recording the time spent during each execution.
+•A simple mechanism for collecting such running times in Java is based 
+on use of  the currentTimeMillismethod of  the System class. That 
+method reports the number of  milliseconds that have passed since a 
+benchmark time known as the epoch (January 1, 1970 UTC).
+•The key is that if  we record the time immediately before executing the 
+algorithm and then immediately after, we can measure the elapsed time 
+of an algorithm’s execution by computing the difference of those times.
+
+Experimental Studies
+•A typical way to automate this process is shown in Code Fragment 
+below:
+
+Experimental Studies
+•The measured times will vary greatly from machine to machine, and may 
+likely vary from trial to trial, even on the same machine. This is because 
+many processes share use of a computer’s central processing unit (or 
+CPU) and memory system; therefore, the elapsed time will depend on 
+what other processes are running on the computer when a test is 
+performed.
+•While the precise running time may not be dependable, experiments are 
+quite useful when comparing the efficiency of  two or more algorithms, 
+so long as they gathered under similar circumstances.
+
+Asymptotic Analysis
+
+Asymptotic Analysis
+•In asymptotic analysis, we analyze algorithms using a mathematical 
+notation for functions that disregards constant factors.
+•Namely, we characterize the running times of  algorithms by using 
+functions that map the size of  the input, n, to values that correspond to 
+the main factor that determines the growth rate in terms of  n.
+•This approach reflects that each basic step in a pseudocode description 
+or a high-level language implementation may correspond to a small 
+number of  primitive operations.
+
+Asymptotic Notation
+•Thus, we can perform an analysis of  an algorithm by estimating the 
+number of  primitive operations executed up to a constant factor, rather 
+than getting bogged down in language-specific or hardware-specific 
+analysis of  the exact number of  operations that execute on the 
+computer.
+•Having the expressions for the best, average and worst cases, we need to 
+identify the upper and lower bounds. To represent these upper and lower 
+bounds, we need some kind of  syntax.
+•Let us assume that the given algorithm is represented in the form of  
+function f(n).
+
+Big-O Notation [Upper Bounding 
+Function]
+•This notation gives the tight upper bound of  the given function.
+•Generally, it is represented as:
+•f(n) = O(g(n))
+•That means, at larger values of  n, the upper bound of  f(n) is g(n).
+•For example, if  f(n) = n
+4
++ 100n
+2
++ 10n + 50 is the given algorithm, 
+then n
+4
+is g(n).
+•That means g(n) gives the maximum rate of  growth for f(n) at larger 
+values of  n.
+
+Big-O Notation [Upper Bounding 
+Function]
+•O–notation is defined as O(g(n)) = {f(n): there exist positive constants c 
+> 0 and n
+0
+>= 1 such that 0 ≤ f(n) ≤ cg(n) for all n > n
+0
+}. g(n) is an 
+asymptotic tight upper bound for f(n).
+•Our objective is to give the smallest rate of  growth g(n) which is greater 
+than or equal to the given algorithms’ rate of growth /(n).
+•Generally we discard lower values of  n. That means the rate of  growth at 
+lower values of  nis not important.
+•In the figure below, n
+0
+is the point from which we need to consider the 
+rate of  growth for a given algorithm. Below n
+0
+, the rate of  growth could 
+be different. n
+0
+is called threshold for the given function.
+
+Big-O Notation [Upper Bounding 
+Function]
+
+Big-O Examples
+•Example-1 Find upper bound for f(n) = 3n + 8
+•Solution: 3n + 8 ≤ 4n, for all n ≥ 8
+•∴3n + 8 = O(n) with c = 4 and n
+0
+= 8
+•Example-2 Find upper bound for f(n) = n
+2
++ 1
+•Solution: n
+2
++ 1 ≤ 2n
+2
+, for all n ≥ 1
+•∴n
+2
++ 1 = O(n
+2
+) with c = 2 and n
+0
+= 1
+•Example-3 Find upper bound for f(n) = n
+4
++ 100n
+2
++ 50
+•Solution: n
+4
++ 100n
+2
++ 50 ≤ 2n
+4
+, for all n ≥ 11
+•∴n
+4
++ 100n
+2
++ 50 = O(n
+4
+) with c = 2 and n
+0
+= 11
+
+Big-O Examples
+•Example-4 Find upper bound for f(n) = 2n
+3
+–2n
+2
+•Solution: 2n
+3
+–2n
+2
+≤ 2n
+3
+, for all n > 1
+•∴2n
+3
+–2n
+2
+= O(n
+3
+) with c = 2 and n
+0
+= 1
+•Example-5 Find upper bound for f(n) = n
+•Solution: n ≤ n, for all n ≥ 1
+•∴n = O(n) with c = 1 and n
+0
+= 1
+•Example-6 Find upper bound for f(n) = 410
+•Solution: 410 ≤ 410, for all n > 1
+•∴410 = O(1) with c = 1 and n
+0
+= 1
+
+Omega-ΩNotation [Lower Bounding 
+Function]
+•Similar to the O discussion, this notation gives the tighter lower bound 
+of the given algorithm and we represent it as f(n) = Ω(g(n)).
+•That means, at larger values of  n, the tighter lower bound of  f(n) is g(n).
+•For example, if  f(n) = 100n
+2
++ 10n + 50, g(n) is Ω(n
+2
+).
+•The Ω notation can be defined as Ω(g(n)) = {f(n): there exist positive 
+constants c and n
+0
+such that 0 ≤ cg(n) ≤ f(n) for all n ≥ n
+0
+}.
+•g(n) is an asymptotic tight lower bound for f(n).
+•Our objective is to give the largest rate of  growth g(n) which is less than 
+or equal to the given algorithm’s rate of growth f(n).
+
+Omega-ΩNotation [Lower Bounding 
+Function]
+
+Ω Examples
+•Example-1 Find lower bound for f(n) = 5n
+2
+.
+•Solution: ∃c, n
+0
+such that: 0 ≤ cn
+2
+≤ 5n
+2
+⇒cn
+2
+≤ 5n
+2
+⇒c = 5 and n
+0
+= 1
+•∴5n
+2
+= Ω(n
+2
+) with c = 5 and n
+0
+= 1
+•Example-2 Prove f(n) = 100n + 5 ≠ Ω(n
+2
+).
+•Solution: ∃c, n
+0
+Such that: 0 ≤ cn
+2
+≤ 100n + 5
+•100n + 5 ≤ 100n + 5n(∀n ≥ 1) = 105n
+•cn
+2
+≤ 105n ⇒n(cn-105) ≤ 0
+•Since n is positive ⇒cn-105 ≤0 ⇒n ≤105/c
+•⇒Contradiction: n cannot be smaller than a constant
+
+Theta-Θ Notation [Order Function]
+•This notation decides whether the upper and lower bounds of  a given 
+function (algorithm) are the same.
+•The average running time of  an algorithm is always between the lower 
+bound and the upper bound.
+•If the upper bound (O) and lower bound (Ω) give the same result, then 
+the Θ notation will also have the same rate of growth.
+•In this case, the rates of  growth in the best case and worst case are the 
+same. As a result, the average case will also be the same.
+
+Theta-Θ Notation [Order Function]
+•For a given function (algorithm), if  the rates of  growth (bounds) for O 
+and Ω are not the same, then the rate of growth for the Θ case may not 
+be the same.
+•In this case, we need to consider all possible time complexities and take 
+the average of  those.
+•Now consider the definition of Θ notation. It is defined as Θ(g(n)) = 
+{f(n): there exist positive constants c
+1
+,c
+2
+and n
+0
+such that 0 ≤ c
+1
+g(n) ≤ 
+f(n) ≤ c
+2
+g(n) for all n ≥ n
+0
+}. g(n) is an asymptotic tight bound for f(n). 
+Θ(g(n)) is the set of functions with the same order of growth as g(n).
+
+Theta-Θ Notation [Order Function]
+
+Θ Examples
+
+Θ Examples
+
+Commonly used Logarithms and 
+Summations
+•Logarithms
+
+Commonly used Logarithms and 
+Summations
+
+Commonly used Logarithms and 
+Summations
+

@@ -1,0 +1,853 @@
+
+
+BIOCHEMISTRY
+LIPIDS
+S. J. NAMAUMBO, 2024
+099397184/0888613923
+snamaumbo@luanar.ac.mw
+
+LIPIDS
+•A naturally occurring molecules which is soluble in nonpolar 
+organic solvents
+•Lipids are very diverse in structure
+•They include
+✓Fats and Oil
+✓Waxes
+✓Sterols
+✓Phospholipds
+The commonest are 
+➢Fats
+➢OIls
+
+LIPIDS 
+FATS
+•Solid at room temperature
+•Mixture of triacylglycerols 
+that is solid because it 
+contains a high proportion of 
+saturated fatty acids
+OILS
+•Liquid at room temperature
+•Mixture of triacylglycerols that 
+is liquid because it contains a 
+high proportion of 
+unsaturated fatty acids
+•Triacylglycerol in natural fast and oils are nonpolar, 
+hydrophobic molecules with no ionic charges
+
+STRUCTURE OF LIPID MOLECULE
+There are two main components of fats/oil:
+a straight chain of an even number of carbon 
+atoms, with hydrogen atoms along the length 
+of the chain and at one end of the chain and a 
+carboxyl group (―COOH) at the other end
+The chemical structure of 
+glycerol shows thateach carbon 
+atom is bonded to an -OH group
+A. GlycerolsB. Fatty Acids
+A trihydroxyl 
+alcohol
+
+FATTY ACIDS
+•They are mostly long chain carboxylic acids with more than 10 carbons
+•Naturally occurring fatty acids have even number of carbon atoms
+Examples
+•Lauric acid (Dodecanoic acid)
+ CH
+3
+(CH
+2
+)
+10
+COOH
+•Myristic acid (Tetradecanoic acid)
+ CH
+3
+(CH
+2
+)
+10
+COOH
+•Palmitic acid (hexadecanoic acid)
+ CH
+3
+(CH
+2
+)
+14
+COOH
+•Stearic acid (Octadecanoic acid)
+ CH
+3
+(CH
+2
+)
+16
+COOH
+•Arachidonic acid (eicosanoic acid)
+ CH
+3
+(CH
+2
+)
+18
+COOH
+
+Saturated and Unsaturated Fatty Acids
+•Saturated Fatty Acids
+•Long chain of RCOOH with only single bond
+•Saturated fatty acids are often classified based 
+on their carbon chain length into short-chain 
+(less than 6 carbons), medium-chain (6 to 12 
+carbons), long-chain (13 to 21 carbons), and 
+very long-chain (more than 22 carbons) fatty 
+acids.
+•Common saturated fatty acids include:
+✓Lauric Acid (C12): Found in coconut oil and palm kernel oil, as well as in cow’s milk and 
+breast milk.
+✓Myristic Acid (C14): Present in dairy products and some plant oils.
+✓Palmitic Acid (C16): Commonly found in palm oil, meat, and dairy products.
+✓Stearic Acid (C18): Found in meat and cocoa butter.
+
+Saturated and Unsaturated Fatty Acids
+•Unsaturated Fatty Acids
+•Long chain of RCOOH with one or more carbon-
+carbon double bond
+•Unsaturated fatty acids are often cis isomers 
+hence puts a kink in the chain structure.
+cis – Oleic acid
+Trans – isomers are only 
+formed synthetically
+trans – Oleic acid
+
+Saturated and Unsaturated Fatty Acids
+Linoleic and Linolenic acids are essential in human diet because the body 
+does not synthsize them. They are needed for the synthesis of other lipids  
+
+Glycerol Esterification
+•Glycerol esterification is a chemical 
+process where glycerol reacts with 
+fatty acids to form glycerol esters, 
+such as glycerol mono-oleate (GMO) 
+and glycerol dioleate (GDO). 
+•This reaction is significant in various 
+industries, including food, 
+cosmetics, pharmaceuticals, and 
+polymers.
+• The process can be catalyzed using 
+different types of catalysts, with 
+acid-catalyzed systems being the 
+most common.
+
+Glycerol Esterification Mechanism
+•The esterification reaction involves the nucleophilic attack of the 
+hydroxyl group of glycerol on the carbonyl carbon of the fatty acid.
+•This leads to the formation of an ester bond and the release of water.
+✓The general reaction can be represented as follows:
+                  Glycerol   +  Fatty Acid  →  Glycerol Ester + Water
+
+Glycerol Esterification Mechanism
+
+•Triglycerides are a type of fat (lipid) 
+found in your blood and are the 
+most common form of fat in the 
+body. 
+•They are composed of three fatty 
+acids linked to a glycerol molecule. 
+What happens when you consume fatty food?
+Are carboxylic acids triesters of 
+glycerol, make up the fats stored 
+in our bodies and most dietry 
+fats and oils.
+Animal fats and vegetable oils 
+are the most plentiful lipids in 
+nature. 
+➢High triglyceride levels (0ver 500mg/dL) can increase the risk of cardiovascular 
+diseases such as heart attacks and strokes.
+
+TRIGLYCERIDES
+•All fats and oils are composed of triesters of glycerol (1,2,3-
+propanetriol, also known as glycerine) with three fatty acids. 
+•They are named chemically as triacylglycerols, but are often 
+called triglycerides 
+
+TRIGLYCERIDES
+The three fatty acids esterified to glycerol usually are not the same 
+type
+✓Fatty acid on carbon 1 is typically saturated. 
+✓Fatty acid on carbon 2 is typically unsaturated. 
+✓Fatty acid on carbon 3 can be either saturated or unsaturated.
+
+TRIGLYCERIDES
+
+TRIGLYCERIDES – Structure and Properties
+✓TAG that are solid at room temperature are classified as fats 
+(animal-based). 
+✓TAG that are liquid at room temperature are classified as oils 
+(vegetable-based).
+✓In general, the more unsaturated the fatty acids in a TAG, 
+the less solid it is.
+✓Most liquid TAG come from plant sources (olives, corn, 
+safflower). 
+✓Most solid or primarily saturated fats come from animal 
+sources. 
+✓3-D structure of fatty acids affects packing which in turn 
+affects melting point
+
+DIGLYCERIDES
+▪Diglycerides, also known as diglycerol 
+esters or diacylglycerols (DAGs)
+▪Type of glyceride that consists of two 
+fatty acid chains attached to a glycerol 
+backbone. 
+▪They are formed through the process of 
+esterification, where glycerol reacts with 
+fatty acids. 
+▪Two possible forms exist, 1,2-
+diacylglycerols and 1,3-diacylglycerols.
+
+DIGLYCERIDES
+✓In food fast diglycerides are are typically found in smaller 
+quantities compared to triglycerides, which are the main 
+form of dietary fat.
+✓The industrial production of diglycerides primarily 
+involves a glycerolysis reaction between triglycerides (the 
+predominant form of dietary fats) and glycerol. 
+▪The glycerolysis reaction isa chemical process that uses 
+glycerol to break chemical bonds and convert free fatty 
+acids (FFAs) into glycerides. 
+▪This process can utilize either vegetable oils or animal fats 
+as raw materials.
+✓Diglycerides serve as important food additives, stabilizer
+❑Common applications include bakery products, beverages, ice 
+cream, peanut butter, shortening, whipped toppings, 
+margarine, confections, and snack foods like Pringles. 
+
+MONOGLYCERIDES – Structure and Properties
+▪Are called glycerol esters
+▪Type of glyceride that consists of only one fatty acid chain 
+attached to a glycerol backbone. 
+▪They are formed through the process of esterification, where 
+glycerol reacts with fatty acids.  
+▪Two possible forms exist, 1-monoglyceride and 2-
+monoglyceride.
+
+Phospholipids and Sphingolipids
+Phospholipids
+•Phospholipids are a major component of all cell membranes 
+as they can form lipid bilayers. 
+•Most phospholipids contain a diglyceride, a phosphate 
+group, and a simple organic molecule such as choline. 
+•The structure of the 
+phospholipid molecule 
+generally consists of 
+hydrophobic tails and a 
+hydrophilic head. 
+
+Phospholipids and Sphingolipids
+Phospholipids: Examples
+Phosphatidylcholine (PC)
+Phosphatidylseline (PS)
+
+Phospholipids and Sphingolipids
+Phospholipids
+•In general, phospholipids are composed of a 
+phosphate group, two alcohols, and one or two 
+fatty acids. 
+•On one end of the molecule are the phosphate group 
+and one alcohol; this end is polar, i.e., has an electric 
+charge, and is attracted to water (hydrophilic). 
+•The other end, which consists of the fatty acids, is 
+neutral; it is hydrophobic and water-insoluble but is 
+fat soluble.
+•This amphipathic nature (containing both 
+hydrophobic and hydrophilic groups) makes 
+phospholipids important in membranes. 
+•They form a two-layer structure, called the lipid 
+bilayer, with the polar head facing out on each 
+surface to interact with water, and with the 
+neutral “tails” driven inward and pointing 
+toward one another. 
+
+Phospholipids and Sphingolipids
+Phospholipids
+•The lipid bilayer is the structural 
+basis of all cell membranes and is 
+nearly impermeable to ions and 
+most polar molecules. The major 
+role is as a barrier between cells 
+and their environment. 
+•Thus separating the cytoplasm 
+and cellular structures from the 
+extracellular fluid and each other. 
+Proteins embedded in the 
+phospholipid matrix transport 
+many substances through the 
+membrane.
+
+Phospholipids and Sphingolipids
+Sphingolipids
+•Sphingolipids are a complex class of lipids that play crucial 
+roles in cellular functions and are primarily found in the 
+plasma membranes of various cell types, especially within the 
+nervous system. 
+•Sphingolipids are 
+extremely versatile 
+molecules, found in 
+nerve tissue and also 
+found in a few bacterial 
+genera
+•They are characterized by a backbone of sphingoid bases, 
+which are aliphatic amino alcohols that include sphingosine. 
+
+Phospholipids and Sphingolipids
+Sphingolipids: Examples
+•Sphingosine
+•Ceramides 
+•Sphingomyelin 
+•Oligoglycosylceramides 
+•Gangliosides.
+•These  are Complex sphingolipids located mainly in the 
+plasma membrane of mammalian cells where they have 
+a structural function, and also serve as adhesion sites for 
+proteins from the extracellular tissue. 
+•Sphingolipids and their metabolites have important roles 
+in signal transduction.
+
+Steroids
+✓Steroids form an important group of compounds 
+based on the fused four saturated carbon rings 
+✓Steroids comprise a group of cyclic organic 
+compounds.. 
+✓The most common characteristic is an 
+arrangement of seventeen carbon atoms in a 
+four-ring structure. 
+✓There are three rings composed of 6-carbons 
+(rings A, B, and C) followed by one with 5-carbons 
+(ring D). 
+✓They have an 8-carbon side chain attached to a 
+carbon on ring D, and two or more methyl groups 
+at the points where adjacent rings are "fused".
+
+Steroids -  Examples
+Cholesterol
+Testosterone
+Progesterone
+Bile acid
+Estrogen
+
+Steroids
+•Steroids are lipids because they are hydrophobic and insoluble 
+in water, but they do not resemble lipids since they have a 
+structure composed of four fused rings. 
+•Cholesterol is the most common steroid and is the precursor 
+to vitamin D, testosterone, estrogen, progesterone, 
+aldosterone, cortisol, and bile salts. 
+•Cholesterol is a component of the phospholipid bilayer and 
+plays a role in the structure and function of membranes. 
+•Steroids are found in the brain and alter electrical activity in 
+the brain. Because they can tone down receptors that 
+communicate messages from neurotransmitters, steroids are 
+often used in anesthetic medicines.
+
+Waxes
+Definition and Composition
+•Waxes are a diverse class of organic compounds 
+characterized by their lipophilic (fat-loving) nature and 
+malleable solid state at ambient temperatures. 
+•They typically consist of long aliphatic alkyl chains, although 
+aromatic compounds may also be present. 
+•Waxes have melting points generally above 40 °C, 
+transitioning to low viscosity liquids upon melting. 
+•They are insoluble in water but soluble in nonpolar organic 
+solvents such as hexane, benzene, and chloroform.
+Waxes typically includes long-chain hydrocarbons with various 
+functional groups such as fatty acids, alcohols, ketones, 
+aldehydes, and esters. The presence or absence of these 
+functional groups can affect the physical properties of the wax.
+
+Types of waxes
+Waxes can be categorized into natural and synthetic types:
+Natural Waxes
+These are produced by plants and animals. The composition of natural 
+waxes varies significantly depending on the species and geographic 
+location.
+Animal Waxes: A well-known example is 
+beeswax, which is primarily composed of 
+myricyl palmitate, an ester formed from 
+triacontanol and palmitic acid. Other animal-
+derived waxes include spermaceti from sperm 
+whales and lanolin from sheep wool.
+Plant Waxes: Plants secrete waxes onto their 
+surfaces to control evaporation and hydration. 
+Carnauba wax, derived from the leaves of the 
+Brazilian palm Copernicia prunifera, is one of 
+the most commercially significant plant waxes.
+
+Properties of waxes
+•Melting Point and Congealing Point: 
+The melting point is critical for determining how a wax behaves under 
+different temperature conditions. The congealing point indicates the 
+temperature at which a liquid wax begins to solidify.
+•Solubility Characteristics: 
+Waxes are generally insoluble in water due to their hydrophobic nature 
+but can dissolve in nonpolar solvents.
+•Food Industry: Used for coatings on fruits and vegetables to 
+enhance shelf life; paraffin wax is commonly used in food 
+packaging.
+•Cosmetics and Personal Care Products: Beeswax is frequently 
+used in lip balms, creams, and lotions due to its emollient 
+properties.
+•Candles and Polishes: Paraffin wax is widely utilized in candle 
+making; carnauba wax is used in furniture polish for its high gloss 
+finish.
+•Industrial Uses: Waxes serve as lubricants, waterproofing agents, 
+and coatings for various materials.
+Application of waxes
+
+BIOLOGICAL MEMBRANES
+❖Structure and function of membrane
+❖Movement of Ions and molecules 
+across membrane
+❖Transport of macromolecules
+
+
+
+BIOLOGICAL MEMBRANE
+•Plasma membrane defines the periphery of the cell, separating its 
+contents from the surroundings. 
+•All cells are bounded by a plasma membrane; 
+•have a cytosol containing metabolites, 
+•coenzymes, 
+•inorganic ions, 
+•and enzymes; 
+•and have a set of genes contained within a nucleoid (prokaryotes) or nucleus 
+(eukaryotes).
+•Prokaryotes are those cells without nuclear envelopes while eukaryotes 
+are those with nuclear envelope
+•These are barriers which give cells their outer boundaries and their outer 
+compartments (organelles)
+•Biological membrane also called bio-membrane is an enclosing or 
+separating membrane acts as a selectively permeable barrier within 
+living things 
+•Plasma Membrane is a boundary that separates the living cell from its 
+non-living surroundings.
+
+STRUCTURE OF MEMBRANE
+
+STRUCTURE OF MEMBRANE
+
+COMMON ATTRIBUTES OF BIOLOGICAL 
+MEMBRANE
+There 7 general attribute of the Biological Membrane
+1.Bi-layer, sheet-like structures.
+2.Made up of lipids, Proteins and Carbohydrates
+3.Membrane lipids are amphipathic
+4.Have specific Proteins
+5.Non-covalent cooperative interactions
+6.Inside – Outside asymmetry
+7.Membranes are fluids 
+
+a. Bi-layer, sheet-like structure
+•Membrane are bi – layer sheet like structures, closed 
+boundaries of cells or organelles
+• They have two polar heads (inside and outside) and non-
+polar region
+
+b. Made of Lipids, Proteins and CHO
+•Biological membrane are made of three major 
+components: 
+•Lipids, Proteins and Sugar
+
+c. They are Amphipathic
+•Amphipathic is a molecule 
+having both hydrophilic  
+(heads) and hydrophobic 
+(tails) parts 
+Phospholipid
+An Amphiphile is a chemical compound possessing 
+both hydrophilic and lipophilic. 
+Membrane have Phospholipids which are 
+amphipathic
+Have polar phosphate and non-polar fatty acids
+
+c. They are Amphipathic...contd
+•One of the tails is a straight chain fatty 
+acid (saturated). 
+•The other has a kink in the tail because 
+of a cis double bond (unsaturated).
+•This kink influences packing and 
+movement in the lateral plane of the 
+membrane
+The presence of the cis 
+double bond prevents tight 
+packing and makes the 
+bilayer difficult to freeze.
+
+c. They are Amphipathic...contd
+
+d. Have specific Proteins
+•Membrane have specific proteins which serves as 
+•pumps, 
+•channels, 
+•receptors, 
+•energy transducers and 
+•enzymes
+
+e. Non – covalent cooperative 
+       interactions
+•Membrane have Lipids, Proteins and CHOs 
+that are held together by several non 
+covalent cooperative interactions
+
+f. Inside – outside asymmetry
+•Membrane have an ‘inside-outside 
+asymmetry’
+•The inside and outside surfaces of biological 
+membranes are always different
+•Example 
+•CHOs are only outside
+•Specific enzymes are either outside/inside 
+•Membrane potential = Inside: negative (-60mV) etc
+
+g. Membranes are fluids
+•The lipid bilayer gives the 
+membranes its fluid 
+characteristics. 
+•At low temperatures, the bilayer 
+is in a gel state and tightly 
+packed. 
+•At higher (body) temperatures, 
+the bilayer actually "melts' and 
+the interior is fluid allowing the 
+lipid molecules to move around, 
+rotate, exchange places.
+•This also allows movement of other components of the 
+membrane.
+
+KEY TERMS
+
+Structure of Biological Membrane
+•All membrane have common structure in which two – layered 
+sheets of lipids molecules have proteins embedded in them. 
+(Polar Heads and Non polar region)
+•The structure is highly fluid and most of the lipid and protein 
+molecules can move about in the plane of the membrane
+•The lipid and protein and protein molecules are held together 
+mainly by non-covalent interactions
+•Sugars are attached by the covalent bonds to some lipid and 
+proteins molecules
+•They are found on one side of the membrane only (outer 
+surface)
+
+FUNCTIONS OF MEMBRANES
+•Protection
+•Communication
+•Selectively allow 
+substances in 
+•Respond to environment
+•Recognition
+The Membrane contains molecules other than phospholipids, 
+primarily other lipids and proteins
+•The plasma membranes also contain certain types of proteins. 
+•Amembrane proteinis a proteinmoleculethat is attached to, or 
+associated with, the membrane of a cell or an organelle.
+•Membrane proteins can be put into two groups based on how 
+the protein is associated with the membrane.
+
+Functions of the Plasma Membrane 
+Proteins
+These include
+a. Transport
+b. Enzymes
+c.  Receptors
+d. Signal Transducers
+e.  Cell adhesion
+f.  Support
+
+PERMEABILITY OF THE MEMBRANE
+
+PERMEABILITY OF THE MEMBRANE
+Ions and molecules 
+move across 
+membrane through:
+✓Diffusion transport
+✓Active Transport
+✓Ionic gated channels
+
+DIFFUSION TRANSPORT
+•Diffusion is the tendency of 
+molecules to spread into an 
+available space.
+• This tendency is a result of 
+the intrinsic thermal energy 
+(heat) found in all 
+molecules at temperatures 
+above absolute zero. 
+•Without other outside forces at work, substances will 
+move/diffuse from a more concentrated environment to a 
+less concentrated environment. 
+•No work is performed for this to happen, as diffusion is a 
+spontaneous process.
+
+Movement of ions and molecules: DIFFUSION 
+TRANSPORT
+•Also called Facilitated transport or Passive transport 
+depending on type.
+•Two Types:
+1. Facilitated Diffusion: Carrier mediated, very fast
+2. Passive Diffusion: Not carrier mediated, very 
+slow
+
+Movement of ions and molecules: DIFFUSION 
+TRANSPORT
+
+DIFFUSION EXPLAINED
+•TERMS
+•Tonicity = Concentration of solution as compared 
+to another. 
+•Describe the amount of solutes dissolved by a solution
+•Hypertonic: More solute concentration (water 
+move into the solution)
+•Hypotonic: Less solute concentration (Water 
+move out of the solution) 
+•Isotonic: Equal solute Concentration (No net 
+movement of water from/to the solution)
+
+ACTIVE TRANSPORT
+•Active transport is the movement of 
+molecules across a cell membrane from a 
+region of their lower concentration to a 
+region of their higher concentration—in 
+the direction against some gradient or 
+other obstructing factor (often a 
+concentration gradient) with the 
+utilization of metabolic energy (ATPs).
+•This type of transport is grouped into two 
+types
+•Primary active transport
+•Secondary active transport
+
+Movement of Ions and Molecules across 
+membrane: Active Transport
+•Primary active transport (called direct active transport) 
+•Directly use metabolic/chemical energy (ATP) to transport molecules across a 
+membrane against concentration gradient.
+•ie a carrier protein uses energy directly from ATP through hydrolysis
+•Transport of charged particles require ion pumps (Channels)Primary 
+active transport (called direct active transport) 
+•Ion pumps are the only molecules capable of performing primary 
+active transport.
+•All ion pumps contain one or more binding sites for ATP
+Na
++
+, K
++
+, Mg
+2+
+and Ca
+2+
+ transported by 
+Primary active transport.
+Sodium-potassium pump and calcium 
+pump are the best
+
+Movement of Ions and Molecules across 
+membrane: Active Transport
+•Secondary active transport (coupled transport or co-transport), 
+transport molecules across membrane utilizing energy in other 
+forms other than ATM
+•there is no direct coupling of ATP; instead it depends upon the 
+electrochemical potential difference created by pumping ions in/out of 
+the cell.
+•ie a carrier protein uses energy stored in the concentration gradients of ions
+Sodium –glucose transport 
+uses sodium ion gradient 
+created by Na
++
+/K
++
+ ATPase 
+pump to transport glucose 
+across the membrane
+
+Movement of Ions and Molecules across 
+membrane: Active Transport
+•Membrane Transporters: Can be classified in to three depending 
+on whether the substance move in the same or opp. directions
+We have:
+A Symport: 
+Two species of 
+ions or other 
+solutes are 
+pumped in the 
+same direction 
+across a 
+membrane
+An Antiport: Two 
+species of ions or 
+other solutes are 
+pumped in opposite 
+direction across a 
+membrane
+In Uniport, 
+only one 
+species of ions 
+or other 
+solutes is  
+transported. 
+(A case in 
+facilitated 
+diffusion)
+
+SUMMARY ACTIVE TRANSPORT
+
+SUMMARY TRANSPORT
+https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Scheme_secundary_active_transport-en.svg/220px-Scheme_secundary_active_transport-en.svg.png
+
+Movement of Ions and Molecules across 
+membrane: Active Transport
+
+TRANSPORT TECHNIQUES
+
+Ionic and gated Channels
+•Ionic channels are integral membrane proteins that facilitate 
+the movement of ions across cell membranes. 
+•They play a crucial role in various physiological processes, 
+including the generation and propagation of electrical signals in 
+neurons and muscle cells. 
+•These channels can be classified based on their gating 
+mechanisms, which determine when they open or close to 
+allow ion flow.
+Types of Ionic Channels
+1.Voltage-Gated Ion Channels
+2.Ligand-Gated Ion Channels
+3.Mechanically Gated Ion Channels
+4.Leak Channels
+
+Voltage gated Channels
+✓These channels open or close in response to changes in membrane 
+potential. 
+✓They are essential for the initiation and propagation of action 
+potentials in neurons. 
+✓For example, voltage-gated sodium (Na+) channels open when the membrane 
+depolarizes, allowing Na+ ions to enter the cell, which further depolarizes the 
+membrane.
+
+Ligand-gated ion Channels
+➢Also known as ligand-gated ion channels (LICs), these channels open in 
+response to the binding of a specific chemical messenger (ligand), such 
+as a neurotransmitter. 
+➢When a ligand binds to its receptor site on the channel, it induces a 
+conformational change that opens the channel, allowing ions like Na+, 
+K+, Ca2+, or Cl− to flow through. 
+➢This mechanism is critical for synaptic transmission in neurons.
+Ions channels receptors(1) opens when the ligands (3) 
+binds to them and this allow ions (2) to pass
+
+Mechanically gated ion Channels
+•These channels respond to mechanical forces such as stretch or 
+pressure applied to the cell membrane. 
+•They are important in sensory systems, such as touch and 
+hearing.
+
+Leak Channels
+Leak Channels: These are 
+non-gated ion channels 
+that remain open under 
+resting conditions, allowing 
+ions to move across the 
+membrane according to 
+their concentration 
+gradients. They help 
+maintain resting 
+membrane potential.
+
+
+
+TRANSPORT OF MACROMOLECULES
+•Macromolecule is a molecule containing a very large number 
+of atoms, such as protein, nucleic acid or synthetic polymers
+•Examples: biopolymers (nucleic acids, proteins, 
+carbohydrates, polyphenols) and large non-polymeric 
+molecules (lipids and macrocycles)
+•Mechanical transport of substance like macromolecules, large 
+liquid droplets and particular matter cannot occur through 
+the unbroken plasma membrane. 
+•They are transported through the membrane bound vesicles 
+and is called vesicular transport
+
+Membrane Transport for Macromolecules
+•Exocytosisandendocytosisare the two forms of vesicular 
+transport.
+•These two do transport larger molecules such as proteins 
+and polysaccharides and even large particles
+
+Membrane Transport for Macromolecules
+Exocytosis:
+•It involves the expulsion of a substance which gets enclosed 
+in membrane bound vesicle calledexocytic vesicle. 
+•It fuses with the plasma membraneand releases its contents 
+outside the cell.
+•Synthetic and secretory materials are passed out of the cell in 
+this way
+
+Membrane Transport for Macromolecules
+Endocytosis:
+•It is the uptake of macromolecules from the extracellular 
+space into the cell across the plasma membrane via the 
+formation of an intracellular vesicle pinching off from the 
+plasma membrane.
+•Endocytosis can be divided into three distinct types 
+depending on the size of the ingested macromolecule and 
+whether specific cell surface receptors are involved. 
+•These three processes 
+arephagocytosis,pinocytosisandreceptormediatedendocyt
+osis.
+
+TYPES of ENDOCYTOSIS
+1. Phagocytosis: (Cellular eating)
+•It is the bulk transport of solid food 
+materials into cell.  
+•It involves folding of theplasma 
+membranearound the substance forming 
+an intracellular vesicle calledphagosome 
+or phagocytic vesicle
+•In protozoa, phagocytosis is a form of feeding, where the 
+ingested material is broken down in the lysosomes and utilized 
+as food.
+•Macrophagesandneutrophils(WBC) use phagocytosis to 
+protect the organism against infection by ingesting invading 
+microorganisms.
+
+Phagocytosis
+
+TYPES of ENDOCYTOSIS
+2. Pinocytosis: (Cellular eating)
+•It is the process of intake of fluid 
+material into the cell.
+•During the process the cell 
+membrane folds to form small 
+vesicles calledpinocytic vesicles or 
+pinosomes in which small drops of 
+fluid materials are taken into the cell.
+•The plasma folds inward to form a 
+channel allowing dissolved substances to 
+enter the cell
+•The liquid encircled within a pinocytic 
+vesicle
+
+TYPES of ENDOCYTOSIS
+
+TYPES of ENDOCYTOSIS
+3. Receptormediatedendocytosis:
+•It is the selective uptake of extracellular macromolecules through 
+their binding to the specific cell surface receptors.
+•The receptor- macromolecule complex then accumulates inclathrin 
+coated pits and is endocytosed via clathrin-coated vesicle.
+•In this chemical binds receptor protein before being brought into the 
+cell eg Cholesterol, is carried by LDL
+
+Summary on the three Endocytosis processes
+
+NEXT = PROTEINS

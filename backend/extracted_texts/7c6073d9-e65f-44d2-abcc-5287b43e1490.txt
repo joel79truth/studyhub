@@ -1,0 +1,4804 @@
+
+
+Demography and Economic Development
+DEC32202
+By
+Timothy Grant
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 0881698021 |
+1
+
+ASSESSMENT
+•Coursework40%
+•Assignment1(10Marks)
+•Assignment2(10Marks)
+•MidSemesterExam(20Marks)
+•Endofcourseexam60%
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+2
+
+Learning Outcomes: 
+•Studentsshouldbeabletoexplainmeaningsofvariousconceptsofdemography
+andeconomicdevelopment
+•Studentsshouldbeabletounderstandpopulationandeconomicdevelopment
+dataandusethedatatocomputeproblems
+•Studentsshouldbeabletounderstandingtheconsequencesofpopulation
+changeineconomicenvironment
+•Studentsshouldbeabletoapplypopulationmodelsandinteractsthemwith
+economicdevelopmentissues.
+•Studentsshouldbeabletoprojectthepopulationandanyassociatedfuture
+economicevents.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+3
+
+Topics
+1. Nature and scope of 
+demography
+•Definitions and concepts in 
+demography
+•Age and sex composition
+•Population pyramid and its 
+interpretation
+•Sources and limitations of 
+population data
+•Uses of population data
+2.  Tools and techniques of 
+demography
+•Direct and indirect tools
+•Life tables
+•Population pyramid
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+4
+
+Cont’.........
+3. Population change
+•Fertility and reproduction
+•Mortality
+•Migration and population 
+distribution
+•Population transition
+•Standardization of population data
+4.TheoriesofPopulationgrowth
+anddevelopment
+•Malthusianpopulationtrap
+•Otherpopulationgrowththeories
+•Microeconomictheoryoffertility
+andpopulationgrowth
+•ClassicalTheorieseconomic
+growthandDevelopment
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+5
+
+Cont’...............
+•5.Populationestimationand
+projectionRatiosandRatesin
+populationestimates
+•Populationprojectionmodels:
+LinearfactormodelMultiple
+compoundmodelAdjustmentof
+demographicdata
+6.Selectedissuesinpopulation
+anddevelopment:
+•Populationandenvironment
+•Populationgrowth,climate
+changeandfoodsecurity
+(microeconomicconsiderations)
+•Populationgrowthandeconomic
+development(macroeconomic
+considerations)
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+6
+
+Cont’...............
+7.HumanCapital:Educationand
+healthinEconomicdevelopment
+•Rolesofeducationandhealth
+•Investingineducationandhealth
+•Childlabour
+•Healthmeasurementand
+distribution
+•Healthproductivityandpolicy
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+7
+
+Topic 1
+Nature and scope of demography
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+8
+
+Nature and scope of demography
+Aim:
+•Definitions and concepts in demography
+•Age and sex composition
+•Population pyramid and its interpretation
+•Sources and limitations of population data
+•Uses of population data
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+9
+
+What is Demography?
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+10
+
+What is Demography?
+•Demographyisthestatisticalstudyofhumanpopulations,focusingontheir
+size,structure,distribution,andchangesovertimeduetobirth,death,migration,
+andageing.
+•Ithelpsinunderstandingpopulationtrends,planningforresourceallocation,and
+shapingpoliciesinareassuchas
+•Healthcare
+•Education
+•Economicdevelopment.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+11
+
+•Demographyisthestudyofthesize,territorialdistribution,andcompositionof
+population,changestherein,andthecomponentsofsuchchanges,whichmaybe
+identifiedasnatality,mortality,territorialmovement(migration,andsocialmobility
+(changeofstatus).HauserandDuncan,(1959:2)
+•derivedfromtwoGreekWords:Demosmeanspopulation&Graphicsmeans
+todraw
+•Demographyisthestudyofnotonlythesizeandgrowthofpopulationbut
+alsooftheirstructure(orcomposition).
+Cont’.........
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+12
+
+Cont’.........
+•Demographicanalysisisconfinedtothestudyofcomponentsofpopulation
+variationandchange.
+•Populationstudiesareconcernednotonlywithpopulationvariablesbutalsowith
+relationshipsbetweenpopulationchangesandothervariables;social,economic,
+political,biological,genetic,geographical,andthelike(Hauser&Duncan,
+1959:2).
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+13
+
+Cont’.........
+•Demographyfocusesitsattentiononthreethingsthatdealwithhuman
+phenomenainourdailylife:
+(1)Changesinpopulationsize(growthordecline)
+(2)Thecompositionofthepopulationand
+(3)Thedistributionofpopulationinspace
+•Demographydealswithmajor“demographicprocesses”
+namelyfertility,mortalityandmigration.
+Theseprocessesarecontinuallyatworkwithinapopulationdeterminingitssize,
+compositionanddistribution.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+14
+
+Population size and composition 
+Populationsizehasthreefaces:
+1.  Absolute Size: 
+•This refers to the total number of individuals in a population. 
+•It gives a straightforward count of the people living in a specific area or 
+region at a given time.
+2. Density: 
+•This refers to the number of individuals per unit of area (e.g., per square 
+kilometre). 
+•Population density provides insights into how crowded or dispersed a 
+population is, which can impact infrastructure, resources, and quality of 
+life.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+15
+
+Cont’.........
+3. Distribution or Relative Size: 
+•This refers to the spatial arrangement or spread of the population within a 
+given area. 
+•It looks at how the population is distributed geographically, whether it is 
+concentrated in urban areas, rural areas, or spread evenly across the 
+region.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+16
+
+Cont’.........
+Composition:relativesizeofcategories
+•Characteristicsthatdonotchangeeasily,age,sex,racialorethnic
+•Traitsthatarebasisforsocietalrolesandeconomicwelfare(literacy,education,
+occupationandincome)
+•Subpopulationswithinpopulations.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+17
+
+Cont’.........
+•Themosttwoimportantdimensionsof
+populationstructureareundoubtedly
+Age and Sex.
+•Ageisabiologicalcharacteristicandit
+isconstantlychanging.
+•Sexisalsobiologicalinnature,butdoes
+notchange(exceptbyhuman
+interventioninrarecases).
+•AgeDynamics:People'srolesand
+behaviourschangeastheyage.
+•Dependency:Youngchildrenandthe
+elderlyrelymoreonothersforsupport.
+•SocialExpectations:Differentage
+groupshavedifferentsocietalrolesand
+responsibilities.
+•ImpactonSociety:Theproportionof
+dependentagegroupsaffectssocial
+structuresandeconomicplanning.
+Example:Highyouthandelderly
+populationsincreasetheneedfor
+education,healthcare,andsocialsupport
+services.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+18
+
+Definitions and Concepts in 
+Demography
+•Demographyincludeskeyconcepts
+suchasfertility,mortality,migration,
+populationgrowth,anddemographic
+transition.
+•Itexamineshowthesefactors
+influencepopulationdynamicsand
+socio-economicdevelopment.
+1.Fertility(BirthRateswithina
+Population)
+•Fertilityreferstothenumberoflive
+birthsperwomaninagiven
+population.
+•ItismeasuredusingtheTotal
+FertilityRate(TFR),which
+representstheaveragenumberof
+childrenawomanisexpectedtohave
+duringherlifetime
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+19
+
+Cont’.........
+•TotalFertilityRate(TFR):Asof2024,Malawi'sTFRisapproximately4.1
+childrenperwoman,adeclinefrom5.7in2010,reflectingsuccessfulfamily
+planninginitiatives.
+•CrudeBirthRate(CBR):TheCBRisabout32birthsper1,000peoplein
+2024.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+20
+
+Cont’.........
+2.Mortality(DeathRatesandLifeExpectancy)
+•Mortalityencompassesthenumberofdeathsinapopulation,withkeyindicators
+includingtheCrudeDeathRate(CDR),InfantMortalityRate(IMR),andlife
+expectancy.
+Examples:
+•CrudeDeathRate(CDR):In2024,Malawi'sCDRisapproximately7.8deathsper
+1,000people.
+•InfantMortalityRate(IMR):TheIMRhasdecreasedto35deathsper1,000live
+birthsin2024,downfrom72in2010,duetoimprovedhealthcareservices.
+•LifeExpectancy:Lifeexpectancyatbirthhasrisento65yearsin2024,upfrom54
+yearsin2010.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+21
+
+Cont’.........
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+22
+
+Cont’.........
+3.Migration(MovementofPeopleAcrossRegions)
+•Migrationinvolvesthemovementofindividualsfromonelocationtoanother,
+categorizedintointernal(withinthecountry)andinternational(across
+countries)migration.
+Examples:
+•Urbanization:Theurbanpopulationhasgrownto19%in2024,upfrom15%
+in2010,indicatingincreasedrural-to-urbanmigration.
+•NetMigrationRate:Malawiexperiencesanetmigrationrateof-0.2per
+1,000peoplein2024,suggestingaslightemigrationtrend.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+23
+
+Cont’.........
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+24
+
+Cont’.........
+4.PopulationGrowth(Changein
+PopulationSizeOverTime)
+•Populationgrowthreferstothechangein
+thenumberofindividualsinapopulation
+overtime,influencedbybirthrates,death
+rates,andmigration.
+Example:
+•TotalPopulation:Asof2024,Malawi's
+populationisestimatedat21.66million,up
+from20.86millionin2020.
+•GrowthRate:Theannualpopulation
+growthrateisapproximately2.58%in2024.
+•In2025,Malawi'spopulationisprojectedto
+bearound22.2millionwithapopulation
+growthrateof2.57%,whileeconomicgrowth
+isprojectedat3.8%,facingchallengeslike
+droughtandmacroeconomicinstability.
+Population:
+•CurrentPopulation:Malawi'spopulationis
+estimatedtobearound22.2millionin2025.
+•PopulationGrowthRate:Theannual
+populationgrowthrateisaround2.57%.
+•UrbanPopulation:Approximately19.8%of
+thepopulationlivesinurbanareas.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+25
+
+Cont’.........
+5.DemographicTransition(ShiftsinBirth
+andDeathRates)
+•TheDemographicTransitionModel
+describesthetransitionfromhighbirthand
+deathratestolowbirthanddeathratesasa
+countrydevelopseconomically.
+Ithasfourstages:
+•Stage 1 (High Birth & Death Rates):Pre-
+industrial society with no population growth.
+•Stage 2 (Declining Death Rates, High 
+Birth Rates):Improvements in health care 
+and sanitation increase life expectancy.
+•Stage3(DecliningBirthRates&
+DeathRates):Economicdevelopment,
+education,andurbanizationlowerfertility
+rates.
+•Stage4(LowBirth&DeathRates):
+Stabilizedpopulationwithslowgrowth.
+•MalawianExample:
+•MalawiisinStage2-3,wheredeathrates
+havefallenduetohealthcare
+improvements,butbirthratesarestill
+relativelyhigh.
+•Familyplanningeffortsandurbanization
+mayhelpMalawitransitiontoStage4in
+thecomingdecades.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+26
+
+Malawi's rapid population growth
+•Malawi'srapidpopulationgrowth,coupledwithitseconomicchallenges,presentsboth
+opportunitiesandobstaclesfordevelopment.
+•Understandingthedemographictrendsandtheireconomicimplicationsiscrucialfor
+effectivepolicy-making.
+Here'samoredetailedlookattherelationshipbetweenpopulationandeconomic
+developmentinMalawi:
+Population Dynamics: 
+1.HighFertilityRates:
+•Malawihasahighfertilityrate,meaningwomenhavemanychildrenonaverage.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+27
+
+Cont’.........
+2.RapidPopulationGrowth:
+•Thishighfertilityratecontributestoarapidpopulationgrowth,whichputsastrainon
+resourcesandinfrastructure.
+3.YouthfulPopulation:
+•AlargeproportionofMalawi'spopulationisyoung,whichcanleadtoalargedependency
+ratio(theratioofnon-workingtoworking-agepeople).
+4.Rural-UrbanMigration:
+•Rural-urbanmigration,whereyoungpeoplemovetocitiesseekingwork,canleadto
+challengesinbothruralandurbanareas.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+28
+
+Economic Implications: 
+1.StrainonResources
+•Rapidpopulationgrowthputsastrainonessentialresourceslikefood,water,
+andland,potentiallyleadingtofoodinsecurityandenvironmentaldegradation.
+2.LimitedInfrastructure
+•Therapidgrowthcanoutpacethedevelopmentofinfrastructure,suchas
+schools,hospitals,andtransportationnetworks.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+29
+
+Cont’.........
+3.ChallengesforEconomicGrowth
+•Whilealargerworkforcecanbeapotentialasset,rapidpopulationgrowthcan
+alsohindereconomicgrowthifitoutpacestheabilitytocreatejobsandimprove
+livingstandards.
+4.DependencyRatio
+•Ahighdependencyratiocanplaceaburdenontheworking-agepopulation,
+potentiallylimitinginvestmentandeconomicgrowth.
+5.PovertyandInequality
+•Rapidpopulationgrowthcanexacerbatepovertyandinequality,asresources
+becomescarcerandcompetitionforjobsincreases.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+30
+
+Opportunities: 
+1.DemographicDividend:
+•Ifmanagedeffectively,Malawi'syoungpopulationcanbecomea"demographic
+dividend,"meaningaperiodofrapideconomicgrowthasthepopulation
+becomesmoreproductive.
+2.LargerWorkforce:
+•Alargerworkforcecanleadtoincreasedproductivityandeconomicgrowth,
+particularlyifcoupledwithinvestmentsineducationandskillsdevelopment.
+3.Entrepreneurship:
+•Ayoungandgrowingpopulationcanalsocreateopportunitiesfor
+entrepreneurshipandinnovation.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+31
+
+Addressing the Challenges: 
+1.FamilyPlanning
+•Accesstofamilyplanningservicesiscrucialforempoweringwomenandenablingthemto
+makeinformedchoicesaboutfamilysize,whichcanhelpslowpopulationgrowth.
+2.InvestmentinEducationandSkills
+•Investingineducationandskillsdevelopmentcanhelppreparetheworkforceforthe
+challengesandopportunitiesofthe21stcentury.
+3.EconomicDiversification
+•Diversifyingtheeconomybeyondagriculturecanhelpcreatemorejobsandimproveliving
+standards.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+32
+
+Cont’.........
+4.InfrastructureDevelopment
+•Investingininfrastructure,suchasroads,electricity,andtelecommunications,is
+essentialforeconomicgrowthanddevelopment.
+6.SustainableResourceManagement
+•Protectingandsustainablymanagingnaturalresourcesiscrucialforensuring
+long-termeconomicandenvironmentalsustainability.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+33
+
+Why Population Matters to Malawi’s 
+Development
+•EconomicGrowthandEmployment–
+Rapidpopulationgrowthincreases
+unemploymentandpoverty,straining
+economicdevelopment.
+•Education–Highpopulationgrowth
+affectsaccesstoqualityeducationby
+increasingthenumberofchildrenrequiring
+schooling.
+•HealthandFamilyPlanning–High
+fertilityratesstrainhealthcaresystems;
+familyplanningimprovesmaternalandchild
+health.
+•.
+•UrbanizationandInfrastructure–
+Rapidpopulationgrowthleadsto
+overcrowding,inadequatehousing,and
+strainedpublicservices.
+•EnvironmentalSustainability–
+Deforestation,soilerosion,andresource
+depletionworsenwithpopulationpressure.
+•GenderEqualityandWomen’s
+Empowerment–Highfertilityrateslimit
+women’seducationandeconomic
+participation.
+•AgricultureandFoodSecurity–
+Growingpopulationsincreasepressureon
+land,water,andfoodresources,leadingto
+foodinsecurity
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+34
+
+What would be the Positive Impacts of Population Growth on Malawi’s 
+Development?
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+35
+
+Positive Impacts of Population Growth on 
+Malawi’s Development
+•LabourForceExpansion–Agrowingpopulationcanprovidealargerworkforce,
+boostingproductivityandeconomicgrowthifwellmanaged.
+•MarketGrowthandEconomicOpportunities–Alargerpopulationincreasesdemand
+forgoodsandservices,stimulatingbusinessgrowthandinvestment.
+•InnovationandEntrepreneurship–Ayouthfulpopulationcandriveinnovation,
+technologicaladvancements,andentrepreneurship.
+•DemographicDividendPotential–Withproperinvestmentineducationandhealth,
+Malawicanbenefitfromaproductiveworking-agepopulation.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+36
+
+Cont’.........
+•CulturalDiversityandSocialNetworks–Agrowingpopulationfosters
+culturalexchange,strongercommunitynetworks,andcollectivedevelopment
+efforts.
+•StrongerHumanCapital–Ifpopulationgrowthismanagedwithinvestments
+ineducationandskillsdevelopment,itcanenhanceMalawi’sglobal
+competitiveness.
+•IncreasedAgriculturalWorkforce–Morepeoplecancontributeto
+agriculturalproduction,boostingfoodsupplyandruraleconomieswhen
+supportedbytechnologyandinfrastructure.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+37
+
+Age and Sex Composition Overview
+•Ageandsexcompositionreferstothedistributionofapopulationbasedonage
+groupsandgender.
+•Impact:Affectsthepopulation’ssocialandeconomicsituationbothpresentand
+future.
+Variations:
+•YoungPopulations:Highproportionofchildrenandyoungadults(e.g.,high-fertilitycountries
+inAfrica).
+•AgingPopulations:Higherproportionofelderly(e.g.,manyEuropeancountries).
+Differences:
+•Labourforceparticipation
+•Medicalneeds
+•Consumerpreferences
+•Crimepatterns
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+38
+
+Cont’.........
+Youth vs. Aging Populations
+•Developing Countries: 
+•40% or more of the population is 
+under age 15.
+•Less than 4% is 65 or older.
+•Developed Countries: 
+•Less than 25% under age 15.
+•More than 10% are 65 or older.
+KeyDemographicIndicators
+•MedianAge:
+•Theageatwhichhalfthepopulationis
+younger,andhalfisolder.
+•SexRatio:
+•Ratioofmalestofemalesinapopulation.
+Typicallyexpressedasthenumberof
+malesforevery100females.
+•Atbirth:~105-106malesper100
+females.
+•Example:In1995,Japanhad96malesper
+100females.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+39
+
+Age-Dependency Ratio
+•The ratio of dependent individuals (under age 15 and over age 64) to 
+economically productive individuals (ages 15-64).
+Formula: 
+Age-dependencyratio=
+•Types: 
+•Old-Age Dependency: 65 and older to 15-64.
+•Child Dependency: Under age 15 to 15-64.
+•Indicator: Reflects the economic burden on the working-age population.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+40
+
+Cont’.........
+•Example of Age-Dependency Ratio
+France (1996): 
+•Age-dependency ratio: 53
+•Interpretation: For every 100 
+working-age individuals (15-64), 
+there were 53 dependent individuals 
+(under 15 or over 64).
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+41
+
+Cont’.........
+Example Problem:
+Let’s say the population breakdown of a 
+country is as follows:
+•Population under age 15 = 3,000,000
+•Population over age 64 = 2,000,000
+•Population ages 15-64 = 10,000,000
+•Let k= 100 for easier interpretation.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+42
+
+Cont’.........
+Result:
+•Theage-dependencyratiois50,meaning
+thereare50dependents(peopleunder15or
+over64)forevery100working-ageindividuals
+(15-64years)(thoseeitherunderage15or
+overage64).
+•Thisratiogivesanindicationoftheeconomic
+burdentheworking-agepopulationhasto
+carryforthedependentpopulation.
+WhatThisImplies:
+•EconomicBurden:Theworking-age
+population(15-64years)hastosupport50
+dependents(childrenandelderly)forevery
+100working-ageindividuals.
+•Thissuggestsahighereconomicburdenon
+theproductivepopulationtoprovidefor
+thenon-workingagegroups.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+43
+
+Cont’.........
+•SocialServices&Infrastructure:Ahigherdependencyratiooftenindicates
+thatmoreresourcesareneededforeducation,healthcare,pensions,andsocial
+services,astherearemorechildrenandelderlypeoplewhorelyonthe
+working-agegroupforsupport.
+•DemographicChallenges:Ahigherratio(like50inthiscase)mightsuggest
+thatthecountrycouldfacechallengessuchasincreaseddemandforhealthcare
+servicesfortheelderlyandeducationalresourcesfortheyoung.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+44
+
+Cont’.........
+Comparison:
+•Incountrieswithyoungerpopulations(highbirthrates),youwilltypically
+seeahigherage-dependencyratioduetoalargerproportionofchildren.
+•Incountrieswithagingpopulations,thedependencyratiomightbedriven
+morebyalargerelderlypopulation.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+45
+
+Cont’.........
+PopulationPyramid&Interpretation
+•Definition:Abarchartshowingthe
+distributionofapopulationbyageand
+sex.
+•Structure:
+•Youngercohortsatthebottom,older
+cohortsatthetop.
+•Malesontheleft,femalesontheright.
+•Barsshowthepercentage(ornumbers)of
+malesandfemalesineachagegroup.
+•PopulationPyramid
+Characteristics
+•AgeandSexStructure:
+•Providesvisualinsightintothedemographic
+structureofapopulation.
+•CohortMovement:
+•Newborncohortsappearatthebottom,
+agingcohortsmoveupward,andmortality
+ormigrationaffectsthepyramidshape.
+•Attrition:
+•Afterage45,populationattrition
+accelerates,narrowingthepyramid'speak.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+46
+
+Cont’.........
+Age-SexDisparity
+•OlderPopulation:
+•Inmostcountries,femalesoutlivemales,
+leadingtoahigherproportionof
+femalesintheoldestagegroups.
+InterpretingPopulationPyramids
+VisualIndicators:
+•WideBase:Highbirthrate,young
+population(typicalindeveloping
+countries).
+•NarrowBase:Lowbirthrate,aging
+population(commonindeveloped
+countries).
+•StraightorEvenShape:Stable
+population.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+47
+
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+48
+
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+49
+
+Use of Age/Sex Composition
+•FutureGrowthPotential:Theage-sexstructureindicatesthepotentialgrowthofspecific
+agegroupsandtheoverallpopulation,influencingfutureplanninganddevelopment.
+•GovernmentPolicyImplications:Theagestructureiscrucialforshapingpolicieson
+education,healthcare,employment,andsocialservices.
+•Social&EconomicImpact:
+•YoungPopulations:Highdemandforschoolsandfuturejobcreation.
+•AgingPopulations:Needforretirementsystems,healthcare,andmedicalfacilities.
+•ShiftingNeeds:Asapopulationages,itsneedsevolvefromchildcareandeducationto
+employment,housing,andhealthcareservices.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+50
+
+-4000000-3000000-2000000-100000001000000200000030000004000000
+0-4
+10-14
+20-24
+30-34
+40-44
+50-54
+60-64
+70-74
+80+
+MaleFemale
+Population Pyramid Of Demographic Data
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+51
+
+Sources and Limitations of Population 
+Data
+DirectSources
+•Populationregisters
+•Achievedadministrativedatasuchasbirths/deathsregistrationsin
+hospitals
+•AuthorityvestedinNationalRegistrationBureau
+•Directdatacomesfromvitalstatisticsregistriesthattrackallbirths
+anddeathsaswellascertainchangesinlegalstatussuchasmarriage,
+divorce,andmigration(registrationofplaceofresidence).
+•Indevelopedcountrieswithgoodregistrationsystems(suchasthe
+UnitedStatesandmuchofEurope),registrystatisticsarethebestmethod
+forestimatingthenumberofbirthsanddeaths.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+52
+
+Cont’...............
+•PopulationandHousingCensuses
+•Censusisatotalcountingofthepopulation
+•Collectsinformationonsex,age,placeofbirth,residence,parentalsurvivorship,
+education,literacy,employment,maritalstatus,assets,etc
+IndirectSources
+Surveys:
+•collectinformationfromasubsampleofapopulationsuchasfrom
+•DemographicandHealthSurveys
+•IntegratedHouseholdSurveys
+•WelfareMonitoringSurveys
+•MultipleIndicatorClusterSurveys
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+53
+
+POPULATION CHANGE
+•Isthedifferencebetweenbirthsand
+deathsandinternationalmigration
+(immigrationandemigration)
+•Keytopopulationchangeare:
+•Fertility
+•Mortality
+•Migration
+•Populationchangereferstothe
+alterationinthesizeandcomposition
+ofapopulationovertimedueto
+births,deaths,andmigration
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+54
+
+Cont’...............
+FactorsAffectingPopulationChange
+•BirthRate:Thenumberoflivebirths
+per1,000peopleperyear.Highbirth
+ratesleadtopopulationgrowth.
+•DeathRate:Thenumberofdeathsper
+1,000peopleperyear.Highdeathrates
+cansloworreducepopulationsize.
+•Migration:Movementofpeople
+betweenregionsorcountries.
+Immigrationincreasespopulation,while
+emigrationdecreasesit.
+Types of Population Change
+•NaturalIncrease:Occurswhenthe
+birthrateexceedsthedeathrate,
+leadingtopopulationgrowth.
+•NaturalDecrease:Happenswhenthe
+deathrateexceedsthebirthrate,
+leadingtopopulationdecline.
+•NetMigration:Thedifference
+betweenimmigrationandemigration
+affectingoverallpopulationsize.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+55
+
+Cont’...............
+Causes of Population Change
+•EconomicFactors:Jobopportunitiesattract
+migration,whilepovertymayleadtoemigration.
+•HealthcareImprovements:Lowerdeath
+ratesandhigherlifeexpectancycontributeto
+growth.
+•GovernmentPolicies:Familyplanning
+programsandmigrationlawsinfluence
+populationtrends.
+•SocialandCulturalBeliefs:Somesocieties
+encouragelargerfamilies,whileothersprefer
+smallerones.
+•NaturalDisastersandConflicts:Canleadto
+suddenpopulationdeclineduetolossoflifeor
+forcedmigration.
+Effects of Population Change
+•EconomicImpact:Agrowingpopulation
+booststhelabourforce,butrapidgrowthcan
+strainresources.
+•Urbanisation:Highpopulationgrowthmay
+leadtorural-urbanmigrationandincreasedcity
+congestion.
+•EnvironmentalPressure:Overpopulation
+canleadtodeforestation,pollution,and
+resourcedepletion.
+•AgingPopulation:Lowbirthratesandhigh
+lifeexpectancycanresultinahigher
+dependencyratio.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+56
+
+Population Change in Malawi
+•HighBirthRates:Malawihasahighfertilityrate,contributingtorapid
+populationgrowth.
+•YouthfulPopulation:Asignificantproportionofthepopulationisunder15,
+increasingdemandforeducationandjobs.
+•RuraltoUrbanMigration:ManypeoplemovetocitieslikeLilongweand
+Blantyreinsearchofemployment.
+•HealthChallenges:Highmaternalmortalityanddiseaseslikemalariaimpact
+populationdynamics.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+57
+
+Fertility Indicators
+•DirectMeasuresofFertility:
+CrudeBirthRate(CBR)
+•Measureslivebirthsper1,000peopleper
+year.
+•Called"crude"becauseitdoesnot
+accountforageorsexdistribution.
+•Formula:CBR=(B/P)×1000,whereB
+=births,P=mid-yearpopulation.
+•Influencedbyfactorslikeage,sex,and
+demographics.
+•Easytocalculatebutnotanaccurate
+measureoffertility.
+•GeneralFertilityRate(GFR)
+•Measuresbirthsper1,000womenof
+childbearingage(15-49years).
+•Formula:GFR=(B/P₍f15−49₎)×
+1000.
+•MorereliablethanCBRforfertility
+analysis.
+•Usefulforcomparingfertilityacross
+differentregionsandgroups.
+•Lessaffectedbyageandsex
+compositiondifferences.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+58
+
+Fertility Indicators
+Indirect Measures of Fertility: 
+BrassP/FRatioMethod
+•DevelopedbyWilliamBrass.
+•Adjustsobservedfertilityratesusingparity
+(childreneverborn)andbirthsinthelast12
+months.
+•Assumesnoagemisreportingandaconstant
+fertilitypattern.
+•ArriagaMethod
+•DevelopedbytheUSBureauoftheCensus.
+•Usesdatafromtwocensusesonchildrenever
+bornandage-specificfertilityrates(ASFR).
+•Doesnotrequiretheassumptionsmadeinthe
+BrassP/Fmethod.
+•GompertzRelationalModel(GRM)
+•DevelopedbyBrasstoestimatethetotal
+fertilityrate.
+•Usescumulativefertilityratesandfitsa
+modeltoASFRandaveragechildrenever
+born.
+•Helpsestimatefertilitytrendsbasedonage
+patterns.
+Differences
+•Methodsvaryindatainputrequirements
+andassumptions.
+•Keyinputsincludeaveragechildrenever
+born,women'sage,andbirthsinthelast
+12monthsbeforeacensus.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+59
+
+Fertility Indicators
+•UsesamicrocomputerprogrammesuchasPopulationAnalysisSpreadsheet(PAS)
+•ARFE-2forArriaga
+•PFRATIOforBrassP/F
+•REL-GMPZforGompertzRelational
+•Othermeasures
+•Child/WomenRatio
+•GrossReproductionRate
+•NetReproductionRate
+•MarriageRates
+•Divorcerates
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+60
+
+Mortality Indicators
+DirectMeasuresofMortality
+Indicators
+•CrudeDeathRate(CDR)
+•Measuresthetotalnumberofdeathsina
+yearper1,000people.
+•Givesageneralideaofmortalitytrends.
+•Affectedbythepopulation'sagestructure
+andspecificdeathratesbyage.
+•Formula:CDR=(D/P)×K,whereD=
+deaths,P=population,K=1,000.
+•Age-SpecificDeathRate(ASDR)
+•Measuresdeathsinaspecificagegroup
+per1,000peopleinthatgroup.
+•Helpscomparemortalitydifferencesby
+age.
+•Oftencalculatedseparatelyformales
+andfemalesduetogenderdifferencesin
+mortality.
+•Formula:ASDR=(D/P)×K,where
+D=deathsinanagegroup,P=
+populationinthatagegroup,K=1,000.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+61
+
+Mortality Indicators
+IndirectMeasuresofMortalityIndicators
+•InfantMortalityRate(IMR)
+•Measuresthenumberofdeathsofinfantsunderoneyearoldper1,000livebirthsina
+givenyear.
+•Formula:IMR=(D₀/B)×K,whereD₀=deathsofinfantsunderoneyear,B=total
+births,K=1,000.
+•Usedtoassessacountry’shealthstatusandlevelofdevelopment.Higherinfantmortality
+oftenindicatespoorhealthcareandlivingconditions.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+62
+
+Cont’...............
+•ChildMortalityRate
+•Referstodeathsofchildrenunderfiveyearsold.
+•Under-fivemortalityincludesbothinfantmortality(underoneyear)andchild
+mortality(ages1–4).
+•Formula:5q₀=1q₀+(1-1q₀)×4q₁,where:
+•5q₀=Under-fivemortality
+•1q₀=Infantmortality
+•4q₁=Childmortality
+•Usedtocomparechildsurvivalratesbetweencountriesandmeasureprogressinchild
+healthcare.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+63
+
+Uses of Population Data
+•Populationdatarefersto
+informationcollectedonthenumber,
+distribution,andcharacteristicsof
+peopleinagivenarea.
+•Sources:Census,surveys,vital
+registrationsystems,administrative
+records.
+•Relevance:Helpsinplanning,
+policymaking,andresourceallocation.
+1.PopulationPlanningandPolicy
+Making
+•Guidesgovernmentpoliciesonhealth,
+education,andeconomic
+development.
+•Example:MalawiVision2063relies
+onpopulationprojectionsfor
+sustainableplanning.
+•Helpsinsettingtargetsforpoverty
+reductionandhumancapital
+development.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+64
+
+Cont’...............
+2.HealthSectorPlanning
+•Assistsindeterminingthedemand
+forhealthcareservices.
+Example:Dataonbirthratesand
+infantmortalityhelpplan
+maternalandchildhealth
+programs.
+•Guidesallocationofhealth
+resourcesinruralvs.urbanareas.
+3.EducationSectorDevelopment
+•Helpsinforecastingschool
+enrolmentratesandplanning
+educationalfacilities.
+Example:Malawi’sfreeprimary
+educationpolicy(1994)led
+toincreasedenrolment,
+requiringmoreteachersand
+classrooms.
+•Dataonliteracyratesguideadult
+educationprograms.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+65
+
+Cont’...............
+4.EmploymentandLabour
+MarketAnalysis
+•Tracksworkforcetrendsand
+employment/unemploymentrates.
+•Example:DatahelpstheMalawi
+governmentdevelopjobcreation
+strategies.
+•Guidesvocationaltrainingprograms
+tomatchmarketdemands.
+5.AgricultureandFoodSecurity
+•Helpsdeterminefoodproduction
+vs.populationgrowthtrends.
+•Example:Dataonruralpopulations
+supportsagriculturalpolicies,suchas
+theAffordableInputsProgramme
+(AIP).
+•Usedtoplanirrigationschemesand
+improvecropyields.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+66
+
+Cont’...............
+6.UrbanisationandInfrastructure
+Development
+•Guidesurbanplanningbymonitoring
+populationgrowthincitieslike
+LilongweandBlantyre.
+•Helpsinexpandingroads,housing,
+water,andsanitationservices.
+•Example:Datainformsslum
+upgradingandaffordablehousing
+projects.
+7.DisasterManagementand
+ClimateChangeAdaptation
+•Identifiesvulnerablepopulations
+infloodanddrought-proneareas.
+•Example:Malawi’sDisasterRisk
+ReductionPolicyusespopulationdata
+toplanemergencyresponses.
+•Helpsinclimateresilience
+planningforaffectedcommunities.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+67
+
+Conclusion and Recommendations
+•Conclusion:PopulationdataisessentialforMalawi’sdevelopment,
+governance,andservicedelivery.
+•Recommendations:
+•Strengthendatacollectionsystemsforaccuracy.
+•Usepopulationdatatoguidesustainabledevelopmentpolicies.
+•Enhancepublicawarenessontheimportanceofcensusparticipation.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+68
+
+Assignment 1
+Discuss the relationship between population data and food security in Malawi. How 
+can accurate demographic statistics contribute to effective agricultural policies?
+(15 Marks) 
+Due date: 04
+th
+April 2025
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+69
+
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+70
+
+Topic 2
+Tools and Techniques of Demography
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+71
+
+Key Areas
+•Direct and indirect tools
+•Life tables
+•Population pyramid
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+72
+
+Introduction to Demographic Tools
+•Demographictoolshelpmeasurepopulationchanges,analysingpopulationtrends,fertility,
+mortality,andmigration.
+•Usedforplanningandpolicy-makingineconomicdevelopment,healthservices,and
+infrastructure.
+•Twomainapproaches:directandindirectmethods.
+Example(Malawi):TheMalawiPopulationandHousingCensus(MPHC)
+conductedevery10yearsprovidesessentialdemographicdataforplanning
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+73
+
+Direct and Indirect Tools –Overview
+•Directtools:Census,vitalregistration,surveys.
+•Indirecttools:Samplesurveys,modellifetables.
+•Directmethodscollectactualdata,whileindirectmethodsestimatemissing
+data.
+Example(Malawi):The2018MPHCwasadirecttool,whilethe
+DemographicandHealthSurvey(DHS)usesindirectestimation
+tosupplementcensusdata.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+74
+
+Direct Tools –Census
+•Acompletecountofacountry’s
+population.
+•Conductedevery5-10yearsto
+collectdataonage,gender,
+employment,andhousing.
+•Providesafoundationforpolicy
+planning.
+•Example:The2018MPHC
+recordedatotalpopulationof17.6
+millionandhighlightedurban-rural
+migrationtrends.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+75
+
+Direct Tools –Vital Registration
+•Recordsbirths,deaths,marriages,anddivorces.
+•Helpstrackfertilityandmortalitytrends.
+•Challenges:Incompleteregistrationinsomecountries.
+•AccordingtotheNationalRegistrationBureau(NRB),only67%of
+birthswereregisteredinMalawiin2021.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+76
+
+Direct Tools –Surveys
+•Conductedtocollectspecificdemographicdata.
+•Examples:DemographicandHealthSurveys(DHS),LabourForceSurveys.
+•Usefulwherecensusesareinfrequent.
+•The2022MDHSrevealedthatMalawi’sfertilityrateis4.2childrenper
+woman,downfrom5.7in2010.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+77
+
+Indirect Tools –Indirect Estimation 
+Methods
+•Usedwhendirectdataisunavailable
+orunreliable.
+•Reliesonmodelsandassumptions.
+•Examples:Brassmethod,reverse
+survivalmethod.
+•Whendataonchildmortalityis
+incomplete,theBrassmethod
+estimatesunder-fivemortalityrates
+usingsurveydata.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+78
+
+Indirect Tools –Sample Surveys
+•Smaller-scalesurveysusedtoestimatepopulationtrends.
+•Examples:Householdsurveys,economicsurveys.
+•Cost-effectivebutlesscomprehensivethanacensus.
+•TheMalawiLabourForceSurvey(MLFS)providesemploymenttrends
+withoutneedingafullcensus.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+79
+
+Indirect Tools –Model Life Tables
+•Usedtoestimatemortalitywheredirectdataismissing.
+•Helpspredictlifeexpectancybasedonsampledata.
+•Usefulfordevelopingcountrieswithincompleterecords.
+•MalawihasusedUNmodellifetablestoestimatelifeexpectancywhen
+officialdeathrecordsareincomplete.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+80
+
+Direct vs. Indirect Tools –Comparison
+•Directtools:Accuratebutexpensiveandtime-consuming.
+•Indirecttools:Cheaperbutrelyonassumptionsandmodels.
+•Bothmethodscomplementeachotherindemographicanalysis.
+•The2018MPHC(direct)wassupplementedbythe2022MDHS(indirect).
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+81
+
+Introduction to Life Tables
+•Statisticaltableshowingmortalityandsurvivalrates.
+•Usedtoestimatelifeexpectancy.
+•Importantforhealth,insurance,andpolicyplanning.
+•In2021,lifeexpectancyinMalawiwas64years(67forfemales,61for
+males).
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+82
+
+What is a Life Table?
+•Alifetableshowstheprobabilityof
+dyingbeforethenextbirthdayfora
+personateachage.Itincludes:
+•Theprobabilityofsurvivingaspecific
+age.
+•Theremaininglifeexpectancyat
+differentages.
+•Theproportionoftheoriginalbirth
+cohortstillalive.
+•Lifetablesaretypicallycreated
+separatelyformenandwomendue
+todifferingmortalityrates.
+•Theyareusedindemography,
+actuarialscience,andpolicyplanning.
+Applicationsinclude:
+•Formulatinginsurancepolicies.
+•Workforceandcompanystaffing.
+•Estimatingsurvivalchancesaftermajor
+medicalevents.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+83
+
+Construction of a Life Table
+•Lifetablesarebuiltusingpastmortalityratesandcensusdata,notnecessarily
+asfutureprojections.
+•Theyaremostaccurateincloseddemographicsystems,wheremigrationisnot
+considered.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+84
+
+Types of Life Tables
+1.Period(Static)LifeTables:
+•Showtheprobabilityofdeathforpeopleof
+differentagesinaspecificyear.
+•Assumeastationarypopulationwith
+overlappinggenerations.
+•PeriodLifeTable:Estimatesmortalityfor
+agiventimeperiod.
+•Malawioftenusesperiodlifetablesdue
+toincompletebirthanddeathrecords.
+2.CohortLifeTables:
+•Trackaspecificbirthcohort’smortality
+overitslifetime.
+•Moreaccuratebutrequirelong-termdata
+collection.
+•Ifapopulationremainsconstant,both
+lifetabletypeswouldbeidentical.
+•However,mostreal-worldpopulations
+fluctuateduetobirths,deaths,and
+migration.
+•Cohorttablesaremoreprecisebut
+requirelong-termdata.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+85
+
+Cont’...............
+Strengths and Weaknesses of Life 
+Tables
+Strengths:
+•Provide a summary of mortality trends.
+•Allow for comparison between 
+different populations and regions.
+Weaknesses:
+•Canbemisinterpretedbythegeneral
+public.
+•Donotconsiderqualityoflifeordisability
+beforedeath.
+•RequireadditionalmeasureslikeHealth-
+AdjustedLifeExpectancy(HALE)and
+Disability-AdjustedLifeYears(DALY)for
+betteranalysis.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+86
+
+Components of a Life Table
+•TheMalawiNationalHealth
+Reportusestheseindicatorsto
+measuremortalityratesacross
+differentagegroups.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+87
+
+Life Table Construction –Steps
+•Step1:Collectmortalitydata.
+•Step2:Calculatedeathprobabilities(qx).
+•Step3:Computesurvivalrates(lx).
+•Step4:Estimatelifeexpectancy(ex).
+•The2019MDHSusedsurveydatatoestimatechildmortalityandlife
+expectancy.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+88
+
+Explanation of Life Table Construction 
+and Notation
+•AgeInterval(xtox+n):
+•Thiscolumnspecifiestheageintervals
+forwhichthetableiscalculating
+mortalitydata(e.g.,0-1years,1-4years,
+etc.).
+•ProbabilityofDying(nQx):
+•Representstheprobabilityofdying
+betweenagexandagex+n.Itis
+typicallyderivedfromobserved
+mortalityratesandshowshowlikely
+individualsinthisagegrouparetodie
+withintheinterval.
+•NumberofSurvivors(lx):
+•Thiscolumnshowsthenumberof
+peoplewhosurvivetoagex,orthe
+numberofsurvivorsatagex.For
+example,atthestart(age0),this
+numberisusually100,000(thestarting
+cohort).Asthetableprogresses,this
+numberdecreasesbasedonmortality
+rates.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+89
+
+Cont’...............
+•NumberofDeaths(ndx):
+•Representsthenumberofpeopledying
+withinthespecificageintervalxtox+n.It
+iscalculatedbymultiplyingthenumberof
+survivorslxbytheprobabilityofdying
+nQxforthatinterval.
+•PersonYearsLivedAfterAgex
+(Lx):
+•Thisisthenumberofperson-yearslived
+afteragexintheageinterval.Itcanbe
+approximatedbyaveragingthenumberof
+survivorsatthebeginningandendofeach
+ageinterval,multipliedbythelengthofthe
+interval.
+•TotalPersonYearsLivedAfterAge
+x(Tx):
+•Thisisthecumulativenumberofperson-
+yearslivedbyallpeopleinthecohortafter
+agex,summedacrossallsubsequentage
+intervals.ItisthesumofallLxvaluesfor
+agesgreaterthanx.
+•LifeExpectancyatAgex(ex):
+•Thisistheexpectednumberofyearsa
+personatagexisexpectedtolive.Itis
+calculatedbydividingthetotalnumberof
+person-yearslivedafteragex(Tx)bythe
+numberofsurvivorsatagex(lx):
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+90
+
+Step-by-Step Calculation for Each 
+Column
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+91
+
+Cont’...............
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+92
+
+Cont’...............
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+93
+
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+94
+
+Life Table (Hypothetical Data for Malawi)
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+95
+
+Interpretation of a Life Table
+•Showsthelikelihoodofsurvivalatdifferentages.
+•Helpsgovernmentspredicthealthcareandpensionneeds.
+•Example:Higherlifeexpectancymeansbetterhealthcare.
+•Example(Malawi):Theelderlypopulation(60+years)hasincreased,
+requiringnewsocialprotectionpolicies.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+96
+
+Life Tables in Economic Development
+•Countrieswithhigherlifeexpectancy
+tendtohavestrongereconomies.
+•Usefulforplanningpensions,
+healthcare,andworkforceneeds.
+•Helpsinsettingretirementpolicies.
+Challenges in Life Table 
+Estimation
+•Incompletedeathregistrationin
+somecountries.
+•Differencesindatacollection
+methods.
+•Estimatesmaybelessaccuratefor
+developingnations.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+97
+
+Ending of a Life Table
+•Lifetablesassumeafinalageatwhichmortalityreaches100%.Methodsfor
+settingthisultimateageinclude:
+•ForcedMethod:Assigningamortalityrateof1.000atachosenage.
+•BlendedMethod:Graduallyadjustingmortalityratestoreach1.000
+smoothly.
+•PatternMethod:Extendingexistingmortalitytrendstodeterminethe
+ultimateage.
+•Less-Than-OneMethod:Assigninganexpectedmortalityratebelow
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+98
+
+Introduction to Population Pyramids
+•A graphical representation of age and sex distribution.
+•Helps in understanding population structure.
+•Used for policy-making in health and education.
+•Malawi has a youthful populationwith over 50% under age 18.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+99
+
+POPULATION PYRAMID
+•Apopulationpyramidisagraphicalrepresentationofthecompositionofagiven
+population.
+•Populationpyramid,alsocalledanagepyramidoragepicturediagram,
+•Itisusuallyusedtostatisticallyrepresentapopulation’sstructure.Whenusingapopulation
+pyramid,
+•Itclearlyillustratesthesexratioandtheagestructure-showingwhetherapopulationis
+young,byitsbroadbase(birthratesarehighinthisinstance)oranageingone,bythe
+sizeofthetopofthepyramid(whichwouldillustratethatthedeathrateislow).
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+100
+
+Cont’...............
+•Themorethefigurelookslikearealpyramid,theyoungerthepopulationis;
+•Ittypicallyconsistsoftwoback-to-backbargraphs,withthepopulationplottedonthe
+X-axisandageontheY-axis,oneshowingthenumberofmalesandoneshowingfemales
+inaparticularpopulationinfive-yearagegroups(alsocalledcohorts).
+•Malesareconventionallyshownontheleftandfemalesontheright,andtheymaybe
+measuredbyrawnumberorasapercentageofthetotalpopulation.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+101
+
+Components of a Population Pyramid
+•X-axis:Malesontheleft,femalesontheright.
+•Y-axis:Agegroupsin5-yearintervals.
+•Shapeprovidesinsightsintodemographictrends.
+•The2018MPHCshowsawidebase,indicatinghighbirthrates.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+102
+
+Types of Population Pyramids
+•ExpansivePyramid:Broadbase,highbirthrates,commonindeveloping
+countries.
+•ConstrictivePyramid:Narrowbase,decliningbirthrates,seenindeveloped
+nations.
+•StationaryPyramid:Uniformshape,stablepopulationgrowth.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+103
+
+TYPES OF POPULATION PYRAMIDS
+•Whileallcountries'populationpyramidsdiffer,fourgeneraltypeshavebeenidentifiedbythe
+fertilityandmortalityratesofacountryandare:-
+1.Stablepyramid
+•Apopulationpyramidshowinganunchangingpatternoffertilityandmortality.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+104
+
+Cont’...............
+2.Stationarypyramid
+•Apopulationpyramidtypicalofcountrieswithlow
+fertilityandlowmortality,verysimilartoa
+constrictivepyramid.
+•Lowfertilityandmortalityrates:Thismeans
+thatthebirthrateanddeathratearebothrelatively
+low,leadingtoastablepopulationsize.
+•Evendistributionacrossagegroups:The
+pyramidhasamorerectangularorpillarshape,witha
+relativelyevendistributionofpeopleacrossdifferent
+agegroups,ratherthanadistinctbaseandnarrowing
+top.
+•Stableorslowpopulationgrowth:The
+populationisgenerallystableorgrowingatavery
+slowrate.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+105
+
+Cont’...............
+3.Expansivepyramid
+•Apopulationpyramidthatisverywideatthebase,indicatinghigh
+birthanddeathrates.
+•Thesepopulationpyramidsdepictanddescribepopulationswhich
+areyoung,butgrowing.
+•Thisisexpressedbythemuchlargerpercentofthepopulation
+beingcomprisedofyoungeragegroups.
+•Anexpansivepopulationpyramidreflectsacountry's
+socioeconomicconditionsbyshowcasinghighbirthratesandlow
+lifeexpectancy,commonindevelopingnations.
+•Thesedemographicsindicatelimitedaccesstohealthcare,
+education,andemploymentopportunities,leadingtoayouthful
+population.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+106
+
+Cont’...............
+4.Constrictivepyramid
+•Apopulationpyramidthatcomesinatthebottom.
+•Thepopulationisgenerallyolderonaverage,asthecountryhas
+longlifeexpectancy,alowdeathrate,butalsoalowbirthrate.
+•Thispyramidisbecomingmorecommon,especiallywhenimmigrants
+arefactoredout,andisatypicalpatternforaverydevelopedcountry,a
+highlevelofeducation,easyaccesstoandincentivetousebirth
+control,goodhealthcare,andfewnegativeenvironmentalfactors.
+•Low birth rates
+•High life expectancy
+•Aging population:The overall effect is a population that is aging, with a 
+smaller proportion of young people and a larger proportion of older 
+people
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+107
+
+Interpretation of Population Pyramids
+•Wide base = High fertility rate.
+•Narrowing top = High life expectancy.
+•Example: African countries vs. 
+European countries.
+Population Pyramids and Policy 
+Making
+•Helpsinplanningeducationand
+healthcareservices.
+•Determineslabourforceavailability
+andretirementpolicies.
+•Predictsfuturedemographictrends.
+•Governmentinvestmentinyouth
+employmentprogramsdueto
+rapidpopulationgrowth.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+108
+
+Cont’...............
+Case Study –Population Pyramid 
+Analysis
+•Example:Malawi’spyramidshowsa
+youngpopulation.
+•Implicationsforemployment,education,
+andhealthcare.
+•ComparingMalawiwithadeveloped
+country(e.g.,Germany).
+•Youngpopulation=Needformore
+schools&jobs.
+•NationalYouthPolicy(2021)aimsto
+addressyouthunemployment.
+Challenges in Using Population 
+Pyramids
+•Dataaccuracyissuesinsomecountries.
+•Impactofmigrationonagestructure.
+•Rapiddemographicshiftscanmake
+projectionsuncertain.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+109
+
+Conclusion & Key Takeaways
+•Directandindirecttools:Essentialforpopulationdatacollection.
+•Lifetables:Helpestimatemortalityandlifeexpectancy.
+•Populationpyramids:Provideavisualrepresentationofdemographicstructure.
+•Application:Thesetoolsarecrucialforpolicy-makingandeconomicplanning.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+110
+
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+111
+
+Topic 3
+Population change
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+112
+
+Key Areas 
+•Fertility and reproduction
+•Mortality
+•Migration and population distribution
+•Population transition
+•Standardization of population data
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+113
+
+Learning Outcomes 
+Afterstudyingthisunitstudentsshouldbeableto:
+•Explainthemajorfactorsthatinfluencepopulationchange
+•Explainthemeasuresofmortalityandfertility
+•Describethevariousstagesofdemographictransition
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+114
+
+Introduction
+•Understandinghumanpopulationdynamicsisamajorfocusof
+demography.
+•Accuratelydescribingapopulationrequiresadequateknowledge
+ofhowitchangesovertime.
+•Knowledgeofpopulationchangeiscriticalbecause:
+•Ithelpspredictfuturepopulationsizes.
+•Itisessentialforeconomicplanning,resourceallocation,and
+developmentstrategies.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+115
+
+Why Study Population Change?
+•Governmentsneedaccurateprojectionsfor:
+•Buildingschools,hospitals,housing.
+•Planningemployment,foodsupply,andinfrastructure.
+•Internationalorganizationsusepopulationdatafor:
+•Healthprograms
+•Disasterresponse
+•Developmentaid
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+116
+
+Key Drivers of Population Change
+•Tounderstandhowandwhypopulationschange,wefocusonmajor
+factors:
+•FertilityandReproduction(Births)
+•Mortality(Deaths)
+•Migration(Movementsinandout)
+•PopulationDistribution(Howpeoplearespreadgeographically)
+•PopulationTransition(Historicalshiftsingrowthpatterns)
+•StandardizationofPopulationData(Makingfaircomparisons)
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+117
+
+Key Components of Population Change
+•Population change is driven by three 
+fundamental factors:
+•Births(Fertility)
+•Deaths(Mortality)
+•Migration(In-migration and out-migration)
+Themostbasicmethodofcalculating
+numericalpopulationchangeovertimeisthe
+“balancingequation:
+푃1+(퐵−퐷)+(퐼−퐸)=푃2
+Where:
+푃2isthepopulationatthelaterdateis
+푃1:isthepopulationattheearlierdate
+Bisbirths
+Disdeathsbetweenthetwodates
+Iisimmigration(orin-migration)
+Eisemigration(orout-migration)
+betweentwodates.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+118
+
+How the Balancing Equation Works
+•Birthsaddtothepopulation.
+•Deathsreducethepopulation.
+•Immigrationincreasespopulation.
+•Emigrationdecreasespopulation.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+119
+
+General Profiles or Patterns of Population 
+Change
+Age-SexCompositionPatterns
+•Populationscanshowdifferentgrowthpatternsdependingonhistoricaland
+currenttrendsinfertility,mortality,andmigration.
+Profile1:RapidGrowth
+•Shape:Widebase,narrowtop(Pyramidshape)
+Characteristics:
+•Highbirthrates
+•Highdeathrates(thoughdeclining)
+•Largepercentageofyoungpeople
+•Commonin:Manydevelopingcountries
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+120
+
+Profile 2: Slow Growth
+•Shape:Narrowerbasecomparedtorapidgrowthpyramid
+•Characteristics:
+•Lowerbirthrates
+•Longerlifeexpectancy
+•Smallerproportionofchildren
+•Commonin:Emergingeconomies,transitioningpopulations
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+121
+
+Profile 3: Zero Growth or Population 
+Decline
+•Shape:Column-like,withslighttaperingatolderages
+•Characteristics:
+•Birthanddeathratesareroughlyequal
+•Agingpopulation
+•Possiblepopulationdeclineovertime
+•Commonin:Developedcountries(e.g.,Japan,Germany)
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+122
+
+NaturalIncrease(NI)
+•NaturalIncreasereferstothedifferencebetweenthenumberofbirths
+andthenumberofdeathsduringaspecifictimeperiod.
+푁퐼=퐵−퐷
+Where:
+•NI=NaturalIncrease
+•B=NumberofBirths
+•D=NumberofDeaths
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+123
+Cont’...............
+
+Rate of Natural Increase
+•RateofNaturalIncreaseistherateatwhichapopulationisincreasing(or
+decreasing)inagivenyearduetoasurplus(ordeficit)ofbirthsoverdeaths,
+expressedasapercentageofthebasepopulation.
+•Thisratedoesnotincludetheeffectsofimmigrationoremigration.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+124
+
+Some Basic Fertility Measures
+IntroductiontoBasicFertilityMeasures
+•Fertilityiscentraltounderstandingpopulationgrowthandchange.
+•Fertilitymeasuresshowhowmanychildrenwomenarehaving,atwhatages,
+andoveralltrendsinchildbearingbehaviour.
+KeyFertilityMeasures:
+•GeneralFertilityRate(GFR)
+•Age-SpecificFertilityRate(ASFR)
+•ChildrenEverBorn(CEB)
+•TotalFertilityRate(TFR)
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+125
+
+Growth Rate
+•Thegrowthrateistherateatwhichapopulationisincreasing(or
+decreasing)inagivenyear,consideringbothnaturalincrease(birthsminus
+deaths)andnetmigration,expressedasapercentage(%)ofthebase
+population.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+126
+Cont’...............
+
+ImportantNotes:
+•Adeclininggrowthratedoesnot
+necessarilymeanpopulationdecline;
+itcouldjustbeslowergrowth.
+•Anegativegrowthratemeansthe
+totalpopulationisshrinking.
+•SomeEuropeancountriestodayare
+experiencingnegativegrowthrates.
+DoublingTime
+•Doublingtimetellshowmanyyears
+itwouldtakeforapopulationto
+doubleinsize,givenaconstant
+growthrate.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+127
+Cont’...............
+
+•Examples:
+•Growth rate 1% →Doubling time ≈ 70 years
+•Growth rate 2% →Doubling time ≈ 35 years
+•Growth rate 3% →Doubling time ≈ 23 years
+•Interpretation:
+Using doubling time helps better understand if a population’s growth rate is fast 
+or slow.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+128
+Cont’...............
+
+Fertility
+•Fertility refers to the actual number of live birthsthat women have.
+•DifferencefromFecundity:
+•Fecundityisthebiologicalabilitytoreproduce.
+•Fertilityisabouttheactualbirthsoccurring.
+•Determinants:Fertilitylevelsareinfluencedbysocial,cultural,economic,
+health,andenvironmentalfactors.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+129
+Cont’...............
+
+BirthRate(CrudeBirthRate)
+•Thebirthrateisthenumberoflive
+birthsper1,000peopleinagiven
+year.(Notper1,000womenthat'sa
+different,morespecificratelike
+GeneralFertilityRate.)
+ImportantClarification:
+•Birthratefocusesonlyonbirths.
+•Growthrateincludesbirths,deaths,
+andmigrationitgivesafullerpictureof
+populationchange.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+130
+Cont’...............
+
+Some Basic Fertility Measures
+a)GeneralFertilityRate(GFR)
+•GFR:Numberoflivebirthsper1,000womenaged15-49inagivenyear.
+•Focusesspecificallyonwomencapableofgivingbirth(childbearingage).
+•Improvesaccuracycomparedtothecrudebirthrate,whichconsidersthe
+entirepopulation.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+131
+
+Example:
+•5,000 births in a year.
+•100,000 women aged 15-49.
+•GFR = (5,000 ÷100,000) ×1,000 = 50 births per 1,000 women.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+132
+Importance:
+•Eliminatesdistortionscausedbydifferentagedistributionsbetween
+populations.
+•Betterforcomparingfertilitylevelsacrossdifferentregionsorcountries.
+•Helpsassessthereproductivehealthservicesneededforthefemale
+population.
+Cont’...............
+
+b)Age-SpecificFertilityRate
+(ASFR)
+•ASFR:Fertilityratecalculatedfor
+specificagegroupsofwomen.
+•Example:Fertilityamongwomenaged
+20-24years.
+•Providesmoredetailedfertility
+patternsthangeneralrates.
+•Example:
+•800birthstowomenaged20–24.
+•10,000womenaged20–24.
+•ASFR=(800÷10,000)×1,000=80
+birthsper1,000womenaged20-
+24.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+133
+Cont’...............
+
+Importance
+•Highlightswhichageswomenaremostlikelytogivebirth.
+•Usefulfor:
+•Monitoringearlychildbearing(e.g.,teenagepregnancies).
+•Familyplanningprogramstargetingspecificagegroups.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+134
+Cont’...............
+
+c)ChildrenEverBorn(CEB)
+•CEB:Totalnumberoflivebirthsa
+womanhashad.
+•Oftenmeasuredforgroupsofwomenat
+differentages.
+•Whencalculatedforwomenaged50+,
+it’scalledCompletedFertilityRate.
+Importance
+•Reflectstheactualchildbearing
+experienceofwomen.
+•Historicalfertilitytrendscanbe
+studiedbycomparingcohorts.
+•Importantinunderstanding
+generationalchangesinfamily
+size.
+Example
+•If500womenaged45-49havehad
+1,500childrenamongthem:
+•AverageCEB=1,500÷500=3
+childrenperwoman.
+•Completedfertilitytellsuswhat
+actualfertilitypatternswere,notjust
+currentbehaviours.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+135
+Cont’...............
+
+d)TotalFertilityRate(TFR)
+•TFR:Averagenumberofchildrenawomanwouldhaveifshelivedthroughher
+childbearingyearsfollowingcurrentASFRs.
+•Summarizesfertilityinonesinglenumber.
+•Syntheticmeasure:basedonhypotheticalassumptions.
+Importance:
+•Bestindicatorofcurrentfertility.
+•Usedtopredictpopulationreplacement:
+•TFRof2.1childrenperwoman=Replacement-levelfertility(fordeveloped
+countries).
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+136
+Cont’...............
+
+Example
+•SupposeASFRsforayearsuggestthatwomen,onaverage,wouldhave:
+•0.05childrenat15–19,
+•0.15childrenat20–24,
+•0.20childrenat25–29,etc.
+•AddingupASFRsgivesaTFRof2.5childrenperwoman.
+•Interpretation:Ifpatternscontinue,theaveragewomanwouldhave2.5
+children.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+137
+Cont’...............
+
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+138
+Cont’...............
+
+FactorsInfluencingFertilityMeasures
+•Socio-economicstatus(wealth,
+education).
+•Culturalfactors(marriagenorms,religious
+beliefs).
+•Healthconditions(maternalandchild
+healthservices).
+•Governmentpolicies(familyplanning,
+incentivesforlargerfamilies).
+WhyFertilityMeasuresMatter
+•Fertilitymeasuresallowpolicymakersand
+demographersto:
+•Understandpopulationdynamics.
+•Planforresourceneeds(schools,
+hospitals).
+•Addresspublichealthandfamily
+planningneeds
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+139
+Cont’...............
+
+d)GrossReproductionRate(GRR)
+•GRRmeasurestheaveragenumberof
+daughtersawomanwouldhaveinherlifetime
+ifsheweretopassthroughherchildbearing
+yearsconformingtocurrentage-specific
+fertilityrates.
+•Focus:Onlydaughters(notsons).
+•SimilartoTFRbutonlycountsfemalebirths-
+crucialformeasuringbiological“reproduction”.
+KeyPoint:
+•UnlikeTotalFertilityRate(TFR),GRRincludes
+onlydaughters(sinceonlyfemalescontinue
+reproduction),anditdoesnotaccountfor
+mortality
+•Example:
+•BurkinaFaso(1993):GRR=3.50
+→Onaverage,eachwomanwouldhave3.5
+daughtersiffertilityratesremainedconstant.→
+Implieshighfertility.
+•UnitedKingdom(1993):GRR=0.86
+→Lessthanonedaughterperwoman→below
+replacementlevel.
+InterpretationforBurkinaFaso:
+•Eventhougheachwomanproduces3.5daughters
+onaverage,onedaughterdiesbefore
+completingherchildbearingyears,reducingthe
+NetReproductionRate(NRR)closerto
+replacement.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+140
+Cont’...............
+
+e) Net Reproduction Rate (NRR) 
+•NRR: Average number of daughters a woman would have, adjusted for mortality 
+rates.
+•Takes into account that not all women surviveto complete childbearing.
+•Always lessthan GRR unless mortality is extremely low.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+141
+Cont’...............
+
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+142
+(f) Child-Woman Ratio (CWR)
+The Child-Woman Ratiois the number of children under age 5per 1,000 women 
+aged 15–49in a population.
+Cont’...............
+
+•Uses:
+•Helpfulforspatialcomparisons(e.g.,betweenurbanandruralareas).
+•Valuableingeographicandsmall-areafertilitystudies,especiallywhenvital
+registrationdataaremissing.
+•Limitation:
+•Itdoesnotadjustforwomen’sagedistributionormaritalstatusthus,lessprecise
+thanage-specificfertilityrates.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+143
+Cont’...............
+
+(g)Replacement-LevelFertility
+•Replacement-levelfertilityistheleveloffertilityatwhichagenerationofwomen
+producesjustenoughdaughtersto“replace”themselves,keepingpopulationsize
+constantovertime(absentmigration).
+Indicator:
+•NetReproductionRate(NRR)=1.00
+Exactreplacement.
+•TotalFertilityRate(TFR)≈2.1indevelopedcountries.
+→Slightlyhigherthan2dueto:
+•Highermalebirths
+•Infantandchildmortality
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+144
+Cont’...............
+
+Example:
+•Finland(2000):NRR=0.84
+•Belowreplacementlevel.
+•Yet,thepopulationmaystillgrowtemporarilyduetopasthighfertility(ayoungage
+structure).
+•InDevelopingCountries:
+•TFRmustbe>2.1tooffsethighermortalityandreachreplacement.
+•Long-termImplication:Oncereplacementfertilityissustained:
+•Birthseventuallyequaldeaths.
+•Populationstabilizes(assumingnomigration).
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+145
+Cont’...............
+
+h)PopulationMomentum
+•Populationmomentumreferstothetendencyofapopulationtocontinuegrowingeven
+afterachievingreplacement-levelfertility(i.e.,wheneachgenerationhasjustenoughchildren
+toreplaceitself).
+•Thisgrowthoccursbecauseoftheagestructureofthepopulationparticularlyiftherearea
+largenumberofyoungpeopleenteringtheirreproductiveyears.
+a)BirthRateforUnmarriedWomen
+•Thebirthrateforunmarriedwomenisthenumberoflivebirthstounmarriedwomen
+per1,000unmarriedwomenaged15-49yearsinagivenyear.
+•Itmeasuresthefertilityofunmarriedwomenandshouldnotbeconfusedwiththe
+percentageofbirthstounmarriedwomen.
+Formula
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+146
+Cont’...............
+
+b)PercentageofBirthsoutsideMarriage
+•Thepercentageofbirthsoutsidemarriageisthenumberoflivebirthsto
+unmarriedwomen(nevermarried,widowed,ordivorced)per100totallive
+birthsinagivenyear.
+Itmeasurestheproportionofallbirthsthatoccuroutsidemarriage.
+Note:
+Even if the birth rate for unmarried womenremains stable or declines, the 
+percentage of births outside marriagecan still rise if the proportion of 
+unmarried women in the population increases.
+Formula 
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+147
+Cont’...............
+
+Mortality
+•Mortalityreferstodeathsthatoccurwithinapopulation.
+•DeathRatealsocalledthecrudedeathrateisthenumberDeathdeathsper
+1,000individualsinagivenyear.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+148
+
+a)CrudeDeathRate(CDR)
+•TheCrudeDeathRateisthenumberofdeathsper1,000individualsinagivenyear.
+•Crudedeathratesareaffectedbymanypopulationcharacteristics,particularlyagestructure.
+•Itisthereforeprudent,whencomparingdeathratesbetweencountries,toadjustfor
+differencesinagecompositionbeforemakinginferencesaboutacountry’shealth,economic,
+orenvironmentalconditions.
+•Itisgenerallyapoormeasureofmortalityasitisaffectedbythepopulationagestructure.
+•Inmanydevelopingcountriesislowerthaninhighlydevelopedcountriesjustbecausethe
+formerhasamuchyoungeragestructure.
+•OneimportantuseofCDRistocalculateCrudeRateofNaturalIncrease-thedifference
+betweentheCBRandCDR.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+149
+Cont’...............
+
+Limitations:
+CDR is affected by the population's age structure. 
+•AyoungerpopulationtendstohavealowerCDR,evenifthehealthconditions
+arepoor.
+Uses:
+It is often used to calculate the Crude Rate of Natural Increase(CBR –
+CDR).
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+150
+Cont’...............
+
+b)Age-SpecificDeathRate(ASDR)
+•Age-SpecificDeathRatesarecalculatedforparticularagegroupstobetter
+understandmortalitypatternsatdifferentlifestages.
+Formula:
+•Comparisonsalsocanbemadebetweencountriesorareas.
+•Becausemortalityvariesgreatlybysexandrace,age-specificdeathratesare
+oftengivenseparatelyformalesandfemalesandfordifferentracialgroupsina
+population.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+151
+Cont’...............
+
+c)InfantMortalityRate(IMR)
+•TheInfantMortalityRatemeasures
+thenumberofdeathsofinfantsunder1
+yearofageper1,000livebirthsinagiven
+year.
+Formula:
+•Note:IMRistechnicallyaratio,nota
+truerate.
+BreakdownofInfantMortality:
+•EarlyNeonatalMortalityRate:
+Deathsunder1weekofageper1,000
+livebirths.
+•LateNeonatalMortalityRate:
+Deathsbetween1-4weeksofageper
+1,000livebirths.
+•Post-NeonatalMortalityRate:
+Deathsbetween4-52weeksofageper
+1,000livebirths.
+•NeonatalMortalityRate:
+Deathsunder28daysofageper1,000
+livebirths.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+152
+Cont’...............
+
+d)MaternalMortalityRatio(MMR)
+•TheMaternalMortalityRatioisthenumberofwomenwhodiefrom
+pregnancy-relatedcausesper100,000livebirthsinagivenyear.
+•Formula:
+•Note:
+Some refer to it as a rate, but technically, it is a ratio since it compares deaths to 
+live births, not to the population at risk (i.e., women of reproductive age).
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+153
+Cont’...............
+
+e)LifeExpectancy
+•Lifeexpectancyisanestimateoftheaveragenumberofadditionalyearsa
+personcanexpecttolivebasedoncurrentage-specificdeathrates.
+•Itisahypotheticalmeasure,assumingthatcurrentmortalityrateswill
+remainconstantthroughoutaperson'slifetime,eventhoughmortalitypatterns
+canchangeovertime.
+•Aperson'slifeexpectancyadjustsastheygrowolderandashealthcare,
+environment,andsocialconditionschange.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+154
+Cont’...............
+
+Migration
+•Migrationreferstothegeographicmovementofpeopleacrossaspecified
+boundarytoestablishanewpermanentorsemi-permanent
+residence.
+•Migration,alongwithfertilityandmortality,formsthethreekey
+componentsofpopulationchange.
+TypesofMigration:
+•InternationalMigration:Movementbetweencountries.
+•Immigration:Enteringacountrytolive.
+•Emigration:Leavingacountrytoliveelsewhere.
+•InternalMigration:Movementwithinacountry.
+•In-Migration:Movingintoaparticularareawithinthecountry.
+•Out-Migration:Movingoutofaparticularareawithinthecountry.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+155
+
+Criteria for Measuring Migration
+a)ImmigrationandEmigrationRate
+ImmigrationRate
+•Thenumberofimmigrantsarrivingat
+adestinationper1,000individuals
+atthatdestinationinagivenyear.
+•Formula:
+EmigrationRate
+•Thenumberofemigrantsdeparting
+anareaoforiginper1,000
+individualsatthatareaoforiginina
+givenyear.
+Formula:
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+156
+
+b)NetMigrationRate
+NetMigrationRate
+•Theneteffectofimmigrationand
+emigrationonanarea’spopulation,
+expressedasincreaseordecreaseper
+1,000populationoftheareaina
+givenyear.
+•Formula:
+c)GrossMigrationRate
+GrossMigrationRate
+•Indicatesthetotalnumberof
+immigrantsandemigrantsduring
+aspecificcalendaryearper
+1,000mid-yearpopulationof
+thecountry.
+•Formula:
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+157
+Cont’...............
+
+d)BalancingFormula
+PopulationChange
+•Populationchangeinanareaisdeterminedbythelevelsofnaturalincreaseand
+netmigration.
+•Formula:
+e)SpecificMigrationRates
+•Specificmigrationratesarecalculatedforvariousfactorssuchasage,gender,race,
+orothercharacteristicsofmigrants.
+•Forexample:
+•Age-SpecificNetMigrationRate:Numberofnetmigrantsofaspecificagegroupdividedby
+thenumberofpeopleofthesameagegroupinthepopulation.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+158
+Cont’...............
+
+The Demographic Transition
+Thedemographictransitiondescribesthe
+processofchangethatpopulationsundergo,
+shiftingfromhighbirthanddeathratesto
+lowbirthanddeathrates.
+•Highlevelsofbirthsanddeathskeptmostpopulationsfrom
+growingrapidlythroughoutmostoftime.
+StagesofDemographicTransition:
+•StageI:HighBirthRate,HighDeath
+Rate
+•Littleornopopulationgrowth.
+•Commonbeforethe18thcenturywhen
+populationswerecontrolledbyhigh
+mortality.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+159
+
+•StageII:HighBirthRate,FallingDeathRate
+•Highpopulationgrowth.
+•Deathratesstarttofallduetoimprovementsin
+livingconditions,nutrition,andhealthcare.
+•StageIII:DecliningBirthRate,RelativelyLow
+DeathRate
+•Slowedpopulationgrowth.
+•Fertilityratesstarttodeclineassocieties
+modernize,adoptfamilyplanning,andurbanize.
+•StageIV:LowBirthRate,LowDeathRate
+•Verylowpopulationgrowth.
+•Populationsstabilizeorgrowslowlyasfertility
+ratesapproachdeathrates.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+160
+
+QUIZ
+1.Explainthethreestagesofdemographictransition?(6Marks)
+2.Discussyourstandpointwhetheryouthinkpopulationgrowthisaproblem
+ornotaproblem?(4Marks)
+3.BonusQuestion:writeacoursecodeofDemographicandEconomic
+development?(2Marks)
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+161
+
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+162
+
+Topic 4
+Theories of Population growth and development
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+163
+
+Aim
+•Explain the Malthusian Population Trap
+•Analyze the Microeconomic Theory of Fertility
+•Discuss Boserup’sTheory
+•Explore Classical Theories of Economic Growth
+•Provide Malawian examples for each theory
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+164
+
+INTRODUCTION
+Whystudypopulationgrowththeories?
+•Thesetheorieshelpdemographersand
+economicplannersunderstandtrends.
+•Theyexplainhowpopulationgrowth
+affectseconomicdevelopment.
+Theoriescovered:
+•MalthusianPopulationTrap
+•Boserup’sTheory
+•MicroeconomicTheoryofFertility
+Outcomes
+•Afterthisunit,studentsshouldbeable
+to:
+•ExplaintheMalthusianPopulationTrap.
+•UnderstandtheMicroeconomic
+TheoryofFertility.
+•DescribeBoserup’sTheory.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+165
+
+Malthusian Theory
+Content:
+•ThomasMalthus(1798)proposedthat
+populationgrowsexponentially,while
+foodsupplygrowsarithmetically.
+•Leadstoshortages,famine,andpoverty
+unlesschecked.
+Example:
+•Malawi’srapidpopulationgrowthvs.
+slowagriculturalexpansion
+•Populationoutstripsfoodsupply→
+famine,poverty,andwars.
+Assumptions of the Malthusian 
+Theory
+•Populationincreasesinageometric
+progression(e.g.,2,4,8,16)
+•Foodproductionincreasesinan
+arithmeticprogression(e.g.,1,2,3,4)
+•Unlesschecked,populationgrowth
+willoutstripfoodsupply
+•Naturalchecksincludefamine,war,
+anddisease
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+166
+
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+167
+
+Cont’...............
+Example of Malthusian Trap
+•Malawihasexperiencedrapidpopulation
+growth,increasingpressureonarableland.
+•Agriculturaloutputstrugglestokeepup,
+leadingtofoodinsecurityandrelianceon
+foodaid.
+Preventive and Positive Checks
+PreventiveChecks:
+•Familyplanning
+•Latemarriage
+•Economicincentivesforsmallerfamilies
+PositiveChecks:
+•-Famine(e.g.,Malawi’s2001/02,2024food
+crisis)
+•-Diseaseoutbreaks(e.g.,cholera,malaria)
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+168
+
+Preventive Checks –Controlling Birth 
+Rate
+•Preventivecheckslowerbirthratesbyencouragingpeopletolimitfamilysizevoluntarily.
+Examples:
+•BirthControl:Useofcontraceptivestomanagefamilysize.
+•LateMarriage:Delayingmarriagereducesthenumberofchildbearingyears.
+•MoralRestraint:Practicingself-disciplineandavoidingearlypregnancies.
+Example:
+•MalawihaspromotedfamilyplanningprogramsthroughtheMinistryofHealthand
+organizationslikeBanjaLaMtsogolotoencourageresponsiblefamilysizedecisions.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+169
+
+Positive Checks –Increasing Death Rate
+•Positivechecksincreasedeathratesnaturallywhenthepopulationexceedsfood
+supply.
+Examples:
+•Starvation&Malnutrition:Lackoffoodleadstohighmortalityrates.
+•Diseases&Epidemics:Malaria,cholera,andHIV/AIDSreducethepopulation.
+•Wars&Conflicts:Civilwarsandpoliticalinstabilityleadtodeaths.
+Example:
+•HIV/AIDSepidemicinthe1990ssignificantlyreducedlifeexpectancy.
+•PeriodicdroughtsandfaminesinMalawihaveledtofoodshortagesaffecting
+populationgrowth.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+170
+
+Criticisms of the Malthusian Theory
+•Technologicaladvancementshave
+increasedfoodproduction
+•Populationgrowthdoesnotalways
+leadtopoverty
+•Economicdevelopmentcansupporta
+largerpopulation
+•EmpiricalevidenceinMalawi:
+Improvedirrigationandhybridseeds
+haveincreasedmaizeyields
+•Ignoredhumancapacitytoinnovate.
+•Developedcountrieshaveavoided
+thetrap.
+Example:
+•Malawi'sGreenBeltInitiative
+increasingfoodsupply
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+171
+
+Microeconomic Household Theory of 
+Fertility
+•Families make fertility decisions based on 
+economic factors, just like they decide 
+how to spend income on goods and 
+services.
+Main Assumptions:
+Children as Economic Goods:
+•In low-income countries, children 
+provide labor and security in old age.
+•In wealthier families, raising children is a 
+cost-heavy decision.
+Income Effect:
+•Higher income leads to larger families 
+(if children are seen as economic 
+assets).
+•In urban areas, more income may 
+reduce fertility (as people prioritize 
+careers and lifestyles).
+Cost of Raising Children:
+•High costs (education, healthcare, 
+housing) reduce fertility rates.
+•Example: Urban Malawian families have 
+fewer children due to schooling costs.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+172
+
+Economic Factors Influencing Fertility 
+Decisions
+Example:
+•RuralMalawi:Familiestendtohavemorechildren(childrenhelpwith
+farmingandprovidesecurityinoldage).
+•UrbanMalawi:Familieshavefewerchildren(highercostsofeducation
+andlivingdiscouragelargefamilies).
+•Governmentpoliciespromotingfreeprimaryeducationhaveinfluenced
+fertilitydecisions.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+173
+
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+174
+
+Cont’...............
+Demand-Based Theory of Fertility
+•Families maximize satisfactionby choosing an optimal mix of children and other goods
+based on income and preferences.
+•The optimal choice occurs where the budget constrainttouches the highest indifference 
+curve(point f).
+Economic Interpretations:
+•Higher Income →More Children (if normal goods):
+•In low-income households, children provide labor and future security, so demand 
+increases with income.
+•Example: Rural Malawi–families have more children because they help in farming.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+175
+
+Cont’...............
+•Quality vs. Quantity Trade-off:
+•As income increases, parents prefer fewer but higher-quality children(better health 
+and education).
+•Example: Urban Malawi–fewer children per family, but better schooling and healthcare.
+Diagram (Budget Line Shift Outward):
+•Shift from ab →a’b’represents an income rise, leading to more goods & children (point 
+h).
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+176
+
+Impact of Higher Costs & Policy on 
+Fertility
+•HigherOpportunityCostofChildren-FewerBirths:
+•Ifeducation&childcarecostsrise,parentschoosefewerchildrenandsubstitutewithgoods.
+•Example:IncreaseinschoolfeesinMalawidiscourageslargerfamilies.
+•EffectofFemaleEmployment:
+•Moreworkingwomen→Higheropportunitycostofhavingchildren→Fewerbirths.
+•Example:Malawi’spushforwomen’sempowermentincreasesjobopportunities,reducingfertility
+rates.
+•GovernmentPoliciesonFamilyPlanning:
+•Iftaxesorchild-relatedcostsincrease,familiesoptforfewerchildren.
+•Example:PoliciespromotingcontraceptiveaccessinMalawihaveloweredfertilityrates.
+Diagram(BudgetRotation&Shift):
+•Shifttocd(higherincomebuthighercostofchildren)→Newpointg(fewerchildrenbut
+betterwelfare).
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+177
+
+The Consequences of High Fertility: 
+Some Conflicting Perspectives
+The Debate on High Fertility –Conflicting Perspectives
+•Populationgrowthhasbeenwidelydebated,withconflictingviewsonwhether
+itisaproblemornot.
+•Someargueitisnotanissue,whileothersseenegativeconsequencesof
+highfertilityrates.
+•Policiesforpopulationcontroldependontheseperspectives.
+MalawianExample:
+MalawihasoneofthehighestfertilityratesinAfrica(~4.3childrenperwoman).
+Somebelieveitdriveseconomicgrowth(moreworkforce),whileotherswarn
+ofstrainonresources.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+178
+
+Population Growth Is NOT a Problem
+OtherIssuesAreBiggerProblems
+•Underdevelopment,resourcedepletion,genderinequality,andpoordistributionofwealth
+mattermore.
+•Example:Malawi’seconomicstrugglesarenotjustduetopopulation,butalsopoorinfrastructure
+andgovernance.
+AFalseIssueCreatedbyRichCountries
+•SomeclaimWesternorganizationsexaggeratetheissuetomaintaindevelopingcountriesina
+dependentstate.
+•Example:SomeMalawianleadersarguethatdonor-drivenpopulationcontroleffortsarepolitically
+motivated.
+HighPopulationGrowthCanBeBeneficial
+•Morepeople→Largerworkforce&market→Economicgrowth.
+•Example:India&Chinagreweconomicallydespitelargepopulations.CouldMalawibenefitsimilarly?
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+179
+
+Population Growth IS a Problem
+•EconomicBurden
+•Morechildren→Moregovernmentspendingonhealth,education,food→Strainonbudget.
+•Example:Malawispends~25%ofitsbudgetoneducation,yetstrugglestoprovideenoughschools.
+•EnvironmentalPressure
+•Morepeople→Deforestation,soilerosion,waterscarcity.
+•Example:DeforestationinMalawihasincreasedduetogrowingdemandforfirewood&land.
+•LowerQualityofLife
+•Highpopulationgrowthreducespercapitaincome→Morepoverty,unemployment,&poor
+healthcare.
+•Example:Malawi’shighyouthpopulation(65%under25)struggleswithlimitedjobs&education.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+180
+
+Policy Solutions for Developing Countries
+HowCanMalawi&OtherDevelopingNationsControlPopulationGrowth?
+•Education&Awareness
+•Promotefamilyplanning&reproductivehealth.
+•Example:Malawi’sFamilyPlanningInitiativeoffersfreecontraceptives.
+•FamilyPlanningPrograms
+•Accesstocontraceptives,reproductivehealthservices.
+•Example:BanjaLaMtsogolo(BLM)providesfamilyplanningservicesacrossMalawi.
+•RaisingWomen’sSocioeconomicStatus
+•Moreeducation&jobsforwomen→Delayedchildbearing.
+•Example:GirlswhofinishsecondaryschoolinMalawihavefewerchildren.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+181
+
+Role of Developed Countries in 
+Population Control
+How Can Wealthier Nations Help?
+•ReduceResourceInequality
+•Richcountriesconsumemoreresources→Encouragesustainability.
+•Example:TheUS&EuropeusefarmoreresourcesperpersonthanAfrica.
+•SupportPopulationControlPrograms
+•Fundingfamilyplanningresearch&technology.
+•Example:TheBill&MelindaGatesFoundationfundsfamilyplanninginMalawi.
+•EasingMigrationPolicies
+•Allowingmoremigrationfromhigh-populationnationscaneasepressure.
+•Example:SomeMalawiansmigratetoSouthAfricaforwork,reducinglocalstrain.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+182
+
+Boserup’sTheory
+Who Was Esther Boserup?
+•Born:1910inCopenhagen,Denmark
+•Died:1999
+•Education:StudiedEconomics&AgriculturalDevelopmentattheUniversityof
+Copenhagen
+•Career:WorkedattheUnitedNations,madecontributionstoearlyfeminism
+•KeyIdea(1965):Populationgrowthdrivestechnologicaladvancement
+MainArgument:
+•UnlikeMalthus,whobelievedpopulationgrowthleadstofoodshortages,
+Boseruparguedthatitencouragesinnovationtoincreasefoodproduction.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+183
+
+Boserup’sKey Argument –Population 
+Growth Stimulates Innovation
+How Does It Work?
+•Whenpopulationgrows,demandforfoodincreases→Peopleareforcedto
+developnewfarmingmethods.
+•Agriculturalinnovations(e.g.,irrigation,fertilizers,mechanization)help
+preventfoodshortages.
+•Technologicaladvancementshelpshiftsocietiesfromagrarianeconomiesto
+moderneconomies.
+Example:TheGreenRevolution
+•Inthe20thcentury,high-yieldcrops,fertilizers,andmachineryboosted
+foodproduction→preventingfaminedespitehighpopulationgrowth.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+184
+
+Boserupvs. Malthus –A Comparison
+Feature Malthusian Theory Boserup’s Theory 
+Main Idea Population grows faster than food 
+supply → famine 
+Population growth drives innovation 
+→ more food 
+View on Population 
+Growth 
+Negative – leads to crisis Positive – encourages development 
+Technological Role Limited by diminishing returns Expands food production & 
+industry 
+Relevance Today? Some relevance in underdeveloped 
+areas 
+More relevant in industrial & 
+globalized economies 
+ 
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+185
+
+Boserup’sTheory in the Modern World
+How Is It Relevant Today?
+•Globalization&Trade
+•Openeconomiesallowcountriestotradeinsteadofrelyingonlyonlocalfoodproduction.
+•TechnologicalGrowthBeyondAgriculture
+•21st-centuryinnovationfocusesonInformation&CommunicationTechnology(ICT),whichboosts
+productivity.
+•ChallengestoBoserup’sTheory
+•Migrationaffectspopulationdistribution(Boserupdidnotconsiderthis).
+•Joboutsourcing&automationchangelabormarkets.
+Example:
+•InAfrica,mobilebanking(likeM-PesainKenya)helpsruraleconomiesgrow,provingthat
+populationgrowthcanpushinnovationbeyondjustfoodproduction.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+186
+
+Depopulation Theory
+•Depopulationtheorysuggestssecretplanstoreduceglobalpopulation,
+oftenthroughcovertmeanslikepoisoning,sterilization,orwar.
+TypesofDepopulationTheories:
+•Overpopulationcrisisjustification–Claimthatpopulationmustbereducedfor
+survival.
+•Eugenics-based–Suggestsanattempttocreateasuperiorracewhileeliminating
+"undesirable"populations.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+187
+
+Common Depopulation Conspiracies
+•Chemtrails&WaterFluoridation–Thetheorythatgovernmentsuseair
+andwatersuppliestosterilizeorpoisonpeople.
+•Monsanto&GeneticallyModifiedFoods(GMOs)–Fearthat
+corporationscontrolfoodsupplyanduseitfordepopulation.
+•Vaccines&CovertEugenicsPrograms–Somebelievevaccinessecretly
+sterilizepopulations.
+•PlannedParenthood&Abortion–Accusedofbeingpartofadepopulation
+scheme.
+•AIDSConspiracyTheory–ClaimsthatHIV/AIDSwasengineeredtoreduce
+specificpopulations.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+188
+
+Cont’...............
+Nuclear War & Economic 
+Collapse Theories
+•LyndonTheory:
+•Suggestsadeliberatenuclearwaris
+plannedtoresetcivilization.
+•Economiccollapseand
+deindustrializationwouldforce
+humanityintoa"newdarkage."
+•Realvs.Fiction?
+•Historicalnuclearthreats(ColdWar,
+nuclearproliferation)vs.baseless
+conspiracyclaims.
+Criticism of Depopulation 
+Theories
+•Lackofscientificevidence–No
+credibleproofsupportstheseclaims.
+•Malthusianfearsrevisited–
+Similaroverpopulationpanicwas
+debunkedwithtechnological
+advancements.
+•Ethical&logicalfallacies–Why
+wouldelitesdestroythelaborforce
+thatsustainstheeconomy?
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+189
+
+Negative Effects of Population Growth -
+Overview
+•Whiledepopulationtheoriesare
+mostlyconspiratorial,realissues
+arisefromuncheckedpopulation
+growth.
+Majorconcerns:
+•Povertytraps
+•Environmentalstrain
+•Infrastructurechallenges
+•Healthcrises
+•Lowerlivingstandards
+Poverty Traps & Food Problems
+•Malthusiantrap–Toomanypeople,
+notenoughfood.
+•Lackofresources–Overpopulation
+indevelopingcountriesleadstofood
+scarcityandmalnutrition.
+•Example:Sub-SaharanAfrica–
+Highbirthratesbutlowagricultural
+productivity.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+190
+
+Cont’...............
+EnvironmentalConsequences
+•CarryingCapacity–When
+populationexceedsthe
+environment’sabilitytosustainit.
+•Deforestation,Pollution,Climate
+Change
+•Biodiversityloss–Morelandused
+forhousing&farming,destroying
+ecosystems.
+Infrastructure&HealthIssues
+•Overcrowdedcities→inadequate
+sanitation,water,publichealth
+services.
+•Urbanslums–Poorhousing,high
+diseaserates.
+•Effectsofovercrowding–
+Malnutrition,stress,rapidspreadof
+diseases.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+191
+
+Cont’...............
+KarlMarx’sTheoryonPopulation
+•RejectsMalthusianIdeas:
+•Malthusblamedoverpopulationforpoverty.
+•Marxarguedthatpovertyisduetocapitalist
+exploitation,notoverpopulation.
+•KeyIdeas:
+•Populationgrowthisnotaprobleminafair
+economicsystem.
+•Undersocialism,resourceswouldbeshared
+fairly,preventingshortages.
+•Therealissueisunequaldistributionof
+wealth,nottoomanypeople.
+MarxistTheory-Criticism&Impact
+•CriticismofMarxistView:
+•Manysocialisteconomiesalsofacedresource
+shortages.
+•Somearguethatuncheckedpopulation
+growthstillstrainsresources.
+•Impact:
+•Inspiredpro-workerpoliciesinsocialistand
+communiststates.
+•Influencedpopulationcontrolstrategiesin
+communistChinaandUSSR.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+192
+
+Cont’...............
+Neoclassical Theory of Population
+FocusonEconomics&RationalChoice
+•Peopledecidehowmanychildrentohave
+basedoneconomicfactors.
+•Fertilityratesfallwhenincomerisesand
+child-rearingcostsincrease.
+KeyAssumptions:
+•Householdsmaximizeutility(childrenvs.
+othergoods).
+•Opportunitycostofchildren–Educated
+womenhavefewerchildren.
+•Urbanization→Familiespreferquality
+overquantityofchildren.
+Neoclassical Theory -Criticism & 
+Impact
+Criticism:
+•Ignoresculturalfactorsinfluencing
+fertility.
+•Doesnotapplywelltotraditional
+societieswherechildrenare
+economicassets.
+Impact:
+•Usedineconomicmodelsfor
+familyplanning&labormarkets.
+•Explainsfertilitydeclinein
+developedcountries.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+193
+
+Cont’...............
+Anti-Malthusian Theory
+RejectionofMalthusianCrisis:
+•Arguesthathumaningenuityprevents
+resourceshortages.
+•Technologicaladvancementsallowfood
+productiontooutpacepopulation
+growth.
+KeyTheorists:
+•EstherBoserup:Morepeople=More
+innovation.
+•JulianSimon:Humancapitalisthe
+ultimateresource.
+Anti-Malthusian Theory -Evidence & 
+Criticism
+EvidenceSupportingAnti-
+Malthusianism:
+•GreenRevolution:Highercropyieldsfed
+growingpopulations.
+•Urbanization&technologyreduce
+fertilityrates.
+Criticism:
+•Someregionsstillfacefamine&resource
+depletion.
+•Overconsumptionbywealthynations
+contradictssustainabilityclaims.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+194
+
+Comparing Theories 
+Theory View on Population 
+Growth 
+Key Idea Criticism 
+Malthusian 
+Dangerous & 
+unsustainable 
+Population grows faster 
+than food 
+Ignores human 
+innovation 
+Marxist 
+Not a problem under 
+socialism 
+Capitalism, not population, 
+causes poverty 
+Socialist economies 
+also faced scarcity 
+Neoclassical 
+Economic decision Families choose based on 
+cost-benefit analysis 
+Ignores cultural factors 
+Anti-
+Malthusian 
+Not a problem Technology & innovation 
+solve shortages 
+Some regions still face 
+scarcity 
+ 
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+195
+
+Policy Implications
+•KarlMarxTheory:Supportsredistributionpolicies&welfare.
+•NeoclassicalTheory:Promoteseducation&familyplanning.
+•Anti-MalthusianTheory:Encouragesinnovation&investmentin
+technology.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+196
+
+Conclusion & Policy Solutions
+•Balancing population growth & resources:
+•Family planning & education.
+•Improved food production & technology.
+•Sustainable urban development.
+•Debunking depopulation myths:
+•While overpopulation poses realchallenges, conspiracy theories 
+distract from practical solutions.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+197
+
+Cont’...............
+•Boserup’sTheorychallengesMalthusianpessimismbyshowingthat
+humaningenuitycanovercomeresourcelimits.
+•Itremainsrelevantintoday’sglobalizedworld,thoughmigration&
+automationaddcomplexities.
+•Thekeytosustainablegrowthliesininnovation,education,andglobal
+cooperation.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+198
+
+Which Theory is Right?
+•Eachtheoryhasstrengths&weaknesses.
+•Modernapproachescombineeconomicplanning,socialwelfare,and
+technologicalinnovation.
+•Sustainablepopulationpoliciesmustconsidereconomic,social,and
+environmentalfactors.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+199
+
+Quiz
+With examples, explain three (3) roles of Developed Countries in 
+Population Control? (9 Marks)
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+200
+
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+201
+
+Topic 5
+Population estimation and projection Ratios and Rates in 
+population estimates
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+202
+
+Estimates and Projections
+•Populationcensuses(every5-10years)giveaccuratecountsbutareexpensive
+andsometimesoutdated.
+•Samplesurveysareusedforquicker,cost-effectivedemographicdata.
+•Estimatesareneededbetweencensusyearstocalculatethingslike:
+•Crudebirth/deathrates
+•Mid-yearpopulationsize
+•Projectionshelpplanforfutureneeds:
+•Schools,teachers
+•Food,fuel,housing
+Thisunitexploreskeymethodsforestimatingandprojectingpopulationsizes.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+203
+
+Aim
+Bytheendofthisunit,studentswillbeableto:
+•Describepopulationprojectionmodels
+•Explainthelinearfactormodel
+•Differentiatebetweenprojectionandestimation
+KeyTerms:
+•Estimation=Determiningcurrent/pastpopulationusingdata
+•Projection=Forecastingfuturepopulationbasedontrends&assumptions
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+204
+
+Cont’.......
+•Anestimateisacalculatedvalueforapopulation,basedonasampleand
+adjustedusingstatisticalmethods.
+•Itreflectsreal-worldconditionsandisnotaguess.
+•Example:If51%ofasampleisfemale,weestimatethat51%ofthetotal
+populationisfemale(assumingthesampleisrepresentative).
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+205
+
+Types of Estimates
+1.Inter-censalEstimates
+•Estimatesmadebetweentwocensus
+years.
+Example:EstimatingMalawi’s2017population
+using2008and2018censusdata.
+2.ImmediatePost-censalEstimates
+•Estimatesmaderightafteracensus,to
+adjustforundercountingormissingdata.
+•Example:Revisingpopulationfiguresright
+afterthe2018censusbasedondetected
+underreportinginruraldistricts.
+3.FutureEstimates/Projections
+•Forecastsoffuturepopulationsizeand
+composition.
+Example:ProjectingthatMalawi’s
+populationwillreach30millionby2030,
+basedonfertilityandmortalitytrends.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+206
+
+What is a Population Projection?
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+207
+
+Definition of a Projection
+•A projectionshows what future changes in 
+a population would beif certain 
+assumptionsabout trends actually happen.
+•It is not a predictionor forecast, but a 
+conditional estimate.
+Key Characteristics
+•Based on past patternsand assumed 
+continuationof trends.
+•Helps in planning and decision-making
+under specific conditions
+Example
+•Aretailchaingrowsfrom:
+•8stores(Year1)
+•12stores(Year2)
+•18stores(Year3)
+•Pattern:50%increaseannually.
+•Projection:27storesinYear4ifthetrend
+continues.
+•ImportantNote
+•Aprojectionisconditionalittellsuswhat
+wouldhappeniftheassumptionsholdtrue.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+208
+
+Comparison of Projections and 
+Forecasts
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+209
+
+How do estimates and projections differ? 
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+210
+
+How do estimates and projections differ? 
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+211
+
+Key Differences and Limitations
+KeyDifferences:
+•Estimatesareretrospectiveand
+groundedinobserveddata.
+•Projectionsareforward-lookingand
+basedonassumptions.
+•Projectionsmayinfluencebehavior,
+therebyalteringactualfuturetrends.
+LimitationsofProjections
+•Changesinfertilityormigrationcan
+leadtolargedeviations.
+•Oftenmultipleprojectionsare
+preparedunderdifferentscenarios.
+•Notpredictionsratherconditional
+"what-if"analyses.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+212
+
+Estimation Procedures
+1. Mathematical Methods
+•Fit curves (e.g., linear, exponential) to 
+census data.
+•Used to estimate inter-censaland 
+post-censalpopulations.
+•Linear Interpolation:
+•Simplest method.
+•Suitable for short intervals.
+•Less accurate over long periods due to 
+non-linear population growth.
+2.ComponentMethod
+•Preferredifreliabledataare
+available.
+•Uses:
+•Births,deaths,immigration,
+emigration.
+•Applieschangestocensus
+population.
+•Providesmoredetailed
+estimates,includingage
+structure.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+213
+
+Cont’.......
+1.LinearInterpolation:
+•assumesconstantgrowthbetween
+twopointsintimeandisexpressed
+bytheformula:
+Conclusion:
+•Linearinterpolationprovidesasimpleandfastmethodfor
+estimatingpopulationbetweentwoknowncensusyears.
+•Itworksbestwhenpopulationgrowthisrelativelystable
+overashortinterval.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+214
+
+Cont’.......
+•Thismethodissimpleandusefulwhen
+estimatingbetweentwoknownvalues(like
+censuses).
+•However,realpopulationgrowthis
+rarelylinear,sothismethodcanbecome
+inaccurateforlong-termprojections.
+2.Polynomialmethods
+•usequadraticorhigher-degreecurveswhen
+populationdatafromthreeormore
+censusesisavailable.
+•Thesemethodsusuallygivemore
+accurateresultsthanlinear
+interpolation,especiallyforinter-
+censalorimmediatepost-censal
+estimates.
+•However,theirreliabilitydecreases
+thefurthertheprojectionextends
+intothefutureduetoincreasing
+uncertainty.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+215
+
+Cont’.......
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+216
+
+Cont’.......
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+217
+
+Cont’.......
+3.GeometricMethodofPopulation
+Projection
+•Thegeometricmethodassumesthe
+populationgrowsataconstantannual
+percentagerate.
+•Itissimilartohowinterestcompoundsina
+bankaccount,hencethename.
+•Thismethodisusefulforshort-term
+projections,especiallywhengrowthisfairly
+stable,butcautionisneededforlong-term
+projections,asreal-worldgrowthratescan
+changeovertime.
+Projected Population in 2025: 23,750
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+218
+
+Cont’.......
+Projected Population in 2025 = 1,104,080
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+219
+
+Cont’.......
+•Workswellforurbanareasorregionswith
+steadygrowth.
+•Shouldalwaysvalidatetheraterwithhistorical
+dataandcheckforrecenttrendsthatcould
+changetheprojection.
+4.LogisticGrowthMethod
+•Thelogisticcurveisusedtomodel
+populationgrowthwithalimiting
+factorsuchaslimitedland,food,or
+resourcesmeaningthatgrowthslows
+downasthepopulationnearsits
+carryingcapacity(themaximum
+populationtheenvironmentcansustain).
+•Unlikegeometricorexponentialgrowth
+models,whichassumeunlimitedgrowth,the
+logisticmodelisrealisticforlong-term
+populationprojectionsbecauseitfactors
+ingrowthdecelerationovertime
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+220
+
+Cont’.......
+HowItWorks:
+•Earlystage:Growthappearsexponential.
+•Middlestage:Growthslows.
+•Latestage:PopulationstabilizesnearKKK
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+221
+
+Cont’.......
+Projected population in 2030 ≈ 2,522,925
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+222
+
+When to Use Logistic Curve:
+•Whenprojectinglong-termpopulationinanareawithlimitedresources.
+•Whenthegrowthrateisslowingduetoenvironmental,social,oreconomic
+constraints.
+•Whenpolicyordevelopmentgoalsaimtostabilizepopulationgrowth.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+223
+
+Component Method of Population 
+Estimation
+Advantages:
+•Providesestimatesbyage,sex,andother
+characteristicsifdetaileddataare
+available.
+•Allowsforunderstandingofdemographic
+dynamics,notjusttotalpopulationsize.
+Estimated population in 2025 = 
+19.5 million
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+224
+
+Cont’.......
+Interpretation:
+•Thisestimategivesarealisticfigure
+becauseitincludesallpopulationchanges
+duetonaturalincrease(births-deaths)
+andnetmigration(immigrants-
+emigrants).
+Limitations:
+•Requiresaccuratedatafromcivil
+registrationandmigrationrecords.
+•Inmanycountries,migrationdataare
+incomplete,andbirth/deathregistration
+maybeunderreported.
+UseCaseinMalawi:
+•TheNationalStatisticalOffice(NSO)
+canapplythismethodbetweencensuses
+(e.g.,betweenthe2018and2028censuses)
+usingVitalRegistrationSystem(VRS)
+andimmigrationdata.Adjustmentsare
+oftenmadeafterthenextcensusto
+correctdiscrepancies.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+225
+
+Population Projections
+•ProjectionMethods:Similartechniquesareusedforpopulationprojections
+asforinter-censalandpost-censalestimates.
+•Short-termProjections:Forafewyearsahead,simplemethodslikelinear
+extrapolationcanbesufficientlyaccurate,withminimaldifferencesbetween
+variousmethods.
+•Long-termProjections:Asthetimeframeextends,differencesbetween
+methodsbecomemorepronouncedandsignificant.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+226
+
+Cont’.......
+•ShiftfromMathematicaltoComponentMethods:
+•Earlyprojectionsreliedonmathematicalmodels,hopingforasimplelawofpopulation
+growth.
+•Thesewerefoundtobeinadequateduetochangingbirthandgrowthrates.
+•Now,thecomponentmethodisthestandardapproach.
+•AdvantagesofComponentMethod:
+•Itallowsseparateassumptionsforfertility,mortality,andmigration.
+•Producesprojectionsbyageandsex,notjusttotalpopulation,offeringmoredetailed
+insights.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+227
+
+Main Projection Methodologies:
+•ComponentMethod(Cohort-ComponentApproach):
+•Projectsfertility,mortality,andmigrationbyageandsex.
+•Eachcomponentisprojectedseparately.
+•ForcountrieswithHIVprevalence>1%,mortalityprojectionsmustinclude
+HIV/AIDSimpacts.
+•MathematicalMethods(e.g.,RatioMethod):
+•Applymathematicalfunctionstototalpopulationfigures,notindividualcomponents.
+•Ratiomethodadjuststhepopulationdistributionbasedonagiventotalandexisting
+frequencyproportions.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+228
+
+Key Considerations in Methodology:
+GeographicLevelDifferences:
+•NationalLevel:
+•Dataismoreavailableandreliable.
+•Migrationhaslessimpactcomparedtosub-
+nationallevels.
+•Growthratesaremorestable.
+•Sub-NationalLevel:
+•Migrationplaysagreaterroleinpopulation
+growth.
+•Growthratesaremorevariable.
+•Internalmigrationbecomesacrucialand
+complexcomponent.
+•Cohort-componentprojectionsatthislevel
+mustincludeinternalmigration.
+MigrationAssumptions:
+•Internationalmigrationmaybe
+negligibleformanycountries.
+•Internalmigrationissignificantin
+almostallcountriesanddominates
+sub-nationalprojections.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+229
+
+Cohort Component Method
+•Simulatespopulationchangesovertimeusingthreecomponents:fertility,mortality,and
+migration.
+HowitWorks:
+•Basepopulationisgroupedintoageandsex-specificcohorts.
+•Eachcohortisprojectedforwardintime:
+•Mortality:AppliedthroughAge-SpecificMortalityRates(ASMRs).
+•Migration:Age-andsex-specificnetmigrationratesareused.
+•Fertility:Age-SpecificFertilityRates(ASFRs)areappliedtowomenof
+reproductiveage.
+•SexRatioatBirth:Dividestotalbirthsintomaleandfemaleinfants.
+•Birthsareexposedtomortalityrates,andsurvivorsarefedintofutureprojections.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+230
+
+Cont’.......
+ProjectionTimeSpan:
+•Nostandardspan;itshouldmatchthe
+planninghorizon.
+•Longerspansincreasetheriskof
+deviation.
+•Besttouseintervalsequaltoage
+groupsforconsistency.
+RatioMethod
+•UseCase:Suitableforsmallareas
+(e.g.,districts)wherecomponent
+dataislimitedorunavailable.
+HowitWorks:
+•Thesmallareaispartofalarger
+“parent”area(e.g.,nationallevel).
+•Itassumessmallareasgrowatthe
+samerateastheparentarea.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+231
+
+Cont’.......
+•Aratioofthedistricttonationalpopulationiscalculated.
+•Futurevaluesofthisratioareassumedandusedtoprojectthedistrict’spopulationbased
+onnationalprojections.
+•Structure Requirement:
+•Geographic units must be mutually exclusive, exhaustive, and aggregatableinto higher 
+levels.
+•Drawback:
+•Assumes uniform growth rates, which may not reflect actual variation in local growth 
+patterns.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+232
+
+Cont’.......
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+233
+
+Cont’.......
+AdditionalNotesonRatioMethod:
+•Afterprojectingeachsmallarea,adjust
+thetotalstomatchthenationaltotal,
+usingthenationalpopulationasa
+control.
+Accuracyfactors:
+•Qualityofinputdata
+•Validityoffutureassumptions
+Methodselectiondependson:
+•Geographicscale:
+•Largerareas(e.g.,countries):less
+uncertainty
+•Smallerareas(e.g.,districts,urban
+centers):morevolatilitydueto
+migration
+•Migrationinfluence:higheratsub-
+nationallevels,makingprojectionsmore
+complex
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+234
+
+Class Discussion 
+1.Whatisthedifferencebetweenanestimateandaprojection?
+2.Explainthemajortypesofestimates.
+3.Usingrelevantexamplesexplainthetwomainmethodsofpopulation
+estimation.
+4.Explainthepopulationprojectionprocedures.
+5.Compareandcontrastthecohortcomponentmethodandtheration
+method.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+235
+
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+236
+
+Topic 6 
+Selected issues in population and development
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+237
+
+Selected issues in population and 
+development
+KeyIssues:
+•Populationandenvironment
+•Populationgrowth,climatechangeandfoodsecurity(microeconomicconsiderations)
+•Populationgrowthandeconomicdevelopment(macroeconomicconsiderations)
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+238
+
+Unit Learning Outcomes
+By the end of this unit, students should be able to:
+a)Explain how population increase affects the environment.
+b)Explain the relationship between population growth and food security.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+239
+
+Key Terms
+•ClimateChange:Long-termshiftsintemperaturesandweatherpatterns,
+mainlycausedbyhumanactivities,especiallytheburningoffossilfuels.
+•FoodSecurity:Thestateinwhichallpeople,atalltimes,havephysical,social,
+andeconomicaccesstosufficient,safe,andnutritiousfoodtomeettheir
+dietaryneeds.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+240
+
+Introduction 
+•Rapidpopulationgrowthisamajorconcerngloballyandlocally.
+•Itincreasespressureonnaturalresources,publicservices,andecosystems.
+•Understandingpopulationtrendshelpsinmakinginformed,sustainable
+developmentdecisions.
+•Theunitfocusesonkeyissueslike:
+•Environmentaldegradation
+•️Climatechange
+•️Foodsecurity
+•Theseissuesareinterconnectedandvitalforensuringsocio-economic
+sustainability.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+241
+
+Population and Environment
+DefinitionofPopulation
+•Apopulationisagroupofindividualsofthesamespecies(e.g.,humans)livingina
+specificgeographicareaataparticulartime.
+TrendsinPopulationGrowth
+•Theglobalpopulationhasbeenincreasingbyaround90millionpeopleannually,
+withapproximately93%ofthatgrowthoccurringindevelopingcountries,such
+asthoseinsub-SaharanAfricaandSouthAsia.
+•Forexample,Malawi'spopulationgrewfrom8millionin1990toover20
+millionin2024,puttingsignificantpressureonland,forests,watersources,andpublic
+infrastructure.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+242
+
+Population Equilibrium
+•Equilibriumisachievedwhenthebirthrateequalsthedeathrate.
+•However,duetoadvancesinhealthcare,sanitation,andfoodsupply,death
+rateshavedeclinedfasterthanbirthrates,especiallyindeveloping
+regions-leadingtopopulationexplosion.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+243
+
+Impacts of Population Growth on the 
+Environment
+Deforestation
+•Morepeoplerequiremorelandforfarming,housing,andfuelwood.
+Example:InMalawi,forestsinNtchisiandpartsofMzimbahavebeenheavilyclearedfor
+charcoalproductionandfarming.
+LossofBiodiversity
+•Expandinghumansettlementsencroachonnaturalhabitats,reducinganimalandplant
+species.
+Example:EncroachmentintoprotectedareaslikeVwazaMarshandLengweNationalPark.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+244
+
+Cont’.......
+WaterPollution&Scarcity
+•Overpopulationleadstooveruseandpollutionofwaterbodiesfromdomestic,
+agricultural,andindustrialwaste.
+Example:ContaminationofLakeMalawiduetoincreasedrunofffromgrowinglakeshore
+towns.
+SoilDegradation
+•Over-cultivationandpoorfarmingtechniquesdrivenbypopulationpressuredepletesoil
+nutrients.
+Example:IndistrictslikeDedzaandBalaka,overworkedlandhasledtodecliningmaize
+yields.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+245
+
+Cont’.......
+AirPollution
+•Morepeopleresultinmore
+vehiclesandindustrialactivities,
+increasingairpollution,especially
+inurbanareaslikeLilongweand
+Blantyre.
+ClimateChangeAcceleration
+•Population-drivendeforestation
+andincreasedenergyuse
+contributetogreenhousegas
+emissions,worseningglobal
+warming.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+246
+
+Cont’.......
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+247
+
+Reasons for growth 
+•Everysecond4-5childrenarebornand
+2peopledie,nearly2.5personsgets
+addedeverysecond.
+Someofthemajorreasonsforthis
+humanpopulationgrowthinclude:
+•Spreadofpublichealthprogrammesin
+developingcountries.
+•RiseinfoodproductionafterWorldWar
+II.
+•High birth rates
+•Religiousandculturalbeliefs
+•Youngagestructure
+•Polygamyandearlymarriages
+•Limitedaccesstofamilyplanning
+services
+•Improvedhealthcareandsanitation
+•Desireforlargefamilies
+•Improvedfoodsupply
+•Lackofeducation(especiallyamong
+women)
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+248
+
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+249
+
+Fertility Trends 
+•Populationpredictionsarehighlysensitive
+tofuturefertilityrateassumptions.
+•If1990fertilityratesremainedconstant,
+theglobalpopulationcouldreach:
+•110billionby2100
+•Over700billionby2150
+•Fertilityrateshavebeendroppingsincethe
+1800sindevelopedcountries.
+•ManydevelopednationshavereachedZero
+PopulationGrowth.
+•Fertilityratesarenowdeclininginmuchof
+thedevelopingworldaswell.
+•Declinesarelinkedtoeducation,
+urbanization,healthcareaccess,andfamily
+planning
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+250
+
+Population Predictions 
+•Mostestimatespredictaglobalpopulationof
+9-12billionby2050.
+•By2100,thepopulationcouldreach10-15
+billion.
+•TheUNsuggestsglobalfertilityrates
+mustremainlowtoachievezeroor
+negativegrowthwithin15years.
+•Thesepredictionsfacelargeuncertainties,
+especiallydueto:
+•Regionalfertilitydifferences
+•Migrationtrends
+•Healthcrisesorimprovements
+•Policychanges
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+251
+
+Human Population Density 
+Humanpopulationdensityrefersto
+thenumberofpeopleperunitarea(e.g.,
+persquarekilometer).
+•Populationdensityhasbeen
+steadilyincreasingovertimedueto
+urbanizationandpopulationgrowth.
+•AsiaandEuropecontainsomeof
+thedensestregionsintheworld.
+•Example:Bangladesh,India,andpartsofChinain
+Asia
+•Example:TheNetherlandsandtheUKin
+Europe
+•Highpopulationdensityisoftenseen
+inurbancenterswhereeconomic
+opportunitiesattractmorepeople.
+•Highdensitycanstrain
+infrastructure,housing,
+sanitation,andnaturalresources.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+252
+
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+253
+
+Maximum Carrying Capacity 
+•CarryingCapacity(K)isthe
+maximumpopulationthatthe
+environmentcansustainablysupport
+withoutdegradingresources.
+•Populationgrowthandcarryingcapacity
+co-evolve,influencedby:
+•Technology
+•Social,political,andeconomicinstitutions
+•Physicalandecologicalenvironment
+PhysicalCarryingCapacity
+("PackingDensity"):
+•Basedonspaceandresource
+availabilityonly.
+CulturalCarryingCapacity:
+•Lowerthanphysicalcapacity;considers
+qualityoflife,socialnorms,andcomfort.
+•There’snouniversalagreementon
+theEarth’sexactcarryingcapacity.
+•Thegenerallyacceptedrangeis10-
+20billionpeople.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+254
+
+Population Explosion 
+•Referstoenormousandrapidgrowthofthehumanpopulation.
+•Causesinclude:
+•Highfertilityrates
+•Lowerinfantmortality
+•Increasedfoodproduction
+•Longerlifeexpectancy
+•Consequences:
+•Increasedresourceconsumption(e.g.,fossilfuelslikecoalandoil)
+•Increasedmunicipalwaste
+•Morepollution(air,water,soil)
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+255
+
+Cont’.......
+ResourceLimitations
+Land
+•Agriculturallandislimitedandunderpressure.
+•Deforestationisincreasingtocreatemorearableland.
+•Ifcurrenttrendscontinue,arablelandmaybeexhaustedwithinthenext
+century.
+•Tofeedthegrowingpopulation,globalcropyieldsmayneedtodouble.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+256
+
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+257
+
+Impacts of Human Population Growth on 
+Earth
+1.EcologicalFootprint
+•Ecologicalfootprintshaveincreasedsignificantlywithpopulationand
+affluence.
+•Averagefootprint:
+•UnitedStates:5hectares/person
+•Developingnations:0.5hectares/person
+•IfeveryonelivedlikeanaverageAmerican,we’dneed3planetEarths.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+258
+
+Cont’.......
+2.EnvironmentalDegradation
+•AirpollutionandclimatechangeduetoincreasedCO₂emissions.
+•Waterpollution,includingcontaminationofgroundwateraquifers.
+Deforestationleadingto:
+•Reducedoxygenproduction
+•Habitatloss
+•Destructionofnationalparks,wetlands,andwildernessareas.
+•Depletionofnonrenewableresourceslikefossilfuelsandmineralores.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+259
+
+Cont’.......
+3.BiodiversityLoss
+•Currentspeciesextinctionratesrival
+the5greatmassextinctions(65-440
+millionyearsago).
+•Recoveryfromsuchlossesmaytake
+tensofmillionsofyears.
+•Biodiversityiscriticalforecosystem
+stabilityandfutureresources.
+•Anemergingneedforaglobal
+ecologicalethic.
+4.GlobalWarming
+•AtmosphericCO₂isrising,intensifying
+thegreenhouseeffect.
+•Projected3-5°Cincreaseinglobal
+temperaturesthiscentury.
+•Humansemit6billiontonsofCO₂
+peryear,up500%since1950.
+•Actualobservedwarming:
+•Surface:0.25-0.4°C
+•Troposphere:0.0-0.2°C(last20years)
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+260
+
+Cont’.......
+5. Urbanization
+•Urban populations have increased rapidly:
+•1950: 29% urban
+•2000: 47% urban
+•2030 (projected): 61% urban
+•Urbanization contributes to:
+•Land use change
+•Pollution
+•Resource concentration
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+261
+
+Population Growth, Climate Change & 
+Food Security (Micro-economics)
+Definition of Food Security
+•Food security exists when all people, at all times, have:
+•Physical, social, and economic accessto food
+•That is sufficient, safe, and nutritious
+•To meet dietary needs and preferences for a healthy life
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+262
+
+Three Key Conditions of Food Security
+1.PhysicalFoodAvailability
+•Nationalproduction+foodimports
+mustmeetorexceedminimum
+nutritionalneeds
+•Includesmaintainingnationalfood
+reserves
+2.EconomicFoodAccess
+•Poorhouseholdsmustbeabletoafford
+essentialfood
+•Purchasingpowerdependson:
+•Income
+•Foodprices
+•Pricesofotheressential
+goods/services
+3.HealthandNutritionalValue
+•Foodmustbefreeofharmful
+substances(e.g.,pesticides,
+pathogens)
+•Consumerrationsmustbebalanced
+forenergyandnutrients(basedon
+age,sex,worktype)
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+263
+
+Ester Boserup’sTheory –Population 
+Pressure Drives Innovation
+Populationgrowthstimulatesagriculturalinnovation
+•Shiftsinfarmingmethods:
+•Longfallow→Shortfallow
+•Increasedlabordemandforintensivefarming
+•Forestscleared→Grasslandscultivated
+•Genderroles:
+•Menclearedland
+•Womenfarmedandweededtosupportcontinuouscropping
+•Useofanimalsandtools(e.g.,ploughs)becamewidespread
+•Transitionfromcommonlandtoprivatelandownership
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+264
+
+The Forces Driving the Food Equation
+•NewDrivingForces:
+•Incomegrowth,globalization,urbanization,highenergyprices,andclimatechangeare
+reshapingfoodconsumption,production,andmarkets.
+•RisingFoodDemand:
+•Drivenbypopulationgrowth,increasingaffluence,andrisingconsumer
+expectations.
+•Morepeopleareshiftingtoresource-intensivediets(richinmeatanddairy),increasing
+pressureoncropproductionforanimalfeed.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+265
+
+Cont’.......
+•PopulationGrowthTrends:
+•Worldpopulationprojectedtogrowfrom6.5billion(2005)toover9billionby2050.
+•Growthrateslowingbutabsolutenumbersrising.
+•Growthconcentratedindevelopingcountriesandurbanareas.
+•By2030,60%oftheworld’spopulationwillliveincities;urbanpopulationinAfrica
+andAsiawilldouble.
+•UrbanizationImpact:
+•Urbanlifestylesincreasedemandforprocessed,ready-to-eat,anddiversifiedfoods.
+•Altersdietarypatternsandraisesenvironmentalconcerns.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+266
+
+Cont’.......
+•EconomicGrowthintheDevelopingWorld:
+•RapidgrowthincountrieslikeChina,India,andpartsofSub-SaharanAfrica.
+•Leadstohigherincomesandpurchasingpower,enablingmorepeopletoafforddiverse
+andnutritiousdiets.
+•ChangingNatureofDemand:
+•Shiftfromstaplegrainstomeat,dairy,fish,fruits,vegetables,andpulses.
+•Risingconsumptionofanimal-basedfoodsisdirectlylinkedtoincomeincreases.
+•Surgeinready-to-cookandready-to-eatfooddemand,especiallyinurbancenters.
+•NutritionalandEnvironmentalImplications:
+•Ready-madefoodsoftenhavelowernutritionalvalueandhigherenvironmental
+impact(duetoenergyuseandpollution).
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+267
+
+Factors Affecting World Food Supply
+•Food Production Must Double by 2050
+•Tofeedover9billionpeople,globalfoodproductionneedstonearlydouble(FAO,2008).
+•NaturalandHuman-DrivenConstraints
+•Keyfactors:landandwateravailability,energysupply,climatechange,innovations,and
+accesstofinance.
+•LandConstraints
+•Limitedpotentialfornewagriculturalland.
+•Highenvironmentalandfinancialcosttoconvertlandforagriculture.
+•Landfrontierisclosedinmanydenselypopulatedareas.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+268
+
+Cont’.......
+•WaterScarcity
+•Freshwaterisbecomingasignificantconstraint.
+•Percapitawaterusehasincreased,whilesupplyremainslimited.
+•Agricultureisthelargestwateruser;waterwithdrawalshavetripledin50years.
+•ClimateChangeImpacts
+•Predictedtemperaturerise(0.2°Cperdecade);negativeeffectsoncropyields.
+•Increasedriskofextremeweather(droughts,floods).
+•Alterswateravailabilityandaffectsagriculturaloutput.
+•EnergyDependence
+•Agricultureisincreasinglydependentonfossilfuels.
+•Highoilpricesimpactthecostoffertilizers,transport,irrigation,andprocessing.
+•Energypricesarestronglylinkedtofoodprices.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+269
+
+Cont’.......
+•AccesstoFinance
+•DeclineinpublicagriculturalinvestmentandR&Doverpastdecades.
+•Needforincreasedfundinginagriculture,especiallyforpoorcountries.
+•PublicR&Discrucialforaddressingfoodneedsofpoorfarmers.
+•TechnologicalInnovation
+•Essentialtoimproveyieldsandefficiencyduetopopulationandresourcepressures.
+•Ahectareoflandissupportingmorepeoplethaneverbefore.
+•FoodWaste
+•Only~43%ofcerealcropsreachhumanconsumption.
+•Wasteatallstages:harvest,post-harvest,household.
+•Environmentalimpacts:wastedwater,fuel,chemicals,andmethaneemissions.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+270
+
+Access to Food
+DefinitionofFoodSecurity
+•Allpeople,atalltimes,havingaccesstosufficient,safe,andnutritiousfood.
+•HungerIsLinkedtoAccess,NotSupply
+•Hungerisduetolackofeconomicaccess,notfoodscarcity.
+•Over1billionareoverweight,whilenearly1billiongohungry.
+FoodPrices
+•Drivenbyincomeandpopulationgrowth,energyprices,andbiofuels.
+•Agriculturalproductionaffectedbylimitedresourcesandunderinvestment.
+•Agriculturalsupplyrespondsslowlytopricechanges(inelasticsupply).
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+271
+
+Cont’.......
+•PriceVolatilityandSpeculation
+•Pricesofcerealsandothercommoditiesspikedin2007–2008.
+•Financialcrisesreduceddemandandpricestemporarily.
+•Lowpricesdiscouragefarmersfromincreasingproduction.
+•TradeandGlobalization
+•Foodpricesurgesledtoexportbans/restrictions(e.g.,rice,wheat).
+•Exportrestrictionscanharmglobalfoodmarkets.
+•Opentradepoliciesaregenerallymorebeneficialfordevelopingcountries.
+•CorporateFoodSystem
+•Multinationalcompaniesdominatefoodvaluechains.
+•Traditionalmarketsarebypassed;smallproducersstruggletocompete.
+•Highfoodsafety/qualitystandardsbenefitconsumersbutcanexcludesmallholders.
+•Cooperativesandpartnershipscanhelpsmallfarmersadapt.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+272
+
+Population Growth and Economic Development 
+(Macroeconomic Considerations)
+•EmploymentOpportunities
+•Rapidpopulationgrowthincreasesthelaborforcebutmayoutpacejobcreation.
+•TaxCollection
+•Agrowingpopulationcanexpandthetaxbasebutalsoincreasespublicservicedemands.
+•Education
+•Highpopulationgrowthputspressureoneducationsystems,affectingqualityandaccess.
+•StandardofLiving
+•Increasedpopulationcanstrainresourcesandinfrastructure,reducinglivingstandardsifeconomic
+growthisinsufficient.
+•PerCapitaGDP
+•IfpopulationgrowsfasterthanGDP,percapitaincomedecreases,affectingoveralldevelopmentand
+povertyreductionefforts.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+273
+
+Quiz
+•Howdoeshumanpopulationincreaseaffecteconomicgrowthand
+development?
+•Explainthemajorfactorsthathaveledtoarapidincreaseinhumanpopulation?
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+274
+
+Conclusion
+•Populationgrowth,urbanization,andrisingincomesaresignificantlyincreasing
+boththequantityandqualityoffooddemand.
+•Resourceconstraints(land,water,energy)andclimatechangearemaking
+foodproductionmoredifficultandlesspredictable.
+•Economicgrowthimprovesfoodaccessbutalsoincreasespressureon
+naturalresourcesduetochangingconsumptionpatterns.
+•Globalizedfoodsystems,thoughefficient,candisadvantagesmall
+producersanddeepeninequalityinfoodaccess.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+275
+
+The Way Forward
+•Achievingfoodsecurityrequires:
+•Investmentsinsustainableagricultureandresearch.
+•Supportforsmallholderfarmersandruralinfrastructure.
+•Technologicalinnovationandimprovedfoodvaluechains.
+•Reducingfoodwasteandpromotingefficiency.
+•Focusmustshiftfromjustfoodavailabilitytoequitableaccessand
+environmentalsustainability.
+•Populationgrowthmustbeaccompaniedbyinclusivepoliciestoensurethat
+nooneisleftbehindinthefightagainsthunger
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+276
+
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+277
+
+Topic 7
+Human Capital : Education and health in 
+Economic development
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+278
+
+Expected Outcomes
+•Definehumancapitalanditsroleindevelopment.
+•Explainhoweducationandhealthboostproductivity.
+•Identifyeffectsofchildlabouronhumancapital.
+•DescribekeyhealthindicatorslikeHDI,HALE,andUHC.
+•Suggestwaystoimprovehealthandeducationaccess.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+279
+
+Introduction to Human Capital
+•HumanCapitalisthecollectionofknowledge,skills,abilities,health,and
+otherpersonalattributesthatindividualsaccumulateandusetoproduce
+economicvalue.
+•Itreferstotheproductivecapacityofpeople,whichcomesfromeducation,
+training,experience,andgoodhealth.
+•Whyitmatters:Keydeterminantoflaborproductivity,incomegrowth,and
+economiccompetitiveness.
+Insimpleterms:
+•Humancapitaliswhatpeople“carryinsidethemselves”theireducation,skills,and
+healththathelpsthemcontributetotheeconomyandimprovetheirownlives.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+280
+
+Key points to remember:
+•Itisanassetlikephysicalcapital(machines,buildings),butitisintangible.
+•Itincreasesproductivityandboostsearnings.
+•Countrieswithhighhumancapitaltendtohavehighergrowth,lowerpoverty,
+andbetterlivingstandards.
+•Investmentsineducation,healthcare,andtrainingbuildhumancapital.
+•Humancapitalanddemographicdividends:Ayouthful,educated,and
+healthypopulationfuelsgrowth.
+•Malawirelevance:Withayoungpopulation,investinginhumancapitaliscritical
+toharnessthedemographicdividend.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+281
+
+The Role of Education in Economic 
+Development
+•Buildsskillsneededforthelabormarket(formalandinformal).
+•Increasesinnovation,technologyadoption,andentrepreneurship.
+•Promotessocialcohesionandinformeddemocraticparticipation.
+•Reducesgenderinequalityandfertilityrates.
+•Malawi:Literacyrateimprovementhasbeengradual,butrural-urban
+disparitiesremain.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+282
+
+The Role of Health in Economic 
+Development
+•Healthyworkersaremorereliableandefficient.
+•Reducesburdenonhealthcaresystemsandpublicspending.
+•Contributestochilddevelopmentandschoolperformance.
+•Goodhealthfostershigherlaborforceparticipationandlongevity.
+•Example:MalariapreventionboostsfarmingproductivityinMalawi.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+283
+
+Synergy Between Education and Health
+•Educationimproveshealth-seekingbehavior(e.g.,immunization,family
+planning).
+•Healthimproveslearningcapacity(e.g.,nutritionenhancesmemory
+andfocus).
+•Jointinterventions(e.g.,schoolfeeding,healtheducation)maximize
+impact.
+•Educatedmothersaremorelikelytoseekhealthcareforchildren.
+•MalawiExample:Girls'educationprogramshaveimprovedmaternal
+healthoutcomes.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+284
+
+Investing in Education and Health
+RationaleforInvestment
+•Humancapitalisanintangibleassetgrows
+nationalwealthovertime.
+•Countriesthatheavilyinvestintheseareas
+(e.g.,SouthKorea)haveseeneconomic
+transformation.
+•Lowinvestmentleadstoproductivitytraps
+andpersistentpoverty.
+•ForMalawi,humancapitalinvestmentaligns
+withVision2063goals.
+InvestmentinEducation:Benefits
+•Increasesearningpotential(e.g.,tertiary
+graduatesearnmorethanprimaryschool
+leavers).
+•Reducesyouthunemploymentandsocial
+unrest.
+•Enhancesgenderequityandeconomic
+inclusion.
+•Facilitatesinnovationandadaptiveskillsfor
+evolvingjobmarkets.
+Example:Malawi'sexpansionofTechnical,
+Entrepreneurial,andVocationalEducationand
+Training(TEVET).
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+285
+
+InvestmentinHealth:Benefits
+•Every$1investedinhealthyieldsupto
+$4ineconomicreturn(WHO).
+•Fewersickdays,higherworkforce
+participation,andlongerproductive
+years.
+•Buildsresiliencetopandemicsand
+shocks.
+•Healthierpopulationsreduce
+intergenerationalpoverty.
+•Malawi:NationalMalariaControl
+Programhasreducedchildmortality
+ChallengesinInvestment
+•Inadequatenationalbudgetallocations
+(belowAbujaDeclarationtargets).
+•Overdependenceondonorfundingfor
+healthandeducation.
+•Poorinfrastructure:lackofclassrooms,
+clinics,trainedpersonnel.
+•Culturalbarriers:earlymarriage,
+resistancetovaccination.
+•Malawi'sbudgetstillallocates<10%to
+health,despiteWHO’s15%target.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+286
+Cont’.......
+
+Case Study-Malawi
+•Education:Highenrollment,lowcompletion(esp.forgirls).Doubleshiftingin
+schools.
+•Health:GainsinHIV/AIDScontrol,butmaternalmortalityremainshigh.
+•Donorsupport:KeyroleofGavi,UNICEF,USAIDinservicedelivery.
+•Needforsustainability:Transitioningtodomesticallyfundedsystems.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+287
+
+Child Labour
+DefinitionandOverview
+•Theengagementofchildreninworkthatismentally,
+physically,socially,ormorallydangerousandharmful,and
+interfereswiththeirschooling,development,andwell-being.
+•Workthatismentally,physically,ormorallydangerousandinterfereswith
+schooling.
+•Affects160millionchildrenglobally(ILO,2022).
+•Commoninagriculture,streetvending,domesticwork.
+•InMalawi,childrenareoftenengagedintobaccofarmingandfishing
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+288
+
+CausesofChildLabour
+•Povertyandincomeshockspush
+familiestodependonchildren's
+income.
+•Lackofaccesstoaffordable,quality
+education.
+•Weaklegalenforcementandsocial
+norms.
+•OrphanhoodduetoHIV/AIDShasled
+tochild-headedhouseholdsinMalawi.
+ConsequencesofChildLabour
+•Stuntedmentalandphysical
+development.
+•Trapschildreninlow-wage,unskilled
+work.
+•Reducesnationalproductivityand
+delaysdevelopment.
+•Linkedtoschooldropoutand
+intergenerationalpoverty.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+289
+Cont’.......
+
+AccordingtotheEmploymentActof
+Malawi(1999):
+•Theminimumageforemploymentis
+14years.
+•Hazardousworkisprohibitedfor
+anyoneunder18years.
+•Workshouldnotinterferewithachild's
+education,health,orphysicaland
+mentaldevelopment.
+Inpractice,childlabourinMalawi
+includes:
+•Childrenworkingintobaccofarms,
+whichexposesthemtotoxic
+substances.
+•Domesticwork,oftenunpaidand
+exploitative.
+•Streetvendingorworkinginmarkets,
+sometimesduringschoolhours.
+•Fishing,quarrying,andbrick-making
+underdangerousconditions.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+290
+Cont’.......
+
+GovernmentandNGOResponse
+•NationalChildLabourPolicy(2000).
+•Malawi’sChildProtectionandJusticeAct
+(2010).
+•CollaborationwithILOandUNICEFon
+childprotectionprograms.
+CombatingChildLabour
+•Free,accessibleeducationandschool
+mealstoincentivizeattendance.
+•Publicawarenesscampaignson
+children'srights.
+•ConditionalCashTransfers(CCTs)and
+socialprotection.
+•Malawi'sNationalChildLabourPolicy
+andcollaborationwithILOprograms.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+291
+Cont’.......
+
+Health Measurement and Distribution
+HealthIndicators
+•LifeExpectancy:Measureslongevity,
+reflectshealthsystemperformance.
+•IMR/MMR:Infantandmaternal
+mortalityratessignalservice
+accessibility.
+•DiseasePrevalence:Malaria,HIV,TB
+askeymetricsinMalawi.
+•DALYs/HALE:Quantifyyearslostdue
+todiseaseanddisability.
+InequalitiesinHealthDistribution
+•Geographic:Ruralcommunitieshave
+limitedaccesstospecialists.
+•Gender:Womenfacereproductive
+healthrisks,domesticviolence.
+•Socioeconomic:Poorerhouseholds
+delaytreatmentduetocosts.
+•Malawi:Regionalvariationinhealth
+outcomesbetweentheNorthand
+South.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+292
+
+Measuring Health Outcomes
+1. HDI-Human Development Index
+Definition: A composite index developed by the UNDP to measure a country's 
+average achievements in three key dimensions:
+•Health-measured by Life Expectancy at Birth.
+•Education-measured by mean years of schooling and expected years of 
+schooling.
+•Standard of Living-measured by Gross National Income (GNI) per 
+capita.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+293
+
+•Purpose: HDI reflects a broader concept of development beyond just income. 
+It shows how well a country turns economic growth into well-being for its 
+people.
+•Health Component: Life expectancy is used as a proxy for overall health 
+and longevityof the population.
+Malawi Context:
+•HDI (2023): Ranked low due to low life expectancy and income.
+•However, recent improvements in HIV/AIDS treatment and child 
+immunizationhave helped improve life expectancy.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+294
+Cont’.......
+
+2.HALE–Health-AdjustedLifeExpectancy
+•Definition:HALEestimatestheaveragenumberofyearsapersoncanliveinfull
+health,byadjustingfortimespentinpoorhealthorwithdisease/disability.
+•Itsubtractstheyearslivedwithillnessordisability(weightedbyseverity)fromtotallife
+expectancy.
+Formula(Simplified):
+HALE=LifeExpectancy–YearsLivedinLessthanFullHealth(YLDs)
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+295
+Cont’.......
+
+WhyHALEisImportant:
+•Providesamoreaccuratepictureofpopulationhealththanlifeexpectancyalone.
+•Helpspolicymakersprioritizehealthinterventionsthatimprovebothlongevityand
+qualityoflife.
+ExampleinMalawi:
+•LifeExpectancy:~65years
+•HALE:~55years(meaning10yearsmaybespentinillhealthduetomalaria,HIV,chronic
+conditions,etc.)
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+296
+Cont’.......
+
+HealthEquityandAccess
+•Healthequity=Fairnessinhealth
+serviceaccessbasedonneed.
+•UHC(UniversalHealthCoverage)
+aimstoeliminateout-of-pocket
+barriers.
+•Addressinginequalitiesincreases
+systemefficiency.
+•Malawi’sCommunityHealthStrategy
+trainsvillage-basedhealthworkers.
+•UniversalHealthCoverage
+meansthatallpeoplehaveaccessto
+thehealthservicestheyneed,when
+andwheretheyneedthem,without
+financialhardship.
+•Itcovers:
+•Prevention
+•Promotion
+•Treatment
+•Rehabilitation
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+297
+Cont’.......
+
+UHCinMalawi:
+•Malawihasmadeprogresswithfree
+primaryhealthcareinpublic
+facilities.
+Challengesremainin:
+•Drugstock-outs
+•Healthcareworkershortages
+•Inequalityinruralvs.urbanaccess
+WhyUHCMattersforEconomic
+Development:
+•Ahealthierpopulationmeansmore
+productiveworkers.
+•Reduceseconomicburdenon
+families.
+•Supportspovertyreductionand
+humancapitaldevelopment.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+298
+Cont’.......
+
+Malawi Context
+•Achievements:ReducedHIVprevalence,improvedimmunization.
+•Challenges:Only1doctorper50,000people(WHOrecommends1:1000).
+•Innovations:Mobileclinics,dronedeliveryofmedicalsuppliesinremoteareas.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+299
+
+Health Productivity and Policy
+HealthandLaborProductivity
+•Sickworkersarelessproductiveand
+mayleavetheworkforceearly.
+•Nutritionboostscognition,motor
+skills,andworkstamina.
+•Chronicdiseases(e.g.,diabetes,
+hypertension)reduceworkforce
+output.
+•InvestinginWASH(Water,Sanitation,
+Hygiene)reducesdiseaseburden.
+PolicyInterventionsinHealth
+•Preventive:Vaccination,health
+education,deworming.
+•Curative:Accessibleprimarycare,
+emergencyresponsesystems.
+•Financing:Tax-based,donor-funded,
+orinsurance-basedmodels.
+•Malawi’sEssentialHealthPackage
+focusesonprimaryinterventions.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+300
+
+EducationandHealthPolicy
+Integration
+•Lifeskillsandhealthcurriculapromote
+responsiblebehavior.
+•School-basedhealthservices:Nutrition,
+deworming,reproductivehealth.
+•Earlyinterventionspreventcostlylong-
+termconsequences.
+•Cross-sectoralcollaborationbetween
+Ministriesisvital.
+FutureProspectsandInnovations
+•Telemedicine:Enablesruraldiagnosis,
+reducesreferralcosts.
+•AI/BigData:Predictsoutbreaks,
+allocateshealthresources.
+•e-Learningplatforms:Expanding
+educationtoremoteareas.
+•Malawiexploringe-Healthandm-Health
+inpilotdistricts.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+301
+Cont’.......
+
+Summary and Key Takeaways
+•Educationandhealtharetwinenginesofeconomicgrowth.
+•Investmentinhumancapitalmustbestrategic,inclusive,andlong-term.
+•Integratedpoliciesyieldhigherreturns.
+•Malawimustsustaingains,closegaps,andleverageinnovation.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+302
+
+Questions & Discussion
+•HowcanMalawiincreaseitsbudgetallocationtoeducationand
+health?
+•Whatpoliciesbestaddressrural-urbandisparities?
+•Openthefloorforcontributionsorcaseexamplesfromthe
+audience.
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+303
+
+5/13/2025
+Mr. Grant Timothy |tgrant@luanar.ac.mw|0992922011| 
+0881698021 |
+304

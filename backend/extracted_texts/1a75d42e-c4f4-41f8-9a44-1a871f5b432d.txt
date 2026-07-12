@@ -1,0 +1,601 @@
+
+
+INTRODUCTION TO ORGANIC 
+CHEMISTRY
+NCHE31205
+Dr F. Jagot
+SEMESTER II
+2024
+
+•The study of compounds containing carbon is called organic 
+chemistry.
+•Compounds that contain carbon and hydrogen, often in combination 
+with nitrogen, oxygen, and/or other elements are known as organic 
+compounds.
+•Most biologically relevant compounds are organic.
+Quinine
+cis-retinol
+sucrose
+
+•Carbon has four valence electrons; [He]2s
+2
+2p
+2
+. 
+•It therefore forms four bonds in virtually all of its compounds.
+•When all four bonds are single bonds, the molecular geometry is 
+tetrahedral –sp
+3
+hybridized.
+•One double bond –trigonal planar –sp
+2
+hybridized.
+•One triple bond –linear –sphybridized.
+
+Drawing molecules
+Structural formulae: Shows how the atoms in the organic molecule are 
+bonded together. 
+•Different types of structural formulae:
+1)Displayed formulae/ Lewis structures:
+•This shows all the bonds between atoms in the molecule as individual 
+lines. 
+•All atoms (including carbon and hydrogen) in the organic molecule are 
+shown.
+
+•For example, the displayed formula for the following compounds:
+ethanalmethane
+butane
+butanoicacid
+
+2) Condensed structural formulae:
+•Condense the C—H bonds in order to simplify the displayed formula. 
+For example by writing CH
+3
+or CH
+2
+instead of showing these bonds.
+•For example:
+CH
+4
+CH
+3
+—CH
+2
+—CH
+2
+—CH
+3
+CH
+3
+—CH
+2
+—CH
+2
+—C=O  
+OH
+ethanal
+methane
+butane
+Butanoicacid
+
+•The structural formula can even be condensed further to minimise 
+space by avoiding displaying of any bonds.
+•For example;
+CH
+3
+COH
+CH
+3
+CH
+2
+CH
+2
+CH
+3
+CH
+3
+CH
+2
+CH
+2
+COOH
+•However, does not show presence of multiple bonds, or arrangement 
+of atoms in the molecule.
+•Substituents are indicated using brackets;
+•For example, the condensed formula for 2-hydroxy-3-methylbutane:
+is: CH
+3
+CH(OH)CH(CH
+3
+)CH
+3
+
+3) Skeletal formulae:
+•Simplify the representation of organic compounds by omitting C’s and 
+H’s in the formula.
+•Shows only the skeleton of the compound by representing C—C 
+bonds as lines.
+•H’s are omitted.
+•Any heteroatom (oxygen, nitrogen, halogen) is shown.
+•Any functional group is shown, attached to the skeleton.
+•For example, the skeletal formula for:
+is:
+
+Condensed displayed 
+formula
+Skeletal formula
+
+Hydrocarbons
+•The simplest class of organic molecules is the hydrocarbons, which 
+consist only of carbon and hydrogen.
+•Contain C—C and C—H bonds.
+•C—C bonds form the skeleton / backbone of the molecule, while the 
+hydrogen atoms are on the surface or ‘skin’ of the molecule.
+•The key feature of hydrocarbons is the presence of stable C—C bonds.
+•These bonds are non-polar, and have a high bond strength. 
+
+•Hydrocarbons can be grouped into four categories based on the types 
+of carbon-carbon bonds in their molecules:
+1.Alkanes
+2.Alkenes
+3.Alkynes
+4.Aromatic hydrocarbons.
+
+Saturated and Unsaturated Hydrocarbons
+•Saturated hydrocarbons are those than contain only C—C single 
+bonds. 
+•They are saturatedwith hydrogen.
+•For example, alkanes and cycloalkanes.
+•Unsaturated hydrocarbons are those that contain at least one C=C 
+double bond or C=C triple bond. 
+•For example, alkenes, alkynes, cycloalkenes.
+
+Aliphatic and Aromatic Hydrocarbons
+•Aromatic hydrocarbons are those that contain a benzenering in their 
+structure.
+•Benzene has delocalised (spread out) pi electrons –this gives rise to the 
+two resonance structures of benzene.
+•They usually have very pleasant smells, hence the name.
+•Most organic compounds are aromatic.
+•An aliphatic compound is one that consists of no rings; only a straight / 
+branched chain. 
+•A cyclic compound is one that contains a non-aromatic cyclic ring in its 
+structure.
+
+Naming Organic compounds
+•Chemists should be able to name organic compounds, so that their 
+structures can be drawn.
+•Chemists have adopted a set of rules for naming compounds 
+established by an organisation called the International Union of Pure 
+and Applied Chemistry (IUPAC).
+•The naming of an unbranched chain consists primarily of 2 parts;
+1)The prefix: this indicates the number of carbon atoms in the chain
+2)The suffix (ending): this indicates the functional group/ nature of 
+the compound.
+
+Prefixes
+•The prefix is determined by the number of carbon atoms in the 
+unbranched chain.
+Memorize these!!
+
+Suffixes
+•The suffix is determined by the functional group of the molecule.
+•The reactivity of organic compounds can be attributed to certain 
+atoms or groups of atoms within the molecule. These groups of atoms 
+make up a functional group.
+•A site of reactivity within an organic molecule is known as a functional 
+group –it controls how the molecule behaves or functions.
+
+
+
+
+
+Alkanes
+•These are hydrocarbons that contain only single bonds. Thus each 
+carbon atom forms four single bonds.
+•Names of alkanes end in ‘ane’.
+•To name the alkane, add ‘ane’ to the prefix corresponding to number 
+of carbon atoms;
+Butane
+Lewis Structures/Displayed formulae
+
+•General formula for alkanes ; C
+n
+H
+2n+2
+•The formulas for alkanes are often written in the form of condensed 
+structural formulas.
+•For example, the molecular formula for propane is C
+3
+H
+8
+. The 
+condensed structural formula is CH
+3
+CH
+2
+CH
+3
+.
+
+First few members of the alkanes and their corresponding condensed structural formulae
+These are all straight chain hydrocarbons or straight chain alkanes
+
+Structural isomers of alkanes
+•Alkanes consisting of four or more carbon atoms can also form 
+branched chains.
+Compounds with the same molecular 
+formula but different structural formula 
+(different arrangement of atoms) are known 
+as structural isomers.
+For example, there are two structural 
+isomers for butane.
+
+Pentane has three structural isomers
+
+•Practice Exercise 1:
+a)Draw the displayed formula for pentane.
+b)Draw the displayed formulae for any 4 structural isomers of 
+pentane.
+
+Naming Structural Isomers
+•The following steps summarize the procedure for naming structural 
+isomers:
+1.Find the longest continuous chain of carbon atoms, and use the 
+name of this chain as the base name of the compound. the longest 
+chain may not always be written as a straight line; 
+Groups attached to the main chain are called substituents.
+
+2. Number the carbon atoms in the longest chain, beginning with the end 
+of the chain nearest to the substituent. The chain is numbered from the 
+end that gives the lowest number for the substituent position.
+3. Name and give the location of each substituent group. A substituent 
+group that is formed by removing an H from an alkane is called an alkyl 
+group. Named by replacing the ‘ane’ending of the alkane with ‘yl’. 
+Names and structural formulae of alkyl substituents
+Secondary –carbon bonded to 
+two other carbons
+Tertiary –carbon bonded to 
+three other carbons
+
+Note: if the substituent is an OH group, it is given the name ‘hydroxy’.
+If the substituent is a halogen, it is given the name ‘halo’. For example a 
+chlorine substituent is known as ‘chloro’.
+4. When two or more substituents are present, list them in alphabetical 
+order. When there are two or more of the same substituent, use a 
+prefix (di-, tri-, tetra-) in front of the substituent name.
+
+•Practice exercise 2: a) name the following alkane:
+b) Name the following organic compound:
+c) Draw the condensed displayed formula for 3-ethyl-2-methylpentane.
+d) Draw the skeletal formula for the above alkane.
+e) Name the structural isomers for hexane that you drew in Practice exercise 
+1.
+
+Classification of carbons
+•We classify carbons as primary (1°), secondary (2°), tertiary (3°), or 
+quaterniary(4°) based on the number of carbon atoms bonded to 
+that particular carbon.
+
+Cycloalkanes
+•Cycloalkanes are saturated hydrocarbons that contain carbon atoms 
+joined in a ring.
+•General formula: C
+n
+H
+2n
+
+•To name cycloalkanes, prefix the name of the corresponding open-
+chain hydrocarbon with cyclo-, and name each substituent on the 
+ring.
+•If there is only one substituent, there is no need to give it a number.
+•If there are two substituents, number the ring by beginning with the 
+substituent of lower alphabetical order. Number in such a way that 
+you get the lowest set of numbers.
+Methylcyclopropane
+1-ethyl-3-methylcyclopentane
+NOT 1-ethyl-4-methylcyclopentane!!
+
+•If there are three or more substituents, number the ring so as to give 
+them the lowest set of numbers, and then list the substituents in 
+alphabetical order. 
+1,3-diethyl-4-methylcyclohexane
+1,3,5-triethyl-2-methylcyclohexane
+
+Sources of alkanes
+•The three major sources of alkanes are: natural gas, coal, and 
+petroleum oil (the three fossil fuels).
+•Natural gas consists of approximately 90 -95% methane, 5-10% 
+ethane, and a mixture of other relatively low-boiling alkanes.
+•Through the process of thermal cracking, alkanes separated from 
+these sources can be converted into unsaturated hydrocarbons (more 
+useful).
+•Catalytic cracking of alkanes takes place at lower temperatures, in the 
+presence of catalysts.
+
+•Petroleum oil is a thick viscous liquid containing a mixture of 
+thousands of compounds, most of which are hydrocarbons.
+•Petroleum, and petroleum-derived products fuel automobiles, trains, 
+and aircrafts.
+•They also provide greases and lubricants for machinery.
+•In addition, petroleum and natural gas contribute 90% of the raw 
+materials which are used in industry to make dyes, pharmaceuticals, 
+perfumes, plastics, synthetic fibres, etc.
+
+•But first, the petroleum must be refined.
+•This complex mixture of hydrocarbons must be separated into 
+fractions. This is achieved by fractional distillation.
+Heated to temperatures as high 
+as 370 to 425 °C.
+Each fraction contains a mixture 
+of hydrocarbons that boils at a 
+specific range.
+
+
+
+•Coal is mostly carbon (C).
+•To make use of coal as a raw material for organic synthesis, steam is 
+passed over the coal.
+•This results in the formation of synthetic gas –a mixture of carbon 
+monoxide and hydrogen.
+•Synthetic gas can then be used to manufacture methanol and acetic 
+acid:
+
+Properties of Alkanes
+•The most important property of alkanes and cycloalkanes is their 
+almost complete lack of polarity –limits their reactivity.
+•Their boiling points are generally lower than those of other 
+compounds of similar molecular weight –weaker intermolecular 
+forces.
+•A branched alkane generally has a lower boiling point than the 
+corresponding unbranched alkane of the same molecular weight.
+•As branching increases, boiling point decreases.
+•This is because as branching increases, the molecule becomes more 
+compact, reducing surface area for intermolecular forces of 
+attraction.
+
+•Alkanes containing 1 to 4 carbons are gases at room temperature.
+•Those containing 5 to 17 carbons are colorlessliquids.
+•Those containing 18 carbons and above are waxy, white solids -for 
+example, the petroleum jelly used in cosmetics which is a mixture of 
+high-molecular weight alkanes.
+
+Reaction mechanisms
+•Reaction mechanisms show how bonds break and form in terms of 
+the flow of electrons.
+REVIEW LECTURES 7 AND 8 FROM CHEMISTRY I (LEWIS 
+STRUCTURES, POLARITY, RESONANCE, ELECTRONEGATIVITY, 
+AND MOLECULAR GEOMETRY)!!
+
+Electronegativity
+•Recall that electronegativity is the ability of an atom to attract 
+electrons towards itself.
+•The more electronegative an atom, the more it will draw electrons 
+towards itself.
+•Electronegativity increases from left to right of the periodic table.
+•The halogens are the most electronegative elements in the periodic 
+table.
+•The atom/s in a molecule (usually carbon) that are bonded to an 
+electronegative element are said to be electropositive –electron 
+deficient. 
+
+•More electronegative atom –represented by symbol δ-
+•Electropositive atom –represented by symbol δ+
+δ+
+δ-
+δ-
+δ-
+δ-
+δ-
+δ-
+δ-
+δ+
+δ+
+δ+
+δ+
+δ+
+δ+
+In these 
+molecules the δ+ 
+atoms are all 
+carbons bonded 
+to δ-atoms
+
+•Lewis acids are species that can accepta pair of electrons to form 
+new bonds.
+•Because a Lewis acid accepts a pair of electrons, it is called an 
+electrophile(electron lover). 
+•Lewis bases are species that have a lone pair of electrons that can be 
+donatedto form new bonds.
+•A Lewis base is called a nucleophile(lover of nuclei) because it 
+donates electrons to a nucleus with an empty, or easily vacated, 
+orbital. 
+A nucleophile donates electrons. It must have a lone 
+pair of electrons.
+An electrophile accepts electrons. It must be electron-
+deficient.
+
+•Common nucleophiles
+In the case of H
+2
+O, the alcohols, and 
+carboxylic acids, it is the oxygen 
+which enables the molecule to act 
+as a nucleophile due the lone pair 
+of electrons.
+Likewise for NH
+3
+and other 
+Nitrogen-containing compounds, 
+and sulphur-containing compounds.
+
+Practice exercise 3:
+a) For the following molecules, use the appropriate symbols to indicate 
+electronegative atoms and electropositive atoms.
+b) For each molecule, identify if it can act as a nucleophile, or an 
+electrophile. 
+
+•Chemists use curved arrows to show the movement of electrons 
+between nucleophiles and electrophiles.
+The curved arrow 
+always starts at the 
+nucleophile and 
+points towards the 
+electrophile.
+
+•The curved arrow shows the flow of a pair of electrons from the 
+nucleophile to the electrophile.
+•It is this flow of electrons that causes bonds to form and to break.
+•The movement of each pair of electrons involved in making or 
+breaking bonds is indicated by its own separate arrow.
+
+•For example:
+•For this reaction, one curved arrow shows the transfer of a lone pair of 
+electrons from oxygen to carbon to form a new O—C bond. Another curved 
+arrow shows that the C—Cl bonding pair detaches from carbon (the bond 
+breaks), and that pair of electrons becomes a lone pair on the Cl product. 
+This is because carbon cannot form 5 bonds!
+
+Homolyticand Heterolyticcleavage
+•When a bond breaks heterolytically(heterolyticcleavage), one atom 
+leaves with both electrons. This results in the formation of 
+intermediate ions.
+•When a bond breaks homolytically(homolyticcleavage), both atoms 
+leave with one electron each. This results in the formation of radicals.
+NB! Note the use of half-arrows. Half-
+arrows are always used to indicate 
+homolyticcleavage (formation of 
+radicals)
+
+Carbocationsand Carbanions
+•Carbocationsand carbanions are formed when bonds split 
+heterolytically.
+•A carbocation is a species containing a positively charged carbon that 
+is bonded to three other atoms.
+•They have no non-bonding pairs of electrons. They only have six 
+valence electrons and are therefore electron deficient.
+•Hence powerful electrophiles.
+‘’R’’represents any 
+atom / group of 
+atoms
+
+•Carbocationsare stabilised by alkyl substituents through the 
+inductive effect.
+•The inductive effect is a donation of electron density from alkyl 
+substituents through the sigma bond to the positively charged 
+carbon.
+•The more highly substituted the carbocation is, the more stable it will 
+be. 
+•Generally, the more stable a carbocation is the more favourable it will 
+be (important to remember for reaction mechanisms).
+
+‘R’ here represents any alkyl group
+
+•Unsaturated carbocationsare also stabilised by the inductive effect 
+and by resonance stabilisation.
+•If a pi bond is adjacent to the positively charged carbon, the filled p 
+orbitals of the pi bond can overlap with the empty p orbitals of the 
+positive carbon.
+•The result is a delocalised ion, with the positive charge being shared 
+by two atoms. This is resonance delocalisation, and it is particularly 
+effective at stabilising carbocations.
+
+•A carbanion is a negatively charged species, containing a negatively 
+charged carbon bonded to three other atoms.
+•Carbanions form when bonds split heterolytically, and the carbon 
+leaves with both electrons from the bond.
+•They form when the carbon atom is bonded to a more electropositive 
+atom (for example a metal).
+δ+
+δ-
+
+•Carbanions are powerful nucleophiles.
+•Contrary to carbocations, alkyl groups destabilisecarbanions through 
+the inductive effect.
+•This is because carbanions are already rich in electron density.
+
+Free radicals
+•When a bond splits homolytically, free radicals are formed.
+•Free radicals are neutral species that contain one non-bonding 
+electron.
+•Just like carbocations, radicals are electron deficient since they lack a 
+complete octet around the carbon. 
+•Radicals are also stabilised by alkyl groups through the inductive 
+effect.
+•The more highly substituted the radical, the more stable it will be.
+
+
+
+Reactivity of Alkanes
+•Due to their almost complete lack of polarity, alkanes are the least 
+reactive of the hydrocarbons.
+•They will, however, undergo combustion in the presence of oxygen.
+•Thus, commonly used as fuels.
+•Alkanes can also undergo halogenation reactions –substitution of a 
+hydrogen atom with a halogen.
+•The reaction needs heat or light in order to take place.
+
+•For example, chlorination of methane in the presence of heat or light;
+•The reaction may continue to give different chloro-substituted 
+products; heat (ΔH) or light (hν) is needed for each step
+
+•Now let’s study the mechanism of the reaction.
+•The halogenation of alkanes follows a free-radical chain reaction 
+mechanism.
+•This type of mechanism has three steps;
+1)Initiation step: generates a reactive intermediate
+2)Propagation step: in which the reactive molecule reacts with a 
+stable molecule to form a product, and another reactive 
+intermediate, allowing the chain to continue until the reactant 
+supply is exhausted or the reactive intermediate is destroyed.
+3)Termination step: reactions that destroy the reactive intermediate, 
+allowing the reaction to stop.
+
+1)The initiation step: generation of radicals
+2) Propagation steps: 
+Cl
+2
+molecule absorbs light, and splits homolytically
+to form two highly reactive Cl radicals. Note the use 
+of half-arrows!
+A Cl radical abstracts (removes) a proton from CH
+4
+. 
+the C-H bond splits homolytically, leaving one 
+electron on the C of CH
+4
+forming methyl radical, and 
+the other electron combines with Cl radical to form 
+H—Cl.
+Chlorine radical
+The methyl radical reacts with a Cl
+2
+molecule, splitting the 
+Cl—Cl bond. This generates another Cl radical that can 
+repeat step 1. 
+This chain of reactions continues until the supply of 
+reactants is exhausted, or the reaction is terminated.
+
+3) Termination step: slows or stops the chain reaction
+This termination step becomes important towards the end of the 
+reaction, when there are relatively few molecules of reactant present.
+At this point, the free radicals are less likely to encounter a reactant 
+molecule than they are to encounter each other. The chain reaction 
+quickly stops. 
+Reactive intermediate 
+radicals are consumed; thus 
+breaking the chain!
+or
+or
+
+•Halogenation of alkanes containing three or more carbon atoms will 
+result in a major and a minor product:
+•Due to the higher stability of a secondary radical compared to a 
+primary radical, the secondary chloride is more favoured (major 
+product).
+Minor product
+40% yield
+Major product
+60% yield
+<
+More stableLess stable

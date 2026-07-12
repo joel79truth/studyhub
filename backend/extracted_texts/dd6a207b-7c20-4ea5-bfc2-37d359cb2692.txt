@@ -1,0 +1,967 @@
+
+
+Variation & Measures of 
+variation
+Wilson Nandolo
++265 993 375 505
+wnandolo@luanar.ac.mw
+http://www.livestockinmalawi.com
+
+Introduction
+•All animals show a wide range of 
+differences from each other. 
+•Even for identical twins, the 
+environment in which they are 
+raised can never be the same, 
+strictly.
+
+Causes of variation
+•Large number of genes
+•Random segregation of genes
+•Independent assortment of genes
+•Crossing over
+•Environment
+
+Importance of variation
+•Variation between individuals is the basis 
+for improvement: 
+–if all animals were identical genetically
+–there would be no way for 
+improvement of some traits in 
+preference for others except by 
+improving the environment.
+
+Variation in qualitative traits
+•qualitative traits do not vary 
+extensively because 
+–they are affected by few genes and
+–their expression is relatively discrete, 
+•For example, 
+–an individual is normally either male or 
+female, and
+–the range of coat colour is quite small. 
+
+Variation of quantitative traits
+•Most traits of economic 
+importance are quantitative. 
+•A wide and continuous range of 
+phenotypes is possible due to 
+–The acting together of many genes, 
+in association with environmental 
+factors
+
+Variance components of an individual’s 
+phenotype
+•Variation in animal performance is in 
+the broad sense due to the effect of 
+–heredity and 
+–the environment.
+•Phenotype can therefore be viewed 
+as a function of genotype and 
+environment i. e.
+푃=퐺+퐸
+
+Components of phenotypic 
+variance
+•The effect of genotype for a quantitative trait is 
+roughly normally distributed according to the 
+polygenic model. 
+•Similarly, the effect of the environment may also 
+be normally distributed 
+–when systematic environmental effects (year, 
+season, sex, feed type) are appropriately 
+accounted for. 
+•Phenotypic variation, V
+P
+, is due to genotypic 
+variation, V
+G
+and environmental variation, V
+E
+. 
+푉
+푃
+=푉
+퐺
++푉
+퐸
+
+Genotype by environment 
+interaction
+•However, the genotype of an animal can 
+interact with the environment, 
+•This leads to another source of variation; the 
+genotype-environment interaction variation
+푉
+푃
+=푉
+퐺
++푉
+퐸
++푉
+퐺×퐸
+
+Components of genotypic 
+variance
+•Moreover the genetic component 
+of phenotypic variation can be 
+divided into 
+–additive (A), 
+–dominance (D) and 
+–epistatic (I) variance, so that
+푉
+푃
+=푉
+퐴
++푉
+퐷
++푉
+퐼
++푉
+퐸
++푉
+퐺×퐸
+
+Additive genetic variation, V
+A
+•The variation due to the additive 
+action of alleles is transmitted to the 
+next generation in a predictable 
+manner. 
+•It is never disrupted during meiosis. 
+•Additive genetic variation is 
+exploited in animal breeding 
+programmes.
+
+Dominant genetic variation, V
+D
+•Variation due to the dominance 
+action at a locus.
+•It is destroyed during meiosis. 
+•It cannot be inherited; it is 
+created anew in the new 
+generation.
+
+Epistatic genetic variation, V
+I
+•The variation due to the 
+interaction of alleles at two or 
+more loci.
+•It can also not be inherited; 
+–it is destroyed during meiosis and 
+created anew in the new 
+generation.
+
+Summary of the genotypic variance 
+components
+•V
+D
+and V
+I
+are difficult to quantify 
+•They are therefore assumed to be 
+equal to zero in large populations 
+or in large sample sizes.
+
+Environmental variance, V
+E
+•This is composed of all the external and 
+internal influences on the animal that affect 
+its performance. 
+•Examples are 
+–feed, 
+–management practices, 
+–the occurrence and control of diseases, 
+–Climate
+–Weather, etc
+
+Environmental variance, V
+E
+•The environmental effects can be 
+measured at any point in time 
+(How?). 
+•Some of the effects may be more 
+or less permanent during the 
+lifetime of an individual, while 
+other effects are short-lived. 
+
+Genotypic and environmental 
+interaction variance, 
+•This can be noted when 
+–two breeds or varieties differ in their performance 
+differently in different environments, or
+–two individuals rank differently in different 
+environments. 
+•The table below shows such interaction.
+Temperate TropicalDifference
+Brahman340230110
+Zebu29025040
+Difference50-20
+
+•Obviously, 
+–the Brahman performs better in the 
+temperate region but not in the tropical one.
+–The Zebu does better in the Tropical region
+TemperateTropicalDifference
+Brahman340230110
+Zebu29025040
+Difference50-20
+340
+250
+
+Measures of variation for quantitative 
+traits
+•Because quantitative traits show 
+normal distribution, they are best 
+described by 
+–their central tendency and 
+•Mean (arithmetic, geometric)
+•Median
+•Mode 
+–distribution about the central tendency
+•Range
+•Variance
+•Standard deviation
+
+Descriptive statistics: the mean
+•This is the average phenotypic value 
+for the population.
+Where
+μ is the true population mean, 
+x
+i
+is the i
+th
+phenotypic value and
+N is the population size.
+휇=
+σ
+푖=1
+푁
+푥
+푖
+푁
+
+Measures of position and 
+distribution
+•The median
+–This is the value at which 50% of the 
+observations exceed or fall below.
+•The mode
+–This is the most frequent value.
+•The range
+–This is the difference between the 
+extreme values.
+
+Variance
+•Population variance, 
+2
+, is given 
+by
+•Sample variance, s
+2
+, is given by
+휎
+2
+=
+σ
+푖=1
+푁
+푥
+2
+−
+σ
+푖=1
+푁
+푥
+2
+푁
+푁
+푠
+2
+=
+σ
+푖=1
+푛
+푥
+2
+−
+σ
+푖=1
+푛
+푥
+2
+푛
+푛−1
+
+The standard deviation
+•This describes the variation of a 
+population or a sample about the 
+mean. 
+•When used together with the mean, 
+the variation of the population or 
+sample is reasonably described. 
+•Population standard deviation, ,  is 
+given by 
+휎=
+σ
+푖=1
+푁
+푥
+2
+−
+σ
+푖=1
+푁
+푥
+2
+푁
+푁
+
+Sample standard deviation, s, is given 
+by
+푠=
+σ
+푖=1
+푛
+푥
+2
+−
+σ
+푖=1
+푛
+푥
+2
+푛
+푛−1
+
+The coefficient of variation
+•This is standardized standard deviation. 
+•The purpose of standardizing the standard 
+deviation is to make it comparable to 
+–the standard deviations for other populations, or
+–other traits or 
+–standard deviations for the same trait but in 
+different age groups. 
+•It is a measure of variation in relative terms, and 
+is expressed as a percentage.
+푐푣=
+푠
+푥
+×100
+
+The standard error of the mean
+•This is the standard deviation of the 
+means of the samples repeatedly 
+drawn from a population. 
+•It is a measure of the precision of 
+estimates. 
+•If the s. e. is small, the estimates are 
+precise. 
+푠푒=
+푥
+푛
+
+Analysis of variance
+•This is a statistical procedure 
+which is used to test the 
+significance of the ratio between
+–the variance attributable to a given 
+factor to 
+–the variance due to random error. 
+•The test statistic is F.
+
+Covariance
+•Covariance is a measure of how much two 
+random variables vary together. 
+•It’s similar to variance, but where variance tells 
+you how a single variable varies, co variance tells 
+you how two variables vary together.
+
+Covariance
+•A large covariance can mean a strong relationship 
+between variables. 
+•However, you can’t compare variances over data 
+sets with different scales (like pounds and inches). 
+•A weak covariance in one data set may be a strong 
+one in a different data set with different scales.
+
+Scatter plots
+•The pattern of data is indicative 
+of the type of relationship 
+between your two variables:
+–positive relationship
+–negative relationship
+–no relationship
+
+Positive relationship
+
+Positive and negative correlation
+
+No relation
+
+Correlation Coefficient
+•Statistic showing the 
+degree of relation between 
+two variables
+
+Simple Correlation  coefficient (r)
+➢It is also called Pearson's 
+correlation    or product moment 
+correlation
+coefficient. 
+➢It measures the natureand 
+strengthbetween two variables of
+the quantitativetype.
+
+Simple Correlation coefficient (r)
+The signof rdenotes the nature 
+of   association 
+while the valueof rdenotes the 
+strength of association.
+
+Simple Correlation coefficient (r)
+➢If the sign is +ve  this means the relation is direct 
+(an increase in one variable is associated with an 
+increase in the other variable and a decrease in 
+one variable is associated with a
+decrease in the other variable).
+➢While if the sign is -ve this means an inverse or 
+indirect relationship (which means an increase in 
+one variable is associated with a decrease in the 
+other).
+
+Simple Correlation coefficient (r)
+➢The value of r ranges between ( -1) and ( +1)
+➢The value of r denotes the strength of the association  as 
+illustrated
+by the following diagram.
+-1
+10
+-0.25-0.750.750.25
+strongstrongintermediateintermediateweakweak
+no relation
+perfect 
+correlation
+perfect 
+correlation
+Direct
+indirect
+
+Simple Correlation coefficient (r)
+If r = Zero  this means no association or 
+correlation between the two variables.
+If 0 < r < 0.25 = weak correlation.
+If 0.25 ≤ r < 0.75 = intermediate correlation.
+If 0.75 ≤ r < 1 = strong correlation.
+If r = l = perfect correlation.
+
+r=
+σ
+xy−
+σ
+x
+σ
+y
+n
+σ
+x
+2
+−
+(
+σ
+x)
+2
+n
+.
+σ
+y
+2
+−
+(
+σ
+y)
+2
+n
+How to compute the simple correlation 
+coefficient (r)
+
+Example:
+•A sample of 6 
+children was 
+selected, data about 
+their age in years 
+and weight in 
+kilograms was 
+recorded as shown 
+in the following table 
+. It is required to find 
+the correlation 
+between age and 
+weight.
+Weight 
+(Kg)
+Age 
+(years)
+No
+1271
+862
+1283
+1054
+1165
+1396
+r=
+σxy−
+σxσy
+n
+σx
+2
+−
+(σx)
+2
+n
+.σy
+2
+−
+(σy)
+2
+n
+
+Example:
+•These 2 variables are of the quantitative type, 
+one variable (Age) is called the independent and 
+denoted as (X) variable and the other (weight)
+is called the dependent and denoted as (Y) 
+variables to find the relation between age and 
+weight compute the simple correlation coefficient 
+using the following formula:
+r=
+σ
+xy−
+σ
+x
+σ
+y
+n
+σ
+x
+2
+−
+(
+σ
+x)
+2
+n
+.
+σ
+y
+2
+−
+(
+σ
+y)
+2
+n
+
+Example:
+Y
+2
+X
+2
+xy
+Weight 
+(Kg)
+(y)
+Age 
+(years)
+(x)
+Serial 
+n.
+1444984127
+1
+64364886
+2
+1446496128
+3
+1002550105
+4
+1213666116
+5
+16981117139
+6
+∑y2=
+742
+∑x2=
+291
+∑xy= 461
+∑y=
+66
+∑x=
+41
+Total
+
+Example:
+•r = 0.759
+•Strong direct correlation 
+r=
+461−
+41×66
+6
+291−
+(41)
+2
+6
+.742−
+(66)
+2
+6
+
+Exercise: Relationship between age 
+and daily milk yield in dairy cows 
+Age (years)Daily milk  
+yield (kg)
+1025
+830
+415
+312
+517
+724
+620
+•Calculate and 
+comment on the 
+correlation 
+between the 
+age of the cows 
+and their milk 
+yields
+
+Exercise 
+
+Regression Analyses
+•Regression: technique 
+concerned with predicting 
+some variables by knowing 
+others
+•The process of predicting 
+variable Y using variable X
+
+Regression analysis
+•Uses a variable (x) to predict 
+some outcome variable (y)
+•Tells you how values in y 
+change as a function of 
+changes in values of x
+
+Regression
+➢Linearmeans “straight line”
+➢Regressiontells us how to draw 
+the straight line described by the 
+correlation
+
+Regression analysis 
+➢Calculates the “best-fit” line for a 
+certain set of data
+•The regression line makes the 
+sum of the squares of the 
+residuals smaller than for any 
+other line
+•Regression minimizes residuals
+
+Regression
+80
+100
+120
+140
+160
+180
+200
+220
+60708090100110120
+Wt (kg)
+SBP(mmHg)
+
+Regression formulae
+
+Regression Equation
+•Regression equation 
+describes the regression 
+line mathematically
+–Intercept
+–Slope
+
+Hours studying and grades
+
+Regressing grades on hours
+•Predicted final grade in class = 59.95 + 3.17*(number of 
+hours you study per week)
+Linear Regression
+2.004.006.008.0010.00
+Number of hours spent studying
+70.00
+80.00
+90.00
+Final grade in course
+
+
+
+
+
+
+
+
+
+
+
+
+Final grade in course = 59.95 + 3.17 * study
+R-Square = 0.88
+
+Predict the final grade of...
+•Predicted final grade in class = 59.95 + 
+3.17*(hours of study)
+•Someone who studies for 12 hours
+–Final grade = 59.95 + (3.17*12)
+–Final grade = 97.99
+•Someone who studies for 1 hour:
+–Final grade = 59.95 + (3.17*1)
+–Final grade = 63.12
+
+Exercise
+•A sample of 6 persons was 
+selected the value of their age ( x 
+variable) and their weight is 
+demonstrated in the following 
+table. 
+•Find the regression equation and 
+what is the predicted weight when 
+age is 8.5 years.
+
+Weight (y)Age (x)Serial no.
+12
+8
+12
+10
+11
+13
+7
+6
+8
+5
+6
+9
+1
+2
+3
+4
+5
+6
+
+Answer
+Y
+2
+X
+2
+xyWeight (y)Age (x)Serial no.
+144
+64
+144
+100
+121
+169
+49
+36
+64
+25
+36
+81
+84
+48
+96
+50
+66
+117
+12
+8
+12
+10
+11
+13
+7
+6
+8
+5
+6
+9
+1
+2
+3
+4
+5
+6
+7422914616641Total
+
+ljx=
+41
+6
+=6.83
+lj푦=
+66
+6
+=11
+푏=
+461−
+41×66
+6
+291−
+(41)
+2
+6
+=0.92
+
+ොy
+(x)
+=4.675+0.92x
+ොy
+(8.5)
+=4.675+0.92∗8.5=12.50Kg
+ොy
+(7.5)
+=4.675+0.92∗7.5=11.58Kg
+
+Exercise 
+•The following are the 
+age (in years) and 
+systolic blood 
+pressure of 20 
+apparently healthy 
+adults.
+B.P (y)Age (x)B.P (y)Age (x)
+128
+136
+146
+124
+143
+130
+124
+121
+126
+123
+46
+53
+60
+20
+63
+43
+26
+19
+31
+23
+120
+128
+141
+126
+134
+128
+136
+132
+140
+144
+20
+43
+63
+26
+53
+31
+58
+46
+58
+70
+
+Exercise 
+•Find the correlation between age and blood pressure 
+using simple and Spearman's correlation coefficients, 
+and comment.
+•Find the regression equation?
+•What is the predicted blood pressure for a man aging 
+25 years?
+
+x2xyyxSerial
+4002400120201
+18495504128432
+39698883141633
+6763276126264
+28097102134535
+9613968128316
+33647888136587
+21166072132468
+33648120140589
+4900100801447010
+
+x2xyyxSerial
+21165888
+12846
+11
+28097208
+13653
+12
+36008760
+14660
+13
+4002480
+12420
+14
+39699009
+14363
+15
+18495590
+13043
+16
+6763224
+12426
+17
+3612299
+12119
+18
+9613906
+12631
+19
+5292829
+12323
+20
+416781144862630852Total
+
+
+
+
+
+
+−
+−
+=
+n
+x)
+(
+x
+n
+y
+x
+xy
+b
+2
+2
+1
+114486−
+852×2630
+20
+41678−
+852
+2
+20
+=0.4547
+=
+for age 25
+ෝ
+풚= 112.13 + 0.4547 * 25=123.49 = 123.5 mm hg
+ොy=112.13+0.4547x
+
+End of presentation 

@@ -1,0 +1,315 @@
+
+
+1
+MOLECULAR MARKERS & THEIR USES
+•  Introduce traditional markers & novel genomic markers: 
+their characteristics, advantages and disadvantages
+•  Application of markers in genetics work
+WHAT ARE GENETIC MARKERS?
+•
+A trait which shows simple genetic variation, detectable 
+as difference in DNA sequence, fragment size, protein 
+size or visible by the eye.
+•Exon difference may be directly interesting in itself 
+46
+DNA MARKERS
+•   Are alleles of loci at which there is sequence variation in DNA that is 
+neutral in terms of phenotype.
+•Advantages
+–  neutral
+–  not influenced by environment
+–  expressed in all tissues
+–  scored at all stages
+BASIC CATEGORIES OF MARKERS
+•Morphological: easily scored but very limited variation 
+(polymorphism)
+•Proteins (isozymes): Example: Isozyme linked (>1 cM) to Fusarium 
+wilt resistance in wheat: limited polymorphism
+•DNA markers: various types, based on hybridization, PCR & 
+DNA sequence
+
+2
+47
+FROM BAND TO LOCUS: TYPICAL GEL POLYMORPHISM
+48
+PROPERTIES OF AN IDEAL MARKER?
+1.Polymorphic and evenly distributed throughout the 
+genome.
+2.    Reveals markers that are codominant, distinguishing 
+between homozygotes and heterozygotes.
+3.    Provide adequate resolution of genetic differences
+4.    Generate multiple independent and reliable markers
+5.    Quick, simple and inexpensive
+6.    Need small amount of tissue and DNA sample
+7.    Have linkage to distinct phenotypes
+8.    Require no prior information about the genome
+
+3
+49
+ISOZYMES AND ALLOZYMES
+•  Isozymes are enzymes that perform the same function but 
+which are coded for by genes located at different loci
+•  Allozymes are variant forms of an enzyme that are coded by 
+different alleles at the same locus.
+•  Both allozymes and isozymes move at different speeds 
+through gel because they differ in size and charge
+50
+Advantages:
+•genic
+• inexpensive
+• codominant
+• reproducible
+• easy to develop & assay
+• amino acid substitutions 
+(nonsynonymous variation)
+• relatively polymorphic
+Disadvantages:
+• limited number
+•biased
+• only nonsynonymous 
+variation
+• hidden alleles
+• tissue demanding
+• observed polymorphic 
+alleles are under strong 
+balancing selection
+• automation is impossible
+Allozymes
+
+4
+51
+Allozymes - applications in conservation genetics
+Measuring genetic variationlimited
+Measuring population genetic structure 
+and differentiation
+limited
+Estimating introgressive hybridization, 
+migration or gene flow
+limited 
+Studying phylogeny or taxonomy
+good, but 
+limited to 
+closely relate 
+taxa
+Characterizing mating system and 
+paternity analysis
+limited
+Individual identification or DNA 
+fingerprinting
+poor
+Genetic mapspoor
+52
+RESTRICTION FRAGMENT LENGTH POLYMORPHISM
+•  The power of this approach lies in the shift from examining 
+derived phenotypes (isozymes) to direct analysis of the 
+genotype
+•  Discovery of restriction endonucleases, to allow direct 
+comparisons of homologous DNA segments among individuals
+•  Variations are monitored as changes in length of the 
+defined DNA fragments produced by digestion of DNA with 
+restriction endonucleases hence the term Restriction 
+fragment length Polymorphism (RFLPs).
+ 
+
+5
+53
+Restriction Fragment Length Polymorphism (RFLP)
+Advantages
+• numerous
+• codominant
+• reproducible
+• representative
+• relatively polymorphic
+Disadvantages:
+• laborious
+• complex patterns
+• large amount DNA 
+required
+• anonymous
+• automation is difficult
+54
+Random Amplified Polymorphic DNA (RAPDs)
+•Overview
+•    RAPD analysis is a variant of standard PCR in which a short single primer (10bp 
+in length) of arbitrary or random nucleotide sequences are used to amplify DNA 
+segments.
+•    Individual primers operate in both forward and reverse directions, amplifying 
+between inverted repeats
+•Around 5 to 20 products
+•    Polymorphisms are due to base changes in the primer sites and length 
+variations between sites
+******* Insertion
+Deletion
+10bp random primer
+Individual 1
+Individual 2
+abc
+*******
+ade
+Ind 1Ind 2
+a
+b
+c
+d
+e
+•Technical
+
+6
+55
+ADVANTAGES & DISADVANTAGES OF RAPDs
+Advantages:
+•numerous
+•inexpensive
+• easy to develop & assay
+• very polymorphic
+Disadvantages:
+• low reproducibility
+• anonymous
+• dominant
+• low transferability 
+across species
+56
+AMPLIFIED FRAGMENT LENGTH POLYMORPHISM (AFLPS)
+Overview
+•   AFLPs combines the power of RFLP with the flexibility of PCR-based 
+technology by ligating primer-recognition sequence (adaptors) to the 
+restricted DNA and selective PCR amplifications of restriction 
+fragments using a limited set of primers. 
+•Step 1. Genomic DNA digested with a pair of 
+restriction enzymes which digest double 
+stranded DNA to produce (Eco-Eco; Eco-
+Mse; Mse-Mse)
+•Step 2. Double stranded Eco and Mse 
+adapters are ligated to restriction fragments.
+•Step 3. Pre-selective amplification, a subset 
+of fragments are amplified, using primers 
+complementary to adapter sequence with the 
+addition of one nucleotide (Eco+A and 
+Mse+C)
+•Step 4. The no of fragments further reduced 
+by Selective amplification in which primers 
+have an additional two selective bases
+
+7
+57
+Microsatellites or Simple Sequence Repeats (SSRs)
+Advantages:
+• numerous
+• codominant (mostly)
+• reproducible (within 
+species)
+• relatively easy to assay
+• very polymorphic
+• automation is possible
+Disadvantages:
+• nongenic
+• expensive to develop
+• frequent return 
+mutations
+• frequent null alleles
+• low transferability 
+across genera
+0
+5000
+10000
+15000
+20000
+25000
+30000
+35000
+40000
+210220230240250260270
+S277.C09_0609151352
+Si ze ( nt )
+228,30
+252,49
+0
+10000
+20000
+30000
+40000
+50000
+60000
+70000
+80000
+90000
+100000
+110000
+120000
+130000
+200210220230240250260
+S44.G01_0609151343
+Size (nt)
+216,22
+252,53
+58
+Simple Sequence Repeats (SSRs) or microsatellites
+•Short tandem repeats of 2 to 6 
+bp
+• Generally these are mono-, di-, 
+tri or tetra –nucleotides (e.g. 
+[A]n, [CA]n, [AGC]n, [GACA]n) 
+•Polymorphisms arise from 
+errors during the replication of 
+DNA or from unequal crossing-
+over (mispairing at repeats 
+during normal replication)
+ 
+•Length variants are detected 
+via PCR amplification of the 
+region containing the repeated 
+motif using primer pairs that 
+are homologous to the flanking 
+sequences
+ 
+•8000 publications by 2005
+Enriched 
+Library
+Non-enriched 
+Library
+Alternative 
+Library
+Successfully sequenced colonies
+Unique microsatellite loci
+Loci suitable for primer 
+design
+Polymorphic microsatellite
+ loci
+36% have
+ microsatellites
+46% suitable for 
+primer design
+50% have scorable
+microsatellites
+83% attrition from
+Library to successfully
+microsatellite
+Squirrell et al., 2003 Molecular Ecology 12:1339-1348
+
+8
+59
+Single Nucleotide Polymorphism (SNP) 
+Advantages:
+• numerous
+• codominant
+• easy to assay
+• reproducible
+• potentially suited for 
+automated technology 
+(DNA-chips)
+Disadvantages:
+• laborious detection
+• not universal 
+60
+APPLICATION OF MOLECULAR MARKERS
+1)    Characterizing mating system and paternity analysis
+2)   Forensic science and criminology- detection of criminals.
+3)   Genetic diversity analysis for conservation
+4)   Varietal identification and clonal fidelity testing
+5)   Assessment of genetic diversity & validation of genetic 
+relationships.
+6)   Marker - assisted selection- molecular  breeding
+7)   Taxonomy and classification
+8)   Studying phylogeny, evolution or taxonomy
+9)   Identification of genes determining sex in dioecious 
+plants, fish and other animals.

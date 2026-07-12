@@ -1,0 +1,83 @@
+
+
+ 
+Lilongwe University of Agriculture and Natural Resources 
+Department of Agricultural Engineering 
+Syllabus for Soil and Water Conservation 
+ 
+PRESENTED TO:     SENATE 
+PRESENTED BY:     Department of Agricultural Engineering 
+YEAR:      2 
+MODULE TITLE:     Soil and Water Conservation 
+COURSE CODE:     AGE32104 
+DURATION:     13 WKS 
+NO. OF LECTURES HOURS/WEEK:  2 HRS 
+NO. OF TUTORIALS HOURS/WEEK:  2 HRS 
+NO. OF PRACTICAL HOURS/WEEK:  0 HRS 
+TOTAL MODULE CREDITS:   3 HRS 
+SUMMARY: 
+ASSESSMENT: 
+Course Work 40%  End of Course Exam. 60% 
+AIMS OF STUDY: 
+1. To enable students understand and get familiarized with the mechanics and processes of soil erosion 
+and methods of controlling soil 
+erosion and conserving water for agricultural and domestic uses 
+2. To acquaint students with the various techniques of estimating soil loss on agricultural catchments 
+3. To acquaint students with the methods of evaluating soil and water conservation. 
+LEARNING OUTCOMES: 
+
+1. Analyse rainfall data and compute erodibility and erosivity indices 
+2. Estimate soil loss on agricultural catchments. 
+3. Comprehend composition of watershed and its effective management practices 
+4. Design elementally soil and water conservation technologies for agricultural production 
+5. Evaluate the performance of soil and water conservation techniques 
+LECTURE TOPICS: 
+1. Sources of water 
+I. Hydrological cycle 
+II. Precipitation and its measurements 
+III. Sources of agricultural water 
+IV. Rainwater Harvesting 
+2. Characteristics of water resources 
+I. Temporal and spatial variation 
+II. Randomness occurrence 
+III. Impacts of floods and droughts on crops, livestock, settlements and human health 
+3. Soil Erosion 
+I. Process of Soil erosion 
+II. Types of soil erosion 
+III. Quantification of factors of soil erosion (Erosion indices) 
+IV. Effects of Soil erosion 
+4. Predicting soil loss 
+I. Empirical models for estimating soil loss 
+II. The Universal Soil Loss Equation (USLE) 
+III. The Soil Loss Estimation Model for Southern Africa (SLEMSA) 
+5. Methods of conserving soil and water 
+I. Biological soil and water conservation methods 
+II. Physical soil and water conservation methods 
+6. Design of soil and water conservation structures 
+I. Design of a simple storm water drainage system 
+
+II. Design and construction of bench terraces 
+7. Watershed management 
+I. Composition of watershed 
+II. Catchment area conservation 
+III. Arable land use and conservation 
+IV. Wetland degradation and management 
+PRACTICAL/LAB TOPICS: 
+1. Analysis of rainfall data, computation of erodibility indices, and evaluation of peak surface runoff 
+2. Field observations of soil erosion 
+3. Estimation of soil loss using USLE and SLEMSA methods 
+4. Design of soil and water conservation structures (storm water drain system and Bench terraces) 
+5. Evaluation of soil and water conservation projects 
+PRESCRIBED TEXT: 
+1. Ghanshyam Das., 2012. Hydrology and Soil Conservation Engineering, including Watershed 
+Management. Second edition, PHI Learning Private Limited, New Delhi – 110001 
+2. Troeh et al., 2019. Soil and Water Conservation for Productivity and Environmental Protection . 4th Ed. 
+F. 
+REFERENCE TEXT: 
+1. Food and Agriculture Organization (FAO). 1993. Soil Tillage in Africa: Needs and Challenges. FAO Soils 
+Bulletin No. 69. FAO, Rome 
+2. Food & Agricultural Organisation (FAO). 2007. Conservation Agriculture. Website -
+http://www.fao.org/ag/ca/ (verified 16.04.07) 
+3. Kamwendo, M. L. 2009. The effect of conservation farming on soil physical properties in Malawi. M. Sc. 
+Thesis. Interuniversity Program on Physical Land resources. Ghent University, Belgium. 
+ 

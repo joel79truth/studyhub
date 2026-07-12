@@ -1,0 +1,4012 @@
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DRAFT PHYSICS II MODULE 
+ 
+By 
+ 
+Thomas Nyanda Reuben, PhD 
+and 
+Duncan Nkolokosa Elia, MSc 
+ 
+ 
+Note:  This  module  is  under  development  and  must  be  used  for  LUANAR  ODL 
+purposes only unless permission is sought from the LUANAR ODL Coordinator 
+
+ 
+1 
+ 
+Module Objectives 
+ 
+By the end of the module, you should be able to: 
+ 
+1) Acquire  knowledge on  fluids,  heat  transfer,  simple  machines,  simple  harmonic 
+motion, work, power and energy, electricity, light and optics  
+2) Relate concepts of fluid statics and dynamics to design and evaluation of hydraulic 
+structures 
+3) Relate concepts of heat transfer, simple machines, simple harmonic motion, work, 
+power and energy, electricity, light and optics to design, operation and evaluation 
+of agricultural and natural resource equipment and instruments 
+ 
+
+ 
+2 
+ 
+UNIT 1: Fluid Mechanics 
+ 
+1.0 Introduction 
+Welcome  to Unit  1!!! In  this  unit  we  will  discuss  the  properties  of  fluids  and  their 
+application  to design  of  hydraulic  structures. You  will  agree  that  our  day  to  day  lives 
+depend on and deal with fluids. Before we proceed, let us remind each other what fluids 
+are. McDonough  (2009)  defined  a  fluid  as  a  substance  that  will  undergo  continuous 
+deformation when it is subjected to shear stress regardless of how small the shear stress is. 
+We can, alternatively simply define a fluid as any substance that has the capability to flow 
+and occupy the shape of a container in which it is placed. There are two groups of fluids, 
+namely, gases and liquids. The air (gas) that we breathe and the water (liquid) that we use 
+day  after day  are examples of fluids. Our discussion in this unit will cover the nature of 
+fluids at rest (statics) and in motion (dynamics). 
+ 
+ 1.1. Objectives 
+By the end of this unit you should be able to: 
+ Define fluid concepts  
+ Differentiate one fluid concept from another 
+ Solve and analyze real-life problems related to fluids 
+ Relate fluid concepts to design of hydraulic structures and equipment 
+ 
+Key terms 
+Ensure that you understand the key terms or phrases used in this unit as listed below. 
+ Absolute viscosity 
+ Buoyancy 
+ Capillarity 
+ Critical velocity 
+ Density 
+ Energy head 
+ Fluid dynamics 
+ Fluid mechanics 
+ Fluid statics 
+ Fluid viscosity 
+
+ 
+2 
+ 
+ Head loss 
+ Ideal fluids 
+ Kinematic viscosity 
+ 
+ Kinetic energy 
+ Laminar flow 
+ Newtonian fluids 
+ Potential energy 
+ Pressure 
+ Reynolds number 
+ Specific gravity 
+ Specific weight 
+ Steady flow 
+ Surface tension 
+ Turbulent flow 
+ Uniform flow 
+ Velocity head 
+ 
+1.2 Fluid Mechanics 
+We will start our discussion by talking about fluid mechanics. Fluid mechanics represents 
+a branch of applied mechanics that deals with the behaviour of fluids at rest (statics) and 
+in motion (dynamics). In general fluids cover the liquid and gaseous state of matter. Fluids 
+are substances that are capable of flowing and conform to the shape of vessels containing 
+them. Let us look at other properties of fluids are presented below. 
+1) Fluids cannot sustain tangential or shear forces when in equilibrium. 
+2) All fluids have some degree of compressibility and offer little resistance to change 
+of form. 
+We can classify fluids as liquids or gases. The chief differences between liquids and gases 
+are: 
+1) Liquids are practically incompressible 
+2) Gases are compressible and usually must be so treated 
+3) Liquids occupy definite volumes and have free surfaces whereas a given mass of 
+gas expands until it occupies all portions of any containing vessel. 
+ 
+1.3 Properties of Fluids 
+ 
+We  will  now  discuss  different  fluid  properties  in  order  to  further  our  understanding  of 
+fluids. The properties include specific weight, density, specific gravity and viscosity. 
+
+ 
+2 
+ 
+ 
+1.3.1 Specific weight () 
+The specific weight ( or w) of a substance is the weight of a unit volume of the substance. 
+For  liquids,  may  be  taken  as  constant  for  practical  changes  of  pressure. The  specific 
+weight of water for ordinary temperature variations is 9.79 kN/m
+3
+. 
+ 
+We can calculate the specific weight of a gas using the equation of state which reads 
+ 
+ 1.1 
+ 
+ 
+Where pressure p is absolute pressure, v is the volume per unit weight, temperature T is 
+the absolute temperature, n the number of moles and R is the gas constant of a particular 
+gas species: 
+   
+ 1.2 
+ 
+ 
+Since an inverse relationship exists between the gas’ specific weight and volume, i.e.   = 
+1/v, then,   
+ 
+ 1.3 
+ 
+ 
+ 
+ 
+1.3.2 Density of a Fluid or Body 
+ 
+
+ 
+3 
+ 
+We define the density of a given fluid or a body as its mass (m) per unit volume (v). We 
+can  similarly  define  it  as  the  specific  weight  ()  of  the fluid or  body divided  by  the 
+acceleration due to gravity (g) since /g = W/vg = mg/vg = m/g. Thus, 
+ 
+    1.1 
+ 
+In SI units, the density of water is 1000kg/m
+3
+ at 4°C.  
+ 
+1.3.3 Specific gravity of a body 
+ 
+The specific gravity of a body is the dimensionless ratio of the weight of the body to the 
+weight of an equal volume of a substance taken as a standard. Solids and liquids are referred 
+to water (20°C) as their standard while gases are often referred to air free of carbon dioxide 
+or hydrogen (0°C). 
+ 
+ 1.2 
+ 
+ 
+ 
+ 
+ 
+ 
+Thus if the specific gravity of a given oil is 0.750, its specific weight is (0.750)(9.79kN/m
+3
+) 
+= 7.34kN/m
+3
+. 
+ 
+1.3.4 Viscosity of a fluid 
+ 
+
+ 
+4 
+ 
+Viscosity is due primarily to interaction between fluid molecules. The viscosity of a fluid 
+is that property which determines the amount of its resistance to a shearing force. The shear 
+force required to move the particle in relation to one another depends on the type of liquid 
+and  upon  its  temperature. The  shear  force of  a  given  fluid is  measured  in  terms  of  the 
+Viscosity of the fluid. A gas has a very low viscosity while that of a liquid is higher. The 
+viscosity  of  a  liquid  will  increase  as  its  temperature  is  reduced. Referring  to  the  figure 
+below, consider two large, parallel plates a small distance y apart, the space between the 
+plates being filled with a fluid. To keep the upper late moving at a constant velocity U, it 
+is  found  that  a  constant  force  F  must  be  applied. Thus  there  exists a  viscous  interaction 
+between the plate and fluid manifested by a drag on the former and a shear force on the 
+latter. 
+ 
+ 
+ 
+ 
+The fluid in contact with the upper plate will adhere to it and will move at velocity U, and 
+the fluid in contact with the fixed plate will have velocity zero. If distance y and velocity 
+U are not too great, the velocity profile will be a straight line. Experiments have shown that 
+shear  force  F  varies  with  the  area  of  the  plate  A,  with  velocity  U,  and inversely  with 
+distance y.  Since by similar triangles, U/y = dV/dy, we have: 
+ 
+ 1.3 
+ 
+Where  = F/A = shear stress. 
+
+ 
+5 
+ 
+ 
+If a proportionality constant, , called the absolute (dynamic) viscosity, is introduced, 
+ 
+ 
+ 1.4 
+ 
+ 
+It  follows  that  the  units  of  are  Pa-s. Fluids  for  which  the  proportionality  of  the  above 
+equation  holds  are  called Newtonian  fluids.The  above  expression  was  postulated  by 
+Newton and is known as Newton’s equation of viscosity.An Ideal or perfect fluid is one 
+which  there  are  no  tangential  or  shear  stresses  between  the  fluid  particles. The  forces 
+always  act  normally  at  a  section  and  are  limited  to  pressure  and  accelerative  forces. No 
+real fluid fully complies with this concept, and for all fluids in motion there are tangential 
+stresses  present  which  have  a  dampening  effect  on  the  motion. However,  some  liquids, 
+including  water,  are  near  to  an  ideal  fluid,  and  this  simplifying  assumption  enables 
+mathematical or graphical methods to be adopted in the solution of certain flow problems. 
+ 
+ 
+ 
+Figure 1. Relationship between shearing 
+ 
+
+ 
+6 
+ 
+ 
+Another viscosity coefficient, the coefficient of kinematic viscosity, is defined as  
+ 
+  
+ 
+ 
+ 1.5 
+ 
+ 
+ 
+The units of  are m
+2
+/s. 
+ 
+ 
+1.4 Fluid statics 
+ 
+As  we  saw  earlier  on,  fluid  statics  deals  with  the  understanding  and  application  of 
+properties of fluids at rest. In this section we will fluid pressure, surface tension, capillarity, 
+and buoyancy and floatation. 
+ 
+1.4.1 Pressure 
+We can define pressure as the perpendicular force per unit area. The pressure exerted on or 
+by a fluid is thus a force exerted at right angles to a unit area of surface in contact with the 
+fluid. Pressure exerted by a fluid varies directly with depth. Fluid pressure is transmitted 
+with equal intensity in all directions and acts normal to any plane.  
+ 
+Having defined what pressure is, let us now look at Pascal’s Principle. Pascal’s principle 
+states that “when the pressure on any part of a confined fluid is changed, the pressure 
+on  every  part  of  the  fluid  is  also  changed  by  the  same  amount”. For  conditions  where 
+force F is uniformly distributed over an area, we have 
+ 
+
+ 
+7 
+ 
+ 1.6 
+ 
+ 
+ 
+Figure 2. Pressure exerted by a column of fluid 
+ 
+The difference in pressure between any two points at different levels in a liquid is given by 
+the following equation: 
+ 
+ 1.7 
+ 
+ 
+where  = Specific weight of the liquid and h
+2
+ – h
+1 
+= difference in elevation. 
+ 
+If point 1 is in the free surface of the liquid and h is positive downward, the above equation 
+becomes
+  
+ 
+ 1.8 
+ 
+ 
+We can apply these equations as long as long as  is constant (or varies so slightly with h 
+as to cause no significant error in the result). In the context of pressure, we use the term 
+vacuum to  refer  to  a  space  that  has  a  pressure  less  than  the  atmospheric  pressure. 
+
+ 
+8 
+ 
+Atmospheric  pressure  refers  to  the  prevailing  pressure  in  the  air  around  us. It  varies 
+somewhat with changing weather conditions, and it decreases with increasing altitude.  
+ 
+The average atmospheric pressure that you would experience at sea level is 101.3kPa, or 
+760mm of mercury, or 1 atmosphere.  We commonly call this the “standard atmospheric 
+pressure”. Now, you may have come across the term “vacuum”. We can quantify a vacuum 
+in terms of how much its pressure is below atmospheric pressure. For example, if we pump 
+air out  of  a  pressure  vessel  until  the  internal  pressure  is 68.9kPa,  and  if  atmospheric 
+pressure  is  standard  (i.e.  101.3kPa), we  could  indicate the  pressure  in  the  vessel  as  a 
+vacuum of 101.3kPa – 68.9 which is equal to 32.4kPa. 
+ 
+We generally  indicate pressure  measurements as  either absolute  pressure or gauge 
+pressure. Absolute pressure uses absolute zero, which is the lowest possible pressure and 
+the  pressure  that  would  exist  in  a  perfect  vacuum,  as  its  base  (i.e.  zero  reading). Gauge 
+pressure is measured with atmospheric pressure as its base. 
+ 
+Thus  if  a  fluid  pressure  is  5.5kPa  above  standard  atmospheric  pressure  (101.3kPa),  its 
+gauge pressure would be 5.5kPa and we can find its absolute pressure as 5.5 + 101.3, or 
+106.8kPa. Sometimes absolute and gauge pressures are indicated by appending “a” and “g”, 
+respectively, to the pressure units. 
+ 
+Note: If no “a” or “g” (or other indication) is given, pressure is usually gauge pressure. 
+ 
+ 
+1.4.1.1 Vapour Pressure 
+ 
+When evaporation takes place within an enclosed space, the partial pressure created by the 
+vapour  molecules  is  called vapour  pressure. Vapour  pressure depends upon  temperature 
+and increases with it. 
+ 
+ 
+
+ 
+9 
+ 
+1.4.1.2 Hydrostatic Pressure 
+ 
+We can define hydrostatic pressure as pressure due to a column of fluid height h and density 
+ρ and represent this mathematically as: 
+  
+ 1.9 
+ 
+1.4.2 Surface Tension and Capillarity 
+ 
+1.4.2.1 Surface Tension 
+ 
+We need to note that a molecule in the interior of a liquid is under attractive forces in all 
+directions and the vector sum of these forces is zero. A molecule at the surface of a liquid 
+is acted upon by a net inward cohesive force that is perpendicular to the surface. 
+ 
+1.4.2.2 Capillarity 
+ 
+You might have observed that a liquid can rise or fall in a capillary tube (thin tube or porous 
+medium such as the soil). This rise or fall of the liquid is caused by surface tension and 
+depends on the relative magnitudes of the cohesion of the liquid and the adhesion of the 
+liquid  to  the  walls  of  the  containing  vessel. Liquids  rise  in  tubes  they  wet  (adhesion  > 
+cohesion) and fall in tubes they do not wet (cohesion > adhesion). We can illustrate these 
+phenomena using Figure 3 (a) and (b).   
+ 
+
+ 
+10 
+ 
+ 
+Figure 3. An illustration of capillarity 
+ 
+1.4.3 Buoyancy and Floatation 
+ 
+It  is  worthy  for  us  to  note  that  the basic  principle  of  buoyancy  and  floatation  was  first 
+discovered  and  stated  by  Archimedes  over  2200  years  ago. We  can  state Archimedes 
+principle as follows:  
+ 
+A body floating or submerged in a fluid is buoyed (lifted) upward by a force equal to the 
+weight of the fluid that would be in the volume displaced by the body  
+ 
+or 
+ 
+If a body floats, or is submerged, in a liquid, the liquid exerts an up thrust on the body 
+equal to the gravitational force on the liquid displaced by the body. 
+ 
+The  force  that  the  liquid  exerts  on  the  body  is known  as  the buoyant  force. The  point 
+through which the buoyant force acts is called the centre of buoyancy and is located at the 
+centre of gravity of the displaced fluid. 
+ 
+ 
+
+ 
+11 
+ 
+By applying Archimedes’ principle, we can find volumes of irregular solids by determining 
+the apparent loss of weight when a body is wholly immersed in a liquid of known specific 
+gravity. 
+ 
+1.5 Fluid Flow 
+ 
+We have all encountered or seen fluids flowing through a given stream channel or pipeline. 
+We can characterize fluid flow as 
+1) Steady or unsteady;  
+2) Uniform or non-uniform; 
+3) Laminar or turbulent; 
+4) One-dimensional, two-dimensional, or three-dimensional; and 
+5) Rotational or irrotational 
+When  we  have  fluid  flow  in  which  the  fluid  particles  do  not experience  any  rotational 
+motion about their centers of mass, the flow is termed irrotational. This kind of flow can 
+be represented by a flow net. The fluid undergoing irrotational motion is referred to as an 
+ideal fluid. We can define an ideal fluid as one in which no shear stresses occur and hence 
+no torque exists. 
+ 
+1.5.1 Steady Flow 
+ 
+Steady flow occurs if, at any point, the velocity of successive fluid particles is the same at 
+successive periods of time. Thus, velocity is constant with respect to time hence we can 
+mathematically define this condition as V/t = 0. The velocity may vary at different points 
+or with respect to distance. Based on this statement, we may as well say  that other fluid 
+variables will not vary with time, implying that p/t = 0, /t = 0, Q/t = 0, etc. 
+ 
+
+ 
+12 
+ 
+ 
+Figure 4. Steady flow (a) and unsteady flow (b) 
+ 
+Most  practical  engineering  flow  problems  involve steady  flow  conditions. For  example, 
+pipelines carrying liquids under constant head conditions or orifices flowing under constant 
+heads illustrate steady flow. These flows may be uniform or non-uniform. 
+ 
+1.5.2 Uniform Flow 
+ 
+Uniform  flow  occurs  when  the  magnitude  and  direction  of  velocity  do  not  change  from 
+point to point in the fluid. This statement can mathematically be represented by V/s = 0. 
+The statement implies that other fluid variables do not change with distance, or, y/s = 0, 
+/s = 0, p/s = 0, etc. You should note that flow of liquids under pressure through long 
+pipelines  of  constant  diameter  is uniform  flow  whether  the  flow  is  steady  or  unsteady. 
+Figure 5 is an illustration of uniform flow. 
+ 
+ 
+Figure 5. Uniform flow. Modified from McDonough (2009). 
+ 
+
+ 
+13 
+ 
+On  the  other  hand,  non-uniform  flow  occurs  when  the  velocity,  depth,  pressure,  etc., 
+change from point to point as the fluid flows. In this case, V/s  0 and this is true for the 
+other fluid variables too. Figure 5 illustrates non-uniform flow. 
+ 
+Figure 6. Non-uniform flow. Modified from McDonough (2009).  
+ 
+1.5.3 Stream lines 
+ 
+Stream lines are imaginary curves drawn through a fluid to indicate the direction of motion 
+in various sections of the fluid flow system (Figure 7). McDonough (2009) stated that the 
+tangent at each point on a streamline is the direction of the velocity vector at that point. 
+ 
+ 
+ 
+Figure 7. Stream lines for a converging pipe section 
+ 
+1.5.4 Stream tubes 
+ 
+A  stream  tube  represents  elementary  portions  of  a  flowing  fluid  bounded  by  a  group  of 
+streamlines that confine the flow (see Figure 8). If the stream tube’s cross-sectional area is 
+
+ 
+14 
+ 
+sufficiently small, we can take the velocity along the midpoint of any cross section as the 
+average velocity for the section as a whole. 
+ 
+ 
+Figure 8. Elemental stream tube 
+ 
+ 
+1.5.5 Continuity Equation 
+ 
+The  equation  of  continuity  results  from  the  principle  of  conservation  of  mass. We  can 
+conveniently define mass in terms of the quantity of liquid which passes a given section in 
+unit time. This is referred to as mass flow.  
+ 
+For steady flow, the mass of fluid passing all sections in a stream of fluid per unit time is 
+the same. This can be evaluated as the mass flow rate. 
+ 
+ 1.10 
+ 
+or 
+ 
+ 1.11 
+ 
+For incompressible fluids  and  where 
+1
+ = 
+2
+ or ρ
+1
+ = ρ
+2
+ for  all  practical  purposes,  the 
+equation becomes 
+
+ 
+15 
+ 
+ 
+ 1.12 
+ 
+Where  A
+1
+ and  V
+1
+ are  respectively  the  cross-sectional  area  and  average  velocity  of  the 
+stream at section 1, with similar terms for section 2.  Units of flow are cubic metres per 
+second (m
+3
+/s). This is known as the continuity equation. 
+ 
+1.5.6 Energy head 
+ 
+Moving fluids possess energy.  We need to consider three forms of energy when analysing 
+fluid flow problems. The forms of energy are 
+ 
+1) Potential; 
+2) Kinetic; and 
+3) Pressure energy 
+ 
+We can illustrate these energy forms using Figure 9. 
+ 
+ 
+Figure 9. Fluid element within a conduit 
+
+ 
+16 
+ 
+ 
+Consider the fluid element within the conduit shown in the diagram above. The element is 
+located a distance z above a reference datum and has a velocity v and pressure p. 
+ 
+ 
+1.5.6.1 Potential energy 
+Potential energy (PE) refers to the energy possessed by a fluid element due to its elevation 
+above  a  reference  datum.  We  can determine it quantitatively  by  multiplying  the  weight 
+(W)  of  the  element  by  the  distance at  which the  element  is  located  above  the  reference 
+datum (z). Therefore, 
+  1.13 
+ 
+ 
+In a continuous flow process, however, it is convenient for us to think in terms of unit mass 
+at  a  particular  point  in  the  liquid  stream. The  energy  per  unit  mass  is  called  the specific 
+potential energy of the liquid.  Thus, specific potential energy is 
+ 
+ 1.14 
+ 
+ 
+1.5.6.2 Kinetic energy 
+ 
+Kinetic energy refers to the energy possessed by an element of fluid due to its velocity. 
+Kinetic energy (KE) is determined quantitatively by   
+ 
+ 1.15 
+ 
+ 
+Similarly  since  this  is  a  continuous  flow  process,  the  energy  per  unit  mass  is  called  the 
+specific kinetic energy of the liquid. 
+
+ 
+17 
+ 
+Thus per unit mass 
+ 
+ 1.16 
+ 
+ 
+1.5.6.3 Pressure energy 
+ 
+Pressure energy, sometimes called flow energy, is the amount of work required to force 
+the element of fluid across a certain distance against pressure 
+ 
+ 
+The pressure energy (FE) can be evaluated by determining the work done in moving the 
+fluid element a distance equal to the segment’s length (d). 
+The force causing work is the product of pressure (p) and cross-sectional area (A) of the 
+element.  Hence 
+    
+ 1.17 
+ 
+The term Ad, is in fact, the volume of the element. Hence 
+  
+FE = pv  
+but v = m/ 
+Therefore,  
+1.18 
+ 
+Similarly, if we consider a unit mass, FE = p/. This is called the specific pressure head 
+of the liquid in the pipe line. 
+ 
+1.5.7 Energy equation 
+ 
+
+ 
+18 
+ 
+We can derive the energy equation by applying the principle of conservation of energy to 
+fluid flow.  Let us consider two points 1 and 2 as shown in Figure 10. 
+ 
+ 
+Figure 10. Illustration of the Energy Equation components 
+ 
+ 
+ 
+You will recall that the energy possessed by a flowing fluid consists of internal energy and 
+energies  due  to  pressure (p),  velocity (v),  and  position (z). In  the  direction  of  flow,  the 
+energy principle is summarised by the general equation: 
+ 
+Energy at section 1 + energy added – energy lost – energy extracted = energy at section 2 
+ 
+ 1. 19 
+ 
+ 
+ 
+
+ 
+19 
+ 
+This  equation  is  known  as  the Bernoulli  theorem. The Bernoulli’s  equation  can be 
+expressed  in  terms  of  equivalent  heads.    Thus,  if  we divide the  above  equation  by  g we 
+have:-  
+ 
+ 1.20 
+ 
+ 
+ 
+ 
+Each  term of  the  Bernoulli  equation  is measured  in  metres  of  liquid. Many  problems 
+dealing  with  flow  of  liquids  use  this  equation  as  the  basis  of  solution. Flow  of  gases,  in 
+many instances, involves principles of thermodynamics and heat transfer. Many problems 
+dealing with flow of liquids use this equation as the basis of solution. 
+ 
+1.5.8 Velocity head 
+ 
+Velocity head represents the kinetic energy per unit weight of a fluid at a particular point. 
+If  the  velocity  at  a  cross-section  were  uniform,  then  the  velocity  head that  we  would 
+calculate with this uniform or average velocity would be the true kinetic energy per unit 
+weight of fluid. 
+ 
+1.5.9 Power 
+ 
+Power is calculated by multiplying the number of Newtons of fluid flowing per second (Q) 
+by energy H in Nm/N.  
+ 
+ 1.21 
+ 
+1.5.10 Flow in Closed Conduits 
+ 
+
+ 
+20 
+ 
+The energy principle is applied in the solution of practical closed-conduit flow problems 
+in different branches of engineering practice. Flow of a real fluid is more complex than that 
+of an ideal fluid. Results of experimentation and semi-empirical methods must be used to 
+solve flow problems. 
+ 
+ 
+Two types of steady flow of real fluids exist, which must be understood and considered. 
+They are laminar flow and turbulent flow. Different laws govern the two types of flow. 
+ 
+1.5.10.1 Laminar Flow 
+ 
+In laminar flow, fluid particles move along straight, parallel paths in layers or laminae. 
+Magnitudes of velocities of adjacent laminae are not the same. 
+ 
+1.5.10.2 Turbulent Flow 
+  
+In turbulent flow, fluid particles move in haphazard fashion in all directions. It is virtually 
+impossible to trace the motion of an individual particle. 
+1.5.10.3 Critical Velocity 
+ 
+Critical  velocity is of  practical  interest  to  engineers.  It is  the  velocity below  which  all 
+turbulence is damped out by the viscosity of the  fluid. It is found that the upper limit of 
+laminar flow of practical interest is represented by a Reynolds number of about 2000. 
+ 
+1.5.10.4 Reynolds Number 
+ 
+The Reynolds number (Re) is a dimensionless number which represents the ratio of inertia 
+forces to viscous forces. For circular pipes that are flowing full, we can find the Reynolds 
+number using the following equation: 
+ 
+
+ 
+21 
+ 
+ 1.22 
+ 
+ 
+   where  V = mean velocity in m/s 
+                         d = diameter of pipe in m 
+                          = kinematic viscosity in m
+2
+/s 
+                          = mass density of fluid in kg/m
+3
+  
+ = absolute viscosity in Ns/m
+2
+  
+ 
+For non-circular cross sections, we use the ratio of cross-sectional area to wetted perimeter, 
+called  the hydraulic  radius, R  (in  metres), to  calculate the  Reynolds  number.    The 
+following equation is used for non-circular cross sections: 
+ 
+ 1.23 
+ 
+ 
+1.5.11 Loss of head for laminar flow 
+ 
+Loss of head for laminar flow is expressed by the Hagen-Poiseulle equation. 
+The expression is 
+ 
+ 
+ 
+ 1.24 
+ 
+ 
+The other equation used to determine head loss is known as the Darcy-Weisbach formula 
+and it reads: 
+
+ 
+22 
+ 
+퐿퐿퐿퐿 ℎ퐿퐿퐿=퐿퐿퐿퐿퐿퐿퐿퐿 퐿퐿퐿퐿퐿퐿 퐿 × 
+퐿퐿퐿퐿퐿ℎ 퐿
+퐿퐿퐿퐿퐿퐿퐿퐿 퐿
+ ×퐿퐿퐿퐿퐿퐿퐿퐿 ℎ퐿퐿퐿 
+퐿
+2
+2퐿
+  
+ 
+ 1.25 
+ 
+ 
+ 
+For laminar flow in all pipes for all fluids, the value of f is:   
+ 
+ 1.26 
+ 
+ 
+Re  has  a practical  maximum  value  of  2000  for  laminar  flow. For turbulent  flow,  many 
+hydraulic  engineers  have  endeavoured  to  evaluate f from  the  results  of  their  own 
+experiments and from those of others. 
+ 
+1.5.11.1 Minor head losses 
+ 
+Other head losses are generally categorised as “minor” head losses. They result when there 
+is  a  significant  change  in  flow  pattern. Hence,  they  occur  in  conduit  contractions  and 
+enlargements (both sudden and gradual)), valves, fittings, bends, etc., and entrance to or 
+exit from a conduit. In some cases, a “minor” loss can be quite important. 
+ 
+1.5.11.2 Entrance losses 
+ 
+Entrance losses occur when a liquid enters a conduit from a large tank or reservoir. 
+The amount of head loss is significantly dependent on the shape of the entrance. 
+If an entrance is well rounded, the entrance loss will be very small. 
+ 
+1.5.11.3 Exit losses 
+ 
+
+ 
+23 
+ 
+Exit losses occur  when  a  liquid  exits  a  conduit  and  enters  a  large  tank  or  reservoir. The 
+losses can be due to sudden contractions, sudden expansions, gradual expansions or gradual 
+contractions. Sudden contraction losses occur when there is an abrupt decrease in conduit 
+size and sudden expansion losses happen when there is an abrupt increase in conduit size. 
+Similarly, gradual expansion losses occur when there is a gradual increase in conduit size, 
+and gradual contraction losses happen when there is a gradual decrease in conduit size. 
+ 
+Theoretical  considerations  of  the  various  minor  losses  are  quite  complicated;  therefore, 
+minor losses are usually evaluated by empirical methods. 
+They are commonly expressed in terms of the applicable velocity head.  In equation form, 
+ 
+ 1.27 
+ 
+ 
+Activity: Example 
+ 
+Water  is  conveyed  through  a  trapezoidal  irrigation  canal  at  a  volumetric  flow  rate  of 
+15m
+3
+/sec.  The  canal  has  a  bottom  width  of  3  m  and  the  water  is  flowing  at  an  effective 
+depth of 2 m. If the top width of the flowing water is 9 m. What is the velocity head of the 
+water? 
+ 
+Solution: 
+We will start with an illustration of the canal: 
+ 
+ 
+
+ 
+24 
+ 
+From our knowledge about the area of a trapezium, we can find the cross area (A) of flow 
+as follows: 
+퐿=
+1
+2
+(
+퐿+퐿
+)
+ℎ 
+where A is the cross sectional area (m
+2
+); b the canal bottom width (m); T the water 
+flow top width; and h the effective water depth 
+ 
+Hence,     퐿=
+1
+2
+(
+3퐿+9퐿
+)
+2퐿 
+ 
+퐿=12 퐿
+2
+  
+From the Continuity Equation, Q = AV. Therefore, 15m
+3
+/s = 12 m
+2
+ x V 
+Hence,     퐿=1.25 퐿/퐿  
+Now let us find the velocity head using the equation, 퐿
+퐿
+= 
+퐿
+2
+2퐿
+  
+ 
+퐿
+퐿
+= 
+(1.25 퐿/퐿)
+2
+2(9.81 퐿/퐿
+2
+ 
+ 
+푯
+푯
+= 푯.푯푯 푯 
+ 
+ 
+Unit Summary 
+In this unit we have discussed the nature and properties of fluids at rest and in motion. We 
+encounter fluids in our everyday life. Therefore, the knowledge acquired in the unit will be 
+essential  in  design,  operation  and  evaluation  of  hydraulic  structures such  as  irrigation 
+canals, reservoirs and water pipelines.  
+ 
+ 
+Unit Test 
+Answer all questions. 
+
+ 
+25 
+ 
+1.6.1 Water is conveyed at a constant volumetric flow rate of 2.3 x 10
+-2
+ m
+3
+/s through a 
+pipeline  whose  internal  diameter  is  15  cm.  The  water  flow  condition  is  laminar 
+(Re = 1,400). Find the following: 
+a) Friction factor 
+b) Water velocity 
+c) Velocity head 
+1.6.2 A  fluid  mass  occupies  2  m
+3
+.Calculate  the  density,  specific  weight,  and  specific 
+gravity if the fluid mass is 
+a) 4 kg 
+b) 8 kg 
+c) 15 kg 
+ 
+1.6.3 A formula that provides a good estimate of the density in kg/m
+3
+ of water is 
+ 
+퐿
+퐿퐿퐿퐿퐿
+=1000− 
+(
+퐿−4
+)
+2
+180
+ 
+ 
+where the temperature T is in degrees Celsius.  
+a) Use this formula and find the density of water at 80
+o
+C. 
+b) What is the error? 
+ 
+ 
+Suggested Answers to the Unit Test 
+  
+Here are the suggested answers for the Unit Test: 
+ 
+Model Answer for Activity 1.6.1:     
+a) f = 0.0457 
+b) V = 1.3015 m/s 
+
+ 
+26 
+ 
+c) Velocity head = 0.086 m 
+  
+Model Answer for Activity 1.6.2: 
+a) 2 kg = m
+3
+; 19.62 N = m
+3
+;   0.002 
+b) 4 kg = m
+3
+;  39.24 N = m
+3
+;   0.004 
+c) 7.5 kg = m
+3
+;  73.6 N = m
+3
+;  0.0075 
+ 
+Model Answers for Activity 1.6.3: 
+a) 968 kg/m
+3
+  
+b) -0.4% 
+
+ 
+27 
+ 
+UNIT 2: HEAT AND CALORIMETRY 
+2.0 Introduction 
+Welcome to unit 2! In unit 1 we discussed fluid mechanics, however in this topic you will 
+be introduced to key principals in heat transfer and thermodynamics.  
+2.1 Objectives 
+By the end of this unit, you should be able to: 
+ Differentiate heat from temperature 
+ State four examples of temperature scales 
+ Convert temperature from one scale to another scale 
+ Measure the amount of heat transfer using a calorimeter 
+Key terms 
+Ensure that you understand the key term phrases used in this unit as listed below. 
+ Temperature 
+ Heat 
+ Specific heat 
+ Calorimetry 
+2.2 Temperature 
+From our primary school knowledge we have always defined temperature as the degree of 
+hotness  or  coldness.  This  definition  is  based  on  our  sense  of  touch:  cold  or  hot.  We 
+generally consider a hot oven to have high temperature than a cold tray of ice. However 
+defining temperature by solely depending on the sense of touch might give us wrong results. 
+For example, if your hands were placed in hot water and then you shift to place the same 
+hands in lukewarm water you will feel cold, on the contrary if you place the hands in the 
+cold water first and then shift them to lukewarm water you would feel water.  
+We shall now define temperature as, the measure of average kinetic energy (thermal energy) 
+of the molecules of the body. Temperature is directly proportional to the average molecular 
+kinetic  energy.  The  greater  the  average  kinetic  energy  of  the  molecules  of  a  body,  the 
+greater is the temperature of the body. In this case we may conclude that temperature of a 
+
+ 
+28 
+ 
+body depends  only on  the  molecular  kinetic  energy  and it  is  independent  of  mass of  a 
+substance.  
+When we bring together two bodies of different temperatures into contact, heat flows from 
+a body at higher temperature to the body at lower temperature till the temperatures of the 
+two bodies are the same. Temperature guides the direction of heat flow between two bodies 
+of different temperatures in contact. 
+2.2.1 Temperature Scales 
+There are four temperature scales 
+Celsius Scale 
+On this scale, the ice point (melting point) is marked as 0°C and the steam point (boiling 
+point)  is  marked  as  100°C.  Both  the  melting  and  boiling  points  are  taken  at  normal 
+atmospheric  pressure.  The  interval  between  these  points  is  divided  into  100  equal  parts. 
+Each  of  these  divisions  gives  one  degree  Celsius  (1°C).  If  the  thermometer  is  needed  to 
+measure  temperatures  outside  the  ice  and  steam  points,  then  the  scale  markings  are 
+continued  below  the  0°C  mark  and  above  100°C  mark.  The  distance  between  the 
+consecutive marks on the scale remains the same. 
+ Fahrenheit Scale 
+On this scale, the ice point is marked as 32°F and the steam point is marked 212°F. The 
+interval between these two reference points is divided into 180 equal parts. Each division 
+is called degree Fahrenheit and is written as °F 
+Temperature scale Freezing  Point  of 
+Water 
+Boiling    Point    of 
+Water 
+SI Unit 
+FAHRENHEIT 
+SCALE 
+32°F 212°F F 
+CELSIUS SCALE 0°C 100°C C 
+KELVIN SCALE 273.15K 373.15K K 
+
+ 
+29 
+ 
+REAUMER 
+SCALE 
+0°R 80°R R 
+ 
+2.2.2 Conversion Equations 
+The relationship among Celsius, Fahrenheit and Reaumur scales is given as 
+ t
+C
+÷100 = (t
+F
+-32)/180 = t
+R
+÷ 80       2.1 
+Other relationships 
+a. F = 1.8C + 32          2.2 
+b. K = C + 273.15         2.3 
+Example 1 
+If the temperature of the room is 20°C, what is its temperature in degrees Fahrenheit? 
+Solution: We  are  going  to  apply  equation  2.2  to  convert  degrees  Celsius  to  degrees 
+Fahrenheit. 
+Then F = 1.8 x 20 + 32 = 68°F 
+Kelvin Scale and the absolute Zero 
+The Kelvin scale is setup so that its zero point is the coldest possible temperature--absolute 
+zero, at which point a substance would have zero internal energy.  This is -273.15 °C, or -
+459.69 °F. Absolute zero can never be reached, but there is no limit to how close we can 
+get to it.  Scientists have cooled substances to within 10
+-5
+ kelvins of absolute zero.  How 
+do we know how cold absolute zero is, if nothing has ever been at that temperature?  The 
+answer is by graphing Pressure vs. Temperature for a variety of gases and extrapolating. 
+
+ 
+30 
+ 
+ 
+The Triple Point of Water 
+We can define the triple point of water as a point where water in a solid, liquid and  gas 
+states can coexist in aquarium and this occurs only at a unique temperature and pressure. 
+The pressure at the triple point of water is 4.58 mm of Hg and the temperature is 273.16K 
+or 0.01°C. 
+ Activity 1 
+An  object  has  a  temperature  of  50°F.  What  is  its  temperature  in  degrees  Celsius  and  in 
+Kelvin? [10°C; 283K] 
+2.3 Specific heats 
+Specific heat is the energy that is transferred from one body to another due to temperature 
+difference  between  two  bodies. Or  is  the transfer  of  internal  (thermal)  energy  from  one 
+body to another. The SI  unit for heat is joule, but can also be measured in calories Heat 
+transfer depends on temperature gradient 
+2.3.1 Heat capacity 
+The amount of heat required to raise its temperature by 1°C. 
+Heat capacity is also called thermal capacity 
+Heat capacity = mc 
+Specific heat 
+
+ 
+31 
+ 
+Is the heat capacity of a substance per unit mass 
+c = Heat capacity/m 
+Alternatively  we  may  define  heat  capacity  as the  amount  of  heat  required  to  raise  the 
+temperature of 1 kg of a substance by 1°C or 1K. The SI Unit is J/Kg/°C or J/Kg/K Specific 
+heat is represented by c. 
+2.3.2 Water Equivalent 
+The mass of water that will absorb or loose the same amount of heat as the body for the 
+same rise or fall in temperature is known as water equivalent. Water equivalent is measured 
+in kg. For instance, if you are told that the water equivalent for a body is  12kg, this means 
+that  when  a  body  is  heated  through  12°C,  it  will  absorb  the  same  amount  of    heat  as 
+absorbed by 12kg. 
+Q = w ΔT  
+But Q = cm ΔT  
+Equating the two equations we have 
+wΔT = cm ΔT  
+w = mc 
+From Equation ---- we may conclude that water equivalent and heat capacity of a body are 
+numerically equal. 
+2.3.4 Molar Specific Heat 
+Molar specific heat of a solid (liquid) is defined as the amount of heat required to raise the 
+temperature of 1 mole of the solid (liquid) through 1°C OR 1 K. We can now represent the 
+amount of heat Q required to raise the temperature ΔT of n moles is presented as: 
+Q = nC ΔT           2.5 
+But n = m/M and capital c (C) stands for molar specific heat. 
+C = Mc           2.6 
+2.3.5 Specific heat of a gas 
+We shall adopt the same definition for specific heat as the one used in solids and liquid. 
+On  the  contrary,  the  situation  with  gasses  is  quite  different.  When  a  gas  is  heated,  there 
+may be large changes in pressure and volume. When we want to define a specific heat, it 
+is necessary to specify the particular conditions of pressure and volume. A gas can have 
+any value of specific heat depending on how the heating has been carried out. 
+
+ 
+32 
+ 
+We are going to consider two practical conditions in which we have values of specific heat 
+of a gas: specific heat of a gas at constant volume (C
+v
+) and specific heat of a gas at constant 
+pressure (C
+p
+). 
+Specific heat at constant volume: The amount of heat required to raise the temperature of 
+1 mole of the gas through 1°C at constant volume is referred to as specific heat at constant 
+temperature. It is measured in J/kg/K or cal/g/K. If we are given 1 mole of the gas instead 
+of 1g, then we will be dealing with molar specific heat of a gas at constant volume. 
+Molar Specific heat of a gas at constant volume is the amount of heat required to raise the 
+temperature  of  1  mole  of  the  gas  through  1°C  at  constant  volume.  We  use  capital  C
+v 
+to 
+denote  molar  specific  heat  at  constant  volume  where  as  c
+v 
+represents  specific  heat  at 
+constant volume. 
+C
+v
+ = Mc
+v
+           2.7 
+Where M = Molecular mass of the gas and the SI units of C
+v 
+J/mol/K or cal/mol/K. 
+Specific heat of a gas at constant pressure: this is the amount of heat required to raise 
+the temperature of 1g of the gas through 1°C at constant pressure. The SI units are the same 
+as those for specific heat capacity at constant volume. On the other hand, molar specific 
+heat at constant pressure is defined as the amount of heat required to raise the temperature 
+of 1 mole of a gas through 1 °C at constant pressure. 
+C
+p
+ = Mc
+p           
+2.8 
+Relationship between C
+v
+ and C
+p
+ 
+a.  
+b. C
+v
+ = R; C
+P
+ = R for monoatomic gas 
+c. C
+v
+ = R; C
+p 
+= R for diatomic gas 
+R = 8.31J/mol/K 
+When you want to calculate the amount of heat required to raise the temperature of a gas 
+you use equation 2.5 but you substitute C
+v 
+and C
+p
+ for specific heat (C): 
+Q at constant volume: Q = n C
+v 
+ΔT        2.8 
+Q at constant pressure: Q = n C
+p
+ ΔT        2.9  
+
+ 
+33 
+ 
+Example: 
+How much heat is required to raise the temperature of an ideal monoatomic gas by 10K if 
+the gas is maintained at constant pressure? 
+Solution: 
+Lets consider what we have first: n = 1 mole, ΔT = 10K, R = 8.31J/mol/K, we are also told 
+that the gas is monoatomic and is at constant pressure. In this case we are going to employ 
+equation 2.9. 
+Q = n C
+p
+ ΔT  
+C
+P
+ = R =  
+Q = 1mol x x 10 K = 207.5 J 
+Activity 3. 
+What is the specific heat of a substance if 36 Kcal of heat is needed to raise 4.5 Kg of the 
+metal from 20° C to 42°C [0.36 Cal/g/°C] 
+ 
+2.3 Calorimetry 
+Is the experimental technique for quantitative measurement of heat exchange. The law of 
+heat exchange is applied in calorimetry. Law of heat exchange states that, “for completely 
+an isolated closed system, no energy can flow into or out of the system.” 
+Alternatively, Heat lost = Heat gained. 
+A calorimeter is used to determine the specific heat of a substance. 
+Heat lost by the substance is gained by and the calorimeter. 
+Heat gained by the calorimeter  
+                  = (m
+1
++w) × c
+’
+× (T
+ 
+-T
+1
+) 
+Heat lost by the substance 
+                  = m
+2
+c(T
+2
+ – T) 
+Where: 
+m
+1
+=Mass of water in the calorimeter 
+w = Water equivalent of the calorimeter 
+
+ 
+34 
+ 
+T
+1
+= Initial temperature of water + calorimeter 
+m
+2
+= Mass of the substance 
+T
+2
+= Initial temperature of a substance 
+T= Final temperature 
+c = specific heat capacity of the substance 
+c
+’
+= Specific heat of water 
+Heat gained = heat lost 
+            (m
+1
++w) × c
+’
+× (T
+ 
+-T
+1
+) = m
+2
+c(T
+2
+ – T)       2.4 
+And c can be given as 
+           c = [(m
+1
++w) × c
+’
+× (T
+ 
+-T
+1
+)]/m
+2
+(T
+2
+ – T) 
+Example 
+When a piece of metal of mass 48.3g at 10.7 °C was immersed in a current of stream at 
+100 °C, 0.762g of steam was found to condense. Calculate the specific heat of the metal 
+(L
+V
+ of steam: 536 cal).   
+Heat gained = 48.3×c×(100-10.7) cal 
+Heat lost = mass of condensed matter × latent heat of steam 
+                 = 0.762×536 cal 
+Then: 48.3×c×(100-10.7) cal = 0.762×536 cal 
+          c = (0.76×536)÷ [48.3×(100 – 10.7) 
+             = 0.095 cal/g/°C.      
+   
+ 
+
+ 
+35 
+ 
+The outer and inner surfaces of the calorimeter are polished heat to reduce heat loss due to 
+radiation 
+The  space  between  a  calorimeter  and  the  insulating  jacket  is  filled  with  some  poor 
+conductor (e.g. Air, cotton) to avoid heat loss by conduction 
+The lid is insulated to avoid heat loss by convection. The insulated lid has two holes, one 
+for stirring (mixing contents) and the other for thermometer. 
+ Activity 2 
+A copper block of mass 2.5 kg is heated in a furnace to a temperature of 500°C and then 
+placed on a large ice block. What is the maximum amount of ice that can melt? (Specific 
+heat of copper = 0.39 J/g/°C; Heat of fusion of water = 335J/g) [1.455kg] 
+2.6 Practice Activity 
+In an experiment on the specific heat of a metal, a 0.20 kg block of the metal at 150°C is 
+dropped in a copper calorimeter (of water equivalent 0.025 kg) containing 150 cm
+3
+ of water 
+at  27°C.  The  final  temperature  is  40°C.  Compute  the  specific  heat  of  the  metal. 
+[0.434J/g/°C] 
+ 2.7 Unit summary 
+In this unit we have discussed important concepts of heat and temperature which will lead 
+to heat transfer and thermodynamics. We have seen that though heat and temperature are 
+related but they are not the same. Specific heat, mass and temperature are very significant 
+in calorimetry. Calorimetry is the science of measuring heat. 
+Unit Test 
+1. If two temperatures differ by 25° on a Celsius scale, what is the difference on Fahrenheit 
+scale? 
+2. A calorimeter contains 70.2 g of water at 15.3°C. If 143.7g of water at 36.5°C is mixed 
+with it, the common temperature is 28.7°C. Find the water equivalent of the calorimeter.  
+3. A piece of iron of mass 16g is dropped at a temperature of 112.5°C into a cavity in a block 
+of ice of which it melts 2.5g. If the latent heat of fusion of ice is 80 cal/g, find the specific 
+heat of iron.  
+
+ 
+36 
+ 
+ Suggested Answers to Unit Activities 
+Activity 1 
+10°C; 283K 
+Activity 2 
+1.455kg 
+Activity 3 
+0.36 cal/g/°C 
+Practice Activity 
+0.434J/g/°C 
+Unit Test 
+1. 45°F 
+2. 13.4g 
+3. 0.11cal/g/°C 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+UNIT 3: Heat and Heat Transfer 
+ 
+3.0 Introduction 
+ 
+Welcome  to Unit  2.  In  this  unit,  we  will  discuss  concepts  of  heat, its transfer and 
+measurement. You will agree that heat forms an integral part of our daily life. For example, 
+we  need  heat  to  cook  our  food  and  to  keep  us  warm.  This  unit  is  therefore  of  prime 
+importance because it will help us deepen our understanding of heat, its measurement and 
+transfer. 
+
+ 
+37 
+ 
+ 
+ 
+ 
+3.1 Objectives 
+By the end of this unit, you should be able to: 
+1) Understand and state the different concepts of heat transfer 
+2) Acquire knowledge on measurement of temperature and heat 
+3) Apply the laws of heat transfer in solving problems related to the same 
+ 
+ 
+ 
+Key Terms 
+Ensure that you understand the key terms used in this unit as listed below. 
+ Heat 
+ Temperature 
+ Latent heat 
+ Specific heat 
+ Sublimation 
+ 
+ Convection 
+ Radiation 
+ Conduction 
+ Heat capacity 
+ Sensible heat
+
+ 
+2 
+ 
+ 
+3.2 Heat and Temperature 
+ 
+3.2.1 Heat 
+ 
+We will start by discussing what heat is and have a quick overview of how heat gets 
+transferred from one location to another. Heat is a form of energy. As you are aware, 
+the molecules of a body are in constant motion. The moving molecules possess kinetic 
+energy referred to as heat. Heat is transferred from a warmer to a colder body because 
+of the temperature difference between the two bodies. 
+ 
+ 
+3.2.2 Temperature 
+ 
+We can define temperature as the intensity of heat or a measure of how hot or cold an 
+object is. In other words, temperature is an indication of molecular activity since (as we 
+saw earlier on) moving molecules possess kinetic energy referred to as heat. In the SI 
+system, temperature is measured in degrees Celsius (named after Anders Celsius). Its 
+temperature scale is referred to as the centigrade scale. The scale involves choosing two 
+fixed  points  (i.e.  two  easily  reproducible  temperatures),  and  dividing the  interval 
+between them into a number of ‘degrees’. 
+ 
+Anders Celsius chose the temperature of melting ice and boiling water (both at normal 
+atmosphere), and the arbitrary number 100 degrees. The Celsius scale is still defined 
+this way but an improvement has been made in which the scale is divided and a more 
+reliable fixed point has been introduced. 
+ 
+The other temperature unit is Kelvin (named after Lord Kelvin). This is referred to as 
+the absolute temperature scale. Lord Kelvin showed that a temperature scale might be 
+divided in a way which does not depend on the properties of a particular substance. 
+He  proposed  that  ‘Zero’  must  be  located  at  the  lowest  temperature  possible. Both 
+theoretical considerations and practical experience indicate that it is impossible to reach 
+a temperature lower than -273.15
+o
+C and this is known as the absolute zero temperature. 
+
+ 
+3 
+ 
+Th e resulting scale is the Kelvin Thermodynamic Temperature Scale and its unit is the 
+Kelvin (K). 
+ 
+ Equation 28 
+Or 
+ Equation 29 
+ 
+Another temperature scale is known as the Fahrenheit. Its relationship to the centigrade 
+scale is as follows: 
+ 
+ Equation 30 
+Or 
+ Equation 31 
+ 
+ 
+ 
+3.2.3 Temperature and Heat Measurements 
+ 
+Let us now look at the instruments and methods used to measure heat intensity. Table 
+1 presents a list of the measurements and their respective instruments: 
+ 
+Table 1. Instruments and methods for measuring heat intensity  
+Measurement Instrument/Method of Measurement 
+Thermal expansion Bi-metallic    thermometers;    Liquid-in-
+glass  (mercury,  alcohol)  thermometers; 
+Pressure thermometers 
+Thermo-electricity Thermocouple 
+Resistance Resistance   thermometers; Thermistors 
+(semi-conductor); Integrated circuit 
+detectors (temperature transducers) 
+
+ 
+4 
+ 
+Radiation Pyranometers 
+It is worth noting that the most common thermometers are mercury–in– glass. 
+ 
+Before we proceed, let us pause and define some of the important terms which we will 
+be  using  in  the  discussions  that  follow.  One  of  such  terms  is  ambient  temperature. 
+Ambient temperature is the temperature of the medium surrounding a body or system, 
+e.g. room  air  temperature. The  other  term  is  specific  heat, the  dimensionless  ratio 
+between the thermal capacity of a material to that of water. Heat quantity is measured 
+in Joules. The amount of heat required to raise the temperature of one gram of water by 
+1° Kelvin is 4.187 Joules. This quantity is equivalent to one calorie of heat. 
+ 
+ 
+ 
+3.3 Specific Heat 
+The actual thermal capacity (specific heat capacity) measured in J/(kg°K) is often listed 
+as specific heat. It is defined as the heat capacity of a substance per unit mass. 
+Specific heat is essentially a measure of how thermally insensitive a substance is to the 
+addition of energy. The greater the material’s specific heat, the more energy must be 
+added to a given mass of the material to cause a particular temperature change. 
+ 
+For gases, heat capacity at constant pressure is a strong function of temperature. 
+Heat capacity is an additive property, i.e. the heat capacity of a mixture of gases can be 
+determined from the heat capacities of the constituents weighted accordingly. 
+The  heat  capacities  of  solids  cannot  be  predicted  from  fundamental  relationships  but 
+they  are  amenable  to  experimental  measurement. However,  a  particularly  useful 
+method of estimating heat capacity in the absence of experimental data is the Kopp’s 
+rule  which  is  based  on  the  fact  that  heat  capacity  is  an  additive  property.    It  may  be 
+stated as follows: 
+  
+ The heat capacity of a solid compound is approximately equal to the sum of 
+the  heat capacities of its constituents.  
+ 
+
+ 
+5 
+ 
+The heat capacities of liquids are generally greater than those of solids and gases; heat 
+capacity  usually  increases  with  temperature.  For  foodstuff,  heat capacity is  strongly 
+dependent upon moisture content. 
+ 
+ 
+3.4 Sensible Heat 
+Sensible heat is the heat that causes a temperature change when there is a heat transfer. 
+We  can  also  define  sensible heat  as  a  measure  of  the  energy that  accompanies  a 
+temperature change. A good example of sensible heat is heat moving through the walls 
+of a home causing a temperature rise in the process. We can determine total sensible 
+heat using the following equation: 
+ 3.1 
+ 
+ where q
+s
+ = total sensible heat (J); m = mass of material (kg); c = specific heat capacity 
+of the material (J/(kg°K); t
+1
+ = temperature (°C) of the material at condition 1; and t
+2
+ = 
+temperature (°C) of the material at condition 2. 
+ 
+ 
+3.5 Latent Heat 
+Latent heat is the heat that causes a change in state but no change in temperature. The 
+heat that is absorbed when ice changes to water (solid to liquid) is known as latent heat 
+of  fusion  (L
+f
+).  When  boiling  water  changes  to  vapour (liquid  to  vapour),  the  heat 
+involved is latent heat of vapourisation (L
+v
+).  
+ 
+You  will  recall  that  at normal  pressures,  most  chemical  compounds  and  elements 
+possess three different states (solid, liquid, gas) at different temperatures. In these cases, 
+the transition from solid to gaseous state requires an intermediate liquid state. However, 
+for some elements or substances at some pressures, the material may pass directly from 
+solid to  gaseous  state. This  can  occur  if  the  atmospheric  pressure  exerted  on  the 
+substance is too low to stop the molecules from escaping from solid state. When a solid 
+changes  to  vapour  without  going  through  the  liquid  phase (solid  to  vapour), the  heat 
+
+ 
+6 
+ 
+involved is referred to as latent heat of sublimation (L
+s
+). Carbon dioxide is a common 
+example of chemical compounds that sublime at atmospheric pressure. A block of solid 
+CO
+2
+ (dry ice) at room temperature and at atmospheric pressure will turn to gas without 
+becoming a liquid. The opposite of sublimation is deposition. The formation of frost is 
+an example of meteorological deposition. 
+ 
+Let us now look at an example on the heat involved when water evaporates to water 
+vapour. This occurs over a wide range of temperatures.  
+ 
+When air moves across the surface of water, some of the air's sensible heat is converted 
+to  latent  heat  causing  the  air  temperature  to  drop.    The  latent  heat  of  vaporisation 
+changes with temperature as presented in Table 2. 
+ 
+Table 2. Latent Heat of Vaporisation for Water 
+°C kJ/kg 
+0 2500 
+30 2430 
+100 2256 
+      
+      
+You should know that different materials have different properties hence latent heat of 
+vaporization  and  latent  heat  of  fusion  vary  from  one material  to  another. Table  3 
+presents latent heat properties of different substances.   
+ 
+ 
+
+ 
+7 
+ 
+Table 3.  Latent  heat  of  fusion  and  latent  heat  of  vaporisation  for  various 
+substances 
+ 
+ 
+When a gas cools, it eventually condenses – that is, it returns to the liquid phase. 
+The energy given up per unit mass is called the latent heat of condensation (L
+c
+) and is 
+numerically equal to the latent heat of vaporisation. Likewise, when a liquid cools, it 
+eventually  solidifies,  and  the  latent  heat  of  solidification  is  numerically  equal  to  the 
+latent heat of fusion. 
+ 
+Activity: Phase Change Example 
+ 
+You will recall that there are three states (or phases) of matter namely gas, liquid and 
+solid. In order for us to understand the role of latent heat in phase changes, consider the 
+energy required to convert 1.0 g cube of ice at -30.0°C, to steam at 120°C. Figure 11 
+indicates the experimental results obtained when energy is gradually added to the ice. 
+Let us examine each portion of the curve. 
+ 
+ 
+
+ 
+8 
+ 
+ 
+Figure 11. A  plot  of  temperature  versus  energy  added  when  1.00g  of  ice  initially  at -30.0°C  is 
+converted to steam at 120.0°C 
+Part A.  On this portion of the curve, the temperature of the ice changes from -30°C to 
+0°C.  Because the specific heat of ice is 2090 J/kg°C, we can calculate the amount of 
+energy added by:  
+ 
+ 
+ 
+ 
+ 
+ 
+Part B.  When the temperature of the ice reaches 0°C, the ice-water mixture remains at 
+this temperature, even though energy is being added, until all the ice melts.  The energy 
+required to melt 1.0 g of ice is:  
+ 
+Thus we have moved to the 396 J (62.7J + 333J) mark on the energy axis in Figure 11.  
+ 
+Part C.  Between 0.0°C and 100.0°C, no phase change occurs, and so all the energy 
+added to the water is used to increase its temperature. The amount of energy necessary 
+to increase the temperature from 0.0°C to 100.0°C is:  
+ 
+ 
+ 
+ 
+
+JQ
+CCkgJkgQ
+TcmQii
+7.62
+30./2090100.1
+3
+
+
+
+
+
+JQ
+CCkgJkgQ
+TcmQww
+419
+0.100./1019.41000.1
+33
+
+
+
+
+
+JkgJkgLmQ
+fi
+333/1033.31000.1
+53
+
+
+
+ 
+9 
+ 
+ 
+ 
+Part D.  At 100.0°C, another phase change occurs as the water changes from water at 
+100.0°C  to  steam  at  100.0°C. The  water-steam  mixture  remains  at  100.0°C,  even 
+though energy is being added, until all of the liquid has been converted to steam. The 
+energy required to convert 1.00g of water to steam at 100.0°C is:  
+ 
+ 
+ 
+ 
+ 
+Part E.  In this portion of the curve, as in parts A and C, no phase change occurs; thus, 
+all energy added is used to increase the temperature of the steam. The energy that must 
+be added to raise the temperature of the steam from 100.0°C to 120°C is:  
+ 
+ 
+ 
+ 
+The total amount of energy that must be added to change 1g of ice at -30.0°C to steam 
+at 120°C is the sum of the results from all the five parts of the curve, which is equal to 
+3.11×10
+3
+J.  Conversely,  to  cool  1g  of  steam  at  120.0°C  to  ice  at -30.0°C,  we  must 
+remove 3.11×10
+3
+J of energy. The results show that a relatively large amount of energy 
+is transferred into the water to vaporise it to steam.  
+ 
+Now, let us imagine reversing this process, there is a large amount of energy transferred 
+out of steam to condense it into water. This is why a burn to your skin from steam at 
+100°C is much more damaging than exposure of your skin to water at 100°C. A very 
+large amount of energy  enters  your skin from steam and the steam remains at 100°C 
+for  a  long  time  while  it  condenses. Conversely,  when  your  skin  makes  contact  with 
+water  at  100°C,  the  water  temperature immediately  begins  to  drop as  energy is 
+transferred from the water to your skin.  
+ 
+3.6 Thermal Capacity 
+
+JQ
+kgJkgQ
+LmQvw
+3
+63
+1026.2
+/1026.21000.1
+
+
+
+
+
+JQ
+CCkgJkgQ
+TcmQss
+3
+63
+102.40
+0.20./1001.21000.1
+
+
+
+
+
+ 
+10 
+ 
+We define thermal (heat) capacity as the ability of a material to absorb and hold heat.  
+Thermal capacity is measured in J/(g K). For example, the thermal capacity of water is 
+4.187kJ/(kg K)  or  J/(g K). Thermal capacity is also defined as the amount of energy 
+needed to raise the temperature of 1g sample by 1°C.  
+ 
+ 
+3.7 Total Heat Content 
+Bodies with great mass can store large quantities of heat, even at low temperatures. For 
+example, thick masonry walls are slow to warm up in the heat of the day and slow to 
+cool  down  during  a  cool  night. Also,  a  match  has high  temperature  and  little  heat 
+content. A  large  tank  of  water  may be  at low  temperature  but  still  have large  heat 
+content.  
+ 
+ 
+ 
+3.8 Heat Transfer Theory 
+Every body contains some internal energy. One component of internal energy is thermal 
+(heat). Heat will transfer from one body to another if there is a temperature difference 
+between  the  bodies. When  designing  an  agricultural  building, an  engineer  is  often 
+required to accelerate or slow down heat transfer. Steady state (constant in time) heat 
+transfer problems can usually be solved with relatively simple equations. Non-steady 
+state (varies with time) heat transfer problems require more complicated solutions. 
+ 
+3.8.1 Types of Sensible Heat Transfer 
+ 
+There are three modes of sensible heat transfer: conduction, convection and radiation. 
+ 
+3.8.1.1 Conduction 
+ 
+In conduction, heat energy is passed from molecule to molecule in a material. For heat 
+to be conducted it is essential that there be physical contact between particles and some 
+temperature difference. Thermal conductivity is a measure of how easily heat is passed 
+
+ 
+11 
+ 
+from particle to particle. The rate of heat flow depends on the magnitude of temperature 
+difference and the thermal conductivity of the material. 
+ 
+You should take note that the thermal conductivity of a material is affected by density, 
+size of fibres or particles, the degree of bonding between particles and their arrangement, 
+moisture content, and temperature. The ability of many materials to conduct heat has 
+been determined experimentally. 
+ 
+        3.2 
+ 
+q = heat conduction rate (W) 
+A = cross-sectional area normal to the direction of heat flow (m2) 
+k = thermal conductivity of material (W/m2 K) 
+dt/dx = temperature gradient (K/m)  
+ 
+The term k(dt/dx) is known as Fourier’s first law of conduction.  
+ 
+The above equation shows us that the rate of heat conduction is directly proportional 
+to: 
+ The cross-sectional area, A; 
+  The thermal conductivity of the substance, k; 
+ The temperature gradient, dt/dx; and  
+ Values of k vary considerably. 
+ 
+It is worthy for us to know that metals have high thermal conductivities, the best being 
+silver (k = 419 W/m 
+o
+C), copper (k = 388 W/m 
+o
+C), aluminium (k = 203 W/m 
+o
+C). Non-
+metals have in general relatively low values of k, e.g. a cork has k = 0.04 W/m 
+o
+C and 
+is often used as a heat insulator. 
+ 
+ 
+Activity: Example 
+
+ 
+12 
+ 
+A small building has concrete walls 150 mm thick. If the thermal conductivity of the 
+concrete is 1.1 W/m
+ o
+C, what is the rate of heat leakage through a wall 2.5 m high and 
+5 m long when the inside temperature is 20
+o
+C and the outside temperature is 2
+o
+C? 
+ 
+Let us begin by illustrating the information contained in the question. 
+ 
+Figure 12. A single layered concrete wall 
+ 
+Let us Equation 1 to solve the problem. From this equation, we have: 
+푯=푯푯(
+푯
+푯
+−푯
+푯
+푯
+)=
+푯.푯푯
+푯°C
+×푯.푯푯×푯푯
+(
+푯푯°C−푯°C
+)
+푯.푯푯푯
+ 
+ 
+ 
+푯=푯푯푯푯 푯=푯.푯푯 푯푯 
+ 
+ 
+Conduction through a composite wall 
+ 
+You will agree that in many cases heat transfer involves more than one material. Let us 
+consider a wall with three layers having a rate of heat transfer, Q passing through each 
+layer. Here is our illustration for this:  
+ 
+ 
+ 
+ 
+
+ 
+13 
+ 
+ 
+Figure 13. A 3-D illustration of a composite wall 
+ 
+From the 3-D illustration in Figure 13, we can extract a 2-D diagram that follows. You 
+will notice that the 2-D diagram is the front view of the 3-D diagram. 
+ 
+ 
+ 
+Figure 14. A 2-D illustration of a composite wall 
+ 
+We can now, using respective notations presented in the Figure 14, write the equations 
+that define the rate of heat transfer through each  of the three layers. The rate of heat 
+transfer through the first layer is as follows: 
+ 
+ 
+3.3 
+ 
+Now,  we  can  define  the  equation  for  the  rate  of  heat  transfer  through  layer  two  as 
+follows: 
+
+ 
+14 
+ 
+ 
+ 
+3.4 
+ 
+Finally, we can define the rate of heat transfer through layer 3 as: 
+ 
+ 
+3.5 
+ 
+Using  the  equations  that  we  have  defined  above,  we  can  determine the  rates  of  heat 
+transfer  through  each  of  the  three  layers  and  the  interface  and  surface  temperatures. 
+You  will  agree  that  it  may  not  be  easy  for  us  to  accurately  measure  the  interface 
+temperatures (t
+2
+ and t
+3
+) unless we have some sophisticated means of doing so. In view 
+of this, it is usually unlikely that the interface temperatures are known while the outside 
+temperatures are easily measured (known). We can compute the values of the interface 
+temperatures by combining the three equations and simplify the result. The section that 
+follows presents we can do this.  
+ 
+The first step is to transpose equations (1), (2) and (3). To transpose the equations, we 
+will group temperature terms together in each equation by bringing them to the left side 
+of the equation. Equation 2 becomes: 
+ 
+ 
+ 
+ 
+3.6 
+ 
+ 
+while equation 3 is: 
+ 
+ 
+ 
+ 
+3.7 
+ 
+
+ 
+15 
+ 
+ 
+and equation 4: 
+ 
+ 
+ 
+3.8 
+ 
+ 
+ 
+If we add equations (4), (5) and (6) we will have: 
+ 
+ 
+ 
+3.9 
+ 
+ 
+Making Q the subject of the formula gives us 
+ 
+ 
+ 
+3.10 
+ 
+ 
+Based  on  what  we  have  found  in  equation  9,  let  us  have  a  close  look  at  t
+4
+. You  will 
+agree that t
+4
+ is the same as t
+3+1
+. The number of layers in the composite wall from which 
+we  have  derived  the  equation  is  3.  This  implies  that  if the  number  of  layers,  3,  is 
+replaced by n, the subscript for the latter temperature term would be t
+n+1
+. Hence for n 
+layers, 
+ 
+ 
+ 
+3.11 
+ 
+ 
+
+ 
+16 
+ 
+Example 
+A  brick  wall  250  mm  thick  is  faced  with  concrete  50  mm  thick.  The  brick  has  a 
+coefficient of thermal conductivity of 0.69 W/m  K while that of the concrete is 0.93 
+W/m K. The temperature of the exposed brick face is 30
+o
+C and that of the concrete is 
+5oC.  
+Determine  the  heat  loss  per  hour  through  a  wall  10  m  long  and  5  m  high.  Find  the 
+interface temperature. 
+ 
+We can illustrate this problem as follows: 
+ 
+ 
+Figure 15. A two layered (composite) wall 
+ 
+a) We can find the rate of heat loss as follows: 
+ 
+ 
+   
+Heat lost per hour = 3.004 kJ/s x 3600 s/hr 
+          = 10, 815 kJ/h 
+ 
+
+ 
+17 
+ 
+ 
+b) Now, let us find the interface temperature. We can do this using either the brick 
+wall or the concrete.  
+ 
+For the brick wall: 
+ 
+        
+ 
+Therefore,  
+     t
+2
+ = t
+1
+ - (Qx
+1
+/k
+1
+A) 
+         = 30 – (3004 x 0.25)/(0.69 x 50) =8.2
+o
+C 
+ 
+Alternatively you  can use  the  concrete  to  get  the  same  answer  {i.e.  t
+2
+=  t
+3
+ +  (3004  x 
+0.05)/(0.93 x 50) = 8.2
+o
+C} 
+ 
+ 
+3.8.1.2 Convection 
+ 
+You may recall that at ordinary temperatures most heat transfer in liquids and gases is 
+by convection. In convection heat transfer, heat is transferred to or from an object by 
+the  mass  movement  of  either  a  liquid  or  gas.  We  will  now  discuss  heat  transfer  by 
+convection in more detail. 
+ 
+ 
+3.8.1.2.1 Rate of heat transfer by convection 
+ 
+You should note that the rate of heat flow depends on the temperature of the moving 
+fluid and the rate of flow. Convection transfer can occur in any liquid or gas. There are 
+many factors that influence the value of convective heat transfer. Due to that, it is almost 
+impossible to determine individual effects of each of the factors by direct experimental 
+
+ 
+18 
+ 
+methods. 
+ 
+You may be aware that the heat transfer rate per unit area is dependent on those physical 
+properties which affect the flow pattern. These properties are as follows: 
+ 
+ Fluid viscosity and density; 
+ The specific heat capacity of the fluid; 
+ The fluid’s thermal conductivity (thermal properties); 
+ The linear dimension of the surface 
+ The velocity of flow of the fluid over the surface; 
+ The temperature difference; 
+ The  factor  determining  the  natural  circulation  effect  caused  by  the  expansion  of  the 
+fluid on heating; and 
+ Acceleration due to gravity. 
+ 
+Let us now define the rate of heat transfer by convection as follows: 
+ 
+Equation 32 
+ 
+where q
+c
+ = convective heat transfer rate (W) 
+  h = heat transfer coefficient (W/m
+2
+. K) 
+ A = surface area (m
+2
+) 
+ t
+s
+ = surface temperature (K) 
+  t = free stream fluid temperature (K) 
+ 
+You should know that the laws  governing the  rate of heat transfer by convection are 
+very  complex because  complex  fluid dynamic  phenomena  are  involved.  We  can 
+determine the value of the heat transfer coefficient, h, from relationships that have been 
+found experimentally. 
+ 
+ 
+3.8.1.2.2 Radiation 
+Classification of Heat Transfer by Convection 
+
+ 
+19 
+ 
+We  can classify  heat  transfer  by  convection  is  usually  classified  as  either natural or 
+forced convection. Natural convection involves fluid motion resulting from differences 
+in fluid density and the action of gravity while forced convection involves fluid motion 
+created  by  a  fan  or  pump. You  should  note  that  heat  transfer  coefficients  for  natural 
+convection are generally much lower than those for forced convection. 
+Let us now discuss an example of heat transfer by natural convection between a cold 
+fluid  and  a  hot surface. The  fluid  in  immediate  contact  with  the  surface  is  heated  by 
+conduction, expands and becomes lighter, and rises due to the density differences. 
+Forced convection heat transfer is determined by the flow conditions and by the fluid 
+properties. The flow conditions may be laminar or turbulent and we can determine the 
+flow  condition  using  the  Reynolds  number.  The  fluid  properties  in  question  include 
+density and viscosity and can be determined using the Prandtl number. 
+ 
+Under forced convection, the convection currents are sometimes assisted by means of 
+a  pump  to  enhance  the  transfer  of  heat. For  example,  a  small  pump  is  set  up  in  the 
+cooling system of motor vehicle engines to assist the convection currents. 
+ 
+3.8.1.3 Radiation 
+ 
+Let us now discuss heat transfer by radiation. The transfer of heat energy by radiation 
+requires  no  transfer  medium.  Since  no  medium  is  required  for  the  heat  energy 
+transmission,  the phenomenon is closely  allied  to  the  transmission  of  light  or  radio 
+waves. 
+ 
+A classic example of heat energy transmission by radiation is the transfer of heat energy 
+from the sun to the earth. You should note that the temperature level of the emitting 
+surface largely controls the quantity of the heat transmitted. 
+ 
+We need to note that the amount of energy a body will emit or absorb by radiation is 
+affected by whether its surface is dark or light. Radiant energy transfer follows the same 
+laws as light. The laws are: 
+ It is transmitted through space 
+ It follows a straight-line path 
+
+ 
+20 
+ 
+ It can be reflected 
+ It can be absorbed 
+ It can produce a heating effect or be re-transmitted 
+ 
+It is important for us to know that radiant energy must first be absorbed by a substance 
+in  order  for  it to  be  converted  to  heat. Also,  heat  cannot  be  transmitted  by  radiation 
+through an opaque material but is instead partially absorbed by and reflected from the 
+surface depending on the nature of the body and the wavelength of the radiant energy. 
+You should know that the atmosphere, glass and translucent materials pass a substantial 
+amount of radiant energy while absorbing and reflecting some. A glass window pane is 
+practically transparent to radiant energy from the sun but it is almost entirely opaque to 
+radiation emitted at a longer wavelength by objects within an enclosure (green house 
+effect). 
+ 
+ 
+Prevost’s theory of exchanges 
+ 
+We should note that a body emits radiation at a rate which is determined by the nature 
+of  its  surface  and its temperature. The  body  will  absorb radiation  at  a  rate  which  is 
+determined by the nature of its surface and the temperature of its surroundings. Radiant 
+energy is transferred between two bodies in both directions and not just from a warmer 
+to a cooler body. However, the net transfer is from warm to cool bodies.  
+ 
+It  follows  that  if  the  surface  of  a  body  is  such  that the  body  is  a  good  absorber  of 
+radiation, it must be an equally good emitter otherwise its temperature would rise above 
+that of its surroundings. In particular, matt black surfaces are the best absorbers and the 
+best  emitters  of  radiation;  highly  polished silver  surfaces  are  both  poor  emitters  and 
+poor absorbers. 
+ 
+Black Body Radiation 
+You  may  be  aware  that  objects  vary  in  their  capacity  to  absorb,  reflect,  and  emit 
+radiation. For example, if you put two objects (one shiny and the other one dark) made 
+out of the same material under direct sunlight, the objects’ temperatures would rise at 
+
+ 
+21 
+ 
+different rates because of the different natures of solar radiation absorption, reflection 
+and emission. A "black" body absorbs all radiation it receives and reflects none. It also 
+emits  radiation  at  the  maximum  rate  for  a  given  temperature. However,  there  are  no 
+true black bodies in life. Real (gray) bodies reflect some of the incoming radiation and 
+emit heat at a rate less than that of a black body. Highly absorptive bodies generally 
+radiate readily while highly reflective ones radiate poorly. An example of a body whose 
+properties are close to those of a black body is a ball covered with lamp black. The ball 
+will receive and emit radiation at a high rate. In contract, brightly polished aluminium 
+is a good reflector, a poor absorber, and a poor radiator. 
+ 
+Emissivity and Absorptivity 
+ 
+From our discussion in the previous section, we can draw the lesson that all real objects 
+do not absorb or emit all the radiation that is incident upon them. Using a black body 
+as a reference, we can determine the fraction (or ratio) of incident radiation that gets 
+absorbed or the fraction of the absorbed radiation that gets emitted from a given body 
+relative to the absorption or emission of radiation by a black body. We will call these 
+ratios absorptivity and emissivity. Absorptivity, α, is the fraction of incoming radiation 
+that is absorbed. Emissivity, ε, is the ratio of the emissive power of a real body to that 
+of a black body at the same temperature. 
+  
+We need to note that the emissivity and absorptivity of all real bodies are functions of 
+absolute temperature and of the radiation wavelengths being absorbed or emitted. 
+For  real  bodies, ε and α can  be  average  values  over  a  range  of  wavelengths  or  for  a 
+specific wavelength. 
+ 
+ Stefan-Boltzmann’s Law 
+ 
+According to Stefan-Boltzmann, the total energy radiated per unit time per unit surface 
+area of a black body is proportional to the fourth power of the temperature of the body 
+expressed in Kelvin. We can use the Stefan-Boltzmann equation to calculate the total 
+emissive power of a black body. The equation reads: 
+
+ 
+22 
+ 
+            3.12 
+where  α = Stefan-Boltzmann constant, 5.67 × 10
+-8
+ Wm²K
+4
+ (a numerical constant of a 
+perfect radiator); E
+b
+ = total emissive power of black body; T = absolute temperature 
+ 
+From Equation 12, we can see that radiant heat transfer of a black body is proportional 
+to the fourth power of the absolute temperature difference. You may recall that there 
+are no true black bodies in life. We can, therefore, define the emissive power of a "gray" 
+body as a fraction of the emissive power of a black body as follows:  
+ 
+    3.13 
+ where ε = emissivity 
+ 
+We  can  find  the  net  heat, q
+r
+,  transferred  by  radiation  between  two  bodies  at 
+temperatures T
+1
+ and T
+2
+, respectively, as:  
+  
+    3.14 
+ 
+ 
+where A  =  Area; α =  Stefan-Boltzmann constant; F
+E
+ is  a  radiation  factor 
+allowing for part of the radiation being re-radiated to the body it came from; F
+A
+ 
+is a geometric factor allowing for size, slope, and orientation of the two bodies 
+ 
+ 
+ 
+3.9 Unit Summary 
+In  this  unit,  we  have  covered heat transfer  and  temperature  measurement.  These  are 
+important principles in our daily living because we encounter heat and heat transfer all 
+the time. For example, we use solar energy to dry clothes, crops and animal feed. We 
+also  take  temperature  measurements  in  both  human  and  livestock  housing  units  to 
+ensure  that  our  living  environment  and  that  of  livestock  are  conducive  to  optimal 
+productivity. Our knowledge of heat transfer will also help us understand heat transfer 
+
+ 
+23 
+ 
+processes that occur in farm equipment and machinery in order for us to operate and 
+maintain them properly. 
+ 
+ 
+3.10 Unit Test 
+ 
+3.10.1 The specific heat capacity of water vapour is 2.01 x 10
+3
+ KJ/kg.K. How much 
+energy  must  be  added  to  raise  the  temperature  of  1  gram  of  steam  from 
+110.0°C to 120°C? 
+3.10.2 A liquid whose mass is 600 kg occupies a volume of 0.5 m
+3
+ at a temperature 
+of 20
+o
+C. What is its specific gravity (to 3 sig. figs), assuming that 2,000 liters 
+of water at the same temperature weigh 1,982 kg?   
+    
+ 
+3.11 Suggested Answers to the Unit Test 
+  
+Here are the suggested answers for the Unit Test: 
+ 
+Model Answer for Activity 2.10.1:   20.1 x 10
+3 
+J 
+Model Answer for Activity 2.10.2:   1.2 
+ 
+ 
+ 
+UNIT 4: THERMODYNAMICS 
+4.0 Introduction 
+In  Unit  2  and  3  you  were  introduced  to  heat  and  calorimetry.  The  concepts  acquired 
+from these two units shall be greatly applied in this unit. I want to welcome you to this 
+unit, where we shall continue to look on the relation between heat and work and discuss 
+various aspects of thermodynamics. 
+The science of thermodynamics was developed long before the atomic and molecular 
+was accepted. It involves the description of matter in terms of macroscopic properties 
+such as pressure, temperature, volume and heat flow. The laws of thermodynamics that 
+
+ 
+24 
+ 
+we shall discus in this unit are very important for our understanding of heat and energy 
+flow. The first law of thermodynamics is an expression of the law of conservation of 
+Energy.  The  second  law  of  thermodynamics  sets  limits  on  the  efficiency  of  the 
+machines and processes that change one form of energy into another. 
+ 4.1 Objectives 
+By the end of this unit, you should be able to: 
+ Describe parts of a thermodynamic system 
+ Derive a characteristic gas equation 
+ State the first and second law of thermodynamics 
+ Apply the second law of thermodynamics in heat engines and refrigerators 
+ Calculate coefficient of performance of a refrigerator 
+ Key terms 
+Ensure that you understand the key term phrases used in this unit as listed below. 
+ Characteristic gas equation 
+ Thermodynamics system 
+ Thermodynamics state 
+ Thermodynamic process 
+ Thermodynamic cycle 
+ Thermodynamic equilibrium 
+ Heat engine 
+ Phase 
+ Entropy 
+ Carnot Cycle 
+ Refrigerator 
+ Coefficient of performance 
+ 
+ 4.2 IDEAL/PERFECT GAS 
+This is the gas, which obeys the gas laws at all values of temperature and pressure. 
+Conditions of an ideal gas 
+1. Molecules of an ideal gas are point masses 
+2. There is no IMF between the molecules of an ideal gas. 
+ 
+4.2.1 Gas laws 
+BOYL’S LAW 
+States that, the volume of a given mass of a gas at constant is inversely proportional to 
+its pressure. 
+
+ 
+25 
+ 
+Or for a given mass of a gas at constant temperature, the product of its pressure and 
+volume is constant 
+PV = Constant or V α 1/P 
+If pressure changes from P
+1
+ to P
+2
+ and the corresponding volume changes from V
+1
+ to 
+V
+2
+ 
+Then P
+1
+V
+1
+ = P
+2
+V
+2
+ 
+ 
+CHALRES LAW 
+At constant pressure, the volume of a given mass a gas increases with temperature at a 
+nearly rate. 
+Vα T or V/T = Constant  
+PRESSURE LAW (GAY LUSSAC’S LAW) 
+The pressure of a given mass of a gas is directly proportional to its absolute 
+temperature at its absolute temperature at constant volume. 
+PαT or P/T = Constant 
+ 
+ 
+COMBINED GAS EQUATION  
+If the amount of the gas is constant, then Boyle’s, Charles’ and Gay-Lussac’s Laws 
+can be combined into one relationship.  
+ 
+ 
+4.2.2 Characteristic gas equation 
+Consider the combined gas equation 
+ 
+ 
+ 
+ 
+We usually call the equation PV = nRT, the Characteristic 
+gas equation. Where n is the number of moles and R is the universal 
+gas constant (8.31J/mol/K). 
+ Activity 1 
+
+ 
+26 
+ 
+An automobile tyre is filled to a gas pressure of 200 K pa at 10°C. After driving 100km, 
+the temperature within the tire rises to 40°C. What is the pressure within the tyre now?  
+4.3 Thermodynamics 
+We define thermodynamics as the study of heat and its transformation to   mechanical 
+energy. It is a branch of Physics that deals with the relationship between heat and work. 
+In  thermodynamics  we  usually  encounter  the  following  terms;  system,  surrounding, 
+boundary and universe. 
+4.3.1 Classification of thermodynamic systems 
+Open System: a system in which both mass and energy can cross the boundary. 
+Closed System: One in which mass does not cross boundaries of the system, but allows 
+energy to pass through 
+Isolated System: one in which neither mass nor energy crosses the boundaries of the 
+system. 
+ 
+ 
+4.3.2 Thermodynamic properties 
+Property 
+It is defined as any measurable or observable characteristics of the substance when the 
+system   remains   in   equilibrium   state.   (i.e.)   pressure,   temp,   density,   volume, 
+Energy, specific volume. 
+Intensive property 
+A property, whose value does not depend on the mass of the system is referred to as 
+intensive  property,  like temperature,  pressure,  density,  specific  volume,  etc.  These 
+properties are independent on the mass of the system and they are constant.  
+Extensive property 
+
+ 
+27 
+ 
+One whose value depends on the mass of the system, like volume, total Energy, etc. 
+4.3.3 Control Volume and Control Surface 
+Control Volume: a specified large number thermal device that has mass flow in and out 
+of a system called as Control volume.  
+Control Surface: A system in which both mass and energy can cross the boundary of a 
+control volume is called control surface  
+4.3.4 Categories of thermodynamic systems 
+Phase:  A  phase  is  a  quantity  of  matter  that  is  homogeneous  throughout  in  chemical 
+composition and physical structure. 
+Adiabatic system: An adiabatic system is one, which is thermally insulated from its 
+surroundings.  It  can  ever,  exchange  work  with  its  surroundings.  If  it  does  not,  it 
+becomes an isolated system 
+Homogeneous system: a system which consists of a single phase (i.e.) mixture of air 
+and water vapour, water plus nitric acid.  
+Heterogeneous  system:  a  system  that  consists  of  two  or  more phases  is  called 
+a heterogeneous system (i.e.) water plus steam, ice plus water, water plus oil.  
+4.3.5 A thermodynamic path and process 
+Any change a system undergoes from one equilibrium state to another is known as a 
+process. We shall now define a thermodynamic path as a series of states through which 
+a system passes during a process. 
+  
+A Cycle 
+A system is said to have undergone a cycle if it returns to its original state at the end of 
+the process. Thus, for a CYCLE, the initial and the final states are identical.  
+Property A 
+State 1 
+State 2 
+Property B
+ 
+Path 
+State 1 
+State 2 
+
+ 
+28 
+ 
+ 
+4.3.5.1 Thermodynamic Processes 
+Isothermal process: temperature is constant. 
+Isobaric process: pressure is constant 
+Isochoric process: volume is constant 
+Adiabatic process: no heat enters or leaves the system. 
+Isenthalpic process: enthalpy is constant 
+Isentropic process: entropy is constant 
+Property A 
+State 1 
+State 2 
+Property B
+ 
+
+ 
+29 
+ 
+   
+ 
+4.3.5.2 Reversible and irreversible process 
+Reversible  process:  Process  that  can  be  reversed  without  leaving  any  trace  on  the 
+Surroundings. i.e. Both, System and Surroundings are returned to their initial states at 
+the  end  of  the  Process.  This  is  only  possible  when  net  Heat  and  net  Work  Exchange 
+between the system and the surroundings is ZERO for the Process.  
+Irreversible process: Most of the Processes in nature are irreversible, i.e. Having taken 
+place,  they  cannot  reverse  themselves  spontaneously  and  restore  the  System  to  its 
+original State.  
+4.3.6 Thermodynamic Equilibrium 
+Thermal Equilibrium - The temperature of the system does not change with time and 
+has  same  value  at  all  points  of  the  system.  Under  thermal  equilibrium,  there  is  no 
+transfer of heat. 
+Pressure (P)
+ 
+Volume (V) 
+V=Const 
+Isochoric 
+P=Const 
+Isobaric 
+Temperature (T)
+ 
+Enthalpy (h)/ Entropy (s) 
+T=Const 
+Isothermal 
+h=Const 
+Isenthalpic 
+s=Const 
+Isentropic 
+
+ 
+30 
+ 
+Mechanical Equilibrium - There are no unbalanced forces within the system or between 
+the surroundings. The pressure in the system is same at all points and does not change 
+with respect to time. 
+ Chemical  Equilibrium - No  chemical  reaction  takes  place  in  the  system  and  the 
+chemical composition that is same throughout the system does not vary with time. 
+Phase  equilibrium – Occurs  to  a  system  having  more  than  one  phase.  Mass  of  each 
+phase is in equilibrium   
+Activity 2 
+Explain the relationship between an isobaric process and mechanical equilibrium. 
+4.4 Zeroth law of Thermodynamics 
+We  have  seen  in  section  4.3.6  that  in  thermal  equilibrium  there  is  no  heat  transfer 
+between or among the substances in contact. In Zeroth law we are simply applying the 
+principal of heat transfer under thermal equilibrium. 
+Zeroth law states that, “If two bodies are in Thermal Equilibrium with the third body, 
+then they are also in Thermal Equilibrium with each other.” 
+For instance, if A is in thermal equilibrium with B, and B is in thermal equilibrium with 
+C, then A and C are in thermal equilibrium with each. Zeroth law serves as a basis of 
+validity for temperature measurement in science. 
+ 
+ 4.5 First law of thermodynamics 
+You  may  recall  from  unit  5  in  Physics  module  1,  that  we  discussed  the  law  of 
+conservation of energy. The first law of thermodynamics is the application of the law 
+of conservation of energy to thermal systems. The law states that: 
+“Whenever heat is added to a system, it transforms to an equal amount of some other 
+forms of energy.”  
+A 
+25 ºC 
+25 ºC 25 ºC 
+B 
+C 
+
+ 
+31 
+ 
+We may alternatively define the first law as 
+“The change in internal energy of a system is equal to heat added to the system minus 
+the work done by system.” 
+             4.1
+ 
+You may deduce from this law that whenever you add heat to a system, it will be turned 
+into internal energy of the system or it will do some work. 
+In order to avoid confusion of signs when dealing with the first law of thermodynamics 
+we are going to summarize all sign conversion in a table. 
+VARIABLES SIGNS 
+Work done by the system Negative [- ve] 
+Work done on the system Positive  [+ ve] 
+Heat released by the system Negative [+ ve] 
+Heat added to the system Positive [+ ve] 
+Increase in internal energy Positive [+ ve] 
+Decrease in internal energy Negative [- ve] 
+ 
+Example 
+If 60J of work is done on a gas and the gas loses 150J of heat to its surroundings. 
+What is the change in internal energy?  
+Solution: 
+60J of work is done on the system, and then work done is positive (+W) 
+W = 60J 
+150J of heat is released by the system, and then heat in the system is negative (- Q), Q 
+= - 150J 
+ 
+Δ U = - 150 + 60J = - 90J 
+Application of the first law of thermodynamics 
+We want to apply the first law of thermodynamics to some simple processes.  
+Limitations of the first law of thermodynamics 
+1. It does not indicate the direction of transfer of heat 
+Does not explain why heat cannot flow from cold to hot 
+2. It does not tell anything about the conditions under which heat can be converted into 
+work 
+
+ 
+32 
+ 
+3. It does not tell why the whole of heat energy cannot be converted into mechanical 
+work continuously. 
+Activity 3 
+A gas starts with 400J of internal energy. When 360J of heat is added to the gas, the 
+gas does 140J of work. What is the final internal energy?  
+ 4.6 Second law of thermodynamics 
+Having discovered shortfalls in the first law of thermodynamics, scientists came up 
+with a more clear explanation on heat transfer. The second law of thermodynamics 
+stipulates that, “Heat flows naturally from a hot body to a cold body; heat will never 
+of itself flow from a cold body to a hot body.” 
+Or “When work is done by a heat engine, running between two temperatures, T
+H
+ 
+(Hot) and T
+L 
+(cold), only some of the input energy at T
+H
+ can be converted to work 
+otherwise the rest is rejected as heat at T
+L
+.” 
+ 
+4.6.1 Kelvin-Plank and Clausius statements  
+a) Kelvin-Planck Statement 
+“It is impossible to construct a system which when operating in a cycle will extract heat 
+energy from a single source and do an equal amount of work on the surroundings”.Ie 
+never possible to achieve 100% thermal efficiency 
+b) Clausius Statement 
+“It is impossible to construct a device which when operating in a cycle has no other 
+effect than the transfer of heat energy from a cool to a hotter body”.Ie some work is 
+done on or by the working fluid to the surroundings or vice versa. 
+
+ 
+33 
+ 
+4.4.2 Entropy 
+May be defined in the following ways: 
+We may define entropy in a number of ways: It is the measure of the disorderliness of 
+a system. Alternatively 
+Entropy is the measure of the amount of energy, which is unavailable to do work. 
+Is a state variable whose change whose change is defined for a reverse process at T 
+where Q is heat absorbed 
+Entropy (S) = Heat absorbed (Q) / Temperature (T)  
+The 2
+nd
+ Law of Thermodynamics says that during any process: 
+ S
+universe 
+=   S
+system
+ +   S
+surroundings
+    0       4.2 
+Change in entropy 
+When a system goes from state one to state two, its entropy changes by the same 
+amount ΔS, whether a hypothetical reversible path is followed or a real irreversible 
+path is taken. 
+ 
+4.4.3 HEAT ENGINES 
+A heat engine is a device that converts heat into mechanical work 
+Characteristics of Heat Engines: 
+1.They receive the Heat from High-Temp Reservoir ( i.e. Source ) 
+2.They convert part of this Heat to Work  
+3.They reject the remaining Heat to Low-Temp Reservoir ( i.e. Sink ) 
+They operate on a CYCLE.  
+Heat Engines are generally Work – Producing devices,  
+
+ 
+34 
+ 
+e.g. Gas Turbines, I.C. Engines, Steam Power Plants, etc. 
+ 
+ 
+ 
+ 
+Efficiency of a heat engine 
+Is the ratio of the work done (W) to the input Heat (Q
+in
+ ) at higher temperature  
+           4.5 
+           4.6
+ 
+          4.7
+ 
+ 
+A Carnot cycle consist of two reversible adiabatic and two isothermal processes 
+operating between temperature T
+H
+ and T
+C
+ 
+HEAT  ENGINE : 
+High 
+Temp 
+Low 
+Temp 
+Qin 
+Qout 
+Heat Engine 
+Wnet 
+          
+4.3 
+          
+4.4 
+ 
+ 
+
+ 
+35 
+ 
+ 
+4.4.4 CARNOT CYCLE 
+The very best theoretically possible heat engine is the Carnot engine. The efficiency 
+of a Carnot engine depends on the temperature of the hot and cold reservoirs. 
+ 
+       
+ 
+ 
+ 
+Consider the following two equations 
+for efficiency of Carnot engine 
+          4.8 
+          4.9 
+Equating equations 4.8 and 4.9 we have 
+ 
+                    4.10 
+ 
+!!Kelvins!in  measured be 
+must res temperatuThe :Note
+1
+hot
+cold
+Carnot
+T
+T
+e
+
+ 
+36 
+ 
+Example 
+A carnot engine absorbs 1000J of heat from a reservoir at 127°C and rejects 600J 
+during each cycle. Calculate 
+a. Efficiency of the engine 
+b. The temperature of the sink 
+c. The amount of useful work done in each cyle 
+Solution: 
+Lets first identify what we have from the given information; 
+Q
+H
+ = 1000J,  Q
+C
+ = 600J, T
+H
+ = 127°C. 
+Since all temperatures must be in Kelvin, we have to convert 127°C to Kelvin 
+T
+H 
+= 127 + 273 = 400K 
+a. Efficiency of the engine 
+Since we have Q
+H
+ and Q
+C
+, we are going to apply equation number 4.7: 
+ 
+= 1 – 0.6 
+η = 0.4 or 40% 
+ 
+b. Temperature of the sink T
+L
+ 
+Here we are going to use equation 4.10 
+ 
+ 
+T
+L
+ =  = 240K or -33°C 
+ 
+c. Useful work  
+We will use equation 4.4 
+W = Q
+H
+ - Q
+L
+ 
+W = 1000J – 600J = 400J 
+ 
+ 
+
+ 
+37 
+ 
+Types of Engines 
+External combustion Engine: the one in which the working substance is produced 
+by burning the fuel outside the cylinder, E.g. steam engine 
+Internal combustion engine: fuel is burned inside the cylinder e.g. petrol engine 
+Activity 4
+1. A glass rod is heated and then blown by a glassblower.  When it is at 185°C it is 
+brought outside to cool.  3200 J of heat are transferred from the glass to the air, which 
+is at 18°C.  Find the change in entropy of the universe.  
+2. A Carnot absorbs 1000J of heat from a reservoir at 127°C and rejects 600J of heat 
+during each cycle. Calculate 
+a. The efficiency of the engine  
+b. The temperature of the sink  
+c. The amount of useful work done during each cycle 
+ 
+ 4.5 REFRIGERATOR 
+A refrigerator is a heat engine running in reverse 
+It transfers heat from a colder body (sink) to a hotter body (source). 
+This is achieved by doing work on the refrigerator 
+
+ 
+38 
+ 
+ 
+ 
+4.5.1 Coefficient of Performance (COP) 
+Performance of a refrigerator is measured by its coefficient of performance. 
+Coefficient of Performance of a refrigerator is the ratio of heat extracted per cycle at 
+low temperature to the work input required. 
+                    4.11 
+But we saw in equation 4.4 that: W = Q
+L
+ - Q
+L 
+if make we substitute for W in equation 
+4.11, we get 
+                   4.12 
+Sometimes  we  calculate  coefficient  of  performance  of  a  refrigerator,  using  sink  and 
+source temperatures. In this case quantities in equation 4.12 are represented in terms of 
+Compressor 
+Condenser 
+Evaporator 
+Expansion  
+Valve 
+Wnet, in 
+Surrounding Air 
+Refrigerated Space 
+Q
+H
+ 
+Q
+L
+ 
+[T
+H]
+ Warm  
+Environment 
+W
+net
+  
+Q
+H
+  
+Q
+L
+  
+Refrigerator 
+Refrigerated  
+Space [T
+L
+] 
+
+ 
+39 
+ 
+their corresponding temperatures, thus T
+L
+ for Q
+L
+ and T
+H
+ for Q
+H
+ as shown in equation 
+4.13. 
+                              4.13 
+Example 
+A farm shop refrigerator has a coefficient of performance of 6. If the room temperature 
+outside  the  refrigerator  is  30°C,  what  is  the  lowest  temperature  that  can  be  obtained 
+inside the refrigerator. 
+Solution 
+The easier way to solve this problem is to know the right equation to be used by first 
+identifying  given  terms  and  missing  terms.  In  our  case  we  are  given  COP  =  6  and 
+temperature outside the refrigerator T
+H
+. We have been asked to calculate (are missing) 
+the temperature inside the refrigerator T
+L
+. 
+In this case we are going to apply equation 4.13, 
+ 
+ 
+1818K - 6T
+L
+ = T
+L 
+7T
+L
+ = 1818K 
+T
+L
+ = 260K. 
+Activity 5 
+A  household  refrigerator  has  a  coefficient  of  performance  of  6.0.  If  the  room 
+temperature outside the refrigerator is 30°C, what is the lowest temperature that can be 
+obtained inside the refrigerator?  
+ 
+4.6 Practice Activity 
+An Agricultural Economist wants to buy a very effective refrigerator for Bunda farm 
+shop. On the market there are two models of refrigerators. Model A works between -
+10°C  and  27°C  while  model  B  works  between -27°C  and  17°C.  Both  A  and  B  can 
+remove 2000J of heat  from the freezer. Which refrigerator should she buy and why? 
+(Show your working)   
+
+ 
+40 
+ 
+ 
+4.7 Unit summary 
+In  this  unit  we  have  discussed  important  concepts  in  the  transformation  of  heat  to 
+mechanical   energy.   Pressure,   temperature,   volume,   enthalpy   and   entropy   are 
+parameters that are involved in the transformation of heat. This transformation follows 
+a particular thermodynamic process which takes a specific path. 
+Unit Test 
+1. In a refrigerator, heat from inside at 277K is transferred to a room at 300K. How 
+many joules of heat shall be delivered to the room for each joule for each joule 
+of electrical energy consumed ideally?      
+2. What amount of work has to be done in converting 1kg of water into steam at 
+100°C and normal atmospheric pressure? [The volume of 1 kg of water at 100°C 
+is 10
+-3
+ m
+3
+ and that of 1 kg of steam is 1.671m and the normal pressure is 10
+5
+ 
+Nm
+-2
+.    
+3. Calculate the change in internal energy of a block of copper of mass 200g when 
+it  is  heated  from  25°C  to  75°C.  Assume  the  change  in  volume  is  negligible. 
+Specific heat of copper is 0.1/g/K       
+4. 1.0 m
+3
+ of water is converted into 1671 m
+3
+ of steam at atmospheric and 100°C 
+temperature. The latent heat of vaporization of water is 2.3 × 10
+6
+ J/kg. If 2.0 kg 
+of water is converted into steam at atmospheric pressure and 100°C temperature, 
+then how much will be the increase in its internal energy? [Density of water = 
+1×10
+3
+ kg m
+-3
+ and atmospheric pressure = 1.01×10
+5
+ Nm
+-2
+].     
+5. What  amount  of  heat  must  be  supplied  to  2×10
+-2
+ kg  of  nitrogen  (at  room 
+temperature)  to  raise  its  temperature  by  45°C at  constant  pressure  (molecular 
+mass of N
+2
+ = 28; R=8.3J/mol/K; C
+P
+ = 3.5R)         
+6. Let temperatures T
+1
+ and T
+2
+ of the two heat reservoirs in the ideal Carnot engine 
+be 1500°C and 500°C respectively. Which of these, increasing T
+1
+ by 100°C or 
+decreasing T
+2
+ by 100°C, would result in a greater improvement in the efficiency 
+of the engine? 
+
+ 
+41 
+ 
+7. Calculate the efficiency of the Carnot engine working between the steam point 
+and ice point.                                                                                
+8. A Carnot engine whose low temperature reservoir is at 7°C, has an efficiency 
+of 50%. It is desired to increase the efficiency to 70%. By how many degrees, 
+the temperature of the high-temperature reservoir is increased?                                                                                                    
+ 
+ Suggested Answers to Unit Activities 
+Activity 1 
+232 Pa. 
+Activity 2 
+They both occur at constant pressure 
+Activity 3 
+620 J. 
+Activity 4 
+1. 4J/K 
+2. a.) 40%               b.) 240K                  c.) 400J   
+Activity 5 
+260 K 
+Practice Activity 
+She should buy refrigerator A. Refrigerator A has a high coefficient of performance 
+than refrigerator B, hence more effective. 
+Unit Test 
+1. 13J 
+2. 1.670 x 10
+5
+J 
+3. 4200J 
+4. 4.263 x 10
+6
+ J 
+5. 934 J 
+6. Decreasing the temperature by 100°C 
+7. 26.81% 
+8. 373.3K  
+ 
+
+ 
+42 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+UNIT 5: ELECTRICITY AND MAGNETISM 
+5.0 Introduction 
+Before the fifteenth century, man used other sources energy for lighting, cooking and 
+even  production.  There  was  little Electrical  phenomena  have  been  studied  since 
+antiquity;  though  progress  in  theoretical  understanding  remained  slow  until  the 
+seventeenth  and  eighteenth  centuries.  Even  then,  practical  applications  for  electricity 
+were few, and it would not be until the late nineteenth century that engineers were able 
+to put it to industrial and residential use. The rapid expansion in electrical technology 
+at  this  time  transformed  industry  and  society.  Electricity's  extraordinary  versatility 
+means    it    can    be    put    to    an    almost    limitless    set    of    applications    which 
+
+ 
+43 
+ 
+include transport, heating, lighting, communications, agriculture and computation. 
+Electrical power is now the backbone of modern industrial society. 
+ 
+ 5.1 Objectives 
+By the end of this unit, you should be able to: 
+ Describe the structure of an atom in relation to static and current electricity 
+ Differentiate static electricity from current electricity 
+ Design parallel and series circuits 
+ Apply Kirchhoff’s rules in circuit analysis 
+ Explain the applications of Faraday’s law 
+  
+ Key terms 
+Ensure that you understand the key term phrases used in this unit as listed below: 
+ Charge 
+ Circuit 
+ Kirchhoff’s rules 
+ Lenz law 
+ Ohms law 
+ Magnetic flux 
+ Faraday’s law 
+ Transformers 
+ Magnetic field 
+ Electric Field
+ 
+ 5.2 Atomic Structure 
+As  you  have  learnt  from  secondary  school  physical  science,  an  atom  is  made  up  of 
+neutrons, protons and electrons. Electrons are found in the outer most shells and have 
+a negative charge and a negligible mass. Protons and neutrons are found at the center 
+of an atom. Protons are positively charged and have a unit mass. Neutrons have a zero 
+charge and a unit mass. Figure 5.1 is shows a structure of an atom. 
+
+ 
+44 
+ 
+ 
+Figure 5.1: Atomic Structure 
+Activity 1 
+Explain how does the position of electrons and protons in an atom affect their 
+movement when conducting current. 
+ 
+ 5.3 Electric Charge and Fields 
+In most cases you wonder when you see sparks or hear a sparkling sound when 
+putting off nylon clothes. In this case, the sparks are the result of transfer of electric 
+charges. 
+ 
+5.3.1 Electric Charge  
+We  shall  define  electric  charge  as  the  intrinsic  characteristic  of  the  fundamental 
+particles making up insulators. Electricity in insulators is transferred through negative 
+charge  carriers (electrons)  and  positive  charge  carriers  (protons).  An  insulator  that 
+increases the number of charges by getting extra positive charges becomes positively 
+charged. On the contrary, an insulator that has a deficit of positive charges (has more 
+electrons that protons) is considered as negatively charged. 
+The SI Unit for electric charge is a Coulomb (C). Q or q represents electric charge. 
+ 
+5.3.2 Electric Field 
+When  you rub  your pen  against  your hair and bring it close to a heap of small small 
+pieces  of  papers, a  pen  attracts  pieces  of  paper;  hence  they  jump  to  the  pen.  But  the 
+
+ 
+45 
+ 
+attraction forces excreted on the pieces of paper by the pen depend on pen’s distance 
+from the pieces of papers. This illustrates to us that it is only within a certain distance 
+that pieces of papers  will jump to the pen. The  area  around  an  electric charge  where 
+electrostatic forces are experienced is referred to as an electric field. 
+We represent the intensity of an electrostatic field at any point as force per unit charge. 
+Mathematically is given as in equation 5.1 
+           5.1 
+The SI Unit for electric field intensity is Newton per coulomb or volts per meter; N/C 
+or V/m. 
+Example 1 
+Find the magnitude of the force acting on a 2.5 C charge, placed in an electric field with 
+an intensity of 10N/C. 
+Solution: 
+Here we have Q = 2.5C, E = 10N/C and F =? 
+To work out F we have to make F subject of the formula in equation 5.1 
+Then F = EQ = 2.5 C x 10N/C = 25N. 
+Activity 2 
+Calculate the value of the magnetic field intensity, given that a force of 0.02N is being 
+exerted on a 10μC charge 
+ 5.4 Coulomb’s Law 
+Coulomb’s  law  is  sometimes  defined  as  the  inverse  square  law.  It  describes  the 
+relationship  between  the  force  of  attraction  between  two  or  more  charges  and  the 
+distance between them. We state coulomb’s law as: 
+“The  electrostatic  force  (F)  between  two  point  charges  (q
+1
+)  and  (q
+2
+)  is  directly 
+proportional to the product of the two charges and inversely proportional to the square 
+of the distance (r) between their centres.” 
+We can express Coulomb’s law mathematically as shown in equation 5.2 
+ 
+         5.2 
+
+ 
+46 
+ 
+Example 2 
+Calculate the value of two equal changes if they repel each other with a force of 0.1 N 
+when situated at 50 cm apart in vacuum.  
+Solution: 
+To successfully solve this problem we have to first identify what we have: 
+F = 0.1N; r = 50 cm; k = 9 x 10 
+9
+ C
+2
+/N/m
+2
+; q
+1
+ = q
+2
+ =? 
+Lets convert 50cm to meters, which is 50/100 = 0.5 m 
+Now we are going to apply equation 5.2 
+ 
+let us now substitute the given values 
+  
+But we are told in the question that and we can equate this to , then 
+, then  
+ 
+Making q the subject of the formula, we have: 
+ 
+or  
+Activity 3 
+ 
+5. 5 Resistivity and Conductivity 
+Resistivity 
+Resistivity is the measure of how strong a conductor resist the flow of electric current. 
+The SI unit of resistivity is ohm-meter (Ωm). Equation 5.3 shows an equation for 
+resistivity: 
+
+ 
+47 
+ 
+          5.3 
+Where, R is resistance of the conductor 
+ A is the cross-sectional area of the conductor 
+ l is the length of the conductor and 
+ ρ is the resistivity of a conductor 
+ 
+Conductivity 
+Conductivity is the inverse (opposite) of resistivity. We may define conductivity as the 
+measure of how well a metal allows the flow of current. Conductivity is measured in 
+Ω
+-1
+m
+-1
+. 
+In this case we may deduce that the higher the resistivity of a conductor the lower the 
+conductivity. Mathematically is represented as shown in equation 5.4. 
+ 
+          5.4 
+ Activity 4 
+A metal rod is 2m in long and 8mm in diameter. Compute its resistance if the resistivity 
+of the metal is 1.76 x 10
+-8
+ Ωm. 
+ 5.6 Electric Current 
+Each time we hear the term electric current; our mind begins to visualize a number of 
+electrical appliances (bulbs, electric iron, a kettle, a cooker, radio cassettes, etc.) that 
+we have ever handled in our lives. You may recall from your secondary school physical 
+science  that  electrons  in  insulators  localized  (stationary)  and  hence  cannot  produce 
+electric  current  but  rather  static  electricity.  On  the  contrary,  electrons  in  metals  are 
+delocalized (move randomly). When a cell is connected to a conductor the free moving 
+electrons in a wire align themselves and flow uniformly in one specified direction. The 
+uniform flow of electric current is known as electric current. 
+You may also express electric current as the rate of change of electric charge. Electric 
+current is measured in Coulomb per second (Coulomb/s) or Amperes (A). Relation 5.5 
+shows an equation for electric current. 
+
+ 
+48 
+ 
+           5.5 
+5.6.1 Ohms Law 
+Ohms law describes the relationship among current, voltage and resistance in a 
+circuit. Ohms law may be stated in a variety of ways but all meaning the same thing. 
+In this section we shall define Ohms law as: 
+“The potential difference across a conductor is directly proportional to the current 
+passing through the conductor.” 
+Or, “Voltage is equal to the product of resistance and current.” 
+          5.6 
+ 
+5.6.2 Ohms Law and Resistance 
+Resistance is the opposition to the flow of electric current and is measured in Ohms. 
+The behavior of current, voltage and resistance in circuit depends on the arrangement 
+of each circuit. We can arrange our circuit as a parallel circuit or a series circuit. 
+ 
+5.6.3 Series Circuit 
+When you connect three resistors connected as shown in figure 5.2, the following facts 
+follow: 
+ 
+FIGURE 5.2 
+Facts on Series Resistors 
+1. Current is the same through all resistors 
+2. Total voltage (PD) = sum of individual voltages (pds): V = V
+1
++ V
+2
++ V
+3
+ 
+3. Individual   potential   difference   (voltage)   is   directly   proportional   to   individual 
+resistances V
+1
+=IR
+1
+, V
+2
+= IR
+2
+, V
+3
+= IR
+3
+ 
+4. Total resistance is greater than individual resistance. R=V/I = R
+1
++R
+2
++R
+3
+ 
+5. Total resistance = sum of individual resistances  
+
+ 
+49 
+ 
+5.6.4 Parallel Circuit 
+Facts on Parallel Resistors 
+1. Potential difference (voltage) is the same across each resistor. 
+V = V
+1
+ = V
+2
+ = V
+3 
+ or V = I
+1
+R
+1
+ = I
+2
+R
+2
+ = I
+3
+R
+3
+ 
+2. Total current = sum of individual currents 
+i.
+ I = I
+1
++ I
+2 
++I
+3
+ +
+ 
+3. Individual currents inversely proportional to individual resistances 
+4. Effective resistance less than least individual resistance 
+i. I/V = 1/R
+ 
+= 1/R
+1
+ + 1/R
+2
+ + 1/R
+3
+ 
+Example 
+A farmer designed a simple circuit for his chicken kraal. The arrangement of resistors 
+in his circuit is shown in figure 5.6. If R1 = 3Ω, R2 = 9Ω, R3 = 12Ω and R4 = 6Ω. 
+Find the value of current passing through R1. 
+ 
+Solution: 
+We first of all should find the effective resistance of the parallel arrangement, 
+Effective resistance: 
+1/R
+T
+ = 1/3+1/9+1/12                             
+         = (12+4+3)/36                          
+         = 19/36                                     
+    R
+T
+ = 36/19 = 1.9Ω 
+Then we will consider series resistors:  1.9 Ω                     
+R
+net
+ = 1.9+6 =7.9 Ω 
+ 
+Total current will be given by 
+
+ 
+50 
+ 
+I = V/R 
+  = 6/7.9 
+  = 0.76A 
+But we know that voltage in series is divided, then 6V will shared between a R4 
+resistor and the set of 3 parallel resistors. In this case let us find the voltage across a 
+3Ω resistor. 
+V
+R4 
+= IR = 0.76A x 6Ω = 4.56V 
+Then voltage across a set of parallel resistors will simply be the difference between 
+circuit voltage (6V) and voltage across R4. 
+V
+Across a set of parallel resistors 
+= 6V – 4.56V = 1.44V 
+At this point we know that voltage across parallel resistors is the same, thus R1, R2 
+and R3 are all 1.44V. 
+Finally, it will be easier to calculate the value of current passing through R1, since we 
+know the values of voltage (1.44V) and resistance (3Ω). 
+ 
+ 
+5.6.5 Electrical Power 
+You may recall that electrical power is the product of voltage and current. We usually 
+use Ohms law to derive at other equations of power. The SI unit for power is Watt 
+(W) 
+P = VI 
+P = I
+2
+R 
+P = V
+2
+/R 
+ 
+ 5.7 Potential Difference and Internal Resistance  
+The potential difference is the work done in moving a unit charge from one point to 
+another. In every cell there is some resistance 
+
+ 
+51 
+ 
+ 
+W = QV = ItV 
+To calculate power generated by the source: 
+EI = I
+2
+r + I
+2
+R 
+Dividing both sides by I 
+E = Ir + IR 
+E = I ( r + R) 
+Making I subject 
+I = E/(R+r) 
+PD across AB: V
+AB
+ = E – Ir = IR 
+Then V
+AB
+ = IR = [E/(R+r)] R 
+ 
+5.7.1 Potential Divider Rule 
+In order to find the voltage of a single resistor amongst several resistors connected in 
+parallel, we apply potential divider rule.  
+ 
+I = V
+0
+/R = V
+0
+/ (R
+1
++R
+2
+)....... 1 
+V
+1
+ = IR
+1 
+........................... 2 
+Sub. Eqn 1 into 2 
+
+ 
+52 
+ 
+V
+1
+ = R
+1
+V
+0
+/(R
+1
++R
+2
+) 
+ 
+ 5.8 Kirchhoff’s Rules 
+5.8.1 KIRCHOFF’S JUNCTION RULE 
+It’s also known as Kirchhoff's current rule 
+States that, “the sum of the currents entering any junction must be equal to the sum 
+of currents leaving the junction.” 
+Alternatively can be defined as, the algebraic (net) sum of the currents at a junction 
+is zero 
+ 
+I
+1
+ = I
+2
+ + I
+3
+ or ΣI = 0.      
+Its applied in case where we have more than one loop 
+Junction rule is based on the conservation of charge 
+FACTS ON KCL 
+1. If the direction of the loop is in the same direction of the current, current is positive 
+2. If the direction of the loop is in the opposite direction to current, current is negative 
+3. The direction of the loop should be the same in every loop 
+5.8.2 KIRCHHOFF’S VOLTAGE RULE 
+States that, the algebraic sum of voltages around a closed circuit loop is zero. 
+Σ V = 0 
+FACTS ON KVL 
+1. If the direction of the loop moves from positive to negative side o0f a cell, V is 
+negative 
+2. If the direction of the loop moves from positive to negative side of the loop 
+3. The direction of the loop should be same in every loop  
+ Activity 5 
+Find the value of I
+1
+, I
+2
+ and I
+3 
+in figure 5.8 
+
+ 
+53 
+ 
+ 
+ 5.9 Electric and magnetic Fields 
+5.9.1 Magnetic Fields 
+A region where magnetic forces are experienced 
+  B = F
+B
+ / qv 
+  F
+B
+ = B|q|v 
+If we have an angle between φ B and V then 
+   F
+B
+ = B×|q|× v × sin φ 
+Where B = Magnetic field 
+             F
+B
+ = Magnetic force 
+             q = Charge 
+             V = velocity 
+SI unit of B is Tesla (T) 
+ 
+5.9.2 Magnetic Properties of Matter 
+Diamagnetic substances: substances in which the magnetic moment is weak and 
+opposite the applied magnetic field. 
+Paramagnetic substances: substances in which the magnetic moment is weak and in 
+the same direction as the applied magnetic field. 
+Ferromagnetic substances: interaction between atoms cause magnetic moments to 
+align and create a strong magnetization that remains after the external field is 
+removed.  
+5.9.3 Electromagnetism 
+
+ 
+54 
+ 
+Magnetic forces created due to the flow of current in a conductor. The magnetic force 
+is affected by the magnitude of current and the number of turns in a coil. 
+Magnetic Field Pattern Round a Flat Coil 
+A solenoid is obtained by increasing the number of turns of a flat coil. The resulting 
+magnetic field pattern of a solenoid resembles that of a bar magnet. 
+ 
+Magnetic field pattern around a straight wire  
+The resulting magnetic field lines form concentric circles around the wire. 
+ 
+The Right-Hand Grip rule can be used to predict the direction of the magnetic field. 
+ 
+5.9.4 Magnetic Flux and Faraday’s Law of  Induction 
+
+ 
+55 
+ 
+5.9.4.1 Induced Electromotive Force 
+Faraday’s experiment: closing the switch in the primary circuit induces a current in 
+the secondary circuit, but only while the current in the primary circuit is changing. 
+ 
+The current in the secondary circuit is zero as long as the current in the primary circuit, 
+and therefore the magnetic field in the iron bar, is not changing. 
+Current flows in the secondary circuit while the current in the primary is changing. It 
+flows in opposite directions depending on whether the magnetic field is increasing or 
+decreasing. 
+The magnitude of the induced current is proportional to the rate at which the magnetic 
+field is changing. 
+ 
+
+ 
+56 
+ 
+ 
+5.9.4.2 Magnetic Flux (Φ) 
+Φ = ABCos θ 
+The SI unit is 1T.m
+2
+ or Weber (Wb) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Magnetic flux is used in the 
+calculation of the induced emf. 
+ 
+Faraday’s law of Induction 
+Faraday’s law: An electromotive force (E) is induced only when the magnetic flux  
+(Φ) through a loop changes with time (t). 
+which can be presented as 
+ 
+ 
+5.9.4.3 Lenz law 
+Lenz law is a law that is applied in generating electromotive force. It relates the 
+direction of current and the magnetic flux that causes it. Lenz law states that,  
+“An induced current always flows in a direction that opposes the change that caused 
+it.” 
+
+ 
+57 
+ 
+For  instance,  if  we  have  a  bar  magnet  and  a  conductor  carrying  current  as  shown  in 
+figure  5.7,  When  the  magnetic  field  is  increasing,  the  magnetic  field  created  by  the 
+induced current will be in the opposite direction; if decreasing, it will be in the same 
+direction.  
+ 
+5.9.4.4 Electric and Magnetic Fields 
+There is a direct relationship between magnetic field (B) and an electric field (E). We 
+now want to consider equations of electric and magnetic fields and establish their 
+relationship. 
+Electric Force: F
+e
+ = qE 
+Magnetic Force: F
+B
+ = qvB 
+At equilibrium in a conductor having both E and B fields: F
+e
+ = F
+B
+ 
+Thus qE = qvB 
+Making q subject: 
+E = Bv 
+ 5.10 Generators and Motors 
+5.10.1 Generators 
+An  electric  generator  converts  mechanical  energy  into  electric  energy.  An  outside 
+source of energy is used to turn the coil, thereby generating electricity. 
+ 
+
+ 
+58 
+ 
+ 
+5.10.2 Electric Motors 
+An electric motor is exactly the opposite of a generator – it uses the torque on a 
+current loop to create mechanical energy. 
+ 
+ 5.11 Transformers 
+A transformer is used to change voltage in an alternating current from one value to 
+another. 
+ 
+
+ 
+59 
+ 
+By applying Faraday’s law of induction to both coils, we can come up with 
+transformer equations: 
+ 
+Where V is voltage, N is number of turns, p is primary circuit, and s is secondary 
+circuit. 
+The power in both circuits must be the same; therefore, if the voltage is lower, the 
+current must be higher. 
+ 
+Activity 
+ 
+5.5 Practice activity 
+ 5.6 Unit summary 
+Unit Test 
+Suggested Answers to unit Activities 
+ 
+UNIT 6: LIGHT, OPTICS AND OPTICAL INSTRUMENTS 
+6.0 Introduction 
+What do you see in front of you? We are all able to see just because of light. You can 
+verify this at night in a dark place; most of us would fail to see anything in the dark. 
+Light and optical instruments enable us to see very small things, things very far away 
+and things hidden inside other objects. In this unit we shall be discussing the elementary 
+principles of light, optics and optical instruments. 
+ 6.1 Objectives 
+By the end of this unit, you should be able to: 
+ Explain the dual nature of light 
+ Calculate angles of reflection and refraction 
+
+ 
+60 
+ 
+ State real life examples of reflection and refraction 
+ Draw the ray diagram for a lens and a mirror showing the object and image 
+ Describe the difference between a real image and a virtual image and give an example 
+of each 
+ Key terms 
+Ensure that you understand the key term phrases used in this unit as listed below. 
+ Specular 
+ Diffuse 
+ Retroreflection 
+ Critical angle 
+ Lens 
+ Mirror 
+ Light ray  
+ Medium 
+ Index of refraction 
+ Snell’s law 
+ Prism 
+ Virtual image 
+ Real image 
+ Internal reflection 
+ Lens Equation
+
+ 
+1 
+ 
+ 6.2 Nature of light 
+There  are  two  historical  models  for  the  nature  of  light. The  speed  of  light  has  been 
+measured in many ways. Reflection and refraction are the fundamental phenomena in ray 
+(geometric) optics. Internal reflection is the basis for fiber optics 
+Before  the  beginning  of  the  nineteenth  century,  light  was  considered  to  be  a  stream  of 
+particles. The particles were either emitted by the object being viewed or emanated from 
+the eyes of the viewer. 
+ 
+Newton was the chief architect of the particle theory of light. He believed the particles left 
+the object and stimulated the sense of sight upon entering the eyes. 
+Christian Huygens argued that light might be some sort of a wave motion. 
+Thomas Young (in 1801) provided the first clear demonstration of the wave nature of light. 
+He showed that light rays interfere with each other. Such behavior could not be explained 
+by particles. 
+ 
+Christian Huygens 
+He lived from 1629 to 1695. He is best known for his contributions to fields of optics and 
+dynamics. He thought light was a type of vibratory motion. It spread out and produced the 
+sensation of light when it hit the eye. Huygens deduced the laws of reflection and refraction. 
+He explained double refraction 
+ 
+6.2.1 Wave nature of light  
+During  the  nineteenth  century,  other  developments  led  to  the  general  acceptance  of  the 
+wave theory of light. Thomas Young provided evidence that light rays interfere with one 
+another according to the principle of superposition. This behavior could not be explained 
+by a particle theory. 
+Maxwell  asserted  that  light  was  a  form  of  high-frequency  electromagnetic  wave. Hertz 
+confirmed Maxwell’s predictions. 
+ 
+6.2.2 Particle nature of light 
+
+ 
+2 
+ 
+In the pursuit to a certain the nature of light, scientists carried out several experiments and 
+the wave model of light could not explain some experiments. The photoelectric effect was 
+a major phenomenon not explained by waves. 
+When light strikes a metal surface, electrons are sometimes ejected from the surface. 
+The kinetic energy of the ejected electron is independent of the frequency of the light. 
+Einstein (in 1905) proposed an explanation of the photoelectric effect that used the idea of 
+quantization. The quantization model assumes that the energy of a light wave is present in 
+particles called photons. 
+E = hƒ 
+Where h is Planck’s Constant = 6.63 x 10
+-34
+ J
+.
+s and f is frequency 
+6.2.3 Dual Nature of light 
+In view of these developments, we consider light as having a dual nature. Light exhibits 
+the characteristics of a wave in some situations and the characteristics of a particle in other 
+situations. 
+Activity 1 
+Explain two experiments that scientists used to establish: 
+a. The wave nature of light (one experiment) 
+b. The particle nature of light (one experiment) 
+ 
+6.3 Reflection and Refraction 
+6.3.1 Reflection 
+A ray of light, the incident ray, travels in a medium. When it encounters a boundary with 
+a  second  medium,  part  of  the  incident  ray  is  reflected  back  into the  first  medium. This 
+means  it  is  directed  backward  into  the  first  medium. For  light  waves  traveling  in  three-
+dimensional space, the reflected light can be in directions different from the direction of 
+the incident rays. 
+6.3.1.1 Specular Reflection 
+Specular reflection is reflection from a smooth surface. The reflected rays are parallel to 
+each other. All reflection in this unit is assumed to be specular. 
+
+ 
+3 
+ 
+ 
+Figure 6.1: Specular Reflection 
+6.3.1.2 Diffuse Reflection 
+Diffuse reflection is reflection from a rough surface. The reflected rays travel in a variety 
+of directions. A surface behaves as a smooth surface as long as the surface variations are 
+much smaller than the wavelength of the light. 
+ 
+Figure 6.2: Diffuse Reflection 
+6.3.1.3 Law of Reflection 
+The law of reflection states that, the incident ray, the reflected ray, and the normal all lie 
+in the same plane and the incident angle is the same as the reflected angle. 
+The normal is a line perpendicular to the surface. It is at the point where the incident ray 
+strikes the surface. The incident ray makes an angle of θ
+1
+ with the normal. The reflected 
+ray makes an angle of θ
+1
+’
+ 
+with the normal. 
+
+ 
+4 
+ 
+ 
+Figure 6.3: Law of Reflection 
+6.3.1.4 Multiple Reflections 
+To  achieve  multiple  reflections  we  need  to  have  more  a  single  mirror. The  incident  ray 
+strikes the first mirror. The reflected ray is directed toward the second mirror. There is a 
+second  reflection  from  the  second  mirror. This  trend  continues  up  to  the  last  mirror 
+depending on the number of mirrors used. Figure 6.4 shows multiple reflections. 
+ 
+Figure 6.4: Multiple Reflections 
+6.3.1.5 Retroreflection 
+
+ 
+5 
+ 
+Assume  the  angle  between  two  mirrors  is  90
+o
+.
+ 
+The  reflected  beam  returns  to  the  source 
+parallel to its original path.
+ 
+This phenomenon is called retroreflection.
+ 
+Applications include: Measuring the distance to the Moon, Automobile taillights 
+Traffic signs 
+ Activity 2 
+Find the values of  
+θ
+M
+2
+, 
+θ
+M
+2
+’
+, γ and δ in the Figure 6.4. 
+6.3.2 Refraction 
+When a ray of light traveling through a transparent medium encounters a boundary leading 
+into another transparent medium, part of the energy is reflected and the other part enters 
+the second medium. 
+The ray that enters the second medium changes its direction of propagation at the boundary. 
+This bending of the ray is called refraction. 
+The  incident  ray,  the  reflected  ray,  the  refracted  ray,  and  the  normal  all  lie  on  the  same 
+plane. The angle of refraction depends upon the material and the angle of incidence. 
+ 
+v
+1
+ is the speed of the light in the first medium and v
+2
+ is its speed in the second. 
+The path of the light through the refracting surface is reversible. 
+For example, a ray travels from A to B. 
+If the ray originated at B, it would follow the line AB to reach point A. 
+
+ 
+6 
+ 
+ 
+Figure 6.5: Law of refraction 
+Refraction V
+1
+ > V
+2
+ 
+Light may refract into a material where its speed is lower. The angle of refraction is less 
+than the angle of incidence. The ray bends toward the normal  
+
+ 
+7 
+ 
+ 
+Figure 6.6: Refraction at V
+1
+ > V
+2
+ 
+Refraction V
+2
+ > V
+1 
+Light may refract into a material where its speed is higher. The angle of refraction is greater 
+than the angle of incidence. The ray bends away from the normal. 
+ 
+Figure 6.7: Refraction at V
+2
+ > V
+1 
+6.3.3 Light in a medium 
+The light enters from the left and it may encounter an electron on the way. The electron 
+may absorb the light, oscillate, and reradiate the light. The absorption and radiation cause 
+the average speed of the light moving through the material to decrease. 
+
+ 
+8 
+ 
+ 
+Figure 6.8: Light in a medium 
+6.3.4 Index of refraction 
+The speed of light in any material is less than its speed in vacuum. 
+The index of refraction, n, of a medium can be defined as: 
+ 
+ 
+For a vacuum, n = 1 
+We assume n = 1 for air also 
+For other media, n > 1 
+n is a dimensionless number greater than unity. 
+n is not necessarily an integer. 
+6.3.5 Indices of refraction 
+ 
+
+ 
+9 
+ 
+ 
+ 
+6.4 Snell’s law of refraction 
+n
+1
+ sin θ
+1
+ = n
+2
+ sin θ
+2
+ 
+θ
+1
+ is the angle of incidence 
+θ
+2
+ is the angle of refraction 
+The experimental discovery of this relationship is usually credited to Willebrord Snell and 
+is therefore known as Snell’s law of refraction. 
+Refraction is a commonplace occurrence, so identify an analysis model as a wave under 
+refraction. 
+Activity 3. 
+Light travels from air into optical fiber with an index of refraction of 1.44. 
+a. In which direction does the light bend?  
+b. If the angle of incidence on the end of the fiber is 22°, what is the angle of refraction inside 
+the fiber? 
+ 6.5 Practice activity 
+A light ray of wavelength 589 nm traveling through air is incident on a smooth, flat slab of 
+crown glass at an angle of 30.0° to the normal. Find 
+1. The angle of refraction  
+2. The speed of this light once it enters the glass  
+3. The wavelength of this light in the glass  
+
+ 
+10 
+ 
+6.6 Unit summary 
+Unit Test 
+Suggested Answers to Unit Activities 
+Activity 1 
+a. Superposition principle 
+b. Photoelectric effect 
+Activity 2 
+θ
+M
+2
+ = 55°, 
+θ
+M
+2
+ = 55°, γ = 35° and δ = 25° 
+Activity 3 
+a. Towards the normal 
+b. 15° 
+Practice Activity 
+1. 19.2° 
+2. 197 x 10
+8
+ m/s 
+3. 388 nm 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+11 
+ 
+References and Bibliography 
+ 
+Brown,  R.G.  2013.  Introductory  physics  I:  Elementary  mechanics.  Duke  University 
+Physics Department. Durham, North Carolina. 
+ 
+Bueche, F.J. 1989. Schaum's outline of theory and problems of college physics. 8th Edition. 
+McGraw-Hill. New York. 
+ 
+Bueche, F. and E. Hecht. 2010. Schaum's outline of theory and problems of college physics. 
+McGraw-Hill.  
+ 
+Constant  F.W.  1967. Fundamental  principles  of  physics.  Adson- Wesley  Publishing 
+Company Incorporated. 
+ 
+Giacoli D.C. 1980. Physics. Prentice-Hall Inc. Englewood Cliffs. New Jersey. 
+ 
+Marion   J.B.   1979. General   Physics   with   Bioscience   Essays.   John   Wiley   and   Sons 
+(International Edition). New York. 
+ 
+McDonough J.M.  2009. Lectures  in  elementary  fluid dynamics:  Physics, Mathematics  and 
+Applications. Department of Mechanical Engineering and Mathematics, University of 
+Kentucky, Lexington, Kentucky. 
+ 
+Muncester R. 1990. A level physics. 3rd Edition. ELBS. 
+ 
+Nelkon, M. and P. Parker. 1987. Advanced Level Physics, 6th Edition. Heinmann. London. 
+ 
+Nelkon, M. and P. Parker. 1995. Advanced Level Physics, Pearson Education. 
+ 
+Titcomb G.R.A. and M. Jackson (1970). Fundamentals of engineering science.  Hutchinson. 
+ 
+
+ 
+12 
+ 
+Titherington  D. and J.G. Rimmer. 1970. Applied mechanics. McGraw-Hill. London. 
+ 
+Todd, K.D. and L.W. Mays. 2005. Groundwater Hydrology. 3rd ed. Hoboken, N,J,: John 
+Wiley and Sons. 
+ 

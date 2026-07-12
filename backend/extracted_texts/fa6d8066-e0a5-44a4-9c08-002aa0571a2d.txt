@@ -1,0 +1,2636 @@
+
+
+AGRICULTURAL ECONOMICS
+(NARD 121)
+Phil. Harawa
+Agribusiness Theme
+Department of Agriculture & Food systems
+Faculty of Natural Resources & Life Sciences
+LUANAR-Natural Resources College
+Agricultural Economics for Agricultural Education (Sem. 3)1
+
+MODULE DETAILS
+LECTURE HOURS15
+PRACTICAL HOURS15
+CREDIT HOURS1.5
+METHOD OF ASSESSMENT
+ContinuousAssessment (Mid-
+Semester Exam & Assignments)
+40%
+End of Semester Examination60%
+Agricultural Economics for Agricultural Education (Sem. 3)2
+
+MODULE AIM & OBJECTIVES
+AIMOFMODULE:
+Toequipstudentswithbasicconceptsandtheoriesinmicro-economics,toenable
+themtosolveproblemsintheagriculturalsector.
+MODULEOBJECTIVES
+Bytheendofthemodulestudentsshouldbeableto:
+DefineEconomicsanditsbranches(Micro-economics&Macro-Economics)
+Describebasicconceptsofmicroeconomics
+Applymicroeconomictheoryinsolvingproblemsintheagriculturalsector
+Agricultural Economics for Agricultural Education (Sem. 3)3
+
+TOPICS OF STUDY
+NatureandscopeofAgriculturalEconomics:Economics;the
+foundationofeconomictheory
+AgriculturalEconomicsanditsProblems:DefinitionofAgricultural
+Economics;ProblemsAssociatedwithAgriculturalEconomics
+(Seasonalityproblem,Perishabilityproblem,productdifferentiation);
+TheoryofConsumerbehaviourandUtilityMaximisation:Curves
+approach(Ordinalutilityapproach)
+TheoryofDemandandSupply:Demand;Supply;Relationship
+betweendemandandSupply
+MarketMechanismsforAgriculturalProducts:DefinitionofMarket;
+Pricedeterminationinagriculturalmarket;FluctuationofAgricultural
+commodityprices;MarketStructures
+Agricultural Economics for Agricultural Education (Sem. 3)4
+
+RESOURCES:
+PRESCRIBEDTEXTS(AvailableintheLibrary)
+McConnell,R.C.,Brue,S.L.&Flynn,S.Economics:Principles,
+Problems,andPolicies,15
+th
+Edition,NewYork,USA,McGrall-Hill
+CompaniesInc.
+Gans,J.,King,S.&Stonecash,R.PrinciplesofEconomics(2012).5
+th
+Edition.
+Collander,D.C.Economics.5
+th
+Edition.
+Agricultural Economics for Agricultural Education (Sem. 3)5
+
+RESOURCES...
+RECOMMENDED READINGS (Available in the Library):
+Cramer,G.L.,ClarenceW.JandSouthgate,D.D.AgriculturalEconomics
+andAgribusiness,8
+th
+Ed.
+Rickets,C.&Ricketts,K.Agribusiness:Fundamentals&Applications.
+2
+nd
+Edition.
+Hill,B.AnintroductiontoEconomicsforStudentsofAgriculture.2
+nd
+Edition.
+Agricultural Economics for Agricultural Education (Sem. 3)6
+
+Economics is...
+Defined differently by different people. However, it is
+thestudyofallocationofscarceandlimitedresourcesamong
+competingalternativesor.
+“thestudyofhowscarceandlimitedresources(land,labor,
+capital,andmanagements)areallocatedamongdifferentand
+competingchoicestobestsatisfyhumanwants.
+Agricultural Economics for Agricultural Education (Sem. 3)7
+
+Three Key Words:
+Scarcity, 
+Resources, 
+Needs & Wants
+Scarcity:Asituationwheretherearenotenoughresourcesavailableto
+satisfypeople’sneedsorwants.
+Scarcityofresourceslimitsoptionsanddemandsmakingofchoices-
+becausepeople/individualscannothaveeverythingatatime,theymust
+makechoicesastowhattheywillhaveandwhattheywillnothave
+(sacrifice).
+SuchsacrificesarecalledOpportunityCosts(theideathat:‘Toobtainmoreof
+onething,peopleorindividualsmustsacrificetheopportunityofgettingthenext
+bestthingthatcouldhavebeencreatedwiththoseresources)
+Agricultural Economics for Agricultural Education (Sem. 3)8
+
+Resources
+Resourcesaretheinputsthatsocietyusestoproduceoutputs.
+Traditionally,economistshaveclassifiedresourcesinto:
+Naturalresources(land&mineraldeposits),
+Humanresources(labor-servicesprovidedbyLabourers&Managersfor
+productionofgoods&services),
+Manufacturedresources(Capital-propertyusedforproductionofother
+goods/services,e.g.machines,buildings,),
+Entrepreneurial/Managementskills.
+Resourcesareconsideredscarcebecauseofatendencyfor
+societyorindividualstodemandmoreresourcesthanwhatare
+available.
+Resourcesorgoodsthatarenotscarcearecalledfreeresources
+orfreegoods(e.g.Sunlight/air).
+ScarcityofresourcesisthefoundationofthestudyofEconomic
+Agricultural Economics for Agricultural Education (Sem. 3)9
+
+Needs & Wants
+Needs:areallthingsthatarecrucialtosustainaliving.
+E.g.food,clothingandshelter.
+Wantsarethingswecanlivewithoutthem/arenotcrucialtodaily
+living.
+E.g.Abasictractorisaneedtoafarmer,butatractorwithair
+conditionerandradiomaybeawant.
+Contextmatterswhendifferentiatingneedsandwants
+SocietyandHumanwantsareinsatiable(unlimited,unsatisfied):-Human
+wantscannotbesatisfiednomatterhowmuchorhowmanygoodswehave.
+Agricultural Economics for Agricultural Education (Sem. 3)10
+
+Macroeconomics versus Microeconomics
+Economicsisdividedinto:MacroeconomicsandMicroeconomics.
+Macroeconomics:
+Theprefixmacromeans“large,”indicatingthatmacroeconomicsis
+thestudyoftheeconomyonalargescaleornationally.
+Macroeconomicslooksattheaggregate(total)performancesofall
+themarketsinthenationaleconomyandisconcernedwiththe
+choicesmadebylargesubsectorsoftheeconomy.
+Agricultural Economics for Agricultural Education (Sem. 3)11
+
+Examples of Macroeconomics Concerns
+GrossDomesticProduct–theGDPofacountryisdefinedasthe
+marketvalueofallfinalgoodsandservicesproducedwithinthat
+countryinagivenperiodoftime.
+Unemploymentrate–theunemploymentrateisthenumberof
+unemployedworkersdividedbythetotalcivilianlaborforce,which
+includesallthosewillingandabletoworkforpay–bothunemployed
+andemployed.
+Inflationanddeflation–inflationisariseinthegenerallevelof
+prices,asmeasuredagainstsomebaselineofpurchasingpower.
+Deflationisadecreaseinthegeneralpricelevel,overaperiodoftime.
+Agricultural Economics for Agricultural Education (Sem. 3)12
+
+Microeconomics
+Theprefixmicromeans“small,”indicatingthatmicroeconomicsstudies
+theeconomyonasmallscale.
+Microeconomicsisconcernedwithindividualeconomic
+units/entities/marketsthatmakeuptheeconomyandisconcernedwith
+thedecisionsmadebythesesmalleconomicunits,suchasindividual
+farmers,households(consumers),governmententities,agricultural
+buyers,andentrepreneurs.
+Agricultural Economics for Agricultural Education (Sem. 3)13
+
+Basic Economic Questions
+Becauseofscarcityofresourcesandunlimited/unsatisfiedwants,all
+societieshavetoanswerthefollowingquestions:
+Whatgoodsandservicesshouldbeproduced,andhowmuchof
+each?
+Howwillthegoodsandservicebeproduced?
+Whoshouldgetwhat(goods&services)andhowmuch?
+Howwilltheeconomicsystemaccommodatechange?
+Howwilltheeconomicsystempromoteprogress?
+Agricultural Economics for Agricultural Education (Sem. 3)14
+
+Basic Economic Questions...
+Whatgoodsandservicestoproduceandhowmuchtoproduce?
+Societyshouldproducemoregoodsandservicesthatwouldbring
+morebenefits/profit,whilethoseproductswhoseproductionwill
+generatealossshouldnotbeproduced
+Howtoproducegoods?
+ProducersorManufacturersshouldalwayslookformeansof
+production(technologies)thatminimizecostofproductionandin
+returnmaximizeprofits.
+Whoshouldgetwhat?
+Thisquestionreferstowhowillreceivethebenefitsofthegoods.
+Thequestionisansweredbydeterminingwhohasthegreatest
+needs,wants,andabilitytopay(effectivedemand)
+Agricultural Economics for Agricultural Education (Sem. 3)15
+
+Basic Economic Questions...
+Howwilltheeconomicsystemaccommodatechange?
+Economicsystemsaredynamic:
+Consumerpreferences,technologiesandsupplyofresourcesdo
+change.
+Withtimeefficientmechanismfordistributionof
+goods/servicestoconsumersbecomeobsolete(outdated)as
+consumerslikebetterproductsandnewwaysofdoingthings
+(technologies)arediscovered.
+Changesinconsumertastes,forinstance,affectpricesof
+andprofitsofgoods/services.
+Agricultural Economics for Agricultural Education (Sem. 3)16
+
+Basic Economic Questions...
+Howwilltheeconomicsystempromoteprogress?
+People/nationsdesireeconomicgrowth(greateroutput)andhigher
+standardsofliving(greateroutputperperson).Howwillaneconomic
+systemachievethesegoals?
+Thus,aneconomicsystemshouldprovidestrongincentivesfor
+technologicaladvancement(newandbettertechnologiesreplacing
+outdatedandinefficienttechnologies).
+Technologicaladvancementhelptominimizeproductionand/or
+distributioncosts.
+Additionally,aneconomicsystemshouldpromotecapitalaccumulation,
+throughpromotionofsavingsandinvestments.
+Aneconomythatinvestsinmorecapitalgoodswillgrowitseconomyand
+improvelivingstandardsoftheentiresociety.
+Agricultural Economics for Agricultural Education (Sem. 3)17
+
+AgricultureEconomics
+Agriculturaleconomicsis“anappliedsocialsciencedealingwith
+howhumanschoosetousetechnicalknowledgeandscarceproductive
+resourcessuchasland,labor,capital,andmanagementtoproduce
+foodandfiberandtodistributeitforconsumptiontovariousmembers
+ofsocietyovertime.”
+Tobeaproductiveagriculturaleconomist,onemustfirstunderstand
+basiceconomicprinciples.
+Economicsissometimescalledabasicscience,whereasagricultural
+economicsisanappliedscience.
+Thus,agriculturaleconomicsusestheoreticalconceptsofeconomics
+toprovideanswerstotheproblemsofagricultureandagribusinesses.
+Agricultural Economics for Agricultural Education (Sem. 3)18
+
+ImportanceofAgriculturalSectortoMalawi’sEconomy:
+Shareofagricultureinthenationalincome:Agricultureplaysan
+importantroleinthenation'sGDP(Assignment1:Findoutthelatest
+percentagecontributionofagriculturetoMalawi’sGDP).
+ProsperityinagriculturehasadirectinfluencetoprosperityofMalawi’s
+economy
+Agricultureasasourceoflivelihood:Agricultureprovidesemployment
+toaround80percentoftotalwork-forceinthecountry.
+Agriculturegrowthhasdirectimpactonpovertyeradication
+Agricultureasameansforindustrialdevelopment:Malawi’sAgri.
+Sectorisasourceofrawmaterialstoleadingindustriessuchascotton,
+tobacco,teaandsugar.
+Roleofagricultureininternationaltrade:Agricultureproductssuchas
+tea,sugar,oilseed,tobacco,constitutemainsourceofFOREXthrough
+exports.
+Agricultural Economics for Agricultural Education (Sem. 3)19
+
+Scope/Focus of Agricultural Economics
+Agriculturaleconomics:
+Providessolutionstofarmers’problems(e.g.whattoproduce,howto
+produce,whattosellandhowtosell)tomaximizebenefitstothe
+farmers
+Dealswithoptimalselectionofland,labourandequipmentforafarm;optimal
+choiceofcropstobegrown&oflivestocktobekept.
+Providesguidancetogovernmentinstitutionsforproperparticipation
+intheagriculturesector(e.g.whendesigningtaxationpolicy,
+agriculturalexportpolicy,agriculturalsubsidypoliciesetc).
+Concernedwithdistributionand/orconsumptionofresources,goods
+andserviceswithinasociety.
+Agricultural Economics for Agricultural Education (Sem. 3)20
+
+Scope/Focus of Agricultural Economics...
+Whattoproduce?:Thefirstmajordecisionrelatestothequantityandthe
+rangeofgoodstobeproduced.Sinceresourcesarelimitedwemustchoose
+betweendifferentalternativecollectionsofgoodsandservicesthatmaybe
+produced.
+Howtoproduce?:Havingdecidedquantityandtypeofgoodstoproduce,
+wemustnextdeterminethetechniquesofproductiontobeusede.g.labour
+intensiveorcapitalintensive.
+Forwhomtoproduce?:Thismeanshowthenationalproductistobe
+distributed,i.e.whoshouldgetwhat&howmuch?
+Aretheresourcesefficientlyused?:Thereistobenowastageormisuse
+ofresourcessincetheyarelimited&scarce.
+Istherefullemploymentofresources?:Aneconomymustendeavorto
+achievefullemploymentnotonlyoflabourbutofallitsresources.
+Isthesector/economygrowing?:Aneconomyshouldkeeponexpanding
+ordevelopingtomaintainconditionsofstability.Theeconomy’sproductive
+capacitymustcontinuetoexpandtoprovidepeople’sneedsofpeople.
+Agricultural Economics for Agricultural Education (Sem. 3)21
+
+Utility(Benefits)of(Studying)AgriculturalEconomics:
+Itprovidesknowledgeaboutproduction,consumption,exchange,
+distributionandpublicfinance.
+Helpsinmakingrational/optimalinvestmentdecisions(maximizing
+returns/incomewithminimumcost).
+Increasesefficiencyofproductiveresources
+Agricultural Economics for Agricultural Education (Sem. 3)22
+
+Economic Systems
+EconomicSystem:Definedasinstitutionalmeans/(allarrangementsputin
+place)bywhichresourcesareemployed(used)tosatisfyhuman/societal
+needsanddesires.
+(Institutionsrefertolaws,policies,practices,habits,ethicsandcustomsof
+thenation’scitizens)
+Prominenteconomicsystemsinclude:
+Traditional,
+Capitalism
+Socialism/Communism
+Mixed.
+Themajordistinctivefeatureofthesesystemsisthedegreeofcontrolof
+economicresources-resourcesarecontrolledbyPrivateeconomic
+units/entitiesorGovernmententities.
+Agricultural Economics for Agricultural Education (Sem. 3)23
+
+TraditionalSystem
+Inatraditionalsystem,thingsaredone“thewaytheyhavealwaysbeen
+done.”
+Economicdecisionsarebasedoncustoms,religiousbeliefs,andways
+ofdoingthingsthathavebeenpassedfromgenerationtogeneration.
+Examples:
+NomadiclifeofMassaiPeople
+BushmenofKalaharidesert
+Agricultural Economics for Agricultural Education (Sem. 3)24
+
+Capitalism
+Privateindividualshavefreecontrolovertheirtimeandothereconomic
+resources,anddetermineexactlyhowtousethoseassets,withfew
+legalcontrolsbygovernment.
+Itisaself-regulatingsystemwhichexcludesgovernmentfromeconomic
+decisions(thereislittleornogovernmentparticipationineconomic
+activities).
+Capitalismdependsonthewillanddesiresofthoseinvolvedinthe
+system.
+Marketforcesofdemand&supplydetermineprices,allocate
+resources,anddistributeincome.
+Marketpricesindicatethevalueofresourcesandeconomicgoods.
+OwnersofbusinessesarecalledCapitalists
+Agricultural Economics for Agricultural Education (Sem. 3)25
+
+Socialism/Communism
+Thebasisofsocialismasaneconomicsystemispublicownershipof
+allproductiveresources.
+Governmentor“state”directsalldecisionsregardingutilizationof
+resources(bothhumanandnonhuman)byvarioussectorsofthe
+economy.
+Decisionsarecentralizedbygovernmentplanners.
+Pricesofmostessentialgoodsandservicesarelargelysetbythe
+governmentandadministeredtoconsumersandfarmers.
+Example:TheMCP-ledgovernmentunderDr.H.KamuzuBanda
+largelypursuedSocialisteconomicpolicies.
+Agricultural Economics for Agricultural Education (Sem. 3)26
+
+Mixed Economic System
+ThissystemcombinesaspectsofCapitalismandSocialism
+(DevelopmentStatePolicy).
+Thatis,marketforces(ofDemandandSupply)arenotentirelyfreeto
+determinepriceinsomemarketsbutarefreeinothermarkets.
+Thegovernment’sinterventionintheagriculturalsector,forexample,
+iswellknown(FISP,Settingofminimum/Maximumpricesfor
+agriculturalproduce).
+Agricultural Economics for Agricultural Education (Sem. 3)27
+
+Theories, Principles and Models
+Justlikeotherdisciplines(Life,PhysicalSciences&otherSocialSciences),
+EconomicsreliesonScientificMethods,whichincludesthefollowing
+procedure:
+i.Observingrealworldbehaviourandoutcomes
+ii.Basedonobservations,formulatinghypothesis(possibleexplanationsofcause
+andeffect)
+iii.Testinghypothesis,bycomparingresults/outcomesofspecificeventstothe
+outcomepredictedbythehypothesis
+iv.Basedonresultsinstep3,eitheracceptingorrejectingormodifyingthe
+hypothesis.
+v.Continuingtotestthehypothesisagainstfacts.Iffavourableresults
+accumulate,thehypothesisevolvesintoaTheory.Averywell-testedand
+widelyacceptedtheoryisreferredtoasanEconomicLaworanEconomic
+Principle.
+AnEconomicPrincipleissimplyastatementabouteconomicbehaviorthatenables
+predictionoftheprobableeffectsofcertainactions.
+CombinationsofEconomicPrinciples/LawsareincorporatedintoModels,whichare
+simplifiedrepresentationsofhowsomething(e.g.amarketorfarmproduction)works.
+Agricultural Economics for Agricultural Education (Sem. 3)28
+
+EconomicPrinciplesandModelsarehighlyusefulinanalyzingeconomic
+behaviourandinunderstandinghowaneconomyoperates
+Theyarethetoolsforascertainingcauseandeffect(actionandoutcome)withinthe
+economicsystem
+Goodtheoriesshouldprovideexplanationsandpredictionsaboutaneconomicsystem.
+PropertiesofEconomicPrinciples/Laws:
+AreGeneralizations:Economicprinciplesareexpressedastendencies/behaviourof
+typical/averageeconomicunits(consumers,buyers,businessfirms).Economicprinciples
+holdtruetoalargedegree.Thisdoesnot,however,meanthattherecan’tbeminor
+variations.
+Useother-things-equalassumption(ceterisparibus):Economistsassumethatall
+variablesorfactorsexceptthoseunderimmediateconsiderationareheldconstantfora
+particularanalysis.
+Areexpressedgraphically:Economistslovetopresentdifferenteconomicprinciplesin
+graphicalform.
+Theories, Principles and Models...
+Agricultural Economics for Agricultural Education (Sem. 3)29
+
+Market Mechanisms for Agricultural Products:
+Bytheendofthistopics,youshouldbeableto:
+DefineaMarket;
+UnderstandandexplainMarketStructures
+Understandpricedeterminationinagriculturalmarkets;
+UnderstandandexplainfluctuationofAgriculturalcommodity
+prices;
+Agricultural Economics for Agricultural Education (Sem. 3)30
+
+Markets & Marketing
+Market
+Aphysicalplacewherebuyingandsellingofgoodsorservicestakes
+place.
+Amarketexistswhenbuyerswishingtoexchangethemoneyforagoodorservice
+areincontactwiththesellerswhoarewillingtoexchangegoodsorservicesfor
+money.
+OtherDefinitions:
+Amarketisthespherewithinwhichpricedeterminingforces(Demandand
+Supply)operate
+Commodityorcommoditiesandbuyersandsellerswhoareinfreeinteraction
+withoneanother.
+AggregateDemandorAggregateSupply
+Agricultural Economics for Agricultural Education (Sem. 3)31
+
+What Is a Market?
+Amarketismadeupofbuyers&sellers
+Buyersarepeoplewhoneedorwantaproductorserviceand
+havethemoneytobuyit
+Amarketmustalsohavesellerswhoarewilling&ableto
+producegoods&servicesforsale
+Agricultural Economics for Agricultural Education (Sem. 3)32
+
+ComponentsofaMarket
+Foramarkettoexist,certainconditionsmustbesatisfied.
+Theexistenceofaproductorcommodity
+Existenceofbuyersandsellers;
+Priceatwhichthecommodityistransactedorexchanged
+Agricultural Economics for Agricultural Education (Sem. 3)33
+
+Two Types of Markets
+Inputmarket
+Theinputmarketincludes
+itemslikefertilizer,seed,
+labour&capital(finance)
+Thesetypesofproductsare
+purchasedbyproducers
+Productmarket
+Thisisthemarketwhere
+finalproductsaresoldto
+consumers
+Eggsandpotatoesfromfarms
+Shoesfromshoestores
+Agricultural Economics for Agricultural Education (Sem. 3)34
+
+Types of Agricultural Markets
+Input MarketsProductMarkets
+Agricultural Economics for Agricultural Education (Sem. 3)35
+
+Market Structures
+Marketstructurereferstothenumberandrelativesizeoffirmsinan
+industry.
+Fourcommontypesofmarketstructuresare:
+PerfectCompetition
+Monopoly
+MonopolisticCompetition
+Oligopoly(includesanothersub-type:Duopoly)
+Theabovemarketstructuresarenamedfromtheperspectiveof
+numberofsuppliers/producers/sellersinanymarket.
+Agricultural Economics for Agricultural Education (Sem. 3)36
+
+Market Structures
+Agricultural Economics for Agricultural Education (Sem. 3)37
+
+Market Structures
+
+Differences in the Market Structures arise based on:
+
+Number of firms (suppliers/producers) in the market
+
+Control over Price
+
+Conditions for Entry or Exit from the market 
+
+Existence of Non-Price Competition in the market
+
+Type of product traded in the market
+
+Flow of market information
+Agricultural Economics for Agricultural Education (Sem. 3)38
+
+Market Structures: Perfect Competition
+Alsocalledpurecompetition.
+Aperfectlycompetitivemarketshouldmeetthefollowingconditions:
+Existenceoflargenumberoffirms(suppliers/producers)andmany
+buyers(totheextentthatnoonepersonorfirmshouldinfluencethe
+totalmarketquantityormarketprice).
+Firmsshouldproducethesame/identicalproduct(homogeneityin
+productofferedtobuyers,i.e.productsofferedbymanysuppliershave
+samefeatures)
+Firmssellthesameproductatthesameprice
+Conditionsforentryorexitfromthemarketareeasy
+Freeflowofmarketinformation(infoaboutproductprices)
+Mostagriculturalmarketspossesssomeoftheconditionsforperfect
+competitionmarkets
+Agricultural Economics for Agricultural Education (Sem. 3)39
+
+Prices Under Perfect Competition
+Perfectlycompetitivemarketsare
+efficientandcompetitionkeeps
+bothpricesandproductioncosts
+low.
+Anyfirminperfectlycompetitive
+market:
+Isnotabletoalterthemarket
+priceofthegooditproduces
+(allfirmsarepricetakers).
+Competeswithmanyother
+firmssellinghomogeneous
+products.
+
+Agricultural Economics for Agricultural Education (Sem. 3)41
+
+Market Structure: Monopoly 
+Amonopolyisamarketinwhichasinglesellerdominates
+Thismarkethasonefirmproducingfortheentiremarketaparticular
+goodorservice.
+Characteristicsofamonopoly:
+Thesinglefirmsetspricesforitsproductsatwill(Itisapricesetter,nota
+pricetaker).
+There are many barriers to entry into the market for new firms
+There is no variety of goods (supplies a unique product with no close 
+substitute)
+Thesinglefirmhasnodirectcompetitors.
+Thesinglefirmhascompletemarketpower(i.e.itcanalterthemarketprice
+ofagoodorservice).
+LO-1
+Agricultural Economics for Agricultural Education (Sem. 3)42
+
+Market Structure: Monopoly 
+Agricultural Economics for Agricultural Education (Sem. 3)43
+
+MarketStructure:Oligopoly
+Oligopolyisamarketwithtwoorafewlargefirmssupplyingallor
+mostofaparticularproduct.
+CharacteristicsofOligopoly:
+Fewfirms(producers)inthemarket
+Somevarietyofgoods
+Manybarrierstoentryintothemarketfornewfirms
+Thereissomecontroloverprices
+Agricultural Economics for Agricultural Education (Sem. 3)44
+
+Market Structure: Oligopoly
+
+Market Structure: Oligopoly
+BarrierstoEntry
+Barrierstoentryinanoligopolycanbetechnological(e.g.processing
+dairyproductsiscarriedoutbyafewcompaniesduetohightechnology
+requirement)
+or 
+Barrierscanbecreatedbyasystemofgovernmentlicensesorpatents
+(e.g.telecommunicationsub-sector-foronetooperateinthissectorone
+hastogetalicensefromgovernment.Currently,MalawihasAirtel,TNM,
+MTL,AccessasMobilePhoneServiceProviders)
+Agricultural Economics for Agricultural Education (Sem. 3)46
+
+Market Structure: Oligopoly
+PriceControls.
+Therearesomepracticesthatconcerngovernmentregarding
+oligopolies.
+Priceleadership:Thiscanleadtopricewarsforfirmsinan
+oligopoly,leadingtounfaircompetition
+Collusion/Cartels:Throughcoordination,firmsinanoligopoly
+mayfixpricesand/orproductionlevelsforitsmembers.Thisis
+illegalinMalawi(UnderCompetitionandFairTradingAct,1998).
+ArefarmercooperativesanexampleofCollusion?
+Agricultural Economics for Agricultural Education (Sem. 3)47
+
+Market Structure: Monopolistic Competition
+MonopolisticCompetition:Itisamarketstructureinwhichmany
+companiessellproductsthataresimilarbutnotidentical
+CharacteristicsofMonopolisticCompetition:
+Manyfirmsinthemarket
+Goods/servicessoldarenotidentical-heterogeneityofproducts
+Minimalbarrierstoentry
+Littlecontroloverprices
+Agricultural Economics for Agricultural Education (Sem. 3)48
+
+Monopolistic Competition
+InMonopolisticCompetition,many
+firmscompeteinanopenmarketto
+sellsimilar,butnotidentical,products
+(marketforgoodswhichare
+substitutesforeachother).
+Commonexamplesor
+monopolisticallycompetitivefirmsare:
+Fillingstations
+Retailstores
+Agriculturalproduction(e.g.
+farmersproducedifferentvarietyof
+samecroplikemaize)
+Themarketforjeansis
+monopolisticallycompetitive
+becausejeanscanvaryby
+size,color,style,anddesigner.
+
+Characteristics of Monopolistic Competition Markets
+ManyFirms
+Lowstart-upcostsallowmanyfirmstoenterthemarket.
+Fewbarrierstoentry
+Itiseasyfornewfirmstoenterthemarket.
+Littlecontroloverprice
+Ifafirmraisestheirpricestoohigh,consumerswillgoelsewheretobuyaclose
+substituteoftheexpensiveproduct.
+Differentiatedproducts
+Allowsafirmtoprofitfromthedifferencesbetweentheirproductanda
+competitor’sproduct(competitionisbasedondifferentbrandsforproducts).
+Non-PriceCompetition
+Inamonopolisticallycompetitivemarket,non-pricecompetitionstrategies(e.g.
+advertisement)playabigrole.
+Agricultural Economics for Agricultural Education (Sem. 3)50
+
+Theory of Demand and Supply:Basic Decision-Making 
+Units
+Afirmisanorganizationthattransformsresources(inputs)into
+products(outputs).
+Firmsareprimaryproducingunitsinamarketeconomy.
+Anentrepreneurisapersonwhoorganizes&managesresources,
+andassumesrisksofafirm,takinganewideaoranewproductand
+turningitintoasuccessfulbusiness.
+Householdsareconsumers&suppliersinaneconomy.
+Agricultural Economics for Agricultural Education (Sem. 3)51
+
+Thecircularflowofeconomic
+activitiesshowstheconnections
+betweenfirmsandhouseholdsin
+inputandoutputmarkets.
+Theory of Demand and Supply: Circular Flow of Economic 
+Activities
+Agricultural Economics for Agricultural Education (Sem. 3)52
+
+Theory of Demand and Supply: Circular Flow of Economic 
+Activities
+Paymentsflowintheopposite
+directionasphysicalflowof
+resources,goods,andservices
+(counter-clockwise).
+Output,orproduct,markets
+aremarketsinwhichgoodsand
+servicesareexchanged.
+Inputmarketsaremarketsin
+whichresources—labor,capital,
+andland—usedtoproduce
+productsareexchanged.
+Agricultural Economics for Agricultural Education (Sem. 3)53
+
+Theory of Demand and Supply: Input Market
+Inputmarketsinclude:
+Thelabormarket,inwhichhouseholdssupplyworkforwagesto
+firmsthatdemandlabor.
+Thecapitalmarket,inwhichhouseholdssupplytheirsavings,for
+interestorforclaimstofutureprofits,tofirmsthatdemandfundsto
+buycapitalgoods.
+Thelandmarket,inwhichhouseholdssupplylandorotherreal
+propertyinexchangeforrent.
+Agricultural Economics for Agricultural Education (Sem. 3)54
+
+Demand: What is it?
+Demandmeansvariousquantitiesofaproduct(goods/services)that
+wouldbepurchasedperunitoftimeatdifferentpricesinagivenmarket
+Ineconomics,demandmeansdesiretopossessproductssupportedby
+willingnessandabilitytopayforit.
+Ifyouhaveadesiretobuyacertaincommodity(e.g.atractor)but
+havingnoadequatemeanstopayforit,itwillsimplybeawishora
+desire.
+Agricultural Economics for Agricultural Education (Sem. 3)55
+
+Demand...
+Thus,demandhasthreemaincharacteristics:
+Willingnessandabilitytopay.Effectivedemandiswhenconsumers
+havethedesireandmeansofattainingthatdesire.
+Demandisalwaysataprice.Consumersmustalwaysknowthe
+priceofcommoditiesforthemtotellthequantityofcommoditiesto
+bepurchased.
+Demand is always per unit of time. Time may be a day, a week, a 
+month, or a year. 
+Agricultural Economics for Agricultural Education (Sem. 3)56
+
+Demand: Individual Vs Market Demand
+Individual'sDemand:
+Theindividual’sdemandforacommodityistheamountofa
+commoditywhichabuyer/consumeriswillingtopurchaseatany
+givenpriceoveraspecifiedperiodoftime.
+MarketDemand:
+Marketdemandforacommodityisobtainedbyaddingupthetotal
+quantitydemandedatvariouspricesbyallindividualsovera
+specifiedperiodoftimeinthemarket.
+Describedasthehorizontalsummationoftheindividuals’demand
+foracommodityatvariouspossiblepricesinmarket.
+Inamarket,thereareanumberofbuyersforacommodityat
+eachprice.
+Agricultural Economics for Agricultural Education (Sem. 3)57
+
+Demand: Demand Schedule
+Demandscheduleisatabularrepresentationofthevariousquantities
+ofacommodity,whichanindividualconsumerpurchasesatdifferent
+(alternative)pricesinthemarketatagiventime.
+Thedemandschedulestatestherelationshipbetweenthequantity
+demandedofacommodityanditsprice.
+Inamarket,thereareanumberofconsumerseachwithher/hisown
+demandschedule,showingthedifferentquantitiesofthecommodity
+thattheywillpurchaseatdifferentprices.
+Themarketdemandschedulecanbeobtainedbyaddingupthe
+demandschedulesofalltheconsumersinthemarket.
+Agricultural Economics for Agricultural Education (Sem. 3)58
+
+Demand: Demand Schedule... (for Maize)
+Price/Kg 
+(MK)
+Buyer 1 
+(Demandin 
+Kg)
+Buyer 2
+(Demandin 
+Kg)
+Buyer 3 
+(Demandin 
+Kg)
+Buyer 4
+(Demandin 
+Kg)
+Market 
+Demand (in 
+Kg)
+80200400300200
+90180390290190
+100170360260150
+120160320240140
+130140300280120
+150100270150110
+Agricultural Economics for Agricultural Education (Sem. 3)59
+
+Demand: Demand Curve
+Thedemandcurveisagraphillustratingquantitiesofagiven
+productanindividualorhouseholdwouldbewillingtobuyatdifferent
+prices.
+Demandcurvesareusuallyderivedfromdemandschedules.
+Itisagraphicalrepresentationofprice-quantityrelationship.
+Individualdemandcurveshowsthehighestpricewhichan
+individualiswillingtopayfordifferentquantitiesofthecommodity.
+Agricultural Economics for Agricultural Education (Sem. 3)60
+
+Demand:DemandCurve
+Px
+Dd         
+Qty X
+Agricultural Economics for Agricultural Education (Sem. 3)61
+
+The Demand Curve
+Thedemandcurveisagraph
+illustratinghowmuchofagiven
+productahouseholdwouldbe
+willingtobuyatdifferentprices.
+Agricultural Economics for Agricultural Education (Sem. 3)62
+
+The Law of Demand
+•Thelawofdemandstatesthat
+thereisanegative,orinverse,
+relationshipbetweenpriceand
+thequantityofagood
+demanded.
+•Thismeansthatwhenpricesof
+goodsgoupquantityofgoods
+demandednormallygodown.
+Agricultural Economics for Agricultural Education (Sem. 3)63
+
+Normal & Inferior Goods
+NormalorSuperiorGoodsaregoodsforwhichdemandgoesupwhen
+incomeishigherandforwhichdemandgoesdownwhenincomeis
+lower.
+•Examples:Electronicsingeneral,Residencelocations,Design
+clothes,processedfoods.
+InferiorGoodsaregoodsforwhichdemandfallswhenincomerises.
+•Examples:unprocessedfoodstuffs,second-handclothes.
+Agricultural Economics for Agricultural Education (Sem. 3)64
+
+Substitutes & Complements
+Substitutesaregoodsthatserveasreplacementsforoneanother.
+Examples:(Bread&Cassava/Potatoes;SoyaPieces&Beef;Tea&
+Coffee)
+•Whenthepriceofoneincreases,demandfortheothergoesup.
+Perfectsubstitutesareidenticalproducts(e.g.Frozyversus
+Fanta).
+Complementsaregoodsthataremostlyconsumedtogether.
+Examples:(Bread&Margarine/Butter;Nsima&Relish;
+•Adecreaseinthepriceofoneresultsinanincreaseindemand
+fortheother,andviceversa.
+Agricultural Economics for Agricultural Education (Sem. 3)65
+
+Determinants of Demand
+PriceoftheCommodity:Thegreaterthepriceofthecommodity,the
+lesserwillbeitsdemandandvice-versa.Thus,thereisanegative
+relationshipbetweenthepriceandquantitydemandedofa
+commodity,ifallotherfactorsremainconstant(Ceterisparibus).
+TastesandPreferencesoftheConsumer:Thechangesindemand
+forvariousgoodsoccurduetochangesinfashion,andmassive
+advertisementbythesellers.
+IncomeofthePeople:Thegreatertheincomesofconsumers,the
+greaterwillbetheirdemandforgoodsandviceversa.Thus,thereisa
+positiverelationshipbetweenincomeanddemandwhenallother
+factorsarekeptconstant.
+Agricultural Economics for Agricultural Education (Sem. 3)66
+
+Determinants of Demand
+ChangesinthePricesofRelatedGoods:
+Substitutesgoods:Supposetwosubstitutegoods(X&Y):Whenthe
+priceofYfalls,thedemandforgoodXwilldecrease.Whenthepriceofthe
+substitute(Y)rises,thedemandforXwillincrease.Teaandcoffeearevery
+closesubstitutes.Therefore,whenthepriceofteafalls,theconsumers
+substituteteaforcoffeeandasaresult,thedemandforcoffeedeclines.
+ComplementaryGoods:Forgoodsthatarecomplementarywitheach
+other,thechangeinthepriceofanyofthemwouldaffectthedemandof
+theother.Forinstance,ifthepriceofmilkfalls,itsdemandwouldrise.
+Alongwiththedemandformilk,thedemandforsugarwouldalsorise,as
+milkandsugararecomplementarygoods.Likewise,whenthepriceofcar
+falls,thedemandforthemwouldincreasewhichinturnwillincreasethe
+demandforfuel.
+Agricultural Economics for Agricultural Education (Sem. 3)67
+
+Determinants of Demand
+Population:Aspopulationincreases,thenumberofconsumers
+wouldalsoincreaseandasaresult,moreofgoodswillbepurchased.
+ExpectationsaboutFuturePrices:Ifconsumersexpectthatthe
+priceofagoodwillrisesharplyinthenearfuture,theymaybuymore
+ofthatgoodnowsoastoavoidpayinghigherpriceslater.
+Agricultural Economics for Agricultural Education (Sem. 3)68
+
+Shift of Demand Versus Movement Along a Demand Curve
+•Achangeindemandisnot
+thesameasachangein
+quantitydemanded.
+•Inthisexample,ahigher
+pricecauseslowerquantity
+demanded.
+•Changesindeterminantsof
+demand,otherthanprice,causea
+changeindemand,orashiftof
+theentiredemandcurve,fromD
+A
+toD
+B
+.
+Agricultural Economics for Agricultural Education (Sem. 3)69
+
+•Whendemandcurveshifts
+totheright,demand
+increases.Thiscauses
+quantitydemandedtobe
+greaterthanitwaspriorto
+theshift,foreachandevery
+pricelevel.
+AChangeinDemandVersusaChangeinQuantity
+Demanded
+Agricultural Economics for Agricultural Education (Sem. 3)70
+
+AChangeinDemandVersusaChangeinQuantity
+Demanded
+To summarize:
+Change in price of a good or service leads to
+Change in quantity demanded
+(Movement along the curve).
+Change in income, preferences, or
+prices of other goods or services
+leadstoChangeindemand(Shiftofdemandcurve).
+Agricultural Economics for Agricultural Education (Sem. 3)71
+
+Supply
+Supplyisthequantityofgoodsand
+servicesthatproducersarewilling
+andabletoofferatvariouspossible
+pricesduringagiventimeperiod.
+Supplyalsoinvolvestherelationship
+betweenpriceandquantity.
+Agricultural Economics for Agricultural Education (Sem. 3)72
+
+Supply Schedule
+Asupplyscheduleisatable
+showingquantityofgoods
+producersarewillingandableto
+offerforsale(tosupply)at
+differentprices.
+QuantitySuppliedrepresents
+thenumberofunitsofaproduct
+thatproducerswouldbewilling
+andabletoofferforsaleata
+particularpriceduringagiven
+timeperiod.
+Price of 
+Bread (MK)
+Quantityof Bread 
+Supplied (Loaves) 
+at NRC campus in 
+November 2019
+20010
+25025
+29040
+43090
+600150
+Agricultural Economics for Agricultural Education (Sem. 3)73
+
+Supply Curve
+Asupplycurveisa
+graphillustrating
+quantitiesofgoods
+producersarewilling
+andabletoofferfor
+saleatdifferent
+prices.
+0
+100
+200
+300
+400
+500
+600
+700
+020406080100120140160
+Price of Bread (MK)
+Quantity of Bread (Loaves)
+Supply Curve for Bread at NRC for the month of 
+October
+Agricultural Economics for Agricultural Education (Sem. 3)74
+
+Law of Supply
+Thelawofsupplystatesthatthereisadirectorpositiverelationship
+betweenpriceandquantityofagoodsupplied.
+TheLawofSupplystatesthatproducerswilloffermoreofaproductat
+higherpricesandlessofaproductatlowerprices.
+Agricultural Economics for Agricultural Education (Sem. 3)75
+
+Individual Supply Vs. Market Supply
+Thesupplyofgoodsorservicescanbedefinedforanindividual
+firm(IndividualSupply),orforagroupoffirmsthatmakeupa
+marketoranindustry(MarketSupply).
+Marketsupplyisthesumofallthequantitiesofagoodorservice
+suppliedperperiodbyallthefirmssellinginthemarketforthat
+goodorservice.
+Agricultural Economics for Agricultural Education (Sem. 3)76
+
+Market Supply
+Aswithmarketdemand,marketsupplyisthehorizontal
+summationofindividualfirms’supplycurves.
+Agricultural Economics for Agricultural Education (Sem. 3)77
+
+Determinants of Supply: Price & Non-Price Determinants
+Priceof goods or services.
+The cost of producing the good, which in turn depends on:
+The price of required inputs(labor, capital, and land),
+The technologiesthat can be used to produce the product,
+Producer expectations (outlook of future prices and profits)
+Government Policies (Subsidies, Taxes and Regulations)
+Size of Industry (Number of firms in the industry)
+The prices of related goods.
+Political events & Climatic Conditions
+Agricultural Economics for Agricultural Education (Sem. 3)78
+
+Determinants of Supply: Cost of Production
+PricesofProductionInputs
+(Resources)
+Anypriceincreaseordecrease
+inresourceswilleffectcostof
+production,whichmayresultin
+reducedproduction/supplyof
+goods&services.
+Resourcesincluderaw
+materials,electricityand
+workers’wages.
+Technology
+Newtechnologycanreducethe
+costsofproduction,leadingtoan
+increaseinsupply
+Agricultural Economics for Agricultural Education (Sem. 3)79
+
+DeterminantsofSupply:ProducerExpectations
+Ifproducersthinkdemandfororpriceoftheirproductswillincreasein
+nearfuturetheywillincreasesupplyofgoods/services.
+Example:
+WithdemandforaccommodationatNRCcampusrisingeachyear,more
+hostelsarebeingconstructedaroundthecampus.
+AstheFestiveseasonisfastapproaching,demandforchickenswillbehigh.
+Thus,shrewdpoultryfarmersincreasedtheirproductioncapacityinpreparation
+fortheseason.
+Withtherainyseason,productionandsupplyofumbrellas/rainsuits(coats)is
+high
+Agricultural Economics for Agricultural Education (Sem. 3)80
+
+Determinants of Supply: Government Policies
+GovernmentPoliciesincludetaxes,subsidiesandotherregulations,
+whichcaninfluencequantityofgoodsandservicesproducers(e.g.
+farmers)arewillingtooffertothemarketforsale.
+Taxes:Taxesaddtocostofproduction,thushavepotentialto
+reducemarketsupply.
+Subsidies:Subsidiesreducecostofproduction.Thus,producers
+aremotivatedtosupplymoreofgoodstomarkets.
+Example:duetoFISPMalawienjoyedbumperharvestsforsomeyeas.
+Regulations:Theseareruleswhichhavetobeadheredtoby
+businesses,whicharemeanttoprotectconsumers/buyers.
+Theseruleshavepotentialtoincreasecostofproduction,whichmayreduce
+totalsupplyofgoods/servicestothemarket.
+Example:Foodfortification.
+Agricultural Economics for Agricultural Education (Sem. 3)81
+
+Determinants of Supply: Size of Industry/ Competition
+Competition
+Competitionincreasessupplybecausetherearemoreproducers/firms
+producingsimilargoods.
+Example:
+Asfarmersfind‘gold’inlocalchickenfarming,morefarmersarejoiningthe
+‘industry’resultinginmoresupplyoflocalchickeneggs/meat.
+Productionofhorticulturalcrops(fruits&vegetables)isalsorising.
+Agricultural Economics for Agricultural Education (Sem. 3)82
+
+Determinants of Supply: Prices of Related Goods
+PricesofRelatedGoods
+Firmsthatproduceaparticularproduct,sayTobacco,cansometimes
+usetheirresourcestoproducealternativegoods,sayIndustrial
+CannabisifpricesofIndustrialCannabisarehigherthanthatof
+Tobacco.
+Thissubstitutioninproductionresultsinadeclineinthesupplyof
+tobacco,andanincreaseinsupplyofIndustrialCannabis.
+Discussthefollowingscenarios:
+Riseinpriceofsubstitutegoods
+Fallindemandofcomplementarygoods
+Agricultural Economics for Agricultural Education (Sem. 3)83
+
+Determinants of Supply: Political & Climatic Conditions
+PoliticalConditions:
+Supplyofgoods&servicesmaybeaffectedbypoliticalturmoil/
+disturbancesinanareaorcountry.
+Ifthereiscivilstrifeinacountrychannelsofproductionare
+disorganized.Thisresultsinthedecreaseofcertaingoods.
+ClimaticChanges(incaseofAgriculturalProducts):
+Supplyofagriculturalproductsisdirectlyaffectedbytheweather
+conditions&otherbiologicalfactors,suchasrainfall,conducive
+temperatures,pests&diseases.
+Ifrainfallistimely,plentiful,well-distributedandthereareincidences
+ofpestsanddiseaseoutbreaksthen,otherthingsremaining
+constant,therewillbebumpercrop.
+Agricultural Economics for Agricultural Education (Sem. 3)84
+
+AChangeinSupplyVersusaChangeinQuantitySupplied
+Achangeinsupplyisnotthe
+sameasachangeinquantity
+supplied.
+Ahigherpricecauseshigher
+quantitysupplied,anda
+movealongthesupplycurve.
+Inthisexample,changesinnon-pricedeterminantsofsupply,causean
+increaseinsupply,orashiftoftheentiresupplycurve,fromS
+A
+toS
+B
+.
+Agricultural Economics for Agricultural Education (Sem. 3)85
+
+Whensupplyshiftstotheright,
+supplyincreases.Thiscauses
+quantitysuppliedtobegreater
+thanitwaspriortotheshift,for
+eachandeverypricelevel.
+A Change in Supply Versus a Change in Quantity Supplied
+Agricultural Economics for Agricultural Education (Sem. 3)86
+
+A Change in Supply Versus a Change in Quantity Supplied
+To summarize:
+Change in price of goods or service
+leads to Change in quantity supplied
+(Movement along the Supply Curve).
+Change in other determinants of supply leads to
+Change in Supply (Shift of Supply Curve).
+Agricultural Economics for Agricultural Education (Sem. 3)87
+
+MarketEquilibrium
+Theoperationofthemarket
+dependsontheinteraction
+betweenbuyersandsellers.
+Anequilibriumisthecondition
+thatexistswhenquantitysupplied
+andquantitydemandedareequal.
+Atequilibrium,thereisno
+tendencyforthemarketpriceto
+change.
+Agricultural Economics for Agricultural Education (Sem. 3)88
+
+Market Equilibrium
+Onlyatequilibriumis
+quantitysuppliedequalto
+quantitydemanded.
+Atanypricelevelother
+thanP
+0
+,thewishesof
+buyersandsellersdonot
+coincide.
+Agricultural Economics for Agricultural Education (Sem. 3)89
+
+Market Equilibrium
+Intersectionofmarketdemandcurveandthemarketsupplycurve
+indicatesequalityofquantitydemandedbytheconsumersand
+quantitysuppliedbyproducers.
+Thisequalityofquantitydemandedandquantitysuppliediscalled
+equilibriumquantityandthepricethatoccursatthisbalancingpoint
+iscalledequilibriumpriceorclearingprice
+Agricultural Economics for Agricultural Education (Sem. 3)90
+
+Market Disequilibria
+•Excessdemand,orshortage,is
+aconditionthatexistswhen
+quantitydemandedexceeds
+quantitysuppliedatthecurrent
+price.
+•Whenquantitydemanded
+exceedsquantitysupplied,
+pricetendstoriseuntil
+equilibriumisrestored.
+Agricultural Economics for Agricultural Education (Sem. 3)91
+
+Market Disequilibria
+•Excesssupply,orsurplus,isthe
+conditionthatexistswhenquantity
+suppliedexceedsquantitydemanded
+atthecurrentprice.
+•Whenquantitysuppliedexceeds
+quantitydemanded,pricetendsto
+falluntilequilibriumisrestored.
+Agricultural Economics for Agricultural Education (Sem. 3)92
+
+Increases in Demand and Supply
+•Higherdemandleadstohigher
+equilibriumpriceandhigher
+equilibriumquantity.
+•Highersupplyleadstolower
+equilibriumpriceandhigher
+equilibriumquantity.
+Agricultural Economics for Agricultural Education (Sem. 3)93
+
+Decreases in Demand and Supply
+Lowerdemandleadstolowerpriceandlowerquantityexchanged.
+•Lowersupplyleadstohigherpriceandlower
+quantityexchanged.
+Agricultural Economics for Agricultural Education (Sem. 3)94
+
+Price Floors
+PriceFloorisaminimumpricefixedby
+thegovernment.
+Apriceatorabovethepriceflooris
+legalwhilstapricebelowtheflooris
+illegal
+Pricefloorsaboveequilibriumpointare
+usuallyimposedwhensocietyfeels
+thatthefreefunctioningofamarket
+systemdoesnotprovideasufficient
+incomeforcertaingroupsofsuppliers
+orproducers.
+PriceFloorsbenefitProducers(e.g.
+farmers)
+Examples:
+Pricesforagriculturalproductssetby
+governments
+Annualminimumlabourwages
+Agricultural Economics for Agricultural Education (Sem. 3)95
+
+Price Floors...& Surpluses
+Atanypriceabovetheequilibrium
+price,quantitysuppliedwillexceed
+quantitydemanded.
+Thus,therewillbeanexcesssupply
+orsurplusofquantitysupplied.
+Producerswillbewillingandofferfor
+salemoreproducethanwhatbuyers
+willbewillingtopurchaseattheprice
+floor.
+Excesssupplycanbedealtwith
+through:
+•Quotasand
+•Government’spurchasesofexcess
+supplyfor&storingordisposingitoff
+Agricultural Economics for Agricultural Education (Sem. 3)96
+
+Price Ceiling 
+APriceCeilingisamaximumlegalpriceasellerissupposedto
+chargeforaproduct.
+Apriceatorbelowtheceilingpointislegal;apriceaboveitisnot
+Therationaleforestablishingpriceceilingsonspecificproductsis
+thattheyenableconsumerstoobtaincertainessentialgoodsor
+servicestheycouldnotaffordatequilibriumprice.
+PriceCeilingsbenefitConsumers
+Examples:
+Interestratecapping(fixinginterestsrates)
+fuelprices;
+Agricultural Economics for Agricultural Education (Sem. 3)97
+
+Price Ceiling ... & Shortages
+Becausetheceilingpriceis
+belowtheequilibriumprice,there
+willbeshortages.
+Thequantitydemandedatprice
+P
+1
+isQ
+d
+andthequantitysupplied
+isQ
+s
+.
+Thus,ashortageofQ
+d
+-Q
+s
+will
+exist
+Thuspriceceilingshave
+potentialtocauseshortagesof
+productsorservices.
+Agricultural Economics for Agricultural Education (Sem. 3)98
+
+Elasticity of Demand
+Elasticityisameasureoftheresponsivenessofonevariabletoanother.
+Thegreatertheelasticity,thegreatertheresponsiveness.
+ElasticityofDemandreferstothedegreeinwhichachangeinpricecan
+affectthequantitydemanded.
+Itisameasureofhowmuchthequantitydemandedofagoodresponds
+toachangeinthepriceofthatgood.
+Agricultural Economics for Agricultural Education (Sem. 3)99
+
+Price Elasticity of Demand
+Accordingtothelawofdemand,wheneverthepricerises,thequantity
+demandedfalls.Thus,priceelasticityofdemandisalways
+negative.
+PriceElasticityofDemandisthepercentagechangeinquantity
+demandedgivenapercentchangeintheprice.
+PriceElasticityofDemandmeasurestheresponsiveness(or
+Sensitivity)ofconsumerstoapricechange
+Example:apoultryfarmermaybethinkingofincreasingpricesofhis
+chickens.However,thefarmermaywanttoknowtheresponseof
+consumerstothepricehike.
+Thedegreeoftheconsumers’responseisElasticityofDemand.
+Agricultural Economics for Agricultural Education (Sem. 3)100
+
+Price Elasticity of Demand
+Forsomeproducts,modestpricechangesresultsinlargechanges
+inthequantitypurchased.Demandforsuchgoodsissaidtobe
+elastic
+Forotherproducts(e.g.salt),substantialpricechangescauseonly
+smallchangesintheamountofproductpurchased.Demandfor
+suchproductsissaidtobeinelastic
+Still,therearesomeproductswherethedegreeofchangeintheir
+pricesresultsinasimilardegreeofchangeinthequantity
+demanded.Theseproductsaresaidtohaveunitelasticity.
+Agricultural Economics for Agricultural Education (Sem. 3)101
+
+Elastic Demand
+Quantity
+Price
+4
+5
+1. A 25%
+increase
+in price...
+Demand
+10050
+2. ...leads to a 50% decrease in quantity.
+Agricultural Economics for Agricultural Education (Sem. 3)102
+
+Inelastic Demand
+Quantity
+Price
+4
+5
+1. A 25%
+increase
+in price...
+Demand
+10090
+2. ...leads to a 10% decrease in quantity.
+Agricultural Economics for Agricultural Education (Sem. 3)103
+
+Unit Elastic Demand
+-Elasticity equals 1
+Quantity
+Price
+4
+5
+1. A 25%
+increase
+in price...
+Demand
+10075
+2. ...leads to a 25% decrease in quantity.
+Agricultural Economics for Agricultural Education (Sem. 3)104
+
+Price Elasticity of Demand
+Price Elasticity of Demand (E
+d
+) = 
+%푎푔푒퐶ℎ푎푛푔푒푖푛푄푢푎푛푡푖푡푦푑푒푚푎푛푑푒푑표푓푝푟표푑푢푐푡푋
+%푎푔푒퐶ℎ푎푛푔푒푖푛푃푟푖푐푒표푓푃푟표푑푢푐푡푋
+E
+d
+=
+푑
+2
+−푑
+1
+푑
+1
+/[
+푝
+2
+−푝
+1
+푝
+1
+]
+Agricultural Economics for Agricultural Education (Sem. 3)105
+
+PriceElasticityofDemand:MidpointFormula
+Themidpointformulaispreferablewhencalculatingprice
+elasticityofdemandbecauseitgivesthesameanswer
+regardlessofthedirectionofthechange.
+푃푟푖푐푒퐸푙푎푠푡푖푐푖푡푦표푓퐷푒푚푎푛푑(퐸
+푑
+)=
+푄
+2
+−푄
+1
+푄
+2
++푄
+1
+2
+푃
+2
+−푃
+1
+푃
+2
++푃
+1
+2
+Agricultural Economics for Agricultural Education (Sem. 3)106
+
+PriceElasticityofDemand:Mid-PointFormula
+Example:IfpriceofBeefincreasesfromMK2,500.00toMK2,700.00
+andquantitydemandedfallsfrom10Kgto8Kg,findelasticityof
+demand,usingthemidpointformula
+푃푟푖푐푒퐸푙푎푠푡푖푐푖푡푦표푓퐷푒푚푎푛푑(퐸푑)=
+푄
+2
+−푄
+1
+푄
+2
++푄
+1
+2
+푃
+2
+−푃
+1
+푃
+2
++푃
+1
+2
+=
+8−10
+8+10
+2
+2,700−2,500
+2,700+2,500
+2
+퐸
+푑
+=-0.22/0.077
+퐸
+푑
+=-2.85
+Agricultural Economics for Agricultural Education (Sem. 3)107
+
+Elasticity of Demand: Interpretations of E
+d
+:
+Agricultural Economics for Agricultural Education (Sem. 3)108
+
+Elasticity of Demand
+Example:SupposeanincreaseinpriceofbeeffromMK2,500/KgtoMK3,000
+perKghasreducedquantitydemandedfrom150Kilogramsto100Kilograms
+perweekinNsundwearea,calculatepriceelasticityofdemand.
+E
+d
+=
+푑
+2
+−푑
+1
+푑
+1
+/[
+푝
+2
+−푝
+1
+푝
+1
+]=
+100−150
+100
+/[
+3,000−2,500
+2
+,
+500
+]
+E
+d
+=-0.5/0.2
+E
+d
+=-2.5
+Interpretation:Anincreaseinpriceofbeefby1Kwachawillcausea
+decreaseindemandforbeefby2.5Kg
+Agricultural Economics for Agricultural Education (Sem. 3)109
+
+Elasticity of Demand:
+Note:
+Priceelasticityofdemandisalwaysnegative.
+Economistsusuallyrefertopriceelasticityofdemandbyits
+absolutevalue(ignorethenegativesign).
+Agricultural Economics for Agricultural Education (Sem. 3)110
+
+Determinants of Price Elasticity of Demand
+Necessities versus Luxuries
+Availability of Close Substitutes
+Size of the Market
+Time Horizon
+Proportion of Income
+Agricultural Economics for Agricultural Education (Sem. 3)111
+
+Determinants of Price Elasticity of Demand
+NecessitiesversusLuxuries
+Generally:
+Ifaproductisconsideredtobealuxuryratherthananecessity,
+greaterispriceelasticityofdemand
+Forexample,
+Maizeisanecessity
+Thus,apriceincreaseforMaizewillnotsignificantlyreducethe
+amountofMaizeconsumed.
+Sausageisaluxury
+Thus,anypriceincreaseforsausagewillsignificantlyreducethe
+quantityofsausageconsumed.
+Agricultural Economics for Agricultural Education (Sem. 3)112
+
+Determinants of Price Elasticity of Demand
+AvailabilityofCloseSubstitutes
+Generally,thelargerthenumberofsubstitutegoodsthatare
+available,thegreatertheelasticityofdemand
+Forexample,ifpriceofBeefgoesup,buyerswillturntothereadily
+availableperfectsubstitutes(e.g.Chicken)providedbyothersellers
+Agricultural Economics for Agricultural Education (Sem. 3)113
+
+Determinants of Price Elasticity of Demand
+Size of the Market
+Generally, if a market is large (has many sellers and buyers) any price 
+change will result to insignificant change in quantity of goods 
+demanded. 
+Agricultural Economics for Agricultural Education (Sem. 3)114
+
+Determinants of Price Elasticity of Demand
+TimeHorizon
+Generally,demandforproductstendstobeelasticinthelongrunthanintheshort-
+run.Consumers/buyersoftenneedtimetoadjusttheirexpenditurepatterndueto
+changesinpricesofproducts.
+E.g.:
+Ifpriceofbeefrisesby10%,consumersmaynotimmediatelyreducebeef
+consumption.Theymaytaketimetosearchforsubstitutes(e.g.fishandchickens)
+Demandforfuelmaybeinelasticintheshort-runaspeoplewillsticktotheirold
+vehicles.However,ascarmanufacturersproducefuel-efficientvehicles,consumers
+will,inthelong-run,switchtothesevehicles.Thusdemandforfuelwillbeelasticin
+thelong-run.
+Agricultural Economics for Agricultural Education (Sem. 3)115
+
+Determinants of Price Elasticity of Demand
+Proportion of Income
+Otherthingsbeingequal(Ceterisparibus),thehigherthepriceofaproduct
+relativetoconsumers’incomes,thegreaterthepriceelasticityofdemand.
+ForExample:
+A10%increaseinthepriceofsweetsamountstoafewmoreKwachas
+relativetoone’sincome,andquantityofsweetsdemandedwillfallslightly.
+Priceelasticityforsuchlow-pricedproductsitemstendstobesmall.
+Asimilar10%increaseinhigh-pricedproductslikeSmartphonesmeans
+substantialexpenditurerelativetoone’sincome.Expenditureonsuch
+productswillresultinsignificantreductioninone’sincome.
+Thus,priceelasticityofdemandforhigh-pricedproductstendstobehigh.
+Agricultural Economics for Agricultural Education (Sem. 3)116
+
+Determinants of Price Elasticity of Demand
+Demandtendstobemoreinelastic
+Ifthegoodisanecessity.
+Ifthetimeperiodisshorter.
+Thesmallerthenumberofclosesubstitutes.
+Themorebroadlydefinedthemarket.
+Demandtendstobemoreelastic:
+ifthegoodisaluxury.
+the longer the time period.
+the larger the number of close substitutes.
+the more narrowly defined the market.
+Agricultural Economics for Agricultural Education (Sem. 3)117
+
+Price Elasticity of Supply
+Study Assignment 2:
+What is Price Elasticity of Supply
+What are the determinants of Price Elasticity of supply
+(Study Assignment 1: Find out the latest percentage contribution of 
+agriculture to Malawi’s GDP).
+Agricultural Economics for Agricultural Education (Sem. 3)118
+
+Price Determination in Agricultural Markets: Supply and 
+Demand
+Price,inthenarrowestsense,isdefinedastheamountofmoney
+chargedforaproductorservice.
+Inthebroadersense,priceisthesumofallthevaluesthat
+customersgiveupinordertogainthebenefitsofhavingorusinga
+productorservice.
+Pricesaredeterminedbytheequalityofdemandandsupply
+functionsofacommodity.
+Thepriceofaproductisdeterminedbythevaluethatbuyersplace
+ontheproduct
+Whenmanybuyerswantacertainproductthepricewillbehigher
+Iffewbuyerswantaproductthepricewillbelower
+Agricultural Economics for Agricultural Education (Sem. 3)119
+
+Determination of Agricultural Prices: Supply and Demand
+Agricultural Economics for Agricultural Education (Sem. 3)120
+
+Determination of Agricultural Prices: Supply and Demand
+Inagivenmarket,duringagivenperiodoftime,themarket
+demandfunctionforacommodityshowstherelationshipbetween
+variousamountsofthecommoditythatmightbeboughtatvarious
+prices
+Thesecondcomponentfordeterminationofmarketpriceisthe
+marketsupply.
+MarketSupplyfunctionshowsquantitiesthatindividualproducers
+arewillingandabletooffertobuyersatvariousprices.
+Whenaproductisexchangedinthemarket,itspriceisarrivedat
+afternegotiationsbetweenbuyers(representedbythemarket
+demandfunction)andsuppliers(representedbythemarketsupply
+function).
+Agricultural Economics for Agricultural Education (Sem. 3)121
+
+FactorstobeConsideredwhenSettingPrices
+CustomerPerceptionofValue(Value-BasedPricing-VBP):
+Goodpricingbeginswithacompleteunderstandingofthevaluethataproductor
+servicecreatesforcustomers.
+Ifthepricesetfortheproductismorethantheconsumer’sperceivedvalue,then
+theproductwillnotbesoldinthemarket.
+Therefore,thepriceoftheproductshouldbelessthanorequaltotheconsumer’s
+perceivedvalueoftheproduct.
+ProductionCosts:
+Cost-basedpricinginvolvessettingpricesbasedoncostsofproduction,
+distributionandsellingtheproductplusafairrateofreturnforeffortandrisk.
+Ifaproductispricedbelowitsproductioncosts,producerswill,inthelongrun,
+incurlossesandtheymayclosedowntheirbusinesses.
+Agricultural Economics for Agricultural Education (Sem. 3)122
+
+Pricing in different types of Markets
+PerfectCompetition:
+Nosinglebuyerorsellercaninfluencetheprevailingmarketprices.
+Therefore,pricinginthismarketisbasedontheprevailingmarket
+price.
+Monopoly:
+Themarketconsistsofonesellerandmanybuyers.
+Thesellerisatlibertytosetanypriceforhis/herproductsatanytime.
+Sellersmaysellthesameproductatvariouspricesdependingonthe
+targetedmarket(ascenariocalledPriceDiscrimination)
+Agricultural Economics for Agricultural Education (Sem. 3)123
+
+Pricing in different types of Markets
+OligopolisticCompetition:
+Marketconsistsoffewsellerswhoarehighlysensitivetoeach
+other’spricingandmarketingstrategies.
+Ifonefirmslashesitsprices,otherfirmsarelikelytoslashtheir
+prices(OtherwisethefewfirmsunderOligopolymayformcartels
+andcoordinatewhensettingpricesfortheirproducts).
+MonopolisticCompetition:
+Themarketconsistsofmanysellerswithdifferentiatedproducts
+Pricesmaydifferdependingonthedifferentbrandsbeingsoldby
+differentsuppliers.Differentfirmsmaysetdifferentprices
+dependingonhowconsumersvaluetheproductbrandbeingsold.
+Agricultural Economics for Agricultural Education (Sem. 3)124
+
+PriceFluctuationforAgriculturalCommodities
+Whatcausesfluctuationofpricesforagriculturalcommodities?
+Howcanwemitigatethechallengeofpricefluctuationsin
+smallholderagriculturesector?
+Agricultural Economics for Agricultural Education (Sem. 3)125
+
+TheoryofConsumerBehaviourandUtilityMaximisation:
+Microeconomics
+Analyseseconomicbehaviourofsmalldecision-makingunits,suchasa
+households,individualfarmers,entrepreneurs,groupsof
+producers/consumers.
+Microeconomicsstudiesthebehaviourofindividualdecisionmaking
+unitswithregardtofixationofpriceandoutput,andtheirreactionsto
+changesindemandandsupplyconditions.
+Weakness:Microeconomicscannotgiveanideaofthefunctioningof
+theeconomyasawhole.
+Bystudyingaboutasinglesmallholderfarmer,generalizationcannot
+bemadeaboutallsmallholderfarmers.
+Agricultural Economics for Agricultural Education (Sem. 3)126
+
+Theory of Consumer Behaviour and Utility Maximisation...
+Animportantproblemtobesolvedbyconsumersintheirdailylifeisthe
+problemofmakingchoicesamidstscarcityofresources.
+Economicchoicesoreconomicdecisionsinvolvechoicebetweenalternatives;
+thebasicreasonforthisbeingscarcityofmeans.
+Theoriesofconsumerbehaviourrelatetodecisionstakenbyconsumersforthe
+purposeofsatisfyingwants.
+Consumptionmeansuseofeconomicgoodsandservicesforsatisfying
+humanwants.
+Wants:Anythingthatwedesiretomeetaparticular/certainsatisfaction.
+Agricultural Economics for Agricultural Education (Sem. 3)127
+
+Theory of Consumer behaviour and Utility Maximisation...
+CharacteristicsofWants:
+Wantsareunlimitedinnumberandvariety:Assoonasonewantis
+satisfied,anotherwantarises.
+Particularwantissatiable:Thequantityofacommoditythatamancan
+enjoyataparticulartimeislimitedbyhisphysicalandmentalpowers.
+Wantsarerecurrent:Peoplewantmanythingsagainandagain,e.g.
+foodandclothes.
+Wantsarecompetitive:Somewantsneedtobesatisfiedmoreurgently
+thanothers.
+Wantsaresometimescomplementary:Inordertosatisfyasinglewant,
+wemayrequireseveralgoodstogether,e.g.bread&butter,leather
+shoes&shoepolish.
+Agricultural Economics for Agricultural Education (Sem. 3)128
+
+CharacteristicsofConsumers
+Consumers possess the following characteristics:
+RationalBehaviour:
+Consumersusetheirincometoderivethegreatestamountofsatisfaction/benefits
+fromit.
+ConsumerswanttomaximizetotalhappinessoutofeveryKwachatheyhave.
+penny.
+Preferences:
+Eachconsumerhasclear-cutpreferencesforgoodsandservicesavailableinthe
+market.
+BudgetConstraint:
+Atanypointintimeconsumershaveafixed,limitedamountofincome,time,
+energy,skill/knowledge,land.
+Agricultural Economics for Agricultural Education (Sem. 3)129
+
+Theory of Consumer behaviour and Utility Maximisation...
+Thebasisofconsumerbehaviouristhatpeopletendtochoosethose
+goodsandserviceswhichprovidemorevalue/satisfaction.
+BasedonthispremiseeconomistsdevelopedthenotionofUtilitytodescribe
+consumptionpatternsadoptedbyconsumers.
+Utility:Definedasthepower/abilityofacommodityorservicetosatisfy
+(meet)ahumanwant.
+Anycommodityorservicewhichcansatisfyahumanwantissaidto
+haveUtility
+Consumersthinkof‘Utility-value/benefit’whentheyarethinkingof
+purchasingacommodity.
+Agricultural Economics for Agricultural Education (Sem. 3)130
+
+Theory of Consumer Behaviour and Utility Maximisation...
+CharacteristicsofUtility:
+Utilityissubjective/relative:Utilityvariesfrompersontoperson
+Example:-Ahighyieldingvarietyseedgivesmoreutilitytoafarmer.Thesame
+seedprovidedtoaCarSellergiveszeroutility.
+Utilityvaries(changes)withpurpose:-MaizeusedforNsimaflour
+orasfeedforlivestockhasdifferentutility.
+Utilityvaries(changes)withtime:TheIntensityofaperson’sdesire
+foracommodityisdifferentatvarioustimeperiods.Example:coldwater
+isvaluedmoreinsummerthaninwinterperiods
+Agricultural Economics for Agricultural Education (Sem. 3)131
+
+Theory of Consumer behaviour and Utility Maximisation...
+Characteristics...
+Utilitycannotbeequatedwithusefulness:Acommoditymaynotbe
+useful,yetitmayhaveutility(’benefits’)forsomeone.
+Forexample:Cigarettes,Beer,Criminalacts,Witchcraft,Commercialsex.
+Utilitiesareindependent:Utilityofoneproductdoesnotinanyway
+affectutilityofanotherproduct.
+Forinstance:benefitsderivedfromconsumptionofmangoescannotreduce
+benefitsderivedfromconsumptionofRice
+Agricultural Economics for Agricultural Education (Sem. 3)132
+
+Theory of Consumer behaviour and Utility Maximisation...
+TwomodelsexplainConsumerBehaviour:CardinalandOrdinalutility.
+Cardinalutility:
+Thismodelstatesthatutilitycanbemeasuredandcanbeaggregatedacross
+individuals.
+Itquantitativelymeasurespreferenceofanindividualtowardsacertaincommodity.
+Numbersareassignedtodifferentgoodsorservices&canbecompared.Autilityof100units
+towardsacupofcoffeeistwiceasdesirableasacupofteawithautilitylevelof50units.
+Ordinalutility:
+Thismodelstatesthatutilitycannotbequantified.
+Withthisapproachorderingofutilitiesismoreimportantthanmagnitude(quantity)of
+theutility.
+Thisapproachfacesthelimitationofutilitiesnotbeingcompared.
+Agricultural Economics for Agricultural Education (Sem. 3)133
+
+Theory of Consumer behaviour and Utility Maximisation...
+TotalandMarginalutility
+Asindividualsconsumemoreofagoodpertimeperiodtheirsatisfactionincreases.
+Acardinalutilityfunctionmeasuresthelevelofsatisfaction,totalutilityTU(q)thataconsumer
+receivesfromacertainamount(q)ofagood(orbasketofgoods).
+Totalutility:Utilitywhichaconsumergetsfromagivenamountofproducts(goodsorservices).
+Throughstudyingconsumerbehaviour,economistsunderstandhowthelevelofsatisfactionchanges
+inresponsetoachangeinthelevelofconsumption(q).
+MarginalUtility(MU):definedasthechangeinthetotalutilityresultingfromoneunitchangeinthe
+consumptionofacommodityperunitoftime,Or
+MU..alsodefinedastheadditionalutilityobtainedbyconsumptionofanextraunitofaproduct
+consideredjustworthwhile.
+Change in total utility 
+Marginal utility (MU) =     -----------------------------=∆푇푈/∆푞
+Change in quantity consumed
+Agricultural Economics for Agricultural Education (Sem. 3)134
+
+Total and Marginal utility
+UnitsofaGood
+(Coke)
+TotalUtility(TU)(in
+Utils)
+MarginalUtility(in
+Utils)
+11010
+2188
+3257
+4305
+5344
+6384
+7402
+8400
+938-2
+Agricultural Economics for Agricultural Education (Sem. 3)135
+
+Assignment (Refer to table on previous slide)
+Taking‘UnitsofaGood’asX-valuesand‘UnitsofUtility’and‘Unitsof
+MarginalUtility’asY-values,Plot‘TotalUtility’and‘MarginalUtility’
+graphs.
+Whatcanyousayaboutthegraphs?
+Agricultural Economics for Agricultural Education (Sem. 3)136
+
+LAW OF DIMINISHING MARGINAL UTILITY
+0
+5
+10
+15
+20
+25
+30
+35
+40
+45
+123456789
+TOTAL UTILITY OF COKE
+QUANTITY OF COKE
+Agricultural Economics for Agricultural Education (Sem. 3)137
+
+MARGINAL UTILITY CURVE
+-4
+-2
+0
+2
+4
+6
+8
+10
+12
+123456789
+MARGINAL UTILITY
+QUANTITY OF COKE CONSUMED
+MARGINAL UTILITY CURVE
+Agricultural Economics for Agricultural Education (Sem. 3)138
+
+LAW OF DIMINISHING MARGINAL UTILITY (LDMU) 
+Thelawofdiminishingmarginalutilityisageneralizationdrawnfrom
+characteristicsofhumanwants
+Thelawstatesthat:
+“Theadditionalutility(benefit)whichapersonderivesfrom
+consumptionofagivenquantityofaproductdiminishes(decreases)
+witheveryincreaseinconsumptionoftheproduct”.
+Or:“CeterisParibus,theadditionalutility(marginalutility)derivedfrom
+successiveunitsofagivencommoditygoesondecreasing”.
+Themorewehaveofaproduct;thelesswewantofit.
+Agricultural Economics for Agricultural Education (Sem. 3)139
+
+ASSUMPTIONS OF THE LAW OF DIMINISHING MARGINAL 
+UTILITY
+Utilitycanbeabsolutelyorcardinally(quantitatively)measured.
+Thereshouldbeasinglecommoditywithhomogeneousunitswanted
+byaconsumer
+Thereshouldbenochangeinthetaste,habit,custom,fashionand
+incomeoftheconsumer.
+Thereshouldbecontinuityintheconsumptionofthecommodity
+Pricesofthedifferentunitsofthecommodityandofthesubstitutesof
+thecommodityshouldremainthesame.
+Theconsumershouldbeaneconomicpersonwhoactsrationally
+Goodsshouldbenormalgoods(goodsforwhichdemandincreases
+whenincomeincreasesandfallswhenincomedecreases).
+Agricultural Economics for Agricultural Education (Sem. 3)140
+
+FacedwiththeBudgetConstraintchallenge,everyconsumermust
+compromise,i.e.mustchoosethemostsatisfyingmixofgoodsand
+services.
+Of all the different combinations of goods and services a consumer 
+can obtain within his or her budget, which specific combination will 
+yield the maximum utility or satisfaction?
+Rule:Tomaximizesatisfaction,theconsumershouldallocatehis/her
+moneyincomesothatthelastKwachaspentoneachproductyields
+thesameamountofmarginalutility.
+Whenconsumershaveattainedthemostsatisfyingcombinationof
+goodsand/servicesusingthisrule,consumersaresaidtobein
+equilibrium.
+Utility Maximizing Behaviour/Rule
+Agricultural Economics for Agricultural Education (Sem. 3)141
+
+Theaimofanyconsumeristoget
+maximumtotalutilityfromhis/her
+purchases(Rationalbehaviour)
+Ifmarginalutilityfromgoodsis
+greaterthanpriceofthosegoods,
+consumerswillbuymoreofthe
+goods.
+Ifmarginalutilityofgoodsisequalto
+thepriceofthecommodity,i.e.,MU
+x
+=
+P
+x
+,consumerswillstoptheir
+purchaseofthegoods.
+IfpriceofchocolateisMK1per
+chocolate,rationalconsumerswill
+purchase6unitsofchocolate.Atthis
+point,consumersattainmaximum
+satisfaction.
+Unitsof
+Chocolate
+Total
+Utility
+(Utils)
+Margina
+lUtility
+(Utils)
+11212
+22210
+3308
+4366
+5404
+6411
+7410
+839-2
+934-5
+Utility Maximizing Behaviour: Single Product
+Agricultural Economics for Agricultural Education (Sem. 3)142
+
+Example:Chisomohas
+MK100tospendon2
+goods(Oranges&
+Apples).Herchallenge
+istofigureoutthemost
+utility-maximizing
+combinationofthe2
+productsgiventhe
+followinginformation:
+(Assumption:Marginal
+utilitiesofOrangesand
+Applesareindependent
+ofeachother)
+Oranges(Price:MK10)Apples(Price:
+MK20)
+Quantity
+of 
+Product
+Marginal
+Utility
+(Utils)
+Marginal
+Utilityper
+Kwacha
+(MU/Price)
+Margina
+lUtility
+(Utils)
+Marginal
+Utilityper
+Kwacha
+(MU/Price)
+1
+1001024012
+2
+80820010
+3
+7071809
+4
+6061608
+5
+5051206
+6
+404603
+7
+303402
+Utility Maximizing Behaviour: More than 1 Product
+Agricultural Economics for Agricultural Education (Sem. 3)143
+
+Utility Maximizing Behaviour: More than 1 Product
+Utilitymaximizingrulesays:“Aconsumerwillmaximizehis/herutility
+whens/heallocateshis/hermoneyincomesothatthelastunitof
+moneyspentonproductA,lastunitofmoneyspentonproductB,
+andsoforth,yieldequalamountsofmarginal(additional)utility”.
+ThisiscalledtheLawofEqui-MarginalUtilityorLawof
+MaximumSatisfaction
+Thus,wefocuson‘MarginalUtilityperunitofmoney’spentonvarious
+productstofindutility-maximizingcombinationofgoods/services:
+
+푀푈표푓푃푟표푑푢푐푡퐴
+푃푟푖푐푒표푓퐴
+=
+푀푈표푓푃푟표푑푢푐푡
+푃푟푖푐푒표푓퐵
+Agricultural Economics for Agricultural Education (Sem. 3)144
+
+Utility Maximizing Behaviour: More than 1 Product
+Oranges (Price: MK 10)Apples (Price: MK20)
+Quantit
+y of 
+Product 
+(A)
+Margina
+lUtility
+(Utils)
+of
+Orange
+s(B)
+Total
+Cost
+(MK)(=A
+*Price)
+Marginal
+Utilityper
+Kwacha
+(MU/Price)
+Marginal
+Utility(Utils)
+ofApples
+(C)
+TotalCost
+(MK)=(A*
+Price)
+Marginal
+Utilityper
+Kwacha
+(MU/Price)
+TotalUtilityfrom
+possibleCombinations
+ofOranges&Apples
+(Combinationswhose
+totalcostisMK100)
+110010102402012
+2 Oranges+4 
+Apples=960 Utils
+2802082004010
+6 Oranges + 2 Apples 
+=840 Utils
+370307180609
+4 Oranges + 3 Apples 
+=930 Utils
+460406160808
+5 Apples = 900 Utils
+5505051201006
+640604601203
+730703401402
+Agricultural Economics for Agricultural Education (Sem. 3)145
+
+Assumptions for Law of Equi-Marginal Utility
+Independentutilities.Themarginalutilitiesofdifferentcommodities
+areindependentofeachotheranddiminisheswithmoreandmore
+purchases.
+Utilityiscardinallymeasurable.
+Everyconsumerisrationalinthepurchaseofgoods.
+Aconsumerhaslimitedmoneyincometospend.
+Constantmarginalutilityofmoney.Themarginalutilityofmoney
+remainsconstanttoconsumersastheyspendmoreandmoreofiton
+purchasesofgoods.
+Agricultural Economics for Agricultural Education (Sem. 3)146
+
+Ordinal Approach to Maximizing Utility: Indifference Curve 
+Analysis 
+Theutilityanalysissuffersfromsubjectivity(i.e.utilitycannotbe
+measuredpreciselyinquantitativeterms).
+Toovercomethischallenge,economistscameupwithanalternative
+approachbasedonindifferencecurves.
+Underthisapproach(usingindifferencecurves)utilitycannotbe
+measuredpreciselybuttheconsumercanstatecombinationsoftwo
+goodss/hepreferswithoutdescribingthemagnitudeofstrengthof
+her/hispreference.
+IndifferenceCurveisagraphwhichshowscombinationsoftwo
+products(A&B)thatgivetheconsumerequal/samesatisfactionor
+Utility.
+Agricultural Economics for Agricultural Education (Sem. 3)147
+
+Ordinal Approach to Maximizing Utility: Indifference Curve 
+Analysis: 
+Iftheconsumerispresentedwithanumberofvariouscombinationsof
+goods,s/hecanorderorrankthemina‘scaleofpreferences’.Ifthe
+variouscombinationsaremarkedA,B,C&D,theconsumercantell
+whethers/heprefersAtoB,orBtoAorisindifferent(doesnotcare)
+betweenthem.
+CombinationUnits of AUnits of B
+A122
+B64
+C46
+D38
+Agricultural Economics for Agricultural Education (Sem. 3)148
+
+A Consumer’s Indifference Curve
+B
+C
+D
+0
+2
+4
+6
+8
+10
+12
+14
+0123456789
+Quantity of A
+Quantity of B
+An Indifference Curve
+Agricultural Economics for Agricultural Education (Sem. 3)149
+
+The Indifference Map
+Asingleindifferencecurvereflectssomeconstant(butunspecified)
+leveloftotalutilityorsatisfaction
+AnIndifferenceMapisasetofindifferencecurvesrepresentingthe
+scaleofpreferenceatdifferentlevelsofsatisfaction
+Aswemoveoutfromtheorigin,eachsuccessiveindifferencecurve
+representsahigherlevelofutility.
+Agricultural Economics for Agricultural Education (Sem. 3)150
+
+Characteristics/Properties of Indifference Curves
+IndifferenceCurvesareDownwardSloping:Anindifferencecurve
+slopesdownwardbecausemoreofoneproductmeanslessoftheother
+productiftotalutilityistoremainunchanged.
+IndifferenceCurvesareConvextotheOrigin:Theslopeofan
+indifferencecurveateachpointmeasurestheMarginalRateof
+Substitution(therateatwhichaconsumerisreadytogiveupone
+goodinexchangeforanothergoodwhilemaintainingthesamelevelof
+utility).
+MarginalRateofSubstitution=
+푪풉풂풏품풆풊풏풀
+푪풉풂풏품풆풊풏푿
+Non-intersecting:Indifferencecurvescannotintersecteachother.
+Agricultural Economics for Agricultural Education (Sem. 3)151
+
+ICcurvescan notintersect
+Good Y
+IC1
+IC2
+Good X                             
+Agricultural Economics for Agricultural Education (Sem. 3)152
+
+The Budget Line
+BudgetLineisascheduleorcurvethatshowsvariouscombinations
+oftwoproductsaconsumercanpurchasewithaspecificmoney
+income.
+SupposeonehasmoneyincomeofMK1,000
+Units of  Product A 
+(Price=MK 100)
+Units of Product B 
+(Price=MK200)
+Total Expenditure (MK)
+100(10*100)+(0*200)=MK1,000
+62(6*100)+(2*200)=MK1,000
+43(4*100)+(3*200)=MK1,000
+24(2*100)+(4*200)=MK1,000
+05(0*100)+(5*200)=MK1,000
+Agricultural Economics for Agricultural Education (Sem. 3)153
+
+The Budget Line
+0
+1
+2
+3
+4
+5
+6
+024681012
+Quantity of Product B 
+Quantity of Product A
+A Consumer's Budget Line
+Agricultural Economics for Agricultural Education (Sem. 3)154
+
+Consumer’s Equilibrium (Maximum Satisfaction) under Ordinal 
+Utility Approach
+The Budget Lineindicates all combinations of two products (A & B) 
+that the consumer can attain with his or her money income, given the 
+prices of those two products.
+Ofallattainablecombinations,anyrationalconsumerprefersthe
+combinationthatyieldsthegreatestsatisfactionorutility.
+Consumer’sEquilibrium(MaximumSatisfaction):Theconsumer
+reachesequilibriumpositioni.e.,attainsmaximumsatisfactionatthe
+pointoftangencybetweentheindifferencecurveandthebudgetline.
+Tomaximizeutility(whilesatisfyingthebudgetconstraint),the
+consumerwillchoosethebasketthatallowshim/hertoreachthe
+highestindifferencecurvewhilebeingonthebudgetline.
+Agricultural Economics for Agricultural Education (Sem. 3)155
+
+Consumer’s Equilibrium (Maximum Satisfaction) under 
+Ordinal Utility Approach
+0
+1
+2
+3
+4
+5
+6
+024681012
+Quantity of Product B 
+Quantity of Product A
+A Consumer's Budget Line
+Agricultural Economics for Agricultural Education (Sem. 3)156
+
+Consumer’s Equilibrium (Maximum Satisfaction) under 
+Ordinal Utility Approach
+F
+E
+B
+A
+D
+C
+Y
+O
+X
+IC
+1
+IC
+2
+IC
+3
+IC
+4
+M
+1
+M
+Budget line (BL)
+Indifference Curves 
+(IC)
+Agricultural Economics for Agricultural Education (Sem. 3)157
+
+PRODUCTION ECONOMICS
+Thewidelyacceptedgoalofagriculturaleconomicsistoincrease
+efficiencyinagriculture.Thatis,producingfood,fodder,bio-fueland
+fibrewithminimaluseofresources.
+Thus,therequiredagriculturaloutputsmustbeproducedwiththe
+leastamountofscarceresources(inputs),ormaximumpossible
+outputmustbeobtainedfromagivenamountofresources.
+Productioneconomicsistheapplicationoftheprinciplesof
+microeconomicsinproduction.
+Theseprinciplesincludebehaviourofproductioncostandrelationship
+betweeninputsandoutputs.
+ProductionEconomicsprovidesaframeworkfordecisionmakingat
+thelevelofafirmforincreasingefficiencyandprofits.
+Agricultural Economics for Agricultural Education (Sem. 3)158
+
+PRODUCTION ECONOMICS...
+Agricultural Economics for Agricultural Education (Sem. 3)159
+
+Why study Production Economics?
+Studyofproductioneconomicshelpsinansweringthefollowing
+questions:
+Whatisefficientproduction?
+Howismostprofitableamountofinputsdetermined?
+Howwillproductionrespondtoachangeinthepriceofoutput?
+Whatenterprisecombinationswillmaximizeprofits?
+Whatshouldamanagerdowhenheisuncertainaboutyield
+response?
+Howwilltechnicalchangeaffectoutput?
+Agricultural Economics for Agricultural Education (Sem. 3)160
+
+Why study Production Economics?
+ProductionEconomicsanalysesproductionrelationshipsand
+principlesofrationaldecisionmakingtooptimizeuseoffarm
+resourcesonindividualfarms
+Productioneconomicsdealswithresource(inputs)allocation,
+resourcecombinations,resourceuseefficiency,resource
+managementtomaximizeproductivityoffarmenterprises.
+Agricultural Economics for Agricultural Education (Sem. 3)161
+
+Decisions made by Profit-Maximizing Firms
+How much of 
+each input to 
+demand
+3.
+Which 
+production 
+technology to 
+use
+2.
+How much 
+output to 
+supply
+1.
+Agricultural Economics for Agricultural Education (Sem. 3)162
+
+Production Function
+AProductionFunctiondefinestherelationshipbetweeninputsandthe
+maximumamountthatcanbeproducedwithinagiventimeperiodwitha
+giventechnology.
+AProductionFunctionsummariseswaysinwhichresourcesare
+combinedtoproduceaparticularoutput.
+Mathematically,theProductionFunctioncanbeexpressedas
+Q=f(X
+1
+,X
+2
+,...,X
+k
+),where:
+Qisthelevelofoutput
+X
+1
+,X
+2
+,...,X
+k
+arethelevelsoftheinputsintheproductionprocess
+f()representstheproductiontechnology
+Agricultural Economics for Agricultural Education (Sem. 3)163
+
+PRODUCTION ECONOMICS...Terminologies
+Afirmisanorganizationwhichtransformsresources(inputs)into
+products(outputs).
+Firmsaretheprimaryproducingunitsinamarketeconomy.
+Production:Theprocessthroughwhichsomegoodsandservicescalled
+inputsaretransformedintoothergoodscalledproductsoroutput.
+Output:Theamountofgoodsandservicesproducedbyfirms
+Technology:Facilitieswhichaid/promote/supportproduction,andwhich
+determinethequantityofoutputpossibleforagivensetofinputs.
+Inputs/Resources:Anythingthatisusedtoproducegoodsandservices
+(alsocalledfactorsofproduction)
+Agricultural Economics for Agricultural Education (Sem. 3)164
+
+Fixedresources/inputs:areallresourcesthatremainunchanged
+irrespectiveofthelevelofproduction,uptoacertainperiodoftime.
+Forexample,land,building,machinery.
+Theseresourcesexistonlyinshortrun(i.e.theyremainfixedupa
+certainperiodoftime).
+Thecostsassociatedwiththeseresourcesarecalledfixedcosts.
+Variableresources:areallresourcesthatchangewiththelevelof
+production.Examples:seeds,fertilizer,chemicals,labour
+Theseresourcesexistbothinshortrunandlongrun.
+Thecostsassociatedwiththeseresourcesarecalledvariable
+costs.
+PRODUCTION ECONOMICS...Terminologies
+Agricultural Economics for Agricultural Education (Sem. 3)165
+
+Productionperiod:Itisthetimeperiodrequiredforthe
+transformationofresourcesorinputsintoproducts.
+Productivity:Outputperunitofinputsiscalledtheproductivity.
+Costofproduction:Thisisexpenditureincurredinproducinga
+unitquantityofproduct/output.IfitcostsMK100toproduce1
+kilogramofmaize,MK100iscostofproduction.
+PRODUCTION ECONOMICS...Terminologies
+Agricultural Economics for Agricultural Education (Sem. 3)166
+
+Technicalefficiency:Itistheratioofthephysicaloutputtoinputs
+used.Itimpliestheusingofresourcesaseffectivelyaspossible
+withoutanywastages.
+Economicefficiency:Itistheexpressionoftechnicalefficiencyin
+monetarytermsthroughtheprices.Inotherwords,theratioofvalue
+ofoutputtovalueofinputsistermedaseconomicefficiency.It
+impliesmaximizationofprofitsperunitofinput.
+Optimality:Itisanidealconditionorsituationinwhichcostsare
+minimumand/orprofitsmaximum.
+PRODUCTION ECONOMICS...Terminologies
+Agricultural Economics for Agricultural Education (Sem. 3)167
+
+SHORT-RUN & LONG-RUN PRODUCTION
+Whendiscussingproduction,itisimportanttodistinguishbetween
+shortrunandLong-runproduction
+Whendemandforafirm’sproductchanges,profitabilityofthefirm
+dependsontheabilityofthefirmtoacquiremoreproductioninputs
+andexpanditsproduction.
+Thefirmcaneasilyacquiresomeproductioninputswithinashortperiodof
+time,e.g.labour,rawmaterialsandfuel.
+However,thefirmmaystruggletoexpandproductionmachineryand
+equipment,buildingswithinashortperiodoftime.
+Agricultural Economics for Agricultural Education (Sem. 3)168
+
+Short Run & Long Run
+ShortRun:isaperiodtoobriefforaproductionfirm(e.g.afarm)to
+changeitsfixedresources(e.g.machinery,equipmentandbuildings)
+yetlongenoughperiodforthefirmtoemploymorevariable
+resources,suchaslabour,rawmaterialsinproduction.
+LongRun:isaperiodlongenoughforaproductionentity(e.g.a
+farm)toadjustthequantitiesofallproductionresources(both
+variableandfixedresources)forproductionofmoreproducts.
+TheLongRunisalsoaperiodoftimelongenoughforexistingfirms
+(entrepreneurs)toleave/quitanindustry(ordissolveabusiness)or
+fornewfirms(entrepreneurs)tobecreatedandjoinanindustry.
+Agricultural Economics for Agricultural Education (Sem. 3)169
+
+SupposedemandforChickenFeedatCentralPoultryFeeds(CP
+Feeds)Ltdhasincreased,let’ssayfrom2000bagsto3000bagsper
+month.CPFeedscanincreaseproductionhours(byintroducinga
+secondproductionshiftandemployingmorelabourers)andsource
+extrarawmaterialswithinashortperiodoftime.ThisisShortRun
+adjustment.
+SupposedemandatCPFeeds(Ltd)keepsonincreasing,therewill
+reachatimewhencapacityoftheprocessingmachineryand
+storagespaceforrawmaterialswillreachtheirmaximumlevels.The
+companywould,thus,havetoexpandtheprocessingmachineryand
+acquiremorestoragespace.Theseprocesseswouldrequiresome
+years(2-5yearsmaybe)tobeaccomplished.Thisadjustmentisa
+long-run.
+Short Run & Long Run: Example
+Agricultural Economics for Agricultural Education (Sem. 3)170
+
+Short-Run Production Relationships
+Costs of production depend on:
+Prices of raw materials (inputs/resources) and
+Quantities of the raw materials (inputs/resources) 
+Prices of resources/inputs/raw materials are determined by the 
+supply and demand
+Technology used in production will determine the quantity of 
+resources/raw materials needed to produce a given quantity of 
+products/output.
+Agricultural Economics for Agricultural Education (Sem. 3)171
+
+When discussing production in the short run, three definitions 
+are important:
+Total Product (TP)
+Marginal Product (MP)
+Average Product (AP).
+Short-Run Production Relationships
+Agricultural Economics for Agricultural Education (Sem. 3)172
+
+TotalProduct(TP)isthetotalquantityortotaloutputofa
+particulargoodorserviceproduced.
+Short-Run Production Relationships
+Agricultural Economics for Agricultural Education (Sem. 3)173
+
+MarginalProduct(MP)istheadditionaloutputthatcanbe
+producedbyaddingonemoreunitofaspecificinput(e.g.labour),
+ceterisparibus.
+MPtellsushowoutputchangesaswechangetheleveloftheinput
+byoneunit.
+Short-Run Production Relationships
+marginal p
+roduct of 
+labor 
+=
+ 
+change in 
+total prod
+uct
+change in 
+units of l
+abor used
+Agricultural Economics for Agricultural Education (Sem. 3)174
+
+AverageProduct(AP),alsocalledproductivity,istheaverage
+amountproducedbyeachunitofinput(e.g.labour)usedin
+production.
+APisfoundbydividingtotaloutputbyamountofinputused.
+APtellsus,onaverage,amountofunitsofoutputproducedperunit
+ofinput(labour)used.
+Short-Run Production Relationships
+average pr
+oduct of l
+abor 
+=
+ 
+total prod
+uct
+total unit
+s of labor
+Agricultural Economics for Agricultural Education (Sem. 3)175
+
+Considertwoinputproductionfunction:
+Q=f(X,Y),
+in which input X is variable and input Y is fixed at some level.
+HoldinginputYconstant,themarginalproductofinputXisdefinedas:
+Short-Run Production Relationships
+X
+Q
+MP
+X
+
+
+
+Agricultural Economics for Agricultural Education (Sem. 3)176
+
+Holding Y constant, the average product of input X is defined as:
+Short-Run Production Relationships
+X
+Q
+AP
+X
+
+Agricultural Economics for Agricultural Education (Sem. 3)177
+
+Thetablebelowrepresentsafirm’sproductionfunction,Q=f(X,Y),
+whereXisLabour(variableinput)andYisLand(fixedinput).
+Short-Run Production Relationships
+Fixed Input (Y=Land)Variable Input (X=Labour)-
+Number of Employees
+Total Product (Q or
+TP)
+200
+218
+2218
+2329
+2439
+2547
+2652
+2756
+2852
+Agricultural Economics for Agricultural Education (Sem. 3)178
+
+CalculationofMarginalProduct(MP)andAverageProduct(AP)
+Fixed Input 
+(Y=Land)
+Variable Input 
+(X=Labour)
+Total Product 
+(Q orTP)
+MarginalProduct 
+(MP)=
+Average Product (AP)
+=
+20000/0=0
+218(8-0)÷(1-0)     =88/1=8
+2218(18-8)÷(2-1)   =1018/2=9
+2329(29-18)÷(3-2) =1129/3=9.67
+2439(39-29)÷(4-3) =1039/4=9.75
+2547(47-39)÷(5-4) =847/5=9.4
+2652(52-47)÷(6-5) =552/6=8.67
+2756(56-52)÷(7-6) =456/7=8
+2852(52-56)÷(8-7) =-452/8=6.5
+X
+Q
+MP
+X
+
+
+
+X
+Q
+AP
+X
+
+Agricultural Economics for Agricultural Education (Sem. 3)179
+
+Assignment:
+Plot graphs of:
+Total Product(TP) against Units of Labour (X) 
+Marginal Product against units of Labour (X)
+Average Product against units of Labour (X)
+What can you say about behaviour or pattern of the three graphs? 
+Agricultural Economics for Agricultural Education (Sem. 3)180
+
+Agricultural Economics for Agricultural Education (Sem. 3)181
+
+Production Function for Bread
+Production Function
+(1)
+LABOR UNITS 
+(EMPLOYEES)
+(2)
+TOTAL PRODUCT 
+(BREAD PER 
+HOUR)
+(3)
+MARGINAL 
+PRODUCT OF 
+LABOR
+(4)
+AVERAGE 
+PRODUCT 
+OF LABOR
+00
+--
+1101010.0
+2251512.5
+3351011.7
+440510.0
+54228.4
+64207.0
+0
+5
+10
+15
+20
+25
+30
+35
+40
+45
+0
+1
+2
+3
+4
+5
+6
+7
+Number of employees
+Total product
+0
+5
+10
+15
+01234567
+Number of employees
+Marginal Product
+182
+
+Total and Marginal Product
+MarginalProductisthe
+slopeoftheTotalProduct
+function.
+AtpointC,TotalProduct
+ismaximum,theslopeof
+theTotalProductfunction
+iszero,andMarginal
+Productintersectsthe
+horizontalaxis.
+AtpointA,theslopeof
+theTotalProductfunction
+ishighest;thus,Marginal
+Productishighest.
+0
+5
+10
+15
+20
+25
+30
+35
+40
+45
+0
+1
+2
+3
+4
+5
+6
+7
+Number of employees
+Total product
+0
+5
+10
+15
+01234567
+Number of employees
+Marginal Product
+Agricultural Economics for Agricultural Education (Sem. 3)183
+
+Total, Average, and Marginal Product
+Whenalinedrawnfromthe
+originfallstangenttotheTotal
+Productfunction,Average
+Productismaximumandequal
+toMarginalProduct.
+Then,averageproductfallsto
+theleftandrightofpointB.
+Agricultural Economics for Agricultural Education (Sem. 3)184
+
+Total, Average, and Marginal Product
+AslongasMarginalProduct
+rises,AverageProductrises.
+WhenAverageProductis
+maximum,Marginalproduct
+equalsAverageProduct.
+WhenAverageProductfalls,
+MarginalProductislessthan
+AverageProduct.
+Agricultural Economics for Agricultural Education (Sem. 3)185
+
+Law of Diminishing Marginal Returns
+Definition
+Itstatesthatassuccessiveunitsofavariableresource(say,
+labour)areaddedtoafixedresource(say,land),beyondsome
+pointtheextra,ormarginal,productthatcanbeattributedtoeach
+additionalunitofthevariableresourcewilldecline.
+Or
+Asadditionalunitsofavariableinputarecombinedwithafixed
+input,atsomepointtheadditionaloutput(i.e.,marginalproduct)
+startstodiminish.
+Agricultural Economics for Agricultural Education (Sem. 3)186
+
+Agricultural Economics for Agricultural Education (Sem. 3)187
+
+Agricultural Economics for Agricultural Education (Sem. 3)188
+
+Agricultural Economics for Agricultural Education (Sem. 3)189
+
+Agricultural Economics for Agricultural Education (Sem. 3)190
+
+Agricultural Economics for Agricultural Education (Sem. 3)191
+
+Agricultural Economics for Agricultural Education (Sem. 3)192
+
+Agricultural Economics for Agricultural Education (Sem. 3)193
+
+Agricultural Economics for Agricultural Education (Sem. 3)194
+
+Agricultural Economics for Agricultural Education (Sem. 3)195
+
+Agricultural Economics for Agricultural Education (Sem. 3)196
+
+Agricultural Economics for Agricultural Education (Sem. 3)197
+
+Agricultural Economics for Agricultural Education (Sem. 3)198
+
+Agricultural Economics for Agricultural Education (Sem. 3)199
+
+Agricultural Economics for Agricultural Education (Sem. 3)200
+
+Agricultural Economics for Agricultural Education (Sem. 3)201
+
+Agricultural Economics for Agricultural Education (Sem. 3)202

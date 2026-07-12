@@ -1,0 +1,2561 @@
+
+
+1 
+ 
+ 
+ 
+General Biology (Botany and Genetics) 
+ 
+ 
+ 
+Biology Module 
+ 
+Course Name: Biology 121 
+ 
+ 
+Course code: BIO 121 
+ 
+ 
+ 
+ 
+Lilongwe University of Agriculture and Natural Resources 
+ 
+ 
+ 
+ 
+ 
+ 
+
+2 
+ 
+Lilongwe University of Agriculture and Natural Resources 
+ 
+ 
+ 
+Biology 121 Module 
+ 
+ 
+ 
+Course code: BIO 121 
+ 
+ 
+Module Authors:  
+Mattrina Mpeketula Soko 
+W.A.B Msuku 
+Thomson Sanudi 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+3 
+ 
+Acknowledgement 
+The module authors gratefully acknowledge the support from ODL team at LUANAR 
+who  were  instrumental  in  the  completing  this  Open  Distance Learning  material. We 
+are also thankful to Dr. Ndalapa Mhango for offering preliminary checking so that the 
+material meets ODL language format. This module was developed and produced by 
+LUANAR  with  the  assistance  of  World  Bank  and  their  contributions  are  gratefully 
+acknowledged.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+4 
+ 
+Unit 1: Introduction to Botany 
+ 
+Introduction 
+ 
+As you may be aware by now that the field of biology is divided into several branches 
+based on the subject of study. In Biology module 1, you covered microbiology (study 
+of  microorganisms)  and  zoology  (study  of  animals).  In  this  module  you  will  be 
+introduced to other two branches of biology which are botany (the study of plants) and 
+genetics (the study of heredity). 
+ 
+ Unit 1 learning objectives 
+By the end of this Unit, you should be able to: 
+a)  
+ 
+ 
+Unit 1 key terms 
+Bryophyta 
+Pteridophyta 
+Angiosperms 
+Gymnosperms 
+Tracheids 
+Gametangia 
+Sporogenous 
+Autotrophs 
+Sporophyte 
+Gametophyte 
+Alternation of generations 
+Archeoplastids 
+Strobili 
+Thalloid 
+Resin 
+Needle 
+
+5 
+ 
+ 
+Unit 1 content 
+ 
+1.0 Plant systematics 
+There are about 1.8 million species of organisms and several millions more remain 
+to  be  discovered.  To  study  these species,  a  system  for  organizing,  naming  and 
+classifying  them  is  essential. The  field  of  biology  that  deals  with the  diversity  of 
+living  organisms  and  their  evolutionary  relationships is  called systematics. 
+Taxonomy is  the branch  of science  of dealing  with  the naming,  describing  and 
+classifying of organisms. On the other hand, classification refers to the branch of 
+science  involving grouping of organisms  based  on  their  evolutionary  similarities 
+and differences. Carolus Linnaeus devised the binomial nomenclature of naming 
+organisms which uses the genus and the species. The genus name always starts 
+with a capital letter followed by the species name which always starts with a small 
+letter. In printed form the scientific name is presented in italics and when it is hand 
+written the genus and the species names must always be underlined separately. 
+ 
+There  are  eight levels  of  classification  which  are  hierarchical  (from  highest  to 
+lowest). These levels are Domain, Kingdom, Phylum, Class, Order, Family, Genus, 
+and Species. 
+ 
+Domain refers to the broadest taxonomic category or group to which a living thing 
+belongs;  each domain  includes  one  or  more  kingdoms.  As  you  may  recall  from 
+module 1, the three domain system consists of Archea (prokaryotic), Eubacteria 
+(prokaryotic)  and  Eukaryote  (eukaryotic).  There  are  five  kingdoms  to  which  all 
+organisms  belong  under  these  three  domains.  These  kingdoms  are  Kingdom 
+
+6 
+ 
+Monera,  Kingdom Protista,  Kingdom Fungi,  Kingdom Plantae and  Kingdom 
+Animalia.  
+ 
+1.1 Kingdom Plantae 
+The Kingdom plantae is also called as Kingdom Metaphyta. It includes all types 
+of    eukaryotic,    multicellular,    photosynthetic    and    autotrophic    plants    with 
+differentiated  tissues  and  organs.  Most  of  the  organisms  in  this  kingdom  are 
+autotrophs, which synthesize their own food with the help of solar energy through 
+photosynthesis. However, there are a few species, which are both autotrophs and 
+heterotrophs. 
+ 
+The history of life on earth and the success of many organisms literally depend on 
+the  success  of  plants.  The  Kingdom  Plantae  contains  about  300,000  different 
+species. Among the five kingdoms, Kingdom plantae is very important, as they are 
+the  source  of  food  for  all  other  living  creatures  present  on  planet  earth,  which 
+depends on plants to survive. 
+ 
+Plants  evolved  from  aquatic  green  algal  ancestors  known  as charophytes or 
+stoneworts. Land plants are collectively classified as archaeplastids. Adaptations 
+to life on land that have evolved in plants include a waxy cuticle to prevent water 
+loss  or  desiccation;  multicellular  gametangia:  (organs  that  protect  developing 
+reproductive parts); stomata (tiny openings in the leaves and stems for gaseous 
+exchange); and for most plants, vascular tissues mostly the xylem and phloem for 
+transportation  of  nutrients and  water  throughout  the  plant. Plants  undergo  an 
+alternation  of  generations  between  multicellular  gametophyte  and  sporophyte 
+generations. 
+ 
+ 
+
+7 
+ 
+ 
+ 
+ 
+1.3 Characteristics and adaptations of plants 
+Besides the diversity of plants, plants share several characteristics. We will now 
+list the main characteristics that are shared among most plants. Most plants: - 
+a. are multicellular eukaryotic organisms with differentiated tissues and organs. 
+b. have cell walls made of cellulose.  
+c. have cells which frequently contain large vacuole and photosynthetic pigments 
+in plastids. 
+d. have photosynthetic pigments are chlorophylls a and b. 
+e. are nonmotile. 
+f. reproduce both asexually and sexually, with alternation of gametophyte (n) and 
+sporophyte (2n) generations. 
+ 
+1.4 Adaptation of plants  
+Here we will discuss the general adaptations of plants for life on land. Life as we 
+know  today  started  in  water  and  evolved  to  terrestrial  environments.  Terrestrial 
+plants had to attain the following adaptations. 
+ Plants  have  a  waxy  cuticle  that  covers  the  aerial  portion  and  prevents 
+desiccation or drying out due to evaporation 
+ They  have  tiny  openings  called  stomata  on  the  leaves  and  stems  which 
+facilitate gaseous exchange 
+ They have multicellular sex organs (gametangia) with an outer layer of sterile 
+cells that surrounds and protects the delicate gametes (eggs and sperm cells). 
+The  fertilized  egg  develops  into  an  embryo  within  the  gametangium  which 
+
+8 
+ 
+offers protection during development. This is not the case in algae where eggs 
+develop  away  from  the  ganetongium  and  in  some  algae,  the  gametes  are 
+released before fertilization. 
+ 
+ 
+1.5 The plant life cycles and alternation of generations  
+Plants  have  two  distinctive  life  cycles  namely  gametophyte  generation  and 
+sporophyte generation. These two phases alternate where by the plants spend the 
+first part of their life cycle in a multicellular haploid stage and second part of their 
+life cycle in a multicellular diploid stage. 
+ 
+Gametophyte generation: This is the haploid portion which gives rise to haploid 
+gametes by mitosis. 
+ 
+Sporophyte generation: This is the diploid portion of the life cycle which begins 
+when   two   gametes   formed   during   the   gametophyte   generation   fuse.   The 
+sporophyte  generation  produces  haploid  spores  by  meiosis.  These  spores 
+represent the first stage in gametophyte generation. 
+ 
+This  change  during  the  life  cycle  from  gametophyte  generation  to  sporophyte 
+generation is called alternation of generations. 
+ 
+During  alternation  of  generations,  the  haploid  gametophytes  produce  male 
+gametangia known as Antheridia (singular antheridium) in which sperm cells form 
+and  female  gametangia  known  as  archegonia  (singular  archegonium).  Each 
+archegonium contains a single egg which is fertilized by a single sperm upon being 
+reached and forms a zygote.  
+
+9 
+ 
+ 
+The  formation  of  the  diploid  zygote  marks  the  beginning  of  a  sporophyte 
+generation.  The  formed  zygote  undergoes  mitotic  cellular  division  and  develops 
+into a multicellular embryo which forms a young sporophyte plant which grows into 
+a mature sporophyte plant. The mature sporophyte has sporogenous cells which 
+are spore producing cells or spore mother cells which divide by meiosis to produce 
+haploid spores. 
+ 
+This can be summarized as follows: 
+ 
+        Fertilisation of female sex cell by male sex cell 
+Zygote 
+Embryo 
+Mature sporophyte plant   Mature gametophyte plant 
+Sporogenous cells    Arhegonis (female sex cell)/  
+Meiosis     Antheridia (male sex cell) 
+Spores 
+ 
+Gametophyte produces gametes (eggs/sperms) by mitosis, two haploid gametes 
+fuse to form a zygote, the zygote develops by mitosis into the sporophyte, special 
+cells of the sporophyte undergo meiosis to form spores and each spore has the 
+potential to undergo mitosis and develop into a gametophyte 
+ 
+The figure below shows the two distinct generations of the basic plant.  
+
+10 
+ 
+ 
+Figure 1.1: The basic plant life cycle 
+1.6  Classification of plants 
+Plants  are  divided  into  four  main  groups  based  on  reproduction  and  vascular 
+tissues. The vascular tissues and reproduction cycle are mainly considered in plant 
+classification  due  to  the  significant  roles  that  they  play.  For Instance  vascular 
+tissues  (the  xylem  and  the  phloem)  play  a  vital  role  in  transporting  substances 
+(water, minerals and sugars) throughout the plant while seeds contain an embryo 
+that helps in storing food which is used during germination. The four major groups 
+of   plants are   Bryophytes,   Seedless   vascular   plants,   Gymnosprems   and 
+Agniosperms which are seeded vascular plants. 
+ 
+The  plant  kingdom  is  made  up  of  10  phyla  namely:  Phylum Bryophyta,  Phylum 
+Hepatophyta,     Phylum     Anthocerophyta,     Phylum     Pteridophyta,     Phylum 
+Lycopodiophyta,     Phylum     Coniferophyta,     Phylum     cycadophyta,     Phylum 
+Ginkgophyta,  Phylum  Gnetophyta,  and  Phylum  Anthrophyta or  Angiosperms. 
+However,  the  focus  of  this  module  is  on  the  four  main  phyla: Bryophyta, 
+Pteridophyta, Angiosperms and Gymnosperms. 
+
+11 
+ 
+ 
+ 
+1.6.1 Bryophyta 
+Bryophyta comes from the Greek words bryon meaning moss and phyton meaning 
+plant.  It  includes the  lichens,  mosses,  algae  and  the  fungi.  Bryophytes  are  the 
+simplest  and  the  most  primitive  of  the  land  plants.  They  are  believed  to  be  the 
+earliest  plant  to  colonize  terrestrial  habitat  from  aquatic  environment  They  are 
+small nonvascular plants that lack a specialized vascular, or conducting system to 
+transport nutrients, water, and essential minerals (inorganic nutrients) throughout 
+the plant body. Their adaptation to a terrestrial mode of life is partial as water is 
+indispensable in one stage or another in their life cycle. Hence, they are also known 
+as  the  amphibians  of  the  plant  kingdom.  They  do  not  form  true  roots,  stems,  or 
+leaves. Instead  of using  the  vascular  tissues  for  transportation,  these  plants 
+depend  mainly  on  osmosis  and  diffusion.  Due  to  this  utilization  of  osmosis  and 
+diffusion for nutrient transportation, bryophytes do not grow as other higher plants.  
+Bryophytes  have  a  restricted growth  since  some  of  their  cells  cannot  obtain 
+sufficient necessary materials if they are to grow much larger. These plants occur 
+more commonly during rainy seasons and also in humid areas. 
+ 
+The Bryophytes are nonvascular plants with a dominant gametophyte generation. 
+They are further divided into three distinct phyla which differ in many ways and in 
+terms  of  evolutionary  relatedness they  may or  may  not be  closely  related.  They 
+are grouped together because they lack vascular tissues and they have similar life 
+cycles.  Bryophtes  are  grouped  into  three  phyla  names; Phylum  Bryophyta 
+
+12 
+ 
+(mosses), Phylum   Hepatophyta   (liverworts) and Phylum   Anthocerophyta 
+(hornworts 
+ 
+The life cycle of bryophytes consists of two distinct phases. These phases are the 
+gametophytic  phase and  sporophytic  phases  which  alternate  with  each  other  a 
+process  called  alternation  of  generations.    For  reproduction  they  reproduce  and 
+disperse through haploid spores. Their life cycle consists of a marked alternation 
+of generations with dominant gametophyte generation.  
+ 
+1. Gametophytic  phase:  It  is  the  main  phase  which  is  haploid,  autotrophic, 
+gamete formative (male and female) and is responsible for sexual reproduction. 
+The  gametophytes  generally  form  dense  green  mats  consisting  of  individual 
+plants 
+ 
+ 
+ 
+2. Sporophytic   phase:   It   is   diploid,   heterotrophic,   spore   formative   and 
+responsible for the asexual reproduction. Vegetative reproduction takes place 
+through   fragmented   tubers   adventitious   branches   and   gemmae.   Sexual 
+reproduction takes place by sex organs antheridium (male) and archegonium 
+(female). 
+ 
+Fertilization takes place in the presence pf water. After fertilization, a zygote is 
+formed which undergoes divisions to form an embryo. The figure below shows 
+the life cycle of mosses as an example of bryophytes 
+
+13 
+ 
+ 
+Figure 1.2: The life cycle of moses. 
+ 
+1.6.2  Pteridophyta 
+These  are  seedless vascular  plants.  Evolutionarily,  they  are  the  first  terrestrial 
+plants  to  possess  vascular  tissues – xylem  and  phloem.  The  pteridophytes  are 
+normally found in swamps, marshes, stream banks, and tropical rain forests. Some 
+may grow in fields, crevices on cliffs or mountains.  
+ 
+The life cycle of pteridophytes has clearaly defined alternation of generations just 
+as in bryophytes. You may recall that in bryophytes the dominant phase in the life 
+cycle  is  the  gametophytic  plant  body.  However,  in  pteridophytes,  the main  plant 
+body is a sporophyte which is differentiated into true root, stem and leaves. These 
+organs possess well-differentiated vascular tissues. The leaves in pteridophyta are 
+small (microphylls) as in ferns. The sporophyte has a horizontal underground stem 
+(rhizome)  that  bears  leaves  known  as fronds. Spore  production  occurs  in  the 
+fronds where sporangia developes. Most species bear the spores in clusters called 
+
+14 
+ 
+sori  (singular  sorus).  In  the  sporangia,  sporagenous  cells  /  spore  mother  cells 
+under-go meiosis to form haploid spores. The sporangia burst open and release 
+spores  that  may  germinate  and  develop  into  gametophytes.    A  mature  fern 
+gametophyte is a tiny heart shaped structure that grows against the ground called 
+a prothallus (plural prothalli). The prothallus lacks vascular tissues, it only has tiny 
+hair   like   absorptive   rhizoids   for   anchorage.   The   prothallus   produces   both 
+archegonia  and  antheridia  on  its  underside.  A  single  egg  is  contained  in  each 
+archegonia while numerous sperm cells are produced in each antheridium.  
+ 
+The  sporophytes  bear  sporangia  that  are  held  by  leaf-like  appendages  called 
+sporophylls.  In  some  cases  sporophylls  may  form  distinct  compact  structures 
+called strobili or cones.  
+ 
+The  sporangia  produce  spores  by  meiosis  in  spore  mother  cells.  The  spores 
+germinate   to   give   rise   to   very   small   but   multicellular   free-living,   mostly 
+photosynthetic thalloid gametophytes  called prothallus  (free  living  haploid 
+gametophyte). These gametophytes require cool, damp, shady places to grow. 
+Because  of  this  specific  restricted  requirement  and  the  need  for  water  for 
+fertilization,  the  spread  of  pteridophytes  is  limited  and  restricted  to  narrow 
+geographical regions. The gametophytes bear male and female sex organs called 
+antheridia and archegonia, respectively just as in bryophytes. 
+ 
+Water is required for transfer of antherozoids – the male gametes released from 
+the antheridia, to the mouth of archegonium. Fusion of a male gamete with the 
+egg  present  in  the  archegonium  result  in  the  formation  of  a  diploid  zygote  that 
+grows  into  a  multicellular  embryo.  This  multicellular  embryo  is  an  immature 
+sporophyte   which   is   attached   to   the   gametophyte and   depends   on   the 
+gametophyte.  As  the  embryo  matures,  the  prothallus  withers  and  dies  and  the 
+prothallus becomes free living. Thus the pteridophyte life cycle alternates between 
+
+15 
+ 
+the dominant sporophyte and which jas rhizome, roots, and fronds and the haploid 
+gametophyte   (prothallus).The   sporophyte   generation   is   dominant   over   the 
+gametophyte  generation  not  only  because  it  is  large  than  the  gametophyte  but 
+because   it   also   persists   over   extended   periods.   A   good   example   of   the 
+pteridophytes   are   the   ferns   whose   sporophytes   are   perennials   while   the 
+gametopytes die soon after reproducing.  
+ 
+In summary the pteridophytes 
+ Are  seedless  vascular  plants,  which  contain  vascular  tissues  but  do  not 
+produce seeds.  
+ Have their reproduction process carried out by spores 
+ Have  a  life  cycle  that  alternates  between  the  gametophyte  and  sporophyte 
+whereby the sporophyte dominates 
+ Some pteridophytes e.g. ferns and club mosses are heterosporous : produce 
+two types of spores  which are microspores and mega spores unlike bryophytes 
+which are monosporous- producing only one type of spores  
+ 
+ 
+ 
+ 
+ 
+ 
+The figure below shows the life cycle of n example of a pteridophyte, the fern. 
+ 
+
+16 
+ 
+ 
+Figure 1.3: A typical life cycle of a pteridophyte 
+ 
+ 
+Figure 1.4: The basic life cycle of heterosporous plants 
+ 
+
+17 
+ 
+Summary 
+1. Sporophyte  plant  produces  sporangia  in  conelike  strobilus  containing 
+microsporangia and megasporangia. Microsprongia produce 
+microsporocytes  /  mother  spore  cells  which  undergo  meiosis  to  form 
+microscopic haploid microspores. 
+2. Microspores  develop  into  male  gametophyte  that  produces  sperm  cells 
+within antheridia 
+3. Megasporangia  undergoes  meiosis  to  form  haploid  megaspores  that 
+develop into female gametophyte to produce eggs in archegonia  
+4. Fertilization occurs followed by development of new sporophyte. 
+ 
+1.6.3 Gymnosperms 
+The gymnosperms are classified imto four phyla:coniferophyta, commonoy called 
+conifers;  Ginkgophyta,Cycadophyta  and  Gnetophyta.  The  conifers  are  the  most 
+familiar group of gymnosperms and they consist of pines, spruces, hemlocks and 
+firs. The conifers are woody plants that produce seed in cones. 
+ 
+Characteristics of conifers 
+ Conifers’ wood has tracheids which are long tapering cells with pits through 
+which water and dissolved minerals move from one cell to the other.  
+ They produce a viscous clear or translucent substance called resin; consisting 
+of several organic compounds which protects the plant from insect and fungi 
+attack. 
+ They have long, narrow, tough, and leathery leaves called needles.     
+ Most conifers are evergreen, apart from a very few that are deciduous shed 
+their needles at the end f he growing season. 
+
+18 
+ 
+ Most  conifers  are monoecious,  they  have  separate  male  and  female 
+reproductive parts in different locations on the same plant.  
+Gymnosperms  are  non-flowering  plants  with  undeveloped  seeds,  which  are 
+present in an enclosed structure. In other terms they are plants in which the ovules 
+are  not  enclosed  by  any  ovary  wall  and  remain  exposed  before  and  after 
+fertilization.  They  produce  naked  seeds.  The  gymnosperms  are  heterosporous; 
+producing  haploid  microspores  and  megaspores.  The  two  kinds  of  spores  are 
+produced  within  sporangia  that  are  borne  on  sporophylls  which  are  arranged 
+spirally along an axis to form lax or compact strobili or cones. The strobili bearing 
+microsporophylls  and  microsporangia  are  called microsporangiate or male 
+strobili. The microspores develop into a male gametophytic generation which is 
+highly  reduced  and  is  confined  to  only  a  limited  number  of  cells.  This  reduced 
+gametophyte  is  called  a pollen  grain.  The  development  of  pollen  grains  takes 
+place within the microsporangia. The cones bearing megasporophylls with ovules 
+or megasporangia are called macrosporangiate or female strobili. The male or 
+female cones or strobili may be borne on the same plant (trees). However in some 
+cases male cones and megasporophylls are borne on different plants (trees). 
+ 
+Unlike  bryophytes  and  pteridophytes,  in  gymnosperms  the  male  and  the female 
+gametophytes  do  not  have  an  independent  free-living  existence.  They  remain 
+within the sporangia retained on the sporophytes. The pollen grain is released from 
+the microsporangium. They are carried in air currents and come in contact with the 
+opening of the ovules borne on megasporophylls. The pollen tube that carries the 
+male  gametes  grows  towards  archegonia  in  the  ovules  and  discharge  their 
+contents near the mouth of the archegonia. Following fertilization, a diploid zygote 
+develops into an embryo and the ovules into seeds. These seeds are not covered. 
+ 
+1 Monocot begins with a single seed-leaf.  The main veins of their leaves are 
+usually parallel and unbranched.  
+
+19 
+ 
+2 Monocot plays an important role in providing us with our primary sources of 
+nutrition, which includes grains, fruits, etc. 
+1.6.4 Angiosperms 
+These are flowering plants, which develop the seeds within a protective structure. 
+They  are  the  most  diverse  phylum  of  plants  that  form  flowers  for  sexual 
+reproduction and they produce seeds enclosed in fruits. There are two main types 
+of angiosperms: monocots and eudicots/ dicot  
+Main characteristics of Angiosperms 
+ They develop their seeds within an ovary, which itself is embedded in a flower. 
+After the stage of fertilization, the flower falls and the ovary bulges to become 
+a fruit. 
+ Angiosperms   in   the   class   Dicotyledoneae   grows   into   two   seed-leaves 
+(cotyledons). 
+ An angiosperms leaf consists of a single, branched, main vein, which originates 
+from the base of the leaf blade. In few plats, it may also consist of four or more 
+main veins diverging from the same base. 
+ 
+Unit 1 activity 
+ 
+ 
+ 
+Unit 1 summary 
+ 
+ 
+
+20 
+ 
+ 
+Unit 1 test 
+Unit 2: Morphology and Anatomy of Flowering Plants 
+ 
+Introduction 
+Naturally, all flowering also known as seed plants develop from a seed. The seed is the 
+seat of partial development of the new sporophyte, the embryo and it thus plays a major 
+role in providing the continuity between successive generations of the plants.  Given the 
+right environmental factors which include moisture, temperature, nutrients and light the 
+seed  will  germinate. This  becomes possible after a more  or  less prolonged dormancy 
+caused  by  various  internal  factors  such  as  rudimentary  or  physiologically  immature 
+embryos,  mechanically  resistant  or  impermeable  seed  coats,  or  the  presence  of 
+germination inhibitors. 
+ 
+Germination is essentially a resumption of embryo growth after imbibition of water. During 
+imbibition, the water content of the seed rises, usually fast at first, then slower, and the 
+embryonic tissue becomes metabolically active. Enzymes already present are activated 
+and new proteins with specific enzymatic activities are synthesized for the digestion and 
+utilization of the different kinds of stored materials. Cell extension and cell divisions are 
+initiated  and  proceed  according  to  the  programmed  pattern.  This  growth  requires 
+continuous supply of water and nutrients. Before the embryo becomes a self-supporting 
+seedling it utilizes the food stored in the endosperm and/or the embryo itself. 
+ 
+Seedling growth leads to the development of three major vegetative organs, i.e. roots, 
+stem and leaf. Depending on the type of plants, time taken to grow into a full mature plant 
+
+21 
+ 
+will vary. At maturity, these plants produce flowers (reproductive organs) which lead to 
+the development of fruits and seeds. 
+ 
+In this unit, we are going to study different morphological and anatomical structures of 
+these organs of the plants. You will also be introduced to the important roles, variations 
+and similarities of these organs. 
+ Unit 2 learning outcomes 
+By the end of this unit, you should be able to:  
+1. State the primary functions and types of roots, stems, leaves and flowers. 
+2. Describe the external and internal parts of mature primary root, stems, leaves 
+and flowers. 
+3. Compare morphological and anatomical structures of monocotyledonous and 
+dicotyledonous stems and leaves. 
+ 
+ Unit 2 key terms 
+Sporophyte 
+Dormancy 
+Imbibition 
+Enzymes 
+Endosperm 
+Androecium 
+Herbaceous 
+Differentiation 
+Coalescence 
+Inflorescence 
+Gymnoecium 
+Vegetative organs 
+Reproductive organs 
+Morphology 
+Anatomy 
+
+22 
+ 
+ Unit 2 Content 
+2.1  Roots 
+ 
+2.1.1 Functions of roots 
+In this section we will discuss the four major and primary functions of roots. You 
+may have noticed that some plants might use roots for other specialized functions. 
+Among major functions of the roots include anchorage, absorption, transportation, 
+and translocation. Specialized functions include storage, propagation, respiration, 
+balancing  and  support,  growth,  parasitism,  and  association  with  other  living 
+organisms. We  will  begin  our  discussion  by  looking  at  the  main  function  of  the 
+roots. 
+ 
+Anchorage 
+This  should  be  familiar  to  most  of  us  that  roots  anchor  trees  firmly  into  the  soil, 
+usually through an extensive branching network that constitutes about one third of 
+the total dry weight of the plant. The roots of most plants do not extend more than 
+3 to 5 meters down into the earth; those of many herbaceous species are confined 
+to the upper 0.6 to 0.9 meters. Some plants form very shallow root systems, but 
+these systems still effectively anchor the plants with a densely branching mass of 
+roots radiating out in all directions as far as 15 meters from the stem. 
+ 
+Absorption 
+You may also be familiar that roots absorb water and minerals in solution mostly 
+through feeder roots found in the soil.  
+ 
+ 
+
+23 
+ 
+Transportation 
+After absorbing the water and mineral salts from the soil roots are also responsible 
+for transporting these materials through stems to the leaves by the use of vascular 
+bundles laid in a form of continuous pipes forming a body known as xylem. This 
+is a one way direction process from roots to leaves (Figure 1A). 
+ 
+ 
+Figure 2.1: Transportation of water, one way direction through xylem pipes (A), 
+and translocation of manufactured food, multidirectional process through phloem 
+pipes (B). 
+ 
+Translocation 
+Food manufactured  in  the  leaves  is  supposed  to  be  transported  to  plant  parts 
+where it is required. As in the transportation of water, there are also specialized 
+pipes  that  are  laid  through  the  plant  body  stretching  from  roots  to  leaves.  Such 
+pipes are known as phloem. Manufactured food is able to be moved from leaves 
+to  roots  and  back  from  roots  to  upper  parts  of  the  plant  where  it  is  required. 
+Manufactured food can also be moved sideways through the root and stem bodies 
+to wherever it is required, hence the process is multidirectional (Figure 2B). 
+ 
+
+24 
+ 
+2.1.2 Types of root systems 
+Based on the origin, position, function and morphological appearance of the root, 
+roots  can  be  grouped  into  three  major  groups of taproot,  adventitious or  fibrous 
+and modified or specialized root systems. Let us now describe these root systems. 
+ 
+Tap root system 
+This  is  characterized  by  one  large  primary  root  (taproot)  and  smaller  roots  with 
+varying  sizes  called  secondary  roots  which  originate  from  the  primary  root.  The 
+taproot originates from the embryonic root called radicle (Figure 2) and continues 
+to form the root systems of many dicotyledonous plants for example bean, mango, 
+orange, gmalina, and gymnosperms for example pines. 
+  
+Figure 2.2: Development of taproot system from embryonic radicle (A, B, C, D) 
+ 
+Adventitious or fibrous root system 
+On the other hand you will notice that roots of monocotyledonous plants such as 
+maize,  rice,  wheat,  grasses  and  bamboos  and  dicotyledonous  plants  that  are 
+planted  from  stems for  example cassava,  sugarcane  and  sweet  potatoes  form 
+adventitious systems. 
+
+25 
+ 
+In the monocotyledons the tap root commonly lives for a relatively short time and 
+the root system is formed by roots arising directly from the shoot (stem and leaves) 
+often in connection with axillary buds. Adventitious root system usually has many 
+uniform or homogenous roots and in appearance, they tend to look like a broom 
+or a mop. Such a fibrous broom structures is the origin of its name as fibrous root 
+system (Figure 3). 
+ 
+Figure 2.3: Adventitious or fibrous root system 
+ 
+Modified or specialized root systems 
+As  mentioned earlier,  most  plants  produce  either adventitious  or  fibrous  root 
+system, taproot system or more commonly combinations of the two types. Some 
+plants,  however have  roots  with  modifications  that  adapt  them  for  performing 
+specific functions apart from the four basic functions. Some of the examples of the 
+modified root systems are given in Table 1 below. 
+ 
+ 
+ 
+
+26 
+ 
+Table 1: Examples of modified roots 
+Modified/specialized root Examples 
+1. Freshy roots (Food and water 
+storage roots) 
+Cassava, sweet potatoes, yams, and 
+some members of pumpkin and 
+plantain familes. 
+2. Propagative roots – many plants 
+produce adventitious buds (buds not 
+appearing from the stem but other 
+organs of the plant ie roots growing 
+along the surface and leaves which 
+will lead to production of a new plant. 
+Adventitious roots of ricepaper plants 
+(Tetrapanax papyrifera), Horseradish 
+(Roroppa armoracia), roots of cherries, 
+apples, pears and other fruit trees often 
+produce suckers. 
+3. Aerial roots  
+a. Includes respiratory or 
+pneumatophores used for gas 
+exchange in plants growing in 
+swampy environments. 
+b.  prop roots are roots developing 
+from stems to provide extra 
+support 
+ 
+Black mangrove (Avicennia nitida), 
+yellow water weed (Ludwigia repens) 
+ 
+-maize and other grasses, fig trees 
+(Ficus sp) 
+4.   Association with other living 
+organisms 
+a.   mycorrhizae: plant roots 
+associated with fungi for mutual 
+symbiotic purposes. 
+ 
+b. nodules in leguminous roots: 
+mutualistic symbiotic association 
+between roots and bacteria 
+ 
+c. parasitic association: an 
+association where roots of crops 
+or trees are associated with roots 
+of plant parasitic plants. 
+ 
+-roots of most forest trees and grasses 
+ 
+ 
+ 
+-all roots of leguminous plants 
+ 
+ 
+-witchweed (Striga sp), Dodders, 
+orchids. 
+ 
+2.1.3 Root structure 
+You will appreciate that the root has different internal and external structures that 
+makes the root to perform the different functions. As the roots elongates, it displays 
+varying morphological and anatomical structural features. From the growing tip to 
+the mature part of the root, we observe six different structural regions (Figure 4). 
+
+27 
+ 
+Such   regions   include   root   cap,   apical   meristem   zone,   elongation   zone, 
+differentiation  zone,  root  hair  zone  and  mature  root  zone.  These  are  discussed 
+below in relation to their type of cells and functions. 
+ 
+Root tip 
+ 
+The root tip is the growing point of the root. As the name suggests this is found at 
+the tip of the root. Within the root tip you will find the root cap, the apical meristem, 
+the elongation zone and the region of cell differentiation.  
+ 
+Root cap 
+The root cap is composed of parenchyma cells that produce and exude mucus-
+like  substance.  This  substance  is  smeared outside  the  root  cap  and  acts  as 
+lubricating oil as the root pushes through the soil particles. As you will notice, the 
+root cap protects the apical meristem. The root cap also assists the growing root 
+as it penetrates the soil. 
+ 
+ 
+Figure 2.4: Internal and external structure of a root 
+28 
+
+28 
+ 
+Apical meristem zone 
+The  apical  meristem  is  a zone  is  made  up  of  young  and  undifferentiated  cells 
+(meristems).  These cells  are  randomly  arranged.  The meristems  are capable  of 
+dividing mitotically increasing the numbers in a limited area hence pushing the root 
+tip forward (growing). 
+ 
+Elongation zone 
+In  the  elongation  zone,  cells  start  elongating  and  increase  in  size.  As  the  cells 
+elongate they arrange themselves in chains 
+ 
+Differentiation zone 
+In  this  zone  cells  begin  to  differentiate  into  different  tissue.  The  cells  begin  by 
+forming  primary  tissues  for both  structural  and functional  use. The  first  primary 
+tissues  include dermal  tissue  (epidermis),  ground  tissue  (cortex) and  vascular 
+tissue  (xylem,  phloem  and  pericycle) (Figure  4).  The  outermost  cells  arrange 
+themselves  into  a  skin  like  structure  called dermal  tissue (epidermis) while  the 
+innermost cells organise themselves into translocating and transporting structures 
+called vascular  tissues. The  vascular  tissue  forms  a  solid  vascular  cylinder,  or 
+pith is present then a hollow cylinder with a few parenchyma and sclerenchyma 
+cells embedded in them for support. The cells between the dermal and the vascular 
+tissue  form  ground  tissues  made  of three major  zones  that  is  hypodermis  or 
+exodermis, loose cortex and endodermis. 
+ 
+Root hair zone 
+In  young  roots  the  epidermis  is  specialized  as  an  absorbing  tissue  and  usually 
+bears  root  hairs  which  are  tubular  extensions  of  the  epidermal  cells.  Root  hairs 
+markedly extend the absorbing surface of the root. Root hairs have short life; they 
+disintegrate in the older epidermal cells as they reach mature stage. 
+
+29 
+ 
+Mature root zone 
+In this region you will find fully grown up cells that make the mature body of the 
+root are well separated and differentiated in readiness for their different functions 
+they have to undertake in the root. They are seen to be grouped into three main 
+groups  (Figure 5).  The  peripheral  is  made  up  of  dermal  tissue  which  acts  as  a 
+protective skin for the root. The central part of the body is taken up by a cylindrical 
+shaped vascular tissues that are meant to transport water and mineral salts and 
+translocate  manufactured  food.  The  area  between  the  two  is  formed  by  cells 
+grouped  as  ground  tissues. Their  functions  are  many,  among  them  include 
+storage, support and in aiding transportation and translocation. 
+ 
+Figure 2.5: Cross section of a mature root 
+ 
+Dermal tissue 
+Epidermis is the outermost one cell layer body which acts as a protective skin of 
+the root. At this stage, you will notice that most cells have lost their root hairs and 
+seen to be forming a very tightly held layer to prevent entry of water and other large 
+molecules from the soil. The layer is composed of epidermal cells of varying sizes. 
+
+30 
+ 
+Ground tissues 
+Ground tissue is a group of tissues that occupy the middle section of the body of 
+a mature root. The ground tissue is mostly composed of parenchyma cells but they 
+could  also  have  collenchyma  cells.  The  tissue  is characterised with large 
+intercellular spaces (lacunae) formed by aerenchyma cells. Aerenchyma cells are 
+highly  vacuolated  and  may  contain plastids  are  devoid  of  chlorophyll.  They 
+however as act storage for large amounts of starch. 
+ 
+The innermost layer of the ground tissue is differentiated into one cell layer called 
+endodermis. The outermost layer close to the dermal tissue (epidermis) is made 
+up  of  one  or  more  cell  layers  called exodermis.  The  large  layer  between 
+exodermis and endodermis is composed of loosely packed cells which usually are 
+referred to as loose cortex. 
+ 
+Cells  that  form  the  endodermis  have  their  cell  walls  coated  with  a  waterproof 
+substance called suberin. This substance goes round the cells within the radial 
+and  transversal  wall  forming  a  band-like  region.    However,  the  band  does  not 
+completely cover all cells. A few cells are left free allowing direct openings between 
+cortex and the vascular tissues. It is through these openings that water and soil 
+solutions  find  their  way  into  the  vascular  tissues.  The  band  is  called casparian 
+strip.  This  band  is  important  in  the  transportation  of  water  and  soil  solutions 
+between cortex and vascular tissues, where water enters the vascular tissue pipes 
+through pressure and with the same pressure water and soil solutions are taken 
+up to the leaves. 
+ 
+ 
+ 
+ 
+
+31 
+ 
+Vascular tissue  
+Let us now finish our discussion of the root by looking at the vascular tissue. The 
+vascular tissue form a cylinder-like body of the innermost part of the mature root 
+(vascular cylinder). This cylinder has three main parts namely pericycle, xylem and 
+phloem. We will discuss the composition, positions and functions of each of these 
+parts below. 
+ 
+Pericycle  
+The  pericycle  is  a  one  celled  layer.  The  cells  are either  Parenchymatous  or 
+sclerenchymatous.  The  pericycle  acts  as  a  source  for  lateral  (secondary)  roots, 
+vascular cambium and cork cambium (phellogen). 
+ 
+Xylem 
+The xylem forms a solid core with ridge like projections called archs. The number 
+of archs varies in different species. Among roots of the same plants and in relation 
+to this variation the roots are called Diarch with two projections, Triarch with three 
+projections, Tetrarch with  four  projections or Polyarch if  the  root  has many 
+projections. 
+ 
+In  general  roots  of  dicotyledonous  plants  have  2,  3,  or  4  archs  (poles)  and  in 
+monocotyledonous plants they may have many archs. 
+Xylem pipes with varying sizes form a continuous pipe system from roots through 
+stems to the leaves. These pipes are responsible for the transportation of water 
+and mineral salts from roots to the leaves. 
+ 
+ 
+ 
+
+32 
+ 
+Phloem 
+Phloem  pipes  are  grouped  into  bundles  between  the  xylem  archs.  Like  in  the 
+xylem, these pipes also form a continuous system stretching from roots to leaves. 
+Their major function is to translocate or conduct manufactured food from leaves 
+throughout the plant body.  
+ 
+2.2 Stems 
+ 
+2.2.1 Functions of stems 
+We will begin by learning the main functions of plant stems. Stems have five main 
+functions  which  are  a)  carry,  support  and  expose  leaves  to  light  and  air b) 
+transportation of water and mineral salts c) translocation of manufactured food d) 
+storage  of  nutrients and  e)  perform  metabolic  functions  such  as  photosynthesis 
+and respiration. 
+ 
+2.2.2 External structure 
+Hope you will agree that the close association of the stem with the leaves make 
+the aerial part of plant axis strictly more complex than the root. Shoot means stems 
+and leaves as one system which seems to express the association. In contrast to 
+the root, the shoot has nodes and internodes with one or more leaves per node. 
+Depending  on  the  development  of  the  internodes  the shoot  assumes  different 
+aspects. 
+ 
+Visible or invisible internodes 
+Plants  with  well-developed  internodes  tend  to  have  visible  stems  as  in  beans, 
+sunflower, maize, bamboos, gmelina, fruit trees and forest trees, while some plants 
+like onions and other bulbs and bananas have short invisible or hidden stems as 
+their internodes are not well developed. 
+
+33 
+ 
+One or more auxiliary buds per node 
+Another  variation  is  the  arrangement  of  leaves  per  node  on  the  stem  which  will 
+lead to number of auxiliary buds hence number of the lateral shoots. Some plants 
+have one leaf per node hence one axillary bud; others have two leaves per node 
+leading  to  two  axillary  buds and  yet  others  have  three or  more  leaves  per  node 
+leading to three or more axillary buds. 
+ 
+The differences are also associated with type of growth and habitat of the shoot. 
+Air or underground stems for rhizome like in grasses, bulbs like in onions, corms 
+like in banana and tubers as in potatoes. Typical examples of land or water shoots 
+are rice plants and the water hyacinth. Some shoots are upright while others are 
+climbing or creeping. Vines creeping shoots, stolons are also creeping shoots as 
+in grasses while some varieties of beans are climbers (Figure 6). 
+ 
+Figure 2.6: Modified stems 
+ 
+
+34 
+ 
+2.2.3 Internal structure of primary stem 
+The stem like the root consists of three tissue systems namely dermal, ground and 
+vascular  tissues.  However  the  distribution  of  ground  and  vascular  tissues  vary 
+between  stems  of  dicotyledonous  and  monocotyledonous  plants.  In  stems  of 
+dicotyledonous  and  gymnospermae  plants,  vascular  tissues  appear  in  separate 
+bundles and these bundles are arranged in a circular structure within the ground 
+tissue. The inner part of the ground tissue is called pith and the outer one cortex. 
+In  stems  of  monocotyledonous  plants, vascular  tissues  form  vascular  bundles 
+which are randomly distributed within the ground tissue where the pith and cortex 
+cannot easily be separated (Figure 7 a and b). 
+ 
+a 
+
+35 
+ 
+ 
+b 
+Figure 2.7: a) Cross section of dicotyledonous b) cross section of a 
+monocotyledonous stem 
+ 
+Dermal tissue 
+The dermal tissue in stems continues to be a one celled layer as we have already 
+seen in roots and it is called epidermis. This skin is maintained up to maturity in all 
+cotyledonous  plants  and  herbaceous  dicotyledonous plants.  Examples  of  the 
+herbaceous dicotyledonous plants include bean, peas, sunflower and other small 
+leguminous  plants.  However,  in  trees  and  other  larger  dicotyledonous  plants, 
+another thicker skin called periderm replaces epidermis at maturity. 
+ 
+Ground tissue 
+Unlike in the root, the ground tissue has four major parts. The innermost part is 
+called  pith  and  close  to  the  dermal  is  called  cortex  with  three  different  layers: 
+hypodermis,  loose  cortex  and  endodermis.  In  stems  the  endodermal  layer  does 
+not perform the function as in the root and its cells do not contain suberin. They 
+are mainly used to store starch hence referred to as starch cells. 
+ 
+
+36 
+ 
+Vascular tissue 
+Primary vascular system of stems of seed plants consist of strands variable in size 
+and degree of distinctness. Individual strands are referred to as vascular bundles. 
+Each bundle is composed of xylem and phloem pipes. Xylem and phloem show 
+variation  in  relative  position  in  vascular  bundles. The common  arrangement  is 
+called collateral where xylem pipes are grouped towards the inner part of the stem 
+and phloem takes the outer position (Figure 8) 
+ 
+Figure 2.8: Vascular bundle showing common arrangement of xylem and phloem 
+tissue 
+ 
+2.3 Leaves 
+In general sense there are quite a number of different types of leaves on a plant 
+based on origin, structure and function. Based on these characteristics we come 
+across four different types of leaves on a flowering plant i.e. cotyledons, cataphylls, 
+floral  and  foliage  leaves.  However,  when  we  talk  of  leaves  we  mostly  refer  to 
+foliage leaves also known as true leaves. 
+ 
+2.3.1 Types of leaves and their functions 
+Cotyledons 
+Cotyledons  are  the  first embryonic leaves  on  the  plant. The  main  function  of 
+cotyledon is that they act as placenta and nurse the young plant. 
+ 
+
+37 
+ 
+Cataphylls 
+Structurally, you  will  notice cataphylls  as  bracts  or  scales  on  stems,  roots  and 
+flowers of plants. They are found on either stolons, rhizomes of grasses or bulbs. 
+Cataphylls offer protection to the shoot and they are also used for storage of food 
+and nutrients. 
+ 
+Floral leaves 
+Floral  leaves  are  modified  for  reproduction  processes. Structurally,  flowers  are 
+made  up  of  four  different  types  of  leaves  each  modified  for  their  own  special 
+functions. Such leaves include calyx, corolla, stamen and pistil. 
+ 
+Foliage leaves 
+As  we  have  already  indicated,  these  are  the  true  leaves. This  group  of  leaves 
+represent the true leaves of the flowering plant. Structurally, the foliage leaf usually 
+shows a specialization as a photosynthetic organ of the plant. 
+ 
+Major basic functions of foliage leaves include photosynthesis, gaseous exchange 
+and translocation of manufactured food. However, they could also be modified to 
+carry  out  other  functions  including  storage,  protection,  propagation  and  holding 
+onto other plants and objects. 
+ 
+2.3.2 External structure of foliage leaves 
+Foliage  leaf  normally  shows  its  specialization  as  a  photosynthetic  organ  by  the 
+expanded platform of its lamina (Figure 9). The leaf shows six major external parts 
+including the tip/apex, base, blade/lamina, margins, main central vascular bundle 
+(midrib)  and  the  stalk  (petiole  and/or  sheath).  Though  having  leaves  with  these 
+major parts, different plants show differences in size, shape, leaf arrangement and 
+morphological  appearance  of  their  tips/apices,  margins  and  bases.  Leaves  of 
+
+38 
+ 
+monocotyledonous and gymnospermae usually tend to have long and flat or round 
+lamina while most leaves of dicotyledonous usually tend to be broad shaped. 
+ 
+Figure 2.9: Typical dicotyledonous and monocotyledonous leaves 
+ 
+2.3.3 External variations of a foliage leaf 
+Below, we will study the common variations that we can see among foliage leaves 
+of flowering plants. Apart from differences in shapes and size of the leaves (Figure 
+10), leaves show variation in tips, bases (Figure 11), margins and arrangement of 
+vascular bundles (venation) (Figure 12). 
+
+39 
+ 
+ 
+Figure 2.10 Common leaf shapes 
+
+40 
+ 
+ 
+Figure 2.11 Common leaf apices and bases 
+ 
+Figure 2.12 common leaf margins and arrangement of vascular bundles 
+ 
+
+41 
+ 
+Leaves may also vary in their arrangement on the stem, pattern of attachment on 
+the stem and number of leaves attached at a node. 
+ 
+Leaf arrangement 
+This  refers  to  the  number  of  leaves  on  the  node  and  how  leaves  position 
+themselves in relation to one another. There are four common leaf arrangements. 
+Alternate  leaf  arrangement where one  leaf  per  node  and  these  leaves  are 
+positioned  in  alternating  positions for  example maize and beans.  In Cyclic  leaf 
+arrangement one  leaf is  attached per  node  but  leaves  are  arranged  in  circular 
+form  going  up  the  stem. Opposite  leaf  arrangement has two  leaves  per  node 
+positioned opposite to each other. The opposite arrangement could appear in two 
+forms. Some plants carry their leaves on one plane others on two planes where 
+two  leaves  on  the  lower  node  alternate  with  the  two  leaves  immediately  above 
+them for  example Gmalina.  Lastly, whorled  leaf  arrangement where  there  are 
+three or more leaves on one node and seem to make a whorl or ring around the 
+stem. 
+ 
+Petiole versus Sessile leaves and sheathing base 
+In most plants, leaves are seen to be attached to leaf stalks as they immerge from 
+a node. This stalk could be a strong round bodied structure (petiole) or flat flexible 
+structure (sheath). Such leaf appearance could be regarded as a normal situation. 
+However in some plats, leaves are seen to be directly emerging from the node. In 
+such situations it is either the stalk is too short that it can be recognized or there is 
+no  stalk.  In  this  kind  of  leaf  attachment  to  the  node,  the  leaf  is  referred  to  as  a 
+sessile leaf. In other cases, leaf blade coming from the sheath will also be seen 
+coming  straight  from  the  stem  with  its  sheath  holding  closely  to  the  stem.  Such 
+appearance is referred to as a sheathing base. See diagrams below. 
+
+42 
+ 
+ 
+Figure 2.13: Leaf bases 
+ 
+Simple versus Compound leaves 
+ 
+A simple leaf has a single blade while the blade of a compound leaf is divided in 
+various  ways  into  leaflets  (Figure  15).  Regardless  of  the  number  of  leaflets,  a 
+compound leaf still has a single axillary bud at its base. Pinnately compound leaves 
+have  the  leaflets  in  pairs  along  an  extension  of  the  petiole  called rachis, while 
+palmately compound leaves have all the leaflets attached at the same point at the 
+end of the petiole. Sometimes, the leaflets of a pinnately compound leaf may be 
+subdivided  into  still  smaller  leaflets  forming  a  bipinnately  compound  leaf  and  a 
+further subdivision forming a tripinnately compound leaf (Figure 16). 
+ 
+
+43 
+ 
+ 
+Figure 2.14 Simple and compound leaves 
+ 
+Figure 2.15: Palmately compound leaf (C) and pinnately compound leaf (D) 
+ 
+2.3.4 Internal structure of a leaf 
+Internal  structure  of  leaves  vary  depending  on  the  prevailing  environmental 
+conditions of the habitat plants have been adapted to. Plants can be grouped into 
+three groups based on their habitat and internal structural leaf arrangement. Such 
+groups include mesophytes, hydrophytes and xerophytes. Mesophytes are plants 
+that  require  environment  that  is  neither  too  wet  nor  too  dry. Hydrophytes plants 
+require a large supply of water and may grow partly or entirely submerged in water 
+while Xerophytes are adapted to a dry hot habitat. 
+ 
+ 
+
+44 
+ 
+Internal structure of a mesophytic leaf 
+Like roots and stems, the leaf also shows three major groups of tissues namely 
+dermal vascular and ground tissues (Figure 17). 
+ 
+Epidermis 
+The leaf is covered/protected by two skins, with both made up of similar type of 
+cells (epidermal cells) the skin that appears on the upper side of the leaf is referred 
+to as an upper epidermis and the one below is referred to as lower epidermis. For 
+its  efficient  functional  purposes,  epidermis  is  equipped  with  some  structures 
+including cuticle, trichomes and stomata. 
+ 
+ 
+Figure 2.16: A composites cross section of a mesophytic leaf 
+ 
+Cuticle  is  a  fatty  waxy  substance  which  repels  water.  It  is  mainly coated  on  the 
+surfaces of the epidermis for the same purpose of preventing direct entry of water 
+from  the  atmosphere. The  other  common  structures found on the epidermis  are 
+trichomes (hairs). The epidermal layer of roots has root hairs for the absorption of 
+
+45 
+ 
+water.  The  hairs  either  on  stems  or  leaves  are  mainly  for  protection  and 
+temperature regulation. The other popular structures found either on both or one 
+side are the natural openings called stomata. These act as openings for gaseous 
+exchange.  Based  on the  position  of  the  stomata,  leaves  may  be  referred  to 
+Amphistomatic leaf if stomata appear on both sides. Epistomatic have stomata 
+on the upper side while hypostomatic have stomata on the lower side. 
+ 
+Ground tissue 
+The main part of the body of the leaf is covered by ground tissue and in leaves is 
+referred to as mesophyl. The mesophyll has the following characteristics: 
+a. mainly composed of parenchyma cells of varying sizes and shapes 
+b. cells contain many chloroplasts 
+c. large volume of intercellular spaces 
+d. It could  be  homogeneously  be  divided  into palisade Mesophyll  with 
+elongated  cells  appearing  in  columns or  Spongy  Mesophyll  with regular 
+sloped cells. 
+ 
+Leaves  may  have  one  or  more  rows  of  palisade  parenchyma  cells. Leaves of 
+plants  adapted  to  mesophytic  habitats  commonly  have  one  row  of  palisade 
+parenchyma cells. On the other hand leaves adapted to xerophytic habitat tend to 
+have two or more rows of palisade parenchyma cells. 
+ 
+Vascular tissue 
+The Vascular System of the leaf is distributed throughout the blade and thus shows 
+a  close  spatial  relation  to  mesophyll.  Vascular  strands  form  an  interconnected 
+system in the median plane of the blade parallel with the surface of the leaf. The 
+Vascular bundles in the leaf are commonly called veins, and the patterns formed 
+by the veins, venation, as seen with the unaided eye. The venation appears in two 
+main patterns, the reticulate or netted which is mainly associated with leaves of 
+
+46 
+ 
+dicotyledonous plants, and the parallel which is mainly associated with leaves of 
+monocotyledonous plants. 
+ 
+2.4 Flowers 
+2.4.1 Functions, structure and variations. 
+You  will  recall  that  it  was  mentioned  that flowers  are  a  form of  modified  leaves. 
+They   are   modified   for   a   purpose   of   carrying   out   reproductive   processes. 
+Structurally, a standard flower depicts four groups of such modified leaves but this 
+is not common to all flowers. Other structural variations will be observed in size, 
+colour, number of parts and arrangement of these floral parts. Below we intend to 
+discuss functions, structure and common variations in flowers. 
+ 
+A flower as a group of specialized floral leaves are adapted for: - 
+a) Production and development of reproductive cells (pollen ♂ and ovules ♀) 
+b) Pollination:- the transfer of pollen  
+c) Fertilization:- the unification of two protoplasmic bodies usually from different 
+individual plants to form one body (protoplast - zygote). 
+d) The ultimate development of the seed and fruit. 
+e) Successful dispersal of the seeds (fruits) 
+ 
+2.4.2 Morphological structure. 
+Flowers are of many different forms. They also vary greatly in size, colour, number 
+of  parts  and  arrangement  of parts. Each  flower  is an  assemblage  of  fertile  and 
+sterile organs in preparation for the five activities above. See figure 18 below. 
+
+47 
+ 
+ 
+Figure 2.17: Classification of floral parts 
+ 
+A typical flower is composed of four whorls of modified leaves. These are sepals, 
+petals,  stamens,  and  a  carpel  or  carpels.  All  attached  to  the  receptacle,  the 
+modified stem end that supports these structures (Figure 19). 
+ 
+ 
+ 
+The sepals enclose the other flower parts in the bud. Generally, they are green. 
+All the sepals taken collectively constitute the calyx; that is, the catalyx of a flower 
+is composed of more or less distinct parts, the sepals. 
+Figure 2.18 a typical flower 
+
+48 
+ 
+The petals are usually the conscpicuous, colored, attractive flower parts. Taken 
+together, the petals constitute the corolla. 
+ 
+The stamens form a whorl, lying inside of the corolla. Each stamen has a slender 
+stalk or filament, at the top of which is an anther, the pollen-bearing organ. The 
+whorl or grouping of stamens is called the androecium. Collectively the carpels 
+are  spoken of  as the gynoecium. Each  individual  structure  in  the gynoecium  is 
+commonly referred to as a pistil. There are generally three distinct parts to each 
+pistil.  
+a) An expanded basal portion, the ovary, in which are borne the ovules,  
+b) The style a slender hollow stalk which lies between the ovary and the stigma 
+above.  
+c) The stigma: The pollen is deposited on the stigma for initiation of successful 
+fertilization. 
+ 
+Summary on the floral parts 
+The parts of the flower in outline are as follows: 
+Receptacle 
+Calyx, consisting of sepals 
+Corolla, consisting of petals            
+ 
+Androecium, consisting of stamens 
+Gynoecium, consisting of carpels 
+ 
+Variations 
+(a) complete and incomplete / perfect vs imperfect 
+fertile and essential parts 
+sterile parts collectively known as perianth 
+
+49 
+ 
+If a flower has a stamen, pistil, petals, and sepals, it is called a complete flower.  
+If one of these parts is missing, the flower is called incomplete. The stamen and 
+pistil are the essential parts of a flower and are involved in seed production. If a 
+flower contains both functional stamens and pistils, it is   called a perfect flower, 
+even  if  it  does  not  contain  petals  and/or  sepals.  If  either  stamens or  pistils  are 
+lacking, the flower is called imperfect. Female (Pistillate), and Male (Staminate) 
+flowers (figure 18). 
+ 
+Figure 2.19: Complete and incomplete flowers 
+ 
+(b) Whorled and spiral arrangements 
+In most flowers the sepals, petals, stamens, and carpels are in whorls or circles on 
+the axis of the flower.  In contrast with this cyclic or whorled arrangement of flower 
+parts is the arrangement in which one or more sets of flower parts are in spirals.   
+
+50 
+ 
+ 
+Figure 2.20: Whorled versus spiral arrangement 
+ 
+(c) Union of flower parts. coalescence. 
+In many flowers, the members of one or more whorls are to some degree united 
+with one another, or are attached to members of other whorls. The union with each 
+other of members of a given whorl is termed coalescence. 
+ Whorl  No Coalescence     Coalescence  
+ Sepals   aposepalous           synsepalous, synsepaly 
+ Petals   apopetalous          sympetalous, sympetaly 
+ Stamens  apoandrous           synandrous, synandry 
+ Carpels   apocarpous          syncarpous, syncarpy 
+ 
+ 
+ 
+
+51 
+ 
+(d) Elevation of flower parts 
+In this variation, we consider the relationship between the position of the ovary and 
+the rest of the other parts. In some flowers, the receptacle is convex or conical and 
+the  different  flower  parts  are  arranged  one  above  the  other.  They  occur  in  the 
+following order (beginning with the lowest): sepals, petals, stamens, and carpels. 
+A flower of this type is said to be Hypogynous. (Superior Ovary) (Figure 20). 
+ 
+Figure 2.21 superior ovary positioned above other floral parts 
+ 
+If the sepals, petals and stamens appear to come from the top of the ovary, the 
+flower is said to be Epigynous (Inferior Ovary) (figure 21). Intermediate between 
+the hypogynous and epigynous types are those flowers in which the sepals, petals 
+and stamens have their origin, not above or below the pistil, but around the ovary. 
+This type of flower is said to be perigynous (Figure 22). 
+ 
+
+52 
+ 
+ 
+Figure 2.22: inferior ovary epigynous as depicted by pumkin flowers 
+ 
+ 
+Figure 2.23: intermediate ovary perigynous 
+ 
+(e) The composite flower 
+As  the  name  implies  the  composite  flower  is  a  group  of  many  small  flowers 
+arranged  to  give  the  appearance  of  a  single  typical  flower.  Good  examples  are 
+depicted by sunflower, pineapples, mangoes and maize (Figure 21). 
+ 
+
+53 
+ 
+ 
+Figure 2.24 Composite flowers 
+ 
+(f) The Grass Flower 
+Flowers of monocotyledonous plants have their flower parts (whorls), in threes or 
+multiples of three as opposed to flowers of dicotyledonous plants which tend to be 
+in fours  or fives  or multiples  of four and/or five i.e.  sepals,  petals, stamens,  and 
+gynoecium. 
+ 
+The   grass   flower   is   regarded   as   an   extremely   reduced   form   of   a   basic 
+monocotyledonous flower type. In the gramineae family (Grasses), the perianth 
+(Sepals  +  Petals),  is  reduced  to  two  segments  which  appear  as scales  called 
+lodicules. Stamens appear in threes with very large lobes of anthers (Two on each 
+filament). Gynaecium is reduced to a single chamber ovary (One seed ovary) with 
+two  feathery  styles  and  with  a  wide  feathery  stigma.  Such  flower  is  referred  to 
+floret (Figure 24). The flower is adapted to wind pollination. 
+
+54 
+ 
+ 
+Figure 2.25 Individual grass flower called floret 
+ 
+Individual flower in grasses appear as composite flowers in form of inflorescence 
+(Figure 25). Each ellipse represents a complete spikelet. Grass flowers generally 
+grow in a head or spike. 
+ 
+In  all  instances  the  individual  small  flowers  or  florets  are  associated  in  groups 
+known as spikelets. Each spikelet is separated from its neighbours by two small 
+modified leaves or bracts, known as glumes (Figure 26). They are found at the 
+base of the spikelet. A separation of the glumes reveals the individual florets which 
+vary  in  numbers  ranging  from  three  to  eight  depending  on  type  grasses.  The 
+spikelet is attached to a slender stalk called the rachilla. Each floret is in turn is 
+protected by two additional bracts, the lemna and the palea (Figures 24 and 26). 
+ 
+The lemna may have attached to it a long slender whip-like structure called awn. 
+The essential parts consist of the androecium composed of three stamens and 
+the gynoecium of two fused carpels. When the flowers are mature the palea and 
+lemna separate slightly, exposing two featherly stigmas and allowing the anthers 
+
+55 
+ 
+to hang free from the spikelet on greatly lengthened filaments. At the base of the 
+floral parts there may be distinguished two small protuberances called lodicules. 
+These are thought to be the greatly modified perianth parts and are supposed to 
+function in the separation of the lemna and palea at pollination time. Lodicules act 
+as sponges, when filled with water they expand hence pushing lemna and palea 
+apart. 
+ 
+Figure 2.26: Common types of grass inflorescence 
+ 
+ 
+Figure 2.27 Spikelet and floret 
+ 
+ Unit 2 Practical activities 
+Refer to Unit 2 of the practical module. 
+
+56 
+ 
+ 
+ Unit 2 Summary 
+In this unit, we have discussed the morphology, anatomy and functions of 
+the  basic  organs  that  make  a  flowering  plant  ie  roots,  stems,  leaves  and 
+flowers. 
+ 
+Roots  are  basically  there  to  provide  anchorage  of  the  plants  in  the  soil. 
+However, they   also   have   other   functions   including   absorption   and 
+transportation   of   water   and   mineral   salts   from   the   soil,   storage   of 
+manufactured  food,  translocation  of  manufactured  food  to  other  required 
+places, and other specialised functions. Roots are basically devided in three 
+structural and functional groups called tissues. Such tissues include dermal, 
+ground and vascular. 
+ 
+Stems  are  subdivided  into  nodes  and  internodes.  Leaves  and  any  other 
+appendages of the plants grow from the nodes of the stems. Apart from this 
+function, stems are also known to transport water from roots to leaves. They 
+also translocate manufactured food between leaves and roots and within its 
+own body. Other functions include storage, support and other specialised 
+ones as discussed in the text. Like in roots, they also show three structural 
+and  functional  groups  of  tissues  are  present  in  the  stem.  However  the 
+arrangement of these tissues especially the ground and vascular is different 
+in stems as in roots. 
+ 
+We have learnt that based on origin, structure, function and position, plants 
+may produce four different types of leaves i.e cotyledons, cataphylls, floral 
+and foliage leaves. Much emphasis of our discussion has been mainly on 
+the  foliage  leaves.  These  leaves  are  basically  present  on  the plants  for 
+
+57 
+ 
+photosynthetic  activities.  Apart  from  this  function  they  also  perform  other 
+specialised  functions.  As  a  photosynthetic  apparatus,  leaves  tend  to  be 
+broad-shaped as solar panels. The leaf body is covered with two skins, one 
+on the upper side and another on the lower side. The space between the 
+two skins is mostly covered by ground tissues. But here and there, we see 
+vascular tissues in form of veins appearing. 
+ 
+Flowers  in  plants  appear  as  modified  stems  and  leaves  for  reproductive 
+purposes. Each standard flower is made up of four basic parts i.e. sepals, 
+petals, stamens and pistils. However, we see a lot of variations in flowers 
+with  regards  to  the  numbers,  arrangement,  sizes,  colour  and  shapes  of 
+these four parts. 
+ Unit 2 Test 
+1. Name the three basic tissues present in all three vegetative organs 
+of a plant. 
+2. With aid of well labelled diagrams, show how the above tissues are 
+arranged in: 
+a) Roots 
+b) Monocotyledonous stems 
+c) Dicotyledonous stems 
+d) Leaves 
+3. Draw and label a root tip 
+4. State five main functions of a normal root 
+5. Name and state a function of any five specialised roots 
+6. Define the following terms: 
+a) Meristem 
+b) Sessile leaf 
+c) Cataphylls 
+d) Senescence 
+
+58 
+ 
+e) Floret 
+f) Perfect flower 
+g) Trichome 
+h) Whorled arrangement of leaves 
+i) Epidermis 
+j) Phloem 
+7. Differentiate between: 
+a) Taproot and adventitious root systems 
+b) Arrangement   of   vascular   tissues   in   dicotyledonous   and 
+monocotyledonous stems 
+c) Unisexual and bisexual flowers 
+d) Amphistomatic and hypostomatic leaves 
+e) Annual and perennial plants 
+f) Hypogenous and epigynous flowers 
+8. Write short notes on the following: 
+a) Veination in plant leaves 
+b) Patterns of leaf arrangements on the stem 
+c) Life cycle of flowering plants 
+d) Endodermal tissue of the root 
+ Unit 2 answers 
+ 
+ 
+ Reading Assignment  
+ 
+ 
+ 
+
+59 
+ 
+Unit 3: Introduction to genetics 
+ 
+Introduction 
+You may be surprised as you read human history that people were unaware of the 
+scientific details of how offspring were conceived and how heredity worked. Clearly 
+they  noticed  the  hereditary  relationship  between  parents  and  children  but  not 
+hereditary mechanisms. 
+ 
+In  this  unit  we  will  try  to  understand  the  genetic  basis  of  hereditary  mechanism. 
+However,  before  we  discuss  these  we  will  start  by  recapping  what  you  learnt  in 
+Biology I module, unit 2; structure and function of the cell. We will also look at the 
+theories  that  tried  to explain  the  origin  of  life  and  how  variations  occur  between 
+parents and offspring. Finally we will discuss how allele and genotype frequencies 
+vary from generation to generation within a family and populations. 
+Unit 3: learning objectives 
+By the end of this unit, you should be able to:- 
+a. recap the structure and function of a cell 
+b. discuss the theories of the origin of life 
+c. evaluate Mendelian monohybrid ratios, dihybrid ratios and test cross 
+d. identify  conditions  that  may  lead  to  a  modification  of  Mendelian  monohybrid 
+and dihybrid ratios 
+e. analyse allele and genotype frequencies in a population 
+ 
+ 
+ 
+ 
+
+60 
+ 
+Unit 3 key terms 
+Ensure that  you  understand  the  key  terms  or  phrases used  in  this unit  as  listed 
+below:-  
+chromatin  
+nucleolus spontaneous 
+generation  
+inheritance    of    acquired 
+characteristics  
+blending theory  
+particulate theory  
+cross-fertilisation  
+self-pollination  
+hybridisation  
+monohybrid  
+F1 generation  
+F2 generation  
+law of segregation  
+law of independent 
+assortment  
+test cross  
+heterozygosity  
+zygosity  
+dominance 
+ 
+Unit 3 Content 
+3.1 Structure and function of the cell (recap) 
+By now you should know that although living things have different forms, they are 
+all cellular meaning that they are composed of at least one cell as a basic unit of 
+life and that each cell comes from a pre-existing cell. Robert Hooke was the first 
+to  describe  cells  after  observing  cork  slices  using  a  microscope  and  coined  the 
+term Cell. 
+  
+You  will  also  appreciate  that  our  knowledge  of  cells  has  grown  dependent  on 
+advances done in the field of microscopy. 
+
+61 
+ 
+In  unit  2  of  Biology  I,  we  discussed  that  cell  at  its  basic  structure  has  cell 
+membrane, nucleus, organelles and the cytoplasm. The cell membrane is a thin 
+bi  lipid  layer  which  separates  the  cell  contents  from  its immediate  environment. 
+Plant  cells  also  have  in  addition  the  cell  wall  which  gives  shape  to  the  cell. The 
+nucleus is specialised for storage of DNA and controls cell functioning including 
+reproduction. The cytoplasm is a liquid substance between the nucleus and the 
+cell membrane in which the organelles are located. Organelles on the other hand 
+are  small  bodies  with  specific  structures  and  functions  within  the  cell.  The 
+organelles   include   the   endoplasmic   reticulum   (both   smooth   and   rough), 
+ribosomes,   polysomes,   golgi   apparatus,   vacuoles   and   storage   vesicles, 
+mitochondria,    chloroplasts    and    plastids,    cytoskeleton,    microtubules    and 
+microfilaments. Some cells may contain cilia and flagella. In addition plants have 
+chloroplasts and plastids for harvesting light energy for photosynthesis. 
+ 
+Our interest in this section is to revise structure and function of the nucleus. The 
+nucleus  has  two  major  functions:  it  stores  the  cell's  hereditary  material  and  it 
+coordinates  the  cell's  activities.  Do  not  forget  that  only  eukaryotic  cells  have  a 
+nucleus enclosed in a nuclear membrane 
+The nucleus is membrane bound enclosing a semifluid matrix called nucleoplasm. 
+The  nucleoplasm  contain  most  of  the  cells  genetic  materials  organized  as  long 
+multiple linear DNA molecules in complex with a large variety of proteins such as 
+histones  to  form  chromosomes.  Chromatin  is  the  less  condensed  form  of  the 
+nucleus. The DNA is the genetic code of the cell. 
+  
+The nucleus also contains one or more nucleoli. Nucleoli are nucleus organelles 
+that  synthesize  protein-producing  macromolecular  assemblies  called  ribosomes 
+and a variety of other smaller components. Through the microscope, the nucleolus 
+looks like a large dark spot within the nucleus. A nucleus may contain up to four 
+nucleoli, but within each species the number of nucleoli is fixed. After a cell divides, 
+
+62 
+ 
+a  nucleolus  is  formed  when  chromosomes  are  brought  together  into  nucleolar 
+organizing regions. During cell division, the nucleolus disappears. 
+ 
+A  section  of  a  chromosome  which  controls  a  particular  trait  is  a  gene.  A  locus 
+(plural:  loci)  is  the  position  of  a  gene  (Figure  3.1).  The  genes  within  these 
+chromosomes  are  the  cells  nuclear  genome  and  structured  in  such  a  way  to 
+promote  cell  function.  The  gene  controls  cellular  activities  by  production of 
+proteins.  Other  places  where  you  find  DNA  molecules  are  mitochondrion  and 
+chloroplasts.  DNA  in  these  organelles  are  involved  in  the  control  of  the  specific 
+processes of those organelle. 
+ 
+ 
+Figure 3.1: The central dogma of molecular biology 
+At this point I am sure you are not surprised why the nuclear envelope is a double-
+layered membrane with space between the layers called the perinuclear space and 
+appears  to  connect  with  the  rough  endoplasmic  reticulum.  The  envelope  is 
+perforated with tiny holes called nuclear pores. These pores regulate the passage 
+of molecules between the nucleus and cytoplasm, permitting some to pass through 
+the  membrane,  but  not  others.  The  inner  surface  has  a  protein  lining  called  the 
+nuclear lamina, which binds to chromatin and other nuclear components. During 
+mitosis or cell division, the nuclear envelope disintegrates but reforms as the two 
+cells complete their formation and the chromatin begins to unravel and disperse. 
+ 
+
+63 
+ 
+3.2 Theories of the origin of life 
+ 
+Together with the advancement in knowledge about the cell did the motivation to 
+answer  the  question  about  the  origin  of  life  (the  cell)  advanced.  Scientists  have 
+tried to explain the origin of life on earth which have evolved to produce a number 
+of theories. 
+ 
+3.2.1 Spontaneous generation 
+ 
+This is the first theory to be recorded that tried to address the origin of life. The 
+belief in spontaneous generation where life is believed to have evolved from non-
+living matter dates back to the time of Aristotle and ancient Greek philosophy. The 
+theory was advanced together with a belief in heterogenesis where one form of life 
+can be derived from a different form. 
+ 
+The  first  experimental  evidence  against  spontaneous  generation  came  in  1688 
+when Francesco Redi showed that no maggots appeared in meat when flies were 
+prevented  from  laying  eggs.  In  1768,  Lazzaro  Spallanzani  demonstrated  that 
+microbes  were  present  in  the  air  and  could  be  killed  by  boiling.  In  161,  Louis 
+Pasteur performed a series of experiments that demonstrated that organisms such 
+as bacteria and fungi do not spontaneously appear in sterile, nutrient rich media 
+but could only appear by invasion from without.  
+ 
+As  you  can  see,  the  belief  of  spontaneous  generation  was  disapproved  and 
+begged  for  an  alternative  theory.  Besides the  theory  also  failed  to  explain  the 
+occurrence of variations among parents and offspring. 
+ 
+ 
+ 
+ 
+ 
+
+64 
+ 
+3.2.2 Inheritance of acquired characteristics 
+ 
+This theory was developed to partially address the existence of variations among 
+parents  and  offspring.  The  theory  was  developed  by  Lamarck  who  argued  that 
+physiological  changes  acquired  over  the  life  of  an  organism  (such  as  the 
+enlargement of a muscle through repeated use) may be transmitted to offspring. It 
+is also commonly referred to as the Theory of Adaptation which is related to the 
+Evolutionary  Theory  of  French  naturalist  Jean-Baptiste  Lamarck  known  as 
+Lamarckism. 
+ 
+This  theory  was  disapproved  by  a  simple  interesting  experiment  conducted  by 
+Weismann who removed the tails of 68 white mice, repeatedly over 5 generations 
+and observed that no mice were born in consequence without a tail or even with a 
+shorter  tail.  Unfortunately,  the  theory  was  consequently  disproved  and  that 
+necessitated another theory. 
+ 
+3.2.3 Blending theory 
+ 
+Weismann  then  developed  the  blending theory  which  aimed  at  explaining  the 
+existence  of  variations  between  parents  and  offspring.  The  theory  states  that 
+offspring  express  phenotypic  characters  intermediate  between  those  of  the 
+parents.  However,  the  theory  could  not  explain  how  traits  that  seemingly 
+disappeared  for  several  generations  often  reasserted  themselves  down  the  line 
+unaltered.  The  theory  could  not  explain  for  example  the  existence  of  some 
+characteristics such as albinism from parents with normal skin and hair colour. 
+ 
+3.2.4 Mendelian inheritance theory 
+ 
+Gregor Mendel (1822-1884) was an Austrian monk who discovered the basic rules 
+of  inheritance.  From  1858  to  1866,  he  bred  garden  peas, Pisum  sativum,  in  his 
+monastery garden and analysed the offspring of these crossings. 
+
+65 
+ 
+ 
+Gregor Mendel proposed Inheritance theory/ Particulate theory which states that 
+similarities  and  differences  between  parents  and  off  springs  are  as  a  result  of 
+passage   of   discrete   hereditary   factors/genes.   The   work   of   Mendel   was 
+rediscovered after many years after his work was rejected theory when they could 
+not find a robust theory to address the shortfalls in the previous theories. 
+Mendel succeeded to come up with principles that lead to the development of this 
+theory that has not been challenged to date because of the following factors:- 
+ 
+a) knowledge of statistics which he used to predict and verify outcome of his 
+experiments 
+b) choice  of  subjects  for  experiments,  he  used  garden  peas  which  can  be 
+cross pollinated or self-pollinated 
+c) choice of traits, he looked at one trait at a time 
+d) many varieties were available that bred true for clear cut quantitative traits 
+analysis such as seed texture, seed colour, flower colour, growth habit  
+e) the way of presenting results, he used numbers to represent whatever he 
+discovered 
+f) his background, he was interested in breeding experiments 
+ 
+3.3  Mendelian monohybrid, dihybrid ratios and test cross 
+ 
+Prior  to  his  work  with  pea  plants  plant  breeders  had  conducted  experiments 
+aimed  at  obtaining  flowers  with  new  varieties  of  colours.  You  probably  are 
+aware  that  when  two  distinct  individuals  with  different  characteristics  are 
+crossed to each (hybridization) their offspring are referred to as hybrids. Mendel 
+chose the garden pea to investigate the natural laws that govern plant hybrids. 
+In some experiments, Mendel carried out self-fertilisation which means that the 
+pollen  and  egg  were  derived  from  the  same  plant.  Cross  pollination  is  when 
+pollen from one plant is placed on a stigma of a different plant.  
+ 
+
+66 
+ 
+Before starting his experiments he concentrated on obtaining several varieties 
+of  peas  that  were  considered  to  be  distinct. These plants  were  different  with 
+regards to many morphological characteristics. The general characteristics of 
+an organism are called characters. The term trait and variant are typically used 
+to describe the specific properties of a character. A variety that produces the 
+same trait after several generations of self-fertilization is called true breeding 
+line. 
+ 
+After obtaining true breeding lines for seven traits (Figure 3.2), Mendel studies 
+these characters by crossing the variants to each other. A cross in which an 
+experimenter is observing only one character is called monohybrid cross also 
+called  single  factor  cross.  When  the  two  parents  are  different  variants  for  a 
+given character, this type of cross produces single character hybrids also called 
+monohybrids. 
+ 
+ 
+Figure 3.5: Seven Characteristics of peas Mendel studied 
+ 
+Mendel’s experimental procedure began with true breeding plants that differed 
+with regards to a single character. These are termed the parental generation of 
+P generation. When the true breeding parents were crossed to each other, this 
+is  called  p  cross  and  the  offspring  constitute  the  F1  generation  for  first  filial 
+generation. Mendel observed that all F1 generation showed the phenotype of 
+one parent. This prompted Mendel to follow the transmission of this character 
+
+67 
+ 
+for  another  generation.  To  do  this,  the  F1  generation  were  allowed  to  self-
+fertilize to produce a second generation called F2 generation for second filial 
+generation. 
+ 
+ 
+ 
+ 
+ 
+P = Parentals (True breeding, 
+Homozygous and Homogametic) 
+ 
+F1 generation (Heterozygous, 
+Heterogametic) 
+ 
+F2 generation (Gives 3:1 Mendelian 
+monohybrid ratio)  
+Figure 3.3: Mendelian monohybrid cross 
+ 
+From  the  data  that  he  obtained  from  this  experiment,  Mendel  made  a 
+quantitative analysis of data from which he was able to propose the following 
+important ideas. 
+ 
+a) Mendel data argued strongly against a blending mechanism of heredity.  
+b) Variant  for  one  character  is  dominant  over  another  variant.  The  term 
+recessive is used to describe a variant that is masked by the presence of a 
+dominant  trait  that  is  masked  by  the  presence  of  a  dominant  trait  but 
+reappears in subsequent generations. 
+c) Dominant  trait  was  always  observed  in  F1  generation  for  heterozygous 
+plants. 
+d) Genetic  determinants  of  traits  are  passed  along  as  unit  factors  from 
+generation to generation. His data were consistent with a particulate theory 
+
+68 
+ 
+of inheritance in which the genes that govern traits are inherited as discrete 
+units that remain unchanged as they are passed from parents to offspring. 
+e) Mendel compared the numbers of dominant and recessive traits in the F2 
+generation, he noticed as recurring pattern. Within experimental variations, 
+he always observed approximately a 3:1 ratio between the dominant traits 
+and the recessive trait. 
+ 
+Mendel  was  the  first  scientist  to  apply  this  type  of  quantitative  analysis  in  a 
+biological experiment. This quantitative approach allowed him to propose a law 
+of segregation of genes. 
+ 
+Law of Segregation of genes (the "First Law") 
+The  Law  of  Segregation  states  that  every  individual  organism  contains  two 
+alleles for each trait, and that these alleles segregate (separate) during meiosis 
+such  that  each  gamete  contains  only  one  of  the  alleles.  An  offspring  thus 
+receives a pair of alleles for a trait by inheriting homologous chromosomes from 
+the parent organisms: one allele for each trait from each parent. 
+ 
+Molecular proof of this principle was subsequently found through observation 
+of meiosis by two scientists independently, the German botanist Oscar Hertwig 
+in 1876,  and  the  Belgian  zoologist  Edouard  Van  Beneden  in  1883.  Paternal 
+and maternal chromosomes get separated in meiosis and the alleles with the 
+traits  of  a  character  are  segregated  into  two  different  gametes.  Each  parent 
+contributes a single gamete, and thus a single, randomly successful allele copy 
+to their offspring and fertilization. 
+ 
+Law of Independent Assortment (the "Second Law") 
+ 
+After   understanding   heredity   mechanisms   of   monohybrid   traits   Mendel 
+proceeded to investigate the pattern of inheritance for two different characters. 
+He carried out two factor crosses also known as dihybrid crosses in which he 
+
+69 
+ 
+followed the inheritance of two different characters within the same groups of 
+individuals. 
+ 
+Let us consider an experiment in which one of the characters was seed shape 
+found  in  round  or  wrinkled  variants,  the  second  character  was  seed  colour 
+which existed as yellow and green variants. 
+ 
+Mendel took peas with round (R) and green (Y) seeds and crossed them with 
+wrinkled (R) and yellow (y) seeds in a cross as shown below. 
+ 
+ P1:    RRYY  x rryy 
+ Gametes (heterogametic):  RY  ry 
+ F1:    RrYy (round and green seeds) 
+ 
+ 
+He then selfed F1 to obtain F2 and or this we use a Punnett square as shown 
+in Figure 3.4 below. 
+ 
+ 
+Figure 3.4: Punnet square for Mendelian dihybrid cross 
+ 
+This gave Mendelian dihybrid ratio, 9:3:3:1 of round green seeds: round yellow 
+seeds:  wrinkled  green  seeds:  wrinkled  yellow  seeds.  From  these  results,  he 
+came up with the law of independent assortment which states that alleles for 
+
+70 
+ 
+separate traits  are  passed  independently  of  one  another  from  parents  to 
+offspring. 
+You can simplify this when you consider that the law states that the biological 
+selection  of  an  allele  for  one  trait  has  nothing  to  do  with  the  selection  of  an 
+allele for any other trait. Mendel found support for this law in his dihybrid cross 
+experiments.  In  his  monohybrid  crosses  he  idealized  a  3:1  ratio  between 
+dominant  and  recessive  phenotypes  while  in  dihybrid  crosses  he  found  a 
+9:3:3:1 ratio. This shows that each of the two alleles is inherited independently 
+from the other, with a 3:1 phenotypic ratio for each. 
+ 
+Test cross 
+ 
+In  genetics,  a  test  cross,  first  introduced  by  Gregor  Mendel,  involves  the 
+breeding of an individual with a phenotypically recessive individual, in order to 
+determine  the  zygosity  of  the  former  by  analysing  proportions  of  offspring 
+phenotypes. Zygosity can either be heterozygous or homozygous. Those that 
+are heterozygous have one dominant and one recessive allele. Individuals that 
+are  homozygous  dominant  have  two  dominant  alleles,  and  those  that  are 
+homozygous recessive have two recessive alleles 
+ 
+ 
+Figure 3.5: Genetic test cross 
+ 
+
+71 
+ 
+ 
+Test crosses involve breeding the individual in question with another individual 
+that expresses a recessive version of the same trait. Analysing the proportions 
+of dominant and recessive offspring determines if the individual in question is 
+homozygous  dominant  or  heterozygous.  If  all  offspring  from  the  test  cross 
+display  the  dominant  phenotype,  the  individual  in  question  is  homozygous 
+dominant;  if  half  the  offspring  display  dominant  phenotypes  and  half  display 
+recessive phenotypes, then the individual is heterozygous (Figure 3.5). Since 
+the homozygous  recessive  individual  can only  pass  on  recessive  alleles,  the 
+alleles  the  individual  in  question  passes on determine  the  phenotypes  of  the 
+offspring. 
+ 
+Modification of Mendelian monohybrid and dihybrid ratios 
+ 
+Mendel  explained  inheritance  in  terms  of  discrete  factors  ‘genes’  that  are 
+passed   along   from  generation   to   generation   according   to the   rules  of 
+probability.  Mendel's  laws  are  valid  for  all  sexually  reproducing  organisms. 
+However,  Mendel's  laws  stop  short  of  explaining  some  patterns  of  genetic 
+inheritance. Cases where Mendel's laws can strictly account for the patterns of 
+inheritance are  relatively  rare.  Often,  the  inheritance  patterns  are  more 
+complex. 
+ 
+Until the end of this section we will discuss some of the cases which may lead 
+to  modification  of  Mendelian  monohybrid  and  dihybrid  ratios  which  include 
+codominance,  multiple  alleles, lethal  alleles,  duplicate  genes,  epistasis,  non-
+epistasis,  complementary  genes,  polygenic,  linkage,  sex  linkage,  autosomal 
+linkage and mutations, 
+Dominance is a relationship between alleles of one gene in which the effect on 
+phenotype of one allele masks the contribution of a second allele at the same 
+locus.  The  first  allele  is  dominant  and  the  second  allele  is  recessive. 
+Dominance is a key concept in Mendelian inheritance and classical genetics. 
+
+72 
+ 
+Often the dominant allele codes for a functional protein whereas the recessive 
+allele does not. Inheritance of such alleles reads to the classical Monohybrid 
+ratio of 3:1 or Mendelian dihybrid 9:3:3:1 ratio. 
+ 
+Incomplete dominance 
+Incomplete dominance is a form of intermediate inheritance in which one allele 
+for a specific trait is not completely expressed over its paired allele. This results 
+in a third phenotype in which the expressed physical trait is a combination of 
+the phenotypes of both alleles. 
+ 
+e.g. P1 Flower colour:  RR (red) x WW (white) 
+  Gametes (Homogametic)  R  W 
+  F1:     RW (pink) 
+  F2:   RR RW RW WW 
+   
+Genotype ratio = 1:2:1 (RR:RW:WW) and  
+Phenotype ratio of 1:2:1 (red: pink: white) 
+ 
+Codominance 
+ 
+Co dominance occurs when the contributions of both alleles are visible in the 
+phenotype. Co dominance where allelic products co-exist in the phenotype is 
+different from incomplete dominance where the quantitative interaction of allele 
+products produce an intermediate phenotype. In co dominance for example, a 
+red homozygous flower and a white homozygous flower will produce offspring 
+that  have  red  and  white  spots.  When  plants  of  the  F1  generation  are  self-
+pollinated, the phenotype and genotypic ratio of the F2 generation will be 1:2:1. 
+ 
+The MN blood group in humans is under the control of a pair of co-dominant 
+alleles, L
+M
+ and L
+N
+ based based upon two genes (glycophorin A and glycophorin 
+B) on chromosome 4. 
+
+73 
+ 
+ 
+ 
+If an individual with M blood type (L
+M
+L
+M
+) is married to an individual with N blood 
+type (L
+N
+L
+N
+) the F1 will have MN blood type (L
+M
+L
+N
+) as shown below. 
+ 
+  P1: MN blood group: L
+M
+L
+M
+ (M) x L
+N
+L
+N
+(N) 
+  Gametes (homogametic): M  N  
+  F1:    LMLN (MN) 
+ 
+Multiple alleles 
+Multiple  alleles  is  a  type  of  non-Mendelian  inheritance  pattern  that  involves 
+more   than   just   the  typical   two   alleles   that   usually   code  for  a   certain 
+characteristic  in  a  species.  With  multiple  alleles,  there  are  more  than  two 
+phenotypes available depending on the dominant or recessive alleles that are 
+available in the trait and the dominance pattern. However, only two forms of the 
+alleles exist in a diploid individual. Why? 
+ 
+We  will  look  at  the  most  well-known  ABO  blood  type  system  to  help  us 
+understand how multiple alleles work. There are four principal types A, B, AB 
+and O. There are two antigens and two antibodies that are mostly responsible 
+for the ABO types. A and B are co-dominant and both are dominant over O. 
+Below are the phenotypes you would expect for each genotype. 
+ 
+  Genotype I
+A
+I
+B
+ = Phenotype AB 
+   Genotype I
+A
+I
+A
+ and I
+A
+I
+O
+ = Phenotype A 
+   Genotype I
+B
+I
+O
+ = Phenotype B 
+   Genotype I
+O
+I
+O 
+= Phenotype O 
+ 
+Lethal alleles 
+Lethal alleles are alleles that cause 100% mortality in the organism that carry 
+them.  They  are  usually  a  result  of  mutations  in  genes  that  are  essential  to 
+
+74 
+ 
+growth   or   development.   Lethal   alleles   may   be   recessive,   dominant   or 
+conditional depending on the gene or genes involved. Lethal alleles can cause 
+death of an organism prenatally or any time after birth, though they commonly 
+manifest early in development. 
+ 
+Lethal  alleles  were  first  discovered  by  Lucien  Cuénot  in  1905  while  studying 
+the inheritance  of  coat  colour  in  mice.  The  agouti  gene  in  mice  is  largely 
+responsible for determining coat colour. The wild-type allele produces a blend 
+of yellow and black pigmentation in each hair of the mouse. This yellow and 
+black blend may be is referred to as 'agouti' in colour. One of the mutant alleles 
+of the agouti gene results in mice with a much lighter, yellowish colour. When 
+these yellow mice were crossed with homozygous wild-type mice, a 1:1 ratio of 
+yellow  and  dark  grey  offspring  were  obtained. This  indicated  that  the  yellow 
+mutation is dominant, and all the parental yellow mice were heterozygotes for 
+the mutant allele. 
+ 
+Let us consider what was happening in these crosses. 
+ 
+e.g. Wild type genotype (agouti) =  AyAy  
+  Ayay = Yellowish colour,  
+  if we take  P1:  Ayay  x  AyAy 
+         Gametes:  Ay/ay  Ay 
+         F1:             AyAy and Ayay   (in what ratio?) 
+ 
+  selfing agouti  P2:    Ay ay     x       Ay ay       (self the F1) 
+    Gametes: Ay /ay 
+    F2:  AyAy, Ayay, Ayay, ayay 
+    ( ratio of 2:1 of agouti:black rats) 
+ 
+Duplicate genes 
+ 
+
+75 
+ 
+This  occurs  if  alleles  duplicated.  Duplication  of  alleles  can  result  from  any 
+process that result DNA replication or repair. Let us consider this by looking at 
+a hypothetical example where by a gene controlling height is duplicated.  
+ 
+  P1:  AABB (tall) x aabb(short) 
+  Gametes: AB  ab 
+  F1:   AaBb (tall) 
+ 
+All the F1 generation will be tall. Now if we self F1 in a case where 
+there are duplicate genes. 
+ 
+  Parents 2: AaBb x  AaBb   
+  Gametes:  AB/Ab/aB/ab 
+ 
+Using a punnet square we obtain the following 
+ AB Ab aB ab 
+AB AABB AABb AaBB AaBb 
+Ab AABb Aabb AaBb Aabb 
+aB AaBB AaBb aaBB aaBb 
+ab AaBb Aabb aaBb aabb 
+ 
+All offspring will be tall except one. The ratio will be 15:1 of tall: short 
+instead of the monohybrid 3:1 or dihybrid 9:3:3:1 ratio 
+ 
+Epistasis genes 
+Epistasis is the phenomenon of the effect of one gene being dependent on the 
+presence of one or more 'modifier genes'. This is a situation where there is a 
+gene at locus A which masks expression of another gene at locus B. Locus A 
+suppresses the expression of the gene at locus B and it depends on whether 
+
+76 
+ 
+there is a dominant or a recessive gene on locus A. Thus, epistatic mutations 
+have different effects in combination than individually.  
+ 
+I hope you will understand this easily by looking at an example of position of 
+flowers. Let gene A be responsible for lateral flower position and B is terminal. 
+If A and B are epistatic where A maskes the expression of B then. 
+ 
+Genotype AABB will give lateral flower position regardless of the presence of 
+a dominant gene for terminal flower. If aa, a recessive gene for lateral flower is 
+present then a terminal flower phenotype will be observed. Terminal flower will 
+only be expressed where aa is recessive. If loci A is heterozygous, that is there 
+is Aa at this locus, lateral flower position will be the phenotype. 
+ 
+Complementary genes 
+This is a situation in which two independent pairs of non-allelic genes neither 
+of  which  is  functional  without  the  other.  These  are  genes  that  produce  an 
+observable effect in an organism only in conjunction with another gene. If seed 
+texture  is  controlled  by  two  alleles  A  and  B  and  that  they  two  alleles  are 
+complementary to each other it means if AABB is the multilocus genotype the 
+seed will be smooth. The following genotypes will give wrinkled seed because 
+the other locus is recessive and hence does not complete the other allele. 
+ 
+i.e. AA + BB = smooth seed 
+ AA + bb = wrinkled seed 
+ aa + BB = wrinkled seed 
+ aa + bb = wrinkled seed 
+ 
+Polygenic inheritance 
+These are multiple genes determining the degree of a characteristic. One of a 
+group  of  genes  in  which  the  number  of  the  genes  present  collectively 
+determines the extent of a characteristic. The term “polygenic inheritance” is 
+
+77 
+ 
+used to refer to the inheritance of quantitative traits, traits which are influenced 
+by multiple genes. In addition to involving multiple genes, polygenic inheritance 
+is also influenced by the environment in someone's development. 
+ 
+Because  many  traits  are  spread  out  across  a  continuum, rather  than  being 
+divided into black and white differences, polygenic inheritance helps to explain 
+the way in  which these traits are inherited and focused. A related concept is 
+pleiotropy, an instance where one gene influences multiple traits. 
+ 
+A typical example would be human height which is controlled by a number of 
+gene and depending on the number of genes contributing to the character. The 
+individual has a range of possible heights not just discrete values. 
+ 
+Linkage 
+Genetic  linkage  is  the  tendency  of  alleles  that  are  close  together  on  a 
+chromosome  to  be  inherited  together  during  the  meiosis  phase  of  sexual 
+reproduction. Genes whose loci are nearer to each other are less likely to be 
+separated  onto  different  chromatids  during  chromosomal  crossover,  and  are 
+therefore said to be genetically linked. In other words, the nearer two genes are 
+on a chromosome, the lower is the chance of a swap occurring between them, 
+and the more likely they are to be inherited together. 
+ 
+Genes that are on the same chromosome are called linked genes. These genes 
+are associated in their inheritance, they are inherited together and in the same 
+position.  The  linkages  are  found  either  in  sex  cells/sex  chromosomes  or 
+autosomal cells/autosome chromosomes. 
+ 
+Sex linkage 
+Morgan observed that inheritance of a characteristic depends on whether the 
+characteristic is on a male or a female organism. He made these observations 
+when he was studying inheritance pattern of eye colour in fruit flies. 
+
+78 
+ 
+ 
+When he crossed wildtype female fruit flies and red eyed males he observed 
+that all females offspring were red eyed but the males had wild type eyes. The 
+pattern  was  different when  he  crossed  red eyed  females and  wild  type  eyed 
+males. In this crossed he observed that all the offspring had red eyes.  
+ 
+These crosses can be represented as shown below. 
+ 
+  Parents: Female (wildtype) x Male (red eyes) 
+     X
+c
+X
+c
+   X
+C
+Y 
+  Gametes:  X
+C
+   X
+C
+, Y 
+F1:   X
+C
+ X
+c 
+, X
+c
+Y, X
+C
+, X
+C
+, X
+c
+Y    
+  (all females had red eyes while males had wild type) 
+ 
+When the characteristics are reversed the following phenotypes are observed. 
+ 
+  P1: Female (red eyes) x Male (wild type) 
+     X
+C
+ X
+C
+  X
+c
+Y 
+  F1:   X
+C
+ X
+C
+, X
+C
+X
+C
+, X
+C
+Y, X
+C
+Y 
+     (all of them had red eyes) 
+ 
+There  are  several  examples  of  sex  linked  characteristics  in  human  beings 
+however for this purpose it should suffice to mention the following characteristic 
+which most of you are familiar with. 
+ 
+1) colour blindiness associated with X 
+2) haemophilia, mainly suffered by females  
+3) baldnes  
+ 
+ 
+ 
+
+79 
+ 
+Autosomal linkage 
+On  the  other  hand  there  are  two  types  of autosomal  linkages;  complete  and 
+partial  autosomal  linkages.  Genes  that  are  linked  completely  do  not  assort 
+themselves independently as a result they are inherited in a block. 
+ 
+Partial  linkages  come  as  a  result  of  crossing  over  at  meiosis  to  make  new 
+combinations   with   other   genes   called   recombinants.   The   frequency   of 
+recombinants is used to estimate the distance between genes. 
+ 
+You  will  recall  that  we  noted  that  genes  that  are  far  apart  have  a  higher 
+probability  of  crossing  over  than  genes  that  are  close  together.  Morgan 
+proposed  a  standard  percentage  combinations  that  1%  of  recombinants 
+represent 1 map unit. This you can understand easily when you consider that 
+when you have a 1% frequency of recombinants then the two genes are one 
+map unit apart. The map unit was named after him as centimorgan hence 1% 
+means the two genes are 1 cM (centimorgan) apart. 
+ 
+Let us look at an example from a typical cross of coloured smooth seeds and 
+coloured wrickled seeds from which the following combinations were found 
+ 
+Coloured smooth seeds 48.25% 
+Coloured wrickled seeds 48.25% 
+Colourless wrickled seeds 1.75% 
+Colourless smooth seeds 1.75% 
+ 
+Total percentage of recombinants for this experiment is 1.75% + 1.75% = 3.5%. 
+We can therefore conclude from this data that the gene for colour and texture 
+are 3.5cM apart 
+ 
+ 
+ 
+
+80 
+ 
+Mutations 
+We will start by defining mutations as sudden changes to chromosomal DNA 
+that  results  into  some heritable  characteristics.  Factors  that  cause mutations 
+also  known  as  mutagens  or  mutagenic  factors  have  potential of  denaturing 
+proteins  and  DNA.  Mutagenic  factors  can  be  categorised  as  radiation  which 
+includes X rays, Alpha rays, gamma rays and beta rays. Ultra violet (UV) light 
+is also a radiation that is a mutagen. Another category of mutagenic factors are 
+oxidation. Oxidation factors are Hydrogen peroxide H
+2
+O
+2
+ and Mustard gas. 
+ 
+There are two types of mutation – gene and chromosome mutation affecting 
+the gene and the chromosome respectively 
+ 
+Types of gene mutations 
+1) Substitution- nucleotide  is  replaced  by  another. The  nucleotides  work  in 
+triples  and  they  code for  a  particular  amino acid. When  one nucleotide  is 
+changed the amino acid changes and it affects its function. 
+2) Insertion/addition- nucleotide(s) are added to a DNA strand 
+3) Inversion- nucleotides  are  cut  off  and pasted  to  the  same  strand  in  an 
+inverted way 
+4) Deletion- the nucleotide(s) is cut and disappear 
+ 
+These mutations have been illustrated in figure 3.6 below. 
+ 
+ 
+Figure 3.6:. Types of gene mutations 
+
+81 
+ 
+Types of chromosome mutations 
+1) Substitution- a small part of the chromosome is cut and lost but is replaced 
+by another part 
+2) Translocation/  addition- this  involves  transfer  of  a  chromosome  part  to 
+another chromosome 
+3) Inversion- part  of  a  chromosome  is  cut  and  joins  the  same  chromosome 
+after flipping over. 
+4) Deletion- when part of a chromosome disappears 
+5) Duplication – a section of a chromosome is repeated 
+6) Mutations  involving  change  in  chromosome  number- non- disjunction  at 
+anaphase of mitosis or meiosis, this may result in one cell having less or 
+more than 2n  
+e.g. Male XY female XX . Non disjuction in male may result in XO = tuner 
+female, XXY = super male or XXX = super female 
+ 
+ 
+Figure 3.7: types of chromosomal mutations 
+ 
+3.4  Population genetics 
+ 
+Until now we have focused our attention on genes within individuals and their 
+related  family  members.  The  field  of  population  genetics  is  concerned  with 
+understanding changes in genetic variations within a group of individuals over 
+time. Population genetics seeks to know the extent of genetic variations within 
+populations. 
+ 
+
+82 
+ 
+Different alleles within a population can be identified by phenotypic effects (for 
+example colour, size, shape), variations in molecular structure (such as protein 
+or DNA). 
+ 
+Population genetics is an extension of our understanding of Mendel’s laws of 
+inheritance  and  molecular  genetics.  Conceptually,  all  of  the  alleles  of  every 
+gene  in  a  population  make  up  the  gene  pool.  Population  genetics  study  the 
+genetic  variation  within  the  gene  pool  and  how  such  variation  changes  from 
+one generation to the next. 
+ 
+We will define a population as a group of individuals of the same species that 
+occupy  the  same  region  and  can  be  interbreed  with  one  another.  A  large 
+population  usually  is  composed  of  smaller  groups  called  local  populations or 
+demes.  
+ 
+Population  genetics is  concerned  with  allele  and  genotype  frequencies.  In 
+population  genetics  we  want  to  understand  the  prevalence  of  polymorphic 
+genes  within  populations.  The  goal  is  to  identify  the  causative  factors  that 
+govern changes in genetic variation. Allele frequencies can be used to make 
+inferences about mating patterns, selection, migration etc. 
+ 
+Two fundamental calculations are central to population genetics:- 
+ 
+퐴푙푙푒푙푒 푓푟푒푞푢푒푛푐푦= 
+푁푢푚푏푒푟 표푓 푐표푝푖푒푠 표푓 푎푛 푎푙푙푒푙푒 푖푛 푎 푝표푝푢푙푎푡푖표푛
+푇표푡푎푙 푛푢푚푏푒푟 표푓 푎푙푙푒푙푒푠 푓표푟 푡ℎ푎푡 푔푒푛푒 푖푛 푎 푝표푝푢푙푎푡푖표푛
+ 
+ 
+퐺푒푛표푡푦푝푒 푓푟푒푞푢푒푛푐푦
+= 
+푁푢푚푏푒푟 표푓 푖푛푑푖푣푖푑푢푎푙푠 푤푖푡ℎ 푎 푝푎푟푡푖푐푢푙푎푟 푔푒푛표푡푦푝푒 푖푛 푎 푝표푝푢푙푎푡푖표푛
+푇표푡푎푙 푛푢푚푏푒푟 표푓 푖푛푑푖푣푖푑푢푎푙푠푠 푖푛 푎 푝표푝푢푙푎푡푖표푛
+ 
+ 
+ 
+
+83 
+ 
+Hardy and Weinberg proposed that allele frequencies in a population remain 
+constant—that is, they are in equilibrium—from generation to generation unless 
+specific disturbing influences are introduced. These disturbing factors include 
+non-random   mating,   mutations,   selection,   limited   population   size   and 
+migration. 
+ 
+The Hardy-Weinberg equation is a mathematical equation that can be used to 
+calculate  the  genetic  variation  of  a  population  at  equilibrium.  To  explore  the 
+Hardy-Weinberg  equation,  we  can  examine  a  simple  genetic  locus  at  which 
+there are two alleles, A and a. The Hardy-Weinberg equation is expressed as: 
+ 
+p2 + 2pq + q2 = 1 
+ 
+where p is the frequency of the "A" allele and  
+q is the frequency of the "a" allele in the population.  
+ 
+The formula is sometimes written as (p2) + (2pq) + (q2)= 1, representing the 
+trivial  fact  that  frequencies  must  add  up  to  one.  The  final  three possible 
+genotypic frequencies in the offspring become: f(AA) = p2, f(Aa) =pq and f(aa) 
+=  q2.  These  frequencies  are  called  Hardy–Weinberg  frequencies  (or  Hardy–
+Weinberg proportions). 
+ 
+In the equation, p2 represents the frequency of the homozygous genotype AA, 
+q2  represents  the  frequency  of  the  homozygous  genotype  aa,  and  2pq 
+represents  the  frequency  of  the  heterozygous  genotype  Aa.  In  the  simplest 
+case of a single locus with two alleles: the dominant allele is denoted A and the 
+recessive a and their frequencies are denoted by p and q; freq(A) = p; freq(a) 
+= q; p + q = 1. 
+ 
+If the p and q allele frequencies are known, then the frequencies of the three 
+genotypes   may   be   calculated   using   the   Hardy-Weinberg   equation.   In 
+
+84 
+ 
+population  genetics  studies,  the  Hardy-Weinberg  equation  can  be  used  to 
+measure whether the observed genotype frequencies in a population differ from 
+the frequencies  predicted  by  the  equation.  If  the  population  is  in  equilibrium, 
+then  we  will  have  freq(AA)  =  p2  for  the  AA  homozygotes    in  the  population, 
+freq(aa)   =   q2   for   the   aa   homozygotes,   and   freq(Aa)   =   2pq   for   the  
+heterozygotes. 
+  
+Let  us  consider  data  that  was  collected  in  Britain  on  MN  blood  system.  The 
+study found out that the frequency of M to be 0.54 while the frequency of N was 
+0.46. From this data we can calculate the frequency of MM, MN and NN blood 
+types.  
+ 
+You will notice that the frequency of M is given as p = 0.54 and the frequency 
+of N is given as q = 0.46. Assuming that the population is in Hardy-Weinberg 
+equilibrium then expected genotypic frequencies will therefore be 
+ 
+MM MN NN 
+p2 2pq q2 
+0.294 0.496 0.209 
+ 
+Now  let  us  assume  that  1000  individuals  were  sampled  in  the  following 
+generation  and  there  were  298  individuals  with  genotype  M,  489  with  MN 
+genotype  and  213  were  NN.  We  can measure  if  this  population  is  in  Hardy 
+Weinberg equilibrium using Chi square test. 
+ 
+We  start  by  calculating  the  expected  genotypes  under  Hardy  Weinberg 
+equilibrium. Then we can proceed to test if the data is in agreement with Hardy 
+Weinberg equilibrium. 
+ 
+ 
+
+85 
+ 
+Genotypes MM MN NN 
+Expected 294 496 209 
+Observed 298 489 213 
+ 
+ 
+The  table  below  summaries  the  steps  that  we  follow  to  test  whether  the 
+frequencies  are  in  agreement  with  Hardy-Weinberg  equilibrium.  We  start  by 
+subtracting the expected from the observed and to remove the negatives the 
+value is squared. Then in the next column you divide this value by the expected. 
+ 
+In the column the values are added to give a χ
+2
+ number which you look up in 
+the χ
+2
+ table. Refer to the practical module for more practise and examples. 
+ 
+Observed (O) Expected (E) (O-E)
+2
+ 
+(
+O−E
+)
+²
+E
+ 
+298 294 16 0.054 
+489 496 49 0.099 
+213 209 16 0.077 
+   
+χ
+2 
+= 0.230 
+ 
+3.5  Principles of genetic evolution 
+ 
+We will define evolution as a change in heritable characteristics of biological 
+populations over successive generations. Evolutionary processes give rise to 
+biodiversity at every level of biological organisation. 
+ 
+It is believed that all life on Earth shares a common ancestor known as the last 
+universal common ancestor (LUCA) which lived approximately 3.5–3.8 billion 
+years  ago.  Repeated  formation  of  new  species  (speciation),  change  within 
+
+86 
+ 
+species   (anagenesis),   and   loss   of   species   (extinction)   throughout   the 
+evolutionary  history  of  life  on  Earth  are  demonstrated  by  shared  sets  of 
+morphological  and  biochemical  traits.  These  shared  traits  are  more  similar 
+among species that share a more recent common ancestor, and can be used 
+to  reconstruct  a  biological  "tree  of  life"  based  on  evolutionary  relationships 
+(phylogenetics) using both existing species and fossils.  
+ 
+In  the  mid-19th  century,  Charles  Darwin  formulated  the  scientific  theory  of 
+evolution by natural selection, published in his book On the Origin of Species 
+(1859).  Evolution  by  natural  selection  is  a  process  demonstrated  by  the 
+observation that more offspring are produced than can possibly survive, along 
+with three facts about populations: phenotypic variation, differential fitness and 
+heritability of fitness. Thus, in successive generations members of a population 
+are replaced by progeny of parents better adapted to survive and reproduce in 
+the  biophysical  environment  in  which  natural  selection  takes  place.  Natural 
+selection, including sexual selection, is the only known cause of adaptation but 
+not  the  only  known  cause  of  evolution.  Other,  non-adaptive  evolutionary 
+processes include mutation, genetic drift and gene migration. 
+ 
+Over a long period of time, precise mechanisms of reproductive heritability and 
+origin of new traits have remained a mystery. However, in the 1920s and 1930s 
+a modern evolutionary synthesis connected natural selection, mutation theory 
+and  Mendelian  inheritance.  Modern  evolutionary  synthesis  explains  how 
+evolution   acts   on   patterns   of   change   within   individuals.   Some   of   the 
+mechanisms include heredity, variations, mutation, recombination, gene flow, 
+natural  selection,  genetic  drift,  genetic  hitchhiking,  adaptation,  coevolution, 
+cooperation, speciation, extinction. 
+ 
+ 
+ 
+ 
+
+87 
+ 
+Evidence of genetic evolution 
+ 
+Scientist  have  demonstrated  that  organisms  have  evolved  from  a  common 
+ancestor.  This   evidence   constructs   the   theoretical  framework   on   which 
+evolutionary theory rests, demonstrates that evolution does occur and is able 
+to show the natural processes that led to the emergency of earth's biodiversity. 
+This evidence supports the modern evolutionary synthesis. 
+ 
+1. Comparative physiology and biology where strongest evidence comes from 
+comparative sequence analysis which examines relationship between DNA 
+or   protein   sequences   of   different   species   and   used   in   generating 
+phylogenetic trees. 
+2. Comparative anatomy in which groups of organism reveal basic similarities 
+of certain structural features. This has been demonstrated by atavism which 
+is  the  reappearance  of  lost  characters  typical  of  ancestors  and  seen  in 
+recent ancestors, similarity in embryogenesis, homologous structures and 
+divergent  adaptive  evolution,  nested hierarchies  in  classification,  vestigial 
+structures 
+3. Paleontology  which  is  the  evidence  obtained  from  the  study  of  past  life 
+based on fossil records and their relation to different geologic time periods. 
+However,  because  of  limitations  inherent  in  the  record,  there  are not fine 
+scales of intermediate forms between related groups of species.  
+4. Biogeography in which there is evidence that organisms are adapted to their 
+environment.  Data  about  the  presence  or  absence  of  species  on  various 
+continents  and  islands  (biogeography)  can  provide  evidence  of  common 
+descent and shed light on patterns of speciation. Further evidence can be 
+found in continental distribution, island biogeography, endemism, adaptive 
+radiations and rings species. 
+ 
+ 
+
+88 
+ 
+5. Artificial   selection   demonstrates   the   diversity   that   can   exist   among 
+organisms  that  share  a  relatively  recent  common  ancestor.  Experimental 
+evolution  uses  controlled  experiments  to  test  hypotheses  and  theories  of 
+evolution. 
+6. Speciation  is  the  evolutionary  process  by  which  new  biological  species 
+arise. 
+7. Computer  science  allows  mathematical  modelling  that  iteration  of  self-
+changing   complex   systems   to   be   studied,   allowing   a   mathematical 
+understanding  of  the  nature  of  the  processes  behind  evolution;  providing 
+evidence for the hidden causes of known evolutionary events. The evolution 
+of  specific  cellular  mechanisms  like  spliceosomes  that  can  turn  the  cell's 
+genome into a vast workshop of billions of interchangeable parts that can 
+create tools that create tools that create tools that create us can be studied 
+for the first time in an exact way. 
+Unit 1 activity 
+ Unit 1 Summary 
+ Unit test 
+1. The ability to taste a bitter chemical, phenylthiocarbamide (PTC), is due to 
+a dominant gene.  Use T and t to symbolize the two alleles of this gene. a. 
+What is the genotype of a non-taster? What are the possible genotypes of 
+a  taster?  b.  Could  a  person  with  two  tasters  as  parents  be  a  non-taster? 
+How? 
+ 
+2. In the fruit fly Drosophila melanogaster, vestigial wings and hairy body are 
+produced by two recessive genes located on different chromosomes.  The 
+
+89 
+ 
+normal  alleles,  long  wings  and  hairless  body,  are  dominant.  Give  the 
+genotype and phenotype of F1 progeny obtained from a cross between a 
+vestigial-winged, hairy male and a normal, homozygous female.  If the F1 
+from  this  cross  are  permitted  to  mate  randomly  among  themselves,  what 
+phenotypic ratio would be expected in the F2 generation? 
+ 
+3. In  humans,  sickle-cell  anemia  is  caused  by  a  recessive  lethal  allele  Hbs; 
+individuals who are HbaHbs have sickle-cell trait, but are healthy. a. What 
+is the probability of two heterozygous individuals giving birth to a child with 
+sickle-cell trait? b. What is the probability of two heterozygous individuals 
+giving birth  to  a  child  with  sickle-cell  anemia?  c.  If  a  normal  HbaHba 
+individual   receives   a   blood   transfusion   from   a   HbaHbs   individual 
+(heterozygous for sickle cell) what are the chances that the HbaHba man 
+and his HbaHba wife will have HbaHbs children? 
+ 
+4. A study  on  blood  types  in  a  population  found  the  following  genotypic 
+distribution among the people sampled: 1101 were MM, 1496 were MN and 
+503  were  NN.  Calculate  the  allele  frequencies  of  M  and  N,  the  expected 
+numbers of the three genotypic classes (assuming random mating). Using 
+X2,   determine   whether   or   not  this   population   is   in   Hardy-Weinberg 
+equilibrium. 
+ 
+5. The  compound  phenylthiocarbamide  (PTC)  tastes  very  bitter  to  most 
+persons. The inability to taste PTC is controlled by a single recessive gene. 
+In  the American  white  population,  about  70%  can  taste  PTC  while  30% 
+cannot  (are  non-tasters).  Estimate  the  frequencies  of  the  Taster  (T)  and 
+nontaster  (t)  alleles  in  this  population  as  well  as  the  frequencies  of  the 
+diploid genotypes. 
+
+90 
+ 
+Unit answers 
+ 
+Reading assignment/List 
+ 

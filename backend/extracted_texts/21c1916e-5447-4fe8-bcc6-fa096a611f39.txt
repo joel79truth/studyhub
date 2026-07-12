@@ -1,0 +1,155 @@
+
+
+All TopicsAccess 2007Exploring an Access Database
+This is exactly what I am
+looking for. My students will
+love this site.
+”
+Online Learner
+ 
+Access 2007
+Exploring an Access Database
+Introduction
+Once you have determined that an Access database will help you store and manage
+your data, you will need to learn the parts of a database, how to start using Access,
+and how to navigate the Access window. In this lesson, we will provide a basic
+overview of Access, including the parts of a database and common tasks you can
+complete using a database.
+Exploring databases
+(Part 2) (3:26min)
+Databases in our lives
+Think about all of the information we encounter on a typical day that might be organized by a database. For
+example, if you go shopping at a department store for a toaster, the store inventory of products is information
+that has to be stored somewhere, along with the price of each product. 
+When you make a purchase, the store needs to be able to store the sales information to determine the daily sales
+total and how to track the decrease in inventory. A database could store this information, and also allow the store
+to quickly determine how many Brand X toasters are in the inventory without needing to count the inventory on the
+shelves.
+While this information could be managed without a database, it would be easier and more efficient to use one.
+Databases have an enormous impact in almost every area of our lives.
+Page 1
+Page 2
+
+Think about it
+Think about what is going on around you in everyday situations and whether there might be a database at work.
+Grocery store: The grocery store is stocked with items. Items must be ordered, shipped, and stocked in the
+store. The store has to pay for the items. Then, when a customer buys the items, the cash register retrieves
+prices, and the customer pays for products. Where might databases be involved in the situation?
+Restaurant: Where does the food come from? How does management know when to reorder a product?
+How are bills paid?
+Traffic lights: Who or what controls when the lights turn red or green?
+A database maintains order and structure in our lives. Databases are created using programs such as Microsoft
+Office Access 2007, which is a relational database program.
+Getting started with Access
+When you start Access 2007, you will see the Getting Started window.
+In the left pane, the template categories—including the featured local templates—are listed, as well as the
+categories on Office Online. Templates are prebuilt databases focused on a specific task that you can download
+and use immediately.
+In the example below, the featured templates are selected, and the template options are displayed in the center
+area of the screen. Featured templates include database template options that are available online, as well as
+templates available as part of the local version of Access.
+Page 3
+
+Opening a database
+You have three main options on the Getting Started page. You can open a template database stored locally or
+online, an existing database, or a blank database.
+To view templates included with Access:
+Click Local Templates in the left pane. The center of the screen will change to display icons for the
+templates.
+Select an icon in the center of the screen. Details about the database template will appear on the right.
+In the left pane of the Getting Started window, you will see a list of categories for the templates available on
+Microsoft Office Online. You must have an Internet connection to download these database templates.
+The Blank Database command allows you to create a database from scratch.
+To open an existing database:
+In the Open Recent Database section, double-click the file name of the database you wish to open. It will
+appear in the window.
+Page 4
+
+OR
+Click the More link. A dialog box will appear.
+Select the database you wish to open.
+Click Open. The database will appear.
+The Access window
+Before you can begin to use a database, you need to become familiar with the Access window.
+The Ribbon
+Page 5
+
+Like other software in the Microsoft Office 2007 suite, Access 2007 has a tabbed Ribbon system that you use to
+navigate the database. The Ribbon is organized into tabs. Each tab contains groups of commands that you use to
+perform tasks in Access. 
+For example, on the Home tab, you'll see that there is a Font group that contains the font formatting commands
+such as font type, size, color, and alignment. Unless you use keyboard shortcuts for everything, the Ribbon is how
+you get the work done in Access.
+Quick Access toolbar
+Once you are familiar with Access, you may find that there are commands you use more often than others. To make
+it easier to use these commands, you can add them to the Quick Access toolbar. By default, the toolbar appears
+above the Ribbon on the left side of the Access window and includes the Save, Undo, and Redo commands.
+Microsoft Office Button
+The Microsoft Office Button resides in the upper-left corner of the Access window and includes key menu options
+such as New, Save, and Print. From this menu, you can also change your Access Options.
+Navigation Pane
+
+The main control center of each Access database is the Navigation Pane. It shows you what is in the database and
+makes the information accessible to you. You can choose to close the Navigation Pane if you need more of the
+Access window to complete specific tasks.
+To open and close the Navigation Pane:
+Click the Shutter Bar Button on the right side of the Navigation Pane.
+The Navigation Pane appears as a single column when it is collapsed.
+Parts of a database
+Page 6
+
+A Microsoft Access database is made up of several components, including tables, forms, queries, and reports.
+These components are called database objects. One or more of these objects is formed when a database is
+created, and all of the objects appear in the Navigation Pane. To make the database easier to navigate, beginning
+Access users may want to reorder the objects in the Navigation Pane.
+To change how objects are ordered in the Navigation Pane:
+Click the drop-down arrow at the top of the Navigation Pane to see ordering options.
+Select a menu option. The Navigation Pane will appear reordered based on your selection.
+If you are new to databases, arranging the objects by type in the Navigation Pane is usually a good idea. This will
+group tables, forms, queries, and reports into individual groups in the pane.
+To expand or collapse a group:
+Click any downward-pointing double arrow to expand a group so all objects are displayed.
+Click any upward-pointing double arrow to collapse a group and hide all objects.
+Parts of a database
+A database is made up of several components, or objects. These objects include:
+Tables
+Queries
+Forms
+Reports
+Page 7
+
+We'll look at each of these objects in more detail in later lessons, but you can access them from the Navigation
+Pane like you can with tables.
+Tables
+A table is the database object that contains the basic information you wish to store. A blue and white icon
+represents the table in the Navigation Pane.
+In the Customer Info table below, there are columns, or fields, of information, including title and author. Each row
+is a record that contains the information specific to the fields listed.
+Queries
+Another database object is called a query. A query allows you to retrieve information from one or more tables
+based on a set of search conditions you define using the table fields.
+For example, if you want to know the name of the books that have sold in Colorado and Kansas, you could create a
+query that would retrieve information from multiple tables to determine the answer. In this example, you would
+retrieve information from the Order table and Books table. Queries are covered in more detail in later lessons.
+Forms
+A third database object is the form. Forms are an Access tool that users can create to make data entry in database
+tables easier.
+Entering data directly into a table can be difficult if there is a lot of information to enter. Like an Excel spreadsheet,
+an Access table is essentially a screen filled with blank rows where a user enters records. Forms, however, provide
+users with an easy-to-read interface where they can enter table data. Forms are especially useful for Access users
+who aren't comfortable working with databases.
+Reports
+
+Terms Of Use
+The final database object is the report. A report is an effective way to analyze and present data using a specific
+layout. The text can be formatted in an Access report, just like it can be in Word documents.
+To close an object:
+Select the tab for the object you wish to close. (The highlighted tab is the active tab).
+Right-click the tab, and select Close from the menu.
+Challenge!
+See if you can answer these questions:
+Where is the Ribbon in the Access window?
+Where is the Navigation Pane located?
+What is the purpose of each of the four objects in an Access database?
+Page 8
+©1998-2014 Goodwill Community Foundation, Inc. All rights reserved.

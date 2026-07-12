@@ -1,0 +1,51 @@
+
+
+Assignment 2: Multiple Linear Regression 
+Due Date: 16
+th
+ October 2025 
+(20 marks) 
+The following data were collected on a simple random sample of 20 patients with 
+hypertension. The doctor wanted to know factors that significantly affect arterial 
+blood pressure. Six variables were evaluated and are: 
+ Y = mean arterial blood pressure (mm Hg) 
+ X₁ = age (years) 
+ X₂ = weight (kg) 
+ X₃ = body surface area (sq m) 
+ X₄ = duration of hypertension (years) 
+ X₅ = basal pulse (beats/min) 
+ X₆ = measure of stress 
+Patient Y X₁ X₂ X₃ X₄ X₅ X₆ 
+1 105 47 85.4 1.75 5.1 63 33 
+2 115 49 94.2 2.10 3.8 70 14 
+3 116 49 95.3 1.98 8.2 72 10 
+4 117 50 94.7 2.01 5.8 73 99 
+5 112 51 89.4 1.89 7.0 72 95 
+6 121 48 99.5 2.25 9.3 71 10 
+7 121 49 99.8 2.25 2.5 69 42 
+8 110 47 90.9 1.90 6.2 66 8 
+
+9 110 49 89.2 1.83 7.1 69 62 
+10 114 48 92.7 2.07 5.6 64 35 
+11 114 47 94.4 2.07 5.3 74 90 
+12 115 49 94.1 1.98 5.6 71 21 
+13 114 50 91.6 2.05 10.2 68 47 
+14 106 45 87.1 1.92 5.6 67 80 
+15 125 52 101.3 2.19 10.0 76 98 
+16 114 46 94.5 1.98 7.4 69 95 
+17 106 46 87.0 1.87 3.6 62 18 
+18 113 46 94.5 1.90 4.3 70 12 
+19 110 48 90.5 1.88 9.0 71 99 
+20 122 56 95.7 2.09 7.0 75 99 
+ 
+a) Write down the regression model based on this data   (2 marks) 
+b) Which variable(s) has(ve) significant effect on blood pressure at   
+  a) α = 0.01, b) α = 0.05      (6 marks) 
+c) Write the regression model for significant factors only at     
+a) α = 0.01, b) α = 0.05       (6 marks) 
+d) State the hypothesis being tested (2 marks) 
+e) What will be the regression model if you drop all non-significant   
+factors so that the model contains only significant factors   (4 marks) 
+f) When you drop all significant factors and regress non-significant    
+factors only, does any of the factor becomes significant? If  
+yes, write the regression model          (4 marks). 

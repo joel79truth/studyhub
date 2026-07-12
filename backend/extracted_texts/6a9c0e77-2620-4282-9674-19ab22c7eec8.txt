@@ -1,0 +1,141 @@
+
+
+Lilongwe University of Agriculture and Natural Resources 
+NRC CAMPUS 
+ 
+Land and Water Resources Department 
+ 
+EXPERIMENT # 2: OHM’S LAW AND RESISTANCE 
+AIM 
+To determine the resistance per cm of a given wire by plotting a graph of potential difference 
+versus current and determining its resistivity. 
+ 
+THEORY 
+The material can resist the flow of the charges, and the measure of how much a material 
+resists the flow of charges is known as resistivity. The resistance is a measure of how difficult 
+it is to pass current through a wire or component. Resistance depends on the resistivity. The 
+resistivity is a characteristic of the material used to fabricate a wire or other electrical 
+component, whereas the resistance is a characteristic of the wire or component. 
+There are three types of materials; conductors, semiconductors, and insulators. 
+Consider a conductor of cross-sectional area A carrying a current I. The current density 푱 in 
+the conductor is defined as the current per unit area.  
+    퐽= 
+퐼
+퐴
+=푛푞푣
+푑
+  ..................................................................... 1 
+Where 푱 has SI units of amperes per unit meter squared. This expression is valid only if the 
+current density is uniform and only if the surface of cross-sectional area A is perpendicular to 
+the direction of the current. 
+A current density and an electric field are established in a conductor whenever a potential 
+difference is maintained across the conductor. In some materials, the current density is 
+proportional to the electric field: 
+                            퐽= 휎퐸 ................................................................................... 2 
+where the constant of proportionality s is called the conductivity of the conductor.  
+
+ Materials that obey the equation above are said to follow Ohm’s law. Materials that obey 
+Ohm’s law and hence demonstrate this simple relationship between E and J are said to be 
+ohmic. Experimentally, however, it is found that not all materials have this property. 
+Materials and devices that do not obey Ohm’s law are said to be nonohmic. Ohm’s law is 
+not a fundamental law of nature; rather, it is an empirical relationship valid only for certain 
+materials. 
+We can obtain an equation useful in practical applications by considering a segment of 
+straight wire of uniform cross-sectional area A and length, as shown in Figure: 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+A potential difference ∆푉= 푉
+푏
+− 푉
+푎
+  is maintained across the wire, creating in the wire an 
+electric field and a current. If the field is assumed to be uniform, the potential difference is 
+related to the field through the equation: 
+ ∆푉=퐸푙................................................................ 3 
+Therefore, we can express the current density in the wire as: 
+                                         퐽= 휎퐸= 휎
+∆푉
+푙
+ .....................................................4 
+But J = I/A, the potential difference across the wire is  
+                   ∆푉=퐽
+푙
+휎
+=퐼 
+(
+푙
+퐴휎
+)
+=푅퐼 ..........................................5 
+since (l/Aσ) = Resistance of the conductor. 
+Therefore, we define Resistance as the ratio of the potential difference across a conductor to 
+the current in the conductor. 
+                                        푅= 
+∆푉
+퐼
+...................................................................6 
+This result shows that resistance has SI units of volts per ampere. One volt per ampere is 
+defined to be one ohm (V): 1Ω = 1 V/A 
+
+Resistance depends upon the material, temperature, and dimensions of the conductor. 
+For a wire of uniform cross-section, the resistance depends on the length 푙 and the area of 
+cross-section A. It also depends on the temperature of the conductor. At a given temperature 
+the resistance: 
+푅=휌 
+푙
+퐴
+ 
+where ρ is the specific resistance or resistivity and is characteristic of the material of the wire. 
+Hence, the specific resistance or resistivity of the material of the wire. 
+휌= 
+퐴푅
+푙
+    and 퐴= 휋푟
+2
+ is a cross-section area of the wire. 
+Then                        휌= 
+휋푟
+2
+푅
+푙
+ 
+ 
+PROCEDURES 
+1. First draw the circuit diagram. 
+2. Arrange the apparatus in the same manner as given in the arrangement diagram. 
+3. Clean the ends of the connecting wires with sandpaper to remove insulation, if any. 
+4. Make neat, clean, and tight connections according to the circuit diagrams. While 
+making connections ensure that +ve marked terminals of the voltmeter and ammeter 
+are joined towards the +ve terminals of the battery. 
+5. Determine the least count of the voltmeter and ammeter, and also note the zero 
+error, if any. 
+6. Insert the key K, slide the rheostat contact, and see that the ammeter and voltmeter 
+are working properly. 
+7. Adjust the sliding contact of the rheostat such that a small current passes through the 
+resistance coil or the resistance wire. 
+8. Note down the value of the potential difference V from the voltmeter and current I 
+from the ammeter. 
+9. Shift the rheostat contact slightly so that both the ammeter and voltmeter show full 
+division readings and not in fractions. 
+10. Record the readings of the voltmeter and ammeter. 
+11. Take at least six sets of independent observations. 
+12. Record the observations in a tabular column 
+13. Now, cut the resistance wire at the points where it leaves the terminals, stretch it, and 
+find its length by the meter scale. 
+14. Then find out the diameter and hence the radius of the wire using the screw gauge 
+and calculate the cross-sectional area A. 
+15. Plot a graph between current (I) along the X-axis and potential difference across the 
+wire (V) along Y-axis 
+16. Determine the slope of the graph. The slope will give the value of resistance (R) of the 
+material of the wire. 
+17. Calculate the resistance per centimeters of the wire. 
+18. Now, calculate the resistivity of the material of the wire using the formula, 

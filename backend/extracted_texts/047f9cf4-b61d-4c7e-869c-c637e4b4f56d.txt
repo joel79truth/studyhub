@@ -1,0 +1,583 @@
+
+
+BIOLOGY  BIO 111
+LILONGWE UNIVERSITY OF AGRICULTURE AND 
+NATURAL RESOURCES COLLEGE (LUANAR)
+NRC CAMPUS
+BY M.KACHINGWE. 
+
+CELL BIOLOGY AND MICROSCOPY
+•Lecture Outline 
+1.Introduction : biology defined & the hierarchy of biological 
+organization  
+2.Relevance of studying microscopes and a brief history of microscopy 
+3.Parts and Functions of the Light microscope 
+4.Principles of microscopy 
+5.Types of Microscopes, their advantages and limitations  
+
+DEFINITION(s) OF BIOLOGY
+•It is the study of living organisms, divided into many specialized fields 
+that cover their morphology, physiology, anatomy, behavior, origin, 
+and distribution (Oxford Dictionary). 
+•Biology is the natural science that studies life and living organisms, 
+including their physical structure, chemical processes, molecular 
+interactions, physiological mechanisms,  development and evolution 
+(Wikipedia). 
+•Biology is the branch of science that deals with living organisms and 
+their vital processes. It encompasses diverse fields, including; botany, 
+conservation biology, ecology, evolution, genetics, marine biology, 
+medicine, microbiology, molecular biology, physiology and zoology. 
+
+LEVELS OF ORGANISATION IN BIOLOGY
+
+
+
+Microscopy-Brief History
+1.ZaccharausJanssen, a lens maker -1590  
+Double lens  50x to 100x
+2.Galileo –1610 ‘Improved microscope’
+3.Robert Hoole-1635-1703 
+In 1660’s Made and used a compound  lens microscope
+•Although his magnifications were high enough to reveal bacteria-No 
+bacterial observations recorded
+Anton Van Leeuwenhoek (1632-1723)
+A merchant, not a trained scientist, self educated in glass blowing and fine metal work
+Hobby in glass lens making, made minute, simple but powerful lens
+Up to 300X magnification
+Delighted in examining a variety of objects, saliva, pepper infusions, seminal fluid, 
+urine, cow dung etc.
+
+Microscopy-Brief History
+•Observed what he called ‘Animacules’.
+•Leeuwenhookmade most of his observations by light transmitted 
+through the object , mostly under fluid observations
+•Hooke’s observations were mostly dried samples
+•1830 –Joseph Jackson Lister reduced spherical aberration or the 
+"chromatic effect“: (fuzzy images & color rings)”-inequalities of 
+refraction by peripheral parts of the objective lens
+•showing that several weak lenses used together at certain distances gave 
+good magnification without blurring the image. This was the prototype 
+for the compound microscope. 
+
+Microscopy-Brief History
+
+Microscopy-Brief History
+
+Microscopy-Brief History 
+
+Parts and Functions of the light microscope 
+Key terms : 
+•magnification, 
+•resolution, 
+•refraction, 
+•reflection, 
+•refractive index, 
+•numerical aperture, 
+•contrast, 
+•field of view, 
+•focus, 
+•immersion liquids
+
+Parts of light microscope 
+
+The Parts of a light Microscope 
+
+
+
+Microscopy –Principles 
+MICROSCOPY
+Microscopy:Technicalfieldofusingmicroscopestoviewsamplesand
+objectsthatcannotbeseenwiththeunaidedeye(objectsthatarenotwithin
+theresolutionrangeofthenormaleye).
+Microscopes:Instrumentsdesignedtoproducemagnifiedvisualor
+photographicimagesofobjectstoosmalltobeseenwiththenakedeye.
+Themicroscopeaccomplishesthreetasks:
+Produceamagnifiedimageofthespecimen,
+Separatethedetailsintheimage,
+Renderthedetailsvisibletothehumaneyeorcamera.
+
+Microscopy -Principles
+Contrast: Ability to distinguish an object from its background-use of 
+stains
+Field of View: Diameter of light circle
+Focus: Adjustments for a sharp/clear image by moving the objective 
+lens, tube, or stage
+
+Microscopy -Principles
+Resolution:Theabilityofalenssystemtoshowfinedetailsoftheobjectbeing
+observed.
+FieldofView(FOV):Thediameterofthecircleoflightthatyouseewhen
+lookingintoamicroscope.
+Asthepowergetsgreater,thefieldofviewgetssmaller.
+Canbemeasuredbyplacingaclearmetricruleronthestageandcountingthemillimetres
+fromonesidetotheother.
+Typicallyyouwillgetabout4.5mmat40X,1.8mmat100X,0.45mmat400Xand0.18mmat
+1000X.
+Focus:Ameansofmovingthespecimencloserorfurtherawayfromthe
+objectivelenstorenderasharpimage.Onsomemicroscopes,thestagemoves
+andonothers,thetubemoves
+
+Parts and Functions of the light microscope
+Key terms : magnification, resolution, refraction, reflection, refractive 
+index, numerical aperture, contrast, field of view, focus, immersion 
+liquids, 
+
+Parts and Functions of the light microscope
+•Eyepiece Lens: Lens at the top that you look 
+through, different magnifications
+•Tube: Eyepiece –Objective lens connection
+•Arm: Supports the tube and connects it to the base 
+&  for carrying the microscope 
+
+Parts and Functions of the light microscope 
+•Base: Bottom of the microscope for support
+•Illuminator: A steady light source (e.g110 volts) 
+•Stage: Flat platform that supports microscope slide
+•Mechanical stage: Clamping device on the stage for 
+holding and moving the slide around on the stage
+•Stage Clips: For holding slides in place
+
+Parts and Functions of the light microscope
+•Nose Piece/ Tunnel: Holds two or more objective lenses and can 
+be rotated to easily change power e.g. X 10 , X 40.
+Objective Lenses
+•Usually you will find 3 or 4 objective lenses on a microscope. They almost 
+always consist of 4X, 10X, 40X and 100X powers. 
+•Diaphragm/Iris: Used to vary the intensity and size of 
+the cone of light that is projected upward into the slide.
+•Coarse adjustment knob : For  focusing, It is always 
+used first, and it is used only with the low power 
+objective.
+
+Parts and Functions of the light microscope
+•Diaphragm: Found within the condenser, regulates the amount of 
+light / light intensity that reaches the slide.
+•Microscopes that lack voltage control on the light source rely entirely 
+on the diaphragm for controlling light intensity.
+•Course adjustment knob: Used to focus during microscopic 
+observation. Used first before the fine adjustments
+•Fine Adjustment: Knob used to bring the specimen into better or 
+fine focus.
+i.e. X100 objective lens
+
+Microscopy-Principles
+•Microscopy-Technical field of using microscopes to view samplesand 
+objects too small to be seen by the un aided eye. Microscopes are 
+instruments designed to produce magnified visual or photographic 
+images of small objects. 
+•The microscope must accomplish three tasks: 
+•Produce a magnified image of the specimen
+•Separate the details in the image
+•Render the details visible to the human eye or camera.
+•Key Concepts of microscopy are:
+•Magnification
+•Resolution
+•Refractive Index
+
+Microscopy -Principles 
+Contrast: Ability to distinguish an object from its background-use of 
+stains
+Field of View: Diameter of light circle
+Focus: Adjustments for a sharp/clear image by moving the objective 
+lens, tube, or stage
+
+Microscopy –Principles 
+•Refraction: When a ray of light passes from one medium to another, 
+it is bent at the interface.
+
+Microscopy –Principles 
+•RefractiveIndex:Ameasureofhowgreatlyasubstanceslowsthe
+velocityoflight.Thedirectionandmagnitudeofbendingis
+measuredbytherefractiveindexesofthetwomediaformingthe
+interfacee.g.airandglass
+•Itistheratioofthevelocityoflightinthefirstofthetwomedia
+(e.g.air)tothatinthesecondmedia(e.g.glass)asitpassesfrom
+thefirsttothesecond(airtoglass).
+
+Microscopy –Principles 
+•Resolution:Theextenttowhichanobservationalsystem
+(microscopeinthiscase)candistinguishthestructuraldetailsbeing
+examinede.g.differentcellorganelles.
+•OrItistheabilityoflensestodistinguishfinedetail&structure,to
+distinguishtwopointsaspecificdistanceaparte.g.Aresolving
+powerof0.4nmcandistinguishtwopointsthatare0.4nmapart.
+•OrItisitsabilitytocompletelyseparatetwoobjectsina
+microscopicfield
+•LimitofResolution(l):Thesmallestdistancethatmayseparatetwo
+pointsonanobjectandstillpermittheirobservationasdistinct
+separatepoints.
+
+Microscopy –Principles 
+•The limit of resolution for light microscopes is about 0.2μm, which 
+means that 2 objects closer than 0.2μm would not be seen as two 
+distinct objects. 
+•Most bacterial cells are about 1μm, but difficult for their internal 
+structures less than 0.2μ
+
+Microscopy –Principles 
+Resolvingpowerfromalenssystemcanbemaximizedbythe
+following:
+1.Placingabluefilteroverthelightsourceshortensthewavelength
+ofthelightsource
+2.Keepingthecondenseratthehighestposition,maximumamount
+oflightentersobjectivelens,limitsamountoflightlostdueto
+refraction
+3.Rightadjustmentsofthediaphragm,asclosingthediaphragm
+improvescontrast,italsoreducesnumericalaperture.
+
+Microscopy -Principles 
+Limit of resolution is given by the Abbe’s relationship as:
+•Limit of Resolution (l)=
+푾풂풗풆풍풆풏품풕풉(흀)
+푵풖풎풆풓풊풄풂풍풂풑풆풓풕풖풓풆(풏풔풊풏휶)
+where :
+•λ (lambda) is the wavelength  of the illumination or radiation used to 
+form the image
+•n is the refractive index (a function of density) of the material (i.e., 
+mostly air or water) between the specimen and the first lens (or objective 
+lens)
+•sin α is sine of the semi-angle of aperture of the first lens as viewed from 
+the specimen. 
+•The quantity “n sin α” is the numerical aperture (NA).
+
+Microscopy -Principles
+•NumericalApertureissimplyamathematicalexpressionthat
+describeshowthecondenserlensconcentratesandfocusesthelight
+raysfromthelightsource.
+•Itsvalueismaximizedwhenlightraysarefocusedintoaconeoflight
+thatthenpassesintothroughthespecimenintotheobjectivelens.
+•Sincelightisrefractedasitpassesfromglasstoair,refractedlightrays
+arelost,andthenumericalapertureisdiminished.
+•Thegreaterthelossofrefractedlight,thelowerthenumerical
+apertureandthisalsoreducestheresolvingpower.
+
+Microscopy –Principles 
+•Abbe’srelationshipsmakeitclearthathighresolutionina
+microscopecanonlybeachievedbymanipulatingthefollowing
+variables:
+1.thewavelengthoftheilluminatingradiation,
+2.therefractiveindex
+3.theaperture.
+
+Microscopy –Principles 
+Wavelengths of different rays -electromagnetic spectrum 
+
+Microscopy –Principles 
+•ResolvingpowerisInverselyproportionaltowavelengthi.e.shorter
+wavelength,higherresolution
+•Refractiveindexcanbeincreasedbyusingoilstofillthespace
+betweenthespecimenandtheobjectivelens.Transparent
+immersionoils(i.e.,oilimmersionlens)havenuptoabout1.6.Still
+1.6isbigimprovementoverairorwater(n=1).
+
+Microscopy -Principles
+•Immersionliquids(e.g.oil)canbeusedtoachievehighermagnificationwith
+goodresolution
+•Onewayofincreasingtheopticalresolvingpowerofthemicroscopeistouse
+immersionliquidsbetweenthefrontlensoftheobjectiveandthecoverslip
+•Lightpassingthroughthemediumandspecimenrefractdifferently,andcanbe
+lostafterpassingthroughthestainedspecimen
+•Topreservethedirectionoflightraysafterhighestmagnification,immersionoil
+isplacedbetweenglassslideandoilimmersionobjectivelens
+
+
+
+Image formation in optical microscopes 
+•The optical microscope forms an image of a specimen placed on 
+the stage by passing light from the illuminator through a series of 
+glass lenses and focusing this light either into the eyepieces, on 
+the film plane in a traditional camera system, or onto the surface 
+of a digital image sensor. 
+•Visible light passes through/ reflected from the sample through 
+lenses to produce a magnified view of the sample.
+•Resulting image viewed directly by the eye, captured digitally, 
+imaged on photographic plate.
+•It uses visible light as a source of light 
+
+Microscopy -Principles
+Real Image and Virtual Image
+•Real Image: Formed when light rays intersect at a focal point and can 
+be projected on a screen, recorded on film, or projected onto the 
+surface of a sensor such as a CDplaced in the image plane 
+•Virtual Image: Formed  when light rays diverge, but project imaginary 
+extensions that converge to a focal point, the image is virtual and 
+cannot be viewed on a screen or recorded on film.
+
+TYPES OF MICROSCOPES
+1.Thelight(optical)microscope
+Compoundmicroscope
+Phase‐contrastmicroscope
+Dark-fieldcontrastmicroscope
+Fluorescentmicroscope
+2.Electronmicroscope
+Transmissionelectronmicroscope(TEM)
+Scanningelectronmicroscope(SEM)
+3.Scanningprobemicroscope
+
+1.Optical microscopes
+
+Optical microscopes
+Opticalorlightmicroscopyinvolvespassingvisiblelighttransmitted
+throughorreflectedfromthesamplethroughasingleormultiple
+lensestoallowamagnifiedviewofthesample.
+Theresultingimagecanbedetecteddirectlybytheeye,imagedona
+photographicplateorcaptureddigitally
+Thebasiclightmicroscopeismadeupwiththefollowing;
+Thesinglelenswithitsattachments,orthesystemoflensesandimaging
+equipment,
+Theappropriatelightingequipment
+Samplestageandsupport
+
+i.Compound microscope
+Thecommonlightmicroscopeusedinthelaboratory
+Becauseitcontainstwotypesoflensesthatfunctiontomagnifyan
+object
+Ocularthelensclosesttotheeye
+Objectivethelensclosesttotheobject
+Mostmicroscopeshaveontheirbaseanapparatuscalleda
+condenser,whichcondenseslightraystoastrongbeam
+Adiaphragmlocatedonthecondenser.Controlstheamountof
+lightcomingthroughit
+Bothcoarseandfineadjustmentsarefoundonthelightmicroscope
+
+Compound microscope
+Acompoundlightmicroscopeoftencontainsfourobjective
+lenses
+4XThescanninglens;usuallyred
+10XThelow-powerlens;usuallyyellow
+40XThehigh-powerlens;usuallyblue
+100XTheoil-immersionlens;usuallywhite&black
+Anocularlensmagnifies10times
+Thetotalmagnificationspossiblewillbe40X,100X,400X,and1000X
+Mostcompoundmicroscopesareparfocal.
+Remainsinfocuswhenoneswitchesfromoneobjectivetothenextobjective
+
+Resolutionofthemicroscope:theabilitytoseeclearlytwo
+itemsasseparateobjectsunderthemicroscope
+Itisdeterminedinpartbythewavelengthofthelightusedforobserving
+Visiblelighthasawavelengthofabout550nm
+Ultravioletlighthasawavelengthofabout400nmorless
+Theresolutionofamicroscopeincreasesasthewavelengthdecreases
+Ultravioletlightallowsonetodetectobjectsnotseenwithvisiblelight
+TheResolvingPowerofalensreferstothesizeofthesmallestobjectthat
+canbeseenwiththatlens
+BasedonthewavelengthofthelightusedandtheNumericalAperture
+ofthelens
+
+TheNumericalAperture(NA):Thewidestconeoflightthatcan
+enterthelens;TheNAisengravedonthesideoftheobjectivelens
+Immersionoilisplacedbetweenthelensandtheglassslide
+Toincreasetheresolutionwiththeoil-immersionlens,
+Ithasthesamelight-bendingability(indexofrefraction)astheglassslide
+Soitkeepslightinastraightlineasitpassesthroughtheglassslidetotheoil
+andontotheglassoftheobjective,totheoil-immersionlens
+Withtheincreasedamountoflightenteringtheobjective,the
+resolutionoftheobjectincreases,andonecanobserveobjectsassmall
+asbacteria
+Resolutionisimportantinothertypesofmicroscopyaswell
+
+Limitations of compound microscopes 
+Livecellsinparticulargenerallylacksufficientcontrasttobe
+studiedsuccessfully;
+Internalstructuresofthecellarecolorlessandtransparent
+Themostcommonwaytoincreasecontrastistostainthe
+differentstructureswithselectivedyes,
+Butthisinvolveskillingandfixingthesample.
+Mayalsointroduceartifacts,apparentstructuraldetailsthatare
+causedbytheprocessingofthespecimenandarethusnota
+legitimatefeatureofthespecimen
+
+Theselimitationshaveallbeenovercometosomeextentbyspecific
+microscopytechniquesthatcannon-invasivelyincreasethecontrastof
+theimage.
+Thesetechniquesmakeuseofdifferencesintherefractiveindexofcell
+structures.
+Itiscomparabletolookingthroughaglasswindow:you(brightfield
+microscopy)don'tseetheglassbutmerelythedirtontheglass.
+Thereishoweveradifferenceasglassisadensermaterial,andthiscreatesa
+differenceinphaseofthelightpassingthrough
+Thehumaneyeisnotsensitivetothisdifferenceinphasebutcleveroptical
+solutionshavebeenthoughtouttochangethisdifferenceinphaseintoa
+differenceinamplitude(lightintensity).
+
+Apartfromthecompoundmicroscope,microbiologists
+useothertypesofmicroscopesforspecificpurposes
+Permitviewingofobjectsnototherwiseseenwiththe
+compoundlightmicroscope
+
+ii. Dark-field Microscope
+Dark-fieldMicroscope:Usedtoobservelive
+spirochetes,suchasthosethatcausesyphilis
+Thismicroscopecontainsaspecialcondenserthatscatters
+lightandcausesittoreflectoffthespecimenatanangle
+Alightobjectisseenonadarkbackground
+
+
+
+
+
+iii. Phase-contrast Microscope
+Containsspecialcondensersthatthrowlight“outof
+phase”andcauseittopassthroughtheobjectatdifferent
+speeds
+Live,unstainedorganismsareseenclearlywiththis
+microscope,andinternalcellpartssuchasmitochondria,
+lysosomes,andtheGolgibodycanbeseenwiththis
+instrument
+
+
+
+iv. TheFluorescent Microscope
+Usesultravioletlightasitslightsource
+Whenultravioletlighthitsanobject,itexcitesthe
+electronsoftheobject,andtheygiveofflightin
+variousshadesofcolor
+SinceUVlightisused,theresolutionoftheobject
+increases
+Alaboratorytechniquecalledthefluorescent-
+antibodytechniqueemploysfluorescentdyesand
+antibodiestohelpidentifyunknownbacteria
+
+
+
+2. ELECTRON MICROSCOPE 
+TheenergysourceusedisaBeamofelectrons
+Sincethebeamhasanexceptionallyshortwavelength,itstrikesmost
+objectsinitspathandincreasestheresolutionofthemicroscope
+significantly
+Usedtoviewvirusesandsomelargemolecules
+TheelectronstravelinaVacuumtoavoidcontactwithdeflectingair
+molecules,andmagnetsfocusthebeamontheobjecttobeviewed
+Themicroscopeisconnectedtoamonitor
+Animageiscreatedonamonitor
+
+ELECTRON MICROSCOPE
+
+i. Transmission Electron Microscope (TEM)
+Themoretraditionalformofelectronmicroscope
+Tousethisinstrument,oneplacesultrathinslicesof
+microorganismsorvirusesonawiregridandthenstains
+themwithgoldorpalladiumbeforeviewing
+Thedenselycoatedpartsofthespecimendeflectthe
+electronbeam,andbothdarkandlightareasshowupon
+theimage
+
+ii. The Scanning Electron Microscope   
+(SEM)
+Themorecontemporaryformelectronmicroscope
+Itpermitsthree‐dimensionalviewsof
+microorganismsandotherobjects
+Wholeobjectsareused
+And,GoldorPalladiumstainingisemployed
+
+3. THE SCANNING PROBE MICROSCOPEs
+SPMsareusedtomakeimagesofnanoscalesurfacesandstructures,
+includingatoms
+Theyuseaphysicalprobetoscanbackandforthoverthesurfaceofa
+sample
+Areconnectedtoacomputerwhichgathersdatathatareusedto
+generateanimageofthesurface
+Differentfromopticalmicroscopes,inSPMstheuserdoesn’t“see”the
+surfacedirectly.
+Instead,thetool“feels”thesurfaceandcreatesanimagetorepresent
+it.
+
+
+
+
+
+Computation of magnification
+1.Estimationbyusinglensspecifications
+Themagnifyingpowerofalensiscommonlyexpressedin
+diameters.
+Forexample,ifalensmagnifiesanobject10times,the
+magnificationissaidtobe10diameters,commonlywrittensimply
+“10X."
+Magnificationlocation
+Themagnificationfortheeyepiececanbefoundontheeyepieceitself.
+Themagnificationfortheobjectivelensescanbefoundoneachobjective
+lens.
+Theoverallhighestmagnificationiswrittenonthesideofthebodytube
+
+Computation of magnification
+Findingtheoverallmagnification
+Multiplythemagnificationoftheeyepiecebythe
+magnificationoftheobjectivelensyouareusing.
+Forexample,ifthemagnificationoftheeyepieceis10xand
+themagnificationoftheobjectivelensis40x,theoverall
+magnificationis400x
+
+Computation of magnification
+2. Estimation by direct measurement.
+Explain  ......!!!!!
+
+Steps for estimation by direct measurement  
+1.Put the slide on the stage of the microscope and put it into focus 
+under low power. Low power is the easiest magnification by which 
+to place the object in focus. It is necessary to have the object in 
+focus before accurately estimating the size under the microscope. 
+
+. 
+2. Use a ruler to measure the diameter of the field of view. Look 
+through the eyepiece while measuring the diameter. 
+Place one end of the ruler at the end of the field of view. Millimeters 
+are a convenient unit of measurement. The diameter of the field of 
+view is also often measured in micrometers. To make the calculations 
+easier, you can convert the units to micrometers after. 
+
+. 
+3.  Estimate how many times the object appears over the field of view 
+of the microscope. To do this, place a piece of graph paper under the 
+object. Look through the eyepiece while performing this estimation, 
+otherwise you will not obtain accurate results. Use the graph paper to 
+determine how many squares of graph paper the object occupies. Then 
+count the total number of squares across the field of view. For 
+example, if the field of view contains a total of six graph paper squares, 
+and the object covers a length of about two graph paper squares, then 
+the object fits across the field of view at least three times. 7 
+
+. 
+4.  Divide the diameter of the field of view by the total number of times 
+the object under the microscope fits across the field of view. For 
+example, if you measured the diameter of the field of view to be 18 
+millimeters, and the object appeared to fit across the field of view 
+three times, then you would divide 18 millimeters by three. The 
+resulting answer would be six millimeters. Therefore, the size of the 
+object under the microscope would be approximately six millimeters. 
+To convert your answer to micrometers, multiply it by 1,000 because 
+there are 1,000 micrometers in one millimeter. Therefore, if your 
+answer is six millimeters, your answer in micrometers would be 6,000.  
+
+
+
+HOW TO MAKE A WET MOUNT-SLIDE
+
+Procedure you would follow to prepare a wet 
+slide to be viewed on alight microscope....
+•Get a clean slide together with a cover slip from a slide box.
+•Cut a piece of internal leaves of the onion bulb using a scalpel.
+•Peel a thin transparent piece of the epidermal layer from the inside of an onion 
+bulb.
+•Carefully, put the piece of epidermal layer you have cut on the slide such that it is 
+not folded.
+•Place one drop of water (or a chemical stain) on the middle of the slide.
+•Slowly, cover the specimen with a coverslip using forces or mounted needle. This 
+needs to be done gently to prevent introducing air bubbles on the specimen.
+•Finally, place the slide with the specimen on the stage of a microscope for 
+viewing.
+
+FIELD OF VIEW FOR MICROSCOPES 
+•
+
+•
+
+. 
+•
+
+•
+
+. 
+•
+
+.
+THE END !

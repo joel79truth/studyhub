@@ -1,0 +1,2150 @@
+
+
+ 
+ 
+ 
+ 
+ 
+HYDROLOGY AND AGROMETEOROLOGY 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+COMPILED BY 
+ 
+MWABUKE NKHATA 
+LILONGWE UNIVERSITY OF AGRICULTURE AND NATURAL RESOURCES (LUANAR) 
+NATURAL RESOURCES COLLEGE 
+Email: mnkhata@luanar.ac.mw 
+ 
+ 
+FEBRUARY, 2021 
+
+ 
+i 
+ 
+TABLE OF CONTENTS 
+ 
+1 INTRODUCTION ................................................................................................................................... 2 
+1.1 HYDROLOGIC CYCLE ................................................................................................................ 2 
+1.2 WATER BUDGET EQUATION................................................................................................. 4 
+1.2.1 CATCHMENT AREA ............................................................................................................ 4 
+1.3 WATER BUDGET EQUATION................................................................................................. 5 
+1.4 WORLD WATER BALANCE ...................................................................................................... 7 
+1.5 HYDROLOGICAL APPLICATIONS IN ENGINEERING ................................................ 8 
+1.6 SOURCES OF HYDROLOGICAL DATA ................................................................................ 9 
+2 PRECIPITATION .................................................................................................................................. 10 
+2.1 FORMS OF PRECIPITATION .................................................................................................. 10 
+2.1.1 RAIN ........................................................................................................................................ 10 
+2.1.2 SNOW ...................................................................................................................................... 11 
+2.1.3 DRIZZLE ................................................................................................................................ 11 
+2.1.4 GRAZE .................................................................................................................................... 11 
+2.1.5 SLEET ...................................................................................................................................... 11 
+2.1.6 HAIL......................................................................................................................................... 11 
+2.2 ANNUAL RAINFALL IN MALAWI ........................................................................................ 11 
+2.3 MEASUREMENT OF RAINFALL ........................................................................................... 13 
+2.4 CLASSIFICATION OF RAIN GAUGES ................................................................................ 13 
+2.4.1 NON-RECORDING GAUGES ........................................................................................ 13 
+2.4.2 RECORDING GAUGES .................................................................................................... 14 
+2.5 ADEQUACY OF RAIN GAUGE STATIONS ....................................................................... 15 
+2.6 ESTIMATION OF MISSING DATA ....................................................................................... 16 
+2.7 PRESENTATION OF RAINFALL DATA ............................................................................. 17 
+2.7.1 MASS CURVE OF RAINFALL .......................................................................................... 17 
+2.7.2 HYETOGRAPH .................................................................................................................... 17 
+2.7.3 POINT RAINFALL .............................................................................................................. 18 
+2.8 FREQUENCY OF POINT RAINFALL ................................................................................... 18 
+2.9 PLOTTING POSITION .............................................................................................................. 20 
+3 ABSTRACTIONS FROM PRECIPITATION ................................................................................. 22 
+
+ 
+ii 
+ 
+3.1 EVAPORATION ........................................................................................................................... 22 
+3.1.1 VAPOUR PRESSURE .......................................................................................................... 22 
+3.1.2 TEMPERATURE .................................................................................................................. 23 
+3.1.3 WIND ....................................................................................................................................... 23 
+3.1.4 ATMOSPHERIC PRESSURE ............................................................................................. 23 
+3.1.5 SOLUBLE SALTS ................................................................................................................. 24 
+3.1.6 HEAT STORAGE IN WATER BODIES ........................................................................ 24 
+3.1.7 EVAPORIMETERS .............................................................................................................. 24 
+3.1.8 EMPIRICAL EVAPORATION EQUATIONS .............................................................. 26 
+3.1.9 METHODS TO REDUCE EVAPORATION LOSSES ............................................... 29 
+3.2 INTERCEPTION .......................................................................................................................... 29 
+3.3 DEPRESSION STORAGE .......................................................................................................... 30 
+4 STREAM FLOW MEASUREMENT ................................................................................................. 30 
+4.1 MEASUREMENT OF STAGE................................................................................................... 31 
+4.1.1 MANUAL GAUGES ............................................................................................................ 31 
+4.1.2 AUTOMATIC STAGE RECORDERS ............................................................................. 31 
+4.2 AREA-VELOCITY METHOD OF DISCHARGE MEASUREMENT ............................. 32 
+4.3 RUNOFF ......................................................................................................................................... 33 
+4.3.1 DIRECT RUNOFF ............................................................................................................... 34 
+4.3.2 BASE FLOW .......................................................................................................................... 34 
+4.3.3 NATURAL FLOW ................................................................................................................ 34 
+4.4 HYDROGRAPHS .......................................................................................................................... 35 
+4.4.1 FACTORS AFFECTING SHAPE OF HYDROGRAPH .................................................... 36 
+4.4.2 BASE FLOW SEPARATION ............................................................................................. 40 
+4.4.3 RUNOFF CHARACTERISTICS OF STREAMS............................................................ 40 
+4.4.4 FACTORS INFLUENCING STREAM FLOW CHARACTERISTICS ..................... 41 
+4.5 RUNOFF VOLUME ..................................................................................................................... 42 
+4.5.1 YIELD ...................................................................................................................................... 42 
+5 OVERVIEW OF WATER RESOURCE AREAS AND UNITS IN MALAWI......................... 43 
+5.1 BASIC HYDROLOGICAL STEPS IN ESTABLISHING AN IRRIGATION SCHEME
+ .......................................................................................................46 
+5.1.1 IRRIGATION SCHEME IDENTIFICATION .............................................................. 46 
+5.1.2 WATER SOURCE LOCATION ........................................................................................ 46 
+
+ 
+iii 
+ 
+5.1.3 IDENTIFICATION OF APPROPRIATE WRA OR WRU FOR THE SCHEME . 46 
+5.1.4 IDENTIFICATION OF A GAUGING STATION IN PROXIMITY TO THE 
+WATER SOURCE ................................................................................................................................. 46 
+5.1.5 CONCLUDING REMARKS .............................................................................................. 47 
+6 DESIGN FLOOD ESTIMATION ..................................................................................................... 47 
+6.1 Regional Flood Frequency Method .............................................................................................. 47 
+6.2 RATIONAL METHOD ............................................................................................................... 49 
+ 
+ 
+ 
+  
+
+ 
+iv 
+ 
+LIST OF TABLES 
+ 
+Table 1-1: Main Components of the hydrologic cycle ................................................................................. 4 
+Table 1-2: Estimated World Water Quantities .............................................................................................. 7 
+Table 2-1: Classification of rainfall by intensity........................................................................................... 10 
+Table 2-2: Plotting position formulae ........................................................................................................... 20 
+Table 3-1: Values of Pan Coefficients C
+p
+ ..................................................................................................... 26 
+Table 3-2: Temperature and saturated vapour pressure relationship ....................................................... 28 
+Table 6-1: Hydrological regions ..................................................................................................................... 48 
+ 
+  
+
+ 
+v 
+ 
+LIST OF FIGURES 
+Figure 1: The Hydrologic Cycle ....................................................................................................................... 3 
+Figure 2: Schematic Sketch of Catchment of River A at Station M ........................................................... 5 
+Figure 3: Annual rainfall distribution in Malawi .......................................................................................... 12 
+Figure 4: Non recording rain gauge (Symon’s gauge) ................................................................................. 14 
+Figure 5: Recording from a Natural Syphon-type Gauge .......................................................................... 15 
+Figure 6: Mass curve of rainfall ...................................................................................................................... 17 
+Figure 7: Hyetograph of a storm ................................................................................................................... 18 
+Figure 8: Return period of Annual Rainfall at Station A ........................................................................... 21 
+Figure 9: Annual rainfall data for station A ................................................................................................. 22 
+Figure 10: Class A Evaporation Pan ............................................................................................................. 25 
+Figure 11: Sunken Colorado Evaporation pan ............................................................................................ 25 
+Figure 12: Staff gauge ...................................................................................................................................... 31 
+Figure 13: Typical cross-sectional area for stream discharge measurement ............................................ 32 
+Figure 14: Different routes of runoff ............................................................................................................ 33 
+Figure 15: A diagram showing parts of a hydrograph ................................................................................ 36 
+Figure 16: Distribution of rainfall and hydrograph ..................................................................................... 37 
+Figure 17: Hydrograph affected by movement of rainfall ......................................................................... 38 
+Figure 18: Effects of catchment shapes on the hydrograph ...................................................................... 38 
+Figure 19: Perennial stream hydrograph ....................................................................................................... 40 
+Figure 20: Intermittent stream hydrograph .................................................................................................. 41 
+Figure 21: Ephemeral stream hydrograph .................................................................................................... 41 
+Figure 22: WRAs and WRUs in Malawi ....................................................................................................... 44 
+Figure 23: Rivers and lakes in Malawi ........................................................................................................... 44 
+Figure 24: Gauging stations and Q80 Unit discharge ................................................................................. 45 
+Figure 25: Demarcation of 3 hydrological regions ...................................................................................... 48 
+Figure 26: Procedure for estimation of slope .............................................................................................. 51 
+Figure 27: Rainfall intensity zones in Malawi (Shela 1990) ........................................................................ 52 
+ 
+  
+
+ 
+Page | 2  
+ 
+1 INTRODUCTION 
+Hydrology means the science of water. It is the science that deals with the occurrence, circulation and 
+distribution of water of the earth and earth’s atmosphere. As a branch of earth science, it is concerned 
+with the water in streams and lakes, rainfall and snow fall, snow and ice on the land and water occurring 
+below the earth’s surface in the pores of the soil and rocks. In a general sense, hydrology is a very 
+broad  subject  of  an  inter-disciplinary  nature  drawing  support  from  allied  sciences,  such  as 
+meteorology, geology, statistics, chemistry, physics and fluid mechanics.  
+ 
+Hydrology is basically an applied science. To further emphasize the degree of applicability, the subject 
+is sometimes classified as; 
+Scientific hydrology – the study which is concerned chiefly with academic aspects. 
+Engineering or applied hydrology – a study concerned with engineering applications.  
+In general sense, engineering hydrology deals with; 
+➢ Estimation of water resources 
+➢ The study of processes such as precipitation, runoff, evapotranspiration and their interaction 
+➢ The study of problems such as floods and droughts and strategies to combat them.  
+ 
+1.1 HYDROLOGIC CYCLE 
+Water  occurs  on  the  earth  in  all  its  three  states  i.e.  liquid,  solid  and  gas  and  in  various  degrees  of 
+motion. Evaporation of water from water bodies such as oceans and lakes, formation and movement 
+of  clouds,  rain  and  snowfall,  streamflow  and  groundwater  movement  are  some  examples  of  the 
+dynamic aspects of water. The various aspects of water related to the earth can be explained in terms 
+of a cycle known as hydrologic cycle.  
+ 
+Figure 1 is a schematic representation of the hydrologic cycle. A convenient starting point to describe 
+the  cycle  in  the  oceans.  Water  in  the  oceans  evaporate  due  to  the  heat  energy  provided  by  solar 
+radiation. The water vapour moves upwards and forms clouds. While much of the clouds condense 
+and fall back to the oceans as rain, a part of the clouds is driven to the land areas by winds. There they 
+condense and precipitate onto the land mass as rain, snow, hail, sleet etc. A part of the precipitation 
+may  evaporate  back  to  the  atmosphere  even  while  falling.  Another  part  may  be  intercepted  by 
+vegetation, structures and other such surface modifications from which it may be either evaporated 
+back to the atmosphere or move down to the ground surface.  
+
+ 
+Page | 3  
+ 
+ 
+ 
+Figure 1: The Hydrologic Cycle 
+A portion of the water that reaches the ground enters the earth’s surface through infiltration, enhance 
+the moisture content of the soil and reach the groundwater body. Vegetation sends a portion of the 
+water from under the ground surface back to the atmosphere through the process of transpiration. 
+The precipitation reaching the ground surface after meeting the needs of infiltration and evaporation 
+moves down the natural slope over the surface and through a network of gullies, streams and rivers 
+to reach the ocean. The groundwater may come to the surface through springs and other outlets after 
+spending a considerably longer time than the surface flow. The portion of the precipitation which by 
+a variety of paths above and below the surface of the earth reaches the stream channel is called runoff. 
+Once it enters a stream channel, runoff becomes stream flow.  
+The sequence of events as above is a simplistic picture of a very complex cycle that has been taking 
+place since the formation of the earth. It is seen that the hydrologic cycle is a very vast and complicated 
+cycle in  which  there  are a  large  number  of  paths  of  varying time  scales.  Further,  it  is  a  continuous 
+recirculating cycle in the sense that there is neither a beginning nor an end or a pause. Each path of 
+the hydrologic cycle involves one or more of the following aspects 
+i. Transpiration of water 
+ii. Temporary storage 
+
+ 
+Page | 4  
+ 
+iii. Change of state.  
+For  example,  (a)  the  process  of  rainfall  has  the  change  of  state  and  transportation  and  (b)  the 
+groundwater path has storage and transportation aspects.  
+ 
+The  main  components  of  the  hydrologic  cycle  can  be  broadly  classified  as  transportation  (flow) 
+components and storage components as below; 
+ 
+Table 1-1: Main Components of the hydrologic cycle 
+Transportation components Storage components  
+- Precipitation 
+- Evaporation  
+- Transpiration  
+- Infiltration  
+- Runoff 
+- Storage on the land surface (Depression 
+storage, ponds, lakes, reservoirs etc.) 
+- Soil moisture storage  
+- Groundwater storage  
+ 
+1.2 WATER BUDGET EQUATION 
+1.2.1 CATCHMENT AREA 
+The area of the land draining into a stream or a water course at a given location is known as catchment 
+area. It is also known as drainage area, drainage basin or watershed. The catchment area is separated 
+from its neighboring areas by a ridge called a divide. The total extent of the catchment area is obtained 
+by  tracing  the  ridge  on a topographic  map  to  delineate  the  catchment and measuring  the  area  by a 
+planimeter. It is obvious that for a river while mentioning the catchment area the station to which it 
+pertains (Figure 2) must also be mentioned. It is normal to assume the groundwater divide to coincide 
+with the surface divide. Thus, the catchment area affords a logical and convenient unit to study various 
+aspects relating to the hydrology and water resources of a region. Further it is probably the single most 
+important drainage characteristic used in hydrological analysis and design.  
+
+ 
+Page | 5  
+ 
+ 
+Figure 2: Schematic Sketch of Catchment of River A at Station M 
+ 
+1.3 WATER BUDGET EQUATION 
+For a given problem area, say a catchment, in an interval of ∆t, the continuity equation for water in 
+its various phases is written as; 
+Mass inflow – Mass outflow = Change in mass storage  
+If the density of the inflow, outflow and storage volumes are the same; 
+ 
+V
+i
+ – V
+0
+ = ∆S 
+Where,  
+V
+i 
+= inflow volume of water into the problem area during the time period 
+V
+0
+ = outflow volume of water from the problem area during the time period 
+∆S = change in the storage of the water volume over and under the given area during the given period. 
+In applying this continuity equation to the paths of the hydrologic cycle involving change of state, the 
+volumes  considered  are  the  equivalent  volumes  of  water  at  a  reference  temperature.  In  hydrologic 
+calculations, the volumes are often expressed as average depths over the catchment area. Thus, for 
+example, if the annual stream flow from a 10 km
+2 
+catchment is 10
+7
+ m
+3
+, it corresponds to a depth of; 
+10
+7
+10∗10
+6
+ = 1 m = 100 cm 
+Rainfall, evaporation and often runoff volumes are expressed in units of depth over the catchment.  
+While realizing that all the terms in a hydrological water budget may not be known to the same degree 
+of accuracy, an expression for the water budget of a catchment for a time interval ∆t is written as; 
+P-R-G-E-T = ∆S 
+
+ 
+Page | 6  
+ 
+In this P = precipitation, R = surface runoff, G = net groundwater flow out of the catchment, E = 
+evaporation, T = transpiration and ∆S = change in storage.  
+ 
+S = S
+s
+ + S
+sm 
++ S
+g
+ 
+Where, 
+S
+s 
+= surface water storage  
+S
+sm 
+= water in storage as soil moisture and  
+S
+g 
+= water in storage as groundwater 
+ 
+Thus,  
+∆S = ∆ S
+s
+ + ∆ S
+sm 
++∆ S
+g 
+All terms have the dimensions of volume. Note that all these terms can be expressed as depth over 
+catchment area.  
+ 
+In terms of rainfall – runoff relationships the equation is expressed as; 
+R = P – L 
+Where L = losses= water not available to runoff due to infiltration (causing addition to soil moisture 
+and  groundwater  storage),  evaporation,  transpiration  and  surface  storage.  Details  of  various 
+components of the water budget equation are discussed in subsequent chapters. Note that in the above 
+equations, the net import of water into the catchment, from sources outside the catchment, by action 
+of man is assumed to be zero.  
+ 
+1.3.1.1 Example 1 
+A lake had a water surface elevation of 103.200 m above datum at the beginning of a certain month. 
+In  that  month  the  lake  received  an average  inflow of  6.0  m
+3
+/s  from  surface runoff  sources.  In  the 
+same period the outflow from the lake had an average value of 6.5m
+3
+/s. Further, in that month, the 
+lake received a rainfall of 145 mm and the evaporation from the lake surface was estimated as 6.10 
+cm. Write the water budget equation for the lake and calculate the water surface elevation of the lake 
+at the end of the month. The average lake surface area can be taken as 5,000 Ha. Assume that there is 
+no contribution to or from the groundwater storage.  
+ 
+1.3.1.2 Example 2 
+A small catchment of area 150 Ha received a rainfall of 10.5 cm in 90 minutes due to a storm. At the 
+outlet of the catchment, the stream draining the catchment was dry before the storm and experienced 
+
+ 
+Page | 7  
+ 
+a runoff lasting for 10 hours with an average discharge of 1.5m
+3
+/s. The stream was again dry after the 
+runoff event.  
+a) What  is  the  amount  of water  which  was  not  available  to  runoff  to  combined  effect  of 
+infiltration, evaporation and transpiration? 
+b) What is the ratio of runoff to precipitation?  
+The Runoff/rainfall ratio is known as the runoff coefficient 
+ 
+1.4 WORLD WATER BALANCE 
+The total quantity of water in the world is estimated to be about 1386 million cubic kilometers (M 
+km
+3
+). About 96.5 % of this water is contained in the oceans as saline water. Some of the water on the 
+land amounting to about 1 % of the total water is also saline. Thus, only about 35.0 M Km
+3
+ of fresh 
+water is available. Out of this, about 10.6 M Km3 is both liquid and fresh and the remaining 24.4 M 
+Km3 is contained in frozen state as ice in the polar regions and on mountain tops and glaciers. An 
+estimated distribution of water on the earth is given in Table 2.  
+ 
+Table 1-2: Estimated World Water Quantities 
+ 
+Table  from  WORLD  WATER  BALANCE  AND  WATER  RESOURCES  OF  THE  EARTH,  © 
+UNESCO, 1975.  
+
+ 
+Page | 8  
+ 
+1.5 HYDROLOGICAL APPLICATIONS IN ENGINEERING  
+Hydrology  finds  its  greatest  application in  the  design  and  operation  of  water resources  engineering 
+projects such as; 
+i. Irrigation  
+ii. Water supply  
+iii. Flood control  
+iv. Water power  
+v. Navigation  
+In all these projects hydrological investigations for the proper assessment of the following factors are 
+necessary; 
+i. The capacity of the storage structures such as reservoirs  
+ii. The magnitude of flood flows to enable safe disposal of the excess flow 
+iii. The minimum flow and quantity of flow available at various seasons 
+iv. The interaction of the flood wave and hydraulic structures, such as levees, reservoirs, barrages 
+and bridges 
+The  hydrological  study  of  a  project  should  necessarily  precede  structural  and  other  detailed  design 
+studies. It involves the collection of relevant data and analysis of the data by applying the principles 
+and theories of hydrology to seek solutions to practical problems.  
+ 
+Many  important  projects  in  the  past  have  failed  due  to  improper  assessment  of  the  hydrological 
+factors. Some typical failures of hydraulic structures are; 
+i. Overtopping and consequent failure of an earthen dam due to inadequate spillway capacity 
+ii. Failure of bridges and culverts due to excess flood flow 
+iii. Inability of a large reservoir to fill up with water due to overestimation of the stream flow 
+Various phases of the hydrological cycle, such as rainfall, runoff, evaporation and transpiration are all 
+nonuniformly distributed both in time and space. Further, practically all hydrologic phenomena are 
+complex  and  at  the  present  level  of  knowledge,  they  can  at  best  be  interpreted  with  the  aid  of 
+probability  concepts.  Hydrological  events  are  treated  as  random  processes  and  the  historical  data 
+relating  to  the  event  are  analysed  by  statistical  methods  to  obtain  information  on  probabilities  of 
+occurrence  of  various  events.  The  hydrologic  data  is  an  important  component  of present-day 
+hydrological  studies  and  enables  the  engineer  to  take  suitable  design  decisions  consistent  with 
+economic and other criteria to be taken in a given project.  
+ 
+
+ 
+Page | 9  
+ 
+1.6 SOURCES OF HYDROLOGICAL DATA  
+Depending upon the problem at hand, hydrologist would require data relating to the various relevant 
+phases of the hydrological cycle playing on the problem catchment. The data normally required in the 
+studies are; 
+➢ Weather records – temperature, humidity and wind velocity  
+➢ Precipitation data  
+➢ Stream flow records  
+➢ Evaporation and evapotranspiration data  
+➢ Infiltration characteristics of the study area  
+➢ Soils of the area  
+➢ Land use cover  
+➢ Ground water characteristics  
+➢ Physical and geological characteristics of the area  
+➢ Water quality data  
+
+ 
+Page | 10  
+ 
+2 PRECIPITATION  
+The term precipitation denotes all forms of water that reach the earth from the atmosphere. The usual 
+forms  are  rainfall,  snow,  hail,  frost  and  dew.  Of  all  these,  only  the  first two  contribute  significant 
+amounts of water. Rainfall being predominant form of precipitation causing stream flow, especially 
+the flood in a majority of rivers. The magnitude of precipitation varies with time and space. It is this 
+variation that is responsible for many hydrological problems such as floods and droughts. The study 
+of precipitation forms a major portion of hydrology meteorology.  
+ 
+For precipitation to form: (i) the atmosphere must have moisture, (ii) there must be sufficient nuclei 
+present to aid condensation, (iii) weather conditions must be good for condensation of water vapour 
+to  take  place,  and  (iv)  the  products  of  condensation  must  reach  the  earth. Under  proper  weather 
+conditions, the water vapour condenses over nuclei to form tiny water droplets of sizes less than 0.1 
+mm  in  diameter.  The  nuclei are  usually  salt  particles  or  products  of  combustion  and  are  normally 
+available in plenty. Precipitation results when water droplets come together to form larger drops that 
+can drop down. A considerable part of this precipitation gets evaporated back to the atmosphere. The 
+net precipitation gets evaporated back to the atmosphere. The net precipitation at a place and its form 
+depend upon a number of meteorological factors, such as weather elements like wind, temperature, 
+humidity and pressure in the volume region enclosing the clouds and the ground surface at the given 
+place.  
+ 
+2.1 FORMS OF PRECIPITATION  
+Some of the common forms of precipitation are: rain, drizzle, glaze, sleet and hail.  
+ 
+2.1.1 RAIN 
+It is the main form of precipitation in Malawi. The term rainfall is used to describe precipitations in 
+the form of water drops of sizes larger than 0.5 mm. The maximum size of a raindrop is about 6 mm. 
+Any drop larger in size than this tends to break up into drops of smaller sizes during its fall from the 
+clouds. On the basis of intensity, rainfall is classified as: 
+ 
+Table 2-1: Classification of rainfall by intensity 
+Type Intensity  
+Light rain  Trace to 2.5 mm/hr 
+Moderate rain 2.5 mm/hr to 7.5 mm/hr 
+Heavy rain > 7.5 mm/hr 
+ 
+
+ 
+Page | 11  
+ 
+2.1.2 SNOW 
+Snow is another important form of precipitation. Snow consists of ice crystals which usually combine 
+to form flakes. When fresh, snow has an initial density varying from 0.06 to 0.15 g/cm
+3
+ and it is usual 
+to assume an average density of 0.1 gcm
+3
+.  
+ 
+2.1.3 DRIZZLE 
+A sprinkle of numerous water droplets of size less than 0.5 mm and intensity less than 1mm/hr is 
+known as drizzle. In this, the droplets are so small that they appear to float in the air.  
+ 
+2.1.4 GRAZE 
+When rain or drizzle comes in contact with cold ground at around 0° C, the water droplets freeze to 
+form an ice coating called glaze or freezing rain.  
+ 
+2.1.5 SLEET 
+It  is  frozen  raindrops  of  transparent  grains  which  form  when  rain  falls  through  air  at sub-freezing 
+temperature. In Britain, sleet denotes precipitation of snow and rain simultaneously.   
+ 
+2.1.6 HAIL 
+It is a showery precipitation in the form of irregular pellets or lumps of ice of size more than 8 mm. 
+Hail occur in violent thunderstorms in which vertical currents are very strong.  
+ 
+2.2 ANNUAL RAINFALL IN MALAWI  
+Malawi has a sub-tropical climate, which is relatively dry and strongly seasonal. The warm-wet season 
+stretches from November to April, during which 95% of the annual precipitation takes place. Annual 
+average rainfall varies from 725mm to 2,500mm with Lilongwe having an average of 900mm, Blantyre 
+1,127mm,  Mzuzu  1,289mm  and  Zomba  1,433mm.  Extreme  conditions  include  the  drought  that 
+occurred in the 1991/92 season and floods of the 1988/89 season. The low-lying areas such as Lower 
+Shire  Valley  and  some  localities  in  Salima  and  Karonga  are  more  vulnerable  to  floods  than  higher 
+grounds. 
+A cool, dry winter season is evident from May to August with mean temperatures varying between 17 
+and 27 degrees Celsius, with temperatures falling between 4 and 10 degrees Celsius. In addition, frost 
+may occur in isolated areas in June and July. A hot, dry season lasts from September to October with 
+
+ 
+Page | 12  
+ 
+average temperatures varying between 25 and 37 degrees Celsius. Humidity ranges from 50% to 87% 
+for the drier months of September/October and wetter months of January/February respectively. 
+ 
+ 
+Figure 3: Annual rainfall distribution in Malawi 
+ G  gIt should  be  noted  that  there  is  considerable variation  of  annual  rainfall  in  time  from  place  to 
+place as seen from Figure 3 above. The coefficient of variation (C
+v
+) is used to measure this variation 
+and is calculated using the following formula; 
+ 
+
+ 
+Page | 13  
+ 
+퐶
+푉
+= 
+100∗푆푡푎푛푑푎푟푑 푑푒푣푖푎푡푖표푛
+푚푒푎푛
+ 
+2.3 MEASUREMENT OF RAINFALL  
+Rainfall is expressed in terms of the depth to which rainfall water would stand on an area if all the rain 
+were  collected  on  it. Thus  1  cm  of  rainfall  over  a catchment area  of  1  km
+2
+ represents a  volume  of 
+water  equal  to  10
+4
+ m
+3
+.  The  precipitation  is  collected  and  measured  in  a  rain  gauge.  A  rain  gauge 
+essentially consists of a cylindrical-vessel assembly kept in the open to collect rain. The rainfall catch 
+of the rain gauge to accurately represent the rainfall in the area surrounding the rain gauge standard 
+settings are adopted. For siting a rain gauge, the following considerations are important: 
+➢ The ground must be level and in the open and the instrument must present a horizontal catch 
+surface.  
+➢ The  gauge  must  be  set  near  the  ground  as  possible  to  reduce  wind  effects  but  it  must  be 
+sufficiently high to prevent splashing, flooding, etc.  
+➢ The  instrument  must  be  surrounded  by  an  open  fenced  area  of  at  least  5.5  m  *  5.5  m.  No 
+object should be nearer to the instrument than 30 m.  
+ 
+2.4 CLASSIFICATION OF RAIN GAUGES  
+Rain gauges can be broadly classified as recording and non-recording rain gauges.  
+ 
+2.4.1 NON-RECORDING GAUGES  
+The non-recording gauge consists of a circular collecting area of 12.7 cm (5.0 inch) diameter connected 
+to a funnel. The rim of the collector is set in a horizontal plane at a height of 30.5 cm above the ground 
+level. The funnel discharges the rainfall catch into a receiving vessel. The funnel and receiving vessel 
+are housed in a metallic container. Figure 4 shows the details of the installation: 
+
+ 
+Page | 14  
+ 
+ 
+Figure 4: Non recording rain gauge (Symon’s gauge) 
+Water contained in the receiving vessel is measured by a suitably graduated measuring glass, with an 
+accuracy of up to 0.1 mm.  
+ 
+2.4.2 RECORDING GAUGES 
+Recording  gauges  produce  a  continuous  plot  of  rainfall  against  time  and  provide  valuable  data  of 
+intensity and duration of rainfall for hydrological analysis of storms. An example of this type of gauge 
+is  the  Natural – Syphon  type.  This  type  of  rain  gauge  is  also  known  as  float  type  gauge.  Here  the 
+rainfall collected by a funnel-shaped collector is led into a float chamber causing a float to rise. As the 
+float rises, a pen attached to the float through a lever system records the elevation of the float on a 
+rotating drum driven by a clock – work mechanism. A syphon arrangement empties the float chamber 
+when the float has reached a pre-set maximum level.  
+ 
+A typical chart from this type of rain gauge is presented in Figure 5. This chart shows a rainfall of 53.8 
+mm in 30 hours. The vertical lines in the pen-trace correspond to the sudden emptying of the float 
+chamber by syphon action which resets the pen to zero level.  
+
+ 
+Page | 15  
+ 
+ 
+Figure 5: Recording from a Natural Syphon-type Gauge 
+ 
+2.5 ADEQUACY OF RAIN GAUGE STATIONS 
+If there are already some rain gauge stations in a catchment, the optimal number of stations that should 
+exist  to  have  an  assigned  percentage  of  error  in  the  estimation  of  rainfall  is  obtained  by  statistical 
+analysis as;  
+푁=
+(
+퐶
+푣
+ɛ
+)
+2
+ 
+Where, 
+N = optimal number of stations 
+ɛ = allowable degree of error in the estimate of the mean rainfall 
+퐶
+푣
+ = coefficient of variation of the rainfall values at the existing m stations (in percent) 
+ 
+If there are m stations in the catchment each recording rainfall values P
+1
+, P
+2
+, ......, P
+i
+....P
+m 
+in a known 
+time, the coefficient of variation C
+v
+ is calculated as: 
+ 
+퐶
+푣
+= 
+100∗휎
+푚−1
+푃
+푚푒푎푛
+ 
+ 
+Where, 
+휎
+푚−1
+= 
+√
+[
+∑
+(푃
+푖
+− 푃
+푚푒푎푛
+)
+2
+푚
+1
+푚−1
+] = standard deviation  
+P
+i 
+= precipitation magnitude in the i
+th
+ station 
+
+ 
+Page | 16  
+ 
+P
+mean
+ = 
+1
+푚
+ 
+(∑
+푃
+푖
+푚
+1
+)
+ = mean precipitation 
+ 
+In calculating N it is usual to take ɛ = 10 %. It is seen that if the value of ɛ is small, the number of 
+rain gauge stations will be more.  
+According to World Meteorological Organization (WMO) recommendations, at least 10 % of the total 
+rain gauges should be of self-recording type.  
+ 
+2.5.1.1 Example 3 
+A catchment has six rain gauge stations. In a year, the annual rainfall recorded by the gauges are as 
+follows: 
+Station  A B C D E F 
+Rainfall 
+(cm) 
+82.6 102.9 180.3 110.3 98.8 136.7 
+ 
+For a 10 % error in the estimation of the mean rainfall, calculate the optimum number of stations in 
+the catchment.  
+ 
+2.6 ESTIMATION OF MISSING DATA 
+Given  the  annual  precipitation  values,  P
+1
+,  P
+2
+,  P
+3
+....P
+m
+ at neighbouring M stations 1, 2, 3...., M 
+respectively, it is required to find the missing annual precipitation Px at station not included in the 
+above M stations. Further, the normal annual precipitations N
+1
+, N
+2
+..... N
+i
+ at each of the above (M+1) 
+stations  including  station  X  are  known.  If  the  normal  annual  precipitations  at  various  stations  are 
+within about 10 % of the normal annual precipitation at station X, then a simple arithmetic average 
+procedure is followed to estimate Px, thus; 
+ 
+푃
+푥
+= 
+1
+푀
+ 
+[
+푃
+1
++푃
+2
++⋯+푃
+푚
+]
+ 
+If the normal precipitation vary considerably, then Px is estimated by weighing the precipitation at the 
+various stations by the ratios of normal annual precipitations. This method is known as the normal 
+ratio method, gives Px as; 
+푃
+푥
+= 
+푁
+푥
+푀
+ [
+푃
+1
+푁
+1
++
+푃
+2
+푁
+2
++⋯+
+푃
+푚
+푁
+푚
+] 
+ 
+ 
+
+ 
+Page | 17  
+ 
+2.6.1.1 Example 4 
+The normal annual rainfall at stations A, B, C and D in a basin are 80.97, 67.59, 76.28 and 92.01 cm 
+respectively. In the year 1975, the station D was in operative and the stations A, B, C recorded annual 
+precipitations of 91.11, 72.23 and 79.89 cm respectively. Estimate the rainfall at station D in that year.  
+ 
+2.7 PRESENTATION OF RAINFALL DATA  
+A few commonly used methods of presentation of rainfall data which have been found to be useful 
+in interpretation and analysis of such data are given as follows: 
+ 
+2.7.1 MASS CURVE OF RAINFALL  
+The mass curve of rainfall is a plot of accumulated precipitation against time, plotted in chronological 
+order. A typical mass curve of rainfall at a station during a storm is presented in Figure --.  
+ 
+ 
+Figure 6: Mass curve of rainfall 
+ 
+2.7.2 HYETOGRAPH 
+A hyetograph is a plot of the intensity of rainfall against the time interval. The hyetograph is derived 
+from  the  mass  curve  and  is  usually represented  as  a  bar  chart.  Figure  7  presents a  example  of  a 
+hyetograph.  
+ 
+
+ 
+Page | 18  
+ 
+ 
+Figure 7: Hyetograph of a storm 
+ 
+It is a very convenient way of representing the characteristics of a storm and is particularly important 
+in  the  development  of  design  storms  to  predict  extreme  floods.  The  area  under  a  hyetograph 
+represents the total precipitation received in the period.  
+ 
+2.7.3 POINT RAINFALL  
+Point rainfall, also known as station rainfall refers to the rainfall data of a station. Depending upon 
+the need, data can be listed as daily, weekly, monthly, seasonal or annual values for periods. Graphically 
+these data are represented as plots of magnitude vs chronological time in the form of a bar diagram.  
+ 
+2.8 FREQUENCY OF POINT RAINFALL 
+In many hydraulic engineering applications such as those concerned with floods, the probability of 
+occurrence of a particular extreme rainfall e.g. a 24-hour maximum rainfall will be of importance. Such 
+information is obtained by the frequency analysis of the point rainfall data. The rainfall at a place is a 
+random hydrological process and a sequence of rainfall data at a place when arranged in chronological 
+order constitute a time series. One of the commonly used data series is the annual series composed of 
+annual values such as annual rainfall. If the extreme values of a specified event occurring in each year 
+is listed, it also constitutes an annual series. Thus, for example, one may list the maximum 24-hour 
+rainfall occurring in a year at a station to prepare an annual series of 24-hour maximum rainfall values. 
+The probability of occurrence of an event in this series is studied by frequency analysis of this annual 
+data series. The analysis of annual series, even though described with rainfall as a reference is equally 
+applicable to any other random hydrological process e.g. stream.  
+ 
+
+ 
+Page | 19  
+ 
+Firstly,  it  is  necessary  to  correctly  understand  the  terminology  used  in frequency  analysis.  The 
+probability of occurrence of an event of a random variable (e.g. rainfall) whose magnitude is equal to 
+or in excess of a specified magnitude X is denoted P. The recurrence interval (also known as the return 
+period) is defined as; 
+ 
+푇= 
+1
+푃
+ 
+ 
+This  represents  the  average interval  between  the  occurrence  of  a  rainfall  of  magnitude  equal  to  or 
+greater than X. Thus if it is stated that the return period of rainfall of 20 cm in 24 hours is 10 years at 
+a certain station A, it implies that on an average rainfall magnitudes equal to or greater than 20 cm in 
+24 hours occur once in 10 years, i.e. in a long period of say 100 years, 10 such events can be expected. 
+However, it does not man that every 10 years one such event is likely, i.e. periodicity is not implied. 
+The probability of a rainfall of 20 cm in 24 hours occurring in anyone year at station A is 
+1
+푇
+ = 
+1
+10
+ = 0.1.  
+ 
+If the probability of an event occurring is P, the probability of the event not occurring in a given year 
+is q = (1-P). The binomial distribution can be used to find the probability of occurrence of the event 
+r times in n successive years. Thus; 
+ 
+푃
+푟,푛
+= 
+푛!
+(
+푛−푟
+)
+!푟!
+ 푃
+푟
+푞
+푛−푟
+ 
+Where, 
+푃
+푟,푛
+=  probability  of  a  random  hydrologic  event  (rainfall)  of  a  given  magnitude  and  exceedance 
+probability P occurring r times in n successive years. Thus, for example, 
+ 
+a) The probability of an event of exceedance probability P occurring 2 times in n successive years 
+is; 
+푃
+2,푛
+= 
+푛!
+(
+푛−2
+)
+!2!
+ 푃
+2
+푞
+푛−2
+ 
+b) The probability of the event not occurring at all in n successive years is; 
+푃
+0,푛
+= 푞
+푛
+=(1−푃)
+푛
+ 
+c) The probability of the event occurring at least once in n successive years 
+푃
+1
+= 1−푞
+푛
+=1−(1−푃)
+푛
+ 
+ 
+
+ 
+Page | 20  
+ 
+2.8.1.1 Example 5 
+Analysis of data on a maximum one-day rainfall depth at Madras indicated that a depth of 280 mm 
+had a return period of 50 years. Determine the probability of a one-day rainfall depth equal to or 
+greater than 280 mm at Madras occurring; 
+a) Once in 20 successive years 
+b) Two times in 15 successive years 
+c) At least once in 20 successive years 
+ 
+2.9 PLOTTING POSITION 
+The purpose of the frequency analysis of an annual series is to obtain a relation between the magnitude 
+of the event and its probability of exceedance. The probability analysis may be made either by empirical 
+or by analytical methods.  
+ 
+A  simple  empirical technique  is  to  arrange  the  given  annual  extreme  series  in  descending  order  of 
+magnitude and to assign an order number m. Thus, for the first entry m = 1, for the second entry m 
+= 2 and so on, till the last event for which m = N = number of years of record. The probability P of 
+an event equalled to or exceeded is given by the Weibull formula; 
+ 
+푃= (
+푚
+푁+1
+)  
+The recurrence interval 푇=
+1
+푃
+= 
+(푁+1)
+푚
+ 
+ 
+The above equation is an empirical formula and there are several other empirical formulae available 
+to calculate P. The exceedance probability of the event obtained by the use of an empirical formula 
+such as the Weibull formula is called the plotting position. The Weibull formula is the most popular 
+plotting position formula and hence only this formula will be used in this compilation. Table 4 shows 
+a list of plotting position formulae.  
+ 
+Table 2-2: Plotting position formulae 
+ 
+
+ 
+Page | 21  
+ 
+ 
+Having calculated P (and hence T) for all the events in the series, the variation of the rainfall magnitude 
+is plotted against the corresponding T on a semi-log paper or log-log paper (Figure ). By extrapolation 
+of this plot, the rainfall magnitude of specific duration for any recurrence interval can be estimated.  
+ 
+Figure 8: Return period of Annual Rainfall at Station A 
+If  P  is  the  probability  of  exceedance  of  a  variable having  a  magnitude  M,  a common  practice  is  to 
+designate  the  magnitude M  as  having  100  %  dependability.  For  example,  75  %  dependable  annual 
+rainfall at a station means the value of annual rainfall at the station that can be expected to be equalled 
+to or exceeded 75 % times, (i.e. on an average 30 times out of 40 years). Thus 75 % dependable annual 
+rainfall means the value of rainfall in the annual rainfall time series that has P = 0.75, i.e. T = 1/P = 
+1.333 years.  
+ 
+2.9.1.1 Example 6  
+The record of annual rainfall at Station A covering a period of 22 years in given below.  
+a) Estimate the annual rainfall with return periods of 10 years and 50 years? 
+b) What would be the probability of an annual rainfall of magnitude equal to or exceeding 100 
+cm occurring at station A? 
+c) What is the 75 % dependable annual rainfall at station A? 
+
+ 
+Page | 22  
+ 
+ 
+Figure 9: Annual rainfall data for station A 
+3 ABSTRACTIONS FROM PRECIPITATION  
+In  Engineering  hydrology  runoff  due  to  a  storm  event  is  often  the  major  subject  of  study.  All 
+abstractions  from  precipitation  like  those due  to  evaporation,  transpiration,  infiltration,  surface 
+detention  and  storage,  are  considered  as  losses  in  the  production  of  runoff.  Chief  components  of 
+abstractions from precipitation, knowledge of which are necessary in the analysis of various hydrologic 
+situations are described in this section.  
+ 
+3.1 EVAPORATION 
+Evaporation is the process in which a liquid change to the gaseous state at the free surface, below the 
+boiling  point  through  the  transfer  of  heat  energy.  The  rate  of  evaporation  is  dependent  on  the 
+following: 
+a) The vapour pressures at the water surface and air above 
+b) Air and water temperatures  
+c) Wind speed  
+d) Atmospheric pressure  
+e) Quality of water and  
+f) Size of the water body  
+ 
+3.1.1 VAPOUR PRESSURE  
+The rate of evaporation is proportional to the difference between the saturation vapour pressure at 
+the water temperature e
+w 
+and the actual vapour pressure in the air e
+a
+. Thus 
+
+ 
+Page | 23  
+ 
+ 
+E
+L
+ = C(e
+w
+ – e
+a
+) 
+ 
+Where, 
+E
+L
+ = rate of evaporation (mm/day)  
+C = a constant  
+E
+w
+ and E
+a
+ are in mm of mercury.  
+ 
+The above equation is known as Dalton’s law of evaporation after John Dalton (1802) who first 
+recognized this law. Evaporation continues till e
+w
+ = e
+a
+. If e
+w
+ >e
+a 
+condensation takes place.  
+ 
+3.1.2 TEMPERATURE  
+Other  factors  remaining  the  same,  the  rate  of  evaporation  increases  with  an  increase  in  the  water 
+temperature. Regarding air temperature, although there is a general increase in the evaporation rate 
+with  increasing  temperature,  high  correlation  between  evaporation  rate  and  temperature  does  not 
+exist.  Thus  for  the  same  mean  monthly  temperature  it  is  possible  to  have  evaporation  to  different 
+degrees in a lake in different months.  
+ 
+3.1.3 WIND  
+Wind aids in removing the evaporated water vapour from the zone of evaporation and consequently 
+creates greater scope for evaporation. However, if the wind velocity is large enough to remove all the 
+evaporated water vapour, any further increase in wind velocity does not influence evaporation. Thus 
+the rate of evaporation increases with the wind speed up to a critical speed beyond which any further 
+increase in the wind speed has no influence on the evaporation rate. This critical wind speed value is 
+a  function  of  the  size  of  the  water  surface.  For  large  water  bodies  high  speed  turbulent  winds  are 
+needed to cause maximum rate evaporation.  
+ 
+3.1.4 ATMOSPHERIC PRESSURE  
+Other  factors  remaining  same,  a  decrease  in  the  barometric  pressure,  as  in  high  altitudes  increases 
+evaporation.  
+ 
+
+ 
+Page | 24  
+ 
+3.1.5 SOLUBLE SALTS 
+When a solute is dissolved in water, the vapour pressure of the solution is less than that of pure water 
+and  hence  causes  reduction  in  the  rate  of  evaporation.  The  percent  reduction  in  evaporation 
+approximately corresponds to the percentage increase in the specific gravity. Thus, for example, under 
+identical conditions evaporation from sea water is about 2-3 % less than that from fresh water.  
+ 
+3.1.6 HEAT STORAGE IN WATER BODIES  
+Deep water bodies have more heat storage than shallow ones. A deep lake may store radiation energy 
+received in the summer and release it in the winter causing less evaporation in the summer and more 
+evaporation  in  the  winter  compared  to  a  shallow  lake exposed  to  a  similar situation.  However,  the 
+effect of heat storage is essentially to change the seasonal evaporation rates and the annual evaporation 
+rate is hardly affected.  
+ 
+3.1.7 EVAPORIMETERS 
+Estimation  of  evaporation  is  of  utmost  importance  in  many  hydrologic  problems  associated  with 
+planning and operation of reservoirs and irrigation systems. The amount of water evaporated from a 
+water surface is estimated by the following methods:  
+➢ Using evaporimeter data 
+➢ Empirical evaporation equations and  
+➢ Analytical methods  
+ 
+3.1.7.1 TYPES OF EVAPORIMETERS  
+Evaporimeters are water containing pans which are exposed to the atmosphere and the loss of water 
+by  evaporation  measured  in  them  at  regular  intervals.  Meteorological  data,  such  as  humidity,  wind 
+movement,  air  and  water  temperatures  and  precipitation  are  also  noted  along  with  evaporation 
+measurement. The commonly used evaporimeters are: 
+➢ Class A Evaporation Pan and 
+➢ Sunken Colorado Pan  
+ 
+3.1.7.2 CLASS A EVAPORATION PAN  
+This  is  a  standard  pan  of  1210  mm  diameter  and  255  mm  depth.  The  pan  is  normally  made  of 
+unpainted galvanized iron sheet. Figure 10 is an illustration of a class A pan set up.   
+
+ 
+Page | 25  
+ 
+ 
+Figure 10: Class A Evaporation Pan 
+3.1.7.3 SUNKEN COLORADO PAN  
+This pan, 920 mm square and 460 mm deep is made up of unpainted galvanized iron sheet and buried 
+into the ground within 100 mm of the top. Figure 11 shows an illustration of a Sunken Colorado pan 
+set up. The main advantage of the sunken pan is that radiation and aerodynamic characteristics are 
+similar to those of a lake. However, it has the following disadvantages: 
+➢ Difficult to detect leaks  
+➢ Extra care is needed to keep the surrounding area free from tall grass, dust etc.  
+➢ Expensive to install 
+ 
+Figure 11: Sunken Colorado Evaporation pan 
+3.1.7.4 PAN COEFFICIENT C
+p
+ 
+Evaporation pans are not exact models of large reservoirs and have the following drawbacks: 
+a) They  differ  in  the  heat-storing  capacity  and  heat  transfer  from  the  sides  and  bottom.  As  a 
+result of this factor the evaporation from a pan depends to a certain extent on its size. While 
+a pan of 3 m diameter is known to give a value, which is about the same as from a neighboring 
+lake, a pan of size 1.0 m diameter indicates about 20 % excess evaporation than that of the 3 
+m diameter pan.  
+b) The height of the rim in an evaporation pan affects the wind action over the surface. Also, it 
+casts a shadow of variable magnitude over the water surface. 
+c) The heat transfer characteristics of the pan material is different from that of the reservoir.  
+In view of the above, the evaporation observed from a pan has to be corrected to get the evaporation 
+from a lake under similar climatic and exposure conditions. Thus a coefficient is introduced as: 
+
+ 
+Page | 26  
+ 
+ 
+Lake evaporation = Cp * pan evaporation  
+ 
+Where, 
+Cp = pan coefficient. The values of Cp in use for different pans are given in Table 5.  
+ 
+Table 3-1: Values of Pan Coefficients C
+p
+ 
+No.  Types of pan  Average value  Range  
+1 Class A land pan  0.70 0.60 – 0.80 
+2 ISI Pan (Modified class A) 0.80 0.65 – 1.10  
+3 Sunken Colorado pan 0.78 0.70 – 0.82  
+ 
+3.1.8 EMPIRICAL EVAPORATION EQUATIONS 
+A  large  number  of  empirical  equations  are available  to  estimate  lake  evaporation  using  commonly 
+available  meteorological  data.  Most  formulae  are  based  on  the  Dalton  type  equation  and  can  be 
+expressed in the general form: 
+퐸
+퐿
+=퐾푓
+(
+푢
+)
+(푒
+푤
+−푒
+푎
+) 
+Where, 
+E
+L
+ = lake evaporation in mm/day  
+e
+w
+ = saturated vapour pressure at the water surface temperature in mm of mercury 
+e
+a
+ = actual vapour pressure of over-lying air at a specified height in mm of mercury,  
+f(u) = wind speed correction function and  
+K = a coefficient  
+The term e
+a
+ is measured at the same height at which wind wind speed is measured. Two commonly 
+used empirical formulae are: 
+ 
+3.1.8.1 MEYER’S FORMULA (1915) 
+퐸
+퐿
+= 퐾
+푀
+(푒
+푤
+−푒
+푎
+)(1+
+푢
+9
+16
+) 
+E
+L
+, E
+w
+ and E
+a
+ are the same as in the above equation.  
+U
+9 
+= monthly mean wind velocity in km/hour at about 9 m above ground and  
+
+ 
+Page | 27  
+ 
+K
+M
+ = coefficient accounting for various other factors with a value of 0.36 for large deep waters and 
+0.5 for small, shallow waters.  
+ 
+3.1.8.2 ROHWER’S FORMULA (1931) 
+Rohwer’s formula considers a correction for the effect of pressure in addition to the wind speed effect 
+and is given by:  
+퐸
+퐿
+=0.771 (1.465−0.000732푃
+푎
+)(0.44+0.0733푈
+0
+)( 푒
+푤
+−푒
+푎
+) 
+E
+L
+, E
+w
+ and E
+a
+ are the same as in the above equation.  
+P
+a
+ = mean barometric reading in mm of mercury  
+U
+0
+ = mean wind velocity in km/hour at ground level, which can be taken to be the velocity at 0.6 m 
+height above ground.  
+ 
+The  empirical  formulae  are  simple  to  use  and  permit  the  use  of  standard  meteorological  data. 
+However, in view of the various limitations of the formulae, they can at best be expected to give an 
+approximate magnitude of the evaporation.  
+ 
+In using the empirical equations, the saturated vapour pressure at a given temperature (e
+w
+) is found 
+from a Table vs temperature as shown in Table 6 while e
+a
+ is expressed as 0.4 of the saturated vapour 
+pressure.   
+ 
+
+ 
+Page | 28  
+ 
+Table 3-2: Temperature and saturated vapour pressure relationship 
+ 
+푒
+푤
+=4.584 푒푥푝(
+17.27푡
+273.3+푡
+) mm of Hg, where t = temperature in °C.  
+ 
+Often, the wind velocity data would be available at an elevation other than that needed in the particular 
+equation. However, it is known that the lower part of the atmosphere, up to a height of 500 m above 
+the ground level, the wind velocity can be assumed to follow the 1/7 power law as:  
+ 
+푢
+ℎ
+=퐶ℎ
+1
+7
+ 
+ 
+Where, 
+uh = wind velocity at a height h above the ground and C = constant. This equation can be used to 
+determine the velocity at any desired level.  
+ 
+3.1.8.3 Example 7  
+a) A  reservoir  with  a surface  area  of  250  hectares  had  the  following  average  values  of  climate 
+parameters during a week: Water temperature = 20°C, relative humidity = 40%, wind velocity 
+at 1.0 m above ground surface = 16 km/hour. Estimate the average daily evaporation from 
+the lake by using Meyer’s formula.  
+
+ 
+Page | 29  
+ 
+b) An ISI Standard evaporation pan at the site indicated a pan coefficient of 0.80 on the basis of 
+calibration against water budgeting method. If this pan indicated an evaporation of 72 mm in 
+the week under question, 
+i. Estimate  the  accuracy  of  Meyer’s  method  relative  to  the  pan  evaporation 
+measurements.  
+ii. Estimate the volume of water that evaporated from the lake in that week 
+ 
+3.1.9 METHODS TO REDUCE EVAPORATION LOSSES  
+Various methods available for reduction of evaporation losses can be considered in three categories; 
+i. Reduction of Surface Area  
+Since the volume of water lost by evaporation is directly proportional to the surface area of 
+the  water  body,  the  reduction  of  surface  area  wherever  feasible  reduces  evaporation  losses. 
+Measures like having deep reservoirs in place of wider ones and elimination of shallow areas 
+can be considered under this category.  
+ii. Mechanical Covers  
+Permanent roofs over the reservoir, temporary roofs and floating roofs rafts and light weight 
+floating particles can be adopted where feasible. Obviously, these measures are limited to very 
+small water bodies such as ponds, etc.  
+iii. Chemical films  
+This  method  consists  of  applying  a  thin  chemical  film  on  the  water  surface  to  reduce 
+evaporation. Currently this is the only feasible method available for reduction of evaporation 
+of reservoirs up to a moderate size.  
+ 
+3.2 INTERCEPTION  
+When it rains over a catchment, not all the precipitation falls directly onto the ground. Before it reaches 
+the  ground,  a  part  of  it  may  be  caught  by  vegetation  and  subsequently  evaporated.  The  volume  of 
+water that  is  caught  up  is  called  interception.  The  interception  precipitation may  follow  one  of  the 
+three possible routes; 
+i. It  may  be  retained  by  the  vegetation  as  surface  storage  and  returned  to  the  atmosphere  by 
+evaporation; a process termed interception loss; 
+ii. It can drip off the plant leaves to join the surface flow; this is known as throughfall and  
+iii. The rainwater may run along the leaves and branches and down the stem to reach the ground 
+surface. This part is called stemflow.  
+For a given storm, the interception loss is estimated as; 
+퐼
+푖
+= 푆
+푖
++ 퐾
+푖
+퐸푡 
+
+ 
+Page | 30  
+ 
+Where, 퐼
+푖
+ = interception loss in mm, 푆
+푖
+ = interception storage whose value varies from 0.25 to 1.25 
+mm depending on the nature of vegetation, 퐾
+푖
+ = ratio of vegetal surface area to its projected area, E 
+= evaporation rate in mm/hr during the precipitation and t = duration of rainfall in hours.  
+ 
+3.3 DEPRESSION STORAGE  
+When the precipitation of a storm reaches the ground, it must first fill up all depressions before it can 
+flow over the surface. The volume of water trapped in these depressions is called depression storage. 
+This amount is eventually lost to runoff through processes of infiltration and evaporation. Depression 
+storage depends on a vast number of factors the chief of which are; 
+i. The type of soil 
+ii. The condition of the surface reflecting the amount and nature of depression 
+iii. The slope of the catchment and  
+iv. The antecedent precipitation, as a measure of the soil moisture.  
+Obviously, general expressions for quantitative estimation of this loss are not available. Values of 0.50 
+cm in sand, 0.4 cm in loan and 0.25 cm in clay can be taken as representatives for depression-storage 
+loss during intensive storms.  
+ 
+4 STREAM FLOW MEASUREMENT  
+Streamflow representing the runoff phase of the hydrologic cycle is the most important basic data for 
+hydrologic  studies.  It  was  seen  in  the  previous  chapters  that  precipitation,  evaporation  and 
+evapotranspiration are all difficult to measure exactly and the presently adopted methods have severe 
+limitations.  In  contrast,  the  measurement  of  streamflow  is  very  simple  to  conduct  fairly  accurate 
+assessment. A stream can be defined as a flow channel into which the surface runoff from specified 
+basin drains. Streamflow measurement techniques can be broadly classified into two categories as (i) 
+direct determination and (ii) indirect determination. Under each category there are a host of methods, 
+the important ones are listed below: 
+ 
+1. Direct determination of stream discharge e.g., area-velocity discharge methods 
+2. Indirect determination of streamflow such as weirs, flumes and gated structures 
+Continuous measurement of stream discharge is very difficult. As a rule, the direct measurement of 
+discharge is very time consuming and costly procedure. Hence, a two-step procedure is followed. First, 
+the discharge in a given stream is related to the elevation of the water surface (stage) through a series 
+of careful measurements. In the next step the stage of the stream is observed routinely in a relatively 
+inexpensive manner and the discharge is estimated by using the previously determined stage-discharge 
+relationship. This method of discharge determination of streams is adopted universally.  
+ 
+
+ 
+Page | 31  
+ 
+4.1 MEASUREMENT OF STAGE 
+The stage of a river is defined as its water elevation measured above a datum. This datum can be the 
+mean-sea level (MSL) or any arbitrary datum connected independently to the MSL.  
+ 
+4.1.1 MANUAL GAUGES  
+4.1.1.1 STAFF GAUGE 
+The simplest of stage measurements are made by noting the elevation of the water surface in contact 
+with a fixed graduated staff. The staff is made of durable material with a low coefficient of expansion 
+with respect to both temperature and moisture. It is fixed rigidly to a structure, such as abutment, wall 
+etc. The staff may be vertical with clearly and accurately graduated permanent markings. The markings 
+are distinctive, easy to read from a distance and are similar to those on a surveying staff. Sometimes, 
+it may not be possible to read the entire range of water surface elevations of a stream by a single gauge 
+and in such cases the gauge is built in sections at different locations. Such gauges are called sectional 
+gauges.  
+ 
+Figure 12: Staff gauge 
+4.1.1.2 WIRE GAUGE  
+It is a gauge used to measure the water surface elevation from above the surface such as from a bridge 
+or  similar  structure.  In  this  a  weight  is  lowered  by  a  reel  to  touch  the  water  surface.  A  mechanical 
+counter measures the rotation of the wheel which is proportional to the change in the water level. The 
+operating range of this kind of gauge is about 25 m.  
+ 
+4.1.2 AUTOMATIC STAGE RECORDERS  
+The  staff  gauge  and  wire  gauge  described  earlier  are  manual  gauges.  While  they  are  simple  and 
+inexpensive,  they  have  to  be  read  at  frequent  intervals  to  define  the  variation  of  stage  with  time 
+accurately. Automatic stage recorders overcome the basic objection of manual staff gauges and find 
+considerable use in streamflow measurement practice.  
+ 
+
+ 
+Page | 32  
+ 
+4.2 AREA-VELOCITY METHOD OF DISCHARGE MEASUREMENT  
+This method of discharge measurement consists essentially of measuring the area of the cross-section 
+of the river at a selected section called the gauging site and measuring the velocity of flow through the 
+cross-sectional  area.  The  gauging  site  must  be  selected  with  care  to  assure  that  the  stage-discharge 
+curve  is  reasonably  constant  over  a  long  period of  about  a  few  years.  Towards  this  the  following 
+criteria are adopted; 
+➢ The  stream  should  have  a  well-defined  cross-section  which  does  not  change  in  various 
+seasons.  
+➢ It should be easily accessible throughout the year.  
+➢ The site should be free from backwater effects in the channel.  
+For purposes of discharge estimation, the cross-section is considered to be divided into a large number 
+of subsections by verticals. The average velocity in these subsections is measured by current meters 
+or floats. It is quite obvious that the accuracy of discharge estimation increases with the number of 
+subsections  used.  However,  the  larger  the  number  of  segments,  the  larger  is  the  effort,  time  and 
+expenditure involved. The following are some of the guidelines to select the number of segments; 
+➢ The segment width should not be greater than 1/5 to 1/20 of the width of the river.  
+➢ The discharge in each segment should be less than 10 % of the total discharge 
+➢ The difference of velocities in adjacent segments should not be more than 20 % 
+ 
+ 
+Figure 13: Typical cross-sectional area for stream discharge measurement 
+The area-velocity method as above using the current meter is often called the standard current meter 
+method.  
+In order to determine the discharge of a stream, the common continuity equation Q = VA is used. 
+The average area of flow measurement segments is determined by multiplying the average width of 
+the segments by the depth of measurement on the current meter reading location. Hence the final Q 
+is determined.  
+
+ 
+Page | 33  
+ 
+4.2.1.1 Example 8  
+The  data  pertaining  to  a  stream-gauging  operation  at  a  gauging  site  are  given  below.  The  rating 
+equation of the current meter is v = 0.51 N
+s
+ +0.03 m/s where N
+s
+ = revolutions per second. Calculate 
+the discharge in the stream.  
+ 
+Distance  from  left 
+water edge (m)  
+0 1.0 3.0 5.0 7.0 9.0 11.0 12.0 
+Depth (m)  0 1.1 2.0 2.5 2.5 1.7 1.0 0 
+Revolutions    of    a 
+current  meter  kept 
+at 0.6 m depth  
+0 39 58 112 90 45 30 0 
+Duration of 
+observations (s)  
+0 100 100 150 150 100 100 0 
+  
+4.3 RUNOFF  
+Runoff  means  the  draining  or  flowing  of  precipitation  from  a  catchment  area  through  a  surface 
+channel. It thus represents the output from the catchment in a given unit of time.  
+Consider a catchment area receiving precipitation. For a given precipitation, the evapotranspiration, 
+initial  loss,  infiltration and  detention  storage  requirements  will  have  to  be  first  satisfied  before  the 
+commencement  of  runoff.  When  these  are  satisfied,  the  excess  precipitation  moves  over  the  land 
+surfaces to reach smaller channels. This portion of runoff is called overland flow and involves building 
+up a storage over the surface and draining of the same. Usually, the lengths and depths of overland 
+flow  ae  small  and  the  flow  is  in  the  laminar  regime.  Flows  from  several  small  channels  join  bigger 
+channels and flows from these in turn combine to form a larger stream and so on till the flow reaches 
+the catchment outlet. The flow in this mode, where it travels all the time over the surface as overland 
+flow and through channels as open channel flow and reaches the catchment outlet is called surface 
+runoff.  
+ 
+Figure 14: Different routes of runoff 
+ 
+
+ 
+Page | 34  
+ 
+Based on the time delay between the precipitation and the runoff, the runoff is classified into two 
+categories as direct runoff and baseflow.  
+ 
+4.3.1 DIRECT RUNOFF  
+It is that part of the runoff which enters the stream immediately after the rainfall. It includes surface 
+runoff, prompt interflow and rainfall on the surface of the stream. In the case of snow-melt, the 
+resulting flow entering the stream is also called direct runoff. Sometimes terms such as direct storm 
+runoff and storm runoff are used to designate direct runoff.  
+ 
+4.3.2 BASE FLOW  
+The delayed flow that reaches a stream essentially as groundwater flow is called base flow. Many 
+times, delayed interflow is also included under this category.  
+ 
+4.3.3 NATURAL FLOW  
+Runoff representing the response of a catchment to precipitation reflects the integrated effects of a 
+wide range of catchment, climate and rainfall characteristics. True runoff is therefore stream flow in 
+its natural condition, i.e. without human intervention. Such a stream flow unaffected by works of 
+man, such as reservoirs and diversion structures on a stream, is called natural flow or virgin flow. 
+When there exists storage or diversion works on a stream, the flow on the downstream channel is 
+affected by the operational and hydraulic characteristics of these structures and hence does not 
+represent the true runoff, unless corrected for the diversion of flow and return flow.  
+ 
+The natural flow (virgin flow) volume in time ∆t at the terminal point of a catchment is expressed by 
+water balance equation as; 
+푅
+푁
+=
+(
+푅
+표
+−푉
+푟
+)
++푉
+푑
++퐸+퐸
+푥
++∆S 
+ 
+Where; 
+푅
+푁
+ = Natural flow volume in time ∆t 
+푅
+표
+ = Observed flow volume in time ∆t at the terminal site  
+푉
+푟
+ = Volume of return flow from irrigation, domestic water supply and industrial use  
+푉
+푑
+ = Volume diverted out of the stream for irrigation, domestic water supply and industrial use  
+E = Net evaporation losses from reservoirs on the stream  
+
+ 
+Page | 35  
+ 
+퐸
+푥
+ =Net export of water from the basin 
+∆S = Change in the storage volumes of water storage bodies on the stream.  
+ 
+4.3.3.1 Example 9 
+The following table gives values of measured discharges at a stream gauging site in a year. Upstream 
+of the gauging site a weir built across the stream diverts 3.0 Mm
+3
+ and 0.50 Mm
+3
+ of water per month 
+for irrigation and for use in an industry respectively. The return flows from the irrigation are estimated 
+as  0.8  Mm
+3
+ and  from  the  industry  at  0.30  Mm
+3
+ reaching  the  stream  upstream  of  the  gauging  site. 
+Estimate the natural flow if the catchment area is 180 km
+2
+ and the average annual rainfall is 185 cm, 
+determine the runoff-rainfall ratio.  
+ 
+Month 1 2 3 4 5 6 7 8 9 10 11 12 
+Gauged 
+flow 
+(Mm
+3
+) 
+2.0 1.5 0.8 0.6 2.1 8.0 18.0 22.0 14.0 9.0 7.0 3.0 
+ 
+4.4 HYDROGRAPHS 
+A  plot  of discharge  in  a  stream  plotted  against  time  chronologically  is  called  a  hydrograph. A 
+hydrograph has three regions namely rising limb, crest segment and falling limb.  
+Rising limb 
+• Ascending  portion  representing  rising  discharge due  to  gradual  increase of inflow  into  the 
+stream 
+• The slope of the limb depends on the storm and basin characteristics 
+Crest Segment 
+• Inflection point on rising limb to falling limb 
+• Indicate the peak flow 
+• Controlled by storm and watershed characteristics 
+• Multiple peaks may occur due to occurrence of two or more storms of different intensities in 
+a closer interval 
+Falling limb (recession limb) 
+• From point of inflection at the end of crest segment to base flow. 
+• Inflection point indicate the time at which rainfall stopped 
+• Shape independent on storm characteristics but dependent on watershed characteristics 
+Nature of hydrograph depend on rainfall and watershed characters. Isolated storm results into single 
+peak hydrograph and complex storm yields multiple peak hydrographs.  
+
+ 
+Page | 36  
+ 
+ 
+Figure 15: A diagram showing parts of a hydrograph 
+Depending upon the unit of time involved, we have 
+➢ Annual hydrographs showing the variation of daily or weekly or daily mean flows over a year.  
+➢ Monthly hydrographs showing the variation of daily mean flows over a month 
+➢ Seasonal hydrographs depicting the variation of the discharge in a particular season 
+➢ Flood hydrographs or hydrographs due to a storm representing stream flow due to a storm 
+over a catchment 
+Each of these types have particular applications. Annual and seasonal hydrographs are of use in  
+i. Calculating the surface water potential of a stream 
+ii. Reservoir studies and 
+iii. Drought studies  
+Flood hydrographs are essential in analyzing stream characteristics associated with floods.  
+4.4.1 FACTORS AFFECTING SHAPE OF HYDROGRAPH 
+4.4.1.1 CLIMATIC FACTORS 
+a) Form of precipitation 
+Rainfall and snow fall – rainfall tends to produce runoff rapidly generating hydrograph with high peak 
+and narrow base 
+ 
+b) Rainfall Intensity 
+
+ 
+Page | 37  
+ 
+Affect volume of runoff, occurrence of peak flow, duration of surface flow 
+Higher the intensity quicker the peak flow and conical hydrograph 
+ 
+c) Duration of rainfall 
+The longer the duration the more the volume. For longer duration, peak flow occur after longer time 
+and hydrograph is flatter with broad base.  
+d) Distribution of rainfall 
+When heavy rain occurs near outlet peak flow occur quickly while when heavy rain occurs in upper 
+areas peak flow occur after few hours. Lower peak and broad base (more time taken for flow to reach 
+outlet) 
+ 
+Figure 16: Distribution of rainfall and hydrograph 
+e) Direction of storm movement 
+• Affects amount of peak flow and surface flow duration 
+• Upward direction reads to lower peak and broad base 
+• Downward direction reads to sharp peak and narrow base 
+ 
+
+ 
+Page | 38  
+ 
+ 
+Figure 17: Hydrograph affected by movement of rainfall 
+4.4.1.2 PHYSIOGRAPHIC FACTORS - CHARACTERISTICS OF WATERSHED  
+a) Shape of basin 
+Affects the shape of hydrograph affecting time of concentration 
+For broad shaped – peak flow occurs soon because of less time of concentration, narrow hydrograph 
+with high peak 
+Fan shaped – peak flow occurs at longer time interval because of longer time of concentration, broad 
+base lower peak hydrograph 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 18: Effects of catchment shapes on the hydrograph 
+ 
+
+ 
+Page | 39  
+ 
+4.4.1.3 EFFECT ON HYDROGRAPH BY SHAPE OF CATCHMENT 
+a) Size of basin 
+Small basin – flow dominated by overland flow that joins channel quickly, peak flow occurs quickly 
+ 
+b) Stream slope 
+• More the stream slope higher the slope of recession limb, reduce base width of hydrograph 
+• Small slope make recession limb flatter and base width wider 
+ 
+c) Nature of valley 
+Greater valley slope higher the slope of recession limb 
+ 
+d) Drainage density 
+• Higher the drainage density, quicker the peak flow, recession limb is steeper with narrow 
+hydrograph 
+• Lesser the drainage density, slow moving rising limb and wide base width 
+ 
+e) Land use 
+• Vegetation reduces loss of water through runoff 
+• Higher the vegetation density, lesser the peak flow – Surface depression 
+• Presence of ponds, rills etc. delay and modify flow pattern 
+• Decreases peak flow and wide base width   
+ 
+ 
+
+ 
+Page | 40  
+ 
+4.4.2 BASE FLOW SEPARATION 
+The normal flow of a river or stream is referred to as baseflow. There are many ways of determining 
+baseflow from a hydrograph but the common method used for baseflow separation is the straight-
+line method. This involves joining the starting and end points of surface runoff by straight line and 
+the area under the straight line is regarded as the base flow.  
+ 
+4.4.3 RUNOFF CHARACTERISTICS OF STREAMS  
+A study of annual hydrographs of streams enables one to classify streams into three classes as; 
+i. Perennial  
+ii. Intermittent and  
+iii. Ephemeral  
+ 
+4.4.3.1 PERENNIAL STREAM  
+A perennial stream is one which always carries some flow. There is considerable amount of ground 
+waterflow throughout the year. Even during the dry seasons, the water table will be above the bed of 
+the  stream.  These  are  the  most  appropriate  types  of  streams  to  consider  as  water  sources  when 
+considering the establishment of irrigation or water supply projects.  
+ 
+Figure 19: Perennial stream hydrograph 
+ 
+4.4.3.2 INTERMITTENT STREAM 
+An intermittent stream has limited contribution from the ground water. During the wet season the 
+water table is above the stream bed and there is a contribution of the baseflow to the stream flow. 
+However, during dry seasons the water table drops to a level lower than that of the stream bed and 
+the stream dries up. Except when an occasional storm happens, the stream remains dry for the most 
+part of the dry months.  
+
+ 
+Page | 41  
+ 
+ 
+Figure 20: Intermittent stream hydrograph 
+ 
+4.4.3.3  EPHEMERAL STREAM 
+An ephemeral stream is one which does not have any base-flow contribution. The annual hydrograph 
+of such a river shows series of short duration spikes marking flash flows in response to storms. The 
+stream becomes dry soon after the end of the storm flow. Typically an ephemeral stream does not 
+have any well – defined channel.  
+ 
+Figure 21: Ephemeral stream hydrograph 
+ 
+4.4.4 FACTORS INFLUENCING STREAM FLOW CHARACTERISTICS  
+The following are the key factors that affect the flow characteristics; 
+➢ The  rainfall  characteristics,  such  as  magnitude  intensity,  distribution  according  to  time  and 
+space and its variability.  
+➢ Catchment  characteristics  such  as  soil,  land  use/cover,  slope,  geology,  shape  and  drainage 
+density.  
+➢ Climatic factors which influence evapotranspiration 
+
+ 
+Page | 42  
+ 
+The interrelationship of these factors is extremely complex. However, at the risk of oversimplification, 
+the following points can be noted.  
+➢ The  seasonal  variation  of  rainfall  is  clearly  reflected  in  the  runoff.  High  stream  discharges 
+occur in the wet season months and low flow and essentially baseflow is maintained during 
+the rest of the year.  
+➢ The shape of the stream hydrograph and hence the peak flow is essentially controlled by the 
+storm and physical characteristics of the basin. Evapotranspiration plays a minor role in this.  
+➢ The  annual  runoff  volume  of  a  stream  is  mainly  controlled  by  the  amount  of  rainfall  and 
+evapotranspiration. The geology of the basin is significant to the extent of deep percolation 
+losses.   The   land   use/cover   play   an   important   role   in   creating   infiltration   and 
+evapotranspiration opportunities and retarding of runoff.  
+ 
+4.5 RUNOFF VOLUME  
+4.5.1 YIELD  
+The total quantity of surface water that can be expected in a given period from a stream at the outlet 
+of its catchment is known as yield of the catchment in that period. Depending upon the period chosen 
+we have annual yield and seasonal yield signifying yield of the catchment in a year and in a specified 
+season respectively. Unless otherwise qualified the term yield is usually used to represent annual yield. 
+ 
+The  annual  yield  from  a  catchment  is  the  end  product  of  various  processed  such  as  precipitation, 
+infiltration  and  evapotranspiration  operating  on  the  catchment.  Due  to  the  inherent  nature  of  the 
+various parameters involved in the process, the yield is a random variable. A list of values of annual 
+yield  in  a  number  of  years  constitutes  an  annual  time  series  which  can  be  analysed  by  methods 
+discussed in chapter 2 of this compilation.  
+ 
+The yield of a catchment Y in a period ∆t could be expressed by water balance equation as; 
+푌= 푅
+푁
++푉
+푟
+= 푅
+표
++퐴
+푏
++∆푆 
+ 
+Where, 
+푅
+푁
+ = Natural flow in time ∆t 
+푉
+푟
+ = Volume of return flow from irrigation, domestic water supply and industrial use 
+푅
+표
+ = Observed runoff volume at the terminal gauging station of the basin in time ∆t 
+퐴
+푏
+ =  Abstraction  in  time, ∆t  in  for  irrigation,  water  supply  and  industrial  use  and  inclusive  of 
+evaporation losses in surface water bodies on the stream 
+
+ 
+Page | 43  
+ 
+∆푆 = Change in the storage volumes of water storage bodies of the stream  
+ 
+The  calculation  of  natural  runoff  (hence  yield)  is  of  fundamental  importance  in  all  surface  water 
+resources development studies and projects.  
+ 
+4.5.1.1 Example 9 
+Annual rainfall and runoff values (in cm) of a catchment spanning a period of 21 years are given below. 
+Analyse the data to estimate the 75 % and 50 % dependable annual yield of the catchment.   
+ 
+ 
+5 OVERVIEW OF WATER RESOURCE AREAS AND UNITS IN 
+MALAWI 
+Malawi  is  generally  considered  to  be  relatively  rich  in  water  resources,  which  are  stored  in  form  of 
+lakes, rivers and aquifers. The country is divided into 17 Water Resources Areas (WRAs) based on the 
+river basins, and WRAs are sub divided into 78 Water Resources Units (WRUs). Some WRAs consist 
+of one river basin and others are composed of several small river basins. 15 of the 17 WRAs excluding 
+WRA-2 (Lake Chilwa) and WRA-11 (Lake Chiuta) belong to the river basins of tributaries of Zambezi 
+River which include the Lake Malawi Basin and the Shire River Basin; the only outflow river from 
+Lake Malawi. Despite the number and widespread nature of surface water bodies, the availability and 
+reliability of  surface  water  is  highly  variable  due  to  climatic  extremes  between  the  wet  and  the  dry 
+seasons and from year to year. Figure 18 and 19 shows WRAs and WRUs respectively in Malawi.  
+
+ 
+Page | 44  
+ 
+  
+The WRAs in the country are housed with gauging stations whereby adequacy of water for irrigation 
+scheme establishment is based on. The gauging stations with their corresponding Q80 is presented in 
+Figure 21. Take note that Q80 is the same as 80 % dependable flow. This means the Q80 is the flow 
+which will be achieved in the stream 80 % of the time or more.   
+Figure 22: WRAs and WRUs in Malawi Figure 23: Rivers and lakes in Malawi 
+
+ 
+Page | 45  
+ 
+ 
+Figure 24: Gauging stations and Q80 Unit discharge 
+ 
+ 
+
+ 
+Page | 46  
+ 
+5.1 BASIC HYDROLOGICAL STEPS IN ESTABLISHING AN IRRIGATION 
+SCHEME 
+The basic hydrological steps in establishing an irrigation scheme are outlined below; 
+➢ Irrigation scheme identification  
+➢ Water source location 
+➢ Identification of the appropriate WRA or WRU for the scheme 
+➢ Identification of a gauging station in proximity to the water source in order to analyse stream 
+flow data  
+➢ Concluding remarks  
+ 
+5.1.1 IRRIGATION SCHEME IDENTIFICATION  
+Irrigation  scheme  identification  is  based  on  several  factors  mainly  topography,  availability of  water 
+resources  and  social-economical  factors. Once  the  need  for  irrigation  scheme  development  arises, 
+detailed feasibility studies based on the factors mentioned have to be conducted.  
+ 
+5.1.2 WATER SOURCE LOCATION 
+The location of the water source of surface irrigation schemes is mostly based on the nearest water 
+resource in proximity to the scheme. This is what forms the intake point for irrigation schemes.  
+ 
+5.1.3 IDENTIFICATION OF APPROPRIATE WRA OR WRU FOR THE SCHEME 
+Once location of the water source is identified, determine the right WRA where this particular water 
+source  lies.  As  already  pointed  out  earlier,  Malawi  is  divided  into  17  WRAs  and  78  WRUs  which 
+contribute their runoffs into various streams or rivers. The selected WRA forms a basis for selecting 
+gauging stations to be used for analysis of water availability.  
+ 
+5.1.4 IDENTIFICATION OF A GAUGING STATION IN PROXIMITY TO THE 
+WATER SOURCE 
+Once the WRA or WRU for the scheme is identified, gauging stations in proximity to the scheme’s 
+water source have to be identified for analysis of stream flow. The stream flow data for the gauging 
+station  spanning  a  considerable  number  of  years  have  to  be  analysed  in  order  to  assess  water 
+availability in the stream. Usually for irrigation purposes we go for perennial streams hence hydrograph 
+analysis of the stream flow data has to be conducted. The Q80 (80 % dependable flow) is mostly used 
+for design of irrigation schemes and this value is compared to crop water requirements in order to 
+determine the hectarage of the scheme.  
+
+ 
+Page | 47  
+ 
+ 
+5.1.5 CONCLUDING REMARKS 
+The concluding remarks for hydrological analysis of stream data for irrigation scheme development is 
+based on the demand and supply concept. Demand in this case looks at the crop water requirements 
+in  the  fields while supply looks at  the  available  water  in  the  stream.  Hence  by  comparing  Q80 and 
+crop water requirements, one is able to determine the hectarage with which a particular stream will be 
+capable of irrigating. 
+ 
+6 DESIGN FLOOD ESTIMATION  
+Generally, the aim of flood estimation is to develop flood control and prevention measures in order 
+to reduce or prevent flood damage by relating the magnitude of the discharge to the expected return 
+period  and  the  associated  flood  damage. Therefore,  in  the  planning  and  designing  of  hydraulic 
+structures, such as dam, spillway, weir and embankment, one of the main hydrological elements to be 
+estimated is the design flood discharge.  The design flood in Malawi is determined using the Regional 
+Flood  Frequency  Method  and  Rational  Formula  presented  in  the  "Guidelines  for  Peak  Flood 
+Estimation for Design of Culverts and Bridges and Design of Spillway of Dams (GoM, UN, 1987)", 
+"Manual for Hydrological  Design  Guidelines  for  Small  Earth  Dams  in  Malawi (GoM,  DANIDA, 
+1999)", and " Engineering Handbook for Design and Construction of Small and Medium Sized Dams 
+in  Malawi – Hydrological  Analysis  for  Dams  (GoM,  WB,  2019).The  estimation  method  for  design 
+flood discharge is decided based on the catchment area, i.e. 
+➢ For areas greater than 20 km
+2
+; Regional Flood Frequency Method is used, and 
+➢ For areas up to 20km
+2
+; Rational Formula is used. 
+ 
+6.1 REGIONAL FLOOD FREQUENCY METHOD 
+In  case  of  catchment  area  greater  than  20  km
+2
+,  the  design  flood  estimation applied  is  the Regional 
+Flood Frequency  Method.  The  region  for  the  peak  flood  estimation  in  Malawi  is  composed  of  3 
+hydrological regions;  Region  I,  Region  II,  and  Region  III.  Firstly,  the  Consultant  identified  the 
+hydrological region; Region I, Region II and Region III. And then, the Mean Annual Flood (Q
+MAF
+) 
+was calculated by the equation relating the area (km
+2
+) and Q
+MAF
+ (m
+3
+/s) as follows; 
+ 
+- Region I; Q
+MAF
+ = 3.34 x A 
+0.51
+ 
+- Region II; Q
+MAF
+ = 9.57 x A 
+0.45
+ 
+- Region III; Q
+MAF
+ = 15.00 x A 
+0.55
+ 
+ 
+The characteristics of the 3 hydrological regions and their demarcation for design flood estimation 
+are presented in Table 6-1 and Figure 19 respectively.  
+ 
+ 
+
+ 
+Page | 48  
+ 
+Table 6-1: Hydrological regions 
+Region  Description 
+I 
+Plateau areas of Central and Northern regions with flat and undulating catchments 
+with dambos. Mean annual runoff is below 200mm and mean annual rainfall is up 
+to about 1,000mm. 
+II 
+All the lakeshore areas, all the escarpments and highlands, Misuku hills, Nyika, 
+Viphya, Dedza, Kirk range, Zomba plateau, Shire highlands and leeward side of the 
+Mulanje mountains. 
+III 
+Windward side of the Mulanje mountains, up to the confluence of the Thuchila 
+tributary 
+ 
+ 
+Figure 25: Demarcation of 3 hydrological regions 
+
+ 
+Page | 49  
+ 
+The design flood by the return period (Q
+T
+) is calculated by multiplying the flood ratio according to 
+T-year return period using the estimated Q
+MAF
+. The growth factors for various return periods of the 
+3 regions are also presented in  
+ 
+Table 6-2: Growth factors for return periods 
+Region Growth Factors for Return Period (yrs) 
+2 5 10 20 50 100 200 500 1000 
+I 0.90 1.51 1.94 2.35 2.88 3.27 3.68 4.21 4.60 
+II 0.90 1.50 1.92 2.32 2.83 3.21 3.62 4.14 4.50 
+III 0.90 1.43 1.76 2.10 2.51 2.82 3.14 3.51 3.89 
+ 
+6.2 RATIONAL METHOD 
+In case of catchment area up to 20 km
+2
+, the design flood estimation method employed is the Rational 
+Formula. Generally, the Rational Formula is used for small scale basin, the design flood estimation 
+using Rational Formula is calculated as follows. 
+Q
+T
+ = 0.2778 * C * I
+T
+* A 
+where; Q
+T
+ = T-year flood (m
+3
+/s) 
+C = Runoff Coefficient 
+I
+T
+ = Intensity of Rainfall (mm/hr) 
+A= Catchment Area (km
+2
+) 
+ 
+The runoff coefficient of the catchment is calculated by summing up 3 factors; (i) vegetation factor 
+(C1), (ii) soil type and drainage factor (C2), and (iii) slope factor (C3). C1, C2 and C3 are determined 
+by multiplying the given values by the proportion of the catchment that falls within each described 
+category and then determining the total. The value of runoff coefficient calculation by each type is 
+presented in the Table 6.5-3. 
+ 
+C Description  Value 
+ 
+ 
+C1 
+Thick bush 0.05 
+Heavy grass  0.10 
+Scrub or medium glass  0.15 
+Cultivated land 0.20 
+Bare or eroded land  0.25 
+ 
+ 
+ 
+C2 
+Deep well drained soil  0.10 
+Deep moderately drained soil  0.20 
+Soil of fair permeability and depth 0.25 
+Shallow soil with impeded drainage 0.30 
+Medium – heavy clay soil or rocky surface 0.40 
+Impervious surface and water-logged soil  0.50 
+
+ 
+Page | 50  
+ 
+ 
+ 
+C3 
+Very flat or gentle slope (<5 %) 0.05 
+Moderate (5~8 %) 0.10 
+Rolling (8~12 %) 0.15 
+Hilly or steep (12~20 %) 0.20 
+Mountainous (>20) 0.25 
+ 
+The weighted runoff coefficient for any given category is calculated by the following formula; 
+ 
+퐶
+퐶
+= 
+∑
+퐴
+푖
+∗퐶
+푖
+∑
+퐴
+푖
+ 
+Where; 
+C
+c
+ = Weighted runoff coefficient   
+A
+i
+ = Area of a specific C factor  
+ 
+Take note that to determine the overall runoff coefficient, weighted C factors for each category i.e 
+vegetative, soil and soil factors have to be determined. The C factors are then added up to produce 
+the final runoff coefficient incorporating all the factors.  
+ 
+The  intensity  of  rainfall  with  return  period  T  years  is  calculated  in  consideration  of  the  time  of 
+concentration (Tc) for the catchment. The Tc for the catchment in hours is estimated by the Kirpich 
+equation below; 
+ 
+Tc = (0.87*L
+2
+/1000S
+avg
+)
+0.385
+ 
+ 
+Where; 
+L = maximum length of flow in the catchment (m) 
+Sg = catchment gradient 
+ 
+Estimation  of  the  slope  of  the  longest  stream is  done  using the  10-85  method,  upstream  of  the 
+embankment up  to  the  catchment’s  boundary.  A  contour  map  is  essential  for  this and  some 
+extrapolation may be required where contour intervals are large. 
+ 
+ 
+
+ 
+Page | 51  
+ 
+ 
+ 
+Figure 26: Procedure for estimation of slope 
+ 
+The average slope is calculated using the following formula 
+S
+avg
+ = (H
+0.85L 
+– H
+0.10L
+)/750L  
+Where: 
+Sav = average main watercourse slope (m/m) 
+L = length of main watercourse (km) 
+H
+0.85L
+ = height (m) of main watercourse at length of 0.85*L 
+H
+0.10L 
+= height (m) of main watercourse at length of 0.10*L 
+
+ 
+Page | 52  
+ 
+ 
+Figure 27: Rainfall intensity zones in Malawi (Shela 1990) 
+
+ 
+Page | 53  
+ 
+Table 3: Rainfall intensities for zones for various return periods (amended from Shela, 
+1990) 
+ 
+
+ 
+Page | 54  
+ 
+6.2.1.1 Example 10  
+The  figure  below  shows  the  delineated  catchment  for  Mwenilondo  Irrigation  scheme.  The  scheme 
+belongs to region II of the 3 hydrological regions. Determine the 5, 10, 20, 50, 100, 200, 500 and 1000 
+return periods for the peak flood.  
+ 
+ 
+ 
+6.2.1.2 Example 11 
+A  box  culvert  at  Khwidzi  village  is  to  be  designed  based  on  a  peak  rainfall  intensity  of 50  years 
+corresponding to 18.7 cm/hr. The catchment area for the culvert point has been determined to be 15 
+km
+2
+ with thick bush, cultivated land and bare ground having areas of 4.5 km
+2
+, 3.75 km
+2
+ and 6.75 km
+2
+. 
+Assuming the coefficient values for thick bush, cultivated land and bare ground are 0.05, 0.2 and 0.25 
+respectively.  
+i. Determine the weighted runoff coefficient with regards to the vegetative factors  
+ii. Determine  the  flow  corresponding  to  50  years  return  period  that  could  pass  through  the 
+culvert location assuming the C2 and C3 are considered not to significantly affect the flow.  

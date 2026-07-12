@@ -1,0 +1,370 @@
+
+
+PRINCIPLES OF SEED SCIENCE 
+(SSY32201)
+KandodoIsaac Maganga
+Crop and Soil Sciences Department
+kmaganga@luanar.ac.mw
+
+FLORAL BIOLOGY AND 
+POLLINATION
+Monday, 13 
+November 2023
+2
+
+FLORAL BIOLOGY AND POLLINATION
+•Flowerstructure,modesofreproductionand
+mechanismsgoverningcross-andself-pollination
+•Importantforreproductionofcropplants.
+•Plantgrowthinmeristemswherecelldivisionand
+elongationoccur
+•Tissuesproduceddevelopintospecificparts.
+•Vegetativemeristemsstems,leaves,androots,
+•Reproductivemeristemsfloralorgansfruitsand
+seeds.
+•Inmostannuals,thisisattheendofthelifecycle.
+•Inperennials,itisaperiodicphenomenon
+Monday, 13 
+November 2023
+3
+
+FLORAL INDUCTION
+•AProcessintheplantwherebytheshootapical
+meristembecomescompetenttodevelopflowers(Fanetal.,
+2018)
+•Aphysiologicalchangeinaplantthatpermitsthe
+developmentofreproductiveprimordia(Copelandetal,
+2001)
+•Drivenbybiochemicalchangesattheapexcaused
+bycytokinins.
+•Plantdoesnotfloweruntilaftersubstantialvegetative
+growthhasoccurred.
+•Reproductiveprocessesrequiretremendousenergy
+Monday, 13 
+November 2023
+4
+
+EXTERNAL AND INTERNAL STIMULI 
+THAT TRIGGER FLORAL INDUCTION
+1.Temperature
+•Someplantsrequireexposuretolowtemperaturesforfloral
+induction(vernalization)
+•Rye(Secalecereale),ryegrass(Loliumperenne),Sugar
+beetsandcarrots
+•Tomatorequiresrepeatedexposuretolownight
+temperatures,separatedbyperiodsofhighertemperature
+(thermoperiodism)
+Monday, 13 
+November 2023
+5
+
+EXTERNAL AND INTERNAL STIMULI THAT 
+TRIGGER FLORAL INDUCTION
+2.Day-LengthStimuli
+•Floral induction in response to day length (photoperiodism)
+Table1:PhotoperiodicResponsesofSomeAgricultural
+Species(Copelandetal2001)
+Monday, 13 
+November 2023
+6
+Short Day PlantsDay-Neutral 
+Plants
+Long-Day Plants
+SoybeanPotatoOats
+RiceSunflowerRyegrass
+MaizeTobaccoRed clover
+CoffeeSpinach
+Radish
+
+EXTERNAL AND INTERNAL STIMULI 
+THAT TRIGGER FLORAL INDUCTION
+3.Phytochrome.
+•Light-receptivesubstanceinplants
+•Responsibleforplantresponsestolight:Flowering,seed
+germination,buddormancy,stemelongation
+•Twophotoreversibleformsofphytochrome:
+•P
+R
+:receptivetoredlight(600-680nm)
+•P
+FR
+:receptivetofar-redlight(700-760nm)
+•TheconversionfromP
+FR
+toP
+R
+phytochrometakesplacein
+thedark.
+Monday, 13 
+November 2023
+7
+
+EXTERNAL AND INTERNAL STIMULI THAT 
+TRIGGER FLORAL INDUCTION
+4.ChemicalStimuli
+•Cytokinins,ethylene,acetylene,indoleaceticacidcause
+floralinduction
+•Gibberellicacidpromotesfloweringoflong-dayplantsheld
+undershort-dayconditions;inhibitsfloweringofshort-day
+plantsunderthesameconditions.
+•Syntheticchemicalssprayedtocropstopromoteflowering
+e.g.2,3,5-triiodobenzoicacid,2,4-dichlorophenoxyacetic
+acid(2,4-D).
+•Maleichydrazideinhibitsflowering.
+Monday, 13 
+November 2023
+8
+
+EXTERNAL AND INTERNAL STIMULI THAT 
+TRIGGER FLORAL INDUCTION
+5.NutritionalStatus
+•Constructionofthefloweringpartsisdependentonfood
+availabilityandtranslocation.
+•Intomatoes,carbohydratedeficienciescausemicrospore
+degeneration,leadingtopollensterility
+Monday, 13 
+November 2023
+9
+
+
+
+FLORAL INITIATION
+•Themorphological
+expressionoftheinduced
+floweringstate.
+•Usuallyoccursdeeplywithin
+themeristemsofaplant.
+•Inmonocotyledonous
+species,floralinitiation
+beginsinspecialized
+meristemscalled
+dermatogens,
+•Indicotyledonousspecies
+floralinitiationoccursinthe
+lateral,terminal,oraxillary
+buds.
+Monday, 13 
+November 2023
+11
+
+FLORAL MORPHOLOGY
+•Thetypicalfloweriscomposed
+ofpetals,sepals,stamens,and
+apistil.
+•Thepetalscorolla.
+•Sepalscalyx.
+•Stamens(antherand
+filament):themalepart
+•Pistil(stigma,thestyle,and
+theovary):thefemalepart
+•Pericarp:Theoutermostwall
+oftheovary
+Monday, 13 
+November 2023
+12
+
+FLORAL MORPHOLOGY
+•Simpleovary:contains
+onecarpel
+•Compound
+ovary:madeupoftwo
+ormoreunitedcarpels
+Monday, 13 
+November 2023
+13
+
+FLORAL MORPHOLOGY
+•Completeflowers:havepistils,
+stamens,petals,andsepals.
+•Incompleteflowers:lackanyofthe
+fourparts.
+•Flowerswithbothstamens(male)
+andpistils(female)aretermed
+perfect;
+•Unisexualflowers,eitherpistillate
+orstaminate,arecalledimperfect.
+•Specieswithbothmaleandfemale
+flowersonthesameplantcalled
+monoeciousegmaize
+•Specieswithunisexualflowerson
+differentplantspawpaware
+dioeciousegpawpaw
+Monday, 13 
+November 2023
+14
+
+
+
+POLLINATION AND FERTILIZATION
+
+POLLEN FORMATION
+•Pollenisproducedinfoursacs(microsporangia)ofthe
+anther
+•Microsporemothercellsinthesporangiaundergomeiosis
+(microsporogenesis)toproducefourmicrospores
+•Microsporesarehaploid(1N).
+•Eachofthefourmicrosporesundergoestwomitotic
+divisions(microgametogenesis)
+•Tubecellandgenerativecellareformedwithinthewallof
+themicrosporetoproducematurepollengrain
+(microgametophyte)
+Monday, 13 
+November 2023
+17
+
+POLLEN FORMATION
+Pollenformationandgermination(Copelandetal.,2001)
+Monday, 13 
+November 2023
+18
+
+OVULE FORMATION
+•Megagametogenesisisthedevelopmentofthefemale
+gametophyte,(embryosac)frommegaspore
+•Threesuccessivenucleardivisionseighthaploid(1N)
+nuclei.
+•Thenucleiarrangethemselveswithinembryosac:
+•threeantipodalcellsatoneend
+•twopolarnuclei(withoutcellwalls)nearthecentre
+•theeggapparatus(oneeggbetweentwosynergidcells)at
+theotherend.
+•Thetwopolarnucleifusetoformadiploid(2N)nucleus
+Monday, 13 
+November 2023
+19
+
+OVULE FORMATION
+Megagametogenesis:(A)threemitoticnucleardivisions
+(B)maturefemalegametophyte.(Copelandetal.,2001)
+Monday, 13 
+November 2023
+20
+
+
+
+POLLINATION
+•Anthesis:Theperiodwhenthestigmaisreadytoreceive
+pollen
+•Pollination:thetransferofpollenfromtheanthertostigma.
+•Aidedbyair,water,insectsandotheranimals.
+•Thepollengraingerminatesonstigmaproducingapollen
+tubeintothestyleuptotheovary
+•Thenucleusofthetubemovesdowntothetipofthepollen
+tube.
+•Thegenerativecellalsopassintothetubeanddividetoform
+twomalegametes.
+Monday, 13 
+November 2023
+22
+
+
+
+FERTILIZATION
+•Thefusionofmaleandfemale
+gametes
+•Duringdoublefertilization,one
+ofthetwomalegametesfuses
+withtheeggcelltoform
+embryowhiletheothercell
+combineswiththepolarnuclei
+toformtheendosperm(3N)
+•Thegrowingovuleis
+transformedintoaseed.
+Monday, 13 
+November 2023
+24
+
+MODES OF POLLINATION
+•Selfpollination
+•Pollen from the anthers is transferred to the stigma of the 
+same flower, resulting in fertilization. 
+•Crosspollination
+•Pollen from anthers is transferred to the stigma of another 
+flower to cause fertilization. 
+•The flowers can be on the same or different plants. 
+•Usually by wind (anemophily) or insects (entomophily). 
+
+.
+SELF POLLINATED CROPS
+•Homozygous for most traits
+•Insignificant inbreeding depression
+
+MECHANISMS PROMOTING SELF POLLINATION
+•Presenceofmaleandfemaleorgansinthesameflower.
+•Maturationofanthersandstigmaatthesametime
+•Pollinationandfertilizationoccurinaclosedfloweregrice,
+wheat,barleyandoats.
+•Stigmassurroundedbyanthersegintomato,greengram,
+blackgram,soybean,chickpeaandpea.
+
+EXAMPLES OF SELF POLLINATED CROPS
+•Commonbeans
+•Rice
+•Cowpea
+•Soybean
+•Groundnut
+•Wheat
+•Barley
+•Oats
+•Tomato
+•Greengram
+•Blackgram
+•Chickpea
+•Peas
+
+.
+b. CROSS POLLINATED CROPS
+•Heterozygous for most traits
+•Significant inbreeding depression
+
+MECHANISMS PROMOTING CROSS POLLINATION
+•Unisexual flowers
+•Maize and cassava  vs pawpaw and hemp
+•Maturation of anthers and stigma at different times eg
+maize, sugarbeet.
+•Styles and filaments differ length eglinseed.
+•Hylinemembrane around the anther egalfalfa
+•Self-incompatibility egbrassica, tobacco
+•Male sterility
+
+EXAMPLES CROSS POLLINATED CROPS
+.
+•Maize
+•Tobacco
+•Grapes
+•Pawpaw
+•Pigeonpea
+•Sugarbeet
+•Cotton
+•Cassava
+•Hemp
+•Alfalfa
+•Linseed
+•Brassica
+
+SIGNIFICANCE OF MODE OF 
+POLLINATION IN SEED PRODUCTION
+Itinfluencesminimumisolationdistancerequired
+duringseedmultiplicationofaparticularcropto
+avoidgeneticcontamination
+
+ISOLATION DISTANCES FOR SEED 
+PRODUCTION OF DIFFERENT CROPS
+MODE OF 
+POLLINATION
+CROPISOLATION DISTANCE (m)
+Basic SeedCertified Seed
+Self-pollinatedRice255
+Commonbeans105
+Groundnut105
+Soybean105
+Cowpea105
+Crosspollinated/
+Oftencrosspollinated
+MaizeHybrid720400
+MaizeOPV400200
+SorghumOPV400200
+Pigeonpea400200
+Tobacco800400
+Cotton200100
+

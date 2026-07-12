@@ -1,0 +1,317 @@
+
+
+Contract Law and Quantity 
+Surveying
+TOPIC 4
+MEASUREMENTS 
+AND 
+BILLS OF QUANTITIES
+
+WhatisaBillofQuantities?
+•ABillofQuantities(BOQ)isadescriptivelist
+ofeachitem/materials/workshavingan
+estimateofquantities,unitcostandtotalcost.
+•Thequantitiesanddescriptionofworksarederived
+fromdrawingsandspecifications.
+•Abillofquantities(BOQ)ismostofthetimes
+preparedbyaQuantitySurveyor/Engineer.
+•Checkthetablepresentedinthenextslide
+
+ItemQuantityUnitUnit CostTotal Cost
+Presentationof a BOQ
+
+FunctionsofaBOQ
+ABOQservesthefollowingfunctions:
+•Itformsabasisfortendercomparison
+•Toprovidesufficientinformationonthe
+quantitiesofthematerials/worksexpectedtobe
+carriedout.
+•Itprovidesabasisformakingprogresspayments
+(estimatingtheworkdoneforissuingthe
+contractors’payments)
+•Itcanbeusedasareferenceforcasesof
+adjudication.
+
+PreparationofBOQ:
+Therearethreestagesinthepreparationofa
+BOQ.
+•Takingoffquantities
+•Abstracting,orgatheringsimilaritems.
+•WritingtheBill
+
+Taking–OffQuantities
+•Thisreferstodeterminingthequantityof
+workexpectedtobecarriedout.Itisdoneby
+takingmeasurementsfromdrawings.
+•Dimensionsarescaledofffromdrawingsand
+enteredinarecognizedform(valuesaremostly
+expressedtotwodecimalplaces).
+•Thedimensionsmustberecordedintheorder
+of:-
+Length,
+Widthorbreadth,
+Depthorheight.
+
+ToolsforTaking–OffQuantities:
+Therearetwobasictoolsthatwillberequiredin
+takingoffquantities:-
+•DimensionPaper
+•Asetofdrawings
+
+Dimension Paper
+A Standard Dimension Paper has four columns.
+•Timesing Column 
+•Dimension Column
+•Squaring Column
+•Description column
+
+1234
+Timesing
+Column
+Dimension
+Column
+Squaring
+Column
+DescriptionColumn
+
+TimesingColumn
+•Thiscolumnshowshowmanytimesthe
+dimension(measureditem)hasbeenrepeated.
+DimensionColumn
+•Thiscolumnistheoneinwhichthe
+dimensionsfromthedrawingsareentered.
+•Thedimensionsareenteredintheorderof
+length,width,anddepth.
+
+SquareColumn
+•Thisisthecolumninwhichtheoutputofthe
+figuresincolumn1and2isrecorded.
+•Themainoutputforaparticularitemis
+placedabovethedoubleline.
+Descriptioncolumn
+•Thiscolumngivesadescriptionoftheitem
+beingmeasured.
+•Afewmajorpointsshouldbeunderstoodat
+thisstagetoassistincomingupwithgood
+description
+
+Descriptioncolumncont........................
+•Statethenatureoftheitemassoonas
+possible.Itisboringtogothroughalong
+description,onlytofindanimportant
+componentinthelastfewwords.
+•Ifdimensionsaregiveninthedescription,
+theyshouldgenerallybeinthesequenceoflength,
+widthandheight.
+
+APPLICATIONOFBILLSOFQUANTITIES
+Example:
+Acommercialfarmerhasapieceoflandthatisfeasiblefor
+micro-sprinklerirrigationsystem.Thedrawingsandlayoutof
+theproposedsystemhavealreadybeenproduced.There
+willbeamainpumpwhichwillpumpwaterintoatank.To
+increaseandmaintainappropriatepressureinthesystem,a
+boosterpumpwillalsobeincorporated.Thesiteareais0.11
+ha.Supposeyouhavebeenconsultedtoassisthimin
+estimatingtherightquantitiesofrequiredmaterialsandrelevant
+cost,usingthedesigndrawingsavailable,estimatethetotal
+costrequiredtosetupthesystemwiththehelpofdetailedBill
+ofQuantities(BOQ).Detailsofunitcostsofvarious
+materialsarepresentedinthenextslide:
+
+Activity/MaterialUnit Cost (MK)
+Site clearance (ha)15000
+Ploughing (ha)30000
+Hallowing (ha)20000
+Land leveling (ha)18000
+Main pump (5 Hp)500000
+Booster pump (1.5 Hp)250,000
+Suction Pipe (50 mm)500
+Flexible delivery pipe (50 mm)500
+Excavation and Back filling (m
+3
+)2000
+Cement(bags)7000
+Sand (tonnes)10000
+Coarse aggregates(tonnes)15000
+Bricks5
+Tank (10000 litres)450000
+Filters15000
+Mainline (50 mm)500
+Laterals (LDPE, 16 mm)300
+Micro sprinkler plus plastic stake720
+Valve (50 mm)3000
+Valves (16 mm)800
+Elbows (50 mm)3000
+Labour for installation work60000
+Transport Cost80,000
+
+•Thesuctionpipewillbe8m(includean
+additionallengthof5%)
+•Thedeliverypipewillbe20m(includean
+additionallengthof5%)
+•Productionoftherequiredconcretewillbe
+basedonastandardratioof1:3:3.Forthe
+volumeofconcreteexpectedtobeproduced,
+include10%tocaterforwastage
+•Onthevolumeoffineaggregatesdetermined,
+includeanadditional10%tocaterforthe
+mortartobeusedduringbrickwork
+
+•Onthevolumeofcementdetermined,include
+anadditional10%tocaterforthemortartobe
+usedduringbrickwork
+•Formainlineandlaterals’lengthincludean
+additionallengthof5%
+•Alsoincludeacontingencyof10%when
+comingupwiththeGrandTotal
+•Forbricks,consider........brickstocovera
+surfaceareaof1m
+2
+(includeinformationon
+bricksize)
+
+Layout of  the system
+Control valve
+End Cap
+Mainline
+(50 mm)
+Screen Filter
+Lateral(16 mm)
+Tank stand (2 m in height)
+Storage Tank (10000 litres)
+Legend
+8.5 m
+Open Well
+Main Pump
+Booster Pump
+Micro-sprinkler
+2
+1
+ 
+m
+3
+.
+5
+ 
+m
+3
+.
+5
+ 
+m
+4
+.
+2
+ 
+m
+14 m14 m
+
+CROSS-SECTION
+PLAN VIEW
+700700
+3700
+3
+5
+0
+4
+0
+0
+2
+0
+0
+0
+2
+0
+0
+3
+0
+0
+2
+6
+0
+0
+300300
+
+
+
+
+
+Taking off  Quantities with the help of  
+Centreline
+•Fromthedrawing,theCentrelineisidentified
+andappliedincalculations.Inthosesections
+wheretheCentrelinecannotbeapplied,
+previousconceptsalreadydiscussedshouldbe
+applied.
+
+Examples of  sections where the 
+Centreline approach can be applied
+TimesingDimensionSquaringDescription
+8.50
+Excavation (Part A, B & C)
+0.70
+Volume: 8.50m x 0.70m x 0.75m 
+0.754.46
+Total volume of  excavation (Part A, B & C)
+8.50
+Foundation concrete (Part A, B & C)
+0.70
+Volume: 8.50m x 0.70m x 0.35m 
+0.352.08
+Total volume of  foundation concrete (Part A, B & C)
+
+Abstracting(gathering similar items)
+MATERIALS/ITEM/WORKTOTAL
+ExcavationVolume: 4.46m
+3
+ConcreteVolume: 4.32m
+3
+Brickwork
+Surface area: 
+19.58m
+2
+BackfillingVolume:1.32m
+3
+
+ITEMQUANTITYUNITUNIT COST(MK)TOTAL(MK)
+Site preparation
+Site clearanceha15,000 
+Ploughingha30,000 
+Hallowingha20,000 
+Land levellingha18,000 
+Earthworks
+Excavationm
+3
+2,000 
+Backfillingm
+3
+2,000 
+Concrete, Mortar and Brickwork
+Cementbags7,000 
+Fine aggregatestonnes10,000 
+Coarse aggregatestonnes15,000 
+BricksNo.5 
+Water storage facilities
+Plastic tank (capacity: 10,000 litres)No.450,000 
+Pumping
+Main pump (5 hp)No.500,000 
+Booster pump (1.5 hp)No.250,000 
+Pipelines
+Suction pipe (50mm)m500 
+Flexible delivery pipe (50mm)m500 
+Mainline (50mm)m500 
+Lateral (LDPE, 16mm)m300 
+Fittings, filters and micro sprinklers
+Valves (50mm)No.3,000 
+Valves (16mm)No.800 
+Elbow (50mm)No.3,000 
+FilterNo.15,000 
+Micro-sprinkler plus plastic stakeNo.720 
+End capsNo.500 
+Transport and installation
+TransportLampsum80,000 
+InstallationLampsum60,000 
+TOTAL
+CONTINGENCY @ 10%
+GRAND TOTAL

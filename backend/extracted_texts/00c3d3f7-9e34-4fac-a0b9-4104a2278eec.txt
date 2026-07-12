@@ -1,0 +1,610 @@
+
+
+Artificial Intelligence
+Solving Problems by Searching
+
+Introduction
+•In solving problems by searching, an agent looks ahead to find a sequence of  
+actions that will eventually achieve its goal.
+
+Problem Solving Agents
+
+Problem Solving Agents
+•A problem-solving agent is an agent that considers a sequence of  actions 
+that form a path to a goal state when the correct action to take is not 
+immediately obvious.
+•The computational process the agent undertakes is called search.
+•Let’s look at an example.
+•In the map shown in the next slide, imagine an agent is in the city of  Arad 
+and wants to travel to Bucharest. 
+
+Problem Solving Agents
+
+Problem Solving Agents
+•The agent can follow this four-phase problem-solving process:
+•Goal formulation: The agent adopts the goal of  reaching Bucharest.
+•Problem formulation: Formulation of  a problem to achieve a goal is called a model. 
+The agent devises a description of  the states and actions necessary to reach the goal. 
+For our agent, one good model is to consider the actions of  traveling from one city to 
+an adjacent city, and therefore the only fact about the state of  the world that will change 
+due to an action is the current city.
+
+Problem Solving Agents
+•Search: Before taking any action in the real world, the agent simulates sequences of  
+actions in its model, searching until it finds a sequence of  actions that reaches the goal. 
+Such a sequence is called a solution. The agent might have to simulate multiple 
+sequences that do not reach the goal, but eventually it will find a solution (such as going 
+from Arad to Sibiu to Fagarasto Bucharest), or it will find that no solution is possible.
+•Execution: The agent can now execute the actions in the solution, one at a time.
+
+Search problems and solutions
+
+Search problems and solutions
+•State space: A set of  possible states that the environment can be in. The 
+state space can be represented as a graph in which the vertices are states 
+and the directed edges between them are actions. The state space describes 
+the (possibly infinite) set of  states in the world, and the actions that allow 
+transitions from one state to another.
+•Initial state: is the state that the agent starts in
+
+Search problems and solutions
+•Goal test: checking if  the state is a goal state. There can be one goal state, a small 
+set of  alternative goal states, or the goal is defined by a property that applies to 
+many states (potentially an infinite number). We can account for all three of  these 
+possibilities by specifying an IS-GOAL method for a problem.
+•Actionsare choices that can be made in a state. Given a state s, ACTIONS(s) 
+returns a finite set of  actions that can be executed in s. We say that each of  these 
+actions is applicable in s.
+•Transition model-describes what state results from performing any applicable 
+action in each state. RESULT(s, a) returns the state that results from doing action a
+in state s.
+
+Search problems and solutions
+•Action cost function, denoted by ACTION-COST(s, a, s′) gives the numeric cost 
+of  applying action ain state sto reach state s′. For example, for route-finding 
+agents, the cost of  an action might be the length in miles, or it might be the time it 
+takes to complete the action.
+•We assume that action costs are additive; that is, the total cost of  a path is the sum 
+of  the individual action costs. An optimal solution has the lowest path cost among 
+all solutions.
+•A sequence of  actions forms a path, and a solutionis a path from the initial state 
+to a goal state.
+
+Search Algorithms
+
+Search Algorithms
+•A search algorithm takes a search problem as input and returns a solution, 
+or an indication of  failure.
+•To learn about search algorithms, we will consider algorithms that 
+superimpose a search tree over the state space graph, forming various 
+paths from the initial state, trying to find a path that reaches a goal state.
+•Each node in the search tree corresponds to a state in the state space and the 
+edges in the search tree correspond to actions.
+
+Search Algorithms
+•The root of  the tree corresponds to the initial state of  the problem.
+•We can expand a node, by considering the available ACTIONS for that state, 
+using the RESULT function to see where those actions lead to, and 
+generating a new node (called a child node or successor node) for each of  
+the resulting states. Each child node has a parent node.
+
+Search Algorithms
+•A search tree describes paths between these states, reaching towards the 
+goal. The search tree may have multiple paths to (and thus multiple nodes 
+for) any given state, but each node in the tree has a unique path back to the 
+root (as in all trees).
+•The frontieris the set of  nodes (and corresponding states) that have been 
+reached but not yet expanded.
+•Any state that has had a node generated for it has been reached(whether or 
+not that node has been expanded)
+
+Search data structures
+
+Search data structures
+•Search algorithms require a data structure to keep track of  the search tree. A 
+node in the tree is represented by a data structure with four components:
+•node.STATE: the state to which the node corresponds;
+•node.PARENT: the node in the tree that generated this node;
+•node.ACTION: the action that was applied to the parent’s state to generate this node;
+•node.PATH-COST: the total cost of  the path from the initial state to this node. In 
+mathematical formulas, we use g(node) as a synonym for PATH-COST.
+
+Search data structures
+•Following the PARENT pointers back from a node allows us to recover the states 
+and actions along the path to that node. Doing this from a goal node gives us the 
+solution.
+•The appropriate data structure to store a frontier is a queue of  some kind, because 
+the operations on a frontier are:
+•IS-EMPTY(frontier) returns true only if  there are no nodes in the frontier.
+•POP(frontier) removes the top node from the frontier and returns it.
+•TOP(frontier) returns (but does not remove) the top node of  the frontier.
+•ADD(node, frontier) inserts node into its proper place in the queue.
+
+Search data structures
+•Three kinds of  queues are used in search algorithms:
+•A priority queue first pops the node with the minimum cost according to some evaluation 
+function, f. It is used in best-first search.
+•A FIFO queue or first-in-first-out queue first pops the node that was added to the queue 
+first; it is used in breadth-first search.
+•A LIFO queue or last-in-first-out queue (also known as a stack) pops first the most recently 
+added node; it is used in depth-first search.
+•The reached states can be stored as a lookup table (e.g. a hash table) where each key 
+is a state and each value is the node for that state.
+
+Redundant Paths
+•The search tree shown below includes a path from Arad to Sibiu and back to 
+Arad again.
+
+Redundant Paths
+•We say that Arad is a repeated state in the search tree, generated in this case 
+by a cycle (also known as a loopy path).
+•So even though the state space has only 20 states, the complete search tree is 
+infinite because there is no limit to how often one can traverse a loop.
+•A cycle is a special case of  a redundant path. For example, we can get to 
+Sibiu via the path Arad–Sibiu (140 miles long) or the path Arad–Zerind–
+Oradea–Sibiu (297 miles long).
+
+Redundant Paths
+•The second path is redundant—it’s just a worse way to get to the same 
+state—and need not be considered in our quest for optimal paths.
+•We call a search algorithm a graph search if  it checks for redundant search 
+paths and a tree-like search if  it does not check.
+
+Measuring problem-solving performance
+•We can evaluate an algorithm’s performance in four ways:
+•Completeness: Is the algorithm guaranteed to find a solution when there is one, and to 
+correctly report failure when there is not?
+•Cost optimality: Does it find a solution with the lowest path cost of  all solutions?
+•Time complexity: How long does it take to find a solution? This can be measured in 
+seconds, or more abstractly by the number of  states and actions considered.
+•Space complexity: How much memory is needed to perform the search?
+
+Measuring problem-solving performance
+•To understand completeness, consider a search problem with a single goal.
+•That goal could be anywhere in the state space; therefore a complete 
+algorithm must be capable of  systematically exploring every state that is 
+reachable from the initial state.
+•In finite state spaces that is straightforward to achieve: as long as we keep 
+track of  paths and cut off  ones that are cycles (e.g. Arad to Sibiu to Arad), 
+eventually we will reach every reachable state.
+
+Search Strategies
+•Search algorithms can be classified into two types: Uninformed search and 
+Informed Search.
+
+Search Strategies
+
+Search Strategies
+•Uninformed search algorithms: explores the search space without having 
+any information about the problem other than its definition.
+•Examples:
+•Breadth First Search
+•Depth First Search
+•Depth Limited Search
+•Iterative Deepening Search
+
+Search Strategies
+•Informed search algorithms: The algorithms leverage any information (heuristics, 
+path cost) on the problem to search through the search space to find the solution 
+efficiently.
+•Examples:
+•Best First Search
+•Uniform Cost Search
+•A* Search
+•Recursive Best First Search
+
+Best-First Search
+
+Best-First Search
+•Best-First algorithm chooses a node non the frontier with minimum value 
+of  evaluation function f(n), return it if  its state is a goal state, and otherwise 
+apply EXPAND to generate child nodes.
+•Each child node is added to the frontier if  it has not been reached before, or 
+is re-added if  it is now being reached with a path that has a lower path cost 
+than any previous path.
+•The algorithm returns either an indication of  failure, or a node that 
+represents a path to a goal.
+
+Best-First Search
+
+Best-First Search
+
+Uninformed Search Strategies
+The algorithm is given no clue about how close a state is to the 
+goal(s).
+
+Breadth-first search
+
+Breadth-first search
+•In breadth-first search, the root node is expanded first, then all the 
+successors of  the root node are expanded next, then their successors, and so 
+on.
+•We use a first-in-first-out queue to determine the correct order of  nodes to 
+expand: new nodes (which are always deeper than their parents) go to the 
+back of  the queue, and old nodes, which are shallower than the new nodes, 
+get expanded first.
+
+Breadth-first search
+•Figure below shows the progress of  a breadth-first search on a binary tree.
+•At each stage, the node to be expanded next is indicated by the triangular 
+marker
+•Below is the algorithm for breadth-first search.
+
+Breadth-first search
+
+Breadth-first search
+
+Breadth-first search
+•Breadth-first search always finds a solution with a minimal number of  
+actions, because when it is generating nodes at depth d, it has already 
+generated all the nodes at depth d -1, so if  one of  them were a solution, it 
+would have been found.
+•It is cost-optimal for problems where all actions have the same cost, but not 
+for problems that don’t have that property.
+•It is complete in either case.
+
+Breadth-first search
+•In terms of  time and space, imagine searching a uniform tree where every 
+state has bsuccessors.
+•The root of  the search tree generates bnodes, each of  which generates b
+more nodes, for a total of  b
+2
+at the second level. Each of  these generates b
+more nodes, yielding b
+3
+nodes at the third level, and so on.
+•Now suppose that the solution is at depth d. Then the total number of  
+nodes generated is
+•1+b+b
+2
++b
+3
++· · ·+b
+d
+= O(b
+d
+)
+
+Breadth-first search
+•All the nodes remain in memory, so both time and space complexity are 
+O(b
+d
+).
+•The memory requirements are a bigger problem for breadth-first search than 
+the execution time. But time is still an important factor.
+•At depth d = 14, even with infinite memory, the search would take 3.5 years.
+•In general, exponential-complexity search problems cannot be solved by 
+uninformed search for any but the smallest instances.
+
+Depth-first search
+
+Depth-first search
+•Depth-first search always expands the deepest node in the frontier first.
+•It is usually implemented as a tree-like search that does not keep a table of  
+reached states.
+•We use a first-in-first-out queue to determine the correct order of  nodes to 
+expand.
+
+Depth-first search
+•The progress of  the search is illustrated in the figure below for M as a 
+solution node:
+•Search proceeds immediately to the deepest level of  the search tree, where the nodes 
+have no successors.
+•The search then “backs up” to the next deepest node that still has unexpanded 
+successors.
+
+Depth-first search
+
+Depth-first search
+
+Depth-first search
+•Depth-first search is not cost-optimal; it returns the first solution it finds, 
+even if  it is not cheapest.
+•For finite state spaces that are trees it is efficient and complete.
+•In cyclic state spaces it can get stuck in an infinite loop; therefore some 
+implementations of  depth-first search check each new node for cycles.
+•Finally, in infinite state spaces, depth-first search is not systematic: it can get 
+stuck going down an infinite path, even if  there are no cycles. Thus, depth-
+first search is incomplete.
+
+Depth-first search
+•For problems where a tree-like search is feasible, depth-first search has much 
+smaller needs for memory.
+•We don’t keep a reached table at all, and the frontier is very small.
+•For a finite tree-shaped state-space like the one above, a depth-first tree-like 
+search takes time proportional to the number of  states, and has memory 
+complexity of  only O(bm), where bis the branching factor and mis the 
+maximum depth of  the tree.
+
+Depth-first search
+•Some problems that would require exabytes of  memory with breadth-first 
+search can be handled with only kilobytes using depth-first search.
+•A variant of  depth-first search called backtrackingsearch uses even less 
+memory.
+•In backtracking, only one successor is generated at a time rather than all 
+successors; each partially expanded node remembers which successor to 
+generate next.
+
+Depth-first search
+•In addition, successors are generated by modifying the current state 
+description directly rather than allocating memory for a brand-new state.
+•This reduces the memory requirements to just one state description and a 
+path of  O(m) actions; a significant savings over O(bm) states for depth-first 
+search.
+•With backtracking we also have the option of  maintaining an efficient set 
+data structure for the states on the current path, allowing us to check for a 
+cyclic path in O(1) time rather than O(m).
+
+Depth-first search
+•For backtracking to work, we must be able to undo each action when we 
+backtrack.
+•Backtracking is critical to the success of  many problems with large state 
+descriptions, such as robotic assembly.
+
+Depth-limited and iterative 
+deepening search
+
+Depth-limited and iterative deepening search
+•To keep depth-first search from wandering down an infinite path, we can use 
+depth-limited search, a version of  depth-first search in which we supply a 
+depth limit, ℓ, and treat all nodes at depth ℓas if  they had no successors.
+•The time complexity is O(b
+ℓ
+) and the space complexity is O(bℓ).
+•Unfortunately, if we make a poor choice for ℓ the algorithm will fail to reach 
+the solution, making it incomplete again.
+•For most problems we will not know a good depth limit until we have solved 
+the problem.
+
+Depth-limited and iterative deepening search
+•Iterative deepening search solves the problem of  picking a good value for ℓ
+by trying all values: first 0, then 1, then 2, and so on—until either a solution 
+is found, or the depth-limited search returns the failure value rather than the 
+cutoff  value.
+•The algorithm is shown below
+
+Depth-limited and iterative deepening search
+
+Depth-limited and iterative deepening search
+•Iterative deepening combines many of  the benefits of  depth-first and 
+breadth-first search.
+•Like depth-first search, its memory requirements are modest: O(bd) when 
+there is a solution, or O(bm) on finite state spaces with no solution.
+•Like breadth-first search, iterative deepening is optimal for problems where 
+all actions have the same cost, and is complete on finite acyclic state spaces, 
+or on any finite state space when we check nodes for cycles all the way up the 
+path.
+
+Depth-limited and iterative deepening search
+•The time complexity is O(b
+d
+) when there is a solution, or O(b
+m
+) when there 
+is none.
+•Each iteration of  iterative deepening search generates a new level, in the 
+same way that breadth first search does, but breadth-first does this by storing 
+all nodes in memory, while iterative deepening does it by repeating the 
+previous levels, thereby saving memory at the cost of  more time.
+•Figure below shows iterations of  iterative-deepening search on a binary 
+search tree.
+
+Depth-limited and iterative deepening search
+
+Depth-limited and iterative deepening search
+•Iterative deepening search may seem wasteful because states near the top of  
+the search tree are re-generated multiple times.
+•But for many state spaces, most of  the nodes are in the bottom level, so it 
+does not matter much that the upper levels are repeated.
+•In an iterative deepening search, the nodes on the bottom level (depth d) are 
+generated once, those on the next-to-bottom level are generated twice, and 
+so on, up to the children of  the root, which are generated d times.
+
+Depth-limited and iterative deepening search
+•So the total number of  nodes generated in the worst case is
+N(IDS) = (d)b
+1
++(d−1)b
+2
++(d−2)b
+3
+· · ·+b
+d
+,
+•which gives a time complexity of  O(b
+d
+)—asymptotically the same as 
+breadth-first search.
+•For example, if  b = 10 and d = 5, the numbers are
+•N(IDS) = 50+400+3,000+20,000+100,000 = 123,450
+•N(BFS) = 10+100+1,000+10,000+100,000 = 111,110
+
+Bidirectional search
+
+Bidirectional search
+•Bidirectional search algorithms simultaneously searches forward from the 
+initial state and backwards from the goal state(s), hoping that the two 
+searches will meet.
+•The motivation is that b
+d/2 
++ b
+d/2 
+is much less than b
+d
+(e.g., 50,000 times less 
+when b=d=10).
+
+Bidirectional search
+•For this to work, we need to keep track of  two frontiers and two tables of  
+reached states, and we need to be able to reason backwards: if  state s′is a 
+successor of  sin the forward direction, then we need to know that sis a 
+successor of  s′in the backward direction. We have a solution when the two 
+frontiers collide.
+•Although there are two separate frontiers, the node to be expanded next is 
+always one with a minimum value of  the evaluation function, across either 
+frontier.
+
+Bidirectional search
+•The general best-first bidirectional search algorithm is shown below.
+•When a path in one frontier reaches a state that was also reached in the other 
+half  of  the search, the two paths are joined (by the function JOIN-NODES) 
+to form a solution.
+•The first solution we get is not guaranteed to be the best; the function 
+TERMINATED determines when to stop looking for new solutions.
+
+Bidirectional search
+
+Bidirectional search
+
+Bidirectional search
+•We pass in two versions of  the problem and the evaluation function, one in the 
+forward direction (subscript F) and one in the backward direction (subscript B).
+•When the evaluation function is the path cost, we know that the first solution found 
+will be an optimal solution, but with different evaluation functions that is not 
+necessarily true.
+•Therefore, we keep track of  the best solution found so far, and might have to 
+update that several times before the TERMINATED test proves that there is no 
+possible better solution remaining.
+
+Informed (Heuristic) Search 
+Strategies
+
+Informed (Heuristic) Search Strategies
+•An informed search strategy uses domain-specific hints about the location of  
+goals to find solutions more efficiently
+•The hints come in the form of  a heuristic function, denoted h(n):
+•h(n) = estimated cost of  the cheapest path from the state at node nto a goal 
+state.
+
+Greedy best-first search
+
+Greedy best-first search
+•Greedy best-first search is a form of  best-first search that expands first the 
+node with the lowest h(n) value—the node that appears to be closest to the 
+goal—on the grounds that this is likely to lead to a solution quickly.
+•So the evaluation function f  (n) = h(n).
+•Figure below shows the values of  h
+SLD
+—straight-line distances to Bucharest.
+
+Greedy best-first search
+
+Greedy best-first search
+•The figure below shows the progress of  a greedy best-first search using the 
+straight line distance heuristic (h
+SLD
+) to find a path from Arad to Bucharest.
+
+Greedy best-first search
+
+Greedy best-first search
+
+Greedy best-first search
+•Greedy best-first graph search is complete in finite state spaces, but not in 
+infinite ones.
+•The worst-case time and space complexity is O(|V|).
+•With a good heuristic function, however, the complexity can be reduced 
+substantially, on certain problems reaching O(bm).
+
+A∗search
+
+A∗search
+•A∗search is the best-first search that uses the evaluation function
+f (n) = g(n)+h(n)
+•where g(n) is the path cost from the initial state to node n, and h(n) is the 
+estimated cost of  the shortest path from nto a goal state, so we have
+f (n) = estimated cost of the best path that continues 
+from n to a goal.
+•Figure below shows the progress of  an A∗search with the goal of  reaching 
+Bucharest
+
+A∗search
+
+A∗search
+
+A∗search
+
+A∗search
+•A
+∗
+search is complete.
+•Whether A
+∗
+is cost-optimal depends on certain properties of  the heuristic.
+•A key property is admissibility: an admissible heuristic is one that never 
+overestimates the cost to reach a goal. (An admissible heuristic is therefore 
+optimistic.)
+•With an admissible heuristic, A
+∗
+is cost-optimal, which we can show with a 
+proof  by contradiction.
+
+A∗search
+•Suppose the optimal path has cost C
+∗
+, but the algorithm returns a path with 
+cost C >C
+∗
+.
+•Then there must be some node nwhich is on the optimal path and is 
+unexpanded (because if  all the nodes on the optimal path had been 
+expanded, then we would have returned that optimal solution).
+•So then, using the notation g
+∗
+(n) to mean the cost of  the optimal path from 
+the start to n, and h
+∗
+(n) to mean the cost of  the optimal path from nto the 
+nearest goal, we have:
+
+A∗search
+•f(n) > C
+∗
+(otherwise n would have been expanded)
+•f(n) = g(n)+h(n) (by definition)
+•f(n) = g
+∗
+(n)+h(n) (because n is on an optimal path)
+•f(n) ≤ g
+∗
+(n)+h
+∗
+(n) (because of admissibility, h(n) ≤ h
+∗
+(n))
+•f(n) ≤ C
+∗
+(by definition, C
+∗
+= g
+∗
+(n)+h
+∗
+(n))
+
+A∗search
+•The first and last lines form a contradiction, so the supposition that the 
+algorithm could return a suboptimal path must be wrong—it must be that A
+∗
+returns only cost-optimal paths.
+•A slightly stronger property is called consistency. A heuristic h(n) is 
+consistent if, for every node nand every successor n′ of  ngenerated by an 
+action a, we have:
+•h(n) ≤ c(n,a,n′)+h(n′) .
+
+A∗search
+•This is a form of  the triangle inequality, which stipulates that a side of  a 
+triangle cannot be longer than the sum of  the other two sides (see Figure 
+below).
+•Triangle inequality: If  the heuristic h is consistent, then the single number 
+h(n) will be less than the sum of  the cost c(n,a,n′) of the action from n to n′ 
+plus the heuristic estimate h(n′).
+
+A∗search
+•Every consistent heuristic is admissible (but not vice versa), so with a 
+consistent heuristic, A
+∗
+is cost-optimal.
+
+The End
+Questions

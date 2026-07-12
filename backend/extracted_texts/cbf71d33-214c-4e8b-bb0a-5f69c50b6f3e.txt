@@ -1,0 +1,376 @@
+
+
+FOODCHEMISTRY II
+Introduction
+
+What is it all about?
+•Food Chemistry is the study of chemical 
+processes and interactions of all biological and 
+non-biological components of foods.
+•The study of analytical, biochemical, physical, 
+nutritional and toxicological aspects of foods.
+–It aim at understanding the molecular basis of the 
+reactions in food.
+
+•Many of the chemicals found in food occur 
+naturally and include nutrients such as 
+–proteins,
+–carbohydrates,
+–fats, 
+–fibreand 
+–host of other elements and compounds.
+•Food chemistry covers the basic composition, 
+structure and properties of foods and chemistry 
+changes occurring during processing and 
+utilization.
+CARBOHYDRATES
+
+•A carbohydrateis consist of carbon (C), 
+Hydrogen (H) and oxygen (O) atoms.
+•In a living tissue cells C comprises 25%, H = 
+49% and O = 25% and the rest is shared 
+among N, S and P
+•Small molecules have the empirical formular
+of C
+m
+(H
+2
+O)
+n
+or C
+m
+H
+2n
+O
+n 
+, Except Deoxyribose
+(C
+5
+H
+10
+O
+4
+) and Glucosamine (C
+6
+H
+13
+O
+5
+N)
+–Example: C
+6
+H
+12
+O
+6
+which can be written asC
+6
+(H
+2
+O)
+6  
+C
+12
+H
+22
+O
+11
+which can be written asC
+12
+(H
+2
+O)
+11    
+CARBOHYDRATES
+
+•This any of a class of organic compounds that are 
+polyhydroxyaldehydesorketones. (hydrates of 
+carbons)
+Aldose                                                      Ketose
+•NOTE: 
+–Aldoses have an aldehyde group (-HC=O)......CHO
+–Ketoses have a ketone group (–CC=OC-).......COC
+•In addition to Hydrates of Carbons, carbohydrates 
+have also hydroxyl groups.
+CARBOHYDRATES
+
+•They are chemically grouped mainly into: 
+a.Monosaccharides(glycose)
+Glucose, Fructose, Galactose
+b.Oligosaccharides: comprised of less than 10 units
+Sucrose, maltose, lactose (Disaccharides)
+Raffinose(Trisaccharides)
+Stachyose(Tetrasaccharides
+c.Polysaccharides 
+Starch, Cellulose, Pectin
+GROUPS OF CARBOHYDRATES
+
+Monosaccharides
+•These are carbohydrates whose carbon atoms 
+ranges from three (3) to seven (7)
+•These can not be further hydrolysed
+•Monosaccharide aldoses and ketoses are 
+derived from glyceraldehyde and  
+dihydroxyacetonerespectively by inserting 
+CHOH units into the carbon chains.
+
+Monosaccharides
+•The following are the structures of first four  
+monosaccharide: 
+(A)  Aldoses
+1.A triose (glyceraldehyde)
+Has 3 carbons (C
+3
+H
+6
+O
+3
+)
+Has one Chiral center
+Occur in two optical 
+isomers or enantiomers
+By convention, one of the is called D-isomer and 
+the other is L -isomer
+
+Monosaccharides
+2.Tetroses
+Has 4 carbon atoms (C
+4
+H
+8
+O
+4
+)
+Has two Chiral centers
+
+Monosaccharide
+3.  Hexoses
+Has 6 carbon atoms (C
+6
+H
+12
+O
+6
+Has three Chiral centers
+
+Monosaccharide
+4.  Hexoses
+Has 6 carbon atoms (C
+6
+H
+12
+O
+6
+Has four Chiral centers
+
+Monosaccharide
+(B) Ketose
+A ketoseis a monosaccharide containing one 
+ketone group per molecule
+1.Triulose(dihydroxyacetone): 
+3 carbon atoms also called ketotriose
+C
+3
+H
+6
+O
+3
+
+Monosaccharides
+2.Tetruloses(ketotetrose)
+4 carbon atoms
+It is called Erythrulose
+C
+4
+H
+8
+O
+4
+
+Monosaccharide
+3.Pentuloses(ketopentoses) 
+Has 5 carbon atoms (C
+5
+H
+10
+O
+5
+)
+Examples include
+Ribuloseand Xylulose
+
+Monosaccharides
+4. Hexulose(ketohexoses)
+Has 6 carbon atoms (C
+6
+H
+12
+O
+6
+)
+Fructose
+
+NAMING RULES FOR MONOSACCHARIDE
+•All aldoses end with the a suffix “–ose”
+•All Ketoses end with the suffix “–ulose”
+•Common prefix are used to signify the 
+number of carbons.
+•For ketosethe position of the keto
+group (carbonyl group) is designated by 
+a numerical prefix
+–Examples: 2-pentulose, 3-hexulose.
+2 -pentulose
+
+NAMING RULES FOR MONOSACCHARIDE
+•When a monosaccharide carries a 
+second carbonyl group, it is denoted 
+as a 
+•–dialdose(2 aldehyde groups), 
+•-osulose(aldehyde and ketogroups) or 
+•-diulose(2 ketogroups). 
+
+NAMING RULES FOR MONOSACCHARIDE
+•Substitution of an OH-group by an H-atom 
+gives rise to a desoxysugar.
+•Substitution of an OH-group by an H
+2
+N-group 
+to amino desoxySugar. 
+•Example: CH
+2
+OH(CHOH)
+3
+CHNH
+2
+COH
+Structurally:
+–This is 2 –animo–2 –deoxyHexose
+
+Cyclic Monosaacharide
+•Monosaccharidesthat contain five or more 
+carbons atomsform cyclic structures in 
+aqueous solution. 
+–That is monosaccharideslarger than tetrosesexist 
+mainly as cyclic compounds
+•This conversion occurs 
+because of the ability 
+of aldehydes and 
+ketones to react with 
+alcohols:
+
+Formation of cyclic monosaccharide
+
+Cyclic Monosaacharide
+•Two cyclic stereoisomers can form from each 
+straight-chain monosaccharide
+–these are known as anomers
+•Consider cyclic compounds from Glucose.
+
+Cyclic Monosaacharide
+•The anomerwith the OH group on the first 
+carbon atom projected downward, represent 
+what is called the alpha (α) form. 
+•The structures with the OH group on the first 
+carbon atom pointed upward, is the beta (β) 
+form. 
+
+Cyclic Monosaccharide
+•The Pyranoseringis formed by the 
+reaction of the hydroxyl group on carbon 
+5 (C-5) of a sugar with the aldehyde at 
+carbon 1. 
+–Glucose forms a glucopyranoseform when 
+carbon atoms 1 and 5 are bridged by an 
+oxygen atom.
+•This forms an intramolecularhemiacetal. 
+
+Cyclic Monosaccharide
+•The Furanoseringis formed by the 
+reaction of the hydroxyl group on carbon 
+4 (C-4) of a sugar with the aldehyde at 
+carbon 1. 
+–The pyranoseform is thermodynamically more 
+stable than the furanoseform, which can be seen 
+by the distribution of these two cyclic forms in 
+solution. 
+
+Formation of Glucopyranose
+
+Formation of Glucofuranose
+
+Furanoseand Pyranosefromsof Hexulose
+
+Oligosaccharides
+•These are compounds with up to about 10 
+monosaccharide
+•A non reducing disaccharide is formed when a 
+glycosidiclinkage are established only 
+between the lactolgroups of two 
+monosaccharides.
+
+Oligosaccharides
+•An oligosaccharide is a saccharide polymer 
+containing a small number of 
+monosaccharides. 
+•Oligosaccharides can have many functions 
+including cell recognition and cell binding
+
+Naming Oligosaccharides
+•An abbreviated method of nomenclature 
+–use a three letter designation or symbol for a 
+monosaccharide 
+•glcfor Glucose 
+•frufor fructose
+•glafor galactose,  
+–Use the suffix after monosaccharide name (in italics) 
+to refer to cyclicform
+•for furanose
+•pfor pyranose. 
+–Only last cyclic form must end with –nose (or –noside)and the 
+rest must end with -nosyl
+
+Naming Oligosaccharides
+–Use prefix D and L to represent the enantiomers 
+–Use prefix αand βto represent the type of an 
+anomerform.
+–Indicate the position of the glycosidicbond by an 
+arrow from the first carbon (on the first 
+monomer) to the second carbon (on the second 
+monomer)
+•(4       6) 
+–This means from carbon number 4 on first monomer to 
+carbon number 6 on the second monomer.
+
+Naming Oligosaccharides
+•For examples:
+–Saccharose/Sucrose 
+•This is made up of Fructose and Glucose
+•Its name is:
+O-β-D-Fruf (2 → 1)α-D-Glcp
+–Maltose 
+•Made from Glucose and Glucose 
+O-α-D-Glcp(1→4)D-Glcp
+
+Naming Ligosaccharides
+
+Lactose
+•Name, using the abbreviated method:
+
+Lactose
+•Name, using the abbreviated method:
+ANSWER: β –D –Galp(1 → 4)D-Glcp
+
+Practice Questions
+•Use simple abbreviated formulae to name:
+1.O –α–D –Glucospyranosyl–(1 → 4) –O –[α–
+D –glucopyranosyl–(1 → 6)]-D-glucopyranose
+2.Cellobioseis written as: O –β–D –
+Glucospyranosyl–(1 → 4) -D-glucopyranose
+3.Stachyoseis written as: O –α–D –
+Glucospyranosyl–(1 → 6) –α–D –
+glucopyranosyl–(1 → 6) –α -D-glucopyranose–
+(1 2) -β–D –fructofranosyl
+
+END OF INTRODUCTION
+
+POLYSACCHARIDES

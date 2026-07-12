@@ -12,15 +12,13 @@ import Course from './pages/Course.jsx';
 import Settings from './pages/Settings';
 import Request from './pages/Request';
 import InstallPrompt from './components/InstallPrompt';
+import UpdateDialog from './components/UpdateDialog';  // ✅ new
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Pass through Login normally */}
         <Route path="/login" element={<Login />} />
-
-        {/* Secure your main core home dashboard using the exact same protector layout */}
         <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path="/papers" element={<ProtectedRoute><PastPapers /></ProtectedRoute>} />
         <Route path="/course" element={<ProtectedRoute><Course /></ProtectedRoute>} />
@@ -34,6 +32,7 @@ function App() {
         <Route path="/quiz" element={<ProtectedRoute><Quiz /></ProtectedRoute>} />
       </Routes>
       <InstallPrompt />
+      <UpdateDialog />   {/* ✅ new */}
     </BrowserRouter>
   );
 }

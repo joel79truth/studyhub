@@ -1,0 +1,311 @@
+
+
+SOIL LOSS ESTIMATION
+
+SOIL LOSSES
+•Soil losses vary considerably with the type of erosion. 
+•Often both wind and water erosion are present in the same area. 
+•The importance of soil losses is indicated by the effect top soil 
+depth has on crop yield. 
+•On some soils these crop yield decreases can largely be overcome 
+by high fertilisation. 
+
+•This equation was developed from more than 40 years 
+of data measured from small plots located in many 
+parts of the US.
+Universal Soil Loss Equation (USLE)
+
+Universal Soil Loss Equation (USLE)
+•It is the most widely accepted method for estimating the average 
+annual soil loss
+•Also helps to determine the adequacy of conservation measures
+•Originally proposed by Wischmierand Smith(1958)
+•Modified to its present form by Wischmierand Smith(1978)
+‘’The USLE is an erosion prediction model for estimating long term 
+averages of soil erosion from sheet and rill erosion from a specified land 
+under specified conditions’’
+
+Universal Soil Loss Equation (USLE)
+Erosion = f (Climate, Soil, Topography, Vegetation
+USLE Equation :  A = R K LS C P    (tonnes/Acre)
+A = 2.24RKLSCP(tonnes/Hectare)
+A = Average annual soil loss, metric (t/ha)
+R  = Rainfall erosivity index/factor (J*mm/m
+2
+*h)
+K  = Soil erodibility index/factor (t*m
+2
+*h/J*m
+2
+*h)
+LS = Topographic factor
+C  = Crop management factor
+P  = Conservation practice factor 
+
+Rainfall Erosivity Index (R)
+•Rainfall erosivity refers to the intrinsic capacity of rainfall to 
+cause soil erosion
+•It is the function of the kinetic energy and the intensity of the 
+rain storm
+•It is expressed as the product of kinetic energy of the storm 
+and the maximum 30-min intensity
+R = EI
+30  
+= KE * I
+30
+where, EI
+30 
+= Rainfall Erosivity Index (R) [E and I representing energy 
+and intensity]; KE = Kinetic energy of storm; I
+30  
+= Maximum 30-min 
+rainfall intensity during the storm 
+
+Rainfall Erosivity Index (R)
+•The equation is based on the fact that product kinetic energy of 
+the storm and the 30-minutes rainfall intensity gives the best 
+estimation of soil loss (Wischimier, 1965)
+•The 30-munites maximum rainfall intensity, I
+30 
+value is estimated 
+from a rain gauge chart
+
+Estimating R (Rainfall erosion index) 
+•In the absence of locally published maps of R values, use the
+formulae belowforestimating R from mean annual 
+precipitation (P).
+Morgan (1974), mean annual erosivity = 9.28 P -8,838 
+(KE > 25)
+Rainfall Erosivity Index (R)
+
+Soil Erodibility Factor (K)
+•Erodibility is the reisistance of the soil to both detachment and 
+transportation. 
+•Soil erodibility factorisa reflection of soil structure, texture, organic 
+matter, permeability, depth, and all of the other characteristics that 
+affectthe rate of soil erosion
+
+•It can be determined through the measurement of soil loss from a 
+standard runoff plot ( called ‘USLE standard plot’)
+A plot having 9% slope (5.16
+◦
+) over 22.13m length, which is 
+kept under fallow with periodic tillage up and down slope
+In this case LS = C = P = 1.0, soil loss = f(R K)
+From known Rand soil loss measurement, Kcan be estimated
+Soil Erodibility Factor (K)
+
+Topographic Factor (LS)
+•Includes factors for slope length(L) and slope steepness (S)
+•It presents a ratio of a soil loss under given conditions to that 
+of a standard plot (9% of 5.16
+◦
+slope steepness and 22.13m 
+slope length)
+•The steeper the slope, the higher the risk of erosion
+•Topographic factor (LS) is given by
+퐿푆=
+퐿
+22.13
+(0.065+0.045푆+0.0065푆
+2
+)
+
+Crop Management Factor (C)
+•It is a ratio of soil loss from a cropped land under spcific conditions 
+to the corresponding loss from clean-tilled, continuous fallow land
+•It includes the effects of crop cover, crop sequence, tillage practice 
+and residue management
+•The Cvalue can be obtained from standard tables
+
+
+
+Conservation Practice  Factor (P)
+•It presents thė ration of soil loss from the land where conservation 
+practices like Contouring, strip cropping and terracing etc are 
+adopted to that where they are not adopted.
+•The value of Pis taken as 1for no conservation practice
+•The value of Pcan be obtained from standard tables 
+
+Example Table
+Conservation Practice  Factor (P)
+
+Problem
+1.Given the following data, calculate the average annual 
+soil loss:
+a)Rainfall Erosivity Index (R) = 200 (J*mm/m
+2
+*h)
+b)Soil Erodibility Factor (K) = 0.34 (t*m
+2
+*h/J*m
+2
+*h)
+c)Slope length (L) = 61m
+d)Average steepness of the slope = 8%
+e)Crop Management factor (C) = 0.2
+f)Conservation practices factor (P) = 1
+
+Application of USLE
+•To provide specific reliable guides for selecting appropriate 
+erosion control practices for farm lands and construction areas
+•To determine upland erosion for reservoir sedimentation and 
+stream loading, control of pollution from crop land and 
+alternative land use treatment combinations
+
+SOIL LOSS TOLERANCE
+•Theoretically, soil erosion should be mainained at a rate that equals to 
+or is below the natural rate at which new soil forms
+•Unfortunately, it is difficult to know whether this balance exist or not
+Although the rate of soil loss can be measured, the rates of soil 
+formation are so slow that they cannot be easily determined 
+The rates of soil formation throughout the world range from 
+0.01 to 7.7 mm yr
+-1
+. The fastest rates are exceptional, however, 
+and the average is about 0.1 mm yr
+-1
+
+•Soil loss tolerance is defined as the maximum permissible rate of 
+soil erosion at which soil fertility can be maintained for over 20-25 
+years
+A mean annual soil loss of 11t/ha is generally acceptedbut 
+values as low as 2 t ha
+-1
+are recommended for particularly 
+sensitive areas where soils are thin or highly erodible
+SOIL LOSS TOLERANCE
+
+SOIL LOSS ESTIMATOR FOR SOUTHERM 
+AFRICA (SLEMSA)
+•The Soil Loss Estimator for Southern Africa (SLEMSA) was 
+developed largely from data from the Zimbabwe highveldto 
+evaluate the erosion resulting from different farming systems so 
+that appropriate conservation measures could be recommended. 
+•The technique has since been adopted throughout the countries of 
+Southern Africa.
+
+SOIL LOSS ESTIMATOR FOR SOUTHERM AFRICA 
+(SLEMSA)
+The equation is (Elwell, 1978):
+Z = K.X.C
+Where Z is mean annual soil loss (t/ha)
+K is mean annual soil loss (t/ha) from a standard
+field plot, 30m long, 10m wide, at 2.5
+○
+slope for a
+known soil of known erodibility (F) under weed
+free bare fallow
+X is a dimensionless combined slope length and
+steepness factor
+C is a dimensionless crop management factor 
+
+SOIL LOSS ESTIMATOR FOR SOUTHERM AFRICA 
+(SLEMSA)
+•The value of K is determined by relating meanannual soil loss to mean 
+annual rainfall energy(E) using the exponential relationship:
+lnK= blnE+ a
+where E is in J/m2, and the values of a and b arefunctions of the soil 
+erodibility factor (F):
+a = 2.884 –8.2109F
+b = 0.4681 + 0.7663F 
+
+SOIL LOSS ESTIMATOR FOR SOUTHERM 
+AFRICA (SLEMSA)
+The topographic factor (X) adjusts the value ofsoil loss calculated 
+for the standard conditionto that for the actual conditions of slope
+steepness and slope length. The value of X isobtained from:
+X = L1/2(0.76 + 0.53s + 0.076s2)/25.65
+Where L is the slope length (m)
+S is the percentage slope 
+
+SOIL LOSS ESTIMATOR FOR SOUTHERM 
+AFRICA (SLEMSA)
+•C is a dimensionless crop management factor.
+•For crops and grasslands with  i< 50 % and for dense pastures and 
+mulches when I≥50% the relationship is:
+C = e
+(-0.06i)
+•For crops and natural grasslands where I<50%
+C = (2.3 –0.01i)/30
+The ivalue is obtained by weighting the percentage crop cover in 
+each ten-day period by percentage of mean annual energy (E) 
+occuringin that period and summing the values.
+
+SOIL LOSS ESTIMATOR FOR SOUTHERM 
+AFRICA (SLEMSA)
+
+Subtract the following from the F value:
+1 for light-textured soils consisting mainly of sands and silts
+1 for restricted vertical permeability within one metre of the surface or for severe soil
+crusting
+1 for ridging up-and-down the slope
+1 for deterioration in soil structure due to excessive soil loss in the previous year
+(>20tha-1) or for poor soil management
+0.5 for slight to moderate surface crusting or for soil losses of 10–20tha-1 in the previous
+year.
+Add the following to the F value:
+2 for deep (>2m) well drained, light-textured soils
+1 for tillage techniques which encourage maximum retention of water on the surface,
+e.g. ridging on the contour
+1 for tillage techniques which encourage high surface infiltration and maximum water
+storage in the profile, e.g. ripping, wheel-track planting
+1 for first season of no tillage
+2 for subsequent seasons of no tillage 
+
+SOIL LOSS ESTIMATOR FOR SOUTHERM 
+AFRICA (SLEMSA)
+
+SOIL LOSS ESTIMATOR FOR SOUTHERM AFRICA 
+(SLEMSA)
+•Example 
+Prediction of soil loss using SLEMSA.Calculate the mean annual soil loss on a 
+100m long slope of 7°on sandy clay soils under un-ridged maize cultivation with 
+contour bands spaced at 20m. Assume, the precipitation is 2695mm.
+Basic equation
+Soil loss (Z) = K *X *C
+Estimating K
+Mean annual precipitation (P) = 2695mm
+Mean annual rainfall energy (E) (Morgan 1974) = 9.28P -8838
+= (9.28 *2695) -8838
+= 16,172Jm-2 
+
+•Example
+Soil erodibility (F)
+From Table 6.5, for a sandy clay, F = 5
+Calculation of K
+lnK= blnE+ a
+where a = 2.884 -8.2109F
+b = 0.4681 + 0.7663F
+Therefore, a = 2.884 -(8.2109 *5)
+= -38.1705
+and b = 0.4681 + (0.7663 *5)
+= 4.2996
+lnK= (4.2996 *9.6910) -38.1705
+= 3.4969
+which gives K = 33.01
+
+Estimating X
+For un-ridged land
+X = (0.76 + 0.53s + 0.0765s
+2
+)/25.65
+where l is slope length (m) and s is slope steepness (%)
+For contour bunds every 20m, l = 20 and s = 7°or 12%
+X = 20(0.76 + (0.53 *12) + (0.0765 *12
+2
+)/25.65
+X = 4.47 *18.064/25.65
+X = 3.15 
+
+Estimating C
+C = (2.3 -0.01i)/30
+= (2.3 -(0.01 *61))/30
+=(2.3 –0.61)/30
+=1.69/30
+= 0.056
+Soil loss (Z) = K *X *C
+= 33.01 * 3.15 * 0.056
+= 5.82t/ha
+
+End of Presentation 

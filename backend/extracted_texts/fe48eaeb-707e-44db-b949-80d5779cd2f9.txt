@@ -1,0 +1,232 @@
+
+
+Unsaturated hydrocarbons 
+–Reactions ofalkenes-
+Part 1
+Dr FatemaJagot
+
+Types of Reactions
+•There are three general types of reactions that organic compounds 
+can undergo:
+i.Addition reactions
+ii.Substitution reactions
+iii.Elimination reactions
+
+Substitution and Elimination Reactions
+•In a substitution reaction, one atom/group of atoms replaces another 
+atom/group of atoms in a molecule;
+•In an elimination reaction, one molecule splits into two molecules;
+
+Addition Reactions
+•In an addition reaction, two groups add to the carbons of the double 
+bond and the carbons become saturated.
+•The pi bond is broken to form two new sigma bonds to two new 
+atoms/groups of atoms.
+•Addition reactions are the most common reactions of the alkenes.
+
+Addition Reactions of Alkenes
+•The presence of double and triple bonds increases the hydrocarbons 
+reactivity.
+•Alkenes act as nucleophiles, due to the presence of the pi bond.
+•To explain this, consider the structure of the pi bond:
+•The pi electrons are delocalised (spread out) above and below the 
+sigma bond. This is unlike in a sigma bond, where the electrons are 
+tightly held.
+
+•Therefore, the pi electrons are located further from the carbon nuclei, 
+and are therefore loosely held (and hence easy to donate).
+•Electrophiles have an affinity for these loosely held electrons.
+•It can pull them away to form a new bond, leaving one of the carbon 
+atoms with three bonds and a positive charge (a carbocation).
+•In effect, the double bond has acted as a nucleophile, donating a pair 
+of electrons to an electrophile.
+•This type of addition reaction is known as an electrophilic addition
+because an electrophile is adding to a nucleophile.
+
+•Most addition reactions involve a second step in which a nucleophile 
+adds to the carbocation to form a stable product.
+•The general, key reaction mechanism for the electrophilic addition of 
+electrophiles to alkenes is shown below:
+Step 1: Attack of the electrophile on the double bond:
+Step 2: Attack by the nucleophile gives the addition product:
+
+•Several examples of addition reactions of alkenes are shown in the 
+table below, along with the descriptive names associated with each:
+
+Addition of hydrogen halides to alkenes
+•The hydrogen halides (HCl, HI, HBr) add to alkenes in an electrophilic 
+additionto give haloalkanes(alkyl halides).
+•For example, ethane reacts with HClto give chloroethane.
+•The addition of HClto propene gives 2-chloropropane as the major 
+product. 1-chloropropane is hardly observed (very minor product);
+
+•We say that the addition of HClto propene is highly regioselective.
+•A regioselectivereaction is one in which one direction of bond 
+forming and breaking occurs in preference to all other directions. So 
+one of the two possible orientations of addition results preferentially 
+over another.
+•Markovnikov’s rule: the generalisation that in the addition of 
+hydrogen halides (HX) to alkenes the hydrogen will add to the carbon 
+of the double bond that has the greater number of hydrogens 
+bonded to it compared to the other carbon of the double bond.
+
+•Practice exercise 1 : Name and draw the structural formula for the 
+major product for each alkene addition reaction:
+Ans: a) 2-iodo-2-methylpropane
+b) 1-chloro-1-methylcyclopropane
+
+•The addition of HX to an alkene proceeds by way of a two-step mechanism:
+For example, for the addition of HClto 2-butene:
+Step 1: Add a proton:
+The double bond is a site that is rich in electron density. It acts as a 
+nucleophile.
+The double bond (nucleophile) attacks the partially positive hydrogen of 
+electrophilic species HCl. This is shown by the first curved arrow, which 
+shows that the pi bond is breaking, and the electron pair in that bond is used 
+to form a new covalent bond with the hydrogen of HCl.
+NB! Keep in mind Markovnikov’s rule
+
+The second curved arrow shows the breaking of the polar H-Cl bond, 
+with both electrons in that bond being given entirely to Cl, forming Cl-
+ion (heterolyticcleavage).
+Step 2: Reaction of an electrophile and nucleophile to form a new 
+covalent bond:
+The chloride ion uses a lone pair of electrons to form a new covalent 
+bond with the positively charged carbon of the carbocation.
+
+
+
+Regioselectivityand Markovnikov’s rule
+•The relative stabilities of carbocationsis the underlying basis for 
+Markovnikov’s rule.
+•The more stable carbocation is the one that is favoured;
+•For example in the addition of HClto propene:
+The 1°carbocation is less stable 
+than the 2°carbocation. Therefore, 
+1-chloropropane is notformed.
+
+•Similarly in the reaction of HClwith 2-methylpropene
+The 3°carbocation is more stable than the 1°carbocation, 
+therefore 2-chloro-2-methylpropane is formed.
+
+Recap from Lecture 1
+This happens due to the inductive effect. The positively charged 
+carbon draws electron density towards itself from the alkyl groups 
+(electron-donating groups). This allows the positive charge to be 
+more delocalised –leading to stability. The more alkyl groups 
+substituted, the greater the stability.
+
+•Practice exercise 2: Arrange the following carbocationsin order of 
+increasing stability:
+1) 
+2) 
+
+•Practice exercise 3: propose a mechanism for the addition of HI to 
+methylenecyclohexaneto give 1-iodo-1-methylcyclohexane:
+
+•In the presence of peroxides, the major product obtained from the 
+addition of HBrto alkenes is the opposite of that expected from the 
+Markovnikov’s rule.
+•This Anti-Markovnikov addition occurs by means of free radical 
+addition mechanism.
+•The reaction is initiated by peroxides, which break down to give 
+alkoxyradicals (R—O).
+•The alkoxyradicals then cause the formation of bromine radicals.
+Free Radical Addition of HBr–Anti-Markovnikov 
+Addition
+
+•Step 1 Initiation: Formation of radicals:
+•Step 2: The bromine radical adds across the double bond to generate 
+an alkyl radical on the more substituted carbon atom.
+•Step 3: the alkyl radical abstracts a proton from H—Br to generate the 
+product and a bromine radical.
+The bromine radical 
+generated here reacts with 
+another alkene molecule, 
+continuing the chain.
+
+•For example, free radical addition of HBrto propene in the presence 
+of peroxide:
+Initiation:
+Step 1:
+Step 2:  
+
+•With the unsymmetrical alkene 2-methylbut-2-ene, adding the bromine 
+radical to the secondary end of the double bond forms the more stable 
+tertiary radical.
+•This radical intermediate then reacts with HBrto give the anti-
+Markovnikov product.
+
+•Practice exercise 4: but-1-ene-2-ylbenzene has the following 
+structure:
+a) Draw the displayed formula for the major product formed when but-
+1-ene-2-ylbenzene reacts with HBrin the presence of tert-butyl 
+peroxide.
+b) Draw out the mechanism of the reaction.
+
+Addition of water to an alkene: Acid catalysed 
+hydration
+•In the presence of an acid catalyst, most commonly concentrated sulphuric 
+acid (H
+2
+SO
+4
+), water adds to the C=C double bond to form an alcohol.
+•This addition is known as a hydration, with a hydrogen atom adding to one 
+carbon and a hydroxygroup (OH) adding to the other carbon of the double 
+bond.
+•Hydration of alkenes also follows Markovnikov’s rule; the hydrogen adds to 
+the carbon of the double bond that has the greater number of hydrogens.
+
+Hydration follows 
+Markovnikov’s rule.
+Explained in terms of 
+stabilities of carbocations.
+
+•Practice exercise 5: Draw a skeletal formula for the product of the 
+acid-catalysed hydration of 1-methylcyclohexene.
+Ans: 
+Draw the skeletal formula for the product for each of the following 
+alkene hydration reactions:
+
+•The mechanism for the addition of H
+2
+O to an alkene is similar to that 
+of the addition of HX to an alkene.
+•For example in the acid-catalysed hydration of propene:
+Step 1: Add a proton: Note that in the presence of an acid catalyst, H
+2
+O 
+exists as the hydronium ion H
+3
+O
++
+.
+The electron pair in the double bond is used to form a new covalent 
+bond with hydrogen from the hydronium ion. The result is a secondary 
+carbocation (Markovnikov’s rule)
+
+Step 2: Reaction of a nucleophile and electrophile to form a new 
+covalent bond.
+The carbocation intermediate acts as an electrophile and the water 
+that was generated in step 1 acts as a nucleophile. The lone pair of 
+electrons on the oxygen of H
+2
+O is used to form a new covalent bond 
+with the positively charged carbon, to complete its valence shell. This 
+results in the formation of an oxoniumion. 
+
+Step 3: Take a proton away:
+Water in solution acts as a nucleophile and forms a covalent bond with 
+the hydrogen from the oxoniumion. The electron pair in the O—H 
+bond of the oxoniumion is transferred to the oxygen atom. 
+An alcohol is produced, and the acid catalyst is regenerated in the form 
+of H
+3
+O
++
+. 
+
+•Practice exercise 6: Propose a mechanism for the acid-catalysed 
+hydration of methylenecyclohexaneto give 1-methylcyclohexanol.
+methylenecyclohexane

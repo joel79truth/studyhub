@@ -1,0 +1,115 @@
+
+
+ISOMERISM IN ORGANIC 
+COMPOUNDS
+
+Three-Dimensional Structures of Molecules
+•Remember that all molecules are three-dimensional.
+•To draw a three-dimensional representation of an organic molecule, 
+chemists use dashed, wedged, and straight lines.
+Dashed lines (        )indicate bonds that go backward, 
+away from the reader.
+Heavy, wedge-shaped lines (       ) depict bonds that 
+go forward, towards the reader.
+Straight lines (        )indicate bonds that are in the 
+plane of the paper.
+
+
+
+Isomers
+•Isomers are different compounds with the same molecular formula.
+•There are several types of isomers in organic chemistry.
+•The two large classes of isomers are:
+i.Constitutionalisomers
+ii.Stereoisomers
+
+Constitutional Isomers
+•Constitutional isomers (or structural isomers) are isomers that differ 
+in their bonding sequence, that is, their atoms are connected 
+differently, but molecular formula is the same.
+•For example, the branching of an alkane.
+•Isomers have different physical and chemical properties.
+butane2-methylpropane
+
+•Constitutional (structural) isomers may differ in ways other than the 
+branching of the chain.
+•They may differ in the position of a double or triple bond, or other 
+functionality, or by having a ring:
+•For example, pent-1-ene, pent-2-ene, cyclopentane, and 
+methylcyclobutaneare all structural isomers of each other:
+Molecular formula: C
+5
+H
+10
+
+Stereoisomers
+•Stereoisomers are isomers that differ only in how their atoms are 
+arranged in space.
+•I.e. same connection of atoms and bonds, but different spatial 
+arrangement of the atoms.
+•An important class of stereoisomers are the geometric isomers.
+•For example cis-and trans-2-butene are geometric isomers, because 
+they have the same connectivity of bonds, but different spatial 
+orientation of the groups attached to the double bond.
+
+But-1-ene and but-2-ene are constitutional isomers.
+Cis-but-2-ene and trans-but-2-ene are stereoisomers 
+(geometric isomers).
+
+•Due to rigidity of their bonds, cycloalkanes also exhibit cis-and trans-
+isomerism.
+•A cycloalkane has two distinct faces, the upper face and the lower 
+face.
+•If two same substituents point towards the same face, it is known as a 
+cisisomer.
+•If two same substituents point towards opposite faces, it is known as 
+a transisomer.
+
+Practice exercise 1:
+Give IUPAC names for the following cycloalkanes:
+
+E/Zisomers are also geometric isomers (see Lecture 2)
+
+Practice exercise 2:
+Give the relationship between the following pairs of structures. The possible 
+relationships are: same compound; constitutional (structural) isomers; 
+geometric isomers; not isomers.
+
+•Another group of stereoisomers are the chiral isomers.
+•Objects that are non-superimposable mirror images of each other are 
+said to be chiral.
+•For example, your left hand and your right hand are non-
+superimposable mirror images of each other –therefore they are 
+chiral.
+•Objects that have mirror images that are superimposable are said to 
+be achiral.
+
+Chiral objects
+
+•Like other objects, molecules are either chiral or achiral.
+•Two molecules are said to be superimposableif they can be placed 
+on top of each other and the three dimensional position of each atom 
+of one molecule coincides with the equivalent atom of the other 
+molecule. 
+•To draw the mirror image of a molecule, simply draw the same 
+structure with left and right side of the molecule reversed.
+•The mirror image isomers of a chiral molecule are known as 
+enantiomers.
+
+•How do you know if a molecule is chiral or not?
+•The most common feature that leads to chirality is a carbon atom 
+that is bonded to four different groups.
+•Such a carbon atom is known as an asymmetric carbon atom, or a 
+chiral carbon atom, and is designated with an asterix(*)
+The 2 enantiomers of 2-
+bromobutane 
+Asymmetric carbon, therefore molecule 
+must be chiral.
+
+Non-superimposable mirror images of each other 
+–chiral 
+
+•Practice exercise 3:
+Identify each asymmetric carbon in the following structure:
+Identify the asymmetric carbons in each of the following structures, 
+using the asterixsymbol, and draw its mirror image (enantiomer).

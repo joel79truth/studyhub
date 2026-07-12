@@ -1,0 +1,427 @@
+
+
+The soil formation process
+Course code: NDHT22103
+By Andrew Thadzi-LUANAR-Natural Resources College
+
+oPedogenesis is the term used to describe the formation and 
+development of the soil profile.
+oTo understand how soil is formed it is important to understand 
+the nature of rocks and their  breakdown into soil parent 
+material.
+oThe minerals in rocks influence the resulting soil composition.
+oHowever, other factors in nature also influence specific soil 
+properties 
+oTwo processes involved in the formation of soil are:
+▪Formation of regolith by breaking down (weathering) of the bed 
+rock.
+▪The addition of organic matter through the decomposition of plant 
+and animal tissues, and reorganization of these components by soil 
+forming processes to form soil.
+oThe process of soil formation is as follows: 
+Rock ->Weathering ->Regolith ->Soil forming factors and processes ->True soil 
+Introduction 
+
+Rocks
+oRock may be defined as aggregate of one or more than one 
+mineral.
+oThere are three main groups of rocks according to geologist.
+oThe groups of rocks are as follows: 
+▪Igneous rocks
+▪Sedimentary rocks
+▪Metamorphic rocks
+Classification 
+and 
+properties 
+of rocks
+
+Igneous rocks
+oRocks from cooled magma (a hot mixture of elements).
+oExtrusive igneous rocks: from magma that cools at the earths’ 
+surface 
+oIntrusive igneous rocks: from magma that cools below the earths 
+surface.
+oThe faster the rate of cooling the smaller the sizes of the mineral 
+crystals. 
+oThey are source of parent material for other rocks and ultimately 
+for soils.
+oThe examples are Granite, Syenite, Diorite, Gabbro, Dolerite and 
+Basalt
+▪Granite: consists of quartz, silica (S
+1
+O
+2
+), feldspar, and mica (muscovite 
+and biotite).
+▪Gabro and Basalt: dark coloured, with little or no quartz, consists of 
+feldspars, hornblende and augite minerals.
+NOTE: amount of silica determines the acidity of a rock
+Classification 
+and 
+properties 
+of rocks
+
+Sedimentary rocks (Stratified rocks)
+oRocks from sediments (material that settles on the bottom 
+of a liquid) 
+oSediments are laid down by water or by wind, usually in the 
+lakes, oceans or lowland regions and consolidate into rocks 
+over time, and under the pressure of overlaying materials. 
+oThree subgroups:
+▪ Clastic sedimentary: rock fragments e.g. sandstone and shale
+▪Chemical sedimentary: formed from chemical compounds settling 
+out of water solutions e.g. limestone and dolomite
+▪Organic sedimentary: formed from living or once-living material 
+settling out of water e.g. coal
+Classification 
+and 
+properties 
+of rocks
+
+Metamorphic rocks
+o“Metamorphic” from Greek means “change form”
+oThey change form by heat and pressure within the earth. 
+oCan be formed from igneous or sedimentary rocks e.g.
+▪Granite into gneiss
+▪Sandstone into quartzite
+▪Shale into slate 
+▪Limestone into marble 
+oThe change can be due to:
+▪Water known as Hydrometamorphism
+▪Heat known as Thermometamorphism 
+▪Pressure known as Dynamometamorphism 
+Classification 
+and 
+properties 
+of rocks
+
+Weathering of rocks and minerals
+
+Weathering 
+o“A process of disintegration and decomposition of rocks and 
+minerals which are brought about by physical agents and 
+chemical processes, leading to the formation of regolith”
+o“The process by which the earth’s crust or lithosphere is 
+broken down by the activities of the atmosphere, with the aid 
+of the hydrosphere and biosphere”
+o“The process of transformation of solid rocks into parent 
+material or regolith”
+oParent material/ Regolith : unconsolidated residues of the 
+weathering rock on the earth’s surface or above the solid 
+rocks from which the soils are developed
+Weathering 
+
+Weathering 
+oThree basic processes of Weathering:
+oPhysical (or) mechanical weathering- Disintegration
+oChemical weathering– Decomposition
+oBiological weathering- Disintegration + Decomposition)
+Weathering 
+
+Physical weathering:
+oBreaking of rocks and minerals into smaller fragment due to 
+physical forces without any chemical change.
+oAlso referred to as disintegration of rocks.
+Factors affecting physical weathering:
+oNature of rock
+▪Rock is aggregate of one or more than one mineral. 
+▪Different minerals conduct heat differently 
+▪The temperature variations between surface and inner surface of 
+rocks leads to peeling of thin 
+   layer from the outer surface of
+   rock, process known
+   as “exfoliation”
+Physical/
+Mechanical 
+disintegration 
+ 
+
+Factors affecting physical weathering....
+oAction of Temperature 
+▪Expansion and contraction of rocks due to heating and cooling of 
+temperatures respectively of the day and night causing  cracks in a 
+rock.
+oWind
+▪Blowing effect carrying 
+   weathered materials acting 
+  as an agent of physical 
+  weathering
+oElectrical Phenomenon 
+▪Helps in widening of cracks developed due to disintegration of rocks 
+Physical/
+Mechanical 
+disintegration 
+ 
+
+Factors affecting physical weathering....
+oAction of water 
+▪Fragmentation and Transport
+•Transporting  capacity of weathered material 
+•Cutting \grinding action based on quality of suspended material carried by 
+running water and intensity of flow .
+▪Freezing action of water: Freezed water  exerting pressure and 
+widening cracks 
+▪Alternate wetting and Drying: Swelling and shrinking of rock minerals 
+upon wetting and drying e.g. smectite, montmorillonite, they shrink 
+in dry weather forming wide cracks and swell in wet weather making 
+them loose and break
+▪Glacier: Moving ice blocks due to gravity having destructive action on 
+rocks in its path 
+Physical/
+Mechanical 
+disintegration 
+ 
+
+Chemical weathering 
+oRock decompose due to different chemical reactions. 
+oSpeed of chemical reaction increases due to dissolved CO
+2 
+and 
+increase in temperature . 
+oIt is the most important process for soil formation.
+oChemical weathering takes place mainly at the surface of 
+rocks and minerals with disappearance of certain minerals and 
+the formation of secondary products (new materials). 
+oThis is called chemical transformation.
+Chemical 
+processes 
+
+Factors affecting chemical weathering:
+oSolution
+▪Mineral removed from rocks due to its solubility and rocks get 
+decomposed, (e.g) halites, NaCl
+▪H
+2
+O + NaCl ------>  Na
++
+ , Cl
+-
+ + H
+2
+O (i.e. Ions surrounded by water)
+oHydration
+▪Chemical combination of water molecules with a particular substance or 
+mineral leading to a change in structure.
+ a) Fe₂O₃              +             3H₂O               →                   2Fe
+2
+​O
+3
+⋅3H
+2
+​O       
+     (Hematite-red coloured)        (Limonite-Yellow coloured)
+ b)Al
+2​
+O
+3
+​               +             3H
+2
+​O              →                     Al
+2
+​O
+3
+⋅3H
+2
+​O 
+     (Bauxite)    (Hyd. aluminium Oxide)
+ c) CaSO
+4                      
++             2H
+2
+O                 --->             CaSO
+4
+ .2H
+2
+O         
+(Anhydrite)                                             (Gypsum) 
+ d) 3(MgO.FeO.SiO
+2
+) + 2H
+2
+O              --->   3MgO.2SiO
+2
+.2H
+2
+O + SiO
+2
+ + 3H
+2
+O 
+  (Olivine)   (Serpentine)
+▪Due to hydration, mineral become soft which increase speed 
+decomposition of mineral 
+▪It leads to expansion of volume.
+Chemical 
+processes 
+
+Factors affecting chemical weathering....
+oHydrolysis
+▪Dissociation of water molecules into hydrogen(H
++
+) and hydroxyl (OH
+-
+) 
+ions
+▪If H
++
+ ions increases water will have acidic reaction which help in 
+decomposition of rocks due to its acidity.
+▪Minerals containing Al and Si are more susceptible for hydrolysis.
+ KAlSi
+3
+O
+8 
++ H
+2
+O ---> HAlSi
+3
+O + KOH  
+(Orthoclase)    (Acid silt clay)
+ HAlSi
+3
+O
+8
+ + 8H
+2
+O ---> Al
+2
+O
+3
+.3H
+2
+O + 6H
+2
+SiO
+3
+ 
+(Recombination)   (Hyd. Alum. oxide)(Silicic acid)
+▪In Al Silicates , hydroxides are formed .
+▪These can be easily removed through percolation , they may further 
+react with other minerals which may lead to formation of clay.
+Chemical 
+processes 
+
+Factors affecting chemical weathering....
+oOxidation
+▪The process of addition and combination of oxygen to minerals. 
+▪The absorption is usually from O
+2
+ dissolved in soil water and that 
+present in atmosphere. 
+▪The oxidation is more active in the presence of moisture and results 
+in hydrated oxides.(e.g) minerals containing Fe and Mg. 
+ 4FeO(Ferrous oxide) + O
+2
+ -> 2Fe
+2
+O
+3
+ (Ferric oxide)
+ 4Fe
+3
+O
+4 
+(Magnetite) + O
+2
+ -> 6Fe
+2
+O
+3
+ (Hematite)
+ 2Fe
+2
+O
+3
+ (Hematite) + 3H
+2
+O -> 2Fe
+2
+O
+3
+ .3H
+2
+O (Limonite)
+Chemical 
+processes 
+
+Factors affecting chemical weathering....
+oReduction
+▪The process of removal of oxygen (reverse of oxidation)
+▪Important in changing soil colour to grey, blue or green as ferric iron 
+is converted to ferrous iron compounds. 
+▪Under the conditions of excess water or water logged condition (less 
+or no oxygen), reduction takes place.
+ 2Fe
+2
+O
+3 
+(Hematite) - O
+2
+ -> 4FeO (Ferrous oxide) - reduced form
+In conclusion, during chemical weathering igneous and 
+metamorphic rocks can be regarded as involving destruction of 
+primary minerals and the production of secondary minerals.
+Chemical 
+processes 
+
+Factors affecting chemical weathering....
+oCarbonation
+▪The process of formation of carbonic acid due to dissolution of CO
+2
+ 
+into water is called carbonation .
+▪The material which is not easily soluble in water can be easily 
+dissolved due to formation of carbonic acid specially rocks containing 
+carbohydrate.
+ CO
+2
+ + H
+2
+O ---> H
+2
+CO
+3 
+(Carbonic acid)
+ CaCO
+3  
++ H
+2
+CO
+3
+ ---> Ca(HCO
+3
+)
+2
+ (Not easily soluble in H
+2
+O) (Calcium bicarbonate (Easily 
+soluble in water)
+Chemical 
+processes 
+
+Biological weathering 
+oThe weathering in which disintegration and decomposition of 
+rocks take place due to biological agent (macro and micro 
+organism + plants)
+oBiological agents 
+▪Man (Human being): Cutting of rock for building and construction 
+bring out disintegration of rocks at greater intensity .
+▪Rats, Rabbits, termites, ants, earth worms provide passage for entry 
+of water 
+▪Higher plants: Roots of higher plants enter through cracks and exert 
+tremendous pressure which leads to widening of cracks and crevice 
+(disintegration)
+⁻Deep rooted plants provide passage for water entry due to growing of their 
+roots deeper and deeper into soil .
+⁻Water loving plants like mosses , lichens, grass, ferns continuously keep rocks 
+moist which bring further decomposition of rocks .
+Biological  
+
+Biological agents:
+oMicro organism
+▪Micro organism bring decomposition of organic matter during 
+decomposition strong acids are produced. 
+▪These acids are mainly responsible for further decomposition.
+Biological  
+
+End

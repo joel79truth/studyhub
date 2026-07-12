@@ -1,0 +1,812 @@
+
+
+EXPERIMENTAL RESEARCH 
+METHODOLOGY/ RESEARCH METHODS 
+AND EXPERIMENTAL DESIGN/ DESIGN 
+AND ANALYSIS OF EXPERIMENTS
+Smith G. Nkhata, PhD
+Department of Agriculture and Food Systems
+Faculty of Life Sciences and Natural Resources
+Natural Resources College 
+Lilongwe University of Agriculture and Natural 
+Resources 
+
+Course Aim and Learning Outcomes 
+•Course Aim: equip students with knowledge and skills that will 
+enable them to conduct research 
+•Learning Outcomes 
+•Describe the research process 
+•Address ethical issues for conducting research 
+•Develop research proposal and project report
+•Design experimental research and data collection tools 
+•Conduct experimental research 
+•Analyze data using statistical tools 
+•Interpret output generated from analysis of research data 
+•Present findings from experimental and social research
+
+Method of Assessment: 
+•Continuous Assessment (40%) 
+oAssignments (10%) 
+oMid-Semester exam (20%) 
+oProject proposal development (10%) 
+•End of Semester Examination (60%) 
+Other requirements: Laptop installed with SPSS 
+
+What is a research?
+•It is a systematicprocess of collectingand analyzing
+information (data) in order to increase our understanding 
+of the phenomenonabout which we are concerned or 
+interested.
+•Formal research: research in which we intentionally set out 
+to enhance our understanding of a phenomenon and 
+expect to communicate what we discover to the large 
+scientific community through publications, seminars, 
+conferences, etc.. 
+
+Scientific Research
+•Is the process of performing systematic and intensive 
+investigations, which aim to discover and interpret the facts 
+that are inserted in a certain reality.
+•It is divided into two: Qualitative and Quantitative.
+•Quantitative Research: explains phenomena by collecting 
+numerical data that are analyzed using mathematically 
+based methods, in particular statistics .
+•Qualitative Research: Is the investigation of the phenomenon 
+in an indepthand holistic fashion, through collection of rich 
+narrative materials using flexible research design.
+•Mixed Method Research: Combines both Quanti-and Quali-
+
+Key elements of Quantitative research 
+•Explaining a phenomena/reality through    
+Collect numerical data that can be quantified/measured
+Analysis using mathematically-based methods (i.e. statistics)
+Uses representative population samples, hence the results 
+constituted a general and sufficiently comprehensive view of the 
+entire population
+Adopts structured procedures and formal instruments for data 
+collection. The data are collected objectively and systematically. 
+•Includes Types: 1) survey research; 2) experimental 
+research; 3) correlational research and 4) etc
+
+Key element of qualitative research
+•to produce in-depth and illustrative information to understand the various 
+dimensions of the problem under analysis.
+•The researcher gathers the words of the participants and analyze them 
+by looking for common themes
+•Data collection methods: 
+1) interviews; 
+2) focus group discussions; 
+3) case studies; 
+4) observations; 
+5) ethnography : observation
+•Analyses
+1) content analysis; 
+2) ethnographic research; 
+3) conversation analysis; 
+3) narrative analysis 
+
+Characteristics of research
+Research:
+Originate with a question or problem
+Requires a clear articulation of goal
+Follows a specific plan of procedure
+Divides principal problem into more manageable sub-problems.
+Guided by specific research problem, question or hypothesis
+Accept certain critical assumptions
+Requires collection and interpretation of data in an attempt to resolve the problem 
+that initiated the research
+Research Can be primary (collects new and original data) or secondary (uses 
+existing data egreport, census, literature review)
+
+Characteristics of good research question
+1.Feasibility –can be investigated without undue amount of 
+time, energy, money
+2.Clarity
+3.Significance –worth investigating because it will contribute 
+important knowledge about human condition
+4.Ethical –will not involve physical or psychological harm or 
+damage to human being
+
+What is research proposal
+•It is a statement that summarizes the question you 
+want to answer through your research.
+•It demonstrates your knowledge of the subject area 
+and shows the methods you want to use to complete 
+your research.
+•When applying for post graduate studies research 
+proposals are used to match you with your potential 
+supervisor or supervisor team
+
+When writing your proposal it is important to:
+•Highlight its originality or significance
+•Explain how it develops or challenges existing knowledge 
+of your subject
+•Identify the importance of your proposed research
+•Demonstrate why you are the correct person to undertake 
+this research project
+
+Assignment –1: Research Proposal (RP)
+1.Download RP samples from the internet –Due 16
+th 
+September 
+2025
+2.Summarize main content/elements of each of the subheading of 
+the RP. What kind of information is contained in each of the 
+proposal heading? Due 23
+rd 
+September 2025. 
+3.Identify and develop a research area. Due 7th October 2025. 
+Write a page describing your research area and your motivation.
+4.Write a RP for the identified research area; Due 17
+th 
+November 
+2025. Develop a full proposal with all the subheadings.
+5.Proposal Defense/Presentation 17
+th
+to 28
+th
+November 2025. 
+
+Assignment –1: Research Proposal (RP)
+1Title and title page (1 page)
+2.Table of contents (1-2 pages)
+3.Executive summary (1 page)
+4.Introduction / background information–problem, purpose (1.5-2 pages)
+5.Research questions –General, specific (0.5 page)
+6.Theory, hypotheses, and conceptual framework ( 1-2 pages)
+7.The literature Review (5-7 pages)
+8.Problem Statement (0.5-1 page)
+9.Justification (0.5-1 page)
+10.Objectives; overall and specific (0.5 page)
+11. Methodology: strategy and design, sample and sampling, data collection –instrument 
+and procedures, data analysis (3-4 pages)
+12.Ethical issues (0.5 page)
+13.Timeframe (0.5-1 page)
+14.Budget (1 page)
+15.References (2-3 pages)
+16.Appendices (1-2 pages) depends
+1,2,3 are written last
+
+Main types of research
+•Experimental
+•Correlational 
+•Survey -
+•Observational -
+
+Experimental research: 
+•The researcher establish different treatments and then 
+studies their effects.
+•Results lead to clear cut interpretation
+•It contains both independent (treatments) and dependent 
+(results) variables
+•You need to control other extraneous variables 
+(confounding factors)
+
+Data from experimental research
+1.Which type of bags retain more b-carotene?
+2.Which variety (genotype) produces hard nsima?
+Nkhataet al., 2019
+Nkhataet al., 2021
+
+Correlational research
+•Determines relationships among two or more variables and 
+explore their cause and effect.
+•Helps to make more intelligent prediction
+Positive: As the content 
+(concentration) of sugar in a solution 
+increases the sweetness also 
+increases
+Negative: As the sugar content of 
+ripening banana increases starch 
+content decreases
+No: sugar content and color of the 
+solution
+
+Sometimes relationships are not linear –
+Death from Covid-9
+
+Strengths of Correlations
+•Correlation allows the researcher to investigate naturally 
+occurring variables that maybe unethical or impractical 
+to test experimentally. For example, it would be 
+unethical to conduct an experiment on whether smoking 
+causes lung cancer.
+•Correlation allows the researcher to clearly and easily 
+see if there is a relationship between variables. This can 
+then be displayed in a graphical form.
+
+Limitations of Correlations
+•Correlation is not and cannot be taken to imply 
+causation. Even if there is a very strong association 
+between two variables we cannot assume that one 
+causes the other.
+•Correlation does not allow us to go beyond the data that 
+is given.
+
+Differences between Experiments and 
+Correlations
+•An experiment isolates and manipulates the independent 
+variableto observe its effect on the dependent variable, and 
+controls the environment in order that extraneous variables 
+may be eliminated. Experiments establish cause and effect.
+•A correlationidentifies variables and looks for a relationship 
+between them. An experiment tests the effect that an 
+independent variable has upon a dependent variable but a 
+correlation looks for a relationship between two variables
+
+3. Observational study
+•Researcher records information concerning the subjects 
+under study without any interference with the process that is 
+generating the information.
+•The researcher is passive observer of the transpiring events. 
+•Can be either comparative or descriptive
+•Comparative: two or more methods of achieving a result are 
+compared for effectiveness
+•Descriptive: main purpose is to characterize a population or 
+process based on certain attributes in that population or 
+process
+
+4. Survey research
+•Data determines specific characteristics of a group.
+•A descriptive survey involves asking the same set of 
+questions (through questionnaire)
+•It is of paramount importance to get  sufficient number 
+of questionnaires completed and returned to make 
+meaningful analyses.
+•Provides a lot of information obtained from large sample 
+of individuals.
+
+GUIDELINES TO PROPOSAL 
+DEVELOPMMENT
+
+•Proposal should present:
+•Objectives and scientific or educational 
+significance of the proposed work
+•Suitability of the method to be employed
+•Qualifications of the investigator
+•Amount of funding required
+
+Main sections -Introduction
+•Introduces background of the research area and highlight key 
+previous discoveries, work, or findings related to the proposed 
+research.
+•Gives background (lay foundation) of the research project to be 
+conducted
+•Provide the context of the research project and highlights most 
+significant previous work in the field
+•Bridges the gap or link the previous work (existing literature) and 
+project being proposed. 
+•The describes current status of research in this field of science
+•Long term goals and supporting objectives of proposed research 
+should be stated and described in details.
+•All work cited be referenced
+
+Literature Review
+•The current status of research in this field of 
+science should is described through review of 
+literature
+•The most significant previous work in the field 
+under consideration including the work should 
+be reviewed
+•You compare and contrast findings from 
+previous research –read original research 
+articles not news, stories or opinions
+•This section must have subsection each 
+focusing on a particular aspect
+•You provide general perspective on overall 
+understanding of the existing literature
+•All work cited be referenced
+
+Problem Statement
+•It is a clear, concise description of the 
+issue that your research aims to 
+address, highlighting its significance 
+and guiding the research objectives
+•What is the problem that you want to 
+solve or address?
+•What gap have you identified that 
+needs to be addressed through your 
+research?
+One of the difficulty parts of the proposal
+
+Study Justification or Significance
+•Explains the rationale behind the 
+research, highlighting its significance, 
+the gaps it addresses, and its 
+contributions to existing knowledge.
+•Why is it necessary to do the research? 
+•What is the major contribution of your 
+research
+•What novelty does it bring?
+•What solution is it going to being
+•What is the relevance
+Prof: Tell me significance of your research?
+Student: to eradicate hunger in Malawi
+Prof: Aaaa? What...?
+
+Hypothesis
+•It is a clear, testable statement predicting 
+the relationship between variables or the 
+outcome of a study. 
+•It forms the foundation of scientific inquiry, 
+providing a direction for investigation and 
+guiding the data collection and analysis 
+process.
+•Mostly used in quantitative research but 
+may sometimes be used in qualitative 
+studies by offering a preliminary assumption 
+about the subject being explored
+•Example: Students from BAT have better 
+academic performance in Research that 
+those from FT
+
+Objectives
+•Are categorized into a) Overall 
+Objective(one) and Specific Objectives 
+(more than one)
+•Specific Objective is just ‘Overall 
+Objective’ broken down into smaller 
+objective for easier implementation
+•Objectives must be SMART
+•Achieving all specific objective should 
+lead to achievement of overall objective
+
+Study/Experimental Design
+•State the design of study to use: CRD, CRBD, Factorial, Latin Square
+•Describe the methodology to use when collecting data
+•Methodology should include but not limited to:
+•sample and sampling
+•Description of proposed investigation and/or experiments in the sequence 
+in which it is planned to carry them out
+•Techniques to be employed in data collection techniques and 
+instrumentation
+•Kinds of results expected
+•Means by which data will be analyzed on interpreted
+•Pitfalls which might be encountered
+•Limitations to proposed procedures
+••Tentative schedule for conducting major steps for investigation 
+and or experiment
+
+Timeline
+•When to do what?
+
+Activity based Budget
+•List of activities/items or 
+description together with amount 
+of money required to implement 
+those activities
+
+Sampling Methods in Research
+
+Two Major Types of Sampling Methods
+•Probability Sampling 
+•uses some form of random selection
+•requires that each unit have a known 
+(often equal) probability of being 
+selected
+•Mostly used in quantitative research
+•Non-Probability Sampling
+•selection is systematic or haphazard, 
+but not random
+•Mostly used in qualitative research 
+•Probability Samples
+
+Types of Probability Sampling Methods
+
+Simple Random Sampling
+•Objective -select n units out of N 
+such that every 
+N
+C
+n
+has an equal 
+chance of being selected
+•Procedure  -use table of random 
+numbers, computer random number 
+generator or mechanical device
+•can sample with or without 
+replacement
+•f=n/N is the sampling fraction
+5
+15
+
+Calculation of Simple Random Sample
+n=
+푍
+2
+푝(1−푝)
+푑
+2
+where 
+•n= required sample size (simple random 
+sample)
+•z = z-score for desired confidence level 
+(e.g., 1.96 for 95%, 2.576 for 99%)
+•p=anticipated proportion (for binary 
+outcomes, e.g., proportion who vaccinate)
+•d=absolute margin of error (precision), e.g., 
+0.05 for ±5%
+•Use 푝=0.5 if you do not know p (maximizes 
+variance, conservative)
+Goal: 95% confidence:
+•d=±5% margin
+•unknown puse p=0.5.
+•푍=1.96
+Calculate the sample size?
+Compute: 푍
+2
+=1.962=3.8416
+푝(1−푝)=0.5×0.5=0.25 
+푑
+2
+=0.0025
+푛=(3.8416×0.25)/0.052
+=0.9604/0.0025
+=384.16 
+= 385
+
+Yamane’s Formula for sample calculation 
+based on population size
+n= sample size
+N= population size
+e= margin of error
+•It estimates sample size based on 
+population with high precision and 
+practicality
+•It uses desired margin of error (i.e
+95%) (0.05)
+
+Factors affecting sample size
+
+Required sample sizes for different confidence levels and 
+margin of error
+
+Stratified Random Sampling
+•Sometimes called "proportional" or "quota" random 
+sampling
+•Objective -population of N units divided into non-
+overlapping strata N
+1
+, N
+2
+, N
+3
+, ... N
+i 
+such that N
+1 
++ N
+2 
++ ... + N
+i 
+= N, then do simple random sample of n/N 
+in each strata
+•Example: we want to study effect of certain food on 
+weight gains. You can stratified the population based 
+on income (low, middle, high)
+
+Stratified Sampling -Purposes:
+•To ensure representation of each 
+strata -oversample smaller 
+population groups
+•Administrative convenience -field 
+offices
+•Sampling problems may differ in 
+each strata
+•Increase precision (lower 
+variance) if strata are 
+homogeneous within (like 
+blocking)
+
+Systematic Random Sampling
+•Number of units in population ranges from 1 
+to N
+•Decide on the n that you want or need
+•N/n=k the interval size
+•Randomly select a number from 1 to k
+•Then take every kth unit
+•Assumes that the population is randomly 
+ordered
+•Advantages -easy; may be more precise 
+than simple random sample
+
+Systematic 
+Sampling
+1265176
+2275277
+3285378
+4295479
+5305580
+6315681
+7325782
+8335883
+9345984
+10356085
+11366186
+12376287
+13386388
+14396489
+15406590
+16416691
+17426792
+18436893
+19446994
+20457095
+21467196
+22477297
+23487398
+24497499
+255075100
+Calculate interval
+•N/n=k the interval 
+size
+•100/20 = 5
+•Sample every 5
+th
+number
+
+Cluster (area) Random Sampling
+•Divide population into clusters
+•Randomly sample clusters
+•Measure all units within sampled 
+clusters
+•Advantages -administratively 
+useful, especially when you have a 
+wide geographic area to cover
+••Examples -randomly sample from 
+city blocks and measure all homes 
+in selected blocks
+
+Group Assignment: Identify the sampling design in each of the 
+following
+
+Non-probability sampling
+•Non-probability sampling is defined as a sampling technique in 
+which the researcher selects samples based on the subjective 
+judgment of the researcher rather than random selection.
+•Non-probability sampling is a sampling method in which not all 
+members of the population have an equal chance of 
+participating in the study
+•Researchers use this method in studies where it is impossible 
+to draw random probability sampling due to time or cost 
+considerations.
+•Focusses on qualitative data
+•selection is systematic or haphazard, but not random
+
+1. Convenience sampling
+•Is a non-probability sampling technique where 
+samples are selected from the population only 
+because they are conveniently available to the 
+researcher.
+•Most common non-probability sampling method, 
+because of its speed, cost-effectiveness, and 
+ease of availability of the sample.
+2. Quota sampling
+•helps in dividing the population into strata or 
+groups.
+•To understand better about a population, the 
+researcher will need only a sample, not the 
+entire population. 
+•The researcher is interested in particular strata 
+within the population
+
+3. Judgmental or Purposive sampling
+•researchers select the samples based purely on 
+the researcher’s knowledge and credibility.
+•researchers choose only those people who they 
+deem fit to participate in the research study
+•Judgmental or purposive sampling is not a 
+scientific method of sampling
+•the preconceived notions of a researcher can 
+influence the results
+4. Snowball sampling
+•helps researchers find a sample when they are 
+difficult to locate. 
+•Researchers use this technique when the 
+sample size is small and not easily available
+•Once the researchers find suitable subjects, he 
+asks them for assistance to seek similar 
+subjects to form a considerably good size 
+sample.
+
+Difference between non-probability sampling 
+and probability sampling
+Non-probability samplingProbability sampling
+•Sample selection based on the subjective 
+judgment of the researcher.
+•The sample is selected at random.
+•Not everyone has an equal chance to 
+participate.
+•Everyone in the population has an equal 
+chance of getting selected.
+•Theresearcherdoesnotconsider
+samplingbias.
+•Used when sampling bias has to be 
+reduced.
+•Useful when the population has similar 
+traits.
+•Useful when the population is diverse.
+•The sample does not accurately represent 
+the population.
+•Used to create an accurate sample.
+•Finding respondents is easy.
+•Finding the right respondents is not easy.
+
+What are the advantages and disadvantages of using each of these 
+sampling techniques –refer to the article shared
+
+Relationship between Variables
+
+1. Simple linear regression 
+•Shows relationship between independent and dependent 
+variable
+•The relation between selected values of x and observed values 
+of y (from which the most probable value of y can be predicted 
+for any value of x)
+•Regression models describe the relationship between 
+variables by fitting a line to the observed data. Linear regression 
+models use a straight line
+•Simple linear regression is used to estimate the relationship 
+between two quantitative variables. You can use simple linear 
+regression when you want to know:
+•How strong the relationship is between two variables
+•The value of the dependent variable (y) at a certain value of the 
+independent variable (x)
+
+Simple linear regression
+
+2. Multiple regression
+•Multiple regression is an extension of 
+simple linear regression. 
+•It is used when we want to predict the value 
+of a variable based on the value of two or 
+more other variables. The variable we want 
+to predict is called the dependent variable 
+(or sometimes, the outcome, target or 
+criterion variable).
+•Multiple linear regression is used to 
+estimate the relationship between two or 
+more independent variables and one 
+dependent variable.
+
+
+
+Example: Regression equation 
+Nitrogen balance studies are used to determine protein requirements for 
+people. Each subject is fed three different controlled diets during three 
+separate experimental periods. The three diets are similar with regards to 
+all nutrients except protein. The data are shown below.
+a) Plot the least square line (simple regression line)
+b) What is the regression equation
+c) Compute the predicted values
+d) Test the hypothesis (slope)
+e) Is there any significant relationship between nitrogen balance and 
+protein intake? α = 0.05
+Protein intake (x)0.5430.7971.030
+Nitrogen Balance (y)-23.417.867.3
+
+y = 185.88x 
+-
+126.28
+R² = 0.994
+-40
+-20
+0
+20
+40
+60
+80
+0.40.50.60.70.80.911.1
+a) Regression line 
+b) Regression equation 
+
+c) Predicted values: what values does the regression equation 
+predict? Use the equation
+X (protein intake)y (nitrogen balance)Predicted y (ý) = 185.88x 126.28)
+0.543-23.4-25.35
+0.79717.821.87
+1.03067.365.18
+
+d) The hypothesis in simple linear regression is: whether the 
+slope of the regression line is zero (meaning there is no 
+relationship between protein intake (x) and nitrogen balance (y). 
+Statistically can be represented as:
+•Ho: β0 = 0
+•Ha: β0 ≠ 0
+e) To test if significant relationship exist between nitrogen 
+balance and protein intake, we need to conduct ANOVA (refresh 
+you memory)
+
+ANOVA table format for simple linear regression
+Source Degree of 
+freedom (df) 
+Sum of Squares Mean Square F 
+Model 1 
+2 
+ (ŷ푖− ȳ) 
+SSM/DFM MSM/MSE 
+Error n-2 
+ 
+SSE/DFE 
+ 
+Total n-1 
+ 
+SST/DFT 
+ 
+ 
+ȳ ; mean value of y
+ŷ푖;  predicted value of y 
+푦푖;  individual value of y
+
+ANOVA table format for simple linear regression
+Source Degree of 
+freedom (df) 
+Sum of 
+Squares 
+Mean Square F 
+Model 1 
+4100.4 
+4100.4 173.45 
+Error 1 
+23.64 
+23.64 
+ 
+Total 2 
+4124.04 
+  
+ 
+Conclusion
+Check the F-tables: Tabulated F(1,1) = 161.45 Computed F(1,1) = 173.45
+•If the calculated value on ANOVA is greater than tabulated value from F-table, we 
+Reject the Null Hypothesis means the slope is not zero. There is a relationship 
+between protein intake and nitrogen balance
+•If the calculated value on ANOVA is less than tabulated value from F-table, we Fail 
+to Reject the Null Hypothesis, meaning there is no evidence to suggest there is a 
+relationship between protein intake and nitrogen balance. Therefore protein intake 
+can not be used to predict nitrogen balance.
+
+•We reject the Ho: the slope is not zero. Therefore there is a 
+significant relationship between protein intake and nitrogen 
+balance. Protein intake can be used to predict nitrogen balance 
+•R-square =  
+
+Assignment 2
+Sixteen students from Computer Science drank Carlsberg beer during social weekend. Thirty 
+minutes later, they drove home and met a police officer with a breathalyzer and commanded that 
+their blood alcohol content be measured. The police officer wanted to find out whether the number of 
+beers a student drunk could predict his or her blood alcohol content (BAC) or drunkenness. Below is 
+the data:
+a)Use excel, make a scatterplot of the data
+b)Which of the variables is a) independent variable b) dependent variable
+c)Calculate predicted values of independent variable
+d)Find the equation of the regression line and add this line to your plot
+e)What is r
+2 
+for the equation?
+f)State the null hypothesis being tested
+g)Use ANOVA to test the hypothesis. Do you reject or fail to reject the null 
+hypothesis? 
+h)h) Briefly summarize the results.
+Students12345678910111213141516
+Number of 
+Beer
+5298373535465714
+BAC0.100.030.190.120.040.0950.070.060.020.050.070.100.0850.090.010.05
+
+0
+0.02
+0.04
+0.06
+0.08
+0.1
+0.12
+0.14
+0.16
+0.18
+0.2
+012345678910
+BAC%
+Number of bottles
+Chart Title
+
+Multiple linear regression

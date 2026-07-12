@@ -1,0 +1,299 @@
+
+
+1. Cell Division
+Mitosis
+A type of nuclear division where one cell divides to form two identical daughter cells, maintaining the 
+chromosome number (2n → 2n).
+Stages
+1. Prophase: Chromosomes condense; spindle fibers begin to form; nuclear envelope starts breaking 
+down.
+2. Metaphase: Chromosomes align at the metaphase plate; spindle fibers attach to centromeres.
+3. Anaphase: Sister chromatids are pulled apart to opposite poles.
+4. Telophase: Chromosomes de-condense; nuclear envelope reforms.
+5. Cytokinesis: Cytoplasm divides, producing two identical cells.
+Importance in plants and animals
+Growth of tissues/organs.
+Repair of damaged cells.
+Asexual reproduction in plants (e.g., potato tubers, banana suckers).
+Meiosis
+Reduction division where a diploid (2n) cell produces four haploid (n) gametes.
+Meiosis I (Reduction Division): homologous chromosomes separate. Crossing-over occurs in prophase I 
+→ introduces genetic variation.
+Meiosis II (Equational Division): similar to mitosis, separates sister chromatids.
+Importance
+Maintains chromosome number across generations.
+Creates variation through recombination and independent assortment.
+Basis for plant and animal breeding.
+
+2. The Central Dogma of Molecular Biology
+Flow of genetic information from DNA → RNA → Protein.
+Steps
+1. Replication: DNA copies itself before cell division.
+2. Transcription: DNA is transcribed into messenger RNA (mRNA).
+Occurs in the nucleus (eukaryotes).
+Requires RNA polymerase, promoter, terminator sequences.
+3. Translation: Ribosomes read mRNA and synthesize proteins.
+mRNA codons → tRNA anticodons → amino acids linked into polypeptides.
+Reverse transcription: RNA → DNA (used by retroviruses like HIV, and in biotechnology tools like RT-
+PCR).
+Applications
+Understanding how traits are expressed.
+Engineering genes to produce specific proteins (e.g., insulin, vaccines).
+3. DNA Structure
+Composition
+Monomer: nucleotide (sugar + phosphate + nitrogen base).
+Nitrogen bases: Purines (A, G), Pyrimidines (T, C in DNA; U in RNA).
+Watson & Crick double helix model:
+Two antiparallel strands (5 →3  and 3 →5 ).′′′′
+Held by hydrogen bonds (A=T, G≡C).
+Types of DNA
+i.B-DNA (most common, right-handed helix).
+
+ii.A-DNA (right-handed, shorter and wider, found in dehydrated conditions).
+iii.Z-DNA (left-handed, plays role in gene regulation).
+Stability
+Base stacking interactions.
+Phosphodiester backbone.
+Relevance
+Blueprint of life.
+Target for genetic engineering, sequencing, PCR.
+4. Genes and Gene Expression
+Gene
+A functional segment of DNA that codes for proteins or functional RNAs (rRNA, tRNA, microRNAs).
+Expression process
+1. Transcription: DNA → RNA.
+2. Post-transcriptional modifications (in eukaryotes): 5  capping, poly-A tail, intron splicing.′
+3. Translation: RNA → protein.
+Regulation of gene expression
+Prokaryotes: Operons (e.g., lac operon).
+Eukaryotes: Transcription factors, enhancers, silencers, epigenetic modifications.
+Epigenetics
+DNA methylation and histone modification control which genes are active.
+Importance
+Explains phenotypic variation.
+Basis for trait manipulation in crops and animals.
+
+5. Gene Manipulation
+Altering genetic material to achieve desired traits.
+Techniques
+Restriction enzymes: Cut DNA at specific sequences.
+DNA ligases: Join DNA fragments.
+Plasmid vectors: Carry foreign DNA into host cells.
+CRISPR-Cas9: Allows precise genome editing.
+Applications
+Crops resistant to pests/diseases (Bt cotton, virus-resistant papaya).
+Nutritionally enhanced crops (Golden Rice with vitamin A).
+Animal breeding (growth hormones, disease resistance).
+Medical biotechnology (gene therapy, vaccine production).
+6. DNA Replication, Transcription, Translation, Gene 
+Regulation
+Replication
+Semi-conservative (each daughter DNA has one old and one new strand).
+Requires: helicase, primase, DNA polymerase, ligase.
+Proofreading ensures high fidelity.
+Transcription
+Initiation → Elongation → Termination.
+Translation
+mRNA codons → polypeptides. Initiation → Elongation → Termination.
+Gene regulation
+
+Prokaryotic operons.
+Eukaryotic transcription factors + chromatin remodeling.
+Significance
+Controls when, where, and how much of a protein is made.
+7. Genomics in Crop and Animal Improvement
+Genomics
+Study of entire genomes (DNA sequencing, mapping, analysis).
+Applications in crops
+Identifying disease-resistance genes.
+Marker-assisted selection for faster breeding.
+Development of GMOs (Bt maize, drought-tolerant maize).
+Applications in animals:
+Genomic selection for milk yield, egg production, growth rates.
+Detection of hereditary diseases.
+Impact
+Increases productivity, reduces losses, supports food security.
+8. DNA Variation and Molecular Markers
+Types of variations
+SNPs (Single Nucleotide Polymorphisms).
+Microsatellites (short tandem repeats).
+RFLPs (Restriction Fragment Length Polymorphisms).
+AFLPs (Amplified Fragment Length Polymorphisms).
+
+Applications
+Genetic mapping.
+Identifying genetic diversity.
+Marker-assisted selection.
+DNA fingerprinting.
+9. Traditional Marker Systems
+Morphological markers
+Based on visible traits such as flower color, seed shape, plant height.
+Advantage
+Easy to observe, no need for specialized equipment.
+Limitations
+Influenced by environment (e.g., drought may stunt growth regardless of genes).
+Limited number of available traits.
+Low resolution compared to molecular markers.
+Biochemical markers
+Based on variation in proteins/enzymes (isozymes, allozymes).
+Uses
+To distinguish between varieties, study genetic diversity.
+Limitations
+Cannot detect silent mutations (non-protein coding changes).
+10. PCR – Molecular Marker Based on in vitro DNA 
+Amplification
+Polymerase Chain Reaction (PCR)
+
+Technique invented by Kary Mullis (1983).
+Amplifies a specific DNA fragment from very small amounts.
+Steps
+1. Denaturation (94–95°C): DNA strands separate.
+2. Annealing (50–65°C): Primers bind to target sequence.
+3. Extension (72°C): Taq polymerase adds nucleotides.
+Repeated for 25–40 cycles, yielding millions of copies.
+Variants
+RT-PCR (Reverse Transcriptase PCR) – for RNA.
+qPCR (Quantitative PCR) – measures DNA amplification in real time.
+Applications
+Genotyping and marker development.
+Detecting GMOs.
+Disease diagnosis (viruses, bacteria).
+Forensics and parentage testing.
+11. Applications of DNA Fingerprinting in Plant Sciences
+DNA fingerprinting
+Unique genetic profile based on DNA patterns.
+Techniques
+RFLP
+SSR, AFLP
+SNP-based markers.
+Applications
+
+Verification of plant varieties (seed certification).
+Protection of breeders’ rights (intellectual property).
+Genetic purity testing in hybrid seeds.
+Identifying genetic contamination in breeding lines.
+Example: DNA fingerprinting used in rice to distinguish between similar cultivars.
+12. Genotype Identification & Genetic Diversity
+Genotyping
+Identifying alleles at specific loci in an organism’s DNA.
+Methods
+SNP chips, sequencing, PCR markers.
+Genetic diversity
+The variation within and between species.
+Importance
+Ensures adaptability to stresses (pests, diseases, climate change).
+Basis for selection in breeding.
+Prevents genetic erosion in crops and livestock.
+Applications in agriculture
+Conservation of rare germplasm.
+Identifying heterozygosity for hybrid vigor (heterosis).
+Monitoring inbreeding in livestock.
+13. Plant Taxonomy and Systematics
+Taxonomy
+Science of naming, describing, and classifying plants.
+
+Systematics
+Study of evolutionary relationships among plants.
+Traditional methods
+Based on morphology (flower structure, leaves, seeds).
+Modern methods
+Use molecular markers and DNA sequencing (DNA barcoding).
+Importance in biotechnology
+Helps identify related species for cross-breeding.
+Ensures correct classification of genetic resources.
+Assists in discovering new sources of useful genes (e.g., disease resistance).
+14. Phylogeography
+Study of the geographical distribution of genetic lineages.
+Uses in agriculture
+Tracing origins of domesticated crops (e.g., maize from Central America).
+Understanding migration of plant species under climate change.
+Identifying centers of diversity for conservation.
+Methods
+Molecular markers (microsatellites, SNPs).
+Phylogenetic trees combined with geographical maps.
+15. Cell Totipotency and Plant Tissue Culture
+Totipotency
+The ability of a single cell to regenerate into a complete plant.
+
+Basis of plant tissue culture.
+Plant Tissue Culture
+Cultivation of plant cells/tissues under sterile, controlled conditions.
+Requires nutrient media (Murashige and Skoog medium).
+Applications
+Clonal propagation (micropropagation).
+Virus elimination (meristem culture).
+Genetic transformation (introducing new traits).
+Germplasm conservation (cryopreservation).
+16. Micropropagation
+Rapid multiplication of plants using tissue culture.
+Stages
+1. Initiation – selection and sterilization of explant.
+2. Multiplication – production of multiple shoots using hormones (cytokinins).
+3. Rooting – using auxins (e.g., IAA, IBA).
+4. Acclimatization – transferring plantlets to soil under greenhouse conditions.
+Advantages
+Produces large numbers of identical, disease-free plants.
+Faster than conventional breeding.
+Useful for endangered species conservation.
+Examples: Banana, sugarcane, cassava, potato.
+17. Pathogen Cleaning of Propagules
+
+Problem
+ Many plant propagules (cuttings, tubers) carry systemic pathogens (viruses, bacteria, fungi).
+Solution
+Meristem culture: Growing apical meristems free of viruses.
+Thermotherapy/Chemotherapy: Heat or chemicals to eliminate pathogens before tissue culture.
+Importance
+Provides healthy, disease-free planting stock.
+18. Anther Culture and Production of Homozygous Lines
+Anther culture
+Isolating and culturing anthers/microspores to develop haploid plants.
+Haploids
+Have only one set of chromosomes (n).
+Chromosome doubling (via colchicine treatment) → Doubled Haploids (DHs) = homozygous 
+lines.
+Advantages
+Speeds up breeding by fixing traits in one generation.
+Useful for mapping genes and QTLs (Quantitative Trait Loci).
+Applications
+ Widely used in cereals (rice, maize, barley).
+19. Cryopreservation / Germplasm Conservation
+Cryopreservation
+Long-term storage of plant genetic material in liquid nitrogen (–196°C).
+
+Material stored
+Seeds, embryos, pollen, shoot tips, somatic embryos.
+Advantages
+Maintains genetic stability over long periods.
+Prevents genetic erosion.
+Cost-effective compared to field gene banks.
+Applications
+Conservation of rare/endangered species.
+Backup storage for breeding programs.
+20. Plant Transformation and Methods
+Introduction of foreign DNA into a plant genome.
+Methods
+1. Agrobacterium-mediated transformation
+Uses Agrobacterium tumefaciens, a natural gene transfer system.
+Very effective in dicots, now optimized for monocots.
+2. Biolistic method (gene gun)
+DNA-coated particles shot into plant cells.
+Useful for species not susceptible to Agrobacterium.
+3. Electroporation
+Uses electric pulses to make cell membranes permeable to DNA.
+Applications
+Herbicide-tolerant crops (soybean, maize).
+Insect-resistant crops (Bt cotton, Bt maize).
+
+Nutritionally enhanced crops (biofortification).
+21. Plant Characterisation
+The process of describing and documenting plant genetic resources.
+Methods
+Morphological characterization: Based on visible traits (plant height, leaf shape, seed color).
+Biochemical characterization: Isozymes, metabolites.
+Molecular characterization: DNA markers, sequencing.
+Importance
+Identifies distinct varieties.
+Protects breeders’ rights.
+Ensures correct labeling of genetic resources.
+Helps in germplasm management and utilization.

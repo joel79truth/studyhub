@@ -1,0 +1,322 @@
+
+
+Contract Law and Quantity 
+Surveying
+By
+D. Sibale
+LUANAR-NRC CAMPUS
+Irrigation Section
+
+Main areas to cover
+a)Understandingplanningtechniquesapplied
+inconstruction/irrigationprojects
+b)GainknowledgeonContractLawand
+Management
+c)Understandingthetenderingprocess
+•Preparationoftendersforsmall-scale
+irrigationprojects
+d)PreparationofBillsofQuantities(BOQ)
+
+TOPIC 1
+Planning techniques applied in construction 
+works/irrigation projects
+The principal objectives of  planning in construction 
+works/irrigation projects are: 
+•To achieve the most economical use of  labour, materials 
+and equipment
+•To obtain the best sequence of  the activities involved
+•To decide the amount of  time needed for each activity
+•To avoid hold-ups due to lack of  materials
+
+Examplesofplanningtechniques
+Withthedevelopmentofnewtechnologies,new
+planningtechniquesarebeingdevelopedinorderto
+makeprojectexecutioneasierandmanageable.These
+techniquesinclude:
+a)CriticalPathMethod(CPM)
+b)UseofNodeDiagrams
+(PrecedenceDiagrams)
+c)UseofBarCharts
+
+Critical Path Method (CPM) or Critical Path 
+Analysis (CPA)
+•Criticalpathmethod(CPM)isastep-by-stepproject
+planning&managementtechniquethatdefines
+criticalandnon-criticaltasks/activitieswhichare
+presentedinanetworkdiagram.
+•Thenetworkdiagramclearillustratestheflowof
+theproject
+
+Major steps involved  in the Critical Path 
+Method:
+Step 1: Specify and list all important activities required in 
+the project 
+(including the expected duration of  each activity)
+Step 2: Establish a dependency table 
+(this helps to have a clear idea on the sequence of  
+activities ) 
+Step 3: Draw the Network Diagram
+Step 4: Estimate activity completion time. ...
+Step 5: Identify the Critical Path 
+(critical activities are identified)
+
+Example1:
+Mr.Sesaniisacommercialfarmerandintendstohavea
+waterstorageunitathisfarm.Waterwillbepumpedfrom
+aboreholeintothreeplastictanks(eachhavinga
+capacityof5000litres).Thethreetankswillbeplacedon
+abrickworkstandshowninFig1.UsingCriticalPath
+Method(CPM),prepareanetworkdiagramthatwill
+guideonplanning,implementationandmanagementof
+keyactivities.Theexpectedkeyactivitiesarepresentedin
+Table1.
+
+Fig 1: Brickwork stand
+
+ActivityDuration (days)
+Siteclearance1
+Settingoutoftheconstructionsite
+Excavation
+1
+1
+Deliveryofallmaterialsatthesite1
+Concretefooting1
+Brickworkonthesubstructure1
+Backfilling1
+Brickworkonthesuperstructure2
+Table 1: Activities and estimated duration of  implementation
+Construction of  the concrete slab1
+Installation of  plastic tanks and pipe 
+connection
+1
+Testing of  the storage unit to check its 
+stability and leakages 
+1
+
+(a)Fromallactivitiesexpectedtobecarriedout,
+prepareanactivitynetwork
+(b)Basingonyouractivitynetwork,whatistheproject
+duration?
+(c)Identifycriticalactivitiesandjustifyyourchoice
+(d)Showthecriticalpathontheactivitynetwork
+produced
+
+ActivityEvent 
+(Node) 
+numbers
+Duration
+(days)
+Dependency/pr
+ecedence
+ASiteclearance1-21None
+BSettingoutoftheconstructionsite2-31A
+CExcavation3-41B
+DDeliveryofmaterials2-41A
+EConcretefooting4-51C & D
+FBrickworkonthesubstructure5-61E
+GBackfilling6-71F
+Table 2: Dependency table
+HBrickwork on the superstructure7-82G
+IConstruction of  concrete slab8-91H
+J
+K
+Installation of  tanks and pipe 
+connections
+Testing of  the storage unit to 
+check its stability and leakages
+9-10
+10-11
+1
+1
+I
+J
+
+Preparing a network diagram
+
+Knowing earliest finishing times for project 
+activities
+EFT = EST + Duration
+“Forward Pass process”
+
+Knowing latest starting times and latest finishing 
+times
+LST = LFT -Duration
+“Backward Pass process”
+
+Identification of  critical path
+CriticalPath
+Criticalpathisarouteonthenetworkwhichshows
+activities/operationswhicharecriticalinaproject.
+Itisamusttomakesuretherearenodelaysin
+completingtheseactivities;otherwisethecontract
+durationwillbeextended.
+Identifyingacriticalpath:
+i.Bylookingateventtimes:
+Eacheventonacriticalpathmusthavethesame
+earliestandlatestfinishingtimes.
+i.Using“Floattimes”:
+Floattime=Latestfinishingtime–earliest
+finishingtimeofaparticularactivity
+*Criticalactivitieswillhaveazerofloat.
+
+Developed critical path
+
+Thecriticalactivitiesneedtobemonitoredcloselyso
+thatifdifficultiesareforeseen,thefollowingoptionsor
+waysshouldbeconsideredtobringthecontractperiod
+backtotarget:
+Involvemoreexpertsandlabourers
+Involvingmoreexpertsandlabourerswillhelpintermsof
+finishingaparticularpieceofworkontime.Includemore
+workersaccordingtotheworkloadandtheintendedwork.
+Usemoremachinery
+Largenumberofmachinerytoaugmenttheworkonsite.
+Overtimeworking(startingearlierandfinishinglater)
+Thisissimplyincreasingtheworkinghours.Thisshouldbe
+accompaniedwithallowanceasamotivationfactor.
+
+Betterbonusscheme
+Introductionofincentivestoencouragethelabourersonsiteto
+workhard.
+Sub-contractors.
+Certainworksshouldbegiventoasubcontractorsothatthe
+workisdoneconcurrently
+
+Assignment 1
+Welthungerhilfe(WHH)intendstoestablishadripirrigationsysteminChikwawa
+district.Waterwillbepumpedfromashallowopenwellusingacentrifugalpump
+andsuppliedtoraisedtanks.Asaconsultancywork,NRCIrrigationteamhasbeen
+engagedtoimplementprojectactivities.Supposeyouarepartoftheimplementing
+teamandyouhavebeentaskedtoprepareaplanofworksbyapplyingtheCritical
+PathMethod:
+a)List key activities that will have to be undertaken in this project
+b)From those key activities expected to be carried out, prepare an activity 
+network
+c)Based on your activity network, what is the project duration?
+d)Identify critical activities and justify your choice
+e)Show the critical path on the network diagram
+Note: 
+•Estimate an understandable durationfor each activity 
+•Layout of  the drip irrigation system has been presented on the next slide.
+
+Fig 2: Layout of  a drip 
+irrigation system
+
+Assignment 2
+Fig.3showsthenetworkdiagramthatillustratesoneoftheplanningtechniques
+appliedinconstructionworks.Thedurationofactivitiesisexpressedinweeks.
+Fig.3: Network diagram of  project activities
+In reference to Fig.3, prepare a dependency table that should illustrate the logical 
+sequence of  activities 
+
+USE OF BAR CHARTS IN PLANNING & MONITORING 
+PROJECT ACTIVITIES
+Barchartsaredevelopedtoservethefollowingpurposes:
+✓Forplanningexecutionofprojectactivities
+✓Formonitoringprogressoftheworks
+✓Forcalculatingresources,suchaslabourersrequiredinthe
+project.
+*Thetimebarsaredrawnfromtheearlieststartingtimes
+andlatestfinishingtimes.
+PreparationofBarchart
+•FirstlytheBarchartwillhaveacolumnofactivitiesand
+rowsindicatingdurationofaparticularactivity.
+•Timebarsaredrawnfromtheearlieststartingtimesand
+latestfinishtimes.
+
+Example2:
+Mr.Sesaniisacommercialfarmerandintendstohavea
+waterstorageunitathisfarm.Waterwillbepumpedfrom
+aboreholeintothreeplastictanks(eachhavinga
+capacityof5000litres).Thethreetankswillbeplacedon
+abrickworkstandshowninFig1.Showhowtheuseof
+BarChartwillguideonplanning,implementationand
+managementofkeyactivities.Theexpectedkeyactivities
+arepresentedinTable1.
+
+Table 3: Presentation of  the Bar Chart
+
+Table 4: Illustration of  critical and non critical 
+activities on a Bar-Chart
+
+LabourAggregation:
+Nowwecanmakeuseofthebarcharttocalculatethe
+totallabourerswewillrequireforeachdayofthe
+project.
+Weloadthebarchartwiththenumberoflabourers
+requiredtoworkoneachactivityperday.
+Afterthat,weaddthetotallabourersforeachday.
+Forexample,comeupwiththelabourrequirementper
+dayconsideringtheinformationprovidedinnextslide
+
+ActivityDuration
+(days)
+No. of  labourers 
+required per day
+ASiteclearance13
+BSettingoutoftheconstruction
+site
+12
+CExcavation15
+DDeliveryofmaterials18
+EConcretefooting14
+FBrickworkonthesubstructure14
+GBackfilling12
+Table 5: Activity, duration and No. of  labourers required per day
+HBrickwork on the superstructure26
+IConstruction of  concrete slab14
+J
+K
+Installation of  tanks and pipe 
+connections
+Testing of  the storage unit to 
+check its stability and leakages
+1
+1
+6
+3
+
+Table 6: Total number of  labourers required per day
+
+Whenallthebarsfortheentireprojecthavebeenloaded
+withnumberoflabourersrequired,thesumforeachday
+isfound.Thisprocessofcalculatingthetotalnumberof
+labourersrequiredperdayisreferredtoaslabour
+aggregation.
+Note:Sometimesagraphisproducedtoshowthe
+labourdemandperday.
+
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+01234567891011
+TOTAL NO. OF LABOURERS PER DAY
+DAYS
+Fig 4: Labour demand per day
+
+Assignment 3
+Welthungerhilfe(WHH)intendstoestablishadripirrigationsystem
+inChikwawadistrict.Waterwillbepumpedfromashallowopen
+wellusingacentrifugalpumpandsuppliedtoraisedtanks.Asa
+consultancywork,NRCIrrigationteamhasbeenengagedto
+implementprojectactivities.Supposeyouarepartofthe
+implementingteamandyouhavebeentaskedtoprepareaplanof
+worksusingBar-charttechnique:
+a)Prepare a Bar Chart
+b)Produce a graph showing the labour demand per day
+Note: 
+•Estimate an understandable durationfor each activity as well as 
+labour demand per dayfor each activity
+•Use the layout of  the drip irrigation system presented in Fig.2

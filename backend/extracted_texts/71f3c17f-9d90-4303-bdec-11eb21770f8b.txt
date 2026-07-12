@@ -1,0 +1,153 @@
+
+
+COURSE TITLE:  PHYSICS II 
+1. PROGRAMME   : Bachelor of Agricultural Technology 
+2. PRESENTED TO   : Senate 
+3. PRESENTED BY   : Faculty of Life Sciences and Natural Resources  
+4. SUBJECT    : Physics 
+5. YEAR    : 1 
+6. SEMESTER OF STUDY  : 2 
+7. COURSE TITLE    : Physics II  
+8. COURSE CODE   : NPHY31201 
+9. DURATION   : 15 Weeks 
+10. LECTURES HOURS PER WEEK: 2 
+11. TUTORIAL HOURS PER WEEK: 1 
+12. PRACTICAL HOURS PER WEEK: 2 
+13. STUDENT INDEPENDENT LEARNING HOURS PER WEEK: 6 
+14. TOTAL COURSE CREDITS  : 3.5 
+15. PREREQUISITE COURSES  : Physics I, Mathematics I 
+16. COREQUISITE COURSE  : Mathematics II 
+17. DELIVERY METHODS    
+17.1. Mode of Delivery  : Face-to-face and ODL 
+17.2. Teaching methods  : Lectures and practicals 
+17.3. Assessment weighting : Continuous Assessment:  40%  
+Practicals    10% 
+
+Assignments   10% 
+Tests     20% 
+End of Semester Exam: 60% 
+ 
+18. AIM(S) OF STUDY: 
+To equip students with problem solving skills and understanding of the general principles 
+of electricity, microscopic nature of matter and Thermal energy at a foundational level. 
+19. LEARNING OUTCOMES 
+Upon successful completion of this course, students should be able to:  
+a. describe and demonstrate properties of waves 
+b. use wave properties in solving optics problems and mechanics problems 
+c. solve practical problems involving periodic motion 
+d. solve problems related to fluids in nonequilibrium conditions.  
+e. compare electric fields and magnetic fields 
+f. describe the composition of matter 
+g. explain the implications of the gas laws 
+h. apply gas laws in solving problems involving heat 
+i. demonstrate the gas laws 
+j. use ray diagrams to predict and describe the image formation 
+k. demonstrate properties of light 
+l. explain the applications of properties of light 
+m. describe nuclear structure 
+
+n. predict the products of radioactive decay 
+o. explain applications of radioactive decay 
+p. explain how radiation detector work 
+q. explain and demonstrate the relationship between electricity and magnetism 
+20. TOPICS OF STUDY: 
+a. Wave motion 
+● Types of waves 
+● Characteristics of waves 
+● Properties of waves 
+● Energy transfer by waves 
+● Equations of a travelling wave 
+● Standing waves 
+b. Kinetic Theory of Matter 
+● Statement of the kinetic theory of matter 
+● Implications of the Kinetic Theory of matter  
+● The Gas laws 
+● Temperature scales 
+● Kinetic theory of Gases (An ideal gas) 
+● The Ideal gas equation 
+● Van der Waals Equation 
+●  Kinetic theory of Gases 
+● Temperature and Internal Energy of agas 
+
+● Implications of the Kinetic Theory of gases 
+c. Fluid Mechanics II 
+● Ideal Fluid 
+● Equation of Continuity,  
+● Bernoulli’s Theorem,  
+● Torricelli’s Theorem 
+d. Electricity 
+● Coulomb’s Law  
+● Electric charge and electric field 
+● Electric force 
+● Electric potential and Capacitance 
+● Electric current,  
+● Voltage (emf and pd),  
+● potential divider 
+● current divider 
+● Ohm’s law,  
+● resistance, (resistance colour code, resistivity), 
+● circuit configurations 
+● Kirchhoff’s circuit laws 
+e. Electromagnetism 
+● Magnetic Fields and Magnetic Dipoles 
+● Magnetic Force 
+
+● Magnetic Flux  
+● Magnetic field due to an electric current, 
+● The motor effect, 
+● Electromagnetic Induction 
+● Faradays laws of electromagnetic induction 
+● Lenz’s law 
+● Applications  of  electromagnetic  induction  (motor,  electric  generator,  electrical 
+transformer) 
+f. Physical Optics 
+● Dual nature of light 
+● Laws of reflection 
+● Flat mirrors 
+● Spherical mirrors 
+● Applications of reflection (retroflectors, reflecting telescope) 
+● Snell’s Law 
+● Total internal reflection 
+● Convex lenses 
+● Concave lenses 
+● Lenses in combination 
+● Applications   of   refraction   (retroflectors   optical   fibers,   the   eye,   refracting 
+telescopes and microscopes) 
+g. Nuclear Physics 
+
+● Nuclear Structure 
+● Isotopes 
+● Binding energy 
+● Radioactive decay 
+● Nuclear Reactions 
+● Radiation detectors  
+21. PRACTICALS/TUTORIALS/LAB TOPICS 
+a. Measurement of g and effective mass of a spring 
+b. Measurement of period of oscillation of a simple pendulum 
+c. Demonstrating gas laws (Boyle’s Law, Charles’ Law and Gay-Lussac law) 
+d. Measuring specific heat capacities at constant pressure and volume 
+e. Measuring coefficient of viscosity for different fluids  
+f. Demonstrating Magnetic field patterns and Electric field patterns 
+g. Demonstrating the Venturi effect 
+h. Using a Venturi meter to measure velocity of and flow rate of a fluid 
+22. PRESCRIBED TEXTS: 
+Bueche, F. J., & Hecht, E. (2018). College Physics (12 ed.). New York: McGraw - Hill. 
+Open Stax College. (2020). College physics. Houston: Rice University.  
+Young, H. D., Freedman, R. A., Ford, L. A., & Estrugo, K. Z. (2020). University Physics 
+with Modern Physics (15th ed.). London: Pearson Education. 
+23. RECOMMENDED TEXTS/READINGS:  
+Duncan, T., & Heather, K. (2014). Cambridge IGCSE Physics (3rd ed.). London: Hodder 
+Education. 
+
+Haliday, D., Resnick, R., & Walker, J. (2018). Fundamentals of Physics (11 ed.). New 
+York: John Wiley & Sons Inc. Retrieved November 30, 2021 
+Hecht, E. (2018). College Physics (12th ed.). Chicago: McGraw-Hill Education. 
+Huebener, R. P. (2016). Conductors, Semiconductors, Superconductors: an introduction 
+to solid State Physics (2nd ed.). New York: Springer. 
+Muncaster, R. (2014). A-Level Physics (4 ed.). Oxford: Oxford University Press. 
+Rex, A., & Finn, C. B. (2017). Finn's Thermal Physics (3 ed.). London: CRC Press. 
+Serway, R. A., & Jewett, J. W. (2014). Physics For Scientists and Engineers with modern 
+Physics (9th ed.). Boston: Cengage Learning. 
+Woodside, R. (2019). Cambridge Internationa AS nd A-Level Physics (2nd ed.). (M. 
+Jones, Ed.) London: Hodder Education. 
+ 

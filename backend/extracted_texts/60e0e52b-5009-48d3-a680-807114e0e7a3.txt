@@ -1,0 +1,578 @@
+
+
+Programming constructs
+•Programs are designed and implemented using common building blocks, known as 
+programming constructs. 
+•These constructs are sequence, selection, and iteration and they form the basis for all 
+programs.
+•Sequenceis the order in which instructions occur and are processed.
+•Selectiondetermines which path a program takes when it is running.
+•Iterationis the repeated execution of a section of code when a program is running
+
+Cont...
+
+Cont...
+❑Selection
+•Selection Logic simply involves several conditions or 
+parameters that decide one out of several written 
+modules. 
+•The structures which use this type of logic are known 
+as Conditional Structures.
+▪Single Alternative
+•This structure has the form:
+If (condition) then:
+[Module A]   
+[End of If structure]
+
+Cont...
+▪Double Alternative.
+•This structure has the form:
+If (Condition), then:
+[Module A]
+Else:
+[Module B]
+[End if structure]
+
+Cont..
+▪Multiple Alternatives.
+•This structure has the form:
+If (condition A), then:
+[Module A]
+Else if (condition B), then:
+[Module B]
+..
+..
+Else if (condition N), then:
+[Module N]
+[End If structure]
+
+PythonIf ... Else
+❑Python Conditions and If statements
+•Python supports the usual logical conditions from mathematics:
+▪Equals: a == b
+▪Not Equals: a != b
+▪Less than: a < b
+▪Less than or equal to: a <= b
+▪Greater than: a > b
+▪Greater than or equal to: a >= b
+•These conditions can be used in several ways, most commonly in "if statements" and 
+loops.
+•An "if statement" is written by using the ifkeyword.
+
+Cont...
+•Example –If  statement:
+a =33
+b =200
+ifb > a:
+print("b is greater than a")
+
+Course Project
+•The project should enable you to show understanding of python building blocks:
+a.Using print statements
+b.Defining variables of various data types
+c.Using lists and loops
+d.Creating python functions
+e.Creating and checking conditional statements
+f.Reading  and writing data from a file
+g.Using Numpy
+h.Using Pandas
+
+Possible projects
+•Expenditure Tracking
+•Simple mathematical Calculator
+•Word guessing games
+•Simple Money transactions
+•Data analysis projects
+•Predictive analysis
+
+What are you submitting in week 5?
+•Cover page: Project group members (including student Reg Numbers)
+•Page 2: Project title. On this, also write two paragraphs explaining 
+why you choose the project.
+•Remember this is worth 5 marks of the 20 marks.
+
+Cont...
+❑Indentation
+•Python relies on indentation (whitespace at the beginning of a line) to define 
+the scope of the code. 
+•Other programming languages often use curly brackets for this purpose.
+•Example –If  statement, without indentation (will raise an error):
+a =33
+b =200
+ifb > a:
+print("b is greater than a")
+# you will get an error
+
+Cont...
+❑Elif
+•The elifkeyword is Python's way of saying "if the previous conditions were not true, 
+then try this condition".
+•Example:
+a =33
+b =33
+ifb > a:
+print("b is greater than a")
+elifa == b:
+print("a and b are equal")
+
+Cont...
+❑Else
+•The else keyword catches anything that isn't caught by the preceding conditions.
+•Example: 
+a =200
+b =33
+ifb > a:
+print("b is greater than a")
+elifa == b:
+print("a and b are equal")
+else:
+print("a is greater than b")
+
+Cont...
+•You can also have an else without the elif.
+•Example:
+a =200
+b =33
+ifb > a:
+print("b is greater than a")
+else:
+print("b is not greater than a")
+
+Cont...
+❑Short Hand If
+•If you have only one statement to execute, you can put it on the same line as 
+the if statement.
+•Example: -One line if statement: 
+ifa > b:print("a is greater than b")
+
+Cont...
+❑Short Hand If ... Else
+•If you have only one statement to execute, one for if, and one for else, you 
+can put it all on the same line.
+•Example: -One line if else statement:
+a =2
+b =330
+print("A")ifa > belseprint("B")
+
+Python–And 
+•The and keyword is a logical operator and is used to combine conditional 
+statements. 
+•If one both parts are true, the and key word returns true.
+•Example: -Test if a is greater than b AND if c is greater than a:
+a =200
+b =33
+c =500
+ifa > b and c > a:
+print("Both conditions are True")
+
+Python–OR
+•The or keyword is a logical operator, and is used to combine conditional 
+statements.
+•If one part is true, the or key word returns true.
+•Example: -Test if a is greater than b, OR if a is greater than c:
+a =200
+b =33
+c =500
+ifa > b or a > c:
+print("At least one of the conditions is True")
+
+Python–NOT
+•The not keyword is a logical operator, and is used to reverse the result 
+of the conditional statement.
+•Example:  -Test if a is NOT greater than b:
+a =33
+b =200
+ifnot a > b:
+print("a is NOT greater than b")
+
+Python -Nested If
+•You can have if statements inside if statements, this is called nested if statements.
+•Example:
+x =41
+ifx >10:
+print("Above ten,")
+ifx >20:
+print("and also above 20!")
+else:
+print("but not above 20.")
+
+The pass Statement
+•if statements cannot be empty, but if you for some reason have an if 
+statement with no content, put in the pass statement to avoid getting an 
+error.
+•Example:
+a =33
+b =200
+ifb > a:
+pass
+
+Cont...
+❑Iteration Logic (Repetitive Flow)
+•The Iteration logic employs a loop that involves a repeat statement followed by a 
+module known as the body of a loop.
+•The two types of these structures are:
+•Repeat-For Structure
+•This structure has the form:
+Repeat for i= A to N by I:
+[Module]
+[End of loop]
+
+Cont...
+•Here, A is the initial value, N is 
+the end value and I is the 
+increment. The loop ends when 
+A>B. 
+•K increases or decreases 
+according to the positive and 
+negative value of I respectively.
+
+Cont...
+❑Repeat-While Structure
+•It also uses a condition to control the loop. This structure has the form:
+Repeat while condition:
+[Module]
+[End of Loop]
+•In this, there requires a statement that initializes the condition controlling the 
+loop. 
+•There must also be a statement inside the module that will change this 
+condition leading to the end of the loop. 
+
+Python -While Loops
+❑Python Loops
+•Python has two primitive loop commands:
+▪while loops
+▪for loops
+▪The while Loop
+•With the while loop we can execute a set of statements as long as a condition is true.
+i =1
+whilei <6:
+print(i)
+i +=1
+
+Cont...
+•Note: remember to increment i, or else the loop will continue forever.
+•The while loop requires relevant variables to be ready, in this example 
+we need to define an indexing variable, i, which we set to 1.
+
+The breakStatement
+•With the break statement we can stop the loop even if the while condition is 
+true.
+•Example: -Exit the loop when iis 3:
+i=1
+whilei<6:
+print(i)
+ifi==3:
+break
+i+=1
+
+The continue Statement
+•With the continue statement we can stop the current iteration, and continue with 
+the next.
+•Example: -Continue to the next iteration if iis 3:
+i=0
+whilei<6:
+i+=1
+ifi==3:
+continue
+print(i)
+
+The else Statement
+•With the else statement we can run a block of code once when the condition no 
+longer is true.
+•Example: -Print a message once the condition is false:
+i=1
+whilei<6:
+print(i)
+i+=1
+else:
+print("iis no longer less than 6")
+
+Python -For Loops
+•A for loop is used for iterating over a sequence (that is either a list, a tuple, 
+a dictionary, a set, or a string).
+•This is less like the for keyword in other programming languages and works 
+more like an iterator method as found in other object-orientated 
+programming languages.
+•With the for loop we can execute a set of statements, once for each item in 
+a list, tuple, set etc.
+
+Cont...
+•Example -Print each fruit in a fruit list:
+fruits = ["apple","banana","cherry"]
+forxinfruits:
+print(x)
+▪Note: The for loop does not require an indexing 
+variable to set beforehand.
+
+For loop: The break Statement
+•With the break statement we can stop the loop before it has looped 
+through all the items.
+•Example: -Exit the loop when x is "banana":
+fruits = ["apple","banana","cherry"]
+forxinfruits:
+print(x)
+ifx =="banana":
+break
+
+For loop: The continue Statement
+•With the continue statement we can stop the current iteration of the loop, 
+and continue with the next.
+•Example: -Do not print banana:
+fruits = ["apple","banana","cherry"]
+forxinfruits:
+ifx =="banana":
+continue
+print(x)
+
+Therange() Function
+•To loop through a set of code a specified number of times, we can use the 
+range() function.
+•The range() function returns a sequence of numbers, starting from 0 by 
+default, and increments by 1 (by default), and ends at a specified number.
+•Example: -Using the range() function:
+forxinrange(6):
+print(x)
+
+Cont...
+•The range() function defaults to 0 as a starting value.
+•However it is possible to specify the starting value by adding a parameter: 
+range(i, n).
+•This means values from ito n (but not including n):
+•Example: -Using the start parameter:
+forxinrange(2,6):
+print(x)
+
+Cont...
+•The range() function defaults to increment the sequence by 1.
+•However, it is possible to specify the increment value by adding a 
+third parameter: range(2, 30, 3):
+•Example: -Increment the sequence with 3:
+forxinrange(2,30,3):
+print(x)
+
+Else in For Loop
+•The else keyword in a for loop specifies a block of code to be executed 
+when the loop is finished.
+•Example: -Print all numbers from 0 to 5, and print a message when the 
+loop has ended:
+forxinrange(6):
+print(x)
+else:
+print("Finally finished!")
+
+Nested Loops
+•A nested loop is a loop inside a loop.
+•The "inner loop" will be executed one time for each iteration of the "outer loop“.
+•Example: -Print each adjective for every fruit:
+adj = ["red","big","tasty"]
+fruits = ["apple","banana","cherry"]
+forxinadj:
+foryinfruits:
+print(x, y)
+
+Functions
+•A function is a block of statements that return the specific task. 
+•The idea is to put some commonly or repeatedly done tasks together 
+and make a function so that instead of writing the same code again 
+and again for different inputs, we can do the function calls to reuse 
+code contained in it over and over again.
+❑Some Benefits of Using Functions
+a.Increase Code Readability 
+b.Increase Code Reusability
+
+Types of Functions in Python
+•There are mainly two types of functions in Python:
+i.Built-in library function: These are Standard functions in Python that are 
+available to use.
+ii.User-defined function: We can create our functions based on our 
+requirements.
+
+Python –Functions 
+•A function is a block of code that only runs when it is called.
+•You can pass data, known as parameters, into a function.
+•A function can return data as a result.
+❑Creating a Function
+•In Python a function is defined using the def keyword as below:
+defmy_function():
+print("Hello from a function")
+
+Cont...
+❑Calling a Function
+•To call a function, use the function name followed by parenthesis:
+•Example:
+defmy_function():
+print("Hello from a function")
+my_function()
+
+Cont...
+❑Arguments
+•Information can be passed into functions as arguments.
+•Arguments are specified after the function name, inside the parentheses. 
+•You can add as many arguments as you want, just separate them with a 
+comma.
+•When the function is called, we pass along the argument values:
+
+Cont...
+•Example:
+defmy_function(fname):
+print(fname+" Refsnes")
+my_function("Emil")
+my_function("Tobias")
+my_function("Linus")
+
+Parameters or Arguments?
+•The terms parameter and argument can be used for the same thing: 
+information that is passed into a function.
+❑From a function's perspective:
+•A parameter is the variable listed inside the parentheses in the function 
+definition.
+•An argument is the value that is sent to the function when it is called.
+
+Another example:
+# A simple Python function to check
+# whether x is even or odd
+defevenOdd(x):
+if(x %2==0):
+print("even")
+else:
+print("odd")
+# Driver code to call the function
+evenOdd(2)
+evenOdd(3)
+
+Types of Python Function Arguments
+•Python supports various types of arguments that can be passed at the time of the 
+function call. 
+•In Python, we have the following 4 types of function arguments.
+▪Default argument
+▪Keyword arguments (named arguments)
+▪Positional arguments
+▪Arbitrary arguments (variable-length arguments *argsand **kwargs)
+•Let’s discuss each type in detail. 
+
+Default Arguments
+•A default argument is a parameter that assumes a default value if a 
+value is not provided in the function call for that argument. 
+•The following example illustrates Default arguments. 
+# Python program to demonstrate
+# default arguments
+def myFun(x, y=50):
+print("x: ", x)
+print("y: ", y)
+# Driver code (We call myFun() with only 1 argument)
+myFun(10)
+
+Keyword Arguments
+•The idea is to allow the caller to specify the argument name with 
+values so that the caller does not need to remember the order of 
+parameters.
+•Example: -Python program to demonstrate Keyword Arguments
+
+Cont...
+# Python program to demonstrate Keyword Arguments
+defstudent(firstname, lastname):
+print(firstname, lastname)
+# Keyword arguments
+student(firstname='Geeks', lastname='Practice')
+student(lastname='Practice', firstname='Geeks')
+
+PositionalArguments
+•We used the Position argument during the function call so that the 
+first argument (or value) is assigned to the first parameter the second 
+argument (or value) is assigned to the second parameter and so forth. 
+•By changing the position, or if you forget the order of the positions, 
+the values can be used in the wrong places.
+•Check the example below:
+
+Cont...
+defnameAge(name, age):
+print("Hi, I am", name)
+print("My age is ", age)
+# You will get correct output because 
+# argument is given in order
+print("Case-1:")
+nameAge("Suraj", 27)
+# You will get incorrect output because
+# argument is not in order
+print("\nCase-2:")
+nameAge(27, "Suraj")
+
+Arbitrary KeywordArguments
+•In Python Arbitrary Keyword Arguments, *args, and **kwargscan 
+pass a variable number of arguments to a function using special 
+symbols. There are two special symbols:
+•*argsin Python (Non-Keyword Arguments)
+•**kwargsin Python (Keyword Arguments)
+•Example 1: Variable length non-keywords argument
+
+Cont...
+# Python program to illustrate
+# *argsfor variable number of arguments
+defmyFun(*argv):
+forarginargv:
+print(arg)
+myFun('Hello', 'Welcome', 'to', 'GeeksforGeeks')
+
+Python-File Handling
+•File handling is an important part of any web application.
+•Python has several functions for creating, reading, updating, and 
+deleting files.
+❑File Handling
+•The key function for working with files in Python is the open() function.
+•The open() function takes two parameters; filename, and mode.
+•There are four different methods (modes) for opening a file:
+
+Cont...
+❑Syntax
+•To open a file for reading it is enough to specify the name of the file:
+f =open("demofile.txt")
+•Same as: f =open("demofile.txt","rt")
+•Because "r" for read, and "t" for text are the default values, you do not need 
+to specify them.
+•Make sure the file exists, or else you will get an error.
+
+Cont...
+❑Opening a file
+•To open the file, use the built-in open() function.
+•The open() function returns a file object, which has a read() method for 
+reading the content of the file:
+f =open("demofile.txt","r")
+print(f.read())
+
+Python –File  Write
+❑Write to an Existing File
+▪To write to an existing file, you must add a parameter to the open() function:
+▪"a" -Append -will append to the end of the file
+▪"w" -Write -will overwrite any existing content
+▪Example –Open  the file "demofile2.txt" and append content to the file:
+f =open("demofile2.txt","a")
+f.write("Now the file has more content!")
+f.close()
+#open and read the file after the appending:
+f =open("demofile2.txt","r")
+print(f.read())
+
+Python-Delete File
+•To delete a file, you must import the OS module, and run its 
+os.remove() function.
+•Example -Remove the file "demofile.txt":
+importos
+os.remove("demofile.txt")
+
+Cont...
+❑Delete Folder
+•To delete an entire folder, use the os.rmdir() method:
+•Example –Remove  the folder "myfolder":
+importos
+os.rmdir("myfolder")
+
+Cont...
+❑Check if File exist:
+•To avoid getting an error, you might want to check if the file exists before you try to 
+delete it:
+•Example –Check  if file exists, then delete it:
+importos
+ifos.path.exists("demofile.txt"):
+os.remove("demofile.txt")
+else:
+print("The file does not exist")

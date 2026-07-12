@@ -1,0 +1,1676 @@
+
+
+
+
+
+
+Veterinary Microbiology 
+and Microbial Disease
+
+
+
+Veterinary Microbiology 
+and Microbial Disease
+Second Edition
+A John Wiley & Sons, Ltd., Publication
+P.J. Quinn   MVB, PhD, MRCVS
+Professor Emeritus, Former Professor of Veterinary Microbiology 
+and Parasitology, School of Veterinary Medicine, 
+University College Dublin
+B.K. Markey   MVB, PhD, Dip Stat, MRCVS
+Senior Lecturer in Veterinary Microbiology, 
+School of Veterinary Medicine, University College Dublin
+F.C. Leonard   MVB, PhD, MRCVS
+Senior Lecturer in Veterinary Microbiology, 
+School of Veterinary Medicine, University College Dublin
+E.S. FitzPatrick    FIBMS
+Chief Technical Offi cer, School of Veterinary Medicine, 
+University College Dublin
+S. Fanning    BSc,    PhD
+Professor of Food Safety and Zoonoses, Director of Academic Centre 
+for Food Safety, University College Dublin
+P.J. Hartigan   BSc, MVM, MA, PhD, MRCVS
+Former Senior Lecturer in Veterinary Pathology, 
+Trinity College Dublin
+
+This edition fi rst published 2011
+© 2002 by Blackwell Science Ltd
+© 2011 by P.J. Quinn, B.K. Markey, F.C. Leonard, E.S. FitzPatrick, S. Fanning and P.J. Hartigan
+Wiley-Blackwell is an imprint of John Wiley & Sons, formed by the merger of Wiley’s global Scientifi c, 
+Technical and Medical business with Blackwell Publishing.
+Registered offi ce:    John Wiley & Sons Ltd, The Atrium, Southern Gate, Chichester, West Sussex, PO19 8SQ, UK
+Editorial offi ces:    9600 Garsington Road, Oxford, OX4 2DQ, UK
+ The Atrium, Southern Gate, Chichester, West Sussex, PO19 8SQ, UK
+ 2121 State Avenue, Ames, Iowa 50014-8300, USA
+For details of our global editorial offi ces, for customer services and for information about 
+how to apply for permission to reuse the copyright material in this book please see our website at 
+www.wiley.com/wiley-blackwell.
+The right of the author to be identifi ed as the author of this work has been asserted in accordance with 
+the UK Copyright, Designs and Patents Act 1988.
+All rights reserved. No part of this publication may be reproduced, stored in a retrieval system, or 
+transmitted, in any form or by any means, electronic, mechanical, photocopying, recording or otherwise, 
+except as permitted by the UK Copyright, Designs and Patents Act 1988, without the prior permission of 
+the publisher.
+Designations used by companies to distinguish their products are often claimed as trademarks. All brand 
+names and product names used in this book are trade names, service marks, trademarks or registered 
+trademarks of their respective owners. The publisher is not associated with any product or vendor 
+mentioned in this book. This publication is designed to provide accurate and authoritative information in 
+regard to the subject matter covered. It is sold on the understanding that the publisher is not engaged in 
+rendering professional services. If professional advice or other expert assistance is required, the services 
+of a competent professional should be sought.
+Library of Congress Cataloging-in-Publication Data
+Veterinary microbiology and microbial disease / P.J. Quinn, MVB, PhD, MRCVS, Professor Emeritus, Former 
+Professor of Veterinary Microbiology and Parasitology, School of Veterinary Medicine, University College, 
+Dublin, B.K. Markey, MVB, PhD, Dip Stat, MRCVS, Senior Lecturer in Veterinary Microbiology, School of 
+Veterinary Medicine, University College, Dublin, F.C. Leonard, MVB, PhD, MRCVS, Senior Lecturer in 
+Veterinary Microbiology, School of Veterinary Medicine, University College, Dublin, E.S. FitzPatrick, FIBMS, 
+Chief Technical Officer, School of Veterinary Medicine, University College, Dublin, S. Fanning, BSc, PhD, 
+Professor of Food Safety and Zoonoses, Director of Academic Centre for Food Safety, University College 
+Dublin, P.J. Hartigan, BSc, MVM, MA, PhD, MRCVS, Former Senior Lecturer in Veterinary Pathology, Trinity 
+College, Dublin. – Second Edition.
+            p.    ;    cm.
+    Includes bibliographical references and index.
+        ISBN 978-1-4051-5823-7 (pbk. : alk. paper)    1.  Veterinary microbiology.    I.  Quinn, P. J. (Patrick J.), 
+author.    II.  Markey, B. K. (Bryan K.), author.    III.  Leonard, F. C., author.    IV.  FitzPatrick, E. S., author. 
+V.  Fanning, S., author.    VI.  Hartigan, P. J., author.
+    [DNLM:    1.    Microbiology.    2.    Veterinary    Medicine.    3.    Communicable    Diseases–microbiology.    
+4.  Communicable Diseases–veterinary. QW 70]
+    SF780.2.V485    2011
+    636.089'69041–dc22
+ 2010049404
+A catalogue record for this book is available from the British Library.
+Set in 10/12 pt Palatino by Toppan Best-set Premedia Limited, Hong Kong
+1    2011
+
+Contents
+v
+Preface                                                                            ix
+Acknowledgements                                                       x
+Author biographies xi
+Section I    Introduction to Microbiology, 
+Infection, Immunity and Molecular 
+Diagnostic Methods
+1 Microbiology, microbial pathogens 
+and infectious disease 3
+2      Subdivisions,      classifi cation and 
+morphological characterization of 
+infectious agents 7
+3 Infection and immunity 14
+4      Immunodefi ciency diseases 67
+5 Vaccines and vaccination 80
+6 Molecular diagnostic methods 95
+Section II    Introductory Bacteriology
+7 The structure of bacterial cells 115
+8 Cultivation, preservation and 
+inactivation of bacteria 123
+9 Bacterial genetics, mechanisms of 
+genetic variation and gene databases 129
+10    Laboratory diagnosis of bacterial disease 143
+11    Antibacterial    agents    149
+12    Antibacterial    resistance    157
+13    Bacterial colonization, tissue 
+invasion and clinical disease 165
+Section III    Pathogenic Bacteria
+14 Staphylococcus species                                                179
+15    Streptococci    188
+16 Actinobacteria                                                               196
+17 Corynebacterium species 207
+18    Rhodococcus    equi                                                          213
+19 Listeria species 217
+20 Erysipelothrix rhusiopathiae                                        222
+21 Bacillus species 227
+22 Clostridium species                                                     233
+23 Mycobacterium species 250
+24 Enterobacteriaceae                                                        263
+25 Pseudomonas aeruginosa and 
+Burkholderia species 287
+26 Actinobacillus species                                                 293
+27 Pasteurella species, Mannheimia 
+haemolytica and Bibersteinia trehalosi                        300
+28 Francisella tularensis                                                   309
+29 Histophilus somni, Haemophilus parasuis 
+and Avibacterium paragallinarum                              314
+30 Taylorella species                                                         321
+31 Bordetella species 325
+32 Moraxella species                                                        330
+33 Brucella species 334
+34 Campylobacter and Helicobacter species                   342
+35 Lawsonia intracellularis                                               351
+36    Spirochaetes    354
+37    Pathogenic anaerobic non-spore-forming 
+Gram-negative bacteria 367
+38    Mycoplasmas    373
+39 Chlamydia and Chlamydophila species 384
+40 Rickettsiales and Coxiella burnetii                              394
+41    Bacterial species of limited 
+pathogenic signifi cance 405
+Section IV    Mycology
+42    General features of fungi associated 
+with disease in animals 413
+43    Dermatophytes    419
+44 Aspergillus species                                                      425
+45    Yeasts and disease production 430
+46    Dimorphic    fungi    439
+47    Zygomycetes of veterinary importance 446
+48    Fungus-like organisms of 
+veterinary importance 452
+49 Pneumocystis carinii                                                    457
+50    Opportunistic infections caused 
+predominantly by phaeoid fungi 459
+51    Mycotoxins and mycotoxicoses 463
+52    Pathogenic algae and cyanobacteria 478
+53    Antifungal    chemotherapy    483
+Section V    Introductory Virology
+54    Nature, structure and taxonomy of viruses 505
+55    Replication of viruses 514
+56    Genetics and evolution of viruses 522
+57    Propagation of viruses and virus–cell 
+interactions                                                                  527
+58    Pathogenesis of viral diseases 534
+59    Laboratory diagnosis of viral infections 541
+60    Antiviral    chemotherapy    548
+Section VI    Viruses and Prions
+61 Herpesviridae                                                                567
+62 Papillomaviridae                                                           583
+63 Adenoviridae                                                                 588
+64 Poxviridae                                                                     593
+65 Asfarviridae                                                                  603
+66 Parvoviridae                                                                  607
+
+vi  Contents
+67 Circoviridae                                                                  615
+68 Retroviridae                                                                  618
+69 Reoviridae                                                                     635
+70 Birnaviridae                                                                  644
+71 Orthomyxoviridae                                                        647
+72    Paramyxoviridae                                                           656
+73 Rhabdoviridae                                                               668
+74 Bornaviridae                                                                 676
+75    Bunyaviridae                                                                679
+76 Picornaviridae                                                               684
+77 Caliciviridae                                                                  692
+78 Astroviridae                                                                  698
+79 Coronaviridae                                                               700
+80 Arteriviridae                                                                 713
+81 Flaviviridae                                                                   718
+82 Togaviridae                                                                    729
+83    Prions: unconventional infectious agents 734
+Section VII    Microbial Agents and 
+Disease Production
+84    Tissue and system preferences of bacterial, 
+fungal and viral pathogens and the nature 
+of the diseases caused by these 
+infectious agents 745
+85    Interactions of microbial pathogens 
+with the nervous system 759
+86    Interactions of microbial pathogens 
+with the male and female 
+reproductive systems 765
+87    The role of microbial pathogens 
+in intestinal disease 773
+88    The role of microbial pathogens 
+in respiratory disease 778
+89    Interactions of microbial pathogens 
+with the renal system 787
+90    Microbial diseases of the 
+cardiovascular system 797
+91    Interactions of microbial pathogens 
+with the musculoskeletal system 806
+92    The role of microbial pathogens in 
+diseases of the integumentary system 826
+93    Bacterial causes of bovine mastitis 837
+94    Disinfection, biosecurity and other 
+aspects of disease control 851
+Appendix: Relevant websites 890
+Index                                                                            893
+Additional resources for lecturers are available on the supporting companion website at:
+www.wiley.com/go/quinn/veterinarymicrobiology
+
+   This book is dedicated to the memory of  
+  Margery  E.  Carter  
+  and  
+  W.J.C. (Bill) Donnelly, co - authors of the fi  rst  edition       
+
+
+
+ix
+  The pace of change in microbiology has accelerated in recent years as molecular techniques, applied to microbial 
+pathogens, elucidate the pathogenesis of many infectious diseases and improve the reliability of diagnostic test 
+procedures.  Today,  microbiology  occupies  a  central  position  in  the  veterinary  curriculum  and  has  developed  
+into  a  subject  of  vast  complexity.  Since  the  publication  of    Veterinary  Microbiology  and  Microbial  Disease   in  2002,  
+many changes have occurred in veterinary microbiology, some on the recommendations of international com-
+mittees and others as a consequence of relevant research. 
+ The  second  edition  of  our  book  incorporates  changes  in  individual  chapters  which  have  been  updated  and  
+expanded. In addition, new chapters on immunodefi ciency diseases, vaccines and vaccination, molecular diag-
+nostic  methods,  antibacterial  resistance,  antifungal  chemotherapy,  antiviral  chemotherapy  and  microbial  dis-
+eases  of  the  urinary  tract,  cardiovascular  system,  musculoskeletal  system  and  the  integumentary  system  have  
+been added. 
+ This edition is divided into seven sections. The fi rst section provides an introduction to microbiology, infec-
+tion,  immunity  and  molecular  diagnostic  methods.  Section  II  contains  chapters  on  introductory  bacteriology.  
+Pathogenic bacteria are dealt with in Section III. The twelve chapters in Section IV are concerned with mycology. 
+Introductory virology is presented in Section V. Viruses and prions are covered in Section VI. The fi nal section, 
+Section VII, includes chapters on the interactions of microbial pathogens with body systems. A separate chapter 
+in this section deals with bovine mastitis and the fi nal chapter provides a comprehensive review of disinfection, 
+biosecurity and other aspects of disease control. 
+ To facilitate readers requiring additional information on topics included in the book, a list of websites is pro-
+vided at the end of Section VII. 
+ The use of colour in this edition enhances the quality of the illustrations and facilitates the interpretation of 
+complex diagrams. 
+ The authors would be pleased to receive notifi cation of errors or inaccuracies in this edition of our book.      
+ Preface     
+
+x
+  We wish to acknowledge the constructive comments of the following colleagues who offered scientifi c, technical 
+and editorial advice on individual chapters or who assisted in other ways: Hester McAllister, Marijka Beltman, 
+Aidan  Kelly,  Paul  Stanley,  Carolyn  Cummins,  Eva  Maischberger,  Jane  Irwin,  Robert  Shiel,  Clodagh  Kearney,  
+Gr  á  inne  McCarthy,  Hanne  Jahns,  Joe  Cassidy,  Yvonne  Abbott,  Dores  Maguire,  Frances  LeMatti,  Ruth  Henry,  
+Pauline  Coyle,  Sean  Hogan,  Jarlath  Nally,  Steve  Gordon,  Brian  Sheahan,  Mark  Rogers,  Shane  Cooney,  Orla  
+Condell, Marta Martins, Matthew McCusker, Stephen O ’ Brien, Katie Solomon, Karen Power, Paul Whyte, Patrick 
+Wall and Theo De Waal, School of Veterinary Medicine, University College Dublin; Cliona O ’ Farrelly, Tim Foster 
+and  Patrick  Prendergast,  Trinity  College  Dublin;  Pat  Lenihan,  Maire  McElroy,  Kevin  Kenny,  Peter  O  ’  Neill  and  
+Pat  Raleigh,  Central  Veterinary  Research  Laboratory,  Backweston;  Patrick  Rogan,  Department  of  Agriculture,  
+Fisheries and Food; Hywel Ball, Agri - Food and Biosciences Institute, Stormont; Patrick McDonough, College of 
+Veterinary  Medicine,  Cornell  University;  Helen  O  ’  Shea,  Department  of  Biological  Sciences,  Cork  Institute  of  
+Technology; Alan Reilly and Wayne Anderson, Food Safety Authority of Ireland; Brendan Crowley, Department 
+of Medical Microbiology, St. James ’ s Hospital, Dublin; Donal Walsh, School of Veterinary Medicine, University 
+of California, Davis; Ross Fitzgerald, Universitry of Edinburgh; Davida Smyth, NewYork University; Clive Lee, 
+Royal College of Surgeons in Ireland; James Buckley, Veterinary Department, Cork County Council. 
+ The facilities and support provided by the librarian, Mr. Diarmuid Stokes, and staff at the veterinary library, 
+Paul  Gogarty,  Michelle  Latimer,  Vanessa  Buckley,  Kathryn  Smith  and  Marie  McGourn  is  acknowledged  with  
+gratitude. 
+ Justinia Wood, Nick Morgan, Lucy Nash and their colleagues at Wiley - Blackwell provided advice and assist-
+ance throughout this long project. The careful editing of the manuscript by Mary Sayers, copy editor, improved 
+the  accuracy  of  the  text,  illustrations  and  references.  As  Project  Manager,  Ruth  Swan  coordinated  corrections  
+and advised the authors on technical aspects of changes to the manuscript. 
+   Dublin,  July  2011        
+ Acknowledgements     
+
+xi
+   P.J.  Quinn ,  MVB,  PhD,  MRCVS,  was  Professor  of  Veterinary  Microbiology  and  Parasitology  and  Head  of  the  
+Department in the Faculty of Veterinary Medicine, University College Dublin, from 1985 to 2002. After graduat-
+ing  from  University  College  Dublin  in  1965,  he  spent  some  time  in  veterinary  practice  before  enrolling  as  a  
+postgraduate student in Ontario Veterinary College, University of Guelph, Canada. In 1970, he was awarded a 
+PhD  for  research  in  veterinary  immunology  and  he  remained  on  the  staff  of  Ontario  Veterinary  College  until  
+his return to the Faculty of Veterinary Medicine, University College Dublin, in 1973. 
+ His research interests have included allergic skin reactions in the horse to biting insects, the epidemiology of 
+toxoplasmosis  in  sheep,  immune  mechanisms  in  the  respiratory  tract  of  calves,  leptospirosis  in  dairy  cattle,  
+immunomodulation, mechanisms of immunity in the respiratory tract of specifi  c pathogen - free and conventional 
+cats,  botulism  in  gulls  around  the  Irish  coastline,  factors  infl  uencing  the  tuberculin  test  in  cattle,  airborne  dis-
+persal  of  bacteria  during  slurry  spreading,  and  evaluation  of  the  effi  cacy  of  chemical  disinfectants  against  
+ Brucella abortus  and  Mycobacterium bovis.  
+ In addition to many refereed publications in journals and chapters in books, he edited  Cell - mediated  Immunity  
+(1984),  is  senior  co  - author  of    Animal  Diseases  Exotic  to  Ireland   (1992),    Clinical  Veterinary  Microbiology    (1994), 
+ Microbial and Parasitic Diseases of the Dog and Cat  (1997),  Veterinary Microbiology and Microbial Disease  (2002) and 
+ Concise Review of Veterinary Microbiology  (2003) and is co - author of  Veterinary Embryology   (2006). 
+ He was awarded the title Professor Emeritus by University College Dublin in 2002. In 2006, he was recipient 
+of the Association of Veterinary Teachers and Research Workers outstanding teaching award. For his contribu-
+tion to teaching and faculty development in the Faculty of Veterinary Medicine in Tirana, he was awarded an 
+honorary doctorate by the Agricultural University of Tirana, Albania, in May 2010. 
+  Bryan K. Markey , MVB, PhD, MRCVS, Dip Stat, graduated from the Faculty of Veterinary Medicine, University 
+College  Dublin,  in  1985.  Following  a  short  period  in  general  practice  he  was  appointed  house  surgeon  in  the  
+Faculty of Veterinary Medicine, University College Dublin. In 1986, he joined the academic staff as an assistant 
+lecturer  in  the  Department  of  Veterinary  Microbiology  and  Parasitology.  He  spent  one  year  on  study  leave  at  
+the Veterinary Sciences Division, Belfast, and enrolled for a PhD degree at Queen ’ s University. He was awarded 
+a PhD from Queen ’ s University, Belfast in 1991 and was promoted to senior lecturer in veterinary microbiology 
+in 1997. From 2002 to 2004 he served as Head of Department. In 2005 he was visiting professor at the College 
+of Life Sciences, Queensland University of Technology, Brisbane. 
+ His research interests include chlamydial infections of domestic animals and methicillin - resistant  Staphylococcus 
+aureus    infection  in  veterinary  species.  He  has  contributed  chapters  to  books  on  veterinary  disinfection  and  is  
+co - author  of   Animal Diseases Exotic to Ireland  (1992),  Clinical Veterinary Microbiology  (1994),  Microbial and Parasitic 
+Diseases  of  the  Dog  and  Cat   (1997),    Veterinary  Microbiology  and  Microbial  Disease   (2002)  and    Concise  Review  of  
+Veterinary Microbiology   (2003). 
+  Finola C. Leonard , MVB, PhD, MRCVS, graduated from the Faculty of Veterinary Medicine, University College 
+Dublin,  in  1983.  She  was  house  surgeon  in  the  Department  of  Large  Animal  Medicine,  Royal  (Dick)  School  of  
+Veterinary Studies, Edinburgh, for one year and engaged in veterinary practice for three years. She commenced 
+postgraduate studies in the Faculty of Veterinary Medicine, University College Dublin, on leptospirosis in dairy 
+cattle while based at Teagasc, Moorepark, Co. Cork, and was awarded a PhD for research on this topic in 1991. 
+She remained in Moorepark as a postdoctoral research worker until 1997. Her research was concerned with foot 
+lameness in dairy cattle and the infl uence of housing on the behaviour and welfare of cattle and pigs. 
+  She  was  appointed  college  lecturer  in  the  Department  of  Veterinary  Microbiology  and  Parasitology  in  the  
+Faculty of Veterinary Medicine, University College Dublin in 1997 and was promoted to senior lecturer in vet-
+erinary  microbiology  in  2002.  Her  research  interests  include    Salmonella    infection  in  pigs,  other  zoonotic  infec-
+tions,  and  antimicrobial  resistance,  including  methicillin  - resistant    Staphylococcus  aureus   infection  in  farm  and  
+companion animals. 
+  Eamonn S. FitzPatrick , FIBMS, was awarded Fellowship of the Institute of Biomedical Science in 1978 and was 
+appointed  to  the  post  of  Principal  Technician  in  the  Department  of  Veterinary  Anatomy,  University  College  
+ Author biographies     
+
+xii  Author biographies
+Dublin.  He  was  appointed  to  the  Histopathology  Advisory  Committee  of  the  Irish  Academy  of  Medical  
+Laboratory Sciences in 1979. From 1987 to 1989 he was External Examiner for the Diploma in Medical Laboratory 
+Science — Histopathology Option, at the Dublin Institute of Technology, where he also lectured for many years 
+on  electron  microscopy  in  the  Medical  Laboratory  Sciences  Degree  course.  He  was  appointed  Chief  Technical  
+Offi cer in the Veterinary Science Unit of the School of Veterinary Medicine, University College Dublin, in 2006. 
+He has been teaching veterinary anatomy and histology for over 25 years. 
+ Recent published work includes papers on hormone receptors in the bovine reproductive tract and the effect 
+of diet supplements on the alimentary tracts of weanling pigs. His current research interests are centred mainly 
+on  mucins,  mucus  gels  and  the  interaction  of  microbial  pathogens  with  epithelial  surfaces,  especially  of  the  
+bovine and equine reproductive tracts. He is co - author of  Veterinary Embryology   (2006). 
+  S é amus  Fanning  ,  BSc,  PhD,  graduated  in  Biochemistry  and  Microbiology  from  University  College  Cork.  He  
+was  awarded  a  Fulbright  Fellowship  in  1995  and  worked  at  Baylor  College  of  Medicine,  Houston.  In  2002  he  
+was appointed as the Professor of Food Safety and Zoonoses at University College Dublin and set up the UCD 
+Centre  for  Food  Safety.  Currently,  his  research  interests  include  the  application  of  molecular  methods  to  food  
+safety to aid in the control of zoonotic bacteria. A signifi cant part of his research is related to the characterization 
+of the genetic mechanisms contributing to the emergence of multiple drug resistance in food - borne pathogens. 
+In particular, this work is related to strain virulence and its infl uence on survival in the food chain. His research 
+group is involved in characterizing the emerging pathogen,  Cronobacter  species (formerly known as  Enterobacter 
+sakazakii ), linked to powdered infant milk formula. The UCD Centre for Food Safety was designated as the World 
+Health Organization (WHO) Collaborating Centre for Research, Reference and Training on  Cronobacter . 
+  Patrick  J.  Hartigan ,  BSc,  MVM,  MA,  PhD,  MRCVS,  graduated  from  the  Veterinary  College  of  Ireland  in  1955.  
+After  a  decade  in  large  animal  practice  in  Co.  Kerry,  he  registered  as  a  graduate  student  at  the  School  of  
+Veterinary  Medicine,  Trinity  College,  Dublin.  His  studies  on  uterine  pathology  in  repeat  breeder  cows  were  
+rewarded  with  a  PhD  in  1970.  After  10  years  as  a  pathologist  in  the  School  of  Veterinary  Medicine,  he  moved  
+to a post as Senior Lecturer in Reproductive Physiology at the Department of Physiology in the Faculty of Health 
+Sciences  at  Trinity  College,  where  he  remained  until  retirement.  At  present,  he  is  a  Research  Associate  in  the  
+Department  of  Physiology.      
+
+Section I
+  Section I 
+Introduction to Microbiology, 
+Infection, Immunity and 
+Molecular Diagnostic Methods     
+
+
+
+SECTION I
+3
+     The earliest forms of life on this planet are presumed 
+to have had characteristics resembling those of bacte-
+ria, most likely anaerobic bacteria. It is postulated that 
+prokaryotes evolved from primitive forms of life and 
+that  the  subsequent  availability  of  oxygen  resulting  
+from  photosynthesis  contributed  to  microbial  diver-
+sity.   The   chronological   sequence   of   evolutionary   
+events relating to the emergence of microbial life and, 
+subsequently,  eukaryotic  cells  is  outlined  in  Fig.    1.1  .  
+This  proposed  scheme  is  based  on  limited  factual  
+information, some deriving from information gleaned 
+from  fossilized  remains  of  prokaryotic  cells  approxi-
+mately  3.5  billion  years  old  and  also  from  studies  of  
+ribosomal RNA among microorganisms.   
+  Before  the  causes  of  infectious  diseases  could  be  
+discussed and evaluated in a rational manner, events 
+associated  with  the  emergence  of  life  forms  required  
+explanation.  Traditional  views  on  the  origin  of  life  
+were  strongly  infl  uenced  by  the  writings  of  classical  
+Greek and Roman scholars, many of whom espoused 
+the  view  of  spontaneous  generation  of  small  living  
+entities.  Disease  was  often  attributed  to  evil  forces  
+associated with disturbances in the upper atmosphere, 
+poisonous   vapours   called   miasmas,   supernatural   
+events   and   other   infl   uences   unrelated   to   biology.   
+Awareness of the possible existence of forms of life not 
+visible  to  the  naked  eye  emerged  slowly.  As  early  as  
+1546, in his treatise  De Contagione , Girolamo Fracastoro 
+suggested  that  animate  agents  were  responsible  for  
+disease.  Concepts  of  infectious  diseases  were  closely  
+related to the demonstration of organisms too small to 
+be  observed  without  magnifi  cation  and  to  the  isola-
+tion  and  characterization  of  these  small  organisms,  
+termed    microorganisms.    Major    developments    in    
+microbiology,   the   study   of   these   microorganisms,   
+began with theories relating to the causes of infectious 
+  Chapter 1 
+Microbiology,  m icrobial 
+ p athogens and 
+ i nfectious  d isease         
+diseases   and   continued   with   the   development   of   
+microscopy,  which  confi  rmed  the  existence  of  micro-
+organisms  visible  only  by  substantial  magnifi cation. 
+Towards the middle of the nineteenth century, the pio-
+neering work of Louis Pasteur and Robert Koch con-
+fi  rmed  the  microbial  aetiology  of  infectious  diseases.  
+Progressive  developments  contributed  to  the  rapid  
+expansion  of  knowledge  and  the  establishment  of  
+microbiology  as  a  subject  of  major  importance  not  
+only  in  human  and  animal  health  but  also  in  food  
+processing and preservation. 
+  Spontaneous  generation  as  an  explanation  for  the  
+emergence of life from decaying organic matter was a 
+commonly held view for many centuries. It was pos-
+tulated that life began as a consequence of putrefaction 
+or some other associated change in organic matter. A 
+number of practical experiments aimed at testing this 
+concept were carried out, often with equivocal results. 
+Improved scientifi c methodology and the availability 
+of  suitable  instrumentation  gradually  challenged  the  
+acceptance  of  spontaneous  generation.  The  develop-
+ment of the microscope around 1600 offered a means 
+of  exploring  minute  living  entities,  and  the  amateur  
+Dutch  scientist,  Antonie  van  Leeuwenhoek,  took  a  
+keen  interest  in  the  examination  of  water,  fl uids and 
+organic material. In fl uids he observed large numbers 
+of motile structures, not visible to the naked eye, which 
+he  called    ‘  animalcules  ’  .  In  1675,  van  Leeuwenhoek  
+recorded the structures he observed, which were prob-
+ably  bacteria,  yeasts  and  protozoa.  However,  van  
+Leeuwenhoek ’ s discovery of microorganisms did not 
+resolve the issue of spontaneous generation. 
+ The occurrence of maggots on putrefying meat was 
+taken  as  evidence  of  spontaneous  generation.  The  
+Italian   physician   and   naturalist   Francesco   Reddi   
+(1626  –  1697)  carried  out  relevant  experiments  on  this  
+Veterinary Microbiology and Microbial Disease, Second Edition. P.J. Quinn, B.K. Markey, F.C. Leonard, E.S. FitzPatrick, S. Fanning, 
+P.J. Hartigan.
+© 2011 P.J. Quinn, B.K. Markey, F.C. Leonard, E.S. FitzPatrick, S. Fanning and P.J. Hartigan. Published 2011 by Blackwell Publishing Ltd.
+
+4  Veterinary Microbiology and Microbial Disease
+SECTION I
+morphologically from brewers’ yeast was responsible 
+for  the  spoilage.  He  deduced  that  both  alcoholic  and  
+lactic fermentation resulted from the metabolism and 
+replication of the living yeast cells. The solution to the 
+spoilage  problem  during  fermentation  of  wine  and  
+beer products lay in heating the raw materials to about 
+120 ° F  (49  ° C)  in  order  to  kill  contaminating  microor-
+ganisms prior to the addition of the appropriate yeast 
+cells.  This  process,  now  known  as  pasteurization,  is  
+widely  used  to  reduce  microbial  contamination  in  
+order to prolong the shelf - life of milk and some other 
+foods. 
+  Pasteur  effectively  ended  the  controversy  about  
+spontaneous  generation  through  defi nitive confi rma-
+tion  of  Spallanzani  ’  s  experiments.  Furthermore,  he  
+demonstrated  that  contamination  of  nutrient  broth  
+when exposed to air resulted from microorganisms in 
+dust particles settling on the fl uid. 
+ An  important  technical  advance,  which  stemmed  
+from Pasteur ’ s fermentation studies, was the develop-
+ment  of  a  fl  uid  medium  suitable  for  culturing  yeast  
+cells.  He  then  developed  other  liquid  media  contain-
+ing  specifi  c  ingredients  that  favoured  the  growth  of  
+particular  pathogenic  bacteria.  It  was  this  develop-
+ment which eventually allowed him to formulate the 
+germ  theory  of  disease.  The  germ  theory  formed  the  
+topic  and  demonstrated  that  maggots  developed  in  
+meat  only  when  fl  ies  laid  their  eggs  on  it.  In  the  
+mid - eighteenth  century,  the  English  naturalist  John  
+Needham  investigated  the  effect  of  boiling  broth  on  
+the  survival  of  microorganisms.  He  claimed  to  have  
+detected microorganisms in boiled broth several days 
+later.    Needham    ’    s    experimental    procedures    were    
+shown subsequently to have been unreliable. In 1769, 
+Lazzaro Spallanzani repeated Needham ’ s experiments 
+and  demonstrated  that  no  organisms  survived  in  
+broth boiled for 1   hour. Needham argued that air was 
+essential for all life and that Spallanzani had excluded 
+air  from  the  fl  asks  containing  broth.  As  a  defi ned 
+branch  of  science,  microbiology  could  not  advance  
+until the concept of spontaneous generation was dis-
+proved.   When   the   French   chemist   Louis   Pasteur   
+(1822  –  1895)  became  involved  in  investigations  relat-
+ing to microbiology, his careful planning and intuitive 
+understanding  of  biology  brought  a  new  energy  and  
+appropriate methodology which conclusively refuted 
+the  prevailing  theories  of  spontaneous  generation.  
+Pasteur   ’   s   interest   in   spontaneous   generation   was   
+prompted by experiments which he had conducted on 
+spoilage  during  the  fermentation  of  beet  alcohol.  He  
+showed  that  a  contaminating  yeast  that  produced  
+lactic  acid  during  fermentation  and  which  differed  
+     Figure 1.1     Chronological sequence of biological events from the formation of Earth, relating to the evolution of different forms of microbial 
+life and, later, eukaryotic cells. Although supporting scientifi c evidence documenting the earliest forms of microbial life is not currently 
+available, data from microfossils confi rm the existence of organisms resembling cyanobacteria approximately 3.5 billion years ago.  
+Formation of Earth,
+estimated to be
+4.6 billion years ago
+2.5 billion years ago
+1.5 billion years ago
+0.5 billion years ago
+3.5 billion years ago
+4 billion years ago
+Present
+Emergence of primitive
+forms of life which had
+no dependence on oxygen
+Organisms resembling
+primitive bacteria
+Cyanobacteria and
+related organisms
+Eukaryotic cells
+Diverse forms of
+early animal life
+Mammals
+
+Microbiology, microbial pathogens and infectious disease    5
+SECTION I
+such  serious  infectious  diseases  as  rabies,  smallpox,  
+foot  -  and  -  mouth  disease  and  rinderpest.  Despite  the  
+absence  of  specifi  c  knowledge  about  the  aetiology  of  
+these  diseases,  successful  vaccines  were  introduced  
+both  for  smallpox,  by  Edward  Jenner  in  the  late  
+eighteenth century, and for rabies, by Pasteur and his 
+associates  in  the  latter  half  of  the  nineteenth  century.  
+The  development  by  Pasteur  ’  s  co  -  worker,  Charles  
+Chamberland, of the porcelain fi lter to produce bacte-
+riologically - sterile  water  for  use  in  culture  media,  
+eventually facilitated isolation of the fi lterable agents 
+which  caused  viral  diseases.  Remarkably,  the  tech-
+nique  was  fi  rst  used  to  elucidate  the  cause  of  a  plant  
+viral disease, tobacco mosaic disease. 
+ Dmitri  Ivanovsky,  a  Russian  scientist,  reported  in  
+1892  that  it  was  possible  to  transmit  tobacco  mosaic  
+disease  from  diseased  to  healthy  plants  using  fi l-
+tered   leaf   extract   as   inoculum.   The   fi lters   used 
+by   Ivanovsky   were   Chamberland   porcelain   fi lters 
+designed  to  remove  bacteria  from  drinking  water.  In  
+1898,  Martinus  Beijerinck,  unaware  of  the  work  of  
+Ivanovsky,  also  demonstrated  the  fi  lterability  of  the  
+agent  of  tobacco  mosaic  disease.  Moreover,  he  real-
+ized  that  the  disease  could  not  be  due  to  a  toxin  as  
+the fi ltered sap from infected plants could be used for 
+serial  transmission  of  the  disease  without  loss  of  
+potency. In the same year, Loeffl er and Frosch identi-
+fi  ed  the  fi rst  fi  lterable  agent  from  animals,  the  virus  
+of foot - and - mouth disease. Yellow fever virus, a fi lter-
+able  agent  pathogenic  for  humans,  was  described  by  
+Walter Reed and his team in 1901. Ellerman and Bang, 
+in  1908,  demonstrated  the  oncogenic  potential  of  a  
+fi  lterable  agent,  the  cause  of  avian  leukosis.  In  1915,  
+Frederick  Twort  observed  that  bacteria  were  suscep-
+tible  to  a  fi  lterable  agent,  and  two  years  later  Felix  
+d ’ Herelle   made   a   similar   observation.   D   ’ Herelle 
+named  these  viruses    ‘  bacteriophages  ’    and  developed  
+a  technique  for  establishing  their  concentration  in  
+active  preparations.  Bacteriophages  have  proved  to  
+be  particularly  useful  in  studies  on  viral  replication  
+and  bacterial  genetics.  
+  Initially,  the  only  method  available  for  recovering  
+large quantities of virus was through infecting suscep-
+tible  animals.  In  1913  Steinhardt  and  his  colleagues  
+succeeded  in  growing  vaccinia  virus  in  explants  of  
+guinea - pig cornea embedded in clotted plasma. Some 
+20 years later, Furth and Sturmia used mice as a host 
+species  for  propagating  viruses,  while  Woodruff  and  
+Goodpasture were successful in propagating fowlpox 
+virus  on  the  chorioallantoic  membrane  of  embryo-
+nated  eggs.  A  major  advance  was  made  in  the  early  
+1950s  with  the  development  of  single  cell  cultures.  
+Factors critical in this development included the avail-
+ability  of  antibiotics  to  control  bacterial  contamina-
+tion, and the use of trypsin to obtain cell suspensions 
+basis for Pasteur ’ s experiments on vaccination against 
+fowl cholera, anthrax and rabies. An additional practi-
+cal  application  of  the  theory  was  the  introduction  of  
+phenol as a disinfectant for surgical procedures by the 
+British surgeon Joseph Lister. 
+ Together with Pasteur, the German physician Robert 
+Koch  is  considered  to  be  a  co  - founder  of  modern  
+microbiology. Having observed bacilli in the blood of 
+animals  that  had  died  from  anthrax,  Koch  demon-
+strated their pathogenicity by injecting mice with the 
+blood.  The  injected  mice  died  and  the  bacilli  were  
+present in preparations from their swollen spleens. He 
+was  also  able  to  transfer  the  infection  from  mouse  to  
+mouse  and  to  demonstrate  the  bacilli  in  each  newly  
+infected  mouse.  Initially,  Koch  used  blood  serum  for  
+growing the anthrax bacillus  in vitro . Later, he devel-
+oped solid media which allowed isolation of individ-
+ual  bacterial  colonies.  Using  a  solid  medium,  he  was  
+eventually able to isolate the tubercle bacillus from the 
+tissues  of  an  experimental  animal  in  which  he  had  
+demonstrated   microscopically   the   presence   of   the   
+organism. As a result of these observations, Koch for-
+mulated  certain  principles  for  proving  that  a  specifi c 
+microorganism  caused  a  particular  disease  (Box    1.1 ). 
+Pasteur ’ s  germ  theory  of  disease  and  Koch  ’ s  postu-
+lates are the two cornerstones on which microbiology 
+is  based  and  without  which  this  branch  of  biology  
+could not have advanced.   
+ By  the  end  of  the  nineteenth  century  a  number  of  
+important  infectious  diseases  had  been  confi rmed as 
+bacterial in origin. Both Pasteur and Koch contributed 
+to  the  identifi  cation  and  confi  rmation  of  the  causal  
+agent  of  anthrax.  Pasteur  demonstrated  that  fowl  
+cholera,  malignant  oedema  and  suppurative  lesions  
+were  each  associated  with  a  specifi  c  bacterial  infec-
+tion.  The  causative  organisms  of  tuberculosis  and  
+typhoid fever were recognized by Koch and his associ-
+ates.  Other  bacterial  agents  responsible  for  serious  
+infectious  diseases  including  glanders,  gas  gangrene,  
+diphtheria and dysentery were isolated by laboratory 
+scientists in Europe, North America and Japan. 
+ The   basic   technical   approaches,   pioneered   by   
+Pasteur and Koch, failed to shed light on the causes of 
+  Box 1.1    Koch ’ s postulates 
+        •            The  pathogenic  microorganism  must  be  present  in  every  
+case of the disease but absent from healthy animals  
+   •        The suspected microorganism must be isolated and grown 
+in pure culture  
+  
+ •        
+  The  same  disease  must  occur  when  the  isolated  microor-
+ganism is injected into healthy susceptible animals  
+  
+ •        
+ The same microorganisms must be isolated again from the 
+injected animals which developed disease     
+
+6  Veterinary Microbiology and Microbial Disease
+SECTION I
+(4)  the  diameter  of  the  nucleocapsid  (helical  viruses)  
+or the number of capsomers (icosahedral viruses). The 
+discovery of the enzyme reverse transcriptase in 1970 
+by Temin and Baltimore helped to elucidate retrovirus 
+replication and provided an essential tool for produc-
+ing complementary DNA (cDNA). This ushered in the 
+recombinant  DNA  revolution.  The  study  of  retrovi-
+ruses   has   made   a   substantial   contribution   to   the   
+advancement  of  basic  research  in  neoplasia  and  the  
+role  of  oncogenes  in  the  emergence  of  malignant  
+tumours. 
+ During the past century, major developments have 
+taken  place  in  microbiological  concepts,  techniques  
+and applications. Modern microbiology encompasses 
+the  study  of  bacteria,  fungi,  viruses  and  other  micro-
+scopic  and  submicroscopic  organisms  (Fig.    1.2  ).  In  
+veterinary microbiology, emphasis is placed on those 
+microorganisms associated with infectious diseases of 
+animals.  Immunology,  the  study  of  host  responses  to  
+infectious  agents,  is  a  discipline  closely  related  to  
+microbiology  and  is  sometimes  considered  a  distinct  
+but  cognate  subject.    
+  Further  r eading 
+    Dunlop ,   R.H.    and    Williams ,   D.J.    ( 1996 ).   Veterinary Medicine: 
+An Illustrated History .   Mosby ,   St.  Louis,  Missouri .  
+    Frankland ,    P.     and     Frankland ,    P.     ( 1901 ).    Pasteur .    Cassell , 
+ London .  
+    Lechevalier ,   H.A.    and    Solotorovsky ,   M.    ( 1965 ).   Three Centuries 
+of Microbiology .   McGraw - Hill ,   New  York .  
+    Pelczar ,   M.J.  ,    Chan ,   E.C.S.    and    Krieg ,   N.R.    ( 1993 ).   Microbiology 
+Concepts and Applications .   McGraw - Hill ,   New  York .  
+    Porter ,    R.     ( 1999 ).    The  Greatest  Benefi  t  to  Mankind .    Fontana , 
+ London .  
+    Prescott ,   L.M.  ,    Harley ,   J.P.    and    Klein ,   D.A.    ( 2002 ).   Microbiology . 
+ Fifth  Edition .   McGraw - Hill ,   New  York .  
+    van    Regenmortel  ,    M.H.V.    ( 1990 ).   Virus  species,  a  much  over-
+looked   but   essential   concept   in   virus   classifi cation . 
+ Intervirology ,   31 ,   241  –  254 .   
+   
+  
+from  embryonic  or  adult  tissue.  The  separated  cells  
+could then be grown as monolayers on glass surfaces. 
+Continuous  cell  lines,  capable  of  multiplying  indefi -
+nitely,  provided  a  reliable  source  of  cells  for  virus  
+cultivation. 
+  In  1887  Buist  observed  vaccinia  virus  using  a  light  
+microscope.  However,  because  of  the  limited  resolv-
+ing power of this type of microscopy, the structure of 
+the virus was not discernible. In 1939 Kausche and his 
+co - workers   employed   the   newly - developed   electron 
+microscope and a metal shadowing technique to iden-
+tify  tobacco  mosaic  virus  in  purifi ed  preparations. 
+Ultrastructural    studies    of    viruses    were    greatly    
+expanded and enhanced in the 1950s by the develop-
+ment  of  negative  staining  and  methods  for  cutting  
+ultrathin  sections.  X  -  ray  diffraction  methods  have  
+been  applied  to  viruses  since  the  1930s,  when  it  was  
+discovered  that  simple  viruses  could  be  crystallized.  
+The fi rst complete high - resolution structure of a crys-
+talline virus, tomato bushy stunt virus, was obtained 
+by  Harrison  and  his  co  -  workers  in  1978.  Computer  
+analysis  of  the  diffraction  patterns  obtained  by  such  
+studies has contributed to knowledge of the molecular 
+structure of viruses. 
+ The  crystallization  of  tobacco  mosaic  virus  (TMV)  
+by Stanley in 1935 provided a boost to the analysis of 
+the chemical composition of viruses. In 1937 Bawden 
+and Pirie showed that TMV contained nucleic acid as 
+well as proteins, and helped to promote the idea that 
+viruses  consisted  of  nucleic  acid  contained  within  a  
+protein coat. Having elucidated the structure of DNA 
+and  observed  the  limited  coding  capacity  of  viral  
+nucleic acid, Watson and Crick in 1956 suggested that 
+viral nucleic acid was surrounded by a shell of identi-
+cal protein subunits. In 1962 Lwoff and his colleagues 
+proposed  a  universal  system  on  which  the  modern  
+classifi cation of viruses is based. The method of clas-
+sifi cation proposed was based on the following crite-
+ria:  (1)  the  type  of  nucleic  acid;  (2)  the  symmetry  of  
+the virus; (3) the presence or absence of an envelope; 
+     Figure 1.2     Subdivisions of microbiology, a subject which has areas of common interest with pathology, immunology, pharmacology, 
+medicine and therapeutics.  
+Microbiology
+Bacteriology, study of bacteria
+Mycology, study of fungi
+Virology, study of viruses
+Study of unconventional infectious
+agents, including prions
+
+SECTION I
+7
+     Living cells, the smallest units capable of independent 
+existence,  can  be  divided  into  two  sharply  differenti-
+ated  groups,  eukaryotes  and  prokaryotes.  The  main  
+differentiating features of eukaryotic and prokaryotic 
+cells  are  presented  in  Table    2.1 .  Eukaryotes  possess  
+true nuclei which contain chromosomes, and individ-
+ual  cells  replicate  by  mitosis.  In  addition,  a  typical  
+eukaryotic cell contains organelles such as mitochon-
+dria, a Golgi apparatus, lysosomes and relatively large 
+ribosomes.  Organisms  in  the  domains    Archaea    and 
+ Bacteria ,   which   are   less   complex   than   eukaryotic   
+organisms, are prokaryotes which lack true membrane -
+  bound  nuclei.  Their  genetic  information  is  contained  
+in a single circular chromosome. In some prokaryotic 
+cells  such  as  bacteria,  extrachromosomal  DNA  in  the  
+form of plasmids encodes for certain characteristics of 
+the  organism.  Although  the  origin  of  life  is  a  much  
+debated subject, it is probable that primitive microor-
+ganisms  originated  from  ancestral  life  forms  several  
+billion  years  ago.  The  degree  of  relatedness  among  
+microorganisms  can  be  assessed  by  comparison  of  
+their ribosomal ribonucleic acid (rRNA). There is some 
+evidence  that  all  organisms  developed  from  a  group  
+of  primitive  cells  rather  than  from  a  single  organism  
+(Doolittle,    1999 ).  Prokaryotes  are  considered  as  one  
+branch of the phylogenetic tree and eukaryotes as the 
+second branch (Fig.  2.1 ). Lateral as well as horizontal 
+transfer  of  genetic  material  probably  occurred  in  the  
+course of evolutionary development, with some bacte-
+rial  genes  incorporated  into  members  of  the    Archaea  
+and  perhaps  with  some  prokaryotic  genes  incorpo-
+rated  into  eukaryotes.  This  lateral  gene  transfer  may  
+  Chapter 2 
+Subdivisions,  c lassifi cation and 
+ m orphological  c haracterization 
+of  i nfectious  a gents         
+explain  how  complex  eukaryotic  cells  acquired  some  
+of  their  genes  and  organelles.  The  endosymbiosis  
+hypothesis  proposes  that  at  some  stage  in  their  early  
+development,    eukaryotic    cells    became    primitive    
+phagocytes and acquired particular bacterial cell types 
+which  enhanced  their  respiratory  activity  (de  Duve,  
+  1996  ).  It  is  proposed  that  the  engulfed  bacteria  pro-
+vided extra energy through this enhanced respiration 
+to the host cell and eventually evolved into mitochon-
+dria.  A  similar  phenomenon  may  account  for  the  
+development  of  chloroplasts  in  plant  cells.  The  cyto-
+plasmic membrane is the site of respiratory or photo-
+synthetic  energy  generation  in  prokaryotes,  unlike  
+eukaryotes in which these activities occur in the mem-
+branes  of  mitochondria  and  chloroplasts.      
+  Microscopical  t echniques 
+  A  number  of  different  microscopical  methods  are  
+employed   for   examining   microorganisms.   These   
+include   bright - fi  eld,   dark - fi  eld,   phase - contrast   and 
+electron  microscopy.  Table    2.2    summarizes  common  
+techniques employed for the examination of microor-
+ganisms  and  the  particular  types  of  microorganisms  
+for  which  the  techniques  are  appropriate.  Units  of  
+measurement  employed  in  microscopy  are  indicated  
+in  Table   2.3 .   
+  The  maximum  magnifi  cation  obtainable  by  bright  -
+ fi  eld  microscopy,  using  oil  - immersion  objectives,  is  
+approximately   1,000 × .   With   bright - fi eld  microscopy, 
+suitably stained bacteria as small as 0.2     μ  m in size can 
+Veterinary Microbiology and Microbial Disease, Second Edition. P.J. Quinn, B.K. Markey, F.C. Leonard, E.S. FitzPatrick, S. Fanning, 
+P.J. Hartigan.
+© 2011 P.J. Quinn, B.K. Markey, F.C. Leonard, E.S. FitzPatrick, S. Fanning and P.J. Hartigan. Published 2011 by Blackwell Publishing Ltd.
+
+8  Veterinary Microbiology and Microbial Disease
+SECTION I
+     Figure 2.1     The evolutionary relationships of living organisms. Endosymbiosis is one of the postulated mechanisms whereby eukaryotic cells 
+acquired mitochondria or chloroplasts by incorporation of prokaryotic cells.  
+Endosymbiosis
+(chloroplasts)
+Endosymbiosis
+(mitochondria)
+P
+r
+o
+k
+a
+r
+y
+o
+t
+a
+E
+u
+k
+a
+r
+y
+o
+t
+a
+Archaea
+Bacteria
+Fungi
+Protozoa
+Animalia
+Primitive forms 
+of life
+Plantae
+Chromista
+  Table 2.1    Comparative features of prokaryotic and eukaryotic 
+cells. 
+   Feature     Prokaryotic cell     Eukaryotic cell  
+  Size  of  individual 
+cells  
+  Usually  less  than 
+5     μ m  in  greatest 
+dimension  
+  Typically  greater  than 
+5     μ m  
+  Genetic  material    Not  separated 
+from cytoplasm  
+  Nucleus  separated 
+from cytoplasm by a 
+nuclear membrane  
+  Characteristics 
+of chromosomes  
+  Usually  single 
+and circular  
+  Multiple  and  linear  
+  Mitochondria    Absent    Present  
+  Golgi  apparatus    Absent    Present  
+  Endoplasmic 
+reticulum  
+  Absent    Present  
+  Location  of 
+ribosomes  
+  Dispersed 
+throughout 
+cytoplasm  
+  Dispersed  throughout 
+cytoplasm and also 
+attached to 
+endoplasmic reticulum  
+  Cell  division    Binary  fi  ssion    Mitosis  
+  
+Table 2.2    Microscopical techniques used in microbiology. 
+   Technique     Comments  
+  Bright - fi  eld 
+microscopy  
+  Used for demonstrating the morphology 
+and size of stained bacteria and fungi; 
+staining affi nity may allow preliminary 
+classifi cation of bacteria and the 
+morphology of fungal structures permits 
+identifi cation of the genus  
+  Phase - contrast 
+microscopy  
+  Used for examining unstained cells in 
+suspension  
+  Dark - fi  eld 
+microscopy  
+  Used for examining unstained bacteria 
+such as spirochaetes in suspension  
+  Fluorescence 
+microscopy  
+  Used for identifying microorganisms 
+with specifi c antibodies conjugated with 
+fl uorochromes  
+  Transmission 
+electron 
+microscopy  
+  Used for demonstrating viruses in 
+biological material and for identifying 
+ultrastructural details of bacterial, 
+fungal and mammalian cells  
+  Scanning  electron 
+microscopy  
+  Used for demonstrating the three -
+ dimensional structure of microorganisms  
+be visualized. With dark - fi eld microscopy, the scatter-
+ing of light by fi ne microorganisms such as spirocha-
+etes  suspended  in  liquid  allows  them  to  be  observed  
+against  a  dark  background.  In  common  with  dark  -
+ fi  eld  techniques,  phase  - contrast  microscopy  can  be  
+used to examine unstained specimens. This procedure 
+is  more  appropriate  for  research  purposes  than  for  
+routine diagnostic microbiology. 
+ In transmission electron microscopy, beams of elec-
+trons  are  used  in  place  of  visible  light  to  visualize  
+small structures such as viruses. Specimens, placed on 
+grids, are negatively stained with electron - dense com-
+pounds   such   as   potassium   phosphotungstate   and   
+viewed  as  magnifi  ed  images  on  a  fl uorescent screen. 
+Magnifi  cations greater than 100,000 ×  are possible with 
+modern instruments. Scanning electron microscopy is 
+used  to  obtain  three  - dimensional  views  of  microor-
+ganisms when coated with a thin fi lm of heavy metal. 
+With this technique a wide range of magnifi cations up 
+to 100,000 ×  is feasible.  
+
+Subdivisions, classifi cation and morphological characterization of infectious agents   9
+SECTION I
+  Pathogenic  m icroorganisms 
+  Most  microorganisms  found  in  nature  are  not  harm-
+ful  to  humans,  animals  or  plants.  Indeed,  many  bac-
+teria  and  fungi  make  an  important  contribution  to  
+biological activities which take place in soil, in water 
+and  in  the  alimentary  tract  of  animals  and  humans.  
+Those   microorganisms   that   can   cause   disease   in   
+animals  or  humans  are  referred  to  as  pathogenic  
+microorganisms. 
+  Bacteria 
+ Microorganisms belonging to the domain  Archaea   (for-
+merly  Archaebacteria ) are not associated with diseases 
+of  domestic  animals.  Organisms  (bacteria)  belonging  
+to  the  domain    Bacteria   (formerly    Eubacteria )   include 
+many pathogens of veterinary importance. 
+  Bacteria  are  unicellular  and  are  smaller  and  less  
+complex than eukaryotic cells such as mammalian red 
+blood  cells  (Table    2.4  ).  They  usually  have  rigid  cell  
+walls  containing  a  peptidoglycan  layer,  multiply  by  
+binary fi ssion and exhibit considerable morphological 
+diversity.  They  occur  as  rods,  cocci  and  helical  forms  
+and occasionally as branching fi laments. Despite their 
+morphological  diversity,  most  bacteria  are  between  
+0.5      μ  m   and   5      μ   m  in  length.  Motile  bacteria  possess  
+fl  agella by which they can move through liquid media. 
+The  majority  of  bacteria  can  grow  on  suitable  inert  
+media; some require special growth supplements and 
+  Table 2.3    Units of measurement used in microbiology. 
+   Unit     Abbreviation     Comments  
+  Millimetre    mm    One  thousandth  of  a  metre 
+(10 
+ − 3
+     m).  Bacterial  and  fungal 
+colony sizes are usually 
+measured in mm. When growing 
+on a suitable medium, bacterial 
+colonies range in size from 
+0.5    mm  to  5    mm  
+  Micrometre 
+(micron)  
+   
+ μ  m  
+  One thousandth of a millimetre 
+(10 
+ – 6
+    m). Used for measuring the 
+size of bacterial and fungal 
+cells. Most bacteria range in 
+size from 0.5    
+ μ  m  to  5      μ  m.  A 
+small number of bacteria may 
+exceed  20     
+ μ  m in length  
+  Nanometre    nm    One  thousandth  of  a  micrometre 
+(10 
+ − 9
+     m).  Used  for  expressing 
+the size of viruses. Most viruses 
+of veterinary importance range 
+in size from 20   nm to 300   nm  
+  
+Table 2.4    A comparison of the morphology and size of bacterial 
+cells relative to a mammalian red blood cell.
+ 
+   Cell     Morphology / size     Comments  
+  Red  blood 
+cell  
+  
+7 μm
+    
+  Readily  seen  using 
+conventional light 
+microscopy  
+  Bacillus  
+  
+5 μm
+    
+  Rod - shaped  cells,  usually 
+stained by the Gram 
+method. Using bright -
+ fi eld microscopy, a 
+magnifi cation of 1,000 ×  
+is required to observe 
+most bacterial cells  
+  Coccus  
+  
+1 μm
+    
+  Spherical  cells,  often 
+occurring in chains or in 
+grape - like  clusters  
+  Spirochaete  
+  
+10 μm
+    
+  Thin,  helical  bacteria. 
+Dark - fi  eld  microscopy 
+(without staining) or 
+special staining methods 
+are required to 
+demonstrate these 
+unusual microorganisms  
+particular  atmospheric  conditions  for  growth.  Two  
+groups  of  small  bacteria,  rickettsiae  and  chlamydiae,  
+which  are  unable  to  multiply  on  inert  media,  require  
+living  cells  for    in  vitro   growth.  Cyanobacteria,  for-
+merly  referred  to  as  blue  - green  algae,  utilize  chloro-
+phyll  for  some  metabolic  pathways.  Unlike  algae,  
+which  store  chlorophyll  in  organelles  referred  to  as  
+chloroplasts,  cyanobacteria  have  chlorophyll  distrib-
+uted inside their cell membranes.    
+  Fungi 
+ Yeasts,  moulds  and  mushrooms  belong  to  a  large  
+group of non - photosynthetic eukaryotes termed fungi. 
+Fungi   may   be   either   unicellular   or   multicellular.   
+Multicellular  fungi  produce  fi lamentous microscopic 
+structures called moulds; yeasts, which are unicellular, 
+have  a  spherical  or  ovoid  shape  and  multiply  by  
+budding.  In  moulds,  the  cells  are  cylindrical  and  
+attached end to end, forming branched hyphae (Table 
+ 2.5 ). A notable feature of fungi is their ability to secrete 
+potent enzymes that can digest organic matter. When 
+moisture  is  present  and  other  environmental  condi-
+tions are favourable, fungi can degrade a wide variety 
+of  organic  substrates.  A  small  number  of  yeasts  and  
+moulds are pathogenic for humans and animals. Some 
+fungi  invade  tissues  whereas  others  produce  toxic  
+
+10  Veterinary Microbiology and Microbial Disease
+SECTION I
+serious disease by invading and destroying host cells. 
+A  small  number  of  viruses  are  aetiologically  impli-
+cated  in  the  development  of  malignant  tumours  in  
+humans  and  animals.    
+  Prions 
+ Infectious particles that are smaller than viruses have 
+been   implicated   in   the   neurological   diseases   of   
+animals  and  humans  that  are  termed  transmissible  
+spongiform  encephalopathies.  These  particles,  called  
+prions,  are  distinct  from  viruses  and  appear  to  be  
+devoid  of  nucleic  acid.  Prions  seem  to  be  composed  
+of  an  abnormally  - folded  protein  capable  of  inducing  
+conformational    changes    in    homologous    normal    
+host  cell  protein.  Following  the  induced  changes,  
+structurally - altered  abnormal  protein  accumulates  in  
+and damages long - lived cells such as neurons. Genetic 
+factors seem to infl uence the susceptibility of humans 
+and animals to prion diseases. Prions exhibit remark-
+able  resistance  to  physical  and  chemical  inactivation  
+procedures.   
+  Biological  c lassifi cation and  n omenclature 
+ Microscopic living organisms were formerly classifi ed 
+on the basis of phenotypic expression including mor-
+substances  called  mycotoxins  which,  if  present  on  
+crops or in stored food such as grain or nuts, can cause 
+disease in animals and humans.    
+  Algae 
+ A morphologically and physiologically diverse group 
+of  organisms,  algae  are  usually  considered  plant  - like 
+because they contain chlorophyll. Many algae are free -
+  living  in  water;  others  grow  on  the  surfaces  of  rocks  
+and  on  other  structures  in  the  environment.  Some  
+algae produce pigments which impart distinct colora-
+tion to water surfaces containing algal blooms. When 
+water  temperatures  are  high,  algal  growth  may  be  
+marked,  leading  to  the  production  of  toxins  that  can  
+accumulate  in  shellfi  sh  or  in  water  containing  algal  
+blooms.  
+  Viruses 
+ Unlike bacteria and fungi, viruses are not cells. A virus 
+particle or virion consists of nucleic acid, either DNA 
+or RNA, enclosed in a protein coat called a capsid. In 
+addition, some viruses are surrounded by envelopes. 
+Viruses are much smaller than bacteria, and typically 
+range in size from 20   nm to 300   nm in diameter (Table 
+  2.6  ).  Despite  their  simple  structure,  viruses  occur  in  
+many  shapes.  Some  are  spherical,  others  are  brick  -
+ shaped or bullet - shaped and a few have an elongated 
+appearance.  Because  they  lack  the  structures  and  
+enzymes  necessary  for  metabolism  and  independent  
+reproduction, viruses can multiply only within living 
+cells. Both prokaryotic and eukaryotic cells are suscep-
+tible to infection by viruses. Those viruses that invade 
+bacterial  cells  are  called  bacteriophages.  Pathogenic  
+viruses  which  infect  humans  and  animals  can  cause  
+  Table 2.5    A comparison of the morphology and size of a bacterial 
+cell and two fungal forms. 
+   Structure     Morphology / size     Comments  
+   Bacterial cell           
+     Coccus  
+  
+1 μm
+    
+  Often occur in chains 
+or  grape - like  clusters  
+   Fungal forms           
+         Yeast  
+  
+5 μm
+    
+  
+Reproduce by 
+budding  
+     Mould  
+  
+30 μm
+    
+ 
+ Branched  structures 
+(hyphae) composed 
+of many cells  
+  
+Table 2.6    A comparison of a bacterial cell and a large and a small 
+virus.  
+a
+   
+   Structure     Morphology / size     Comments  
+   Bacterial cell           
+   
+  Coccus  
+  
+1 μm
+    
+  
+Readily seen at 
+magnifi cation of 1,000 ×
+   
+   Viruses           
+     Poxvirus  
+  
+300 nm
+    
+  
+Viruses cannot be seen 
+using conventional 
+bright - fi  eld  microscopy
+  
+     Parvovirus  
+  
+20 nm
+    
+  Electron  microscopy  at 
+a magnifi cation of up 
+to 100,000 ×  is used to 
+demonstrate viruses in 
+clinical specimens or in 
+laboratory preparations  
+    a  ,  not  drawn  to  scale.   
+
+Subdivisions, classifi cation and morphological characterization of infectious agents   11
+SECTION I
+ In terms of sexually reproducing higher organisms, 
+a  species  is  defi  ned  as  a  group  or  population  com-
+posed of similar individuals that are capable of inter-
+breeding  naturally  and  are  reproductively  isolated  
+from  other  groups.  However,  the  defi  nition  of  what  
+constitutes  a  species  poses  particular  problems  in  
+microbiology. Members of the  Bacteria  and  Archaea   do 
+not  undergo  true  reproduction.  As  a  result,  bacteria  
+tend to be defi ned operationally or in subjective terms 
+as a collection of strains that share many similar prop-
+erties  but  differ  signifi  cantly  from  other  strains.  It  is  
+possible to be more precise by using a defi nition based 
+on genetic data with a species expected to share 70% 
+or  greater  binding  in  standardized  DNA  – DNA  hy-
+bridization  studies  and/or  over  97%  gene  - sequence 
+identity  for  16S  ribosomal  RNA  (rRNA).  Recently  a  
+threshold range of 98.7 to 99% sequence similarity has 
+been recommended as the point at which DNA – DNA 
+reassociation   experiments   should   be   required   for   
+testing  the  genomic  uniqueness  of  a  novel  isolate  
+(Stackebrandt  and  Ebers,    2006 ).  Further  debate  and  
+refi   nement   regarding   the   defi   nition   of   a   bacterial   
+species is on - going. 
+  Microorganisms  are  generally  named  according  to  
+the binomial system devised by the Swedish botanist 
+Carolus Linnaeus in the eighteenth century. The names 
+are  Latin  or  Latinized  Greek  derivations  and  are  
+printed  in  italics.  There  are  two  parts,  a  capitalized  
+generic name and a specifi c epithet. For example, the 
+bacterium that causes anthrax in humans and animals 
+is  termed    Bacillus  anthracis,  Bacillus   being  the  generic  
+name  and    anthracis    the  specifi  c  name.  The  naming  of  
+species  and  higher  groups  of  bacteria  is  regulated  
+by  the  Bacteriological  Code    –   The  International  Code  
+of  Nomenclature  of  Bacteria .   The  International  Journal  of  
+Systematic  and  Evolutionary  Microbiology    is  the  offi -
+cial  publication  for  recording  taxonomical  changes  
+of  Bacteria  and  Archaea . Websites providing listings of 
+approved  names  include  List  of  Prokaryotic  Names  
+with Standing in Nomenclature ( http://www.bacterio.
+cict.fr )  and  Bacterial  Nomenclature  Up - to - Date  ( http://
+www.dsmz.de/bactnom/bactname.htm ). 
+ Viruses pose particular taxonomic problems in that 
+they are regarded as subcellular, non - living, infectious 
+entities and are often ignored or considered alongside 
+their host species by scientists dealing with the global 
+taxonomy   of   organisms.   However,   virologists   are   
+agreed that viruses should be considered as a separate 
+group  of  organisms  regardless  of  their  host  species,  
+and have established a free - standing virus taxonomy 
+derived  from  classical  Linnean  systematics  but  with  
+rules unique to the discipline of virology. The system 
+is   operated   by   the   International   Committee   on   
+Taxonomy  of  Viruses  (ICTV)  with  the  latest  informa-
+tion   on   viral   taxonomy   published   periodically   in   
+phology   and   distinct   attributes   refl ecting   unique 
+metabolic properties. Increasingly, classifi cation meth-
+ods  for  microorganisms  have  come  to  rely  heavily  
+on  genotypic  analysis.  In  recent  years  this  has  led  to  
+changes  in  the  classifi  cation  and  nomenclature  of  
+microorganisms. 
+ The practice and science of orderly classifi cation of 
+organisms into hierarchical units termed taxa (singu-
+lar taxon) is known as taxonomy. There are three inter-
+related parts to taxonomy: identifi cation, nomenclature 
+and classifi cation. Taxonomy is important in microbi-
+ology because (1) it permits accurate identifi cation of 
+organisms;  (2)  it  provides  precise  names  that  permit  
+effi  cient  communication;  (3)  it  groups  similar  organ-
+isms in a way that allows predictions to be made and 
+hypotheses  to  be  framed  with  reasonable  confi dence 
+regarding  members  of  the  same  group.  Most  organ-
+isms  are  grouped  according  to  their  genotypic  and  
+phenotypic characteristics. Traditionally, great empha-
+sis  was  placed  on  anatomical  or  morphological  simi-
+larities  but  this  has  increasingly  been  replaced  by  a  
+polyphasic  approach  facilitated  by  the  availability  of  
+highly sophisticated methods of identifi cation and the 
+inclusion  of  additional  criteria  for  the  description  of  
+new  species.  Examples  of  phenotypic  characteristics  
+used  in  taxonomy  include  morphology,  metabolism,  
+physiology, cell chemistry (particularly fatty acid com-
+position  in  the  case  of  bacteria)  and  motility.  DNA  
+profi     ling,     DNA     –     DNA     hybridization,     multilocus     
+sequence  typing  (MLST)  and  percentage  of  guanine  
+plus  cytosine  in  an  organism  ’ s  DNA  (GC  ratio)  are  
+examples of the genetic methods used. Complementing 
+these  two  types  of  analyses  is  phylogenetic  analysis,  
+which attempts to create a framework of evolutionary 
+relationships. The exponential growth in the availabil-
+ity  of  genetic  sequencing  data  has  permitted  taxon-
+omy to increasingly refl ect phylogenetic relationships 
+among microorganisms. 
+  The  basic  taxonomic  unit  or  group  is  the  species.  
+Similar species are grouped into genera, which in turn 
+are placed in families. Several levels or ranks are used 
+in this classifi cation, with higher ranks including indi-
+vidual groups based on the shared properties of these 
+groups.  The  levels  in  ascending  order  are  species,  
+genus,   family,   order,   class,   phylum   and   kingdom   
+or  domain  (Fig.    2.2  ).  Traditionally,  biologists  have  
+grouped   organisms   into   fi   ve   kingdoms:   animals,   
+plants, fungi, protists and bacteria. However, analysis 
+of  small  subunit  ribosomal  RNA  gene  sequences  has  
+suggested  that  cellular  life  has  evolved  along  three  
+primary lineages. The three resulting groups are called 
+domains  and  are  usually  placed  above  the  kingdom  
+level.  Two  of  the  domains,    Bacteria    and    Archaea ,   are 
+exclusively microbial and prokaryotic, while the third 
+domain,  Eukarya,  contains the eukaryotes.   
+
+12
+  
+Veterinary Microbiology and Microbial Disease
+SECTION I
+     Figure 2.2     Example of hierarchical levels of taxonomy using the bacterium  
+Escherichia coli . Note that many of the levels are deliberately incomplete to 
+simplify the diagram.  
+Bacteria
+Proteobacteria
+g-Proteobacteria
+δ-Proteobacteria
+α-Proteobacteria
+ε-Proteobacteria
+β-Proteobacteria
+Enterobacteriales
+VibrionalesPasteurellales
+PseudomonadalesLegionellales
+Thiotrichales
+Chromatiales
+Domain
+Phylum
+Class
+Order
+Family
+Genus
+Species
+Enterobacteriaceae
+Escherichia
+Enterobacter
+Klebsiella
+Salmonella
+ShigellaProteus
+Yersinia
+Serratia
+E. coli
+E. fergussonii
+E. hermanniiE. vulnerisE. albertii
+ActinobacteriaFirmicutes
+Spirochaetes
+Chlamydiae
+
+Subdivisions, classifi cation and morphological characterization of infectious agents   13
+SECTION I
+known  as  the  order  of  presentation,  are  used  based  
+on the composition and structure of the viral genome, 
+including  genome  polarity  and  reverse  transcription:  
+double  -  stranded  DNA  viruses,  single  -  stranded  DNA  
+viruses,  DNA  and  RNA  reverse  transcribing  viruses,  
+double - stranded    RNA    viruses,    negative    - stranded 
+single  -  stranded  RNA  viruses  and  positive  -  stranded  
+single - stranded  RNA  viruses.  In  addition  there  is  a  
+category  of  unassigned  viruses  and  one  for  subviral  
+agents  including  viroids,  satellites  and  prions.    
+  References 
+    de     Duve  ,     C.     ( 1996 ).    The   birth   of   complex   cells .    Scientifi c 
+American ,   274 ,   38  –  45 .  
+    Doolittle ,    W.F.     ( 1999 ).    Phylogenetic   classifi  cation  and  the  
+universal tree .  Science ,   284 ,   2124  –  2128 .  
+    Fauquet ,    C.M.  ,     Mayo ,    M.A.  ,     Maniloff ,    J.  ,     Desselberger ,    U.   
+and    Ball ,   L.A.    ( 2005 ).   Eighth  Report  of  the  ICTV .   Elsevier , 
+ Amsterdam .  
+    Stackebrandt ,   E.    and    Ebers ,   J.    ( 2006 ).   Taxonomic  parameters 
+revisited: tarnished gold standards .  Microbiology Today ,   33 , 
+ 152  –  155 .  
+  Further  r eading 
+    Madigan ,   M.T.  ,    Martinko ,   J.M.  ,    Dunlap ,   P.V.    and    Clark ,   D.P.   
+( 2009 ).    Brock  Biology  of  Microorganisms .    Twelfth   Edition . 
+ Pearson  Benjamin  Cummings ,   San  Francisco .  
+    Prescott ,   L.M.  ,    Harley ,   J.P.    and    Klein ,   D.A.    ( 2005 ).   Microbiology . 
+ Sixth  Edition .   McGraw  Hill ,   Boston .  
+    Schlegel ,   H.G.    ( 1993 ).   General Microbiology .   Seventh  Edition . 
+ Cambridge  University  Press ,   Cambridge .    
+ 
+  
+report  form  (Fauquet    et  al .,    2005 )  or  available  elec-
+tronically   at      http://ictvonline.org/virusTaxonomy.
+asp . A number of points must be borne in mind when 
+considering  the  taxonomy  of  viruses:  (1)  it  is  consid-
+ered unlikely that viruses evolved from a single origi-
+nal  protovirus  and,  as  a  result,  the  highest  level  
+recognized is that of order; (2) some viruses frequently 
+undergo   genetic   recombination   and   reassortment   
+resulting  in  chimeric  organisms  with  polyphyletic  
+genomes;  (3)  some  viruses  infect  both  vertebrate  and  
+invertebrate  hosts,  evolving  differently  in  the  differ-
+ent  host  species;  (4)  some  viruses  integrate  into  the  
+genome of their host but can switch between horizon-
+tal and vertical transmission by moving in and out of 
+the  host  cell  genome,  which  may  result  in  the  incor-
+poration  of  host  genes  into  the  viral  genome.  As  a  
+result,  it  is  inevitable  that  the  classifi cation  system 
+will at times appear artifi cial and give rise to misfi ts. 
+A  non  - systematic,  polythetic,  hierarchical  system  of  
+classifi  cation  is  used  for  viruses.  In  essence  a  virus  
+species is defi ned by a consensus group of properties 
+without  any  one  of  these  properties  being  essential.  
+Viruses  are  generally  grouped  in  families  based  on  
+virion  morphology  and  nucleic  acid  type.  Further  
+subdivision  of  pathogenic  animal  viruses  frequently  
+relates to the species of host affected and to the clini-
+cal  disease  which  is  produced.  Each  viral  genus  con-
+tains  a  type  species,  which  is  defi  ned  as  the  virus  
+species  responsible  for  the  original  creation  of  the  
+genus  and  whose  name  is  linked  to  the  use  of  the  
+genus   name.   Virus   species   names   are   commonly   
+abbreviated, for example BPIV - 3 for bovine parainfl u-
+enza virus 3. In presenting taxonomic descriptions of 
+viruses,    several    informal    categories,    collectively    
+
+SECTION I
+14
+     Infectious  disease  is  a  major  cause  of  morbidity  and  
+mortality in avian and mammalian species. Individual 
+body systems supply the host ’ s respiratory, nutritional 
+and sensory needs, and the immune system is uniquely 
+equipped to provide defence against microbial or par-
+asitic  infection  irrespective  of  the  source  or  the  route  
+of  transmission.  Some  microorganisms  cause  oppor-
+tunistic  infections  in  domestic  animals;  other  infec-
+tious  agents,  termed  pathogenic  microorganisms,  are  
+capable of causing serious infection if they gain entry 
+into the body. The immune system is composed of an 
+array  of  structures,  cells  and  secretions  which  offer  
+defence  not  only  against  opportunistic  infections  but  
+also  against  pathogenic  microorganisms  which  can  
+cause life - threatening infections in susceptible animals. 
+ The  fi  rst barriers to infection that offer rapid, protec-
+tive  responses  are  components  of  innate  immunity.  
+These components include anatomical structures such 
+as the skin and mucous membranes, inhibitory secre-
+tions,  antimicrobial  factors  and  phagocytic  cells  (Fig.  
+ 3.1 ). If an infectious agent enters the tissues, material 
+from this invading pathogen can be presented to lym-
+phocytes  by  phagocytic  cells  such  as  macrophages.  
+These lymphocytes then undergo functional changes, 
+proliferate and secrete soluble factors which promote 
+the  involvement  of  other  cells  of  the  immune  system  
+in  an  attempt  to  contain  the  infection.  This  response  
+on the part of lymphocytes is referred to as an adap-
+tive    immune    response.    Moreover,    following    an    
+encounter   with   a   microbial   pathogen,   the   body   ’   s   
+immune   system   learns   from   the   experience   by   
+responding in a specifi c manner to the pathogen and 
+by     ‘ remembering ’     the    interaction.    Immunological 
+memory  resides  in  some  lymphocytes  that  are  pro-
+  Chapter 3 
+Infection and  i mmunity        
+duced  in  the  course  of  a  response  to  an  infectious  
+agent, and these memory cells react quickly to subse-
+quent   invasion   by   the   same   agent.   The   immune   
+system,  therefore,  has  components  that  function  as  
+innate,  non - specifi  c  barriers  to  infectious  agents,  and  
+components  that  exhibit  specifi  city  combined  with  
+immunological memory. It provides protection against 
+a  vast  array  of  actual  or  potential  pathogens  present  
+in  the  immediate  environment  of  animals.  Immune  
+responses,  however,  are  not  confi  ned  to  infectious  
+agents and responses to innocuous substances such as 
+pollens, foreign proteins and some therapeutic drugs, 
+can   cause   potentially   destructive   hypersensitivity   
+reactions. Although the primary activity of the immune 
+system  is  usually  considered  to  be  associated  with  
+protection  against  infectious  agents,  it  has  a  defi ned 
+role  in  immune  surveillance  for  the  detection  of  neo-
+plastic tissue changes and, in some instances, elimina-
+tion  of  such  undesirable  mutated  cells  or  neoplastic  
+cells by immune mechanisms.   
+ Soon  after  birth  the  external  surfaces  of  the  body,  
+extensive portions of the alimentary tract and regions 
+of the respiratory and urinary tracts become colonized 
+by bacteria. The host and colonizing bacteria live in a 
+relatively peaceful state of coexistence, with microor-
+ganisms restricted to parts of the body where they can 
+be  tolerated  and  microbial  invasion  of  tissues  can  be  
+prevented  by  natural  antibacterial  defence  mecha-
+nisms.   Bacteria   that   colonize   tissues   of   the   body   
+without   producing   disease   constitute   part   of   the   
+normal  fl  ora.  This  harmonious  relationship  between  
+animals   and   their   environment   can   be   reinforced   
+by   good   management   systems,   optimal   nutrition,   
+adequate  fl  oor  space  and  effective  disease  control  
+Veterinary Microbiology and Microbial Disease, Second Edition. P.J. Quinn, B.K. Markey, F.C. Leonard, E.S. FitzPatrick, S. Fanning, 
+P.J. Hartigan.
+© 2011 P.J. Quinn, B.K. Markey, F.C. Leonard, E.S. FitzPatrick, S. Fanning and P.J. Hartigan. Published 2011 by Blackwell Publishing Ltd.
+
+Infection and immunity
+  
+15
+SECTION I
+     Figure 3.1     Cells, secretions and other elements of innate and adaptive immunity which contribute to protection against infectious agents. IL: Interleukin; IFN -  γ : 
+interferon -  γ ; 
+TNF: tumour necrosis factor.  
+Hypothalamus - fever
+Endothelial cells - inflammation
+Liver - acute phase proteins
+T lymphocytes
+Cells
+Act as antigen-
+presenting cells
+Cytokines with
+diverse activities
+in the mediation
+of inflammatory
+and immune
+responses
+Components
+related to
+innate immunity
+Immune
+system
+Components of
+specific
+adaptive immunity
+Specific
+antibodies
+IL-8, TNF-β
+IL-2
+IL-5
+IL-6
+TNF
+IL-4
+IL-1
+Neutrophils
+Monocytes
+Macrophages
+Dendritic cells
+NK cells
+Eosinophils
+Mast cells
+IL-12, IL-15, IL-18
+B lymphocytes
+Immune complexes, formed by
+antibodies combining with
+antigens, activate complement
+When activated by immune
+complexes, complement amplifies
+protective role of antibodies
+Inhibitory
+secretions
+Gastric acid
+Fatty acids
+  in skin
+Bile
+Mucus
+Antimicrobial factors
+Complement
+Lysozyme
+Interferons
+Acute phase proteins
+Mannose-binding lectin
+Properdin
+Lactoperoxidase
+Lactoferrin
+Transferrin
+Peptides, such as defensins
+Degradative enzymes
+Toxic free radicals
+Cytokines
+Chemotactic factors
+Anatomical structures
+and mechanical activity
+Skin
+Mucous membranes
+Nasal conchae
+Mucociliary clearance
+Flushing activity of urine
+  and lacrimal secretions
+Peristalsis
+Coughing and sneezing
+Plasma
+cells
+ IFN-
+γ
+IL-13, IFN-
+γ
+IL-2, IL-4, IL-5, IL-8, IL-13, TNF-β, IFN-
+γ
+IL-2, IL-4, IL-5, IL-6, IL-8, IL-13, IFN-
+γ
+Cytokine
+production
+I
+L
+-
+1
+5
+,
+I
+L
+-
+1
+8
+
+16  Veterinary Microbiology and Microbial Disease
+SECTION I
+other  microorganisms  from  the  animal  ’  s  immediate  
+environment may colonize particular sites on the skin 
+and regions of the alimentary, respiratory or urogeni-
+tal  tracts.  Microorganisms  that  compete  successfully  
+for  particular  sites  gradually  form  a  stable  normal  
+fl  ora. Different regions of the body may have a distinc-
+tive  resident  fl  ora  suggesting  that  regional  coloniza-
+tion  may  refl  ect  a  selective  advantage  on  the  part  of  
+successful   microorganisms.   The   ability   to   survive   
+acidic  conditions  in  the  alimentary  tract  or  tolerance  
+for  some  naturally  occurring  antimicrobial  factors  
+confers  particular  survival  capabilities  on  some  resi-
+dent  fl  ora.  Adherence  to  host  cells  or  synthesis  of  
+metabolic substances antagonistic to competitors may 
+enhance colonization of the skin, mucous membranes 
+or  parts  of  the  alimentary  tract  by  some  bacteria  and  
+yeasts.  There  is  evidence  that  the  normal  fl ora  can 
+compete  with  and  sometimes  prevent  establishment  
+of pathogenic microorganisms. This may be achieved 
+by  competition  for  nutrients,  by  formation  of  inhibi-
+tory substances, or by attachment to receptors on cell 
+surfaces, thereby preventing colonization by invading 
+pathogens.  Although  the  normal  fl  ora  is  not  directly  
+associated  with  non - specifi c immunity, their competi-
+tive  role  can  be  considered  benefi  cial  for  the  host.  In  
+programmes  (Fig.    3.2 ).  Negative  factors  that  can  tilt  
+the balance in favour of potential or actual pathogens 
+include   overcrowding,   uncontrolled   environmental   
+temperature, nutritional imbalances and absence of a 
+well  designed  and  implemented  disease  control  pro-
+gramme. Even if bacteria, fungi or viruses succeed in 
+entering  the  tissues  and  causing  infection,  disease  is  
+not an inevitable outcome. Characteristics of the infec-
+tious agent, environmental infl uences and the suscep-
+tibility  of  the  infected  animal  usually  determine  the  
+outcome of infection. If infection is not quickly elimi-
+nated,  clinical  disease  or  subclinical  infection  is  the  
+likely  result  (Fig.    3.3  ).  Characteristics  of  individual  
+species  of  pathogenic  bacteria  can  strongly  infl uence 
+their  ability  to  overcome  host  defences  and  produce  
+disease.  Structural,  metabolic  and  other  features  of  
+bacteria  that  promote  disease  development  are  pre-
+sented  in  Table   3.1 .      
+  Normal  fl  ora 
+ Soon after birth, neonatal animals are exposed through 
+contact,  ingestion  or  inhalation  to  microorganisms  
+present  on  the  dam.  Bacteria,  yeasts  and  eventually  
+     Figure 3.2     The infl uence of disease control programmes, environmental conditions and other factors on the health status of animal 
+populations. The balance between positive factors that promote health, and negative factors that predispose to disease can determine the 
+health and welfare status of animal populations.  
+Positive
+Negative
+Health
+Disease
+Disease
+Health
+Ineffective disease control measures
+Inadequate vaccination programme
+Inappropriate chemotherapy
+Misuse of chemoprophylaxis
+Random selection of replacement animals
+Nutritional imbalances
+Contaminated food or water
+Ineffective insect vector control measures
+Water deprivation
+Overcrowding
+Uncontrolled environmental temperature
+Inadequate ventilation
+Effective disease control programme
+Planned vaccination programme
+Appropriate chemotherapy
+Strategic chemoprophylaxis
+Careful selection of replacement animals
+Optimal nutrition
+Pathogen-free food and water
+Effective insect vector control measures
+Constant supply of clean water
+Adequate floor space
+Regulated environmental temperature
+Controlled ventilation

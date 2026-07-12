@@ -1,0 +1,748 @@
+
+
+BIOLOGY 2 
+Elija Kamundi
+
+BIOLOGY 2
+•Course Code; NBIO21202
+
+Aim
+•Todevelopanunderstandingandskillsinlifesciencesas
+appliedtoagriculture,environmentandnaturalresource
+management
+
+Learning outcomes
+a.describeMendeliangenetics
+b.describetheclassificationsystemofplantsintothe
+differenttaxa.
+c.usetheclassificationsystemofplantstodescribe
+thedifferenttaxaofplants
+
+Topics
+•Topic One: Genetics and evolution
+Mendeliangenetics
+Populationgenetics
+Moleculargenetics/neo-mendeliangenetics
+Conceptofevolution
+Evidenceandmechanismsofevolution
+Theoriesoftheoriginoflife
+
+Topic Two:  Botany
+Plantorgans:leaves,stems,roots
+Planttissues:epidermaltissue,groundtissue,vasculartissue
+•ClassificationofPlants:
+•Tropismandphotoperiodism
+Reproductioninplants
+Phytochromesandplanthormones
+WaterandNutrientuptake;
+
+Topic Three: Ecology of Plants and Animals
+Thephysicalandbioticenvironmentoforganisms
+Theecologicalniches,habitats,communitiesand
+ecosystems
+ThefoodchainsandEnergyPyramids
+Thegrowthandregulationofpopulations
+Samplingmethodsinecology
+Agriculturalandnon-agriculturalecosystems
+
+Practicals
+a.Genetics
+StudyofmodelsonDNAandRNAstructures
+Demonstrationsonmonohybrid,dihybrid,trihybrid,testcrossing
+andbackcrossing
+
+Practical cont..
+b.Botany
+Demonstrationofplanttaxaanduseofkeysforplantidentification
+Observingthemorphologyofleaves,stems,roots,andflowers
+Seedgermination
+Testforstarch,
+Demonstrationofosmosis,osmoticpressure,wateruptakeandtranspirationin
+plants
+
+Practical cont..
+a.Ecologyofanimalsandplants
+Samplingmethodsinecology
+Useofquadratsandtransects
+•Finding the probability and Chi-square test Observing 
+•comparing the agricultural and non-agricultural ecosystems 
+around NRC
+
+Prescribed Texts
+Elrod,S.L.&Stansfield,W.D.(2010),Theoryandproblems
+ofgenetics,5thEdition,Schaum'sOutlineofGenetics.
+McGrawHillEducation
+Mauseth,J.D.(2014),Botany,Burlington,Massachusetts,
+JonesandBartlettPublishers
+Solomon,E.P.,Berg,L.R.,&Martin,D.W.(2011).Biology
+9thEdition.Belmont,CA:Brooks/Cole
+
+Recommended Texts
+Alberts  B.,  Bray  D.,  Hopkin  K.,  Johnson  A.,  Lewis  J.,  Raff  M.,  Roberts  K., 
+Waiter  P. 
+(2014).  Essential  Cell  Biology,  4th  Edition,  Garland  Science,  Taylor  &  Francis 
+Group, LLC.
+ 
+Hartl, D.L., and Jones, E.W., (2006). Essential Genetics
+-
+ 
+A Genomic Perspective. 4th ed. 
+Sudbury MA, Jones and Bartlett Publishers.
+ 
+Klug, W.S., and Cummings, M.R., Spencer, C.A., & Palladino, M.A., (2014). Essentials 
+of Genetics. 8th Edition. New Jersey: Pearson
+ 
+Raven P. et al., (2020). Biology, 12th Edition, McGraw
+-
+Hill
+ 
+
+
+
+Topic one: Genetics and Evolution.
+•a. Genetics Terms and definitions
+•1. What Is gene?
+1.Classical definition:  A gene is adiscrete unit of hereditythat is passed 
+down from parents to offspring and determines a specific trait or 
+characteristic. 
+2. Genetic definition:  A gene is a unit of inheritance that occupies a 
+specific location on a chromosome and determines a particular 
+characteristic or trait.
+
+Gene meaning
+•3.Moleculardefinition:AgeneisasegmentofDNA
+(deoxyribonucleicacid)thatcodesforaspecificproteinorfunctional
+product.
+•4.Functionaldefinition:AgeneisasequenceofDNAthatis
+transcribedintoRNA(ribonucleicacid)andtranslatedintoaprotein,
+whichperformsaspecificfunctionintheorganism.
+
+•5. Genomic definition:  A gene is a region of DNA that is encodedin the 
+genome of an organism and provides the instructions for the development, 
+growth, and function of that organism.
+
+Key aspects of genes
+•Gene Expression: The process by which a gene's information is converted into a 
+functional product.-
+•Regulation: The control of gene expression in response to environmental or 
+cellular cues.-
+•Gene Mutation: Changes in the DNA sequence of a gene that can affect its 
+function or expression.-
+•Inheritance: The passing down of genes from parents to offspring.
+
+Where are genes stored in a cell?
+•Ineukaryotes(suchasanimals,plants,andfungi),genesare
+containedchromosomeslocatedwithinthecellnucleus.
+•Themitochondria(inanimals)andthechloroplasts(in
+plants)andribosomesalsocontainsmallsubsetsofgenes
+distinctfromthegenesfoundinthenucleus.
+•Inprokaryotes(organismslackingadistinctnucleus,such
+asbacteria),genesarecontainedinasinglechromosomethatis
+free-floatinginthecellcytoplasm.
+•Manybacteriaalsocontainplasmids—extrachromosomal
+geneticelementswithasmallnumberofgenes.
+
+•What is a locus?
+•a locus (plural: loci) refers to a specific location on a chromosome 
+where a particular gene is found. 
+•It's essentially a precise address on the chromosome that identifies 
+the position of a gene or a DNA sequence.
+
+•Each locus can have different variants or alleles, which are alternative 
+forms of the gene or DNA sequence at that specific location. 
+•These alleles can influence various traits or characteristics, such as 
+eye color, height, or even susceptibility to certain diseases.
+
+What is Genotype? 
+•a genotype refers to the complete set of genes that an individual 
+organism inherits from its parents. 
+•It's the genetic makeup of an individual, written in the DNA sequence 
+of their chromosomes.
+•An individual's genotype is made up of two copies of each gene, one 
+inherited from each parent
+
+genotype
+•The genotype determines various aspects of an individual's traits and 
+characteristics, such as:-
+•Physical characteristics (eye color, hair color, height, etc.)-
+•Behavioral characteristics 
+•Susceptibility or resistance to certain diseases-
+•Response to environmental factors
+
+What is a phenotype?
+•Also called character or trait
+•a phenotype refers to the physical and behavioral characteristics of an individual 
+that result from the interaction of their genotypeand the environment.
+•In other words, phenotype is the outward expression of genes, influenced by 
+environmental factors.
+
+Phenotype is a result of complex interactions
+•1. Genotype (the genetic information)
+•2. Environmental factors (diet, temperature, exposure to toxins, etc.)
+•3. Epigenetic factors (gene expression regulation)
+
+Epigenetic factors?
+•Epigenetic factors are elements that influence gene expression 
+without altering the DNA sequence itself. 
+•They play a crucial role in shaping an individual's phenotype, 
+development, and adaptation to the environment.
+
+Some Examples of epigenetic factors
+•1. DNA methylation: chemical modifications to DNA that silence gene 
+expression
+•2. Histone modification: changes to histone proteins that DNA wraps 
+around, affecting gene accessibility
+•3. Chromatin remodeling: reorganization of chromatin structure to 
+allow or block gene expression
+
+SOME EXAMPLES OF EPIGENETIC FACTORS
+•4. Environmental factors:    
+•5. Exposure to toxinsand pollutants-
+•6. Stress and psychological factors    -Social and cultural 
+influences
+•7. Hormonaland metabolicfactors:    -Hormone levels and 
+balance
+
+What is genetics?
+•Genetics is the scientific study of heredity, variation, and the 
+transmissionof traits from parents to offspring. 
+•It's a branch of biology that explores how genes, genetic information, 
+and environmental factors interact to shape the characteristics and 
+behaviors of living organisms.
+
+Branches of Genetics 
+•1. Mendelian genetics: studies the inheritance patterns of traits and 
+genes
+•2. Molecular genetics: examines the structure, function, and 
+regulation of genes at the molecular level
+•3. Population genetics: explores the distribution and frequency of 
+genetic variations within populations
+
+branches
+•4. Quantitative genetics: analyzes the contribution of multiple 
+genes to complex traits
+•5. Epigenetics: investigates gene expression and regulation beyond 
+the DNA sequence
+•6. Genomics: focuses on the study of entire genomes, including their 
+structure, function, and evolution
+
+Application of genetics
+•1.  Medicine (genetic counseling, personalized medicine)
+•2. Agriculture (crop improvement, animal breeding)
+•3. Biotechnology (genetic engineering, gene editing)
+•4. Forensic science (DNA fingerprinting, identification)
+•5. Anthropology (human evolution, population studies)
+
+Mendelian genetics 
+•Historical puzzle of inheritance
+•Artificial selection has been important since recorded 
+history.
+•selection of animals for domestication and
+•selection of plants for cultivation.
+
+Breeders’ Puzzle.....
+
+BREEDERS’ PUZZLE.....
+
+Animal Breeders mystery 
+•Wanted this.
+
+Animal breeders
+•Got this.
+
+Gregor Mendel, the father of modern genetics
+•Mendelian genetics, named after Gregor Johann Mendel.
+•Mendel, an Austrian monk and scientist, conducted experiments on 
+pea plants in the 1860s, uncovering the fundamental principles of 
+inheritance.
+
+Mendel's Work (1860s): 
+•-Conducted experiments on pea plants (Pisum sativum)    
+•-Studied traits like height, flower color, and seed shape    
+•-Mendel studied peas with different phenotypes using genetic 
+crosses.
+
+What is a genetic cross?
+•A genetic cross is the purposeful mating of two individuals resulting 
+in the combination of genetic material in the offspring.
+•Crossis a flow diagram which shows how alleles of the same gene 
+are passed from parents to offsprings.
+•Example a genetic cross between two pea plants one tall and the 
+other dwarf.
+•Allele for tall dominant to allele for dwarf.
+
+Example of genetic cross
+
+INFORMATION OUTLINED IN THE GENETIC CROSS
+•1. Parental generation:  A pair of parents used in breeding.
+•2.  Purebred/Homozygous:  A condition whereby two similar alleles 
+are present at a locus in diploid cells.
+•3. Homozygous dominant or homozygous recessive ???
+•4. True breeding: organisms that are homozygous for a particular 
+gene
+
+•5: Heterozygous: a state in which two contrasting alleles of the same 
+gene are present in diploid state.
+•Heterozygous can be inherited in three ways:
+•1. Complete dominance: One allele masks the expression of the other 
+completely. 
+•2. Codominance: The expression of both alleles in heterozygous.  
+Example the AB blood group.
+
+•3. Incomplete dominance:  An allele is not dominant 
+completely on the other as a result, an intermediate phenotype can 
+be seen in the individual. 
+•For example, Pink colour flowers are seen in Snapdragon, one allele 
+forbeing red and the other forwhite.
+
+•6. F1 Generation: Offsprings born from P generation
+•7. F2 Generation: offsprings born from inbreeding F1 generation
+
+Monohybrid crosses and Mendel’s Principle of 
+segregation
+•A cross used to study a singe trait/phenotype with two variations. 
+•Example flower colour is a phenotype and purple and white flowers 
+are two variations.
+
+Example:
+•Mendel crossed two true-breeding parents one with smooth 
+seed and the other with wrinkled seed. 
+•The allele for smooth seeds is dominant to allele for wrinkled 
+seed.
+•Analyze the test cross up to F2 Generation
+
+
+
+From this cross, Mendel proposed the law of 
+segregation:
+•Which states that:
+
+
+
+Punnett square
+•A Punnett square is a grid that enables one to predict the outcome of 
+a simple genetic crosses
+•Proposed by English geneticist Reginald Punnett
+
+How to use Punnett square
+
+
+
+
+
+Calculations using genotypic and phenotypic 
+ratios
+•1. In a cross between two plants with the genotype “Tt", what is the 
+expected genotypic and phenotypic ratios of the offspring, if T codes 
+for Tall plant and t for dwarf plant and allele for tall dominant to 
+dwarf.
+•2. In a study on pea seed shape, the F2 generation produced had 219 
+plants with smooth seed and 73 plants with wrinkled seed. What is 
+the genotypes of F2 and P generations. 
+
+Test cross: 
+•Atestcrossisabreedingexperimentusedtodeterminethegenotype
+ofanindividualwithadominanttrait.
+•Itinvolvescrossingtheindividualwitharecessivehomozygote.
+
+Example
+•In pea plants the gene for seed colour has two alleles. One for yellow 
+colour and one for green colour. 
+•Yellow is dominant to green. 
+•Let ‘Y’ to denote allele for yellow seed and ‘y’ to denote allele for 
+green.
+
+•The question now is:  is the genotype of a yellow seed ‘YY’ 
+(homozygous) or ‘Yy’ Heterozygous?.
+•Perform a test cross with a known homozygous recessive (yy).
+•This must be done in the field by growing the plants. 
+
+Expected results
+•A. If the yellow seed was homozygous 
+
+b. If the yellow seed was heterozygous 
+
+Dihybrid cross and Mendel's law of 
+independent assortment
+•What happens when more than one pair of characters is 
+simultaneously involved in the crosses?
+•In one dihybrid cross experiment, Mendel studied the inheritance of 
+seed color and seed shape.
+
+•The allele for yellow seeds (Y) is dominant to the allele for green 
+seeds (y). 
+•The allele for round seeds (R) is dominant to the allele for wrinkled 
+seeds (r).
+
+•Mendel crossed true-breeding plants that had yellow, round 
+seeds (YYRR) with true-breeding plants that has green, wrinkled 
+seeds (yyrr). 
+•The resulting F1 dihybrid progeny were heterozygous for both 
+traits (RrYy) and had round yellow seeds, the dominant 
+phenotypes.
+
+•FromtheF1generation,Mendelcouldnottellifthetwocharacters
+wereinheritedindependentlyornot,soheallowedtheF1progenyto
+self-pollinate.
+•ThatisRrYyXRrYy.
+•Let’suseaPunnettsquarewith16boxestosolve
+this.
+
+
+
+Mendel’s observations and conclusion. 
+•Allelesofdifferentgeneswereinheritedindependently
+•Hediscoveredthatthecombinationsoftraitsintheoffspringof
+hiscrossesdidnotalwaysmatchthecombinationsoftraitsin
+theparentalorganisms
+
+Mendel'slaw of independent assortment states 
+•Theallelesoftwo(ormore)differentgenesgetsorted
+intogametesindependentlyofoneanother.
+•Inotherwords,thealleleagametereceivesforone
+genedoesnotinfluencetheallelereceivedforanother
+gene.
+
+Difference between law of segregation and 
+independent assortment
+•Thelawofsegregationstatesthateveryindividualpossesses
+twoallelesandonlyonealleleispassedontotheoffspring.
+•Thelawofindependentassortmentstatesthattheinheritance
+ofonepairofgenesisindependentofinheritanceofanother
+pair.
+
+Mendel’s law of dominance
+•One allele can be dominant over another allele, resulting in the 
+dominant allele being expressed in the phenotype.    
+•The recessive allele will only be expressed if an individual is 
+homozygous recessive (has two copies of the recessive allele).
+
+Exceptions to Mendel's laws
+•Throughthecourseoftime,geneticistshavediscoveredsome
+observationsthatcouldnotbeexplainedbyMendel’sprinciples.
+•They are referred to as deviations/exceptions to Mendel’s work.
+
+Reasons for deviations
+•Mendel observed complete dominant genes where one allele masks 
+the expression of the other.
+•Mendel did experiments on genes which are on different 
+chromosomes and can segregate easily.
+
+Exceptions
+•1. Incomplete dominance
+•2. Codominance:
+•3. Pleiotropy: 
+
+•4. Polygenic inheritance: 
+•5. Gene-environment interaction: 
+•6. Linkage: 
+•8. Lethal genes
+
+1. Incomplete dominance
+•When two different alleles of the same gene produce a blended 
+phenotype
+•Egflower colour in a plant called Mirabilis jalapa
+•Alleles produce red and white flowers
+•A cross between Red and white and pink F1 generation 
+
+
+
+results
+•Phenotypic ratios of F2 generation
+•Red : Pink : White are 1:2:1not 3:1 ration as in normal monohybrid 
+cross of heterozygous individuals.
+•Note, C stands for Colour
+
+2. Codominance
+•When both alleles have an equal effect on the phenotype, resulting in 
+a combination of both traits
+•The example is AB blood group in human. 
+•The people who have blood type AB are heterozygous exhibiting 
+phenotypes for both the IA and IB alleles.  I isoagglutinin
+•In other words, heterozygotes for codominant alleles are 
+phenotypically similar to both parental types.
+
+3. Pleiotropy
+•(from Greek πλείων pleion, 'more', and τρόπος tropos, 'way’) 
+•When a single gene affects multiple traits
+•Egsickle cell condition
+
+Pleiotropic disease sickle cell
+•Sickle cell anemia is a genetic disease that causes deformed red blood 
+cells with a rigid, crescent shape instead of the normal flexible, round 
+shape.
+•It is caused by a change in a gene that encodes information to make 
+the beta-globin subunit ofhemoglobin, 
+•Sickle cell anemia occurs when the gene mutation prevents 
+hemoglobin to transport oxygen.
+
+•Some consequences of the change in the gene:
+•Hemoglobin forms polymers and clump together
+•Red blood cells become rigid
+•HBP
+•Loss of vision
+•That’s one gene, controlling several characters
+
+4. Polygenic inheritance:
+•When multiple genes contribute to a single trait.
+•polygenetic traits may display a range of possible phenotypes, determined 
+by a number of different genes and the interactions between them.
+•The traits that are determined by polygenic inheritance are not simply an 
+effect of dominance and recessively. 
+•Each of the genes that contributes to a polygenic trait, has an equal 
+influence and each of the alleles has anadditive effecton the phenotype 
+outcome.
+
+Examples of polygenic traits
+•Height
+•Intelligence
+•Skin colour
+
+Example of multiple genes
+•The pigment melanin is responsible for dark coloration in the 
+skin and there are at least three genes, which control for 
+human skin color. 
+•The production of melanin is controlled bycontributing 
+alleles(denoted here as A, B and C), resulting in dark skin color, 
+•Light skin color is produced bynon contributing alleles(denoted 
+here as a, b and c), 
+
+•In two parents, heterozygous for each of the melanin-producing 
+genes (AaBbCcx AaBbCc), 
+•it is possible to see how the additive effects and combinations of 
+alleles results in all the possiblegenotypes.
+
+
+
+6. Gene-environment interaction:
+•When environmental factors influence the expression of a gene. 
+Example fur colour in Siamese cats.
+•Body parts with temperature below 33
+o
+C have black fur while body 
+parts with temperatures above 33
+o
+C have white fur. 
+
+
+
+7. Lethal genes
+•Gene, which causes the death of its carrier when in homozygous 
+condition is called lethal gene. 
+•Mendel’s findings were based on equal survival of all genotypes.
+•In normal segregation ratio of 3:1 is modified into 2:1 ratio
+•Example fur colour in mice two alleles one yellow one gray
+•Yello dominant to gray.  The genotype YY is lethal
+
+
+
+Linkage:
+•When genes are physically close together on the same chromosome 
+and tend to be inherited together.
+•The way in which two genes located close to each other on a chromosome 
+are often inherited together.
+
+Example of linkage
+
+Example of dihybrid cross with linked genes
+•Suppose the genes for seed colour and seed shape are linked
+•Seed shape Round: Wrinkled (Round dominant to wrinkled)
+•Seed colour yellow: green (Yellow dominant to green)
+•Draw a cross for heterozygous parents for the two genes
+
+Population genetics
+•Population genetics is the branch of genetics that focuses on 
+studying the heritable features of populations over time and 
+space. 
+•The measurement of variability by describing changes in allele 
+and genotypic frequency for a particular trait over time 
+
+Terms
+•1. Population....??
+•Ecologically: A group of individuals of the same species living within 
+a restricted geographical area that allows any two individuals to 
+interbreed 
+•Genetically: A group of individuals who share a common gene pool 
+and have the potential to interbreed
+
+•2. Genepool
+•The sum of all the alleles in a population.
+•A gene pool can also be defined as the alleles among the reproductive 
+members of a population from which gametes can be drawn. 
+
+•3.Theallelic frequency(or gene frequency) 
+•is the rate at which a specific allele appears within a population.
+•Denoted ‘P’ for dominant allele and ‘q’ for recessive allele
+•4. Genotypic frequency :the proportion of individuals in a population 
+that have a specific genotype.
+
+•5. The genotypic and allelic frequenciesconstitutegenetic structure 
+of a population 
+•6. Gene flow: The movement of genes from one population to 
+another.
+•Occurs when individuals of a population migrate.
+
+•5. Variations: The differences among individuals of a population.
+•6. Morphological Variations: The differences in external appearance 
+among individuals of a population
+•7. Genetic variation:  the differences in the DNA sequence among 
+individuals within a population or species
+
+Calculations of genotypic and allelic 
+frequencies
+•A frequency is a percentage or a proportion, and always ranges 
+between 0 and 1. 
+•If 18% of the people in a group have red hair, the frequency of red 
+hair in the group is 0.18i.e18÷100 = 0.18
+•To calculate the genotypic frequencies at a specific locus, we count 
+the number of individuals with one particular genotype and divide 
+this number by the total number of individuals in the population. 
+
+HARDY-WEINBERG POPULATIONS
+•G.H. Hardy and W. Weinberg –developed a law in 1908, which 
+clarifies the relationships between genotype and allele 
+frequencies within a generation and from one generation to 
+another.
+•Developed Hardy-Weinberg Law and equation
+
+The Hardy-Weinberg Law
+•States that: In a large random mating population with no 
+selection, mutation, or migration, the allelic frequencies and 
+the genotype frequencies are constant from generation to 
+generation
+
+Credibility of the Hardy-Weinberg Law depends on five 
+key points.
+•1. The population includes a very large, virtually infinite 
+number of individuals. 
+•2. The individuals mate at random in the sense that 
+each individual’s genotype at the locus of interest does 
+not influence his or her choice of a mate. 
+
+•3. No new mutations appear in the gene pool. 
+•4. There is no migration into or out of the population. 
+•5. There are no genotype-dependent differences in 
+the ability to survive to reproductive age and transmit 
+genes to the next generation.
+
+Hardy-Weinberg equilibrium.
+•Populations that satisfy all these five assumptions are said to 
+be at Hardy-Weinberg equilibrium.
+•The Hardy-Weinberg equilibrium is a fundamental concept in 
+population genetics that describes the frequency of alleles and 
+genotypes in a population under certain assumptions.
+
+Explanation of the Key Points in Hardy-
+Weinberg Assumptions
+•1. Random mating
+•The first assumption is random mating, which means that the probability 
+that two genotypes will mate is the product of the frequencies (or 
+probabilities) of the genotypes in the population. 
+•If the MM genotype makes up 90% of a population, then any individual 
+has a 90% chance (probability = 0.9) of mating with a person with an MM 
+genotype. The probability of an MM by MM mating is (0.9)(0.9), or 0.81
+
+Deviations from random mating come about 
+for two reasons
+•1. choice. 
+•If members of a population choose individuals of a particular 
+phenotype as mates more or less often than at random, the 
+population is engaged in assortative mating. 
+
+Two types of assortative mating
+•If individuals with similar phenotypes are mating more often 
+than at random, positive assortative mating.
+•if mating occurs between individuals with dissimilar phenotypes 
+more often than at random, negative assortative mating,
+
+•2. Circumstance
+•Deviations from random mating also arise when mating individuals are 
+either more closely related genetically or more distantly related than 
+individuals chosen at random from the population. 
+•Inbreedingis the mating of related individuals, and outbreedingis the 
+mating of genetically unrelated individuals.
+
+•Inbreeding is a consequence of two factors: pedigree relatedness (e.g. 
+cousins) and small population size.
+•2. Large Population Size
+•The second assumption of the Hardy-Weinberg equilibrium is that the 
+population is infinitely large.
+
+•A large population produces a large sample of successful gametes. 
+•The larger the sample, the greater the probability that the allelic 
+frequencies of the offspring will be a true representation of the allelic 
+frequencies in the parental population. 
+
+•When populations are small or when alleles are rare, changes in allelic 
+frequencies take place due to chance alone. 
+•These changes are referred to as random genetic drift, or genetic drift.
+
+•Allelic and genotypic frequencies may change through the loss or addition 
+of alleles through mutation or migration
+•The third and fourth assumptions of the Hardy-Weinberg equilibrium are 
+that neither mutation nor migration causes such allelic loss or addition in 
+the population.
+
+5. No Natural Selection 
+•The final assumption necessary to the Hardy-Weinberg 
+equilibrium is that no individual will have a reproductive 
+advantage over another individual because of its genotype. 
+•In other words, no natural selection or artificial selection is 
+occurring.
+
+Hardy-Weinberg equation
+•Equation used for calculating genotypic and allelic 
+frequencies in a population
+•Assuming that a gene has two allele and each sperm 
+has equal chance of fertilizing any egg.
+
+•Let ‘A’ Denote dominant allele and ‘a’ denote recessive allele
+•The frequency for dominant allele is denoted ‘P’and the frequency for 
+recessive allele is ‘q’
+•Therefore: the frequency for homozygous dominant (AA) is P
+2
+•The frequency for homozygous recessive (aa) is q
+2
+•The frequency for heterozygous (Aa) is 2Pq
+•This information can be understood from Punnett square when Aa cross 
+with Aa
+
+The equation
+•P
+2
++ 2Pq + q
+2
++ 1
+•Similar: P + q = 1
+
+Calculation
+•Example 1. Using proportions of earlobe to calculate allelic and 
+phenotypic frequencies
+•Example 2.
+
+•A very large population of randomly-mating 
+laboratory mice contains 35% white mice. White 
+coloring is caused by the double recessive genotype, 
+"aa". Calculate allelic and genotypic frequencies for 
+this population.
+•Suppose after so many years the population of mice is 
+100,000. How many mice are homozygous dominant? 
+What assumption do you make for the answer?
+
+•A rather large population of Biology instructors have 396 red-sided 
+individuals and 557 tan-sided individuals. Assume that red is totally 
+recessive. Please calculate the following:
+A.The allele frequencies of each allele.
+B.The expected genotype frequencies.
+C.The number of heterozygous individuals that you would predict to be in 
+this population.
+D.The expected phenotype frequencies.
+E.Conditions happen to be really good this year for breeding and next year 
+there are 1,245 young "potential" Biology instructors. Assuming that all of 
+the Hardy-Weinberg conditions are met, how many of these would you 
+expect to be red-sided and how many tan-sided?
+
+End of topic
+
+
+

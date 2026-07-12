@@ -1,0 +1,262 @@
+
+
+GEOPHYSICS
+(NGEP 33105): 
+TECTONICSON A SPHERE
+HERBERT JAMES BANDA
+Basic Science Department
+Lilongwe University Of Agriculture And 
+Natural Resources (LUANAR)
+1
+TOPIC
+
+ROTATION VECTORS AND ROTATION POLES
+•To describe motions on the surface of a sphere we use Euler’s ‘fixed-
+point’ theorem, which states that :
+•‘The most general displacement of a rigid body with a fixed point is 
+equivalent to a rotation about an axis through that fixed point.’
+•OR
+•A change in position can be described by rotation about an axis.
+•Taking a plate as a rigid body and the centre of the Earth as a fixed point, 
+we can restate this theorem: 
+•‘Every displacement from one position to another on the surface of the Earth 
+can be regarded as a rotation about a suitably chosen axis passing through the 
+centre of the Earth.’
+
+ROTATION VECTORS AND ROTATION POLES
+•The ‘suitably chosen axis’ which passes through 
+the centre of the Earth is called the rotation 
+axis.
+•It cuts the surface of the Earth at two points 
+called the poles of rotation (Fig. 2.8(a)). 
+•These are purely mathematical points and have 
+no physical reality.
+•The positions describe the directions of motion 
+of all points along the plate boundary. 
+•The magnitude of the angular velocity about 
+the axis defines the magnitude of the relative 
+motion between the two plates. 
+
+ROTATION VECTORS AND ROTATION POLES
+•Angular velocities behave as vectors.
+•The relative motion between two plates can be 
+written as 흎, a vector directed along the rotation 
+axis.
+•The magnitude of 흎 is 휔, the angular velocity.
+•The sign convention used is that a rotation that is 
+clockwise (or right-handed) when viewed from the 
+centre of the Earth along the rotation axis is positive. 
+•Viewed from outside the Earth, a positive rotation is 
+anticlockwise. 
+•Thus, one rotation pole is positive and the other is 
+negative (Fig. 2.8(b)).
+
+ROTATION VECTORS AND ROTATION POLES
+•Consider a point X on the surface of the Earth 
+(Fig. 2.8(c)).
+• At X the value of the relative velocity v 
+between the two plates is
+  풗=흎푹퐬퐢퐧휽 (2.3)
+•where 휃 is the angular distance between the 
+rotation pole P and the point X, and R is the 
+radius of the Earth. 
+•This factor of sin 휃 means that the relative 
+motion between two adjacent plates changes 
+with position along the plate boundary.
+
+ROTATION VECTORS AND ROTATION POLES
+•Consider a point X on the surface of the Earth 
+(Fig. 2.8(c)).
+•Thus, the relative velocity is zero at the rotation 
+poles, where θ = 0◦ and 180◦.
+•It  has a maximum value of ωR at 90◦ from the 
+rotation poles. 
+•If by chance the plate boundary passes through the 
+rotation pole, the nature of the boundary changes 
+from divergent to convergent, or vice versa (as in 
+Fig. 2.8(b)). 
+•Lines of constant velocity (defined by θ = constant) 
+are small circles about the rotation poles.
+
+PRESENT-DAY PLATE MOTIONS
+Determination of rotation poles and rotation vectors
+1.A local determination of the direction of relative motion between two 
+plates can be made from the strike of active transform faults. 
+•Methods of recognizing transform faults are discussed fully in Section 8.5. 
+•Transform faults on ridges are much easier to recognize and more common 
+than transform faults along destructive boundaries.
+•This method is used primarily to find rotation poles for plates on either 
+side of a midocean ridge. 
+•The relative motion at transform faults is parallel to the fault and is of 
+constant value along the fault.
+•This means that the faults are arcs of small circles about the rotation pole. 
+•The rotation pole must therefore lie somewhere on the great circle which is 
+perpendicular to that small circle. 
+•So, if two or more transform faults can be used, the intersection of the great 
+circles is the position of the rotation pole (Fig. 2.9).
+
+PRESENT-DAY PLATE MOTIONS
+Determination of rotation poles and rotation vectors
+2.The spreading rate along a constructive plate boundary changes as the sine 
+of the angular distance θ from the rotation pole (Eq. (2.3)). 
+•So, if the spreading rate at various locations along the ridge can be determined (from 
+spacing of oceanic magnetic anomalies , the rotation pole and angular velocity can 
+then be estimated.
+3.The analysis of data from an earthquake can give the direction of motion 
+and the plane of the fault on which the earthquake occurred. 
+ This is known as a fault-plane  solution or a focal mechanism.
+• Fault-plane solutions for earthquakes along a plate boundary can give the 
+direction of relative motion between the two plates. 
+•For example, earthquakes occurring on the transform fault between plates A 
+and B in Fig. 2.8(b) would indicate that there is right lateral motion across 
+the fault.
+•The location of the pole and the direction, though not the magnitude, of the 
+motion can be estimated.
+
+PRESENT-DAY PLATE MOTIONS
+Determination of rotation poles and rotation vectors
+4.Where plate boundaries cross land, surveys of displacements can be used 
+(over large distances and long periods of time) to determine the local 
+relative motion.
+• For example, stream channels and even roads, field boundaries and 
+buildings may be displaced.
+5.Satellites have made it possible to measure instantaneous plate motions 
+with some accuracy. 
+•One method uses a satellite laser-ranging system (SLR) to determine 
+differences in distance between two sites on the Earth’s surface over a 
+period of years.
+• Another method, very-long-baseline interferometry (VLBI), uses quasars for 
+the signal source and terrestrial radio telescopes as the receivers. 
+•Again, the difference in distance between two telescope sites is measured 
+over a period of years. 
+•Worldwide, the rates of plate motion determined by VLBI and SLR agree 
+with geologically determined rates to within 2%.
+
+PRESENT-DAY PLATE MOTIONS
+Determination of rotation poles and rotation vectors
+6.A third method of measuring plate motions utilizes the Global Positioning 
+System (GPS) which was developed to provide real-time navigation and 
+positioning using satellites. 
+•A worldwide network of GPS receivers with a precision suitable for 
+geodynamics has been established (1 cm in positioning and <10
+−3
+ arcsec in 
+pole-position estimates).
+•It is called the International GPS Service for Geodynamics (IGS), and is a 
+permanent global network of receivers.
+• Analysis of data from 1991–1996 shows that the agreement of GPS velocities 
+with the geologically determined velocities for all but a few locations is to 
+better than 95% confidence. 
+•This is another impressive corroboration of relative plate motions – the 
+plates are continually in motion.
+
+PRESENT-DAY PLATE MOTIONS
+•An estimate of the present-day plate motions, NUVEL-1A, made by using 277 
+measurements of ridge spreading rate, 121 oceanic transform-fault azimuths 
+and 724 earthquake slip vectors is given in Table 2.1. 
+
+PRESENT-DAY PLATE MOTIONS
+•Figure 2.10 shows velocities in southern California relative to North America as 
+determined from geodetic measurements (including GPS and VLBI) between 
+1972 and 1995. 
+
+PRESENT-DAY PLATE MOTIONS
+•The measured velocity of motion across this boundary was 50 mm 푦
+−1
+, 
+compared with the 49 mm 푦
+−1
+ predicted (Table 2.1). 
+•Thus, again geological estimates based on measurements with a timescale of a 
+million years agree with measurements made over a few years.
+
+SYMBOLS USED IN C ALCULATIONS INVOLVING ROTATION POLES
+
+C ALCULATIONS INVOLVING POLES
+•Although clear boundaries between rigid plates describe the relative motions 
+and structures well, there are a few boundaries for which the term ‘diffuse 
+plate boundary’ is appropriate (spread out over a wide region). 
+•The main examples are the North American and South American plate 
+boundary from the Mid-Atlantic Ridge to the Caribbean and the boundary 
+which subdivides the Indian plate.
+•It is important to realize that a rotation with a large angular velocity ω does 
+not necessarily mean that the relative motion along the plate boundary is also 
+large.
+
+THE RELATIVE POSITIONS  OF THE POSITIVE ROTATION 
+•A diagram showing the relative positions of the 
+positive rotation pole P and point X on the plate 
+boundary.
+•N is the North Pole. 
+•The sides of the spherical triangle NPX are all great 
+circles, the sides NX and NP are lines of geographic 
+longitude. 
+•The vector v is the relative velocity at point X on 
+the plate boundary (note that v is perpendicular to 
+PX). 
+•It is usual to quote the lengths of the sides of 
+spherical triangles as angles (e.g., latitude and 
+longitude when used as geographic coordinates).
+
+THE RELATIVE POSITIONS  OF THE POSITIVE ROTATION 
+•The distance between rotation pole and 
+plate boundary is important (remember 
+the sin θ factor multiplying the angular 
+velocity ω in Eq. (2.3)).
+•However, it is conventional to use the 
+relative velocity at θ = 90◦ when quoting 
+a relative velocity for two plates, even 
+though neither plate may extend 90◦ 
+from the pole.
+
+RELATIVE MOTION AT A PLATE BOUNDARY
+•Once the instantaneous rotation pole and angular 
+velocity for a pair of adjacent plates have been 
+determined :
+•they can be used to calculate the direction and 
+magnitude of the relative motion at any point along 
+the plate boundary.
+•The notation and sign conventions used in the 
+following pages are given in Table 2.2. 
+•Figure 2.11 shows the relative positions of the 
+North Pole N, positive rotation pole P and point 
+X on the plate boundary (compare with Fig. 
+2.8(b)).
+•In the spherical triangle NPX, let the angles 
+෣
+푋푁푃 
+= A, 
+෣
+푁푃푋 = B and 
+෣
+푃푋푁 = C,
+Figure 2.11
+
+RELATIVE MOTION AT A PLATE BOUNDARY
+
+RELATIVE MOTION AT A PLATE BOUNDARY
+
+RELATIVE MOTION AT A PLATE BOUNDARY
+
+RELATIVE MOTION AT A PLATE BOUNDARY
+
+COMBINATION OF ROTATION VECTORS
+•Suppose that there are three rigid plates A, B and C and that the 
+angular velocity of A relative to B, 
+퐵
+.
+휔
+퐴
+ , and that of B relative to C, 
+퐶
+.
+휔
+퐵
+, are known. 
+•The motion of plate A relative to plate C, 
+퐶
+.
+휔
+퐴
+, can be determined 
+by vector addition just as for the flat Earth:

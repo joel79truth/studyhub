@@ -1,0 +1,921 @@
+
+
+BIOLOGY 121
+(Genetics, Evolution & Botany)
+Mendelian genetics
+Thomson Sanudi
+@ Basic Sciences Department
+tsanudi@bunda.luanar.mw
+
+Introduction
+•Genetics is a sub-field of biology.
+•Biology is a sub-field of science dealing with ; 
+oEpistemology: investigates origin, nature, methods and limits of 
+human knowledge
+oMetaphysical: concerned with abstract thought or subject as 
+existence, causality or truth
+oEthical: pertaining morals or principles of morality, issues of right or 
+wrong in conduct
+
+Introduction
+•Biology considers the philosophical questions raised by nature and 
+existence of living organisms and biological processes.
+oWhat is the origin of life?
+oWhy are their variations among parents and offspring?
+oWhat is the nature of evolutionary theory?
+etc
+
+Theories of the origin of life
+•Spontaneous Generation states that living things arise from non living 
+things (water+light+dust+heat).
+•Spontaneous generation was disproved by Louis Pastuerwho proposed 
+the Cell theory.
+a) Every cell comes from another cell, b) the cell is the basic unit of life
+•The cell theory fails to explain: -
+a)variations that appear among parents and offspring, b) the virus 
+which is a living thing but a cellular c) the origin of the first cell
+
+Theories of the origin of life
+•Lamarck,proposedatheoryofInheritanceofAcquiredCharacteristics.
+Thisstatesthatchangesintheenvironmentcreatenewneedswhichled
+tonewbehavioursthatmayinvolveuseordisuseofsomestructures.
+•Thetheoryofinheritanceofacquiredcharacteristicswasdisprovedby
+Wisemanwhocuttailsoftheratsexpectingthattheoffspringwillhaveno
+tails.
+
+Theories of the origin of life
+•WisemanproposedtheBlendingtheorywhichstatedthatcharacteristics
+ofoffspringareasaresultofcombinationoftraitsofbothparentswhich
+blendtogether.
+•Theshortfallofthistheoryisthatitdoesnotexplainthepresenceofsome
+characteristicthatarenotpresentineitheroftheparentse.g.albino
+offspringfromnormalparents.
+
+Theories of the origin of life
+•MendelcameupwithhistheorycalledInheritancetheorywhichstates
+thatsimilaritiesanddifferencesbetweenparentsandoffspringsareasa
+resultofthepassageofdiscretehereditaryfactors(genes).Itisalso
+referredasParticulatetheory.
+
+Theories of the origin of life
+•Factors that led to the success of Mendel are:-
+1.Knowledge of statistics which he used to predict and verify outcome of 
+his experiments
+2.Choice of subjects for experiments, he used garden peas which can 
+be cross pollinated or self pollinated
+3.Choice of characters, he looked at one character at a time
+4.The way of presenting results, he used numbers to represent whatever 
+he discovered
+5.His background, he was interested in breeding experiments
+
+Mendelian Genetics
+•Mendel’s monohybrid and dihybrid experiments gave the idea of 
+dominance and recessive where the recessive gene is masked by the 
+dominant gene and the recessive gene can be expressed only in 
+homozygous state (dd).
+•From his experiments he also came up with 2 important laws:-
+oMendel’s law of segregation:-states that genes segregate during gamete formation 
+and reunite randomly during fertilisation.
+oMendel’s law of independent assortment:-states that inheritance of a gene pair on a 
+chromosome is unaffected by inheritance of other gene pairs on the other 
+chromosome.
+
+•Monohybrid cross:  a genetic cross involving a single pair of genes (one 
+trait)
+•Used by geneticists to observe how homozygousoffspring express 
+heterozygousgenotypes inherited from their parents.
+•P= Parental generation
+•F
+1
+= First filial generation
+•F
+2
+= Second filial generation of a genetic cross
+Monohybrid cross 
+
+Mendelian ratios
+A.Monohybrid inheritance
+Mendel took pure lines that breed true
+ParentsDD (tall)  x       dd(dwarf)
+Gametes            DD                  dd(homogametic)
+F1Dd(all tall)
+He then took Ddand self-pollinated (selfed)
+Parents (F1)Dd(tall)   x   Dd(tall)
+Gametes          DdDd(heterogametic)
+F2                 DD (tall)  Dd(tall) Dd(tall) dd(dwarf)
+This gave a 3:1 tall to dwarf (this is a Mendelian monohybrid ratio)
+
+D
+D
+D
+D
+d
+d
+d
+d
+Parent 1 (tall)
+Homogametic
+Homozygous
+Parent 1 (dwarf)
+Homogametic
+Homozygous
+Gametes
+First filial generation (F1)
+Heterozygous
+D
+d
+
+Punnett square
+•A useful tool to do genetic crosses
+•It is used to predict the genotypes and phenotypes 
+of the offspring.
+•For a monohybrid cross, the square is divided into 
+four 
+•Looks like a window pane
+
+Using a Punnett Square
+STEPS: 
+1. determine the genotypes and gametes for 
+each parent  organisms 
+2. write down your "cross" (mating) 
+3. draw a p-square 
+E.gParent genotypes :TT  and  t t
+Gamates: T ,T   X  t, t
+
+4. "split" the letters of the genotype for each parent & put them 
+"outside" the p-square 
+5. determine the possible genotypes of the offspring by filling in the p-
+square 
+6. summarize results (genotypes & phenotypes of offspring)
+T Tt t
+T tT t
+T tT t
+T         T
+Genotypes:
+100%    T t
+Phenotypes:
+100% Tall plants
+Punnett square
+
+Monohybrid cross: F
+2
+generation
+•If you let the F1 generation self-fertilize, the next monohybrid cross would 
+be:
+T tT t
+(tall)            (tall)
+T TT t
+T tt t
+T         t
+Genotypes:
+1 TT= Tall
+2 Tt = Tall
+1  tt= dwarf
+Genotypic ratio= 1:2:1
+Phenotype:
+3 Tall
+1 dwarf
+Phenotypic ratio=  3:1
+
+•A dihybrid cross is a type of genetic cross between two individuals with either 
+homozygous or heterozygous genotypes of two characters or traits.
+Dihybrid crosses
+•The dihybrid cross is used as a method to determine or prove the law of independent 
+assortment as it proves that two characters segregate independently of one another.
+•It only works in the case of genes that are not linked and are present on different 
+chromosomes.
+
+Mendelian ratios
+B.Dihybridinheritance
+Mendel took peas with round (W) and green (Y) seeds and crossed them with wrinkled (w)and 
+yellow (y) seeds.
+Parents    WWYY      x         wwyy
+Gametes    WYWY             wywy
+F1 : WwYy(round and green seeds)
+GametesWYWY
+wyWwYyWwYy
+wyWwYyWwYy
+
+He then self-fertilization F1 (for this we use a Punnett square)
+–This gave a Mendelian dihybrid ratio of 9:3:3:1 of
+–round green seeds: round yellow seeds: wrinkled green seeds: wrinkled yellow 
+seeds
+
+W
+W
+W
+W
+w
+w
+w
+w
+Y
+Y
+Y
+Y
+y
+y
+y
+y
+Parent 1 (round green seeds)
+Homogametic
+Homozygous
+Parent 1 (wrinkled yellow 
+seeds)
+Homogametic
+Homozygous
+Gametes
+First filial generation (F1)
+Heterozygous
+WwYy
+Y
+W
+y
+w
+Gametes would be 
+WY, Wy, wYor wy
+
+Test cross
+We saw that both DD and Ddhad tall phenotypes while WWYY and WwYy
+also had dominant phenotypes (round green seeds). 
+A test cross is conducted to determine whether an individual is either 
+homozygous or heterozygous? 
+Parents DD x ddParentsDdx dd
+GametesD       dGametesD  d     d   d
+F1Dd(all tall)F1DdDddddd
+Ddand dd(50% tall and 50% Dwarf)
+
+1. A homozygouslion with blue eyes (bb) mates with a heterozygous lion with 
+brown eyes (Bb)
+a. Calculate the genotype and phenotype ratios?
+b. What is the probability that will produce a lion with blue eyes?
+BbBb
+bbbb
+Gametes : bb and Bb
+b                        b
+B
+b
+Genotype ratios            Phenotype
+Blue : Brown
+Bb : bb                              2 : 2
+2: 2                                  1:1
+1:1
+P = 2/4=0.5*100 =50%
+Example for Monohybrid cross
+
+Incats,theabilitytorunnormallyisadominanttrait.Acatwiththesetraits
+iscalledrunningcat(R).Therecessivetraitcausescatstorunincirclesonly.
+Catswiththesetraitsarecalledwaltzingcats(r).Thehaircolorisalso
+inheritedincats.Blackhair(B)isdominantoverbrownhairb.
+•Using a Punnett   square cross a heterozygous running, heterozygous black 
+cat withhomozygous running, homozygous black cat
+Example for Dihybrid cross
+
+Incats,theabilitytorunnormallyisadominanttrait.Acatwiththesetraitsiscalled
+runningcat(R).Therecessivetraitcausescatstorunincirclesonly.Catswiththese
+traitsarecalledwaltzingcats(r).Thehaircolorisalsoinheritedincats.Blackhair(B)is
+dominantoverbrownhairb.
+Using a Punnett   square cross a heterozygous running, heterozygous black cat 
+with homozygous running, homozygous black cat
+Parent Genotypes:               RrBbx                            RRBB
+Gametes:
+RB,Rb,rB,rb
+RB, RB, RB, RB
+Parent phenotypes: Heterozygous running & black        Homozygous  running &  black 
+Parent 1
+Parent 2
+Example for Dihybrid cross
+
+GametesRBRbrBrb
+RBRRBBRRBbRrBBRRBb
+RBRRBBRRBbRrBBRRBb
+RBRRBBRRBbRrBBRRBb
+RBRRBBRRBbRrBBRRBb
+Off Spring phenotypes % :   Running and black  =  100%
+Running and brown = 0%
+Waltzing and black   = 0%
+Waltzing and brown = 0%
+
+2. In mouse, brown coloring (B) is dominant, and blue coloring (b) is recessive. 
+A homozygous brown mouse crosses with a heterozygous mouse. Calculate the 
+genotype and phenotype ratios?
+3. A pure-breeding pea plant with round seeds and white flowers is crossed with 
+a pure-breeding plant that has wrinkled seeds and purple flowers.
+i. what will the F1 offspring look like? 
+ii. if two F1 plants are crossed, what phenotypes will be expected in  the F2 
+generation, and in what proportions?
+
+3. In a dihybrid cross, AaBbx AaBb, what fraction of the offspring will be homozygous for 
+both recessive
+traits?
+4. Following a  SSYyx SsYycross, what fraction of the offspring are predicted to have a 
+genotype that is heterozygous for both characteristics?
+5. Wolves are sometimes observed to have black coats and blue eyes. Assume further that 
+normal coat color (N) is dominant to black (n) and brown eyes (B) are dominant to blue (b). 
+Suppose the alpha male and alpha female of a pack (these are the dominant individuals who do 
+most of the breeding) are black with blue eyes and normal colored with brown eyes, 
+respectively. The female is also heterozygous for both traits. 
+What are the possible genotypes of the offspring?
+
+Practice questions
+1. In guinea pigs, rough coat R is dominant over smooth coat r, and black 
+coat B is dominant over white b. R and B are independent genes (not linked). 
+If a rough black guinea pig is bred with a rough white and gives 28 rough 
+black; 31 rough white; 11 smooth black and 10 smooth white. 
+What are the likely genotypes of the following offspring?    
+Rough black
+Rough white
+Smooth black
+Smooth white 
+What are the likely genotypes of the parents?
+
+Modification of Mendelianratios
+1.Incomplete dominance
+2.Codominance
+3.Multiple alleles/genes
+4.Lethal genes
+5.Duplicate genes
+6.Epistasis
+7. Non-epistasis
+8. Complementary
+9. Polygenic
+10. Linkage genes
+11. Mutations 
+
+Modification of Mendelianratios
+1.Incomplete dominance
+Products of both genes/alleles give an intermediate character because non is 
+completely dominant over the other. 
+e.g.Flower colour: 
+Parents1:RR (red)       x      rr(white)
+Gametes:RRrr
+F1 Rr  (pink)
+Parents 2:Rr (pink)xRr (pink)
+Gametes:R  ,  rR,   r
+F2RR    RrRrrr(ratio of 1 : 2 : 1 of red : pink : white)  
+
+Recollect that the genotype ratio of F2 generation in the monohybrid cross by Mendel also gave the same ratio of 1:2:1. 
+However, the phenotype ratio has changed from 3:1 to 1:2:1. The reason for this variation is the incomplete dominance of the 
+allele R over the allele W. This led to the blending of color in flowers
+
+Modification of Mendelianratios
+2Codominance
+Both genes/alleles are expressed in the offspring like MN blood group
+e.g.MN blood group:    
+Parents 1:L
+M
+L
+M
+(M) x      L
+N
+L
+N
+(N)
+Gametes:L
+M
+, L
+M
+L
+N,
+L
+N
+F1L
+M
+L
+N
+(MN)
+Parents 2:L
+M
+L
+N 
+(MN)xL
+M
+L
+N 
+(MN)
+GametesL
+M
+L
+N
+L
+M
+L
+N
+F2L
+M
+L
+M
+L
+M
+L
+N
+L
+M
+L
+N
+L
+N
+L
+N
+Phenotype: 1: 2:1
+;                                                                                                                       Genotype: 1:2:1
+
+Modification of Mendelian ratios
+•Multiple genes/alleles
+•This occurs when there is more than one form of alleles in individuals but only two 
+forms of alleles can exist in a population.
+•The AOB blood group system is an example of a multiple allele system, meaning 
+that there are more than two possible alleles that can determine an individuals 
+blood type within the system.
+•In the AOB system, there are three main alleles: A,O and These alleles interact in 
+various combination to determine an individual’s blood type
+
+•There are multiple possible genotypes and phenotypes within the AOB blood 
+group system
+
+1.What will the F1 generation’s blood group be if you cross a Mother with blood 
+group Owith a Father with blood group AB?
+I
+A
+I
+B
+I
+O
+I
+A
+I
+O
+I
+B
+I
+O
+I
+O
+I
+A
+I
+O
+I
+B
+I
+O
+Parent     Phenotype         Father Group AB                                       Mother Group O                          
+(p)                Genotype           I
+A
+I
+B
+I
+O
+I
+O
+Gametes               
+I
+A
+I
+B
+I
+O
+I
+O
+Male
+Female
+Offspring genotype: 50% I
+A
+I
+O 
+,50% I
+B
+I
+O
+Offspring Phenotype: 50% blood group  A
+50%  blood group B
+Multiple genes
+Examples
+
+2.IfafatherwithbloodgroupA(heterozygous)haschildrenwithamotherwithblood
+groupB(Heterozygous),whatarethepossiblebloodgroupsofthechildren?
+I
+A
+I
+O
+I
+B
+I
+A
+I
+B
+I
+B
+I
+O
+I
+O
+I
+A
+I
+O
+I
+O
+I
+O
+Parent     Phenotype         Father Group A                                     Mother Group B                          
+(p)                Genotype           I
+A
+I
+O
+I
+B
+I
+O
+Gametes               
+I
+A
+I
+O
+I
+B
+I
+O
+Male
+Female
+Offspring genotype:    25% I
+A
+I
+B 
+,25% I
+B
+I
+0    
+25%  I
+A
+I
+0
+,25% I
+O
+I
+O
+Offspring Phenotype: 25% blood group AB
+25%  blood group B
+25% blood group  A
+25% blood group O 
+
+1. A person with type AB blood is crossed with another individual. They have 4 
+childrensand all of them have either type A or type B blood. What are their 
+genotypes. 
+Show Punnett square to support your answer
+Practice questions
+2. A woman with type A blood has parents who are both type AB and a husband who 
+is a type B. They have a child with type A blood.
+a. What are the genotypes of the woman, her husband and their child?
+3.The mother has type A blood. Her husband has type B blood. Their child has type O
+blood. The father claims the child can’t be his. Is he right?
+
+4. Lethal alleles/genes
+•This involves genetic defects that cause a 100% mortality rate. 
+•It causes death in individuals having a particular pair of alleles to die. 
+•They are usually a result of mutations in genes that are essential for 
+growth or development.
+•The genes are usually recessive and homologous recessive individuals 
+die.
+•Could also be dominant or conditional depending on the gene or genes 
+involved
+Modification of Mendelian ratios
+
+P1
+F
+1
+AA           ×AA
+agouti               agouti
+AA
+Agouti  
+AA
+Y
+×AA
+Y
+YellowYellow
+AA 
+agouti
+AA
+Y
+yellow
+A
+Y
+A
+yellow
+A
+Y
+A
+Y
+Lethal
+AA×AA
+Y
+AgoutiYellow
+AA 
+agouti
+AA
+Y
+yellow
+Phenotype: 1:1
+(All  survived)
+Phenotype: 1:2
+(1 died)
+Example: Coat color in mice
+A     = agouti  (brown)   = wild-type allele
+*A
+Y
+= yellow                = mutant allele
+
+5.Duplicate genes
+•This occurs if a gene is duplicated on the same chromosome. Resulting in 
+multiple copies of the same
+e.g.If a gene controlling height is duplicated on a chromosome
+Parents 1:    AABB (tall)   x      aabb(short)
+Gametes:            AB                         ab
+F1:AaBb(tall)
+Parents 2 AaBbx AaBb
+Gametes:    AB/Ab/aB/ab     AB/Ab/aB/ab
+All offspring will be tall except one. The ratio will be 15:1 of tall to short.
+ABAbaBab
+ABAABBAABbAaBBAaBb
+AbAABbAabbAaBbAabb
+aBAaBBAaBbaaBBaaBb
+abAaBbAabbaaBbaabb
+
+6.Epistasis genes
+This is a situation where there is a gene at locus A that masks the expression of another gene at locus B
+Locus A suppresses the expression of the gene at locus B and it depends on whether there is a dominant 
+or a recessive gene on locus B.
+Gene at one locus alters the phenotypic expression of a different gene at a second locus i.e. Hair color in 
+mammals:  mice
+In mice, black (B) coat is dominant to brown coat color (b)
+A second gene determines whether or not pigment will be deposited in the hair...dominant (C) for color 
+results in deposition
+If the mouse is cc, it will be albino regardless of the genotype at the black/brown locus.
+Modification of Mendelianratios
+
+
+
+7. Non-epistaticgenes
+•This is a situation where a characteris a 
+product of a number of gene products. 
+•The products interact to produce a 
+phenotype. 
+•This inheritance occurs if the end product 
+of a different gene contributes to the same 
+character.
+e.g. Flower colour.
+Locus A  Locus B    Locus CPhenotype
+AABBCCRed
+AaBBCCRed
+aaBBCCwhite
+In this case the products of these loci contribute 
+towards the same character -flower colour
+Modification of Mendelian ratios
+
+8.Complementary genes
+•A type of gene interaction between two different genes that work together to create a 
+specific phenotype or visible trait.
+•Both types of genes must be present indominant form to complement each other 
+and  produce a specific phenotype
+e.g. if the protein has subunits to be functional (Haemoglobin sub units)
+Modification of Mendelian ratios
+
+E.g.  Colour  of flower in lathyrusadoratus(sweet pea)
+Raw material  ...........Chromagen(White)...........Anthocyanin(purple
+Chromagen
+(White)
+CC orCc
+PP or Pp
+
+9.Polygenic inheritance
+•It is a quantitative inheritance, where multiple independent genes have an 
+additive or similar effect on a single quantitative trait.
+•In polygenic inheritance, each allele has a cumulative or additive effect on 
+the phenotype thus generating continuous variation, e.g. skin pigmentation, 
+height, etc.
+Modification of Mendelian ratios
+
+10.Linkage
+–Genes that are on the same chromosome are called linked genes. 
+These genes are associated in their inheritance, they are inherited 
+together and in the same position.
+–The linkages are found either in sex cells/sex chromosomes or in 
+autosomal cells/autosome chromosomes
+Modification of Mendelian ratios
+
+
+
+Sex linkage
+–These are genes found on the same sex chromosome.
+–Mammals have XY in males and females have XX chromosomes.
+–Bugs and grasshopper males have only one X chromosome and they 
+are XO, females are XX. There is no Y chromosome
+–Birds females have ZW chromosome and males have ZZ
+–Examples of sex linked characteristics are 1) colour blindness 
+associated with X chromosome, 2) haemophilia-blood clotting, 
+mainly suffered by females 3) baldness
+Modification of Mendelian ratios
+
+Sex linkages
+Morganobservedthattheinheritanceofacharacterdependsonwhetherthe
+characterisfromamaleorafemaleparent.
+An example -Eye colour of fruit flies :
+an experiment done by Dr. Morgan to predict how white eye color is inherited in 
+two generations of fruit flies. 
+Modification of Mendelian ratios
+
+
+
+
+
+Hemophilia is caused by a mutation in either of two genes, both of which are located 
+on the X chromosome. Both genes encode proteins that help blood clot. Let's focus on 
+just one of these genes, calling the functional alleleX
+H
+and the disease alleleX
+h
+E.g:awomanwhoisheterozygousfornormalandhemophiliaalleles(X
+H
+X
+h
+)has
+childrenwithamanwhoishemizygousforthenormalform(X
+H
+Y).Bothparentshave
+normalbloodclotting,butthemotherisacarrier.Whatisthechanceoftheirsons
+anddaughtershavinghemophilia?
+Example
+
+X
+H
+Y
+X
+H
+X
+H
+X
+H
+X
+H
+Y
+X
+h
+X
+H
+X
+h
+X
+h
+Y
+Parent     Phenotype         Unaffected father                                    Carrier Mother                          
+(p)                Genotype           X
+H
+YX
+H 
+X
+h
+Gametes               
+X
+H
+Y
+X
+H
+X
+h
+Unaffected father
+Carrier Mother
+•None of the daughters will have 
+hemophilia
+•½ of the sons will be affected 
+•½of the sons will not be affected
+What is the chance of their sons and daughters having hemophilia?
+
+Pedigree Chart
+A pedigree chart is a diagram that shows how a gene of a trait or disease is 
+inherited over several generations.
+
+Autosomal linkage
+•There are two types, complete and partial autosomal linkages.
+•Genes that are linked completely do not assort themselves independently 
+as a result they are inherited in a block
+•Partial linkages come as a result of crossing over at meiosis to make new 
+combinations with other genes and are called recombinants
+Modification of Mendelian ratios
+
+•Autosomal linkage
+–Frequency of cross over is used to estimate the distance between genes.
+•Genes that are far apart have a higher probability of crossing over than 
+genes that are close together.
+•Genetics have a standard percentage combinations that 1% of 
+recombinants means 1 map unit i.e. The distance between neighbouring 
+genes. 1% = 1 cM(centimorgan)
+Modification of Mendelian ratios
+
+Autosomal linkages
+e.g. After crossing coloured smooth seeds x coloured wricked seeds the 
+following combinations were found
+Coloured smooth seeds 48.25%
+Coloured wrickledseeds 48.25%
+Colourless wrickledseeds 1.75%
+Colourless smooth seeds 1.75%
+Total percentage of recombinants for this experiment is 1.75% + 1.75% = 
+3.5%. Therefore the gene for colour and texture are 3.5cM apart
+Modification of Mendelian ratios
+
+1. Duchennemuscular dystrophy (DMD) is an X-linked recessive condition in 
+humans that causes muscle weakness and wasting. The allele that correctly 
+produces the dystrophin protein (D) is dominant to the allele that causes DMD (d). 
+A female with the genotype X
+D
+X
+d
+marries  a male with the genotypeX
+D
+Y.
+I. What is the probability, in percent, that the offspring will be a male with the 
+disease?
+PRACTICE QUESTIONS
+
+2.Theinheritanceofcolorblindnessinhumansisduetoarecessivegenelocated
+ontheXchromosome(Xlinked).X
+N
+isnormalcolorsightandisdominanttoX
+n
+(colorblind)
+i.Ifacolor-blindboyisborntoparentsbothofwhomhavenormalvision,what
+arethegenotypesofthethreeindividuals?
+ii   What is the probability that the couple will have a color-blind daughter?
+
+11.Mutations
+Mutations are sudden changes to the chromosomal DNA that results to some 
+heritable  characteristics
+Factors that cause mutations also known as mutagens or mutagenic factors 
+have potential of denaturing proteins and DNA are
+•X-, alpha-, gamma-, beta-rays
+•Ultra violet (UV) light
+•Hydrogen peroxide (H
+2
+0
+2
+)
+•Mustard gas
+Modification of Mendelian ratios
+
+Mutations
+There are two types of mutation –
+a)Gene mutation affecting the gene 
+b)Chromosome mutation affecting the chromosome
+Modification of Mendelian ratios
+
+Gene Mutations
+•Types of gene mutations
+1.Substitution-necleotideis replaced by another. The nucleotides work in triples and 
+they code for a particular amino acid. When one nucleotide is changed the amino 
+acid changes and it affects its function.
+2.Insertion/addition-nucleotide(s) are added to a DNA strand
+3.Inversion-nucleotides are cut off and pasted to the same strand in an inverted way
+4.Deletion-the nucleotide(s) is cut and disappear 
+Modification of Mendelian ratios
+
+
+
+Chromosome mutations; 
+1.Substitution-a small part of the chromosome is cut and lost but is 
+replaced by another part
+2.Translocation/ addition-this involves transfer of a chromosome part to 
+another chromosome
+3.Inversion-part of a chromosome is cut and joins the same chromosome 
+after flipping over.
+4.Deletion-when part of a chromosome disappears
+5.Duplication–a section of a chromosome is repeated
+Modification of Mendelian ratios
+
+Chromosome mutations
+
+Chromosome mutations; 
+6.Mutations involving a change in chromosome number-
+•Non-disjunction at anaphase of mitosis or meiosis may result in one cell having 
+less or more than 2n which is called aneuploidy
+•Monosomicshave only one of a pair of a particular set of chromosomes, and 
+trisomicshave three copies of a chromosome, rather than the normal two
+e.g. Male XY female XX . 
+Non disjunction in male may result in XO = tuner female, XXY = super male or XXX 
+= super female
+Modification of Mendelian ratios
+
+
+
+•Down syndrome is an example of a trisomic
+condition in which the individual is born with an 
+extra copy of chromosome 21. 
+•This condition results in a small oval head, 
+lower than normal IQ, short stature, reduced 
+life span, and infertility in males.
+•Read on other disorders on non-disjunction 
+on autosomes
+Non-disjunction Involving Autosomes
+
+•Nondisjunction can cause individuals to be born female with one X (Turner 
+syndrome), female with three X chromosomes (Trisomy X), male with XXY (Klinefelter
+syndrome), or male with XYY (XYY syndrome).
+Nondisjunction Involving Sex Chromosomes

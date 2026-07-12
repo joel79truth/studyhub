@@ -1,0 +1,1090 @@
+
+
+Introduction to genetic parameters
+Part I
+Wilson Nandolo
++265 993 375 505
+wnandolo@luanar.ac.mw
+http://www.livestockinmalawi.com
+
+Introduction 
+•In this section we discuss 
+fundamental genetic parameters that 
+are the basis of animal breeding. 
+•The parameters are 
+•heritability, 
+•genetic and phenotypic correlation 
+•repeatability.
+2
+
+Heritability
+•Recall that phenotypic variance is given by 
+푉
+푃
+=푉
+퐴
++푉
+퐷
++푉
+퐼
++푉
+퐸
++푉
+퐺푋퐸
+•Our interest in improvement of animal 
+performance is in the genetic variance 
+component, that is 푉
+퐺
+=푉
+퐴
++푉
+퐷
++푉
+퐼
+•The proportion of V
+G
+in V
+P
+is referred to as 
+heritabilityin the broad sense ℎ
+2
+=
+휎
+퐺
+2
+휎
+푃
+2
+•Where h
+2
+is the heritability and 
+2
+G is the 
+genetic variance and 
+2
+P is the phenotypic 
+variance.
+3
+
+The meaning of heritability
+•h
+2
+measures the amount of variation in 
+the phenotype of an animal that is 
+attributable to the genetic makeup of the 
+animal.
+•Remember
+•the dominanceand epistaticcomponents of 
+the genetic variance  cannot be inherited. 
+•the genetic variance  that is transmitted to 
+offspring is additive genetic variance, V
+A
+. 
+4
+
+Narrow definition of heritability
+•It is therefore necessary to define heritability in 
+terms of this heritable component of genetic 
+variance, hence 
+ℎ
+2
+=
+휎
+2
+퐴
+휎
+2
+푃
+•h
+2
+expresses the proportion of total variation 
+due to the average effect of genes (the breeding 
+value of the individual).
+•It measures the transfer of genes from parents 
+to the offspring, 
+•It also determines the degree of resemblance 
+between the two.
+5
+
+The practical meaning of h
+2
+•If the weight of 5-week-oldlocal 
+chickens has 
+•V
+P
+= 2098.31 g
+2
+and 
+•h
+2 
+= 0.43, 
+•Then 
+•43% of the observed phenotypic variance 
+is due to additive genetic effect (43% of 
+2098.31 g
+2
+= 902.27 g
+2
+). 
+•The rest is due to environmental and non-
+additive genetic effects.
+6
+
+Typical heritability ratings
+RangeExamples
+Low0.00 -0.15Reproduction traits
+Medium0.15 -0.35Production traits
+High0.35 –1.00Least important traits
+7
+
+Typical heritability values 
+SpeciesTraitTraittypeh
+2
+value (%)
+PoultryEggproductionProduction5-15
+WeightatpointoflayProduction39-50
+PigsLittersizeReproduction0-10
+GrowthrateProduction20-40
+FatdepthProduction30-60
+CattleMilkyieldProduction30-40
+CalvingintervalReproduction0-15
+WeightatweaningProduction30-40
+8
+
+Uses of heritability
+•To predict response to selection in a 
+population
+•That is, how much of the superiority 
+of a group of individuals selected will 
+be transmitted to the next generation
+•Or a prediction of superiority of 
+progeny generation
+9
+
+Principal methods to estimate h
+2
+•The main methods include
+•Parent-offspring  regression analysis
+•Sib analysis –use of ANOVA
+•Complex pedigrees –Animal models
+•Non-statistical,  realised h
+2
+approach
+•All statistical methods are based on use of 
+genetic covariance  between related 
+individuals
+10
+
+Parent –offspring regression
+•This is a statistical approach in which you 
+regress the performance  of the offspring on 
+the performance  of the parents
+•If we plot performance  of the offspring 
+against performance  of both parents, 
+•They show a positive association
+•Meaning there is a covariate
+•Due to sharing similar genes, hence existence of 
+additive genetic relationship
+11
+
+Parent –offspring regression
+•The slope of the best fit regression line represents h
+2
+•You need  data from measurement of parents and their 
+offspring
+12
+
+Parent –offspring regression
+•A regression model is 
+y=  a+bx
+The dependent 
+variable, Offspring 
+phenotype  value in 
+this case
+The intercept, a 
+regression constant
+The independent 
+variable, parent 
+phenotype  value in 
+this case
+Regression 
+coefficient, 
+heritability in this 
+case
+Do some regression work in excel
+13
+
+Parent –offspring regression, an example
+•Growth rate of pigs from birth to weaning is as 
+shown in Table
+Average performance of offspring (y 
+units)
+Average performance of parents (x 
+units)
+1.81.7
+1.41.5
+1.51.6
+1.61.4
+1.61.2
+푏=
+σ
+푥−lj푥푦−lj푦
+σ
+푥−lj푥
+2
+=0.19
+This means growth rate of pigs from birth to 
+weaning has h
+2
+of 0.19 or 19 %
+14
+
+Parent –offspring regression, an example
+y=a+bx
+Parent meanOffspring Mean
+1.71.80.220.220.04840.04840.0484
+1.51.40.02-0.180.00040.0324-0.0036
+1.61.50.12-0.080.01440.0064-0.0096
+1.41.6-0.080.020.00640.0004-0.0016
+1.21.6-0.280.020.07840.0004-0.0056
+Sum7.47.90.000.000.150.090.03
+Mean1.481.58SSy SSxCovxy
+rxy0.25
+b0.19
+a1.30
+y
+y
+−
+x
+x
+−
+(
+)
+2
+y
+y
+−
+(
+)
+2
+x
+x
+−
+(
+)
+(
+)
+x
+x
+y
+y
+−
+−
+15
+
+Parent –offspring regression, SPSS Output
+Coefficients
+a
+1.300.6432.022.136
+.189.432.245.438.691
+(Constant)
+PARENT
+Model
+1
+BStd. Error
+Unstandardized
+Coefficients
+Beta
+Standardized
+Coefficients
+tSig.
+Dependent Variable: OFFSPRIN
+a. 
+16
+
+Add trend lines in Excel
+y = 0.1892x + 1.3
+1.1
+1.2
+1.3
+1.4
+1.5
+1.6
+1.7
+1.8
+1.9
+1.11.21.31.41.51.61.71.8
+Parent mean
+Offspring mean
+17
+
+Parent –offspring regression, an example
+•You can regress the average  performance  of 
+the offspring to the average  performance  of 
+the sire
+•In this case, you only use information from 
+measurement  of the sire
+•And sire passes only ½ of its genes to the 
+offspring
+•Hence b will be only half the value of h
+2
+푏=
+1
+2
+ℎ
+2ℎ
+2
+=2푏
+18
+
+Parent –offspring regression, an example
+•You can regress average 
+performance of offspring on average 
+performance of the dam
+푏=
+1
+2
+ℎ
+2ℎ
+2
+=2푏
+19
+
+Sire component mostly used
+•This is because the dam component carries 
+maternal effects that may be confused to be 
+genetic
+•And give high estimates of h
+2
+•While maternal effects are not genetic
+•And tend to be pronounced on those with long 
+gestation periods
+•The sire only contributes a sperm that is 
+naked and does not carry outside effects
+20
+
+Sib analysis
+•On average, full sibs have half of their genes 
+in common
+•Half sibs have one quarter of their genes in 
+common
+•We can use this fact to estimate h
+2
+by
+•Estimating variation within sibs ~ within family
+•Estimating variation between sibs ~ between 
+families
+•That is splitting variance component into 
+between and within families
+21
+
+Sib analysis
+•Variance between families = covariance within 
+families
+•Remember, covariance is a measure of similarity
+•Due to common genes or common environment
+•Variance within families = rest of variation not 
+accounted for 
+22
+
+Sib analysis –use of ANOVA
+•When we have balanced data
+•That is equal number of offspring in 
+each family
+•Variance components can be 
+estimated using ANOVA
+23
+
+Sib analysis, family structure
+•In animal breeding we often use hierarchical 
+family structures
+•This is a nested design
+•A sire is mated to a number of dams
+•This results in half –sib families (that have 
+their sire in common)
+•Or full –sib families (that have both sires and 
+dams in common)
+24
+
+Sib analysis, full –sib structure
+Sires
+Dams
+Progeny
+Full sib designs are common  in poultry  and pig breeding
+25
+
+Sib analysis, half –sib structure
+•In e.g. cattle breeding, the sires 
+usually have many offspring
+•But dams only have one offspring
+•This results in paternal half sib 
+families
+•Those that have their sire in 
+common
+26
+
+Sib analysis, half –sib structure
+Progeny
+Sires
+27
+
+Farm Practical
+•Students to visit the farm
+•Check for different species
+•Determine the families 
+•By tracing an individual, its sire, its dam
+•Establish those that are
+•Full sibs
+•Half sibs
+28
+
+Estimating heritability
+•We need an idea of between and within family 
+variance to estimate h
+2
+•Note that
+•Variance between families = covariance within 
+families
+•High variance between families means families are 
+distinct from each other = high covariance within 
+families (that is members within a family are more 
+alike)
+•And this is due to common source parents in this 
+case
+29
+
+h
+2
+estimates from half –sib families
+•Variance between half –sib families = 
+sire variance
+•Since this is the only common source
+•And this = covariance among half –sibs
+•And this = ¼V
+A
+•Since half –sibs have a quarter of their 
+alleles in common
+30
+
+h
+2
+estimates from half –sib families
+•Variance within half –sib families is the rest of 
+variance
+•And = V
+P
+-¼V
+A
+= ¾V
+A
++ V
+D
++ V
+E
+ℎ
+2
+=
+푉
+퐴
+푉
+푃
+=
+4×푆푖푟푒푣푎푟푖푎푛푐푒
+푉
+푃
+31
+
+Design needed
+•Note that the higher the number in a family, the 
+more accurate the estimate of variance between 
+families
+32
+
+An example of half sib analysis
+growth rate of offspring from beef cattle sires
+Sire ASire BSire CSire DSire E
+1165101396594099811418961007100011799989881009956975
+100384091490110471109952106393911051080970108711351137
+8449539051109100010538861032996997921965107210111125
+Estimate between half –sib (sire) variance
+Estimate within half –sib variance
+33
+
+An example
+•We set up a model 
+•Where y
+ij
+is observed growth rate of animal jwithin 
+sire i
+•μ is overall mean growth rate 
+•s
+i
+is the effect of sire i
+•e
+ij
+is the residual error
+풚
+풊풋
+=흁+풔
+풊
++풆
+풊풋
+34
+
+An example
+•A model of analysis of variance in this data was
+풚
+풊풋
+=흁+풔
+풊
++풆
+풊풋
+(
+)
+e
+s
+V
+V
+Y
+V
++
+=
+Note that sis a random effect and not a fixed effect 
+here. So variance is estimated instead
+35
+
+Output from SAS
+Source of variation 
+(SV)
+dfMean Square 
+(MS)
+Expected Mean 
+Square (EMS)
+Between  Siresa -1MST
+s
+V
+w 
++ nV
+s
+Within  progeny 
+(residual error)
+a(n-1)MSE
+w
+V
+w
+TotalN-1
+a = number of sires
+n = number of progeny  per sire
+N = total number of progeny
+36
+
+Output from SAS
+Source of 
+variation (SV)
+dfSum of 
+squares
+Mean 
+Square 
+(MS)
+Expected 
+Mean Square 
+(EMS)
+Between Sires415802.08V
+w 
++ 9V
+s
+Within progeny 
+(residual error)
+406346.12V
+w
+Total44
+6346.12
+V
+w
+=
+V
+푠
+=
+15802.08−6346.12
+9
+=1050.663
+V
+푇
+=6346.12+1050.663=7396.783
+ℎ
+2
+=
+푉
+퐴
+푉
+푇
+=
+4푉
+푆
+푉
+푇
+=
+4푥1050.663
+7396.783
+=0.568
+37
+
+h
+2
+estimates from full –sib families
+•Follows a similar approach
+•Except that estimation is 
+complicated by full –sibs having 
+common
+•Maternal environmental effects
+•Dominance effects
+38
+
+An example
+•Body length of Landrace pigs was 
+studied
+•There were 468 sires, each mated to 2 
+dams, and each dam produced 2 
+offspring 
+•So
+•s = 468 
+•d = 2
+•k = 2
+39
+
+An example
+•So we have
+•Between sire
+•Between dam within sire
+•Between progeny within dam within sire
+•As variance components
+•MS
+dam
+= V
+w
++ kV
+d
+= variance due to error and 
+variance due to dam weighted by k
+•Ms
+sire
+= V
+w
++ kV
+d
++ kdVs= Variance due to error 
+and variance due to dam weighted by k and 
+variance due to sire weighted by kd
+40
+
+An example
+Source of variation 
+(SV)
+dfMean Square 
+(MS)
+Expected Mean 
+Square (EMS)
+Between Siress -1MS
+s
+V
+w 
++ kV
+D 
++ kdV
+s
+Between dams within 
+sires
+s(d –1)MS
+d
+V
+w 
++ kV
+D
+Within progeny within 
+dam within sire 
+(residual error)
+sd(k –1)MS
+w
+V
+w
+s = number of sires
+d = number of dams mated to a sire
+k=number of progeny per dam
+Interpretation: there are ssires, each mating ddams which 
+produce koffspring  per dam
+41
+
+An example
+•MS
+w
+= MS 
+error
+= V
+w
+= Variance within progeny
+•This is a measure of variance within family 
+•Others MS (MS
+d
+and MS
+s
+) are not specific variance components
+•As they contain MS
+w
+Source of variation 
+(SV)
+dfMean Square 
+(MS)
+Expected Mean 
+Square (EMS)
+Between Siress -1MS
+s
+V
+w 
++ kV
+D 
++ kdV
+s
+Between dams within 
+sires
+s(d –1)MS
+d
+V
+w 
++ kV
+D
+Within progeny within 
+dam within sire 
+(residual error)
+sd(k –1)MS
+w
+V
+w
+42
+
+An example
+•Sowe need  to estimate variance between  dams and between  sires by 
+mean square splitting into
+•Expected  Mean Square
+Source of variation 
+(SV)
+dfMean Square 
+(MS)
+Expected Mean 
+Square (EMS)
+Between Siress -1MS
+s
+V
+w 
++ kV
+D 
++ kdV
+s
+Between dams within 
+sires
+s(d –1)MS
+d
+V
+w 
++ kV
+D
+Within progeny within 
+dam within sire 
+(residual error)
+sd(k –1)MS
+w
+V
+w
+43
+
+An example
+•The between dam MS (V
+w 
++ kV
+D
+) is composed of variance due to error (V
+w
+) and 
+k times the between dam variance component (V
+w 
++ kV
+D
+)
+•The between sire MS (V
+w 
++ kV
+D 
++ kdV
+s
+) is made up of variance due to error 
+(V
+w
+), dam component (kV
+D
+) and sire component weighted  according to 
+offspring produced (kdV
+s
+)
+Source of variation 
+(SV)
+dfMean Square 
+(MS)
+Expected Mean 
+Square (EMS)
+Between Siress -1MS
+s
+V
+w 
++ kV
+D 
++ kdV
+s
+Between dams within 
+sires
+s(d –1)MS
+d
+V
+w 
++ kV
+D
+Within progeny within 
+dam within sire 
+(residual error)
+sd(k –1)MS
+w
+V
+w
+44
+
+An example
+k
+MSMS
+k
+VVkV
+V
+wdwwd
+d
+−
+=
+−+
+=
+(
+)
+kd
+MS
+MS
+kd
+V
+kV
+kdV
+kV
+V
+Vs
+d
+s
+w
+d
+s
+d
+w
+−
+=
++
+−
++
++
+=
+sdwTP
+VVVVV++==
+45
+
+h
+2
+estimates
+(
+)
+T
+d
+s
+T
+d
+T
+s
+2
+V
+V
+V
+2
+V
+V
+4
+V
+V
+4
+h
++
+=
+=
+=
+46
+
+Anova table
+•Analysis of variance is done using the available 
+information
+Source of variationdfSums of 
+Square
+Mean 
+Square
+EMS
+Between sires (s-1)4672816.016.03
+Between dams within 
+sires (s(d-1))
+4681783.083.81
+Between progeny within 
+dam within sire (sd(k-1))
+9362686.322.872.87
+V
+T
+3.895
+ퟔ.ퟎퟑ−ퟑ.ퟖퟏ
+ퟒ
+=ퟎ.ퟓퟓퟓ
+ퟑ.ퟖퟏ−ퟐ.ퟖퟕ
+ퟐ
+=ퟎ.ퟒퟕ
+47
+
+Splitting MS into EMS 
+퐸푀푆
+푒푟푟표푟
+=푉
+푤
+=푀푆
+푤
+=2.87
+퐸푀푆
+푑
+=푉
+푑
+=
+3.81−2.87
+2
+=0.47
+퐸푀푆
+푠
+=푉
+푠
+=
+6.03−3.81
+2푥2
+=0.56
+푉
+푇
+=2.87+0.47+0.56=3.895
+48
+
+h
+2
+estimates
+•Using the sire component
+•Using dam component
+•Using full sib analysis
+h
+2
+=
+4푉
+푆
+푉
+푇
+=
+4(0.56)
+3.89
+=0.58
+h
+2
+=
+4푉
+퐷
+푉
+푇
+=
+4(0.47)
+3.89
+=0.48
+h
+2
+=
+2푉
+푆
++푉
+퐷
+푉
+푇
+=
+2(0.56+0.47)
+3.89
+=0.53
+What is shown here is that h
+2
+is not a fixed value. The value changes 
+depending on how you carry out the analysis. Check for consistency
+49
+
+Realised h
+2
+•This is a non-statistical approach where 
+h
+2
+is estimated by actually conducting 
+the observations
+•Genetic change under selection
+푅=ℎ
+2
+×푆퐷
+50
+
+Realised h
+2
+•You have a population of individuals such as 
+chickens to be studied for a particular trait e.g. 
+growth rate
+•Then you select fast growing individuals from the 
+population
+•The difference between growth rate of selected 
+from mean of the population will give SD
+•The difference between growth rate of offspring of 
+selected individuals and the original population 
+mean gives R
+51
+
+Realised h
+2
+•From the formula
+•You estimate R and S
+•Changing subject of the formula, h
+2
+could be estimated
+푅=ℎ
+2
+푆
+52
+
+Realised h
+2
+, an example
+•A population is growing at 200g per day
+•The few selected grow at 250g per day
+•The selected produce progeny that grows at 
+230g per day
+•The value of genetic change, R = 30 g per 
+day
+•SD = 50
+ℎ
+2
+=
+30
+50
+=0.60
+53
+
+End of presentation
+54

@@ -15,7 +15,7 @@ dotenv.config();
 
 /* ===== INITIALISATION ===== */
 
-// Firebase Admin SDK
+// Firebase Admin SDK – for FCM push notifications
 if (!process.env.FIREBASE_SERVICE_ACCOUNT_BASE64) {
   throw new Error("Missing FIREBASE_SERVICE_ACCOUNT_BASE64");
 }
@@ -26,7 +26,7 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
 
-// Supabase – two clients: one for public queries (anon), one for admin/storage (service role)
+// Supabase clients
 if (!process.env.SUPABASE_URL || !process.env.SUPABASE_ANON_KEY) {
   throw new Error("Missing Supabase credentials");
 }
@@ -34,12 +34,10 @@ const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
 const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-// Public client (anon) – for reading programs, metadata, etc.
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
-// Admin client (service role) – for storage uploads & writes that need to bypass RLS
 const supabaseAdmin = supabaseServiceRoleKey
   ? createClient(supabaseUrl, supabaseServiceRoleKey)
-  : supabase; // fallback to anon if service key missing (but you should provide it)
+  : supabase;
 
 // Google Drive OAuth
 if (!process.env.OAUTH_CLIENT_JSON || !process.env.GOOGLE_REFRESH_TOKEN) {
@@ -55,7 +53,6 @@ const oauth2Client = new google.auth.OAuth2(
 );
 oauth2Client.setCredentials({ refresh_token: process.env.GOOGLE_REFRESH_TOKEN });
 
-// Keep-Alive agents
 const httpAgent = new http.Agent({ keepAlive: true });
 const httpsAgent = new https.Agent({ keepAlive: true });
 
@@ -65,7 +62,6 @@ const drive = google.drive({
   httpAgent: httpsAgent,
 });
 
-// Multer
 const upload = multer({ storage: multer.memoryStorage() });
 
 const app = express();
@@ -73,9 +69,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 
-/* ===== HELPER FUNCTIONS ===== */
+/* ===== HELPERS ===== */
 
-// Retry helper for Drive uploads
 async function uploadToDriveWithRetry(file, maxRetries = 3, baseDelay = 500) {
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
@@ -101,7 +96,7 @@ async function uploadToDriveWithRetry(file, maxRetries = 3, baseDelay = 500) {
   }
 }
 
-// Authentication middleware
+// Auth middleware (Supabase)
 async function requireAuth(req, res, next) {
   try {
     const authHeader = req.headers.authorization;
@@ -109,8 +104,9 @@ async function requireAuth(req, res, next) {
       return res.status(401).json({ message: "Unauthorized" });
     }
     const token = authHeader.split(" ")[1];
-    const decoded = await admin.auth().verifyIdToken(token);
-    req.user = decoded;
+    const { data: { user }, error } = await supabase.auth.getUser(token);
+    if (error || !user) throw new Error('Unauthorized');
+    req.user = user;
     next();
   } catch (err) {
     console.error("Auth error:", err);
@@ -118,14 +114,13 @@ async function requireAuth(req, res, next) {
   }
 }
 
-// SSE clients
 let sseClients = [];
 
 /* ===== ROUTES ===== */
 
 app.get("/", (req, res) => res.send("Server is running"));
 
-// GET /api/programs – uses anon client (public read)
+// Programs list (public)
 app.get("/api/programs", async (req, res) => {
   try {
     const { data, error } = await supabase
@@ -140,7 +135,7 @@ app.get("/api/programs", async (req, res) => {
   }
 });
 
-// Save FCM token (write) – use admin client if needed, but anon may work with proper RLS
+// Save FCM token
 app.post("/save-token", requireAuth, async (req, res) => {
   const { token, program } = req.body;
   if (!token) return res.status(400).json({ message: "Missing token" });
@@ -148,18 +143,18 @@ app.post("/save-token", requireAuth, async (req, res) => {
     const { error } = await supabaseAdmin
       .from("fcm_tokens")
       .upsert(
-        { token, uid: req.user.uid, program: program || null },
+        { token, uid: req.user.id, program: program || null },
         { onConflict: "token" }
       );
     if (error) throw error;
-    res.json({ message: "Token stored", uid: req.user.uid });
+    res.json({ message: "Token stored", uid: req.user.id });
   } catch (err) {
     console.error("Error saving token:", err);
     res.status(500).json({ message: "Database error" });
   }
 });
 
-// Upload file (protected)
+// ===== UPLOAD (FAST & CORRECT) =====
 app.post("/upload", requireAuth, upload.single("file"), async (req, res) => {
   try {
     const { program, semester, subject } = req.body;
@@ -168,7 +163,7 @@ app.post("/upload", requireAuth, upload.single("file"), async (req, res) => {
       return res.status(400).json({ message: "Missing fields or file" });
     }
 
-    // 5MB threshold: small files → Supabase (fast), large → Google Drive
+    // Choose storage: Google Drive for large files, Supabase for small
     const USE_GDRIVE = file.size > 5 * 1024 * 1024;
     const id = uuidv4();
     const safeName = file.originalname.replace(/\s+/g, "_");
@@ -181,7 +176,6 @@ app.post("/upload", requireAuth, upload.single("file"), async (req, res) => {
       storage_ref = driveRes.data.id;
       publicUrl = `/api/drive/${storage_ref}`;
     } else {
-      // Use supabaseAdmin (service role) to bypass RLS
       const { error } = await supabaseAdmin.storage
         .from(process.env.SUPABASE_BUCKET || "files")
         .upload(filePath, file.buffer, { contentType: file.mimetype });
@@ -193,28 +187,31 @@ app.post("/upload", requireAuth, upload.single("file"), async (req, res) => {
         .getPublicUrl(filePath).data.publicUrl;
     }
 
-    // Save metadata – use admin client for write
-    const { error: dbError } = await supabaseAdmin.from("files").insert([
+    // Insert metadata into `notes` table
+    const { error: dbError } = await supabaseAdmin.from("notes").insert([
       {
         id,
         program,
         semester: String(semester),
-        subject,
-        email: req.user.email || req.user.uid,
+        course_name: subject,
         filename: file.originalname,
         filepath: storage_ref,
         url: publicUrl,
         storage_type,
+        uploader_uid: req.user.id,
+        uploader_email: req.user.email || 'unknown@example.com',
+        size: String(file.size),
         uploaded_at: new Date().toISOString(),
       },
     ]);
+
     if (dbError) throw dbError;
 
-    // Send push notification (optional, use admin client for reads if needed)
+    // Push notifications (FCM)
     const { data: tokens, error: tokenError } = await supabaseAdmin
       .from("fcm_tokens")
       .select("token");
-    if (!tokenError && tokens && tokens.length) {
+    if (!tokenError && tokens?.length) {
       const tokenList = tokens.map(t => t.token);
       const message = {
         tokens: tokenList,
@@ -250,7 +247,7 @@ app.post("/upload", requireAuth, upload.single("file"), async (req, res) => {
   }
 });
 
-// Proxy for Google Drive files
+// Google Drive proxy
 app.get("/api/drive/:fileId", async (req, res) => {
   try {
     const driveRes = await drive.files.get(
@@ -268,12 +265,12 @@ app.get("/api/drive/:fileId", async (req, res) => {
   }
 });
 
-// Get metadata – public read (anon is fine)
+// Metadata endpoint (using uploader_uid)
 app.get("/api/metadata", async (req, res) => {
   try {
     const { uid, program } = req.query;
-    let query = supabase.from("files").select("*").order("uploaded_at", { ascending: false });
-    if (uid) query = query.eq("email", uid);
+    let query = supabase.from("notes").select("*").order("uploaded_at", { ascending: false });
+    if (uid) query = query.eq("uploader_uid", uid);
     if (program) query = query.eq("program", program);
     const { data, error } = await query;
     if (error) throw error;
@@ -284,7 +281,34 @@ app.get("/api/metadata", async (req, res) => {
   }
 });
 
-// Submit a request – use admin client for insert
+// ************** NEW ROUTE: App Update Checker **************
+app.get("/api/update", async (req, res) => {
+  try {
+    const { data, error } = await supabase
+      .from("app_updates")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .single();
+
+    if (error || !data) {
+      return res.status(500).json({ error: "No version data found" });
+    }
+
+    res.json({
+      version: data.version,
+      forceUpdate: data.force_update,
+      title: data.title,
+      message: data.message,
+      apkUrl: data.apk_url,
+    });
+  } catch (err) {
+    console.error("Update fetch error:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// Submit a request (for missing notes)
 app.post("/submit-request", async (req, res) => {
   try {
     const { topic, course, program, semester, notes, email } = req.body;
@@ -303,6 +327,7 @@ app.post("/submit-request", async (req, res) => {
       },
     ]);
     if (error) throw error;
+    // Send notification to program subscribers
     sendNotificationToProgram(program, { topic, course, semester }).catch(console.error);
     res.json({ message: "Request submitted successfully" });
   } catch (err) {
@@ -343,7 +368,7 @@ async function sendNotificationToProgram(program, { topic, course, semester }) {
   if (invalid.length) await supabaseAdmin.from("fcm_tokens").delete().in("token", invalid);
 }
 
-// Other routes (requests, chat, etc.) – unchanged but use supabaseAdmin for writes
+// Other routes (requests, chat, events, etc.)
 app.get("/api/requests", async (req, res) => {
   try {
     const { data, error } = await supabase.from("requests").select("*").order("created_at", { ascending: false });

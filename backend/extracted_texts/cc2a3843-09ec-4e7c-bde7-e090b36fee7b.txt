@@ -1,0 +1,205 @@
+
+
+Unsaturated 
+hydrocarbons –
+Alkenes
+
+Alkenes
+•Alkenes are unsaturated hydrocarbons that contain at least one C=C 
+bond.
+•General formula; C
+n
+H
+2n
+•Molecular geometry around each carbon atom of the double bond is 
+trigonal planar; sp
+2
+hybridization.
+
+•Named by adding ‘ene’ to the prefix indicating the number of carbon 
+atoms.
+•The simplest alkene is ethene, CH
+2
+=CH
+2
+•The next member of the series is propene, CH
+3
+—CH=CH
+2
+•The names of alkenes are based on the longest chain containing the 
+double bond.
+•The location of the double bond is indicated by a number that 
+designates the number of the carbon atom that contains the double 
+bond and is nearest to an end of the chain (gives the lowest number).
+•Generally follow the same rules as those of naming alkanes
+
+•For example, 
+•If the molecule contains two or more double bonds, each is located 
+by a numerical prefix. The ending of the name is altered to identify 
+the number of double bonds. 
+•Use di, tri, tetra to indicate the number of double bonds.
+•Number them to achieve lowest set of numbers.
+•For example, CH
+2
+=CH—CH
+2
+—CH=CH
+2 
+is 1,4-pentadiene.
+
+
+
+•Practice exercise 1: Give the IUPAC name of the following alkenes:
+Ans: a) 1-Octene,   b) 2-Methyl-2-butene
+Practice exercise 2:  Write the IUPAC name of the following alkenes:
+
+Geometric isomers of alkenes
+•Rotation about C=C double bond is severely restricted, due to the 
+presence of the pi bond.
+•This is unlike rotation about C—C single bond; rotation is relatively 
+easy and these bonds are free to rotate. 
+•Due to the restriction of rotation about the double bond, alkenes 
+which have two different groups bonded to each carbon atom show 
+cis-trans isomerism.
+
+•The cis-transisomers are geometric isomers -same molecular formula 
+and same groups bonded to one another but differ in the spatial 
+arrangement of the groups.
+•In a cisisomer, the two groups are on the same side of the double 
+bond. In a transisomer, the two groups are on opposite sides of the 
+double bond.
+•For example, 2-butene:
+•They are different compounds, with different physical and chemical 
+properties.
+
+Both H’s are on the same side of 
+the double bond
+The H’s are on opposite sides of 
+the double bond
+
+•Practice exercise 3: Draw out the condensed structural formula for 
+each of the following alkenes, and name each alkene using the cis-
+transsystem to identify the configuration about the double bond.
+Ans: a) trans-3-heptene
+b) cis-6-methyl-3-heptene
+
+•Cisalkenes are less stable than their trans isomers because of non-
+bonded interaction strain (steric hindrance) between alkyl 
+substituents on the same side of the double bond in the cisisomers.
+•More strain –less stability.
+
+The E,Zsystem
+•The E,Z system must be used for tri, and tetra substituted alkenes. It 
+is used to specify the configuration of groups about a C=C double 
+bond.
+•The system uses a set of rules to assign priorities to substituents on 
+each carbon of the double bond.
+•If the groups of higher priority are on the same side of the double 
+bond, the configuration assigned is Z( Z: from German word 
+zusammenmeaning same side).
+•If the groups of higher priority are on opposite sides of the double 
+bond, the configuration assigned is E( E: from German word 
+entgegenmeaning opposite).
+
+The first step in assigning an E or Z configuration is to 
+label each substituent on each carbon of the double 
+bond in terms of priorities.
+
+Priority Rules:
+1)Priority is assigned based on atomic number. If the substituent 
+directly bonded to a carbon of the double bond has a higher atomic 
+number, it is assigned a higher priority.
+The following are substituents arranged in order of increasing priority 
+(the atomic number of the atom determining priority is shown in 
+brackets).
+
+2.If priority cannot be assigned based on the atom directly bonded to 
+the double bond, look at the next set of atoms and continue until a 
+priority can be assigned. Priority is assigned at the first point of 
+difference.
+The following is a list of substituents arranged in order of increasing 
+priority. Again the atomic numbers of the atoms determining priority is 
+given in brackets:
+
+3.In order to compare carbons that are not sp
+3
+hybridised (so the 
+substituent contains a multiple bond), the carbons must be treated 
+as if they are bonded to an equivalent number of the same atom. 
+For example if the substituent is C=C, we imagine this as carbon 
+single bonded to two carbon atoms. If the substituent is C=C, we 
+imagine this as carbon single bonded to three carbon atoms. If C=O, 
+we imagine this as carbon single bonded to two oxygen atoms:
+
+•Practice exercise 4: Assign priorities to the groups in each set:
+Ans: a) 
+b) 
+
+•Consider each end of the double bond separately, and use the priority 
+rules to assign first (1 = higher priority) and second (2= lower priority) 
+priority to each substituent of one end of the double bond.
+•Repeat for the other end of the double bond.
+•Assign E, or Z, configuration based on the positions of higher priority 
+groups.
+•If the two higher priority groups are on the same side, assign Z.
+•If the two higher priority groups are on opposite sides, assign E.
+
+•For example,
+= higher priority
+= lower priority
+
+•The same rules apply for cycloalkenes,
+•For example,
+
+Practice exercise 5: Name each alkene and specify its configuration by 
+the E,Z system:
+Ans: a) (Z)-3,4-dimethyl-2-pentene.
+b) (E)-2-chloro-2-pentene.
+
+Cycloalkenes
+•To name cycloalkenes, we number the carbon atoms of the ring 
+double bond 1 and 2 in the direction that gives the substituent 
+encountered first the lowest number.
+•We name and locate substituents, and list them in alphabetical order.
+
+•Practice exercise 6: Give the IUPAC name for each of the following 
+cycloalkenes:
+Ans: a) 3,3-dimethylcyclohexene
+b) 1,2-dimethylcyclopentene
+c) 4-isopropyl-1-methylcyclohexene
+
+Physical properties of alkenes
+•Alkenes, just like alkanes and alkynes, are non-polar.
+•They only have dispersion forces between their molecules, therefore 
+similar physical properties as alkanes.
+•They are insoluble in water, and insoluble in polar organic solvents lie 
+ethanol.
+
+Commercial importance of alkenes
+•Due to their reactivity, alkenes are useful intermediates in the 
+synthesis of plastics, dyes, pesticides.
+•Ethene(ethylene) is used to make polyethylene, ethanol, acetic acid 
+and a variety of other organic chemicals.
+•It is also the plant hormone that speeds up the ripening of fruits.
+•Propene is used in the manufacture of polypropylene, acetone, and 
+isopropyl alcohol.
+•Most common polymers are made by polymerising alkenes.
+
+Stability of alkenes
+•Transalkenes are more stable than cisalkenes (less steric hindrance 
+of substituents).
+•The more substituted an alkene double bond, the more stable the 
+alkene will be.
+•Alkyl groups attached to double bonded carbons stabilise the alkene.
+Less stableMore stable
+
+•Double bonds that are separated from each other by just one single bond 
+are said to be conjugated.
+•Double bonds that are separated from each other by more than one single 
+bond are said to be isolated.
+•The stability of conjugated alkenes compared to isolated alkenes is due to 
+the pi bonding electrons being delocalised (spread out) over both double 
+bonds.
+Conjugated double bonds 
+are more stable than 
+isolated double bonds

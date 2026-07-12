@@ -1,0 +1,1119 @@
+
+
+FOODCHEMISTRY II
+Introduction
+
+What is it all about?
+•Food Chemistry is the study of chemical 
+processes and interactions of all biological and 
+non-biological components of foods.
+•The study of analytical, biochemical, physical, 
+nutritional and toxicological aspects of foods.
+–It aim at understanding the molecular basis of the 
+reactions in food.
+
+•Many of the chemicals found in food occur 
+naturally and include nutrients such as 
+–proteins, 
+–carbohydrates, 
+–fats, 
+–fibre and 
+–host of other elements and compounds.
+•Food chemistry covers the basic composition, 
+structure and properties of foods and chemistry 
+changes occurring during processing and 
+utilization.
+CARBOHYDRATES
+
+•A carbohydrate is consist of carbon (C), 
+Hydrogen (H) and oxygen (O) atoms.
+•In a living tissue cells C comprises 25%, H = 
+49% and O = 25% and the rest is shared 
+among N, S and P
+•Small molecules have the empirical formular 
+of C
+m
+(H
+2
+O)
+n
+  or C
+m
+H
+2n
+O
+n 
+, Except Deoxyribose 
+(C
+5
+H
+10
+O
+4
+) and Glucosamine (C
+6
+H
+13
+O
+5
+N)
+–Example: C
+6
+H
+12
+O
+6
+ which can be written as C
+6
+(H
+2
+O)
+6  
+       
+   C
+12
+H
+22
+O
+11
+ which can be written as C
+12
+(H
+2
+O)
+11    
+CARBOHYDRATES
+
+•This any of a class of organic compounds that are 
+polyhydroxy aldehydes or ketones. (hydrates of 
+carbons)
+         Aldose                                                      Ketose
+•NOTE: 
+–Aldoses have an aldehyde group (-HC=O)......CHO
+–Ketoses have a ketone group (–CC=OC-).......COC
+•In addition to Hydrates of Carbons, carbohydrates 
+have also hydroxyl groups.
+CARBOHYDRATES
+
+•They are chemically grouped mainly into: 
+a.Monosaccharides (glycose)
+✓Glucose, Fructose, Galactose
+b.Oligosaccharides: comprised of less than 10 units
+✓Sucrose, maltose, lactose (Disaccharides)
+✓Raffinose (Trisaccharides)
+✓Stachyose (Tetrasaccharides
+c.Polysaccharides 
+✓Starch, Cellulose, Pectin
+GROUPS OF CARBOHYDRATES
+
+Monosaccharides
+•These are carbohydrates whose carbon atoms 
+ranges from three (3) to seven (7)
+•These can not be further hydrolysed 
+•Monosaccharide aldoses and ketoses are 
+derived from glyceraldehyde and  
+dihydroxyacetone  respectively by inserting 
+CHOH units into the carbon chains.
+
+Monosaccharides
+•The following are the structures of first four  
+monosaccharide: 
+(A)  Aldoses
+1.A triose (glyceraldehyde)
+➢Has 3 carbons (C
+3
+H
+6
+O
+3
+)
+➢Has one Chiral center
+➢Occur in two optical 
+        isomers or enantiomers
+➢By convention, one of the is called D-isomer and 
+the other is L - isomer
+
+Monosaccharides
+2.Tetroses
+➢Has 4 carbon atoms (C
+4
+H
+8
+O
+4
+)
+➢Has two Chiral centers
+
+Monosaccharide
+3.  Hexoses
+➢Has 6 carbon atoms (C
+6
+H
+12
+O
+6
+➢Has three Chiral centers
+
+Monosaccharide
+4.  Hexoses
+➢Has 6 carbon atoms (C
+6
+H
+12
+O
+6
+➢Has four Chiral centers
+
+Monosaccharide
+(B) Ketose
+A ketose is a monosaccharide containing one 
+ketone group per molecule
+1.Triulose (dihydroxyacetone): 
+✓3 carbon atoms also called ketotriose
+✓C
+3
+H
+6
+O
+3
+
+Monosaccharides
+2.Tetruloses (ketotetrose)
+✓4 carbon atoms
+✓It is called Erythrulose
+✓C
+4
+H
+8
+O
+4
+                          
+
+Monosaccharide
+3.Pentuloses (ketopentoses) 
+✓Has 5 carbon atoms (C
+5
+H
+10
+O
+5
+)
+✓Examples include
+❖Ribulose and Xylulose
+
+Monosaccharides
+4. Hexulose (ketohexoses)
+✓Has 6 carbon atoms (C
+6
+H
+12
+O
+6
+)
+✓Fructose
+
+NAMING RULES FOR MONOSACCHARIDE
+•All aldoses end with the a suffix “– ose”
+•All Ketoses end with the suffix “– ulose” 
+•Common prefix are used to signify the 
+number of carbons.
+•For ketose the position of the keto 
+group (carbonyl group) is designated by 
+a numerical prefix
+–Examples: 2-pentulose, 3-hexulose.
+2 - pentulose
+
+NAMING RULES FOR MONOSACCHARIDE
+•When a monosaccharide carries a 
+second carbonyl group, it is denoted 
+as a 
+•–dialdose (2 aldehyde groups), 
+•-osulose (aldehyde and keto groups) or 
+•-diulose (2 keto groups). 
+
+NAMING RULES FOR MONOSACCHARIDE
+•Substitution of an OH-group by an H-atom 
+gives rise to a desoxy sugar.
+•Substitution of an OH-group by an H
+2
+N-group 
+to amino desoxy Sugar. 
+•Example: CH
+2
+OH(CHOH)
+3
+ CHNH
+2
+COH
+     Structurally:
+–This is 2 – animo – 2 – deoxy Hexose
+
+Cyclic Monosaacharide
+•Monosaccharides that contain five or more 
+carbons atoms form cyclic structures in 
+aqueous solution. 
+–That is monosaccharides larger than tetroses exist 
+mainly as cyclic compounds
+•This conversion occurs 
+because of the ability 
+of aldehydes and 
+ketones to react with 
+alcohols:
+
+Formation of cyclic monosaccharide
+
+Cyclic Monosaacharide
+•Two cyclic stereoisomers can form 
+from each straight-chain 
+monosaccharide
+–these are known as anomers
+•Consider cyclic compounds from Glucose.
+Anomer: a pair of near-
+identical stereoisomers or 
+diastereomers that differ at 
+only the anomeric carbon, the 
+carbon that bears the 
+aldehyde or ketone functional 
+group in the sugar's open-
+chain form
+
+Cyclic Monosaacharide
+•The anomer with the 
+OH group on the first 
+carbon atom 
+projected 
+downward, 
+represent what is 
+called the alpha (α) 
+form. 
+•The structures with 
+the OH group on the 
+first carbon atom 
+pointed upward, is 
+the beta (β) form. 
+
+Cyclic Monosaccharide
+•The Pyranose ring is formed by the 
+reaction of the hydroxyl group on carbon 
+5 (C-5) of a sugar with the aldehyde at 
+carbon 1. 
+–Glucose forms a glucopyranose form when 
+carbon atoms 1 and 5 are bridged by an 
+oxygen atom.
+•This forms an intramolecular hemiacetal. 
+
+Cyclic Monosaccharide
+•The Furanose ring is formed by the 
+reaction of the hydroxyl group on carbon 
+4 (C-4) of a sugar with the aldehyde at 
+carbon 1. 
+–The pyranose form is thermodynamically more 
+stable than the furanose form, which can be seen 
+by the distribution of these two cyclic forms in 
+solution. 
+
+Formation of Glucopyranose
+
+Formation of Glucofuranose
+
+Furanose and Pyranose froms of Hexulose
+
+Oligosaccharides
+•These are compounds with up to about 10 
+monosaccharide
+•A non reducing disaccharide is formed when a 
+glycosidic linkage are established only 
+between the lactol groups of two 
+monosaccharides.
+
+Oligosaccharides
+•An oligosaccharide is a saccharide polymer 
+containing a small number of 
+monosaccharides. 
+•Oligosaccharides can have many functions 
+including cell recognition and cell binding
+
+Naming Oligosaccharides
+•An abbreviated method of nomenclature 
+–use a three letter designation or symbol for a 
+monosaccharide 
+•glc for Glucose 
+•fru for fructose
+•gla for galactose,  
+–Use the suffix after monosaccharide name (in italics) 
+to refer to cyclicform
+•f or furanose 
+•p for pyranose. 
+–Only last cyclic form must end with –nose (or – noside) and the 
+rest must end with -nosyl
+
+Naming Oligosaccharides
+–Use prefix D and L to represent the enantiomers 
+–Use prefix α and β to represent the type of an 
+anomer form.
+–Indicate the position of the glycosidic bond by an 
+arrow from the first carbon (on the first 
+monomer) to the second carbon (on the second 
+monomer)
+•(4       6) 
+–This means from carbon number 4 on first monomer to 
+carbon number 6 on the second monomer.
+
+Naming Oligosaccharides
+•For examples:
+–Saccharose/Sucrose 
+•This is made up of Fructose and Glucose
+•Its name is:
+  O-β-D-Fru f (2 → 1)α-D-Glcp 
+–Maltose 
+•Made from Glucose and Glucose 
+     O-α-D-Glcp(1→4)D-Glcp
+
+Naming Ligosaccharides
+
+Lactose
+•Name, using the abbreviated method:
+ANSWER: β – D – Galp(1 → 4)D-Glcp 
+
+Practice Questions
+•Use simple abbreviated formulae to name:
+1.O – α – D – Glucospyranosyl – (1 → 4) – O – [α – 
+D – glucopyranosyl – (1 → 6)]-D-glucopyranose
+2.Cellobiose is written as: O – β – D – 
+Glucospyranosyl – (1 → 4) -D-glucopyranose
+3.Stachyose is written as: O – α – D – 
+Glucospyranosyl – (1 → 6) –α – D – 
+glucopyranosyl – (1 → 6) –α -D-glucopyranose –
+(1 2) -β – D – fructofranosyl
+
+
+
+AMYLOSE
+
+Amylose
+
+WHAT IS AMYLOSE?
+Amylose is a linear polysaccharide 
+structure that is formed when D-glucose 
+molecules are joined together.
+It occurs when one carbon atom of one 
+glucose combines with four carbon atom 
+of another glucose molecule by a 
+glycosidic bond.
+These molecules are tightly packed 
+together and they do not form any 
+branches. 
+
+Amylose
+It is the crystallizable form of starch, 
+consisting of long unbranched 
+polysaccharide chains
+It is one of the two components of starch, 
+making up approximately 20-30%. 
+Amylose is more resistant to digestion 
+than other starch molecules and is 
+therefore an important form of resistant 
+starch
+
+Amylose
+Amylose is known as the “starchy, non-
+sticky starch” in cooking. 
+It does not dissolve in water, and high 
+levels of amylose help grains, like rice, 
+maintain their shape.
+◦It is relatively soluble in water 
+In food manufacturing, some companies 
+use amylose as a stabilizer and thickener.
+
+Amylose
+Consists of a chain of a few thousand to 
+over a million Glucose units linked 
+through α-1,4 glycosidic bonds (Extension 
+of maltose).
+Amylose is broken down by salivary 
+amylase
+In the laboratory it can be broken down 
+by acid hydrolysis method
+
+Structure of Amylose
+
+Cellulose
+
+WHAT IS CELLULOSE?
+Cellulose is a structural polysaccharide 
+where D-glucose are joined together. 
+The glucose molecules are joined 
+together by β (1→4) glycosidic bonds and 
+they are unbranched due to the rigid 
+structure.
+The molecule formed is insoluble in 
+water and it is quite common in green 
+plants with the cell walls. 
+
+Structure of Cellulose
+
+Similarities between Amylose 
+and Cellulose 
+Both are polysaccharides
+Both occur in plants
+Both have an unbranched chain
+Both form glycosidic bonds during the 
+condensation reaction
+
+Core Difference between 
+Amylose and Cellulose
+Amylose can be digested by the human 
+digestive system while cellulose cannot be 
+digested by the human digestive system.
+Amylose is used in making thickening and 
+binding agents while cellulose for 
+paperboard and paper production
+Amylose turn brown iodine solution to 
+blue-black while cellulose reacts with 
+anthrone in sulphuric acid to form a 
+colored compound
+
+Core Difference between 
+Amylose and Cellulose
+The significance of amylose is plant energy storage 
+while cellulose is a structural carbohydrate
+The bond presence in amylose is α(1→4) glycosidic 
+bonds while that of cellulose is β(1→4) linked D-
+glucose units
+◦Thus, cellulose forms long linear chains, while amylose 
+organizes in three-dimensional helical structures
+Amylose has no exact chemical formula while that of 
+cellulose is (C
+6
+H
+10
+O
+5
+)
+n
+Amylose has a linear polymer with 300 to several 
+thousand units of glucose while cellulose is a straight-
+chain polymer with 3000 to several thousand units of 
+glucose
+
+Core Difference between 
+Amylose and Cellulose
+Amylose is a storage polysaccharide while 
+cellulose is a structural polysaccharide
+Amylose is a linear helical carbohydrate 
+polymer made of α-D-glucose units while 
+cellulose is an organic polysaccharide 
+comprising a linear chain
+Amylose has less crystalline and 
+amorphous regions while cellulose has a 
+more crystalline and amorphous region.
+
+Amylopectin
+
+Amylopectin
+Branched chain polysaccharide, usually larger than 
+amylose; 
+◦up to 100 million Glucose units
+Has α-1,4 glycosidic links and α-1,6 glycosidic 
+linkages
+Branch points occur every 24-30 glucose residues
+Relatively insoluble in water and has colloidal 
+properties
+Gives red-violet color when reacted with iodine
+Qualifies starch as the main energy store
+Hydrolysis yields – Isomaltose and maltose
+
+Structure of Amylopectin
+
+SUMMARY ON STRUCTURES
+Cellulose
+
+MODIFIED STARCHES
+Starch properties and those of amylose 
+and amylopectin can be improved or 
+“tailored” by physical and chemical 
+methods to fit or adjust the properties to 
+a particular application or food product
+Modified starch is a food additive which is 
+prepared by treating starch or starch 
+granules, causing them to be partial 
+degraded
+
+USES OF MODIFIED STARCHES
+As Thickening agent
+As Stabilizers
+As Emulsifiers
+As Dusting agent
+As Drying aids
+In Pharmaceuticals
+As Binders in 
+coated paper
+As Clouding agent
+As Suspending 
+agent
+As freeze-thaw 
+stability
+Improve 
+appearance
+Adjust viscosity of a 
+food product
+etc
+
+Modified Starch
+1.Mechanically 
+Damaged Starches
+2.Extruded Starches
+3.Dextrins
+4.Pre-gelatinized 
+Starch
+5.Thin – Boiling 
+Starch
+6.Starch Ethers
+7.Starch Esters
+8.Cross – Linked 
+Starches
+9.Oxidized Starches
+10.Cationic starches
+11.Acetylated 
+starches
+12.Grafted starches
+13.etc
+These   include:
+
+CHARACTERISTICS OF STARCH
+Starches have the capacity to go through 
+the following processes:
+◦Dextrinization
+◦Gelatinisation
+◦Gel formation
+◦Retrogradation 
+◦etc
+
+STARCH DEXTRINIZATION
+Dextrinisation is the process involving the 
+browning of starch foods when subjected 
+to dry heat.
+It is the break down of starch into 
+dextrins
+It changes the properties 
+of starch as a result of 
+heat application.
+◦It is a non-enzymatic 
+browning
+
+STARCH GELATINISATION
+What happens when starch is heated in a 
+liquid?
+◦Tiny granules of starch do not dissolve when 
+mixed in liquid instead forms suspension.
+◦Gelatinisation occurs when they absorb liquid 
+when heated 
+◦Starch granules gets swell up when heating 
+continues
+◦Then the granules burst releasing the starch 
+which forms a gel with the liquid
+This thickens the liquid.
+
+STARCH GELATINISATION
+This is a process of breaking down the 
+intermolecular bonds of starch molecules 
+in the presence of water and heat 
+allowing the hydrogen bonding sites to 
+engage more water.
+It is the process where starch and water 
+are subjected to heat causingthe starch 
+granules to swell. 
+◦This gives the system a viscous and 
+transparent texture. 
+
+STARCH GELATINISATION
+This process occurs when starch granules 
+are heated in a liquid, causing them to 
+swell and burst, which results in the liquid 
+thickening.
+The result of the reaction is a gel, which is 
+used in sauces, puddings, creams, porridge, 
+pasta and other food products, providing 
+a pleasing
+
+GEL FORMATION OF STARCH
+Gelation is the process of formation of a 
+gel from a system with polymers
+
+GEL 
+FORMATION 
+
+STARCH GELATION
+
+RETROGRADATION
+Retrogradation is a reaction that takes 
+place when the amylose and amylopectin 
+chains in cooked, gelatinized starch realign 
+themselves as the cooked starch cools. 
+◦It is a process in which amylose and 
+amylopectin chains disaggregate in gelatinized 
+starch paste re-associate to form more 
+ordered structures
+
+RETROGRADATION
+This is collective processes of dissolved 
+starch becoming less soluble are. 
+Retrogradation of cooked starch involves 
+amylose and amylopectin (Polymer 
+constituents)
+Amylose undergoing retrogradation at a 
+much more rapid rate than does 
+amylopectin. 
+◦Retrogradation is an ongoing process which 
+involves rapid recrystallization of amylose 
+followed by a slow one of amylopectin
+
+The rate of retrogradation depends on 
+several variables which include:
+◦The molecular ratio of amylose to 
+amylopectin; (structures of the amylose and 
+amylopectin molecules)
+◦Storage temperature; 
+◦Starch concentration; 
+◦Presence and concentration of other 
+ingredients, such as surfactants and salts. 
+◦Compositions such as water content, lipids 
+and anti-staling enzymes 
+RETROGRADATION
+
+Starch retrogradation leads to
+◦bread staling (change in texture and 
+flavor during storage)
+◦loss of viscosity 
+◦decrease the storage stability
+◦decrease the starch digestibility
+◦precipitation in soups and sauces,  etc
+EFFECTS OF RETROGRADATION
+
+RETROGRATION PROCESS
+
+BREAD STALING
+Staling is a chemical and physical process 
+in bread and other foods that reduces 
+their palatability
+It becomes and Leathery
+
+Staling is the decrease in the palatability 
+of cookies, cakes and bread that does not 
+include microbial contamination. 
+◦It is a change in both chemical and physical 
+attributes that give bread products a dry, 
+leathery texture. 
+It is a major problem in the baking 
+industry.
+
+What causes staling?
+It is caused mainly by 
+◦starch retrogradation
+➢This is the recrystallisation of the starch molecules
+➢Starch undergoes swelling or gelatinization when 
+heated in the presence of water
+◦Water migration and redistribution
+◦Protein – starch interaction
+◦Gluten transformation (Gluten cross-links in 
+the structure of the baked product)
+
+It is usually characterized by:
+➢Loss of aroma
+➢Loss of moisture and flavor
+➢Loss in product freshness
+➢Changes in mouth feel
+➢Development of crumbliness
+➢Toughening of the crust
+➢Firming of the crumb
+Characteristics of Bread Staling
+
+Prevention of Staling
+
+Prevention of Staling
+Storage temperatures (18 – 25
+o
+C)
+Prevent Moisture migration and loss
+Processing factors such as: 
+◦lowering baking temperatures
+◦larger loaf volumes reduces staling
+Enzymes: 
+◦heat stable α amylase, lipase, lipoxygenase, 
+protesae, pullulanase, non starch 
+polysaccharide  modifying enzymes
+
+Prevention of Staling
+Ingredients 
+◦fats, wheat gluten, high protein flour and sugar
+Surface active agents (Lipids) as emulsifiers 
+Packaging
+Soy addition
+Malting and fermentation
+Incorporation of high fiber flours
+Reheating
+
+Physical and Chemical  Structures
+Functional and nutrition roles
+Cellulose derivates
+CELLULOSE
+(C
+6
+H
+10
+O
+5
+)
+n
+
+Cellulose
+Recall:
+Types of Polysaccharides
+Starch
+Cellulose
+Glycogen 
+Insulin
+Cellulose is the most 
+abundant organic compound
+It is the principal cell-wall 
+component of higher plants. 
+
+Cellulose
+Cellulose is the main constituent of plant cell walls, 
+where it usually occurs together with 
+hemicelluloses, 
+pectin
+lignin. 
+ Cellulose is a high-molecular-weight, linear, insoluble 
+homopolymer of repeating β-D-glucopyranosyl units
+Heating  cellulose in acidic, hydrolysis to glucose 
+molecules 
+
+Properties of Cellulose
+Its properties include:
+➢Has no taste
+➢It is odorless
+➢It is hydrophilic
+➢Insoluble in water and some organic solvent
+➢It is Chiral
+➢It is biodegradable
+➢It has high melting points (467
+o
+C)
+
+STRUCTURE OF CELLULOSE
+
+CHEMICAL STRUCTURE AND FORMULA
+Consist of a linear chain of several hundred of D-glucose 
+joined by β(1 4) glycosidic linkages
+Cellulose are poly(1,4-β-D-glucopyranoside)
+
+CHEMICAL STRUCTURE AND FORMULA
+Cellulose linear chains are held together by forming 
+hydrogen bonds
+Cellulose crystallizes as monoclinic, rod-like crystals. 
+
+Because of their linearity and stereoregular nature, cellulose 
+molecules associate over extended regions, forming 
+polycrystalline, fibrous bundles. 
+Crystalline regions are held together by large numbers of 
+hydrogen bonds. 
+CHEMICAL STRUCTURE AND FORMULA
+
+CHEMICAL STRUCTURE AND FORMULA
+
+CHEMICAL STRUCTURE AND FORMULA
+Cellulose is insoluble because, in order for it to 
+dissolve, most of these hydrogen bonds would have 
+to be released at once. 
+Cellulose can, however, through substitution, be 
+converted into water-soluble gums.
+Cellulose and its modified forms serve as dietary fiber 
+They do not contribute significant nourishment or calories as 
+they pass through the human digestive system. 
+
+Functions of Cellulose
+Structural role in both Plants and Animals
+Helps the plant to stand up right
+For manufacturing of paper, cotton fabrics and 
+other synthetics products
+Maintains health of the intestines (prevents colon 
+cancer)
+Have vast application in food industry
+
+Functions of Cellulose
+In food industry, cellulose is used as:
+➢Fiber supplement
+➢As calorie Reducer
+➢Thickening
+➢Emulsifying
+➢Anti-caking
+➢Stabilizer
+➢Dispersing agent
+➢Gelling agent
+
+CELLULOSE DERIVATIVES
+These can be produced through:
+Alkylation:
+Cellulose can be alkylated into a number of derivatives with good swelling 
+properties and improved solubility.
+Such derivatives have a wide field of application
+Mechanical or Chemical processing
+Pharmaceutically used cellulose derivatives obtained by either of these or 
+both
+Hydroxylation
+The hydroxyl groups of cellulose can be partially or fully reacted with various 
+reagent to afford derivatives
+Additional treatment
+Pure cellulose additional treatment by HCl produced various cellulose 
+derivatives
+
+CELLULOSE DERIVATIVES
+The cellulose derivatives include
+➢Ester Cellulose
+➢Ether Cellulose
+➢Cellulose Nitrate (Celluloid)
+▪Carboxymethyl Cellulose 
+▪Alkyl Cellulose
+▪Hydroxyalkyl  
+
+Ester Cellulose
+Important ones are: cellulose acetate, cellulose acetate-
+propionate and cellulose acetate-butyrate.
+Cellulose acetate is a crystal clear, tough and flexible plastic
+It is a stable cellulose derivative
+It is formed as follows:
+
+Ether Cellulose
+These are produced from wood pulp or cotton linters.
+The important ones are methyl cellulose and ethyl cellulose
+Methyl cellulose is simplest derivative
+Its methoxy groups have replaced the hydroxyl groups
+Other  commercially important ether cellulose include 
+hydroxylpropylcellulose, hydroxyethylcellulose, 
+carboxymethylcellulose.
+
+Celluloid
+Also called cellulose nitrate or nitrocellulose
+Formed when OH on cellulose has been replaced by nitro 
+group (NO
+2
+)
+It is highly combustible hence too hazardous
+Used as a inder in products like inks, coatings and adhesives.
+
+Advantages of using cellulose
+Good Lubrication
+Good binging properties
+Reduced friability and weight loss
+Excellent compressions and hard ness
+Improve stability of drug
+etc
+
+
+
+Individual polysaccharides
+PECTIN
+DEXTRANS 
+CARRAGEENANS 
+ALGINATES 
+AGAR 
+GUM ARABIC 
+
+PECTIN
+
+Introduction
+Pectin is a structural heteropolysaccharide 
+contained in the primary cell walls of terrestrial 
+plants
+It is a white, amorphous, colloidal carbohydrate of 
+high molecular weight occurring in ripe fruits, 
+especially in apples, currants, etc.
+Due to its properties It is used in fruit jellies, 
+pharmaceuticals, and cosmetics
+
+Occurrence
+It is produced commercially from peels of citrus fruits and 
+from apple pomace. 
+20–40% in citrus fruit peel 
+10–20% in apple pomace.
+Extraction is achieved at pH 1.5–3 at 60–100 ◦C., in a 
+controlled manner
+Liquid pectin product
+Powered pectin product
+
+STRUCTURE
+Pectin is a polysaccharide mixture 
+with a complicated structure 
+containing at least 65% of 
+galacturonic acid (GalA). 
+
+Structure
+Three structural elements are involved in the 
+make-up of a pectin molecule: 
+ 
+STRUCTURAL 
+ELEMENT
+COMPOSITION
+Homogalacturonan
+consisting of  (1 → 4) linked α-D-GalA
+Galacturonan
+with differently arranged side chains (building blocks: 
+apiose, fucose, arabinose, xylose)
+Rhamnogalacturonan
+With aa backbone consisting of the disaccharide units 
+[→ 4)-α-D-GalA-(1 → 2)- α-L-Rha-(1 →] its 
+rhamnose residues linked by arabinan and galactan chains
+
+STRUCTURE
+Pectin stability is highest at pH 3–4. 
+The glycosidic linkage hydrolyzes
+  in a stronger acidic medium.
+In an alkaline medium, both 
+ linkages,(ester and glycosidic), are 
+ split to the same extent, the 
+ latter by an elimination reaction
+
+Gelling properties of pectin
+Gel a semi-rigid colloidal dispersion of a solid 
+with a liquid or gas, as jelly, glue, etc.
+A pectin-gel can be formed when the ingredients 
+are heated, thereby dissolving the pectin. 
+Upon cooling below gelling temperature, a gel 
+starts to form. 
+
+Gelling properties of pectin
+If gel formation is too strong,the extraction of the liquid 
+component occurs and produce a granular texture. 
+Weak gelling leads to excessively soft gels. 
+Pectins gel according to specific parameters, such as
+sugar, 
+pH and 
+bivalent salts (especially Ca
+2+
+). 
+
+Gelling properties of pectin
+Gel formation by pectin is influenced by:
+The degree of esterification: the gelling is fast when the degree 
+is high
+The distribution of the ester groups in the pectin molecule
+pH: a thermally reversible gel is formed at about pH 3 and in 
+presence of Ca
+2+
+Molecular weight: gel forming ability is directly proportion to 
+weight 
+Temperature: decrease as temp increase above 50
+0
+C
+Effect of acylation: decrease with decrease in acylation
+
+USES OF PECTIN
+As a gelling agent
+Thickening agent
+As a stabilizer in food and drinks
+Reduces the gel strength of low calorie jams
+As fat substitute in baked goods
+Used as food additive
+
+Dextran (C
+18
+H
+32
+O
+16
+)
+Is a group of glucose polymer made by certain bacteria
+This is produced from saccharose extracellularly by 
+bacteria with the help of dextran sucrase 
+The bacteria include: 
+Leuconostoc mesenteroides, 
+Streptobacterium dextranicum, 
+Streptococcus mutans 
+etc
+
+Structure  and Properties
+Dextran is an α-1,6-glucan with several glucose side chains, 
+which are bound to the main chain of the macromolecule 
+primarily through 1,3-linkages but, in part, also by 1,4- 
+and1,2-linkages
+
+STRUCTURE AND PROPERTIES
+On an average, 95% of the glucose residues are present in the 
+main chain. 
+Dextran is very soluble in water.
+They are also soluble in other organic solvent
+Their viscosity increases with molecular weight
+They are biodegradable
+They are neutral
+They are stable for more than 5 yrs
+They are easily filtered
+
+Uses of dextran
+Dextran is used mostly in medicine as a blood substitute.  
+(antiplatelet to reduce blood viscosity)
+In the food industry it is used as a thickening and stabilizing 
+agent, as exemplified by its use in baking products, 
+confections, beverages and in the production of ice creams.
+Used in some eye drop as a lubricant
+Used in immobilization in biosensors
+
+Carrageenans
+Red sea weeds produce two types of galactans: 
+✓agar and agar-like polysaccharides, composed of 
+D-galactose and 3,6- anhydro-L-galactose residues
+✓carrageenans and related polysaccharides, 
+composed of D-galactose and 3,6-anhydro-D-
+galactose 
+Galactose residues are alternatively linked by 1 → 3 and 1 
+→ 4 linkages.
+Carrageenans are isolated by hot water extraction under 
+mild alkaline conditions, followed by drying or isolate 
+precipitation
+
+STRUCTURE AND PROPERTIES
+Carrageenans are a complex mixture of various polysaccharides.
+They can be separated by fractional precipitation with potassium 
+ions
+Two major fractions are 
+κ (gelling and K
++
+-insoluble fraction) 
+λ (nongelling, K
++
+-soluble).
+
+STRUCTURE AND PROPETIES
+κ-Carrageenan is composed of D-galactose, 3,6-anhydro-D-
+galactose and ester-bound sulfate in a molar ratio of 6:5:7.
+A typical sequence of κ- carrgeenan is:
+
+STRUCTURE AND PROPETIES
+λ –Carrageenan contains as the basic building block β-
+DGalp-(1 → 4)-α-D-Galp
+The highsulfate content favors the formation of a 
+zigzagribbon-shaped conformation.
+Its structure is given as:
+
+Uses of carrageenan
+Carrageenan utilization in food processing is based on the ability 
+of the polymer 
+to gel,
+to increase solution viscosity and 
+to stabilize
+emulsions and 
+various dispersions. 
+Carrageenans prevent syneresis in fresh cheese
+It improve dough properties 
+Enable a higher amount of milk powder incorporation in baking. 
+
+Uses of carrageenan
+The gelling property in the presence of K+ salt is utilized in 
+desserts and canned meat. 
+Protein fiber texture is also improved.
+Protein sedimentation in condensed milk is prevented by 
+carrageenans which, like κ-casein,
+prevent milk protein coagulation by calcium ions.
+Carrageenans are also used to stabilize ice cream and clarify 
+beverages.
+

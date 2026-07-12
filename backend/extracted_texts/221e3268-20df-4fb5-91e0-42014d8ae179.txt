@@ -1,0 +1,7898 @@
+
+
+Lilongwe University of Agriculture and
+Natural Resources
+Basic Sciences Department
+Mathematics I - MAT 111
+Tutorial Module
+Francisco ChameraandFelix Walije Moyo
+August 8, 2017
+
+Module Overview
+This module was written with an intention of providing you with additional prac-
+tice questions.  It has a number of questions on each topic of your first semester
+Mathematics.  The units in this module are related to units in Module 1 and Mod-
+ule 2 of MAT 111.  The first five units are units in Module 1 and the other four
+units are units in Module 2.
+In each unit we have a brief introduction which provides background knowledge
+on the topic of study. Detailed explanations are contained in Module 1 and Module
+2.  We also have a set of questions and solutions to selected problems.  Please do
+not go straight to solutions before attempting the given question.  Do the question
+on your own first then compare your solutions with ours.
+ii
+
+Contents
+iii
+
+iv
+
+Unit 1
+Systems of Naming Numbers
+1.1    Introduction
+Letn∈N,n≥2 andn6= 10.
+1.  Each  position  in  a  basennumber  represents  a  power  ofn.   To  convert  a
+number from basento base 10, multiply each digit by a power ofnat that
+position.
+2.  To convert a base 10 whole number to basen, divide that number recursively
+byn, writing down the remainder and quotient at each stage till the quotient
+is 0.  The solution is the number formed by listing all remainders starting
+with the last remainder.
+3.  A  base  10  fraction  is  converted  to  basenby  multiplying  recursively  the
+number byn, saving the integer part at each stage.  The fractional part goes
+to the next step where it is multiplied byn.  We stop after getting 0 or the
+required number of digits after a point.
+4.  Each octal digit can be represented by three binary bits while each hexadec-
+imal digit can be represented by four binary bits.
+1.2    Practice Questions
+1.  What is wrong with the following numbers in binary system?
+(a)  110101011
+2
+(b)  101101210
+2
+(c)  1004811
+2
+1
+
+2.  Convert the following binary numbers to decimal
+(a)  1101
+2
+(b)  10101011001
+2
+(c)  1110110.1100112
+(d)  1010.101
+2
+(e)  111.1111
+2
+(f)  111.0100
+2
+(g)  110111.1011
+2
+(h)  11011010101.1010110101
+2
+(i)  0.11101010
+2
+(j)  101011010101.001
+2
+(k)  11101111010101.01010101
+2
+(l)  1100011001011010.0111010101
+2
+3.  Convert the following decimal numbers to base 2
+(a)  689
+10
+(b)  90921
+10
+(c)  147500
+10
+(d)  891221129
+10
+(e)  88223202
+10
+(f)  75.75
+(g)  45673.11
+10
+(h)  234.45
+10
+(i)  940.456
+(j)  610.465
+(k)  23876.75
+(l)  93671.25
+(m)  40525.16528
+(n)  973623.95
+(o)  87113519.42
+4.  Convert the following octal numbers to decimal
+2
+
+(a)  7
+8
+(b)  10
+8
+(c)  411
+8
+(d)  156431
+8
+(e)  10001002
+8
+(f)  2013014
+8
+(g)  4372331
+8
+(h)  406711103
+8
+(i)  707245022
+8
+(j)  217645.22
+8
+(k)  12017105.201
+8
+(l)  7762.36004
+8
+5.  Convert the following decimal numbers to octal
+(a)  234
+10
+(b)  5923
+10
+(c)  90921
+10
+(d)  61251
+10
+(e)  0.456
+10
+(f)  75.75
+10
+(g)  45673.11
+(h)  23876.75
+(i)  93671.25
+(j)  61.465
+(k)  40525.16528
+6.  Convert the following hexadecimal numbers to decimal
+(a)  10
+16
+(b)  123
+16
+(c)  1B5
+16
+(d)  98AFC
+16
+(e)ADEF73
+16
+3
+
+(f)E8A
+16
+(g)  3635
+16
+(h)  1000
+16
+(i)A045C.1D0E
+16
+(j)  9.1ADE3
+16
+(k)  74A.6F1
+16
+(l)  147CD2.A21C
+16
+7.  Convert the following decimal numbers to hexadecimal
+(a)  716
+10
+(b)  1984
+10
+(c)  981234
+10
+(d)  87622234
+10
+(e)  8712398
+(f)  234.45
+10
+(g)  0.456
+10
+(h)  90921
+10
+(i)  75.75
+10
+(j)  45673.11
+(k)  23876.75
+(l)  93671.25
+(m)  61.465
+(n)  40525.16528
+8.  Convert the following binary numbers direct to base 8
+(a)  100111010101010111
+2
+(b)  1101101
+2
+(c)  111110111101111011
+2
+(d)  11111100000101010010011001
+2
+(e)  10001101111101111
+2
+(f)  11110111000
+2
+(g)  1101001.11010101
+2
+4
+
+(h)  0.000100010101
+2
+(i)  11.1101011110
+2
+(j)  111111.1011
+2
+9.  Convert the following binary numbers direct to base 16
+(a)  11110111000
+2
+(b)  1101101
+2
+(c)  111110111101111011
+2
+(d)  100111010101010111
+2
+(e)  11111100000101010010011001
+2
+(f)  10001101111101111
+2
+(g)  111111.1
+2
+(h)  0.00010001010101
+2
+(i)  1101001.11010101
+2
+(j)  11.1101011110
+2
+(k)  10111011110001.1100110111
+2
+(l)  11.00011111110101
+2
+10.  Convert the following hexadecimal numbers to binary numbers without chang-
+ing to base 10 first.
+(a)  7AB2
+16
+(b)  1509F
+16
+(c)  100
+16
+(d)AB9D5F
+16
+(e)  545AD
+16
+(f)  12331
+16
+(g)  912.671
+16
+(h)  12E72.115D
+16
+(i)DA.ABCD
+16
+(j)  8F16.A720E
+16
+11.  Convert the following numbers to octal (use any method);
+(a)  5627BC
+16
+5
+
+(b)  3E6.5
+16
+(c)F76ADD.BD
+16
+(d)ECFD3BCE42F.1A
+16
+(e)  1E9C4F4A1.FEB
+16
+(f)  11BC0D.A01
+16
+(g)  8EEF109D.25C
+16
+(h)  4CE7F2.A01F
+16
+(i)  1C4A3F1.E1
+16
+(j)F82C.B
+16
+(k)  89A20EE
+16
+12.  Which number in the following pairs is greater than the other?
+(a)  10110
+2
+or 21
+10
+?
+(b)  1000101
+2
+or 72
+10
+?
+(c)  2221
+6
+or 11001
+8
+?
+(d)  1210
+4
+or 110000
+2
+?
+(e)  322
+4
+or 67
+8
+?
+(f)  1000001
+2
+or 77
+8
+?
+13.  Perform the indicated operations
+(a)  11101
+2
++ 1010
+2
+(b)  101110
+2
++ 11001
+2
+(c)  11101
+2
++ 1011
+2
+(d)  10101011
+2
+−11101
+2
+(e)  11011111
+2
+−101100
+2
+(f)  111001
+2
+−11111
+2
+(g)  1100110100.11011
+2
++ 1110110110.110011
+2
+(h)  1101100101.1011
+2
+−110110101.11
+2
+(i)  10101010
+2
+−1011101
+2
++ 10110111
+2
+(j)  10101
+2
+−110111
+2
++ 1010010
+2
+(k)  1010010
+2
++ 1110111
+2
++ 10101
+2
+(l)  100
+2
++ 110
+2
++ 111
+2
++ 1101
+2
+6
+
+(m)  11110110.110
+2
+×1.1
+2
+(n)  1101101010
+2
+×101
+2
+(o)  1011.1
+2
+×10.1
+2
+(p)  1101
+2
+×101
+2
+(q)  1010110100111010000101.1001
+2
+÷101
+2
+(r)  1111011111101.101
+2
+÷1011.11
+2
+(s)  11110100.1110
+2
+÷10.01
+2
+(t)  101101010
+2
+÷1110
+2
+(u)  101011101
+2
+÷1101
+2
+14.  Perform the indicated operations
+(a)  217645.22
+8
++ 12017105.201
+8
+(b)  234
+8
++ 47
+8
+(c)  236
+8
++ 157
+8
+(d)  22
+8
++ 36
+8
+(e)  2732
+8
+−156
+8
+(f)  102
+8
+−43
+8
+(g)  1000254316
+8
+−427503
+8
+(h)  10001002
+8
+−7762.36004
+8
+(i)  401
+8
+−205
+8
++ 101
+8
+(j)  567300026.0024
+8
++ 65657.1101
+8
+(k)  7072
+8
+×277
+8
+(l)  36176.145
+8
+×17
+8
+(m)  1150100
+8
+×66
+8
+(n)  11021
+8
+×62
+8
+(o)  107
+8
+×1.23
+8
+(p)  5602
+8
+×201
+8
+(q)  203
+8
+×6
+8
+15.  Perform the indicated operation
+(a)  456
+16
++ 784
+16
+(b)  2AC
+16
++ 9BE
+16
+7
+
+(c)  615
+16
++ 3CE
+16
+(d)CD1F
+16
++ 29AD
+16
+(e)  11ABCDEF.43A
+16
++ 1EF345DC.11BC
+16
+(f)  75C6F9C.AAE0A891
+16
++ 4D452FCB.FFA0C7
+16
+(g)  207
+16
+−A
+16
+(h)F3E
+16
+−2AA
+16
+(i)BA5C
+16
+−9C15
+16
+(j)  6228
+16
+−D81
+16
+(k)EFACD
+16
+−ACBBE
+16
+(l)EFACADE
+16
+×FE0
+16
+(m)CF01
+16
+×AD
+16
+(n)  317
+16
+×76
+16
+(o)B0C
+16
+×102
+16
+(p)DF15.2C
+16
+×A1.F
+16
+(q)  613C.D1
+16
+×F2
+16
+(r)  301.32
+16
+×9.4
+16
+(s)C4620A.4C
+16
+×10
+16
+(t)  19E
+16
+×12
+16
+16.  Convert the following numbers to the indicated bases
+(a)  231
+4
+to base 9
+(b)  638
+9
+to base 3
+(c)  112102
+3
+to base 6
+(d)  101010111
+2
+to base 7
+(e)  231003
+4
+to base 5
+(f)  66274
+9
+to base 16
+(g)  2315
+7
+to base 2
+(h)  644
+7
+to base 10
+(i)  2331
+6
+to base 8
+(j)  20012
+3
+to base 9
+(k)  22241
+6
+to base 4
+8
+
+17.  Work out the following and leave your answer in the base indicated in bracket
+[hint: convert the numbers to the indicated base and perform the necessary
+operation].
+(a)  1671
+8
++ 12211
+3
+(base 8)
+(b)  73112
+9
++ 5134
+6
+(base 6)
+(c)  1211
+3
++ 41341
+5
+(base 3)
+(d)  111010101
+4
+−10011
+3
+(base 4)
+(e)  107
+8
+×21
+3
+(base 8)
+(f)  4101
+7
+×12
+6
+(base 6)
+(g)  451
+6
+×40
+7
+(base 7)
+(h)  1424
+5
+×36
+7
+(base 5)
+1.3    Suggested solutions to Selected Questions
+2   (a)
+1101
+2
+= 1×2
+3
++ 1×2
+2
++ 1 + 0×2
+1
++ 1×2
+0
+= 8 + 4 + 0 + 1
+= 13
+10
+.
+(c)
+1110110.110011
+2
+= 1×2
+6
++ 1×2
+5
++ 1×2
+4
++ 0×2
+.
+3 + 1×2
+2
++ 1×2
+1
++ 0×2
+0
++ 1×2
+−1
++ 1×2
+−2
++ 0×2
+−3
++ 0×2
+−4
++ 1×2
+−5
++ 1×2
+−6
+= 64 + 32 + 16 + 0 + 4 + 2 + 0 +
+1
+2
++
+1
+4
++ 0 + 0 +
+1
+32
++
+1
+64
+= 118 +
+51
+64
+= 118.796875
+10
+.
+(e)
+111.1111
+2
+= 1×2
+2
++ 1×2
+1
++ 1 + 1×2
+0
++ 1×2
+−1
++a×2
+−2
++ 1×2−3 + 1×2
+−4
+= 4 + 2 + 1 +
+1
+2
++
+1
+4
++
+1
+8
++
+1
+16
+= 7 +
+15
+16
+= 7 + 0.9375
+= 7.9375
+10
+.
+9
+
+(h)
+11011010101.1010110101
+2
+= 1×2
+10
++ 1×2
+9
++ 0×2
+8
++ 1×2
+7
++ 1×2
+6
++ 0×2
+5
++ 1×2
+4
++ 0×2
+3
++ 1×2
+2
++ 0×2
+1
++ 1×2
+0
++ 1×2
+−1
++ 0×2−2 + 1×2
+−3
++ 0×2
+−4
++ 1×2
+−5
++ 1×2
+−6
++ 0×2
+−7
++ 1×2
+−8
++ 0×2
+−9
++ 1×2
+−10
+= 1024 + 512 + 0 + 128 + 64 + 0 + 16 + 0 + 4 + 0 + 1
++
+1
+2
++
+1
+8
++
+1
+32
++
+1
+64
++
+1
+256
++
+1
+1024
+= 1749 +
+693
+1024
+= 1749 + 0.6767578
+= 1749.6767578
+10
+.
+3  (a)
+689÷2 = 344 remainder 1
+344÷2 = 172 remainder 0
+172÷2 = 86 remainder 0
+86÷2 = 43 remainder 0
+26÷2 = 13 remainder 0
+13÷2 = 6 remainder 1
+6÷2 = 3 remainder 0
+3÷2 = 1 remainder 1
+1÷2 = 0 remainder 1.
+Hence 689
+10
+= 1101010001
+2
+.
+(c)
+147500÷2 = 73750 remainder 0
+73750÷2 = 36875 remainder 0
+36875÷2 = 18437 remainder 1
+18437÷2 = 9218 remainder 1
+9218÷2 = 4609 remainder 0
+4609÷2 = 2304 remainder 1
+2304÷2 = 1152 remainder 0
+1152÷2 = 576 remainder 0
+576÷2 = 288 remainder 0
+10
+
+288÷2 = 144 remainder 0
+144÷2 = 72 remainder 0
+72÷2 = 36 remainder 0
+36÷2 = 18 remainder 0
+18÷2 = 9 remainder 0
+9÷2 = 4 remainder 1
+4÷2 = 2 remainder 0
+2÷2 = 1 remainder 0
+1÷2 = 0 remainder 1
+Hence 147500
+10
+= 100100000000101100
+2
+.
+(f) Converting 75 to base 2:
+75÷2 = 37 remainder 1
+37÷2 = 18 remainder 1
+18÷2 = 9 remainder 0
+9÷2 = 4 remainder 1
+4÷2 = 2 remainder 0
+2÷2 = 1 remainder 0
+1÷2 = 0 remainder 1
+Therefore 75
+10
+= 1001111
+2
+.
+Converting 0.75:
+0.75×2 = 1.5 integer 1
+0.5×2 = 1 Integer 1.
+Therefore 0.75
+10
+=.11
+2
+.
+Combining the two we have 75.75
+10
+= 1001111.11
+2
+.
+(h) Convert 234.45 to base 2.
+234÷2 = 117 remainder 0
+117÷2 = 58 remainder 1
+58÷2 = 29 remainder 0
+29÷2 = 14 remainder 1
+14÷2 = 7 remainder 0
+7÷2 = 3 remainder 1
+3÷2 = 1 remainder 1
+1÷2 = 0 Remainder 1
+11
+
+234
+10
+= 11101010
+2
+0.45×2 = 0.9 integer 0
+0.9×2 = 1.8 Integer 1
+.8×2 = 1.6 integer 1
+0.6×2 = 1.2 Integer 1
+0.45
+10
+=.0111
+2
+..
+234.45
+10
+= 11101010.0111
+2
+...
+(4)  Converting numbers from base 8 to base 10.
+(a)
+7
+8
+= 7×8
+0
+= 7×1
+= 7
+10
+.
+(d)
+156431
+8
+= 1×8
+5
++ 5×8
+4
++ 6×8
+3
++ 4×8
+2
++ 3×8
+1
++ 1×8
+0
+= 32768 + 5×4096 + 6×512 + 4×64 + 3×8 + 1
+= 32762 + 20480 + 3072 + 256 + 24 + 1
+= 56601
+10
+.
+(h)
+406711103
+8
+= 4×8
+8
++ 0×8
+7
++ 6×8
+6
++ 7×8
+5
++ 1×8
+4
++ 1×8
+3
++ 1×8
+2
++ 0×8
+1
++ 3×8
+0
+= 4×16777216 + 0 + 6×262144 + 7×32768
++ 4096 + 512 + 64 + 0 + 3
+= 67108864 + 0 + 1572864 + 229376 + 4096 + 512 + 64 + 0 + 3
+= 68915779
+10
+.
+(j)
+217645.22
+8
+= 2×8
+5
++ 1×8
+4
++ 7×8
+3
++ 6×8
+2
++ 4×8
+1
++ 5×8
+0
++ 2×8
+−1
++ 2×8
+−2
+= 2×32768 + 1×4096 + 7×512 + 6×64 + 4×8 + 5×1 +
+2
+8
++
+2
+64
+= 65536 + 4096 + 3584 + 384 + 32 + +5 + 0.24 + 0.03125
+= 73637.28125
+10
+.
+12
+
+(l)
+7762.36004
+8
+= 7×8
+3
++ 7×8
+2
++ 6×8
+1
++ 2×8
+0
++ 3×8
+−1
++ 6×8
+−2
++ 0×∗8
+−3
++ 0×8
+−4
++ 4×8
+−5
+= 3584 + 448 + 48 + 2 +
+3
+8
++
+6
+64
++
+4
+32768
+= 4082 +
+3072 + 768 + 1
+8192
+= 4082 +
+3841
+8192
+= 4082 + 0.468872
+= 4082.468872
+10
+.
+5  Converting decimal numbers to octal.
+(a)  234
+10
+234÷8 = 29 remainder 2
+29÷8 = 3 remainder 5
+3÷8 = 0 remainder 3..
+Therefore 234
+10
+= 352
+8
+(c)  90921
+10
+90921÷8 = 11365 remainder 1
+11365÷8 = 1420 remainder 5
+1420÷8 = 177 remainder 4
+177÷8 = 22 remainder 1
+22÷8 = 2 remainder 6
+2÷8 = 0 remainder 2.
+Therefore 90921 = 261451
+8
+.
+(e)  0.456
+8
+0.456
+8
+to base 10
+0.456×8 = 3.648 integer 3
+0.648×8 = 5.184 integer 5
+0.184×8 = 1.472 integer 1
+0.472×8 = 3.776 integer 3
+0.776×8 = 6.208.8 Integer 6.
+Therefore 0.456
+10
+= 0.35136
+8
+....
+(g)  45673.11 to octal
+13
+
+45673÷8 = 5709 remainder 1
+5709÷8 = 713 remainder 5
+713÷8 = 89 remainder 1
+89÷8 = 11 remainder 1
+11÷8 = 1 remainder 3
+1÷8 = 0 remainder 1
+Therefore 45673
+10
+= 131151
+8
+.
+0.11×8 = 0.88 integer 0
+0.88×8 = 7.04 Integer 7
+0.04×8 = 0.36 integer 0
+0.36×8 = 2.88 Integer 2
+0.88×8 = 7.o04 integer 7
+Therefore 0.11
+10
+=.07027
+8
+.
+Hence 45673.11
+10
+= 131151.07027
+8
+.
+Converting numbers from hexadecimal to decimal.
+6   (a)
+10
+16
+= 1×16
+1
++ 0×16
+0
+= 16 + 0
+= 16
+10
+.
+(d)
+98AFC
+16
+= 9×16
+4
++ 8×16
+3
++A×16
+2
++F×16
+1
++C×16
+0
+= 9×65536 + 8×4096 + 10×256 + 15×16 + 12×1
+= 589824 + 32768 + 2560 + 240 + 12
+= 625404
+10
+.
+(i)
+A045C.1D0E
+16
+=A×16
+4
++ 0×16
+3
++ 4×16
+2
++ 5×16
+1
++C×16
+0
++ 1×16
+−1
++D×16
+−2
++ 0×16
+−3
++E×16
+−4
+= 10×65536 + 0 + 4×256 + 5×16 + 12×1
++
+1
+16
++
+13
+256
++ 0 +
+14
+65536
+= 655360 + 0 + 1024 + 80 + 12 + 0.0625
++ 0.050781 + 0.000213623
+= 656476.1134946
+10
+.
+14
+
+(k)
+74A.6F1
+16
+= 7×16
+2
++ 4×16
+1
++A×16
+0
++ 6×16
+−1
++F×16
+−2
++ 1×16
+−3
+= 7×256 + 4×16 + 10×1 +
+6
+16
++
+15
+256
++
+1
+4096
+= 1792 + 64 + 10 + 0.375 + 0.0559375 + 0.000244140
+= 1866.43383789
+10
+.
+7  Converting decimal numbers to hexadecimal.
+(a)  716
+716÷16 = 44 remainder 11 =B
+44÷16 = 2 remainderB
+2÷16 = 0 remainder 2.
+Therefore 716
+10
+= 2BB
+16
+.
+(c)  981234
+981234÷16 = 61327 remainder 2
+61327÷16 = 3832 remainderF
+3832÷16 = 239 remainder 8
+239÷16 = 14 remainderF
+14÷16 = 0 remainderD.
+Therefore 98123410 =DF8F2
+16
+.
+(f)  234.45
+234÷16 = 14 remainderA
+14÷16 = 0 remainderD
+Therefore 234
+10
+=DA
+16
+.
+0.45×16 = 7.2 integer 7
+0.2×16 = 3.2 Integer 3
+0.2×16 = 3.2 integer 3
+0.2×16 = 3.2 integer 3 ...
+Therefore 0.4510 =.7333
+16
+.
+Hence 234.45
+10
+=DA.7333
+16
+.
+(k)  23876.75
+15
+
+23876÷16 = 1492 remainder 4
+1492÷16 = 93 remainder 4
+93÷16 = 5 remainderD
+5÷16 = 0 remainder 5.
+Therefore 2387610 = 5D44
+16
+.
+0.75×16 = 12 integerB.
+Therefore 0.75 = 0.B.
+Hence 23876.7510 = 5D44.B
+16
+.
+8   (a)  100111010101010111
+2
+Binary100111010101010111
+Octal472527
+100111010101010111
+2
+= 472527
+8
+(f)  11110111000
+2
+Binary011110111000
+Octal3670
+11110111000
+2
+= 3670
+8
+(g)  1101001.11010101
+2
+Binary001101001.110101010
+Octal151.652
+1101001.11010101
+2
+= 151.652
+8
+9  Converting binary numbers direct to hexadecimal
+(a)  11110111000
+2
+Binary011110111000
+Hexadecimal7B8
+11110111000
+2
+= 7B8
+16
+Converting binary numbers to decimal.
+(h)  0.00010001010101
+2
+Binary.0001000101010100
+Hexadecimal.115C
+0.00010001010101
+2
+= 0.115C
+16
+.
+10  Converting hexadecimal numbers direct to binary.
+16
+
+(a)  7AB2
+16
+.
+Hexadecimal7AB2
+Binary0111101010110010
+7AB2
+16
+= 1111010110010
+2
+.
+(d)AB9D5F
+HexadecimalAB9D5F
+Binary101010111001110101011111
+AB9D5F
+16
+= 101010111001110101011111
+2
+.
+(h)  12E72.115D
+16
+Hexadecimal12E72.115D
+Binary00010010111001110010.0001000101011101
+12E72.115D
+12
+= 10010111001110010.0001000101011101
+2
+.
+11  Converting hexadecimal numbers to octal numbers.
+(a)  5627BC
+16
+.
+hexadecimal5627BC
+Binary010101100010011110111100
+Binary010101100010011110111100
+Octal25423674
+5627BC
+16
+= 25423674
+8
+.
+You may first convert the hexadecimal number to decimal, then convert
+the decimal number to octal.
+(c)F76ADD.BD
+HexadecimalF76ADD.BD
+Binary111101110110101011011101.10111101
+Binary111101110110101011011101.101111010
+Octal75665335.572
+F76ADD.BD
+16
+= 75665335.572
+8
+.
+12  Determining which number is greater than the other.
+(b)  10110
+2
+or 21
+10
+.
+10110
+2
+= 1×2
+4
++ 0×2
+3
++ 1×2
+2
++ 1×2
+1
++ 0×2
+0
+= 16 + 0 + 4 + 2 + 1
+= 22
+10
+.
+10110
+2
+is greater than 21
+10
+.
+17
+
+(e)  322
+4
+or 67
+8
+?
+222
+4
+= 2×4
+2
++ 2×4
+1
++ 2×4
+0
+= 3×16 + 2×4 + 2
+= 48 + 8 + 2
+= 58
+10
+.
+67
+8
+= 6×8
+1
++ 7×8
+0
+= 48 + 7
+= 55
+10
+.
+222
+4
+is greater than 67
+8
+.
+13   (b)  101110
+2
++ 11001
+2
+.
+1    0    1    1    1    0
++1    1    0    0    1
+1    0    0    0    1    1    1
+(d)  10101011
+2
+−11101
+2
+.
+1    0    1    0    1    0    1    1
+-1    1    1    0    1
+1    0    0    0    1    1    1    0
+(h)  1101100101.1011
+2
+−110110101.11
+2
+.
+1    1    0    1    1    0    0    1    0    1    .    1    0    1    1
+-1    1    0    1    1    0    1    0    1    .    1    1
+1    1    0    1    0    1    1    1    1    .    1    1    1    1
+(i)  To find 10101010
+2
+−1011101
+2
++ 10110111
+2
+, we add the first and the last
+numbers and then subtract the second number.
+1    0    1    0    1    0    1    0
++1    0    1    1    0    1    1    1
+1    0    1    1    0    0    0    0    1
+1    0    1    1    0    0    0    0    1
+-1    0    1    1    1    0    1
+1    0    0    0    0    0    1    0    0
+(m)  11110110.11
+2
+×1.1
+2
+.
+18
+
+1    1    1    1    0    1    1    0    .    1    1
+×1    .    1
+1    1    1    1    0    1    1    01    1
++    1    1    1    1    0    1    1    0    11
+1    0    1    1    1    0    0    1    0    .    0    0    1
+(p)  1101
+2
+×101
+2
+.
+1    1    0    1
+×1    0    1
+1    1    0    1
++1    1    0    1    0
+1    0    0    0    0    0    1
+14   (a)  217645.22
+8
++ 12017105.201
+8
+.
+2    1    7    6    4    5    .    2    2
++    1    2    0    1    7    1    0    5    .    2    0    1
+1    2    2    3    6    7    5    2    .    4    2    1
+(c)  236
+8
++ 157
+8
+.
+2    3    6
++    1    5    7
+4    1    5
+(e)  2732
+8
+−156
+8
+.
+2    7    3    2
+-1    5    6
+1    5    5    4
+(h)  10001002
+8
+−7762.36004
+8
+.
+1    0    0    0    1    0    0    2    .
+-7    7    6    2    .    3    6    0    0    4
+7    7    7    1    0    1    7    .    4    1    7    7    4
+k)  7072
+8
+×277
+8
+.
+7    0    7    2
+×2    7    7
+6    1    6    2    6
++6    1    6    2    6
++    1    6    1    6    4
+2    5    1    6    5    0    6
+(o)  77
+8
+×2.4
+8
+.
+19
+
+7    7
+×2.4
+3    74
++2    0    6
+2    4    5    .4
+15   (a)  456
+16
++ 784
+16
+.
+456
++784
+B    D    A
+(e)  11ABCDEF.43A
+16
++ 1EF345DC.11BC
+16
+1    1A    B    C    D    E    F    .    4    3    A
++    1    E    F345D    C    .    1    1    B    C
+3    0A    F13C    B    .    5    55C
+(h)D97
+16
+−46A
+16
+.
+D    9    F
+-46    A
+935
+(j)  4057
+16
+−9ED
+16
+.
+4    0    57
++9    E    D
+3    6    5A
+(m)DDE301
+16
+×FA
+16
+.
+D    D    E301
+×F    A
+8    A    A    D    E    0    A
++    D    004D0    F
+D    8    A    F    A    E    F    A
+(p)FF81C.B
+16
+×D.E
+16
+.
+F    F    8    1    C.B
+×D.E
+D    F    9    191A
++    C    F9    9    74F
+D    D    9    2    8    E    .  0    A
+20
+
+16   (a)  Converting 231
+4
+to base 10, then convert the result to base 9.
+231
+4
+= 2×4
+2
++ 3×4
+1
++ 1×4
+0
+= 2×16 + 3×4 + 1×1
+= 32 + 12 + 1
+= 45
+10
+.
+45
+10
+÷9 = 5 Remainder 0
+5÷9 = 0 Remainder 5.
+Therefore 231
+4
+= 50
+9
+.
+(c)  Converting 112102
+3
+to base 10:
+112102
+3
+= 1×3
+5
++ 1×3
+4
++ 2×3
+3
++ 1×3
+2
++ 0×3
+1
++ 2×3
+0
+= 243 + 81 + 54 + 9 + 0 + 2
+= 389
+10
+.
+Converting 389
+10
+to base 6:
+389
+10
+÷6 = 64 Remainder 5
+64÷6 = 10 Remainder 4.
+10÷6 = 1 Remainder 4
+1÷6 = 0 Remainder 1.
+Hence 112102
+3
+= 1445
+6
+.
+21
+
+Unit 2
+Number Systems
+2.1    Introduction
+1.  Sets ofreal numbers,R, are
+•Natural numbers:N={1,2,3,4,5,....}.
+•Whole numbers:W={0,1,2,3,4,....}.
+•Integers:Z={...,−3,−2,−1,0,1,2,3,4,...}.
+•Rational numbers:R=
+{
+3
+7
+,2,−4,−
+6
+17
+,...
+}
+.
+•Irrational numbers:I={π,
+√
+2,
+√
+3,....}.
+2.  Acomplex number,z∈C, takes the formz=a+bi, wherea,b∈Rand
+i=
+√
+−1.
+3.  Operations with complex numbers:
+•Addition:  (a
+1
++b
+1
+i) + (a
+2
++b
+2
+i) = (a
+1
++a
+2
+) + (b
+1
++b
+2
+)i.
+•Subtraction:  (a
+1
++b
+1
+i)−(a
+2
++b
+2
+i) = (a
+1
+−a
+2
+) + (b
+1
+−b
+2
+)i.
+•Multiplication:
+(a
+1
++b
+1
+i)(a
+2
++b
+2
+i) =a
+1
+a
+2
++a
+1
+b
+2
+i+a
+2
+b
+1
+i+b
+1
+b
+2
+i
+2
+= (a
+1
+a
+2
+−b
+1
+b
+2
+)+(a
+1
+b
+2
++a
+2
+b
+1
+)i.
+•Conjugation:
+a+bi=a−bi.
+•Division:
+a
+1
++b
+1
+i
+a
+2
++b
+2
+i
+=
+a
+1
++b
+1
+i
+a
+2
++b
+2
+i
+×
+a
+2
+−b
+2
+i
+a
+2
+−b
+2
+i
+.
+22
+
+2.2    Practice Questions
+1.  State whether each of the following statements is true or false;
+(a)  The conjugate ofbi+aisbi−a.
+(b)  The equation 2x
+2
++ 5 = 3 has no solution over complex numbers.
+(c)  All irrational numbers are complex numbers and all complex numbers
+are irrational numbers.
+(d)
+√
+17 is a complex number.
+2.  Express the following numbers in the forma+bi, where a and b are real
+numbers:
+(a)  3(7 + 7i) + (7 + 7i)i
+(b)  (1/3 + 3i)
+3
+(c)i
+−13
+−i
+26
+(d)i
+13
++i
+23
++i
+40
+(e)  1 +i
+2
++i
+4
++i
+6
++...+i
+100
+(f)i
+43
+−i
+−46
+(g)  (2
+√
+3−2i)
+−1
+(h)  (−2 + 2i
+√
+3)
+2
+(i)  (4−3i)(2 +i)
+(j)i(3−2i)
+2
+(k)  (7−6i)−(−11−3i)
+(l)−3i−(3−7i)−(−i−2)
+(m)  (7−6i)(−8 + 3i)
+(n)  (4−5i)(4 +i)
+(o)  (i−4)÷2−3i×(1−2i)
+(p)−6 + 6i−(−5−4i)−8i
+(q)  (1 + 5i)−(−6i) + (3i+ 1)
+3.  Express  the  following  numbers  in  the  forma+biwhere  a  and  b  are  real
+numbers:
+(a)  (−7i) + (
+√
+2 +i)
+2
++ (1−i)(i−2)
+(b)
+1−7i
+6−2i
+23
+
+(c)
+−3−2i
+5 + 2i
+(d)
+7−i
+3−5i
+(e)
+−2 + 6i
+3i
+(f)
+5i−3
+i
+−(1 + 2i)
+2
++
+i
+1 +i
+(g)
+−i
+2 +i
++
+6
+i−2
+−(2 + 1)
+−1
+(h)
+(3 +i
+√
+5)(3−i
+√
+5)
+(
+√
+3 +i
+√
+3)−(
+√
+3−
+√
+2)i
+(i)
+5 + 10i
+2−i
+−
+40−20i
+3 +i
++
+20
+2 + 6i
+4.  Given thatz
+1
+= 2−i,z
+2
+= 3 + 2iandz
+3
+=−1 + 4i, find
+(a)  2z
+3
+−z
+1
+(b)  (z
+1
++
+z
+2
+)×z
+3
+(c)Re(z
+1
+−3z
+1
++z
+3
+)
+(d)Im(z
+1
+−3z
+1
++z
+3
+)
+5.  Simplify the quantity;
+(a)
+√
+−9
+(b)−
+√
+−9
+(c)
+√
+(−81)(−4)
+(d)
+√
+−25
+√
+−9
+(e)  (2−
+√
+−4)(3−
+√
+−9)
+(f)
+4 +
+√
+−36
+7−
+√
+−144
+(g)
+3−
+√
+−18
+1 +
+√
+−25
+6.  Compute the real and imaginary part of;
+(a)
+√
+3−i
+(b)−2 + 4i
+24
+
+(c)  3i
+(d)−117
+(e)  5 + 5i
+√
+3
+(f)−12−5i
+(g)2i
+(
+1
+2
+−i
+)
+(h)
+5
+1−3i
+7.  Letx= 3−iShow that:
+(a)x=x
+(b)x
+2
+=x
+2
+8.  Solve the following equations;
+(a)  (7x−yi)−(6x+ 3yi) =−7i+ 1
+(b)  4 + (x+ 2y)i=x+ 2i
+(c)x−2yi−6i=−4 +yi−x
+(d)  (−3 + 6i)x−(−5−3i)y−3i+ 8 = 0
+9.  Find the complex numberzin the following equations;
+(a)  (2i+ 1)z= 1−3i
+(b)  (3 + 4i) = (4 + 3i) + (1 +i)z
+2.3    Suggested Solutions to Selected Questions
+1.  (a) False.  (c) False.
+2.   (a)
+3(7 + 7i) + (7 + 7i)i= 21 + 21i+ 7 + 7i
+2
+= 21 + 28i−7
+= 14 + 28i
+25
+
+(c)
+i
+−13
+−i
+26
+=i
+−12
+×i
+−1
+−(i
+2
+)
+13
+=
+1
+i
+12
+×
+1
+i
+−(−1)
+13
+=
+1
+(i
+4
+)
+3
+×
+1
+i
+×
+i
+i
+−(−1)
+= 1×
+i
+i
+2
++ 1
+= 1×−i+ 1
+= 1−i
+Note;i
+4
+= 1 andi
+2
+=−1
+(g)
+(2
+√
+3−2i)
+−1
+=
+1
+2
+√
+3−2i
+=
+1
+2
+√
+3−2i
+×
+2
+√
+3 + 2i
+2
+√
+3 + 2i
+=
+2
+√
+3 + 2i
+(2
+√
+3)
+2
++ 2
+2
+=
+2
+√
+3 + 2i
+16
+=
+√
+3
+8
++
+1
+8
+i
+(j)
+(4−3i)(2 +i) = 12 + 4i−6i−3i
+2
+= 12−2i−3(−1)
+= 12 + 3−2i
+= 15−2i
+(k)
+(7−6i)−(−11−3i) =7−6i+ 11 + 3i
+= (7 + 11)−6i+ 3i
+= 18−3i
+3.   (a)−2 + (−2
+√
+2−6)i
+26
+
+(c)
+−3−2i
+5 + 2i
+=
+−3−2i
+5 + 2i
+×
+5−2i
+5−2i
+=
+−3(5−2i)−2(5−2i)
+24 + 4
+=
+−15 + 6i−10i−4
+29
+=
+−19−4i
+29
+=
+−19
+29
+−
+−4
+29
+i
+(e)
+−2 + 6i
+3i
+=
+−2 + 6i
+3i
+×
+i
+i
+=
+−2i+ 6i
+2
+3i
+2
+=
+−2i−6
+−3
+=
+−6
+−3
++
+−2i
+−3
+= 2 +
+2
+3i
+(i)
+5 + 10i
+2−i
+−
+40−20i
+3 +i
++
+20
+2 + 6i
+5 + 10i
+2−i
+=
+5 + 10i
+2−i
+×
+2 +i
+2 +i
+=
+10 + 20i+ 5i−10
+4 + 1
+=
+25i
+5
+= 5i.
+40−20i
+3 +i
+=
+40−20i
+3 +i
+×
+3−i
+3−i
+=
+120−40i−60i−20
+9 + 1
+=
+100−100i
+10
+= 10−10i,
+27
+
+20
+2 + 6i
+=
+20
+2 + 6i
+×
+2−6i
+2−6i
+=
+40−120i
+4 + 36
+=
+40−120i
+40
+= 1−3i,
+Therefore,
+5 + 10i
+2−i
+−
+40−20i
+3 +i
++
+20
+2 + 6i
+= 5i−(10−10i) + 1−3i
+= 5i−10 + 10i+ 1−3i
+= 12i−9
+=−9 + 12i.
+4.  (a)−4 + 7i.(c)Re(Z
+1
+−3
+z
+1
++z
+3
+) =−5.
+5.   (a)
+√
+−9 =
+√
+9×−1 = 3
+√
+−1 = 3i.
+(c)
+√
+(−81)×(−4) =
+√
+81×4 = 9×2 = 18.
+When applying the idea of multiplication of surds in complex numbers,
+apply it cautiously because some rules do not apply directly!
+For instance
+√
+−81×
+√
+−46=
+√
+(−81)(−4).
+(f)
+4 +
+√
+−36
+7−
+√
+−144
+=
+4 + 6i
+7−12i
+=
+4 + 6i
+7−12i
+×
+7 + 12i
+7 + 12i
+=
+28 + 48i+ 42i−72
+49 + 144
+=
+−44 + 90i
+193
+=
+−44
+193
++
+90i
+193
+.
+6.   (a)  Re(
+√
+5−i) =
+√
+5, Im(
+√
+5−i) =−1.
+(c)Re(3i) = 0, Im(3i) = 3.
+7.   (a)z= 2−2i,z= 2 + 2i.
+Thereforez= 2−2i=z.
+28
+
+(c)
+z×w=(2−2i)(3 + 7i
+=6 + 14i−6i+ 14
+=20 + 8i
+= 20−8i.
+z×w= (2 + 2i)(3−7i)
+= 6−14i+ 6i+ 14
+= 20−8i
+=
+z×w.
+8.   (a)x= 1 andy=
+7
+4
+.
+(c)x=−2 andy=−2.
+29
+
+Unit 3
+Set Theory
+3.1    Introduction
+1.  Asetis a well-defined collection of objects.
+2.  A set isfiniteof all of its elements can be counted, otherwise it isinfinite.
+3.  A set without elements is callednull set.
+4.  A setAis asubsetof setB,A⊂B, if all elements ofAare elements ofB.
+5.  SetsAandBare equal,A=B, if they have exactly the same elements.
+6.  Theuniversal set,ξ, is the set of all elements under consideration.
+7.  Thedifference set,A−B, has all elements inAwhich are not inB.
+8.  IfX⊂ξ, then thecomplementof setXis given byX
+′
+=ξ−X.
+9.  Theunionof two setsAandB,A∪B, is the set of all elements inAand
+all elements inBincluding those in bothAandB.
+10.  Theintersectionof setsAandB,A∩B, is the set of all elements common
+toAandB.
+11.  Thesymmetric differencebetween setsAandBis given by
+A4B= (A∪B)−(A∩B).
+30
+
+3.2    Practice Questions
+1.  State whether each of the following statement is true or false;
+(a)  For any setsAandB, (A∩B)⊂(A∪B).
+(b)  Letξbe  the  universal  set  andRany  set  such  thatR⊂ξ.   Then
+(R
+′
+)
+′
+=R.
+2.  LetA,BandCbe any sets.  Which of the following statements are true?
+(a)A−(B∩C) = (A−B)∪(A−C)
+(b)A−(B∪C) = (A−B)∩(A−C)
+3.  Identify each of the following sets as finite, infinite or empty.  ;
+(a){z|z∈N,0< z≤1000000}
+(b){a|a∈R,−1< a≤1}
+(c){p|p∈N,−10< p <−1}
+(d){y|y∈Z,−35≤y <1}
+(e){x∈Q|1≤x≤2}
+4.  Write each set in set builder notation;
+(a){1,3,5,...,17}
+(b){−7,−5,−3,−1,1,3,5,7,9}
+(c){25,36,49,64,81,100,121,}
+(d){12,15,18,21,24,27,30}
+(e){18,24,30,36,42,48}
+(f){...,−7,−6,−5,−4,−3,...}
+5.  Write each set in roster notation (list the actual elements);
+(a){x|xis an odd integer greater than 15}
+(b){a|a∈N,a≤10}
+(c){x|xis an even integer, 22< x≤23}
+(d){z|z∈W,−5≤z <6}
+(e){c:c∈N,2c+ 1 = 7}
+(f){x:x∈Z,2≤x≤6}
+31
+
+(g){y:y∈N,x≥12}
+(h){x:x∈N,x <5}
+(i){2n+ 1 :n∈Z}
+6.  In a class, 100 students take MAT111 or PHY111,48 students take MAT111
+and 62 students take PHY111, How many students take both MAT111 and
+PHY111?
+7.  In a school of 320 students,  85 students are in the band,  200 students are
+on sports teams, and 60 students participate in both activities.  How many
+students are involved in either band or sports?
+8.  IfAandBare subsets ofξ, simplify (A∪B)∩(A
+′
+∪B)∩(A∪B
+′
+).
+9.  Letξ={1,2,3,4,5,6},A={2,4,6},B={3,4,5}andC={1,6}.  Find
+(a)A
+′
+∩B
+′
+(b)  (A∪B)−C
+(c)  (C
+′
+)
+′
+(d)  [(A∩B)
+′
+∪C]
+′
+10.  LetX={2,3,4,5,6,7}, andY={3,5,7,9,11,13}.  Find
+(a)X−Y
+(b)Y−X
+(c)  (X−Y)∪(Y−X)
+(d)  (X−Y)∩(Y−X)
+11.  Let A ={x:xis a natural number between 8 and 20}, B ={x:xis an
+even number, 10≤x≤18}, andC={9,11,12,13,14,18}.  Find
+(a)A−B
+(b)C−A
+(c)C−B
+(d)A−C
+12.  LetR(real numbers) be the universal set.  Suppose thatA={x∈R: 0≤
+x <7}andB={x∈R: 4< x <10}.  WriteA−Bin set builder notation.
+13.  LetAandBbe any sets.  FindA4BandB4Afor the following pairs of
+sets;
+32
+
+(a)A={2,4,6,8,10}andB={0,2,5,7,8}
+(b)A={x|xis an old integer}andB={y|yis an even integer}
+(c)A={z|z∈N,Z≤25}andB={positive multiples of 4 less than 30}
+14.  Let X and Y be two finite sets such thatn(A) = 30,n(B) = 38 andn(A∪
+B) = 46.  Findn(A∩B)
+15.  Ifn(X−Y) = 20,n(X∪Y) = 85 andn(X∩Y) = 28.  Findn(Y)
+16.  In  a  group  of  28  people  15  cultivate  Kanyani  maize  variety,  12  cultivate
+Nkango maize variety, and 6 cultivate neither of the two varieties.
+(a)  How many cultivate both varieties?
+(b)  Draw  the  Venn  diagram  and  fill  in  the  number  of  people  in  all  four
+regions.
+17.  In a college of 40 students, 11 are intelligent, 15 are hard working, and 17
+are neither hard working nor intelligent.
+(a)  How many are hard working or intelligent?
+(b)  A  student  will  pass  if  and  only  if  the  student  is  intelligent  and  hard
+working.  How many will fail?
+18.  In a class of 50 students, 6 take both History and Geography, 10 take Geog-
+raphy and 8 do not take History.  How many take
+(a)  neither?
+(b)  History?
+(c)  Geography but not History?
+19.  In a group of 60 students, 25 play table tennis (T), 16 do swimming (S) and
+22 play cricket (C), 8 play T and do S, 6 play C and do S, 5 play T and C,
+and 12 students do not play any of these games.
+(a)  how many play all the three games?
+(b)  how many play T but not C?
+(c)  how many do not do S?
+(d)  how many play T and C only?
+(e)  how many do not play T and C?
+33
+
+20.  In a farm club, 32 people grow Maize, 36 grow Cassava, and 27 grow Beans.
+20  people  grow  both  Maize  and  Cassava,  12  people  grow  both  Maize  and
+Beans, 16 people grow both Cassava and Beans, and 7 people grow all the
+three crops.
+(a)  how many grow both Maize and Beans only?
+(b)  how many grow beans but Maize?
+(c)  how many grow both Maize and Cassava?
+3.3    Suggested Solutions to Selected Questions
+1  (a) The statement is true since (A∪B) contains all elements of the setAand
+all elements of the setB, whilst (A∩B) contains elements that are common
+to both setsAandB.  Therefore elements of (A∩B) are also in (A∪B).
+2  (a)A−(B∩C) = (A−B)∪(A−C) the statement is true, this is one of
+the laws of difference sets.
+3   (a)  The  set  is  finite  since  every  element  of  the  set  can  be  assigned  to  a
+counting number up to 1,000,000.
+(c)  This  set  is  a  null  set  since  there  are  no  counting  numbers  that  are
+negative.
+(e)  The set is infinite since the rational numbers in the given interval can
+be assigned counting numbers indefinitely.
+4   (a){x:xis an odd integer, 1≤x≤17}
+(c){a
+2
+:a∈Z,5≤a≤11}
+5   (a){17,19,21,23,...}
+(c)  This is an empty set.
+(e)
+2c+ 1 = 7⇒2c= 6⇒c= 3.
+Therefore the given set, in roster notation, is{3}.
+6  Refer to Figure??.
+Clearlyd= 0.c= 62−banda= 48−b.
+The total number of students is 100.  So
+(48−b) + (62−b) +b= 100⇒110−b= 100⇒b= 10.
+Hence 10 students take both subjects.
+34
+
+Figure 3.1:  Venn Diagrams for Questions 6 and 18
+8
+(A∪B)∩(A
+′
+∪B)∩(A∪B
+′
+) =B∩(A∪B
+′
+)
+= (B∩A)∪(B∩B
+′
+)
+= (A∩B)∪φ
+= (A∩B).
+10   (a)  (X−Y) ={2,4,6}
+(b)  (Y−X) ={9,11,13}
+(c)  (X−Y)∪(Y−X) ={2,4,6,9,11,13}
+(d)  (X−Y)∩(Y−X) ={}
+12A={x∈R: 0< x <7}andB={x|∈R,4< x <10}thenA−B={x∈
+R: 0≤x≤4}Note:  Set B contains real numbers greater than 4, those real
+numbers greater than 4 but less than 7 must be excluded to getA−B
+16   (a)  5 people cultivate both varieties.
+18  Refer to Figure??.
+b= 10−6 = 4.b+c= 8 givingc= 4.
+The total number of students is 50, so
+a+b+c+ 6 = 50⇒a+ 4 + 4 + 6 = 50⇒a+ 14 = 50⇒a= 36.
+Hence the final solutions are (a) 4 (b) 42 and (c) 4.
+35
+
+Unit 4
+Relations and Functions
+4.1    Introduction
+1.  Afunctionfrom setXto setY, is a relation which maps, to each element
+ofX, exactly one element ofY.
+2.  A function fromXtoYisone-to-oneif no two elements ofXare mapped
+to the same element ofY.
+3.  Theinverse,f
+−1
+, of a functionf, if it exists, is found by:
+(a)  replacingf(x) withy
+(b)  solving forx(makingxthe subject)
+(c)  replacingxwithf
+−1
+(x) andywithx.
+4.  The inverse of a functionfexists if and only iffis one-to-one.
+5.  We can add and subtract functions by collecting and simplifying like terms.
+6.  Functions can also be multiplied.  Division of functions is possible only if the
+denominator is non-zero.
+7.  Thecompositionof two functionsfandgis given byf◦g=f(g(x)).
+8.  For any invertible functionfwe havef
+−1
+(f(x)) =xandf(f
+−1
+(x)) =x.
+9.  Aneven  functionsatisfiesf(−x)  =f(x)  while  anodd  functionis  a
+functiongsuch thatg(−x) =−g(x).
+10.  Anexponential functiontakes the formf(x) =a
+x
+wherex∈R,ais a
+constant,a >0 anda6= 1.
+36
+
+11.  Alogarithmic functionis the functiong(x) = log
+a
+x, whereais a positive
+constant,a6= 1 andx∈R.
+12.Growth or decay formular:LetQ
+0
+be the value of the quantityQat time
+t= 0, that isQ
+0
+is the initial amount ofQ.  IfQchanges instantaneously at
+a rate proportional to its current value, then
+Q(t) =Q
+0
+e
+kt
+wherek >0 is the rate of growth ork <0 is the rate of decay ofQ.
+4.2    Practice Questions
+1.  State whether each of the following statements istrue or false.
+(a)  Every relation is a function.
+(b)  Every one-to-one function has an inverse.
+(c)  The relationR={(1,−1),(4,−2),(81,9),(81,−9),(36,−6)}represents
+a function.
+(d)  The  domain  of  (g◦f)(x)  consists  of  the  numbersxthat  are  in  the
+domain of bothgandf.
+(e)f
+−
+(f(x)) =x, wherexis in the domain off.
+(f)  The domain of the functionf(x) =
+x
+2
+−4
+x
+is{x|x6= 2}.
+(g)  Iffandgare inverse functions then the domain offis the same as the
+domain ofg.
+(h)  Ify= log
+a
+x, theny=a
+x
+.
+2.  Supposefandgare both even functions.  What can be said about each of
+the following functions?
+(a)f+g
+(b)f−g
+(c)fg
+(d)f/g?
+3.  Leth(x) = 4x
+3
++ 3x−17.  Find the image of−3.
+4.  Letf(x) =x. This is called anidentity function. Findf(12),f(−35),f(−5.78),f(90)
+andf(2/3).
+37
+
+5.  Letg(x) = 65.  (A function of the formf(x) =awherea∈Ris called a
+constant function.)  Findf(12),f(−35),f(−5.78),f(90) andf(2/3).
+6.  Given thatg(x) =x+2 andh(x) =x
+2
+−3, what value ofxsatisfiesg(h(x)) =
+h(g(x))?
+7.  Given the functionsf(x) = 2x+ 1 andg(x) = 1−3x, for what value ofxis
+f◦g
+−1
+=f
+−1
+◦g?
+8.  Given a functionf:x7→
+x+p
+x−3
+(x6= 3), wherep∈R,
+(a)  Find the value ofpiff(5) =
+3
+2
+.
+(b)  Findf
+−1
+(x).
+(c)  Show thatf(f
+−1
+(x)) =x.
+9.  Ifg(x) =x
+2
+−3xb−4 andg(1) =−2, findb.
+10.  Leth(t) = 7t−2t
+2
+.  Find the values oftwhose image is 5.
+11.  For the functionf(x) =ax
+2
++bx+c, wherea,bandcare constants,f(0) =
+4,f(−1) = 8 andf(−2) = 18.  Find the values ofa,bandc.
+12.  Letf(x) =x
+2
++x+ 1.  Iff(x) = 5, find the values ofx.
+13.  State the range ofg(x) =x
+2
++ 2.
+14.  Use the pair of functionsf(x) =x
+2
+andg(x) =
+√
+x+ 1 to find the domain
+of the function (f/g)(x).
+15.  What values ofxmust be excluded from the domain of
+(a)
+x−1
+2x
+2
+−x−3
+?
+(b)
+x+ 1
+x
+2
++x−2
+?
+(c)  3−
+2
+x+ 3
+?
+(d)
+√
+x−4
+3x
+2
+?
+(e)
+2x
+√
+2−x
+?
+(f)
+x−2
+2x−3
+?
+38
+
+16.fis the function add 2 then square,
+(a)  writefin the formf(x) =...
+(b)  findf(−4), andf(5)
+(c)  Iff(x) = 16 find the value ofx.
+17.  If the range of the functionf(x) = 1−
+2
+x
+is{−1,2,4}find its domain.
+18.  Givenf(x) =x
+2
+−xandg(x) = 2x−3.  Iff(p) +g(−p) = 1, find the value
+ofp.
+19.  Determine algebraically whether each of the following functions iseven, or
+oddorneither even nor odd.
+(a)f(x) = 3x
+2
+(b)f(x) =
+1
+x
+(x6= 0)
+(c)f(x) = 2x
+(d)f(x) =x
+4
+−5x
+2
+(e)g(x) =−x
+2
+−15
+(f)h(x) =
+−x
+5
+1
+2
+x
+4
+−7
+(g)f(x) =
+3
+√
+2x
+2
++ 1
+(h)f(x) =
+2x
+|x|
+(x6= 0
+20.  Findf(x) given the following;
+(a)f
+−1
+(x) = 2x−3
+(b)f
+−1
+(x) =
+x+ 3
+2
+21.  For the given functionsfandgfind the following (i) (f◦g)(4), (ii) (f◦f)(1),
+(iii) (g◦f)(−2) and (iv) (g◦g)(0).
+(a)f(x) = 2xandg(x) = 3x
+2
++ 1
+(b)f(x) = 2x
+2
+andg(x) = 1−3x
+2
+(c)f(x) =
+√
+xandg(x) = 2x
+39
+
+22.  State the domain of the composite (f◦g)(x) of the following functions,
+(a)f(x) =
+3
+x−1
+andg(x) =
+2
+x
+(b)f(x) =
+√
+xandg(x) = 2x+ 3
+(c)f(x) =x
+2
++ 4 andg(x) =
+√
+x−2
+23.  Verify that the functionsfandgare inverse of each other by showing that
+f(g(x)) =xandg(f(x)) =x.
+(a)f(x) = 3x+ 4 andg(x) =
+1
+3
+(x−4)
+(b)f(x) =x
+3
+−8 andg(x) =
+3
+√
+x+ 8
+(c)f(x) = 2x+ 6 andg(x) =
+1
+2
+x−3
+(d)f(x) =
+x−5
+2x+ 3
+andg(x) =
+3x+ 5
+1−2x
+24.  Find the inverse of each function.
+(a)f(x) = 2x−5
+(b)f(x) =
+2x−3
+x−5
+(x6= 5)
+(c)f(x) =
+x+ 1
+x−2
+(x6= 2)
+(d)f(x) =x
+2
++ 4
+(e)f(x) =x
+3
++ 1
+(f)f(x) =−
+3x+ 1
+x
+(g)f(x) =
+−3x−4
+x−2
+25.  Supposef(x) = 2
+x
+,
+(a)  What isf(4)?
+(b)  Iff(x) =
+1
+16
+, what isx?
+26.  Supposeh(x) = 3
+−x
+−2,
+(a)  What ish(−2)
+(b)  Ifh(x) =
+−13
+8
+, what isx?
+40
+
+27.  Supposeg(x) = 4
+x
++ 2,
+(a)  What isg(−1)?
+(b)  Ifg(x) = 66, what isx?
+28.  Determine whether the following relations represents a function;
+(a){(1,4),(2,5),(3,6),(4,7)}
+(b){(1,4),(2,4),(3,5),(6,10)}
+(c){(−3,9),(−2,4),(0,0),(1,1),(−3,8)}
+(d){(1,3),(2,3),(3,3),(4,3)}
+(e){(2,6),(−3,6),(2,9),(2,10)}
+(f){(−2,4),(−1,1),(0,0),(1,1)}
+29.  Given a functionf:x7→
+18
+cx+d
+(
+x6=−
+d
+c
+)
+;
+(a)  Find the values ofcanddiff(3) = 2 andf(−3) =−6.
+(b)  Findf
+−1
+(7).
+30.  Letf(x) =
+2x
+x−2
+.  Findf(f(x))−f
+−1
+(x).
+31.  Letg(x) = 3x−2 andh(x) =
+2
+x+ 1
+.
+(a)  Findh(g(x)),[g(h(x))]
+−1
+and the value ofxsuch thath(g(x)) =g(h(x)).
+(b)  Show that [g(h(x))]
+−1
+=h
+−1
+(g
+−1
+(x)).
+32.  State the domain of each of the following functions;
+(a)f(x) = ln(x−3)
+(b)f(x) = ln(x+ 5)
+(c)f(x) = 8 + 5 ln (2x+ 3)
+(d)h(x) = log
+5
+x
+3
+(e)h(x) = log
+3
+(
+x
+x−1
+)
+33.  Iff(x) = lnx,g(x) =e
+x
+andh(x) =x
+2
+, find each of the following;
+(a)  (f◦g)(x)
+41
+
+(b)  (g◦f)(x)
+(c)  (f◦g◦h)(3)
+(d)  (f◦h)(e)
+34.  For the given functionsfandg, find the following (f+g)(x),(fg)(−3),(gf)(−1),(
+f
+g
+)(x)
+and 2f(x)−3g(x).
+(a)f(x) = 3x+ 4,g(x) = 2x−3
+(b)f(x) =x−2),g(x) = 2x
+2
+(c)f(x) = 2x
+2
++ 3,g(x) = 4x
+3
++ 1
+(d)f(x) =
+√
+x+ 1,g(x) =
+2
+x
+35.  Iff(x) = 2x
+3
++Ax
+2
++ 4x−5 andf(2) = 5, findA
+36.  Iff(x) =
+3x+ 8
+2x−C
+andf(0) = 2, find C
+37.  For the two functions,f(x) andg(x), the table of values is shown below.
+x−2123
+f(x)−5302
+g(x)3−1−3−5
+Findf
+−1
+(0),f(g(−2)) +f(3),g(1)−g(f(1)),f(g
+−1
+(−3)),f
+−1
+(g
+−1
+(−5)).
+38.  Find the value ofain the following equation;
+(a)  (2x−1)
+(−3a−4)
+= 4x
+2
+−4x+ 1
+39.  Find the values of the following logarithms;
+(a)  log
+2
+(
+1
+8
+)
+(b)  log
+8
+4
+(c)  log
+4
+9
+(d)  log
+9
+27
+(e)  log
+2
+2
+√
+2
+(f)  log
+64
+8
+42
+
+40.  If  you  start  a  biology  experiment  with  5000000  cells  and  45  %  are  dying
+every minute, how long will it take to have about 1000 cells?
+41.  The half-life of carbon-14 is known to be 5720 years.  Doctor Frankenstein
+has  300  grams  of  carbon-14  in  his  experimental  laboratory.   If  untouched,
+how many of the 300 grams will remain after 1200 years?
+42.  The radioactive element polonium-210 has a half-life of 138 days.  If you have
+100 micrograms of polonium-210, how much will remain after 60 days?
+43.  Radium-226,  a  common  isotope  of  radium,  has  a  half-life  of  1620  years.
+Professor Korbel has a 120 gram sample of radium-226 in his laboratory.  a.)
+Find the constant of proportionality for radium-226.  b.)  How many grams
+of the 120 gram sample will remain after 100 years?
+44.  A certain strain of bacteria that is growing on your kitchen counter doubles
+every  5  minutes.   Assuming  that  you  start  with  only  one  bacterium,  how
+many bacteria could be present at the end of 96 minutes?
+4.3    Suggested Solutions to Selected Questions
+1.   (a)  The statement is false.  Check the definition of a function.
+(c)  The statement is false since the number 81 has two images−9 and 9.
+(e)  The statement is true.
+(g)  The statement is false.
+2.   (a)f+gis also an even function since the sum of two even function is also
+even.
+(b)f−gis neither even nor odd.
+(d)
+f
+g
+is also an even function since the quotient of two even functions is
+also even.
+4.(i)f(12) = 12
+(ii)f(−35) =−35
+5.(i)f(12) = 65
+(ii)f(−35) = 65
+43
+
+6.h(x) =x
+2
+−3,g(x) =x+ 2
+g(h(x)) =g(x
+2
+−3) = (x
+2
+−3) + 2 =x
+2
+−1
+h(g(x)) =h(x−2) = (x−2)
+2
+−3 =x
+2
+−4x+ 4−3 =x
+2
+−4x+ 1.
+x
+2
+−4x+ 1 =x
+2
+−1
+−4x+ 1 =−1
+−4x=−2
+x=
+1
+2
+Therefore, ifg(h(x)) =h(g(x)),x=
+1
+2
+.
+7.f(x) = 2x+ 1, g(x) = 1−3x
+f
+−1
+(x) =
+x−1
+2
+,
+g
+−1
+(x) =
+1−x
+3
+f◦g
+−1
+=f(g
+−1
+(x)) =f(
+1−x
+3
+) = 2(
+1−x
+3
++ 1 =
+2
+3
+−
+2x
+3
++ 1 =
+5
+3
+−
+2x
+3
+f
+−1
+◦g=f
+−1
+(g(x)) =f
+−1
+(1−3x) =
+1−3x−1
+2
+=
+−3x
+2
+Therefore,
+5
+3
+−
+2x
+3
+=
+−3x
+2
+10−4x=−9x
+10 =−9x+ 4x
+10 =−5x
+x=
+−10
+5
+=−2.
+9.g(1) = 5 from the functiong(1) = 1
+2
+−3(1)b−4 = 1−4−3b=−3−3b
+Then
+−3−3b= 5
+44
+
+−3b= 5 + 3 = 8
+b=
+−8
+3
+.
+10.h(t) = 4
+Then
+7t−2t
+2
+= 54
+2t
+2
+−7t+ 5 = 0
+(2t−5)(t−1) = 0
+t=
+5
+2
+ort= 1.
+13.  The  range  ofg(x)  =x
+2
++ 2  is  (2,∞)  since  for  all  valuesxof  the  domain
+g(x)≥2.
+14.  The domain offisRand the domain ofgis{x:x≥−1}.
+Therefore the domain of
+f
+g
+is{x:x >−1}.
+15.   (a)  Exclude the values that will make the denominator equal to zero , i.e
+x=−1 andx=
+3
+2
+.
+(c)  The valuex=−3 must be excluded since it will make the denominator
+equal to zero hence making the function to be undefined a that point.
+16.   (a)f(x) = (x+ 2)
+2
+.
+(b)f(−4) = (−4 + 2)
+2
+= (−2)
+2
+= 4,f(5) = (5 + 2)
+2
+= 7
+2
+= 49.
+(c)f(x) = 16,
+Then
+(x+ 2)
+2
+= 16
+x
+2
++ 4x+ 4 = 16
+x
+2
++ 4x−12 = 0
+(x−2)(x+ 6) = 0
+45
+
+x= 6 orx=−2.
+17.f(x) = 1−
+2
+x
+, Range ={-1, 2, 4}
+forf(x) =−1,
+1−
+2
+x
+=−1
+−2
+x
+=−2
+x= 1
+forf(x) = 2,
+1−
+2
+x
+= 2
+−2
+x
+= 1
+x=−2
+forf(x) = 4,
+1−
+2
+x
+= 4
+−2
+x
+= 3
+x=
+−2
+3
+Therefore, the domain ={1,2,
+−2
+3
+}.
+19.   (a)f(−x) = 3(−x)
+2
+= 3x
+2
+=f(x), and thereforef(x) is an even function.
+(c)f(−x) = 2(−x) =−2x=−f(x).
+Therefore the functionf(x) = 2xis an odd function.
+46
+
+(e)g(x) =−x
+2
+−15,g(−x) =−(−x)
+2
+−15 =−x
+2
+−15 =f(x).
+Therefore the functionf(x) =−x
+2
+−15 is an even function.
+(g)f(x) =
+3
+√
+2x
+2
++ 1,f(−x) =
+3
+√
+2(−x)
+2
++ 1 =
+3
+√
+2x
+2
++ 1 =f(x).
+Hence,f(x) =
+3
+√
+2x
+2
++ 1 is an even function.
+20.f
+−1
+= 2x−3.  We need to find the functionf(x).
+Letf
+−1
+(x) =y, theny= 2x−3.  interchanging variables and then making
+ysubject,
+x= 2y−3⇒x+ 3 = 2y⇒y=
+x+ 3
+2
+.
+Therefore,f(x) =
+x+ 3
+2
+.  (Note that (f
+−1
+)
+−1
+=f(x)).
+21.f(x) = 2xandg(x) = 3x
+2
++ 1
+(a)   (i)  (f◦g)(4) =f(g(4) =f(3(4)
+2
++ 1) =f(48 + 1) =f(98).
+(ii)  (f◦f)(1) =f(f(1)) =f(2(1)) =f(2) = 2(2) = 4.
+(iii)  (g◦f)(−2) =g(f(−2)) =g(2(−2)) =g(−4) = 3(−4)
+2
++1 = 3(16)+1
+= 48 + 1 = 49.
+(iv)  (g◦g)(0) =g(g(0)) =g(g(0)) =g(1) = 3(1)
+2
++ 1 = 3 + 1 = 4.
+22.   (a)f(x) =
+3
+x−1
+, andg(x) =
+2
+x
+.
+f(g(x)) =f(
+2
+x
+) =
+3
+2
+x
+−1
+=
+3x
+2−x
+.
+Therefore, the domain off(g(x) is{x:x6= 2 andx6= 0}, that is we
+exclude the valuex=  2 because the composite function is undefined
+atx=  2  and  we  exclude  the  valuex=  0  because  the  functiongis
+undefined atx= 0.
+23.   (a)f(x) = 3x+ 4,g(x) =
+1
+3
+(x−4), required to show that the two functions
+are inverses of one another.
+f(g(x)) =f(
+1
+3
+(x−4)
+= 3(
+1
+3
+(x−4)) + 4
+= (x−4 + 4)
+=x.
+47
+
+and
+g(f(x)) =g(3x+ 4)
+=
+1
+3
+(3x+ 4−4)
+=
+1
+3
+(3x)
+=x.
+Hencef(x) andg(x) are inverses of one another.
+24.   (a)f(x) = 2x−5, required to findf
+−1
+(x).
+Lety= 2x−5.  Interchanging the variables and makingysubject, we
+have
+x= 2y−5⇒2y=x+ 5⇒y=
+x+ 5
+2
+.
+Therefore,f
+−1
+(x) =
+x+ 5
+2
+.
+cf(x) =
+x+ 1
+x−2
+(x6= 2), required:f
+−1
+(x).
+Lety=
+x+ 1
+x−2
+.  Interchanging variables and making y the subject:
+x=
+y+ 1
+y−2
+,
+x(y−2) = (y+ 1),
+xy−2x=y+ 1,
+xy−y= 1 + 2x,
+y(x−1) = 1 + 2x,
+y=
+1 + 2x
+x−1
+.
+Therefore,f
+−1
+(x) =
+1 + 2x
+x−1
+x6= 1.
+25.f(x) = 2
+x
+.
+(a)  To find the value off(4)
+f(4) = 2
+4
+= 16.
+(b)  Iff(x) =
+1
+16
+, required to findx
+2
+x
+=
+1
+16
+48
+
+2
+x
+= 16
+−1
+2
+x
+= 2
+−4
+x=−4.
+28.   (a)  The relation is a function because every member of the domain has a
+unique image.
+(c)  The relation is not a function because the element−3 in the domain
+has two images 8 and 9.
+30.f(x) =
+2x
+x−2
+, requiredf(f(x))−f
+−1
+(x)
+Lety=
+2x
+x−2
+.  Then
+x=
+2y
+y−2
+yx−2x= 2y
+yx−2y= 2x
+y(x−2) = 2x
+y=
+2x
+x−2
+Therefore,f
+−1
+(x) =
+2x
+x−2
+f(f(x)) =f
+(
+2x
+x−2
+)
+=
+2
+(
+2x
+x−2
+)
+2x
+x−2
+−2
+=
+4x
+x−2
+×
+x−2
+2x−2x+ 4
+=
+4x
+4
+=x
+Therefore,
+f(f(x))−f
+−1
+(x) =x−
+2x
+x−2
+=
+x(x−2)−2x
+x−2
+=
+x
+2
+−2x−2x
+x−2
+=
+x
+2
+−4x
+x−2
+.
+32.   (a){x:x >3}.
+(d)x >0.
+33.f(x) = lnx,g(x) =e
+x
+andh(x) =x
+2
+.
+49
+
+(a)  (g◦g)(x) =f(g(x)) =f(e
+x
+) = ln(e
+x
+) =x.
+(c)  (f◦g◦h)(3) =f(g(h(x))) =f(g(3
+2
+)) =f(g(9)) =f(e
+9
+) =In(e
+9
+) = 9.
+34.   (a)f(x) = 3x+ 4,,g(x) = 2x−3.
+(i)  (f+g)(x) = 3x+ 4 + 2x−3 = 5x+ 1.
+(ii)  (fg)(−3) =f(3)×g(3) = (3(−3) + 4)(2(−3)−3) = (−2−3)(−3 + 4) =
+(−9 + 4)(−6−3) = (−5)(−9) =−45.
+(iii)  (gf)(−1) =g(−1)f(−1) = (2(−1)−3)(3(−1)+4) = (−2−3)(−3+4) =
+(−5)(−1) =−5.
+(iv)  (
+f
+g
+)(x) =
+f(x)
+g(x)
+=
+3x+ 4
+2x−3
+.
+(v)  2f(x)−3f(x) = 2(3x+ 4)−3(2x−3) = 6x+ 8−6x+ 9 = 17.
+37.  Referring to the table on item 37.
+(i)f
+−1
+(0) = 2.
+(ii)f(g(−2)) +f(−3) =f(3) +f(3) = 2f(3) = 2(2) = 4.
+(iii)g(1)−g(f(1)) =−1−g(3) =−1−(−5) =−1 + 5 = 4.
+(iv)f(g
+−1
+(−3) =f(2) =−3.
+(v)f
+−1
+(g
+−1
+(−5)) =f
+−1
+(3) = 1.
+38.  (2x−1)
+−3x−4
+= 4x
+2
+−4x+ 1
+(2x−1)
+−3a−4
+= 4x
+2
+−2x−2x+ 1
+(2x−1)
+−3a−4
+= (2x−1)
+2
+Therefore,−3a−4 = 2a=−2 Since the bases are equal.
+41.Q
+t
+= 259.4029 grams.
+42.Q
+t
+= 73.9805.
+43.  (a)k=−0.00042786.  (b)Q
+t
+= 114.974 grams.
+44.Q
+t
+= 602,248.7625.bacteria
+50
+
+Unit 5
+Graphs of Linear, Exponential
+and Logarithmic Functions
+5.1    Introduction
+1.  Thedistancebetween points (x
+1
+,y
+1
+) and (x
+2
+,y
+2
+) is
+√
+(x
+1
+−x
+2
+)
+2
++ (y
+1
+−y
+2
+)
+2
+.
+2.  Themid-pointof  the  straight  line  joining  (x
+1
+,y
+1
+)  and  (x
+2
+,y
+2
+)  has  co-
+ordinates
+(
+x
+1
++x
+2
+2
+,
+y
+1
++y
+2
+2
+)
+.
+3.  Theslopeof the straight line which passes through (x
+1
+,y
+1
+) and (x
+2
+,y
+2
+) is
+m=
+y
+1
+−y
+2
+x
+1
+−x
+2
+.
+4.  Theequation of a straight linetakes the formy=mx+cwheremis
+the slope andcis they-intercept.
+5.y=mx+ccan be transformed to thegeneral formax+by+c= 0 where
+a,b,c∈R.
+6.  The equation of a straight line which passes through (x
+1
+,y
+1
+) and has slope
+misy=mx+ (y
+1
+−mx
+1
+).
+7.  The equation of a straight line which passes through (x
+1
+,y
+1
+) and (x
+2
+,y
+2
+) is
+y−y
+1
+x−x
+1
+=
+y
+2
+−y
+1
+x
+2
+−x
+1
+.
+8.  The equations of ahorizontal lineand avertical linearey=bandx=a
+respectively wherea,b∈R.
+9.  Two straight lines areparallelif and only if they have the same slope.
+51
+
+10.  Two  straight  lines  areperpendicularif  and  only  if  the  product  of  their
+slopes is−1.
+5.2    Practice Questions
+1.  Evaluate the distance between the given points.
+(a)P(−2,4) andQ(−2,8)(b)X(5,−6) andY(−12,−6)
+(c)L(1,0) andM(−4,8)(d)A(5,−4) andB(14,14)
+(e)C(9,−5) andD(−3.5,3)(f)V(0,0) andW(7,−14)
+2.  The distance between two pointsA(a,6) andB(−2,4) is 9 units.  Find the
+possible values ofa.
+3.  The distance between two pointsX(−1,2b) andY(8,(3b−1)) is 12 units.
+Find the possible values ofb.
+4.  Find the mid-point of the line segment joining the following points.
+(a)P(−2,4) andQ(−2,8)(b)X(5,−6) andY(−12,−6)
+(c)L(1,0) andM(−4,8)(d)A(5,−4) andB(14,14)
+(e)C(9,−5) andD(−3.5,3)(f)V(0,0) andW(7,−14)
+5.  The mid-point of the line segment joining the pointsA(−2,5) and (a,−5) is
+(8,4b+ 1) find the values ofaandb.
+6.  Calculate the gradient of the line segment joining the following points.
+(a)P(−2,4) andQ(−2,8)(b)X(5,−6) andY(−12,−6)
+(c)L(1,0) andM(−4,8)(d)A(5,−4) andB(14,14)
+(e)C(9,−5) andD(−3.5,3)(f)V(0,0) andW(7,−14)
+7.  Find the equation of the line passing through the given points.
+(a)P(−2,4) andQ(−2,8)(b)X(5,−6) andY(−12,−6)
+(c)L(1,0) andM(−4,8)(d)A(5,−4) andB(14,14)
+(e)C(9,−5) andD(−3.5,3)(f)V(0,0) andW(7,−14)
+8.  Find the equation of a straight line whose gradient and the point through
+which the line passes are given.
+(a)m= 2 andP(−3,7)(b)m=−5 andP(0,−1)
+52
+
+(c)m=
+−1
+3
+andP(12,−9)(d)m= 4 andP(9,6)
+9.  Discuss whether the following pairs of lines are perpendicular or not.
+(a)  2y= 4x−5 and 6y=
+1
+3
+x+ 4
+(b)
+1
+2
+y+ 3x+ 4 = 0 and 6y−x−10 = 0
+(c)−x+y=−7 and−y=x+ 12
+(d)
+−x−y
+2
+= 6 andx=y+ 2
+10.  The liney=
+1
+2
+x+ 7 is perpendicular to the linelwhich passes through the
+point (−2,5).  Find the equation of the linel.
+11.  Discuss whether the following pairs of lines are parallel or not.
+(a)
+1
+4
+y+
+1
+2
+x+ 4 = 0 and 6y+ 12x−5 = 0
+(b)−x+y=−7 and 2y= 2x+ 12
+(c)  5x−7y= 35 andy=
+5
+7
+x+
+2
+7
+12.  Find the equation of a straight line parallel to the line 2y=−4x−7 which
+passes through the point (−2,1).
+13.  Draw graphs of the following functions
+(a)y=−2x−5(b) 2x+ 3y= 12
+(c)  4x−3y= 24(d)y= 2
+x
+(e)y= 3
+−3
+(f)y= 1.4
+x
+(g)y= ln(x−1)(h) ln(2x)
+(i)y= log(x−2)(j)y=e
+2x
+(k)y= log(x+ 3)
+5.3    Suggested Solutions to Selected Questions
+1.  Finding the distance between the two given points.
+53
+
+(a)P(−2,4) andQ(−2,8)
+PQ=
+√
+(−2−(−2))
+2
++ (8−4)
+2
+=
+√
+0 + 4
+2
+=
+√
+16
+= 4
+ThereforePQ= 4 units.
+(c)L(1,0) andM(−4,8)
+LM=
+√
+(−2−1)
+2
++ (8−0)
+2
+=
+√
+(−5)
+2
++ 8
+2
+=
+√
+25 + 64
+=
+√
+89
+ThereforeLM=
+√
+89 units.
+(e)C(9,−5) andD(−3.5,3)
+CD=
+√
+(−3.5−9)
+2
++ (3−(−5))
+2
+=
+√
+(−12.5)
+2
++ 8
+2
+=
+√
+156.25 + 64
+=
+√
+220.25
+ThereforeCD=
+√
+220.25 units.
+2.  The line passes through the pointsA(a,6) andB(−2,4) and has length 9
+units.  Required:  the value ofa.
+AB=
+√
+(−2−a)
+2
++ (4−6)
+2
+= 9
+(−2−a)
+2
++ (−2)
+2
+= 81
+(−2−a)
+2
++ 4 = 81
+(−2−a)
+2
+= 81−4
+(−2−a)
+2
+= 77
+−2−1 =±
+√
+77
+−a= 2±
+√
+77
+a=−2±
+√
+77.
+54
+
+4.   (a)M
+P Q
+=
+(
+−2 + (−2)
+2
+,
+8 + 4
+2
+)
+=
+(
+−4
+2
+,
+12
+2
+)
+= (−2,6).
+(c)M
+LM
+=
+(
+1 + (−4)
+2
+,
+0 + 8
+2
+)
+=
+(
+−3
+2
+,
+8
+2
+)
+=
+(
+−3
+2
+,4
+)
+.
+(e)M
+CD
+=
+(
+9 + (−3.5)
+2
+,
+−5 + 3
+2
+)
+=
+(
+5.5
+2
+,
+−2
+2
+)
+=
+(
+5.5
+2
+,−1
+)
+.
+5.  The line passes through the pointsA(−2,5) and (a,−5) and has mid-point
+(8,4b+ 1).  Required:  the values of b.
+M
+AB
+=
+(
+−2 +a)
+2
+,
+−5 + 5
+2
+)
+= (8,4b+ 1)
+−2 +a
+2
+= 8
+−2 +a= 16
+a= 18.
+0 = 4b+ 1
+4b=−1
+b=−
+1
+4
+6.   (a)P(−2,4)  andQ(−2,8).m
+P Q
+=
+8−4
+−2−(−2)
+=
+4
+0
+(undefined).   This
+implies that the straight line is vertical.
+(c)L(1,0) andM(−4,8).m
+LM
+=
+8−0
+−4−1
+=
+8
+−5
+.
+(e)C(9,−5) andD(−3.5,3).
+m
+CD
+=
+3−(−5)
+−3.5−9
+=
+8
+−12.5
+= 8÷
+−25
+2
+= 8×
+2
+25
+=
+16
+25
+.
+7.   (a)P(−2,4) andQ(−2,8).  From 6(a) the line is vertical.  Therefore,  its
+equation has only the variablexand the equation isx=−2.
+(c)L(1,0) andM(−4,8).  From 6 (c),m=
+8
+−5
+.
+55
+
+Using the point (x
+1
+,y
+1
+) = (1,0) the equation is
+y=m(x−x
+1
+) +y
+1
+y=
+−8
+5
+(x−1) + 0
+y=
+−8
+5
+x+
+8
+5
+.
+(e)C(9,−5) andD(−3.5,3).  From Question 6(e)m=
+16
+25
+.
+Using the point (x
+1
+,y
+1
+) = (9,−5), the equation is
+y=m(x−x
+1
+) +y
+1
+y=
+16
+25
+(x−9)−5
+y=
+16
+25
+x−
+−144
+25
+−5
+y=
+16
+25
+x−
+269
+25
+.
+8.   (a)m= 2,P(−3,7)
+y=m(x−x
+1
+) +y
+1
+= 2(x+ 3) + 7
+= 2x+ 6 + 7
+= 2x+ 13.
+(c)m=
+−1
+3
+,P(12,−9)
+y=m(x−x
+1
+) +y
+1
+=
+−1
+3
+(x−12)−9
+=
+−1
+3
+x+ 4−9
+=
+−1
+3
+x−5.
+9.   (a)  For 2y= 4x−5, y= 2x−
+5
+2
+givingm
+1
+= 2.
+For 6y=
+1
+3
++ 4,y=
+1
+18
+x+
+2
+3
+givingm
+2
+=
+1
+18
+.
+m
+1
+×m
+2
+= 2×
+1
+18
+=
+2
+18
+=
+1
+9
+6=−1.
+Therefore the two lines are not perpendicular.
+56
+
+(c)−x+y=−7⇒y=x−7 givingm
+1
+= 1.
+y=x+ 12⇒y=−x−12 givingm
+2
+=−1.
+m
+2
+×m
+1
+= 1×−1 =−1.
+Therefore the lines are perpendicular.
+10.  Required:  To find the line perpendicular toy=
+1
+2
+x+ 7 and passing through
+the point (−2,5).
+Let the required line beland its gradient bem
+2
+.  Then
+m
+2
+×
+1
+2
+=−1⇒m
+2
+=−2.
+Therefore
+y=−2(x−x
+1
+) +y
+1
+=−2(x−(−2)) + 5
+=−2x−4 + 5
+=−2x+ 1.
+11.   (a)
+1
+4
+y+
+1
+2
+x+ 4 = 0⇒y=−2x−16 givingm
+1
+=−2.
+6y+ 12x−5 = 0⇒y=−2x+
+5
+6
+givingm
+2
+=−2.
+Since  the  two  gradients  are  equal,  the  two  lines  are  parallel  to  each
+other.
+57
+
+Unit 6
+Systems of Linear Equations and
+Quadratic Equations
+6.1    Introduction
+1.  To solve a system of three linear equations in three variables usingsubsti-
+tution method:
+•choose one equation and solve for one variable in it
+•substitute into other equations
+•solve the resulting system of two linear equations in two unknowns
+•substitute  the  two  variables  in  any  equation  to  find  the  value  of  the
+third variable.
+2.  Two systems of linear equations areequivalentif they have the same solu-
+tion set.
+3.  Thecompleted square formof the quadratic equationax
+2
++bx+c= 0 is
+a(x+d)
+2
++e= 0 whered=
+b
+2a
+ande=c−
+b
+2
+4a
+.
+4.  The formulax=
+−b±
+√
+b
+2
+−4ac
+2a
+gives solution(s) to the quadratic equation
+ax
+2
++bc+c= 0.
+5.  In the quadratic formulax=
+−b±
+√
+b
+2
+−4ac
+2a
+, the numberb
+2
+−4acis called
+thediscriminantand is used to determine the nature of solutions to the
+equationax
+2
++bx+c= 0 as follows:
+58
+
+•b
+2
+−4ac >0:  the equation has two distinct real roots.
+•b
+2
+−4ac= 0:  the equation has one repeated real root.
+•b
+2
+−4ac <0; the equation has no real roots.  Instead it has two complex
+roots which are conjugate to each other.
+6.  Themaximum valueofax
+2
++bx+cisc−
+b
+2
+4a
+and is obtained whena <0
+andx=−
+b
+2a
+.
+7.  Theminimum valueofax
+2
++bx+cisc−
+b
+2
+4a
+and is obtained whena >0
+andx=−
+b
+2a
+.
+6.2    Practice Questions
+1.  Solve the following quadratic equations by the factor method.
+(a)  (x−2)(x−6) =−3(b)−3x
+2
+−9 =−12x(c)x
+2
+= 4x
+(d)  2y
+2
++ 4−9y= 0(e)x
+2
++ 9x+ 18 = 0(f)x
+2
+−3x−10 = 0
+(g)  2x
+2
+−10x−28 = 0(h)x
+2
++ 50 =−15x(i)a
+2
+= 36
+(j)  2x
+2
++ 3x−2 = 0
+2.  Solve the following quadratic equations using the quadratic formula.
+(a)x
+2
++ 2x−8 = 0(b)x
+2
+−12x+ 16 = 0(c) 2x
+2
+=−7x−3
+(d)  2x
+2
+−8x+ 5 = 0(e) 2x
+2
++ 9x−5 = 0(f) 5x
+2
+−21x+ 2 = 0
+(g)  2−x= 3x
+2
+(h) 3−
+5
+2
+x−3x
+2
+= 0(i)−5x
+2
++ 7x+ 9 = 0
+(j)  12 + 11x−15x
+2
+= 0
+3.  Solve the following quadratic equations by completing the square.
+(a)x
+2
++ 6x+ 3 = 0(b) 2x
+2
++ 2x= 1(c) 5x
+2
+−6x−8 = 0
+(d)x
+2
+−5x−5 = 0(e) 3x
+2
+−10x+ 5 = 0(f)x
+2
++ 2x−8 = 0
+(g)−5x
+2
+−2x=−2(h)x
+2
+= 4x−4(i)x
+2
++ 3x+ 1 = 0
+(j)  2x
+2
+−6x= 20
+59
+
+4.bandcin the quadratic equationx
+2
++bx+c= 0 are real numbers.  Find
+the values ofbandcso that the given equation has solutions ,x=
+−1
+4
+and
+x=
+1
+2
+5.  Find all values ofmfor which the quadratic equationx
+2
++ 2x−2m= 0 has
+no real solutions.
+6.  Find all values ofmfor which the quadratic equation 2x
+2
++ 3x−m+ 2 = 0
+has two distinct roots.
+7.  Find all values ofmfor which the quadratic equationx
+2
++−mx+ 4 = 0 has
+real and equal roots.
+8.  If one of the roots of the quadratic equationx
+2
++mx+ 24 = 0 is 1.5, then
+what is the value of m?
+9.  State  the  type  of  roots  for  each  of  the  following  quadratic  equations,  i.e.,
+repeated (equal) roots, distinct roots or no real roots (complex roots).
+(a)  2x
+2
++ 4x+ 3 = 0(b) 4x
+2
+−20x+ 25 = 0(c) 2x
+2
++ 8x+ 5 = 0
+(d)  4x
+2
+−48 = 16(e)−3x
+2
+−5x= 3(f)−3x
+2
++ 6x=−1
+(g)  3x
+2
++ 6x= 0
+10.  If the equationx
+2
++ 3 =t(x+ 1) does not have real roots, find the range of
+values oft.
+11.  The equationx
+2
+−(r+ 2)x+ (1 + 3r) = 0 has equal roots.  Find the possible
+values ofr.
+12.  For what values ofpdoes the equationx
+2
+−px+ 25 = 0 have equal roots?
+13.  Show that the equationm
+2
+x
+2
++mx+ 1 = 0 can never have real roots.
+14.  If the equationx
+2
+−2kx+ 3k+ 4 = 0 has equal roots, find the possible values
+ofkand solve the two equations.
+15.  Show that the equation (n+ 3)x
+2
++ (2n+ 5)x+ (n+ 2) = 0 has real roots
+for all values ofn.
+16.  Solve the following systems of linear equations by using substitution method.
+(a)
+
+
+
+
+
+−3x+ 2y+−6z= 6,
+5x+ 7y−5z= 6,
+x+ 4y−2z= 8.
+(b)
+
+
+
+
+
+4x−3y+z=−10
+2x+y+ 3z= 0
+−x+ 2y−5z= 17
+(c)
+
+
+
+
+
+2x+y+ 3z= 1,
+2x+ 6y+ 8z= 3,
+6x+ 8y+ 18z= 5.
+60
+
+(d)
+
+
+
+
+
+2x−y+z= 10
+3x−2y−2z= 7
+x−3y−2z= 10
+(e)
+
+
+
+
+
+7x+ 5y−3z= 16
+3x−5y+ 2z=−8
+5x+ 3y−7z= 0
+(f)
+
+
+
+
+
+x+ 2y−z= 4
+2x+y+z=−2
+x+ 2y+z= 2
+(g)
+
+
+
+
+
+x−2y+ 3z= 7,
+2x+y+z= 4,
+−3x+ 2y−2z=−10.
+17.  Solve the following systems of linear equations by using elimination method.
+(a)
+
+
+
+
+
+x−2y+z= 0
+2x+ 3y−z= 16
+3x−y−3z= 23
+(b)
+
+
+
+
+
+x+y+z= 5
+2x−y+z= 9
+x−2y+ 3z= 16
+(c)
+
+
+
+
+
+x−3y+ 2z=−11
+2x−4y+ 3z=−15
+3x−5y−4z= 5
+d
+
+
+
+
+
+2x−3y+z=−9
+−2x+y−3z= 7
+x−y+ 2z=−5
+(e)
+
+
+
+
+
+3x−4y+z= 19
+2x+ 4y+z= 0
+x−2y+ 5z= 17
+(f)
+
+
+
+
+
+2x−5y+ 2z= 16
+3x+ 2y−3z=−19
+4x−3y+ 4z= 18
+(g)
+
+
+
+
+
+−2x+ 3y−4z= 3
+3x−5y+ 2z= 4
+−4x+ 2y−3z= 0
+6.3    Suggested Solutions to Selected Questions
+1.  Required to solve the given equations using factor method.
+(a)  (x−2)(x−6) =−3.
+x(x−6)−2(x−6) =−3
+x
+2
+−6x−2x+ 12 =−3
+x
+2
+−8x+ 12 + 3 = 0
+x
+2
+−8x+ 15 = 0
+x
+2
+−3x−5x+ 15 = 0
+(x−3)(x−5) = 0
+eitherx−3 = 0 ,x= 3
+orx−5 = 0 ,x= 5.
+Therefore the solutions to the equation are :x= 3 andx= 5.
+(b)x=−3 andx=−1
+61
+
+(c)x
+2
+= 4x
+x
+2
+−4x= 0
+x(x−4) = 0
+Hencex= 0 andx= 4.
+(d)y= 0.5 andy= 4.
+(e)x
+2
++ 9x+ 8
+x
+2
++ 6x+ 3x+ 18 = 0
+x(x+ 6) + 3(x+ 6) = 0
+(x+ 3)(x+ 6) = 0
+x=−3 andx=−6.
+(f)  Eitherx=−2 orx= 5
+(g)  Eitherx=−2 orx= 7
+(h)  Eitherx=−10 orx=−5
+(i)  Eitherx=−6 orx= 6
+(j)  Eitherx=−2 orx=
+1
+2
+2.  Solving the given equations using the quadratic formula.
+(a)x
+2
++ 2x−8 = 0.a= 1,b= 2 andc=−8.
+x=
+−2±
+√
+(2)
+2
+−2(1)(−8)
+2(1)
+=
+−2±
+√
+4 + 32
+2
+=
+−2±
+√
+36
+2
+=
+−2±6
+2
+Hencex=
+−2 + 6
+2
+=
+4
+2
+= 2 andx=
+−2−6
+2
+=
+−8
+2
+=−4.
+(b)x= 6−2
+√
+5 andx= 6 +
+√
+5.
+62
+
+(c)x
+2
+=−7x−3.  Rearranging we have, 2x
+2
++ 7x+ 3 = 0.a= 2,b= 7 and
+c= 3.
+x=
+−7±
+√
+7
+2
+−4(2)(3)
+2(2)
+=
+−7±
+√
+49−24
+4
+=
+−7±
+√
+25
+4
+=
+−7±5
+4
+Hencex=
+−7 + 5
+4
+=
+−2
+4
+=
+−1
+2
+andx=
+−7−5
+4
+=
+−12
+4
+=−3.
+(d)  2x
+2
+−8x+ 5 = 0.  Herea= 2,b=−8 andc= 5.
+Therefore
+x=
+−8±
+√
+(−8)
+2
+−4(2)(5)
+2(2)
+=
+8 +±
+√
+64−40
+4
+=
+8±
+√
+24
+4
+=
+8±2
+√
+6
+4
+=
+4±
+√
+6
+2
+Hencex=
+4 +
+√
+6
+4
+andx=
+4−
+√
+6
+4
+.
+(e)  Eitherx=−5 orx= 0.5
+(f)  Eitherx=
+−
+√
+401 + 21
+10
+orx=
+√
+401 + 21
+10
+(g)  Eitherx=−1 orx=
+2
+3
+(h)  Eitherx=−
+3
+2
+orx=
+2
+3
+(i)  Eitherx=
+7−
+√
+229
+10
+orx=
+7 +
+√
+229
+10
+(j)  Eitherx=
+−3
+5
+orx=
+4
+3
+63
+
+3.  Solving the given equations by completing the square.
+(a)x
+2
++ 6x+ 3 = 0,
+x
+2
++ 6x+ 3
+2
+=−3 + 3
+2
+x
+2
++ 6x+ 9 =−3 + 9
+x
+2
++ 6x+ 9 = 6
+Factorising the left hand side:  (x+ 3)
+2
+= 6.
+Taking square roots both sides:
+√
+(x+ 3)
+2
+=
+√
+6⇒x+ 3 =±
+√
+6.
+Hencex=−3 +
+√
+6 andx=−3−
+√
+6.
+(b)  2x
+2
++ 2x= 1.  Dividing both sides by 2, we have,
+2x
+2
++ 2x
+2
+=
+1
+2
+⇒x
+2
++x=
+1
+2
+.
+Therefore
+x
+2
++x+
+(
+1
+2
+)
+2
+=
+1
+2
++
+(
+1
+2
+)
+2
+x
+2
++x+
+1
+4
+=
+1
+2
++
+1
+4
+x
+2
++x+
+1
+4
+=
+2 + 1
+4
+x
+2
++x+
+1
+4
+=
+3
+4
+Factorising the left side:
+(
+x+
+1
+2
+)
+2
+=
+3
+4
+.
+Taking square roots both sides:x+
+1
+2
+=±
+√
+3
+4
+⇒x+
+1
+2
+=±
+√
+3
+2
+.
+Hencex=−
+1
+2
++
+√
+3
+2
+=
+−1 +
+√
+3
+2
+andx=−
+1
+2
++
+√
+3
+2
+=
+−1−
+√
+3
+2
+.
+(c)x= 2 andx=−
+4
+5
+.
+(d)  Eitherx=
+5−3
+√
+5
+2
+orx=
+5 + 3
+√
+5
+2
+.
+(e)  Eitherx=
+5−
+√
+10
+3
+orx=
+5 +
+√
+10
+3
+.
+(f)  Eitherx=−4 orx= 2 .
+64
+
+(g)  Eitherx=−
+√
+11−1
+5
+orx=
+√
+11−1
+5
+.
+(h)  Eitherx= 2 orx= 2.
+(i)  Eitherx=
+√
+5−3
+2
+orx=
+√
+5−3
+2
+.
+(j)  Eitherx=−2 orx= 5.
+4.b=−
+1
+2
+andc=−
+1
+4
+.
+5.a=  1,b=  2  andc=−2m.   The  quadratic  equation  has  no  real  roots  if
+b
+2
+−4ac <0.
+Therefore
+2
+2
+−4(1)(−2m)<0⇒4 + 8m <0⇒8m <−4 givingm <−
+1
+2
+.
+6.m >
+7
+8
+.
+7.m= 4 andm=−4.
+8.  We putx=
+3
+2
+in the equationx
+2
++mx+ 24 = 0.
+(
+3
+2
+)
+2
++
+3
+2
+m+ 24 = 0
+9
+4
++
+3
+2
+m+ 24 = 0
+9 + 6m+ 96 = 0
+6m=−105
+m=−17.5.
+9.   (a)  2x
+2
++ 4x+ 3 = 0.a= 2,b= 4 ,c= 3.b
+2
+−4ac= 4
+2
+−4(2)(3) =
+16−24 =−8.
+Since the discriminant is negative the equation has no real roots.
+(b)  4x
+2
+−20x+ 25 = 0.a= 4b=−20 andc= 25.b
+2
+−4ac= (−20)
+2
+−
+4(4)(25) = 400−400 = 0.
+Since the discriminant is zero, the equation has repeated roots.
+(c)  The equation has two distinct roots.
+(d)  The equation has two distinct roots.
+65
+
+(e)  The equation has no real roots.
+(f)  The equation has two distinct real roots.
+(g)  The equation has two distinct real roots.
+10.−6< t <2.
+11.Hint:Takea= 1,b= (r+ 2) andc= (1 + 3r), then find the value of the
+discriminantb
+2
+−4ac= 0.
+12.p= 10 andp=−10.
+13.  Evaluateb
+2
+−4acwitha=m
+2
+,b=mandc=  1,  you will obtain−3m
+2
+which is always negative regardless of the value ofm.
+Hence the equation can not have real roots.
+14.  Eitherk=−1 ork= 4.
+15.  Witha=n+ 3,b= 2n+ 5,  andc=n+ 2,  evaluateb
+2
+−4ac.  You will
+observe that for all values ofn,b
+2
+−4ac= 1.
+Therefore the equation has real roots always.
+16.  Solutions to systems of linear equations by using Substitution method.
+(a)
+
+
+
+
+
+−3x+ 2y+−6z= 6...(i),
+5x+ 7y−5z= 6,...(ii)
+x+ 4y−2z= 8....(iii)
+From (iii),x= 8−4y+ 2z.....(iv)
+Substituting (iv) in (i):
+−3(8−4y+ 2z) + 2y−6z= 6⇒14y−12z= 30...(v)
+Substituting (iv) in (ii):
+5(8−4y+2z)+7y−5z= 6⇒40−20y+10z+7y−5z= 6⇒−13y+5z=−34...(vi)
+Solving (v) and (vi) simultaneously givesy= 3 andz= 1.
+Substituting in (iv):x+ 4(3)−2(1) = 8⇒x=−2.
+Thereforex=−2,y= 3 andz= 1.
+(b)x= 1,y= 4 andz=−2.
+(c)x=
+3
+10
+,y=
+2
+5
+andz= 0.
+66
+
+(d)x= 1,y=−5 andz= 3.
+(e)x=
+32
+67
+,y=
+40
+67
+andz=−
+216
+67
+.
+(f)x=
+−5
+3
+,y=
+7
+3
+andz=−1.
+(g)x= 2,y=−1 andz= 1.
+17.   (a)x= 5,y= 1 andz=−3.
+(b)x= 2,y=−1 andz= 4.
+(c)x= 1,y= 2 andz=−3.
+(d)x=−1,y= 2 andz=−1.
+(e)x= 3,y=−2 andz= 2.
+(f)x=−1,y=−2 andz= 4.
+(g)x= 1,y=−1 andz=−2.
+67
+
+Unit 7
+Inequalities, Linear Programming
+and Partial Fractions
+7.1    Introduction
+1.  General tips for solving inequalities:
+•We can add (or subtract) the same number to both sides of an inequality
+without changing the inequality.
+•We can multiply (or divide) by the same positive number on both sides
+of an inequality without changing it.
+•Multiplying  or  dividing  by  a  negative  number  reverses  the  inequality
+symbol.
+2.  Letb∈R.  Then
+• |x|< bif and only if−b < x < b.
+• |x|> bif and only ifx <−borx > b.
+3.  The solution of a linear programming problem, if it exists, must occur at the
+vertex of the set of feasible solutions.
+4.  To solve a linear programming problem involving two variables;
+•Sketch  the  region  corresponding  to  the  system  of  constraints.    The
+points  inside  or  on  the  boundary  of  the  region  are  called  feasible  so-
+lutions.
+•Find the vertices of the region.
+68
+
+•Test the objective function at each vertex and select the values of the
+variables that optimise the objective function.
+5.  Rules for decomposing a rational function into partial fractions:
+•For  a  rational  function
+p(x)
+q(x)
+to  be  expressed  in  partial  fractions,  the
+degree ofp(x) must be less than that ofq(x).
+•Corresponding to a linear factorax+bin the denominator of a com-
+pound fraction, there is a partial fraction of the form
+A
+ax+b
+.
+•Corresponding to a linear factorax+brepeatedrtimes in the denom-
+inator of a compound fraction, there are partial fractions of the form
+A
+1
+ax+b
+,
+A
+2
+(ax+b)
+2
+,...,
+A
+r
+(ax+b)
+r
+.
+•Corresponding to a quadratic factorax
+2
++bx+cin the denominator,
+there is a partial fraction of the form
+A
+1
+x+A
+2
+ax
+2
++bc+c
+.
+•Repeated  quadratic  factors  are  treated  in  the  same  way  as  repeated
+linear factors.
+7.2    Practice Questions
+1.  State whether the following statements are true or false.
+(a)  The equation|x|= 2 is equivalent tox= 2 orx=−2.
+(b)  The inequality|x|>5 is equivalent tox >5 orx <−5.
+(c)  The inequality|x|<−2 is equivalent tox <2 andx >−2.
+2.  Solve the following inequalities and write your solution in interval notation.
+(a)x−5≥5
+(b)|x+ 3|≤1
+(c)
+1
+3
+|2x−1|≥3
+(d)|4−5x|+ 3≥17
+(e)−|2x−5|>6
+(f)|5−x|+ 5>5
+(g)  2 + 4|3x|≤34
+69
+
+(h)  2 +|6−3x|≥2
+(i)
+∣
+∣
+∣
+∣
+3−x
+2
+−1
+∣
+∣
+∣
+∣
+<0
+(j)  2
+∣
+∣
+∣
+x
+3
++ 3
+∣
+∣
+∣
+>8
+(k)
+31
+|x−2|
+≤5
+(l)
+x
+4
+≤x−3
+(m)
+∣
+∣
+∣
+∣
+4−5x
+2
+∣
+∣
+∣
+∣
+<−1
+3.  Solve the following inequalities and write your solution in interval notation.
+(a)x
+2
+−6x+ 8>0
+(b)  8x≤33−x
+2
+(c)x
+2
++ 2x+ 1≥0
+(d)  12x+ 2x
+2
+≤−20
+(e)x
+2
+−4x >−171−30x
+(f)
+x
+2x−8
+>3
+(g)−x
+2
+−4x−7<0
+(h)  (x−2)
+2
+≤16
+(i)  15x−
+2
+x
+>1
+(j)−4x
+2
++ 36<0
+(k)  2x
+2
++ 3x+ 1≤x
+2
+−2x−5
+(l)x
+2
++ 2x−8≥0
+(m)−x
+2
+≤2x−3
+(n)−15<−x
+2
+−2x
+(o)
+x+ 5
+4x−1
+<2
+4.  Solve the following linear programming problems graphically;
+(a)  MaximiseZ= 60x+ 15ywherex≥0 andy≥0, subject to constraints;
+{
+x+y≤50,
+3x+y≤90.
+70
+
+(b)  MaximiseP= 30x+ 60ywherex≥0 andy≥0, subject to constraints;
+
+
+
+
+
+2x+y≤70,
+x+y≤40,
+x+ 3y≤90.
+(c)  MinimiseC= 4x+ 3ywherex≥0 andy≥0, subject to constraints;
+
+
+
+
+
+2x+y≥40,
+x+ 2y≥50,
+x+y≥35.
+5.  A painter has exactly 32 units of yellow dye and 54 units of green dye.  He
+plans to mix as many tins as possible of colourAand colourB.  Each tin
+of colourArequires 4 units of yellow dye and 1 unit of green dye.  Each tin
+of colourBrequires 1 unit of yellow dye and 6 units of green dye.  Find the
+maximum number of tins he can mix.
+6.  A  company  makes  cattle  feed  in  two  different  factories.   At  factoryXit
+takes 30 hours to produce each bag of the feed and at factoryYit takes 20
+hours.  The costs of producing these bags of feed areK50000 each at factory
+XandK60000 each at factoryY.  The company’s labour force can provide
+6000 hours of labour each week and resources areK12,000,000 each week.
+How should the company allocate its labour and resources to maximize the
+number of feed (in bags) produced?
+7.  A transport company has two types of vehicles, TypeXand TypeY.  Type
+Xhas a refrigerated capacity of 20m
+3
+and a non-refrigerated capacity of 40m
+3
+while TypeYhas the same overall volume with equal sections for refrigerated
+and non-refrigerated stock.  A grocer needs to hire vehicles for the transport
+of 3,000m
+3
+of refrigerated stock and 4,000m
+3
+of non-refrigerated stock.  The
+cost per Kilo meter of a TypeXisK3,000, andK4,000 for TypeY.  How
+many vehicles of each type should the grocer rent to achieve the minimum
+total cost?
+8.  A Collage is preparing a trip for 400 students.  The company which is pro-
+viding the transportation has 10 buses of 50 seats each and 8 buses of 40
+seats, but it has only 9 drivers available.  The rental cost for a large bus is
+K8,000 andK6,000 for the small bus.  Calculate how many buses of each
+type should be used for the trip for the least possible cost.
+9.  A business lady wants to clear her old stock of 200 blouses and 100 skirts.
+She decided to give two offers, 1 and 2.  Offer 1 is a package of one blouse
+and a skirt which will sell forK300, while Offer 2 is a package of three blouse
+71
+
+and a skirt, which will sell forK500.  The business lady does not want to
+sell less than 20 packages of Offer 1 and less than 10 of Offer 2.  How many
+packages of each does she have to sell to maximize the money generated from
+the promotion?
+10.  Moyo sells two blends of rice:  blendAand blendB.  BlendAis one-half
+Kilombero and one-half Super fire.  BlendBis one-quarter Kilombero rice
+and three-quarters Super fire.  Profit on the blendAisK350 per kg, while
+profit on the BlendBisK400 per kg.  Each day Moyo receives a shipment
+of 200 Kilograms of Kilombero and 330 Kilograms of Super fire to use for
+the two blends.  How many Kilograms of each blend should be prepared each
+day to maximize profit?  What is the maximum profit?
+11.  A  farmer  has  10  acres  to  plant  in  maize  and  ground  nuts.   He  has  only
+K124,000 to spend and each acre of maize costsK2000 to plant and each
+acre of ground nuts costsK1000 to plant.  Moreover, the farmer has to get
+the planting done in 12 hours and it takes an hour to plant an acre of maize
+and 2 hours to plant an acre of ground nuts.  If the profit isK5000 per acre
+of maize andK3000 per acre of ground nuts how many acres of each should
+be planted to maximize profits?
+12.  Decompose the following fractions into partial fractions.
+(a)
+2x+ 3
+(x−2)(x+ 5)
+(b)
+2x+ 5
+x
+2
++ 5x+ 6
+(c)
+3x
+2
+−2x−5
+(x−2)(x+ 2)(x+ 3)
+(d)
+x
+x
+2
++ 2x−3
+(e)
+x
+2
++ 1
+(x−1)
+2
+(x+ 1)
+(f)
+x
+2
+−3x−7
+(x
+2
++x+ 2)(2x−1)
+(g)
+13
+(2x+ 3)(x
+2
++ 1)
+(h)
+x−2
+x
+2
++ 4x+ 4
+(i)
+1
+(x+ 1)(x+ 2)(x+ 3)
+72
+
+(j)
+5
+(t+ 4)
+2
+(t−1)
+(k)
+3x
+2
+−x+ 8
+(x+ 4)(x
+2
++ 4)
+(l)
+5x
+2
++ 17x+ 15
+(x+ 2)
+2
+(x+ 1)
+(m)
+2x−1
+(x+ 2)(x−3)
+(n)
+2x+ 3
+(x+ 1)
+2
+(o)
+1
+x
+2
+−4
+2
+(p)
+2x−1
+(x−1)(x
+2
++ 1)
+2
+(q)
+x
+2
+−2
+(x−2)(x+ 1)
+3
+(r)
+2x−2
+(x
+2
++x+ 4)(x+ 2)
+(s)
+x+ 3
+(x
+2
+−1)(x−5)
+(t)
+7x−6
+(x−2)(2x+ 3)
+(u)
+x
+2
++ 2x−2
+x
+3
+(x−1)
+7.3    Suggested Solutions to Selected Questions
+1.  (a) True.  (b) True.  (c) False.
+2.  (a)
+x−5≥5
+x≥5 + 5
+x≥10
+73
+
+IntervalTest Number(x−4)(x−2)(x−4)(x−2)
+x <21−−+
+2< x <43−+−
+x >45+++
+2−00
+40+0
+Table 7.1:  Test Table for the inequalityx
+2
+−6x+ 8>0
+x∈[10,∞).
+(b)
+|x+ 3|≤1
+−1≤x+ 3≤1
+−1−3≤x≤1−3
+−4≤x≤−2
+x∈[−4,−2].
+(c)x∈(−∞,−4]∪[5,∞).  (d)x∈(−∞,−2]∪
+[
+18
+5
+,∞
+)
+.  (e) Has no solution.
+(f)x∈Rx6= 5.  (g)x∈
+[
+−8
+3
+,
+8
+3
+]
+.  (h)x∈R.
+(i)  Has no solution.  (j)x∈(−∞,−2)∪[3,∞).  (k)x∈(−∞,
+21
+5
+]∪[
+41
+5
+,∞).
+(l)x∈[4,∞).  (m) Has no solution.
+3.  (a)
+x
+2
+−6x+ 8>0
+(x−4)(x−2)>0
+74
+
+Key numbers arex= 4 andx= 2.
+Refer to Table??.  Forx <2 we havex
+2
+−6x+ 8>0.  For 2< x <4 we
+havex
+2
+−6x+ 8<0.  Forx >4 we havex
+2
+−6x+ 8>0.
+Therefore the solution isx <2 orx >4.  Alternativelyx∈(−∞,2]∪[4,∞).
+(b)
+8x≤33−x
+2
+x
+2
++ 8x−33≤0
+(x+ 11)(x−3)≤0
+Key numbers arex=−11 andx= 3.
+Forx <−11  we  havex
+2
++ 8x−33>0.   For−11< x <3  we  have
+x
+2
++ 8x−33<0, and forx >3 we havex
+2
++ 8x−33>0.
+Hence the solution isx∈[−11,3].
+(c)
+x
+2
++ 2x+ 1≥0
+(x+ 1)
+2
+≥0
+(x+ 1)
+2
+is always positive.
+Therefore,x∈R.
+(d)  Has no solution.  (e)x∈R.  (f)x∈(−∞,
+26
+5
+)∪(4,∞).
+(g)x∈R.  (h)x∈(−∞,6]∪[−2,∞).  (i)x∈(
+1
+3
+,0)∪(
+2
+5
+,∞).
+(j)x∈(−∞,−3]∪[3,∞).  (k)x∈[−3,−2].  (l)x∈(−∞,−4]∪[2,∞).
+(m)x∈(−∞,−3]∪[1,∞).  (n)x∈[−5,3].  (o)x∈(−∞,
+1
+3
+)∪(1,∞).
+4.  (a)Z= 2050 is the maximum occurring whenx= 20 andy= 30.
+(b)Pis maximum whenx= 15 andy= 25, and the maximum value ofPis
+1950.
+(c)C= 100 is the minimum obtained atx= 10 andy= 20.
+75
+
+5.  The maximum number of tins is 14 occurring atx= 8 andy= 6.
+6.  4,500 hrs andK7,500,000 of resources should be allocated to factoryXwhile
+to factoryY1,500 hrs andK4,500,000 of resources must be allocated.
+7.  The minimum cost that can be incurred subject to the given constraints is
+K416,000 to hire 50 vehicles of typeXand 66 vehicles of typeY.
+8.  4 big buses and 5 smaller buses should be used to incur a minimum cost of
+K62,000.
+9.  50 packages of each type should be offered in order to make a maximum total
+revenue ofK40,000.
+10.  135 Kilograms of blendAand 65 Kilograms of blendBshould be prepared
+to realise a maximum profit ofK73,250.
+11.  4 Acres of each type should be planted to maximise the profit.
+12.   (a)  Let
+2x+ 3
+(x−2)(x+ 5)
+=
+A
+x−2
++
+B
+x+ 5
+, i.e., 2x+ 3 =A(x+ 5) +B(x−2).
+Settingx=−5 we have
+2(−5) + 3 =B(−52)⇒−7 =−7B⇒B= 1.
+Settingx= 2 we have
+2(2) + 3 =A(2 + 5)⇒7 = 7A⇒A= 1.
+Hence
+2x+ 3
+(x−2)(x+ 5)
+=
+1
+x−2
++
+1
+x+ 5
+.
+(b)  Factorising the denominator we have
+2x+ 5
+x
+2
++ 5x+ 6
+=
+2x+ 5
+(x+ 2)(x+ 3)
+.
+Let
+2x+ 5
+(x+ 2)(x+ 3)
+=
+A
+x+ 2
++
+B
+x+ 3
+, i.e., 2x+ 5 =A(x+ 3) +B(x+ 2).
+Puttingx=−3 gives
+2(−3) + 5 =B(−3 + 2)⇒−6 + 5 =−B⇒B= 1.
+Puttingx=−2 gives
+2(−2) + 5 =A(−2 + 3)⇒−4 + 5 =A⇒A= 1.
+Hence
+2x+ 5
+(x+ 2)(x+ 3)
+=
+1
+x+ 2
++
+1
+x+ 3
+.
+76
+
+(c)
+3x
+2
+−2x−5
+(x−2)(x+ 2)(x+ 3)
+=
+3
+20(x−2)
+−
+11
+4(x+ 2)
++
+28
+5(x+ 3)
+(d)
+x
+x
+2
++ 2x−3
+=
+1
+4(x+ 3)
++
+3
+4(x−1)
+(e)
+x
+2
++ 1
+(x−1)
+2
+(x+ 1)
+=
+1
+2(x+ 1)
++
+1
+2(x−1)
++
+1
+(x−1)
+2
+(f)
+x
+2
+−3x−7
+(x
+2
++x+ 2)(2x−1)
+=
+2x+ 1
+x
+2
++x+ 2
+−
+3
+2x−1
+(g)
+13
+(2x+ 3)(x
+2
++ 1)
+=
+4
+2x+ 3
++
+−2x+ 3
+x
+2
++ 1
+(h)
+1
+x
+2
+−4
+2
+=
+1
+8(x−4)
+−
+1
+8(x+ 4)
+(p)
+2x−1
+(x−1)(x
+2
++ 1)
+2
+=
+1
+4(x−1)
+−
+x+ 1
+4(x
+2
++ 1)
++
+−x+ 3
+2(x
+2
++ 1)
+2
+77
+
+Unit 8
+Matrix Algebra
+8.1    Introduction
+1.  Thetransposeof a matrixXis formed by changing rows ofXinto columns.
+2.  Thesumordifferenceof two matrices is found by adding or subtracting
+entries in corresponding positions.
+3.  TheproductABof two matricesAandBis found by multiplying rows of
+Aby columns ofB.
+4.  Thedeterminantof the matrix
+(
+a b
+c d
+)
+isad−bc.
+5.Sarrus Rule:The determinant of
+
+
+a b  c
+d e f
+g h  i
+
+
+is
+aei+bfg+cdh−ceg−afh−bdi.
+6.Cramer’s Rule:The solution of the system,
+{
+ax+by=e
+cx+dy=f
+, if it exists,
+isx=
+ed−bf
+ad−bc
+andy=
+af−ec
+ad−bc
+.
+7.  Theinverseof a matrix
+(
+a b
+c d
+)
+, if it exists, is
+1
+ad−bc
+(
+d−b
+−c  a
+)
+.
+8.  The inverse of a 3×3 matrixXisX
+−1
+=
+1
+det(X)
+(AdjX) whereAdjXis
+the  transpose  of  the  matrix  obtained  by  replacing  each  entry  inXby  its
+co-factor.
+78
+
+9.  Theelementary row operationsare:
+•interchange rows
+•multiply a row by a non-zero scalar
+•replace a row by its sum with a scalar multiple of another row.
+10.  A matrix is inrow echelon form(REF) if
+•zero rows occur at the bottom
+•The first non-zero entry in every non-zero row is 1.
+•The leading 1 in lower rows occur to the right of the leading 1 in higher
+rows.
+11.  A matrix is inreduced row echelon form(RREF) if
+•it is in REF
+•each leading 1 is the only no-zero entry in its column.
+12.  To solve the system
+{
+ax+by=e
+cx+dy=f
+, we can perform elementary row oper-
+ations to theaugmented matrix
+(
+a b
+e
+c df
+)
+reducing it totriangular
+form.  The solution set is obtained usingback substitution.
+8.2    Practice Questions
+1.  Determine whether each statement is true or false:
+(a)  For all matricesA,B, andCof the appropriate dimensions, we have
+(AB)C= (CA)B.
+(b)  IfAis anm×nmatrix,Bis ann×pmatrix, andCis ap×qmatrix,
+thenABCis anm×qmatrix.
+(c)  IfAandBare symmetricn×nmatrices, then so isA+B.
+(d)  IfAandBare skew-symmetricn×nmatrices, thenABis a symmetric
+matrix.
+(e)  Forn×nmatricesAandB, we have (A+B)
+2
+=A
+2
++ 2AB+B
+2
+.
+(f)  IfAB= 0 , then eitherA= 0 orB= 0.
+(g)  IfAandBare square matrices such that AB is upper triangular, then
+AandBmust both be upper triangular.
+79
+
+(h)  IfAis  a  square  matrix  such  thatA
+2
+=A,  thenAmust  be  the  zero
+matrix or the identity matrix.
+2.  Given thatA=
+
+
+6−1
+24
+−35
+
+
+andB=
+
+
+−1    4
+−1    5
+110
+
+
+, work out the following:
+(a)A+B
+(b)B−A
+(c)  2A−3B
+(d)  3A+ 4B
+3.  Given  thatA=
+(
+211
+−1−1   4
+)
+andB=
+(
+2−34
+−31−2
+)
+,  work  out  the
+following:
+(a)A−B
+(b)  4A−3B
+(c)A−2B
+4.  Given the following matricesA=
+
+
+−21
+10
+3−4
+
+
+andB=
+
+
+03
+20
+−4−1
+
+
+,
+(a)  FindXif 2X= 2A−B.
+(b)  FindYifY=
+−3
+2
+A+
+1
+2
+B.
+5.  LetA=
+(
+1−1−2
+314
+)
+,B=
+
+
+2−13
+512
+46−2
+
+
+,C=
+
+
+1
+−1
+2
+
+
+andD=
+(
+2−2   3
+)
+.
+Work out the following.
+(a)AB
+(b)BC
+(c)CA
+(d)DB
+(e)CD
+6.  IfA=
+(
+x1
+−2y
+)
+, determine all values ofxandyfor whichA
+2
+=A.
+80
+
+7.  LetX=
+(
+2−i1 +i
+−i2 + 4i
+)
+,Y=
+(
+i1−3i
+0    4 +i
+)
+,W=
+(
+−1 +i2−i0
+1 + 5i03−2i
+)
+andZ=
+(
+32i i
+−i i
+)
+.  Work out the following.
+(a)XY
+(b)ZW
+8.  Suppose thatL=
+
+
+1−114
+2023
+34−1   0
+
+
+andM=
+
+
+
+
+01
+−1   2
+11
+21
+
+
+
+
+.  Find the follow-
+ing.
+(a)L
+T
+(b)M
+T
+(c)LL
+T
+(d)  (LM)
+T
+9.  Given thatX=
+(
+23
+1−2
+)
+andY=
+(
+5−1
+30
+)
+, findXY
+T
++ 2Y.
+10.  Find the determinant of each of the following matrices:A=
+(
+−22
+−3−5
+)
+,
+B=
+(
+0.05   0.06
+1020
+)
+,C=
+(
+0.02   0.5
+3050
+)
+,D=
+
+
+3   04
+2   32
+0   5−1
+
+
+,E=
+
+
+1   3   2
+4   1   3
+2   2   0
+
+
+andF=
+
+
+2−43
+312
+14−1
+
+
+.
+11.  Given thatA=
+(
+2−2
+a3a
+)
+and detA=−8, find the possible values ofa.
+12.  Find the inverse of each of the following Matrices if it exists:A=
+(
+6−3
+−21
+)
+,
+B=
+(
+3   4
+5   7
+)
+,C=
+(
+2   3
+1   2
+)
+,D=
+
+
+3−1   1
+−110
+101
+
+
+,E=
+
+
+130
+123
+0−1   2
+
+
+,
+F=
+
+
+10−1
+2−10
+11−4
+
+
+,G=
+
+
+231
+−121
+4−1−1
+
+
+andH=
+
+
+1−1−1
+210
+3−21
+
+
+.
+81
+
+13.  Given thatA=
+(
+4   3
+8   7
+)
+,B=
+(
+6   6
+0   6
+)
+,andC=
+(
+3   4
+5   7
+)
+, find each of the
+following:
+(a)  (A
+T
+)
+−1
+(b)  (AB)
+−1
+.
+(c)B
+−1
+C
+−1
+−AC.
+14.  IfAis invertible andAB=AC, prove thatB=C.
+15.  FindA
+−1
+andB
+−1
+(if they exist) given thatA=
+
+
+2   1   1
+1   2   1
+1   1   2
+
+
+,and
+B=
+
+
+2−2−1
+−12−1
+−1−12
+
+
+.
+16.  Find  (i)  (AB)
+−1
+,  (ii)A
+−1
+B
+−1
+,  and  (iii)B
+−1
+A
+−1
+for  each  of  the  following
+pairs of matrices.
+(a)A=
+(
+3   4
+2   3
+)
+,B=
+(
+3   7
+2   5
+)
+.
+(b)A=
+(
+1−1
+23
+)
+,B=
+(
+6   2
+2   1
+)
+.
+17.  Use Cramer’s rule to solve each of the following systems of linear equations:
+(a)
+{
+2x−y= 5
+3x+ 2y=−3.
+(b)
+{
+x−y=−1
+3x−2y= 0
+(c)
+{
+4x−3y=−2
+2x+ 3y= 5
+(d)
+{
+3x−5y=−2
+2x+ 3y= 5
+(e)
+
+
+
+
+
+−3x+ 2y+−6z= 6
+5x+ 7y−5z= 6
+x+ 4y−2z= 8
+(f)
+
+
+
+
+
+4x−3y+z=−10
+2x+y+ 3z= 0
+−x+ 2y−5z= 17
+(g)
+
+
+
+
+
+2x+y+ 3z= 1
+2x+ 6y+ 8z= 3
+6x+ 8y+ 18z= 5
+(h)
+
+
+
+
+
+2x−3y+z=−9
+−2x+y−3z= 7
+x−y+ 2z=−5
+(i)
+
+
+
+
+
+3x−4y+z= 19
+2x+ 4y+z= 0
+x−2y+ 5z= 17
+(j)
+
+
+
+
+
+2x−5y+ 2z= 16
+3x+ 2y−3z=−19
+4x−3y+ 4z= 18
+.
+82
+
+18.  Find the REF of each of the following matrices:
+A=
+
+
+1   2   1
+2   2   2
+1   0   1
+
+
+,B=
+(
+1   2   3
+2   3   4
+)
+andC=
+
+
+3−247
+210−3
+28−82
+
+
+.
+19.  Find the RREF of each of the following matrices:
+A=
+
+
+121
+−2−3   1
+350
+
+
+,B=
+
+
+3−1   24
+213−1
+123−2
+
+
+andC=
+
+
+
+
+11−1
+2−11
+2−11
+112
+
+
+
+
+.
+20.  Use  Gaussian  elimination  to  find  all  solutions  to  the  following  systems  of
+linear equations.
+(a)
+
+
+
+
+
+x+ 2y+ 3z= 9
+2x−2z=−2
+3x+ 2y+ 2z= 7.
+(b)
+{
+x+ 2y+ 3z= 9
+3x+ 2y+z= 7
+(c)
+
+
+
+
+
+3x+ 2y+z=−6
+4x−3y+ 3z= 7
+2x+y−z=−9.
+(d)
+
+
+
+
+
+3x−2y+z= 4
+x+ 3y−z=−3
+4x−10y+ 4z= 10
+(e)
+
+
+
+
+
+x−3y−z=−3
+2x−8y+ 8z=−2
+−6x+ 3y−15z= 9
+8.3    Suggested Solutions to Selected Questions
+1.  (a) False (b) True (c) True (d) False (e) False (f) False (g) True (h) False
+2.  (a)
+
+
+53
+19
+−2   15
+
+
+(b)
+
+
+−7   5
+−3   1
+45
+
+
+(c)
+
+
+15−14
+7−7
+−9−20
+
+
+(d)
+
+
+14    13
+232
+−5   55
+
+
+3.  (a)
+(
+04−3
+2−26
+)
+(b)
+(
+2    13−8
+5−7    22
+)
+(c)
+(
+−27−7
+5−38
+)
+4.  (a)X=
+
+
+
+
+
+−2
+1
+2
+00
+5
+−7
+2
+
+
+
+
+
+(b)Y=
+
+
+
+
+
+30
+−1
+2
+0
+−13
+2
+11
+2
+
+
+
+
+
+5.A=
+(
+1−1−2
+314
+)
+B=
+
+
+2−13
+512
+46−2
+
+
+C=
+
+
+1
+−1
+2
+
+
+.
+(a)AB=
+(
+−11−14   5
+27223
+)
+83
+
+(b)BC=
+
+
+2−5 + 8
+−1−1 + 12
+4−6−4
+
+
+=
+
+
+9
+8
+−6
+
+
+(c) The dimensions of the matrices are incompatible for matrix multiplica-
+tion.
+(d)DB=
+(
+6   16−1
+)
+(e)CD=
+
+
+2−23
+−22−3
+4−46
+
+
+.
+6.  Eitherx= 2 andy=−1 orx=−1 andy= 2.
+7.  (a)XY=
+(
+1 + 2i2−2i
+11 + 7i
+)
+(b)
+ZW=
+(
+32i×(−1 +i) +i×(1 + 5i)   32i×(2−i) + 1×0   32i×0 +i×(3−2i)
+−i×(−1 +i) +i×(1 + 5i)−i×(2−i) +i×0i×0 +i×(3−2i)
+)
+=
+(
+−32i+ 32i
+2
++i+ 5i
+2
+64i−32i
+2
++ 0   0 + 3i−2i
+2
+i−i
+2
++i+ 6i
+2
+−2i+i
+2
++ 00 + 3i−2i
+2
+)
+=
+(
+−31i+ 37i
+2
+64i+ 32   3i+ 2
+2i+ 4i
+2
+−2i−1   3i+ 2
+)
+=
+(
+−37−31i32 + 64i2 + 3i
+−4 + 2i−1−2i2 + 3i
+)
+8.  (a)L
+T
+=
+
+
+
+
+123
+−1   04
+12−1
+430
+
+
+
+
+.  (b)M
+T
+=
+(
+0−1   1   2
+121   1
+)
+.
+84
+
+(c)
+L=
+
+
+1−114
+2023
+34−1
+
+
+LL
+T
+=
+
+
+1−114
+2023
+34−1
+
+
+
+
+
+
+123
+−1   04
+12−1
+430
+
+
+
+
+=
+
+
+1 + 1 + 1 + 16   2 + 0 + 2 + 12    3−4−1 + 0
+2 + 0 + 2 + 12    4 + 0 + 4 + 96 + 0−2 + 0
+3−4−1 + 06 + 0−2 + 0    9 + 16 + 1 + 0
+
+
+=
+
+
+19    16−2
+16    174
+−2    4    26.
+
+
+(d) (LM)
+T
+=
+(
+10   8−5
+4    7    10
+)
+.
+9.XY
+T
++ 2Y=
+(
+17   4
+13   3
+)
+10.  (a) det(A) = 16.
+(b) det(B) = (0.05)(20)−(0.06)(10) = 1−0.6 = 0.4.
+(c) det(C) =−14.
+(d)D=
+
+
+3   04
+2   32
+0   5−1
+
+
+.
+det(D) = 1
+(e) det(E) = 24.  (f) det(F) =−5.
+11.A=
+(
+2−2
+a3a
+)
+det(A) = 6a+ 2a=−8
+Therefore 8a=−8 ,a=−1.
+12.  (a)A=
+(
+6−3
+−21
+)
+det(A) = 6−6 = 0
+Therefore the matrixAis not invertible.
+(b)B
+−1
+=
+(
+7−4
+−53
+)
+.  (c)C
+−1
+=
+(
+2−3
+−12
+)
+85
+
+(d)D=
+
+
+3−1   1
+−110
+101
+
+
+In row 1,
+Cofactor of 3 is 1.
+cofactor of−1 is 1.
+cofactor of 1 is−1.
+In the second row,
+cofactor of−1 is 1.
+cofactor of 1 is 2.
+cofactor of 0 is−1.
+In the third row,
+cofactor of 1 is−1.
+cofactor of 0 is−1.
+cofactor of 1 is 2.
+Matrix of cofactors ofDis
+
+
+11−1
+12−1
+−1−12
+
+
+.
+AdjD=
+
+
+11−1
+12−1
+−1−12
+
+
+det(D) = 3(1) + (−1)(−1) + 1(−1) = 3−1−1 = 1
+D
+−1
+=
+1
+detD
+AdjD=
+
+
+11−1
+12−1
+−1−12
+
+
+.
+(e)E
+−1
+=
+
+
+7−69
+−22−3
+−11−1
+
+
+(f)F
+−1
+=
+
+
+4−1−1
+8−3−2
+3−1−1
+
+
+(g)  MatrixGis not invertible.  (h)H
+−1
+=
+
+
+
+
+
+
+1
+10
+3
+10
+1
+10
+−1
+5
+2
+5
+−1
+5
+−7
+10
+−1
+10
+3
+10
+
+
+
+
+
+
+.
+13.  (a) (A
+T
+)
+−1
+=
+
+
+
+7
+4
+−2
+−3
+4
+1
+
+
+
+.  (b) (AB)
+−1
+=
+
+
+
+5
+8
+−7
+24
+−1
+3
+1
+6
+
+
+
+.
+(c)B
+−1
+C
+−1
+−AC=
+
+
+
+−25
+−229
+6
+−359
+6
+−161
+2
+
+
+
+.
+86
+
+14.  Watch the tutorial video.
+15.  (a)A
+−1
+=
+
+
+
+
+
+
+3
+4
+−1
+4
+−1
+4
+−1
+4
+3
+4
+−1
+4
+−1
+4
+−1
+4
+3
+4
+
+
+
+
+
+
+.  (b)B
+−1
+=
+
+
+
+
+
+
+−1
+−5
+3
+−4
+3
+−1
+−1
+4
+−1
+2
+−1
+−4
+3
+−2
+3
+
+
+
+
+
+
+.
+16.  (a)A=
+(
+3   41
+2    3
+)
+,B=
+(
+3   7
+2   5
+)
+,  andA
+−1
+=
+(
+3−4
+−23
+)
+andB
+−1
+=
+(
+5−7
+−23
+)
+.
+(AB)
+−1
+=B
+−1
+A
+−1
+=
+(
+5−7
+−23
+)(
+3−4
+−23
+)
+=
+(
+15 + 14−20−2
+−6−68 + 9
+)
+=
+(
+29−41
+−1217
+)
+.
+(ii)A
+−1
+B
+−1
+=
+(
+2333
+−16   23
+)
+.  (iii)B
+−1
+A
+−1
+=
+(
+29−41
+−1217
+)
+.
+(b)  (i) (AB)
+−1
+=
+
+
+
+7
+10
+−1
+10
+−9
+5
+2
+5
+
+
+
+.  (ii)A
+−1
+B
+−1
+=
+
+
+
+1
+10
+0
+−2
+5
+1
+
+
+
+.
+(iii)B
+−1
+A
+−1
+=
+
+
+
+710
+−1
+10
+−9
+5
+2
+5
+
+
+
+.
+17.  (a)x= 1,y=−3 (b)x= 2,y= 3.  (c)x=
+1
+2
+,y=
+4
+3
+.(d)x= 1,y= 1.
+(e)x=−2,y= 3,z= 1.  (f)x= 1,y= 4,z=−2.  (g)x=
+3
+10
+,y=
+2
+5
+,z= 0.
+(h)x=−1,y= 2,z=−1.  (i)x= 3,y=−2,z= 2.  (j)x=−1,y=−2,
+z= 4.
+18.  (a)A=
+
+
+1   2   1
+2   2   2
+1   0   1
+
+
+2R
+1
+−R
+2
+=R
+2
+−−−−−−−−−−→
+
+
+1   2   1
+0   2   0
+1   0   1
+
+
+R
+1
+−R
+3
+=R
+3
+−−−−−−−−−→
+
+
+1   2   1
+0   2   0
+0   2   0
+
+
+R
+2
+−R
+3
+=R
+3
+−−−−−−−−−→
+
+
+1   2   1
+0   2   0
+0   0   0
+
+
+R
+2
+2
+=R
+2
+−−−−−−→
+
+
+1   2   1
+0   1   0
+0   0   0
+
+
+.
+(b)
+(
+1   2   3
+2   3   4
+)
+2R
+1
+−R
+2
+=R
+2
+−−−−−−−−−−→
+(
+1   2   3
+0   1   2
+)
+.
+87
+
+(c)  The REF ofC=
+
+
+
+1−3410
+01
+−8
+7
+−23
+7
+0001
+
+
+
+.
+19.
+(a)A=
+
+
+121
+−2−3   1
+350
+
+
+2R
+1
++R
+2
+=R
+2
+−−−−−−−−−−→
+
+
+1   2   1
+0   1   3
+3   5   0
+
+
+3r
+1
+−R
+3
+=R
+3
+−−−−−−−−−−→
+
+
+1   2   1
+0   1   3
+0   1   3
+
+
+R
+2
+−R
+3
+=R
+3
+−−−−−−−−−→
+
+
+1   2   1
+0   1   3
+0   0   0
+
+
+−2R
+2
++R
+1
+=R
+1
+−−−−−−−−−−−−→
+
+
+1   0−5
+0   13
+0   00
+
+
+.
+(b)  The RREF of matrixBis
+
+
+1   0   13
+0   1   1−1
+0   0   00
+
+
+.
+(c)  The RREF of matrixCis
+
+
+
+
+1   0   0
+0   1   0
+0   0   1
+0   0   0
+
+
+
+
+.
+20.  (a)x=−1, y= 5,z= 0.  (b)x=t, y=
+9
+2
+−2t,z=t.  (c)x=−2, y=
+−5
+3
+,
+z=
+10
+3
+.
+(d)  The system of equations has no solution.  (e)x=
+−5
+2
+, y=
+1
+32
+,z=
+13
+32
+.
+88
+
+Unit 9
+Sequences and Series
+9.1    Introduction
+1.Summation notation rules:Supposec
+1
+andc
+2
+are constants andfand
+gare functions ofk.  Then
+•
+n
+∑
+k=1
+c
+1
+=nc
+1
+•
+n
+∑
+k=1
+[c
+1
+f(k) +c
+2
+g(k)] =c
+1
+n
+∑
+k=1
+f(k) +c
+2
+n
+∑
+k=1
+g(k).
+2.  Then-th term of arithmetic sequence isa
+n
+=a
+1
++ (n−1)dwherea
+1
+is the
+first termanddis thecommon difference.
+3.  The sum of the firstnterms of arithmetic series isS
+n
+=
+n
+2
+[a
+1
++a
+n
+] where
+a
+n
+is the last term.
+4.  Then-th term of a geometric sequence isa
+n
+=a
+1
+r
+n−1
+wherea
+1
+andrare
+thefirst termandcommon ratiorespectively.
+5.  The sum of the firstnterms of the geometric series isS
+n
+=
+a
+1
+(1−r
+n
+)
+1−r
+where
+a
+1
+andrare thefirst termandcommon ratiorespectively.
+6.  The sum ofinfinitegeometric series isS=
+a
+1
+1−r
+wherea
+1
+andrare the
+first termandcommon ratiorespectively and|r|<1.
+7.  Coefficients of the expansion of (x+y)
+n
+are entries of the (n+ 1)-th row of
+Pascal’s triangle (refer to Module 2).
+89
+
+9.2    Practice Questions
+1.  Say whether each statement is true or false:
+(a)  The arithmetic sequence 3,1,−1,−3,−5,...has common difference 2.
+(b)  Ifa
+1
+= 5 anda
+3
+= 10 in an arithmetic sequence, thena
+4
+= 15.
+(c)  The series
+5
+∑
+j=1
+(3 + 2j) is an arithmetic series.
+(d)  The sequence 2,6,24,120,...is a geometric sequence.
+(e)  For the sequencea
+n
+= 2
+n
+, there is a common difference between adja-
+cent terms.
+(f)  The common ratio of the geometric sequencea
+n
+= 3(0.5)
+n−1
+is
+1
+2
+.
+(g)  Ifa
+n
+= 3(2)
+−n+3
+, thena
+1
+= 12.
+(h)  2 + 4 + 8 + 16 +.....=
+2
+1−2
+.
+2.  Write the following sums in sigma notation:
+(a)  1 +
+1
+3
++
+1
+9
++...
+(b)
+1
+2
+−
+1
+4
++
+1
+8
+−
+1
+16
++
+1
+32
+(c)  5,9,13,17,21,25
+(d)  4,1,−2,−5,−8,...
+3.  Write the first five terms of each sequence
+(a)
+n(n−1)
+2
+(b)a
+n
+= (−1)
+n
+(n+ 1)
+2
+(c)  2
+n−2
++ 2
+2
+n
+4.  Evaluate each of the following.
+(a)
+2
+∑
+k=−2
+1
+2
+k
+(b)
+4
+∑
+k=0
+(−2)
+k+1
+(c)
+15
+∑
+n=1
+13
+90
+
+(d)
+2
+∑
+k=−2
+(k−2)(k+ 2)
+(e)
+5
+∑
+k=1
+(−3)
+n−1
+5.  Write a formula for then-th term of each arithmetic sequence below.
+(a)  0,6,12,18,....
+(b)−4,−2,0,2,4,...
+(c)  4,15,26,37,48,...
+6.  Find the sum of each arithmetic series.
+(a)−9−1 + 7 +....+ 103
+(b)  20 + 12 + 4−4 +....−92
+(c)
+7
+∑
+i=1
+(6−4i)
+(d)
+19
+∑
+k=1
+(3k−5)
+(e)  19 + 1−17 +....−125
+7.  Find  the  common  difference  of  an  arithmetic  sequence  with  first  term−8
+and ninth term−64.
+8.  If the common difference of an arithmetic sequence is 5 and the 20-th term
+is−7, what is the first term?
+9.  Find the common ratiorfor the geometric sequence that has first term 1
+and fourth term−27.
+10.  Finda
+5
+for the geometric sequence that hasa
+1
+=−
+2
+3
+andr=−
+2
+3
+.
+11.  Write a formula for then-th term of each geometric sequence.
+(a)−
+1
+4
+,−
+1
+5
+,−
+4
+25
+,...
+(b)  8,−4,2,−1,...
+(c)
+1
+4
+,2,16,...
+(d)
+1
+3
+,1,3,9,...
+91
+
+12.  Find the sum of each infinite geometric series.
+(a)
+1
+8
++
+1
+16
++
+1
+32
++...
+(b)
+1
+9
++
+1
+27
++
+1
+81
++....
+13.  The repeating decimal number 0.44444....can be written as
+4
+10
++
+4
+100
++
+4
+1000
++
+4
+10000
++..., an infinite geometric series.  Find the sum of this geometric series.
+14.  Find the sum of the first 50 terms of the sequence 4,9,14,19,24,.....
+15.  What number is the term−172 in the arithmetic sequence 4,−4,−12,−20,−28,....?
+16.  Suppose you deposit one thousand kwacha into your bank account on the
+first day of December and, on each day of December after that, you deposit
+twice as much as on the previous day.  How much will you have in the bank
+after the last deposit?
+17.  Find then-th term of the sequence given the first five terms.
+(a)  1,
+1
+4
+,
+1
+9
+,
+1
+16
+,
+1
+25
+,...
+(b)−1,4,−9,16,−25,...
+(c)−
+1
+2
+,
+1
+4
+,−
+1
+6
+,
+1
+8
+,−
+1
+10
+,...
+(d)  7,12,17,22,27,...
+(e)  1,3,9,27,81,...
+9.3    Suggested Solutions to Selected Questions
+1.   (a)  False:  The common difference is−2.
+(b)  False
+(c)  True:a
+1
+= 5 andd= 2.
+(d)  False:  There is no common ratio.
+(e)  False:  There is a common ratio 2 and no common difference.
+(f)  True
+2.  (a)
+∞
+∑
+k=0
+(
+1
+3
+)
+k
+(b)
+5
+∑
+r=1
+(
+1
+2
+)
+r
+(−1)
+r+1
+(c)
+6
+∑
+n=1
+(4n+ 1) (d)
+∞
+∑
+k=1
+(7−3k)
+92
+
+4.   (a)
+2
+∑
+k=−2
+1
+2
+k
+=
+(
+1
+2
+)
+−2
++
+(
+1
+2
+)
+−1
++
+(
+1
+2
+)
+0
++
+(
+1
+2
+)
+1
++
+(
+1
+2
+)
+2
+= 4 + 2 + 1 +
+1
+2
++
+1
+4
+=
+31
+4
+.
+(b)
+4
+∑
+k=0
+(−2)
+k+1
+= (−2)
+1
++ (−2)
+2
++ (−2)
+3
++ (−2)
+4
++ (−2)
+5
+=−2 + 4−8 + 16−32
+= 20−42
+=−22.
+(c)
+15
+∑
+n=1
+13 = 13×15 = 195.
+6.   (a)a
+1
+=−9,d=−1−(−9) = 8, anda
+n
+=−9 + 8(n−1) = 8n−17.
+Equatinga
+n
+to 103 we have
+8n−17 = 103⇒8n= 120⇒n= 15.
+S
+n
+=
+n
+2
+(a
+1
++a
+n
+)
+S
+15
+=
+15
+2
+(−9 + 103)
+=
+15
+2
+×94
+= 15×47
+= 705.
+(c)
+7
+∑
+i=1
+(6−4i) = 2−2−6−....−22.
+a
+1
+= 2,d=−4,n= 7 anda
+7
+=−22.
+S
+7
+=
+7
+2
+(2−22) =
+7
+2
+×−20 = 7×−10 =−70.
+93
+
+7.  Then-th term isa
+n
+=a
+1
++ (n−1)d.a
+1
+=−8 anda
+9
+=−64.
+So
+−64 =−8 + (9−1)d⇒−64 =−8 + 8d⇒−56 = 8d⇒d=−7.
+9.  Then-th term isa
+n
+=a
+1
+r
+n−1
+.
+Therefore
+−27 = 1×r
+4−1
+⇒r
+3
+=−27⇒r=−3.
+11.  (a)a
+n
+=
+(
+−
+1
+4
+)(
+4
+5
+)
+n−1
+(b)a
+n
+= 8
+(
+−
+1
+2
+)
+n−1
+(c)
+(
+1
+4
+)
+8
+n−1
+(d)
+(
+1
+9
+)
+3
+n
+12.  (a)
+1
+4
+(b)
+1
+6
+14.  6225
+15.n= 21
+17.  (a)a
+n
+=
+1
+n
+2
+(b)a
+n
+= (−1)
+n
+×n
+2
+(c)a
+n
+= (−1)
+n
+×
+1
+2n
+(d)a
+n
+= 5n+ 2 (e)
+a
+n
+= 3
+n−1
+94
+
+Bibliography
+[1]  S. Lipschutz,Set Theory and Related Topics(2nd ed.), New York, McGraw
+Hill, 1998.
+[2]  J.  Stewart,  L.  Redlin,  and  S.  Saatson,College  Algebra(5th  ed.),  USA:
+Brooks/Cole, 2009.
+[3]  M. Sullivan,Algebra and Trigonometry(8th ed.), USA:Pearson Prentice Hall,
+2008.
+[4]  E. Swokowski, and J. Cole,Fundamentals of Algebra and Trigonometry(9th
+Ed.), Brooks/Cole, 1979.
+[5]  J.  F.  Talbert  and  H.  H.  Heng,Additional Mathematics:  Pure and Applied,
+South Asia:  Pearson Education, 1990.
+95

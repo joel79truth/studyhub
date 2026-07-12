@@ -1,0 +1,1021 @@
+
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics1
+TOPIC 3: PRODUCTION ECONOMICS
+By the end of this Topic, you should:
+Understand the meaning of Production & Production Economics
+Understand different terminologies & concepts used in Production Economics 
+Differentiate short-run and long-run productions
+Understand the significance & application of economic principles in Production
+Understand different types of costs
+Intro. to Agricultural Economics125
+PRODUCTION ECONOMICS
+Introduction:
+The widely accepted goal of agricultural economics is to increaseefficiencyin
+agriculture.i.e. to produce more food, fodder, bio-fuel and fibre with minimal use
+of resources.
+Required agricultural outputs/products must be produced with the least amount
+of scarce resources (inputs).
+Maximum possible output must be obtained from a minimum level of given resources.
+Production economics is the application of the principles of microeconomics in the
+production of different goods & services.
+These principles includebehaviour of production costandrelationship between inputs and
+outputs.
+Production economics provides a framework for decision making at the level of a
+firm for increasing efficiency, profits & sustainability.
+Intro. to Agricultural Economics126
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics2
+PRODUCTION ECONOMICS (Flow of Goods & Services)...
+Intro. to Agricultural Economics127
+Why study Production Economics?
+Studying production economics helps in determining the following:
+Efficient production levels.
+The most profitable quantity of inputs to use
+Response of production to changes in the prices of output
+Profit-maximizing enterprise combinations.
+Effect of technical & technological changes on output
+Production economics deals with resource mobilization, allocation,
+resource combinations & efficiency in resource utilization to maximize
+output & productivity of farm enterprises.
+Intro. to Agricultural Economics128
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics3
+Some questions asked by Profit-Maximizing Firms...
+How much of 
+each input to 
+demand?
+4.
+Which 
+production 
+technology to 
+use?
+3.
+What & How 
+much output 
+to produce?
+1.
+Intro. to Agricultural Economics129
+Where & 
+when to 
+produce & 
+supply?
+2.
+Key Terminologies
+Afirmis an organization which transforms resources (inputs) into products
+(outputs).
+Firms are the primary producing units in a market economy.
+Production: The process through which some goods and services called
+inputs are transformed into other goods called products or output.
+Output/Product: The goods and services produced by firms.
+Technology:Facilities which aid/promote/support production, and which
+determine the quantity (& quality) of output possible for a given set of
+inputs.
+Inputs/Resources: Anything that is used to produce goods and services (also
+called factors of production)
+Intro. to Agricultural Economics130
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics4
+Fixed resources/inputs:  are all resources that remain unchanged
+irrespective of the level of production, up to a certain period of time.
+Examples: land , buildings, machinery.
+These resourcesremain fixed up a certain period of time.
+The costs associated with these resources are calledfixed costs.
+Variable resources:are all resources that change with the level of
+production.
+Examples: seeds, fertilizer, chemicals, labour
+These resources exist both in short run and long run.
+The costs associated with these resources are calledvariable costs.
+Key Terminologies
+Intro. to Agricultural Economics131
+Production period: It is the time required to transform resources into
+products.
+Productivity: Output per unit of inputs.
+Cost of production:Expenditure incurred in producing a unit quantity
+of product/output.
+Example: If MK500 is used to produce 1 Kilogram of maize, MK500 is cost of
+maize production.
+Key Terminologies
+Intro. to Agricultural Economics132
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics5
+Technical efficiency: Refers to production of maximum level of output 
+that can be obtained from a given combination of inputs
+It is the ratio of the physical output to inputs used.
+It implies using resources as effectively as possible with minimal wastage.
+Economic efficiency:Means production of a given amount of output
+at the lowest possible cost.
+It is the expression of technical efficiency in monetary terms through the prices.
+It is the ratio of value of output to value of inputs.
+Optimality:It is an ideal condition or situation in which costs are at
+their minimum possible level, and/or profits are at their maximum
+level.
+Key Terminologies
+Intro. to Agricultural Economics133
+SHORT-RUN & LONG-RUN PRODUCTION
+When discussing production, it is important to distinguish between
+Short run and Long-run production
+When demand for a firm’s product changes, profitability of the firm
+depends on:
+Ability of the firm to acquire more production resources/inputs, and
+Expansion of production capacity.
+The firm can easily acquire some production inputs within a short
+period of time,e.g. labour, raw materials and fuel.
+However, the firm may struggle to expand production machinery, some
+equipment & buildings within a short period of time.
+Intro. to Agricultural Economics134
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics6
+Short Run & Long Run
+Short Run:
+A period too brief for a firm (e.g. a farm) to change its fixed resources (e.g.
+machinery, equipment and buildings) yet long enough for the firm to acquire
+variable resources, such as labour & raw materials.
+In the short runsome inputs are fixed and some inputs are variable
+e.g. A firm may be able to vary the quantity of labor, but cannot
+adjust the amount of capital.
+Long Run:
+A period long enough for a production entity (e.g. a farm) to adjust the
+quantities of all production resources (both variable and fixed resources)
+for production processes.
+In the long runall inputs become variable.
+e.g. the long run is the period in which a firm can adjust all inputs.
+Intro. to Agricultural Economics135
+Short-Run:
+Suppose demand for Chicken Feed at CP Feeds increases, from 2,000 tonnes
+to 3,000 tonnes. To respond to this new demand CP Feeds can increase
+production hours (by introducing a second production shift and employing
+more labourers) and source extra raw materials within a short period of time.
+However, the company can not quickly adjust the production capacity.
+This is Short Run adjustment.
+Long-Run:
+Suppose demand at CP Feeds (Ltd) keeps on increasing, there will reach a time
+when capacity of the processing machinery and storage space for raw
+materials will reach their maximum levels. The company would, thus, have to
+expand the processing machinery and acquire more storage space. This
+adjustment can, for example, take 2-5years be accomplished.
+This adjustment is a Long-run.
+Short Run & Long Run: Examples
+Intro. to Agricultural Economics136
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics7
+Production Function
+AProduction Functiondefines therelationship between inputs and the
+maximum amountthat can be producedwithin a given time period
+with a given technology.
+AProduction Functionsummarises ways in which resources are combined to
+produce a particular output.
+Mathematically, the Production Function can be expressed as:
+Q=f(X
+1
+,X
+2
+,...,X
+k
+), where:
+Qis the level of output
+X
+1
+,X
+2
+,...,X
+k
+are the levels of inputs in the production process
+f( )represents the production technology
+Intro. to Agricultural Economics137
+Short-Run Production: Cost of Production
+Cost of production depends on:
+Prices of raw materials (inputs/resources)and
+Quantities of the raw materials (inputs/resources) used in production
+Prices of raw materials are determined by supply and demand factors.
+Technology used in production will determine the quantity of
+resources/raw materials needed (at a time) to produce a given quantity
+of products/output (per a given period of time).
+Intro. to Agricultural Economics138
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics8
+When discussing production in the short-run, three concepts are
+important:
+Total Product (TP)
+Marginal Product (MP)
+Average Product (AP).
+Intro. to Agricultural Economics139
+Short-Run Production: Cost of Production
+Total Product (TP)is the total quantity or total output of a particular good or
+service produced by a given set of inputs.
+Short-Run Production: Cost of Production
+Intro. to Agricultural Economics140
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics9
+The table below represents a firm’s production function, Q=f(X,Y), where X is
+Labour (variable input) and Y is Land (fixed input).
+Short-Run Production: Cost of Production
+Fixed Input (Y=Land)   Variable Input (X=Labour)   Total Product (Q or TP)
+200
+218
+2218
+2329
+2439
+2547
+2652
+2756
+2852
+Intro. to Agricultural Economics141
+Short-Run Production: Cost of Production
+Marginal Product(MP)is the additional output that is produced by adding one more
+unit of a specific input (e.g. labour),ceteris paribus.
+MPtells us how output changes as we change the level of the variable input by one unit.
+Consider two-input production function:
+Q=f(X,Y),
+in which input X is variable and input Y is fixed at some level.
+Holding input Y constant, the marginal product of input X is defined as:
+Intro. to Agricultural Economics142
+marginal product of labor  =  
+change in total product
+change in units of labor used
+X
+Q
+MP
+X
+
+
+
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics10
+Variable 
+Input     
+(X)
+Total Product      
+(Q or TP)
+Marginal 
+Product 
+(MP)
+00
+18
+218
+329
+439
+547
+652
+756
+852
+ΔX=1
+ΔQ=8
+8
+1
+8
+
+
+
+X
+Q
+Calculation of Marginal Product
+Intro. to Agricultural Economics143
+Variable 
+Input     
+(X)
+Total Product      
+(Q or TP)
+Marginal 
+Product 
+(MP)
+00
+18
+218
+329
+439
+547
+652
+756
+852
+ΔX=1ΔQ=5
+5
+1
+5
+
+
+
+X
+Q
+8
+10
+11
+10
+8
+4
+-4
+Calculation of Marginal Product
+Intro. to Agricultural Economics144
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics11
+Average Product (AP)(aka productivity):Average amount of products
+produced by each unit of input (e.g. labour) used in production.
+AP is found by dividing total output by total units of each input used.
+AP tells us, on average, amount of units of output produced per unit of
+input (e.g. labour) used.
+Short-Run Production: Cost of Production
+average product of labor  =  
+total product
+total units of labor
+Intro. to Agricultural Economics145
+Holding Y constant, the average product of input X is defined as:
+Short-Run Production: Cost of Production
+X
+Q
+AP
+X
+
+Intro. to Agricultural Economics146
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics12
+Calculation of Average Product
+Variable 
+Input     
+(X)
+Total 
+Product      
+(Q or TP)
+Average 
+Product 
+(AP)
+00---
+18
+218
+329
+439
+547
+652
+756
+852
+8
+1
+8
+
+X
+Q
+18
+8
+1
+Intro. to Agricultural Economics147
+Calculation of Average Product
+Variable 
+Input     
+(X)
+Total 
+Product      
+(Q or TP)
+Average 
+Product 
+(AP)
+00---
+188
+2189
+3299.67
+4399.75
+5479.4
+6528.67
+7568
+8526.5
+Intro. to Agricultural Economics148
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics13
+Calculation of Marginal Product (MP) and Average Product (AP)
+Fixed Input 
+(Y=Land)
+Variable Input 
+(X=Labour)
+Total Product 
+(Q or TP)
+Marginal Product (MP)=   Average Product (AP)
+=
+20000/0=0
+218(8-0)÷(1-0)     =88/1=8
+2218(18-8)÷(2-1)   =1018/2=9
+2329(29-18)÷(3-2) =1129/3=9.67
+2439(39-29)÷(4-3) =1039/4=9.75
+2547(47-39)÷(5-4) =847/5=9.4
+2652(52-47)÷(6-5) =552/6=8.67
+2756(56-52)÷(7-6) =456/7=8
+2852(52-56)÷(8-7) =-452/8=6.5
+X
+Q
+MP
+X
+
+
+
+X
+Q
+AP
+X
+
+Intro. to Agricultural Economics149
+Intro. to Agricultural Economics150
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics14
+151
+Short-Run Analysis of Total, Average, and Marginal Product
+When MP > AP then AP is rising
+When MP < AP then AP is falling
+Where MP = AP, AP is at its
+maximum point.
+TP is maximized where MP = 0
+Intro. to Agricultural Economics
+Relationship between Marginal Product (MP) & Total Product (TP)
+When MP moves upward, TP
+increases at an increasing rate.
+When MP is constant, TP increases
+at a constant rate.
+When MP starts declining, TP
+increases at a decreasing rate.
+When MP is zero, TP is at its
+maximum.
+Intro. to Agricultural Economics152
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics15
+Production Function for Bread
+Production Function
+(1)
+LABOR UNITS 
+(EMPLOYEES)
+(2)
+TOTAL PRODUCT (BREAD PER 
+HOUR)
+(3)
+MARGINAL PRODUCT 
+OF LABOR
+(4)
+AVERAGE PRODUCT 
+OF LABOR
+0
+0--
+1
+101010.0
+2
+251512.5
+3
+351011.7
+4
+40510.0
+5
+4228.4
+6
+4207.0
+0
+5
+10
+15
+20
+25
+30
+35
+40
+45
+0   1   2   3   4   5   6   7
+Number of employees
+Total product
+0
+5
+10
+15
+0   1   2   3   4   5   6   7
+Number of employees
+Marginal Product
+153
+Total and Marginal Product
+Marginal Productis the slope
+of the Total Product function.
+At point C, Total Product is
+maximum,the slopeof the
+Total Product function is zero,
+and   Marginal   Product
+intersects the horizontal axis.
+At point A,the slopeof the
+Total  Product  function  is
+highest;  thus,   Marginal
+Product is highest.
+0
+5
+10
+15
+20
+25
+30
+35
+40
+45
+0   1   2   3   4   5   6   7
+Number of employees
+Total product
+0
+5
+10
+15
+0   1   2   3   4   5   6   7
+Number of employees
+M arginal P roduc t
+Intro. to Agricultural Economics154
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics16
+Total, Average, and Marginal Product
+As long as Marginal Product rises,
+Average Product rises.
+When  Average  Product  is
+maximum,  Marginal  product
+equals Average Product.
+When  Average  Product  falls,
+Marginal Product is less than
+Average Product.
+Intro. to Agricultural Economics155
+Law of Diminishing Marginal Returns (LDMR)
+Definition
+It states that as successive units of a variable resource (say, labour)
+are added to a fixed resource (say, land), beyond some point the
+extra or marginal product that can be attributed to each additional
+unit of the variable resource will decline.
+Or
+As additional units of a variable input are combined with a fixed
+input, at some point the additional output (i.e., marginal product)
+starts to diminish.
+It is also known as law of diminishing productivity
+Intro. to Agricultural Economics156
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics17
+157
+Application of Law of Diminishing Returns:
+It helps in the identification of rational and irrational stages of
+operations.
+It provides answers to the question of:How much to produce?
+Intro. to Agricultural Economics
+Short-Run Production Costs
+What are:
+•Fixed Costs, 
+•Variable Costs, 
+•Total Costs
+•Average Fixed Costs
+•Average Variable Costs
+•Average Total Costs
+•Marginal Costs
+What is the relationship between short-run production and short-run 
+production costs?
+Intro. to Agricultural Economics158
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics18
+© 2006 McGraw-Hill Ryerson Limited.  All rights reserved.159
+Fixed & Variable Costs
+Fixed costs(FC)are those that cannot be changed in the period of
+time under consideration regardless of output.
+•In the long-run there are no fixed costs since all costs are variable.
+•In the short-run, a number of costs will be fixed.
+Variable costs(VC)are costs that change as output changes, such as
+the costs of labour and materials.
+© 2006 McGraw-Hill Ryerson Limited.  All rights reserved.160
+Average Variable Costs & Average Fixed Costs
+Average Variable Cost (AVC)equals variable cost divided by quantity
+of output produced.
+AVC = VC/Q
+Average Fixed Cost (AFC)equals fixed costs divided by quantity of
+output produced.
+AFC = FC/Q
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics19
+© 2006 McGraw-Hill Ryerson Limited.  All rights reserved.161
+Total Cost & Average Total Cost
+Total Cost (TC)is the sum of the fixed costs and variable costs.
+TC = FC + VC
+Average Total Cost (ATC) (often called average cost) equals total cost 
+divided by the quantity of output produced.
+ATC = TC/Q
+Average total cost can also be thought of as the sum of average fixed 
+cost and average variable cost.
+ATC = AFC + AVC
+© 2006 McGraw-Hill Ryerson Limited.  All rights reserved.162
+Marginal Cost
+Marginal Costis the increase in total cost due to increase in the level
+of output by one unit.
+MC = TC/Q
+In deciding how many units to produce, the most important variable 
+is marginal cost.
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics20
+© 2006 McGraw-Hill Ryerson Limited.  All rights reserved.163
+The Cost of Producing Water-Mellons 
+Output FC   VC   TC   MC   AFC   AVC   ATC 
+3   50   38   88   —  16.67  12.66  29.33 
+4   50   50  100  12  12.50  12.50  25.00 
+9   50   100  150  —   5.56  11.11  16.67 
+10   50   108  158   8   5.00  10.80  15.80 
+16   50   150  200  —   3.13  9.38  12.50 
+17   50   157  207   7   2.94  9.24  12.18 
+22   50   200  250  —   2.27  9.09  11.36 
+23   50   210  260  10   2.17  9.13  11.30 
+27   50   255  305  —   1.85  9.44  11.30 
+28   50   270  320  15   1.79  9.64  11.42 
+ 
+164
+Relationship Between Marginal and Average Costs
+$90
+80
+70
+60
+50
+40
+30
+20
+10
+0
+Quantity
+Area B 
+Area A Area C 
+MC
+ATC
+AVC
+1  2  3  4  5  6 7  8  9
+Q
+1
+B
+Q
+0
+A
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics21
+Optimal Level of Variable Input Usage
+Total Revenue Product (TRP)= Market value of the firm’s output,
+computed by multiplying the total product by the market price
+TRP = Q * P
+Marginal Revenue Product (MRP)= Change in the firm’s TRP
+resulting from a unit change in the number of inputs used.
+MRP =
+MPP
+X
+QP
+X
+PQ
+X
+TRP
+
+
+
+
+
+
+
+
+)(
+Optimal Level of Variable Input Usage
+In order to determine the optimal input usage we assume that the
+firm operates in a perfectly competitive market for its input and its
+output.
+•Product price, P=$2
+•Variable input (e.g. labour) price, w=$10,000
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics22
+Optimal Level of Variable Input Usage
+Total Labor Cost (TLC) = Total cost of using the variable input labor, computed 
+by multiplying the wage rate by the number of variable inputs (X) employed.
+TLC = w * X
+Marginal Labor Cost (MLC)= Change in total labor cost resulting from a unit
+change in the number of variable inputs used.
+MLC = 
+w
+X
+TLC
+
+
+
+Optimal Level of Variable Input Usage
+Labor 
+Unit 
+(X)
+Total 
+Product   
+(Q or TP)
+Average 
+Product 
+(AP)
+Marginal 
+Product 
+(MP)
+Total 
+Revenue 
+Product 
+(TRP)
+Marginal 
+Revenue 
+Product 
+(MRP)
+Total 
+Labor 
+Cost 
+(TLC)
+Marginal 
+Labor 
+Cost 
+(MLC)
+TRP-
+TLC
+MRP-
+MLC
+00000
+110,00010,00010,00020,00020,00010,00010,00010,00010,000
+2   25,000  12,500  15,000  50,000  30,000  20,000  10,000 30,000 20,000
+3   45,000  15,000  20,000  90,000  40,000  30,000  10,000 60,000 30,000
+4   60,000  15,000  15,000  120,000  30,000  40,000  10,000 80,000 20,000
+5   70,000  14,000  10,000  140,000  20,000  50,000  10,000 90,000 10,000
+675,00012,5005,000150,00010,00060,00010,00090,0000
+7   78,000  11,143  3,000  156,000  6,000  70,000  10,000 86,000 -4,000
+8   80,000  10,000  2,000  160,000  4,000  80,000  10,000 80,000 -6,000
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics23
+Optimal Level of Variable Input Usage
+Labor 
+Unit 
+(X)
+Total 
+Product   
+(Q or TP)
+Average 
+Product 
+(AP)
+Marginal 
+Product 
+(MP)
+Total 
+Revenue 
+Product 
+(TRP)
+Marginal 
+Revenue 
+Product 
+(MRP)
+Total 
+Labor 
+Cost 
+(TLC)
+Marginal 
+Labor 
+Cost 
+(MLC)
+TRP-
+TLC
+MRP-
+MLC
+00000
+110,00010,00010,00020,00020,00010,00010,00010,00010,000
+225,00012,50015,00050,00030,00020,00010,00030,00020,000
+345,00015,00020,00090,00040,00030,00010,00060,00030,000
+460,00015,00015,000120,00030,00040,00010,00080,00020,000
+570,00014,00010,000140,00020,00050,00010,00090,00010,000
+675,00012,5005,000150,00010,00060,00010,00090,0000
+778,00011,1433,000156,0006,00070,00010,00086,000-4,000
+880,00010,0002,000160,0004,00080,00010,00080,000-6,000
+Stage
+II
+Optimal Level of Variable Input Usage
+A profit-maximizing firm operating in perfectly competitive output
+and input markets will be using the optimal amount of an input at
+the point at which the monetary value of the input’s marginal
+product is equal to the additional cost of using that input.
+Where MRP=MLC.
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics24
+TOPIC 4: MARKET STRUCTURES FOR AGRICULTURAL PRODUCTS
+By the end of this topics, you should be able to:
+Define a Market;
+Understand and explain Market Structures
+Understand key characteristics of Market Structures
+Intro. to Agricultural Economics171
+Markets
+Market
+A physical place where buying and selling of goods or services takes
+place.
+A market exists when buyers wishing to exchange the money for a
+good or service are in contact with the sellers who are willing to
+exchange goods or services for money.
+Other Definitions:
+A market is the sphere within whichprice determining forces (Demand
+and Supply)operate.
+Aggregate Demand or Aggregate Supply for a particular commodity.
+Intro. to Agricultural Economics172
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics25
+Components of a Market
+For a market to exist, certain conditions must be satisfied.
+The existence of a product or commodity
+Existence of buyers and sellers;
+Price at which the commodity is transacted or exchanged
+Intro. to Agricultural Economics
+173
+Types of Markets
+Input/Factor/Resource Market
+The input market includes items
+like fertilizer, seed, labour, and
+finance.
+These types of products are
+purchased by producers
+Output Market
+This is the market where final
+products are sold to consumers
+Eggs and potatoes from farms
+Shoes from shoe stores
+Intro. to Agricultural Economics174
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics26
+Market Structures
+Market Structure refers toorganizational characteristics of a market which
+influence behaviour and performance of business firms in the market.
+Four common types of market structures are:
+Perfect Competition
+Monopoly
+Monopolistic Competition
+Oligopoly (includes another sub-type: Duopoly)
+The above market structures arenamed from the perspective of number of
+suppliers/producers/sellers in any market.
+Intro. to Agricultural Economics175
+Market Structures
+Intro. to Agricultural Economics176
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics27
+Market Structures
+
+Differences in the Market Structures arise based on:
+
+Number of firms (suppliers/producers) in the market
+
+Control over Prices
+
+Conditions for Entry or Exit from the market 
+
+Existence of Non-Price Competition in the market
+
+Type of product traded in the market
+
+Flow of market information
+Intro. to Agricultural Economics177
+Market Structures: Perfect Competition
+Also called Pure Competition.
+A perfectly competitive market should meet the following conditions:
+Existence of large number of firms (suppliers/producers) and many
+buyers (to the extent thatno one person or firm should influence the
+total market quantity or market price).
+Firms should produce the same/identical product (homogeneity in
+product offered to buyers, i.e.products offered by many suppliers have
+same features)
+Firms sell the same (homogenous) product at the same price
+Conditions for entry or exit from the market are easy
+Free flow of market information (info about product prices)
+Most agricultural markets possess some characteristics of perfect
+competition markets
+Intro. to Agricultural Economics178
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics28
+Prices Under Perfect Competition
+Perfectly competitive markets are
+efficient and competition keeps
+both prices and production costs
+low.
+Any firm in perfectly competitive
+market:
+Is not able to alter the market price
+of the good it produces(all firms are
+price takers).
+Competes with many other firms
+selling homogeneous products.
+Intro. to Agricultural Economics180
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics29
+Market Structure: Monopoly 
+A monopoly is a market in which a single seller dominates
+This market has one firm producing for the entire market a particular
+good or service.
+Characteristics of a monopoly:
+The single firm sets prices for its products at will (It is a price setter, not a price
+taker).
+There are many barriers to entry into the market for new firms
+There is no or less variety of goods (supplies a unique product with no or few
+close substitute)
+The single firm has no or insignificant direct competitors.
+The single firm has complete market power (i.e.it can alter the market price of
+a good or service).
+LO-1
+Intro. to Agricultural Economics181
+Market Structure: Monopoly 
+Intro. to Agricultural Economics182
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics30
+Market Structure: Oligopoly
+Oligopolyis a market with two or a few large firms supplying all or
+most of a particular product.
+Characteristics of Oligopoly:
+Few firms (producers) in the market
+Some variety of goods
+Many barriers to entry into the market for new firms
+There is some control over prices
+Intro. to Agricultural Economics183
+Market Structure: Oligopoly
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics31
+Market Structure: Oligopoly
+Barriers to Entry
+Barriers to entry in an oligopoly can be technological (e.g. processing dairy
+products is carried out by a few companies due to high technology
+requirement)
+or 
+Barriers can be created by a system of government licenses or patents(e.g.
+telecommunication sub-sector: for firms to operate in this sector they ought to
+get a license from government.
+Currently, Malawi has Airtel, TNM, MTL, Access as Mobile Phone Service Providers.
+Same thing with banking sector.
+Same thing in the Industrial Cannabis sub-sector
+Intro. to Agricultural Economics185
+Market Structure: Oligopoly
+Price Controls.
+There are some practices that concern government regarding
+oligopolies.
+Price leadership: This can lead to price wars for firms in an
+oligopoly, leading to unfair competition
+Collusion/Cartels: Through coordination, firms in an oligopoly may
+fix prices and/or production levels for its members. This is illegal in
+Malawi (Under Competition and Fair Trading Act, 1998).
+Are farmer cooperatives an example of Cartels/Collusion?
+Intro. to Agricultural Economics186
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics32
+Market Structure: Monopolistic Competition
+Monopolistic Competition: It is a market structure in which many firms
+sell products that are similar but not identical
+Characteristics of Monopolistic Competition:
+Many firms in the market
+Goods/services sold are not identical-heterogeneity of products
+Minimal barriers to entry
+Little control over prices
+Intro. to Agricultural Economics187
+Monopolistic Competition
+In Monopolistic Competition, many
+firms compete in an open market to
+sell similar, but not identical, products
+(market  for  goods  which  are
+substitutes for each other).
+Commonexamplesor
+monopolistically competitive firms
+are:
+Filling stations
+Retail stores
+Agricultural production (e.g. farmers
+produce different varieties or species of
+same crop or livestock)
+The  market  for  jeans  is
+monopolisticallycompetitive
+because  jeans  can  vary  by
+size, color, style, and designer.
+
+11/18/2025
+LUANAR_Introduction to Agricultural Economics33
+Characteristics of Monopolistic Competition Markets
+Many Firms
+Low start-up costs allow many firms to enter the market.
+Few barriers to entry
+It is easy for new firms to enter the market.
+Little control over price
+If a firm raises their prices too high, consumers will go elsewhere to buy a close
+substitute of the expensive product.
+Differentiated products
+Allows a firm to profit from the differences between their product and a
+competitor’s product (competition is based on different brands for products).
+Non-Price Competition
+In a monopolistically competitive market, non-price competition strategies (e.g.
+advertisement; embedded services; customer care services; unique product
+branding) play a big role.
+Intro. to Agricultural Economics189

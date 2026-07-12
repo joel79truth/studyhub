@@ -1,0 +1,600 @@
+
+
+1 
+ 
+A proposal for research 
+On 
+Elucidating contribution of carotenoids to reduced glycaemia of porridge made from biofortified 
+orange maize 
+Prepared by 
+ 
+Food Technology/Agro food processing 
+Natural Resources College 
+Lilongwe University of Agriculture and Natural Resources 
+P.O Box 143, Lilongwe, Malawi 
+ 
+Submitted to: Research Committee – NRC Campus 
+ 
+Project Period: 2020-2021 
+Amount Requested:  
+ 
+Principal Investigator:  
+ 
+Co-PI:  
+tngoma@luanar.ac.mw 
+(+265 882 505 366) 
+ 
+Contents 
+Abstract ........................................................................................................................................... 2 
+
+2 
+ 
+Background ..................................................................................................................................... 4 
+Rationale ......................................................................................................................................... 6 
+Problem statement and justification ................................................................................................ 6 
+Main objective ................................................................................................................................ 8 
+Specific objectives....................................................................................................................... 8 
+Hypotheses ...................................................................................................................................... 9 
+Methodology ................................................................................................................................... 9 
+Study design ................................................................................................................................ 9 
+Place of the study ...................................................................................................................... 10 
+Target population ...................................................................................................................... 10 
+Sampling techniques and tools .................................................................................................. 10 
+Sample size determination ........................................................................................................ 10 
+Analysis of maltose and glucose after in-vitro digestion .......................................................... 11 
+Data collection techniques and tools ......................................................................................... 11 
+Data analysis ............................................................................................................................. 11 
+Dissemination of research findings ............................................................................................... 12 
+Ethical consideration ..................................................................................................................... 12 
+Personnel roles and institutions .................................................................................................... 12 
+Collaborating institutions and implementing team ....................................................................... 12 
+Work Plan ..................................................................................................................................... 13 
+Budget ........................................................................................................................................... 14 
+Budget justification: .................................................................................................................. 14 
+References ..................................................................................................................................... 15 
+Appendix 1 .................................................................................................................................... 18 
+ 
+ 
+ 
+Abstract 
+
+3 
+ 
+Biofortified orange maize (vitamin A maize) is promoted in developing country as a strategy to 
+alleviate  vitamin  A  deficiency.  A  significant  effort  has  been  put  in  breeding  of  maize  varieties 
+with higher  carotenoid contents. Despite the notable effect on raising vitamin A level in people 
+consuming  these  elite  maize  grains,  their  health  benefits  are  currently  under  reported.  These 
+grains are rich in antioxidants that may play different health roles in the body.  In this study  we 
+propose to determine the effect of carotenoids, rich in vitamin A maize, on starch digestion and 
+subsequent  glycemic  response  in non-diabetic  individuals.  To  do  this  we  plan  to  recruit  40 
+individuals and  be  fed  porridge  made  from  vitamin  A  maize  and  compare  their  glycemic 
+response to those that will consume similar porridge but made from ordinary white maize flour. 
+This  will  address  the  question  whether  porridge  from  vitamin  A  maize  produces  different 
+glycemic responses compared to porridge from white maize. However, at this point data cannot 
+explain whether the difference is due to carotenoids.  In order to reduce interferences that may be 
+caused by other components of the maize grains, we will do similar procedure using carotenoid 
+enriched starch  pastes and  compared  glycemic  response  with  individuals  that  will  consume 
+starch  paste  without  carotenoid  enrichment.  If  we  get  significantly  lower  (p<0.05)  postprandial 
+blood  glucose  level  in  carotenoid  enriched  group  then  we  can  confidently  attribute  it  to 
+carotenoids.  If  vitamin  A  maize is  found  to  reduce  blood  spike  post  feeding,  then  we  will 
+recommend it for consumption by people managing diabetes. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+4 
+ 
+Background/Introduction 
+Consumers  are  increasingly  becoming   aware   of  the  importance  of   eating  healthy foods. 
+Generally, a diet rich in fruits and vegetables is considered healthier because it is associated with 
+reduced  risk  of  cancer,  cardiovascular  diseases,  diabetes  mellitus and hypertension (Kaulmann 
+and   Bohn,   2014).   Many   studies   have   attributed   these   health   benefits   to   anti-oxidant 
+phytochemicals  that  include  polyphenols,  vitamin  C  and  carotenoids  present  in  fruits  and 
+vegetables (Hu  et  al,  2012). Diabetes  mellitus  is  a  metabolic  disease  manifested  through  high 
+fasting  blood  glucose  level. It  is  in  two forms:  type  I  diabetes  mellitus  which  is  caused  due  to 
+failure by the pancreatic β-cells to produce enough insulin to regulate blood glucose and type II 
+diabetes mellitus which is caused due to insulin insensitivity by cells. The former is common in 
+infants while the latter is common among adults.  
+Blood glucose rises after eating carbohydrate rich foods because starch is hydrolyzed by 
+amylases  and  glucosides  into  simple  sugars.  This  is  the  reasons  why  people  with  diabetes  are 
+discouraged  from  eating  food  with  high  glycemic  index (GI). Despite  recommending  food to 
+diabetic  persons based  on GI has  obvious shortfalls  neglecting  the  effects  of  other  dietary 
+component that may affect glucose  release such as phytochemicals, fats and proteins, GI is still 
+used  to  prescribe  diets  to  diabetic  individuals. Moreover,  it does  not  take  into  account  serving 
+size which is an important factor in determining postprandial blood glucose level. Compliance to 
+dietary restrictions based  on  GI is  challenging  because  of  limited  knowledge  and  awareness  of 
+the  GI  of  commonly  consumed  foods. Effort  to  promote  consumption  of  whole  grain  nsima 
+(mgaiwa) is challenging because mgaiwa is not palatable (appealing) to many consumers leading 
+to many households making ofa oyera or refined flour for nsima preparation despite its potential 
+to increase the risk of developing diabetes.  
+
+5 
+ 
+ Identification of staple  food  that  may have  limited glucose  release postprandially  is 
+important  for  diabetes  management  especially  among  resource  poor  families  where  it  is  very 
+difficult to  meet  the  cost  of  managing diabetes by  use  of  drugs or  other  medical  prescriptions. 
+Even  in  foods  that  are  known  to  result  in  high  blood  glucose,  deliberate  strategies  should  be 
+identified  that  will slow  down  starch  digestion and  decrease postprandialblood  glucose  level. 
+This approach  will make  people continue enjoying the  usual  diet  while  avoiding postprandial 
+glucose  spike characteristic  of  those  diets. Currently,  a  number  of  strategies  are  used  to control 
+postprandial  blood  glucose  level  after  consumption  of  high  carbohydrate  (starchy)  foods. 
+Recently research has focused on manipulating digestion processes by inhibiting starch digestive 
+enzymes  (α-amylases and  α-glucosides)  by  using  bioactive  compounds  such  as  green tea 
+polyphenols (Forester et al., 2012; Li et al., 2018) and carotenoids (Gopal et al., 2017) which was  
+effective  at  reducing  postprandial  blood  glucose in  mice. Similar  effect  has  been  reported  in 
+literature on human subjects (Lochocka et al., 2015). 
+Recently,  release  of  biofortified  maize  genotypes  has  added  diversity  to  sources  of 
+carotenoids  as  adoption  of  biofortified  maize  is  increasing (Bouis  and  Saltzman,  2017).  While 
+polyphenols  are  known  to  inhibit  starch  digestion,  there  is  limited  information  on  effect  of 
+carotenoids  on  starch  digestion. One  study  (Oluba  and  Oredokun-Lache,  2018)  reported  low 
+postprandial blood glucose level after consumption of high carotenoid biofortified maize relative 
+to white maize in adult non-diabetic human subjects suggesting that carotenoids may play a role, 
+at  least  in  part,  to lowering  postprandial  blood  glucose  level. The  nutritional  importance  of 
+biofortified  maize to developing  countries  is  well  documented (Gannon  et  al., 2014). However, 
+biofortified maize does not contain nutrients only but also carotenoids. These carotenoids include 
+lutein and zeaxanthin that provide other health benefits including improvement of eye health and 
+
+6 
+ 
+neuronal  development (Johnson,  2014 )  and  work  as  anti-oxidant  fighting  oxidative  stress 
+(Nkhata  and  Ayua,  2019).  These  properties  justifies  why  biofortified  maize  should  be  used  by 
+different categories of people rather than vitamin A deficient individuals only. Nevertheless, for 
+complete adoption and utilization of carotenoids rich biofortified maize by different categories of 
+population, it’s nutritional and health benefits need to be demonstrated. 
+Literature review 
+(Insert the literature review section here). I will send you the document on how the literature 
+review should be written 
+Rationale 
+Despite having similar   starch   contents,   biofortified   maize porridge produced low 
+postprandial blood  glucose  level than  traditional  white  maize  (Oluba  and  Oredokun-Lache, 
+2018).  Biofortified  maize genotypes  have higher carotenoid  and phenolic  acid contents than 
+white  maize (Oluba  and  Oredokun-Lache,  2018;  Nkhata,  2019). Both  carotenoids  and  phenolic 
+acids  are  known  to  inhibit starch-digesting enzymes such  as α-amylase  and  α-glucosides 
+(Forester et al., 2012; Li et al., 2018, Gopal et al., 2017). The Oluba and Oredokun-Lache study 
+suggests that either presence of carotenoids or phenolic acids or a combination of both may have 
+effect on α-amylase and α-glucosides that may be inhibitory to starch digestion thereby reducing 
+postprandial blood glucose level.  
+Problem statement and justification 
+The  increase in  diabetes  cases  in  Malawi  is not  surprising  as  our  diet  is increasingly 
+becoming higher in refined carbohydrates (added sugars  and  starches) while  at  the  same  time 
+more  and  more  people  are  becoming  less  active  (Price  et  al.,  2018; Gowshall  and  Taylor-
+
+7 
+ 
+Robinson, 2018). More than 1 in 5 Malawians are overweight or obese (WHO, 2010). As a result 
+there  is  an increase  in  cases  of  overweight/obesity  among women  of  reproductive  age  in both 
+rural  and  urban  areas,  currently  at an  average  of 21%  from  17%  in  2010  (MDHS  2015-2016). 
+The  study  that  was  done  in  Karonga  and  Lilongwe  between  2013  and  2016  and  published  in 
+Lancet  Diabetes  Endocrinology has  shown  that  overweight,  obesity  and  diabetes  are  highly 
+prevalent  in  urban  and  rural  Malawi  (Price  et  al.,  2018). It  is  known  that  increase  in  obesity  is 
+associated with increase in diabetes cases (Gowshall and Taylor-Robinson, 2018) and obesity is 
+considered as the leading risk factor for type 2 diabetes (Barnes and Coulter, 2010). Studies have 
+shown  that  women  with  a  body  mass  index (BMI)  of  30  kg/m
+2
+ have  a  28  times  greater  risk  of 
+developing diabetes than do women of normal weight (Coldtiz et al., 1995).  The risk of diabetes 
+is 93 times greater if the BMI is 35 kg/m (Coldtiz et al., 1995).  
+The  main  dish  for Malawians constitute  of carbohydrate  rich nsima  that  is  reported  to 
+have high GI (Gowshall and Taylor-Robinson, 2018). Studies have shown that participants with 
+a diet of high GI or glycemic load and low cereal fiber intake had approximately 50% increased 
+risk  of  developing  diabetes  (Ardisson  eta  l.,  2014). While  other  factors  such  as  physical 
+inactivity, smoking and alcohol consumption play some roles in development of both obesity and 
+diabetes,  dietary  approaches  remain  critical  to  both  development  and  management  of  these 
+metabolic  conditions. Due  to  increase  in  cases  of  diabetes  in Malawi  and  other developing 
+countries where diet is built around carbohydrate rich stable crop (maize, millet there is a need to 
+find  the  best  staple  food and  the  best  form of  consumption for  diabetic people. Lately, 
+biofortified  maize  genotypes  have  been  released  for  adoption  (Bouis  and  Saltzman,  2017). 
+Because biofortified  maize produced  lower  postprandial  blood  glucose  level  compared  to 
+traditional  white  maize (Oluba  and  Oredokun-Lache,  2018),  we therefore  hypothesize  that 
+
+8 
+ 
+consumption of porridge or nsima made from biofortified maize will significantly produce lower 
+postprandial  blood  glucose level  relative  to consumption  of porridge  or  nsima  made  from 
+traditional white maize.  
+To  date,  it  is  not  known  what  is  responsible  for  low glycemia  of  biofortified  maize that 
+was  observed  in  Oluba  and  Oredokun-Lache  (2018)  study.  Carotenoids, polyphenols and fiber 
+individually  or  in  combination  may  be responsible  for  the  observed  decrease  in  postprandial 
+blood glucose. This study seeks to determine the contribution of carotenoids to reduced glycemia 
+of  biofortified  maize. Moreover,  studies  to  elucidate  effects  of  carotenoids  on  starch  digestion 
+are   limited. While   the   finding   that porridge   made   from   biofortified   maize   produced 
+comparatively  lower  postprandial  blood  glucose  level  than  the  white  maize  is  preliminary,  it  is 
+encouraging and must be further explored. Therefore, this study seeks to determine if carotenoids 
+have  effect  on  starch  digestion  (hydrolysis) and  subsequent  postprandial  blood  glucose  level  in 
+non-diabetic individuals.  
+Main objective 
+To determine the effects of carotenoids on starch digestion and glycemic response after 
+consumption of carotenoid rich biofortified maize porridge 
+Specific objectives 
+1. To compare starch hydrolysis in porridges made from white and biofortified maize after 
+in-vitro digestion with α-amylase and β-amylase (or α-glucosidases). 
+2. Compare  postprandial  blood  glucose level in non-diabetic  persons after  consumption  of 
+biofortified maize and traditional white maize. 
+
+9 
+ 
+3. Compare  postprandial  blood  glucose  level  after  consumption  of  carotenoid  enriched 
+starch  pastes  (CESP)  and non-carotenoid enriched starch  pastes (NCESP). The  starch 
+pastes will be made from both maize and cassava. 
+Hypotheses 
+1. Presence of carotenoids decreases hydrolysis of starch by amylases 
+2. Consumption  of  biofortified  maize  porridge produces  lower postprandial blood glucose 
+level relative to consumption of white maize porridge. 
+3. Presence   of   carotenoids lowers postprandial   blood   glucose   level compared   to 
+consumption of white maize porridge. 
+Methodology 
+Study design 
+Approach  to  objective  1:  To  compare  starch  hydrolysis  from  porridges  made  from  white  and 
+biofortified maize after in-vitro digestion with α-amylase and β-amylase.   Porridge from maize 
+flour (both biofortified and white maize) will be prepared and digested using a modified in-vitro 
+procedure as previously reported (Nkhata, 2019). 
+Approach to objective 2. The participants will be divided into two groups (n = 20) each (2 more 
+in case of dropouts). Subjects (n = 20) will be served with ~500 g of standardized porridge made 
+from biofortified maize (experimental) while the other group (n = 20) will be served with similar 
+amount of porridge but made from ordinary white maize. Then blood will be drawn using finger 
+pricks (a drop of blood) and blood glucose level measured every 30 minutes for the first 2 hours 
+after ingestion of test porridge in the morning (8:00am) and thereafter the measurements will be 
+done every hour until 7 hours post feeding. This will answer whether postprandial blood glucose 
+is different when subjects consume biofortified maize or white maize.  
+
+10 
+ 
+Approach  to  objective  3; If significant  difference  in  blood  glucose  level  is  noted,  we  will  be 
+interested to know whether carotenoids have any influence on postprandial blood glucose. To do 
+this,  same  subjects  (N  =  40)  will  ingest  starch  paste  to  which  a  known  amount  of  carotenoids 
+(mainly those from maize) will be added (n = 20) while the other group (n = 20) will ingest the 
+same amount of starch paste without added carotenoids. The assumption is that any difference in 
+blood  glucose  level  between  these  groups  will  be  attributed  to  the  presence  of  carotenoids  in 
+starch paste. Therefore pure carotenoid standards will be purchased. 
+Place of the study 
+The study will be conducted at LUANAR-NRC clinic. 
+Target population 
+The participants of the study are students and faculty at LUANAR-NRC campus. 
+Sampling techniques and tools 
+The study will be advertised on campus and those interested will be enrolled.  
+Sample size determination 
+ A total of 40 participants will be involved after at least 8 hours fasting (overnight fasting). The 
+sample  size  was determined  based  on  glycemic  index  as  reported  previously (Oluba  and 
+Oredokun-Lache,  2018)  and calculated  based  on  the  following  formula; 푛=
+푧
+2
+휎
+2
+푑
+2
+,  where z 
+confidence coefficient of 0.95, σ is standard deviation and d minimum difference expected. From 
+similar  previous  study  (Oluba  and  Oredokun-Lache,  2018), σ (standard  deviation  in  GI) was 
+found to be 11.8 while d (difference in GI between the two groups) was 5.4 and we will use z = 
+1.96 (0.95). The sample size is therefore;  
+푛=
+푧
+2
+휎
+2
+푑
+2
+=18 
+
+11 
+ 
+ The  study  will  be  advertised  around  the  college  campus  and  those  willing  to  participate 
+voluntarily will be asked to contact the project PI. The enrolment of subjects into the study will 
+be done after thorough screening for inclusion factors. Inclusion criteria includes age (≥ 18 years 
+old but not more than 60 years), body mass index (BMI) > 18.5, non-diabetic, non-smokers, not 
+on  medication  for  at  least  a week and  availability  during  study  period and  should  be  either  a 
+student  or  a  staff  member  of  NRC. This  study  will  be  carried  out  with  the  help  of  registered 
+nurses  at  the  college  clinic. After  the  study,  participants  who  will  be  found  conditions  needing 
+medical  care  shall  be  advised  on  individual  basis  by  the  nurses  or  clinicians  that  will  be  used. 
+Depending  on  the  conditions,  they  may  be  assisted  at  the  clinic  or  may  be referred to  another 
+health facility under strict conditions of confidentiality. 
+Analysis of maltose and glucose after in-vitro digestion 
+Maltose  and  glucose generated  after  digesting  porridge will  be  analyzed  using  a  procedure  by 
+megazyme (K-MASUG 08/18).  
+Data collection techniques and tools 
+Carotenoid contents in porridge will be determined using HPLC on dry weight basis (μg/g DW). 
+Blood glucose level will be determined by physicians at the clinic  and the data collection sheet 
+where the physicians will record data has been developed (see Appendix 1).  
+Data analysis 
+Data  will  be analyzed using  SPSS  to  generate  group  means. Mean  postprandial blood  glucose 
+level (mmol/L)  from  control  group (white  maize  or  plain  starch  paste)  will  be  compared  with 
+experimental group (biofortified maize or carotenoid enriched starch paste) and differences with 
+p<0.05  will  be  considered  significant using  t-test (α = 0.05). Aggregate  area  under  the  curve 
+(AUC) for the two groups will be produced. 
+
+12 
+ 
+Dissemination of research findings 
+Data  from  this  study  will  be  disseminated  in  a  number  of  ways  that  include  presentations  at 
+stakeholder meeting including NHSRC, Ministry of Health, Department of Nutrition HIV/AIDS, 
+Ministry  of  Agriculture  and  Water  Development,  Ministry  of  Gender  and  other  relevant 
+ministries.  Participation in both local and international research seminars and symposiums will 
+also  be  an  option  for  disseminating  the  findings.  Finally,  results  will  be  published  in  peer 
+reviewed journals accredited by LUANAR. 
+Ethical consideration 
+The  study  approval  will  be  obtained  from  the  National  Health  Sciences  Research  Committee 
+(NHSRC) under the National Commission for Science and Technology (NCST) prior to starting 
+the study. Participants will give informed consent by signing consent form in order to participate 
+in  the  study.  Before  signing  consent  form,  the  aim,  objectives  and  any  implication  of  the  study 
+will be explained. Details of the participants are for research purposes only and will not be made 
+public. There will be no any identification of participant during data recording. Once the study is 
+complete the information will be destroyed. 
+Personnel roles and institutions 
+Collaborating institutions and implementing team 
+ 
+ 
+ 
+ 
+ 
+
+13 
+ 
+Work Plan 
+Activity 
+ Jun- 
+2020 
+ Jul-
+2020 
+ Aug-
+2020 
+ Sept-
+2020 
+Oct-
+2020 
+ Nov 2020 -
+March 2021 
+       
+Obtaining study approval            
+Buying maize (both biofortified and 
+white)         
+ 
+  
+Feeding experiment             
+Data analysis and interpretation            
+Report writing, seminar presentation, 
+submission to journal         
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+14 
+ 
+Budget 
+ 
+ 
+Budget justification:  
+This budget takes into account the purchasing of simple medical equipment for analysis of blood 
+sugar and purchasing of  vitamin A maize from farmers. As a token of appreciation participants 
+will be given K8000 each. The total budge also include 10% (K334,400) payable to NHSRC and 
+contingency plan due to rising cost of products. This research is done to provide information to 
+ObjectiveActivity/itemQuantityAmount (MK)Total (MK)
+Internal travels2200,000400,000          
+Research dissemination1200,000200,000          
+Meetings310,00030,000           
+Fuel1001,000100,000          
+Stationery 10300030,000           
+Sub Total760,000          
+Buy maize (kg)102502,500             
+α-amylase Enzymes 
+1100,000100,000          
+β-amylase
+1100,000100,000          
+Carotenoids  (β-carotene, β-Cryptoxanthin, Lutein, Zeaxanthin)4100,000400,000          
+Reagents280,000160,000          
+Appendorf tubes (50ml and 15 mls)220,00040,000           
+Sub Total802,500          
+Research approval1130,000130,000          
+Subject screening/recruitment50100050,000           
+Screening sample analysis502000100,000          
+Subjects incentives (participants)408,000320,000          
+Biofortified maize (50 kg bags)212,00024,000           
+White maize (50 kg bags)212,00024,000           
+Cooking oil135003,500             
+Blood glucose analysis (subjects, 7 times)4016,000640,000          
+Sub Total1,291,500       
+Human subjects incentives208,000160,000          
+Maize starch (30 kg bags)110,00010,000           
+Blood glucose analysis (subjects)2016,000320,000          
+Sub Total490,000          
+Total
+NCRSH fee (10%)
+Contingency (5%)
+Grand Total
+167,200.00                                                
+3,845,600.00                                             
+Objective3.Comparepostprandialblood
+glucoselevelafterconsumptionof
+carotenoidenrichedmaizestarchpaste
+(CEMSP)andpuremaizestarchpaste
+(PMSP).
+Project Administration
+Objective1.Tocomparestarch
+hydrolysisfromporridgesmadefrom
+whiteandbiofortifiedmaizeafterin-
+vitrodigestionwithα-amylase,β-
+amylase and a-glucosidases. 
+Objective2.Comparepostprandialblood
+glucoseafterconsumptionofbiofortified
+maize and traditional white maize.
+3,344,000                                                  
+334,400.0                                                  
+
+15 
+ 
+the general public, there is also money for dissemination of the information which may take the 
+form of seminar, poster presentation and publication in journal accredited by LUANAR. 
+ 
+ 
+References 
+Barnes AS, Coulter, SA (2011). The Epidemic of Obesity and Diabetes :Trends and Treatments. 
+Tex Heart Inst J. 38(2): 142–144. 
+ Colditz  GA,  Willett  WC,  Rotnitzky  A,  Manson  JE. Weight  gain  as  a  risk  factor  for  clinical 
+diabetes mellitus in women. Ann Intern Med 1995;122(7):481–6. 
+Forester  SC,  Gu  Y,  Lambert,  JD.  (2012).  Inhibition  of  starch  digestion  by  the  green  tea 
+polyphenol, (−)-epigallocatechin-3-gallate. Mol Nutr Food Res. 2012 56(11): 1647–1654. 
+doi:10.1002/mnfr.201200206. 
+Gannon, B., Kaliwile, C., Arscott, S.A., Schmaelzle, S., Chileshe, J., Kalungwana, N.,Mosonda, 
+M.,  Pixley,  K.,  Masi,  C.,  Tanumihardjo,  S.A.,  2014.  Biofortified  orange  maize  is  as 
+efficacious as a vitamin A supplement in Zambian children even in the presence of high 
+liver  reserves  of  vitamin  A:  a  community-based,  randomized  pla-cebo-controlled  trial. 
+Am. J. Clin. Nutr. 100, 1541– 1550. 
+Gopal,  S.  S.,  Lakshmi,  M.  J.,  Sharavana,  G.,  Sathaiah,  G.,  Sreerama,  Y. N.,  &  Baskaran,  V. 
+(2017). Lactucaxanthin – a  potential  anti-diabetic  carotenoid  from  lettuce  (Lactuca 
+sativa) inhibits α-amylase and α-glucosidase activity in vitro and in diabetic rats. Food & 
+Function, 8(3), 1124–1131.doi:10.1039/c6fo01655c. 
+
+16 
+ 
+Li,  X.,  Li, S.,  Chen,  M.,  Wang,  J.,  Xie,  B.,  &  Sun,  Z.  (2018). (-)-Epigallocatechin-3-gallate 
+(EGCG)  inhibits  starch  digestion  and  improves  glucose  homeostasis  through  direct  or 
+indirect  activation  of  PXR/CAR-mediated phaseIImetabolism in diabetic mice. Food  & 
+Function.doi:10.1039/c8fo01293h. 
+Malawi Demographic Health Survey 2015-2016. NSO, Zomba. 
+Nkhata,  SG.  (2019).  Postharvest  storage  of  biofortified  maize  in  purdue  improved  crop  storage 
+(PICS) bags and effect on subsequent flour rheology and carotenoid bioaccessibility. PhD 
+Thesis. Purdue University, West Lafayette, IN. 
+Oluba,  O.M.,  Oredokun-Lache,  A.B.  (2018).  Nutritional  composition  and  glycemic  index 
+analyses  of  vitamin  A-biofortified  maize  in  healthy  subjects. Food  Sci Nutr.00:1–8. 
+https://doi.org/10.1002/fsn3.801. 
+Price  AJ,  Crampin  AC,  Amberbir  A,  Kayuni-Chihana  N,  CMusicha  C,  Tafatatha  T, at  al., 
+(2018).  Prevalence  of  obesity,  hypertension,  and  diabetes,  and  cascade  of  care  in  sub-
+Saharan  Africa:  a  cross-sectional,  population-based  study  in  rural  and  urban  Malawi. 
+Lancet Diabetes Endocrinol; 6: 208–22 
+Rombo,  G.  O.,  Taylor,  J.  R.,  &  Minnaar,  A.  (2001). Effect  of  irradiation,  with  and  without 
+cooking  of  maize  and  kidney  bean  flours,  on  porridge  viscosity  andin  vitro  starch 
+digestibility. J. Sci. Food and Agri, 81(5), 497–502. doi:10.1002/jsfa.838. 
+Hu, F., Wang, Y. B., Zhang, W., Liang, J., Lin, C., Li, D.,  et al.  (2012). Carotenoids and breast 
+cancer risk:  a meta-analysis and meta-regression.  Breast Cancer Res Treat., 131(1), 239-
+253 
+
+17 
+ 
+Bouis,  H.E.,  Saltzman,  A.,  2017.  Improving  nutrition  through  biofortifi  cation:  a  review  of 
+evidence from HarvestPlus, 2003 through 2016. Global Food Security 12, 49– 58. 
+Johnson,  E.J.,  2014.  Role  of  lutein  and  zeaxanthin  in  visual  and  cognitive  function  throughout 
+the lifespan. Nutr. Rev. 72, 605 –612 
+Nkhata,  SG;  Ayua E. Limitation of Dietary  Lycopene and β-Carotene  in  Prostate  and  Breast 
+Cancer Chemoprevention Based on Their Mechanisms of Action. CPQ Cancer (2019) 1:5 
+Gowshall M, Taylor-Robinson SD. The increasing prevalence of non-communicable diseases in 
+low-middle   income   countries:   the   view   from   Malawi. Int   J   Gen   Med. 2018   Jun 
+28;11:255-264. doi: 10.2147/IJGM.S157987. 
+Ardisson  Korat  AV,  Willett  WC,  Hu  FB.  Diet,  lifestyle,  and  genetic  risk  factors for  type  2 
+diabetes: a review from the Nurses’ Health Study, Nurses’ Health Study 2, and Health 
+Professionals’ Follow-up Study. Curr Nutr Rep. 2014;3(4):345–354. 
+WHO. Malawi National STEPS Survey for Chronic Non-Communicable Diseases and their Risk 
+Factors. 2010. Available from. http://www. 
+who.int/ncds/surveillance/steps/Malawi_2009_STEPS_Report.pdf.   Accessed   May   30, 
+2018. 
+Kaulmann,  A.  &  Bohn,  T.  (2014).  Carotenoids,  inflammation,  and  oxidative  stress-implications 
+of  cellular  signaling  pathways  and  relation  to  chronic  disease  prevention.    Nutr  Res., 
+34(11), 907-929. 
+ 
+ 
+
+18 
+ 
+Appendix 1 
+Data Collection tool 
+Study title: Elucidating contribution of carotenoids to reduced glycemia of porridge made 
+from biofortified orange maize (vitamin A maize) 
+Participant 
+ID 
+Blood 
+glucose 
+level 
+during 
+screening 
+Blood glucose level at different times (before and post feeding 
+vitamin A maize porridge) 
+0 0.5 1 2 3 4 5 6 7 
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+
+19 
+ 
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+ 
+Physician comment 
+______________________________________________________________________________
+______________________________________________________________________________
+______________________________________________________________________________
+______________________________________________________________________________
+______________________________________________________________________________
+______________________________________________________________________________ 

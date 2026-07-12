@@ -1,0 +1,339 @@
+
+
+Factorial design
+
+3. Factorial design
+•Involves the study of two or more factors.
+•When you have multiple independent variables (factors) in a 
+single study, it is called factorial design.
+•Each trial or replicate of the experiment, all possible combinations 
+of the levels of the factors are investigated.
+•If there are a level of A and b levels of factors B, each replicate 
+contains all ab treatment combinations.
+•The effect of the factor is the change in response produced by a 
+change in the level of the factor
+•The change in response is frequently called the main effect 
+because it refers to the primary factor of interest in the 
+experiment.
+
+2×3 factorial (Effect of varieties and storage system on 
+retention of vitamin A)
+Factors : genotypes (maize varieties) and storage system (bags)
+Storage system (Factor 2)
+Varieties 
+(Factor 1)
+PICS-oxyPICS-noxyWoven bags
+OPVIX1       X2X1      X2X1      X2
+OPVIIY1       Y2Y1       Y2Y1       Y2
+
+3
+×
+3Factorial
+
+Hypotheses
+•In factorial design we are interested in testing the equality of 
+treatment effects as well as interaction between factors
+•Treatment; Ho: μ1 = μ2 = μ3 = 0; Ha: at least one is different
+•Interaction;  Ho: (ab)
+ij
+= 0 for all ij; Ha: at least one (ab)
+ij
+≠ 0.
+•State all the hypothesis
+•State all conclusions which can be drawn from the ANOVA 
+
+ANOVA
+SourceSSdfMSF
+A TreatmentsSSAa-1MSA=SSA/(a-1)MSA/MSE
+B TreatmentsSSBb-1MSB=SSB/(b-1)MSB/MSE
+Interaction (A*B)SSAB(a-1)(b-1)MSAB=SSAB/(a-1)(b-1)MSAB/MSE
+ErrorSSEab(n-1)MSE =SSE/ab(n-1)
+TotalTSSabn-1)
+abn
+
+Example: Number of days it takes before three different brands 
+of cooking oil become rancid/spoil when stored at different 
+temperature are presented in the table below
+Temperature (
+O
+C)
+Brand62545
+A13015534402070
+7418080758258
+B1501881361222570
+1591261061155845
+C13811017412096104
+1681601501398260
+
+Note: 
+y
+2
+ijk 
+= you square all individual observation; 
+푦
+2
+... = you square total of all observations; 
+y
+2
+.j 
+= 
+you square total for factor a; 
+y
+2
+.j 
+= you square total for factor b; 
+y
+2
+ij 
+=you square total of each level (factor a and factor b); a = factor 1; b=factor 2; n 
+= number  of observation in each level
+
+Example: Number of days it takes before three different brands of 
+cooking oil become rancid/spoil when stored at different temperature 
+are presented in the table below
+ 
+ 
+ 
+Temperature (
+O
+C)
+ 
+ 
+ 
+ 
+Brand
+ 
+6
+ 
+y
+ij.
+ 
+25
+ 
+y
+ij.
+ 
+ 
+45
+ 
+y
+ij.
+ 
+y
+i..
+ 
+A
+ 
+130
+ 
+155
+ 
+539
+ 
+34
+ 
+40
+ 
+229
+ 
+20
+ 
+70
+ 
+230
+ 
+998
+ 
+74
+ 
+180
+ 
+80
+ 
+75
+ 
+82
+ 
+58
+ 
+B
+ 
+150
+ 
+188
+ 
+623
+ 
+136
+ 
+122
+ 
+479
+ 
+25
+ 
+70
+ 
+198
+ 
+1300
+ 
+159
+ 
+126
+ 
+106
+ 
+115
+ 
+58
+ 
+45
+ 
+C
+ 
+138
+ 
+110
+ 
+576
+ 
+174
+ 
+120
+ 
+583
+ 
+96
+ 
+104
+ 
+342
+ 
+1501
+ 
+168
+ 
+160
+ 
+150
+ 
+139
+ 
+82
+ 
+60
+ 
+y
+.j.
+ 
+1738
+ 
+ 
+1291
+ 
+ 
+7
+ 
+70
+ 
+ 
+y... = 3799
+ 
+ 
+TSBrand
+SSTemp
+TSS
+SSBrandTemp
+–SSBrand–SSTemp
+-10,683.72 –39,118.72= 9613.78
+SSE = TSS –SSA –SSB –SSAB = 77646.97 -10,683.72 -39,118.72 -9613.78 = 18,230.75
+Note: 
+y
+2
+ijk 
+= you square all 
+individual observation; 
+푦
+2
+... = you square total of all 
+observations; 
+y
+2
+.j 
+= 
+you square total for 
+factor a; 
+y
+2
+.j 
+= you square total for 
+factor b; 
+y
+2
+ij 
+=you square total of each 
+level (factor a and factor b); 
+a = factor 1; b=factor 2; n = 
+number  of observation in 
+each level
+
+ANOVA table
+SourceSSdfMSF
+A Treatments10,683.7225341.867.91
+B Treatments39118.72219559.3628.97
+Interaction(A*B)9613.7842403.443.56
+Error18230.7527675.21
+Total77646.9735
+•What are the hypotheses?
+•Do you reject of fail to reject Ho? Explain.
+•What is the conclusion to a layman?
+
+4. Latin Square
+It is used to eliminate two nuisance sources of variability (allows 
+blocking in two directions)
+
+TSS  
+SSRows  
+SSColumn  
+ SSTreatment =  
+40.687 
+SSE = TSS – SSRow – SSColumn - SSTreatment = 247.44 – 147.19 - 54.69 – 
+40.687 = 4.875 
+
+
+
+TSS 
+ 
+SSRows 
+ 
+SSColumn 
+ 
+ 
+SSTreatment
+ 
+= 
+ 
+40.687
+ 
+SSE 
+= TSS 
+–
+ 
+SSRow 
+–
+ 
+SSColumn 
+-
+ 
+SSTreatment = 247.44 
+–
+ 
+147.19 
+-
+ 
+54.69 
+–
+ 
+40.687 = 4.875
+ 

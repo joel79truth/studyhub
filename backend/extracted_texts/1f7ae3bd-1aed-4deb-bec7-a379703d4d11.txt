@@ -1,0 +1,26 @@
+
+
+Home Lab Assignment 1    Date of Submission  19.09.25 @ 12.00 Hrs 
+Instructions 
+1. Reproduce table 1 below in excel. The worksheet should look exactly the same  (20 Marks) 
+2. Then, arrange the cost items in ascending order. Write steps you followed. (10 Marks) 
+3. Use formula to calculate the total cash production costs. I will give marks to the formula used 
+which I will know by clicking on the cells of total values    (10 Marks) 
+4. Create a row called Standard Deviation (STDEV) at the bottom of last item. Use excel to calculate 
+the Standard Deviation for costs for each of the crops    (10 Marks) 
+5. Create a column at the right end of hay and label it ONLY HAY. Apply Logical Function to return 
+one value if condition is true or another value if condition is false. The condition is that if the 
+cost of any item of hay crop is more than $30 it should indicate SEEK APPROVAL or if less 
+indicate PROCURE         (10 Marks) 
+6. Create another row at bottom of items called Grand Total and using appropriate excel formula 
+calculate the sum of totals of cash production costs of all crops. I will check the formula by 
+clicking the grand total cells value.      (20 Marks) 
+7. Create another row at the bottom of items and label it PMT-5YRS. This is the monthly loan 
+repayment which you need to know. Suppose you take a loan today of the grand total value 
+from the bank at 35% interest rate to be repaid in 5 years. Use excel to calculate the PMT. I will 
+check the formula by clicking the cell where you have placed the PMT value. (20 Marks) 
+ 
+Save your work and upload in Google Classroom to submit. 
+ 
+Table 1 
+ 

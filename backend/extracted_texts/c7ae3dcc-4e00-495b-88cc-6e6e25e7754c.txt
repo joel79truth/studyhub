@@ -1,0 +1,439 @@
+
+
+Data and Information
+➢Data: Raw, unorganized facts or numbers that have no 
+meaning by themselves.
+ Example: 25, 30, 28, 32I
+➢Information: Data that has been processed or organized so 
+it becomes meaningful and useful. Example: “The average 
+temperature this week is 29°C.
+
+Introduction to Computer
+An electronic device that processes data according to a set of stored instructions. core parameters 
+that determine the system's speed and capability
+1.Processor Speed
+Faster processors execute instructions more quickly.
+2.RAM Size
+More RAM allows better multitasking and faster performance.
+3.Storage Type
+SSDs are faster than HDDs in reading and writing data.
+4.Number of CPU Cores
+More cores improve multitasking and processing power.
+
+Overview Of The Computer
+Main operations of a computer
+The fundamental process a system uses to convert raw data into 
+information thus include Input Operation, Processing Operation, 
+Output Operation e.g. monitors(Cathode Ray Tubes (CRT) & Liquid 
+Crystal Display (LCD)
+ CPU components
+CPU speed is measured in Hertz (Hz) because Hertz represents the 
+number of cycles the CPU performs per second.
+➢Arithmetic Logic Unit (ALU)
+Performs arithmetic calculations and logical comparisons.
+➢Control Unit (CU)
+Controls and coordinates all CPU operations.
+➢Registers
+Temporary storage locations used to hold data and instructions 
+during processing.
+
+Types of Computer
+1.Supercomputers, The most powerful and fastest computers, Used for complex task 
+eg Weather prediction and forecasting, Supercomputers analyse large amounts of 
+climate data to predict weather conditions and Scientific Research, They are used in 
+simulations such as space exploration, nuclear research, and medical research.
+2.Mainframe computer, alarge powerful centralised system used by major organisations 
+to manage massive mission-critical workloads
+3.Minicomputers, Medium-sized computers (smaller than super computers).Often used 
+by small to medium organizations, Support multiple users.
+4.Microcomputers (Personal Computers),The most common type used by individuals
+
+Computer Memory
+➢RAM (Random Access Memory) – Temporary Memory
+RAM is the computer’s short-term memory that stores data and programs 
+while the computer is running. When the computer is turned off, the data 
+in RAM is lost.
+➢ROM (Read Only Memory) – Permanent Memory
+ROM is the computer’s permanent memory that stores important 
+instructions needed to start the computer. The data in ROM remains even 
+when the computer is turned off. Types are: PROM, EPROM, EEPROM
+
+RAM CALCULATIONS
+➢A MEBIBYTE(MIB) is a unit of measurement specifically used in computing to represent binary 
+data Size, It is based on the binary(base 2)system.
+➢1GB= 1024 MiB
+➢1MiB= 1024 KiB
+➢Each block =256 KiB
+➢Each Block = 128 records
+Exercise. A computer has 2 GB of RAM, A program uses memory blocks of 256 KiB each. 
+How many memory blocks can fit into the RAM and If each block stores 128 records, how many total 
+records can be stored? 
+
+Memory Management
+Memory management is a function of the operating system that handles:
+➢Allocation of memory to programs 
+➢Tracking memory usage 
+➢Protecting processes from interfering with each other 
+➢Efficient use of RAM 
+Two memory management techniques are:
+➢Paging
+Paging is a memory management technique in which, Physical memory is divided into 
+fixed-size blocks called frames Logical memory is divided into equal-size blocks called 
+pages and The operating system maps pages to frames.
+➢Segmentation
+Segmentation divides memory into variable-sized segments based on the logical structure 
+of a program.
+
+Advantages and disadvantages
+
+Types & functions of software 
+➢In a Computer System, the software 
+is basically a set of instructions or 
+commands that tell a computer to do 
+a specific task that serves its users.
+➢System software controls and 
+manages computer hardware and 
+system operations.
+➢Application software helps users 
+perform specific tasks such as typing 
+documents or browsing the internet.
+
+Types of System Software
+It has three subtypes which are:
+1.Operating System:It is the main program of a computer system perform 
+Memory management, File management, Device management, Process 
+management, Security and user management
+2.Language Processor:conversion is done by the language processor. It converts 
+programs written in high-level into sets of instructions that are easily readable 
+by machines(known as object code or machine code).
+3.Device Driver:A Device driver is a program or software that controls a device 
+and helps that device to perform its functions
+
+The client –server model
+1.Request:The client sends 
+anHTTP/HTTPS requestto the 
+server's IP address.
+2.Processing:The server 
+validates the request, performs 
+necessary logic (like querying a 
+database), and prepares the 
+result.
+3.Response:The server sends the 
+data back to the client, which 
+then renders or displays it for 
+the user.
+
+Computer Security Threats
+➢As the world becomes more digital, computer security concerns are always 
+developing. A threat in a computer system is a potential danger that could 
+jeopardize/compromise data security.
+➢Computer security threats are potential threats to your computer's efficient 
+operation and performance.  
+Types of Threats:
+➢Physical
+➢non-physical (logical)
+
+Physical Threats
+A physical danger/Threats to computer systems is a potential cause of an 
+occurrence/event that could result in data loss or physical damage. It can be 
+classified as:
+➢Internal:Short circuit, fire, non-stable supply of power, hardware failure due 
+to excess humidity, etc. cause it.
+➢External:Disasters such as floods, earthquakes, landscapes, Etc...
+➢Human:Destroying of infrastructure and/or hardware, thefts, disruption, and 
+unintentional/intentional errors are among the threats.
+
+Non-physical threats(logical)
+None Physical are digital attacks targeting software, data, and network systems 
+(e.g., malware, hacking) this attacks could result in:
+➢Hampering of the business operations that depend on computer systems.
+➢Sensitive data or information loss
+➢Keeping track of other's computer system activities illegally.
+➢Hacking id & passwords of the users, etc.
+
+Causes of none physical/Logic
+The non-physical threads can be commonly caused by:
+➢Malware:Malware (malicious software) is a type of computer program that infiltrates 
+and damages systems without the user’s knowledge, You may notice that your system is 
+processing at a slower rate than usual.
+➢Virus:It is a program that replicates itself and infects your computer's files and 
+programs, rendering them inoperable. It is a type of malware that spreads by inserting 
+a copy of itself into and becoming part of another program. It spreads with the help of 
+software or documents. They are embedded with software and documents and then 
+transferred from one computer to another using the network, a disk, file sharing, or 
+infected e-mail.
+➢Spyware:Spyware is a type of computer program that tracks, records, and reports a 
+user's activity (offline and online) without their permission for the purpose of profit or 
+data theft. 
+
+Computer Security Threats
+➢Worms:Unlike viruses, which spread by infecting a host file, worms are freestanding 
+programs that do not require a host program. Worms don't change programs; instead, 
+they replicate themselves over and over. They just eat resources to make the system 
+down.
+➢Trojan Horse:A Trojan horse is malicious software that is disguised as a useful host 
+program. When the host program is run, the Trojan performs a harmful/unwanted 
+action. A Trojan horse, often known as a Trojan, is malicious malware or software that 
+appears to be legal yet has the ability to take control of your computer. 
+➢Denial Of Service Attacks:an attacker tries to prohibit legitimate users from 
+obtaining information or services. An attacker tries to make a system or network 
+resource unavailable to its intended users in this attack. The web servers of large 
+organizations such as banking, commerce, trading organizations, etc. are the victims.
+
+Computer Security Threats
+➢Phishing:Phishing is a type of attack that is frequently used to obtain sensitive 
+information from users, such as login credentials and credit card details. They 
+deceive users into giving critical information, such as bank and credit card 
+information, or access to personal accounts, by sending spam, malicious Web 
+sites, email messages, and instant chats.
+➢Key-Loggers: Keyloggers can monitor a user's computer activity in real-time. 
+Keylogger is a program that runs in the background and records every keystroke 
+made by a user, then sends the data to a hacker with the intent of stealing 
+passwords and financial information.
+
+Ergonomics in Computer Use
+➢Proper sitting posture 
+➢Correct screen position 
+➢Use of ergonomic devices (keyboard, mouse, chair) 
+➢Regular breaks to avoid fatigue
+
+ICT & health (ergonomics) 
+➢Ergonomics isthe science of designing workplaces, products, and systems to fit the user, 
+aiming to reduce fatigue, discomfort, and injury while improving efficiency
+➢The science of adapting the work environment to the user Focuses on reducing strain, 
+fatigue, and injury Common in offices, industries, and computer 
+Importance of Ergonomics
+➢Prevents health problems (e.g., back pain, eye strain)
+➢Improves productivity
+➢Increases comfort when using devices
+➢Reduces workplace injuries
+
+Introduction to Networking (Chapter 4)
+➢A computer network is a group of connected devices that 
+communicate with each other to share data and resources.
+❖The Internet is a global network that connects millions of 
+computers worldwide and is accessible to anyone.
+❖An Intranet is a private network used within an organization 
+(e.g., school, company) and is only accessible to authorized 
+users
+
+Applications of Computer Networking
+➢Resource Sharing:You can share a single software among Multiple 
+users. We can also share Hardware Devices such as Printers.
+➢Communication:Communication Medium means various ways through 
+which we can communicate like Email Calls, Socia media.
+➢E-commerce:Computer Networking has facilitated the growth of e-
+commerce by allowing businesses to sell their products and services 
+online and reach a global market.
+➢Online Education:Computer Networking has revolutionized education 
+by providing online learning platforms, distance education, and virtual 
+classrooms.
+
+Advantages of Computer Networking
+➢Central Storage of Data:data being managed on one 
+central node and available to every user
+➢Reliability:Data will be up to date, available 24/7
+➢Communication efficiency: real time feedback
+➢Cost efficiency, due to shared resources
+
+Disadvantages  of Computer Networking
+➢Virus and Malware:Computer Networking can lead to the 
+spreading of viruses to another computer through the 
+network.
+➢Expensive:Execution of the network can be expensive in 
+the case of an initial setup, as it requires devices and 
+expensive wires/cables
+➢The system can be Hacked:In the case of Wide Area 
+Networks(WAN), there is a threat of Hacking of the System
+
+Network Topologies
+➢A network topology is the way computers and devices are 
+arranged and connected in a network. It describes both the 
+physical layout (how devices are wired) and the logical flow of 
+data (how information moves between them).
+➢Types: Bus, Star, Ring, Mesh
+
+Bus Topology
+➢Bus topology isa network setup 
+where all devices (nodes) connect 
+to a single, central cable, known as 
+the backbone, using a shared 
+communication line. It is simple, 
+cost-effective, and ideal for small 
+networks, but a failure in the main 
+cable brings down the entire 
+network
+
+Star Topology
+➢A star topology isa network setup 
+where every device (node) connects 
+individually to a central hub, switch, or 
+router, which manages data 
+transmission. It is reliable, less 
+expensive and scalable network 
+topology for modern LANs (local area 
+networks), allowing easy, independent 
+node management, less expensive But 
+There is risk of one point failure.
+
+Ring Topology
+➢A ring topology isa network setup 
+where each device (node) connects 
+to exactly two others, forming a 
+continuous, closed, circular pathway 
+for data. Data travels unidirectionally 
+(or bidirectionally in dual rings) from 
+node to node, with each device 
+acting as a repeater to manage 
+traffic and reduce collisions, less 
+expensive, But There is risk of one 
+point failure.
+
+Mesh Topology
+➢Mesh topology isa network setup 
+where devices (nodes) are 
+interconnected, with many or all 
+devices directly connected to each 
+other, creating multiple, redundant 
+pathways for data. This design 
+ensures high reliability, fault 
+tolerance, and no traffic 
+bottlenecks. It is commonly used in 
+critical, high-reliability scenarios 
+like industrial automation, smart 
+homes, and military communication
+
+Types of Networks
+➢Computer networks are classified by geographical scope and purpose, 
+ranging from personal to global connectivity. Key types include 
+Personal Area Networks (PAN) for individual devices, Local Area 
+Networks (LAN) for homes/offices, Metropolitan Area Networks 
+(MAN) for cities, and Wide Area Networks (WAN) like the internet, 
+which connect across regions.
+
+Personal Area Network (PAN)
+➢Covers a very small area (a 
+few meters).
+➢Connects personal devices.
+➢Uses technologies like 
+Bluetooth.
+➢Example: Phone connected to 
+wireless earbuds.
+
+Local Area Network (LAN)
+➢Covers a small geographic area 
+(home, school, office).
+➢High speed and low cost.
+➢Devices are connected via 
+Ethernet cables or Wi-Fi.
+➢Example: Computers in a 
+school lab.
+
+Wireless Local Area Network (WLAN)
+➢A type of LAN that uses 
+wireless communication.
+➢Devices connect through Wi-Fi 
+instead of cables.
+➢Provides mobility and 
+flexibility.
+➢Example: Home or café Wi-Fi 
+network.
+
+Metropolitan Area Network (MAN)
+➢Covers a city or large town.
+➢Larger than LAN but smaller than 
+WAN.
+➢Often used by governments or 
+large organizations.
+➢Example: City-wide internet 
+service network.
+
+Wide Area Network (WAN)
+➢Covers a large geographical 
+area (countries or continents).
+➢Connects multiple LANs 
+together.
+➢Uses public communication 
+systems (satellites, fiber optics).
+➢Example: The Internet.
+
+Communication Devices
+➢Communication hardware devices are physical tools 
+used in computer networks.
+➢They help computers send and receive data.
+➢They are important for internet access and 
+connectivity.
+
+Types of Communication Devices
+➢Modem
+➢Router
+➢Switch
+➢Hub
+➢Wireless Access Point
+
+Modem
+➢Modem, Short for Mudulator-demodulator is an electronic device 
+that converts a computer’s digital signals into specific 
+frequencies to travel over telephone line or cable. The main 
+function of a modem is to convert the analog signal that come 
+from telephone wire into a digital form. In digital form, these 
+converted signals are stored in the form of 0s and 1s
+
+Transmission Modes
+Data transmission modes refer to the direction of data flow 
+between two communication devices.
+Type:
+➢Simplex mode
+➢Half Duplex mode
+➢Full-Duplex Mode
+
+Simplex mode
+➢Data flows in one direction only. 
+➢One device is always the sender, the other is always the receiver. 
+Characteristics
+➢No feedback mechanism. 
+➢Simple and inexpensive. 
+➢Cannot send responses. 
+Examples
+➢Keyboard → Computer 
+➢Television broadcast
+
+Half Duplex mode
+➢Data flows in both directions, but not at the same time. 
+➢Devices take turns to send and receive. 
+Characteristics
+➢Requires coordination to avoid collision. 
+➢More flexible than simplex. 
+➢Slight delay due to switching. 
+Examples
+➢Walkie-talkies 
+➢Two-way radios
+
+Full-Duplex Mode
+➢Data flows in both directions simultaneously. 
+➢Both devices can send and receive at the same time. 
+Characteristics
+➢Fast and efficient communication. 
+➢More complex and costly. 
+➢No waiting time. 
+Examples
+➢Telephone conversations 
+➢Video calls
+
+Data Transmission Rate
+➢DefinitionData transmission rate is the amount of data transmitted from one 
+device to another in a given time, usually measured in bits per second (bps).
+➢It determines how fast information travels across a network, affecting 
+activities like browsing, streaming, and downloading.
+➢ Units of Measurementbps (bits per second) – basic unitKbps (Kilobits per 
+second) = 1,000 bpsMbps (Megabits per second) = 1,000,000 bpsGbps (Gigabits 
+per second) = 1,000,000,000 bps
+
+Data Transmission Rate continue..............
+Factors Affecting Data Transmission Rate
+➢Bandwidth, Higher bandwidth = higher data rate 
+➢Transmission Medium, Fiber optics is faster than copper cables 
+➢Noise and Interference, More noise reduces speed and accuracy 
+➢Distance, Longer distances may reduce signal strength 
+➢Network Congestion, More users = slower speeds
+Formular: Data Rate = Amount of Data ÷ Time Taken

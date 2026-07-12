@@ -1,0 +1,836 @@
+
+
+Programme-   B.Sc (Agriculture) 
+ 
+Course -   
+Principles and Methods of Soil and Water 
+Conservation 
+Course Code-   BSCAG-214 
+ 
+Semester -   III
+rd
+  
+  
+Year-    2020-21 
+ 
+Unit-    5 
+   
+Topic-    
+Soil Erosion and its Types 
+ 
+Sub-Topic-    
+Introduction, Principles of Soil Erosion,  
+    Wind erosion- Type, Factor affecting 
+    Water erosion- Type, Factor affecting 
+    Mechanism of Soil erosion 
+    Effect of Soil erosion  
+ 
+Faculty- Mr. Sharwan Kumar 
+ 
+E-mail-   sharwanp0782@gmail.com
+ 
+ 
+Soil Erosion and its Types 
+ Introduction 
+Soil erosion is the process by which soil is removed from the Earth's surface by exogenetic 
+processes such as wind or water flow, and then transported and deposited in other locations. 
+In general, soil erosion implies the physical removal of topsoil by various agents, including 
+rain,  water  flowing  over  and  through  the  soil  profile,  wind,  glaciers  or  gravitational  pull. 
+Land  and  water  are  the  most  precious  natural  resources  that  support  and  sustain  the 
+anthropogenic  activities.  In  India  particularly,  about  65%  of  the  population  depend  on 
+agriculture, the only sector which generates half of the employment and maintain ecological 
+balance. 
+ 
+Soil  erosion in  India  is  amongst  the  leading  areas  of  concern  as  it  affects  cultivation  and 
+farming in the country in adverse and unfavourable ways. Soil erosion leads to deprivation of 
+physical  characteristics  of  soils and  damages  plant and  crops.  In  India almost  130 million 
+hectares  of  land,  i.e.,  45  %  of  total  geographical  surface  area,  is  affected  by  serious  soil 
+erosion  through  gorge  and  gully,  shifting  cultivation,  cultivated  wastelands,  sandy  areas, 
+deserts and water logging. Soil erosion by  rain and transportation  of soil particles  through 
+rivulets that takes place in hilly areas causes severe landslides and floods. The anthropogenic 
+activities including cutting trees for agricultural implements, firewood and timber; grazing by 
+a large number of livestock over and above the carrying capacity of grass lands, traditional 
+agricultural  practices,  construction  of  roads,  indiscriminate  quarrying  and  other  activities, 
+have all led to the opening of top surfaces to extreme soil erosion. In Indian condition, the 
+control  of  soil  erosion  is  a  challenging  task  in  the  sense  that  the  onset  of  monsoon  often 
+
+coincides with the kharif sowing and transplanting. In this stage of kharif crop when canopy 
+cover is minimal, major part of the land is exposed to the rainfall let the land prone to soil 
+erosion. It is prudent to check soil erosion from agricultural lands since it affects majority of 
+people. 
+ 
+ Principles of Soil Erosion 
+ Causes of Soil Erosion 
+No single unique cause can be held responsible for soil erosion or assumed as the main cause 
+for  this  problem.  There  are  many  underlying  factors  responsible  for  this  process,  some 
+induced  by  nature  and  others  by  human  being.  The  main  causes  of  soil  erosion  can  be 
+enumerated as: 
+Destruction of Natural Protective Cover by 
+ Indiscriminate cutting of trees, 
+ Overgrazing of the vegetative cover and 
+ Forest fires. 
+Improper Use of the Land 
+ Keeping the land barren subjecting it to the action of rain and wind, 
+ Growing of crops that accelerate soil erosion, 
+ Removal of organic matter and plant nutrients by injudicious cropping patterns, 
+ Cultivation along the land slope, and 
+ Faulty methods of irrigation. 
+ Types of Soil Erosion: 
+According  to  Origin: Soil erosion can broadly be categorized into two types i.e. geologic 
+erosion and accelerated erosion. 
+Geological  Erosion: Under  natural  undisturbed  conditions  an  equilibrium  is  established 
+between the climate of a place and the vegetative cover that protects the soil layer. Vegetative 
+covers  like  trees  and  forests  retard  the  transportation  of  soil  material and  act  as  a  check 
+against excessive erosion. A certain amount of erosion, however, does take place even under 
+the natural cover. This erosion, called geologic erosion, is a slow process and is compensated 
+by  the formation  of  soil  under  the  natural  weathering  process.  Its  effect  are  not  of  much 
+consequence so far as agricultural lands are concerned. 
+Accelerated  Erosion:  When  land  is  put  under  cultivation,  the  natural  balance  existing 
+between  the  soil,  its  vegetation  cover  and  climate  is  disturbed.  Under  such  condition,  the 
+removal of surface soil due to natural agencies takes places at faster rate than it can be built 
+by  the  soil  formation  process.  Erosion  occurring  under  these  condition  is  referred  to  as 
+accelerated erosion. Its rates are higher than geological erosion. Accelerated erosion depletes 
+soil fertility in agricultural land. 
+According  to  Erosion  Agents: Soil  erosion  is  broadly  categorized  into  different  types 
+depending  on  the  agent  which  triggers  the  erosion  activity.  Mentioned  below  are the  four 
+main types of soil erosion. 
+(1) Water Erosion: Water erosion is seen in many parts of the world. In fact, running water 
+is the most common agent of soil erosion. This includes rivers which erode the river basin, 
+rainwater which erodes various landforms, and the sea waves which erode the coastal areas. 
+Water erodes and transports soil particles from higher altitude and deposits them in low lying 
+areas. Water erosion may further be classified, based on different actions of water responsible 
+for erosion, as : (i) raindrop erosion, (ii) sheet erosion, (iii) rill erosion, (iv) gully erosion, (v) 
+stream bank erosion, and (vi) slip erosion. 
+
+(2) Wind Erosion: Wind erosion is most often witnessed in dry areas wherein strong winds
+brush against various landforms, cutting through them and loosening the soil particles, which 
+are lifted and transported towards the direction in which the wind blows. The best example of 
+wind erosion are sand dunes and mushroom rocks structures, typically found in deserts.
+(3) Glacial  Erosion:  Glacial  erosion,  also  referred  to  as  ice  erosion,  is  common  in  cold 
+regions at high altitudes. When soil comes in contact with large moving glaciers, it sticks to 
+the base of these glaciers. This is eventually transported with the glaciers, and as 
+melting it is deposited in the course of the moving chunks of ice.
+(4) Gravitational Erosion: Although gravitational erosion is not as common a phenomenon
+as water erosion, it can cause huge damage to natural, as well as man
+basically the mass movement of soil due to gravitational force. The best examples of this are
+Agents of Soil Erosion 
+Soil erosion is the detachment of soil from its original location and transportation to a new 
+location.  Mainly  water  is  responsible  for  this
+glaciers are also the agents causing soil erosion. Water in the form of rain, flood and runoff 
+badly affects the soil. Soil is in fact a composite of sand, silt and clay. When the rain falls 
+along the mountains and bare soil, the water detaches the soil particles, and takes away the 
+silt and clay particles along with the flowing water. Similarly, when wind blows in the form 
+of storms, its speed becomes too high to lift off the entire soil upper layer and causes soil
+erosion. 
+Other factors responsible for soil erosion are human and animal activities. Vegetation is the 
+natural cover of soil. When the animals continuously graze in the pastures, the vegetation is 
+removed due to their walking and grazing. Bare lands
+erosion. Activities of human like forest cutting, increased agriculture, and clearing of land for 
+different purposes are the other agents that cause erosion of the soil. The soil erosion agent 
+can be classified and summarized as shown in Fig.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Broadly, soil erosion can be divided into three categories depending on the eroding agents 
+namely water erosion, wind erosion and chemical or geological erosion. Soil erosion due to 
+the agents like water and wind is mostly prevalent and tangible. The erosi
+chemical and geological agents is a slow process and continues to years and often it is non
+tangible. Water erosion is further subdivided into classes depending on the effect of water 
+: Wind erosion is most often witnessed in dry areas wherein strong winds
+rms, cutting through them and loosening the soil particles, which 
+are lifted and transported towards the direction in which the wind blows. The best example of 
+wind erosion are sand dunes and mushroom rocks structures, typically found in deserts.
+:  Glacial  erosion,  also  referred  to  as  ice  erosion,  is  common  in  cold 
+at high altitudes. When soil comes in contact with large moving glaciers, it sticks to 
+the base of these glaciers. This is eventually transported with the glaciers, and as 
+melting it is deposited in the course of the moving chunks of ice. 
+: Although gravitational erosion is not as common a phenomenon
+as water erosion, it can cause huge damage to natural, as well as man-made structures. It is 
+asically the mass movement of soil due to gravitational force. The best examples of this are
+Soil erosion is the detachment of soil from its original location and transportation to a new 
+location.  Mainly  water  is  responsible  for  this erosion  although  in  many  locations  wind, 
+glaciers are also the agents causing soil erosion. Water in the form of rain, flood and runoff 
+badly affects the soil. Soil is in fact a composite of sand, silt and clay. When the rain falls 
+bare soil, the water detaches the soil particles, and takes away the 
+silt and clay particles along with the flowing water. Similarly, when wind blows in the form 
+of storms, its speed becomes too high to lift off the entire soil upper layer and causes soil
+Other factors responsible for soil erosion are human and animal activities. Vegetation is the 
+natural cover of soil. When the animals continuously graze in the pastures, the vegetation is 
+removed due to their walking and grazing. Bare lands left behind are easily affected by soil 
+erosion. Activities of human like forest cutting, increased agriculture, and clearing of land for 
+different purposes are the other agents that cause erosion of the soil. The soil erosion agent 
+summarized as shown in Fig. 
+Broadly, soil erosion can be divided into three categories depending on the eroding agents 
+namely water erosion, wind erosion and chemical or geological erosion. Soil erosion due to 
+the agents like water and wind is mostly prevalent and tangible. The erosi
+chemical and geological agents is a slow process and continues to years and often it is non
+tangible. Water erosion is further subdivided into classes depending on the effect of water 
+: Wind erosion is most often witnessed in dry areas wherein strong winds 
+rms, cutting through them and loosening the soil particles, which 
+are lifted and transported towards the direction in which the wind blows. The best example of 
+wind erosion are sand dunes and mushroom rocks structures, typically found in deserts. 
+:  Glacial  erosion,  also  referred  to  as  ice  erosion,  is  common  in  cold 
+at high altitudes. When soil comes in contact with large moving glaciers, it sticks to 
+the base of these glaciers. This is eventually transported with the glaciers, and as they start 
+: Although gravitational erosion is not as common a phenomenon 
+made structures. It is 
+asically the mass movement of soil due to gravitational force. The best examples of this are 
+Soil erosion is the detachment of soil from its original location and transportation to a new 
+erosion  although  in  many  locations  wind, 
+glaciers are also the agents causing soil erosion. Water in the form of rain, flood and runoff 
+badly affects the soil. Soil is in fact a composite of sand, silt and clay. When the rain falls 
+bare soil, the water detaches the soil particles, and takes away the 
+silt and clay particles along with the flowing water. Similarly, when wind blows in the form 
+of storms, its speed becomes too high to lift off the entire soil upper layer and causes soil 
+Other factors responsible for soil erosion are human and animal activities. Vegetation is the 
+natural cover of soil. When the animals continuously graze in the pastures, the vegetation is 
+left behind are easily affected by soil 
+erosion. Activities of human like forest cutting, increased agriculture, and clearing of land for 
+different purposes are the other agents that cause erosion of the soil. The soil erosion agent 
+Broadly, soil erosion can be divided into three categories depending on the eroding agents 
+namely water erosion, wind erosion and chemical or geological erosion. Soil erosion due to 
+the agents like water and wind is mostly prevalent and tangible. The erosion caused through 
+chemical and geological agents is a slow process and continues to years and often it is non-
+tangible. Water erosion is further subdivided into classes depending on the effect of water 
+
+erosion. These include sheet erosion, rill erosion, gully erosion, land slide or slip erosion and 
+stream bank erosion. 
+ 
+ 
+ Geologic Erosion 
+Geologic erosion sometimes referred to as natural or normal erosion; represent erosion under 
+the cover of vegetation. It includes soil as well as soil eroding processes that maintain the soil 
+in favourable balance, suitable for the growth of most plants. The rate of erosion is so slow 
+that the loss of soil is compensated by the formation of new soil under natural weathering 
+processes. The various topographical features such as existing of streams, valleys, etc. are the 
+results of geologic erosion. 
+ Wind Erosion 
+Wind erosion is the detachment, transportation and redeposition of soil particles by wind. A 
+sparse or absent vegetative cover, a loose, dry and smooth soil surface, large fields and strong 
+winds all increase the risk of wind erosion. Air movement must attain a certain velocity (with 
+enough  speed  to  generate  visible  movement  of  particles  at  the  soil  level)  before  it  can 
+generate deflation and transport of particles. Winds with velocities of less than 12-19 km/hr 
+seldom impart sufficient energy at the soil surface to dislodge and put into motion sand-sized 
+particles.  Drifting  of  highly  erosive  soil  usually  starts  when  the  wind  attains  a  forward 
+velocity of 25-30 km/hr. Wind erosion tends to occur mostly in low rainfall areas when soil 
+moisture content is at wilting point or below, but all drought-stricken soils are at risk. Often 
+the only evidence of wind erosion is an atmospheric haze of dust comprising fine mineral and 
+organic soil particles that contain most of the soil nutrients. Actions to minimize wind erosion 
+include  improving  soil  structure  so  wind  cannot  lift  the  heavier  soil  aggregates;  retaining 
+vegetative  cover  to  reduce  wind  speed  at  the  ground  surface;  and  planting  windbreaks  to 
+reduce  wind  speed.  Also,  be  ready  for  severe  wind  erosion  seasons  which  tend  to  be  the 
+summers following dry autumns and winters. The most familiar result of wind erosion is the 
+loss of topsoil and nutrients, which reduces the soil's ability to produce crops. Topsoil loss 
+can be seen as rocky or gravelly knolls, thin soils mixed with lighter coloured subsoil, or the 
+presence of calcium carbonate in surface soils. 
+Soil productivity is affected by wind erosion in various ways. Areas of erosion and deposition 
+within  a  field  increase  the  variation  in  soil  characteristics,  requiring  more  costly  and  less 
+efficient  soil  management  practices.  Wind  removes  the  smaller  clay  particles  and  organic 
+matter  from  the  soil  while  coarser  materials  are  left  behind.  The  continued  loss  of  fine 
+particles reduces soil quality. In shallow soils and soils with a hardpan layer, wind erosion 
+also  results  in  decreased  root  zone  depth  and  water-holding  capacity.  Such  changes  may 
+occur  slowly  and  go  unnoticed  for  many  years  especially  if  mixing  by  tillage  masks  the 
+effects of wind erosion. 
+ Process of Wind Erosion 
+The process of wind erosion comprises of three basic stages namely saltation, suspension and 
+surface creep. Fig. 2 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Fig.2 Process of wind erosion 
+ Saltation: Saltation occurs when the wind lifts larger particles off the ground for short 
+distances,  leading  to  sand  drifts.  Fine  and  medium  sand-sized  particles  are  lifted  a 
+short distance into the air, dislodging more soil as they fall back to the ground. 
+ Suspension: Suspension occurs when the wind lifts finer particles into the air leading 
+to dust storms. Very fine soil particles are lifted from the surface by the impact of 
+saltation and carried high into the air, remaining suspended in air for long distances. 
+ Surface  Creep:  The movement  of large  soil  particles along  the  surface of  the soil 
+after being loosened by the impact of saltating particles. 
+ Extent of Wind Erosion 
+Several factors, other than the wind velocity itself, contribute to wind erosion. These fall into 
+two main groups of closely interrelated elements: those inherent in the properties of the soil 
+per se and those associated with soil cover. A rough soil structure, especially at the surface, 
+effectively reduces the movement of soil particles. Arid regions, however, are dominated by 
+smooth, pulverized and structure less top soils. Soil texture also influences soil erodibility; 
+soils of fine texture are, for example, particularly susceptible to wind erosion. 
+Measurements of dust in the air up to three metres above the soil surface at Jodhpur, 
+India, showed that on a stormy day the amount of dust blowing varied between 50 and 420 
+kg/ha. In the Jaisalmer region of India, where wind speeds generally are higher, average soil 
+loss of 511 kg/ha was recorded. 
+ Water Erosion 
+The soil erosion caused by water as an agent is called water erosion. In water erosion, 
+the water acts as an agent to dislodge and transport the eroded soil particle from one location 
+to another. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+Fig. 4 Process of water erosion 
+ Extent of Water Erosion 
+The extent of water erosion in Indian subcontinent are presented in Table 1.2. In India, 32.8 
+Mha area in India is affected by water erosion which accounts for 18% of the land. However, 
+the water erosion extent estimated by different sources varies from 87 to 111 Mha in India. 
+Table 6 Extent of erosion in India unit- (1000 ha) 
+S. No. Name of the States Water Erosion Wind Erosion 
+1 Andhra Pradesh 11518 0 
+2 Arunachal  Pradesh 2372 0 
+3 Assam 688 0 
+4 Bihar+ Jharkhand 3024 0 
+5 Goa 60 0 
+6 Gujarat 5207 443 
+7 Haryana 315 536 
+8 Himachal Pradesh 2718 0 
+9 Jammu & Kashmir 5460 1360 
+10 Karnataka 5810 0 
+11 Kerala 76 0 
+12 Madhya Pradesh + Chhattisgarh 17883 0 
+13 Maharastra 11179 0 
+14 Manipur 133 0 
+15 Mizoram 137 0 
+16 Meghalaya 137 0 
+17 Nagaland 390 0 
+18 Orissa 5028 0 
+19 Punjab 372 282 
+20 Rajasthan 3137 6650 
+21 Sikkim 158 0 
+22 Tamil Nadu 4926 0 
+23 Tripura 121 0 
+24 Uttar Pradesh + Uttarakhand 11392 212 
+25 West Bengal 1197 0 
+26 Delhi 55 0 
+27 Union Territories 187 0 
+ 
+Grand Total 93680 9483 
+ 
+Grand Total(Million ha) 93.68 9.48 
+ 
+Forms of Water Erosion: 
+The impact of rainfall causes splash erosion. Runoff water causes scraping and transport of 
+soil particles leading to sheet, rill and gully erosion. Water waves cause erosion of bank sides 
+of reservoirs, lakes and oceans. The subsurface runoff causes soil erosion in the form of pipe 
+erosion, which is also called tunnel erosion. The glacial erosion causes heavy landsides. In 
+
+India, glacial erosions are mainly confined to Himalayan regions. The various forms of water 
+erosion are given below. 
+ 
+ Hydraulic Action: The hydraulic action takes place when water runs over the soil surface 
+compressing the soil, as a result of which the air present in the voids exerts a pressure on the 
+soil particles and this leads to the soil detachment. The pressure exerted by the air voids is 
+called hydraulic pressure. The soil particles so detached from their places, are scoured by the 
+running water. The hydraulic action is more effective when the soil is in loose condition. 
+Abrasion: Soil particles mixed with the running water create an abrasive power in the water 
+which increases the capacity of flowing water to scour more soil particles. Due to this effect, 
+larger soil particles are eroded by the flowing water. 
+Attrition: This  form  includes  mechanical  breakdown  of  loads running  along  the  moving 
+water due to collision of particles with each other. The broken particles are moved along with 
+the  flow  velocity,  which  generate  abrasion  effect  on  the  bottom  and  banks  of  the  water 
+course. This effect pronounces the water erosion. 
+Solution: This form is associated with the chemical action between running water and soil or 
+country rocks. This type condition is observed in areas where existing rocks or soils are easily 
+dissolved in the running water. 
+Transportation: The process of soil transportation by running water is completed under the 
+following forms: 
+Saltation: the  water  soluble  contents  present  in  the  water are  transported  by  the  water  in 
+solution form. 
+Suspension: it  involves  the  transportation  of  finer  soil  particles,  which  are  present  in 
+suspension form in the flowing water. 
+Surface Creep: it involves transportation of medium size soil particles that are not able to 
+stand in suspension form, but are mixed in water and flow over the stream bed in the form of 
+mud. The surface creep action is responsible for transporting the coarser soil particles. 
+ Types of Water Erosion 
+The different types of water erosion are described in the following section. 
+ Splash Erosion 
+This type of soil erosion is because of the action of raindrop. The kinetic energy of 
+falling raindrop dislodges the soil particle and the resultant runoff transports soil particles. 
+Splash erosion is the first stage of soil erosion by water. It occurs when raindrops hit bare 
+soil.  The  explosive  impact  breaks  up  soil  aggregates  so  that  individual  soil  particles  are 
+‘splashed’ onto the soil surface. The splashed particles can rise as high 0.60 meter above the 
+ground and move up to 1.5 meter from the point of impact. The particles block the spaces 
+between soil aggregates, so that the soil forms a crust that reduces infiltration and increases 
+runoff. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ Sheet Erosion 
+Sheet  erosion is  the  removal  of  soil  in  thin  layers  by  raindrop  impact  and  shallow 
+surface flow. This action called skimming and is prevalent in the agricultural land. It results 
+in  loss  of  the finest  soil  particles  that  contain  most  of  the  available  nutrients  and  organic 
+matter  in  the  soil.  Soil  loss  is  so  gradual  that  the  erosion  usual
+cumulative  impact  accounts  for  large  soil  losses.  This  type  of  soil  erosion  is  mainly 
+responsible  for  loss  of  soil  productivities.  Soils  most  vulnerable  to  sheet  erosion  are 
+overgrazed and cultivated soils where there is little v
+Early signs of sheet erosion include bare areas, water puddling as soon as rain falls, visible 
+grass roots, exposed tree roots, and exposed subsoil or stony soils. Soil deposits on the high 
+side of obstructions such as fences may indicate active sheet erosion.
+Vegetation cover is vital to prevent sheet erosion because it protects the soil, impedes 
+water flow and encourages water to infiltrate into the soil. The surface water flows that cause 
+sheet erosion rarely flow for more than a few meters before concentrating into rills.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Rill Erosion 
+Rills  formation  is  the  intermittent  process  of  transforming  to  gully  erosion.  The 
+advance form of the rill is initial stage of gully formation. The rills are shallow drainage lines 
+less  than  30cm  deep  and  50  cm  wide.  They  develop  when  surface  water  concent
+depressions or low points through paddocks and erodes the soil. Rill erosion is common in 
+bare agricultural land, particularly overgrazed land, and in freshly tilled soil where the soil 
+structure  has  been  loosened.  The  rills  can  usually  be  removed
+erosion is mostly occurs in alluvial soil and is quite frequent in Chambal river valley in India. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+is  the  removal of  soil  in  thin  layers  by  raindrop  impact  and shallow 
+surface flow. This action called skimming and is prevalent in the agricultural land. It results 
+in  loss  of  the finest  soil  particles  that  contain  most  of  the  available  nutrients  and  organic 
+matter  in  the  soil.  Soil  loss  is  so  gradual  that  the  erosion  usually  goes  unnoticed,  but  the 
+cumulative  impact  accounts  for  large  soil  losses.  This  type  of  soil  erosion  is  mainly 
+responsible  for  loss  of  soil  productivities.  Soils  most  vulnerable  to  sheet  erosion  are 
+overgrazed and cultivated soils where there is little vegetation to protect and hold the soil. 
+Early signs of sheet erosion include bare areas, water puddling as soon as rain falls, visible 
+grass roots, exposed tree roots, and exposed subsoil or stony soils. Soil deposits on the high 
+as fences may indicate active sheet erosion. 
+Vegetation cover is vital to prevent sheet erosion because it protects the soil, impedes 
+water flow and encourages water to infiltrate into the soil. The surface water flows that cause 
+for more than a few meters before concentrating into rills.
+Rills  formation  is  the  intermittent  process  of  transforming  to  gully  erosion.  The 
+advance form of the rill is initial stage of gully formation. The rills are shallow drainage lines 
+less  than  30cm  deep  and  50  cm  wide.  They  develop  when  surface  water  concent
+depressions or low points through paddocks and erodes the soil. Rill erosion is common in 
+bare agricultural land, particularly overgrazed land, and in freshly tilled soil where the soil 
+structure  has  been  loosened.  The  rills  can  usually  be  removed with  farm  machinery.  Rill 
+erosion is mostly occurs in alluvial soil and is quite frequent in Chambal river valley in India. 
+is  the  removal  of  soil  in  thin layers  by  raindrop  impact and shallow 
+surface flow. This action called skimming and is prevalent in the agricultural land. It results 
+in  loss  of  the finest  soil  particles  that  contain  most  of  the  available  nutrients  and  organic 
+ly  goes  unnoticed,  but  the 
+cumulative  impact  accounts  for  large  soil  losses.  This  type  of  soil  erosion  is  mainly 
+responsible  for  loss  of  soil  productivities.  Soils  most  vulnerable  to  sheet  erosion  are 
+egetation to protect and hold the soil. 
+Early signs of sheet erosion include bare areas, water puddling as soon as rain falls, visible 
+grass roots, exposed tree roots, and exposed subsoil or stony soils. Soil deposits on the high 
+Vegetation cover is vital to prevent sheet erosion because it protects the soil, impedes 
+water flow and encourages water to infiltrate into the soil. The surface water flows that cause 
+for more than a few meters before concentrating into rills. 
+Rills  formation  is  the  intermittent  process  of  transforming  to  gully  erosion.  The 
+advance form of the rill is initial stage of gully formation. The rills are shallow drainage lines 
+less  than  30cm  deep  and  50  cm  wide.  They  develop  when  surface  water  concentrates  in 
+depressions or low points through paddocks and erodes the soil. Rill erosion is common in 
+bare agricultural land, particularly overgrazed land, and in freshly tilled soil where the soil 
+with  farm  machinery.  Rill 
+erosion is mostly occurs in alluvial soil and is quite frequent in Chambal river valley in India.  
+
+ 
+ 
+ 
+Fig.7. Rill Erosion 
+ Gully Erosion 
+The advance stage of rills is transformed into initial stage of gully. Gully formation 
+are initiated when the depth and width of the rill is more than 50 cm. Gullies (Fig. 1.6) are 
+deeper channels that cannot be removed by normal cultivation. Hillsides are more prone to 
+gullying when they cleared of vegetation, through deforestation, over-grazing or other means. 
+The eroded soil is easily carried by the flowing water after being dislodged from the ground, 
+normally  when  rainfall  falls  during  short,  intense  storms.  Depending  upon  the  depth  and 
+width, the gullies further divided into 4 classes namely G1, G2, G3 and G4. Gullies reduce 
+the productivity of farmland where they incise into the land, and produce sediment that may 
+clog downstream water bodies. Because of this, much effort are required to invested into the 
+study of gullies within the scope of geomorphology, in the prevention of gully erosion, and in 
+restoration  of  gullied  landscapes.  The  total  soil  loss  from  gully  formation  and  subsequent 
+downstream river sedimentation can be sizable. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Fig. 8 Gully Erosion 
+ 
+             
+                
+  
+ 
+ 
+ 
+ 
+ 
+ 
+           
+
+ 
+ 
+ 
+ 
+Table: Classification of Gully
+ 
+                 
+      
+Description of symbols of Gully 
+  
+ 
+Particulars 
+  
+G1 
+  
+G2 
+  
+G3 
+  
+G4 
+  
+             
+                 
+ Depth (m)   Up to 1.0   1.0-3.0   3.0-9.0   >9.0   
+                 
+ Width (m)   <18.0   <18.0   18   >18.0   
+                 
+ Side slope (%)   <6.0   <6.0   6.0-12.0   >12.0   
+                 
+               
+ Tunnel Erosion 
+Tunnel  erosion occurs  when  surface  water  moves  into  and  through  dispersive  sub 
+soils. Dispersive soils are poorly structured so they erode easily when wet. The tunnel starts 
+when surface water moves into the soil along cracks or channels or through rabbit burrows 
+and old tree root cavities. Dispersive clays are the first to be removed by the water flow. As 
+the space enlarges, more water can pour in and further erode the soil. As the tunnel expands, 
+parts of the tunnel roof collapse leading to potholes and gullies. Indications of tunnel erosion 
+include  water  seepage  at  the  foot  of  a  slope  and fine  sediment  fans  downhill  of  a  tunnel 
+outlet. This type of erosion is more frequent in foothills where elevation is between 500-750 
+meter. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Fig.9. Tunnel Erosion 
+
+ 
+ 
+ 
+ 
+ Stream Bank Erosion
+Stream bank erosion occurs where streams begin 
+a consequence of increased peak flows or the removal of local protective vegetation. Stream 
+bank  erosion  is  common  along  rivers,  streams  and  drains  where  banks  have  been  eroded, 
+sloughed or undercut. This is quite preva
+bank erosion becomes a problem where development has limited the meandering nature of 
+streams, where streams have been channelized, or where stream bank structures (like bridges, 
+culverts,  etc.)  are  located  in  places  where  they  can  actually  cause  damage  to  downstream 
+areas.  Stabilizing  these areas  can  help  protect watercourses  from
+damage to adjacent land uses, control unwanted meander, and improvement of habitat for fish 
+and wildlife. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(a) 
+ 
+ Coastal erosion 
+The  waves,  geology  and geomorphology  are  the  three  major factors  that affect the 
+coastal erosion. Waves are the
+of the wind blowing over the surface of the sea, the length of fetch and the wind blowing 
+time. The geology of the coastline also affects the rate of erosion. If the coast is made of a 
+more resistant type of rock (say, granite), the erosion rate will be lo
+made of a less resistant type of rock (say, boulder clay). The 
+coastline further affects the rate of erosion. Headlands cause wave refraction, making waves 
+converge  and  combining  their  energy.  Wider,
+diverge,  losing  energy  due  to  friction  with  the  sea  bed.  A  wider  beach  cause  more  wave 
+energy to be lost due to friction before the waves can break. A narrower beach will mean that 
+the breaking point of the waves 
+due to friction  before they break. Similarly, shingle  and  pebbles  will allow  more water  to 
+infiltrate and cause more wave energy to be lost due to friction, while sandy beaches allow 
+less infiltration and cause less friction and so allow for a higher rate of erosion. If the beach 
+gradient  is  steep,  this  will encourage  steeper,  higher
+because  shingle  and  pebble  beaches  leave  less  energy  for  backwash,  material
+moved upwards, making the beach steeper. The coastal erosion is a major concern for India 
+Stream Bank Erosion 
+Stream bank erosion occurs where streams begin cutting deeper and wider channels as 
+a consequence of increased peak flows or the removal of local protective vegetation. Stream 
+bank  erosion  is  common  along  rivers,  streams  and  drains  where  banks  have  been  eroded, 
+sloughed or undercut. This is quite prevalent in alluvial river and streams. Generally, stream 
+bank erosion becomes a problem where development has limited the meandering nature of 
+streams, where streams have been channelized, or where stream bank structures (like bridges, 
+ated  in  places  where  they  can  actually  cause  damage  to  downstream 
+areas.  Stabilizing  these areas  can  help  protect watercourses from continued  sedimentation, 
+damage to adjacent land uses, control unwanted meander, and improvement of habitat for fish 
+ (b) 
+Fig10. Stream Bank Erosion 
+ 
+The  waves,  geology  and  geomorphology  are  the  three  major factors  that affect the 
+coastal erosion. Waves are the cause of coastal erosion. Wave energy is the result the speed
+of the wind blowing over the surface of the sea, the length of fetch and the wind blowing 
+of the coastline also affects the rate of erosion. If the coast is made of a 
+more resistant type of rock (say, granite), the erosion rate will be lower than if the coast is 
+made of a less resistant type of rock (say, boulder clay). The geomorphology
+coastline further affects the rate of erosion. Headlands cause wave refraction, making waves 
+converge  and  combining  their energy.  Wider, shallower  bays,  meanwhile,  allow  waves  to 
+diverge,  losing  energy  due  to  friction  with  the  sea  bed.  A  wider  beach  cause  more  wave 
+energy to be lost due to friction before the waves can break. A narrower beach will mean that 
+the breaking point of the waves is closer to the coastline, and less energy will have been lost 
+due to friction before they  break.  Similarly,  shingle  and  pebbles will  allow  more water  to 
+infiltrate and cause more wave energy to be lost due to friction, while sandy beaches allow 
+ltration and cause less friction and so allow for a higher rate of erosion. If the beach 
+gradient is  steep,  this  will  encourage  steeper,  higher-energy  waves.  Paradoxically,  though, 
+because  shingle  and  pebble  beaches  leave  less  energy  for  backwash,  material
+moved upwards, making the beach steeper. The coastal erosion is a major concern for India 
+cutting deeper and wider channels as 
+a consequence of increased peak flows or the removal of local protective vegetation. Stream 
+bank  erosion  is  common  along  rivers,  streams  and  drains  where  banks  have  been  eroded, 
+lent in alluvial river and streams. Generally, stream 
+bank erosion becomes a problem where development has limited the meandering nature of 
+streams, where streams have been channelized, or where stream bank structures (like bridges, 
+ated  in  places  where  they  can  actually  cause  damage  to  downstream 
+continued  sedimentation, 
+damage to adjacent land uses, control unwanted meander, and improvement of habitat for fish 
+The  waves,  geology  and  geomorphology  are  the  three  major  factors  that  affect  the 
+cause of coastal erosion. Wave energy is the result the speed 
+of the wind blowing over the surface of the sea, the length of fetch and the wind blowing 
+of the coastline also affects the rate of erosion. If the coast is made of a 
+wer than if the coast is 
+geomorphology (or shape) of the 
+coastline further affects the rate of erosion. Headlands cause wave refraction, making waves 
+shallower  bays,  meanwhile,  allow  waves  to 
+diverge,  losing  energy  due  to  friction  with  the  sea  bed.  A  wider  beach  cause  more  wave 
+energy to be lost due to friction before the waves can break. A narrower beach will mean that 
+is closer to the coastline, and less energy will have been lost 
+due to friction before they break. Similarly, shingle  and  pebbles  will  allow more  water to 
+infiltrate and cause more wave energy to be lost due to friction, while sandy beaches allow 
+ltration and cause less friction and so allow for a higher rate of erosion. If the beach 
+energy  waves.  Paradoxically,  though, 
+because  shingle  and  pebble  beaches  leave  less  energy  for  backwash,  material tends  to  be 
+moved upwards, making the beach steeper. The coastal erosion is a major concern for India 
+
+as about 40% of the Indian coasts are subjected to severe erosion that has the pote
+change the coast line. 
+ 
+ 
+ 
+Mechanics of Soil Erosion
+Soil erosion is initiated by detachment of soil particles due to action of rain. The detached 
+particles are transported by erosion agents from one place to another and finally get settled at 
+some place leading to soil erosion p
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Fig. Process of water erosion by the impact of raindrops.
+ 
+ 
+ 
+ 
+ 
+Mechanics of soil erosion due to water and wind is discussed below.
+Mechanics of Water Erosion
+There are three steps for accelerated erosion by water:
+ Detachment  or  loosening  of  soil  particles  caused  by  flowing  water,  freezing  and 
+thawing of the top soil, and/or the impact of falling raindrops,
+ Transportation of soil particles by floating, rolling, dragging, and/or spla
+ Deposition of transported particles at some places of lower elevation.
+Rain enhances the translocation of soil through the process of splashing as shown in Fig.2.2. 
+Individual  raindrops  detach  soil aggregates  and  redeposit  them  as  particles.  T
+particles may then plug soil pores, reducing water intake (infiltration). Once the soil dries, 
+these particles develop into a crust at the soil surface and runoff is further increased.
+Mechanics of Wind Erosion:
+Wind erosion occurs where soil is exposed to the dislodging force of wind. The intensity of 
+wind erosion varies with surface roughness, slope and types of cover on the soil surface and 
+wind  velocity,  duration  and angle  of  incidence.  Fine  soil  particles  can  be  carried  to  great 
+heights  and  for  (may  be)  hundreds  of  kilometers.  The  overall  occurrence  of  wind  erosion 
+could be described in three different phases. These are initiation of movement, transportation 
+and deposition. 
+Initiation of Movement: The initiation of the movement of
+factors  acting  separately  in  combination.  In  the  course  of  collision  of  grains  rolling  and 
+as about 40% of the Indian coasts are subjected to severe erosion that has the pote
+Mechanics of Soil Erosion 
+Soil erosion is initiated by detachment of soil particles due to action of rain. The detached 
+particles are transported by erosion agents from one place to another and finally get settled at 
+some place leading to soil erosion process. Different soil erosion processes are shown in Fig.
+Process of water erosion by the impact of raindrops. 
+Mechanics of soil erosion due to water and wind is discussed below. 
+Mechanics of Water Erosion 
+for accelerated erosion by water: 
+Detachment  or  loosening  of  soil  particles  caused  by  flowing  water,  freezing  and 
+thawing of the top soil, and/or the impact of falling raindrops, 
+Transportation of soil particles by floating, rolling, dragging, and/or spla
+Deposition of transported particles at some places of lower elevation.
+Rain enhances the translocation of soil through the process of splashing as shown in Fig.2.2. 
+Individual  raindrops  detach  soil  aggregates  and  redeposit  them  as  particles.  T
+particles may then plug soil pores, reducing water intake (infiltration). Once the soil dries, 
+these particles develop into a crust at the soil surface and runoff is further increased.
+: 
+soil is exposed to the dislodging force of wind. The intensity of 
+wind erosion varies with surface roughness, slope and types of cover on the soil surface and 
+wind  velocity,  duration  and angle  of  incidence.  Fine  soil  particles  can  be  carried  to  great 
+ts  and  for  (may  be)  hundreds  of  kilometers.  The  overall  occurrence  of  wind  erosion 
+could be described in three different phases. These are initiation of movement, transportation 
+The initiation of the movement of soil particles is caused by
+factors  acting  separately  in  combination.  In  the  course  of  collision  of  grains  rolling  and 
+as about 40% of the Indian coasts are subjected to severe erosion that has the potential to 
+Soil erosion is initiated by detachment of soil particles due to action of rain. The detached 
+particles are transported by erosion agents from one place to another and finally get settled at 
+processes are shown in Fig. 
+Detachment  or  loosening  of  soil  particles  caused  by  flowing  water,  freezing  and 
+Transportation of soil particles by floating, rolling, dragging, and/or splashing and 
+Deposition of transported particles at some places of lower elevation. 
+Rain enhances the translocation of soil through the process of splashing as shown in Fig.2.2. 
+Individual  raindrops  detach  soil  aggregates  and  redeposit  them  as  particles.  The  dispersed 
+particles may then plug soil pores, reducing water intake (infiltration). Once the soil dries, 
+these particles develop into a crust at the soil surface and runoff is further increased.\ 
+soil is exposed to the dislodging force of wind. The intensity of 
+wind erosion varies with surface roughness, slope and types of cover on the soil surface and 
+wind  velocity,  duration  and angle  of  incidence.  Fine  soil  particles  can  be  carried  to  great 
+ts  and  for  (may  be)  hundreds  of  kilometers.  The  overall  occurrence  of  wind  erosion 
+could be described in three different phases. These are initiation of movement, transportation 
+soil particles is caused by several 
+factors  acting  separately  in  combination.  In  the  course  of  collision  of  grains  rolling  and 
+
+bumping on the surface, some particles may be bounced up. It occurs when the wind force or 
+the impact of moving particles is strong enough to dislodge stationary soil particles. 
+Transportation: The  transportation  of  the  particles  once  they  are  dislodged  take  place  in 
+three ways: 
+ Saltation – In  saltation  soil  particles  of  medium  size  (0.10-0.15  mm  diameter)  are 
+carried by wind in a series of short bounces. These bounces are caused by the direct 
+pressure of the wind on soil particles. 
+ Surface Creep – Saltation also encourages surface creep (rolling or sliding) along the 
+surface  of  the  particles  (0.5-1.0  mm  diameter).  The  bouncing particles  carried  by 
+saltation strike the large aggregates and speed up their movement along the surface. 
+ Suspension – When the particles of soil are very small (less than 0.1 mm) they are 
+carried over  long  distances.  Finer  suspended  particles  are  moved  parallel  to  the 
+ground surface and upward. 
+Deposition: Deposition of the particles occurs when the gravitational force is greater than the 
+forces  holding  the  particles  in  air.  Deposition  could  occur  when  the  wind  velocity  is 
+decreased due to surface obstructions or other natural causes. 
+ Effects of Soil Erosion 
+The soil erosion adversely affects the livelihood of the people in one way or other. The major 
+losses and problem occurs due to the soil erosion from various agents are listed below. 
+ Siltation of rivers. 
+ Siltation of irrigation channels and reservoirs. 
+ Problems in crop irrigation and consequent need of conserving the water. 
+ Damage to sea coast and formation of sand dunes. 
+ Disease and public health hazards. 
+ Soils  eroded  by  water  get  deposited  on river  beds,  thus  increasing  their  level  and 
+causing floods. These floods sometime have various extreme effects, such as killing 
+human and animals and damaging various buildings. 
+ Soil erosion decreases the moisture supply by soil to the plants for their growth. It 
+also affects the activity of soil micro-organisms thus deteriorating the crop yield. 
+ Top layer of soil contains most of the organic matter and nutrients, loss of this soil 
+reducing soil fertility and affecting its structure badly. 
+ Wind  erosion  is  very  selective,  carrying  the  finest  particles - particularly  organic 
+matter, clay and loam for many kilometres. There the wind erosion causes losses of 
+fertile soils from highly productive farming areas. 
+ The most spectacular forms are dunes - mounds of more or less sterile sand - which 
+move as the wind takes them, even burying oases and ancient cities. 
+ Sheets of sand travelling close to the ground (30 to 50 metres) can degrade crops. 
+ Wind erosion reduces the capacity of the soil to store nutrients and water, thus making 
+the environment drier. 
+ 
+Reference Books   
+ 
+1. 
+Soil and water conservation Engineering. Suresh, R. 
+2. 
+Principles of Agricultural Engineering Ojha, T.P. and A.M.Michae 
+3. 
+Agricultural Engineering Singhal, O.P. 
+ 

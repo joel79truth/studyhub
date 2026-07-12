@@ -1,0 +1,602 @@
+
+
+Agricultural Economics
+NDAG22103
+By
+Timothy Grant
+22/03/2025
+Mr. Timothy Grant
+1
+
+ASSESSMENT
+•Coursework40%
+•Assignment1(10Marks)
+•Assignment2(10Marks)
+•MidSemesterExam(20Marks)
+•Endofcourseexam60%
+22/03/2025Mr. Timothy Grant2
+
+AIMS OF STUDY: 
+Aim
+•TheaimoftheCourseistoequip
+studentswithknowledgeofmicro-
+economicconceptsandtheirapplication
+intheagriculturalindustryforoptimal
+andefficientproduction,marketingand
+distributionofagriculturalproduceand
+products
+LearningOutcome
+•Improvedunderstandingofmicro-
+economicandmacroeconomictheories,
+conceptsandtechniquesandtheir
+applicationintheagriculturalsector.
+•Increasedknowledgeandcompetencies
+onapplicationofeconomictheoryin
+leveragingopportunitiesthatexistin
+variousagriculturalvaluechainsand
+solvingbottlenecksintheagricultural
+sector.
+22/03/2025Mr. Timothy Grant3
+
+TOPICS
+1.Micro-Economics
+•Nature&ScopeofEconomics
+•Basiceconomicproblems
+•TheoryofConsumerBehaviour
+•TheoryofUtilityMaximisation
+•Marketstructures(perfect
+competition,monopoly,oligopolyetc)
+•TheoryofDemandandSupply
+2.MarketMechanismsfor
+AgriculturalProducts
+•DefinitionofMarket
+•FluctuationofAgricultural
+commodityprices
+•MarketStructures
+•Pricedeterminationindifferent
+marketstructures
+•Priceinstabilityandstabilization
+mechanisms
+22/03/2025Mr. Timothy Grant4
+
+Cont’...............
+3.TheoryofProduction
+•Factor-product model
+•Factor-factor model
+•Product-product model.
+•Theory of Production Costs 
+4. Macro-Economics
+•Introduction to Macroeconomics
+•Money and Fiscal Policy 
+•Gross Domestic Product (GDP) and 
+National Income
+•Economic Growth
+22/03/2025Mr. Timothy Grant5
+
+Cont’...............
+•5. Business Cycles, 
+Unemployment and Inflation
+6. Macroeconomic Models & 
+Fiscal Policy
+•The Consumption and Savings 
+Functions
+•Determinants of Consumption   
+•Theories of Consumption 
+•The Investment Theory 
+•Determinants of Investment 
+22/03/2025Mr. Timothy Grant6
+
+Cont’...............
+7. Aggregate Demand and 
+Aggregate Supply
+8. Fiscal policy, Deficits and 
+DebtInterest Rates and 
+Monetary Policy
+22/03/2025Mr. Timothy Grant7
+
+TOPIC 1
+Micro-Economics
+22/03/2025Mr. Timothy Grant8
+
+Cont’...............
+1.Micro-Economics
+•Nature&ScopeofEconomics
+•Basiceconomicproblems
+•Defineeconomicsandagricultural
+economics
+•Explaintheeconomicproblem
+•Describebranchesofeconomics
+•Explainfactorsofproduction
+•Outlinefundamentalelementsinthe
+scopeofeconomics
+•Discussterminologies,generalization
+andabstractionineconomics
+•TheoryofConsumerBehaviour
+•TheoryofUtilityMaximisation
+•Marketstructures(perfectcompetition,
+monopoly,oligopolyetc)
+•TheoryofDemandandSupply
+22/03/2025Mr. Timothy Grant9
+
+Aims and Objectives of the Course
+Aims
+Thecourseintroducesstudentstothebasicprinciplesandtheoriesofmicroeconomicsusedin
+theagriculturalsector.
+Objectives
+Bytheendofthiscoursestudentsshouldbeableto
+(1)Identifydifferentbranchesofeconomics,
+(2)Explainthebasicconceptsandanalyticaltechniquesofmicroeconomictheoryappliedinthe
+agriculturalsector,
+(3)Calculateandinterpretelasticityofdemandforandsupplyofagriculturalcommodities,
+(4)Discusstheoriesofdemand,production,costs,firmandsupply,
+(5)Applytheanalyticaltechniquesofmicroeconomictheoryinsolvingproblemsofagricultural
+sector.
+22/03/2025Mr. Timothy Grant10
+
+Definitions Economics/Agricultural 
+economics 
+•Economicsisasocialsciencethatisconcernedwiththeefficientuseor
+allocationofscarceresourcestoachievemaximumsatisfactionof
+society’seconomicwants.
+•Agriculturaleconomics-anappliedsocialsciencethatdealswithhow
+peoplechoosetousetechnicalknowledgeandscarceproductive
+resourcessuchasland,labor,capitalandmanagementtoproducefoodand
+fiberandtodistributeitforconsumptiontovariousmembersofsociety
+overtime.
+11AAE 211: Agricultural Economics I Tutorial
+
+Branches of economics
+•Therearetwobranchesofeconomicscalled:
+1.Microeconomics
+2.Macroeconomics
+MAE 214 Topic 1 @ MCA
+
+Definition of Macroeconomics
+•Macroeconomicsisthestudyof
+economywidephenomena.
+•Macroeconomicsexamineseither
+theeconomyasawholeorits
+basicsubdivisionsoraggregates,
+suchasthegovernment,
+household,andbusinesssectors.
+•Anaggregateisacollectionof
+specificeconomicunitstreatedas
+iftheywereoneunit.
+•Acourseinmacroeconomicswould
+examineaggregatelevelsofincomeand
+employment,thelevelsofinterestrates
+andprices,therateofinflation,andthe
+natureofbusinesscyclesinanational
+economy.
+•Italsodevelopspoliciestodealwith
+economicproblems.
+MAE 214 Topic 1 @ MCA
+
+Definition of Microeconomics
+•Microeconomicsisthebranchof
+economicsthatstudiesthebehaviorof
+individuals,households,andfirmsin
+makingdecisionsregardingtheallocationof
+limitedresources.
+•Itfocusesonsupplyanddemand,pricing,
+production,andmarketstructuresata
+smallscale,ratherthantheoveralleconomy.
+Examples:
+•PricingofGoodsandServices:Asmall
+businessownerdecidingtoincreasethe
+priceofbreadduetohigherproduction
+costs.
+•ConsumerChoice:Astudentchoosing
+betweenbuyingatextbookorsavingmoney
+fortransport.
+•LabourMarketDecisions:Acompany
+decidingtohiremoreworkerswhen
+productiondemandincreases.
+•EffectofTaxes:Ashopkeeperraising
+priceswhenthegovernmentimposes
+highertaxesonimportedgoods.
+•CompetitionAmongFirms:Twomobile
+networkprovidersreducingcallratesto
+attractmorecustomers.
+22/03/2025Mr. Timothy Grant14
+
+DIFFERENCES 
+MAE 214 Topic 1 @ MCA
+MICROECONOMICSMACROECONOMICS
+Study of individual economic units of an 
+economy
+Study of economy as a whole and its aggregates
+Central problem is price determination and 
+allocation of resources
+Central problem is determination of level of 
+Income and employment.
+Solve the central problem of ‘what, how and 
+for whom’ to produce
+Solve the central problem of full employment of 
+resources in the economy
+Price is the main determinant of micro-
+economic problems
+Income is the major determinant of 
+macroeconomic problems.
+
+Relationship between Macroeconomics and 
+Microeconomics 
+Microeconomics and macroeconomics are also related.
+•For example, in macroeconomics we study inflation and inflation raises prices 
+thereby affecting individual consumers and firm.
+•The national output studied in macroeconomics arises from decisions made by 
+individual producers.
+•Both fields of economics often use the same principles and formulas to solve 
+problems. 
+MAE 214 Topic 1 @ MCA
+
+The Economic Problem
+•Thefundamentaleconomicproblemfacingallsocietiesisthatofscarcity.
+•Theproblemofscarcityiscompoundedbythefactthatsociety’seconomic
+wantsarevirtuallyunlimitedandinsatiable(unsatisfied).
+•Itlimitsouroptionsandnecessitatesthatwemakechoices.
+•So,theproblemofchoiceisessentiallytheproblemofresourceallocation.
+•Therefore,choicesmustbemadeinsuchawaythatresourcesareallocated
+efficiently.
+•Theoverallobjectiveofalleconomicactivitiesistofulfillandsatisfy
+people’sdiverseeconomicwants.
+17AAE 211: Agricultural Economics I Tutorial
+
+Scarcity versus Money
+•Theproblemofscarcityisnotcausedbyashortageofmoney.
+•Forinstance,supposethateveryoneinasocietysuddenlybecame
+wealthierthantheythoughtpossible.
+•Evenifeveryonebecamemillionaires,theywouldstillgowithout
+manyofthethingstheywantandneed.Whowouldwanttowork?
+•Mostpeoplewouldprobablytrytospendtheirmoneyonreal
+estatelikehouses;buyboats,cars,vacationandotherthings.
+•Therewouldbemorepurchasethanproduction.
+•Thehugeincreaseinpeople’sincomewouldnotsolvetheeconomic
+problemofscarcity
+18AAE 211: Agricultural Economics I Tutorial
+
+Cont’..........
+•LimitedGoodsandServices–Sinceresourcesarescarce,theproductionof
+goodsandservicesisalsolimited.
+•RelativeScarcity–Someresourcesarerareandcostlyincertainregionsbut
+abundantandcheaperinothers.
+•NeedforChoices–Scarcityforcesindividualsandsocietiestomakedecisions
+aboutwhattoproduceandwhattosacrifice.
+•ResourceAllocation–Thechallengeofchoicerevolvesarounddistributing
+resourceseffectively.
+•Decision-Making–Peoplemustdeterminehowtoallocatebothresourcesand
+producedgoodswithinsociety.
+•EfficiencyinAllocation–Ensuringresourcesareusedefficientlyiscrucialfor
+economicsustainability.
+22/03/2025Mr. Timothy Grant19
+
+Factors of Production 
+•Thereasonpeoplecannotsatisfyalltheirwantsandneedsisthescarcityof
+productiveresourcesalsocalledeconomicresources.
+•Economicresourcesincludeallnatural,human,andmanufacturedresourcesthat
+providethemeansforasocietytoproduceanddistributeitsgoodsand
+services.
+Economicresourcesorfactorsofproduction,areland,capital,labour
+andentrepreneurship.
+•Theseareclassifiedaseither
+•propertyresources(e.g.land,rawmaterials,andcapital)or
+•humanresources(e.g.labourandentrepreneurialability).
+22/03/2025Mr. Timothy Grant20
+
+Land as a Factors of Production 
+•Landreferstothe“giftsofnature”ornaturalresourcesthatareusedinthe
+productionprocess,notcreatedbyhumaneffort.
+•Land includesnatural resources like arable land, forests, minerals, oil, 
+water, and climate. 
+•Limited supply:Natural resources are fixed, making land scarce. 
+•Scarcity impact:There is not enough farmland, beaches, or minerals to meet 
+global demand. 
+•Income from land:The reward for using land is called rent or rental 
+income.
+21AAE 211: Agricultural Economics I Tutorial
+
+Capital as a Factors of Production 
+•Capital(or capital goods or investment goods) includes all manufactured aids 
+used in producing consumer goods and services. 
+•Capital includesmanufactured tools, machinery, equipment, and infrastructure 
+used in production. 
+•Capital goods vs. financial capital:Capital goods are physical assets, while 
+financial capital (money) is used to acquire them. 
+•Money is not capitalbecause it does not directly produce goods or services. 
+Theincomereceivedfromsupplyingcapitalgoodsisinterest.
+Theprocessofproducingandpurchasingcapitalgoodsisknownasinvestment.
+22AAE 211: Agricultural Economics I Tutorial
+
+Labor as a Factors of Production 
+•Laborisabroadtermreferringtopeoplewithalltheirindividual
+physicalandmentaltalents,skills,efforts,andabilitiesavailableand
+usableinproducinggoodsandservices.
+Theservicesofafarmer,cottonharvestingman,retailclerkinthefoodmarts,
+teacher,marketingmanager,professionalfootballplayerandallothersfallunderthe
+generalheading“labour.”
+Labourincludesallpeopleexceptforauniquegroupofindividualscalled
+entrepreneurs,whicharesingledoutbecauseoftheirspecialroleintheeconomy.
+•Theincomeforlaboursupplyiscalledwages.
+•Wagesincludesalaries,andallwageandsalarysupplementssuchasbonuses,commissions
+andloyalties.
+23AAE 211: Agricultural Economics I Tutorial
+
+Cont’...............
+•Entrepreneursaretheinnovatorsresponsibleformuchofthechangeinthe
+economy.Theyareoftenthoughtofasthedrivingforceintheeconomy
+becausetheyexhibitaskilltostartanewbusiness.
+•Theirinitiativecombinestheresourcesofland,labourandcapitalintonew
+products.
+•Therewardforentrepreneurshipisprofit.
+22/03/2025Mr. Timothy Grant24
+
+Entrepreneursas a factor of production
+•Someworkershaveaspecialstatusbecausetheyaretheinnovatorsresponsibleformuch
+ofthechangeintheeconomy.Thesepeoplearecalledentrepreneurs.
+25AAE 211: Agricultural Economics I Tutorial
+
+Functions of Entrepreneurs
+•Theentrepreneurperformsseveralfunctionsasfollows:
+ˉTheycombineresourcestoproducegoodsandservices.
+ˉMakesbasicbusinesspolicydecisions
+ˉTheycommercializesnewproducts,productiontechniques,orformsof
+businessorganization.
+•Theentrepreneurisarisk-taker(orriskbearer).
+₋Inamarketsystemtheentrepreneurhasnoguaranteeofprofit;
+₋Theentrepreneurrisksnotonlyhis/herinvestedfundsbutthoseof
+associatesandstockholdersaswell.
+Theincomefortheentrepreneur’stime,efforts,andabilitiesisprofit.
+Profitmaybepositive(gain)ornegative(loss).
+22/03/2025Mr. Timothy Grant26
+
+Basic Questions in Resource Use
+1.WhattoProduce?
+•Societymustdecidewhichgoodsand
+servicestoproduce,consideringlimited
+resources.
+•Overproductionleadstowaste,while
+underproductioncausesshortages.
+•Thisdecisionrelatestopricetheory.
+•Acountrymustdecidewhetherto
+allocateresourcestomilitary
+equipmentorsocialservices(e.g.,
+morehospitalsormorefighterjets).
+•Ifproducinghousing,shoulditfocuson
+low-incomehousing,middle-class
+apartments,orluxuryvillas?
+Example:
+•InMalawi,thegovernmentmaychoose
+toinvestmoreinagriculturerather
+thanluxurygoodstoensurefood
+security
+AAE 211: Agricultural Economics I Tutorial27
+
+Cont’...............
+HowtoProduce?
+•Choicebetweencapital-intensive
+(machines)orlabour-intensive
+(workers)methods.
+•Labour-intensivemethodshelpwith
+employment,whilecapital-intensive
+methodslowercosts.
+•Thisdecisionfallsundertheoryof
+production.
+•A textile factory can choose 
+automated sewing machines (capital-
+intensive) or manual stitching 
+(labour-intensive). 
+•InruralMalawi,farmersmayrelyon
+handtoolsinsteadoftractorsdueto
+limitedcapital.
+Example:
+•Chinausesassembly-lineproduction
+forefficiency,whileIndiaemploysmore
+labour-intensivemethodsinhandloom
+industries.
+22/03/2025Mr. Timothy Grant28
+
+Cont’...............
+3.ForWhomtoProduce?
+•Goodsmustbeallocatedamongdifferentgroupsinsociety.
+•Distributiondependsoneconomicpoliciesandsocialpriorities.
+•Thisrelatestothetheoryofdistribution.
+•Ifagovernmentbuildsroads,shouldtheyprioritiseurbanareas(wealthier
+populations)orruralareas(underservedcommunities)?
+Example:
+InSouthAfrica,governmenthousingprojectstargetlow-incomefamilies,
+whileintheUS,luxuryapartmentsarebuiltforhigh-incomeearners.
+22/03/2025Mr. Timothy Grant29
+
+Why study Economics?
+•Economicsforcitizenship
+•Electingleadersbasedoneconomicattributes.
+•Economicsforpersonalapplication
+•Buyingandemploymentdecisions
+•Financialdecisions
+•SupportBusinessandEntrepreneurship–
+Assistsinmakingsoundbusinessdecisionsbasedon
+marketdemand,competition,andpricingstrategies.
+•UnderstandGlobalIssues–Providesinsightsinto
+globaltrade,economiccrises,development,and
+sustainabilitychallenges.
+•UnderstandScarcityandResource
+Allocation–Helpsinmakinginformed
+decisionsonhowtouselimitedresources
+efficiently.
+•ImproveDecision-MakingSkills–
+Providesanalyticaltoolstoassesscosts,
+benefits,andtrade-offsinvarioussituations.
+•EnhanceFinancialLiteracy–Aidsin
+understandingmarkets,inflation,interest
+rates,andinvestmentstrategies.
+•InfluenceGovernmentandPolicy-
+Making–Helpsinshapingpoliciesrelated
+totaxation,trade,employment,and
+economicgrowth.
+AAE 211: Agricultural Economics I Tutorial30
+
+Cont’...............
+•ImproveEmploymentOpportunities–Equipsindividualswithskills
+neededinbanking,finance,consulting,publicadministration,andresearch.
+•PredictMarketTrends–Helpsbusinessesandpolicymakersanticipate
+economicfluctuationsandplanaccordingly.
+•EnhanceProblem-SolvingSkills–Developscriticalthinkingtosolve
+economicandsocialproblemslikepovertyandunemployment.
+•ContributetoNationalDevelopment–Aidsinunderstandinghow
+economicgrowth,industrialisation,andinfrastructureimpactacountry’s
+progress.
+22/03/2025Mr. Timothy Grant31
+
+THE SCOPE OF ECONOMICS
+32AAE 211: Agricultural Economics I Tutorial
+
+Four Key Elements in the Scope of 
+Economics
+1.Description
+Itisconcernedwithwhatisproducedandwhogetshowmuch.Itisalsoconcerned
+withunemployment,inflation,internationaltrade,governmentspendingandtaxes.
+2.Analysis
+Ithelpstoanswersuchquestionsas“why”and“how”,economicsmustfocuson
+theanalysisofeconomicactivity.
+•Whyfor,example,arepricesofsomecommoditieshighwhileothersarelow?
+•WhyistheMalawiKwachafluctuatingsomuchandfailingtostabilizeagainst
+majorcurrenciesonthefinancialmarket?
+•Howdotaxesaffectpeople’sdesiretoworkandsave?
+33AAE 211: Agricultural Economics I Tutorial
+
+Cont’...............
+3.Explanation
+•Aftereconomistsunderstandhowthings
+work,theknowledgeiscommunicatedto
+others.
+•Inthismanner,thestudyofeconomicshelps
+usbetterunderstandourworld.
+4.Prediction
+Economistsanticipatingthelikelyconsequences
+ofdifferentcoursesofaction.
+•Supposeafarmingcommunity
+wantstoraiserevenuetobuilddip-
+tanksfortheincreasednumberof
+livestockherds.
+•Shouldthefundsberaised
+throughvoluntarycontributions,
+farmincometaxesfromthe
+producemarketorbysomeother
+means?
+•Economistscanhelppredictthe
+consequencesofdifferentcoursesof
+action,butthefinalchoiceisstillup
+tothepeopleinthecommunity.
+22/03/2025Mr. Timothy Grant34
+
+Economic Perspective
+•Economists view things from a unique perspective. 
+•This economic perspective, or economic way of thinking , has several 
+critical and closely interrelated features.
+•Scarcity and choice
+•Rational thinking
+•Marginal analysis: Benefits and Costs
+35
+AAE 211: Agricultural Economics I Tutorial
+
+Economic Perspective
++
+36AAE 211: Agricultural Economics I Tutorial
+Scarcity and choice
+Scarce economic resources mean limited goods and services. 
+Scarcity restricts options and demands choices
+Because we “can’t have it all,”we must decide what we will have and what we 
+must forgo.
+At the core of economics is the idea that “there is no free lunch.” You may be 
+treated to lunch, making it “free”
+
+Economic Perspective
+RationalThinking
+•Rationalbehaviourmeansthatindividualswillmakedifferentchoicesunder
+differentcircumstances.
+•Ofcourse,rationaldecisionsmaychangeascostsandbenefitschange.
+•Rationalthinkingisdifferentfromselfinterest
+•Self-interestbehaviourissimplybehaviourthatenablesapersontoachieve
+personalsatisfaction,howeveritmaybederived.
+37AAE 211: Agricultural Economics I Tutorial
+
+Economic Perspective
+MarginalAnalysis:BenefitsandCost
+•Theeconomicperspectivefocuseslargelyonmarginalanalysis–thatis,comparisonsof
+marginalbenefitsandmarginalcosts
+•Economicdecisionsareusuallymadeinthemarginswhereeachdecision-involvechanges
+fromthestatusquoandtheassociatedmarginalbenefitsand,becauseofscarce
+resources,marginalcosts.
+•WhenMC<MBcarryouttheeconomicactivityandyoumayincreaseuntil
+MC=MB.MC>MBmeansyouarehavingtoomuchofthegood.
+•Asaself-boarderyouareshoppingbeeftolastoneweekunder
+refrigeration.ShouldyoubuysteakatK1500perkgorafulldressedchicken
+atK1100?
+38AAE 211: Agricultural Economics I Tutorial
+
+Economic Methodology
+•Economics relies on the scientific method and consists of a number of 
+methodological elements as follows: 
+1.The observation of facts (real-world data).
+2.The formulation of hypothesis
+3.The testing of the hypothesis 
+4.The acceptance, rejection, or modification of the hypothesis, based 
+on these comparisons.
+5.The continued testing of the hypothesis against the facts. 
+39AAE 211: Agricultural Economics I Tutorial
+
+Terminology 
+•Economistsspeakof“hypotheses,”“theories,”“laws”or“principles”
+and“models”.
+•Someofthesetermsoverlap,buttheyusuallyreflectagradationorshift
+orprogressionofconfidenceinthegeneralizations.
+•Ahypothesisneedstesting;
+•Atheoryhasbeentestedbutneedsmoretesting;
+•Alaworprincipleisatheorythathasprovidedastrongpredictive
+accuracy,overandover.
+•Economistsoftenusetheterm“model,”whichcombinesprinciplesinto
+asimplifiedrepresentationofreality.
+40AAE 211: Agricultural Economics I Tutorial
+
+Terminology 
+•In this course, custom or convenience will govern the use of “theory,” 
+“law”, “principle,” and “model.” 
+For instance, 
+•We will use the term law of demand, rather than theory or principle of 
+demand, simply because this is the custom. 
+•We will refer to the circular flow model, not the circular flow law, 
+because the concept combines several ideas into a single representation.
+41AAE 211: Agricultural Economics I Tutorial
+
+Generalizations 
+•Aswehavealreadymentioned,economictheories,principles,andlawsare
+generalizationsrelatingtoeconomicbehaviorortotheeconomyitself.
+•Theyareimprecisebecauseeconomicfactsareusuallydiverse;notwoindividualsor
+institutionsactexactlythesameway.
+•Economicprinciplesareexpressedasthetendenciesoftypicaloraverageconsumers,
+workers,orbusinessfirms.
+Forexample:
+•Consumerspendingriseswhenpersonalincomeincreases.Thisisdespitethefactthat
+somehouseholdsmaysaveallofanincreaseintheirincomes.But,onaverage,andforthe
+fulleconomy,spendinggoesupwhenincomeincreases.
+42AAE 211: Agricultural Economics I Tutorial
+
+Assumptions 
+•Notethatnaturalscientistssuchaschemistsorphysicistscanconductcontrolled
+experimentswhere“allotherthings”areheldconstant(orvirtuallyso),andtheycantest
+withgreatprecisiontheassumedrelationshipbetweentwovariables.
+•Economiststesttheirtheoriesusingreal-worlddata,whicharegeneratedbytheactual
+operationoftheeconomy.
+•Inthisworld,,dochange.
+•Inconstructingtheirtheories,economistsusetheceterisparibusorother-things-equal
+assumption.
+43AAE 211: Agricultural Economics I Tutorial
+
+Abstractions 
+•Economicprinciplesortheoriesareabstractions.
+•Theyaresimplificationsthatomitirrelevantfactsandcircumstances.
+•Economistsabstractinordertogivemeaningtoanotherwiseoverwhelmingand
+confusingmazeoffacts.
+44AAE 211: Agricultural Economics I Tutorial
+
+22/03/2025Mr. Timothy Grant45

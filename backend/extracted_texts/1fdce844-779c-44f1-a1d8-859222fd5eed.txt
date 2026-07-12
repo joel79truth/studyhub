@@ -1,0 +1,258 @@
+
+
+Ecology of plants and Animals
+BIO121
+
+Fundamental concepts in ecology (ecological 
+terms) 
+•Ecologyisthebranchofbiologythatdealswiththescientific
+studyoftheinterrelationshipsbetweenlivingthingsandtheir
+environment.Inotherwords,theinteractionbetweenthebiotic
+(living)andabiotic(non-living)factors.
+•Environmentreferstothetotalsurroundingsofanorganism.It
+includesthebioticandabioticfactors.
+•Ecosystemreferstotheinteractionbetweenlivingthingsand
+theirenvironmentataparticularplaceorlocation.E.g.forest
+ecosystem.
+
+Fundamental concepts in ecology (ecological 
+terms) 
+•Biospherereferstothepartoftheearthanditsatmosphere
+wherelivingthingscanliveorbefound.Thisalsoincludesthe
+hydrosphere(water)andlithosphere(land).
+•Biomereferstoalargenaturalareaofanecosystemwitha
+particularclimate.Biomesareoftendefinedbythedominant
+vegetationtype.E.g.desert
+•Ahabitatisthephysicalenvironmentwhereanorganismlives
+•Nicheisthefunctionalroleorpositionofaspecieswithinits
+habitatwhichincludesitsfood,shelter,breedinggroundsand
+otherresources.
+
+Fundamental concepts in ecology (ecological 
+terms)
+•Abioticfactors:thesearetheenon-livingphysicalandchemicalcomponents
+ofanecosystemsuchassunlight,temperature,water,soil,airandnutrients.
+•Bioticfactors:theseareallthelivingcomponentsandtheirproductsthat
+affectotherlivingorganismsofanecosystem.Itincludesalltheplants,
+animals,fungi,micro-organismsandtheactivitiesofhumans.
+•Species:thisreferstoagroupoforganismsthatcaninterbreedandproduce
+offspringcapableofreproduction.
+•Foodchain:afoodchainisalinearsequenceoforganismsexistinginany
+ecosystemthroughwhichenergyandnutrientsaretransferred.Afoodchain
+showshowenergyflowsoriscirculatedwithinanecosystem.
+•Foodweb:it’sacomplexfeedingrelationshipbetweenorganismsinwhich
+someorganismsmaybepartofmorethanonefoodchain.
+
+Ecological Concepts
+•Ecologicalconceptshelpusunderstandtheintricaterelationshipsbetween
+livingorganismsandtheirsurroundings..
+•Examplesofthemajorhabitatsandtheecologicalconcepts
+•Deserts:theharshandextremeconditionsoftemperature(heatandcold),scarcityof
+waterandhighlightintensitymaketheconceptofadaptationofgreatsignificancein
+deserthabitats.
+•Forests:theconceptofspeciesdiversityisevidenthere,astheforesthabitathostsan
+incrediblevarietyofplants,animalsandmicroorganisms,fosteringacloselyknit
+mutualisticrelationshipbetweenvariousspeciesfoundthere.
+•Grasslands:grasslands,whethersavannas,steppesorprairiessupportadiverserange
+ofplantandanimalspeciesadaptedtograssyenvironments.Thegrazingdynamicsof
+animalsalsoplayacrucialroleincontrollingthegrasspopulationthroughherbivory.
+•Freshwater:Riparianzones,whichistheinterfacebetweenaquaticandterrestrial
+environmentsinfreshwaterbodiessupportuniquebiodiversityandecological
+function
+
+Importance of Interdependency of Living 
+Organisms
+•EcologicalBalance
+•Biodiversity
+•AdaptationandEvolution
+•NutrientCycling
+•Resilience
+
+Sampling Methods in Ecology 
+•Ecologicaltoolsareinstrumentsormethodsusedbyecologistsand
+environmentalscientiststostudy,monitor,manage,andconserve
+ecosystemsandbiodiversity.
+•Thesetoolshelpresearchersgatherdata,analysepatterns,andmake
+informeddecisionsregardingecologicalmanagementand
+conservation
+
+Common sampling methods 
+•Quadrat:Aquadratisasquareorrectangularframeusedtooutlinea
+samplearea,oftenusedforvegetationorstudyplantandsessile
+animalpopulations.
+•Transect:Atransectisastraightlineorpathplacethroughahabitatto
+measurevegetationfrequency.Itisusedtostudychangesinecological
+parametersacrossapieceofland.
+•Apitfalltrap:Itisasimpletrapusedtocapturesmallground-dwelling
+animals,suchasinsects,spiders,andotherinvertebrates.
+•Pooter:Apooter,alsoknownasasuctionsampler,isasmalldevice
+usedtocollectorsuckverysmallinvertebrateswithoutharmingthem
+
+Common sampling methods 
+•Secchidisk:Thisisasimpledeviceusedtomeasurewater
+transparencyorturbidityinbodiesofwater,particularlyrivers,lakesor
+oceans
+•Sweepnet:Asweepnetisatoolusedtocollectsmallorganismsfrom
+vegetationorwaterinecologicalsurveys
+•GPS(GlobalPositioningSystem):GPSisusedtopreciselylocate
+samplingsites,trackanimalmovements,maphabitattypesand
+monitorchangesinlandcoverandlandusepatterns.
+
+Lincoln Index 
+•Thisisamethodusedinecologytoestimatethepopulationsizeofa
+species,particularlywhenindividualsaredifficulttoobservedirectly.
+•ItisnamedafterFrederickCharlesLincoln,anAmericanbiologistwho
+developedthemethodintheearly1930s.
+•Itisbasedonthecapture-mark-recapturetechnique.Theprocessinvolves
+capturingandmarkingortaggingasampleofthepopulation(e.g.,witha
+uniqueidentifier),releasingthembackintotheenvironment,andallowing
+enoughtimeforcompletemixingofindividuals.After,thecompletemixing
+ofindividualsinthepopulation,anothersampleofindividualsiscaptured
+fromthesamepopulation.Thissecondsampleincludesbothmarked
+(previouslycaptured)andunmarkedindividuals.
+
+The Lincoln Index calculation
+The Lincoln Index uses the proportion of marked individuals recaptured 
+in the second sample to estimate the total population size.
+•The formula is given as: N = (M ×C)/R
+•N =the estimated population size.
+•M = the number of individuals initially marked and released.
+•C =the total number of individuals captured in the second sample.
+•R =the number of marked individuals recaptured in the second sample.
+Assumptions: The Lincoln Index assumes that the marking does not 
+significantly affect the behavior or survival of the marked individuals, 
+that the population 
+
+Lincoln Index 
+•Assumptions:TheLincolnIndexassumesthatthemarkingdoesnot
+significantlyaffectthebehaviororsurvivalofthemarkedindividuals,
+thatthepopulationisclosed(nobirths,deaths,ormigrationduring
+thestudyperiod),andthatindividualshaveanequalprobabilityof
+beingcapturedoneachoccasion.
+
+Flow of Energy in an Ecosystem
+Theflowofenergyinanecosystemmaybedeterminedusing
+techniquessuchasdirectcounting,gutexamination,and
+radioactive/tracer.
+1.Directcountingisoftenusedforinitialassessmentsorinsimpler
+ecosystems.
+2.Gutexaminationworkswellforstudyingpredator-preyinteractions
+3.Radioactive/tracermethodsofferamoreprecisewaytotrackenergy
+flowthroughcomplexfoodwebs.
+4.Ecologicalpyramidsareusedtodeterminetheflowofenergyacross
+trophiclevels
+
+The Food Chains and Energy Pyramids
+•An ecological pyramid is a graphical representation illustrating the 
+distribution of organisms across different trophic levels in a food 
+chain. 
+•When food passes from primary producers to secondary consumers 
+and then to tertiary consumers (carnivores),
+•it is estimated that about 10% of energy is lost during the process
+•Ecologists use the pyramid to graphically represent this and call it 
+‘Ecological Pyramids’.
+
+Pyramids of Numbers
+•PyramidofNumbers:Thismethod
+representsthenumberoforganismsat
+eachtrophiclevelinanecosystem.
+•Itisthesimplestmethodandinvolves
+countingthenumberofindividualsat
+eachtrophiclevelandarrangingthemin
+apyramidshape.
+•Inatypicalpyramidofnumbers,the
+numberofindividualsusuallydecreases
+withincreasingtrophiclevels
+
+Pyramid of Biomass
+•Thepyramidofbiomassrepresentsthe
+totaldryweight(usually)ofthe
+organismsateachtrophiclevel.
+•Biomassisamoreaccurate
+representationofenergyavailable
+sinceittakesintoaccounttheactual
+totalmassoflivingorganisms,rather
+thanthenumberoforganisms.
+•Inapyramidofbiomass,thebiomass
+alwaysdecreasesateachtrophiclevel.
+
+Pyramid of Energy
+•Thepyramidofenergyrepresentstheactual
+flowofenergythrougheachtrophiclevelin
+anecosystem.
+•Itquantifiestheamountofenergy
+transferredfromonetrophicleveltothe
+next.
+•Theenergyvalueisusuallydetermined
+usingthecalorimetrymethod.Thisinvolves
+measuringtheheatreleasedorabsorbed
+duringchemicalreactions,includingthe
+combustionoforganicmatter.
+•Byburningsamplesofbiomasscollected
+fromdifferenttrophiclevelsandmeasuring
+theheatproduced
+
+The Physical and Biotic Environment of Organisms 
+•Bioticandabioticfactorsarethefeaturesofecosystems,orgeographic
+areasofaplanet.
+•Bioticfactorsarealllivingorganisms,includingmicroorganisms,plants,
+animals,andhumans.
+•Abioticfactorsareallnonlivingthings,rangingfromlandformsto
+chemicalstoclimaticfeatures.
+•Bioticandabioticfactorsareinterrelated,meaningtheyworktogether,
+andtheyareinvolvedinvariousnaturalcyclesthatkeepecosystems
+sustainedandbalanced
+
+Biotic and abiotic factors
+Reading Assigment–find out more on the Difference between Biotic and Abiotic Factors
+
+The Growth and Regulation of Populations 
+•Populationecologistsmakeuseofavarietyofmethodstomodel
+populationdynamics.
+•Exponentialgrowthmodel-amodelthatdescribespopulationsthat
+increaseinnumberswithoutanylimitstotheirgrowth.Occurswhen
+resourcesareabundant.
+•Logisticgrowthmodel–thismodelintroduceslimitstoreproductive
+growththatbecomemoreintenseasthepopulationsizeincreases.
+Populationgrowsuntilitreachescarryingcapacity
+•Neithermodeladequatelydescribesnaturalpopulations,butthey
+providepointsofcomparison
+
+The Growth models 
+Nb:Whenresourcesareunlimited,populationsexhibitexponentialgrowth,resultinginaJ-
+shapedcurve.Whenresourcesarelimited,populationsexhibitlogisticgrowth.Inlogistic
+growth,populationexpansiondecreasesasresourcesbecomescarce,anditlevelsoffwhen
+thecarryingcapacityoftheenvironmentisreached,resultinginanS-shapedcurve.
+
+Factors Regulating Population Size
+Density-dependent factors
+•Competition
+•Predation
+•Parasitism
+•Disease
+Density-independent factors
+•Natural disasters
+•Climate extremes
+•Pollution
+
+Population Parameters
+•Birthrate
+•Deathrate
+•Immigration
+•Emigration
+
+Agricultural and Non-agricultural Ecosystems 
+•Agricultural ecosystems are designed and managed by humans for the 
+purpose of growing crops and/or raising animals. 
+•Natural ecosystems/ non agricultural , on the other hand, exist 
+without humans. They are composed of a great diversity of biotic 
+(living) and abiotic (non-living) components
+
+Ecosystem cycles
+•There are three main types of processes involved in natural and 
+agricultural ecosystems
+•Energy flows 
+•Water cycling 
+•Nutrient cycling 
+•Reading assignment: find out the relationship between agriculture 
+and non agriculture ecosystem

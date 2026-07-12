@@ -1,0 +1,329 @@
+
+
+      
+   
+  
+ 
+ 
+CAP21202 : EXCEL 
+ 
+Section 1: Spreadsheet and Microsoft Excel   
+   
+What is a Spreadsheet?   
+   
+"A spreadsheet is a group of values and other data organized into rows and columns similar to the ruled 
+paper worksheets traditionally used by bookkeepers and accountants."    
+The spreadsheet software is mandatory to create computerized spreadsheets. Microsoft Excel is a form 
+of a spreadsheet. There are many terms one must have to know to create a spreadsheet (in brief).    
+• A worksheet is the single spreadsheet document.    
+• A workbook allows multiple worksheets to be saved together in a single spreadsheet file.   
+• Worksheets are divided into rows and columns.    
+• The intersection of a row and column, in other words, where a row 
+and column meet is called a cell.    
+• One must enter content into the active cell, or current cell, it has a 
+border around it to make it be easily identified.    
+• Data is entered directly into worksheet cells by clicking a cell to 
+make it the active cell.    
+• Labels, constant values, formulas, and functions are the data that 
+is entered into a cell.    
+• Before one enters a formula or function into a cell, one must begin with some type of 
+mathematical symbol, usually the equal sign (=).   
+• Spreadsheets are used to organize and calculate data.    
+• It is essential to know how to use spreadsheets for school, work, sports, or anything that requires 
+data!   
+   
+   
+The Interface   
+   
+When you open Excel 2016 for the first time, the Excel Start Screen will appear. From here, you will be 
+able to create a new workbook, choose a template, and access your recently edited workbooks.   
+   
+
+      
+   
+  
+ 
+The same with Microsoft Word, to access 
+the Excel interface you have to select the 
+Blank workbook option form the Excel 
+Start Screen.   
+   
+   
+   
+   
+   
+   
+   
+1. Quick Access Toolbar: The Quick 
+Access Toolbar lets you an access 
+common command no matter which 
+tab is selected. You can customize 
+the commands depending on your 
+preference.   
+2. The Ribbon: The Ribbon contains all 
+of the commands you will need to 
+perform common tasks in Excel. It 
+has multiple tabs, each with several 
+groups of commands.   
+3. Tell Me: The Tell me box works like 
+a search bar to help you quickly find 
+tools or commands you want to use.   
+4. Microsoft Account: From here, you 
+can access your Microsoft account 
+information, view your profile, and 
+switch accounts.   
+5. Name Box: The Name box displays the location, or name, of a selected cell.   
+6. Formula Bar: In the formula bar, you can enter or edit data, a formula, or a function that will appear 
+in a specific cell.   
+7. Column: A column is a group of cells that runs from the top of the page to the bottom. In Excel, 
+columns are identified by letters.   
+8. Cell: Each rectangle in a workbook is called a cell. A cell is the intersection of a row and a column. 
+Simply click to select a cell.   
+9. Row: A row is a group of cells that runs from the left of the page to the right. In Excel, rows are 
+identified by numbers.   
+10. Worksheets: Excel files are called workbooks. Each workbook holds one or more worksheets. 
+Click the tabs to switch between them, or right-click for more options.   
+11. Worksheet View Options: There are three ways to view a worksheet. Simply click a command to 
+select the desired view.   
+12. Zoom Control: Click and drag the slider to use the zoom control. The number to the right of the 
+slider reflects the zoom percentage.   
+
+      
+   
+  
+ 
+13. Vertical and Horizontal Scroll Bars: The scroll bars allow you to scroll up and down or side to side. 
+To do this, click and drag the vertical or horizontal scroll bar.   
+   
+How to use a Spreadsheet   
+The cell address also appears in the Name box in the top-left corner, and that a cell's column and row 
+headings are highlighted when the cell is selected.   
+   
+You can also select multiple cells at the same time. A group of cells is known as a cell range. Rather 
+than a single cell address, you will refer to a cell range using the cell addresses of the first and last cells 
+in the cell range, separated by a colon.   
+Examples:   
+                  Cell range A1:A8                                                       Cell range A1:F1   
+    
+When using a spreadsheet application, the user can use various concepts to compute the data entered 
+into the cells in the spreadsheet. These different concepts are provided within the program.    
+Some common concepts that are utilized are:    
+• Charts   
+• Functions  Formulas  • Cell referencing.   
+   
+Functions   
+A function is a pre-programmed mathematical formula to allow the user to make calculations based on 
+the data input. The functions under spreadsheets are there to perform a simple calculation by using a 
+certain value, called arguments.   
+   
+Why using functions on spreadsheets?   
+• For arithmetic functions to process numerical data.   
+• For the use of statistical functions that use analysis tools and averaging tools for finding the 
+average of the numbers in a certain row/column on a spreadsheet.    
+• The date function that processes and converts dates. This function could be used to put the 
+sequential dates in order on the spreadsheet.    
+• The logic function that process logic data. An example of logic data would be an AND/OR 
+function. If there was something that needed to be marked yes if it is above 5 and marked no if it 
+is below 5 then that would be a logic function.    
+• The financial functions that process monetary data.    
+   
+How to use functions?   
+• They all must start with an equal sign, the name of the function, parenthesis opening and closing.    
+• In the function, a comma or semicolon is used as the delimiter, depending on what settings are 
+there in the spreadsheet would depend on which one to use.    
+
+      
+   
+  
+ 
+• An example would be =SUM(A1:A4), this function would find the sum in those cells.    
+• Some of the most common functions are SUM, AVERAGE, IF, COUNT, MAX and MIN.   
+   
+Formulas   
+Mathematical operators   
+Excel uses standard operators for formulas, such as a plus sign for addition (+), a minus 
+sign for subtraction (-), an asterisk for multiplication (*), a forward slash for division (/), 
+and a caret (^) for exponents.   
+   
+A formula always starts with an equals sign (=), followed by a constant, a function or 
+a reference, then followed by an operator, and then followed by another constant, 
+function or reference.    
+ A constant: is a value that never changes; this includes numbers, dates, titles and other text 
+input.    
+ References: represent a certain cell, such as “A2”.    
+ An operator: is usually a math symbol, such as “+” or “*” which tells the computer how to 
+compute (add or multiply) the given constants or functions given in the formula.    
+   
+   
+   
+   
+Cell References   
+While you can create simple formulas in Excel using numbers (for example, =2+2 or =5*5), most of the 
+time you will use cell addresses to create a formula. This is known as making a cell reference.  Using 
+cell references will ensure that your formulas are always accurate because you can change the value of 
+referenced cells without having to rewrite the formula.   
+   
+Example:   
+We want to add the numbers “5” and “2” and display the result below. We are 
+typing in cell A3 the equal sign (=) we select cell A5, we press the plus button (+) 
+and then select the A2 cell.   
+   
+   
+   
+   
+When you press Enter, the formula calculates and displays the answer in cell A3   
+   
+   
+   
+By doing math equations using cells addresses, if the values in the referenced cells 
+change, the formula automatically recalculates.   
+   
+   
+
+      
+   
+  
+ 
+   
+   
+Formulas can also include a combination of cell references and numbers, as in the examples below:   
+   
+  
+Operators are not always arithmetic, they can also be comparison, text concatenation, and reference 
+operators. Comparison includes greater than, lesser than, greater than or equal to, and lesser than or 
+equal to. To connect two values into one value, a text concatenation (the “and” sign i.e. “&”) is used.    
+   
+The signs used as reference operators are the following:    
+ A colon is used to reference two cells and all the cells between them (i.e. B1:B10)   A comma 
+is used to combine multiple references into one reference (i.e. B1:B10,C1:C10)  A space is used 
+as an intersection operator.   
+There are two ways of doing this:    
+1. Relative Cell Referencing.   
+2. Absolute Cell Referencing.    
+A relative cell reference will adjust as the formula is copied from another cell while an absolute will 
+not adjust.    
+An example of this would be "=D2+F2" which is row 2 to row 3 which 
+will equal "D3+F3". It is also important to note that a user can reference 
+both the same sheet and other sheets in a book using this concept.   
+   
+Tables and Pivot Tables   
+   
+Tables:   
+Just like Microsoft Word, Excel also includes several tools and 
+predefined table styles, allowing you to create tables quickly and easily.   
+   
+How to insert a Table   
+1. Select the cells you want to format as a table.   
+2. From the Home tab, click the Format as Table command in the 
+Styles group.      
+3. Select a table style from the drop-down menu.   
+
+      
+   
+  
+ 
+4. A dialog box will appear, confirming the selected cell range for the table. (*If your table has 
+headers, check the box next to My table has headers, then click OK.)   
+5. The cell range will be formatted in the selected table style.   
+   
+Side note: Tables include filtering by default. You can filter your data at any time using the drop-down 
+arrows in the header cells.   
+   
+   
+In addition, Excel allows you to modify the table size by including additional rows and columns. There 
+are two simple ways to change the table size:   
+1. Either by entering new content into any adjacent row or column. (The row or column will be roped 
+into the table automatically.)   
+2. Click and drag the bottom-right corner of the table to 
+create additional rows or columns. (Figure Below)   
+   
+   
+   
+   
+   
+   
+Pivot Tables:   
+One the most powerful features available in the Microsoft Office spreadsheet program Excel, is pivot 
+tables. Pivot tables allow you to manipulate large amounts of raw data. It makes it easy to analyse the 
+data in different ways, with a simple click and drag. Some of the features of Pivot Table are:   
+• Calculations can be performed by row or column.    
+• Data can be filtered or sorted automatically by any or all of the fields.    
+• Excel can even recommend a basic layout of a pivot table based on the type of data selected.    
+• A wizard is available to assist in the creation of the table.    
+• An important thing to remember when using pivot tables is that any time the original data source 
+is modified; the data must be refreshed in the pivot.   
+   
+Example    
+Let's say we wanted to answer the question:    
+   
+What is the amount sold by each salesperson?   
+   
+Because each salesperson appears on multiple rows 
+and we would need to total all of their different 
+orders individually, the answer could be time 
+consuming and difficult.   
+   
+   
+
+      
+   
+  
+ 
+Once you have created a PivotTable, you can use it to answer different questions by rearranging or 
+pivoting the data. For example, let's say we wanted to answer: What is the total amount sold in each 
+month?    
+   
+We could modify our PivotTable to look like this:   
+   
+   
+                 
+    
+                  
+ 
+   
+                      
+     
+   
+How to create a PivotTable   
+1. First, you need to select the table or cells (including column headers) that you want to include in 
+your PivotTable.   
+2. From the Insert tab, click the PivotTable command.   
+3. The Create PivotTable dialog box will appear. Choose 
+your settings, and then click OK.   
+4. A blank PivotTable and Field List will appear on a new 
+worksheet.   
+5. Once you create a PivotTable, you'll need to decide which 
+fields to add. Each field is simply a column header from the source data.    
+In the PivotTable Field List, check the box for each field you want to add.   
+6. The selected fields will be added to one of the four areas below. (In our example, the Salesperson 
+field has been added to the Rows area, while Order Amount has been added to Values. Alternatively, 
+you can drag and drop fields directly into the desired area.)   
+7. The PivotTable will calculate and summarize the selected fields.   
+   
+   
+    
+Side Note: Just like with normal spreadsheets, you can sort the data in a PivotTable using the Sort & 
+
+      
+   
+  
+ 
+Filter command on the Home tab. You can also apply any type of number formatting you want.   
+   
+Finally, by changing the content of rows columns and values, you can have several results according to 
+what you want to calculate.    
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+We are going to examine more about the Microsoft Excel Features through our exercises.   
+   

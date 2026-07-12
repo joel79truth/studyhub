@@ -1,0 +1,423 @@
+
+
+
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+●
+●
+●
+●
+8
+
+9
+TrackIDTitleArtistGenre
+1Float awayThe SpringsPop
+2In denialRockettsRock
+3With youFunzo Pop
+4UsThe FeastRnB
+
+tblTracks
+
+10
+TrackIDTitleArtistGenre
+1Float awayThe SpringsPop
+2In denialRockettsRock
+3With youFunzo Pop
+4UsThe FeastRnB
+
+tblTracks
+
+tbl
+11
+TrackIDTitleArtistGenre
+1Float awayThe SpringsPop
+2In denialRockettsRock
+3With youFunzo Pop
+4UsThe FeastRnB
+
+tblTracks
+
+12
+TrackIDTitleArtistGenre
+1Float awayThe SpringsPop
+2In denialRockettsRock
+3With youFunzo Pop
+4UsThe FeastRnB
+
+tblTracks
+
+●TrackID
+●Title
+●Artist
+●Genre
+13
+TrackIDTitleArtistGenre
+1Float awayThe SpringsPop
+2In denialRockettsRock
+3With youFunzo Pop
+4UsThe FeastRnB
+
+
+14
+TrackIDTitleArtistGenre
+1Float awayThe SpringsPop
+2In denialRockettsRock
+3With youFunzo Pop
+4UsThe FeastRnB
+
+tblTracks
+
+15
+TrackIDTitleArtistGenre
+1Float awayThe SpringsPop
+2In denialRockettsRock
+3With youFunzo Pop
+4UsThe FeastRnB
+
+tblTracks
+
+16
+
+TrackIDTitleArtistGenreDloadIDDateTimeMemberIDFirstnameSurname
+1Float away
+The 
+Springs
+Pop14.6.1018:361SaraBibi
+2In denialRockettsRock25.6.1119:201SaraBibi
+1Float away
+The 
+Springs
+Pop39.6.1209:302DannyJudd
+2In denialRockettsRock41.7.1408:282DannyJudd
+1Float away
+The 
+spings
+Pop59.1.1103:453CaraLichfield
+
+TrackIDTitleArtistGenreDloadIDDateTimeMemberIDFirstnameSurname
+1Float away
+The 
+Springs
+Pop14.6.1018:361SaraBibi
+2In denialRockettsRock25.6.1119:201SaraBibi
+1Float away
+The 
+Springs
+Pop39.6.1209:302DannyJudd
+2In denialRockettsRock41.7.1408:282DannyJudd
+1Float away
+The 
+spings
+Pop59.1.1103:453CaraLichfield
+
+TrackIDTitleArtistGenreDloadIDDateTimeMemberIDFirstnameSurname
+1Float away
+The 
+Springs
+Pop14.6.1018:361SaraBibi
+2In denialRockettsRock25.6.1119:201SaraBibi
+1Float away
+The 
+Springs
+Pop39.6.1209:302DannyJudd
+2In denialRockettsRock41.7.1408:282DannyJudd
+1Float away
+The 
+spings
+Pop59.1.1103:453CaraLichfield
+
+TrackIDTitleArtistGenreDloadIDDateTimeMemberIDFirstnameSurname
+1Float away
+The 
+Springs
+Pop14.6.1018:361SaraBibi
+2In denialRockettsRock25.6.1119:201SaraBibi
+1Float away
+The 
+Springs
+Pop39.6.1209:302DannyJudd
+2In denialRockettsRock41.7.1408:282DannyJudd
+1Float away
+The 
+spings
+Pop59.1.1103:453CaraLichfield
+
+TrackIDTitleArtistGenreDloadIDDateTimeMemberIDFirstnameSurname
+1Float away
+The 
+Springs
+Pop14.6.1018:361SaraBibi
+2In denialRockettsRock25.6.1119:201SaraBibi
+1Float away
+The 
+Springs
+Pop39.6.1209:302DannyJudd
+2In denialRockettsRock41.7.1408:282DannyJudd
+1Float away
+The 
+spings
+Pop59.1.1103:453CaraLichfield
+
+TrackIDTitleArtistGenreDloadIDDateTimeMemberIDFirstnameSurname
+1Float away
+The 
+Springs
+Pop14.6.1018:361SaraBibi
+2In denialRockettsRock25.6.1119:201SaraBibi
+1Float away
+The 
+Springs
+Pop39.6.1209:302DannyJudd
+2In denialRockettsRock41.7.1408:282DannyJudd
+1Float away
+The 
+spings
+Pop59.1.1103:453CaraLichfield
+
+
+
+●
+●
+●
+
+
+
+
+
+
+
+TrackID
+Title
+Artist
+Genre
+DownlID
+TrackID
+MemberID
+Date
+Time
+MemberID
+Firstname
+Surname
+Email
+Password
+tblTrackstblDownloadstblMembers
+
+TrackID
+Title
+Artist
+Genre
+DownlID
+TrackID
+MemberID
+Date
+Time
+MemberID
+Firstname
+Surname
+Email
+Password
+tblTrackstblDownloadstblMembers
+
+TrackID
+Title
+Artist
+Genre
+DownlID
+TrackID
+MemberID
+Date
+Time
+MemberID
+Firstname
+Surname
+Email
+Password
+tblTrackstblDownloadstblMembers
+
+TrackID
+Title
+Artist
+Genre
+DownlID
+TrackID
+MemberID
+Date
+Time
+MemberID
+Firstname
+Surname
+Email
+Password
+tblTrackstblDownloadstblMembers
+
+TrackID
+Title
+Artist
+Genre
+DownlID
+TrackID
+MemberID
+Date
+Time
+MemberID
+Firstname
+Surname
+Email
+Password
+tblTrackstblDownloadstblMembers
+
+TrackID
+Title
+Artist
+Genre
+DownlID
+TrackID
+MemberID
+Date
+Time
+MemberID
+Firstname
+Surname
+Email
+Password
+tblTrackstblDownloadstblMembers
+
+TrackID
+Title
+Artist
+Genre
+DownlID
+TrackID
+MemberID
+Date
+Time
+MemberID
+Firstname
+Surname
+Email
+Password
+tblTrackstblDownloadstblMembers
+
+DownlIDTrackIDMemberIDDateTime
+1
+111.5.1803:40
+2
+212.9.2008:29
+3
+223.4.2011:25
+4
+321.8.1913:45
+tblDownloads
+
+
+DownlIDTrackIDMemberIDDateTime
+1
+111.5.1803:40
+2
+212.9.2008:29
+3
+223.4.2011:25
+4
+321.8.1913:45
+tblDownloads
+
+
+DownlIDTrackIDMemberIDDateTime
+1
+111.5.1803:40
+2
+212.9.2008:29
+3
+223.4.2011:25
+4
+321.8.1913:45
+tblDownloads
+
+
+DownlIDTrackIDMemberIDDateTime
+1
+111.5.1803:40
+2
+212.9.2008:29
+3
+223.4.2011:25
+4
+321.8.1913:45
+tblDownloads
+
+
+tblTracks
+DownlIDTrackIDMemberIDDateTime
+1
+111.5.1803:40
+2
+212.9.2008:29
+3
+223.4.2011:25
+4
+321.8.1913:45
+tblDownloads
+
+
+tblTracks
+TrackIDTitleArtistGenre
+1Float awayThe SpringsPop
+2In denialRockettsRock
+3With youFunzo Pop
+4UsThe FeastRnB
+
+tblTracks
+
+DownlIDTrackIDMemberIDDateTime
+1111.5.1803:40
+2212.9.2008:29
+3223.4.2011:25
+4321.8.1913:45
+tblDownloads
+
+
+MemberIDFirstnameSurnameEmailPassword
+1
+SaraBibis@b.com123456
+2DannyJudd
+d@j.com987654
+3CaraLichfield
+c@l.comqwerty
+tblMembers
+
+
+TrackID
+Title
+Artist
+Genre
+DownlID
+TrackID
+MemberID
+Date
+Time
+MemberID
+Firstname
+Surname
+Email
+Password
+tblTrackstblDownloadstblMembers
+
+
+44
+
+45
+
+46
+
+47
