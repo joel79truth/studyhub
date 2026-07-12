@@ -1,14 +1,15 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { VitePWA } from 'vite-plugin-pwa';               // 👈 1. import
+import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
   plugins: [
     react(),
-    VitePWA({                                              // 👈 2. add the PWA plugin
+    VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
       manifest: {
+        id: '/',
         name: 'StudyHub LUANAR',
         short_name: 'StudyHub',
         description: 'Your study companion for LUANAR',
@@ -16,28 +17,36 @@ export default defineConfig({
         background_color: '#ffffff',
         display: 'standalone',
         start_url: '/',
-        icons: [
+       icons: [
+  {
+    src: 'icons/icon-192x192.png',
+    sizes: '192x192',
+    type: 'image/png',
+  },
+  {
+    src: 'icons/icon-512x512.png',
+    sizes: '512x512',
+    type: 'image/png',
+  },
+],
+        screenshots: [
           {
-            src: 'icons/icon-192x192.png',
-            sizes: '192x192',
+            src: 'screenshots/screenshot-mobile.png',
+            sizes: '1080x1920',
             type: 'image/png',
+            form_factor: 'narrow',
           },
           {
-            src: 'icons/icon-512x512.png',
-            sizes: '512x512',
+            src: 'screenshots/screenshot-desktop.png',
+            sizes: '1920x1080',
             type: 'image/png',
-          },
-          {
-            src: 'icons/icon-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-            purpose: 'any maskable',
+            form_factor: 'wide',
           },
         ],
       },
     }),
   ],
-  // ---------- your existing config below (do not change) ----------
+  // ---------- your existing config (do not change) ----------
   server: {
     proxy: {
       '/upload': 'http://localhost:3000',
@@ -61,7 +70,7 @@ export default defineConfig({
     },
   },
   build: {
-    rolldownOptions: {                                    // if this was a typo for rollupOptions, keep it
+    rolldownOptions: {
       external: ['@capacitor/app', '@capacitor/browser'],
       output: {
         codeSplitting: true,
