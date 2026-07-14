@@ -3,7 +3,6 @@ import { Download } from 'lucide-react';
 
 export default function InstallPrompt() {
   const [installEvent, setInstallEvent] = useState(null);
-  const [showManual, setShowManual] = useState(false);
   const [isInstalled, setIsInstalled] = useState(false);
 
   useEffect(() => {
@@ -13,39 +12,20 @@ export default function InstallPrompt() {
       return;
     }
 
-    // If service worker not supported, manual guide is all we have
-    if (!('serviceWorker' in navigator)) {
-      setShowManual(true);
-      return;
-    }
-
-    // Wait for SW to be ready
-    navigator.serviceWorker.ready.catch(() => {});
-
     // Listen for the automatic prompt
     const handler = (e) => {
       e.preventDefault();
       setInstallEvent(e);
-      setShowManual(false);
     };
     window.addEventListener('beforeinstallprompt', handler);
 
     window.addEventListener('appinstalled', () => {
       setInstallEvent(null);
       setIsInstalled(true);
-      setShowManual(false);
     });
-
-    // If after 6 seconds no prompt, show manual install guidance
-    const timeout = setTimeout(() => {
-      if (!installEvent) {
-        setShowManual(true);
-      }
-    }, 6000);
 
     return () => {
       window.removeEventListener('beforeinstallprompt', handler);
-      clearTimeout(timeout);
     };
   }, []);
 
@@ -55,10 +35,10 @@ export default function InstallPrompt() {
     installEvent.userChoice.then(() => setInstallEvent(null));
   };
 
-  // Don't show anything if already installed
+  // Show nothing if installed
   if (isInstalled) return null;
 
-  // Show automatic button if event is available
+  // Only show the automatic install button (if available)
   if (installEvent) {
     return (
       <button
@@ -76,20 +56,6 @@ export default function InstallPrompt() {
     );
   }
 
-  // Manual fallback – small instruction bar
-  if (showManual) {
-    return (
-      <div
-        className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 
-                   flex items-center gap-2 px-4 py-2 
-                   bg-gray-900/90 backdrop-blur-md border border-gray-700 
-                   rounded-full shadow-lg 
-                   text-xs text-gray-200"
-      >
-        <span>Tap ⠅ <strong>Add to Home screen</strong></span>
-      </div>
-    );
-  }
-
+  // ⛔ MANUAL FALLBACK REMOVED – no more "Add to Home screen" popup
   return null;
 }

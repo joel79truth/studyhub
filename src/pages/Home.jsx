@@ -1,111 +1,13 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef, useMemo, memo } from 'react';
 import { supabase } from '../supabase';
 import { BottomNav } from '../components/BottomNav';
 import { useNavigate, Navigate } from 'react-router-dom';
+import AiStudyAssistantCard from '../components/AiCard';
+import Files from '../components/Files'; // <-- new file manager
 
-// ========== Loading Skeleton ==========
-const LoadingSkeleton = () => (
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-    {[1, 2, 3, 4, 5, 6].map((i) => (
-      <div key={i} className="bg-card border border-border rounded-xl overflow-hidden animate-pulse">
-        <div className="h-32 bg-muted"></div>
-        <div className="p-3 space-y-2">
-          <div className="h-4 bg-muted rounded w-3/4"></div>
-          <div className="h-3 bg-muted rounded w-1/2"></div>
-          <div className="h-2 bg-muted rounded w-full"></div>
-          <div className="flex justify-between">
-            <div className="h-3 bg-muted rounded w-1/4"></div>
-            <div className="h-3 bg-muted rounded w-1/4"></div>
-          </div>
-        </div>
-      </div>
-    ))}
-  </div>
-);
-
-// ========== Course Card ==========
-const CourseCard = ({ file }) => {
-  const fileUrl = file.url || (file.file_path ? 
-    supabase.storage.from("notes").getPublicUrl(file.file_path).data.publicUrl : null);
-  
-  if (!fileUrl) return null;
-
-  const title = file.title || file.filename || "Untitled File";
-  const subject = file.subject || "Unknown Subject";
-  const semester = file.semester || "N/A";
-  const category = file.category || "General";
-  const downloads = file.downloads || 0;
-  const rating = file.rating ? file.rating.toFixed(1) : "N/A";
-
-  let imageUrl;
-  const lowerTitle = title.toLowerCase();
-  if (lowerTitle.endsWith(".pdf")) {
-    imageUrl = "https://cdn-icons-png.flaticon.com/512/337/337946.png";
-  } else if (lowerTitle.endsWith(".doc") || lowerTitle.endsWith(".docx")) {
-    imageUrl = "https://cdn-icons-png.flaticon.com/512/337/337932.png";
-  } else if (lowerTitle.endsWith(".ppt") || lowerTitle.endsWith(".pptx")) {
-    imageUrl = "https://cdn-icons-png.flaticon.com/512/337/337951.png";
-  } else {
-    imageUrl = `https://source.unsplash.com/400x300/?${encodeURIComponent(title)}`;
-  }
-
-  return (
-    <div className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-200 hover:-translate-y-1 group">
-      <div className="relative h-32 overflow-hidden">
-        <img 
-          src={imageUrl} 
-          alt={title} 
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
-          loading="lazy"
-        />
-        <div className="absolute top-2 left-2">
-          <span className="px-2 py-0.5 bg-background/90 backdrop-blur-sm text-xs font-medium rounded-md text-foreground/80">
-            {category}
-          </span>
-        </div>
-        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
-          <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-            <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-              <polygon points="5,3 19,12 5,21"/>
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div className="p-3">
-        <h3 className="font-medium text-sm mb-0.5 text-foreground group-hover:text-blue-600 transition-colors line-clamp-2">
-          {title}
-        </h3>
-        <p className="text-xs text-muted-foreground mb-1">Subject: {subject}</p>
-        <div className="flex items-center justify-between text-xs text-muted-foreground mb-1">
-          <span>Semester {semester}</span>
-          <div className="flex items-center gap-2">
-            <div className="flex items-center gap-0.5">
-              <svg className="w-3 h-3 text-yellow-500" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
-              </svg>
-              <span className="text-foreground">{rating}</span>
-            </div>
-            <div className="flex items-center gap-0.5">
-              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                <circle cx="12" cy="7" r="4"/>
-              </svg>
-              <span className="text-foreground">{downloads}</span>
-            </div>
-          </div>
-        </div>
-        <button 
-          onClick={() => window.open(fileUrl, '_blank')}
-          className="w-full mt-1 px-3 py-1.5 text-xs bg-transparent border border-border rounded-lg hover:bg-accent transition-colors text-foreground"
-        >
-          Open File
-        </button>
-      </div>
-    </div>
-  );
-};
-
-// ========== Stats Card ==========
+// ============================================================
+// 1. STATS CARD (unchanged)
+// ============================================================
 const StatsCard = ({ icon, title, value, subtitle, gradient }) => (
   <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl p-3 hover:shadow-lg transition-all duration-200 hover:-translate-y-1">
     <div className="flex items-center justify-between mb-1">
@@ -119,14 +21,18 @@ const StatsCard = ({ icon, title, value, subtitle, gradient }) => (
   </div>
 );
 
-// ========== Home Component ==========
+// ============================================================
+// 2. MAIN HOME COMPONENT
+// ============================================================
 const Home = () => {
   const navigate = useNavigate();
+
+  // ----- State -----
   const [user, setUser] = useState(null);
   const [authReady, setAuthReady] = useState(false);
   const [userData, setUserData] = useState(null);
-  const [files, setFiles] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [files, setFiles] = useState([]);          // kept for cache, but Files component will fetch its own
+  const [loading, setLoading] = useState(true);    // used for initial load, not for Files
   const [streak, setStreak] = useState(0);
   const [daysLeft, setDaysLeft] = useState(0);
   const [daysDelta, setDaysDelta] = useState('');
@@ -147,9 +53,36 @@ const Home = () => {
   const [fieldErrors, setFieldErrors] = useState({ program: false, semester: false, year: false, role: false, code: false });
   const [profileSubmitting, setProfileSubmitting] = useState(false);
 
+  // ----- Caching to avoid reload on navigation -----
+  const cacheKey = 'homeData';
+  const loadFromCache = () => {
+    try {
+      const cached = sessionStorage.getItem(cacheKey);
+      if (cached) {
+        const data = JSON.parse(cached);
+        setStreak(data.streak || 0);
+        setDaysLeft(data.daysLeft || 0);
+        setDaysDelta(data.daysDelta || '');
+        setLoading(false);
+        return true;
+      }
+    } catch (e) { /* ignore */ }
+    return false;
+  };
+
+  const saveToCache = (streakVal, daysVal, deltaVal) => {
+    try {
+      sessionStorage.setItem(cacheKey, JSON.stringify({
+        streak: streakVal,
+        daysLeft: daysVal,
+        daysDelta: deltaVal,
+      }));
+    } catch (e) { /* ignore */ }
+  };
+
   const LECTURER_SECRET = "LUANAR-FACULTY-2026";
 
-  // Load programmes
+  // ----- Load programs (once) -----
   const loadPrograms = async () => {
     try {
       const { data, error } = await supabase
@@ -163,45 +96,27 @@ const Home = () => {
     }
   };
 
-  // Exam countdown
+  // ----- Exam countdown (reused) -----
   const calculateExamCountdown = useCallback(() => {
     const examDate = new Date(2026, 5, 17);
     const now = new Date();
     const diffDays = Math.ceil((examDate - now) / (1000 * 60 * 60 * 24));
+    let delta = '';
     if (diffDays > 0) {
       setDaysLeft(diffDays);
-      setDaysDelta('days left until exams');
+      delta = 'days left until exams';
     } else if (diffDays === 0) {
       setDaysLeft(0);
-      setDaysDelta('Exams start today!');
+      delta = 'Exams start today!';
     } else {
       setDaysLeft(0);
-      setDaysDelta('Exams are over');
+      delta = 'Exams are over';
     }
+    setDaysDelta(delta);
+    return { diffDays, delta };
   }, []);
 
-  // Load files
-  const loadFiles = useCallback(async (program) => {
-    if (!program) return;
-    try {
-      setLoading(true);
-      const { data, error } = await supabase
-        .from("files")
-        .select("*")
-        .ilike("program", program.trim())
-        .order("uploaded_at", { ascending: false })
-        .limit(6);
-      if (error) throw error;
-      setFiles(data || []);
-    } catch (err) {
-      console.error("loadFiles error:", err);
-      setFiles([]);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  // Load user profile – never redirects to login
+  // ----- Load user profile (cached) -----
   const loadUserProfile = useCallback(async (authUser) => {
     try {
       const { data: profile, error } = await supabase
@@ -212,7 +127,6 @@ const Home = () => {
       if (error) throw error;
 
       if (!profile || !profile.program) {
-        // Profile missing or incomplete → show form inside Home
         setShowProfileForm(true);
         setUserData({
           displayName: authUser.user_metadata?.full_name || authUser.email,
@@ -223,7 +137,6 @@ const Home = () => {
         return;
       }
 
-      // Profile complete
       setShowProfileForm(false);
       setUserData({
         displayName: authUser.user_metadata?.full_name || authUser.email,
@@ -231,9 +144,6 @@ const Home = () => {
         program: profile.program,
         semester: profile.semester,
       });
-      if (profile.program) {
-        loadFiles(profile.program);
-      }
 
       // Streak logic
       const today = new Date().toDateString();
@@ -250,14 +160,16 @@ const Home = () => {
         .from('profiles')
         .upsert({ id: authUser.id, streak: newStreak, last_active: new Date().toISOString() });
       setStreak(newStreak);
-      calculateExamCountdown();
+      const { diffDays, delta } = calculateExamCountdown();
+      // Update cache
+      saveToCache(newStreak, diffDays, delta);
+
     } catch (err) {
       console.error('Error loading profile:', err);
-      // do not redirect, just stay and maybe show error
     }
-  }, [loadFiles, calculateExamCountdown]);
+  }, [calculateExamCountdown]);
 
-  // Auth listener
+  // ----- Auth listener (unchanged) -----
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
@@ -268,6 +180,7 @@ const Home = () => {
           setUser(null);
           setUserData(null);
           setShowProfileForm(false);
+          sessionStorage.removeItem(cacheKey);
         }
         setAuthReady(true);
       }
@@ -289,7 +202,18 @@ const Home = () => {
     };
   }, [loadUserProfile]);
 
-  // Scroll listener
+  // ----- Remove "Add to Home" popup -----
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e) => {
+      e.preventDefault();
+    };
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
+  }, []);
+
+  // ----- Scroll listener (for header) -----
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
@@ -298,15 +222,31 @@ const Home = () => {
     return () => container.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Filter files
-  const filteredFiles = files.filter(file => {
-    if (!searchQuery) return true;
-    const query = searchQuery.toLowerCase();
-    const title = (file.title || file.filename || '').toLowerCase();
-    const subject = (file.subject || '').toLowerCase();
-    return title.includes(query) || subject.includes(query);
-  });
+  // ----- Dynamic AI description (stabilised with useMemo) -----
+  const getPersonalizedDescription = useMemo(() => {
+    // Only recalculates when daysLeft or streak change
+    if (daysLeft > 0 && daysLeft <= 30) {
+      return `⚡ ${daysLeft} days until exams – let's crush it!`;
+    }
+    if (streak > 0 && streak % 7 === 0) {
+      return `🔥 ${streak}‑day streak! You're unstoppable!`;
+    }
+    if (daysLeft > 30) {
+      return "🎯 How to get a 3.7 GPA this semester?";
+    }
+    // Stable random fallback (picks once, not on every render)
+    const messages = [
+      "Ask anything. Get answers.",
+      "💪 Crush your goals today!",
+      "📚 Every question answered.",
+      "🚀 You've got this!",
+    ];
+    // Use a deterministic choice based on streak to keep it stable
+    const index = (streak + daysLeft) % messages.length;
+    return messages[index];
+  }, [daysLeft, streak]);
 
+  // ----- Derived data -----
   const displayName = user?.email?.split('@')[0] || userData?.displayName || 'User';
   const names = displayName.trim().split(' ');
   const initials = names.length === 1 
@@ -315,7 +255,7 @@ const Home = () => {
 
   const handleNavigation = (path) => navigate(path);
 
-  // Profile form submission
+  // ----- Profile form submission (unchanged) -----
   const handleProfileSubmit = async (e) => {
     e.preventDefault();
     setFieldErrors({ program: false, semester: false, year: false, role: false, code: false });
@@ -347,7 +287,6 @@ const Home = () => {
 
       if (error) throw error;
 
-      // Reload profile
       await loadUserProfile(user);
       setShowProfileForm(false);
     } catch (err) {
@@ -358,7 +297,10 @@ const Home = () => {
     }
   };
 
-  // Spinner while auth state is loading
+  // ============================================================
+  // RENDER
+  // ============================================================
+
   if (!authReady) {
     return (
       <div className="h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50">
@@ -370,12 +312,11 @@ const Home = () => {
     );
   }
 
-  // If no user at all → go to login
   if (!user) {
     return <Navigate to="/login" replace />;
   }
 
-  // ========== PROFILE COMPLETION FORM ==========
+  // Profile form
   if (showProfileForm) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50 p-4">
@@ -533,6 +474,13 @@ const Home = () => {
 
       {/* ===== MAIN CONTENT ===== */}
       <div className="px-4 lg:px-6 space-y-4 lg:space-y-6">
+        
+        {/* 👇 AI Study Assistant Card with STABLE description */}
+        <AiStudyAssistantCard 
+          onAskClick={() => navigate('/ai-chat')}
+          description={getPersonalizedDescription}
+        />
+
         {/* Stats Cards */}
         <div className="grid grid-cols-2 gap-3 lg:gap-4">
           <StatsCard
@@ -559,11 +507,11 @@ const Home = () => {
           />
         </div>
 
-        {/* Course Grid */}
+        {/* ===== FILE MANAGER ===== */}
         <div className="space-y-4">
           <div>
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-base font-medium text-foreground">Recently uploaded</h2>
+              <h2 className="text-base font-medium text-foreground">My Notes</h2>
               <button 
                 onClick={() => handleNavigation('/my_courses')}
                 className="text-xs font-medium text-blue-600 hover:text-blue-700"
@@ -571,31 +519,8 @@ const Home = () => {
                 View All
               </button>
             </div>
-            {loading ? (
-              <LoadingSkeleton />
-            ) : filteredFiles.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {filteredFiles.map((file, index) => (
-                  <CourseCard key={file.id || index} file={file} />
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-8">
-                <p className="text-sm text-muted-foreground">
-                  {files.length === 0 
-                    ? 'No courses available for your program yet.' 
-                    : `No courses match "${searchQuery}".`}
-                </p>
-                {files.length === 0 && (
-                  <button 
-                    onClick={() => handleNavigation('/request')}
-                    className="mt-2 text-sm text-blue-600 hover:underline"
-                  >
-                    Request notes
-                  </button>
-                )}
-              </div>
-            )}
+            {/* The Files component handles its own loading and data fetching */}
+            <Files searchQuery={searchQuery} limit={6} />
           </div>
         </div>
       </div>
@@ -611,10 +536,10 @@ const Home = () => {
         />
       )}
 
-      {/* Mobile Sidebar */}
+      {/* Mobile Sidebar - instant toggle */}
       <div className={`
         lg:hidden fixed top-0 left-0 h-full w-64 bg-white border-r border-border
-        transform transition-transform duration-300 ease-in-out z-50 flex flex-col
+        transform transition-transform duration-200 ease-in-out z-50 flex flex-col
         ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>
         <div className="flex justify-end p-4">

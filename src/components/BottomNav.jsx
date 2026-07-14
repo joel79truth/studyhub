@@ -10,7 +10,7 @@ const navItems = [
 
 export function BottomNav() {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 safe-area-inset-bottom">
+    <nav className="fixed bottom-3 left-3 right-3 z-50 bg-white border border-gray-200 shadow-lg rounded-2xl safe-area-inset-bottom">
       <div className="flex items-stretch h-16">
         {navItems.map(({ to, icon: Icon, label }) => (
           <NavLink
@@ -21,7 +21,7 @@ export function BottomNav() {
               [
                 'flex flex-1 flex-col items-center justify-center gap-1 transition-colors duration-150',
                 isActive
-                  ? 'text-blue-600'           // ✅ active text = blue
+                  ? 'text-blue-600'           // ✅ active text stays blue
                   : 'text-muted-foreground hover:text-foreground',
               ].join(' ')
             }
@@ -30,14 +30,14 @@ export function BottomNav() {
               <>
                 <span
                   className={[
-                    'flex items-center justify-center w-10 h-6 rounded-full transition-colors duration-150',
-                    isActive ? 'bg-blue-50' : '',   // ✅ active background = light blue
+                    'flex items-center justify-center w-10 h-8 rounded-full transition-colors duration-150', // h-8 for larger icons
+                    isActive ? 'bg-blue-50' : '',   // ✅ active background stays blue-50
                   ].join(' ')}
                 >
                   <Icon
-                    size={20}
-                    strokeWidth={isActive ? 2.5 : 1.75}
-                    className={isActive ? 'text-blue-600' : ''} // ✅ icon also blue
+                    size={22}                       // ✅ bigger icons (was 20)
+                    strokeWidth={isActive ? 2.75 : 2}  // ✅ thicker icons (was 2.5 / 1.75)
+                    className={isActive ? 'text-blue-600' : ''}
                   />
                 </span>
                 <span className="text-[11px] leading-none tracking-wide">
