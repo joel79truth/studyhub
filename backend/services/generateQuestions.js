@@ -1,25 +1,38 @@
+// ──────────────────────────────────────────────────────────
+// generateQuestions.js  –  final robust version
+// ──────────────────────────────────────────────────────────
 require('dotenv').config();
 const { createClient } = require('@supabase/supabase-js');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
-// Supabase
+// ── Supabase ──
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-// Gemini – using 2.0 flash for higher free quota
+// ── Gemini ──
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({ model: 'models/gemini-2.0-flash' });
 
-// Sleep helper to respect rate limits
+// ── Helpers ──
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// ------------------------------------------------------------
-//  HELPER: get course_id + metadata for the prompt
-// ------------------------------------------------------------
+// Parse command line arguments
+const args = process.argv.slice(2);
+let limit = Infinity;
+const limitArg = args.find(arg => arg.startsWith('--limit='));
+if (limitArg) {
+  limit = parseInt(limitArg.split('=')[1], 10);
+}
+
+// ── Cache for course metadata ──
+const metadataCache = new Map();
+
 async function getCourseMetadata(fileId) {
+  if (metadataCache.has(fileId)) return metadataCache.get(fileId);
+
   const { data: file, error: fileErr } = await supabase
     .from('files')
     .select('program, semester, course_name')
@@ -28,6 +41,7 @@ async function getCourseMetadata(fileId) {
 
   if (fileErr || !file) {
     console.warn(`   ⚠️ File ${fileId} not found.`);
+    metadataCache.set(fileId, null);
     return null;
   }
 
@@ -35,17 +49,15 @@ async function getCourseMetadata(fileId) {
   const semester = file.semester;
   const originalCourseName = file.course_name.trim();
 
-  // Remove emojis and special characters, collapse spaces, lowercase for matching
   const clean = (str) =>
     str
-      .replace(/[^\w\s]/g, '')   // remove everything except letters, digits, spaces
-      .replace(/\s+/g, ' ')      // collapse multiple spaces
+      .replace(/[^\w\s]/g, '')
+      .replace(/\s+/g, ' ')
       .trim()
       .toLowerCase();
 
   const fileCourseClean = clean(originalCourseName);
 
-  // Find program id (for course matching)
   const { data: programs, error: progErr } = await supabase
     .from('programs')
     .select('id, name')
@@ -65,7 +77,6 @@ async function getCourseMetadata(fileId) {
       .eq('semester', semester);
 
     if (!courseErr && courses && courses.length > 0) {
-      // Normalise DB course names and compare
       const exact = courses.find(c => clean(c.course_name) === fileCourseClean);
       if (exact) {
         courseId = exact.id;
@@ -83,40 +94,14 @@ async function getCourseMetadata(fileId) {
     }
   }
 
-  return {
-    courseId,
-    programName,
-    courseName: matchedCourseName,
-    semester,
-  };
+  const result = { courseId, programName, courseName: matchedCourseName, semester };
+  metadataCache.set(fileId, result);
+  return result;
 }
 
-// ------------------------------------------------------------
-//  CHUNK QUALITY CHECK
-// ------------------------------------------------------------
-async function isChunkEducational(chunkContent) {
-  const prompt = `
-Is the following text educational content suitable for generating study questions?
-Reply with a single word: YES or NO.
-Text:
-"""
-${chunkContent.substring(0, 1000)}
-"""`;
-
-  try {
-    const result = await model.generateContent(prompt);
-    const text = result.response.text().trim().toUpperCase();
-    return text === 'YES';
-  } catch (e) {
-    console.error('   Quality check failed, assuming YES');
-    return true; // assume ok on error
-  }
-}
-
-// ------------------------------------------------------------
-//  GENERATE QUESTIONS FOR ONE CHUNK
-// ------------------------------------------------------------
-async function generateQuestionsForChunk(chunkId) {
+// ── Generate questions for a single chunk ──
+async function generateQuestionsForChunk(chunkId, retries = 2) {
+  // Fetch chunk
   const { data: chunk, error } = await supabase
     .from('note_chunks')
     .select('id, content, heading, file_id, chunk_number')
@@ -128,7 +113,7 @@ async function generateQuestionsForChunk(chunkId) {
     return;
   }
 
-  // 1. Already has questions?
+  // Already has questions?
   const { data: existing } = await supabase
     .from('generated_questions')
     .select('id')
@@ -139,26 +124,15 @@ async function generateQuestionsForChunk(chunkId) {
     return;
   }
 
-  // 2. Quality pre‑check
-  const educational = await isChunkEducational(chunk.content);
-  if (!educational) {
-    console.log(`   ⛔ Chunk ${chunkId} does not contain enough educational content – skipped.`);
-    return;
-  }
-
-  // 3. Get course metadata (courseId, programName, etc.)
+  // Get course metadata (cached)
   const meta = await getCourseMetadata(chunk.file_id);
   const courseId = meta?.courseId || null;
   const programName = meta?.programName || 'Unknown Program';
   const courseName = meta?.courseName || 'Unknown Course';
   const semester = meta?.semester || '';
-
-  // Source reference for later use
   const sourceRef = `${chunk.heading || 'Lecture'} (Chunk ${chunk.chunk_number})`;
 
-  // ----------------------------------------------------------
-  // 4. THE MAIN PROMPT (your exact specifications)
-  // ----------------------------------------------------------
+  // ── Main prompt (unchanged) ──
   const prompt = `
 You are an expert university assessment designer.
 
@@ -315,14 +289,12 @@ ${chunk.content.substring(0, 3000)}
 """
 `;
 
-  // ----------------------------------------------------------
-  // 5. CALL GEMINI & INSERT
-  // ----------------------------------------------------------
+  // ── Call Gemini ──
   try {
     const result = await model.generateContent({
       contents: [{ role: 'user', parts: [{ text: prompt }] }],
       generationConfig: {
-        maxOutputTokens: 2500,   // enough for 8 questions + objectives
+        maxOutputTokens: 2500,
         temperature: 0.4,
       },
     });
@@ -335,7 +307,6 @@ ${chunk.content.substring(0, 3000)}
 
     let inserted = 0;
     for (const q of questions) {
-      // Discard if confidence < 0.7
       if (q.confidence && parseFloat(q.confidence) < 0.7) {
         console.log(`   ⚠️ Low confidence (${q.confidence}), skipping.`);
         continue;
@@ -370,18 +341,53 @@ ${chunk.content.substring(0, 3000)}
     }
 
     console.log(`   ✅ Inserted ${inserted} questions (${objectives.length} objectives) for chunk ${chunkId}`);
+
   } catch (err) {
-    console.error(`   ❌ Gemini generation failed for chunk ${chunkId}:`, err.message);
+    // ── ERROR HANDLING ──
+
+    // 1. Check if it's a DAILY quota error
+    const isDailyQuota = err.message.includes('429') && (
+      err.message.includes('GenerateRequestsPerDay') ||
+      err.message.includes('per day') ||
+      err.message.includes('daily') ||
+      err.message.includes('free_tier_requests')      // free tier daily limit
+    );
+
+    // 2. Check if it's a PER‑MINUTE quota error
+    const isPerMinuteQuota = err.message.includes('429') &&
+      (err.message.includes('per minute') ||
+       err.message.includes('GenerateRequestsPerMinute'));
+
+    if (isDailyQuota) {
+      console.error('🚨 Daily quota exceeded. Please try again tomorrow.');
+      const stopError = new Error('DAILY_QUOTA_EXCEEDED');
+      stopError.isDailyQuota = true;
+      throw stopError;
+    }
+
+    if (isPerMinuteQuota && retries > 0) {
+      const match = err.message.match(/retryDelay["']?:\s*["']?(\d+\.?\d*)\s*s/i);
+      let delay = 60000;
+      if (match) {
+        delay = parseFloat(match[1]) * 1000 + 1000;
+      }
+      console.log(`   ⏳ Rate limit (per‑minute). Retrying in ${delay/1000}s... (${retries} retries left)`);
+      await sleep(delay);
+      return generateQuestionsForChunk(chunkId, retries - 1);
+    }
+
+    // If we've exhausted retries or it's another error, log and move on
+    console.error(`   ❌ Generation failed for chunk ${chunkId}:`, err.message);
     if (err.response) console.error('   Response:', err.response);
   }
 }
 
-// ------------------------------------------------------------
-//  MAIN LOOP
-// ------------------------------------------------------------
+// ── Main loop ──
 async function generateAllMissing() {
+  console.log(`🚀 Starting generation (limit = ${limit === Infinity ? '∞' : limit})`);
+
   const { data: allChunks } = await supabase.from('note_chunks').select('id');
-  if (!allChunks) {
+  if (!allChunks || allChunks.length === 0) {
     console.log('No chunks found.');
     return;
   }
@@ -394,20 +400,33 @@ async function generateAllMissing() {
   const missing = allChunks.filter(c => !existingSet.has(c.id));
 
   console.log(`Found ${missing.length} chunks without questions out of ${allChunks.length} total.`);
+  const toProcess = missing.slice(0, limit);
+  console.log(`Processing ${toProcess.length} chunks this run.`);
 
-  for (let i = 0; i < missing.length; i++) {
-    const chunk = missing[i];
-    await generateQuestionsForChunk(chunk.id);
+  for (let i = 0; i < toProcess.length; i++) {
+    const chunk = toProcess[i];
+    console.log(`\n[${i+1}/${toProcess.length}] Processing chunk ${chunk.id}...`);
 
-    // Respect free‑tier per‑minute limits (e.g., 5‑10 requests/min)
-    // Adjust the delay as needed – 3 seconds is safe.
-    if (i < missing.length - 1) {
+    try {
+      await generateQuestionsForChunk(chunk.id);
+    } catch (err) {
+      if (err.isDailyQuota) {
+        console.log('⏸️  Stopping due to daily quota. Run again tomorrow.');
+        break;
+      } else {
+        console.error('   Unexpected error:', err.message);
+        // continue with next chunk
+      }
+    }
+
+    // Wait between chunks (3s for RPM)
+    if (i < toProcess.length - 1) {
       console.log(`   ⏳ Waiting 3 seconds before next chunk...`);
       await sleep(3000);
     }
   }
 
-  console.log('🎉 All chunks processed.');
+  console.log('🎉 All chunks processed for this run.');
 }
 
 generateAllMissing().catch(console.error);

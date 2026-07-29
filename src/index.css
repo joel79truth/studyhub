@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-@tailwind base;
+ @tailwind base; 
 @tailwind components;
 @tailwind utilities;
 
@@ -38,7 +38,7 @@ body {
 
 /* -------- LIGHT THEME VARIABLES -------- */
 :root {
-  --text: #6b6375;
+  --text: #000000;
   --text-h: #08060d;
   --bg: #fff;
   --border: #e5e4e7;
@@ -73,7 +73,7 @@ body {
 /* -------- DARK THEME VARIABLES -------- */
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #9ca3af;
+    --text:#000000;
     --text-h: #f3f4f6;
     --bg: #16171d;
     --border: #2e303a;

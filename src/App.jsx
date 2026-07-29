@@ -12,7 +12,10 @@ import Course from './pages/Course.jsx';
 import Settings from './pages/Settings';
 import Request from './pages/Request';
 import InstallPrompt from './components/InstallPrompt';
-import UpdateDialog from './components/UpdateDialog';  // ✅ new
+import FileViewer from './pages/FileViewer';
+import AiChat from './pages/AiChat';
+import AdminRoute from './components/AdminRoute';
+import AdminUpload from './pages/AdminUpload';
 
 function App() {
   return (
@@ -30,9 +33,11 @@ function App() {
         <Route path="/program-detail/:program" element={<ProtectedRoute><ProgramDetail /></ProtectedRoute>} />
         <Route path="/upload" element={<ProtectedRoute><Upload /></ProtectedRoute>} />
         <Route path="/quiz" element={<ProtectedRoute><Quiz /></ProtectedRoute>} />
+        <Route path="/viewer" element={<ProtectedRoute><FileViewer /></ProtectedRoute>} />
+        <Route path="/admin/upload" element={<AdminRoute><AdminUpload /></AdminRoute>} />
+        <Route path="/AiChat" element={<ProtectedRoute><AiChat /></ProtectedRoute>} /> {/* ✅ Fixed */}
       </Routes>
       <InstallPrompt />
-      <UpdateDialog />   {/* ✅ new */}
     </BrowserRouter>
   );
 }

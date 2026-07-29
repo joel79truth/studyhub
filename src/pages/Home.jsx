@@ -1,12 +1,29 @@
-import React, { useState, useEffect, useCallback, useRef, useMemo, memo } from 'react';
+import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { supabase } from '../supabase';
 import { BottomNav } from '../components/BottomNav';
 import { useNavigate, Navigate } from 'react-router-dom';
 import AiStudyAssistantCard from '../components/AiCard';
-import Files from '../components/Files'; // <-- new file manager
+import Files from '../components/Files';
 
 // ============================================================
-// 1. STATS CARD (unchanged)
+// Helper: get public URL for a note
+// ============================================================
+const getNotePublicUrl = (note) => {
+  if (note.storage_type === 'gdrive' && note.filepath) {
+    return `https://drive.google.com/file/d/${note.filepath}/view`;
+  }
+  if (note.filepath && note.storage_type !== 'gdrive') {
+    const { data } = supabase.storage.from('notes').getPublicUrl(note.filepath);
+    if (data?.publicUrl) return data.publicUrl;
+  }
+  if (note.url && (note.url.startsWith('http://') || note.url.startsWith('https://'))) {
+    return note.url;
+  }
+  return null;
+};
+
+// ============================================================
+// 1. STATS CARD
 // ============================================================
 const StatsCard = ({ icon, title, value, subtitle, gradient }) => (
   <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl p-3 hover:shadow-lg transition-all duration-200 hover:-translate-y-1">
@@ -31,8 +48,7 @@ const Home = () => {
   const [user, setUser] = useState(null);
   const [authReady, setAuthReady] = useState(false);
   const [userData, setUserData] = useState(null);
-  const [files, setFiles] = useState([]);          // kept for cache, but Files component will fetch its own
-  const [loading, setLoading] = useState(true);    // used for initial load, not for Files
+  const [loading, setLoading] = useState(true);
   const [streak, setStreak] = useState(0);
   const [daysLeft, setDaysLeft] = useState(0);
   const [daysDelta, setDaysDelta] = useState('');
@@ -40,9 +56,8 @@ const Home = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const scrollContainerRef = useRef(null);
-  const authSubscriptionRef = useRef(null);
 
-  // Profile completion state
+  // Profile form state
   const [showProfileForm, setShowProfileForm] = useState(false);
   const [program, setProgram] = useState('');
   const [semester, setSemester] = useState('');
@@ -50,26 +65,17 @@ const Home = () => {
   const [role, setRole] = useState('');
   const [lecturerCode, setLecturerCode] = useState('');
   const [programs, setPrograms] = useState([]);
-  const [fieldErrors, setFieldErrors] = useState({ program: false, semester: false, year: false, role: false, code: false });
+  const [fieldErrors, setFieldErrors] = useState({
+    program: false, semester: false, year: false, role: false, code: false
+  });
   const [profileSubmitting, setProfileSubmitting] = useState(false);
 
-  // ----- Caching to avoid reload on navigation -----
-  const cacheKey = 'homeData';
-  const loadFromCache = () => {
-    try {
-      const cached = sessionStorage.getItem(cacheKey);
-      if (cached) {
-        const data = JSON.parse(cached);
-        setStreak(data.streak || 0);
-        setDaysLeft(data.daysLeft || 0);
-        setDaysDelta(data.daysDelta || '');
-        setLoading(false);
-        return true;
-      }
-    } catch (e) { /* ignore */ }
-    return false;
-  };
+  // Prevent duplicate profile fetches with request ID
+  const fetchRequestId = useRef(0);
+  const lastFetchedUserId = useRef(null);
 
+  // ----- Caching -----
+  const cacheKey = 'homeData';
   const saveToCache = (streakVal, daysVal, deltaVal) => {
     try {
       sessionStorage.setItem(cacheKey, JSON.stringify({
@@ -80,10 +86,23 @@ const Home = () => {
     } catch (e) { /* ignore */ }
   };
 
-  const LECTURER_SECRET = "LUANAR-FACULTY-2026";
+  // Read cache on mount
+  useEffect(() => {
+    const cached = sessionStorage.getItem(cacheKey);
+    if (cached) {
+      try {
+        const { streak: cachedStreak, daysLeft: cachedDays, daysDelta: cachedDelta } = JSON.parse(cached);
+        setStreak(cachedStreak || 0);
+        setDaysLeft(cachedDays || 0);
+        setDaysDelta(cachedDelta || '');
+      } catch (e) { /* ignore */ }
+    }
+  }, []);
 
-  // ----- Load programs (once) -----
-  const loadPrograms = async () => {
+  const LECTURER_SECRET = import.meta.env.VITE_LECTURER_SECRET || "LUANAR-FACULTY-2026";
+
+  // ----- Load programs -----
+  const loadPrograms = useCallback(async () => {
     try {
       const { data, error } = await supabase
         .from('programs')
@@ -94,9 +113,16 @@ const Home = () => {
     } catch (err) {
       console.error('Failed to load programs:', err);
     }
-  };
+  }, []);
 
-  // ----- Exam countdown (reused) -----
+  // Pre-load programs when the form appears
+  useEffect(() => {
+    if (showProfileForm) {
+      loadPrograms();
+    }
+  }, [showProfileForm, loadPrograms]);
+
+  // ----- Exam countdown -----
   const calculateExamCountdown = useCallback(() => {
     const examDate = new Date(2026, 5, 17);
     const now = new Date();
@@ -116,33 +142,74 @@ const Home = () => {
     return { diffDays, delta };
   }, []);
 
-  // ----- Load user profile (cached) -----
+  // ========== LOAD USER PROFILE ==========
   const loadUserProfile = useCallback(async (authUser) => {
+    const currentRequestId = ++fetchRequestId.current;
+    if (lastFetchedUserId.current !== authUser.id) {
+      lastFetchedUserId.current = authUser.id;
+    }
+
+    console.log('🔍 Fetching profile for:', authUser.id);
     try {
       const { data: profile, error } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', authUser.id)
         .maybeSingle();
-      if (error) throw error;
 
-      if (!profile || !profile.program) {
+      if (error) throw error;
+      if (currentRequestId !== fetchRequestId.current) return;
+
+      console.log('📦 Raw profile from DB:', profile);
+      console.log('   year_of_study value:', profile?.year_of_study, 'type:', typeof profile?.year_of_study);
+      console.log('   program:', profile?.program, 'semester:', profile?.semester);
+
+      if (!profile) {
         setShowProfileForm(true);
         setUserData({
           displayName: authUser.user_metadata?.full_name || authUser.email,
           email: authUser.email,
-          program: null,
-          semester: null,
         });
         return;
       }
 
+      // ----- COMPLETENESS CHECK (field-based, no profile_complete) -----
+      const hasProgram = profile.program && profile.program.trim().length > 0;
+      const hasSemester = profile.semester > 0 && profile.semester <= 8;
+      const hasYear = profile.year_of_study > 0 && profile.year_of_study <= 4;
+      const isComplete = hasProgram && hasSemester && hasYear;
+
+      console.log('   Completeness:', { hasProgram, hasSemester, hasYear, isComplete });
+
+      if (!isComplete) {
+        console.log('⚠️ Profile incomplete – showing form');
+        setShowProfileForm(true);
+        setUserData({
+          displayName: authUser.user_metadata?.full_name || authUser.email,
+          email: authUser.email,
+          program: profile.program || '',
+          semester: profile.semester ?? '',
+          year: profile.year_of_study ?? '',
+          role: profile.role || '',
+        });
+        // Pre-fill form fields
+        setProgram(profile.program || '');
+        setSemester(profile.semester ?? '');
+        setYear(profile.year_of_study ?? '');
+        setRole(profile.role || '');
+        return;
+      }
+
+      // Profile complete → load dashboard
+      console.log('✅ Profile complete – loading dashboard');
       setShowProfileForm(false);
       setUserData({
         displayName: authUser.user_metadata?.full_name || authUser.email,
         email: authUser.email,
         program: profile.program,
         semester: profile.semester,
+        year: profile.year_of_study,
+        role: profile.role,
       });
 
       // Streak logic
@@ -161,32 +228,39 @@ const Home = () => {
         .upsert({ id: authUser.id, streak: newStreak, last_active: new Date().toISOString() });
       setStreak(newStreak);
       const { diffDays, delta } = calculateExamCountdown();
-      // Update cache
       saveToCache(newStreak, diffDays, delta);
-
     } catch (err) {
-      console.error('Error loading profile:', err);
+      console.error('🔥 Error loading profile:', err);
+      setShowProfileForm(true);
     }
   }, [calculateExamCountdown]);
 
-  // ----- Auth listener (unchanged) -----
+  // ========== AUTH INITIALISATION ==========
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
-        if (session?.user) {
-          setUser(session.user);
-          await loadUserProfile(session.user);
-        } else if (event === 'SIGNED_OUT') {
-          setUser(null);
-          setUserData(null);
-          setShowProfileForm(false);
-          sessionStorage.removeItem(cacheKey);
-        }
-        setAuthReady(true);
-      }
-    );
+    let subscription = null;
+    let mounted = true;
 
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    const initAuth = async () => {
+      const { data: { subscription: sub } } = supabase.auth.onAuthStateChange(
+        async (event, session) => {
+          if (!mounted) return;
+          if (session?.user) {
+            setUser(session.user);
+            loadUserProfile(session.user);
+          } else if (event === 'SIGNED_OUT') {
+            setUser(null);
+            setUserData(null);
+            setShowProfileForm(false);
+            sessionStorage.removeItem(cacheKey);
+            lastFetchedUserId.current = null;
+          }
+          setAuthReady(true);
+        }
+      );
+      subscription = sub;
+
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!mounted) return;
       if (session?.user) {
         setUser(session.user);
         loadUserProfile(session.user);
@@ -194,26 +268,19 @@ const Home = () => {
         setUser(null);
       }
       setAuthReady(true);
-    });
+    };
 
-    authSubscriptionRef.current = subscription;
+    initAuth();
+
     return () => {
-      if (authSubscriptionRef.current) authSubscriptionRef.current.unsubscribe();
+      mounted = false;
+      if (subscription) {
+        subscription.unsubscribe();
+      }
     };
   }, [loadUserProfile]);
 
-  // ----- Remove "Add to Home" popup -----
-  useEffect(() => {
-    const handleBeforeInstallPrompt = (e) => {
-      e.preventDefault();
-    };
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-    return () => {
-      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-    };
-  }, []);
-
-  // ----- Scroll listener (for header) -----
+  // ----- Scroll listener -----
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
@@ -222,26 +289,12 @@ const Home = () => {
     return () => container.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // ----- Dynamic AI description (stabilised with useMemo) -----
+  // ----- AI description -----
   const getPersonalizedDescription = useMemo(() => {
-    // Only recalculates when daysLeft or streak change
-    if (daysLeft > 0 && daysLeft <= 30) {
-      return `⚡ ${daysLeft} days until exams – let's crush it!`;
-    }
-    if (streak > 0 && streak % 7 === 0) {
-      return `🔥 ${streak}‑day streak! You're unstoppable!`;
-    }
-    if (daysLeft > 30) {
-      return "🎯 How to get a 3.7 GPA this semester?";
-    }
-    // Stable random fallback (picks once, not on every render)
-    const messages = [
-      "Ask anything. Get answers.",
-      "💪 Crush your goals today!",
-      "📚 Every question answered.",
-      "🚀 You've got this!",
-    ];
-    // Use a deterministic choice based on streak to keep it stable
+    if (daysLeft > 0 && daysLeft <= 30) return `⚡ ${daysLeft} days until exams – let's crush it!`;
+    if (streak > 0 && streak % 7 === 0) return `🔥 ${streak}‑day streak! You're unstoppable!`;
+    if (daysLeft > 30) return "🎯 How to get a 3.7 GPA this semester?";
+    const messages = ["Ask anything. Get answers.", "💪 Crush your goals today!", "📚 Every question answered.", "🚀 You've got this!"];
     const index = (streak + daysLeft) % messages.length;
     return messages[index];
   }, [daysLeft, streak]);
@@ -249,58 +302,124 @@ const Home = () => {
   // ----- Derived data -----
   const displayName = user?.email?.split('@')[0] || userData?.displayName || 'User';
   const names = displayName.trim().split(' ');
-  const initials = names.length === 1 
-    ? names[0][0] 
-    : names[0][0] + names[names.length - 1][0];
+  const initials = names.length === 1 ? names[0][0] : names[0][0] + names[names.length - 1][0];
 
   const handleNavigation = (path) => navigate(path);
 
-  // ----- Profile form submission (unchanged) -----
+  // ========== PROFILE FORM SUBMISSION (FIXED & LOGGED) ==========
   const handleProfileSubmit = async (e) => {
     e.preventDefault();
     setFieldErrors({ program: false, semester: false, year: false, role: false, code: false });
 
     let valid = true;
-    if (!program) { setFieldErrors(prev => ({ ...prev, program: true })); valid = false; }
-    if (!semester) { setFieldErrors(prev => ({ ...prev, semester: true })); valid = false; }
-    if (!year) { setFieldErrors(prev => ({ ...prev, year: true })); valid = false; }
-    if (!role) { setFieldErrors(prev => ({ ...prev, role: true })); valid = false; }
+
+    // Validate program
+    if (!program || program.trim().length === 0) {
+      setFieldErrors(prev => ({ ...prev, program: true }));
+      valid = false;
+    }
+
+    // Validate semester: must be a number 1-8
+    const semesterNum = parseInt(semester, 10);
+    if (isNaN(semesterNum) || semesterNum < 1 || semesterNum > 8) {
+      setFieldErrors(prev => ({ ...prev, semester: true }));
+      valid = false;
+    }
+
+    // Validate year: must be a number 1-4
+    const yearNum = parseInt(year, 10);
+    if (isNaN(yearNum) || yearNum < 1 || yearNum > 4) {
+      setFieldErrors(prev => ({ ...prev, year: true }));
+      valid = false;
+    }
+
+    // Validate role
+    if (!role) {
+      setFieldErrors(prev => ({ ...prev, role: true }));
+      valid = false;
+    }
+
+    // Lecturer code check
     if (role === 'Lecturer' && lecturerCode !== LECTURER_SECRET) {
       setFieldErrors(prev => ({ ...prev, code: true }));
       valid = false;
     }
+
     if (!valid) return;
 
     setProfileSubmitting(true);
     try {
-      const { error } = await supabase
+      // Prepare update object (omit profile_complete to avoid schema errors)
+      const updateData = {
+        id: user.id,
+        program: program.trim(),
+        semester: semesterNum,
+        year_of_study: yearNum,
+        role: role,
+        updated_at: new Date().toISOString(),
+      };
+
+      console.log('📤 Upserting profile:', updateData);
+
+      const { data, error } = await supabase
         .from('profiles')
-        .upsert({
-          id: user.id,
-          program,
-          semester,
-          year_of_study: year,
-          role,
-          profile_complete: true,
-          updated_at: new Date().toISOString(),
-        }, { onConflict: 'id' });
+        .upsert(updateData, { onConflict: 'id' })
+        .select(); // 👈 returns the updated row
 
       if (error) throw error;
 
-      await loadUserProfile(user);
+      console.log('✅ Profile saved successfully. Returned data:', data);
+
+      // --- FORCE FORM CLOSURE ---
+      // Even if the refetch below fails, we'll close the form and update local state
       setShowProfileForm(false);
+      setUserData(prev => ({
+        ...prev,
+        program: updateData.program,
+        semester: updateData.semester,
+        year: updateData.year_of_study,
+        role: updateData.role,
+      }));
+
+      // Attempt to refresh the profile to sync streak and other fields
+      await loadUserProfile(user);
+
+      // If the form somehow reappeared (e.g., because the DB still shows incomplete),
+      // force it closed again and update state directly from the upsert result.
+      if (showProfileForm) {
+        console.warn('⚠️ Form reopened after refetch – forcing closure.');
+        setShowProfileForm(false);
+        setUserData(prev => ({
+          ...prev,
+          program: updateData.program,
+          semester: updateData.semester,
+          year: updateData.year_of_study,
+          role: updateData.role,
+        }));
+      }
     } catch (err) {
-      console.error('Profile update error:', err);
-      alert('Failed to save profile. Please try again.');
+      console.error('🔥 Profile update error:', err);
+      alert('Failed to save profile: ' + err.message);
     } finally {
       setProfileSubmitting(false);
     }
   };
 
+  // ----- File click handler -----
+  const handleFileClick = useCallback((file) => {
+    const url = getNotePublicUrl(file);
+    if (!url) {
+      alert('File URL not available.');
+      return;
+    }
+    navigate('/viewer', {
+      state: { url, filename: file.filename || 'Document' },
+    });
+  }, [navigate]);
+
   // ============================================================
   // RENDER
   // ============================================================
-
   if (!authReady) {
     return (
       <div className="h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50">
@@ -316,7 +435,7 @@ const Home = () => {
     return <Navigate to="/login" replace />;
   }
 
-  // Profile form
+  // ---- Profile form ----
   if (showProfileForm) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50 p-4">
@@ -326,50 +445,71 @@ const Home = () => {
           <form onSubmit={handleProfileSubmit}>
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">Programme of study <span className="text-red-500">*</span></label>
-              <select value={program} onChange={(e) => setProgram(e.target.value)} onFocus={loadPrograms}
-                className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.program ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}>
+              <select
+                value={program}
+                onChange={(e) => setProgram(e.target.value)}
+                className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.program ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+                aria-describedby={fieldErrors.program ? "program-error" : undefined}
+              >
                 <option value="">— Select programme —</option>
                 {programs.map((p) => (
                   <option key={p.id} value={p.name}>{p.name} ({p.campus})</option>
                 ))}
               </select>
-              {fieldErrors.program && <p className="text-red-500 text-xs mt-1">Program is required</p>}
+              {fieldErrors.program && <p id="program-error" className="text-red-500 text-xs mt-1" role="alert">Program is required</p>}
             </div>
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">Semester <span className="text-red-500">*</span></label>
-              <select value={semester} onChange={(e) => setSemester(e.target.value)}
-                className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.semester ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}>
+              <select
+                value={semester}
+                onChange={(e) => setSemester(e.target.value)}
+                className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.semester ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+                aria-describedby={fieldErrors.semester ? "semester-error" : undefined}
+              >
                 <option value="">Select semester</option>
                 {[1,2,3,4,5,6,7,8].map(s => <option key={s} value={s}>Semester {s}</option>)}
               </select>
-              {fieldErrors.semester && <p className="text-red-500 text-xs mt-1">Select your semester</p>}
+              {fieldErrors.semester && <p id="semester-error" className="text-red-500 text-xs mt-1" role="alert">Select a valid semester (1–8)</p>}
             </div>
             <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-1">Year of study</label>
-              <select value={year} onChange={(e) => setYear(e.target.value)}
-                className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.year ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Year of study <span className="text-red-500">*</span></label>
+              <select
+                value={year}
+                onChange={(e) => setYear(e.target.value)}
+                className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.year ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+                aria-describedby={fieldErrors.year ? "year-error" : undefined}
+              >
                 <option value="">Select year</option>
                 {[1,2,3,4].map(y => <option key={y} value={y}>Year {y}</option>)}
               </select>
-              {fieldErrors.year && <p className="text-red-500 text-xs mt-1">Year is required</p>}
+              {fieldErrors.year && <p id="year-error" className="text-red-500 text-xs mt-1" role="alert">Select a valid year (1–4)</p>}
             </div>
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">Role <span className="text-red-500">*</span></label>
-              <select value={role} onChange={(e) => setRole(e.target.value)}
-                className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.role ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}>
+              <select
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+                className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.role ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+                aria-describedby={fieldErrors.role ? "role-error" : undefined}
+              >
                 <option value="">Choose role</option>
                 <option value="Student">Student</option>
                 <option value="Lecturer">Lecturer</option>
               </select>
-              {fieldErrors.role && <p className="text-red-500 text-xs mt-1">Role is mandatory</p>}
+              {fieldErrors.role && <p id="role-error" className="text-red-500 text-xs mt-1" role="alert">Role is mandatory</p>}
             </div>
             {role === 'Lecturer' && (
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 mb-1">Lecturer authorization code</label>
-                <input type="password" value={lecturerCode} onChange={(e) => setLecturerCode(e.target.value)}
+                <input
+                  type="password"
+                  value={lecturerCode}
+                  onChange={(e) => setLecturerCode(e.target.value)}
                   className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.code ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
-                  placeholder="Enter secure code" />
-                {fieldErrors.code && <p className="text-red-500 text-xs mt-1">Invalid lecturer code</p>}
+                  placeholder="Enter secure code"
+                  aria-describedby={fieldErrors.code ? "code-error" : undefined}
+                />
+                {fieldErrors.code && <p id="code-error" className="text-red-500 text-xs mt-1" role="alert">Invalid lecturer code</p>}
               </div>
             )}
             <button type="submit" disabled={profileSubmitting}
@@ -388,7 +528,7 @@ const Home = () => {
       ref={scrollContainerRef}
       className="h-screen overflow-y-auto overflow-x-hidden bg-gradient-to-br from-blue-50 to-purple-50 pb-16 lg:pb-0 w-full max-w-full"
     >
-      {/* ===== MOBILE HEADER ===== */}
+      {/* MOBILE HEADER */}
       <div className="lg:hidden sticky top-0 z-30 bg-card/90 backdrop-blur-md border-b border-border">
         <div className="flex items-center justify-between py-3 px-4">
           <div className="flex items-center gap-3">
@@ -428,12 +568,9 @@ const Home = () => {
           </div>
         </div>
         
-        {/* Mobile Welcome Banner – disappears on scroll */}
-        <div 
-          className={`p-3 bg-gradient-to-br from-blue-50/80 to-purple-50/80 transition-all duration-300 ${
-            isScrolled ? 'opacity-0 max-h-0 p-0 overflow-hidden' : 'opacity-100 max-h-20 p-3'
-          }`}
-        >
+        <div className={`p-3 bg-gradient-to-br from-blue-50/80 to-purple-50/80 transition-all duration-300 ${
+          isScrolled ? 'opacity-0 max-h-0 p-0 overflow-hidden' : 'opacity-100 max-h-20 p-3'
+        }`}>
           <div className="text-center space-y-1">
             <h2 className="text-sm font-light text-foreground">Welcome back, {displayName}</h2>
             <p className="text-xs text-muted-foreground">Continue your learning journey</p>
@@ -441,7 +578,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* ===== DESKTOP HEADER ===== */}
+      {/* DESKTOP HEADER */}
       <div className="hidden lg:block px-6 py-6 space-y-4">
         <div className="text-left space-y-1">
           <h1 className="text-2xl font-light text-foreground">
@@ -472,16 +609,12 @@ const Home = () => {
         </div>
       </div>
 
-      {/* ===== MAIN CONTENT ===== */}
+      {/* MAIN CONTENT */}
       <div className="px-4 lg:px-6 space-y-4 lg:space-y-6">
-        
-        {/* 👇 AI Study Assistant Card with STABLE description */}
         <AiStudyAssistantCard 
-          onAskClick={() => navigate('/ai-chat')}
+          onAskClick={() => navigate('/AiChat')}
           description={getPersonalizedDescription}
         />
-
-        {/* Stats Cards */}
         <div className="grid grid-cols-2 gap-3 lg:gap-4">
           <StatsCard
             icon={
@@ -506,12 +639,10 @@ const Home = () => {
             gradient="from-orange-500 to-red-500"
           />
         </div>
-
-        {/* ===== FILE MANAGER ===== */}
         <div className="space-y-4">
           <div>
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-base font-medium text-foreground">My Notes</h2>
+              <h2 className="text-base font-medium text-foreground">Recently Uploaded</h2>
               <button 
                 onClick={() => handleNavigation('/my_courses')}
                 className="text-xs font-medium text-blue-600 hover:text-blue-700"
@@ -519,13 +650,15 @@ const Home = () => {
                 View All
               </button>
             </div>
-            {/* The Files component handles its own loading and data fetching */}
-            <Files searchQuery={searchQuery} limit={6} />
+            <Files 
+              searchQuery={searchQuery} 
+              limit={6} 
+              onFileClick={handleFileClick}
+            />
           </div>
         </div>
       </div>
 
-      {/* Bottom Navigation */}
       <BottomNav />
 
       {/* Sidebar Overlay */}
@@ -536,7 +669,7 @@ const Home = () => {
         />
       )}
 
-      {/* Mobile Sidebar - instant toggle */}
+      {/* Mobile Sidebar */}
       <div className={`
         lg:hidden fixed top-0 left-0 h-full w-64 bg-white border-r border-border
         transform transition-transform duration-200 ease-in-out z-50 flex flex-col

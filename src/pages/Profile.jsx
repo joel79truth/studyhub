@@ -18,6 +18,7 @@ export default function Profile() {
   });
   const [saving, setSaving] = useState(false);
   const [toast, setToast] = useState({ message: '', type: '' });
+  const [isAdmin, setIsAdmin] = useState(false);   // NEW
 
   // Check Supabase session
   useEffect(() => {
@@ -70,6 +71,14 @@ export default function Profile() {
         updated_at: new Date().toISOString()
       };
       setProfile(profileData);
+
+      // ADMIN CHECK – fetch the is_admin flag
+      const { data: profileMeta } = await supabase
+        .from('profiles')
+        .select('is_admin')
+        .eq('id', user.id)
+        .maybeSingle();
+      setIsAdmin(profileMeta?.is_admin || false);
 
       // Load user's uploaded files (if table exists)
       const { data: filesData } = await supabase
@@ -230,8 +239,7 @@ export default function Profile() {
     : '—';
 
   return (
-    <div style={{ maxWidth: '700px', margin: '0 auto', padding: '0 16px 20px', fontFamily: 'Inter, system-ui, sans-serif' }}>
-      {/* ========== TOP HEADER ========== */}
+<div style={{ maxWidth: '700px', margin: '0 auto', padding: '0 16px 20px', fontFamily: 'Inter, system-ui, sans-serif', backgroundColor: '#f8fafc' }}>      {/* ========== TOP HEADER ========== */}
       <div style={{
         position: 'sticky', top: 0, zIndex: 30,
         backgroundColor: '#fff', borderBottom: '1px solid #e2e8f0',
@@ -419,6 +427,14 @@ export default function Profile() {
           <div style={{ width: '36px', height: '36px', background: '#f1f5f9', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>👥</div>
           <div><div style={{ fontWeight: 700, fontSize: '0.8rem' }}>Friend Requests</div><div style={{ fontSize: '0.7rem', color: '#64748b' }}>Connect with peers</div></div>
         </div>
+
+        {/* NEW: Admin Upload button (only for admins) */}
+        {isAdmin && (
+          <div onClick={() => navigate('/admin/upload')} style={{ background: 'white', borderRadius: '16px', padding: '12px', display: 'flex', alignItems: 'center', gap: '10px', border: '1px solid #e2e8f0', cursor: 'pointer' }}>
+            <div style={{ width: '36px', height: '36px', background: '#f1f5f9', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>🛠️</div>
+            <div><div style={{ fontWeight: 700, fontSize: '0.8rem' }}>Admin Upload</div><div style={{ fontSize: '0.7rem', color: '#64748b' }}>Past paper extraction</div></div>
+          </div>
+        )}
       </div>
 
       {/* My Files */}

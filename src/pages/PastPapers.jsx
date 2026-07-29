@@ -48,7 +48,7 @@ export default function PastPapers() {
     try {
       if (isOnline) {
         const { data, error } = await supabase
-          .from('past_papers')
+          .from('past_paper')
           .select('*')
           .order('uploaded_at', { ascending: false })
         if (error) throw error
@@ -132,7 +132,7 @@ export default function PastPapers() {
     for (const item of pending) {
       try {
         await supabase
-          .from('past_papers')
+          .from('past_paper')
           .update({ likes: item.isLiked ? 1 : 0 })
           .eq('id', item.paperId)
         await clearPendingLike(item.paperId)
@@ -157,7 +157,7 @@ export default function PastPapers() {
     if (isOnline) {
       try {
         await supabase
-          .from('past_papers')
+          .from('past_paper')
           .update({ likes: newLikeCount })
           .eq('id', paperId)
       } catch (err) {

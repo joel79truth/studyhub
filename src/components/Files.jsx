@@ -290,7 +290,7 @@ const ListRow = ({
 // ============================================================
 // MAIN FILES COMPONENT
 // ============================================================
-export default function Files({ searchQuery = '', limit = 6 }) {
+export default function Files({ searchQuery = '', limit = 6, onFileClick }) {
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [viewMode, setViewMode] = useState('grid');
@@ -358,7 +358,12 @@ export default function Files({ searchQuery = '', limit = 6 }) {
       toggleSelection(file.id);
       return;
     }
-    // Open file in a new tab (preview)
+    // ✅ If onFileClick is provided, use it (in-app viewer)
+    if (onFileClick) {
+      onFileClick(file);
+      return;
+    }
+    // Fallback: open in new tab
     const url = getDownloadUrl(file);
     if (url) {
       window.open(url, '_blank');

@@ -180,7 +180,7 @@ export default function Upload() {
       }, 100);
 
       // ✅ FIXED: use your computer's USB tethering IP + port 3000
-      const res = await fetch('http://10.159.158.4:3000/upload', {
+      const res = await fetch('/upload', {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` },
         body: formData,

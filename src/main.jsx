@@ -1,13 +1,12 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import { setupDeepLinkHandler } from './utils/deepLinkHandler'
-import { checkForUpdate } from './utils/updateChecker'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.css';
+import App from './App.jsx';
+import { setupDeepLinkHandler } from './utils/deepLinkHandler';
 
-// Start deep link listener and auto-update checker
+// Start deep link listener (auto-update removed to avoid CORS errors)
 setupDeepLinkHandler();
-checkForUpdate();
+// checkForUpdate();  // <-- removed to prevent CORS & 'not defined' errors
 
 // Optional: service worker for web version (harmless to keep)
 if ('serviceWorker' in navigator) {
@@ -26,4 +25,4 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
   </StrictMode>
-)
+);

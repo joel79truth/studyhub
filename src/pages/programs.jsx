@@ -1,298 +1,99 @@
-import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+  useRef,
+  useLayoutEffect,
+  useDeferredValue,
+  memo,
+} from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import {
-  FileText, File, FileImage, Download, Trash2, X,
-  FolderOpen, Calendar, ChevronLeft, MoreVertical,
-  Share2, Search
-} from 'lucide-react';
-import { BottomNav } from "../components/BottomNav";
 import { supabase } from '../supabase';
+import { BottomNav } from '../components/BottomNav';
 
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-//  HELPERS
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-const normalizeName = (name) => String(name || '').trim().toLowerCase();
+// ─── Custom Hooks ──────────────────────────────────────────
 
-const formatFileSize = (bytes) => {
-  if (!bytes || bytes === 0) return '0 KB';
-  const mb = bytes / (1024 * 1024);
-  if (mb >= 1) return mb.toFixed(1) + ' MB';
-  return (bytes / 1024).toFixed(1) + ' KB';
-};
-
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-//  SUB‑COMPONENTS
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-// ─── Course Card (without progress ring) ──────────────────
-const CourseCard = ({ course, fileCount, lastOpened, onClick }) => {
-  return (
-    <motion.div
-      whileHover={{ scale: 1.02, boxShadow: '0 8px 24px rgba(0,0,0,0.10)' }}
-      transition={{ duration: 0.2 }}
-      className="bg-white rounded-xl border border-gray-200 p-4 cursor-pointer hover:border-blue-400"
-      onClick={onClick}
-    >
-      <div className="flex items-start justify-between">
-        <div className="flex-1 min-w-0">
-          <h4 className="font-semibold text-gray-800 truncate">{course}</h4>
-          <div className="flex flex-wrap gap-x-3 gap-y-1 mt-1 text-xs text-gray-500">
-            <span className="flex items-center gap-1">
-              <FileText size={12} /> {fileCount} file{fileCount !== 1 ? 's' : ''}
-            </span>
-            {lastOpened && (
-              <span className="flex items-center gap-1">
-                <Calendar size={12} /> Last opened {lastOpened}
-              </span>
-            )}
-          </div>
-        </div>
-        {/* Simple badge – no percentage circle */}
-        <div className="w-10 h-10 flex-shrink-0 ml-2 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 text-xs font-medium">
-          {fileCount}
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
-// ─── File Row with three‑dot menu (no swipe) ─────────────
-const FileRow = ({ file, onOpen, onDownload, onShare, onDelete }) => {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  // Determine icon
-  const ext = file.filename?.split('.').pop()?.toLowerCase() || '';
-  let Icon = File;
-  let iconColor = 'text-gray-400';
-  if (['pdf'].includes(ext)) { Icon = FileText; iconColor = 'text-red-500'; }
-  else if (['doc', 'docx'].includes(ext)) { Icon = FileText; iconColor = 'text-blue-500'; }
-  else if (['ppt', 'pptx'].includes(ext)) { Icon = FileText; iconColor = 'text-orange-500'; }
-  else if (['jpg','jpeg','png','gif'].includes(ext)) { Icon = FileImage; iconColor = 'text-purple-500'; }
-
-  return (
-    <div className="relative flex items-center gap-3 p-3 bg-white border-b border-gray-100 hover:bg-gray-50 transition-colors">
-      <Icon className={`w-5 h-5 flex-shrink-0 ${iconColor}`} />
-      <div className="flex-1 min-w-0 cursor-pointer" onClick={() => onOpen(file)}>
-        <p className="text-sm font-medium text-gray-800 truncate">{file.filename || 'Untitled'}</p>
-        <p className="text-xs text-gray-500 truncate">{file.course || 'No course'}</p>
-      </div>
-      <div className="text-xs text-gray-400 whitespace-nowrap mr-2">
-        {formatFileSize(file.size)}
-      </div>
-      {/* Three‑dot menu */}
-      <div className="relative">
-        <button
-          className="p-1 rounded-full hover:bg-gray-200 transition-colors"
-          onClick={(e) => { e.stopPropagation(); setMenuOpen(!menuOpen); }}
-        >
-          <MoreVertical size={18} className="text-gray-500" />
-        </button>
-        {menuOpen && (
-          <div className="absolute right-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-10">
-            <button
-              className="w-full px-4 py-2 text-sm text-left hover:bg-gray-100 flex items-center gap-2"
-              onClick={(e) => { e.stopPropagation(); onDownload(file); setMenuOpen(false); }}
-            >
-              <Download size={16} /> Download
-            </button>
-            <button
-              className="w-full px-4 py-2 text-sm text-left hover:bg-gray-100 flex items-center gap-2"
-              onClick={(e) => { e.stopPropagation(); onShare(file); setMenuOpen(false); }}
-            >
-              <Share2 size={16} /> Share
-            </button>
-            <button
-              className="w-full px-4 py-2 text-sm text-left hover:bg-gray-100 flex items-center gap-2 text-red-600"
-              onClick={(e) => { e.stopPropagation(); onDelete(file); setMenuOpen(false); }}
-            >
-              <Trash2 size={16} /> Delete
-            </button>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
-
-// ─── Slide‑over Preview Modal (unchanged) ────────────────
-const FilePreviewModal = ({ file, isOpen, onClose }) => {
-  const scrollRef = useRef(null);
-
-  useEffect(() => {
-    if (file && isOpen) {
-      const saved = localStorage.getItem(`scroll_${file.id}`);
-      if (saved && scrollRef.current) {
-        scrollRef.current.scrollTop = parseFloat(saved);
-      }
-    }
-  }, [file, isOpen]);
-
-  const handleScroll = useCallback(() => {
-    if (scrollRef.current && file) {
-      localStorage.setItem(`scroll_${file.id}`, String(scrollRef.current.scrollTop));
-    }
-  }, [file]);
-
-  if (!isOpen || !file) return null;
-
-  const contentUrl = file.url || (file.filepath
-    ? supabase.storage.from('notes').getPublicUrl(file.filepath).data.publicUrl
-    : null);
-
-  return (
-    <AnimatePresence>
-      <motion.div
-        initial={{ x: '100%' }}
-        animate={{ x: 0 }}
-        exit={{ x: '100%' }}
-        transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-        className="fixed inset-y-0 right-0 w-full max-w-lg bg-white shadow-2xl z-50 flex flex-col"
-      >
-        <div className="flex items-center justify-between p-4 border-b border-gray-200 flex-shrink-0">
-          <h3 className="font-medium truncate text-gray-800">{file.filename}</h3>
-          <button onClick={onClose} className="p-1 rounded-full hover:bg-gray-100 transition-colors">
-            <X size={20} className="text-gray-500" />
-          </button>
-        </div>
-        <div
-          ref={scrollRef}
-          onScroll={handleScroll}
-          className="flex-1 overflow-y-auto p-4 bg-gray-50"
-        >
-          {contentUrl ? (
-            file.filename?.match(/\.(pdf|txt|md)$/i) ? (
-              <iframe src={contentUrl} className="w-full h-[calc(100vh-140px)] border-0 rounded-lg" title={file.filename} />
-            ) : (
-              <div className="text-center py-12">
-                <FileText className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                <p className="text-gray-600">Preview not available for this file type.</p>
-                <button
-                  onClick={() => window.open(contentUrl, '_blank')}
-                  className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-                >
-                  Open in new tab
-                </button>
-              </div>
-            )
-          ) : (
-            <div className="text-center py-12 text-gray-500">
-              <p>No preview available</p>
-            </div>
-          )}
-        </div>
-      </motion.div>
-    </AnimatePresence>
-  );
-};
-
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-//  MAIN PROGRAMS COMPONENT
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-export default function Programs() {
-  const navigate = useNavigate();
-
-  // ── State ──────────────────────────────────────────────
-  const [notes, setNotes] = useState([]);
-  const [userProgram, setUserProgram] = useState('');
-  const [userSemester, setUserSemester] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+// Auth hook
+function useAuth() {
+  const [user, setUser] = useState(null);
+  const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const mounted = useRef(true);
 
-  // View states
-  const [viewMode, setViewMode] = useState('courses'); // 'courses' | 'files' | 'allPrograms'
-  const [selectedCourse, setSelectedCourse] = useState(null);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [previousView, setPreviousView] = useState('courses'); // to know where to go back
-  const [isAllProgramsFileView, setIsAllProgramsFileView] = useState(false);
-
-  // Optimistic UI: read status (optional, kept for potential use)
-  const [readStatus, setReadStatus] = useState(() => {
-    return JSON.parse(localStorage.getItem('readFiles') || '{}');
-  });
-
-  // Preview modal
-  const [previewFile, setPreviewFile] = useState(null);
-
-  // Cache key
-  const NOTES_CACHE_KEY = 'programs_notes_cache';
-
-  // ── Load cached notes on mount ──────────────────────────
   useEffect(() => {
-    const cached = localStorage.getItem(NOTES_CACHE_KEY);
-    if (cached) {
-      try { setNotes(JSON.parse(cached)); } catch (e) {}
-    }
-  }, []);
-
-  // ── Fetch user profile ──────────────────────────────────
-  useEffect(() => {
-    const fetchProfile = async () => {
-      setLoading(true);
+    mounted.current = true;
+    const fetchSession = async () => {
       try {
         const { data: { session } } = await supabase.auth.getSession();
+        if (!mounted.current) return;
         if (!session) {
-          setIsLoggedIn(false);
+          setUser(null);
+          setProfile(null);
           setLoading(false);
           return;
         }
-        setIsLoggedIn(true);
-
-        const cachedProgram = localStorage.getItem('userProgram');
-        const cachedSemester = localStorage.getItem('userSemester');
-        if (cachedProgram && cachedSemester) {
-          setUserProgram(cachedProgram);
-          setUserSemester(cachedSemester);
-        }
-
-        const { data: profile, error } = await supabase
+        setUser(session.user);
+        const { data, error } = await supabase
           .from('profiles')
           .select('program, semester')
           .eq('id', session.user.id)
           .single();
-
-        if (!error && profile) {
-          setUserProgram(profile.program || '');
-          setUserSemester(profile.semester || '');
-          localStorage.setItem('userProgram', profile.program || '');
-          localStorage.setItem('userSemester', profile.semester || '');
-        }
+        if (!mounted.current) return;
+        if (error) throw error;
+        setProfile(data || { program: '', semester: '' });
       } catch (err) {
-        console.error('Error fetching profile:', err);
+        if (mounted.current) setError(err.message);
       } finally {
-        setLoading(false);
+        if (mounted.current) setLoading(false);
       }
     };
 
-    fetchProfile();
+    fetchSession();
 
-    const { data: listener } = supabase.auth.onAuthStateChange((event) => {
-      if (event === 'SIGNED_IN' || event === 'USER_UPDATED') fetchProfile();
+    const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
+      if (!mounted.current) return;
+      if (event === 'SIGNED_IN' || event === 'USER_UPDATED') fetchSession();
       if (event === 'SIGNED_OUT') {
-        setIsLoggedIn(false);
-        setUserProgram('');
-        setUserSemester('');
-        localStorage.removeItem('userProgram');
-        localStorage.removeItem('userSemester');
+        setUser(null);
+        setProfile(null);
+        setLoading(false);
       }
     });
 
-    return () => listener?.subscription?.unsubscribe();
+    return () => {
+      mounted.current = false;
+      listener?.subscription?.unsubscribe();
+    };
   }, []);
 
-  // ── Load notes from Supabase ────────────────────────────
-  useEffect(() => {
-    if (!isLoggedIn) return;
+  return { user, profile, loading, error };
+}
 
-    const loadNotes = async () => {
+// Notes hook
+function useNotes(user) {
+  const [notes, setNotes] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (!user) {
+      setNotes([]);
+      return;
+    }
+
+    let cancelled = false;
+    const fetchNotes = async () => {
+      setLoading(true);
+      setError(null);
       try {
         const { data, error } = await supabase
           .from('notes')
           .select('*')
           .order('uploaded_at', { ascending: false });
-
+        if (cancelled) return;
         if (error) throw error;
-
         const transformed = (data || []).map((n) => ({
           id: n.id,
           filename: n.filename,
@@ -300,82 +101,479 @@ export default function Programs() {
           semester: n.semester,
           course: n.course_name,
           description: n.description || '',
-          size: n.size || 0,
+          size: n.size || '',
           uploadDate: n.uploaded_at ? new Date(n.uploaded_at).toLocaleDateString() : '',
           url: n.url || '',
           filepath: n.filepath || '',
+          storage_type: n.storage_type || 'supabase',
         }));
-
         setNotes(transformed);
-        localStorage.setItem(NOTES_CACHE_KEY, JSON.stringify(transformed));
       } catch (err) {
-        console.error('Failed to load notes:', err);
+        if (!cancelled) setError(err.message);
+      } finally {
+        if (!cancelled) setLoading(false);
       }
     };
 
-    loadNotes();
-  }, [isLoggedIn]);
+    fetchNotes();
+    return () => { cancelled = true; };
+  }, [user]);
 
-  // ── Derived data ────────────────────────────────────────
+  return { notes, loading, error };
+}
+
+// Read status hook (localStorage)
+function useReadStatus() {
+  const [readFiles, setReadFiles] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('readFiles') || '{}');
+    } catch {
+      return {};
+    }
+  });
+
+  const toggleRead = useCallback((fileId) => {
+    setReadFiles((prev) => {
+      const next = { ...prev, [fileId]: !prev[fileId] };
+      localStorage.setItem('readFiles', JSON.stringify(next));
+      return next;
+    });
+  }, []);
+
+  const isRead = useCallback((fileId) => !!readFiles[fileId], [readFiles]);
+
+  return { toggleRead, isRead };
+}
+
+// ─── Helpers ──────────────────────────────────────────────
+const normalizeName = (name) => String(name || '').trim().toLowerCase();
+
+const getNotePublicUrl = (note) => {
+  // 1. Google Drive files
+  if (note.storage_type === 'gdrive' && note.filepath) {
+    return `https://drive.google.com/file/d/${note.filepath}/view`;
+  }
+
+  // 2. Supabase Storage (or any other with filepath)
+  if (note.filepath && note.storage_type !== 'gdrive') {
+    const { data } = supabase.storage.from('notes').getPublicUrl(note.filepath);
+    if (data?.publicUrl) {
+      return data.publicUrl;
+    }
+  }
+
+  // 3. Fallback to note.url if it's a valid external URL
+  if (note.url && (note.url.startsWith('http://') || note.url.startsWith('https://'))) {
+    return note.url;
+  }
+
+  return null;
+};
+
+// ─── File Icon Component (SVG) ────────────────────────────
+const FileIcon = memo(({ filename }) => {
+  const ext = String(filename || '').split('.').pop()?.toLowerCase() || '';
+  const iconClass = 'w-6 h-6';
+
+  if (ext === 'pdf') {
+    return (
+      <svg className={iconClass} viewBox="0 0 48 48">
+        <path fill="#E53935" d="M40 45H8c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2h22l10 10v30c0 1.1-.9 2-2 2z"/>
+        <path fill="#FFCDD2" d="M38.5 14H30V5.5L38.5 14z"/>
+        <text x="12" y="34" fontFamily="Arial, sans-serif" fontSize="10" fill="#fff" fontWeight="bold">PDF</text>
+      </svg>
+    );
+  }
+  if (['doc', 'docx'].includes(ext)) {
+    return (
+      <svg className={iconClass} viewBox="0 0 48 48">
+        <path fill="#1565C0" d="M40 45H8c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2h22l10 10v30c0 1.1-.9 2-2 2z"/>
+        <path fill="#BBDEFB" d="M38.5 14H30V5.5L38.5 14z"/>
+        <text x="12" y="34" fontFamily="Arial, sans-serif" fontSize="10" fill="#fff" fontWeight="bold">DOC</text>
+      </svg>
+    );
+  }
+  if (['ppt', 'pptx'].includes(ext)) {
+    return (
+      <svg className={iconClass} viewBox="0 0 48 48">
+        <path fill="#D84315" d="M40 45H8c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2h22l10 10v30c0 1.1-.9 2-2 2z"/>
+        <path fill="#FFCCBC" d="M38.5 14H30V5.5L38.5 14z"/>
+        <text x="12" y="34" fontFamily="Arial, sans-serif" fontSize="10" fill="#fff" fontWeight="bold">PPT</text>
+      </svg>
+    );
+  }
+  if (['xls', 'xlsx'].includes(ext)) {
+    return (
+      <svg className={iconClass} viewBox="0 0 48 48">
+        <path fill="#2E7D32" d="M40 45H8c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2h22l10 10v30c0 1.1-.9 2-2 2z"/>
+        <path fill="#C8E6C9" d="M38.5 14H30V5.5L38.5 14z"/>
+        <text x="12" y="34" fontFamily="Arial, sans-serif" fontSize="10" fill="#fff" fontWeight="bold">XLS</text>
+      </svg>
+    );
+  }
+  if (['zip', 'rar', '7z'].includes(ext)) {
+    return (
+      <svg className={iconClass} viewBox="0 0 48 48">
+        <path fill="#FFA000" d="M40 45H8c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2h22l10 10v30c0 1.1-.9 2-2 2z"/>
+        <path fill="#FFECB3" d="M38.5 14H30V5.5L38.5 14z"/>
+        <text x="12" y="34" fontFamily="Arial, sans-serif" fontSize="10" fill="#fff" fontWeight="bold">ZIP</text>
+      </svg>
+    );
+  }
+  return (
+    <svg className={iconClass} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+    </svg>
+  );
+});
+
+// ─── File List Item ───────────────────────────────────────
+const FileListItem = memo(({ file, onFileClick, onDownload, onCopyLink, onToggleRead, isRead }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+  const buttonRef = useRef(null);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const close = () => setMenuOpen(false);
+    const handleClick = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target) &&
+          buttonRef.current && !buttonRef.current.contains(e.target)) {
+        close();
+      }
+    };
+    const handleKey = (e) => e.key === 'Escape' && close();
+    document.addEventListener('click', handleClick);
+    document.addEventListener('keydown', handleKey);
+    return () => {
+      document.removeEventListener('click', handleClick);
+      document.removeEventListener('keydown', handleKey);
+    };
+  }, [menuOpen]);
+
+  const toggleMenu = (e) => {
+    e.stopPropagation();
+    setMenuOpen((prev) => !prev);
+  };
+
+  const handleAction = (e, action) => {
+    e.stopPropagation();
+    action(file);
+    setMenuOpen(false);
+  };
+
+  return (
+    <div className="group relative flex items-center gap-4 p-4 bg-white/60 backdrop-blur-sm border border-gray-100 rounded-xl hover:bg-white hover:shadow-sm hover:border-blue-100 transition-all mb-3">
+      <div className="w-10 h-10 flex-shrink-0 bg-blue-50/50 rounded-lg flex items-center justify-center shadow-sm border border-blue-100/50">
+        <FileIcon filename={file.filename} />
+      </div>
+
+      <button
+        className="flex-1 min-w-0 text-left cursor-pointer"
+        onClick={() => onFileClick(file)}
+        aria-label={`Open ${file.filename}`}
+      >
+        <p className={`text-[15px] font-semibold truncate transition-colors ${isRead ? 'text-gray-400 line-through' : 'text-gray-800 group-hover:text-blue-600'}`}>
+          {file.filename || 'Untitled'}
+        </p>
+        <div className="flex items-center gap-2 mt-1">
+          <span className="text-xs font-medium px-2 py-0.5 bg-gray-100 text-gray-600 rounded-md truncate max-w-[120px] sm:max-w-[200px]">
+            {file.course || 'No course'}
+          </span>
+          {file.semester && (
+            <span className="text-xs font-medium px-2 py-0.5 bg-indigo-50 text-indigo-600 rounded-md">
+              {file.semester}
+            </span>
+          )}
+          {file.uploadDate && (
+            <span className="text-xs text-gray-400">📅 {file.uploadDate}</span>
+          )}
+        </div>
+      </button>
+
+      <div className="relative">
+        <button
+          ref={buttonRef}
+          className={`p-2 rounded-lg transition-colors ${menuOpen ? 'bg-blue-50 text-blue-600' : 'text-gray-400 hover:bg-gray-100 hover:text-gray-600'}`}
+          onClick={toggleMenu}
+          aria-label={`Options for ${file.filename}`}
+          aria-haspopup="true"
+          aria-expanded={menuOpen}
+        >
+          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="5" r="2" />
+            <circle cx="12" cy="12" r="2" />
+            <circle cx="12" cy="19" r="2" />
+          </svg>
+        </button>
+
+        {menuOpen && (
+          <div
+            ref={menuRef}
+            className="absolute right-0 mt-2 w-48 bg-white/95 backdrop-blur-md rounded-xl shadow-xl border border-gray-100 py-1.5 z-30"
+            role="menu"
+          >
+            <button
+              className="w-full px-4 py-2.5 text-sm text-left hover:bg-blue-50 flex items-center gap-3"
+              onClick={(e) => handleAction(e, onDownload)}
+              role="menuitem"
+            >
+              ⬇️ Download
+            </button>
+            <button
+              className="w-full px-4 py-2.5 text-sm text-left hover:bg-blue-50 flex items-center gap-3"
+              onClick={(e) => handleAction(e, onCopyLink)}
+              role="menuitem"
+            >
+              🔗 Copy Link
+            </button>
+            <div className="h-px bg-gray-100 my-1 mx-2" />
+            <button
+              className={`w-full px-4 py-2.5 text-sm text-left flex items-center gap-3 ${isRead ? 'hover:bg-orange-50' : 'hover:bg-green-50'}`}
+              onClick={(e) => handleAction(e, onToggleRead)}
+              role="menuitem"
+            >
+              {isRead ? 'Start Quiz' : 'Quiz'}
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+});
+
+// ─── View Components ──────────────────────────────────────
+
+const CoursesView = memo(({ courses, courseCounts, userProgram, userSemester, onCourseClick, onBrowseAll }) => {
+  const navigate = useNavigate();
+
+  if (!userProgram || !userSemester) {
+    return (
+      <div className="text-center py-12 px-4 bg-white/80 backdrop-blur-md rounded-2xl shadow-sm border border-gray-200">
+        <div className="w-16 h-16 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">👤</div>
+        <h3 className="text-xl font-bold text-gray-900 mb-2">Profile Incomplete</h3>
+        <p className="text-gray-500 mb-6 max-w-md mx-auto">Please set your program and semester in your profile.</p>
+        <button
+          onClick={() => navigate('/profile')}
+          className="px-6 py-2.5 bg-gray-900 text-white font-medium rounded-xl hover:bg-gray-800"
+        >
+          Go to Profile Settings
+        </button>
+      </div>
+    );
+  }
+
+  if (courses.length === 0) {
+    return (
+      <div className="text-center py-16 bg-white/50 backdrop-blur-sm rounded-2xl border border-gray-200 border-dashed">
+        <div className="text-4xl mb-4">📭</div>
+        <h3 className="text-lg font-semibold text-gray-800">No courses found</h3>
+        <p className="text-gray-500 mt-1">
+          We couldn't find courses for <strong>{userProgram}</strong> ({userSemester}).
+        </p>
+        <button
+          onClick={onBrowseAll}
+          className="mt-6 px-5 py-2 bg-white border border-gray-300 text-gray-700 font-medium rounded-xl hover:bg-gray-50"
+        >
+          Browse All Programs
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {courses.map((course) => {
+        const count = courseCounts[course] || 0;
+        return (
+          <div
+            key={course}
+            className="group bg-white border border-gray-200 rounded-xl p-3.5 hover:shadow-lg hover:-translate-y-0.5 hover:border-indigo-300 transition-all cursor-pointer flex flex-col justify-between min-h-[100px] relative overflow-hidden"
+            onClick={() => onCourseClick(course)}
+          >
+            <div className="absolute -right-4 -top-4 w-16 h-16 bg-gradient-to-br from-indigo-50 to-blue-50 rounded-full opacity-50 group-hover:scale-150 transition-transform duration-500 pointer-events-none" />
+            <div className="relative z-10">
+              <div className="w-8 h-8 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center mb-3 border border-indigo-100 group-hover:bg-indigo-600 group-hover:text-white transition-colors text-sm">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
+              <h3 className="font-semibold text-gray-800 text-sm leading-tight line-clamp-2">{course}</h3>
+            </div>
+            <div className="mt-3 flex items-center justify-between border-t border-gray-50 pt-2.5 relative z-10">
+              <span className="text-xs font-medium text-gray-500">📄 {count} {count === 1 ? 'file' : 'files'}</span>
+              <div className="text-indigo-500 opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+});
+
+const FilesView = memo(({ course, files, onBack, fileActions }) => (
+  <div className="animate-in fade-in slide-in-from-right-4 duration-300">
+    <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+      <div>
+        <button onClick={onBack} className="text-sm font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1.5 mb-3 px-3 py-1.5 -ml-3 rounded-lg hover:bg-blue-50">
+          ← Back to courses
+        </button>
+        <h2 className="text-2xl font-bold text-gray-900">{course}</h2>
+        <p className="text-sm text-gray-500 mt-1">🟢 {files.length} {files.length === 1 ? 'file' : 'files'}</p>
+      </div>
+    </div>
+    {files.length > 0 ? (
+      files.map((file, idx) => (
+        <div key={file.id} style={{ animationDelay: `${idx * 50}ms`, animationFillMode: 'both' }} className="animate-in fade-in slide-in-from-bottom-2">
+          <FileListItem file={file} {...fileActions} isRead={fileActions.isRead(file.id)} />
+        </div>
+      ))
+    ) : (
+      <div className="text-center py-16 bg-white/50 rounded-2xl border border-dashed">
+        <div className="text-4xl mb-4">📭</div>
+        <h3 className="text-lg font-semibold text-gray-800">No files yet</h3>
+      </div>
+    )}
+  </div>
+));
+
+const AllProgramsView = memo(({ programs, notes, onProgramClick, searchQuery, onSearchChange }) => (
+  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <div className="mb-6">
+      <h2 className="text-2xl font-bold text-gray-900">All Programs</h2>
+      <p className="text-gray-500 mt-1">Explore materials across all disciplines.</p>
+    </div>
+
+    {programs.length === 0 ? (
+      <div className="text-center py-16 bg-white/50 rounded-2xl border border-dashed">
+        <div className="text-4xl mb-4">📚</div>
+        <h3 className="text-lg font-semibold text-gray-800">No programs found</h3>
+      </div>
+    ) : (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {programs.map((program) => {
+          const count = notes.filter((n) => n.program === program).length;
+          return (
+            <div
+              key={program}
+              className="group bg-white/80 border border-gray-200 rounded-2xl p-5 hover:shadow-xl hover:-translate-y-1 hover:border-blue-200 transition-all cursor-pointer"
+              onClick={() => onProgramClick(program)}
+            >
+              <h3 className="font-semibold text-gray-800 text-lg line-clamp-2">{program}</h3>
+              <div className="mt-4 flex items-center justify-between">
+                <span className="text-xs font-medium text-blue-600 bg-blue-50 px-3 py-1.5 rounded-lg">
+                  {count} {count === 1 ? 'Resource' : 'Resources'}
+                </span>
+                <span className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
+                </span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    )}
+  </div>
+));
+
+// ─── Main Component ──────────────────────────────────────
+export default function Programs() {
+  const navigate = useNavigate();
+
+  const { user, profile, loading: authLoading, error: authError } = useAuth();
+  const { notes, loading: notesLoading, error: notesError } = useNotes(user);
+  const { toggleRead, isRead } = useReadStatus();
+
+  const userProgram = profile?.program || '';
+  const userSemester = profile?.semester || '';
+
   const userNotes = useMemo(() => {
     if (!userProgram || !userSemester) return [];
     return notes.filter((n) => {
       const progMatch = normalizeName(n.program).includes(normalizeName(userProgram));
-      const semMatch = normalizeName(n.semester).includes(normalizeName(userSemester));
+      const semMatch = normalizeName(n.semester) === normalizeName(userSemester);
       return progMatch && semMatch;
     });
   }, [notes, userProgram, userSemester]);
 
   const courses = useMemo(() => {
     const courseSet = new Set();
-    userNotes.forEach((n) => {
-      if (n.course) courseSet.add(String(n.course).trim());
-    });
+    userNotes.forEach((n) => n.course && courseSet.add(String(n.course).trim()));
     return Array.from(courseSet).sort();
   }, [userNotes]);
 
-  // Files for the selected course – source depends on where we came from
-  const courseFiles = useMemo(() => {
-    if (!selectedCourse) return [];
-    const sourceNotes = isAllProgramsFileView ? notes : userNotes;
-    return sourceNotes.filter((n) => normalizeName(n.course) === normalizeName(selectedCourse));
-  }, [selectedCourse, isAllProgramsFileView, notes, userNotes]);
+  const courseCounts = useMemo(() => {
+    const counts = {};
+    userNotes.forEach((n) => {
+      if (n.course) {
+        const key = String(n.course).trim();
+        counts[key] = (counts[key] || 0) + 1;
+      }
+    });
+    return counts;
+  }, [userNotes]);
 
   const allPrograms = useMemo(() => {
     const progSet = new Set();
-    notes.forEach((n) => {
-      if (n.program) progSet.add(String(n.program).trim());
-    });
+    notes.forEach((n) => n.program && progSet.add(String(n.program).trim()));
     return Array.from(progSet).sort();
   }, [notes]);
 
-  const filteredPrograms = useMemo(() => {
-    if (!searchQuery) return allPrograms;
-    return allPrograms.filter((p) => normalizeName(p).includes(normalizeName(searchQuery)));
-  }, [allPrograms, searchQuery]);
+  // ── UI State (persistence) ──
+  const STORAGE_KEY = 'programs_page_state';
+  const getInitialState = () => {
+    try {
+      const stored = sessionStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (['courses', 'files', 'allPrograms'].includes(parsed.viewMode)) {
+          return parsed;
+        }
+      }
+    } catch {}
+    return { viewMode: 'courses', selectedCourse: null, searchQuery: '' };
+  };
 
-  // ── Handlers ──────────────────────────────────────────────
-  const handleCourseClick = (course) => {
+  const [viewMode, setViewMode] = useState(getInitialState().viewMode);
+  const [selectedCourse, setSelectedCourse] = useState(getInitialState().selectedCourse);
+  const [searchQuery, setSearchQuery] = useState(getInitialState().searchQuery);
+  const deferredSearch = useDeferredValue(searchQuery);
+
+  useEffect(() => {
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ viewMode, selectedCourse, searchQuery }));
+  }, [viewMode, selectedCourse, searchQuery]);
+
+  // ── Scroll restoration ──
+  const scrollRef = useRef(null);
+  useLayoutEffect(() => {
+    const savedScroll = sessionStorage.getItem('programs_scroll');
+    if (savedScroll && scrollRef.current) {
+      scrollRef.current.scrollTop = parseInt(savedScroll, 10);
+    }
+  }, []);
+
+  const saveScroll = useCallback(() => {
+    if (scrollRef.current) {
+      sessionStorage.setItem('programs_scroll', String(scrollRef.current.scrollTop));
+    }
+  }, []);
+
+  // ── Handlers ──
+  const handleCourseClick = useCallback((course) => {
     setSelectedCourse(course);
-    setIsAllProgramsFileView(false);
-    setPreviousView('courses');
     setViewMode('files');
-  };
+  }, []);
 
-  const handleProgramClickFromAll = (program) => {
-    setSelectedCourse(program);
-    setIsAllProgramsFileView(true);
-    setPreviousView('allPrograms');
-    setViewMode('files');
-  };
-
-  const handleBackFromFiles = () => {
-    setViewMode(previousView);
+  const handleBackToCourses = useCallback(() => {
+    setViewMode('courses');
     setSelectedCourse(null);
-    setIsAllProgramsFileView(false);
-  };
+  }, []);
 
-  const handleToggleView = () => {
+  const handleToggleView = useCallback(() => {
     if (viewMode === 'allPrograms') {
       setViewMode('courses');
       setSearchQuery('');
@@ -383,262 +581,191 @@ export default function Programs() {
       setViewMode('allPrograms');
       setSelectedCourse(null);
     }
-  };
+  }, [viewMode]);
 
-  // ── File actions ──────────────────────────────────────────
-  const getFileUrl = (file) => {
-    return file.url || (file.filepath
-      ? supabase.storage.from('notes').getPublicUrl(file.filepath).data.publicUrl
-      : null);
-  };
+  const handleProgramClick = useCallback((program) => {
+    navigate(`/program-detail?program=${encodeURIComponent(program)}`);
+  }, [navigate]);
 
-  const handleFileOpen = (file) => {
-    setPreviewFile(file);
-  };
-
-  const handleDownload = async (file) => {
-    const url = getFileUrl(file);
+  // ─── ✅ FIXED: File click navigates to in‑app viewer ───
+  const handleFileClick = useCallback((file) => {
+    const url = getNotePublicUrl(file);
     if (!url) {
-      alert('No downloadable link.');
+      alert('File URL not available.');
       return;
     }
-    try {
-      const response = await fetch(url);
-      const blob = await response.blob();
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.download = file.filename || 'download';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(link.href);
-    } catch (err) {
-      window.open(url, '_blank');
-    }
-  };
+    // Navigate to the viewer route with file details
+    navigate('/viewer', {
+      state: {
+        url,
+        filename: file.filename || 'Document',
+      },
+    });
+  }, [navigate]);
 
-  const handleShare = (file) => {
-    const url = getFileUrl(file);
+  const handleDownload = useCallback(async (file) => {
+    const url = getNotePublicUrl(file);
+    if (!url) { alert('No downloadable link.'); return; }
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = file.filename || 'download';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }, []);
+
+  const handleCopyLink = useCallback((file) => {
+    const url = getNotePublicUrl(file);
     if (url) {
-      navigator.clipboard.writeText(url);
-      alert('Link copied to clipboard!');
-    } else {
-      alert('No link available to share.');
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url)
+          .then(() => alert('Link copied!'))
+          .catch(() => prompt('Copy this link:', url));
+      } else {
+        prompt('Copy this link:', url);
+      }
     }
-  };
+  }, []);
 
-  const handleDelete = (file) => {
-    // Optimistic delete (local only)
-    const previousNotes = [...notes];
-    const updatedNotes = notes.filter(n => n.id !== file.id);
-    setNotes(updatedNotes);
-    localStorage.setItem(NOTES_CACHE_KEY, JSON.stringify(updatedNotes));
-    // (If you need server sync, add Supabase delete call here with rollback)
-  };
+  const fileActions = useMemo(() => ({
+    onFileClick: handleFileClick,
+    onDownload: handleDownload,
+    onCopyLink: handleCopyLink,
+    onToggleRead: toggleRead,
+    isRead,
+  }), [handleFileClick, handleDownload, handleCopyLink, toggleRead, isRead]);
 
-  // ── Skeleton Loader ──────────────────────────────────────
-  const renderSkeletons = () => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {[...Array(6)].map((_, i) => (
-        <div key={i} className="bg-white rounded-xl border border-gray-200 p-4 animate-pulse">
-          <div className="flex items-start justify-between">
-            <div className="flex-1">
-              <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-              <div className="h-3 bg-gray-200 rounded w-1/2 mt-2"></div>
-            </div>
-            <div className="w-10 h-10 bg-gray-200 rounded-full"></div>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
+  const courseFiles = useMemo(() => {
+    if (!selectedCourse) return [];
+    return userNotes.filter((n) => normalizeName(n.course) === normalizeName(selectedCourse));
+  }, [userNotes, selectedCourse]);
 
-  // ──────────────────────────────────────────────────────────
-  //  RENDER
-  // ──────────────────────────────────────────────────────────
-  if (loading && !notes.length) {
+  const filteredPrograms = useMemo(() => {
+    if (!deferredSearch) return allPrograms;
+    return allPrograms.filter((p) => normalizeName(p).includes(normalizeName(deferredSearch)));
+  }, [allPrograms, deferredSearch]);
+
+  // ── Loading / Error states ──
+  if (authLoading || notesLoading) {
     return (
-      <div className="h-screen bg-gradient-to-br from-blue-50 to-purple-50 pb-16 lg:pb-0">
-        <div className="px-4 py-4">
-          {renderSkeletons()}
+      <div className="h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center">
+        <div className="text-center animate-pulse">
+          <div className="rounded-full h-14 w-14 border-4 border-blue-500 border-t-transparent animate-spin mx-auto" />
+          <p className="mt-6 text-sm font-medium text-blue-800">Loading…</p>
         </div>
-        <BottomNav />
       </div>
     );
   }
 
-  if (!isLoggedIn) {
+  if (authError || notesError) {
     return (
-      <div className="h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-lg text-gray-600">🔒 Please log in to see your courses.</p>
+      <div className="h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center p-6">
+        <div className="bg-white/80 backdrop-blur-md p-8 rounded-2xl shadow-xl max-w-sm w-full text-center">
+          <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">⚠️</div>
+          <h2 className="text-xl font-bold text-gray-800 mb-2">Something went wrong</h2>
+          <p className="text-sm text-gray-500 mb-6">{authError || notesError}</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-xl"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex flex-col items-center justify-center p-6">
+        <div className="bg-white/80 backdrop-blur-md p-8 rounded-2xl shadow-xl max-w-sm w-full text-center">
+          <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">🔒</div>
+          <h2 className="text-xl font-bold text-gray-800 mb-2">Access Restricted</h2>
+          <p className="text-sm text-gray-500 mb-6">Please log in to view your courses.</p>
           <button
             onClick={() => navigate('/login')}
-            className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors"
+            className="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-xl"
           >
             Go to Login
           </button>
         </div>
-        <BottomNav />
       </div>
     );
   }
 
+  // ─── Render ──────────────────────────────────────────────
   return (
-    <div className="h-screen overflow-y-auto bg-gradient-to-br from-blue-50 to-purple-50 pb-16 lg:pb-0 w-full">
-
-      {/* ===== HEADER ===== */}
-      <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-gray-200 px-4 py-2 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          {/* Hide logo + title when in "Browse All" view */}
-          {viewMode !== 'allPrograms' && (
-            <>
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center overflow-hidden flex-shrink-0">
-                <img src="/images/luanar7.png" alt="LUANAR Logo" className="w-full h-full object-cover" />
-              </div>
-              <h1 className="text-lg font-medium">
-                <span className="text-gray-800">Study</span>
-                <span className="text-blue-600">Hub</span>
-              </h1>
-            </>
-          )}
+    <div
+      ref={scrollRef}
+      onScroll={saveScroll}
+      className="min-h-screen bg-gradient-to-br from-blue-50 via-gray-50 to-purple-50 w-full flex flex-col overflow-y-auto"
+      style={{ maxHeight: '100vh', paddingBottom: '80px' }}
+    >
+      <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-xl border-b border-gray-200/60 shadow-sm px-4 sm:px-6 py-3 flex items-center justify-between flex-shrink-0">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center overflow-hidden shadow-sm border border-blue-700/20">
+            <img src="/images/luanar7.png" alt="LUANAR Logo" className="w-full h-full object-cover" onError={(e) => e.currentTarget.style.display = 'none'} />
+            <span className="text-white font-bold text-sm absolute"></span>
+          </div>
+          <h1 className="text-xl font-bold tracking-tight">
+            <span className="text-gray-800">Study</span><span className="text-blue-600">Notes</span>
+          </h1>
         </div>
-
         <div className="flex items-center gap-3">
           {viewMode === 'allPrograms' && (
-            <div className="relative">
-              <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+            <div className="relative hidden xs:block">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">🔍</span>
               <input
                 type="text"
                 placeholder="Search programs..."
-                className="pl-8 pr-3 py-1.5 bg-white border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-36 sm:w-48 text-gray-800"
+                className="pl-9 pr-4 py-2 bg-gray-100/80 border-transparent focus:bg-white border focus:border-blue-300 rounded-xl text-sm focus:outline-none focus:ring-4 focus:ring-blue-500/10 w-40 sm:w-64"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                autoComplete="off"
+                aria-label="Search programs"
               />
             </div>
           )}
           <button
             onClick={handleToggleView}
-            className="px-3 py-1.5 text-sm font-medium bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors shadow-sm"
+            className={`px-4 py-2 text-sm font-semibold rounded-xl transition-all active:scale-95 ${
+              viewMode === 'allPrograms'
+                ? 'bg-gray-800 text-white hover:bg-gray-900 shadow-md'
+                : 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 shadow-md shadow-blue-500/20'
+            }`}
           >
-            {viewMode === 'allPrograms' ? '← My Courses' : 'Browse All'}
+            {viewMode === 'allPrograms' ? 'My Courses' : 'Browse All'}
           </button>
         </div>
       </header>
 
-      {/* ===== CONTENT ===== */}
-      <div className="px-4 py-4 max-w-6xl mx-auto">
+      <main className="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
         {viewMode === 'allPrograms' ? (
-          // ─── ALL PROGRAMS VIEW ────────────────────────
-          <div>
-            {filteredPrograms.length === 0 ? (
-              <div className="text-center py-12 text-gray-500">
-                📚 No programs found. {searchQuery && 'Try a different search.'}
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {filteredPrograms.map((program) => {
-                  const count = notes.filter((n) => n.program === program).length;
-                  return (
-                    <div
-                      key={program}
-                      className="bg-white border border-gray-200 rounded-xl p-4 hover:shadow-md transition-all cursor-pointer hover:border-blue-500 flex items-center justify-between"
-                      onClick={() => handleProgramClickFromAll(program)}
-                    >
-                      <span className="font-medium text-gray-800">{program}</span>
-                      <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
-                        {count} note{count !== 1 ? 's' : ''}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
+          <AllProgramsView
+            programs={filteredPrograms}
+            notes={notes}
+            onProgramClick={handleProgramClick}
+            searchQuery={searchQuery}
+            onSearchChange={setSearchQuery}
+          />
         ) : viewMode === 'files' ? (
-          // ─── FILES VIEW ──────────────────────────────────
-          <>
-            <div className="flex items-center gap-3 mb-4">
-              <button
-                onClick={handleBackFromFiles}
-                className="text-sm font-medium text-blue-600 hover:text-blue-800 flex items-center gap-1"
-              >
-                <ChevronLeft size={18} /> Back
-              </button>
-              <span className="text-lg font-semibold text-gray-800">{selectedCourse}</span>
-              <span className="text-sm text-gray-500">({courseFiles.length} files)</span>
-            </div>
-            <div className="border border-gray-200 rounded-lg overflow-hidden bg-white">
-              {courseFiles.length > 0 ? (
-                courseFiles.map((file) => (
-                  <FileRow
-                    key={file.id}
-                    file={file}
-                    onOpen={handleFileOpen}
-                    onDownload={handleDownload}
-                    onShare={handleShare}
-                    onDelete={handleDelete}
-                  />
-                ))
-              ) : (
-                <div className="text-center py-8 text-gray-500">No files for this course.</div>
-              )}
-            </div>
-          </>
+          <FilesView
+            course={selectedCourse}
+            files={courseFiles}
+            onBack={handleBackToCourses}
+            fileActions={fileActions}
+          />
         ) : (
-          // ─── COURSES VIEW ────────────────────────────────
-          <>
-            <div className="mb-4">
-              <h2 className="text-lg font-semibold text-gray-800">Your Courses</h2>
-              <p className="text-sm text-gray-500">Select a course to see its files</p>
-            </div>
-            {!userProgram || !userSemester ? (
-              <div className="text-center py-8 text-gray-500">
-                <p>👤 Please set your program and semester in profile settings.</p>
-                <button
-                  onClick={() => navigate('/profile')}
-                  className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors"
-                >
-                  Go to Profile
-                </button>
-              </div>
-            ) : courses.length === 0 ? (
-              <div className="text-center py-8 text-gray-500">
-                <p>📭 No courses found for {userProgram} · {userSemester}.</p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {courses.map((course) => {
-                  const courseFiles = userNotes.filter(n => normalizeName(n.course) === normalizeName(course));
-                  const fileCount = courseFiles.length;
-                  const lastOpened = courseFiles.reduce((latest, f) => {
-                    const d = new Date(f.uploadDate);
-                    return d > latest ? d : latest;
-                  }, new Date(0)).toLocaleDateString();
-
-                  return (
-                    <CourseCard
-                      key={course}
-                      course={course}
-                      fileCount={fileCount}
-                      lastOpened={lastOpened}
-                      onClick={() => handleCourseClick(course)}
-                    />
-                  );
-                })}
-              </div>
-            )}
-          </>
+          <CoursesView
+            courses={courses}
+            courseCounts={courseCounts}
+            userProgram={userProgram}
+            userSemester={userSemester}
+            onCourseClick={handleCourseClick}
+            onBrowseAll={() => { setViewMode('allPrograms'); setSelectedCourse(null); }}
+          />
         )}
-      </div>
-
-      {/* ===== PREVIEW MODAL ===== */}
-      <FilePreviewModal
-        file={previewFile}
-        isOpen={!!previewFile}
-        onClose={() => setPreviewFile(null)}
-      />
+      </main>
 
       <BottomNav />
     </div>
