@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
+import React, {
+  useState, useEffect, useCallback, useRef, useMemo, useTransition, memo,
+} from 'react';
 import { supabase } from '../supabase';
 import { BottomNav } from '../components/BottomNav';
 import { useNavigate, Navigate } from 'react-router-dom';
@@ -22,10 +24,68 @@ const getNotePublicUrl = (note) => {
   return null;
 };
 
-// ============================================================
-// 1. STATS CARD
-// ============================================================
-const StatsCard = ({ icon, title, value, subtitle, gradient }) => (
+// ─── Skeleton Components ──────────────────────────────────────────────────
+const DashboardSkeleton = memo(() => (
+  <div className="px-4 lg:px-6 space-y-4 lg:space-y-6 animate-pulse">
+    {/* AI Card Skeleton */}
+    <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-6 h-32 flex items-center justify-center">
+      <div className="w-full max-w-md h-6 bg-gray-200 rounded-full" />
+    </div>
+    {/* Stats Skeletons */}
+    <div className="grid grid-cols-2 gap-3 lg:gap-4">
+      {[1, 2].map(i => (
+        <div key={i} className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl p-3 h-24">
+          <div className="flex items-center justify-between mb-1">
+            <div className="h-4 w-16 bg-gray-200 rounded" />
+            <div className="h-8 w-8 bg-gray-200 rounded-lg" />
+          </div>
+          <div className="h-6 w-12 bg-gray-200 rounded mt-2" />
+          <div className="h-3 w-20 bg-gray-200 rounded mt-1" />
+        </div>
+      ))}
+    </div>
+    {/* Files Skeleton */}
+    <div>
+      <div className="flex items-center justify-between mb-3">
+        <div className="h-5 w-40 bg-gray-200 rounded" />
+        <div className="h-4 w-16 bg-gray-200 rounded" />
+      </div>
+      <div className="space-y-3">
+        {[1, 2, 3].map(i => (
+          <div key={i} className="flex items-center gap-4 p-4 bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl">
+            <div className="w-10 h-10 bg-gray-200 rounded-lg" />
+            <div className="flex-1">
+              <div className="h-4 w-3/4 bg-gray-200 rounded" />
+              <div className="h-3 w-1/2 bg-gray-200 rounded mt-2" />
+            </div>
+            <div className="w-8 h-8 bg-gray-200 rounded-full" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+));
+
+const ProfileFormSkeleton = memo(() => (
+  <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50 p-4">
+    <div className="w-full max-w-md bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/50 animate-pulse">
+      <div className="h-8 w-48 bg-gray-200 rounded mx-auto mb-2" />
+      <div className="h-4 w-32 bg-gray-200 rounded mx-auto mb-6" />
+      <div className="space-y-4">
+        <div className="h-12 bg-gray-200 rounded-lg" />
+        <div className="h-12 bg-gray-200 rounded-lg" />
+        <div className="h-12 bg-gray-200 rounded-lg" />
+        <div className="h-12 bg-gray-200 rounded-lg" />
+        <div className="h-12 bg-gray-200 rounded-lg" />
+        <div className="h-12 bg-gray-200 rounded-lg" />
+      </div>
+      <div className="h-12 bg-gray-200 rounded-lg mt-4" />
+    </div>
+  </div>
+));
+
+// ─── Stats Card (memoised) ───────────────────────────────────────────────
+const StatsCard = memo(({ icon, title, value, subtitle, gradient }) => (
   <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl p-3 hover:shadow-lg transition-all duration-200 hover:-translate-y-1">
     <div className="flex items-center justify-between mb-1">
       <h3 className="text-xs font-medium text-muted-foreground">{title}</h3>
@@ -36,11 +96,9 @@ const StatsCard = ({ icon, title, value, subtitle, gradient }) => (
     <div className="text-xl font-bold text-foreground">{value}</div>
     {subtitle && <p className="text-[10px] text-muted-foreground">{subtitle}</p>}
   </div>
-);
+));
 
-// ============================================================
-// 2. MAIN HOME COMPONENT
-// ============================================================
+// ─── Main Home Component ──────────────────────────────────────────────────
 const Home = () => {
   const navigate = useNavigate();
 
@@ -76,7 +134,7 @@ const Home = () => {
 
   // ----- Caching -----
   const cacheKey = 'homeData';
-  const saveToCache = (streakVal, daysVal, deltaVal) => {
+  const saveToCache = useCallback((streakVal, daysVal, deltaVal) => {
     try {
       sessionStorage.setItem(cacheKey, JSON.stringify({
         streak: streakVal,
@@ -84,7 +142,7 @@ const Home = () => {
         daysDelta: deltaVal,
       }));
     } catch (e) { /* ignore */ }
-  };
+  }, []);
 
   // Read cache on mount
   useEffect(() => {
@@ -170,6 +228,7 @@ const Home = () => {
           displayName: authUser.user_metadata?.full_name || authUser.email,
           email: authUser.email,
         });
+        setLoading(false);
         return;
       }
 
@@ -197,6 +256,7 @@ const Home = () => {
         setSemester(profile.semester ?? '');
         setYear(profile.year_of_study ?? '');
         setRole(profile.role || '');
+        setLoading(false);
         return;
       }
 
@@ -229,11 +289,13 @@ const Home = () => {
       setStreak(newStreak);
       const { diffDays, delta } = calculateExamCountdown();
       saveToCache(newStreak, diffDays, delta);
+      setLoading(false);
     } catch (err) {
       console.error('🔥 Error loading profile:', err);
       setShowProfileForm(true);
+      setLoading(false);
     }
-  }, [calculateExamCountdown]);
+  }, [calculateExamCountdown, saveToCache]);
 
   // ========== AUTH INITIALISATION ==========
   useEffect(() => {
@@ -253,6 +315,7 @@ const Home = () => {
             setShowProfileForm(false);
             sessionStorage.removeItem(cacheKey);
             lastFetchedUserId.current = null;
+            setLoading(false);
           }
           setAuthReady(true);
         }
@@ -266,6 +329,7 @@ const Home = () => {
         loadUserProfile(session.user);
       } else {
         setUser(null);
+        setLoading(false);
       }
       setAuthReady(true);
     };
@@ -304,9 +368,9 @@ const Home = () => {
   const names = displayName.trim().split(' ');
   const initials = names.length === 1 ? names[0][0] : names[0][0] + names[names.length - 1][0];
 
-  const handleNavigation = (path) => navigate(path);
+  const handleNavigation = useCallback((path) => navigate(path), [navigate]);
 
-  // ========== PROFILE FORM SUBMISSION (FIXED & LOGGED) ==========
+  // ========== PROFILE FORM SUBMISSION ==========
   const handleProfileSubmit = async (e) => {
     e.preventDefault();
     setFieldErrors({ program: false, semester: false, year: false, role: false, code: false });
@@ -349,7 +413,6 @@ const Home = () => {
 
     setProfileSubmitting(true);
     try {
-      // Prepare update object (omit profile_complete to avoid schema errors)
       const updateData = {
         id: user.id,
         program: program.trim(),
@@ -364,14 +427,13 @@ const Home = () => {
       const { data, error } = await supabase
         .from('profiles')
         .upsert(updateData, { onConflict: 'id' })
-        .select(); // 👈 returns the updated row
+        .select();
 
       if (error) throw error;
 
       console.log('✅ Profile saved successfully. Returned data:', data);
 
-      // --- FORCE FORM CLOSURE ---
-      // Even if the refetch below fails, we'll close the form and update local state
+      // Force form closure
       setShowProfileForm(false);
       setUserData(prev => ({
         ...prev,
@@ -381,11 +443,10 @@ const Home = () => {
         role: updateData.role,
       }));
 
-      // Attempt to refresh the profile to sync streak and other fields
+      // Refresh profile to sync streak and other fields
       await loadUserProfile(user);
 
-      // If the form somehow reappeared (e.g., because the DB still shows incomplete),
-      // force it closed again and update state directly from the upsert result.
+      // If form somehow reappeared, force close again
       if (showProfileForm) {
         console.warn('⚠️ Form reopened after refetch – forcing closure.');
         setShowProfileForm(false);
@@ -417,16 +478,29 @@ const Home = () => {
     });
   }, [navigate]);
 
-  // ============================================================
-  // RENDER
-  // ============================================================
-  if (!authReady) {
+  // ========== RENDER ==========
+  // Show skeleton while auth is initialising or profile is loading
+  if (!authReady || loading) {
     return (
-      <div className="h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50">
-        <div className="text-center">
-          <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-sm text-gray-500">Loading your account…</p>
+      <div className="h-screen flex flex-col bg-gradient-to-br from-blue-50 to-purple-50">
+        {/* Sticky header skeleton */}
+        <div className="flex-shrink-0 sticky top-0 z-30 bg-card/90 backdrop-blur-md border-b border-border px-4 py-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-gray-200 rounded-lg animate-pulse" />
+              <div className="h-6 w-32 bg-gray-200 rounded animate-pulse" />
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-gray-200 rounded-full animate-pulse" />
+            </div>
+          </div>
         </div>
+        {/* Scrollable content with skeleton */}
+        <div className="flex-1 overflow-y-auto px-4 lg:px-6 py-4">
+          <DashboardSkeleton />
+        </div>
+        {/* BottomNav always visible */}
+        <BottomNav />
       </div>
     );
   }
@@ -438,98 +512,99 @@ const Home = () => {
   // ---- Profile form ----
   if (showProfileForm) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50 p-4">
-        <div className="w-full max-w-md bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/50">
-          <h2 className="text-2xl font-bold text-center text-gray-800">✍️ Complete your profile</h2>
-          <p className="text-sm text-center text-gray-500 mb-6">Just a few details to personalise your dashboard</p>
-          <form onSubmit={handleProfileSubmit}>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-1">Programme of study <span className="text-red-500">*</span></label>
-              <select
-                value={program}
-                onChange={(e) => setProgram(e.target.value)}
-                className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.program ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
-                aria-describedby={fieldErrors.program ? "program-error" : undefined}
-              >
-                <option value="">— Select programme —</option>
-                {programs.map((p) => (
-                  <option key={p.id} value={p.name}>{p.name} ({p.campus})</option>
-                ))}
-              </select>
-              {fieldErrors.program && <p id="program-error" className="text-red-500 text-xs mt-1" role="alert">Program is required</p>}
-            </div>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-1">Semester <span className="text-red-500">*</span></label>
-              <select
-                value={semester}
-                onChange={(e) => setSemester(e.target.value)}
-                className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.semester ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
-                aria-describedby={fieldErrors.semester ? "semester-error" : undefined}
-              >
-                <option value="">Select semester</option>
-                {[1,2,3,4,5,6,7,8].map(s => <option key={s} value={s}>Semester {s}</option>)}
-              </select>
-              {fieldErrors.semester && <p id="semester-error" className="text-red-500 text-xs mt-1" role="alert">Select a valid semester (1–8)</p>}
-            </div>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-1">Year of study <span className="text-red-500">*</span></label>
-              <select
-                value={year}
-                onChange={(e) => setYear(e.target.value)}
-                className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.year ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
-                aria-describedby={fieldErrors.year ? "year-error" : undefined}
-              >
-                <option value="">Select year</option>
-                {[1,2,3,4].map(y => <option key={y} value={y}>Year {y}</option>)}
-              </select>
-              {fieldErrors.year && <p id="year-error" className="text-red-500 text-xs mt-1" role="alert">Select a valid year (1–4)</p>}
-            </div>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-1">Role <span className="text-red-500">*</span></label>
-              <select
-                value={role}
-                onChange={(e) => setRole(e.target.value)}
-                className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.role ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
-                aria-describedby={fieldErrors.role ? "role-error" : undefined}
-              >
-                <option value="">Choose role</option>
-                <option value="Student">Student</option>
-                <option value="Lecturer">Lecturer</option>
-              </select>
-              {fieldErrors.role && <p id="role-error" className="text-red-500 text-xs mt-1" role="alert">Role is mandatory</p>}
-            </div>
-            {role === 'Lecturer' && (
+      <div className="h-screen flex flex-col bg-gradient-to-br from-blue-50 to-purple-50">
+        <div className="flex-1 overflow-y-auto flex items-center justify-center p-4">
+          <div className="w-full max-w-md bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/50">
+            <h2 className="text-2xl font-bold text-center text-gray-800">✍️ Complete your profile</h2>
+            <p className="text-sm text-center text-gray-500 mb-6">Just a few details to personalise your dashboard</p>
+            <form onSubmit={handleProfileSubmit}>
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Lecturer authorization code</label>
-                <input
-                  type="password"
-                  value={lecturerCode}
-                  onChange={(e) => setLecturerCode(e.target.value)}
-                  className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.code ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
-                  placeholder="Enter secure code"
-                  aria-describedby={fieldErrors.code ? "code-error" : undefined}
-                />
-                {fieldErrors.code && <p id="code-error" className="text-red-500 text-xs mt-1" role="alert">Invalid lecturer code</p>}
+                <label className="block text-sm font-medium text-gray-700 mb-1">Programme of study <span className="text-red-500">*</span></label>
+                <select
+                  value={program}
+                  onChange={(e) => setProgram(e.target.value)}
+                  className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.program ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+                  aria-describedby={fieldErrors.program ? "program-error" : undefined}
+                >
+                  <option value="">— Select programme —</option>
+                  {programs.map((p) => (
+                    <option key={p.id} value={p.name}>{p.name} ({p.campus})</option>
+                  ))}
+                </select>
+                {fieldErrors.program && <p id="program-error" className="text-red-500 text-xs mt-1" role="alert">Program is required</p>}
               </div>
-            )}
-            <button type="submit" disabled={profileSubmitting}
-              className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium py-3 rounded-lg transition-all disabled:opacity-70">
-              {profileSubmitting ? 'Saving…' : '🚀 Access Dashboard'}
-            </button>
-          </form>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 mb-1">Semester <span className="text-red-500">*</span></label>
+                <select
+                  value={semester}
+                  onChange={(e) => setSemester(e.target.value)}
+                  className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.semester ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+                  aria-describedby={fieldErrors.semester ? "semester-error" : undefined}
+                >
+                  <option value="">Select semester</option>
+                  {[1,2,3,4,5,6,7,8].map(s => <option key={s} value={s}>Semester {s}</option>)}
+                </select>
+                {fieldErrors.semester && <p id="semester-error" className="text-red-500 text-xs mt-1" role="alert">Select a valid semester (1–8)</p>}
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 mb-1">Year of study <span className="text-red-500">*</span></label>
+                <select
+                  value={year}
+                  onChange={(e) => setYear(e.target.value)}
+                  className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.year ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+                  aria-describedby={fieldErrors.year ? "year-error" : undefined}
+                >
+                  <option value="">Select year</option>
+                  {[1,2,3,4].map(y => <option key={y} value={y}>Year {y}</option>)}
+                </select>
+                {fieldErrors.year && <p id="year-error" className="text-red-500 text-xs mt-1" role="alert">Select a valid year (1–4)</p>}
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 mb-1">Role <span className="text-red-500">*</span></label>
+                <select
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                  className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.role ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+                  aria-describedby={fieldErrors.role ? "role-error" : undefined}
+                >
+                  <option value="">Choose role</option>
+                  <option value="Student">Student</option>
+                  <option value="Lecturer">Lecturer</option>
+                </select>
+                {fieldErrors.role && <p id="role-error" className="text-red-500 text-xs mt-1" role="alert">Role is mandatory</p>}
+              </div>
+              {role === 'Lecturer' && (
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Lecturer authorization code</label>
+                  <input
+                    type="password"
+                    value={lecturerCode}
+                    onChange={(e) => setLecturerCode(e.target.value)}
+                    className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.code ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+                    placeholder="Enter secure code"
+                    aria-describedby={fieldErrors.code ? "code-error" : undefined}
+                  />
+                  {fieldErrors.code && <p id="code-error" className="text-red-500 text-xs mt-1" role="alert">Invalid lecturer code</p>}
+                </div>
+              )}
+              <button type="submit" disabled={profileSubmitting}
+                className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium py-3 rounded-lg transition-all disabled:opacity-70">
+                {profileSubmitting ? 'Saving…' : '🚀 Access Dashboard'}
+              </button>
+            </form>
+          </div>
         </div>
+        {/* BottomNav also fixed on form screen */}
+        <BottomNav />
       </div>
     );
   }
 
   // ==================== MAIN DASHBOARD ====================
   return (
-    <div 
-      ref={scrollContainerRef}
-      className="h-screen overflow-y-auto overflow-x-hidden bg-gradient-to-br from-blue-50 to-purple-50 pb-16 lg:pb-0 w-full max-w-full"
-    >
+    <div className="h-screen flex flex-col bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden">
       {/* MOBILE HEADER */}
-      <div className="lg:hidden sticky top-0 z-30 bg-card/90 backdrop-blur-md border-b border-border">
+      <div className="lg:hidden flex-shrink-0 sticky top-0 z-30 bg-card/90 backdrop-blur-md border-b border-border">
         <div className="flex items-center justify-between py-3 px-4">
           <div className="flex items-center gap-3">
             <button 
@@ -579,7 +654,7 @@ const Home = () => {
       </div>
 
       {/* DESKTOP HEADER */}
-      <div className="hidden lg:block px-6 py-6 space-y-4">
+      <div className="hidden lg:block flex-shrink-0 px-6 py-6 space-y-4 bg-gradient-to-br from-blue-50 to-purple-50">
         <div className="text-left space-y-1">
           <h1 className="text-2xl font-light text-foreground">
             Welcome back, <span className="font-medium">{displayName}</span>
@@ -609,8 +684,11 @@ const Home = () => {
         </div>
       </div>
 
-      {/* MAIN CONTENT */}
-      <div className="px-4 lg:px-6 space-y-4 lg:space-y-6">
+      {/* SCROLLABLE MAIN CONTENT */}
+      <div 
+        ref={scrollContainerRef}
+        className="flex-1 overflow-y-auto overflow-x-hidden px-4 lg:px-6 pb-4 space-y-4 lg:space-y-6"
+      >
         <AiStudyAssistantCard 
           onAskClick={() => navigate('/AiChat')}
           description={getPersonalizedDescription}
@@ -657,6 +735,8 @@ const Home = () => {
             />
           </div>
         </div>
+        {/* extra bottom padding for mobile */}
+        <div className="h-4 lg:h-8" />
       </div>
 
       <BottomNav />

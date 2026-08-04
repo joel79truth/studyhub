@@ -1,417 +1,236 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabase';
-import { 
-  Grid3x3, List, FileText, MoreVertical, 
-  Download, Pencil, Copy, Check, X 
+import {
+  Grid3x3, List, FileText, Download, BookOpen
 } from 'lucide-react';
 
-// ============================================================
-// HELPERS
-// ============================================================
+// ─── HELPERS ──────────────────────────────────────────────
+
+const getNotePublicUrl = (file) => {
+  if (file.storage_type === 'gdrive' && file.filepath) {
+    return `https://drive.google.com/file/d/${file.filepath}/view`;
+  }
+  if (file.filepath && file.storage_type !== 'gdrive') {
+    const { data } = supabase.storage.from('notes').getPublicUrl(file.filepath);
+    if (data?.publicUrl) return data.publicUrl;
+  }
+  if (file.url && (file.url.startsWith('http://') || file.url.startsWith('https://'))) {
+    return file.url;
+  }
+  return null;
+};
 
 const formatFileSize = (bytes) => {
-  if (!bytes) return '0 B';
+  if (!bytes) return '—';
   const k = 1024;
   const sizes = ['B', 'KB', 'MB', 'GB'];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
   return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
 };
 
-const relativeTime = (dateStr) => {
-  if (!dateStr) return '';
-  const date = new Date(dateStr);
-  const now = new Date();
-  const diffSeconds = Math.floor((now - date) / 1000);
-  if (diffSeconds < 60) return 'just now';
-  const diffMinutes = Math.floor(diffSeconds / 60);
-  if (diffMinutes < 60) return `${diffMinutes}m ago`;
-  const diffHours = Math.floor(diffMinutes / 60);
-  if (diffHours < 24) return `${diffHours}h ago`;
-  const diffDays = Math.floor(diffHours / 24);
-  if (diffDays < 7) return `${diffDays}d ago`;
-  return date.toLocaleDateString();
-};
-
 const getFileTypeColor = (filename) => {
   const ext = filename?.split('.').pop()?.toLowerCase() || '';
   const colors = {
-    pdf: 'bg-red-100 text-red-700',
-    doc: 'bg-blue-100 text-blue-700',
-    docx: 'bg-blue-100 text-blue-700',
-    ppt: 'bg-orange-100 text-orange-700',
-    pptx: 'bg-orange-100 text-orange-700',
-    md: 'bg-purple-100 text-purple-700',
-    txt: 'bg-gray-100 text-gray-700',
+    pdf: 'bg-red-100 text-red-700 border-red-200',
+    doc: 'bg-blue-100 text-blue-700 border-blue-200',
+    docx: 'bg-blue-100 text-blue-700 border-blue-200',
+    ppt: 'bg-orange-100 text-orange-700 border-orange-200',
+    pptx: 'bg-orange-100 text-orange-700 border-orange-200',
+    md: 'bg-emerald-100 text-emerald-700 border-emerald-200',
+    txt: 'bg-slate-100 text-slate-700 border-slate-200',
   };
-  return colors[ext] || 'bg-gray-100 text-gray-700';
+  return colors[ext] || 'bg-gray-100 text-gray-700 border-gray-200';
 };
 
-// ============================================================
-// GET DOWNLOAD URL (handles Supabase + Google Drive)
-// ============================================================
-const getDownloadUrl = (file) => {
-  let url = file.url || null;
-  
-  // If no direct URL, try file_path from Supabase Storage
-  if (!url && file.file_path) {
-    const { data: { publicUrl } } = supabase.storage
-      .from('notes')
-      .getPublicUrl(file.file_path);
-    url = publicUrl;
-  }
+// ─── GRID CARD ─────────────────────────────────────────────
 
-  if (!url) return null;
-
-  // --- Google Drive handling ---
-  if (url.includes('drive.google.com')) {
-    // Pattern: /d/FILE_ID/
-    const match = url.match(/\/d\/(.*?)\//);
-    if (match && match[1]) {
-      return `https://drive.google.com/uc?export=download&id=${match[1]}`;
-    }
-    // If it's already a download link
-    if (url.includes('export=download')) return url;
-    // Fallback: return original (might open in browser)
-    return url;
-  }
-
-  return url;
-};
-
-// ============================================================
-// CIRCULAR PROGRESS COMPONENT
-// ============================================================
-const CircularProgress = ({ progress }) => {
-  const radius = 14;
-  const circumference = 2 * Math.PI * radius;
-  const offset = circumference - (progress / 100) * circumference;
-  
-  return (
-    <div className="relative inline-flex items-center justify-center">
-      <svg className="w-8 h-8 transform -rotate-90">
-        <circle
-          className="text-gray-200"
-          strokeWidth="3"
-          stroke="currentColor"
-          fill="transparent"
-          r={radius}
-          cx="16"
-          cy="16"
-        />
-        <circle
-          className="text-[#024927] transition-all duration-300"
-          strokeWidth="3"
-          strokeDasharray={circumference}
-          strokeDashoffset={offset}
-          strokeLinecap="round"
-          stroke="currentColor"
-          fill="transparent"
-          r={radius}
-          cx="16"
-          cy="16"
-        />
-      </svg>
-      <span className="absolute text-[10px] font-medium text-[#024927]">
-        {progress}%
-      </span>
-    </div>
-  );
-};
-
-// ============================================================
-// GRID CARD (with circular download button)
-// ============================================================
-const GridCard = ({ 
-  file, 
-  onPress, 
-  onLongPress, 
-  isSelected, 
-  isDownloading, 
-  progress, 
-  onDownload 
+const GridCard = React.memo(({
+  file,
+  onPress,
+  isSelected,
+  onDownload,
+  isDownloading,
+  progress,
+  isDownloaded,
 }) => {
-  const title = file.title || file.filename || 'Untitled';
-  const subject = file.subject || 'General';
-  const category = file.category || 'Other';
-  const updatedAt = file.updated_at || file.created_at || new Date().toISOString();
-  const size = file.file_size || 0;
+  const title = file.course_name || file.filename || 'Untitled Document';
+  const subject = file.program || 'General Study';
   const fileType = file.filename?.split('.').pop()?.toUpperCase() || 'FILE';
 
-  const accentColors = {
-    'Math': 'bg-blue-500',
-    'Biology': 'bg-green-500',
-    'Physics': 'bg-purple-500',
-    'Chemistry': 'bg-yellow-500',
-    'English': 'bg-pink-500',
-    'History': 'bg-orange-500',
-    'General': 'bg-gray-400',
-  };
-  const accent = accentColors[category] || 'bg-gray-400';
-
   return (
-    <div className="relative group bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden">
-      {/* Accent ribbon */}
-      <div className={`h-1 w-full ${accent}`}></div>
-
-      {/* Clickable area */}
-      <div 
-        className="cursor-pointer"
-        onClick={onPress}
-        onContextMenu={(e) => { e.preventDefault(); onLongPress(); }}
-      >
+    <div className={`relative group bg-white rounded-2xl border-2 transition-all duration-300 overflow-hidden ${
+      isSelected ? 'border-blue-500 ring-4 ring-blue-50 shadow-lg' : 'border-slate-100 hover:border-blue-200 hover:shadow-md'
+    }`}>
+      <div className="cursor-pointer" onClick={onPress}>
         <div className="p-3">
-          {/* Preview - shorter aspect ratio 4:3 */}
-          <div className="relative aspect-[4/3] bg-gray-50 rounded-lg overflow-hidden border border-gray-100">
-            <div className="absolute inset-0 p-3 flex flex-col gap-1.5">
-              <div className="h-2 w-3/4 bg-gray-200 rounded"></div>
-              <div className="h-2 w-full bg-gray-200 rounded"></div>
-              <div className="h-2 w-5/6 bg-gray-200 rounded"></div>
-              <div className="h-2 w-4/5 bg-gray-200 rounded"></div>
-              <div className="h-6 w-3/4 bg-gray-200 rounded mt-1"></div>
+          <div className="relative aspect-[4/3] bg-slate-50 rounded-xl overflow-hidden border border-slate-100 flex items-center justify-center">
+            <div className="absolute inset-0 opacity-10 flex flex-col gap-2 p-4">
+              <div className="h-2 w-full bg-slate-900 rounded" />
+              <div className="h-2 w-5/6 bg-slate-900 rounded" />
+              <div className="h-2 w-full bg-slate-900 rounded" />
+              <div className="h-6 w-1/2 bg-slate-900 rounded mt-auto" />
             </div>
-            <span className={`absolute bottom-2 left-2 px-2 py-0.5 rounded-full text-[10px] font-medium ${getFileTypeColor(file.filename)} backdrop-blur-sm bg-white/80`}>
+
+            <FileText size={40} className="text-slate-200 group-hover:text-blue-200 transition-colors" />
+
+            <span className={`absolute top-2 left-2 px-2 py-1 rounded-md text-[10px] font-bold border ${getFileTypeColor(file.filename)}`}>
               {fileType}
             </span>
 
-            {/* --- Circular Download Button (bottom-right) --- */}
-            <div className="absolute bottom-2 right-2">
-              {isDownloading ? (
-                <CircularProgress progress={progress} />
-              ) : (
-                <button
-                  onClick={(e) => { e.stopPropagation(); onDownload(file); }}
-                  className="w-8 h-8 bg-black hover:bg-gray-800 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-105"
-                >
-                  <Download size={16} />
+            <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/5 transition-colors flex items-center justify-center">
+              <div className="transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all">
+                <button className="bg-blue-600 text-white px-4 py-2 rounded-full text-xs font-bold shadow-xl flex items-center gap-2">
+                  <BookOpen size={14} /> STUDY
                 </button>
-              )}
+              </div>
             </div>
           </div>
 
-          {/* Metadata */}
-          <div className="mt-2">
-            <h4 className="text-sm font-semibold text-gray-800 truncate">{title}</h4>
-            <p className="text-xs text-gray-500 truncate">{subject}</p>
-            <div className="flex justify-between text-[10px] text-gray-400 mt-1">
-              <span>{relativeTime(updatedAt)}</span>
-              <span>{formatFileSize(size)}</span>
+          <div className="mt-3 px-1">
+            <h4 className="text-sm font-bold text-slate-800 truncate leading-tight">{title}</h4>
+            <div className="flex items-center justify-between mt-2">
+              <p className="text-[11px] text-slate-500 font-medium truncate">{subject}</p>
+              <div className="flex items-center gap-2">
+                {isDownloading ? (
+                  <div className="text-[10px] font-bold text-blue-600">{progress}%</div>
+                ) : isDownloaded ? (
+                  <div className="text-[10px] font-bold text-green-600">✓ Downloaded</div>
+                ) : (
+                  <button
+                    onClick={(e) => { e.stopPropagation(); onDownload(file); }}
+                    className="p-1.5 hover:bg-slate-100 rounded-full text-slate-400 hover:text-blue-600 transition-colors"
+                  >
+                    <Download size={14} />
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Multi-select checkbox */}
-      {isSelected !== undefined && (
-        <div className="absolute top-2 left-2">
-          <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${
-            isSelected ? 'bg-blue-500 border-blue-500 text-white' : 'bg-white border-gray-300'
-          }`}>
-            {isSelected && <Check size={12} />}
-          </div>
-        </div>
-      )}
     </div>
   );
-};
+});
 
-// ============================================================
-// LIST ROW (with circular download button on the right)
-// ============================================================
-const ListRow = ({ 
-  file, 
-  onPress, 
-  onLongPress, 
-  isSelected, 
-  isDownloading, 
-  progress, 
-  onDownload 
-}) => {
-  const title = file.title || file.filename || 'Untitled';
-  const subject = file.subject || 'General';
-  const updatedAt = file.updated_at || file.created_at || new Date().toISOString();
-  const size = file.file_size || 0;
+// ─── MAIN COMPONENT ───────────────────────────────────────
 
-  return (
-    <div className={`relative bg-white border-b border-gray-100 hover:bg-gray-50 transition-colors ${
-      isSelected ? 'bg-blue-50' : ''
-    }`}>
-      <div 
-        className="flex items-center gap-3 p-3 cursor-pointer"
-        onClick={onPress}
-        onContextMenu={(e) => { e.preventDefault(); onLongPress(); }}
-      >
-        <div className="w-8 flex-shrink-0">
-          {isSelected !== undefined ? (
-            <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-              isSelected ? 'bg-blue-500 border-blue-500 text-white' : 'bg-white border-gray-300'
-            }`}>
-              {isSelected && <Check size={12} />}
-            </div>
-          ) : (
-            <FileText size={20} className="text-gray-400" />
-          )}
-        </div>
-
-        <div className="flex-1 min-w-0">
-          <p className="text-sm font-medium text-gray-800 truncate">{title}</p>
-          <p className="text-xs text-gray-500 truncate">{subject}</p>
-        </div>
-
-        <div className="hidden sm:flex items-center gap-4 text-xs text-gray-400 flex-shrink-0">
-          <span>{relativeTime(updatedAt)}</span>
-          <span>{formatFileSize(size)}</span>
-        </div>
-
-        {/* Download button (circular) in list row */}
-        <div className="flex-shrink-0 ml-2">
-          {isDownloading ? (
-            <CircularProgress progress={progress} />
-          ) : (
-            <button
-              onClick={(e) => { e.stopPropagation(); onDownload(file); }}
-              className="w-8 h-8 bg-black hover:bg-gray-800 text-white rounded-full flex items-center justify-center shadow transition-all duration-200 hover:scale-105"
-            >
-              <Download size={16} />
-            </button>
-          )}
-        </div>
-
-        <button 
-          className="p-1 rounded-full hover:bg-gray-200 transition-colors flex-shrink-0"
-          onClick={(e) => { e.stopPropagation(); onLongPress(); }}
-        >
-          <MoreVertical size={16} className="text-gray-500" />
-        </button>
-      </div>
-    </div>
-  );
-};
-
-// ============================================================
-// MAIN FILES COMPONENT
-// ============================================================
-export default function Files({ searchQuery = '', limit = 6, onFileClick }) {
+export default function Files({ searchQuery = '', limit = 10 }) {
+  const navigate = useNavigate();
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [viewMode, setViewMode] = useState('grid');
   const [selectedIds, setSelectedIds] = useState([]);
   const [selectionMode, setSelectionMode] = useState(false);
-  const [contextMenu, setContextMenu] = useState(null);
-  const [userProgram, setUserProgram] = useState('');
-  
-  // Download state per file
-  const [downloadingId, setDownloadingId] = useState(null);
-  const [downloadProgress, setDownloadProgress] = useState(0);
+  const [userProfile, setUserProfile] = useState(null);
 
-  // Load user program
-  useEffect(() => {
-    const fetchUserProgram = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
-      const { data: profile } = await supabase
-        .from('profiles')
-        .select('program')
-        .eq('id', user.id)
-        .maybeSingle();
-      if (profile) setUserProgram(profile.program);
-    };
-    fetchUserProgram();
+  // Download state per file: { [fileId]: { status: 'idle'|'downloading'|'done', progress: 0 } }
+  const [downloadStates, setDownloadStates] = useState({});
+  // Downloaded file IDs from localStorage
+  const [downloadedIds, setDownloadedIds] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('downloadedFiles') || '[]');
+    } catch { return []; }
+  });
+
+  // Helper to add a file ID to downloaded list
+  const markAsDownloaded = useCallback((fileId) => {
+    setDownloadedIds(prev => {
+      if (prev.includes(fileId)) return prev;
+      const newList = [...prev, fileId];
+      localStorage.setItem('downloadedFiles', JSON.stringify(newList));
+      return newList;
+    });
   }, []);
 
-  // Load files with limit
+  // Check if file is already downloaded
+  const isFileDownloaded = useCallback((fileId) => downloadedIds.includes(fileId), [downloadedIds]);
+
+  // ─── Auth & Profile ──────────────────────────────────────
+  useEffect(() => {
+    const init = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('*')
+          .eq('id', session.user.id)
+          .single();
+        setUserProfile(profile);
+      }
+    };
+    init();
+  }, []);
+
+  // ─── Load Files ──────────────────────────────────────────
   const loadFiles = useCallback(async () => {
-    if (!userProgram) return;
+    if (!userProfile) return;
+    setLoading(true);
     try {
-      setLoading(true);
       const { data, error } = await supabase
         .from('files')
         .select('*')
-        .ilike('program', userProgram.trim())
+        .ilike('program', `%${userProfile.program}%`)
+        .eq('semester', userProfile.semester)
         .order('uploaded_at', { ascending: false })
         .limit(limit);
-      if (error) throw error;
-      setFiles(data || []);
-    } catch (err) {
-      console.error('Error loading files:', err);
+      if (!error) setFiles(data || []);
     } finally {
       setLoading(false);
     }
-  }, [userProgram, limit]);
+  }, [userProfile, limit]);
 
-  useEffect(() => {
-    if (userProgram) loadFiles();
-  }, [userProgram, loadFiles]);
+  useEffect(() => { loadFiles(); }, [loadFiles]);
 
-  // Filter by search
-  const filteredFiles = useMemo(() => {
-    if (!searchQuery) return files;
-    const q = searchQuery.toLowerCase();
-    return files.filter(f => 
-      (f.title || f.filename || '').toLowerCase().includes(q) ||
-      (f.subject || '').toLowerCase().includes(q)
-    );
-  }, [files, searchQuery]);
-
-  // ---- Interactions ----
-  const handleCardPress = (file) => {
+  // ─── File Open ────────────────────────────────────────────
+  const handleFileAction = useCallback((file) => {
     if (selectionMode) {
-      toggleSelection(file.id);
+      setSelectedIds(prev =>
+        prev.includes(file.id)
+          ? prev.filter(id => id !== file.id)
+          : [...prev, file.id]
+      );
       return;
     }
-    // ✅ If onFileClick is provided, use it (in-app viewer)
-    if (onFileClick) {
-      onFileClick(file);
-      return;
-    }
-    // Fallback: open in new tab
-    const url = getDownloadUrl(file);
-    if (url) {
-      window.open(url, '_blank');
-    } else {
+
+    const finalUrl = getNotePublicUrl(file);
+    if (!finalUrl) {
       alert('File URL not available.');
-    }
-  };
-
-  const handleLongPress = (file) => {
-    if (!selectionMode) {
-      setSelectionMode(true);
-      setSelectedIds([file.id]);
-    } else {
-      toggleSelection(file.id);
-    }
-  };
-
-  const toggleSelection = (id) => {
-    setSelectedIds(prev => 
-      prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
-    );
-  };
-
-  const exitSelectionMode = () => {
-    setSelectionMode(false);
-    setSelectedIds([]);
-    setContextMenu(null);
-  };
-
-  // ---- DOWNLOAD with Progress & Fallback ----
-  const handleDownload = async (file) => {
-    const downloadUrl = getDownloadUrl(file);
-    if (!downloadUrl) {
-      alert('No downloadable link found for this file.');
       return;
     }
 
-    // For Google Drive, sometimes fetch fails due to CORS or content-length.
-    // We'll try fetch first, but if it fails, we fallback to window.open.
-    setDownloadingId(file.id);
-    setDownloadProgress(0);
+    navigate('/viewer', {
+      state: {
+        url: finalUrl,
+        filename: file.course_name || file.filename,
+      },
+    });
+  }, [selectionMode, navigate]);
+
+  // ─── Download with Progress ──────────────────────────────
+  const handleDownload = useCallback(async (file) => {
+    const fileId = file.id;
+
+    // If already downloaded, do nothing (icon hidden anyway)
+    if (isFileDownloaded(fileId)) return;
+
+    const url = getNotePublicUrl(file);
+    if (!url) {
+      alert('No downloadable link available.');
+      return;
+    }
+
+    // Set downloading state
+    setDownloadStates(prev => ({
+      ...prev,
+      [fileId]: { status: 'downloading', progress: 0 },
+    }));
 
     try {
-      const response = await fetch(downloadUrl);
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Network response was not ok');
       const contentLength = response.headers.get('content-length');
-      const total = parseInt(contentLength, 10);
+      const total = contentLength ? parseInt(contentLength, 10) : 0;
       const reader = response.body.getReader();
       const chunks = [];
       let loaded = 0;
@@ -421,195 +240,181 @@ export default function Files({ searchQuery = '', limit = 6, onFileClick }) {
         if (done) break;
         chunks.push(value);
         loaded += value.length;
-        if (total) {
-          setDownloadProgress(Math.round((loaded / total) * 100));
+        if (total > 0) {
+          const percent = Math.round((loaded / total) * 100);
+          setDownloadStates(prev => ({
+            ...prev,
+            [fileId]: { status: 'downloading', progress: Math.min(percent, 100) },
+          }));
         } else {
-          // If no content-length, just estimate (max 100)
-          const estimated = Math.min(100, Math.round((loaded / (1024 * 1024)) * 5));
-          setDownloadProgress(estimated);
+          // If no content-length, show indeterminate
+          setDownloadStates(prev => ({
+            ...prev,
+            [fileId]: { status: 'downloading', progress: 0 },
+          }));
         }
       }
 
+      // Combine chunks into a Blob
       const blob = new Blob(chunks);
+      const objectUrl = URL.createObjectURL(blob);
+
+      // Trigger download
       const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
+      link.href = objectUrl;
       link.download = file.filename || 'download';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      URL.revokeObjectURL(link.href);
+      URL.revokeObjectURL(objectUrl);
 
-      setDownloadProgress(100);
-      setTimeout(() => setDownloadingId(null), 1200);
-    } catch (err) {
-      console.warn('Fetch download failed, falling back to window.open:', err);
-      // Fallback: open in new tab (works for many services including Google Drive)
-      window.open(downloadUrl, '_blank');
-      setDownloadingId(null);
+      // Mark as downloaded
+      markAsDownloaded(fileId);
+      setDownloadStates(prev => ({
+        ...prev,
+        [fileId]: { status: 'done', progress: 100 },
+      }));
+    } catch (error) {
+      console.error('Download failed:', error);
+      alert('Download failed. Please try again.');
+      setDownloadStates(prev => {
+        const newState = { ...prev };
+        delete newState[fileId];
+        return newState;
+      });
     }
-  };
+  }, [isFileDownloaded, markAsDownloaded]);
 
-  // ---- Context Menu Actions ----
-  const contextActions = [
-    { 
-      label: 'Download', 
-      icon: Download, 
-      action: (file) => handleDownload(file) 
-    },
-    { 
-      label: 'Rename', 
-      icon: Pencil, 
-      action: (file) => { alert('Rename coming soon'); } 
-    },
-    { 
-      label: 'Copy Link', 
-      icon: Copy, 
-      action: (file) => { 
-        const url = getDownloadUrl(file);
-        if (url) {
-          navigator.clipboard.writeText(url);
-          alert('Link copied to clipboard!');
-        } else {
-          alert('No link to copy.');
-        }
-      } 
-    },
-  ];
-
-  // ---- Render ----
-  if (loading) {
-    return (
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-        {[...Array(limit)].map((_, i) => (
-          <div key={i} className="bg-white rounded-xl border border-gray-200 shadow-sm animate-pulse">
-            <div className="h-1 w-full bg-gray-200"></div>
-            <div className="p-3">
-              <div className="aspect-[4/3] bg-gray-100 rounded-lg"></div>
-              <div className="mt-2 space-y-1">
-                <div className="h-3 bg-gray-200 rounded w-3/4"></div>
-                <div className="h-2 bg-gray-200 rounded w-1/2"></div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+  // ─── Filter ──────────────────────────────────────────────
+  const filteredFiles = useMemo(() => {
+    if (!searchQuery) return files;
+    const q = searchQuery.toLowerCase();
+    return files.filter(f =>
+      (f.course_name || f.filename || '').toLowerCase().includes(q)
     );
-  }
+  }, [files, searchQuery]);
 
-  if (filteredFiles.length === 0) {
-    return (
-      <div className="text-center py-8">
-        <p className="text-sm text-gray-500">
-          {files.length === 0 ? 'No notes uploaded yet.' : 'No matches found.'}
-        </p>
-      </div>
-    );
-  }
+  if (loading) return <LoadingGrid limit={limit} />;
 
   return (
-    <div>
-      {/* View toggle + selection controls */}
-      <div className="flex justify-between items-center mb-4">
-        <div className="flex items-center gap-2">
+    <div className="space-y-6">
+      {/* Header Controls */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2 bg-slate-100 p-1 rounded-xl">
           <button
             onClick={() => setViewMode('grid')}
-            className={`p-2 rounded-lg transition-colors ${viewMode === 'grid' ? 'bg-blue-100 text-blue-600' : 'text-gray-500 hover:bg-gray-100'}`}
+            className={`p-2 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-500'}`}
           >
-            <Grid3x3 size={20} />
+            <Grid3x3 size={18} />
           </button>
           <button
             onClick={() => setViewMode('list')}
-            className={`p-2 rounded-lg transition-colors ${viewMode === 'list' ? 'bg-blue-100 text-blue-600' : 'text-gray-500 hover:bg-gray-100'}`}
+            className={`p-2 rounded-lg transition-all ${viewMode === 'list' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-500'}`}
           >
-            <List size={20} />
+            <List size={18} />
           </button>
         </div>
 
-        {selectionMode && (
-          <div className="flex items-center gap-3">
-            <span className="text-sm text-gray-600">{selectedIds.length} selected</span>
-            <button onClick={exitSelectionMode} className="p-1 rounded-full hover:bg-gray-200">
-              <X size={16} className="text-gray-500" />
-            </button>
-          </div>
-        )}
+        <button
+          onClick={() => setSelectionMode(!selectionMode)}
+          className={`px-4 py-2 rounded-full text-xs font-bold transition-all ${
+            selectionMode ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+          }`}
+        >
+          {selectionMode ? `CANCEL (${selectedIds.length})` : 'SELECT FILES'}
+        </button>
       </div>
 
-      {/* Grid / List rendering */}
-      {viewMode === 'grid' ? (
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-          {filteredFiles.map(file => (
-            <GridCard
-              key={file.id}
-              file={file}
-              onPress={() => handleCardPress(file)}
-              onLongPress={() => handleLongPress(file)}
-              isSelected={selectionMode ? selectedIds.includes(file.id) : undefined}
-              isDownloading={downloadingId === file.id}
-              progress={downloadProgress}
-              onDownload={handleDownload}
-            />
-          ))}
+      {/* File Grid */}
+      {filteredFiles.length === 0 ? (
+        <div className="py-20 text-center bg-slate-50 rounded-3xl border-2 border-dashed border-slate-200">
+          <FileText size={48} className="mx-auto text-slate-300 mb-4" />
+          <p className="text-slate-500 font-medium">No documents found for your current semester.</p>
         </div>
       ) : (
-        <div className="border border-gray-200 rounded-lg overflow-hidden bg-white">
-          {filteredFiles.map(file => (
-            <ListRow
-              key={file.id}
-              file={file}
-              onPress={() => handleCardPress(file)}
-              onLongPress={() => handleLongPress(file)}
-              isSelected={selectionMode ? selectedIds.includes(file.id) : undefined}
-              isDownloading={downloadingId === file.id}
-              progress={downloadProgress}
-              onDownload={handleDownload}
-            />
-          ))}
-        </div>
-      )}
+        <div className={viewMode === 'grid'
+          ? "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"
+          : "flex flex-col gap-2"
+        }>
+          {filteredFiles.map(file => {
+            const state = downloadStates[file.id];
+            const isDownloading = state?.status === 'downloading';
+            const progress = state?.progress || 0;
+            const isDownloaded = isFileDownloaded(file.id);
 
-      {/* Bottom action bar for multi-select */}
-      {selectionMode && selectedIds.length > 0 && (
-        <div className="fixed bottom-20 left-0 right-0 px-4 z-40">
-          <div className="max-w-md mx-auto bg-white rounded-2xl shadow-2xl border border-gray-200 p-3 flex items-center justify-around">
-            <button 
-              className="p-2 rounded-full hover:bg-gray-100" 
-              onClick={() => {
-                const first = files.find(f => f.id === selectedIds[0]);
-                if (first) handleDownload(first);
-              }}
-            >
-              <Download size={20} className="text-gray-600" />
-            </button>
-            <button className="p-2 rounded-full hover:bg-gray-100" onClick={exitSelectionMode}>
-              <X size={20} className="text-gray-600" />
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* Context Menu */}
-      {contextMenu && (
-        <div 
-          className="fixed z-50 bg-white rounded-xl shadow-2xl border border-gray-200 py-1 min-w-[160px]"
-          style={{ top: contextMenu.y, left: contextMenu.x }}
-          onMouseLeave={() => setContextMenu(null)}
-        >
-          {contextActions.map((action, i) => (
-            <button
-              key={i}
-              className="w-full flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
-              onClick={() => {
-                action.action(contextMenu.file);
-                setContextMenu(null);
-              }}
-            >
-              <action.icon size={16} />
-              {action.label}
-            </button>
-          ))}
+            return (
+              <GridCard
+                key={file.id}
+                file={file}
+                onPress={() => handleFileAction(file)}
+                isSelected={selectedIds.includes(file.id)}
+                onDownload={handleDownload}
+                isDownloading={isDownloading}
+                progress={progress}
+                isDownloaded={isDownloaded}
+              />
+            );
+          })}
         </div>
       )}
     </div>
   );
 }
+const PDFThumbnail = ({ url }) => {
+  const [thumbnail, setThumbnail] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef(null);
+
+  // 1. Only start processing when the card is visible on screen
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) setIsVisible(true);
+    }, { threshold: 0.1 });
+    
+    if (containerRef.current) observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // 2. Generate the thumbnail once visible
+  useEffect(() => {
+    if (!isVisible || !url || thumbnail) return;
+
+    const generateThumb = async () => {
+      try {
+        const loadingTask = pdfjs.getDocument({ url, disableAutoFetch: true });
+        const pdf = await loadingTask.promise;
+        const page = await pdf.getPage(1);
+        
+        const viewport = page.getViewport({ scale: 0.3 }); // Small scale for speed
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+
+        await page.render({ canvasContext: context, viewport }).promise;
+        setThumbnail(canvas.toDataURL('image/jpeg', 0.7)); // High compression
+        pdf.destroy(); // Free memory immediately
+      } catch (e) {
+        console.error("Thumbnail error", e);
+      }
+    };
+    generateThumb();
+  }, [isVisible, url]);
+
+  return (
+    <div ref={containerRef} className="w-full h-full flex items-center justify-center bg-slate-50">
+      {thumbnail ? (
+        <img src={thumbnail} alt="" className="w-full h-full object-cover animate-in fade-in duration-500" />
+      ) : (
+        <FileText size={40} className="text-slate-200" />
+      )}
+    </div>
+  );
+};
+const LoadingGrid = ({ limit }) => (
+  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+    {[...Array(limit)].map((_, i) => (
+      <div key={i} className="h-48 bg-slate-100 animate-pulse rounded-2xl" />
+    ))}
+  </div>
+);

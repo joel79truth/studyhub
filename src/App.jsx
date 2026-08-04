@@ -34,6 +34,7 @@ function App() {
         <Route path="/upload" element={<ProtectedRoute><Upload /></ProtectedRoute>} />
         <Route path="/quiz" element={<ProtectedRoute><Quiz /></ProtectedRoute>} />
         <Route path="/viewer" element={<ProtectedRoute><FileViewer /></ProtectedRoute>} />
+        <Route path="/file-viewer" element={<ProtectedRoute><FileViewer /></ProtectedRoute>} />
         <Route path="/admin/upload" element={<AdminRoute><AdminUpload /></AdminRoute>} />
         <Route path="/AiChat" element={<ProtectedRoute><AiChat /></ProtectedRoute>} /> {/* ✅ Fixed */}
       </Routes>

@@ -5,16 +5,18 @@ import React, {
   useCallback,
   useRef,
   useLayoutEffect,
-  useDeferredValue,
+  useTransition,
   memo,
 } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabase';
 import { BottomNav } from '../components/BottomNav';
 
+// ─── Simple in‑memory cache ──────────────────────────────
+const notesCache = new Map(); // key: userId, value: { data, timestamp }
+
 // ─── Custom Hooks ──────────────────────────────────────────
 
-// Auth hook
 function useAuth() {
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
@@ -71,22 +73,42 @@ function useAuth() {
   return { user, profile, loading, error };
 }
 
-// Notes hook
+// Notes hook with cache
 function useNotes(user) {
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [isStale, setIsStale] = useState(false);
 
   useEffect(() => {
     if (!user) {
       setNotes([]);
+      setLoading(false);
       return;
+    }
+
+    const userId = user.id;
+    const cached = notesCache.get(userId);
+    const now = Date.now();
+    const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+
+    // If cache exists and is fresh, use it immediately
+    if (cached && (now - cached.timestamp < CACHE_TTL)) {
+      setNotes(cached.data);
+      setLoading(false);
+      setIsStale(false);
+    } else if (cached) {
+      // Stale cache – show it but refetch in background
+      setNotes(cached.data);
+      setLoading(false);
+      setIsStale(true);
+    } else {
+      // No cache – start loading
+      setLoading(true);
     }
 
     let cancelled = false;
     const fetchNotes = async () => {
-      setLoading(true);
-      setError(null);
       try {
         const { data, error } = await supabase
           .from('notes')
@@ -107,19 +129,30 @@ function useNotes(user) {
           filepath: n.filepath || '',
           storage_type: n.storage_type || 'supabase',
         }));
-        setNotes(transformed);
+        // Update cache
+        notesCache.set(userId, { data: transformed, timestamp: Date.now() });
+        if (!cancelled) {
+          setNotes(transformed);
+          setLoading(false);
+          setIsStale(false);
+        }
       } catch (err) {
-        if (!cancelled) setError(err.message);
-      } finally {
-        if (!cancelled) setLoading(false);
+        if (!cancelled) {
+          setError(err.message);
+          setLoading(false);
+        }
       }
     };
 
-    fetchNotes();
+    // If cache is missing or stale, fetch
+    if (!cached || isStale) {
+      fetchNotes();
+    }
+
     return () => { cancelled = true; };
   }, [user]);
 
-  return { notes, loading, error };
+  return { notes, loading, error, isStale };
 }
 
 // Read status hook (localStorage)
@@ -140,33 +173,28 @@ function useReadStatus() {
     });
   }, []);
 
-  const isRead = useCallback((fileId) => !!readFiles[fileId], [readFiles]);
+  // Returns a boolean for a given fileId – stable reference
+  const getIsRead = useCallback((fileId) => !!readFiles[fileId], [readFiles]);
 
-  return { toggleRead, isRead };
+  return { toggleRead, getIsRead };
 }
 
 // ─── Helpers ──────────────────────────────────────────────
 const normalizeName = (name) => String(name || '').trim().toLowerCase();
 
 const getNotePublicUrl = (note) => {
-  // 1. Google Drive files
   if (note.storage_type === 'gdrive' && note.filepath) {
     return `https://drive.google.com/file/d/${note.filepath}/view`;
   }
-
-  // 2. Supabase Storage (or any other with filepath)
   if (note.filepath && note.storage_type !== 'gdrive') {
     const { data } = supabase.storage.from('notes').getPublicUrl(note.filepath);
     if (data?.publicUrl) {
       return data.publicUrl;
     }
   }
-
-  // 3. Fallback to note.url if it's a valid external URL
   if (note.url && (note.url.startsWith('http://') || note.url.startsWith('https://'))) {
     return note.url;
   }
-
   return null;
 };
 
@@ -226,6 +254,21 @@ const FileIcon = memo(({ filename }) => {
     </svg>
   );
 });
+
+// ─── Skeleton Loader ──────────────────────────────────────
+const SkeletonItem = () => (
+  <div className="flex items-center gap-4 p-4 bg-white/60 rounded-xl mb-3 animate-pulse">
+    <div className="w-10 h-10 bg-gray-200 rounded-lg" />
+    <div className="flex-1">
+      <div className="h-4 bg-gray-200 rounded w-3/4 mb-2" />
+      <div className="flex gap-2">
+        <div className="h-3 bg-gray-200 rounded w-20" />
+        <div className="h-3 bg-gray-200 rounded w-16" />
+      </div>
+    </div>
+    <div className="w-8 h-8 bg-gray-200 rounded-full" />
+  </div>
+);
 
 // ─── File List Item ───────────────────────────────────────
 const FileListItem = memo(({ file, onFileClick, onDownload, onCopyLink, onToggleRead, isRead }) => {
@@ -415,7 +458,7 @@ const CoursesView = memo(({ courses, courseCounts, userProgram, userSemester, on
   );
 });
 
-const FilesView = memo(({ course, files, onBack, fileActions }) => (
+const FilesView = memo(({ course, files, onBack, fileActions, isReadMap }) => (
   <div className="animate-in fade-in slide-in-from-right-4 duration-300">
     <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
       <div>
@@ -429,7 +472,11 @@ const FilesView = memo(({ course, files, onBack, fileActions }) => (
     {files.length > 0 ? (
       files.map((file, idx) => (
         <div key={file.id} style={{ animationDelay: `${idx * 50}ms`, animationFillMode: 'both' }} className="animate-in fade-in slide-in-from-bottom-2">
-          <FileListItem file={file} {...fileActions} isRead={fileActions.isRead(file.id)} />
+          <FileListItem
+            file={file}
+            {...fileActions}
+            isRead={isReadMap[file.id] || false}
+          />
         </div>
       ))
     ) : (
@@ -485,8 +532,8 @@ export default function Programs() {
   const navigate = useNavigate();
 
   const { user, profile, loading: authLoading, error: authError } = useAuth();
-  const { notes, loading: notesLoading, error: notesError } = useNotes(user);
-  const { toggleRead, isRead } = useReadStatus();
+  const { notes, loading: notesLoading, error: notesError, isStale } = useNotes(user);
+  const { toggleRead, getIsRead } = useReadStatus();
 
   const userProgram = profile?.program || '';
   const userSemester = profile?.semester || '';
@@ -523,7 +570,7 @@ export default function Programs() {
     return Array.from(progSet).sort();
   }, [notes]);
 
-  // ── UI State (persistence) ──
+  // ── UI State ──
   const STORAGE_KEY = 'programs_page_state';
   const getInitialState = () => {
     try {
@@ -541,7 +588,7 @@ export default function Programs() {
   const [viewMode, setViewMode] = useState(getInitialState().viewMode);
   const [selectedCourse, setSelectedCourse] = useState(getInitialState().selectedCourse);
   const [searchQuery, setSearchQuery] = useState(getInitialState().searchQuery);
-  const deferredSearch = useDeferredValue(searchQuery);
+  const [isPending, startTransition] = useTransition();
 
   useEffect(() => {
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ viewMode, selectedCourse, searchQuery }));
@@ -564,44 +611,63 @@ export default function Programs() {
 
   // ── Handlers ──
   const handleCourseClick = useCallback((course) => {
-    setSelectedCourse(course);
-    setViewMode('files');
+    startTransition(() => {
+      setSelectedCourse(course);
+      setViewMode('files');
+    });
   }, []);
 
   const handleBackToCourses = useCallback(() => {
-    setViewMode('courses');
-    setSelectedCourse(null);
+    startTransition(() => {
+      setViewMode('courses');
+      setSelectedCourse(null);
+    });
   }, []);
 
   const handleToggleView = useCallback(() => {
-    if (viewMode === 'allPrograms') {
-      setViewMode('courses');
-      setSearchQuery('');
-    } else {
-      setViewMode('allPrograms');
-      setSelectedCourse(null);
-    }
+    startTransition(() => {
+      if (viewMode === 'allPrograms') {
+        setViewMode('courses');
+        setSearchQuery('');
+      } else {
+        setViewMode('allPrograms');
+        setSelectedCourse(null);
+      }
+    });
   }, [viewMode]);
 
   const handleProgramClick = useCallback((program) => {
     navigate(`/program-detail?program=${encodeURIComponent(program)}`);
   }, [navigate]);
 
-  // ─── ✅ FIXED: File click navigates to in‑app viewer ───
-  const handleFileClick = useCallback((file) => {
-    const url = getNotePublicUrl(file);
-    if (!url) {
-      alert('File URL not available.');
-      return;
-    }
-    // Navigate to the viewer route with file details
-    navigate('/viewer', {
-      state: {
-        url,
-        filename: file.filename || 'Document',
-      },
-    });
-  }, [navigate]);
+  // ─── File actions ───
+ // Programs.jsx – inside component
+const handleFileClick = useCallback((file) => {
+  const url = getNotePublicUrl(file);
+  if (!url) {
+    alert('File URL not available.');
+    return;
+  }
+  // Detect file type from extension
+  const ext = file.filename.split('.').pop().toLowerCase();
+  const fileType = ['pdf'].includes(ext) ? 'pdf' :
+                   ['ppt', 'pptx'].includes(ext) ? 'pptx' : 'unknown';
+
+  navigate('/viewer', {
+    state: {
+      fileId: file.id,
+      filename: file.filename || 'Document',
+      url,
+      fileType,
+      // optionally pass context for Luna
+      context: {
+        course: file.course,
+        semester: file.semester,
+        program: file.program,
+      }
+    },
+  });
+}, [navigate]);
 
   const handleDownload = useCallback(async (file) => {
     const url = getNotePublicUrl(file);
@@ -628,13 +694,23 @@ export default function Programs() {
     }
   }, []);
 
+  // Stable fileActions – does not depend on isRead
   const fileActions = useMemo(() => ({
     onFileClick: handleFileClick,
     onDownload: handleDownload,
     onCopyLink: handleCopyLink,
     onToggleRead: toggleRead,
-    isRead,
-  }), [handleFileClick, handleDownload, handleCopyLink, toggleRead, isRead]);
+  }), [handleFileClick, handleDownload, handleCopyLink, toggleRead]);
+
+  // Compute isRead map for files in current view
+  const isReadMap = useMemo(() => {
+    const map = {};
+    if (viewMode === 'files' && selectedCourse) {
+      const files = userNotes.filter((n) => normalizeName(n.course) === normalizeName(selectedCourse));
+      files.forEach((f) => { map[f.id] = getIsRead(f.id); });
+    }
+    return map;
+  }, [viewMode, selectedCourse, userNotes, getIsRead]);
 
   const courseFiles = useMemo(() => {
     if (!selectedCourse) return [];
@@ -642,67 +718,19 @@ export default function Programs() {
   }, [userNotes, selectedCourse]);
 
   const filteredPrograms = useMemo(() => {
-    if (!deferredSearch) return allPrograms;
-    return allPrograms.filter((p) => normalizeName(p).includes(normalizeName(deferredSearch)));
-  }, [allPrograms, deferredSearch]);
+    if (!searchQuery) return allPrograms;
+    return allPrograms.filter((p) => normalizeName(p).includes(normalizeName(searchQuery)));
+  }, [allPrograms, searchQuery]);
 
-  // ── Loading / Error states ──
-  if (authLoading || notesLoading) {
-    return (
-      <div className="h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center">
-        <div className="text-center animate-pulse">
-          <div className="rounded-full h-14 w-14 border-4 border-blue-500 border-t-transparent animate-spin mx-auto" />
-          <p className="mt-6 text-sm font-medium text-blue-800">Loading…</p>
-        </div>
-      </div>
-    );
-  }
+  // ── Determine if we should show skeletons ──
+  const showSkeletons = authLoading || (notesLoading && !isStale && notes.length === 0);
+  const showError = authError || notesError;
 
-  if (authError || notesError) {
-    return (
-      <div className="h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center p-6">
-        <div className="bg-white/80 backdrop-blur-md p-8 rounded-2xl shadow-xl max-w-sm w-full text-center">
-          <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">⚠️</div>
-          <h2 className="text-xl font-bold text-gray-800 mb-2">Something went wrong</h2>
-          <p className="text-sm text-gray-500 mb-6">{authError || notesError}</p>
-          <button
-            onClick={() => window.location.reload()}
-            className="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-xl"
-          >
-            Retry
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  if (!user) {
-    return (
-      <div className="h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex flex-col items-center justify-center p-6">
-        <div className="bg-white/80 backdrop-blur-md p-8 rounded-2xl shadow-xl max-w-sm w-full text-center">
-          <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">🔒</div>
-          <h2 className="text-xl font-bold text-gray-800 mb-2">Access Restricted</h2>
-          <p className="text-sm text-gray-500 mb-6">Please log in to view your courses.</p>
-          <button
-            onClick={() => navigate('/login')}
-            className="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-xl"
-          >
-            Go to Login
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  // ─── Render ──────────────────────────────────────────────
+  // ── Render ──────────────────────────────────────────────
   return (
-    <div
-      ref={scrollRef}
-      onScroll={saveScroll}
-      className="min-h-screen bg-gradient-to-br from-blue-50 via-gray-50 to-purple-50 w-full flex flex-col overflow-y-auto"
-      style={{ maxHeight: '100vh', paddingBottom: '80px' }}
-    >
-      <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-xl border-b border-gray-200/60 shadow-sm px-4 sm:px-6 py-3 flex items-center justify-between flex-shrink-0">
+    <div className="h-screen flex flex-col bg-gradient-to-br from-blue-50 via-gray-50 to-purple-50">
+      {/* Header – fixed top */}
+      <header className="flex-shrink-0 sticky top-0 z-30 bg-white/80 backdrop-blur-xl border-b border-gray-200/60 shadow-sm px-4 sm:px-6 py-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center overflow-hidden shadow-sm border border-blue-700/20">
             <img src="/images/luanar7.png" alt="LUANAR Logo" className="w-full h-full object-cover" onError={(e) => e.currentTarget.style.display = 'none'} />
@@ -739,35 +767,91 @@ export default function Programs() {
         </div>
       </header>
 
-      <main className="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
-        {viewMode === 'allPrograms' ? (
-          <AllProgramsView
-            programs={filteredPrograms}
-            notes={notes}
-            onProgramClick={handleProgramClick}
-            searchQuery={searchQuery}
-            onSearchChange={setSearchQuery}
-          />
-        ) : viewMode === 'files' ? (
-          <FilesView
-            course={selectedCourse}
-            files={courseFiles}
-            onBack={handleBackToCourses}
-            fileActions={fileActions}
-          />
+      {/* Main scrollable content */}
+      <main
+        ref={scrollRef}
+        onScroll={saveScroll}
+        className="flex-1 overflow-y-auto w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8"
+        style={{ paddingBottom: '80px' }} // space for BottomNav
+      >
+        {showError ? (
+          <div className="bg-white/80 backdrop-blur-md p-8 rounded-2xl shadow-xl max-w-sm mx-auto text-center">
+            <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">⚠️</div>
+            <h2 className="text-xl font-bold text-gray-800 mb-2">Something went wrong</h2>
+            <p className="text-sm text-gray-500 mb-6">{authError || notesError}</p>
+            <button
+              onClick={() => window.location.reload()}
+              className="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-xl"
+            >
+              Retry
+            </button>
+          </div>
+        ) : showSkeletons ? (
+          // Skeleton loaders
+          <div>
+            <div className="h-8 w-48 bg-gray-200 rounded mb-6 animate-pulse" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div key={i} className="bg-white border border-gray-200 rounded-xl p-3.5 h-[100px] animate-pulse">
+                  <div className="w-8 h-8 bg-gray-200 rounded-lg mb-3" />
+                  <div className="h-4 bg-gray-200 rounded w-3/4" />
+                  <div className="mt-3 h-3 bg-gray-200 rounded w-1/4" />
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : !user ? (
+          <div className="bg-white/80 backdrop-blur-md p-8 rounded-2xl shadow-xl max-w-sm mx-auto text-center">
+            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">🔒</div>
+            <h2 className="text-xl font-bold text-gray-800 mb-2">Access Restricted</h2>
+            <p className="text-sm text-gray-500 mb-6">Please log in to view your courses.</p>
+            <button
+              onClick={() => navigate('/login')}
+              className="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-xl"
+            >
+              Go to Login
+            </button>
+          </div>
         ) : (
-          <CoursesView
-            courses={courses}
-            courseCounts={courseCounts}
-            userProgram={userProgram}
-            userSemester={userSemester}
-            onCourseClick={handleCourseClick}
-            onBrowseAll={() => { setViewMode('allPrograms'); setSelectedCourse(null); }}
-          />
+          // Actual content
+          <>
+            {viewMode === 'allPrograms' ? (
+              <AllProgramsView
+                programs={filteredPrograms}
+                notes={notes}
+                onProgramClick={handleProgramClick}
+                searchQuery={searchQuery}
+                onSearchChange={setSearchQuery}
+              />
+            ) : viewMode === 'files' ? (
+              <FilesView
+                course={selectedCourse}
+                files={courseFiles}
+                onBack={handleBackToCourses}
+                fileActions={fileActions}
+                isReadMap={isReadMap}
+              />
+            ) : (
+              <CoursesView
+                courses={courses}
+                courseCounts={courseCounts}
+                userProgram={userProgram}
+                userSemester={userSemester}
+                onCourseClick={handleCourseClick}
+                onBrowseAll={() => {
+                  startTransition(() => {
+                    setViewMode('allPrograms');
+                    setSelectedCourse(null);
+                  });
+                }}
+              />
+            )}
+          </>
         )}
       </main>
 
-      <BottomNav />
+      {/* BottomNav – always fixed at bottom */}
+      <BottomNav className="flex-shrink-0" />
     </div>
   );
 }

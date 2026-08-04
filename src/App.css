@@ -58,3 +58,69 @@ body {
 .dark .bg-card { background-color: rgb(var(--card)); }
 .dark .border-border\/50 { border-color: rgba(var(--border), 0.5); }
 .dark .text-muted-foreground { color: rgb(var(--muted-foreground)); }
+
+
+@keyframes luna-idle {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+.animate-luna-idle { animation: luna-idle 2s ease-in-out infinite; }
+
+@keyframes luna-thinking {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.animate-luna-thinking { animation: luna-thinking 1.5s linear infinite; }
+
+@keyframes luna-replying {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+.animate-luna-replying { animation: luna-replying 0.4s ease-in-out infinite; }
+
+@keyframes luna-happy {
+  0% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.2) rotate(10deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+.animate-luna-happy { animation: luna-happy 0.6s ease-in-out 1; }
+
+@keyframes celebrationFadeOut {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+.animate-celebrationFadeOut { animation: celebrationFadeOut 2s ease-out forwards; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fadeIn { animation: fadeIn 0.3s ease-out; }
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+.animate-shake { animation: shake 0.5s ease-in-out; }
+
+@keyframes zoomBounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+.animate-zoomBounce { animation: zoomBounce 0.3s ease-in-out; }
+
+@keyframes ellipsis {
+  0% { content: "."; }
+  33% { content: ".."; }
+  66% { content: "..."; }
+}
+.animate-ellipsis::after { display: inline-block; animation: ellipsis 1s steps(4, end) infinite; content: ""; }
+@keyframes progress-slide {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.animate-progress-slide {
+  animation: progress-slide 1.8s ease-in-out infinite;
+}

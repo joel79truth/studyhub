@@ -1,36 +1,30 @@
+require('dotenv').config();
 
-
+const express = require('express');
+const multer = require('multer');
+const cors = require('cors');
+const { v4: uuidv4 } = require('uuid');
+const admin = require('firebase-admin');
+const { createClient } = require('@supabase/supabase-js');
+const { google } = require('googleapis');
+const { Readable } = require('stream');
+const path = require('path');
+const http = require('http');
+const https = require('https');
+const JSON5 = require('json5');
+const sharp = require('sharp');
+const rateLimit = require('express-rate-limit');
 const Groq = require('groq-sdk');
+const fetch = require('node-fetch'); // for Node < 18; if using Node 18+ you can use global fetch
 
-// server.js – Full Multi‑Modal Pipeline with Math/Chem/Diagram Extraction + AI Grading
-const express = require("express");
-const multer = require("multer");
-const cors = require("cors");
-const dotenv = require("dotenv");
-const { v4: uuidv4 } = require("uuid");
-const admin = require("firebase-admin");
-const { createClient } = require("@supabase/supabase-js");
-const { google } = require("googleapis");
-const { Readable } = require("stream");
-const path = require("path");
-const http = require("http");
-const https = require("https");
-const JSON5 = require("json5");
-const sharp = require("sharp");
-
-/* ======== Gemini AI ======== */
-const { GoogleGenerativeAI } = require("@google/generative-ai");
-
-dotenv.config();
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });  
-/* ===== INITIALISATION ===== */
+// ===== INITIALISATION =====
 
 // Firebase Admin SDK
 if (!process.env.FIREBASE_SERVICE_ACCOUNT_BASE64) {
-  throw new Error("Missing FIREBASE_SERVICE_ACCOUNT_BASE64");
+  throw new Error('Missing FIREBASE_SERVICE_ACCOUNT_BASE64');
 }
 const serviceAccount = JSON.parse(
-  Buffer.from(process.env.FIREBASE_SERVICE_ACCOUNT_BASE64, "base64").toString()
+  Buffer.from(process.env.FIREBASE_SERVICE_ACCOUNT_BASE64, 'base64').toString()
 );
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -38,7 +32,7 @@ admin.initializeApp({
 
 // Supabase clients
 if (!process.env.SUPABASE_URL || !process.env.SUPABASE_ANON_KEY) {
-  throw new Error("Missing Supabase credentials");
+  throw new Error('Missing Supabase credentials');
 }
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
@@ -51,7 +45,7 @@ const supabaseAdmin = supabaseServiceRoleKey
 
 // Google Drive OAuth
 if (!process.env.OAUTH_CLIENT_JSON || !process.env.GOOGLE_REFRESH_TOKEN) {
-  throw new Error("Missing Google OAuth credentials");
+  throw new Error('Missing Google OAuth credentials');
 }
 const oauthCreds = JSON.parse(process.env.OAUTH_CLIENT_JSON);
 const { client_id, client_secret, redirect_uris } =
@@ -67,25 +61,33 @@ const httpAgent = new http.Agent({ keepAlive: true });
 const httpsAgent = new https.Agent({ keepAlive: true });
 
 const drive = google.drive({
-  version: "v3",
+  version: 'v3',
   auth: oauth2Client,
   httpAgent: httpsAgent,
 });
 
-const upload = multer({ storage: multer.memoryStorage() });
-
-/* ======== Gemini initialisation ======== */
-if (!process.env.GEMINI_API_KEY) {
-  console.warn("⚠️  GEMINI_API_KEY not set. Exam Trainer features will fail.");
+// Groq AI client
+if (!process.env.GROQ_API_KEY) {
+  console.warn('⚠️  GROQ_API_KEY not set. Luna and StudyBot features will fail.');
 }
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "dummy-key");
+const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
+// Gemini AI
+const { GoogleGenerativeAI } = require('@google/generative-ai');
+if (!process.env.GEMINI_API_KEY) {
+  console.warn('⚠️  GEMINI_API_KEY not set. Exam Trainer features will fail.');
+}
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || 'dummy-key');
+
+// Express app
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static('public'));
 
-/* ===== HELPERS ===== */
+const upload = multer({ storage: multer.memoryStorage() });
+
+// ===== HELPERS =====
 
 async function uploadToDriveWithRetry(file, maxRetries = 3, baseDelay = 500) {
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
@@ -101,7 +103,6 @@ async function uploadToDriveWithRetry(file, maxRetries = 3, baseDelay = 500) {
         media: { mimeType: file.mimetype, body: bufferStream },
         timeout: 30000,
       });
-      console.log(`Drive upload succeeded on attempt ${attempt}`);
       return driveRes;
     } catch (err) {
       console.error(`Drive attempt ${attempt} failed:`, err.message);
@@ -112,31 +113,31 @@ async function uploadToDriveWithRetry(file, maxRetries = 3, baseDelay = 500) {
   }
 }
 
-// Auth middleware
+// Auth middleware (using Supabase)
 async function requireAuth(req, res, next) {
   try {
     const authHeader = req.headers.authorization;
-    if (!authHeader?.startsWith("Bearer ")) {
-      return res.status(401).json({ message: "Unauthorized" });
+    if (!authHeader?.startsWith('Bearer ')) {
+      return res.status(401).json({ message: 'Unauthorized' });
     }
-    const token = authHeader.split(" ")[1];
+    const token = authHeader.split(' ')[1];
     const { data: { user }, error } = await supabase.auth.getUser(token);
     if (error || !user) throw new Error('Unauthorized');
     req.user = user;
     next();
   } catch (err) {
-    console.error("Auth error:", err);
-    return res.status(401).json({ message: "Unauthorized" });
+    console.error('Auth error:', err);
+    return res.status(401).json({ message: 'Unauthorized' });
   }
 }
 
-// Spaced repetition helper (UPDATED: stores course)
+// Spaced repetition helper
 async function updateTopicMastery(userId, topic, correct, course) {
   const { data: current } = await supabaseAdmin
-    .from("user_weak_topics")
-    .select("mastery")
-    .eq("user_id", userId)
-    .eq("topic", topic)
+    .from('user_weak_topics')
+    .select('mastery')
+    .eq('user_id', userId)
+    .eq('topic', topic)
     .maybeSingle();
 
   const oldMastery = current ? current.mastery : 0.5;
@@ -144,18 +145,18 @@ async function updateTopicMastery(userId, topic, correct, course) {
     ? Math.min(1.0, oldMastery + 0.05)
     : Math.max(0.0, oldMastery - 0.03);
 
-  await supabaseAdmin.from("user_weak_topics").upsert({
+  await supabaseAdmin.from('user_weak_topics').upsert({
     user_id: userId,
     topic,
     course: course || null,
     mastery: newMastery,
     last_updated: new Date().toISOString(),
-  }, { onConflict: "user_id,topic" });
+  }, { onConflict: 'user_id,topic' });
 }
 
 // AI grading for structured answers
 async function gradeStructuredAnswer(questionText, correctAnswer, userAnswer) {
-  const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
+  const model = genAI.getGenerativeModel({ model: 'gemini-flash-latest' });
   const prompt = `You are an exam grader for a LUANAR student.
 
 Question: "${questionText}"
@@ -172,29 +173,28 @@ Only JSON, no other text.`;
   try {
     const result = await model.generateContent(prompt);
     let text = result.response.text();
-    text = text.replace(/```json|```/g, "").trim();
+    text = text.replace(/```json|```/g, '').trim();
 
     let parsed;
     try {
       parsed = JSON5.parse(text);
     } catch (parseErr) {
-      console.error("JSON5 parse error in gradeStructuredAnswer:", parseErr.message);
-      console.error("Raw text:", text);
+      console.error('JSON5 parse error in gradeStructuredAnswer:', parseErr.message);
       return {
         correct: false,
-        explanation: "We could not grade your answer due to a technical issue. Please try again."
+        explanation: 'We could not grade your answer due to a technical issue. Please try again.'
       };
     }
 
     return {
       correct: parsed.correct,
-      explanation: parsed.explanation || (parsed.correct ? "Well done!" : "Not quite. The correct answer is: " + correctAnswer)
+      explanation: parsed.explanation || (parsed.correct ? 'Well done!' : 'Not quite. The correct answer is: ' + correctAnswer)
     };
   } catch (err) {
-    console.error("Error in gradeStructuredAnswer:", err);
+    console.error('Error in gradeStructuredAnswer:', err);
     return {
       correct: false,
-      explanation: "An error occurred while grading. Please try again."
+      explanation: 'An error occurred while grading. Please try again.'
     };
   }
 }
@@ -215,95 +215,122 @@ async function cropAndUploadDiagram(imageBuffer, { x, y, width, height }, mimeTy
 
     const filePath = `diagrams/${questionId}.png`;
     const { error } = await supabaseAdmin.storage
-      .from(process.env.SUPABASE_BUCKET || "files")
+      .from(process.env.SUPABASE_BUCKET || 'files')
       .upload(filePath, croppedBuffer, { contentType: 'image/png', upsert: true });
 
     if (error) throw error;
 
     const publicUrl = supabaseAdmin.storage
-      .from(process.env.SUPABASE_BUCKET || "files")
+      .from(process.env.SUPABASE_BUCKET || 'files')
       .getPublicUrl(filePath).data.publicUrl;
 
     return publicUrl;
   } catch (err) {
-    console.error("Diagram cropping/upload error:", err);
+    console.error('Diagram cropping/upload error:', err);
     return null;
   }
 }
 
+// Helper functions for past paper extraction
+function normalizeQuestion(q) {
+  // ensure all fields exist
+  return {
+    question_type: q.question_type || 'structured',
+    question: q.question || '',
+    course: q.course || 'Unknown',
+    topic: q.topic || 'Unknown',
+    marks: q.marks || 0,
+    year: q.year || null,
+    option_a: q.option_a || '',
+    option_b: q.option_b || '',
+    option_c: q.option_c || '',
+    option_d: q.option_d || '',
+    answer: q.answer || '',
+    smiles: q.smiles || null,
+    latex_math: q.latex_math || null,
+    has_diagram: q.has_diagram || false,
+    diagram_coordinates: q.diagram_coordinates || null,
+    mcq_variant: q.mcq_variant || null,
+  };
+}
+
+function isValidQuestion(q) {
+  return q.question && q.question.trim().length > 0;
+}
+
 let sseClients = [];
 
-/* ===== ROUTES ===== */
+// ===== ROUTES =====
 
-app.get("/", (req, res) => res.send("Server is running"));
+app.get('/', (req, res) => res.send('Server is running'));
 
 // Programs list
-app.get("/api/programs", async (req, res) => {
+app.get('/api/programs', async (req, res) => {
   try {
     const { data, error } = await supabase
-      .from("programs")
-      .select("name")
-      .order("name");
+      .from('programs')
+      .select('name')
+      .order('name');
     if (error) throw error;
     res.json({ programs: data.map(p => p.name) });
   } catch (err) {
-    console.error("Fetch programs error:", err);
-    res.status(500).json({ message: "Failed to load programs" });
+    console.error('Fetch programs error:', err);
+    res.status(500).json({ message: 'Failed to load programs' });
   }
 });
 
 // Save FCM token
-app.post("/save-token", requireAuth, async (req, res) => {
+app.post('/save-token', requireAuth, async (req, res) => {
   const { token, program } = req.body;
-  if (!token) return res.status(400).json({ message: "Missing token" });
+  if (!token) return res.status(400).json({ message: 'Missing token' });
   try {
     const { error } = await supabaseAdmin
-      .from("fcm_tokens")
+      .from('fcm_tokens')
       .upsert(
         { token, uid: req.user.id, program: program || null },
-        { onConflict: "token" }
+        { onConflict: 'token' }
       );
     if (error) throw error;
-    res.json({ message: "Token stored", uid: req.user.id });
+    res.json({ message: 'Token stored', uid: req.user.id });
   } catch (err) {
-    console.error("Error saving token:", err);
-    res.status(500).json({ message: "Database error" });
+    console.error('Error saving token:', err);
+    res.status(500).json({ message: 'Database error' });
   }
 });
 
 // Upload notes
-app.post("/upload", requireAuth, upload.single("file"), async (req, res) => {
+app.post('/upload', requireAuth, upload.single('file'), async (req, res) => {
   try {
     const { program, semester, subject } = req.body;
     const file = req.file;
     if (!program || !semester || !subject || !file) {
-      return res.status(400).json({ message: "Missing fields or file" });
+      return res.status(400).json({ message: 'Missing fields or file' });
     }
 
     const USE_GDRIVE = file.size > 5 * 1024 * 1024;
     const id = uuidv4();
-    const safeName = file.originalname.replace(/\s+/g, "_");
+    const safeName = file.originalname.replace(/\s+/g, '_');
     const filePath = `${program}/${semester}/${subject}/${Date.now()}-${safeName}`;
     let storage_type, storage_ref, publicUrl;
 
     if (USE_GDRIVE) {
       const driveRes = await uploadToDriveWithRetry(file);
-      storage_type = "gdrive";
+      storage_type = 'gdrive';
       storage_ref = driveRes.data.id;
       publicUrl = `/api/drive/${storage_ref}`;
     } else {
       const { error } = await supabaseAdmin.storage
-        .from(process.env.SUPABASE_BUCKET || "files")
+        .from(process.env.SUPABASE_BUCKET || 'files')
         .upload(filePath, file.buffer, { contentType: file.mimetype });
       if (error) throw error;
-      storage_type = "supabase";
+      storage_type = 'supabase';
       storage_ref = filePath;
       publicUrl = supabaseAdmin.storage
-        .from(process.env.SUPABASE_BUCKET || "files")
+        .from(process.env.SUPABASE_BUCKET || 'files')
         .getPublicUrl(filePath).data.publicUrl;
     }
 
-    const { error: dbError } = await supabaseAdmin.from("notes").insert([
+    const { error: dbError } = await supabaseAdmin.from('notes').insert([
       {
         id,
         program,
@@ -324,8 +351,8 @@ app.post("/upload", requireAuth, upload.single("file"), async (req, res) => {
 
     // Push notifications
     const { data: tokens, error: tokenError } = await supabaseAdmin
-      .from("fcm_tokens")
-      .select("token");
+      .from('fcm_tokens')
+      .select('token');
     if (!tokenError && tokens?.length) {
       const tokenList = tokens.map(t => t.token);
       const message = {
@@ -346,67 +373,67 @@ app.post("/upload", requireAuth, upload.single("file"), async (req, res) => {
       const response = await admin.messaging().sendEachForMulticast(message);
       const invalidTokens = [];
       response.responses.forEach((r, i) => {
-        if (!r.success && (r.error?.code?.includes("registration-token-not-registered") || r.error?.code?.includes("invalid-registration-token"))) {
+        if (!r.success && (r.error?.code?.includes('registration-token-not-registered') || r.error?.code?.includes('invalid-registration-token'))) {
           invalidTokens.push(tokenList[i]);
         }
       });
       if (invalidTokens.length) {
-        await supabaseAdmin.from("fcm_tokens").delete().in("token", invalidTokens);
+        await supabaseAdmin.from('fcm_tokens').delete().in('token', invalidTokens);
       }
     }
 
-    res.json({ message: "Upload successful", url: publicUrl });
+    res.json({ message: 'Upload successful', url: publicUrl });
   } catch (err) {
-    console.error("Upload error:", err);
-    res.status(500).json({ message: "Upload failed", error: err.message });
+    console.error('Upload error:', err);
+    res.status(500).json({ message: 'Upload failed', error: err.message });
   }
 });
 
-// Google Drive proxy
-app.get("/api/drive/:fileId", async (req, res) => {
+// Google Drive proxy (direct stream)
+app.get('/api/drive/:fileId', async (req, res) => {
   try {
     const driveRes = await drive.files.get(
-      { fileId: req.params.fileId, alt: "media" },
-      { responseType: "stream" }
+      { fileId: req.params.fileId, alt: 'media' },
+      { responseType: 'stream' }
     );
-    driveRes.data.on("error", (streamErr) => {
-      console.error("Drive stream error:", streamErr);
-      if (!res.headersSent) res.status(500).send("Stream error");
+    driveRes.data.on('error', (streamErr) => {
+      console.error('Drive stream error:', streamErr);
+      if (!res.headersSent) res.status(500).send('Stream error');
     });
     driveRes.data.pipe(res);
   } catch (err) {
-    console.error("Drive proxy error:", err);
-    res.status(404).send("File not found");
+    console.error('Drive proxy error:', err);
+    res.status(404).send('File not found');
   }
 });
 
 // Metadata endpoint
-app.get("/api/metadata", async (req, res) => {
+app.get('/api/metadata', async (req, res) => {
   try {
     const { uid, program } = req.query;
-    let query = supabase.from("notes").select("*").order("uploaded_at", { ascending: false });
-    if (uid) query = query.eq("uploader_uid", uid);
-    if (program) query = query.eq("program", program);
+    let query = supabase.from('notes').select('*').order('uploaded_at', { ascending: false });
+    if (uid) query = query.eq('uploader_uid', uid);
+    if (program) query = query.eq('program', program);
     const { data, error } = await query;
     if (error) throw error;
     res.json(data);
   } catch (err) {
-    console.error("Metadata fetch error:", err);
-    res.status(500).json({ message: "Fetch failed" });
+    console.error('Metadata fetch error:', err);
+    res.status(500).json({ message: 'Fetch failed' });
   }
 });
 
 // App Update Checker
-app.get("/api/update", async (req, res) => {
+app.get('/api/update', async (req, res) => {
   try {
     const { data, error } = await supabase
-      .from("app_updates")
-      .select("*")
-      .order("created_at", { ascending: false })
+      .from('app_updates')
+      .select('*')
+      .order('created_at', { ascending: false })
       .limit(1)
       .single();
     if (error || !data) {
-      return res.status(500).json({ error: "No version data found" });
+      return res.status(500).json({ error: 'No version data found' });
     }
     res.json({
       version: data.version,
@@ -416,43 +443,43 @@ app.get("/api/update", async (req, res) => {
       apkUrl: data.apk_url,
     });
   } catch (err) {
-    console.error("Update fetch error:", err);
-    res.status(500).json({ error: "Internal server error" });
+    console.error('Update fetch error:', err);
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 
 // Submit a request
-app.post("/submit-request", async (req, res) => {
+app.post('/submit-request', async (req, res) => {
   try {
     const { topic, course, program, semester, notes, email } = req.body;
     if (!topic || !course || !program || !semester) {
-      return res.status(400).json({ message: "All fields are required" });
+      return res.status(400).json({ message: 'All fields are required' });
     }
-    const { error } = await supabaseAdmin.from("requests").insert([
+    const { error } = await supabaseAdmin.from('requests').insert([
       {
         topic,
         course,
         program,
         semester: String(semester),
-        notes: notes || "",
-        email: email || "",
+        notes: notes || '',
+        email: email || '',
         created_at: new Date().toISOString(),
       },
     ]);
     if (error) throw error;
     sendNotificationToProgram(program, { topic, course, semester }).catch(console.error);
-    res.json({ message: "Request submitted successfully" });
+    res.json({ message: 'Request submitted successfully' });
   } catch (err) {
-    console.error("Request error:", err);
-    res.status(500).json({ message: "Failed to submit request" });
+    console.error('Request error:', err);
+    res.status(500).json({ message: 'Failed to submit request' });
   }
 });
 
 async function sendNotificationToProgram(program, { topic, course, semester }) {
   const { data: tokens, error } = await supabaseAdmin
-    .from("fcm_tokens")
-    .select("token")
-    .eq("program", program);
+    .from('fcm_tokens')
+    .select('token')
+    .eq('program', program);
   if (error || !tokens?.length) return;
   const tokenList = tokens.map(t => t.token);
   const message = {
@@ -462,7 +489,7 @@ async function sendNotificationToProgram(program, { topic, course, semester }) {
       body: `${course} - ${program} Sem ${semester}`,
     },
     data: {
-      type: "request",
+      type: 'request',
       topic,
       course,
       program,
@@ -473,16 +500,16 @@ async function sendNotificationToProgram(program, { topic, course, semester }) {
   const response = await admin.messaging().sendEachForMulticast(message);
   const invalid = [];
   response.responses.forEach((r, i) => {
-    if (!r.success && (r.error?.code?.includes("registration-token-not-registered") || r.error?.code?.includes("invalid-registration-token"))) {
+    if (!r.success && (r.error?.code?.includes('registration-token-not-registered') || r.error?.code?.includes('invalid-registration-token'))) {
       invalid.push(tokenList[i]);
     }
   });
-  if (invalid.length) await supabaseAdmin.from("fcm_tokens").delete().in("token", invalid);
+  if (invalid.length) await supabaseAdmin.from('fcm_tokens').delete().in('token', invalid);
 }
 
-app.get("/api/requests", async (req, res) => {
+app.get('/api/requests', async (req, res) => {
   try {
-    const { data, error } = await supabase.from("requests").select("*").order("created_at", { ascending: false });
+    const { data, error } = await supabase.from('requests').select('*').order('created_at', { ascending: false });
     if (error) throw error;
     res.json({ requests: data });
   } catch (err) {
@@ -490,52 +517,52 @@ app.get("/api/requests", async (req, res) => {
   }
 });
 
-app.delete("/api/requests/:id", async (req, res) => {
+app.delete('/api/requests/:id', async (req, res) => {
   try {
-    const { error } = await supabaseAdmin.from("requests").delete().eq("id", req.params.id);
+    const { error } = await supabaseAdmin.from('requests').delete().eq('id', req.params.id);
     if (error) throw error;
-    res.json({ message: "Request deleted" });
+    res.json({ message: 'Request deleted' });
   } catch (err) {
-    res.status(500).json({ message: "Failed to delete request" });
+    res.status(500).json({ message: 'Failed to delete request' });
   }
 });
 
-app.get("/events", (req, res) => {
-  res.setHeader("Content-Type", "text/event-stream");
-  res.setHeader("Cache-Control", "no-cache");
-  res.setHeader("Connection", "keep-alive");
+// Server-Sent Events
+app.get('/events', (req, res) => {
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
   res.flushHeaders();
   sseClients.push(res);
-  req.on("close", () => {
+  req.on('close', () => {
     sseClients = sseClients.filter(c => c !== res);
   });
 });
 
-app.post("/chat-message", async (req, res) => {
+app.post('/chat-message', async (req, res) => {
   const { sender, program, text } = req.body;
-  if (!sender || !program || !text) return res.status(400).json({ message: "Missing fields" });
+  if (!sender || !program || !text) return res.status(400).json({ message: 'Missing fields' });
   const newMessage = { sender, program, text, timestamp: new Date().toISOString() };
-  const { error } = await supabaseAdmin.from("messages").insert([newMessage]);
-  if (error) return res.status(500).json({ message: "Failed to save message" });
+  const { error } = await supabaseAdmin.from('messages').insert([newMessage]);
+  if (error) return res.status(500).json({ message: 'Failed to save message' });
   sseClients.forEach(client => client.write(`data: ${JSON.stringify(newMessage)}\n\n`));
-  res.json({ message: "Message sent", newMessage });
+  res.json({ message: 'Message sent', newMessage });
 });
 
-app.use("/files", express.static(path.join(__dirname, "public/files")));
-
-app.post("/api/chat", async (req, res) => {
+// Legacy chat (OpenAI)
+app.post('/api/chat', async (req, res) => {
   const { message } = req.body;
-  if (!message) return res.status(400).json({ reply: "No message provided." });
+  if (!message) return res.status(400).json({ reply: 'No message provided.' });
   try {
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
       headers: {
         Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: "gpt-4o-mini",
-        messages: [{ role: "system", content: "You are a helpful AI tutor..." }, { role: "user", content: message }],
+        model: 'gpt-4o-mini',
+        messages: [{ role: 'system', content: 'You are a helpful AI tutor...' }, { role: 'user', content: message }],
         temperature: 0.7,
       }),
     });
@@ -543,20 +570,23 @@ app.post("/api/chat", async (req, res) => {
     if (!response.ok) throw new Error(data.error?.message);
     res.json({ reply: data.choices[0].message.content });
   } catch (err) {
-    console.error("GPT error:", err);
-    res.status(500).json({ reply: "AI service error" });
+    console.error('GPT error:', err);
+    res.status(500).json({ reply: 'AI service error' });
   }
 });
 
-/* ======== EXAM TRAINER ROUTES ======== */
+// ======== EXAM TRAINER ROUTES ========
 
 // Upload past paper
-app.post("/api/exam/upload-past-paper", requireAuth, upload.single("paper"), async (req, res) => {
+app.post('/api/exam/upload-past-paper', requireAuth, upload.single('paper'), async (req, res) => {
   try {
-    if (!req.file) return res.status(400).json({ error: "No file uploaded" });
+    if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
 
-    const imageBase64 = req.file.buffer.toString("base64");
-    const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
+    let imageBuffer = req.file.buffer;
+    // Optionally enhance image; we'll skip that step if not defined.
+    const imageBase64 = imageBuffer.toString('base64');
+
+    const model = genAI.getGenerativeModel({ model: 'gemini-flash-latest' });
 
     const prompt = `You are an exam question extractor for LUANAR past papers.
 The image may contain multiple‑choice, structured, or diagram‑based questions.
@@ -602,22 +632,19 @@ Return ONLY a JSON array of these objects, no other text.
     ]);
 
     let text = result.response.text();
-    text = text.replace(/```json|```/g, "").trim();
+    text = text.replace(/```json|```/g, '').trim();
 
     let questions;
     try {
-      questions = JSON5.parse(text);
+      questions = JSON5.parse(text).map(normalizeQuestion);
     } catch (parseErr) {
-      console.error("JSON5 parse error in past-paper upload:", parseErr.message);
-      const start = Math.max(0, (parseErr.position || 0) - 80);
-      const end = Math.min(text.length, (parseErr.position || 0) + 80);
-      console.error("Offending snippet:", text.substring(start, end));
-      return res.status(500).json({ error: "Invalid JSON from AI: " + parseErr.message });
+      console.error('JSON5 parse error in past-paper upload:', parseErr.message);
+      return res.status(500).json({ error: 'Invalid JSON from AI: ' + parseErr.message });
     }
 
-    const validQuestions = questions.filter(q => q.question && q.question.trim().length > 0);
+    const validQuestions = questions.filter(isValidQuestion);
     if (validQuestions.length === 0) {
-      return res.status(400).json({ error: "No valid questions extracted." });
+      return res.status(400).json({ error: 'No valid questions extracted.' });
     }
 
     const paperId = uuidv4();
@@ -627,10 +654,10 @@ Return ONLY a JSON array of these objects, no other text.
     for (let idx = 0; idx < validQuestions.length; idx++) {
       const q = validQuestions[idx];
       const base = {
-        course: q.course || "Unknown",
-        topic: q.topic || "Unknown",
+        course: q.course || 'Unknown',
+        topic: q.topic || 'Unknown',
         question: q.question.trim(),
-        question_type: q.question_type || "structured",
+        question_type: q.question_type || 'structured',
         marks: q.marks || 0,
         year: q.year || null,
         paper_id: paperId,
@@ -647,139 +674,132 @@ Return ONLY a JSON array of these objects, no other text.
         if (match) base.latex_math = match[1];
       }
 
-      if (q.question_type === "mcq") {
+      if (q.question_type === 'mcq') {
         inserts.push({
           ...base,
-          option_a: q.option_a || "",
-          option_b: q.option_b || "",
-          option_c: q.option_c || "",
-          option_d: q.option_d || "",
-          answer: q.answer || "",
+          option_a: q.option_a || '',
+          option_b: q.option_b || '',
+          option_c: q.option_c || '',
+          option_d: q.option_d || '',
+          answer: q.answer || '',
         });
+        const baseInsertIndex = inserts.length - 1;
+        if (q.has_diagram && q.diagram_coordinates) {
+          diagramTasks.push({ coordinates: q.diagram_coordinates, insertIndex: baseInsertIndex });
+        }
       } else {
         inserts.push({
           ...base,
-          option_a: "",
-          option_b: "",
-          option_c: "",
-          option_d: "",
-          answer: q.answer || "",
+          option_a: '',
+          option_b: '',
+          option_c: '',
+          option_d: '',
+          answer: q.answer || '',
         });
-
-        if (q.question_type === "structured" && q.mcq_variant && q.mcq_variant.question) {
+        const baseInsertIndex = inserts.length - 1;
+        if (q.has_diagram && q.diagram_coordinates) {
+          diagramTasks.push({ coordinates: q.diagram_coordinates, insertIndex: baseInsertIndex });
+        }
+        if (q.mcq_variant && q.mcq_variant.question) {
           const variant = q.mcq_variant;
           inserts.push({
             ...base,
-            question_type: "mcq",
+            question_type: 'mcq',
             question: variant.question.trim(),
-            option_a: variant.option_a || "",
-            option_b: variant.option_b || "",
-            option_c: variant.option_c || "",
-            option_d: variant.option_d || "",
-            answer: variant.answer || "",
+            option_a: variant.option_a || '',
+            option_b: variant.option_b || '',
+            option_c: variant.option_c || '',
+            option_d: variant.option_d || '',
+            answer: variant.answer || '',
           });
         }
-      }
-
-      if (q.has_diagram && q.diagram_coordinates) {
-        diagramTasks.push({
-          coordinates: q.diagram_coordinates,
-          questionIdx: idx,
-        });
       }
     }
 
     const { data: mainData, error: mainError } = await supabaseAdmin
-      .from("past_papers")
+      .from('past_papers')
       .insert(inserts)
       .select();
     if (mainError) throw mainError;
 
     for (const task of diagramTasks) {
-      const row = mainData[task.questionIdx];
-      if (row) {
-        const url = await cropAndUploadDiagram(
-          req.file.buffer,
-          task.coordinates,
-          req.file.mimetype,
-          row.id
-        );
-        if (url) {
-          await supabaseAdmin.from("past_papers").update({ image_url: url }).eq("id", row.id);
-        }
+      const row = mainData[task.insertIndex];
+      if (!row) continue;
+      const url = await cropAndUploadDiagram(imageBuffer, task.coordinates, req.file.mimetype, row.id);
+      if (url) {
+        await supabaseAdmin.from('past_papers').update({ image_url: url }).eq('id', row.id);
       }
     }
 
     res.json({ success: true, extracted: mainData.length, paper_id: paperId });
   } catch (err) {
-    console.error("Past paper extraction error:", err);
+    console.error('Past paper extraction error:', err);
     res.status(500).json({ error: err.message });
   }
 });
 
 // Generate similar questions
-app.post("/api/exam/generate-similar", requireAuth, async (req, res) => {
+app.post('/api/exam/generate-similar', requireAuth, async (req, res) => {
   const { pastQuestionId } = req.body;
   try {
     const { data: original, error } = await supabaseAdmin
-      .from("past_papers")
-      .select("*")
-      .eq("id", pastQuestionId)
+      .from('past_papers')
+      .select('*')
+      .eq('id', pastQuestionId)
       .single();
-    if (error || !original) return res.status(404).json({ error: "Past question not found" });
+    if (error || !original) return res.status(404).json({ error: 'Past question not found' });
 
-    const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
+    const model = genAI.getGenerativeModel({ model: 'gemini-flash-latest' });
     let prompt;
-    if (original.question_type === "mcq") {
+    if (original.question_type === 'mcq') {
       prompt = `You are an exam question generator for LUANAR. Take this past MCQ and create 5 new similar MCQs on the same topic. Return a JSON array of objects with fields: question, option_a, option_b, option_c, option_d, answer (correct option letter). Original question: "${original.question}" Options: A) ${original.option_a} B) ${original.option_b} C) ${original.option_c} D) ${original.option_d} Answer: ${original.answer} Topic: ${original.topic}`;
     } else {
       prompt = `You are an exam question generator for LUANAR. Take this past structured question and create 5 new similar structured questions on the same topic. Return a JSON array with fields: question, answer (model answer). Original question: "${original.question}" Model answer: "${original.answer}" Topic: ${original.topic}`;
     }
 
     const result = await model.generateContent(prompt);
-    let text = result.response.text().replace(/```json|```/g, "").trim();
+    let text = result.response.text().replace(/```json|```/g, '').trim();
 
     let generated;
     try {
       generated = JSON5.parse(text);
     } catch (parseErr) {
-      console.error("JSON5 parse error in generate-similar:", parseErr.message);
-      return res.status(500).json({ error: "Invalid JSON from AI: " + parseErr.message });
+      console.error('JSON5 parse error in generate-similar:', parseErr.message);
+      return res.status(500).json({ error: 'Invalid JSON from AI: ' + parseErr.message });
     }
 
     const inserts = generated.map(q => ({
       source_past_paper_id: original.id,
       question: q.question,
-      option_a: original.question_type === "mcq" ? (q.option_a || "") : "",
-      option_b: original.question_type === "mcq" ? (q.option_b || "") : "",
-      option_c: original.question_type === "mcq" ? (q.option_c || "") : "",
-      option_d: original.question_type === "mcq" ? (q.option_d || "") : "",
+      option_a: original.question_type === 'mcq' ? (q.option_a || '') : '',
+      option_b: original.question_type === 'mcq' ? (q.option_b || '') : '',
+      option_c: original.question_type === 'mcq' ? (q.option_c || '') : '',
+      option_d: original.question_type === 'mcq' ? (q.option_d || '') : '',
       answer: q.answer,
       course: original.course,
       topic: original.topic,
       question_type: original.question_type,
-      difficulty_stage: "learning"
+      difficulty_stage: 'learning'
     }));
 
-    const { data, error: insertErr } = await supabaseAdmin.from("generated_questions").insert(inserts).select();
+    const { data, error: insertErr } = await supabaseAdmin.from('generated_questions').insert(inserts).select();
     if (insertErr) throw insertErr;
 
     res.json({ success: true, count: data.length });
   } catch (err) {
-    console.error("Generate similar error:", err);
+    console.error('Generate similar error:', err);
     res.status(500).json({ error: err.message });
   }
 });
 
-// Adaptive quiz (FIXED: course name lookup)
-app.get("/api/exam/quiz", requireAuth, async (req, res) => {
-  const { mode = "learning", count = 10, preferred, courseId } = req.query;
+// Adaptive quiz
+app.get('/api/exam/quiz', requireAuth, async (req, res) => {
+  const { mode = 'learning', count = 10, preferred, courseId } = req.query;
   const userId = req.user.id;
 
   try {
     const now = new Date().toISOString();
 
-    // Look up course name from ID if provided
     let courseName = null;
     if (courseId) {
       const { data: courseData, error: courseErr } = await supabaseAdmin
@@ -792,16 +812,16 @@ app.get("/api/exam/quiz", requireAuth, async (req, res) => {
       }
     }
 
-    const weakTopicsResp = await supabaseAdmin.from("user_weak_topics").select("*").eq("user_id", userId);
+    const weakTopicsResp = await supabaseAdmin.from('user_weak_topics').select('*').eq('user_id', userId);
     const weakTopics = weakTopicsResp.data || [];
 
     async function fetchQuestions(table, typeFilter = null, limitCount = 10) {
-      let query = supabaseAdmin.from(table).select("*");
+      let query = supabaseAdmin.from(table).select('*');
       if (courseName) {
-        query = query.eq("course", courseName);
+        query = query.eq('course', courseName);
       }
       if (typeFilter) {
-        query = query.eq("question_type", typeFilter);
+        query = query.eq('question_type', typeFilter);
       }
       const { data: all } = await query.limit(limitCount * 2);
       return all || [];
@@ -809,32 +829,32 @@ app.get("/api/exam/quiz", requireAuth, async (req, res) => {
 
     let questionsPool = [];
 
-    if (mode === "exam") {
-      questionsPool = await fetchQuestions("past_papers", null, count);
-    } else if (mode === "auto") {
+    if (mode === 'exam') {
+      questionsPool = await fetchQuestions('past_papers', null, count);
+    } else if (mode === 'auto') {
       const mix = { mcq: Math.ceil(count * 0.4), structured: Math.ceil(count * 0.3), diagram: Math.ceil(count * 0.1) };
       let fetched = [];
       for (const [type, num] of Object.entries(mix)) {
         if (num === 0) continue;
-        let typeQuestions = await fetchQuestions("past_papers", type, num);
+        let typeQuestions = await fetchQuestions('past_papers', type, num);
         fetched.push(...typeQuestions);
       }
       questionsPool = fetched;
     } else {
       const typeFilter = (preferred && preferred !== 'all') ? preferred : null;
-      questionsPool = await fetchQuestions("past_papers", typeFilter, count);
+      questionsPool = await fetchQuestions('past_papers', typeFilter, count);
     }
 
     const { data: seenProgress } = await supabaseAdmin
-      .from("user_progress")
-      .select("question_id, question_type")
-      .eq("user_id", userId);
+      .from('user_progress')
+      .select('question_id, question_type')
+      .eq('user_id', userId);
     const seenIds = seenProgress.map(p => p.question_id);
     const dueProgress = await supabaseAdmin
-      .from("user_progress")
-      .select("question_id")
-      .eq("user_id", userId)
-      .lte("next_review", now);
+      .from('user_progress')
+      .select('question_id')
+      .eq('user_id', userId)
+      .lte('next_review', now);
     const dueIds = dueProgress.data.map(p => p.question_id);
 
     let unseen = [], due = [], other = [];
@@ -860,28 +880,28 @@ app.get("/api/exam/quiz", requireAuth, async (req, res) => {
     questionsPool = [...due, ...unseen, ...other].slice(0, count);
     res.json({ questions: questionsPool });
   } catch (err) {
-    console.error("Get quiz error:", err);
+    console.error('Get quiz error:', err);
     res.status(500).json({ error: err.message });
   }
 });
 
 // AI Grading endpoint
-app.post("/api/exam/grade", requireAuth, async (req, res) => {
+app.post('/api/exam/grade', requireAuth, async (req, res) => {
   const { questionText, correctAnswer, userAnswer } = req.body;
   if (!questionText || !correctAnswer || !userAnswer) {
-    return res.status(400).json({ error: "Missing required fields." });
+    return res.status(400).json({ error: 'Missing required fields.' });
   }
   try {
     const grading = await gradeStructuredAnswer(questionText, correctAnswer, userAnswer);
     res.json(grading);
   } catch (err) {
-    console.error("Grade error:", err);
+    console.error('Grade error:', err);
     res.status(500).json({ error: err.message });
   }
 });
 
 // Submit answer (with spaced repetition)
-app.post("/api/exam/submit-answer", requireAuth, async (req, res) => {
+app.post('/api/exam/submit-answer', requireAuth, async (req, res) => {
   const { questionId, questionType, correct, topic, userAnswer, questionText, correctAnswer, course } = req.body;
   const userId = req.user.id;
 
@@ -889,18 +909,18 @@ app.post("/api/exam/submit-answer", requireAuth, async (req, res) => {
     const now = new Date();
     let isCorrect = correct;
 
-    if (questionType !== "mcq" && userAnswer) {
+    if (questionType !== 'mcq' && userAnswer) {
       const grading = await gradeStructuredAnswer(questionText, correctAnswer, userAnswer);
       isCorrect = grading.correct;
       res.locals.explanation = grading.explanation;
     }
 
     const { data: progress } = await supabaseAdmin
-      .from("user_progress")
-      .select("*")
-      .eq("user_id", userId)
-      .eq("question_id", questionId)
-      .eq("question_type", questionType)
+      .from('user_progress')
+      .select('*')
+      .eq('user_id', userId)
+      .eq('question_id', questionId)
+      .eq('question_type', questionType)
       .maybeSingle();
 
     let repetitions, ease_factor, interval_days, next_review;
@@ -924,7 +944,7 @@ app.post("/api/exam/submit-answer", requireAuth, async (req, res) => {
       next_review = new Date(now.getTime() + interval_days * 24 * 60 * 60 * 1000);
 
       await supabaseAdmin
-        .from("user_progress")
+        .from('user_progress')
         .update({
           repetitions,
           ease_factor,
@@ -934,9 +954,9 @@ app.post("/api/exam/submit-answer", requireAuth, async (req, res) => {
           correct_count: progress.correct_count + (isCorrect ? 1 : 0),
           incorrect_count: progress.incorrect_count + (isCorrect ? 0 : 1),
         })
-        .eq("user_id", userId)
-        .eq("question_id", questionId)
-        .eq("question_type", questionType);
+        .eq('user_id', userId)
+        .eq('question_id', questionId)
+        .eq('question_type', questionType);
     } else {
       repetitions = isCorrect ? 1 : 0;
       interval_days = isCorrect ? 1 : 0;
@@ -945,7 +965,7 @@ app.post("/api/exam/submit-answer", requireAuth, async (req, res) => {
         ? new Date(now.getTime() + interval_days * 24 * 60 * 60 * 1000)
         : now;
 
-      await supabaseAdmin.from("user_progress").insert({
+      await supabaseAdmin.from('user_progress').insert({
         user_id: userId,
         question_id: questionId,
         question_type: questionType,
@@ -973,16 +993,16 @@ app.post("/api/exam/submit-answer", requireAuth, async (req, res) => {
 
     res.json(response);
   } catch (err) {
-    console.error("Submit answer error:", err);
+    console.error('Submit answer error:', err);
     res.status(500).json({ error: err.message });
   }
 });
 
 // AI explanation
-app.post("/api/exam/explain", requireAuth, async (req, res) => {
+app.post('/api/exam/explain', requireAuth, async (req, res) => {
   const { question, correctAnswer, userAnswer } = req.body;
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
+    const model = genAI.getGenerativeModel({ model: 'gemini-flash-latest' });
     const prompt = `A student answered a LUANAR exam question incorrectly.
 Question: "${question}"
 Correct Answer: "${correctAnswer}"
@@ -998,40 +1018,39 @@ Keep it concise.`;
     const result = await model.generateContent(prompt);
     res.json({ explanation: result.response.text() });
   } catch (err) {
-    console.error("Explain error:", err);
+    console.error('Explain error:', err);
     res.status(500).json({ error: err.message });
   }
 });
 
-// Stats endpoint (with improved readiness formula)
-app.get("/api/exam/stats", requireAuth, async (req, res) => {
+// Stats endpoint
+app.get('/api/exam/stats', requireAuth, async (req, res) => {
   const userId = req.user.id;
   try {
     const { count: totalAttempted } = await supabaseAdmin
-      .from("user_progress")
-      .select("*", { count: "exact", head: true })
-      .eq("user_id", userId);
+      .from('user_progress')
+      .select('*', { count: 'exact', head: true })
+      .eq('user_id', userId);
 
     const { data: weakTopics } = await supabaseAdmin
-      .from("user_weak_topics")
-      .select("*")
-      .eq("user_id", userId);
+      .from('user_weak_topics')
+      .select('*')
+      .eq('user_id', userId);
 
     const avgMastery = weakTopics.length
       ? weakTopics.reduce((sum, w) => sum + w.mastery, 0) / weakTopics.length
       : 0.5;
 
-    // Logistic saturation: readiness grows slowly with attempts
     const attemptsFactor = 1 - Math.exp(-(totalAttempted || 0) / 50);
     const rawScore = avgMastery * attemptsFactor;
     const confidence = Math.min(100, Math.round(rawScore * 100));
 
     const now = new Date().toISOString();
     const { count: dueCount } = await supabaseAdmin
-      .from("user_progress")
-      .select("*", { count: "exact", head: true })
-      .eq("user_id", userId)
-      .lte("next_review", now);
+      .from('user_progress')
+      .select('*', { count: 'exact', head: true })
+      .eq('user_id', userId)
+      .lte('next_review', now);
 
     res.json({
       totalAttempted: totalAttempted || 0,
@@ -1039,22 +1058,21 @@ app.get("/api/exam/stats", requireAuth, async (req, res) => {
       confidence,
       examReadiness:
         confidence >= 80
-          ? "Ready for Finals"
+          ? 'Ready for Finals'
           : confidence >= 60
-          ? "Getting There"
-          : "Needs Work",
+          ? 'Getting There'
+          : 'Needs Work',
       dueToday: dueCount || 0,
     });
   } catch (err) {
-    console.error("Stats error:", err);
+    console.error('Stats error:', err);
     res.status(500).json({ error: err.message });
   }
 });
 
-/* ======== Drawing Upload ======== */
+// Drawing upload
 const uploadDrawing = multer({ storage: multer.memoryStorage() });
-
-app.post("/api/upload-drawing", requireAuth, uploadDrawing.single('image'), async (req, res) => {
+app.post('/api/upload-drawing', requireAuth, uploadDrawing.single('image'), async (req, res) => {
   try {
     const { questionId } = req.body;
     const file = req.file;
@@ -1087,20 +1105,14 @@ app.post("/api/upload-drawing", requireAuth, uploadDrawing.single('image'), asyn
   }
 });
 
-
-
-
-
-
-// ===== STUDYBOT – Gemini‑powered chat =====
-app.post("/api/studybot/chat", requireAuth, async (req, res) => {
+// ===== STUDYBOT – Legacy Gemini chat =====
+app.post('/api/studybot/chat', requireAuth, async (req, res) => {
   const { messages, userName, userSubject } = req.body;
 
   if (!messages || !Array.isArray(messages)) {
-    return res.status(400).json({ error: "Messages array required." });
+    return res.status(400).json({ error: 'Messages array required.' });
   }
 
-  // Personalised system prompt
   let systemPrompt = `You are StudyBot, a friendly and knowledgeable AI tutor for university students.`;
   if (userName) {
     systemPrompt += ` The student you are speaking to is named ${userName}.`;
@@ -1118,36 +1130,32 @@ app.post("/api/studybot/chat", requireAuth, async (req, res) => {
 - Cite sources or suggest further reading when helpful
 Always be encouraging, patient, and supportive. Keep answers focused and student-friendly.`;
 
-try {
-  const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
+  try {
+    const model = genAI.getGenerativeModel({ model: 'gemini-flash-latest' });
 
-  const contents = [
-    { role: "user", parts: [{ text: systemPrompt }] },
-    { role: "model", parts: [{ text: "Understood! I am StudyBot, ready to help you." }] },
-    ...messages.map(m => ({
-      role: m.role === "user" ? "user" : "model",
-      parts: [{ text: m.text }],
-    })),
-  ];
+    const contents = [
+      { role: 'user', parts: [{ text: systemPrompt }] },
+      { role: 'model', parts: [{ text: 'Understood! I am StudyBot, ready to help you.' }] },
+      ...messages.map(m => ({
+        role: m.role === 'user' ? 'user' : 'model',
+        parts: [{ text: m.text }],
+      })),
+    ];
 
-  const result = await model.generateContent({
-    contents,
-    generationConfig: { temperature: 0.7, maxOutputTokens: 1024 },
-  });
+    const result = await model.generateContent({
+      contents,
+      generationConfig: { temperature: 0.7, maxOutputTokens: 1024 },
+    });
 
-  const reply = result.response.text();
-  res.json({ reply });
-} catch (err) {
-  console.error("StudyBot Gemini error:", err);
-  res.status(500).json({ error: "AI service error: " + err.message });
-}
-
+    const reply = result.response.text();
+    res.json({ reply });
+  } catch (err) {
+    console.error('StudyBot Gemini error:', err);
+    res.status(500).json({ error: 'AI service error: ' + err.message });
+  }
 });
-/* ======== END ======== */
-// ===== STUDYBOT 2.0 – Course‑aware, streaming chat with session history =====
-// ===== STUDYBOT 2.0 – Fast, structured, course‑aware, streaming chat with session history =====
 
-const rateLimit = require('express-rate-limit');
+// ===== STUDYBOT 2.0 – Streaming Chat with Session History =====
 
 // In‑memory context cache (TTL 60s)
 const contextCache = new Map();
@@ -1160,12 +1168,10 @@ function setCachedContext(userId, data) {
   contextCache.set(userId, { data, timestamp: Date.now() });
 }
 
-// ----- Robust context fetch -----
 async function getStudentContext(userId) {
   const cached = getCachedContext(userId);
   if (cached) return cached;
 
-  // 1. Profile – now includes streak, quiz stats, daily_counts
   const { data: profile, error: profileErr } = await supabaseAdmin
     .from('profiles')
     .select(
@@ -1176,7 +1182,6 @@ async function getStudentContext(userId) {
 
   if (profileErr) console.error('Profile fetch error:', profileErr);
 
-  // 2. Courses
   let courses = [];
   try {
     const { data: coursesData } = await supabaseAdmin
@@ -1186,7 +1191,6 @@ async function getStudentContext(userId) {
     courses = (coursesData || []).map(c => c.course_name);
   } catch (e) {}
 
-  // 3. Weaknesses (already exists)
   let weaknesses = [];
   try {
     const { data: wData } = await supabaseAdmin
@@ -1194,7 +1198,7 @@ async function getStudentContext(userId) {
       .select('topic, mastery, course')
       .eq('user_id', userId)
       .order('mastery', { ascending: true })
-      .limit(5); // weakest first
+      .limit(5);
     weaknesses = (wData || []).map(w => ({
       topic: w.topic,
       mastery: w.mastery,
@@ -1202,7 +1206,6 @@ async function getStudentContext(userId) {
     }));
   } catch (e) {}
 
-  // 4. Strengths – derive from weak topics with mastery > 0.8 (or you can create a new table)
   let strengths = [];
   try {
     const { data: strongTopics } = await supabaseAdmin
@@ -1215,7 +1218,6 @@ async function getStudentContext(userId) {
     strengths = (strongTopics || []).map(s => s.topic);
   } catch (e) {}
 
-  // 5. Recent activity – from quiz_sessions (last 5) + today’s count from daily_counts
   let recentActivity = '';
   try {
     const { data: recentSessions } = await supabaseAdmin
@@ -1235,9 +1237,8 @@ async function getStudentContext(userId) {
       recentActivity = `Last quiz: ${lastSession.percentage || lastSession.score}% on ${new Date(lastSession.completed_at).toLocaleDateString()}. ${sessionsToday} quiz(zes) today.`;
     }
 
-    // Bonus: daily_counts JSONB might have today's count already
     if (profile?.daily_counts) {
-      const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+      const today = new Date().toISOString().split('T')[0];
       const todayCount = profile.daily_counts[today] || 0;
       if (todayCount > 0) {
         recentActivity += ` Today's question count: ${todayCount}.`;
@@ -1245,16 +1246,10 @@ async function getStudentContext(userId) {
     }
   } catch (e) {}
 
-  // 6. Upcoming exams – no table, skip. (If you add later, adjust.)
-  const upcomingExams = []; // placeholder
-
-  // 7. Study streak (from profile)
+  const upcomingExams = [];
   const studyStreak = profile?.streak || 0;
+  const preferredExplanationStyle = 'standard';
 
-  // 8. Preferred explanation style – not stored, default to 'standard'
-  const preferredExplanationStyle = 'standard'; // Could be added to profiles later
-
-  // 9. Past paper summaries (keep as is, or reduce)
   let paperSummaries = '';
   if (courses.length > 0) {
     try {
@@ -1281,7 +1276,7 @@ async function getStudentContext(userId) {
     upcomingExams,
     studyStreak,
     preferredExplanationStyle,
-    paperSummaries,     // still available but consider removing for token savings
+    paperSummaries,
     quizzesCompleted: profile?.quizzes_completed || 0,
     accuracyRate: profile?.accuracy_rate || 0,
     totalQuestions: profile?.total_questions || 0,
@@ -1294,143 +1289,263 @@ async function getStudentContext(userId) {
   return ctx;
 }
 
-// ----- Sanitise dynamic text to prevent prompt injection -----
 function safe(str) {
   if (!str) return '';
   return str.replace(/\n/g, ' ').replace(/\r/g, '');
 }
 
-// ----- Build the system instruction with formatting guidance -----
 function buildSystemPrompt(context) {
   const {
-    name, program, semester, yearOfStudy, courses, weaknesses, strengths,
-    recentActivity, upcomingExams, studyStreak, preferredExplanationStyle,
-    quizzesCompleted, accuracyRate, totalQuestions, totalCorrect, badges,
+    name,
+    program,
+    semester,
+    yearOfStudy,
+    courses,
+    weaknesses,
+    strengths,
+    recentActivity,
+    upcomingExams,
+    studyStreak,
+    preferredExplanationStyle,
+    quizzesCompleted,
+    accuracyRate,
+    totalQuestions,
+    totalCorrect,
+    badges,
     paperSummaries
   } = context;
 
-  const s = (str) => (str || '').replace(/\n/g, ' ').replace(/\r/g, '');
+  const s = (v) => (v || "").toString().replace(/\n/g, " ").trim();
 
-  const profileLines = [];
-  if (name) profileLines.push(`Name: ${s(name)}`);
-  if (program) profileLines.push(`Program: ${s(program)}`);
-  if (semester) profileLines.push(`Semester: ${semester}`);
-  if (yearOfStudy) profileLines.push(`Year of Study: ${yearOfStudy}`);
-  if (courses.length) profileLines.push(`Current Courses:\n${courses.map(c => `- ${s(c)}`).join('\n')}`);
-  if (weaknesses.length) {
-    const weakList = weaknesses.map(w => `- ${s(w.topic)} (mastery: ${Math.round(w.mastery*100)}%)`).join('\n');
-    profileLines.push(`Weak Areas:\n${weakList}`);
-  }
-  if (strengths.length) profileLines.push(`Strengths:\n${strengths.map(st => `- ${s(st)}`).join('\n')}`);
-  if (recentActivity) profileLines.push(`Recent Activity: ${recentActivity}`);
-  if (studyStreak) profileLines.push(`Study Streak: ${studyStreak} days`);
-  if (upcomingExams.length) {
-    const examLines = upcomingExams.map(e => `- ${s(e.course)} in ${e.daysLeft} days`).join('\n');
-    profileLines.push(`Upcoming Exams:\n${examLines}`);
-  }
-  if (badges && badges.length) profileLines.push(`Badges: ${badges.join(', ')}`);
-  if (accuracyRate) profileLines.push(`Quiz Accuracy: ${accuracyRate}% (${totalCorrect}/${totalQuestions} correct)`);
-  if (preferredExplanationStyle && preferredExplanationStyle !== 'standard') {
-    profileLines.push(`Preferred Explanation Style: ${s(preferredExplanationStyle)}`);
-  }
+  const profile = [];
 
-  const profileBlock = profileLines.join('\n');
+  if (name) profile.push(`• Name: ${s(name)}`);
+  if (program) profile.push(`• Programme: ${s(program)} (Year ${yearOfStudy || "Unknown"}, Semester ${semester || "Unknown"})`);
+  if (courses?.length) profile.push(`• Current Courses: ${courses.map(s).join(", ")}`);
+  if (strengths?.length) profile.push(`• Strong Areas: ${strengths.join(", ")}`);
+  if (weaknesses?.length) profile.push(`• Areas Needing Practice: ${weaknesses.map(w => `${w.topic} (${Math.round(w.mastery * 100)}% mastery)`).join(", ")}`);
+  if (accuracyRate != null) profile.push(`• Quiz Accuracy: ${Math.round(accuracyRate * 100)}% (${totalCorrect || 0}/${totalQuestions || 0})`);
+  if (studyStreak) profile.push(`• Current Study Streak: ${studyStreak} days`);
+  if (badges?.length) profile.push(`• Achievements: ${badges.join(", ")}`);
+  if (upcomingExams?.length) profile.push(`• Upcoming Exams: ${upcomingExams.map(e => `${e.course} (${e.daysLeft} days)`).join(", ")}`);
 
-  const prompt = `You are Luna, the personal AI study mentor inside StudyHub.
+  return `
+=========================================
+STUDYHUB LUNA SYSTEM PROMPT
+=========================================
 
-**Your Personality:**
-- Warm, patient, and genuinely invested in the student's success.
-- Speak naturally and confidently—like a friendly senior tutor, not customer support.
-- Use a conversational tone. Avoid robotic or encyclopaedic language.
+IDENTITY
 
-**Your Core Behavior:**
-- Answer the question the student actually asked.
-- Explain concepts at the level the student's question suggests.
-- Start simple and expand only if the student asks for more detail.
-- Never try to teach an entire chapter in one response. Treat learning as a conversation.
-- Use progressive disclosure: give the minimum useful answer first, then offer to go deeper.
+You are Luna, the AI Study Mentor inside StudyHub.
+You are not customer support.
+You are not a search engine.
+You are an experienced academic mentor whose mission is to help students genuinely understand what they are learning.
+Your success is measured by whether the student understands—not by how quickly you answer.
+Your personality should feel like an intelligent senior student who enjoys teaching.
+Warm. Natural. Patient. Honest. Curious. Confident. Professional but approachable.
+Never sound robotic. Never overuse emojis. Never use unnecessary filler.
 
------
+-----------------------------------------
+PRIMARY MISSION
+Your goal is to help students
+• understand concepts deeply
+• prepare for exams
+• solve problems
+• improve confidence
+• become independent learners
 
-**Student Context (provided automatically):**
-${profileBlock}
+Always teach instead of merely giving answers.
+Whenever appropriate explain
+• why
+• how
+• when
+• where it is applied
+• common mistakes
 
-${paperSummaries ? `Relevant past paper context for courses:\n${paperSummaries}` : ''}
------
+-----------------------------------------
+STUDENT PROFILE
+${profile.join("\n")}
 
-**RESPONSE FORMAT — follow these exactly:**
+${paperSummaries ? `
+PAST PAPER KNOWLEDGE
+${paperSummaries}
+` : ""}
 
-**Structure your response in this order:**
-1. **Direct answer** — 1–3 sentences that answer exactly what was asked.
-2. **Brief explanation** — only if needed. Keep it tight.
-3. **Example** — one concrete example, only when it genuinely aids understanding.
-4. **Next step** — one optional follow-up question or suggestion, only when it feels natural.
+-----------------------------------------
+PERSONALISATION
+Use the student's profile naturally.
+If the student is strong in an area, connect new ideas to that strength.
+If they struggle in an area, slow down and explain more carefully.
+If exams are approaching, focus on revision and exam techniques.
+If they have a study streak, encourage consistency without sounding repetitive.
+Never force personal information into every response.
 
-Never pad. Never summarise what you just said. Never list things that belong in prose.
+-----------------------------------------
+READABILITY RULES (VERY IMPORTANT)
+Your responses will primarily be read on mobile devices.
+Optimise every response for effortless reading.
+Rules:
+• Paragraphs must never exceed 3 sentences.
+• Prefer 1–2 sentence paragraphs whenever possible.
+• Never produce large walls of text.
+• Insert blank lines between ideas.
+• Use headings for topics.
+• Use bullet lists when listing concepts.
+• Use numbered steps for procedures.
+• Keep sentences concise.
+• Every response should feel skimmable within 5 seconds.
+If a response becomes long:
+Break it into clearly labelled sections instead of writing long continuous paragraphs.
+Before sending a response, ask yourself:
+"Could a tired student read this comfortably on a phone?"
+If not, rewrite it.
 
----
+SCROLLING RULE
+Avoid making students scroll through unnecessary text.
+Prefer:
+Short explanation
+↓
+Example
+↓
+Key takeaway
 
-**Length by question type:**
+instead of five long paragraphs.
+Every sentence should either
+• answer the question
+• teach something useful
+• prepare the student for the next idea
+Remove everything else.
 
-| Type | Target |
-|---|---|
-| Definition / quick check | 20–80 words |
-| Normal question | 80–180 words |
-| "Explain" / "How does…" / multi-step | 180–350 words |
-| Detailed notes / full lesson / revision (explicit request only) | 350+ words |
+-----------------------------------------
+ADAPTIVE TEACHING
+Before answering, silently determine what the student actually needs.
+Possible intentions include
+• understanding a concept
+• solving homework
+• preparing for exams
+• revising
+• summarising notes
+• generating quiz questions
+• checking understanding
+Adapt automatically.
 
----
+Examples
+Concept learning → explain deeply
+Exam preparation → concise, marks-oriented
+Homework → guide before giving answers
+Revision → summaries, flashcards, recall questions
+Quick question → direct answer first
 
-**Formatting rules:**
+-----------------------------------------
+EXPLANATION STYLE
+Follow the student's preferred explanation style: ${preferredExplanationStyle || "Balanced"}
+If they appear confused, simplify.
+If they request detail, go deeper.
+If they request beginner explanations, avoid jargon.
+If they request technical depth, use correct terminology while still explaining it.
 
-- **Short answers (< 150 words):** plain paragraphs only — no headings, no bullet lists.
-- **Medium answers (150–350 words):** short paragraphs; bullets only where a list genuinely beats prose.
-- **Long answers (350+ words):** use \`##\` headings to chunk; numbered steps for procedures; bullets for true lists.
-- **Code:** triple backticks with language name.
-- **Math:** \`\\(...\\)\` inline · \`$$...$$\` for block equations.
-- Never cut off mid-sentence. Wrap up gracefully if truncated.
+-----------------------------------------
+STANDARD RESPONSE STRUCTURE
+Unless another format is clearly better, respond using this flow.
+1. Direct Answer – Answer the question immediately. Never hide the answer.
+2. Explanation – Teach the reasoning step by step.
+3. Example – Use practical examples. Prefer examples related to engineering, agriculture, science, technology, or everyday life.
+4. Key Takeaway – Summarise the most important idea.
+5. Next Step – Offer one useful continuation.
+Examples: "Want a worked example?" "Would you like an exam-style question?" "Want a quick quiz?"
 
-**Avoid these formatting anti-patterns:**
-- ❌ Opening with "Sure!" / "Great question!" / "Of course!"
-- ❌ Bullet-ising everything — prose is often clearer.
-- ❌ Restating the question before answering it.
-- ❌ Closing every message with a question.
-- ❌ Using bold text inside sentences just for decoration.
+-----------------------------------------
+TEACHING PRINCIPLES
+Always
+Define unfamiliar words.
+Explain symbols.
+Explain equations.
+Explain units.
+Compare similar concepts.
+Break difficult ideas into smaller pieces.
+Use analogies.
+Use mnemonics when useful.
+Connect ideas together.
+Encourage thinking instead of memorisation.
 
----
+-----------------------------------------
+EXAM SUPPORT
+Whenever appropriate include
+Common mistakes
+Exam tips
+Likely examiner expectations
+Memory tricks
+Revision advice
+Important definitions
+Likely questions
 
-**Active Learning (gentle):**
-When natural — not forced — include a short recall question, a micro-quiz prompt, or a flashcard suggestion.
+-----------------------------------------
+MATHEMATICS
+When solving maths, show the reasoning clearly.
+Present calculations one step at a time.
+Explain why each step is performed.
+Never skip directly to the answer unless requested.
 
-**Handling Emotion:**
-If the student expresses frustration or anxiety, acknowledge their feelings first. Then offer support. Do not jump straight into explanations.
+-----------------------------------------
+PROGRAMMING
+When teaching code, explain
+• what the code does
+• why it works
+• common mistakes
+• improvements
+Keep code clean and readable.
 
-**Observant, Not Creepy:**
-When referencing past activity, phrase it naturally:
-- ❌ "I know you love Hydrology."
-- ✅ "I noticed you've been spending time on Hydrology recently."
+-----------------------------------------
+FORMATTING
+Optimise for mobile reading.
+Use
+Short paragraphs
+Headings
+Bullet points
+Numbered steps
+Tables when comparing
+Bold only important terms.
+Avoid giant walls of text.
 
-**Personalised Greetings (first message of a session only):**
-Open with a warm, specific greeting that mentions the student’s name, program, and at least one course.
-For example: *"Welcome back, Joel! I'm Luna, your study mentor for Irrigation Engineering. I see you're studying Hydrology, Irrigation Design, and more – ready to dive in?"*
-Always tailor the greeting to the student’s actual profile data.
+-----------------------------------------
+CONVERSATION
+Maintain context naturally.
+Do not restart explanations unnecessarily.
+Remember what has already been discussed in the current conversation.
+Build upon previous answers.
 
----
+-----------------------------------------
+HONESTY
+Never invent facts.
+If uncertain, say so.
+If important information is missing, ask one clear follow-up question.
 
-**Reasoning checklist (do this silently before every reply):**
-1. What is the student actually asking?
-2. Simple or complex request?
-3. What is the shortest answer that fully satisfies the question?
-4. Does an example genuinely help here?
-5. Does this response need a follow-up nudge, or should I just stop?
+-----------------------------------------
+EMOTIONAL INTELLIGENCE
+If a student is frustrated, acknowledge it briefly.
+Remain encouraging.
+Never shame them.
+Never exaggerate praise.
+Support progress realistically.
 
-You are Luna. Now respond to the student.`;
+-----------------------------------------
+QUALITY CHECK
+Before every response silently verify
+✓ Did I answer the actual question?
+✓ Is the answer easy to read?
+✓ Did I teach instead of only answering?
+✓ Is the explanation appropriate for this student's level?
+✓ Would this help in an exam?
+✓ Is there unnecessary information I should remove?
 
-  return prompt;
+-----------------------------------------
+You are Luna.
+Your purpose is not simply to answer questions.
+Your purpose is to help students learn, think, remember, and succeed.
+`;
 }
-// ============ Routes ============
 
-// GET /api/chat/sessions – list user's sessions
+// Chat sessions
 app.get('/api/chat/sessions', requireAuth, async (req, res) => {
   try {
     const { data, error } = await supabaseAdmin
@@ -1447,7 +1562,6 @@ app.get('/api/chat/sessions', requireAuth, async (req, res) => {
   }
 });
 
-// POST /api/chat/sessions – create a new session
 app.post('/api/chat/sessions', requireAuth, async (req, res) => {
   try {
     const { title } = req.body;
@@ -1468,10 +1582,8 @@ app.post('/api/chat/sessions', requireAuth, async (req, res) => {
   }
 });
 
-// GET /api/chat/sessions/:id/messages – load messages for a session
 app.get('/api/chat/sessions/:id/messages', requireAuth, async (req, res) => {
   try {
-    // Verify ownership
     const { data: session } = await supabaseAdmin
       .from('chat_sessions')
       .select('id')
@@ -1495,7 +1607,6 @@ app.get('/api/chat/sessions/:id/messages', requireAuth, async (req, res) => {
   }
 });
 
-// DELETE /api/chat/sessions/:id
 app.delete('/api/chat/sessions/:id', requireAuth, async (req, res) => {
   try {
     const { error } = await supabaseAdmin
@@ -1512,14 +1623,12 @@ app.delete('/api/chat/sessions/:id', requireAuth, async (req, res) => {
   }
 });
 
-// Rate limiter for the streaming chat endpoint
 const chatLimiter = rateLimit({
-  windowMs: 60 * 1000,       // 1 minute
-  max: 15,                   // 15 requests per minute per IP (adjust as needed)
+  windowMs: 60 * 1000,
+  max: 15,
   message: { error: 'Too many messages, please slow down.' },
 });
 
-// POST /api/chat/sessions/:id/messages – stream a response (fast & structured)
 app.post('/api/chat/sessions/:id/messages', requireAuth, chatLimiter, async (req, res) => {
   const { message } = req.body;
   if (!message) return res.status(400).json({ error: 'Message text required.' });
@@ -1527,7 +1636,6 @@ app.post('/api/chat/sessions/:id/messages', requireAuth, chatLimiter, async (req
   const sessionId = req.params.id;
   const userId = req.user.id;
 
-  // 1. Verify session ownership
   const { data: session } = await supabaseAdmin
     .from('chat_sessions')
     .select('id, title')
@@ -1538,8 +1646,7 @@ app.post('/api/chat/sessions/:id/messages', requireAuth, chatLimiter, async (req
   if (!session) return res.status(404).json({ error: 'Session not found.' });
 
   try {
-    // 2. Save user message immediately
-    const { error: msgErr } = await supabaseAdmin
+    await supabaseAdmin
       .from('chat_messages')
       .insert({
         session_id: sessionId,
@@ -1547,13 +1654,9 @@ app.post('/api/chat/sessions/:id/messages', requireAuth, chatLimiter, async (req
         content: message,
       });
 
-    if (msgErr) throw msgErr;
-
-    // 3. Build context & system message (cached)
     const context = await getStudentContext(userId);
     const systemContent = buildSystemPrompt(context);
 
-    // 4. Fetch recent history (last 20 messages)
     const { data: history } = await supabaseAdmin
       .from('chat_messages')
       .select('role, content')
@@ -1563,7 +1666,6 @@ app.post('/api/chat/sessions/:id/messages', requireAuth, chatLimiter, async (req
     const MAX_HISTORY = 20;
     const recentHistory = (history || []).slice(-MAX_HISTORY);
 
-    // 5. Prepare messages for Groq (system + history)
     const messages = [
       { role: 'system', content: systemContent },
       ...recentHistory.map(m => ({
@@ -1572,7 +1674,6 @@ app.post('/api/chat/sessions/:id/messages', requireAuth, chatLimiter, async (req
       })),
     ];
 
-    // 6. Set SSE headers
     res.writeHead(200, {
       'Content-Type': 'text/event-stream',
       'Cache-Control': 'no-cache',
@@ -1580,9 +1681,8 @@ app.post('/api/chat/sessions/:id/messages', requireAuth, chatLimiter, async (req
       'X-Accel-Buffering': 'no',
     });
 
-    // 7. Stream from Groq (Llama 3.1 70B – fast, high quality)
     const stream = await groq.chat.completions.create({
-     model: 'llama-3.3-70b-versatile',
+      model: 'llama-3.3-70b-versatile',
       messages,
       temperature: 0.7,
       max_tokens: 4096,
@@ -1598,7 +1698,6 @@ app.post('/api/chat/sessions/:id/messages', requireAuth, chatLimiter, async (req
       }
     }
 
-    // 8. Save assistant message
     await supabaseAdmin
       .from('chat_messages')
       .insert({
@@ -1607,7 +1706,6 @@ app.post('/api/chat/sessions/:id/messages', requireAuth, chatLimiter, async (req
         content: fullResponse,
       });
 
-    // 9. Update session title
     if (session.title === 'New chat') {
       const newTitle = message.substring(0, 50) + (message.length > 50 ? '...' : '');
       await supabaseAdmin
@@ -1634,6 +1732,328 @@ app.post('/api/chat/sessions/:id/messages', requireAuth, chatLimiter, async (req
   }
 });
 
-// ===== END STUDYBOT 2.0 =====
+// ===== FILE PROXY ROUTE (NEW, secure) =====
+const fileProxyRouter = express.Router();
+
+fileProxyRouter.get('/', requireAuth, async (req, res) => {
+  const { url } = req.query;
+  if (!url) return res.status(400).json({ error: 'Missing file URL' });
+
+  try {
+    const headers = {};
+    if (req.user.googleAccessToken) {
+      headers['Authorization'] = `Bearer ${req.user.googleAccessToken}`;
+    }
+
+    const response = await fetch(url, { headers });
+    if (!response.ok) {
+      const text = await response.text();
+      if (text.includes('accounts.google.com')) {
+        return res.status(401).json({ error: 'Drive authentication required.' });
+      }
+      return res.status(response.status).json({ error: 'Failed to fetch file' });
+    }
+
+    const contentType = response.headers.get('content-type') || 'application/octet-stream';
+    res.setHeader('Content-Type', contentType);
+    res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    response.body.pipe(res);
+  } catch (err) {
+    console.error('File proxy error:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.use('/api/file-proxy', fileProxyRouter);
+
+// ===== LUNA STUDY ASSISTANT ROUTE (NEW) =====
+const lunaRouter = express.Router();
+
+const lunaUsage = new Map();
+const MAX_QUESTIONS_PER_DOC = 30;
+
+function isGeneralQuestion(question) {
+  const greetingPatterns =
+    /^(hi|hello|hey|good (morning|afternoon|evening)|how are you|what('s| is) your name|who are you)\b/i;
+  const docKeywords =
+    /(page|slide|document|notes|text|explain|this|here|chapter|section|figure|table|above|below)/i;
+
+  const lowerQ = question.toLowerCase();
+  if (greetingPatterns.test(lowerQ)) return true;
+  if (question.length < 15 && !docKeywords.test(lowerQ)) return true;
+  return false;
+}
+
+function getSystemPrompt(mode) {
+  const identity = `
+## Identity & Personality
+
+You are Luna, the personal AI tutor inside StudyHub.
+You help students understand—not just get answers.
+You explain ideas clearly, patiently, and confidently.
+You adapt your teaching style to each student's level of understanding.
+You never sound robotic. You never sound like customer support.
+You sound like an excellent university tutor sitting beside the student, working through the material together.
+You encourage curiosity and confidence. You celebrate progress without excessive praise.
+Every response should help the student think more deeply than before.
+  `.trim();
+
+  const teachingPhilosophy = `
+## Teaching Philosophy
+
+1. **Start simple** – Give the easiest possible explanation first.
+2. **Explain why it matters** – Connect the concept to something the student already cares about.
+3. **Use an everyday analogy** – Whenever possible, ground the idea in real life.
+4. **Connect back to the course** – Show how it fits into the student's current study material.
+5. **Reveal technical details** – Only after the foundation is clear, introduce precise terminology.
+
+Never jump straight into jargon.
+  `.trim();
+
+  const responseFlow = `
+## Internal Response Flow
+
+Before you write your final answer, mentally follow this sequence:
+
+1. **Interpret the student's real need** – Are they stuck, curious, or just verifying?
+2. **Answer clearly** – Give a direct, accurate answer first.
+3. **Explain the reasoning** – Show *why* the answer makes sense.
+4. **Provide an example** – Concrete examples solidify understanding.
+5. **Mention a common mistake** – Preempt confusion.
+6. **End with a natural follow‑up** – A question, a challenge, or a related idea (see Follow‑up Rules).
+  `.trim();
+
+  const adaptiveness = `
+## Adapt to the Student's Level
+
+- If the student seems **confused**:
+  • Use simpler language.
+  • Break ideas into small steps.
+  • Avoid jargon unless you define it immediately.
+
+- If the student shows **understanding**:
+  • Increase depth.
+  • Introduce technical vocabulary naturally.
+  • Connect multiple concepts together.
+  • Do not repeat basic explanations unless asked.
+  `.trim();
+
+  const memoryAwareness = `
+## Memory & Continuity
+
+You have access to the conversation history.
+- Never repeat information you've already explained, unless the student asks for a recap.
+- Build on previous explanations.
+- Refer back to earlier concepts using phrases like "Remember when we talked about X…"
+- Maintain a continuous thread throughout the study session.
+  `.trim();
+
+  const contextPriority = `
+## Context Priority
+
+When formulating an answer, use information in this order:
+
+1. The **current page** the student is viewing.
+2. **Nearby pages** (previous and next).
+3. **Earlier document summaries** (if available in context).
+4. **Previous conversation turns**.
+5. **Your own general knowledge** – only when necessary.
+
+**Important:** If you must use general knowledge not present in the provided notes, begin your answer with:
+"That isn't covered in your notes, but I can explain it using what I know: …"
+  `.trim();
+
+  const handlingNoContext = `
+## Handling Questions Without Document Context
+
+If the user's question is clearly **not** about the current page or any part of the document:
+- Ignore the page text entirely.
+- Respond as a knowledgeable, friendly tutor using your own training data.
+- You may mention that you're answering from general knowledge, but do so naturally.
+- Keep the same teaching philosophy, tone, and formatting.
+- If you think the student might be confused, gently guide them back to the study material.
+  `.trim();
+
+  const formatting = `
+## Response Presentation (Mobile‑First)
+
+Design every response for **full‑screen reading on a phone**.
+
+- Use **generous spacing** – short paragraphs, blank lines between ideas.
+- **Paragraphs**: maximum 3–4 lines on a mobile screen. Never produce walls of text.
+- **Headings**: use descriptive section titles (e.g., "The Core Idea", "Why This Matters") only when they improve readability.
+- **Bold**: highlight key terms, important takeaways, and action verbs.
+- **Lists**: use bullet points for related ideas, numbered steps for processes.
+- **Tables**: use markdown tables when comparing multiple items or contrasting concepts.
+- **Definitions**: present the term in bold first, then the explanation on a new line.
+- Responses should feel like **beautifully formatted study notes**, not chat bubbles.
+
+Avoid unnecessary markdown. If a concept can be explained clearly in a single paragraph, don't force a list.
+  `.trim();
+
+  const qualityRules = `
+## Response Quality Rules
+
+- **No filler.** Every sentence must add value.
+- **Don't repeat the student's question** as a heading.
+- **Avoid generic AI phrases** like "It is important to note that…"
+- **Don't overexplain** simple yes/no or factual questions.
+- **Clarity over length.** Short, clear sentences always win.
+- **Use contractions** ("you're", "it's") to sound human, but keep the tone professional.
+  `.trim();
+
+  const followUpRules = `
+## Follow‑up Suggestions
+
+- When appropriate, end your response with 1–3 **useful follow‑up questions** based on the current topic.
+- Only suggest questions that genuinely extend the student's understanding.
+- Do not repeat the same suggestions across different turns.
+- If the student just received a long explanation, offer a simpler "Quick recap" instead of new questions.
+- Prefer suggestions that invite the student to **apply** what they've learned, not just recall.
+  `.trim();
+
+  let modeInstructions = '';
+
+  if (mode === 'teach') {
+    modeInstructions = `
+## Mode: Teach Me (Socratic Tutor)
+
+You are in a dedicated teaching session. Your goal is not to give answers, but to guide the student to understanding.
+
+**Lesson Framework:**
+1. **Introduce the idea simply** – use an analogy or everyday example.
+2. **Explain why it matters** – connect to the student's goals.
+3. **Check understanding** – ask one thoughtful, non‑trivial question before revealing the full explanation.
+4. **Respond to the student's answer**:
+   - If correct: affirm and add deeper nuance.
+   - If incorrect: gently correct. Say "That's a common thought, but let's look at [concept] again. What if…?"
+5. **Increase difficulty gradually** – start with foundation, then challenge.
+6. **End with a practical challenge** – a problem, a scenario, or a "Real‑world Challenge" that solidifies the concept.
+
+Never give the complete answer immediately if the student is trying to learn.
+If the student asks for a direct answer, acknowledge their request but still include a learning check.
+    `.trim();
+  } else {
+    modeInstructions = `
+## Mode: Assist (Direct Helper)
+
+You are in direct‑help mode. Provide clear, concise, and highly accurate answers based on the provided text.
+
+- If the answer is contained in the notes, synthesize it elegantly.
+- If the answer spans multiple pages, weave them together.
+- If the answer is **not** in the notes, say: "That isn't covered in this section of your notes. Would you like me to explain it using my general knowledge instead?"
+- End every answer with a small "You could also ask:" block, containing 2–3 relevant suggestions that go deeper or broaden the context.
+    `.trim();
+  }
+
+  return [
+    identity,
+    teachingPhilosophy,
+    responseFlow,
+    adaptiveness,
+    memoryAwareness,
+    contextPriority,
+    handlingNoContext,
+    formatting,
+    qualityRules,
+    followUpRules,
+    modeInstructions,
+  ].join('\n\n');
+}
+
+lunaRouter.post('/chat', requireAuth, async (req, res) => {
+  const { fileId, pageNumber, pageText, question, history, mode = 'assist' } = req.body;
+
+  if (!fileId || !question) {
+    return res.status(400).json({ error: 'Missing fileId or question' });
+  }
+
+  const userId = req.user.id;
+  const usageKey = `${userId}:${fileId}`;
+  const today = new Date().toDateString();
+
+  const usage = lunaUsage.get(usageKey);
+  if (usage && usage.date === today && usage.count >= MAX_QUESTIONS_PER_DOC) {
+    return res.status(429).json({ error: `Daily limit of ${MAX_QUESTIONS_PER_DOC} reached.` });
+  }
+
+  try {
+    const useContext = !isGeneralQuestion(question);
+    const contextToSend = useContext ? pageText : null;
+
+    const systemPrompt = getSystemPrompt(mode);
+
+    let userPrompt;
+    if (contextToSend) {
+      userPrompt = `
+CONTEXT WINDOW (Previous, Current, and Next Page):
+---
+${pageText}
+---
+STUDENT'S CURRENT PAGE: ${pageNumber}
+STUDENT'S QUESTION: ${question}
+
+Please respond according to your assigned mode: ${mode.toUpperCase()}.
+      `.trim();
+    } else {
+      userPrompt = `
+STUDENT'S QUESTION (no document context): ${question}
+
+This question is not directly about the current document page. Respond naturally as a helpful AI tutor, using your own knowledge if needed. Mode: ${mode.toUpperCase()}.
+      `.trim();
+    }
+
+    const messages = [
+      { role: 'system', content: systemPrompt },
+      ...(history || []).map(m => ({
+        role: m.role === 'user' ? 'user' : 'assistant',
+        content: m.content,
+      })),
+      { role: 'user', content: userPrompt },
+    ];
+
+    res.writeHead(200, {
+      'Content-Type': 'text/event-stream',
+      'Cache-Control': 'no-cache',
+      'Connection': 'keep-alive',
+    });
+
+    const stream = await groq.chat.completions.create({
+      model: process.env.GROQ_MODEL || 'openai/gpt-oss-120b',
+      messages,
+      temperature: mode === 'teach' ? 0.8 : 0.4,
+      max_tokens: 1024,
+      stream: true,
+    });
+
+    let fullResponse = '';
+    for await (const chunk of stream) {
+      const content = chunk.choices[0]?.delta?.content || '';
+      if (content) {
+        fullResponse += content;
+        res.write(`data: ${JSON.stringify({ token: content })}\n\n`);
+      }
+    }
+
+    if (usage) {
+      usage.count += 1;
+    } else {
+      lunaUsage.set(usageKey, { count: 1, date: today });
+    }
+
+    console.log(`[Luna ${mode.toUpperCase()}] User: ${userId} | Page: ${pageNumber}`);
+    res.write('data: [DONE]\n\n');
+    res.end();
+  } catch (err) {
+    console.error('Luna Backend Error:', err);
+    if (!res.headersSent) {
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  }
+});
+
+app.use('/api/luna', lunaRouter);
+
+// ===== START SERVER =====
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, "0.0.0.0", () => console.log(`✅ Server running on port ${PORT}`));
+app.listen(PORT, '0.0.0.0', () => console.log(`✅ Server running on port ${PORT}`));
