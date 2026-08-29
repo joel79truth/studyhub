@@ -1,5 +1,5 @@
 // components/StudyBot/StudyBotContainer.js
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { UserProvider } from '../../context/UserContext';
 import Header from './Header/Header';
 import ChatMessages from './Chat/ChatMessages';
@@ -25,6 +25,8 @@ function ChatApp() {
   } = useChatSession();
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sessionSearch, setSessionSearch] = useState('');
+  const [errorDismissed, setErrorDismissed] = useState(false);
   const isOnline = useOnlineStatus();
 
   const handleCopy = useCallback((text) => {
@@ -32,24 +34,33 @@ function ChatApp() {
     // optionally show a toast
   }, []);
 
+  // Fixed: previous handleRegenerate referenced an undefined
+  // setMessagesWithouthLastAssistant() and was never actually wired up to
+  // anything — ChatMessages was calling its own separate inline handler.
+  // This is now the single source of truth, passed down below.
   const handleRegenerate = useCallback(() => {
-    if (messages.length < 2) return;
-    // Find last user message
-    const lastUserMsg = [...messages].reverse().find(m => m.role === 'user');
-    if (lastUserMsg) {
-      // Remove last assistant message if present and resend
-      setMessagesWithouthLastAssistant(); // we need a way to trigger resend
-      // Actually we can just call send again with the same text, but the hook’s send will append a new user message.
-      // Better: we need a regenerate function in the hook that resends last user message.
-      // For simplicity, we’ll just call send(lastUserMsg.text) and manually remove the assistant message.
-      // We'll add a helper in the hook. Let's modify useChatSession to expose a regenerate function.
-      // We'll implement a quick solution: pass a callback.
-      // I'll provide an updated hook that includes regenerate.
-    }
-  }, [messages]);
+    const lastUser = [...messages].reverse().find(m => m.role === 'user');
+    if (lastUser) send(lastUser.text);
+  }, [messages, send]);
 
-  // For simplicity, we'll add a regenerate function to the hook later.
-  // For now, we'll just note it. (In the final code I'll include it.)
+  // Tip 2: local, client-side search over sessions — filters the array
+  // before it reaches ChatSidebar, so it doesn't touch useChatSession's
+  // fetching/caching at all. Only shown once there's enough sessions to
+  // make searching worthwhile.
+  const filteredSessions = useMemo(() => {
+    if (!sessionSearch.trim()) return sessions;
+    const q = sessionSearch.toLowerCase();
+    return sessions.filter(s =>
+      (s.title || s.name || '').toLowerCase().includes(q)
+    );
+  }, [sessions, sessionSearch]);
+
+  // Tip 1: lets WelcomeOverlay (or Header) adapt its copy for someone who
+  // already has chat history vs. a first-time visitor, instead of treating
+  // every load identically. NOTE: WelcomeOverlay's own implementation isn't
+  // shown here — this only wires the prop through; the component itself
+  // needs to actually branch on it.
+  const isReturningUser = sessions.length > 0;
 
   return (
     <div style={{
@@ -58,13 +69,15 @@ function ChatApp() {
       background: '#f8faff', position: 'relative', overflow: 'hidden',
     }}>
       <ChatSidebar
-        sessions={sessions}
+        sessions={filteredSessions}
         currentSessionId={currentSessionId}
         onSelect={switchSession}
         onNew={newChat}
         onDelete={removeSession}
         isOpen={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
+        searchQuery={sessions.length > 6 ? sessionSearch : ''}
+        onSearchChange={sessions.length > 6 ? setSessionSearch : undefined}
       />
       <div style={{
         flex: 1, display: 'flex', flexDirection: 'column',
@@ -78,17 +91,34 @@ function ChatApp() {
           onSettings={() => {}}
           onToggleSidebar={() => setSidebarOpen(prev => !prev)}
         />
+
+        {/* Tip 3: a visible, dismissible status strip instead of `error`
+            sitting unused as a prop passed further down with no clear
+            surface-level acknowledgement in this container. */}
+        {error && !errorDismissed && (
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 8,
+            padding: '8px 16px', fontSize: 13, color: '#b91c1c',
+            background: '#fef2f2', borderBottom: '1px solid #fecaca',
+          }}>
+            <span style={{ flex: 1 }}>⚠️ {typeof error === 'string' ? error : 'Something went wrong. Please try again.'}</span>
+            <button
+              onClick={() => setErrorDismissed(true)}
+              style={{ background: 'none', border: 'none', color: '#b91c1c', cursor: 'pointer', fontSize: 16, lineHeight: 1 }}
+              aria-label="Dismiss error"
+            >
+              ×
+            </button>
+          </div>
+        )}
+
         <ChatMessages
           messages={messages}
           loading={loading}
           error={error}
           onStop={stopGenerating}
           onCopy={handleCopy}
-          onRegenerate={() => {
-            // get last user message and resend
-            const lastUser = [...messages].reverse().find(m => m.role === 'user');
-            if (lastUser) send(lastUser.text);
-          }}
+          onRegenerate={handleRegenerate}
         />
         <ChatInput
           onSend={send}
@@ -96,7 +126,7 @@ function ChatApp() {
           onStop={stopGenerating}
           hasKey={true}
         />
-        <WelcomeOverlay onFinish={() => {}} />
+        <WelcomeOverlay onFinish={() => {}} isReturningUser={isReturningUser} />
       </div>
     </div>
   );

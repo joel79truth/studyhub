@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SocialLogin } from '@capgo/capacitor-social-login';
 import { supabase } from '../supabase';
+import { ensureConsistentSession } from '../lib/authGuard';
 import appLogo from '/images/luanar7.png'; // adjust path if needed
 
 export default function Login() {
@@ -53,6 +54,14 @@ export default function Login() {
           token: idToken,
         });
         if (supabaseError) throw supabaseError;
+
+        // Validate the freshly-written session before trusting it — a
+        // stale/partial write here is exactly what caused mismatched
+        // user.id / access_token.sub in storage previously.
+        const ok = await ensureConsistentSession();
+        if (!ok) {
+          throw new Error('Sign-in produced an invalid session. Please try again.');
+        }
         navigate('/', { replace: true });
       } else {
         // Web: redirect-based OAuth
@@ -61,10 +70,12 @@ export default function Login() {
           options: { redirectTo: window.location.origin }
         });
         if (error) throw error;
+        // Browser navigates away here; the onAuthStateChange listener
+        // below handles validation + navigation on return.
       }
     } catch (err) {
       console.error('Google sign‑in error:', err);
-      setError('Sign‑in failed. Please try again.');
+      setError(err.message || 'Sign‑in failed. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -73,13 +84,34 @@ export default function Login() {
   // ─── Session listener – auto‑navigate if already logged in ───
   useEffect(() => {
     let mounted = true;
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (mounted && session?.user) navigate('/', { replace: true });
-    });
+
+    (async () => {
+      // Validate BEFORE trusting any pre-existing session on mount —
+      // if a previous sign-in left a corrupted session in storage, this
+      // clears it instead of bouncing the user into a dashboard that will
+      // silently 403 on every write.
+      const ok = await ensureConsistentSession();
+      if (!mounted) return;
+      if (ok) {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (mounted && session?.user) navigate('/', { replace: true });
+      } else {
+        setError('Your previous session was invalid. Please sign in again.');
+      }
+    })();
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      if (mounted && (event === 'SIGNED_IN' || event === 'USER_UPDATED') && session?.user) {
-        navigate('/', { replace: true });
+      if (!mounted) return;
+      if ((event === 'SIGNED_IN' || event === 'USER_UPDATED') && session?.user) {
+        (async () => {
+          const ok = await ensureConsistentSession();
+          if (!mounted) return;
+          if (ok) {
+            navigate('/', { replace: true });
+          } else {
+            setError('Sign-in produced an invalid session. Please try again.');
+          }
+        })();
       }
     });
 

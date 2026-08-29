@@ -1,113 +1,16 @@
+// ============================================================
+// ProgramDetail.jsx – server-side filtered notes query,
+// no dead auth/profile fetch, cache-first render.
+// ============================================================
 import React, {
   useState, useEffect, useMemo, useCallback, useRef,
-  useLayoutEffect, useDeferredValue, memo
+  useLayoutEffect, useDeferredValue, memo, useTransition,
 } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import { supabase } from '../supabase';
+import { useQuery } from '@tanstack/react-query';
 
-// ─── Custom Hooks ──────────────────────────────────────────
-
-// 1. Auth hook (same as in Programs)
-function useAuth() {
-  const [user, setUser] = useState(null);
-  const [profile, setProfile] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const mounted = useRef(true);
-
-  useEffect(() => {
-    mounted.current = true;
-    const fetchSession = async () => {
-      try {
-        const { data: { session } } = await supabase.auth.getSession();
-        if (!mounted.current) return;
-        if (!session) {
-          setUser(null);
-          setProfile(null);
-          setLoading(false);
-          return;
-        }
-        setUser(session.user);
-        const { data, error } = await supabase
-          .from('profiles')
-          .select('program, semester')
-          .eq('id', session.user.id)
-          .single();
-        if (!mounted.current) return;
-        if (error) throw error;
-        setProfile(data || { program: '', semester: '' });
-      } catch (err) {
-        if (mounted.current) setError(err.message);
-      } finally {
-        if (mounted.current) setLoading(false);
-      }
-    };
-
-    fetchSession();
-
-    const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
-      if (!mounted.current) return;
-      if (event === 'SIGNED_IN' || event === 'USER_UPDATED') fetchSession();
-      if (event === 'SIGNED_OUT') {
-        setUser(null);
-        setProfile(null);
-        setLoading(false);
-      }
-    });
-
-    return () => {
-      mounted.current = false;
-      listener?.subscription?.unsubscribe();
-    };
-  }, []);
-
-  return { user, profile, loading, error };
-}
-
-// 2. Notes hook – fetches all notes (filtering done in the component)
-function useNotes() {
-  const [notes, setNotes] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  const fetchNotes = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const { data, error } = await supabase
-        .from('notes')
-        .select('*')
-        .order('uploaded_at', { ascending: false });
-      if (error) throw error;
-      const transformed = (data || []).map((n) => ({
-        id: n.id,
-        filename: n.filename,
-        program: n.program,
-        semester: n.semester,
-        course: n.course_name,
-        description: n.description || '',
-        size: n.size || '',
-        uploadDate: n.uploaded_at ? new Date(n.uploaded_at).toLocaleDateString() : '',
-        url: n.url || '',
-        filepath: n.filepath || '',
-        storage_type: n.storage_type || 'supabase', // ← added for Google Drive support
-      }));
-      setNotes(transformed);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchNotes();
-  }, [fetchNotes]);
-
-  return { notes, loading, error, refetch: fetchNotes };
-}
-
-// 3. Read status hook (localStorage)
+// ─── Read status hook (localStorage) ─────────────────────
 function useReadStatus() {
   const [readFiles, setReadFiles] = useState(() => {
     try { return JSON.parse(localStorage.getItem('readFiles') || '{}'); } catch { return {}; }
@@ -116,7 +19,7 @@ function useReadStatus() {
   const toggleRead = useCallback((fileId) => {
     setReadFiles((prev) => {
       const next = { ...prev, [fileId]: !prev[fileId] };
-      localStorage.setItem('readFiles', JSON.stringify(next));
+      try { localStorage.setItem('readFiles', JSON.stringify(next)); } catch {}
       return next;
     });
   }, []);
@@ -129,30 +32,21 @@ function useReadStatus() {
 // ─── Helpers ──────────────────────────────────────────────
 const normalize = (t) => (t || '').trim().toLowerCase();
 
-// Unified URL generator – same as in Programs
 const getNotePublicUrl = (note) => {
-  // 1. Google Drive files
   if (note.storage_type === 'gdrive' && note.filepath) {
     return `https://drive.google.com/file/d/${note.filepath}/view`;
   }
-
-  // 2. Supabase Storage (or any other with filepath)
   if (note.filepath && note.storage_type !== 'gdrive') {
     const { data } = supabase.storage.from('notes').getPublicUrl(note.filepath);
-    if (data?.publicUrl) {
-      return data.publicUrl;
-    }
+    if (data?.publicUrl) return data.publicUrl;
   }
-
-  // 3. Fallback to note.url if it's a valid external URL
   if (note.url && (note.url.startsWith('http://') || note.url.startsWith('https://'))) {
     return note.url;
   }
-
   return null;
 };
 
-// ─── File Icon Component (unchanged) ─────────────────────
+// ─── File Icon Component ──────────────────────────────────
 const FileIcon = memo(({ filename }) => {
   const ext = String(filename || '').split('.').pop()?.toLowerCase() || '';
   const iconClass = 'w-6 h-6';
@@ -209,7 +103,7 @@ const FileIcon = memo(({ filename }) => {
   );
 });
 
-// ─── FileListItem (unchanged) ─────────────────────────────
+// ─── FileListItem ─────────────────────────────
 const FileListItem = memo(({ file, onFileClick, onDownload, onCopyLink, isRead, onToggleRead }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
@@ -245,8 +139,8 @@ const FileListItem = memo(({ file, onFileClick, onDownload, onCopyLink, isRead, 
   };
 
   return (
-    <div className="group relative flex items-center gap-4 p-4 bg-white/60 backdrop-blur-sm border border-gray-100 rounded-xl hover:bg-white hover:shadow-sm hover:border-blue-100 transition-all mb-3">
-      <div className="w-10 h-10 flex-shrink-0 bg-blue-50/50 rounded-lg flex items-center justify-center shadow-sm border border-blue-100/50">
+    <div className="group relative flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:bg-white hover:shadow-sm hover:border-blue-100 transition-colors mb-3">
+      <div className="w-10 h-10 flex-shrink-0 bg-blue-50/50 rounded-lg flex items-center justify-center border border-blue-100/50">
         <FileIcon filename={file.filename} />
       </div>
 
@@ -273,7 +167,7 @@ const FileListItem = memo(({ file, onFileClick, onDownload, onCopyLink, isRead, 
       <div className="relative">
         <button
           ref={buttonRef}
-          className={`p-2 rounded-lg transition-colors ${menuOpen ? 'bg-blue-50 text-blue-600' : 'text-gray-400 hover:bg-gray-100 hover:text-gray-600'}`}
+          className={`p-2 rounded-lg transition-colors active:scale-90 ${menuOpen ? 'bg-blue-50 text-blue-600' : 'text-gray-400 hover:bg-gray-100 hover:text-gray-600'}`}
           onClick={toggleMenu}
           aria-label={`Options for ${file.filename}`}
           aria-haspopup="true"
@@ -289,21 +183,13 @@ const FileListItem = memo(({ file, onFileClick, onDownload, onCopyLink, isRead, 
         {menuOpen && (
           <div
             ref={menuRef}
-            className="absolute right-0 mt-2 w-48 bg-white/95 backdrop-blur-md rounded-xl shadow-xl border border-gray-100 py-1.5 z-30"
+            className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-100 py-1.5 z-30"
             role="menu"
           >
-            <button
-              className="w-full px-4 py-2.5 text-sm text-left hover:bg-blue-50 flex items-center gap-3"
-              onClick={(e) => handleAction(e, onDownload)}
-              role="menuitem"
-            >
+            <button className="w-full px-4 py-2.5 text-sm text-left hover:bg-blue-50 flex items-center gap-3" onClick={(e) => handleAction(e, onDownload)} role="menuitem">
               ⬇️ Download
             </button>
-            <button
-              className="w-full px-4 py-2.5 text-sm text-left hover:bg-blue-50 flex items-center gap-3"
-              onClick={(e) => handleAction(e, onCopyLink)}
-              role="menuitem"
-            >
+            <button className="w-full px-4 py-2.5 text-sm text-left hover:bg-blue-50 flex items-center gap-3" onClick={(e) => handleAction(e, onCopyLink)} role="menuitem">
               🔗 Copy Link
             </button>
             <div className="h-px bg-gray-100 my-1 mx-2" />
@@ -321,13 +207,13 @@ const FileListItem = memo(({ file, onFileClick, onDownload, onCopyLink, isRead, 
   );
 });
 
-// ─── Toast System (unchanged) ─────────────────────────────
+// ─── Toast System ──────────────────────────────────────────
 const ToastContainer = ({ toasts, removeToast }) => (
   <div className="fixed top-4 right-4 z-50 flex flex-col gap-2 max-w-sm w-full">
     {toasts.map((toast) => (
       <div
         key={toast.id}
-        className={`px-4 py-3 rounded-lg shadow-lg text-sm font-medium transition-all cursor-pointer flex items-center gap-2 ${
+        className={`px-4 py-3 rounded-lg shadow-lg text-sm font-medium transition-transform active:scale-95 cursor-pointer flex items-center gap-2 ${
           toast.type === 'success' ? 'bg-green-100 text-green-800 border border-green-200' :
           toast.type === 'error' ? 'bg-red-100 text-red-800 border border-red-200' :
           'bg-blue-100 text-blue-800 border border-blue-200'
@@ -341,29 +227,62 @@ const ToastContainer = ({ toasts, removeToast }) => (
   </div>
 );
 
-// ─── Main Component ──────────────────────────────────────
+// ─── Skeleton Loader ──────────────────────────────────────
+const NotesSkeleton = memo(() => (
+  <div className="space-y-3">
+    {Array.from({ length: 4 }).map((_, i) => (
+      <div key={i} className="bg-white border border-gray-100 rounded-xl p-4 animate-pulse flex items-center gap-4">
+        <div className="w-10 h-10 bg-gray-200 rounded-lg" />
+        <div className="flex-1 space-y-2">
+          <div className="h-4 bg-gray-200 rounded w-3/4" />
+          <div className="h-3 bg-gray-200 rounded w-1/2" />
+        </div>
+        <div className="w-8 h-8 bg-gray-200 rounded-full" />
+      </div>
+    ))}
+  </div>
+));
+
+// ─── Query fn (module scope, filtered server-side by program) ─────
+const fetchNotesForProgram = async (programName) => {
+  const { data, error } = await supabase
+    .from('notes')
+    .select('id, filename, program, semester, course_name, size, uploaded_at, url, filepath, storage_type')
+    .ilike('program', `%${programName}%`)
+    .order('uploaded_at', { ascending: false });
+  if (error) throw error;
+  return (data || []).map((n) => ({
+    id: n.id,
+    filename: n.filename,
+    program: n.program,
+    semester: n.semester,
+    course: n.course_name,
+    size: n.size || '',
+    uploadDate: n.uploaded_at ? new Date(n.uploaded_at).toLocaleDateString() : '',
+    url: n.url || '',
+    filepath: n.filepath || '',
+    storage_type: n.storage_type || 'supabase',
+  }));
+};
+
+const CACHE_PREFIX = 'programDetailNotes:';
+
+// ─── Main Component ─────────────────────────────────────────
 export default function ProgramDetail() {
   const navigate = useNavigate();
   const location = useLocation();
   const { program: programParam } = useParams();
   const query = new URLSearchParams(location.search);
   const programName = programParam || query.get('program') || '';
+  const [isPending, startTransition] = useTransition();
 
-  // ── Custom hooks ──
-  const { user } = useAuth(); // kept for consistency
-  const { notes, loading, error, refetch } = useNotes();
   const { toggleRead, isRead } = useReadStatus();
 
-  // ── Local state ──
   const [searchQuery, setSearchQuery] = useState(() => {
-    try {
-      const saved = sessionStorage.getItem('programDetail_search');
-      return saved || '';
-    } catch { return ''; }
+    try { return sessionStorage.getItem('programDetail_search') || ''; } catch { return ''; }
   });
   const deferredSearch = useDeferredValue(searchQuery);
 
-  // ── Toast state ──
   const [toasts, setToasts] = useState([]);
   const addToast = useCallback((message, type = 'info', duration = 3500) => {
     const id = Date.now() + Math.random();
@@ -376,21 +295,46 @@ export default function ProgramDetail() {
     setToasts((prev) => prev.filter((t) => t.id !== id));
   }, []);
 
-  // ── Filter notes by program and search ──
+  // ── React Query: notes for THIS program only, filtered server-side ──
+  const cacheKey = `${CACHE_PREFIX}${programName}`;
+  const {
+    data: notes = [],
+    isLoading,
+    error,
+    refetch,
+  } = useQuery({
+    queryKey: ['programNotes', programName],
+    queryFn: () => fetchNotesForProgram(programName),
+    enabled: !!programName,
+    staleTime: 5 * 60 * 1000,
+    gcTime: 10 * 60 * 1000,
+    refetchOnWindowFocus: false,
+    initialData: () => {
+      try {
+        const cached = sessionStorage.getItem(cacheKey);
+        return cached ? JSON.parse(cached) : undefined;
+      } catch { return undefined; }
+    },
+  });
+
+  useEffect(() => {
+    if (!programName || !notes.length) return;
+    try { sessionStorage.setItem(cacheKey, JSON.stringify(notes)); } catch {}
+  }, [notes, programName, cacheKey]);
+
+  // ── Filter notes by search only now — program filtering happens
+  // server-side, so this is a cheap in-memory pass over an already-small
+  // list instead of the whole table. ──
   const filteredNotes = useMemo(() => {
-    if (!programName) return [];
     const q = normalize(deferredSearch);
+    if (!q) return notes;
     return notes.filter((note) => {
-      const progMatch = note.program ? normalize(note.program).includes(normalize(programName)) : false;
-      if (!progMatch) return false;
-      if (!q) return true;
       const course = normalize(note.course || '');
       const name = normalize(note.filename || '');
       return course.includes(q) || name.includes(q);
     });
-  }, [notes, programName, deferredSearch]);
+  }, [notes, deferredSearch]);
 
-  // ── Stats ──
   const stats = useMemo(() => {
     const courses = new Set(filteredNotes.map((n) => n.course).filter(Boolean));
     return { total: filteredNotes.length, courses: courses.size };
@@ -411,36 +355,28 @@ export default function ProgramDetail() {
     }
   }, []);
 
-  // ── Save search query to sessionStorage ──
   useEffect(() => {
-    sessionStorage.setItem('programDetail_search', searchQuery);
+    try { sessionStorage.setItem('programDetail_search', searchQuery); } catch {}
   }, [searchQuery]);
 
-  // ── Redirect if no program ──
   useEffect(() => {
-    if (!programName) navigate('/programs', { replace: true });
+    if (!programName) {
+      startTransition(() => navigate('/programs', { replace: true }));
+    }
   }, [programName, navigate]);
 
-  // ⛔️ Return null while redirecting (no flash)
   if (!programName) return null;
 
-  // ── File actions ──
   const handleFileClick = useCallback((file) => {
     const url = getNotePublicUrl(file);
     if (!url) {
       addToast('File URL not available.', 'info');
       return;
     }
-    // ✅ Navigate to the in‑app viewer
-    navigate('/viewer', {
-      state: {
-        url,
-        filename: file.filename || 'Document',
-      },
-    });
+    navigate('/viewer', { state: { url, filename: file.filename || 'Document' } });
   }, [navigate, addToast]);
 
-  const handleDownload = useCallback(async (file) => {
+  const handleDownload = useCallback((file) => {
     const url = getNotePublicUrl(file);
     if (!url) { addToast('No downloadable link.', 'error'); return; }
     const link = document.createElement('a');
@@ -455,18 +391,19 @@ export default function ProgramDetail() {
 
   const handleCopyLink = useCallback((file) => {
     const url = getNotePublicUrl(file);
-    if (url) {
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(url)
-          .then(() => addToast('Link copied!', 'success'))
-          .catch(() => prompt('Copy this link:', url));
-      } else {
-        prompt('Copy this link:', url);
-      }
+    if (!url) return;
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(url)
+        .then(() => addToast('Link copied!', 'success'))
+        .catch(() => prompt('Copy this link:', url));
+    } else {
+      prompt('Copy this link:', url);
     }
   }, [addToast]);
 
-  // ── Render ──
+  // Skeleton only for a genuine cold start — cached data renders instantly
+  const showSkeleton = isLoading && notes.length === 0;
+
   return (
     <div
       ref={scrollRef}
@@ -474,12 +411,11 @@ export default function ProgramDetail() {
       className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 pb-20 lg:pb-8 w-full flex flex-col overflow-y-auto"
       style={{ maxHeight: '100vh' }}
     >
-      {/* Header */}
       <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-xl border-b border-gray-200/60 shadow-sm px-4 sm:px-6 py-3 flex items-center justify-between flex-shrink-0">
         <div className="flex items-center gap-4">
           <button
-            onClick={() => navigate('/programs')}
-            className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-md hover:bg-white hover:shadow-lg transition-all flex items-center justify-center text-xl font-medium text-gray-700"
+            onClick={() => startTransition(() => navigate('/programs'))}
+            className="w-10 h-10 rounded-full bg-white border border-gray-200 shadow-md hover:bg-white hover:shadow-lg active:scale-90 transition-all flex items-center justify-center text-xl font-medium text-gray-700"
             aria-label="Back to Programs"
           >
             ←
@@ -492,7 +428,6 @@ export default function ProgramDetail() {
       </header>
 
       <main className="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
-        {/* Stats & Search */}
         <div className="flex flex-wrap items-center gap-3 mb-6">
           <span className="bg-white/70 px-3 py-1 rounded-full shadow-sm text-sm">📄 {stats.total} notes</span>
           <span className="bg-white/70 px-3 py-1 rounded-full shadow-sm text-sm">📚 {stats.courses} courses</span>
@@ -507,7 +442,7 @@ export default function ProgramDetail() {
           <input
             type="search"
             placeholder="Search by course name…"
-            className="w-full pl-10 pr-10 py-2.5 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10"
+            className="w-full pl-10 pr-10 py-2.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             autoComplete="off"
@@ -515,7 +450,7 @@ export default function ProgramDetail() {
           />
           {searchQuery && (
             <button
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 active:scale-90 transition-transform"
               onClick={() => setSearchQuery('')}
               aria-label="Clear search"
             >
@@ -524,63 +459,48 @@ export default function ProgramDetail() {
           )}
         </div>
 
-        {/* Results count */}
-        {!loading && !error && filteredNotes.length !== notes.length && (
+        {!isLoading && !error && deferredSearch && filteredNotes.length !== notes.length && (
           <p className="text-sm text-gray-500 mb-4">
             Showing {filteredNotes.length} of {notes.length} notes
           </p>
         )}
 
-        {/* Content */}
-        {loading ? (
-          <div className="space-y-3">
-            {Array.from({ length: 4 }).map((_, i) => (
-              <div key={i} className="bg-white/60 border border-gray-100 rounded-xl p-4 animate-pulse flex items-center gap-4">
-                <div className="w-10 h-10 bg-gray-200 rounded-lg" />
-                <div className="flex-1 space-y-2">
-                  <div className="h-4 bg-gray-200 rounded w-3/4" />
-                  <div className="h-3 bg-gray-200 rounded w-1/2" />
-                </div>
-                <div className="w-8 h-8 bg-gray-200 rounded-full" />
-              </div>
-            ))}
-          </div>
+        {showSkeleton ? (
+          <NotesSkeleton />
         ) : error ? (
           <div className="text-center py-12">
             <div className="text-4xl mb-4">⚠️</div>
             <p className="text-gray-500 mb-4">Could not load notes.</p>
             <button
-              onClick={refetch}
-              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+              onClick={() => refetch()}
+              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 active:scale-95 transition-transform"
             >
               Retry
             </button>
           </div>
         ) : filteredNotes.length === 0 ? (
-          <div className="text-center py-12 bg-white/50 backdrop-blur-sm rounded-2xl border border-gray-200 border-dashed">
+          <div className="text-center py-12 bg-white/50 rounded-2xl border border-gray-200 border-dashed">
             <div className="text-4xl mb-4">📭</div>
             <h3 className="text-lg font-semibold text-gray-800">No notes found</h3>
             <p className="text-gray-500 mt-1">Try a different search term.</p>
           </div>
         ) : (
           <div className="flex flex-col">
-            {filteredNotes.map((file, idx) => (
-              <div key={file.id} className="animate-in fade-in slide-in-from-bottom-2" style={{ animationDelay: `${idx * 50}ms`, animationFillMode: 'both' }}>
-                <FileListItem
-                  file={file}
-                  onFileClick={handleFileClick}
-                  onDownload={handleDownload}
-                  onCopyLink={handleCopyLink}
-                  isRead={isRead(file.id)}
-                  onToggleRead={toggleRead}
-                />
-              </div>
+            {filteredNotes.map((file) => (
+              <FileListItem
+                key={file.id}
+                file={file}
+                onFileClick={handleFileClick}
+                onDownload={handleDownload}
+                onCopyLink={handleCopyLink}
+                isRead={isRead(file.id)}
+                onToggleRead={toggleRead}
+              />
             ))}
           </div>
         )}
       </main>
 
-      {/* Toasts */}
       <ToastContainer toasts={toasts} removeToast={removeToast} />
     </div>
   );

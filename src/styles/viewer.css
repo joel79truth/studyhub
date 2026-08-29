@@ -1,0 +1,49 @@
+/* ─── Keyframes (shared with Luna panel) ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes popIn {
+  0%   { transform: scale(.6); opacity: 0; }
+  70%  { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes breathe {
+  0%, 100% { box-shadow: 0 2px 12px rgba(29,78,216,.35); }
+  50% { box-shadow: 0 2px 12px rgba(29,78,216,.35), 0 0 0 8px rgba(59,130,246,.15); }
+}
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ─── Viewer shell ─── */
+.viewer-root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f6f7f9;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ─── PDF page placeholders (used by PdfViewer) ─── */
+.page-slot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f1f3; /* placeholder colour */
+}
+
+/* ─── Rendered page canvas (inserted by renderer) ─── */
+.page-canvas {
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-radius: 4px;
+  will-change: transform;   /* promote to GPU layer for smooth compositing */
+}

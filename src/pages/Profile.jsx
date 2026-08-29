@@ -1,14 +1,77 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabase';
 
+// ─── sessionStorage cache for the whole profile bundle ──────
+// This page previously had no caching at all — every visit re-fetched
+// profile + admin flag + files before showing anything. We now hydrate
+// synchronously from cache on mount (no skeleton flash on revisit) and
+// silently revalidate everything against Supabase in the background.
+const PROFILE_CACHE_KEY = 'studyhub_full_profile_cache';
+const readProfileCache = () => {
+  try {
+    const raw = sessionStorage.getItem(PROFILE_CACHE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch { return null; }
+};
+const writeProfileCache = (data) => {
+  try { sessionStorage.setItem(PROFILE_CACHE_KEY, JSON.stringify(data)); } catch {}
+};
+
+// Soft, muted category tints — kept within the site's existing green/neutral
+// palette family so quick-action tiles and subject tags read as distinct
+// categories (Tip 4) without introducing a competing accent color.
+const CATEGORY_PALETTE = [
+  { bg: '#ecfdf5', fg: '#059669' }, // green (matches theme accent)
+  { bg: '#eff6ff', fg: '#2563eb' }, // blue
+  { bg: '#fdf4ff', fg: '#a21caf' }, // purple
+  { bg: '#fff7ed', fg: '#d97706' }, // amber
+  { bg: '#f0f9ff', fg: '#0891b2' }, // teal
+];
+
+const isRecentUpload = (isoString, days = 3) => {
+  if (!isoString) return false;
+  const then = new Date(isoString).getTime();
+  if (Number.isNaN(then)) return false;
+  return (Date.now() - then) / (1000 * 60 * 60 * 24) <= days;
+};
+
+// ─── Skeleton (only shown on a genuine cold start) ──────────
+const ProfileSkeleton = () => (
+  <div style={{ maxWidth: '700px', margin: '0 auto', padding: '0 16px 20px', backgroundColor: '#f8fafc' }}>
+    <div style={{ padding: '10px 0', marginBottom: '12px' }}>
+      <div className="animate-pulse" style={{ height: 20, width: 80, background: '#e2e8f0', borderRadius: 6 }} />
+    </div>
+    <div className="animate-pulse" style={{ background: '#e5e7eb', borderRadius: 16, height: 68, marginBottom: 16 }} />
+    <div className="animate-pulse" style={{ background: 'white', borderRadius: 20, padding: 20, marginBottom: 16, border: '1px solid #e2e8f0' }}>
+      <div style={{ width: 80, height: 80, borderRadius: '50%', background: '#e2e8f0', margin: '0 auto 12px' }} />
+      <div style={{ height: 18, width: '50%', background: '#e2e8f0', borderRadius: 4, margin: '0 auto 8px' }} />
+      <div style={{ height: 12, width: '35%', background: '#e2e8f0', borderRadius: 4, margin: '0 auto' }} />
+    </div>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10, marginBottom: 16 }}>
+      {[1, 2, 3].map(i => (
+        <div key={i} className="animate-pulse" style={{ background: 'white', borderRadius: 16, height: 70, border: '1px solid #e2e8f0' }} />
+      ))}
+    </div>
+  </div>
+);
+
 export default function Profile() {
   const navigate = useNavigate();
+
+  // Hydrate synchronously from cache — avoids the "Loading profile..."
+  // flash on every revisit. loadProfile() below still runs and silently
+  // revalidates/overwrites this in the background.
+  const cached = useMemo(readProfileCache, []);
+
   const [user, setUser] = useState(null);
   const [loadingAuth, setLoadingAuth] = useState(true);
-  const [profile, setProfile] = useState(null);
-  const [files, setFiles] = useState([]);
-  const [connections, setConnections] = useState(0);
+  const [profile, setProfile] = useState(cached?.profile || null);
+  const [files, setFiles] = useState(cached?.files || []);
+  const [connections, setConnections] = useState(cached?.connections || 0);
+  const [isAdmin, setIsAdmin] = useState(cached?.isAdmin || false);
+  const [hasCachedData, setHasCachedData] = useState(!!cached?.profile);
+
   const [editing, setEditing] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -18,13 +81,17 @@ export default function Profile() {
   });
   const [saving, setSaving] = useState(false);
   const [toast, setToast] = useState({ message: '', type: '' });
-  const [isAdmin, setIsAdmin] = useState(false);   // NEW
+
+  // Tip 2: local search over uploads — only shown once there's enough
+  // files to warrant it, purely client-side, doesn't touch caching.
+  const [fileSearch, setFileSearch] = useState('');
 
   // Check Supabase session
   useEffect(() => {
     const getSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session?.user) {
+        try { sessionStorage.removeItem(PROFILE_CACHE_KEY); } catch {}
         navigate('/login');
         return;
       }
@@ -36,7 +103,10 @@ export default function Profile() {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (_event, session) => {
         if (session?.user) setUser(session.user);
-        else navigate('/login');
+        else {
+          try { sessionStorage.removeItem(PROFILE_CACHE_KEY); } catch {}
+          navigate('/login');
+        }
       }
     );
     return () => subscription?.unsubscribe();
@@ -78,7 +148,8 @@ export default function Profile() {
         .select('is_admin')
         .eq('id', user.id)
         .maybeSingle();
-      setIsAdmin(profileMeta?.is_admin || false);
+      const adminFlag = profileMeta?.is_admin || false;
+      setIsAdmin(adminFlag);
 
       // Load user's uploaded files (if table exists)
       const { data: filesData } = await supabase
@@ -87,10 +158,21 @@ export default function Profile() {
         .eq('user_id', user.id)
         .order('uploaded_at', { ascending: false });
 
-      setFiles(filesData || []);
+      const loadedFiles = filesData || [];
+      setFiles(loadedFiles);
 
       const connectionsCount = localStorage.getItem(`connections_${user.id}`) || 0;
-      setConnections(Number(connectionsCount));
+      const connectionsNum = Number(connectionsCount);
+      setConnections(connectionsNum);
+
+      setHasCachedData(true);
+      writeProfileCache({
+        userId: user.id,
+        profile: profileData,
+        files: loadedFiles,
+        connections: connectionsNum,
+        isAdmin: adminFlag,
+      });
     };
 
     loadProfile();
@@ -129,7 +211,9 @@ export default function Profile() {
       if (error) {
         showToast('Failed to update profile picture', 'error');
       } else {
-        setProfile({ ...profile, profile_pic: base64 });
+        const updatedProfile = { ...profile, profile_pic: base64 };
+        setProfile(updatedProfile);
+        writeProfileCache({ userId: user.id, profile: updatedProfile, files, connections, isAdmin });
         try {
           await supabase.auth.updateUser({ data: { avatar_url: base64 } });
         } catch (err) {}
@@ -184,13 +268,15 @@ export default function Profile() {
         .eq('id', user.id);
       if (error) throw error;
 
-      setProfile({
+      const updatedProfile = {
         ...profile,
         name: formData.name,
         email: formData.email,
         campus: formData.campus,
         bio: formData.bio
-      });
+      };
+      setProfile(updatedProfile);
+      writeProfileCache({ userId: user.id, profile: updatedProfile, files, connections, isAdmin });
       setEditing(false);
       showToast('Profile updated successfully!');
     } catch (err) {
@@ -218,25 +304,50 @@ export default function Profile() {
     if (error) {
       showToast('Failed to add subject', 'error');
     } else {
-      setProfile({ ...profile, subjects: updated });
+      const updatedProfile = { ...profile, subjects: updated };
+      setProfile(updatedProfile);
+      writeProfileCache({ userId: user.id, profile: updatedProfile, files, connections, isAdmin });
       showToast(`"${trimmed}" added!`);
     }
   };
 
   const handleLogout = async () => {
     if (window.confirm('Sign out of StudyHub?')) {
+      try { sessionStorage.removeItem(PROFILE_CACHE_KEY); } catch {}
       await supabase.auth.signOut();
       navigate('/login');
     }
   };
 
-  if (loadingAuth) return <div style={{ padding: '2rem', textAlign: 'center' }}>Loading profile...</div>;
-  if (!user) return null;
+  const filteredFiles = useMemo(() => {
+    if (!fileSearch.trim()) return files;
+    const q = fileSearch.toLowerCase();
+    return files.filter(f =>
+      (f.name || '').toLowerCase().includes(q) ||
+      (f.subject || '').toLowerCase().includes(q)
+    );
+  }, [files, fileSearch]);
+
+  // Only show the true cold-start skeleton if we have neither cached
+  // nor freshly-loaded data yet. Once cache hydrates state above, this
+  // is false immediately and the real page paints on first render.
+  const showSkeleton = loadingAuth && !hasCachedData;
+
+  if (showSkeleton) return <ProfileSkeleton />;
+  if (!user && !hasCachedData) return null;
 
   const strength = calculateStrength();
-  const joinedDate = user.created_at
+  const joinedDate = user?.created_at
     ? new Date(user.created_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
-    : '—';
+    : (profile ? '—' : '—');
+
+  // Tip 1: personalize the banner copy based on how complete the profile
+  // is, instead of showing every visitor the same static line.
+  const profileSegment = strength >= 80 ? 'complete' : strength >= 40 ? 'building' : 'new';
+  const bannerSubtitle =
+    profileSegment === 'new' ? 'Add a photo and bio to get your profile started.' :
+    profileSegment === 'building' ? "You're making good progress — a few details left." :
+    'Empowering agricultural minds';
 
   return (
 <div style={{ maxWidth: '700px', margin: '0 auto', padding: '0 16px 20px', fontFamily: 'Inter, system-ui, sans-serif', backgroundColor: '#f8fafc' }}>      {/* ========== TOP HEADER ========== */}
@@ -277,7 +388,7 @@ export default function Profile() {
         </div>
       )}
 
-      {/* Welcome Banner */}
+      {/* Welcome Banner — now adapts its subtitle to profile completeness */}
       <div style={{
         background: '#ecfdf5', borderLeft: '3px solid #1e4620', borderRadius: '16px',
         padding: '12px 16px', display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '16px'
@@ -287,7 +398,7 @@ export default function Profile() {
         </div>
         <div>
           <h2 style={{ fontSize: '0.9rem', fontWeight: 700, margin: 0 }}>LUANAR • {profile?.campus || 'Bunda Campus'}</h2>
-          <p style={{ fontSize: '0.7rem', margin: 0, color: '#166534' }}>Empowering agricultural minds</p>
+          <p style={{ fontSize: '0.7rem', margin: 0, color: '#166534' }}>{bannerSubtitle}</p>
         </div>
         <div style={{ fontSize: '0.7rem', background: 'rgba(30,70,32,0.1)', padding: '4px 12px', borderRadius: '30px', marginLeft: 'auto' }}>🎓 #ProudlyLUANAR</div>
       </div>
@@ -317,7 +428,7 @@ export default function Profile() {
 
         <div style={{ width: '80px', height: '80px', margin: '0 auto 12px', position: 'relative', cursor: 'pointer' }} onClick={() => document.getElementById('profilePicUpload').click()}>
           <img
-            src={profile?.profile_pic || user.user_metadata?.avatar_url || 'https://www.w3schools.com/howto/img_avatar.png'}
+            src={profile?.profile_pic || user?.user_metadata?.avatar_url || 'https://www.w3schools.com/howto/img_avatar.png'}
             alt="profile"
             style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover', border: '2px solid white', boxShadow: '0 0 0 2px #3b82f6' }}
           />
@@ -326,7 +437,7 @@ export default function Profile() {
         <input type="file" id="profilePicUpload" accept="image/*" style={{ display: 'none' }} onChange={handlePictureUpload} />
 
         <div style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '4px' }}>
-          {profile?.name || user.user_metadata?.full_name || 'LUANAR Student'}
+          {profile?.name || user?.user_metadata?.full_name || 'LUANAR Student'}
         </div>
 
         {/* Program display */}
@@ -336,7 +447,7 @@ export default function Profile() {
           </div>
         )}
 
-        <div style={{ fontSize: '0.8rem', color: '#64748b', marginBottom: '8px' }}>{profile?.email || user.email}</div>
+        <div style={{ fontSize: '0.8rem', color: '#64748b', marginBottom: '8px' }}>{profile?.email || user?.email}</div>
         <div style={{ fontSize: '0.8rem', color: '#334155', margin: '0 auto 12px', maxWidth: '90%' }}>
           {profile?.bio || 'Set your bio and campus to complete your profile.'}
         </div>
@@ -368,13 +479,16 @@ export default function Profile() {
         </div>
       </div>
 
-      {/* Subjects Tags */}
+      {/* Subjects Tags — Tip 4: color-coded chips instead of one flat gray */}
       <div style={{ background: 'white', borderRadius: '20px', padding: '18px 20px', textAlign: 'center', border: '1px solid #e2e8f0', marginBottom: '16px' }}>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', justifyContent: 'center' }}>
-          {(profile?.subjects || []).map((subj, idx) => (
-            <span key={idx} style={{ background: '#f1f5f9', padding: '4px 12px', borderRadius: '30px', fontSize: '0.7rem' }}>📖 {subj}</span>
-          ))}
-          <span onClick={addSubject} style={{ background: '#f1f5f9', padding: '4px 12px', borderRadius: '30px', fontSize: '0.7rem', cursor: 'pointer' }}>➕ Add Subject</span>
+          {(profile?.subjects || []).map((subj, idx) => {
+            const palette = CATEGORY_PALETTE[idx % CATEGORY_PALETTE.length];
+            return (
+              <span key={idx} style={{ background: palette.bg, color: palette.fg, padding: '4px 12px', borderRadius: '30px', fontSize: '0.7rem', fontWeight: 600 }}>📖 {subj}</span>
+            );
+          })}
+          <span onClick={addSubject} style={{ background: '#f1f5f9', color: '#334155', padding: '4px 12px', borderRadius: '30px', fontSize: '0.7rem', cursor: 'pointer' }}>➕ Add Subject</span>
         </div>
       </div>
 
@@ -409,56 +523,77 @@ export default function Profile() {
         </form>
       )}
 
-      {/* Quick Actions */}
+      {/* Quick Actions — Tip 4: color-coded icon tiles instead of uniform gray */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px', marginBottom: '16px' }}>
         <div onClick={() => navigate('/upload')} style={{ background: 'white', borderRadius: '16px', padding: '12px', display: 'flex', alignItems: 'center', gap: '10px', border: '1px solid #e2e8f0', cursor: 'pointer' }}>
-          <div style={{ width: '36px', height: '36px', background: '#f1f5f9', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>📤</div>
+          <div style={{ width: '36px', height: '36px', background: CATEGORY_PALETTE[0].bg, color: CATEGORY_PALETTE[0].fg, borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>📤</div>
           <div><div style={{ fontWeight: 700, fontSize: '0.8rem' }}>Upload Notes</div><div style={{ fontSize: '0.7rem', color: '#64748b' }}>Share your knowledge</div></div>
         </div>
         <div onClick={() => navigate('/videolesson')} style={{ background: 'white', borderRadius: '16px', padding: '12px', display: 'flex', alignItems: 'center', gap: '10px', border: '1px solid #e2e8f0', cursor: 'pointer' }}>
-          <div style={{ width: '36px', height: '36px', background: '#f1f5f9', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>▶️</div>
+          <div style={{ width: '36px', height: '36px', background: CATEGORY_PALETTE[1].bg, color: CATEGORY_PALETTE[1].fg, borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>▶️</div>
           <div><div style={{ fontWeight: 700, fontSize: '0.8rem' }}>Video Lessons</div><div style={{ fontSize: '0.7rem', color: '#64748b' }}>Watch tutorials</div></div>
         </div>
         <div onClick={() => navigate('/wisdom')} style={{ background: 'white', borderRadius: '16px', padding: '12px', display: 'flex', alignItems: 'center', gap: '10px', border: '1px solid #e2e8f0', cursor: 'pointer' }}>
-          <div style={{ width: '36px', height: '36px', background: '#f1f5f9', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>💡</div>
+          <div style={{ width: '36px', height: '36px', background: CATEGORY_PALETTE[3].bg, color: CATEGORY_PALETTE[3].fg, borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>💡</div>
           <div><div style={{ fontWeight: 700, fontSize: '0.8rem' }}>Wisdom</div><div style={{ fontSize: '0.7rem', color: '#64748b' }}>Daily inspiration</div></div>
         </div>
         <div onClick={() => navigate('/friend-requests')} style={{ background: 'white', borderRadius: '16px', padding: '12px', display: 'flex', alignItems: 'center', gap: '10px', border: '1px solid #e2e8f0', cursor: 'pointer' }}>
-          <div style={{ width: '36px', height: '36px', background: '#f1f5f9', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>👥</div>
+          <div style={{ width: '36px', height: '36px', background: CATEGORY_PALETTE[2].bg, color: CATEGORY_PALETTE[2].fg, borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>👥</div>
           <div><div style={{ fontWeight: 700, fontSize: '0.8rem' }}>Friend Requests</div><div style={{ fontSize: '0.7rem', color: '#64748b' }}>Connect with peers</div></div>
         </div>
 
-        {/* NEW: Admin Upload button (only for admins) */}
+        {/* Admin Upload button (only for admins) */}
         {isAdmin && (
           <div onClick={() => navigate('/admin/upload')} style={{ background: 'white', borderRadius: '16px', padding: '12px', display: 'flex', alignItems: 'center', gap: '10px', border: '1px solid #e2e8f0', cursor: 'pointer' }}>
-            <div style={{ width: '36px', height: '36px', background: '#f1f5f9', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>🛠️</div>
+            <div style={{ width: '36px', height: '36px', background: CATEGORY_PALETTE[4].bg, color: CATEGORY_PALETTE[4].fg, borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>🛠️</div>
             <div><div style={{ fontWeight: 700, fontSize: '0.8rem' }}>Admin Upload</div><div style={{ fontSize: '0.7rem', color: '#64748b' }}>Past paper extraction</div></div>
           </div>
         )}
       </div>
 
-      {/* My Files */}
+      {/* My Files — Tip 2: search once the list is long; Tip 3: NEW badge for recent uploads */}
       <div style={{ background: 'white', borderRadius: '20px', padding: '18px 20px', border: '1px solid #e2e8f0', marginBottom: '16px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
           <span style={{ fontWeight: 700 }}>📁 My Uploads</span>
           <span style={{ fontSize: '0.7rem', color: '#64748b' }}>{files.length} files</span>
         </div>
+
+        {files.length > 6 && (
+          <input
+            type="text"
+            value={fileSearch}
+            onChange={e => setFileSearch(e.target.value)}
+            placeholder="Search your uploads…"
+            style={{ width: '100%', padding: '8px 12px', border: '1px solid #cbd5e1', borderRadius: '10px', fontSize: '0.8rem', marginBottom: '10px', boxSizing: 'border-box' }}
+          />
+        )}
+
         <div style={{ maxHeight: '280px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '8px' }}>
           {files.length === 0 ? (
             <div style={{ textAlign: 'center', padding: '24px', color: '#64748b' }}>📭 No notes uploaded yet.</div>
+          ) : filteredFiles.length === 0 ? (
+            <div style={{ textAlign: 'center', padding: '24px', color: '#64748b' }}>No uploads match "{fileSearch}"</div>
           ) : (
-            files.map(file => (
-              <div key={file.id} style={{ background: '#fefce8', borderRadius: '10px', padding: '10px 12px', display: 'flex', alignItems: 'center', gap: '10px', border: '1px solid #e2e8f0' }}>
-                <div style={{ width: '32px', height: '32px', background: '#e2e8f0', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  {file.name?.endsWith('.pdf') ? '📕' : '📄'}
+            filteredFiles.map(file => {
+              const fresh = isRecentUpload(file.uploaded_at);
+              return (
+                <div key={file.id} style={{ background: '#fefce8', borderRadius: '10px', padding: '10px 12px', display: 'flex', alignItems: 'center', gap: '10px', border: '1px solid #e2e8f0' }}>
+                  <div style={{ width: '32px', height: '32px', background: '#e2e8f0', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    {file.name?.endsWith('.pdf') ? '📕' : '📄'}
+                  </div>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <div style={{ fontWeight: 600, fontSize: '0.8rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{file.name}</div>
+                      {fresh && (
+                        <span style={{ flexShrink: 0, fontSize: '0.6rem', fontWeight: 700, color: '#059669', background: '#d1fae5', padding: '1px 6px', borderRadius: '8px' }}>NEW</span>
+                      )}
+                    </div>
+                    <div style={{ fontSize: '0.7rem', color: '#64748b' }}>{file.subject || 'General'}</div>
+                  </div>
+                  <a href={file.url} target="_blank" rel="noopener noreferrer" style={{ background: 'white', border: '1px solid #cbd5e1', padding: '4px 12px', borderRadius: '20px', fontSize: '0.7rem', textDecoration: 'none', color: '#0f172a', flexShrink: 0 }}>View</a>
                 </div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: 600, fontSize: '0.8rem' }}>{file.name}</div>
-                  <div style={{ fontSize: '0.7rem', color: '#64748b' }}>{file.subject || 'General'}</div>
-                </div>
-                <a href={file.url} target="_blank" rel="noopener noreferrer" style={{ background: 'white', border: '1px solid #cbd5e1', padding: '4px 12px', borderRadius: '20px', fontSize: '0.7rem', textDecoration: 'none', color: '#0f172a' }}>View</a>
-              </div>
-            ))
+              );
+            })
           )}
         </div>
       </div>
