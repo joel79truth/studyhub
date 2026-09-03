@@ -106,8 +106,21 @@ const GROQ_QUESTION_ACTION_MODEL = process.env.GROQ_QUESTION_ACTION_MODEL || 'op
 const GROQ_SOLVE_MODEL = process.env.GROQ_SOLVE_MODEL || 'openai/gpt-oss-12b';
 // Express app
 const app = express();
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://studyhub-backend-opdd.onrender.com', // your deployed frontend
+  // add any other deployed frontend URL(s) here
+];
+
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: function (origin, callback) {
+    // allow requests with no origin (e.g. curl, mobile apps, server-to-server)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error('Not allowed by CORS: ' + origin));
+  },
   credentials: true,
 }));
 
@@ -1295,16 +1308,28 @@ app.get('/api/drive/:fileId', async (req, res) => {
   try {
     const driveRes = await drive.files.get(
       { fileId: req.params.fileId, alt: 'media' },
-      { responseType: 'stream' }
+      { responseType: 'stream', timeout: 60000 }
     );
+
+    // Forward the real content-type/length so the frontend can validate
+    // the response instead of guessing (this is what was causing the
+    // "file server returned something other than the document" errors).
+    const contentType = driveRes.headers['content-type'] || 'application/octet-stream';
+    const contentLength = driveRes.headers['content-length'];
+    res.setHeader('Content-Type', contentType);
+    if (contentLength) res.setHeader('Content-Length', contentLength);
+    res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+
     driveRes.data.on('error', (streamErr) => {
       console.error('Drive stream error:', streamErr);
       if (!res.headersSent) res.status(500).send('Stream error');
+      else res.destroy(streamErr);
     });
+
     driveRes.data.pipe(res);
   } catch (err) {
-    console.error('Drive proxy error:', err);
-    res.status(404).send('File not found');
+    console.error('Drive proxy error:', err.message);
+    if (!res.headersSent) res.status(404).send('File not found');
   }
 });
 
