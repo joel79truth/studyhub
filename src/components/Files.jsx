@@ -1,28 +1,59 @@
 // ============================================================
-// Files.jsx – Optimized for stability and flickering fixes
+// Files.jsx – Aligned to Programs.jsx's data contract.
+// See Viewer.jsx: fileId is now also carried in the URL query
+// string (?fileId=...) so it survives reload/bookmark — router
+// `state` alone is not durable across a hard refresh.
+// Now sources from the `notes` table (not `files`), so file.id
+// is the SAME id the Viewer's download cache and StudyHub's
+// /api/luna/chat backend already understand. This fixes:
+//   1. Slow open after download (cache lookup was missing by id)
+//   2. "No document is open" in StudyHub chat (fileId was wrong)
 // ============================================================
 import React, {
   useState, useEffect, useCallback, useMemo, useRef,
-  useDeferredValue, memo, useTransition,
+  useDeferredValue, memo,
 } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabase';
 import { useQuery } from '@tanstack/react-query';
 import {
-  Grid3x3, List, FileText, Download, BookOpen, CheckCircle, RefreshCcw
+  Grid3x3, List, FileText, Download, CheckCircle, RefreshCcw, X
 } from 'lucide-react';
+import { useIsDownloaded, useDownloadProgress, useDownloadManager } from '../hooks/useDownloadManager';
 
 // ─── Helpers ──────────────────────────────────────────────
 
-const getNotePublicUrl = (file) => {
-  if (file.storage_type === 'gdrive' && file.filepath) {
-    return `https://drive.google.com/file/d/${file.filepath}/view`;
+// Same shape Programs.jsx's fetchUserNotes() produces — keep these
+// two in sync (or better, extract to a shared module).
+const mapNote = (n) => ({
+  id: n.id,                              // ✅ canonical notes.id — matches Programs.jsx, the download cache, and studyhub-router.js
+  filename: n.filename,
+  program: n.program,
+  semester: n.semester,
+  course_name: n.course_name,
+  uploaded_at: n.uploaded_at,
+  url: n.url || '',
+  filepath: n.filepath || '',
+  storage_type: n.storage_type || 'supabase',
+});
+
+const getNotePublicUrl = (note) => {
+  if (note.storage_type === 'gdrive' && note.filepath) {
+    return `https://drive.google.com/file/d/${note.filepath}/view`;
   }
-  if (file.filepath && file.storage_type !== 'gdrive') {
-    const { data } = supabase.storage.from('notes').getPublicUrl(file.filepath);
-    return data?.publicUrl || null;
+  if (note.filepath && note.storage_type !== 'gdrive') {
+    const { data } = supabase.storage.from('notes').getPublicUrl(note.filepath);
+    if (data?.publicUrl) return data.publicUrl;
   }
-  return file.url || null;
+  if (note.url && (note.url.startsWith('http://') || note.url.startsWith('https://'))) {
+    return note.url;
+  }
+  return null;
+};
+
+const getFileType = (filename) => {
+  const ext = String(filename || '').split('.').pop()?.toLowerCase();
+  return ext === 'pptx' || ext === 'ppt' ? 'pptx' : 'pdf';
 };
 
 const getFileTypeColor = (filename) => {
@@ -37,6 +68,19 @@ const getFileTypeColor = (filename) => {
   return colors[ext] || 'bg-slate-50 text-slate-700 border-slate-100';
 };
 
+// ─── Toast ──────────────────────────────────────────────────
+function Toast({ message, onClose }) {
+  useEffect(() => {
+    const timer = setTimeout(onClose, 3000);
+    return () => clearTimeout(timer);
+  }, [onClose]);
+  return (
+    <div className="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 bg-gray-900 text-white px-4 py-2 rounded-xl shadow-lg text-sm">
+      {message}
+    </div>
+  );
+}
+
 // ─── Fallback Auth Hook ──────────────────────────────────
 const useAuthFallback = (skip) => {
   const [profile, setProfile] = useState(null);
@@ -48,6 +92,7 @@ const useAuthFallback = (skip) => {
 
     const fetchProfile = async () => {
       try {
+        setLoading(true); // ✅ re-arm loading on SIGNED_IN refetch, avoids stale-profile flash
         const { data: { session } } = await supabase.auth.getSession();
         if (!mounted || !session) {
           if (mounted) setLoading(false);
@@ -58,7 +103,7 @@ const useAuthFallback = (skip) => {
           .select('*')
           .eq('id', session.user.id)
           .single();
-        
+
         if (mounted) {
           setProfile(data);
           setLoading(false);
@@ -80,7 +125,7 @@ const useAuthFallback = (skip) => {
   return { profile, loading };
 };
 
-// ─── PDF Thumbnail ───────────────────────────────────────
+// ─── PDF Thumbnail ────────────────────────────────────────
 const PDFThumbnail = memo(({ url }) => {
   const [thumbnail, setThumbnail] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -128,60 +173,36 @@ const PDFThumbnail = memo(({ url }) => {
   );
 });
 
-// ─── File Card ───────────────────────────────────────────
-const FileCard = memo(({ file, onPress, isSelected, isDownloaded, onDownloadComplete }) => {
-  const [downloadState, setDownloadState] = useState({ status: 'idle', progress: 0 });
+// ─── File Card ────────────────────────────────────────────
+const FileCard = memo(({ file, onPress, onStartDownload, onCancelDownload, onRemoveDownload }) => {
+  const isDownloaded = useIsDownloaded(file.id);
+  const progress = useDownloadProgress(file.id);
+  const isDownloading = progress !== null;
+  const fileType = useMemo(() => getFileType(file.filename), [file.filename]);
   const publicUrl = useMemo(() => getNotePublicUrl(file), [file]);
 
-  const handleDownload = useCallback(async (e) => {
+  const handleDownloadTap = useCallback((e) => {
     e.stopPropagation();
-    if (isDownloaded || downloadState.status === 'downloading' || !publicUrl) return;
-
-    setDownloadState({ status: 'downloading', progress: 0 });
-    try {
-      const response = await fetch(publicUrl);
-      const reader = response.body.getReader();
-      const contentLength = +response.headers.get('Content-Length');
-      let receivedLength = 0;
-      let chunks = [];
-
-      while(true) {
-        const {done, value} = await reader.read();
-        if (done) break;
-        chunks.push(value);
-        receivedLength += value.length;
-        if (contentLength) {
-          const p = Math.round((receivedLength / contentLength) * 100);
-          setDownloadState(s => s.progress === p ? s : { ...s, progress: p });
-        }
-      }
-
-      const blob = new Blob(chunks);
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = file.filename || 'document';
-      a.click();
-      URL.revokeObjectURL(url);
-      
-      setDownloadState({ status: 'done', progress: 100 });
-      onDownloadComplete(file.id);
-    } catch (err) {
-      setDownloadState({ status: 'idle', progress: 0 });
+    if (isDownloading) {
+      onCancelDownload(file.id);
+      return;
     }
-  }, [file, isDownloaded, downloadState.status, publicUrl, onDownloadComplete]);
+    if (isDownloaded) {
+      onRemoveDownload(file.id);
+      return;
+    }
+    onStartDownload(file, publicUrl, fileType);
+  }, [isDownloading, isDownloaded, file, publicUrl, fileType, onStartDownload, onCancelDownload, onRemoveDownload]);
 
   return (
-    <div className={`relative bg-white rounded-2xl border-2 transition-all ${
-      isSelected ? 'border-blue-500 ring-4 ring-blue-50 shadow-md' : 'border-slate-100 hover:border-blue-100'
-    }`}>
+    <div className="relative bg-white rounded-2xl border-2 border-slate-100 hover:border-blue-100 transition-all">
       <div className="p-3 cursor-pointer" onClick={onPress}>
         <div className="relative aspect-[4/3] bg-slate-50 rounded-xl overflow-hidden border border-slate-50">
           {file.filename?.toLowerCase().endsWith('.pdf') ? (
             <PDFThumbnail url={publicUrl} />
           ) : (
             <div className="w-full h-full flex items-center justify-center">
-               <FileText size={32} className="text-slate-200" />
+              <FileText size={32} className="text-slate-200" />
             </div>
           )}
           <span className={`absolute top-2 left-2 px-1.5 py-0.5 rounded text-[9px] font-bold border uppercase ${getFileTypeColor(file.filename)}`}>
@@ -193,12 +214,19 @@ const FileCard = memo(({ file, onPress, isSelected, isDownloaded, onDownloadComp
           <div className="flex items-center justify-between mt-1">
             <p className="text-[10px] text-slate-400 truncate w-24">{file.program || 'General'}</p>
             <div className="flex items-center">
-              {downloadState.status === 'downloading' ? (
-                <span className="text-[10px] font-bold text-blue-600">{downloadState.progress}%</span>
+              {isDownloading ? (
+                <button onClick={handleDownloadTap} className="flex items-center gap-1 p-1 text-blue-600" title="Cancel download" aria-label={`Cancel download of ${file.filename}`}>
+                  <span className="text-[10px] font-bold tabular-nums">
+                    {progress === 'indeterminate' ? '…' : `${progress}%`}
+                  </span>
+                  <X size={11} />
+                </button>
               ) : isDownloaded ? (
-                <CheckCircle size={14} className="text-green-500" />
+                <button onClick={handleDownloadTap} className="p-1 text-green-500 hover:text-red-500" title="Downloaded — tap to remove" aria-label={`Remove download of ${file.filename}`}>
+                  <CheckCircle size={14} />
+                </button>
               ) : (
-                <button onClick={handleDownload} className="p-1 text-slate-400 hover:text-blue-600">
+                <button onClick={handleDownloadTap} className="p-1 text-slate-400 hover:text-blue-600" title="Download for offline use" aria-label={`Download ${file.filename}`}>
                   <Download size={14} />
                 </button>
               )}
@@ -213,7 +241,6 @@ const FileCard = memo(({ file, onPress, isSelected, isDownloaded, onDownloadComp
 // ─── Main Component ───────────────────────────────────────
 export default function Files({ searchQuery = '', limit = 10, onFileClick, profile: profileProp }) {
   const navigate = useNavigate();
-  const [, startTransition] = useTransition();
 
   const needsOwnAuth = !profileProp;
   const { profile: fetchedProfile, loading: authLoading } = useAuthFallback(!needsOwnAuth);
@@ -222,38 +249,28 @@ export default function Files({ searchQuery = '', limit = 10, onFileClick, profi
   const [viewMode, setViewMode] = useState('grid');
   const [selectionMode, setSelectionMode] = useState(false);
   const [selectedIds, setSelectedIds] = useState([]);
-  
-  const [downloadedIds, setDownloadedIds] = useState(() => {
-    try { return JSON.parse(localStorage.getItem('downloadedFiles') || '[]'); } catch { return []; }
-  });
+  const [toast, setToast] = useState(null);
 
+  // ✅ FIX #1: source from `notes` (same table Programs.jsx uses), not `files`.
+  // This is the table studyhub-router.js and the download cache key off of —
+  // reading from a different table meant file.id never matched what those
+  // systems expected.
   const { data: files = [], isLoading, isFetching, error, refetch } = useQuery({
     queryKey: ['files', profile?.program, profile?.semester, limit],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from('files')
-        .select('*')
+        .from('notes')
+        .select('id, filename, program, semester, course_name, uploaded_at, url, filepath, storage_type')
         .ilike('program', `%${profile.program}%`)
         .eq('semester', profile.semester)
         .order('uploaded_at', { ascending: false })
         .limit(limit);
       if (error) throw error;
-      return data || [];
+      return (data || []).map(mapNote);
     },
-    // The crucial fix: Query only runs if we have a profile.
-    // If enabled is false, isLoading remains true.
     enabled: !!profile,
     staleTime: 1000 * 60 * 5,
   });
-
-  // Persist downloads
-  const markAsDownloaded = useCallback((id) => {
-    setDownloadedIds(prev => {
-      const next = prev.includes(id) ? prev : [...prev, id];
-      localStorage.setItem('downloadedFiles', JSON.stringify(next));
-      return next;
-    });
-  }, []);
 
   const deferredSearch = useDeferredValue(searchQuery);
   const filteredFiles = useMemo(() => {
@@ -261,19 +278,74 @@ export default function Files({ searchQuery = '', limit = 10, onFileClick, profi
     return files.filter(f => (f.course_name || f.filename || '').toLowerCase().includes(q));
   }, [files, deferredSearch]);
 
-  const handleAction = (file) => {
+  // ── View a file ──
+  const handleFileClick = useCallback((file) => {
     if (selectionMode) {
       setSelectedIds(p => p.includes(file.id) ? p.filter(i => i !== file.id) : [...p, file.id]);
       return;
     }
     if (onFileClick) { onFileClick(file); return; }
+
+    // ✅ FIX #2: file.id is now always the real notes.id — no more
+    // fallback chain that could pick a wrong/unrelated id.
     const url = getNotePublicUrl(file);
-    if (url) navigate('/viewer', { state: { url, filename: file.course_name || file.filename } });
-  };
+    if (!url) {
+      setToast('File URL not available.');
+      return;
+    }
 
-  // ─── UI Logic ───────────────────────────────────────────
+    // ✅ fileId travels in the URL (survives reload/bookmark/PWA relaunch),
+    // router `state` is only used as a same-session fast-path so the Viewer
+    // doesn't have to re-fetch what we already have in hand.
+    navigate(`/viewer?fileId=${encodeURIComponent(file.id)}`, {
+      state: {
+        fileId: file.id,
+        filename: file.course_name || file.filename || 'Document',
+        fileType: getFileType(file.filename),
+        url,
+        context: {
+          course: file.course_name,
+          semester: file.semester,
+          program: file.program,
+        },
+      },
+    });
+  }, [selectionMode, onFileClick, navigate]);
 
-  // 1. Show loader while auth is fetching OR while database is fetching for the first time
+  // ── Download handlers ──
+  const { startDownload, cancelDownload, removeDownload } = useDownloadManager();
+
+  const handleStartDownload = useCallback(async (file, publicUrl, fileType) => {
+    if (!publicUrl) { setToast('No downloadable link.'); return; }
+    if (fileType === 'pptx') {
+      setToast("PowerPoint files can't be saved for offline use yet.");
+      return;
+    }
+
+    // ✅ FIX #3: pass the full mapped note object (same shape Programs.jsx
+    // passes), not a hand-built subset — so the download cache entry looks
+    // identical regardless of which page started the download.
+    const result = await startDownload(
+      file,
+      () => publicUrl,
+      (u, opts) => fetch(u, opts)
+    );
+
+    if (!result.ok && !result.cancelled && result.reason !== 'in_progress') {
+      setToast(result.message || `Couldn't download ${file.filename}. Check your connection and try again.`);
+    }
+  }, [startDownload]);
+
+  const handleCancelDownload = useCallback((fileId) => {
+    cancelDownload(fileId);
+  }, [cancelDownload]);
+
+  const handleRemoveDownload = useCallback(async (fileId) => {
+    const removed = await removeDownload(fileId);
+    if (removed) setToast('Download removed.');
+  }, [removeDownload]);
+
+  // ── UI states ──
   if ((needsOwnAuth && authLoading) || (isLoading && !files.length)) {
     return (
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -284,7 +356,6 @@ export default function Files({ searchQuery = '', limit = 10, onFileClick, profi
     );
   }
 
-  // 2. Error State
   if (error) {
     return (
       <div className="p-10 text-center bg-red-50 rounded-2xl border border-red-100">
@@ -294,7 +365,6 @@ export default function Files({ searchQuery = '', limit = 10, onFileClick, profi
     );
   }
 
-  // 3. No Files Found (Only show if NOT loading and NOT currently fetching new data)
   if (!isLoading && !isFetching && filteredFiles.length === 0) {
     return (
       <div className="py-20 text-center bg-slate-50 rounded-3xl border-2 border-dashed border-slate-200">
@@ -311,10 +381,10 @@ export default function Files({ searchQuery = '', limit = 10, onFileClick, profi
           <button onClick={() => setViewMode('grid')} className={`p-1.5 rounded ${viewMode === 'grid' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-400'}`}><Grid3x3 size={16}/></button>
           <button onClick={() => setViewMode('list')} className={`p-1.5 rounded ${viewMode === 'list' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-400'}`}><List size={16}/></button>
         </div>
-        
+
         <div className="flex items-center gap-2">
-           {isFetching && <RefreshCcw size={14} className="animate-spin text-slate-400" />}
-           <button 
+          {isFetching && <RefreshCcw size={14} className="animate-spin text-slate-400" />}
+          <button
             onClick={() => setSelectionMode(!selectionMode)}
             className={`px-3 py-1.5 rounded-full text-[10px] font-bold uppercase transition-all ${selectionMode ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600'}`}
           >
@@ -328,13 +398,15 @@ export default function Files({ searchQuery = '', limit = 10, onFileClick, profi
           <FileCard
             key={file.id}
             file={file}
-            onPress={() => handleAction(file)}
-            isSelected={selectedIds.includes(file.id)}
-            isDownloaded={downloadedIds.includes(file.id)}
-            onDownloadComplete={markAsDownloaded}
+            onPress={() => handleFileClick(file)}
+            onStartDownload={handleStartDownload}
+            onCancelDownload={handleCancelDownload}
+            onRemoveDownload={handleRemoveDownload}
           />
         ))}
       </div>
+
+      {toast && <Toast message={toast} onClose={() => setToast(null)} />}
     </div>
   );
 }

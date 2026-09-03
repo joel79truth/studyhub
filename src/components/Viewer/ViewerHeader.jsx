@@ -1,6 +1,6 @@
 import { ArrowLeft, Search, Sparkles } from 'lucide-react'
-import { memo, useState, useEffect, useRef, useCallback, useMemo } from 'react'
-import { saveFileOffline, getOfflineFile } from "../../utils/offlineStorage";
+import { memo, useState, useEffect, useCallback, useMemo } from 'react'
+import { useIsDownloaded, useDownloadProgress, useDownloadManager } from '../../hooks/useDownloadManager'
 
 // ─── usePress (unchanged) ──────────────────────────────────
 function usePress() {
@@ -14,37 +14,7 @@ function usePress() {
   return [pressed, handlers]
 }
 
-// ─── Download → store in shared offline cache → return blob URL ──
-// Uses the same saveFileOffline/getOfflineFile as useFileLoader, keyed
-// by fileId, so a save here is immediately visible to the viewer's
-// cache-first load path — previously these were two separate stores
-// that never saw each other's data.
-async function downloadAndStore(url, filename, fileId, onProgress) {
-  const res = await fetch(url)
-  if (!res.ok) throw new Error(`HTTP ${res.status}`)
-
-  const total    = parseInt(res.headers.get('Content-Length') || '0', 10)
-  const reader   = res.body.getReader()
-  const chunks   = []
-  let   received = 0
-
-  while (true) {
-    const { done, value } = await reader.read()
-    if (done) break
-    chunks.push(value)
-    received += value.length
-    onProgress(total > 0 ? Math.round((received / total) * 100) : -1)
-  }
-
-  const blob = new Blob(chunks)
-  await saveFileOffline(fileId, blob, { name: filename })
-
-  return URL.createObjectURL(blob)
-}
-
-// ─── Confetti (memoised) ──────────────────────────────────
-// Fixed: useMemo now runs unconditionally before the early return, so
-// hook call order can never differ between renders (Rules of Hooks).
+// ─── Confetti (unchanged) ──────────────────────────────────
 const ConfettiBurst = memo(({ active }) => {
   const colors = ['#3b82f6', '#22c55e', '#f59e0b', '#ec4899', '#a78bfa']
   const pieces = useMemo(() =>
@@ -80,7 +50,7 @@ const ConfettiBurst = memo(({ active }) => {
   )
 })
 
-// ─── Progress ring (simplified) ──────────────────────────
+// ─── Progress ring (unchanged) ────────────────────────────
 const ProgressRing = memo(({ progress, size = 28, stroke = 2.5 }) => {
   const r      = (size - stroke * 2) / 2
   const circ   = 2 * Math.PI * r
@@ -104,7 +74,7 @@ const ProgressRing = memo(({ progress, size = 28, stroke = 2.5 }) => {
   )
 })
 
-// ─── Indeterminate spinner (memo) ─────────────────────────
+// ─── Indeterminate spinner (unchanged) ────────────────────
 const IndetermRing = memo(({ size = 28, stroke = 2.5 }) => {
   const r    = (size - stroke * 2) / 2
   const circ = 2 * Math.PI * r
@@ -127,118 +97,77 @@ const IndetermRing = memo(({ size = 28, stroke = 2.5 }) => {
   )
 })
 
-// ─── SaveOfflineButton (optimised) ────────────────────────
-// Now keyed by fileId (shared with useFileLoader's cache), not filename.
-const SaveOfflineButton = memo(({ fileUrl, filename, fileId, isOffline, onOfflineReady }) => {
-  const [phase,      setPhase]      = useState('idle')
-  const [progress,   setProgress]   = useState(0)
-  const [indetermin, setIndetermin] = useState(false)
-  const [pressed,    pressHandlers] = usePress()
-  const [hovered,    setHovered]    = useState(false)
+// ─── SaveOfflineButton — now backed by the SAME store as the file
+// list (useDownloadManager / downloadStore), not a separate cache.
+// This is the fix: previously this wrote to offlineStorage via
+// saveFileOffline/getOfflineFile, a totally different IndexedDB
+// store than the list's downloadStore — a file downloaded from the
+// list showed "Save" here, and a file saved here didn't show a tick
+// in the list. One store, one truth, everywhere. ──
+const SaveOfflineButton = memo(({ fileUrl, filename, fileId, courseName }) => {
+  const isDownloaded = useIsDownloaded(fileId)
+  const progress = useDownloadProgress(fileId) // number | 'indeterminate' | null
+  const { startDownload, cancelDownload } = useDownloadManager()
+  const [pressed, pressHandlers] = usePress()
+  const [hovered, setHovered] = useState(false)
+  const [errorFlash, setErrorFlash] = useState(false)
 
-  const mountedRef = useRef(true)
-  const timeoutRef = useRef(null)
-
-  // Combined check on mount – get blob URL if already cached
-  useEffect(() => {
-    if (!fileId) return
-
-    mountedRef.current = true
-
-    if (isOffline) {
-      setPhase('success')
-    }
-
-    getOfflineFile(fileId).then(record => {
-      if (!mountedRef.current) return
-      if (record?.blob) {
-        setPhase('success')
-        onOfflineReady?.(URL.createObjectURL(record.blob))
-      }
-    }).catch(() => {})
-
-    return () => { mountedRef.current = false }
-  }, [fileId, isOffline]) // eslint-disable-line
-
-  // Clear timeout on unmount
-  useEffect(() => {
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current)
-    }
-  }, [])
+  const isDownloading = progress !== null
+  const indeterminate = progress === 'indeterminate'
 
   const handleClick = useCallback(async () => {
-    if (phase === 'downloading' || phase === 'success') return
-    if (!fileId || !fileUrl) return
-    setPhase('downloading')
-    setProgress(0)
-    setIndetermin(false)
+    if (isDownloading) return // tap-to-cancel could go here later; for now, ignore mid-download taps
+    if (isDownloaded || !fileId || !fileUrl) return
 
-    try {
-      const blobUrl = await downloadAndStore(fileUrl, filename, fileId, pct => {
-        if (!mountedRef.current) return
-        if (pct === -1) setIndetermin(true)
-        else { setIndetermin(false); setProgress(pct) }
-      })
-      if (!mountedRef.current) return
-      setProgress(100)
-      setPhase('success')
-      onOfflineReady?.(blobUrl)
-    } catch {
-      if (!mountedRef.current) return
-      setPhase('error')
-      timeoutRef.current = setTimeout(() => {
-        if (mountedRef.current) setPhase('idle')
-      }, 2200)
+    const result = await startDownload(
+      { id: fileId, filename, course: courseName },
+      () => fileUrl,
+      (u, opts) => fetch(u, opts)
+    )
+
+    if (!result.ok && !result.cancelled) {
+      setErrorFlash(true)
+      setTimeout(() => setErrorFlash(false), 2200)
     }
-  }, [phase, fileUrl, filename, fileId, onOfflineReady])
+  }, [isDownloading, isDownloaded, fileId, fileUrl, filename, courseName, startDownload])
 
-  // Memoise button styles
   const buttonStyle = useMemo(() => {
-    const isDownloading = phase === 'downloading'
-    const isSuccess     = phase === 'success'
-    const isError       = phase === 'error'
-
     return {
       position: 'relative',
       display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
       padding: '7px 13px', borderRadius: 20,
       fontSize: 12, fontWeight: 600,
-      cursor: isDownloading || isSuccess ? 'default' : 'pointer',
+      cursor: isDownloading || isDownloaded ? 'default' : 'pointer',
       overflow: 'visible', whiteSpace: 'nowrap',
       flexShrink: 0, userSelect: 'none',
       border: isDownloading ? '1.5px solid #bfdbfe'
-            : isSuccess     ? '1.5px solid #86efac'
-            : isError       ? '1.5px solid #fca5a5'
+            : isDownloaded  ? '1.5px solid #86efac'
+            : errorFlash    ? '1.5px solid #fca5a5'
             : hovered       ? '1.5px solid #94a3b8'
             :                 '1.5px solid #e2e8f0',
       background: isDownloading ? '#eff6ff'
-                : isSuccess     ? '#f0fdf4'
-                : isError       ? '#fff1f2'
+                : isDownloaded  ? '#f0fdf4'
+                : errorFlash    ? '#fff1f2'
                 : hovered       ? '#f1f5f9'
                 :                 '#f8fafc',
       color: isDownloading ? '#3b82f6'
-           : isSuccess     ? '#16a34a'
-           : isError       ? '#dc2626'
+           : isDownloaded  ? '#16a34a'
+           : errorFlash    ? '#dc2626'
            : hovered       ? '#374151'
            :                 '#6b7280',
-      transform: pressed && !isDownloading && !isSuccess
+      transform: pressed && !isDownloading && !isDownloaded
         ? 'scale(0.91)'
-        : hovered && !isDownloading && !isSuccess
+        : hovered && !isDownloading && !isDownloaded
           ? 'scale(1.04)'
           : 'scale(1)',
-      animation: isError ? 'errorShakeOff 0.45s ease both' : 'none',
+      animation: errorFlash ? 'errorShakeOff 0.45s ease both' : 'none',
       transition: pressed
         ? 'transform 0.08s ease, background 0.1s ease, border-color 0.1s ease, color 0.1s ease'
         : 'transform 0.22s cubic-bezier(0.34,1.56,0.64,1), background 0.18s ease, border-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease',
-      boxShadow: isSuccess && !pressed ? '0 2px 10px rgba(22,163,74,.18)' : 'none',
+      boxShadow: isDownloaded && !pressed ? '0 2px 10px rgba(22,163,74,.18)' : 'none',
       willChange: 'transform',
     }
-  }, [phase, hovered, pressed])
-
-  const isDownloading = phase === 'downloading'
-  const isSuccess     = phase === 'success'
-  const isError       = phase === 'error'
+  }, [isDownloading, isDownloaded, errorFlash, hovered, pressed])
 
   return (
     <button
@@ -248,14 +177,14 @@ const SaveOfflineButton = memo(({ fileUrl, filename, fileId, isOffline, onOfflin
       onMouseLeave={() => setHovered(false)}
       style={buttonStyle}
       aria-label={
-        isDownloading ? `Downloading ${progress}%`
-        : isSuccess   ? 'Saved to device'
-        : isError     ? 'Download failed — tap to retry'
-        :               'Download and save to device'
+        isDownloading ? (indeterminate ? 'Downloading' : `Downloading ${progress}%`)
+        : isDownloaded ? 'Saved to device — available offline'
+        : errorFlash   ? 'Download failed — tap to retry'
+        :                'Download and save to device'
       }
     >
       {isDownloading ? (
-        indetermin ? <IndetermRing /> : (
+        indeterminate ? <IndetermRing /> : (
           <>
             <ProgressRing progress={progress} />
             <span style={{ fontSize: 11, fontVariantNumeric: 'tabular-nums', fontWeight: 700, color: '#3b82f6', minWidth: 28, textAlign: 'right' }}>
@@ -263,7 +192,7 @@ const SaveOfflineButton = memo(({ fileUrl, filename, fileId, isOffline, onOfflin
             </span>
           </>
         )
-      ) : isSuccess ? (
+      ) : isDownloaded ? (
         <>
           <span style={{
             display: 'flex', position: 'relative',
@@ -276,7 +205,7 @@ const SaveOfflineButton = memo(({ fileUrl, filename, fileId, isOffline, onOfflin
           </span>
           <span className="save-label">Saved!</span>
         </>
-      ) : isError ? (
+      ) : errorFlash ? (
         <>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
             <path d="M3 3L11 11M11 3L3 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
@@ -295,7 +224,7 @@ const SaveOfflineButton = memo(({ fileUrl, filename, fileId, isOffline, onOfflin
   )
 })
 
-// ─── Icon button (memo) ──────────────────────────────────
+// ─── Icon button (unchanged) ──────────────────────────────
 const IconBtn = memo(({ onClick, 'aria-label': label, children }) => {
   const [pressed, pressHandlers] = usePress()
   const [hovered, setHovered]    = useState(false)
@@ -327,7 +256,7 @@ const IconBtn = memo(({ onClick, 'aria-label': label, children }) => {
   )
 })
 
-// ─── Luna button (memo) ──────────────────────────────────
+// ─── Luna button (unchanged) ──────────────────────────────
 const LunaBtn = memo(({ onClick }) => {
   const [pressed, pressHandlers] = usePress()
   const [hovered, setHovered]    = useState(false)
@@ -366,12 +295,12 @@ const LunaBtn = memo(({ onClick }) => {
         <Search size={14} color="#fff" strokeWidth={2.5} />
         <Sparkles size={8} color="#fde047" fill="#fde047" style={{ position: 'absolute', bottom: -2, right: -3, filter: 'drop-shadow(0 0 3px rgba(253,224,71,.5))' }} />
       </span>
-      <span className="luna-label">Ask Luna</span>
+      <span className="luna-label">Ask</span>
     </button>
   )
 })
 
-// ─── CSS (unchanged, but moved to a separate file if possible) ─
+// ─── CSS (unchanged) ───────────────────────────────────────
 const HEADER_CSS = `
   @keyframes confettiFly {
     0%   { transform: translate(0,0) scale(1); opacity: 1; }
@@ -461,14 +390,11 @@ const ViewerHeader = memo(({
   fileId,
   currentPage,
   numPages,
-  isOffline,
   onAskLuna,
   onBack,
-  onOfflineReady,
 }) => {
   const progress = numPages > 0 ? (currentPage / numPages) * 100 : 0
 
-  // Infer file type from filename if not provided
   const displayType = useMemo(() => {
     if (fileType) return fileType
     const ext = filename.split('.').pop()?.toLowerCase()
@@ -490,6 +416,11 @@ const ViewerHeader = memo(({
       default:     return { bg: '#f1f5f9', text: '#64748b' }
     }
   }, [displayType])
+
+  // PPTX can't be saved for true offline viewing yet (see Viewer.jsx
+  // note) — hide the Save button rather than let a student download
+  // it and be confused when it still needs internet to open.
+  const canDownload = displayType === 'pdf'
 
   return (
     <>
@@ -521,13 +452,13 @@ const ViewerHeader = memo(({
         </div>
 
         <div className="header-right">
-          <SaveOfflineButton
-            fileUrl={fileUrl}
-            filename={filename}
-            fileId={fileId}
-            isOffline={isOffline}
-            onOfflineReady={onOfflineReady}
-          />
+          {canDownload && (
+            <SaveOfflineButton
+              fileUrl={fileUrl}
+              filename={filename}
+              fileId={fileId}
+            />
+          )}
           <LunaBtn onClick={onAskLuna} />
         </div>
       </header>

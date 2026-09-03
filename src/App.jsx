@@ -2,9 +2,10 @@
 // App.jsx – Fully optimised with React Query + lazy loading
 // ============================================================
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client'; // CHANGED
+import { queryClient, idbPersister, PERSIST_MAX_AGE } from './lib/queryClient'; // CHANGED — single instance, now persisted to IndexedDB
 import { lazy, Suspense } from 'react';
-
+import Timetable from './pages/Timetable';
 // ─── Lazy load all pages ──────────────────────────────────
 const Home = lazy(() => import('./pages/Home'));
 const PastPapers = lazy(() => import('./pages/PastPapers'));
@@ -24,20 +25,17 @@ const AdminUpload = lazy(() => import('./pages/AdminUpload'));
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminRoute from './components/AdminRoute';
 import InstallPrompt from './components/InstallPrompt';
+import FcmSetup from './components/FcmSetup';
+
 import Viewer from './components/Viewer/Viewer';
 // import { BottomNav } from './components/BottomNav'; // if you want to place it globally
 
 // ─── React Query client ────────────────────────────────────
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 5 * 60 * 1000,
-      cacheTime: 10 * 60 * 1000,
-      refetchOnWindowFocus: false,
-      retry: 1,
-    },
-  },
-});
+// REMOVED: queryClient is no longer created here. It now lives in
+// ./lib/queryClient.js (single instance) so it can be imported by the
+// IndexedDB persister setup without a circular dependency, and so any
+// other file that ever needs direct access to it (e.g. manual
+// queryClient.invalidateQueries calls) imports the same instance.
 
 // ─── Loading fallback ─────────────────────────────────────
 const PageLoader = () => (
@@ -51,7 +49,14 @@ const PageLoader = () => (
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
+    // CHANGED: QueryClientProvider -> PersistQueryClientProvider.
+    // Same client, same children — this just adds save-to-IndexedDB /
+    // restore-from-IndexedDB around it, so every useQuery() in every page
+    // below (Home, PastPapers, Quiz, ...) survives a reload with no network.
+    <PersistQueryClientProvider
+      client={queryClient}
+      persistOptions={{ persister: idbPersister, maxAge: PERSIST_MAX_AGE }}
+    >
       <BrowserRouter>
         {/* 
           Suspense is still here – but with prefetch="intent" on every NavLink,
@@ -76,13 +81,16 @@ function App() {
             <Route path="/file-viewer" element={<ProtectedRoute><Viewer /></ProtectedRoute>} />
             <Route path="/admin/upload" element={<AdminRoute><AdminUpload /></AdminRoute>} />
             <Route path="/AiChat" element={<ProtectedRoute><AiChat /></ProtectedRoute>} />
+            <Route path="/timetable" element={<Timetable />} />
+
           </Routes>
         </Suspense>
         <InstallPrompt />
+        <FcmSetup />
         {/* Uncomment if you want the bottom nav visible on every page */}
         {/* <BottomNav /> */}
       </BrowserRouter>
-    </QueryClientProvider>
+    </PersistQueryClientProvider>
   );
 }
 

@@ -1,5 +1,6 @@
-import { useState, lazy, Suspense, useMemo, useEffect, useRef } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useState, lazy, Suspense, useMemo, useEffect } from 'react';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { supabase } from '../../supabase';
 import { useFileLoader } from '../../hooks/useFileLoader';
 import { usePdfLoader } from '../../hooks/usePdfLoader';
 import { usePdfRenderer } from '../../hooks/usePdfRenderer';
@@ -14,30 +15,91 @@ import '../../styles/viewer.css';
 
 const LunaPanel = lazy(() => import('./LunaPanel'));
 
+// Same helpers as Files.jsx / Programs.jsx. TODO: extract to a shared
+// utils/notes.js so there's exactly one copy instead of three.
+const getNotePublicUrl = (note) => {
+  if (note.storage_type === 'gdrive' && note.filepath) {
+    return `https://drive.google.com/file/d/${note.filepath}/view`;
+  }
+  if (note.filepath && note.storage_type !== 'gdrive') {
+    const { data } = supabase.storage.from('notes').getPublicUrl(note.filepath);
+    if (data?.publicUrl) return data.publicUrl;
+  }
+  if (note.url && (note.url.startsWith('http://') || note.url.startsWith('https://'))) {
+    return note.url;
+  }
+  return null;
+};
+
+const getFileType = (filename) => {
+  const ext = String(filename || '').split('.').pop()?.toLowerCase();
+  return ext === 'pptx' || ext === 'ppt' ? 'pptx' : 'pdf';
+};
+
 export default function Viewer() {
   const navigate = useNavigate();
   const { state } = useLocation();
-  const filename = state?.filename || 'Document';
-  const rawUrl = state?.url || null;
-  const fileId = state?.fileId || null;
-  const fileType = state?.fileType || 'pdf';
+  const [searchParams] = useSearchParams();
 
-  // useFileLoader must be updated to check the local cache before
-  // hitting rawUrl — see notes below. This just requests that behavior.
-  const { blobUrl, fileLoading, fileError, isOffline, servedFromCache } = useFileLoader(
-    rawUrl, fileId, fileType, filename,
-    { preferCache: true }
+  // ✅ Router `state` only lives in memory for the current session — a
+  // hard refresh, a bookmark, a shared link, or a PWA relaunch all land
+  // here with `state` undefined. The URL's ?fileId= is the durable
+  // source of truth; `state` is just a same-session shortcut so the
+  // common case (clicking from Files/Programs) doesn't need a refetch.
+  const fileIdFromUrl = searchParams.get('fileId');
+  const fileId = state?.fileId || fileIdFromUrl || null;
+  const hasFullState = !!state?.url;
+
+  const [recovered, setRecovered] = useState(null);
+  const [recoveryError, setRecoveryError] = useState(null);
+
+  // Recovery path: we have a fileId but not the rest (url/filename/type)
+  // because state was lost. Fetch the note directly from `notes` by id —
+  // the same id space Files.jsx, Programs.jsx, and studyhub-router.js
+  // all agree on, so this always resolves for a real, existing document.
+  useEffect(() => {
+    if (hasFullState || !fileId) return;
+    let cancelled = false;
+    setRecoveryError(null);
+    (async () => {
+      const { data, error } = await supabase
+        .from('notes')
+        .select('id, filename, url, filepath, storage_type, course_name, semester, program')
+        .eq('id', fileId)
+        .single();
+      if (cancelled) return;
+      if (error || !data) {
+        setRecoveryError('Could not find this document. It may have been removed.');
+        return;
+      }
+      setRecovered(data);
+    })();
+    return () => { cancelled = true; };
+  }, [hasFullState, fileId]);
+
+  const filename = state?.filename || recovered?.course_name || recovered?.filename || 'Document';
+  const rawUrl = state?.url || (recovered ? getNotePublicUrl(recovered) : null);
+  const fileType = state?.fileType || (recovered ? getFileType(recovered.filename) : 'pdf');
+
+  // retryTick: bumping this re-runs useFileLoader's effect without a
+  // hard page reload. Critical for the offline case — a hard reload
+  // while offline can strand the student on a blank browser error
+  // page if there's no service worker precaching the app shell.
+  const [retryTick, setRetryTick] = useState(0);
+
+  // CHANGED: also pull loadStage/downloadProgress so LoadingScreen can
+  // show what's actually happening instead of a generic spinner.
+  const { blobUrl, fileLoading, fileError, isOffline, loadStage, downloadProgress } = useFileLoader(
+    rawUrl, fileId, fileType, filename, retryTick
   );
 
-  // usePdfLoader should use PDF.js's streaming API (getDocument({url})
-  // or a ReadableStream) rather than waiting for a full blob — see notes.
   const {
     pdf,
     pageSizes,
     numPages,
     loading: pdfLoading,
     error: pdfError,
-    firstPageReady, // new: true as soon as page 1 can render, before all pages parsed
+    firstPageReady,
   } = usePdfLoader(fileType === 'pdf' ? blobUrl : null);
 
   const [scale, setScale] = useState(1.0);
@@ -50,7 +112,6 @@ export default function Viewer() {
   const baseWidth = useMemo(() => pageSizes[0]?.width || 595, [pageSizes]);
   const renderer = usePdfRenderer(pdf, scale, baseWidth);
 
-  // Extract text of the current page (unchanged, cancellation-safe)
   useEffect(() => {
     if (!pdf || !numPages) return;
     let cancelled = false;
@@ -68,15 +129,63 @@ export default function Viewer() {
     return () => { cancelled = true; };
   }, [pdf, currentPage, numPages]);
 
-  // Show the shell as soon as we can render page 1 — don't block on
-  // every page being parsed. This is the main "long loading" fix at
-  // this layer; the rest is in useFileLoader/usePdfLoader.
+  // ── Recovery states (only relevant when state was lost) ──
+  if (!fileId && !hasFullState && !rawUrl) {
+    // No id anywhere (state, URL) — genuinely nothing to show, not a
+    // loading condition. Distinct from "recovering" below.
+    return (
+      <ErrorScreen
+        message="No document is open. Go back and select a file to view."
+        onBack={() => navigate(-1)}
+      />
+    );
+  }
+
+  if (!hasFullState && !recovered && !recoveryError) {
+    // We have a fileId but are still fetching its details from `notes`.
+    // CHANGED: explicit stage instead of the default.
+    return <LoadingScreen stage="lookup" />;
+  }
+
+  if (recoveryError) {
+    return (
+      <ErrorScreen
+        message={recoveryError}
+        onBack={() => navigate(-1)}
+      />
+    );
+  }
+
   const showLoading = fileType === 'pdf'
     ? (fileLoading || (pdfLoading && !firstPageReady))
     : fileLoading;
 
   if (showLoading) {
-    return <LoadingScreen />;
+    // CHANGED: real stage + progress instead of a bare spinner.
+    // While useFileLoader is still working, show its stage
+    // (checking-cache / downloading) with byte progress when known.
+    // Once it's done and we're just waiting on pdf.js to parse the
+    // first page, that's a distinct 'opening' stage with no byte
+    // progress to report (it's CPU parsing, not a network transfer).
+    return (
+      <LoadingScreen
+        stage={fileLoading ? loadStage : 'opening'}
+        progress={fileLoading ? downloadProgress : null}
+      />
+    );
+  }
+
+  // PPTX rendering depends on a live embedded viewer (Office/Google),
+  // not just having the bytes — caching the blob doesn't make this
+  // work offline. Say so clearly instead of letting it spin forever
+  // or show a blank iframe.
+  if (fileType === 'pptx' && !navigator.onLine && !blobUrl) {
+    return (
+      <ErrorScreen
+        message="PowerPoint files need an internet connection to view and can't be opened offline yet. PDF downloads work offline — ask your lecturer for a PDF version if one's available."
+        onBack={() => navigate(-1)}
+      />
+    );
   }
 
   if (fileError) {
@@ -84,7 +193,7 @@ export default function Viewer() {
       <ErrorScreen
         message={fileError}
         onBack={() => navigate(-1)}
-        onRetry={() => window.location.reload()}
+        onRetry={() => setRetryTick((t) => t + 1)}
       />
     );
   }
@@ -94,7 +203,7 @@ export default function Viewer() {
       <ErrorScreen
         message={`Could not open PDF: ${pdfError}`}
         onBack={() => navigate(-1)}
-        onRetry={() => window.location.reload()}
+        onRetry={() => setRetryTick((t) => t + 1)}
       />
     );
   }
@@ -104,7 +213,7 @@ export default function Viewer() {
       <ErrorScreen
         message="PDF loaded but could not be displayed. It may be corrupted or unsupported."
         onBack={() => navigate(-1)}
-        onRetry={() => window.location.reload()}
+        onRetry={() => setRetryTick((t) => t + 1)}
       />
     );
   }
@@ -112,17 +221,16 @@ export default function Viewer() {
   return (
     <div className="viewer-root">
       <ViewerHeader
-  filename={filename}
-  fileType={fileType}
-  fileUrl={rawUrl}
-  fileId={fileId}
-  currentPage={currentPage}
-  numPages={numPages}
-  isOffline={isOffline}
-  onBack={() => navigate(-1)}
-  onAskLuna={() => setShowLuna(true)}
-  onOfflineReady={() => { /* optional: could trigger useFileLoader to re-check cache */ }}
-/>
+        filename={filename}
+        fileType={fileType}
+        fileUrl={rawUrl}
+        fileId={fileId}
+        currentPage={currentPage}
+        numPages={numPages}
+        isOffline={isOffline}
+        onBack={() => navigate(-1)}
+        onAskLuna={() => setShowLuna(true)}
+      />
 
       {fileType === 'pdf' ? (
         <PdfViewer

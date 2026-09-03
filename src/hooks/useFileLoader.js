@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { supabase } from '../supabase';
 import { saveFileOffline, getOfflineFile } from '../utils/offlineStorage';
+import { getDownload } from '../utils/downloadStore';
+
 
 const DEBUG = false;
 const log = DEBUG ? console.log.bind(console) : () => {};
@@ -24,12 +26,36 @@ const getProxiedUrl = (rawUrl) => {
   return rawUrl;
 };
 
+// Checks the actual bytes instead of trusting HTTP 200 — catches Google
+// Drive's "can't scan this file for viruses" interstitial, which large
+// files get served with a 200 status instead of the real bytes.
+async function looksLikeValidFile(blob, fileType) {
+  try {
+    const header = new Uint8Array(await blob.slice(0, 8).arrayBuffer());
+    if (fileType === 'pdf') {
+      return header[0] === 0x25 && header[1] === 0x50 && header[2] === 0x44
+        && header[3] === 0x46 && header[4] === 0x2d; // "%PDF-"
+    }
+    if (fileType === 'pptx') {
+      return header[0] === 0x50 && header[1] === 0x4b; // "PK" (zip)
+    }
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export function useFileLoader(rawUrl, fileId, fileType, filename) {
   const [blobUrl, setBlobUrl] = useState(null);
   const [fileLoading, setFileLoading] = useState(true);
   const [fileError, setFileError] = useState(null);
   const [isOffline, setIsOffline] = useState(false);
   const [servedFromCache, setServedFromCache] = useState(false);
+  // NEW: what the loading screen should actually say, and real byte
+  // progress during a network download so a slow connection shows a
+  // moving number instead of a spinner that could mean anything.
+  const [loadStage, setLoadStage] = useState('checking-cache'); // 'checking-cache' | 'downloading'
+  const [downloadProgress, setDownloadProgress] = useState(null); // number 0-100 | 'indeterminate' | null
   const mounted = useRef(true);
   const blobUrlRef = useRef(null); // avoids stale-closure revokes
 
@@ -39,11 +65,16 @@ export function useFileLoader(rawUrl, fileId, fileType, filename) {
   }, []);
 
   useEffect(() => {
-    if (!fileId) return;
-    getOfflineFile(fileId).then(cached => {
-      if (mounted.current) setIsOffline(!!cached);
-    });
-  }, [fileId]);
+  if (!fileId) return;
+  let cancelled = false;
+  (async () => {
+    const downloaded = await getDownload(fileId);
+    if (!cancelled && downloaded) { setIsOffline(true); return; }
+    const cached = await getOfflineFile(fileId);
+    if (!cancelled) setIsOffline(!!cached);
+  })();
+  return () => { cancelled = true; };
+}, [fileId]);
 
   // Main loading effect
   useEffect(() => {
@@ -51,6 +82,8 @@ export function useFileLoader(rawUrl, fileId, fileType, filename) {
     setFileLoading(true);
     setFileError(null);
     setServedFromCache(false);
+    setLoadStage('checking-cache');
+    setDownloadProgress(null);
 
     if (blobUrlRef.current) {
       URL.revokeObjectURL(blobUrlRef.current);
@@ -83,6 +116,9 @@ export function useFileLoader(rawUrl, fileId, fileType, filename) {
 
     const fetchFromNetwork = async () => {
       try {
+        setLoadStage('downloading');
+        setDownloadProgress(null);
+
         const token = await getAuthToken();
         const proxied = getProxiedUrl(rawUrl);
         const apiUrl = proxied.startsWith('/api/')
@@ -95,9 +131,45 @@ export function useFileLoader(rawUrl, fileId, fileType, filename) {
         });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-        const blob = await res.blob();
+        let blob;
+        if (res.body && typeof res.body.getReader === 'function') {
+          // Stream with real progress — same pattern as
+          // useDownloadManager's explicit downloads, so slow connections
+          // show an actual percentage instead of a spinner.
+          const total = Number(res.headers.get('content-length')) || 0;
+          setDownloadProgress(total ? 0 : 'indeterminate');
+
+          const reader = res.body.getReader();
+          const chunks = [];
+          let received = 0;
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            if (cancelled) { reader.cancel(); return; }
+            chunks.push(value);
+            received += value.length;
+            if (mounted.current) {
+              setDownloadProgress(total ? Math.min(99, Math.round((received / total) * 100)) : 'indeterminate');
+            }
+          }
+          blob = new Blob(chunks);
+        } else {
+          // Fallback for environments without a streamable fetch body
+          // (some older WebViews) — no progress, but still works.
+          setDownloadProgress('indeterminate');
+          blob = await res.blob();
+        }
+
         if (!mounted.current || cancelled) return;
 
+        const valid = await looksLikeValidFile(blob, fileType);
+        if (!valid) {
+          throw new Error(
+            'The file server returned something other than the document — this usually happens with large files hosted on Google Drive. Try again in a moment, or ask your lecturer to re-upload it.'
+          );
+        }
+
+        setDownloadProgress(100);
         applyBlob(blob, false);
 
         if (fileId) {
@@ -118,41 +190,59 @@ export function useFileLoader(rawUrl, fileId, fileType, filename) {
     };
 
     const run = async () => {
-      // PPTX doesn't need a blob — uses rawUrl directly, no caching path.
-      if (fileType === 'pptx') {
-        setFileLoading(false);
-        return;
-      }
+  if (fileType === 'pptx') {
+    setFileLoading(false);
+    return;
+  }
 
-      // Cache-first, regardless of online/offline status. This is the
-      // fix: previously the offline cache was only checked when the
-      // device was offline, so an already-downloaded file was silently
-      // re-fetched from the network on every view.
-      if (fileId) {
-        try {
-          const cached = await getOfflineFile(fileId);
-          if (cancelled) return;
-          if (cached?.blob) {
-            log('📦 Serving from offline cache — skipping network');
-            applyBlob(cached.blob, true);
-            return;
-          }
-        } catch (e) {
-          console.warn('Offline cache lookup failed, falling back to network:', e);
+  setLoadStage('checking-cache');
+
+  if (fileId) {
+    // 1. Explicit download — never re-fetch, never auto-delete, but DO
+    // validate before trusting it.
+    try {
+      const downloaded = await getDownload(fileId);
+      if (cancelled) return;
+      if (downloaded?.blob) {
+        if (await looksLikeValidFile(downloaded.blob, fileType)) {
+          log('✅ Serving from explicit download — fully offline');
+          applyBlob(downloaded.blob, true);
+          return;
         }
+        console.warn('Explicit download for', fileId, 'failed validation — skipping');
       }
+    } catch (e) {
+      console.warn('Download store lookup failed:', e);
+    }
 
-      // Nothing cached — but if we're offline and have nothing, fail
-      // clearly instead of attempting (and hanging on) a dead fetch.
-      if (!navigator.onLine) {
-        setFileError('You are offline and this file is not saved for offline use.');
-        setFileLoading(false);
-        return;
+    // 2. Soft cache — best-effort, safe to skip silently if invalid.
+    try {
+      const cached = await getOfflineFile(fileId);
+      if (cancelled) return;
+      if (cached?.blob) {
+        if (await looksLikeValidFile(cached.blob, fileType)) {
+          log('📦 Serving from soft cache — skipping network');
+          applyBlob(cached.blob, true);
+          return;
+        }
+        console.warn('Soft cache for', fileId, 'failed validation — refetching from network');
       }
+    } catch (e) {
+      console.warn('Offline cache lookup failed, falling back to network:', e);
+    }
+  }
 
-      await fetchFromNetwork();
-    };
+  // 3. Nothing valid locally — need network.
+  if (!navigator.onLine) {
+    setFileError(
+      'You\u2019re offline and haven\u2019t downloaded this file yet. Connect to the internet once to download it for offline use.'
+    );
+    setFileLoading(false);
+    return;
+  }
 
+  await fetchFromNetwork();
+};
     run();
 
     return () => {
@@ -170,5 +260,5 @@ export function useFileLoader(rawUrl, fileId, fileType, filename) {
     };
   }, []);
 
-  return { blobUrl, fileLoading, fileError, isOffline, servedFromCache };
+  return { blobUrl, fileLoading, fileError, isOffline, servedFromCache, loadStage, downloadProgress };
 }

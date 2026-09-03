@@ -200,17 +200,24 @@ async function callGeminiWithFallback(modelName, contents, { label = 'gemini-cal
     }
   }
 
-  // If primary fails, try fallback model once (if different)
+   // If primary fails, try fallback model with the same retry treatment
   if (modelName !== fallbackModel) {
     console.warn(`[${label}] primary model "${modelName}" failed, trying fallback "${fallbackModel}"`);
-    try {
-      const fallbackGenModel = genAI.getGenerativeModel({ model: fallbackModel });
-      const result = await fallbackGenModel.generateContent(contents);
-      const response = await result.response;
-      return response.text();
-    } catch (fallbackErr) {
-      console.error(`[${label}] fallback also failed:`, fallbackErr.message);
-      throw fallbackErr;
+    const fallbackGenModel = genAI.getGenerativeModel({ model: fallbackModel });
+    for (let attempt = 0; attempt < 3; attempt++) {
+      try {
+        const result = await fallbackGenModel.generateContent(contents);
+        const response = await result.response;
+        return response.text();
+      } catch (fallbackErr) {
+        lastError = fallbackErr;
+        if (!isRetryableError(fallbackErr) || attempt === 2) {
+          console.error(`[${label}] fallback also failed:`, fallbackErr.message);
+          break;
+        }
+        const delay = 1000 * 2 ** attempt;
+        await new Promise(resolve => setTimeout(resolve, delay));
+      }
     }
   }
 
@@ -1398,6 +1405,68 @@ async function sendNotificationToProgram(program, { topic, course, semester }) {
   if (invalid.length) await supabaseAdmin.from('fcm_tokens').delete().in('token', invalid);
 }
 
+async function notifyNewQuestions(programName, courseName, courseId, extractedCount) {
+  console.log('[notifyNewQuestions] called with:', { programName: JSON.stringify(programName), courseName, courseId, extractedCount });
+
+  if (!extractedCount || extractedCount <= 0) {
+    console.log('[notifyNewQuestions] skipped — extractedCount is 0 or falsy');
+    return;
+  }
+
+  // Log every distinct program value currently stored in fcm_tokens, so we
+  // can see exactly what's there vs. what we're searching for — catches
+  // case/whitespace/null mismatches immediately instead of guessing.
+  const { data: allTokenRows } = await supabaseAdmin
+    .from('fcm_tokens')
+    .select('program');
+  const distinctPrograms = [...new Set((allTokenRows || []).map(r => JSON.stringify(r.program)))];
+  console.log('[notifyNewQuestions] distinct program values in fcm_tokens table:', distinctPrograms);
+  console.log('[notifyNewQuestions] searching for program exactly equal to:', JSON.stringify(programName));
+
+  const { data: tokens, error } = await supabaseAdmin
+    .from('fcm_tokens')
+    .select('token, program')
+    .eq('program', programName);
+
+  console.log(`[notifyNewQuestions] ${tokens?.length || 0} program(s)/token(s) matched "${programName}"`, { error });
+
+  if (error || !tokens?.length) {
+    console.log('[notifyNewQuestions] skipped — no matching tokens for program:', programName);
+    return;
+  }
+
+  const tokenList = tokens.map(t => t.token);
+  const message = {
+    tokens: tokenList,
+    notification: {
+      title: `🎯 New Quiz Available: ${courseName}`,
+      body: `${extractedCount} new question${extractedCount === 1 ? '' : 's'} added — tap to practice.`,
+    },
+    data: {
+      type: 'new_questions',
+      program: programName,
+      course: courseName,
+      courseId: String(courseId || ''),
+      url: `/quiz?courseId=${encodeURIComponent(courseId || '')}`,
+    },
+  };
+  const response = await admin.messaging().sendEachForMulticast(message);
+  console.log('[notifyNewQuestions] FCM send result:', JSON.stringify({
+    successCount: response.successCount,
+    failureCount: response.failureCount,
+    errors: response.responses.filter(r => !r.success).map(r => r.error?.code),
+  }));
+
+  const invalid = [];
+  response.responses.forEach((r, i) => {
+    if (!r.success && (r.error?.code?.includes('registration-token-not-registered') || r.error?.code?.includes('invalid-registration-token'))) {
+      invalid.push(tokenList[i]);
+    }
+  });
+  if (invalid.length) await supabaseAdmin.from('fcm_tokens').delete().in('token', invalid);
+}
+
+
 app.get('/api/requests', async (req, res) => {
   try {
     const { data, error } = await supabase.from('requests').select('*').order('created_at', { ascending: false });
@@ -1551,6 +1620,7 @@ app.post('/api/exam/upload-past-paper', requireAuth, upload.single('paper'), asy
     generatePaperDocument(pastPaperId).catch((docErr) => {
       console.error(`[upload-past-paper] background document generation failed for ${pastPaperId}:`, docErr.message);
     });
+    notifyNewQuestions(program.name, course.course_name, course.id, extracted).catch(console.error);
 
     res.json({
       success: true,
@@ -1647,8 +1717,31 @@ app.post('/api/exam/batch-upload-past-papers', requireAuth, async (req, res) => 
         console.error(`[batch-upload] background document generation failed for ${rawPaperId}:`, docErr.message);
       });
 
-      return { success: true, paper_id: paperId, extracted, flagged_for_review: flaggedForReview };
+      return {
+  success: true, paper_id: paperId, extracted, flagged_for_review: flaggedForReview,
+  course_id: paperRecord.course_id, course_name: paperRecord.course, program_id: paperRecord.program_id,
+};
     });
+
+    const courseTotals = {};
+    for (const r of results) {
+      if (r.success && r.extracted > 0) {
+        if (!courseTotals[r.course_id]) {
+          courseTotals[r.course_id] = { extracted: 0, course_name: r.course_name, program_id: r.program_id };
+        }
+        courseTotals[r.course_id].extracted += r.extracted;
+      }
+    }
+    const courseIds = Object.keys(courseTotals);
+    if (courseIds.length) {
+      const programIds = [...new Set(Object.values(courseTotals).map(c => c.program_id))];
+      const { data: programsData } = await supabaseAdmin.from('programs').select('id, name').in('id', programIds);
+      const programNameById = Object.fromEntries((programsData || []).map(p => [p.id, p.name]));
+      for (const [courseId, agg] of Object.entries(courseTotals)) {
+        const programName = programNameById[agg.program_id];
+        if (programName) notifyNewQuestions(programName, agg.course_name, courseId, agg.extracted).catch(console.error);
+      }
+    }
 
     res.json({ results });
   } catch (err) {
@@ -2092,7 +2185,7 @@ CRITICAL — this is a JSON string, so every backslash in your LaTeX must be esc
         model: modelName,
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.3,
-        max_tokens: 500,
+        max_tokens: 900,
         response_format: { type: 'json_object' },
       }),
       { label: 'exam-grade-single' }
@@ -2177,7 +2270,7 @@ MATH IN "feedback" ONLY: if it needs math, use LaTeX with $ / $$ delimiters (e.g
           ],
         }],
         temperature: 0.3,
-        max_tokens: 500,
+        max_tokens: 900,
         response_format: { type: 'json_object' },
       }),
       { label: 'exam-grade-diagram' }

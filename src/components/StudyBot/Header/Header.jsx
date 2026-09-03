@@ -40,10 +40,10 @@ export default function Header({ loading, onNewChat, onToggleSidebar }) {
 
       <div style={{ flex: 1, minWidth: 0 }}>
         <p style={{ fontSize: '15px', fontWeight: '700', color: '#1e2d5a', margin: 0, lineHeight: 1.2 }}>
-          StudyBot{greeting}
+          StudyHub{greeting}
         </p>
         <span style={{ fontSize: '11px', color: '#6b7db3', marginTop: '2px', display: 'block' }}>
-          {loading ? '✦ thinking...' : 'Your AI university tutor'}
+          {loading ? '✦ thinking...' : 'Your university tutor'}
         </span>
       </div>
 

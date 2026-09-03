@@ -367,6 +367,76 @@ const ANIM_CSS = `
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   h1, h2, h3, .font-display { font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif; font-display: swap; }
+
+/* Sage AI Response */
+.ai-response {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+               "Segoe UI", sans-serif;
+
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 400;
+
+  letter-spacing: -0.01em;
+  color: #1f2937;
+}
+
+/* Main headings */
+.ai-response h1 {
+  font-size: 25px;
+  line-height: 1.25;
+  font-weight: 700;
+  margin: 24px 0 12px;
+}
+
+/* Section headings */
+.ai-response h2 {
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 700;
+  margin: 22px 0 10px;
+}
+
+/* Smaller sections */
+.ai-response h3 {
+  font-size: 17px;
+  line-height: 1.4;
+  font-weight: 650;
+  margin: 18px 0 8px;
+}
+
+/* Paragraphs */
+.ai-response p {
+  margin: 0 0 14px;
+}
+
+/* Lists */
+.ai-response ul,
+.ai-response ol {
+  padding-left: 22px;
+  margin: 8px 0 16px;
+}
+
+.ai-response li {
+  margin-bottom: 7px;
+}
+
+/* Bold text */
+.ai-response strong {
+  font-weight: 650;
+}
+
+/* Code */
+.ai-response code {
+  font-size: 14px;
+}
+
+/* Math */
+.ai-response .katex {
+  font-size: 1.05em;
+}
+
+
 `
 
 function TrendIcon({ trend, className = 'w-3.5 h-3.5' }) {
@@ -759,9 +829,9 @@ const EQUATION_RE = /^[=∫Σ√±≈≤≥≠→⇒αβγθπμρλΔΩ]|[=:]\s
 // Heading styles by markdown level — each level needs its own visual weight/size/color
 // so ##, ###, #### actually read as a hierarchy instead of three identical bold lines.
 const HEADING_STYLE = {
-  2: 'text-xl font-bold text-indigo-700',
-  3: 'text-lg font-bold text-gray-900',
-  4: 'text-sm font-bold uppercase tracking-wide text-gray-500',
+  2: 'text-xl font-bold text-indigo-700',      // 20px
+  3: 'text-lg font-bold text-gray-900',        // 18px
+  4: 'text-base font-semibold text-gray-700',  // 16px
 }
 
 function MarkdownLite({ text }) {
@@ -770,7 +840,7 @@ function MarkdownLite({ text }) {
     // Paragraph rhythm widened again (space-y-4 → space-y-5) and line-height nudged up
     // (leading-relaxed/1.625 → leading-[1.7]) — a touch more air between wrapped lines
     // without going as loose as leading-loose. text-base stays the reading-size floor.
-    <div className="space-y-5 text-base leading-[1.7] text-gray-800">
+    <div className="ai-response space-y-5 text-base leading-[1.7] text-gray-800">
       {blocks.map((block, bi) => {
         const trimmedBlock = block.trim()
         const lines = block.split('\n').map(l => l.trim()).filter(Boolean)

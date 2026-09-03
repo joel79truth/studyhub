@@ -2,7 +2,7 @@
 // Programs.jsx – server-side filtered queries, lazy "browse all",
 // no skeleton flashes on navigation. Course grid now personalizes
 // (continue badge), supports search, and uses color-coded cards;
-// file rows flag recent uploads.
+// file rows flag recent uploads and downloaded/downloading state.
 // ============================================================
 import React, {
   useState, useEffect, useMemo, useCallback, useRef,
@@ -12,9 +12,15 @@ import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabase';
 import { BottomNav } from '../components/BottomNav';
 import { useQuery } from '@tanstack/react-query';
+import { useIsDownloaded, useDownloadProgress, useDownloadManager } from '../hooks/useDownloadManager';
 
 // ─── Helpers ──────────────────────────────────────────────
 const normalizeName = (name) => String(name || '').trim().toLowerCase();
+
+const getFileType = (filename) => {
+  const ext = String(filename || '').split('.').pop()?.toLowerCase();
+  return ext === 'pptx' || ext === 'ppt' ? 'pptx' : 'pdf';
+};
 
 const getNotePublicUrl = (note) => {
   if (note.storage_type === 'gdrive' && note.filepath) {
@@ -30,9 +36,9 @@ const getNotePublicUrl = (note) => {
   return null;
 };
 
-// Soft color-coded tints for course cards (Tip 4) — same hue family
-// as the existing blue/indigo theme, just varied so cards read as
-// distinct categories at a glance instead of one uniform block.
+// Soft color-coded tints for course cards — same hue family as the
+// existing blue/indigo theme, just varied so cards read as distinct
+// categories at a glance instead of one uniform block.
 const COURSE_PALETTE = [
   { bg: 'bg-indigo-50', text: 'text-indigo-600', hoverBg: 'group-hover:bg-indigo-600', border: 'border-indigo-100' },
   { bg: 'bg-blue-50',   text: 'text-blue-600',   hoverBg: 'group-hover:bg-blue-600',   border: 'border-blue-100' },
@@ -75,8 +81,86 @@ const FileIcon = memo(({ filename }) => {
   return <span className={`text-xl ${color}`}>{icon}</span>;
 });
 
+// ─── Download Badge — the "double tick" ─────────────────────
+// Lives as a SIBLING to the filename <p>, never inside it — a
+// truncating text node and an icon fighting for the same line
+// causes exactly the kind of layout breakage that erodes trust.
+const DownloadBadge = memo(({ fileId }) => {
+  const isDownloaded = useIsDownloaded(fileId);
+  const progress = useDownloadProgress(fileId); // number | 'indeterminate' | null
+
+  if (progress === 'indeterminate') {
+    return <span className="flex-shrink-0 text-[10px] font-semibold text-blue-500 animate-pulse">…</span>;
+  }
+  if (typeof progress === 'number') {
+    return <span className="flex-shrink-0 text-[10px] font-semibold text-blue-500 tabular-nums">{progress}%</span>;
+  }
+  if (isDownloaded) {
+    return (
+      <span className="flex-shrink-0 text-blue-500" title="Downloaded — available offline">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+          <path d="M1 8l3 3 5-6" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+          <path d="M5 8l3 3 5-6" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+        </svg>
+      </span>
+    );
+  }
+  return null;
+});
+
+// ─── Download menu row — reflects real state instead of always
+// saying "Download", and gives a way to cancel or remove ─────────
+const DownloadMenuItem = memo(({ file, onStartDownload, onCancelDownload, onRemoveDownload }) => {
+  const isDownloaded = useIsDownloaded(file.id);
+  const progress = useDownloadProgress(file.id);
+  const isDownloading = progress !== null;
+  const fileType = getFileType(file.filename);
+
+  if (fileType === 'pptx') {
+    return (
+      <div className="w-full px-4 py-2.5 text-sm text-left text-gray-300 flex items-center gap-3 cursor-not-allowed" title="PowerPoint files can't be saved for offline viewing yet">
+        ⬇️ Download unavailable
+      </div>
+    );
+  }
+
+  if (isDownloading) {
+    return (
+      <button
+        className="w-full px-4 py-2.5 text-sm text-left hover:bg-red-50 flex items-center gap-3 text-blue-600"
+        onClick={() => onCancelDownload(file.id)}
+        role="menuitem"
+      >
+        ⏳ Downloading{typeof progress === 'number' ? ` ${progress}%` : '…'} — Cancel
+      </button>
+    );
+  }
+
+  if (isDownloaded) {
+    return (
+      <button
+        className="w-full px-4 py-2.5 text-sm text-left hover:bg-red-50 flex items-center gap-3 text-red-600"
+        onClick={() => onRemoveDownload(file.id)}
+        role="menuitem"
+      >
+        🗑 Remove download
+      </button>
+    );
+  }
+
+  return (
+    <button
+      className="w-full px-4 py-2.5 text-sm text-left hover:bg-blue-50 flex items-center gap-3"
+      onClick={() => onStartDownload(file)}
+      role="menuitem"
+    >
+      ⬇️ Download
+    </button>
+  );
+});
+
 // ─── File List Item ───────────────────────────────────────
-const FileListItem = memo(({ file, onFileClick, onDownload, onCopyLink, onToggleRead, isRead }) => {
+const FileListItem = memo(({ file, onFileClick, onStartDownload, onCancelDownload, onRemoveDownload, onCopyLink, onToggleRead, isRead }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
@@ -110,18 +194,26 @@ const FileListItem = memo(({ file, onFileClick, onDownload, onCopyLink, onToggle
     setMenuOpen(false);
   };
 
-  const handleDownload = (e) => {
-    e.stopPropagation();
-    onDownload(file);
-    setMenuOpen(false);
-  };
   const handleCopyLink = (e) => {
     e.stopPropagation();
     onCopyLink(file);
     setMenuOpen(false);
   };
 
-  // Tip 3: a small status cue (like an order's "just placed" flag) instead
+  const wrappedStartDownload = (f) => {
+    onStartDownload(f);
+    setMenuOpen(false);
+  };
+  const wrappedCancelDownload = (id) => {
+    onCancelDownload(id);
+    setMenuOpen(false);
+  };
+  const wrappedRemoveDownload = (id) => {
+    onRemoveDownload(id);
+    setMenuOpen(false);
+  };
+
+  // A small status cue (like an order's "just placed" flag) instead
   // of every file looking identical regardless of how fresh it is.
   const fresh = isRecent(file.uploadedAtRaw);
 
@@ -140,6 +232,7 @@ const FileListItem = memo(({ file, onFileClick, onDownload, onCopyLink, onToggle
           <p className={`text-[15px] font-semibold truncate transition-colors ${isRead ? 'text-gray-400 line-through' : 'text-gray-800 group-hover:text-blue-600'}`}>
             {file.filename || 'Untitled'}
           </p>
+          <DownloadBadge fileId={file.id} />
           {fresh && !isRead && (
             <span className="flex-shrink-0 text-[10px] font-bold px-1.5 py-0.5 bg-green-100 text-green-600 rounded-md">NEW</span>
           )}
@@ -178,12 +271,15 @@ const FileListItem = memo(({ file, onFileClick, onDownload, onCopyLink, onToggle
         {menuOpen && (
           <div
             ref={menuRef}
-            className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-100 py-1.5 z-30"
+            className="absolute right-0 mt-2 w-52 bg-white rounded-xl shadow-xl border border-gray-100 py-1.5 z-30"
             role="menu"
           >
-            <button className="w-full px-4 py-2.5 text-sm text-left hover:bg-blue-50 flex items-center gap-3" onClick={handleDownload} role="menuitem">
-              ⬇️ Download
-            </button>
+            <DownloadMenuItem
+              file={file}
+              onStartDownload={wrappedStartDownload}
+              onCancelDownload={wrappedCancelDownload}
+              onRemoveDownload={wrappedRemoveDownload}
+            />
             <button className="w-full px-4 py-2.5 text-sm text-left hover:bg-blue-50 flex items-center gap-3" onClick={handleCopyLink} role="menuitem">
               🔗 Copy Link
             </button>
@@ -245,8 +341,6 @@ const CoursesView = memo(({
 
   return (
     <div>
-      {/* Tip 2: smarter search — only shown once the list is long enough to
-          need it, filters locally, no network round-trip. */}
       {totalCourseCount > 6 && (
         <div className="relative mb-5 max-w-sm">
           <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">🔍</span>
@@ -422,9 +516,6 @@ const mapNote = (n) => ({
   storage_type: n.storage_type || 'supabase',
 });
 
-// Fetches ONLY the current user's program+semester notes — this is the
-// query that runs on every page load, so it stays small no matter how
-// large the overall notes table grows.
 const fetchUserNotes = async (program, semester) => {
   const { data, error } = await supabase
     .from('notes')
@@ -436,8 +527,6 @@ const fetchUserNotes = async (program, semester) => {
   return (data || []).map(mapNote);
 };
 
-// Fetches only program names + counts — used exclusively by the "Browse
-// All" view, and only loaded when that view is actually opened.
 const fetchProgramCounts = async () => {
   const { data, error } = await supabase.from('notes').select('program');
   if (error) throw error;
@@ -455,7 +544,6 @@ export default function Programs() {
   const navigate = useNavigate();
   const [isPending, startTransition] = useTransition();
 
-  // ── UI State (read synchronously so there's no flash between views) ──
   const STORAGE_KEY = 'programs_page_state';
   const getInitialState = () => {
     try {
@@ -477,9 +565,6 @@ export default function Programs() {
   const [courseQuery, setCourseQuery] = useState('');
   const [toast, setToast] = useState(null);
 
-  // Tip 1: remembers the last course the user opened, so the grid can
-  // surface a "Continue" cue for a returning user instead of treating
-  // every visit identically. Pure localStorage read/write — no network.
   const [lastViewedCourse, setLastViewedCourse] = useState(() => {
     try { return localStorage.getItem('lastViewedCourse') || null; } catch { return null; }
   });
@@ -488,7 +573,6 @@ export default function Programs() {
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ viewMode, selectedCourse, searchQuery }));
   }, [viewMode, selectedCourse, searchQuery]);
 
-  // ── React Query: profile ──
   const { data: profile, isLoading: profileLoading } = useQuery({
     queryKey: ['profile'],
     queryFn: fetchProfile,
@@ -511,7 +595,6 @@ export default function Programs() {
   const userProgram = profile?.program || '';
   const userSemester = profile?.semester || '';
 
-  // ── React Query: user's own notes only (small, fast, server-filtered) ──
   const {
     data: userNotes = [],
     isLoading: notesLoading,
@@ -543,8 +626,6 @@ export default function Programs() {
     } catch {}
   }, [userNotes, userProgram, userSemester]);
 
-  // ── React Query: program counts — LAZY, only fetched when "Browse All"
-  // is actually opened, and cached so switching back and forth is instant ──
   const {
     data: programCounts = {},
     isLoading: programCountsLoading,
@@ -556,7 +637,6 @@ export default function Programs() {
     gcTime: 15 * 60 * 1000,
   });
 
-  // ── Read status ──
   const [readFiles, setReadFiles] = useState(() => {
     try { return JSON.parse(localStorage.getItem('readFiles') || '{}'); } catch { return {}; }
   });
@@ -569,7 +649,6 @@ export default function Programs() {
     });
   }, []);
 
-  // ── Derived data ──
   const courses = useMemo(() => {
     const courseSet = new Set();
     userNotes.forEach((n) => n.course && courseSet.add(String(n.course).trim()));
@@ -604,7 +683,6 @@ export default function Programs() {
     return allProgramNames.filter((p) => normalizeName(p).includes(q));
   }, [allProgramNames, searchQuery]);
 
-  // ── Scroll restoration ──
   const scrollRef = useRef(null);
   useLayoutEffect(() => {
     const savedScroll = sessionStorage.getItem('programs_scroll');
@@ -619,7 +697,6 @@ export default function Programs() {
     }
   }, []);
 
-  // ── Handlers ──
   const handleCourseClick = useCallback((course) => {
     try { localStorage.setItem('lastViewedCourse', course); } catch {}
     setLastViewedCourse(course);
@@ -662,23 +739,38 @@ export default function Programs() {
       state: {
         fileId: file.id,
         filename: file.filename || 'Document',
+        fileType: getFileType(file.filename), // ← was missing; Viewer always defaulted to 'pdf' without this
         url,
         context: { course: file.course, semester: file.semester, program: file.program }
       },
     });
   }, [navigate]);
 
-  const handleDownload = useCallback((file) => {
+  const { startDownload, cancelDownload, removeDownload } = useDownloadManager();
+
+  const handleStartDownload = useCallback(async (file) => {
     const url = getNotePublicUrl(file);
     if (!url) { setToast('No downloadable link.'); return; }
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = file.filename || 'download';
-    link.target = '_blank';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }, []);
+
+    const result = await startDownload(
+      file,
+      () => url,
+      (u, opts) => fetch(u, opts) // forward the abort signal, or cancel never actually stops anything
+    );
+
+    if (!result.ok && !result.cancelled && result.reason !== 'in_progress') {
+      setToast(result.message || `Couldn't download ${file.filename}. Check your connection and try again.`);
+    }
+  }, [startDownload]);
+
+  const handleCancelDownload = useCallback((fileId) => {
+    cancelDownload(fileId);
+  }, [cancelDownload]);
+
+  const handleRemoveDownload = useCallback(async (fileId) => {
+    const removed = await removeDownload(fileId);
+    if (removed) setToast('Download removed.');
+  }, [removeDownload]);
 
   const handleCopyLink = useCallback((file) => {
     const url = getNotePublicUrl(file);
@@ -694,21 +786,21 @@ export default function Programs() {
 
   const fileActions = useMemo(() => ({
     onFileClick: handleFileClick,
-    onDownload: handleDownload,
+    onStartDownload: handleStartDownload,
+    onCancelDownload: handleCancelDownload,
+    onRemoveDownload: handleRemoveDownload,
     onCopyLink: handleCopyLink,
     onToggleRead: toggleRead,
-  }), [handleFileClick, handleDownload, handleCopyLink, toggleRead]);
+  }), [handleFileClick, handleStartDownload, handleCancelDownload, handleRemoveDownload, handleCopyLink, toggleRead]);
 
   const courseFiles = useMemo(() => {
     if (!selectedCourse) return [];
     return userNotes.filter((n) => normalizeName(n.course) === normalizeName(selectedCourse));
   }, [userNotes, selectedCourse]);
 
-  // Skeleton only for a genuine cold start with no cached data
   const showSkeleton = (profileLoading && !profile) || (notesLoading && !userNotes.length && !!userProgram);
   const isDataReady = !showSkeleton;
 
-  // ── Render ──
   return (
     <div className="h-screen flex flex-col bg-gradient-to-br from-blue-50 via-gray-50 to-purple-50">
       <header className="flex-shrink-0 sticky top-0 z-30 bg-white/80 backdrop-blur-xl border-b border-gray-200/60 shadow-sm px-4 sm:px-6 py-3 flex items-center justify-between">

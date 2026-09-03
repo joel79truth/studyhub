@@ -769,7 +769,7 @@ export default function App({
   const rm = usePrefersReducedMotion()
 
   const [convs, setConvs] = useState(() => [freshConv()])
-  const [currentId, setCurrentId] = useState(1)
+  const [currentId, setCurrentId] = useState(() => convs[0].id)
   const [mode, setMode] = useState('normal')
   const [input, setInput] = useState('')
   const [isThinking, setIsThinking] = useState(false)

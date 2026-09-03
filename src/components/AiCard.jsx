@@ -1,39 +1,65 @@
-import React from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 
 export default function AiStudyAssistantCard({
   onAskClick = () => {},
   onSuggestionClick = () => {},
-  title = 'AI Study Assistant',
-  description = 'Ask anything. Get answers.', // default
+  title = 'Study Assistant',
+  description = 'Ask anything. Get answers.',
   buttonText = 'Ask now',
-  suggestions = [], // e.g. ['Explain photosynthesis', 'Summarize Chapter 3']
+  suggestions = [],
 }) {
+  const [clicked, setClicked] = useState(false);
+  const firedRef = useRef(false); // synchronous guard — no async state lag
+
+  const fire = useCallback(() => {
+    if (firedRef.current) return; // already executed → block instantly
+    firedRef.current = true;      // marked synchronously, before any re-render
+    setClicked(true);             // update UI (disabled/opacity/label)
+    onAskClick();                 // call parent handler immediately
+  }, [onAskClick]);
+
+  const handleTouchStart = useCallback(
+    (e) => {
+      e.preventDefault(); // stop the ghost click that would follow ~300ms later
+      fire();
+    },
+    [fire]
+  );
+
+  const handleClick = useCallback(
+    (e) => {
+      e.preventDefault();
+      if (firedRef.current) return; // touch already handled it
+      fire();
+    },
+    [fire]
+  );
+
   return (
     <div className="w-full bg-[#024927] text-white p-4 rounded-[20px] flex flex-col gap-3 font-sans shadow-md">
-
       <div className="flex items-center justify-between">
-        {/* Left column */}
         <div className="flex flex-col gap-1.5 flex-1">
-          {/* Pure white title */}
           <h3 className="text-[17px] font-bold tracking-wide text-[#ffffff]">
             {title}
           </h3>
-
-          {/* Dynamic description – short, bold, personal */}
           <p className="text-[11px] text-gray-200/90 font-medium leading-tight">
             {description}
           </p>
-
           <button
-            onClick={onAskClick}
-            className="mt-2 w-max bg-white text-[#024927] text-[12px] font-bold px-5 py-2 rounded-full hover:bg-gray-100 transition-colors cursor-pointer"
+            onTouchStart={handleTouchStart}
+            onClick={handleClick}
+            disabled={clicked}
+            style={{ touchAction: 'manipulation' }} // kills the 300ms tap delay
+            className={`mt-2 w-max bg-white text-[#024927] text-[12px] font-bold px-5 py-2 rounded-full transition-colors cursor-pointer select-none ${
+              clicked
+                ? 'opacity-50 cursor-not-allowed'
+                : 'hover:bg-gray-100'
+            }`}
             type="button"
           >
-            {buttonText}
+            {clicked ? 'Processing…' : buttonText}
           </button>
         </div>
-
-        {/* Larger Robot Avatar */}
         <div className="w-[80px] h-[80px] bg-[#111c24] rounded-full flex flex-col items-center justify-center border border-[#1b2a36] shadow-inner ml-2 flex-shrink-0">
           <img
             src="/images/Ai.png"
@@ -43,11 +69,6 @@ export default function AiStudyAssistantCard({
           />
         </div>
       </div>
-
-      {/* Quick-ask suggestions — gives the user somewhere to start instead
-          of a bare button that opens onto a blank chat, mirroring the
-          "search with suggestions beats a blank search bar" idea. Purely
-          optional: renders nothing if the caller doesn't pass any. */}
       {suggestions.length > 0 && (
         <div className="flex flex-wrap gap-2">
           {suggestions.slice(0, 4).map((s, i) => (

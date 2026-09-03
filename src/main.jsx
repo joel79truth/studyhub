@@ -8,18 +8,12 @@ import { setupDeepLinkHandler } from './utils/deepLinkHandler';
 setupDeepLinkHandler();
 // checkForUpdate();  // <-- removed to prevent CORS & 'not defined' errors
 
-// Optional: service worker for web version (harmless to keep)
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.getRegistrations().then(regs => {
-    regs.forEach(reg => reg.unregister());
-  }).then(() => {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
-        .then(reg => console.log('SW registered:', reg.scope))
-        .catch(err => console.error('SW failed:', err));
-    });
-  });
-}
+// Service worker registration is handled by vite-plugin-pwa (registerType:
+// 'autoUpdate' in vite.config.js) — it auto-injects its own registration
+// script (dist/registerSW.js). A manual register()/unregister() here used
+// to race against that and could tear down the service worker mid-registration,
+// which delayed FCM push-token registration. Do not add manual SW code back
+// without checking vite.config.js first.
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
