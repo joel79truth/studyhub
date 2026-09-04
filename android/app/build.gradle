@@ -1,9 +1,10 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'   // <-- ADD THIS (always applied)
+apply plugin: 'com.google.gms.google-services'
 
 android {
     namespace = "com.studyhub.luanar"
     compileSdk = rootProject.ext.compileSdkVersion
+
     defaultConfig {
         applicationId "com.studyhub.luanar"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -11,12 +12,24 @@ android {
         versionCode 1
         versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
         aaptOptions {
             ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+
+    signingConfigs {
+        release {
+            storeFile file("${System.getenv('USERPROFILE')}/studyhub-keystore/studyhub-release.jks")
+            storePassword project.findProperty("STUDYHUB_STORE_PASSWORD")
+            keyAlias "studyhub"
+            keyPassword project.findProperty("STUDYHUB_KEY_PASSWORD")
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -24,7 +37,7 @@ android {
 }
 
 repositories {
-    flatDir{
+    flatDir {
         dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
     }
 }
@@ -39,7 +52,6 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
     implementation project(':capacitor-cordova-android-plugins')
-    // 🔥 ADD THIS – REQUIRED FOR GOOGLE SIGN-IN
     implementation 'com.google.android.gms:play-services-auth:21.2.0'
 }
 
