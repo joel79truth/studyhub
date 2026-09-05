@@ -28,6 +28,7 @@ import {
 import { BlockMath } from 'react-katex'
 import 'katex/dist/katex.min.css'
 import { supabase } from '../../supabase'
+import { API_BASE_URL } from '../../lib/apiConfig'
 // Adjust this relative path if your folder layout differs — it should
 // point at the same math-fix.jsx that PastPapers.jsx imports from.
 import { renderInline } from "../../pages/math-fix";
@@ -43,7 +44,7 @@ const getAuthToken = async () => {
 }
 
 const apiUrl = (path) =>
-  path.startsWith('/api/') ? `${import.meta.env.VITE_API_URL}${path}` : path
+  path.startsWith('/api/') ? `${API_BASE_URL}${path}` : path
 
 // ─── Design tokens ──────────────────────────────────────────────
 const C = {

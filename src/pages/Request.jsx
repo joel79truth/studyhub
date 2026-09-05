@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BottomNav } from '../components/BottomNav';
+import { API_BASE_URL } from '../lib/apiConfig';
 
 const RequestNotes = () => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ const RequestNotes = () => {
   useEffect(() => {
     const loadPrograms = async () => {
       try {
-        const res = await fetch('https://studyhub-backend-opdd.onrender.com/api/programs');
+        const res = await fetch(`${API_BASE_URL}/api/programs`);
         if (!res.ok) throw new Error('Failed to load programs');
         const data = await res.json();
         setPrograms(data.programs || []);
@@ -51,7 +52,7 @@ const RequestNotes = () => {
 
     try {
       const payload = { topic, course, program, semester, notes, email };
-      const res = await fetch('https://studyhub-backend-opdd.onrender.com/submit-request', {
+      const res = await fetch(`${API_BASE_URL}/submit-request`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

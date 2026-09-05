@@ -1,7 +1,8 @@
 // src/services/api.js
 import { supabase } from '../supabase'; // adjust path to your supabase client
+import { API_BASE_URL } from '../lib/apiConfig';
 
-const BASE_URL = '/api/chat';
+const BASE_URL = `${API_BASE_URL}/api/chat`;
 
 // Helper: get the current access token
 async function getAuthHeaders() {

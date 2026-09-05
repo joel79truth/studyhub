@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { getAuthToken } from '../utils/auth'; // your supabase helper
+import { API_BASE_URL } from '../lib/apiConfig';
 
 export function useLunaChat(currentPage, fileId, context, pdf) {  // ← added pdf
   const [messages, setMessages] = useState([]);
@@ -66,7 +67,7 @@ export function useLunaChat(currentPage, fileId, context, pdf) {  // ← added p
     };
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/luna/chat`, {
+      const res = await fetch(`${API_BASE_URL}/api/luna/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -72,9 +72,10 @@ import {
   Tag, ArrowRight,
 } from 'lucide-react'
 import { MathText, renderInline, mathRenderError } from './math-fix'
+import { API_BASE_URL } from '../lib/apiConfig'
 
 // ── API layer ─────────────────────────────────────────────────
-const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'
+const API_BASE = API_BASE_URL
 
 async function authHeaders() {
   const { data } = await supabase.auth.getSession()

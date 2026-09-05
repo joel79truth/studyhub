@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { supabase } from '../supabase';
+import { API_BASE_URL } from '../lib/apiConfig';
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const BASE_URL = API_BASE_URL;
 
 // ── Principle 5: input method matched to context ──────────────────────────────
 // UUID field stays as text input (precise, one-time). File stays as file input.

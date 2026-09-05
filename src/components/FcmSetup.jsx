@@ -3,8 +3,9 @@ import { Capacitor } from '@capacitor/core';
 import { getMessaging, getToken, isSupported } from 'firebase/messaging';
 import { app } from '../firebase';
 import { supabase } from '../supabase';
+import { API_BASE_URL } from '../lib/apiConfig';
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const BASE_URL = API_BASE_URL;
 const VAPID_KEY = 'BKolFxr4YYRukImWVT8_YPOgyrIDk0y0xPvIS-FIwH6adpzl9fr8bvhLmfie-5KUyONylN7u96fgz4pbyrT5q6A';
 
 async function saveTokenToServer(token, userId) {

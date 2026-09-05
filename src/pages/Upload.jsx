@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabase';
+import { API_BASE_URL } from '../lib/apiConfig';
 import { Capacitor } from '@capacitor/core';
 import { FilePicker } from '@capawesome/capacitor-file-picker';
 import styles from './Upload.module.css';
@@ -180,7 +181,7 @@ export default function Upload() {
       }, 100);
 
       // ✅ FIXED: use your computer's USB tethering IP + port 3000
-      const res = await fetch('/upload', {
+      const res = await fetch(`${API_BASE_URL}/upload`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` },
         body: formData,

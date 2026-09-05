@@ -52,6 +52,7 @@ import 'katex/dist/katex.min.css';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { MathText } from './math-fix.jsx';
+import { API_BASE_URL } from '../lib/apiConfig';
 
 import {
   BookOpen,
@@ -999,7 +1000,7 @@ const Quiz = () => {
       const { data: { session } } = await supabase.auth.getSession();
       const token = session?.access_token;
       if (!token) return;
-      const base = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+      const base = API_BASE_URL;
       const { flushed } = await flushPendingSubmissions(base, token);
       if (flushed > 0) addToast(`Synced ${flushed} saved answer${flushed === 1 ? '' : 's'}`, 'success');
     };
@@ -1030,7 +1031,7 @@ const Quiz = () => {
     const { data: { session } } = await supabase.auth.getSession();
     return session?.access_token || null;
   }, []);
-  const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+  const apiBase = API_BASE_URL;
 
   // ── Fetch questions ─────────────────────────────────────────
   const fetchQuestions = useCallback(async (courseId, mode, count) => {

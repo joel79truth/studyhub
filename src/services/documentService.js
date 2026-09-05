@@ -1,5 +1,5 @@
-// src/services/documentService.js
 import { supabase } from '../supabase';
+import { API_BASE_URL } from '../lib/apiConfig';
 
 /**
  * Fetch the pages of a document.
@@ -22,7 +22,7 @@ export async function fetchDocumentPages(fileId, fileType, url) {
 
   // 2. If not found, call a backend parser (replace with your actual endpoint)
   try {
-    const response = await fetch('/api/parse-document', {
+    const response = await fetch(`${API_BASE_URL}/api/parse-document`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ fileId, fileType, url }),

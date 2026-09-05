@@ -9,6 +9,7 @@ const { createClient } = require('@supabase/supabase-js');
 const { google } = require('googleapis');
 const { Readable } = require('stream');
 const path = require('path');
+const fs = require('fs');
 const http = require('http');
 const https = require('https');
 const JSON5 = require('json5');
@@ -103,20 +104,31 @@ const GEMINI_VISION_FALLBACK = process.env.GEMINI_VISION_FALLBACK || 'gemini-fla
 const GEMINI_TEXT_MODEL = process.env.GEMINI_TEXT_MODEL || 'gemini-3.6-flash';
 const GEMINI_TEXT_FALLBACK = process.env.GEMINI_TEXT_FALLBACK || 'gemini-flash-latest';
 const GROQ_QUESTION_ACTION_MODEL = process.env.GROQ_QUESTION_ACTION_MODEL || 'openai/gpt-oss-120b';
-const GROQ_SOLVE_MODEL = process.env.GROQ_SOLVE_MODEL || 'openai/gpt-oss-12b';
+const GROQ_SOLVE_MODEL = process.env.GROQ_SOLVE_MODEL || 'openai/gpt-oss-20b';
 // Express app
 const app = express();
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://studyhub-backend-opdd.onrender.com', // your deployed frontend
-  // add any other deployed frontend URL(s) here
+  'http://localhost:3000',
+  'http://localhost',
+  'https://localhost',
+  'capacitor://localhost',
+  'http://127.0.0.1:5173',
+  'https://studyhub-backend-opdd.onrender.com',
+  'https://studyhub-backend.onrender.com',
 ];
 
 app.use(cors({
   origin: function (origin, callback) {
     // allow requests with no origin (e.g. curl, mobile apps, server-to-server)
     if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) {
+    if (
+      allowedOrigins.includes(origin) ||
+      origin.endsWith('.onrender.com') ||
+      origin.startsWith('http://localhost') ||
+      origin.startsWith('https://localhost') ||
+      origin.startsWith('capacitor://')
+    ) {
       return callback(null, true);
     }
     return callback(new Error('Not allowed by CORS: ' + origin));
@@ -126,6 +138,12 @@ app.use(cors({
 
 app.use(express.json());
 app.use(express.static('public'));
+
+// Serve frontend build if dist directory exists
+const distPath = path.join(__dirname, '../dist');
+if (fs.existsSync(distPath)) {
+  app.use(express.static(distPath));
+}
 
 const upload = multer({ storage: multer.memoryStorage() });
 
@@ -3895,6 +3913,23 @@ Return ONLY a JSON array, no markdown fences, no other text:
     res.status(500).json({ error: err.message });
   }
 });
+
+// Fallback to index.html for client-side routing if dist exists
+if (fs.existsSync(distPath)) {
+  app.get('*', (req, res, next) => {
+    if (
+      req.path.startsWith('/api') ||
+      req.path.startsWith('/upload') ||
+      req.path.startsWith('/events') ||
+      req.path.startsWith('/save-token') ||
+      req.path.startsWith('/chat-message') ||
+      req.path.startsWith('/submit-request')
+    ) {
+      return next();
+    }
+    res.sendFile(path.join(distPath, 'index.html'));
+  });
+}
 
 // ============================================================================
 // START SERVER

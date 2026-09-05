@@ -35,7 +35,10 @@ export default function Login() {
         // Native: get ID token via SocialLogin
         const result = await SocialLogin.login({
           provider: 'google',
-          options: { scopes: ['profile', 'email'] }
+          options: {
+            scopes: ['profile', 'email'],
+            filterByAuthorizedAccounts: false,
+          }
         });
 
         // Extract ID token from any known response shape

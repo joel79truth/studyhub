@@ -1,7 +1,9 @@
 // utils/updateChecker.js
+import { API_BASE_URL } from '../lib/apiConfig';
+
 export async function checkForUpdate() {
   try {
-    const res = await fetch('https://studyhub-backend.onrender.com/api/update');
+    const res = await fetch(`${API_BASE_URL}/api/update`);
     if (!res.ok) return null;
     return await res.json();
   } catch (_) {

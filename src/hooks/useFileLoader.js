@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { supabase } from '../supabase';
+import { API_BASE_URL } from '../lib/apiConfig';
 import { saveFileOffline, getOfflineFile } from '../utils/offlineStorage';
 import { getDownload } from '../utils/downloadStore';
 
@@ -122,7 +123,7 @@ export function useFileLoader(rawUrl, fileId, fileType, filename) {
         const token = await getAuthToken();
         const proxied = getProxiedUrl(rawUrl);
         const apiUrl = proxied.startsWith('/api/')
-          ? `${import.meta.env.VITE_API_URL}${proxied}`
+          ? `${API_BASE_URL}${proxied}`
           : proxied;
 
         log('🌐 Fetching file from:', apiUrl);

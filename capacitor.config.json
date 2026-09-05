@@ -2,10 +2,7 @@
   "appId": "com.studyhub.luanar",
   "appName": "StudyHub LUANAR",
   "webDir": "dist",
-    "server": {
-    "url": "http://localhost:5173",
-    "cleartext": true
-  },
+
   "plugins": {
     "GoogleAuth": {
       "scopes": ["profile", "email"],

@@ -120,7 +120,6 @@ export default defineConfig({
   },
   build: {
     rolldownOptions: {
-      external: ['@capacitor/app', '@capacitor/browser'],
       output: {
         codeSplitting: true,
       },

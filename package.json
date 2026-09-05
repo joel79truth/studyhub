@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "vite preview --port $PORT --host"
+    "start": "node backend/server.js"
   },
   "dependencies": {
     "@capacitor/android": "^8.4.1",
