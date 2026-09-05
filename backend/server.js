@@ -3914,6 +3914,10 @@ Return ONLY a JSON array, no markdown fences, no other text:
   }
 });
 
+app.get('/privacy', (req, res) => {
+  res.sendFile(path.join(__dirname, 'privacy.html'));
+});
+
 // Fallback to index.html for client-side routing if dist exists
 if (fs.existsSync(distPath)) {
   app.get('*', (req, res, next) => {
