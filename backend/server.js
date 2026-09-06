@@ -99,10 +99,10 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 // ----------------------------------------------------------------------------
 // Gemini model selection
 // ----------------------------------------------------------------------------
-const GEMINI_VISION_PRIMARY = process.env.GEMINI_VISION_PRIMARY || 'gemini-3.1-pro-preview';
-const GEMINI_VISION_FALLBACK = process.env.GEMINI_VISION_FALLBACK || 'gemini-flash-latest';
+const GEMINI_VISION_PRIMARY = process.env.GEMINI_VISION_PRIMARY || 'gemini-3.6-flash';
+const GEMINI_VISION_FALLBACK = process.env.GEMINI_VISION_FALLBACK || 'gemini-3.5-flash';
 const GEMINI_TEXT_MODEL = process.env.GEMINI_TEXT_MODEL || 'gemini-3.6-flash';
-const GEMINI_TEXT_FALLBACK = process.env.GEMINI_TEXT_FALLBACK || 'gemini-flash-latest';
+const GEMINI_TEXT_FALLBACK = process.env.GEMINI_TEXT_FALLBACK || 'gemini-3.5-flash';
 const GROQ_QUESTION_ACTION_MODEL = process.env.GROQ_QUESTION_ACTION_MODEL || 'openai/gpt-oss-120b';
 const GROQ_SOLVE_MODEL = process.env.GROQ_SOLVE_MODEL || 'openai/gpt-oss-20b';
 // Express app
