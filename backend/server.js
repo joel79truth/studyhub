@@ -1297,6 +1297,8 @@ app.post('/upload', requireAuth, upload.single('file'), async (req, res) => {
         android: {
           priority: 'high',
           notification: {
+            icon: 'ic_stat_studyhub',
+            color: '#064e3b',
             sound: 'default',
             channelId: 'studyhub_channel',
             priority: 'high',
@@ -1443,6 +1445,8 @@ async function sendNotificationToProgram(program, { topic, course, semester }) {
     android: {
       priority: 'high',
       notification: {
+        icon: 'ic_stat_studyhub',
+        color: '#064e3b',
         sound: 'default',
         channelId: 'studyhub_channel',
         priority: 'high',
@@ -1510,6 +1514,8 @@ async function notifyNewQuestions(programName, courseName, courseId, extractedCo
     android: {
       priority: 'high',
       notification: {
+        icon: 'ic_stat_studyhub',
+        color: '#064e3b',
         sound: 'default',
         channelId: 'studyhub_channel',
         priority: 'high',

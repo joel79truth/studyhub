@@ -64,6 +64,8 @@ async function registerNative(userId) {
       visibility: 1,
       sound: 'default',
       vibration: true,
+      lights: true,
+      lightColor: '#064e3b',
     });
     console.log('[FCM] studyhub_channel created with importance 5');
   } catch (channelErr) {
