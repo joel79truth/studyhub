@@ -55,12 +55,37 @@ async function registerNative(userId) {
 
   console.log('[FCM] permission granted, adding listeners');
 
+  try {
+    await PushNotifications.createChannel({
+      id: 'studyhub_channel',
+      name: 'StudyHub Notifications',
+      description: 'Alerts for new quizzes, past papers, and study materials',
+      importance: 5,
+      visibility: 1,
+      sound: 'default',
+      vibration: true,
+    });
+    console.log('[FCM] studyhub_channel created with importance 5');
+  } catch (channelErr) {
+    console.warn('[FCM] createChannel error:', channelErr);
+  }
+
   await PushNotifications.addListener('registration', (token) => {
     console.log('[FCM] registration event fired, token:', token.value?.slice(0, 20) + '...');
     saveTokenToServer(token.value, userId);
   });
   await PushNotifications.addListener('registrationError', (err) => {
     console.error('[FCM] registrationError:', JSON.stringify(err));
+  });
+  await PushNotifications.addListener('pushNotificationReceived', (notification) => {
+    console.log('[FCM] push received in foreground:', notification);
+  });
+  await PushNotifications.addListener('pushNotificationActionPerformed', (action) => {
+    console.log('[FCM] push notification tapped:', action);
+    const url = action.notification?.data?.url;
+    if (url) {
+      window.location.href = url;
+    }
   });
 
   console.log('[FCM] calling PushNotifications.register()');

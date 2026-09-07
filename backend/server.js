@@ -1294,6 +1294,17 @@ app.post('/upload', requireAuth, upload.single('file'), async (req, res) => {
           title: `📚 New Notes: ${subject}`,
           body: `${file.originalname} for ${program} Sem ${semester}`,
         },
+        android: {
+          priority: 'high',
+          notification: {
+            sound: 'default',
+            channelId: 'studyhub_channel',
+            priority: 'high',
+            defaultSound: true,
+            defaultVibrateTimings: true,
+            visibility: 'public',
+          },
+        },
         data: {
           program,
           semester: String(semester),
@@ -1429,6 +1440,17 @@ async function sendNotificationToProgram(program, { topic, course, semester }) {
       title: `📝 New Request: ${topic}`,
       body: `${course} - ${program} Sem ${semester}`,
     },
+    android: {
+      priority: 'high',
+      notification: {
+        sound: 'default',
+        channelId: 'studyhub_channel',
+        priority: 'high',
+        defaultSound: true,
+        defaultVibrateTimings: true,
+        visibility: 'public',
+      },
+    },
     data: {
       type: 'request',
       topic,
@@ -1484,6 +1506,17 @@ async function notifyNewQuestions(programName, courseName, courseId, extractedCo
     notification: {
       title: `🎯 New Quiz Available: ${courseName}`,
       body: `${extractedCount} new question${extractedCount === 1 ? '' : 's'} added — tap to practice.`,
+    },
+    android: {
+      priority: 'high',
+      notification: {
+        sound: 'default',
+        channelId: 'studyhub_channel',
+        priority: 'high',
+        defaultSound: true,
+        defaultVibrateTimings: true,
+        visibility: 'public',
+      },
     },
     data: {
       type: 'new_questions',
