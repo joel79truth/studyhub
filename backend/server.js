@@ -137,7 +137,7 @@ app.use(cors({
 }));
 
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve frontend build if dist directory exists
 const distPath = path.join(__dirname, '../dist');
@@ -1510,6 +1510,7 @@ async function notifyNewQuestions(programName, courseName, courseId, extractedCo
     notification: {
       title: `🎯 New Quiz Available: ${courseName}`,
       body: `${extractedCount} new question${extractedCount === 1 ? '' : 's'} added — tap to practice.`,
+      imageUrl: 'https://studyhub-backend-opdd.onrender.com/icons/icon-192x192.png',
     },
     android: {
       priority: 'high',
@@ -1522,6 +1523,7 @@ async function notifyNewQuestions(programName, courseName, courseId, extractedCo
         defaultSound: true,
         defaultVibrateTimings: true,
         visibility: 'public',
+        imageUrl: 'https://studyhub-backend-opdd.onrender.com/icons/icon-192x192.png',
       },
     },
     data: {
