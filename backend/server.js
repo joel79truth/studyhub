@@ -1430,17 +1430,23 @@ app.post('/submit-request', async (req, res) => {
 });
 
 async function sendNotificationToProgram(program, { topic, course, semester }) {
-  const { data: tokens, error } = await supabaseAdmin
-    .from('fcm_tokens')
-    .select('token')
-    .eq('program', program);
+  const cleanProgram = (program || '').trim();
+  const isBasics = !cleanProgram || /basic/i.test(cleanProgram);
+  let query = supabaseAdmin.from('fcm_tokens').select('token');
+  if (!isBasics) {
+    query = query.or(`program.eq."${cleanProgram}",program.ilike."%${cleanProgram}%"`);
+  }
+  const { data: tokens, error } = await query;
   if (error || !tokens?.length) return;
-  const tokenList = tokens.map(t => t.token);
+  const tokenList = [...new Set(tokens.map(t => t.token).filter(Boolean))];
+  if (!tokenList.length) return;
+
   const message = {
     tokens: tokenList,
     notification: {
       title: `📝 New Request: ${topic}`,
-      body: `${course} - ${program} Sem ${semester}`,
+      body: `${course} - ${cleanProgram || 'General'} Sem ${semester}`,
+      imageUrl: 'https://studyhub-backend-opdd.onrender.com/icons/icon-192x192.png',
     },
     android: {
       priority: 'high',
@@ -1453,15 +1459,16 @@ async function sendNotificationToProgram(program, { topic, course, semester }) {
         defaultSound: true,
         defaultVibrateTimings: true,
         visibility: 'public',
+        imageUrl: 'https://studyhub-backend-opdd.onrender.com/icons/icon-192x192.png',
       },
     },
     data: {
       type: 'request',
       topic,
       course,
-      program,
+      program: cleanProgram,
       semester: String(semester),
-      url: `/requested-notes.html?program=${encodeURIComponent(program)}&course=${encodeURIComponent(course)}&semester=${semester}&topic=${encodeURIComponent(topic)}`,
+      url: `/requested-notes.html?program=${encodeURIComponent(cleanProgram)}&course=${encodeURIComponent(course)}&semester=${semester}&topic=${encodeURIComponent(topic)}`,
     },
   };
   const response = await admin.messaging().sendEachForMulticast(message);
@@ -1482,29 +1489,25 @@ async function notifyNewQuestions(programName, courseName, courseId, extractedCo
     return;
   }
 
-  // Log every distinct program value currently stored in fcm_tokens, so we
-  // can see exactly what's there vs. what we're searching for — catches
-  // case/whitespace/null mismatches immediately instead of guessing.
-  const { data: allTokenRows } = await supabaseAdmin
-    .from('fcm_tokens')
-    .select('program');
-  const distinctPrograms = [...new Set((allTokenRows || []).map(r => JSON.stringify(r.program)))];
-  console.log('[notifyNewQuestions] distinct program values in fcm_tokens table:', distinctPrograms);
-  console.log('[notifyNewQuestions] searching for program exactly equal to:', JSON.stringify(programName));
+  const cleanProgram = (programName || '').trim();
+  const isBasics = !cleanProgram || /basic/i.test(cleanProgram);
 
-  const { data: tokens, error } = await supabaseAdmin
-    .from('fcm_tokens')
-    .select('token, program')
-    .eq('program', programName);
+  let tokensQuery = supabaseAdmin.from('fcm_tokens').select('token, program');
+  if (!isBasics) {
+    tokensQuery = tokensQuery.or(`program.eq."${cleanProgram}",program.ilike."%${cleanProgram}%"`);
+  }
 
-  console.log(`[notifyNewQuestions] ${tokens?.length || 0} program(s)/token(s) matched "${programName}"`, { error });
+  const { data: tokens, error } = await tokensQuery;
+  console.log(`[notifyNewQuestions] isBasics=${isBasics}, found ${tokens?.length || 0} token(s) for "${cleanProgram}"`, { error });
 
   if (error || !tokens?.length) {
-    console.log('[notifyNewQuestions] skipped — no matching tokens for program:', programName);
+    console.log('[notifyNewQuestions] skipped — no matching tokens for program:', cleanProgram);
     return;
   }
 
-  const tokenList = tokens.map(t => t.token);
+  const tokenList = [...new Set(tokens.map(t => t.token).filter(Boolean))];
+  if (!tokenList.length) return;
+
   const message = {
     tokens: tokenList,
     notification: {
@@ -1528,7 +1531,7 @@ async function notifyNewQuestions(programName, courseName, courseId, extractedCo
     },
     data: {
       type: 'new_questions',
-      program: programName,
+      program: cleanProgram,
       course: courseName,
       courseId: String(courseId || ''),
       url: `/quiz?courseId=${encodeURIComponent(courseId || '')}`,
