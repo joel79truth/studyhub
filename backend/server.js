@@ -3442,6 +3442,236 @@ app.post('/api/chat/sessions/:id/messages', requireAuth, chatLimiter, async (req
 });
 
 // ============================================================================
+// SNAP & LEARN (Vision AI + Weak-Spot Memory Loop)
+// ============================================================================
+
+app.post('/api/chat/vision', requireAuth, upload.single('image'), async (req, res) => {
+  try {
+    const file = req.file;
+    if (!file) {
+      return res.status(400).json({ error: 'No image provided' });
+    }
+
+    const mode = req.body.mode === 'hint' ? 'hint' : 'solution';
+    const userPrompt = (req.body.prompt || '').trim();
+    let sessionId = req.body.sessionId;
+    const userId = req.user.id;
+
+    // Compress image if larger than 1MB to optimize latency & API transfer
+    let imageBuffer = file.buffer;
+    let mimeType = file.mimetype || 'image/jpeg';
+    if (file.size > 1024 * 1024) {
+      imageBuffer = await sharp(file.buffer)
+        .resize({ width: 1400, height: 1400, fit: 'inside', withoutEnlargement: true })
+        .jpeg({ quality: 85 })
+        .toBuffer();
+      mimeType = 'image/jpeg';
+    }
+
+    // Retrieve student academic context
+    const context = await getStudentContext(userId);
+    const { name, program, semester, courses, weaknesses } = context;
+
+    const weakTopicsList = (weaknesses || []).map(w => w.topic).join(', ');
+    const coursesList = (courses || []).join(', ');
+
+    const promptText = `
+You are ${STUDYHUB_NAME}, a warm, highly capable AI tutor and academic companion built specifically for LUANAR (Lilongwe University of Agriculture and Natural Resources) students.
+Student profile:
+- Name: ${name || 'Student'}
+- Program: ${program || 'Undergraduate'} (Semester ${semester || 'Current'})
+- Registered Courses: ${coursesList || 'Various University Courses'}
+- Recent Topics Needing Practice: ${weakTopicsList || 'None recorded yet'}
+
+The student took a photo of an exam question, homework problem, or diagram.
+Solving mode requested: "${mode === 'hint' ? 'GUIDE ME / SOCRATIC HINT MODE' : 'STEP-BY-STEP COMPLETE SOLUTION'}".
+${userPrompt ? `Additional student question/note: "${userPrompt}"` : ''}
+
+INSTRUCTIONS:
+1. Examine the image carefully. Transcribe or summarize the core academic question accurately.
+2. Identify the academic Course/Subject (e.g. "Physics 2", "Fluid Mechanics", "Soil Science", "Calculus") and the specific Topic (e.g. "Wave Motion", "Archimedes' Principle", "Soil Bulk Density").
+3. Produce the response:
+   - If mode is "hint":
+     Do NOT spoil the final answer. Provide Socratic guidance: state the core concept/law involved, give the key formula, and provide Step 1 with a gentle question asking them how they would apply it. Keep it motivating, concise, and educational.
+   - If mode is "solution":
+     Provide a structured, beautifully formatted step-by-step breakdown:
+     * Identify given data and variables.
+     * State relevant equations or principles.
+     * Show calculation/reasoning step by step.
+     * Clearly highlight the Final Answer with units at the end.
+4. IMPORTANT FORMATTING:
+   - Never use raw LaTeX, dollar signs ($ or $$), or backslash commands like \\frac or \\text.
+   - Write all math, fractions, units, and symbols in clean, readable plain text (e.g., "(10)/(2)", "10 m/s^2", "√(x)", "x^2", "H2O").
+   - Write with the voice of a friendly, patient professor or peer tutor.
+
+RETURN YOUR ANSWER ONLY AS A VALID JSON OBJECT (enclosed in { ... } without markdown code fence):
+{
+  "topic": "Detected topic name (under 50 chars)",
+  "course": "Detected course name (under 50 chars)",
+  "extracted_question": "Clean transcription of the question",
+  "guidance": "The complete response text to display to the student"
+}
+`;
+
+    const contents = [
+      promptText,
+      {
+        inlineData: {
+          data: imageBuffer.toString('base64'),
+          mimeType: mimeType,
+        },
+      },
+    ];
+
+    const rawResult = await callGeminiWithFallback(
+      GEMINI_VISION_PRIMARY,
+      contents,
+      { label: 'snap-and-learn', fallbackModel: GEMINI_VISION_FALLBACK }
+    );
+
+    let parsed;
+    try {
+      const cleaned = rawResult.replace(/```(?:json)?/gi, '').replace(/```/g, '').trim();
+      parsed = JSON5.parse(cleaned);
+    } catch (parseErr) {
+      console.warn('Failed to parse JSON from Gemini vision, wrapping raw response:', parseErr.message);
+      parsed = {
+        topic: 'Exam Problem',
+        course: courses?.[0] || 'General Science',
+        extracted_question: userPrompt || 'Photo problem',
+        guidance: humanizeMathArtifacts(rawResult),
+      };
+    }
+
+    parsed.guidance = humanizeMathArtifacts(parsed.guidance || '');
+
+    // Safely update or record the weak spot in user_weak_topics
+    if (parsed.topic) {
+      try {
+        const { data: existingTopic } = await supabaseAdmin
+          .from('user_weak_topics')
+          .select('id, mastery, course')
+          .eq('user_id', userId)
+          .ilike('topic', parsed.topic.trim())
+          .maybeSingle();
+
+        if (existingTopic) {
+          await supabaseAdmin
+            .from('user_weak_topics')
+            .update({
+              last_updated: new Date().toISOString(),
+              course: parsed.course || existingTopic.course || 'General',
+            })
+            .eq('id', existingTopic.id);
+        } else {
+          await supabaseAdmin.from('user_weak_topics').insert({
+            user_id: userId,
+            topic: parsed.topic.trim(),
+            course: parsed.course || 'General',
+            mastery: 0.5,
+            last_updated: new Date().toISOString(),
+          });
+        }
+      } catch (topicErr) {
+        console.warn('[SnapLearn] Failed to update user_weak_topics:', topicErr.message);
+      }
+    }
+
+    // If session ID is provided, save messages to chat session; otherwise create a new chat session!
+    if (!sessionId) {
+      try {
+        const { data: newSession } = await supabaseAdmin
+          .from('chat_sessions')
+          .insert({
+            user_id: userId,
+            title: `📷 ${parsed.topic || 'Photo Problem'}`,
+          })
+          .select()
+          .single();
+        if (newSession) sessionId = newSession.id;
+      } catch (sessErr) {
+        console.warn('[SnapLearn] Failed to create session:', sessErr.message);
+      }
+    }
+
+    if (sessionId) {
+      try {
+        await supabaseAdmin.from('chat_messages').insert([
+          {
+            session_id: sessionId,
+            role: 'user',
+            content: `📷 [Question Photo: ${parsed.extracted_question || 'Problem'}]${userPrompt ? `\n\n${userPrompt}` : ''}`,
+          },
+          {
+            session_id: sessionId,
+            role: 'model',
+            content: parsed.guidance,
+          },
+        ]);
+        await supabaseAdmin
+          .from('chat_sessions')
+          .update({ updated_at: new Date().toISOString() })
+          .eq('id', sessionId);
+      } catch (msgErr) {
+        console.warn('[SnapLearn] Failed to record chat messages:', msgErr.message);
+      }
+    }
+
+    res.json({
+      success: true,
+      topic: parsed.topic,
+      course: parsed.course,
+      question: parsed.extracted_question,
+      reply: parsed.guidance,
+      mode,
+      sessionId,
+    });
+  } catch (err) {
+    console.error('[SnapLearn vision] Error:', err);
+    res.status(500).json({ error: err.message || 'Vision analysis failed' });
+  }
+});
+
+app.get('/api/student/study-summary', requireAuth, async (req, res) => {
+  const userId = req.user.id;
+  try {
+    const { data: weakTopics } = await supabaseAdmin
+      .from('user_weak_topics')
+      .select('topic, course, mastery, last_updated')
+      .eq('user_id', userId)
+      .order('last_updated', { ascending: false })
+      .limit(6);
+
+    const { data: profile } = await supabaseAdmin
+      .from('profiles')
+      .select('name, program, streak')
+      .eq('id', userId)
+      .maybeSingle();
+
+    const topWeak = (weakTopics || [])[0];
+    let recommendedAction = null;
+    if (topWeak) {
+      recommendedAction = {
+        title: `Review ${topWeak.topic}`,
+        course: topWeak.course,
+        prompt: `Explain ${topWeak.topic} in ${topWeak.course || 'my course'} simply with an example question.`,
+      };
+    }
+
+    res.json({
+      success: true,
+      weakTopics: weakTopics || [],
+      recommendedAction,
+      streak: profile?.streak || 0,
+      program: profile?.program || '',
+    });
+  } catch (err) {
+    console.error('study-summary error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// ============================================================================
 // FILE PROXY ROUTE (secure)
 // ============================================================================
 
