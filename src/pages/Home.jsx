@@ -5,8 +5,6 @@ import { supabase } from '../supabase';
 import { BottomNav } from '../components/BottomNav';
 import { useNavigate, Navigate } from 'react-router-dom';
 import AiStudyAssistantCard from '../components/AiCard';
-import SnapModal from '../components/SnapLearn/SnapModal';
-import { API_BASE_URL } from '../lib/apiConfig';
 import Files from '../components/Files';
 import { ensureConsistentSession } from '../lib/authGuard';
 import {
@@ -464,8 +462,6 @@ const Home = () => {
   const [streakSheetOpen, setStreakSheetOpen] = useState(false);
   const [filesEmpty, setFilesEmpty] = useState(false);
   const [toast, setToast] = useState(null);
-  const [snapOpen, setSnapOpen] = useState(false);
-  const [studySummary, setStudySummary] = useState(null);
 
   // FIX: real connectivity state, so we can (a) skip network calls that
   // would just hang/fail offline, (b) avoid treating "no network" as
@@ -479,28 +475,6 @@ const Home = () => {
   const [hintIdx, setHintIdx] = useState(0);
   const [showHint, setShowHint] = useState(false);
   const [hintTarget, setHintTarget] = useState(0); // 0 = exam card, 1 = streak card
-
-  // Fetch Weak-spot study summary for adaptive personal tutor recommendations
-  useEffect(() => {
-    if (!user || !isOnline) return;
-    let cancel = false;
-    (async () => {
-      try {
-        const { data: { session } } = await supabase.auth.getSession();
-        if (!session?.access_token) return;
-        const res = await fetch(`${API_BASE_URL}/api/student/study-summary`, {
-          headers: { Authorization: `Bearer ${session.access_token}` },
-        });
-        if (res.ok && !cancel) {
-          const data = await res.json();
-          setStudySummary(data);
-        }
-      } catch (err) {
-        // quiet fallback
-      }
-    })();
-    return () => { cancel = true; };
-  }, [user, isOnline]);
 
   const scrollContainerRef = useRef(null);
   const profilePicSrc = useMemo(() => localStorage.getItem('userProfilePic') || '', []);
@@ -1096,17 +1070,7 @@ const Home = () => {
         <div className="px-4 lg:px-6 space-y-4 pt-2 pb-32">
 
           <div className="ed-fade-up" style={{ animationDelay: '0.04s' }}>
-            <AiStudyAssistantCard
-              onAskClick={() => navigate('/AiChat')}
-              onSnapClick={() => setSnapOpen(true)}
-              onSuggestionClick={(prompt) => navigate(`/AiChat?prompt=${encodeURIComponent(prompt)}`)}
-              recommendedTopic={studySummary?.recommendedAction}
-              suggestions={
-                studySummary?.weakTopics?.length
-                  ? studySummary.weakTopics.map((w) => `Review ${w.topic}`)
-                  : ['Ask about exam topics', 'Calculate a formula', 'Past paper questions']
-              }
-            />
+            <AiStudyAssistantCard onAskClick={() => navigate('/AiChat')} description={getPersonalizedDescription} />
           </div>
 
           <div className="grid grid-cols-2 gap-3 ed-fade-up" style={{ animationDelay: '0.09s' }}>
@@ -1232,12 +1196,6 @@ const Home = () => {
           <p className="text-[10px] text-gray-300 text-center">© 2026 StudyHub LUANAR</p>
         </div>
       </div>
-
-      {/* Snap & Learn Modal */}
-      <SnapModal
-        isOpen={snapOpen}
-        onClose={() => setSnapOpen(false)}
-      />
     </div>
   );
 };
