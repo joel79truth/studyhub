@@ -7,6 +7,7 @@ import {
   fetchMessages,
   sendMessageStream,
 } from '../services/api';
+import { trackAiChatPrompt } from '../lib/analytics';
 
 export function useChatSession() {
   const [sessions, setSessions] = useState([]);
@@ -74,6 +75,7 @@ export function useChatSession() {
 
   const send = useCallback((text) => {
     if (!currentSessionId || loading) return;
+    trackAiChatPrompt();
     if (abortControllerRef.current) abortControllerRef.current.abort();
     const controller = new AbortController();
     abortControllerRef.current = controller;

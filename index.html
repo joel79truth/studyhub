@@ -16,6 +16,19 @@
     <!-- KaTeX for math/chemistry rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
 
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8YPDKR3B3F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      // Configure GA4 (SPA route changes handled dynamically in React)
+      gtag('config', 'G-8YPDKR3B3F', {
+        send_page_view: false
+      });
+    </script>
+
     <title>StudyHub</title>
   </head>
 

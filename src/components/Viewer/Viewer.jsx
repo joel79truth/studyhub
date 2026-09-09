@@ -12,6 +12,7 @@ import ZoomControls from './ZoomControls';
 import LoadingScreen from './LoadingScreen';
 import ErrorScreen from './ErrorScreen';
 import '../../styles/viewer.css';
+import { trackNotesViewed } from '../../lib/analytics';
 
 const LunaPanel = lazy(() => import('./LunaPanel'));
 
@@ -80,6 +81,17 @@ export default function Viewer() {
   const filename = state?.filename || recovered?.course_name || recovered?.filename || 'Document';
   const rawUrl = state?.url || (recovered ? getNotePublicUrl(recovered) : null);
   const fileType = state?.fileType || (recovered ? getFileType(recovered.filename) : 'pdf');
+
+  // Analytics tracking: notes/document viewed
+  useEffect(() => {
+    if (filename && filename !== 'Document') {
+      trackNotesViewed({
+        filename,
+        subject: state?.course || recovered?.course_name || '',
+        program: state?.program || recovered?.program || '',
+      });
+    }
+  }, [filename, fileId]);
 
   // retryTick: bumping this re-runs useFileLoader's effect without a
   // hard page reload. Critical for the offline case — a hard reload

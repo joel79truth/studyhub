@@ -53,6 +53,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { MathText } from './math-fix.jsx';
 import { API_BASE_URL } from '../lib/apiConfig';
+import { trackQuizCompleted } from '../lib/analytics';
 
 import {
   BookOpen,
@@ -1334,12 +1335,19 @@ const Quiz = () => {
       studyMeta: { firstAttemptCorrect, retryAttempted: retried.length, retrySuccess },
     } });
 
+    trackQuizCompleted({
+      course: subjects[currentSubjectId]?.name || 'Unknown',
+      score: correctCount,
+      total,
+      percentage,
+    });
+
     if (user && currentSubjectId) {
       await persistResults(correctCount, total, details);
       invalidateSubjectCache(currentSubjectId);
     }
     startTransition(() => setScreen('results'));
-  }, [questions, feedbackByIndex, attempts, answers, textAnswers, imageData, user, currentSubjectId]);
+  }, [questions, feedbackByIndex, attempts, answers, textAnswers, imageData, user, currentSubjectId, subjects]);
 
   // FIX (v17): now awaits finishStudySession and keeps an explicit
   // `finishingSession` flag on for its duration, so the "See Results"
@@ -1452,6 +1460,13 @@ const Quiz = () => {
     const total = questions.length;
     const percentage = Math.round((correctCount / total) * 100);
     dispatch({ type: 'DONE', results: { correct: correctCount, total, percentage, details } });
+
+    trackQuizCompleted({
+      course: subjects[currentSubjectId]?.name || 'Unknown',
+      score: correctCount,
+      total,
+      percentage,
+    });
 
     let queuedCount = 0;
     if (token) {

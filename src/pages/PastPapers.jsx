@@ -73,6 +73,7 @@ import {
 } from 'lucide-react'
 import { MathText, renderInline, mathRenderError } from './math-fix'
 import { API_BASE_URL } from '../lib/apiConfig'
+import { trackPaperViewed, trackSearch } from '../lib/analytics'
 
 // ── API layer ─────────────────────────────────────────────────
 const API_BASE = API_BASE_URL
@@ -1941,6 +1942,25 @@ export default function PastPapers() {
     setMilestoneMsg(msg)
     milestoneTimer.current = setTimeout(() => setMilestoneMsg(null), 3500)
   }, [])
+
+  // Analytics tracking: paper viewed
+  useEffect(() => {
+    if (currentPaper?.paperId) {
+      trackPaperViewed({
+        id: currentPaper.paperId,
+        title: `${currentPaper.courseName || ''} (${currentPaper.year || ''})`,
+        course: currentPaper.courseName,
+        program: currentProgram?.name || myProgramName,
+      })
+    }
+  }, [currentPaper?.paperId])
+
+  // Analytics tracking: search queries
+  useEffect(() => {
+    if (deferredSearch && deferredSearch.trim().length >= 3) {
+      trackSearch({ query: deferredSearch.trim(), section: 'past_papers' })
+    }
+  }, [deferredSearch])
 
   // Queries
   const { data: myProgramName } = useQuery({ queryKey: ['myProgramName', user?.id], queryFn: () => fetchUserProgramId(user?.id), enabled: !!user?.id })
