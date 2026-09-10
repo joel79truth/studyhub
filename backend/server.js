@@ -18,6 +18,7 @@ const rateLimit = require('express-rate-limit');
 const Groq = require('groq-sdk');
 const fetch = require('node-fetch');
 const PDFDocument = require('pdfkit');
+const storageUpload = require('./Storageupload');
 // ===================== GEMINI =====================
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
@@ -404,7 +405,7 @@ async function getOrCreateCourse(rawName, programId, rawSemester) {
 // ============================================================================
 // IMAGE COMPRESSION HELPER (for Gemini vision calls)
 // ============================================================================
-async function compressImageForVision(buffer, { maxDim = 1120, quality = 70 } = {}) {
+async function compressImageForVision(buffer, { maxDim = 1600, quality = 82 } = {}) {
   try {
     return await sharp(buffer)
       .rotate()
@@ -641,10 +642,16 @@ Only the JSON object, no other text.`;
 async function cropAndUploadDiagram(imageBuffer, { x, y, width, height }, mimeType, questionId) {
   try {
     const metadata = await sharp(imageBuffer).metadata();
-    x = Math.max(0, Math.round(x));
-    y = Math.max(0, Math.round(y));
-    width = Math.min(Math.round(width), metadata.width - x);
-    height = Math.min(Math.round(height), metadata.height - y);
+
+    // Add 12% padding on each side so tight Gemini estimates don't clip the diagram
+    const padX = Math.round(width * 0.12);
+    const padY = Math.round(height * 0.12);
+
+    x = Math.max(0, Math.round(x) - padX);
+    y = Math.max(0, Math.round(y) - padY);
+    width  = Math.min(Math.round(width)  + padX * 2, metadata.width  - x);
+    height = Math.min(Math.round(height) + padY * 2, metadata.height - y);
+
     if (width <= 0 || height <= 0) return null;
 
     const croppedBuffer = await sharp(imageBuffer)
@@ -743,124 +750,114 @@ function wordOverlapRatio(a, b) {
 }
 
 function buildExtractionPrompt(expectedCourseName) {
-  return `You are an exam question extractor for LUANAR past papers.
-The image may contain multiple-choice, structured, or diagram-based questions,
-possibly across two columns or with diagrams positioned above, below, or beside
-their question text.
+  return `You are an exam question extractor for LUANAR (Lilongwe University of Agriculture and Natural Resources) past papers.
+The image is a scanned exam paper page. Extract every question on this page as a JSON array.
 
-IDENTITY (already decided — do not change this):
-This paper has been filed under the course "${expectedCourseName}" by the
-uploader. You are extracting questions FOR this course. You are NOT identifying
-which course the paper belongs to — never invent or substitute a different
-course name anywhere in your output.
+═══════════════════════════════════════════════════════
+COORDINATE SYSTEM (read carefully — this is critical)
+═══════════════════════════════════════════════════════
+All bounding boxes use NORMALIZED coordinates relative to the image you see:
+  x=0.0 → left edge,   x=1.0 → right edge
+  y=0.0 → top edge,    y=1.0 → bottom edge
+Example: a box in the top-left quarter = { x: 0.0, y: 0.0, width: 0.5, height: 0.5 }
+All values must be floats in the range [0.0, 1.0]. Never use pixel values.
 
-SUBJECT MISMATCH SAFETY CHECK:
-If the visible subject matter of the questions clearly does NOT match
-"${expectedCourseName}" (e.g. the paper is obviously Horticulture but was filed
-under Chemistry), set "subject_mismatch": true on every question and put your
-best one- or two-word guess of the actual subject in "detected_subject". This
-is a flag for a human to review — it does not change what gets saved.
-Otherwise set "subject_mismatch": false and omit "detected_subject".
+═══════════════════════════════════════════════════════
+COURSE IDENTITY (do not change this)
+═══════════════════════════════════════════════════════
+This paper is filed under: "${expectedCourseName}"
+You are extracting questions FOR this course. Do not rename or replace it.
+SUBJECT MISMATCH SAFETY CHECK: If the paper is CLEARLY a different subject (e.g. it is obviously Horticulture but filed under Chemistry), set "subject_mismatch": true on every question and put a brief guess in "detected_subject". Otherwise set "subject_mismatch": false and omit "detected_subject".
 
-QUESTION BOUNDARY RULE (STRICT — this is the most common failure mode, be careful):
-- Process the page in natural reading order (top-to-bottom, left-to-right for
-  multi-column layouts).
-- Each question on the page becomes exactly ONE JSON object. Never merge two
-  distinct numbered questions into a single object, even if they are visually
-  close together or a diagram sits between them.
-- If the printed paper shows a question number (e.g. "3.", "Q3", "(iii)"),
-  copy it into "question_number". If none is visible, set it to null.
-- Include a "question_bbox": {x, y, width, height} — approximate pixel
-  coordinates of the question's OWN text block (not including any diagram).
-  This must be distinct per question even if two questions are adjacent.
-- A diagram belongs to the question whose text is closest to it AND which
-  makes contextual sense (e.g. a circuit diagram belongs to the question that
-  asks about a circuit, not to an unrelated question just because it happens
-  to sit nearby on the page). If you are not confident which question a
-  diagram belongs to, still make your best guess but set "diagram_uncertain": true.
+═══════════════════════════════════════════════════════
+QUESTION GROUPING RULES (most common failure mode)
+═══════════════════════════════════════════════════════
+1. PARENT + PARTS → ONE OBJECT.
+   If a question has numbered/lettered sub-parts, e.g.:
+     "Q3. Given the soil profile below: (a) Name the horizon. (b) State its function."
+   → Combine the parent stem AND all sub-parts into a SINGLE "question" string.
+   → Do NOT create separate JSON objects for (a) and (b).
+   → Use line-breaks (\\n) between parts inside the "question" field.
 
-QUESTION TYPE PREFERENCE:
-- Prefer "mcq" wherever the question has (or can fairly be given) a single
-  clear correct answer — a numeric result, a named term, a short fact. Aim
-  for roughly 70% of output questions being MCQ.
-- Only use "structured" or "diagram" when the question genuinely requires an
-  extended written answer, a derivation, a drawing, or cannot be reduced to
-  one correct short answer without changing its meaning.
+2. NUMBERED MAIN QUESTIONS → SEPARATE OBJECTS.
+   Only split at top-level question numbers (1, 2, 3, Q1, Q2 etc.).
+   Sub-letters (a, b, c) or sub-roman numerals (i, ii, iii) always stay inside
+   their parent question's "question" field.
 
-MCQ OPTION RULE (STRICT):
-- option_a..option_d must each be SHORT — a single value, term, or short
-  phrase (roughly under 8 words / one line). Never write a full sentence or
-  paragraph as an option. Students should be able to scan all four options
-  in a couple of seconds.
-- Distractors should be plausible (common mistakes, off-by-a-factor errors,
-  adjacent concepts), not random.
+3. TWO-COLUMN LAYOUT.
+   Process the LEFT column top-to-bottom first, then the RIGHT column top-to-bottom.
+   Never interleave lines across columns.
 
-UNITS AND MATH FORMATTING (STRICT — this output is rendered by a LaTeX
-renderer, so it must be syntactically VALID LaTeX, not an approximation of it):
-- Use LaTeX enclosed in $ for inline or $$ for block math.
-- ALWAYS wrap units in \\text{}, e.g. "5 \\text{m/s}" not "5 m/s" and not
-  "5 \\text{textm/s}".
-- NEVER write a bare "text{...}" without its leading backslash, and NEVER
-  write a slash before "text" like "10/text{kg}" — the correct form is
-  always "10\\text{kg}" (a backslash, not a forward slash). This applies to
-  EVERY command, not just \\text — \\frac, \\sqrt, \\alpha, \\Delta, etc.
-  must all keep their leading backslash too.
-- EVERY opening curly brace "{" must have a matching closing "}" before the
-  end of the field, and NEVER add an extra closing "}" that has no matching
-  open. Double-check nested braces in \\frac{a}{b} and \\text{} before
-  outputting — an unclosed or extra brace renders as broken text and is a
-  hard failure.
-- When a field contains more than one standalone "$$...$$" equation, ALWAYS
-  put a full blank line between them. Never place one "$$" immediately after
-  the previous one's closing "$$" — that gets treated as a single broken
-  equation instead of two working ones.
-- For multiplication use \\times (never "\\times \\text{times}").
-- For fractions use \\frac{numerator}{denominator}, fully closed.
-- For chemical formulas use LaTeX subscripts, e.g. $H_2O$ not "H2O".
-- For chemical structures, additionally provide a "smiles" string.
-- Before finalizing each field, mentally re-read it as if you were the
-  renderer: if it would not display as clean, correct math, fix it before
-  outputting.
+═══════════════════════════════════════════════════════
+DIAGRAM ASSIGNMENT RULES
+═══════════════════════════════════════════════════════
+1. A diagram belongs to the question whose text is CLOSEST to it AND that makes
+   contextual sense (e.g. a circuit diagram → the question asking about a circuit).
+2. SHARED DIAGRAM: If one diagram is referenced by multiple questions,
+   assign it to the FIRST question that references it. Set "diagram_shared": true
+   on that question. Do NOT duplicate the same diagram_coordinates on multiple questions.
+3. If you are uncertain which question a diagram belongs to, still pick the most
+   likely one and set "diagram_uncertain": true.
+4. diagram_coordinates must tightly enclose ONLY the diagram/figure itself
+   (not the question text beside it). Use normalized coordinates.
 
-For each question return a JSON object with:
-- question_number (string or null, as printed on the paper)
-- question_type: "mcq", "structured", or "diagram"
-- question (string, required, never null)
-- question_bbox: {x, y, width, height}
-- topic (string, e.g., "Irrigation Methods")
-- marks (number, if visible, else null)
-- year (number or null)
-- subject_mismatch (boolean, see safety check above)
-- detected_subject (string, only if subject_mismatch is true)
+═══════════════════════════════════════════════════════
+QUESTION TYPE
+═══════════════════════════════════════════════════════
+- "mcq": has (or can fairly be given) a single correct answer. Aim for ~70% of output.
+- "structured": requires an extended written answer or derivation.
+- "diagram": requires drawing, labelling, or the question IS the diagram.
+MCQ OPTIONS: each of option_a..option_d must be SHORT (≤8 words / one line).
 
-For MCQ:
-  - option_a, option_b, option_c, option_d (short strings, may contain LaTeX)
-  - answer: correct option letter (A,B,C,D)
+═══════════════════════════════════════════════════════
+MATH & LATEX FORMATTING (output is rendered by KaTeX)
+═══════════════════════════════════════════════════════
+- Inline math: $...$ | Block math: $$...$$ (blank line between consecutive blocks)
+- Units: always \\text{}, e.g. $5\\,\\text{m/s}$
+- Backslash before EVERY command: \\frac, \\sqrt, \\text, \\alpha, \\Delta, \\times
+- Every { must have a matching } in the same field
+- Chemical formulas: LaTeX subscripts e.g. $H_2O$
+- Chemical structures: also provide a "smiles" string
 
-For structured or diagram:
-  - answer: model answer text (may contain LaTeX)
-  - if the answer is a chemical structure, also provide a "smiles" string.
+═══════════════════════════════════════════════════════
+OUTPUT FORMAT
+═══════════════════════════════════════════════════════
+Return ONLY a JSON array — no markdown fences, no explanation, no extra text.
+Each element:
+{
+  "question_number": "3" | null,          // as printed, e.g. "1", "Q3", "2b" — top-level only
+  "question_type": "mcq" | "structured" | "diagram",
+  "question": "...",                      // full text incl. all sub-parts joined by \\n
+  "question_bbox": { x, y, width, height },  // normalized, covers question TEXT only
+  "topic": "Irrigation Methods",
+  "marks": 5 | null,
+  "year": 2019 | null,
+  "subject_mismatch": false,
+  "detected_subject": null,
 
-For any question with a diagram/image that is not just text:
-  - "has_diagram": true
-  - "diagram_coordinates": {x, y, width, height} (pixel coords in the full image)
-  - "diagram_uncertain": true if you are not fully confident of the assignment (see rule above)
+  // MCQ only:
+  "option_a": "...", "option_b": "...", "option_c": "...", "option_d": "...",
+  "answer": "A",   // correct letter
 
-Additionally, for every structured question, if a sensible MCQ conversion is
-possible, ALSO include:
-    mcq_variant: {
-        question, option_a, option_b, option_c, option_d,
-        answer: correct option letter
-    }
-(short options, same rule as above; same LaTeX formatting rules above apply
-to every field inside mcq_variant too). If not possible, set mcq_variant to null.
+  // Structured/diagram only:
+  "answer": "...",   // model answer
+  "smiles": null,    // SMILES string if chemical structure
 
-Return ONLY a JSON array of these objects, no other text, no markdown fences.`;
+  // Diagrams:
+  "has_diagram": true | false,
+  "diagram_coordinates": { x, y, width, height } | null,  // normalized, diagram box only
+  "diagram_uncertain": false,
+  "diagram_shared": false,    // true if shared with other questions
+
+  // Optional MCQ conversion of a structured question:
+  "mcq_variant": { "question": "...", "option_a": "...", "option_b": "...", "option_c": "...", "option_d": "...", "answer": "A" } | null
+}`;
 }
 
 // ============================================================================
 // CORE EXTRACTION (uses Gemini — Pro-tier by default, see model selection above)
 // ============================================================================
+
 async function extractQuestionsFromImage(imageBuffer, mimeType, expectedCourseName) {
   const prompt = buildExtractionPrompt(expectedCourseName);
 
@@ -869,8 +866,6 @@ async function extractQuestionsFromImage(imageBuffer, mimeType, expectedCourseNa
     sharp(imageBuffer).metadata(),
     sharp(visionBuffer).metadata(),
   ]);
-  const scaleX = visionMeta.width ? (origMeta.width || visionMeta.width) / visionMeta.width : 1;
-  const scaleY = visionMeta.height ? (origMeta.height || visionMeta.height) / visionMeta.height : 1;
   const base64Image = visionBuffer.toString('base64');
 
   const contents = [
@@ -898,14 +893,33 @@ async function extractQuestionsFromImage(imageBuffer, mimeType, expectedCourseNa
       throw new Error('Invalid JSON from Gemini: ' + parseErr.message);
     }
 
+    // Convert normalized 0–1 coordinates → absolute pixels of the ORIGINAL image
+    const origW = origMeta.width  || 1;
+    const origH = origMeta.height || 1;
+
     for (const q of rawQuestions) {
       if (q.diagram_coordinates) {
-        q.diagram_coordinates = {
-          x: Math.round((q.diagram_coordinates.x || 0) * scaleX),
-          y: Math.round((q.diagram_coordinates.y || 0) * scaleY),
-          width: Math.round((q.diagram_coordinates.width || 0) * scaleX),
-          height: Math.round((q.diagram_coordinates.height || 0) * scaleY),
-        };
+        const dc = q.diagram_coordinates;
+        // Guard: if values look like pixels already (>1), leave them alone
+        const isNormalized = dc.x <= 1.0 && dc.y <= 1.0 && dc.width <= 1.0 && dc.height <= 1.0;
+        if (isNormalized) {
+          q.diagram_coordinates = {
+            x:      Math.round((dc.x      || 0) * origW),
+            y:      Math.round((dc.y      || 0) * origH),
+            width:  Math.round((dc.width  || 0) * origW),
+            height: Math.round((dc.height || 0) * origH),
+          };
+        } else {
+          // Legacy pixel path (shouldn't happen with new prompt, but safe fallback)
+          const scaleX = visionMeta.width  ? origW / visionMeta.width  : 1;
+          const scaleY = visionMeta.height ? origH / visionMeta.height : 1;
+          q.diagram_coordinates = {
+            x:      Math.round((dc.x      || 0) * scaleX),
+            y:      Math.round((dc.y      || 0) * scaleY),
+            width:  Math.round((dc.width  || 0) * scaleX),
+            height: Math.round((dc.height || 0) * scaleY),
+          };
+        }
       }
     }
 
@@ -1008,14 +1022,17 @@ async function insertExtractedQuestions(validQuestions, imageBuffer, mimeType, s
     .select();
   if (mainError) throw mainError;
 
-  for (const task of diagramTasks) {
-    const row = mainData[task.insertIndex];
-    if (!row) continue;
-    const url = await cropAndUploadDiagram(imageBuffer, task.coordinates, mimeType, row.id);
-    if (url) {
-      await supabaseAdmin.from('past_papers').update({ image_url: url }).eq('id', row.id);
-    }
-  }
+  // Parallelize all diagram cropping + uploads concurrently for speed
+  await Promise.all(
+    diagramTasks.map(async (task) => {
+      const row = mainData[task.insertIndex];
+      if (!row) return;
+      const url = await cropAndUploadDiagram(imageBuffer, task.coordinates, mimeType, row.id);
+      if (url) {
+        await supabaseAdmin.from('past_papers').update({ image_url: url }).eq('id', row.id);
+      }
+    })
+  );
 
   const flaggedCount = inserts.filter((i) => i.needs_review).length;
   return { paperId, extracted: mainData.length, flaggedForReview: flaggedCount };
@@ -1233,108 +1250,7 @@ app.post('/save-token', requireAuth, async (req, res) => {
   }
 });
 
-app.post('/upload', requireAuth, upload.single('file'), async (req, res) => {
-  try {
-    const { program, semester, subject } = req.body;
-    const file = req.file;
-    if (!program || !semester || !subject || !file) {
-      return res.status(400).json({ message: 'Missing fields or file' });
-    }
-
-    const USE_GDRIVE = file.size > 5 * 1024 * 1024;
-    const id = uuidv4();
-    const safeName = file.originalname.replace(/\s+/g, '_');
-    const filePath = `${program}/${semester}/${subject}/${Date.now()}-${safeName}`;
-    let storage_type, storage_ref, publicUrl;
-
-    if (USE_GDRIVE) {
-      const driveRes = await uploadToDriveWithRetry(file);
-      storage_type = 'gdrive';
-      storage_ref = driveRes.data.id;
-      publicUrl = `/api/drive/${storage_ref}`;
-    } else {
-      const { error } = await supabaseAdmin.storage
-        .from(process.env.SUPABASE_BUCKET || 'files')
-        .upload(filePath, file.buffer, { contentType: file.mimetype });
-      if (error) throw error;
-      storage_type = 'supabase';
-      storage_ref = filePath;
-      publicUrl = supabaseAdmin.storage
-        .from(process.env.SUPABASE_BUCKET || 'files')
-        .getPublicUrl(filePath).data.publicUrl;
-    }
-
-    const { error: dbError } = await supabaseAdmin.from('notes').insert([
-      {
-        id,
-        program,
-        semester: String(semester),
-        course_name: subject,
-        filename: file.originalname,
-        filepath: storage_ref,
-        url: publicUrl,
-        storage_type,
-        uploader_uid: req.user.id,
-        uploader_email: req.user.email || 'unknown@example.com',
-        size: String(file.size),
-        uploaded_at: new Date().toISOString(),
-      },
-    ]);
-
-    if (dbError) throw dbError;
-
-    const { data: tokens, error: tokenError } = await supabaseAdmin
-      .from('fcm_tokens')
-      .select('token');
-    if (!tokenError && tokens?.length) {
-      const tokenList = tokens.map(t => t.token);
-      const message = {
-        tokens: tokenList,
-        notification: {
-          title: `📚 New Notes: ${subject}`,
-          body: `${file.originalname} for ${program} Sem ${semester}`,
-        },
-        android: {
-          priority: 'high',
-          notification: {
-            icon: 'ic_stat_studyhub',
-            color: '#064e3b',
-            sound: 'default',
-            channelId: 'studyhub_channel',
-            priority: 'high',
-            defaultSound: true,
-            defaultVibrateTimings: true,
-            visibility: 'public',
-          },
-        },
-        data: {
-          program,
-          semester: String(semester),
-          subject,
-          filename: file.originalname,
-          fileId: id,
-          url: `/program.html?program=${encodeURIComponent(program)}&semester=${encodeURIComponent(semester)}&subject=${encodeURIComponent(subject)}`,
-        },
-      };
-      const response = await admin.messaging().sendEachForMulticast(message);
-      const invalidTokens = [];
-      response.responses.forEach((r, i) => {
-        if (!r.success && (r.error?.code?.includes('registration-token-not-registered') || r.error?.code?.includes('invalid-registration-token'))) {
-          invalidTokens.push(tokenList[i]);
-        }
-      });
-      if (invalidTokens.length) {
-        await supabaseAdmin.from('fcm_tokens').delete().in('token', invalidTokens);
-      }
-    }
-
-    res.json({ message: 'Upload successful', url: publicUrl });
-  } catch (err) {
-    console.error('Upload error:', err);
-    res.status(500).json({ message: 'Upload failed', error: err.message });
-  }
-});
-
+app.use('/api/storage', storageUpload.router);
 app.get('/api/drive/:fileId', async (req, res) => {
   try {
     const driveRes = await drive.files.get(
@@ -1669,7 +1585,9 @@ app.post('/api/exam/upload-past-paper', requireAuth, upload.single('paper'), asy
     const { data: publicUrlData } = supabaseAdmin.storage.from(bucketName).getPublicUrl(storagePath);
     const fileUrl = publicUrlData?.publicUrl || null;
 
-    const { error: insertPaperErr } = await supabaseAdmin.from('past_paper').insert({
+    // Try insert with new status columns first; fall back if they don't exist yet
+    let insertPaperErr;
+    ({ error: insertPaperErr } = await supabaseAdmin.from('past_paper').insert({
       id: pastPaperId,
       file_name: req.file.originalname,
       file_path: storagePath,
@@ -1683,46 +1601,128 @@ app.post('/api/exam/upload-past-paper', requireAuth, upload.single('paper'), asy
       course_id: course.id,
       semester,
       processed: false,
-    });
+      processing_status: 'processing',
+    }));
+    if (insertPaperErr && insertPaperErr.message?.includes('processing_status')) {
+      // New columns not yet added — insert without them
+      ({ error: insertPaperErr } = await supabaseAdmin.from('past_paper').insert({
+        id: pastPaperId,
+        file_name: req.file.originalname,
+        file_path: storagePath,
+        storage_path: storagePath,
+        file_url: fileUrl,
+        thumbnail_url: fileUrl,
+        file_type: mimeType,
+        program: program.name,
+        program_id: program.id,
+        course: course.course_name,
+        course_id: course.id,
+        semester,
+        processed: false,
+      }));
+    }
     if (insertPaperErr) throw insertPaperErr;
 
-    const validQuestions = await extractQuestionsFromImage(imageBuffer, mimeType, course.course_name);
-
-    if (validQuestions.length === 0) {
-      return res.status(400).json({
-        error: 'No valid questions extracted. The original was saved and can be reprocessed from the Batch tab.',
-        raw_paper_id: pastPaperId,
-      });
-    }
-
-    const { paperId, extracted, flaggedForReview } = await insertExtractedQuestions(
-      validQuestions,
-      imageBuffer,
-      mimeType,
-      pastPaperId,
-      course
-    );
-
-    await supabaseAdmin.from('past_paper').update({ processed: true }).eq('id', pastPaperId);
-    generatePaperDocument(pastPaperId).catch((docErr) => {
-      console.error(`[upload-past-paper] background document generation failed for ${pastPaperId}:`, docErr.message);
-    });
-    notifyNewQuestions(program.name, course.course_name, course.id, extracted).catch(console.error);
-
-    res.json({
-      success: true,
-      extracted,
-      paper_id: paperId,
+    // ── Respond immediately so the client doesn't wait for AI ──
+    res.status(202).json({
+      accepted: true,
       raw_paper_id: pastPaperId,
-      flagged_for_review: flaggedForReview,
+      status: 'processing',
+      message: 'File saved. AI extraction is running in the background.',
+    });
+
+    // ── Run extraction asynchronously (fire-and-forget) ──
+    ;(async () => {
+      try {
+        const validQuestions = await extractQuestionsFromImage(imageBuffer, mimeType, course.course_name);
+
+        if (validQuestions.length === 0) {
+          await supabaseAdmin.from('past_paper').update({
+            processing_status: 'failed',
+            processing_error: 'No valid questions extracted.',
+          }).eq('id', pastPaperId).catch(() => {});
+          return;
+        }
+
+        const { paperId, extracted, flaggedForReview } = await insertExtractedQuestions(
+          validQuestions,
+          imageBuffer,
+          mimeType,
+          pastPaperId,
+          course
+        );
+
+        // Update with new columns, fallback if they don't exist yet
+        const updateResult = await supabaseAdmin.from('past_paper').update({
+          processed: true,
+          processing_status: 'done',
+          paper_id: paperId,
+          extracted_count: extracted,
+        }).eq('id', pastPaperId);
+        if (updateResult.error?.message?.includes('processing_status')) {
+          await supabaseAdmin.from('past_paper').update({ processed: true }).eq('id', pastPaperId);
+        }
+
+        generatePaperDocument(pastPaperId).catch((docErr) => {
+          console.error(`[upload-past-paper] background document generation failed for ${pastPaperId}:`, docErr.message);
+        });
+        notifyNewQuestions(program.name, course.course_name, course.id, extracted).catch(console.error);
+
+        console.log(`[upload-past-paper] done: ${pastPaperId} → ${extracted} questions extracted`);
+      } catch (bgErr) {
+        console.error('[upload-past-paper] background extraction error:', bgErr.message);
+        await supabaseAdmin.from('past_paper').update({
+          processing_status: 'failed',
+          processing_error: bgErr.message,
+        }).eq('id', pastPaperId).catch(() => {});
+      }
+    })();
+
+  } catch (err) {
+    console.error('Past paper upload error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// ── Poll this endpoint to get the current extraction status of a uploaded paper ──
+app.get('/api/exam/paper-status/:rawPaperId', requireAuth, async (req, res) => {
+  try {
+    const { rawPaperId } = req.params;
+
+    // Try selecting new columns; fall back to just 'processed' if they don't exist yet
+    let data, selectError;
+    ({ data, error: selectError } = await supabaseAdmin
+      .from('past_paper')
+      .select('id, processed, processing_status, processing_error, paper_id, extracted_count, course')
+      .eq('id', rawPaperId)
+      .maybeSingle());
+
+    if (selectError && selectError.message?.includes('processing_status')) {
+      // Columns not yet migrated — fall back to base columns only
+      ({ data, error: selectError } = await supabaseAdmin
+        .from('past_paper')
+        .select('id, processed, course')
+        .eq('id', rawPaperId)
+        .maybeSingle());
+    }
+    if (selectError) throw selectError;
+    if (!data) return res.status(404).json({ error: 'Paper not found' });
+
+    const status = data.processing_status || (data.processed ? 'done' : 'processing');
+    res.json({
+      status,
+      paper_id: data.paper_id || null,
+      extracted: data.extracted_count || null,
+      error: data.processing_error || null,
+      course: data.course,
     });
   } catch (err) {
-    console.error('Past paper extraction error:', err);
     res.status(500).json({ error: err.message });
   }
 });
 
 async function fetchRawPaperImage(rawPaperId) {
+
   const { data: paperRecord, error } = await supabaseAdmin
     .from('past_paper')
     .select('file_url, thumbnail_url, storage_path')
@@ -1798,7 +1798,12 @@ app.post('/api/exam/batch-upload-past-papers', requireAuth, async (req, res) => 
         rawPaperId,
         { id: paperRecord.course_id, course_name: paperRecord.course }
       );
-      await supabaseAdmin.from('past_paper').update({ processed: true }).eq('id', rawPaperId);
+      await supabaseAdmin.from('past_paper').update({
+        processed: true,
+        processing_status: 'done',
+        paper_id: paperId,
+        extracted_count: extracted,
+      }).eq('id', rawPaperId);
 
       generatePaperDocument(rawPaperId).catch((docErr) => {
         console.error(`[batch-upload] background document generation failed for ${rawPaperId}:`, docErr.message);
@@ -1839,12 +1844,27 @@ app.post('/api/exam/batch-upload-past-papers', requireAuth, async (req, res) => 
 
 app.get('/api/exam/unprocessed-papers', requireAuth, async (req, res) => {
   try {
-    const { data, error } = await supabaseAdmin
+    let data, error;
+
+    // Try with new columns first; fall back if they don't exist yet
+    ({ data, error } = await supabaseAdmin
       .from('past_paper')
-      .select('id, file_url, thumbnail_url, storage_path, created_at, semester, course, program, course_id, program_id')
+      .select('id, file_url, thumbnail_url, storage_path, created_at, semester, course, program, course_id, program_id, processing_status')
       .eq('processed', false)
+      .not('processing_status', 'eq', 'done')
       .order('created_at', { ascending: true })
-      .limit(200);
+      .limit(200));
+
+    if (error && error.message?.includes('processing_status')) {
+      // Columns not migrated yet — fall back to base query
+      ({ data, error } = await supabaseAdmin
+        .from('past_paper')
+        .select('id, file_url, thumbnail_url, storage_path, created_at, semester, course, program, course_id, program_id')
+        .eq('processed', false)
+        .order('created_at', { ascending: true })
+        .limit(200));
+    }
+
     if (error) throw error;
     res.json({ papers: data });
   } catch (err) {
@@ -1852,6 +1872,7 @@ app.get('/api/exam/unprocessed-papers', requireAuth, async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
 
 app.post('/api/exam/generate-document/:pastPaperId', requireAuth, async (req, res) => {
   try {

@@ -1,29 +1,38 @@
 // ═══════════════════════════════════════════════════════════════
-//  StudyHub – AI Study Assistant  ·  Production  ·  Performance Edition
+//  StudyHub – AI Study Assistant  ·  Production  ·  UX-Fixed Edition
 //  Backend: studyhub-router.js (mounted at /api/luna)
 //
-//  v-next CHANGES (this pass — math parser unification):
-//   - The hand-rolled InlineMd/isLikelyMath/MathInline regex parser is
-//     GONE. Inline text now goes through renderInline() from math-fix.jsx
-//     — the same parser PastPapers.jsx uses — so bold/italic/math all
-//     resolve through one tested code path instead of two divergent ones.
-//   - Standalone $$ equations are now streaming-safe: while a $$ block
-//     hasn't closed yet, ALL currently-streamed lines belonging to it are
-//     consumed and replaced with a single "…" placeholder, instead of
-//     letting partial LaTeX ("\begin{aligned}", "&=", etc.) leak onto the
-//     screen as literal text mid-stream. This also fixes the standing bug
-//     where a $$ token entirely alone on its own line (the exact shape
-//     produced by \begin{aligned}...\end{aligned} blocks) was excluded
-//     from the block-math branch and fell through to plain text.
-//   - If a $$ block is STILL unclosed once streaming has fully finished
-//     (a genuinely malformed response), it now renders via MathFallback
-//     as literal text instead of leaving an unresolvable "…" forever.
+//  FIXES APPLIED IN THIS PASS (see chat writeup for full rationale):
+//   1. Removed outside-click-closes-panel. It fought the core use case
+//      (referencing the page while the assistant is open) and silently
+//      aborted in-flight streams. Closing is now only via the X button,
+//      or Escape (which first exits fullscreen, then closes the sidebar,
+//      then closes the panel — progressive, not accidental).
+//   2. Fixed the outside-click bug where clicking inside the Sidebar
+//      (a separate fixed tree, not inside panelRef) closed the whole
+//      assistant. Moot now that #1 is gone, but noting the root cause.
+//   3. Retry no longer duplicates the user's message — extracted a
+//      runAssistant() that streams a response for a given question／
+//      history WITHOUT re-pushing a user bubble. handleSend pushes the
+//      user bubble once; handleRetry/handleRegenerate reuse runAssistant.
+//   4. Input is now an auto-growing <textarea> (Enter sends, Shift+Enter
+//      inserts a newline), not a single-line <input>.
+//   5. Added a "Regenerate" action on the latest assistant message.
+//   6. Auto-scroll now respects scroll position — if the user has
+//      scrolled up, new content doesn't yank them back down; a floating
+//      "Jump to latest" button appears instead.
+//   7. Accessibility: ConvItem is keyboard-operable, error banner is
+//      role="alert"/aria-live, sidebar is a labelled dialog with basic
+//      focus handling, options menu exposes aria-expanded/aria-haspopup,
+//      icon buttons have larger hit areas, focus-visible outlines added.
+//   8. Error banner no longer auto-dismisses — it stays until the user
+//      retries or closes it, so it can't disappear before being read.
 // ═══════════════════════════════════════════════════════════════
 
 import { useState, useEffect, useRef, useCallback, useMemo, memo } from 'react'
 import {
   X, Send, Maximize2, Minimize2, Menu, Plus, Trash2,
-  MessageSquare, MoreHorizontal, Check, Copy, RefreshCw, Square,
+  MessageSquare, MoreHorizontal, Check, Copy, RefreshCw, Square, ChevronDown,
 } from 'lucide-react'
 import { BlockMath } from 'react-katex'
 import 'katex/dist/katex.min.css'
@@ -46,7 +55,7 @@ const getAuthToken = async () => {
 const apiUrl = (path) =>
   path.startsWith('/api/') ? `${API_BASE_URL}${path}` : path
 
-// ─── Design tokens ──────────────────────────────────────────────
+// ─── Design tokens (unchanged — theme preserved) ─────────────────
 const C = {
   brand: '#4f46e5',
   brandB: '#3b82f6',
@@ -95,6 +104,8 @@ const INTENT_CHIPS = {
 }
 
 const THINKING_LABEL = 'Thinking…'
+const MAX_INPUT_HEIGHT = 120 // px, before the textarea scrolls internally
+const NEAR_BOTTOM_THRESHOLD = 120 // px from bottom counted as "at bottom"
 
 // ─── Backend streaming client ──────────────────────────────────
 async function* streamChat({ fileId, pageNumber, pageText, question, history, mode }, signal) {
@@ -365,6 +376,7 @@ const MicroCheck = memo(({ check }) => {
       <button
         onClick={() => picked === null && setPicked(letter)}
         disabled={picked !== null}
+        aria-pressed={isPicked}
         style={{
           textAlign: 'left', padding: '8px 12px', borderRadius: 10,
           border: `1.5px solid ${border}`, background: bg, color,
@@ -385,18 +397,17 @@ const MicroCheck = memo(({ check }) => {
         <Option letter="A" label={check.optionA} />
         <Option letter="B" label={check.optionB} />
       </div>
-      {picked !== null && (
-        <p style={{ margin: '8px 0 0', fontSize: 12.5, fontWeight: 600, color: correct ? C.good : C.bad }}>
-          {correct ? '✓ Correct' : `✗ Not quite — the answer is ${check.answer}.`}
-        </p>
-      )}
+      {/* aria-live so screen reader users hear the verdict without hunting for it */}
+      <p aria-live="polite" style={{ margin: picked !== null ? '8px 0 0' : 0, fontSize: 12.5, fontWeight: 600, color: correct ? C.good : C.bad, minHeight: picked !== null ? undefined : 0 }}>
+        {picked !== null ? (correct ? '✓ Correct' : `✗ Not quite — the answer is ${check.answer}.`) : ''}
+      </p>
     </div>
   )
 })
 
 // ─── Loading dots ────────────────────────────────────────────────
 const LoadingDots = memo(({ rm }) => (
-  <div style={{ display: 'flex', alignItems: 'center', gap: 9, padding: '8px 2px' }}>
+  <div style={{ display: 'flex', alignItems: 'center', gap: 9, padding: '8px 2px' }} role="status" aria-label="StudyHub is thinking">
     <div style={{ display: 'flex', gap: 5 }}>
       {[0, 1, 2].map(i => (
         <div key={i} style={{
@@ -446,8 +457,8 @@ const CopyBtn = memo(({ text }) => {
   return (
     <button onClick={handle} title="Copy response" aria-label="Copy response" style={{
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      width: 22, height: 22, background: 'none', border: 'none', cursor: 'pointer',
-      color: copied ? C.good : C.muted, padding: 0, borderRadius: 6,
+      width: 30, height: 30, background: 'none', border: 'none', cursor: 'pointer',
+      color: copied ? C.good : C.muted, padding: 0, borderRadius: 8,
       transition: 'color 0.2s ease', touchAction: 'manipulation',
     }}>
       {copied ? <Check size={13} /> : <Copy size={13} />}
@@ -455,8 +466,21 @@ const CopyBtn = memo(({ text }) => {
   )
 })
 
+// ─── Regenerate button ────────────────────────────────────────────
+const RegenerateBtn = memo(({ onClick, disabled }) => (
+  <button onClick={onClick} disabled={disabled} title="Regenerate response" aria-label="Regenerate response" style={{
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    width: 30, height: 30, background: 'none', border: 'none',
+    cursor: disabled ? 'default' : 'pointer',
+    color: disabled ? '#cbd5e1' : C.muted, padding: 0, borderRadius: 8,
+    transition: 'color 0.2s ease', touchAction: 'manipulation',
+  }}>
+    <RefreshCw size={13} />
+  </button>
+))
+
 // ─── Message bubble ─────────────────────────────────────────────
-const MessageBubble = memo(({ msg, index, rm, onFollowUp, isLastAssistant }) => {
+const MessageBubble = memo(({ msg, index, rm, onFollowUp, onRegenerate, isLastAssistant, isThinking }) => {
   const isUser = msg.role === 'user'
   const isStreaming = msg.isStreaming || false
 
@@ -482,6 +506,7 @@ const MessageBubble = memo(({ msg, index, rm, onFollowUp, isLastAssistant }) => 
           color: '#fff', borderRadius: '18px 18px 5px 18px',
           padding: '10px 15px', fontSize: 14.5, lineHeight: 1.6,
           boxShadow: '0 3px 14px rgba(79,70,229,.28)', letterSpacing: '0.01em',
+          whiteSpace: 'pre-wrap', wordBreak: 'break-word',
         }}>
           {msg.content}
         </div>
@@ -504,8 +529,11 @@ const MessageBubble = memo(({ msg, index, rm, onFollowUp, isLastAssistant }) => 
           )}
 
           {!isStreaming && displayText && (
-            <div style={{ paddingLeft: 2, marginTop: 1 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 2, marginTop: 1 }}>
               <CopyBtn text={displayText} />
+              {isLastAssistant && (
+                <RegenerateBtn onClick={onRegenerate} disabled={isThinking} />
+              )}
             </div>
           )}
 
@@ -528,7 +556,7 @@ const EmptyState = memo(({ rm, onSelect }) => (
   }}>
     <img
       src={AI_ICON}
-      alt={`${ASSISTANT_NAME} assistant`}
+      alt=""
       style={{ width: 52, height: 52, borderRadius: '50%', objectFit: 'cover', boxShadow: '0 6px 24px rgba(99,102,241,.18)' }}
       loading="lazy"
     />
@@ -551,19 +579,36 @@ const EmptyState = memo(({ rm, onSelect }) => (
 const OptionsMenu = memo(({ mode, onModeChange, isFullscreen, onToggleFullscreen, rm }) => {
   const [open, setOpen] = useState(false)
   const ref = useRef(null)
+  const btnRef = useRef(null)
+
   useEffect(() => {
     if (!open) return
-    const h = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(false) }
-    document.addEventListener('pointerdown', h)
-    return () => document.removeEventListener('pointerdown', h)
+    const onPointer = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(false) }
+    const onKey = e => {
+      if (e.key === 'Escape') { setOpen(false); btnRef.current?.focus() }
+    }
+    document.addEventListener('pointerdown', onPointer)
+    document.addEventListener('keydown', onKey)
+    return () => {
+      document.removeEventListener('pointerdown', onPointer)
+      document.removeEventListener('keydown', onKey)
+    }
   }, [open])
+
   return (
     <div ref={ref} style={{ position: 'relative' }}>
-      <button onClick={() => setOpen(o => !o)} className="cir" aria-label="More options">
+      <button
+        ref={btnRef}
+        onClick={() => setOpen(o => !o)}
+        className="cir"
+        aria-label="More options"
+        aria-haspopup="menu"
+        aria-expanded={open}
+      >
         <MoreHorizontal size={16} color="#64748b" />
       </button>
       {open && (
-        <div style={{
+        <div role="menu" aria-label="Assistant options" style={{
           position: 'absolute', top: 'calc(100% + 6px)', right: 0,
           background: '#fff', borderRadius: 14,
           boxShadow: '0 8px 32px rgba(0,0,0,.12)', border: '1px solid #f1f5f9',
@@ -572,7 +617,8 @@ const OptionsMenu = memo(({ mode, onModeChange, isFullscreen, onToggleFullscreen
         }}>
           <div style={{ padding: '9px 13px 4px', fontSize: 10.5, fontWeight: 700, color: C.muted, letterSpacing: '0.06em', textTransform: 'uppercase' }}>Mode</div>
           {MODES.map(m => (
-            <button key={m.key} onClick={() => { onModeChange(m.key); setOpen(false) }} style={{
+            <button key={m.key} role="menuitemradio" aria-checked={mode === m.key}
+              onClick={() => { onModeChange(m.key); setOpen(false); btnRef.current?.focus() }} style={{
               display: 'flex', alignItems: 'center', gap: 10, width: '100%', padding: '8px 13px',
               border: 'none', background: mode === m.key ? '#f8faff' : '#fff', cursor: 'pointer', textAlign: 'left',
             }}>
@@ -582,7 +628,7 @@ const OptionsMenu = memo(({ mode, onModeChange, isFullscreen, onToggleFullscreen
             </button>
           ))}
           <div style={{ borderTop: '1px solid #f1f5f9' }} />
-          <button onClick={() => { onToggleFullscreen(); setOpen(false) }} style={{
+          <button role="menuitem" onClick={() => { onToggleFullscreen(); setOpen(false); btnRef.current?.focus() }} style={{
             display: 'flex', alignItems: 'center', gap: 10, width: '100%', padding: '9px 13px',
             border: 'none', background: '#fff', cursor: 'pointer', textAlign: 'left',
           }}>
@@ -613,7 +659,7 @@ const SendButton = memo(({ onClick, disabled }) => (
 ))
 
 const StopButton = memo(({ onClick }) => (
-  <button onClick={onClick} title="Stop generating" style={{
+  <button onClick={onClick} title="Stop generating" aria-label="Stop generating" style={{
     width: 36, height: 36, borderRadius: '50%', border: 'none', flexShrink: 0,
     background: '#fef2f2', display: 'flex', alignItems: 'center', justifyContent: 'center',
     cursor: 'pointer', boxShadow: '0 0 0 1.5px #fecaca inset',
@@ -623,11 +669,30 @@ const StopButton = memo(({ onClick }) => (
   </button>
 ))
 
+// ─── Jump-to-latest button ─────────────────────────────────────────
+const JumpToLatestBtn = memo(({ onClick }) => (
+  <button onClick={onClick} aria-label="Jump to latest message" style={{
+    position: 'absolute', bottom: 8, left: '50%', transform: 'translateX(-50%)',
+    display: 'flex', alignItems: 'center', gap: 4,
+    padding: '6px 12px', borderRadius: 20, border: `1px solid ${C.border}`,
+    background: '#fff', color: C.brand, fontSize: 12, fontWeight: 700,
+    boxShadow: '0 4px 16px rgba(0,0,0,.12)', cursor: 'pointer', zIndex: 20,
+    touchAction: 'manipulation',
+  }}>
+    <ChevronDown size={13} /> New messages
+  </button>
+))
+
 // ─── Conversation item / sidebar ──────────────────────────────────
 const ConvItem = memo(({ conv, isActive, onSelect, onDelete }) => {
   const [pressed, setPressed] = useState(false)
   return (
-    <div onClick={onSelect}
+    <div
+      role="button"
+      tabIndex={0}
+      aria-current={isActive ? 'true' : undefined}
+      onClick={onSelect}
+      onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect() } }}
       onPointerDown={() => setPressed(true)} onPointerUp={() => setPressed(false)} onPointerLeave={() => setPressed(false)}
       style={{
         display: 'flex', alignItems: 'center', gap: 10,
@@ -636,52 +701,72 @@ const ConvItem = memo(({ conv, isActive, onSelect, onDelete }) => {
         color: isActive ? '#4338ca' : C.text, fontWeight: isActive ? 600 : 400, fontSize: 14,
         userSelect: 'none', touchAction: 'manipulation',
       }}>
-      <MessageSquare size={15} style={{ flexShrink: 0, opacity: 0.6 }} />
+      <MessageSquare size={15} style={{ flexShrink: 0, opacity: 0.6 }} aria-hidden="true" />
       <span style={{ flex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{conv.title}</span>
-      <button onClick={e => { e.stopPropagation(); onDelete(conv.id) }}
-        style={{ background: 'none', border: 'none', color: '#cbd5e1', cursor: 'pointer', padding: 3, borderRadius: 6, display: 'flex', touchAction: 'manipulation' }}>
+      <button
+        onClick={e => { e.stopPropagation(); onDelete(conv.id) }}
+        aria-label={`Delete "${conv.title}"`}
+        style={{ background: 'none', border: 'none', color: '#cbd5e1', cursor: 'pointer', padding: 6, borderRadius: 8, display: 'flex', touchAction: 'manipulation' }}>
         <Trash2 size={13} />
       </button>
     </div>
   )
 })
 
-const Sidebar = memo(({ convs, currentId, onSelect, onNew, onDelete, isOpen, onClose }) => (
-  <>
-    {isOpen && (
-      <div onClick={onClose} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,.3)', zIndex: 65, animation: 'fadeIn 0.15s ease both' }} />
-    )}
-    <div style={{
-      position: 'fixed', top: 0, left: 0, bottom: 0,
-      width: 'min(82vw,300px)', background: '#fff',
-      borderRight: '1px solid #f1f5f9', zIndex: 70,
-      transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
-      transition: 'transform 0.25s cubic-bezier(0.22,1,0.36,1)',
-      display: 'flex', flexDirection: 'column',
-      boxShadow: isOpen ? '4px 0 32px rgba(0,0,0,.1)' : 'none',
-    }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '20px 16px 12px', borderBottom: '1px solid #f1f5f9' }}>
-        <h2 style={{ flex: 1, fontSize: 17, fontWeight: 700, margin: 0, color: C.ink }}>Chats</h2>
-        <button onClick={onNew} style={{
-          display: 'flex', alignItems: 'center', gap: 4,
-          background: `linear-gradient(135deg,${C.brand},${C.brandB})`, color: '#fff',
-          border: 'none', borderRadius: 20, padding: '6px 14px',
-          fontSize: 13, fontWeight: 600, cursor: 'pointer', touchAction: 'manipulation',
-        }}><Plus size={14} /> New</button>
-        <button onClick={onClose} style={{ width: 32, height: 32, borderRadius: '50%', border: 'none', background: '#f1f5f9', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
-          <X size={15} color="#64748b" />
-        </button>
+const Sidebar = memo(({ convs, currentId, onSelect, onNew, onDelete, isOpen, onClose }) => {
+  const closeBtnRef = useRef(null)
+  const newBtnRef = useRef(null)
+
+  useEffect(() => {
+    if (!isOpen) return
+    newBtnRef.current?.focus()
+    const onKey = e => { if (e.key === 'Escape') onClose() }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [isOpen, onClose])
+
+  return (
+    <>
+      {isOpen && (
+        <div onClick={onClose} aria-hidden="true" style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,.3)', zIndex: 65, animation: 'fadeIn 0.15s ease both' }} />
+      )}
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label="Chat history"
+        aria-hidden={!isOpen}
+        style={{
+          position: 'fixed', top: 0, left: 0, bottom: 0,
+          width: 'min(82vw,300px)', background: '#fff',
+          borderRight: '1px solid #f1f5f9', zIndex: 70,
+          transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
+          transition: 'transform 0.25s cubic-bezier(0.22,1,0.36,1)',
+          display: 'flex', flexDirection: 'column',
+          boxShadow: isOpen ? '4px 0 32px rgba(0,0,0,.1)' : 'none',
+        }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '20px 16px 12px', borderBottom: '1px solid #f1f5f9' }}>
+          <h2 style={{ flex: 1, fontSize: 17, fontWeight: 700, margin: 0, color: C.ink }}>Chats</h2>
+          <button ref={newBtnRef} onClick={onNew} style={{
+            display: 'flex', alignItems: 'center', gap: 4,
+            background: `linear-gradient(135deg,${C.brand},${C.brandB})`, color: '#fff',
+            border: 'none', borderRadius: 20, padding: '6px 14px',
+            fontSize: 13, fontWeight: 600, cursor: 'pointer', touchAction: 'manipulation',
+          }}><Plus size={14} /> New</button>
+          <button ref={closeBtnRef} onClick={onClose} aria-label="Close chat history" style={{ width: 32, height: 32, borderRadius: '50%', border: 'none', background: '#f1f5f9', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
+            <X size={15} color="#64748b" />
+          </button>
+        </div>
+        <div style={{ flex: 1, overflowY: 'auto', padding: 8, display: 'flex', flexDirection: 'column', gap: 3 }}>
+          {convs.length === 0 && <p style={{ fontSize: 13, color: C.muted, textAlign: 'center', marginTop: 24 }}>No chats yet</p>}
+          {convs.map(conv => (
+            <ConvItem key={conv.id} conv={conv} isActive={conv.id === currentId}
+              onSelect={() => onSelect(conv.id)} onDelete={onDelete} />
+          ))}
+        </div>
       </div>
-      <div style={{ flex: 1, overflowY: 'auto', padding: 8, display: 'flex', flexDirection: 'column', gap: 3 }}>
-        {convs.length === 0 && <p style={{ fontSize: 13, color: C.muted, textAlign: 'center', marginTop: 24 }}>No chats yet</p>}
-        {convs.map(conv => (
-          <ConvItem key={conv.id} conv={conv} isActive={conv.id === currentId}
-            onSelect={() => onSelect(conv.id)} onDelete={onDelete} />
-        ))}
-      </div>
-    </div>
-  </>
-))
+    </>
+  )
+})
 
 // ─── CSS ─────────────────────────────────────────────────────────
 const CSS = `
@@ -724,7 +809,7 @@ const CSS = `
   }
   .cir:hover  { background: #e2e8f0; }
   .studyhub-messages {
-    flex: 1; overflow-y: auto; overflow-x: hidden;
+    flex: 1; overflow-y: auto; overflow-x: hidden; position: relative;
     padding: 14px; display: flex; flex-direction: column; gap: 12px;
     scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
     background: #fff;
@@ -732,13 +817,13 @@ const CSS = `
   .studyhub-messages::-webkit-scrollbar { display: none; }
   .studyhub-input-row {
     padding: 7px 12px; border-top: 1px solid #f1f5f9; flex-shrink: 0;
-    display: flex; align-items: center; gap: 7px;
+    display: flex; align-items: flex-end; gap: 7px;
     padding-bottom: max(12px, env(safe-area-inset-bottom, 12px));
     background: #fff;
   }
   .studyhub-pill {
-    flex: 1; display: flex; align-items: center; gap: 8px;
-    background: #f1f5f9; border-radius: 26px; padding: 4px 4px 4px 15px;
+    flex: 1; display: flex; align-items: flex-end; gap: 8px;
+    background: #f1f5f9; border-radius: 22px; padding: 7px 7px 7px 15px;
     transition: box-shadow 0.15s ease, background 0.12s ease;
   }
   .studyhub-pill:focus-within { background: #fff; box-shadow: 0 0 0 2.5px rgba(99,102,241,.22); }
@@ -746,6 +831,8 @@ const CSS = `
     flex: 1; background: transparent; border: none; outline: none;
     font-size: max(16px, 14px); line-height: 1.45; color: #111; min-width: 0;
     font-family: inherit; -webkit-appearance: none;
+    resize: none; max-height: ${MAX_INPUT_HEIGHT}px; overflow-y: auto;
+    padding: 5px 0;
   }
   .studyhub-inp::placeholder { color: #b0b8c8; }
   .err-banner {
@@ -753,6 +840,14 @@ const CSS = `
     color: #be123c; font-size: 13.5px; line-height: 1.5;
     animation: errorShake 0.35s ease both;
     display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  }
+
+  /* Keyboard-focus visibility across custom controls */
+  button:focus-visible,
+  [role="button"]:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid ${C.brand};
+    outline-offset: 2px;
   }
 `
 
@@ -779,6 +874,7 @@ export default function App({
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [isVisible, setIsVisible] = useState(true)
+  const [showJump, setShowJump] = useState(false)
 
   const inputRef = useRef(null)
   const containerRef = useRef(null)
@@ -787,9 +883,11 @@ export default function App({
   const frameRef = useRef(null)
   const doneRef = useRef(false)
   const lastMsgRef = useRef('')
+  const lastHistoryRef = useRef([])
   const panelRef = useRef(null)
   const finalMessageAddedRef = useRef(false)
   const currentIntentRef = useRef('general')
+  const isNearBottomRef = useRef(true)
 
   const currentConv = convs.find(c => c.id === currentId) || convs[0]
   const messages = currentConv?.messages || []
@@ -823,34 +921,61 @@ export default function App({
     window.dispatchEvent(new CustomEvent('studyhub-close'))
   }, [onClose, resetStream, clearStreamingMsg])
 
+  // Escape is a deliberate, discoverable way to back out — never an
+  // accidental one. It steps down progressively: exit fullscreen, then
+  // close the sidebar, then close the panel. Outside clicks on the host
+  // page intentionally do NOT close the assistant — the user needs to
+  // reference the page while chatting about it.
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (panelRef.current && !panelRef.current.contains(e.target)) {
-        if (!isFullscreen) handleClose()
-        setSidebarOpen(false)
-      }
+    const onKey = (e) => {
+      if (e.key !== 'Escape') return
+      if (isFullscreen) { setIsFullscreen(false); return }
+      if (sidebarOpen) { setSidebarOpen(false); return }
+      handleClose()
     }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [handleClose, isFullscreen])
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [isFullscreen, sidebarOpen, handleClose])
 
-  const scrollBottom = useCallback(() => {
+  const scrollBottom = useCallback((smooth = false) => {
     const el = containerRef.current
-    if (el) el.scrollTop = el.scrollHeight
+    if (!el) return
+    if (smooth && !rm) el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' })
+    else el.scrollTop = el.scrollHeight
+    isNearBottomRef.current = true
+    setShowJump(false)
+  }, [rm])
+
+  const handleScroll = useCallback(() => {
+    const el = containerRef.current
+    if (!el) return
+    const near = el.scrollHeight - el.scrollTop - el.clientHeight < NEAR_BOTTOM_THRESHOLD
+    isNearBottomRef.current = near
+    setShowJump(!near)
   }, [])
 
-  useEffect(() => { requestAnimationFrame(scrollBottom) }, [messages, isThinking, scrollBottom])
+  // Only auto-scroll if the user was already at (or near) the bottom —
+  // otherwise scrolling up to reread something earlier gets yanked away.
+  useEffect(() => {
+    if (isNearBottomRef.current) requestAnimationFrame(() => scrollBottom(false))
+  }, [messages, isThinking, scrollBottom])
 
   useEffect(() => {
     const t = setTimeout(() => inputRef.current?.focus(), 100)
     return () => clearTimeout(t)
   }, [])
 
+  // Reset the textarea's height once its value is cleared (after sending).
   useEffect(() => {
-    if (!error) return
-    const t = setTimeout(() => setError(null), 7000)
-    return () => clearTimeout(t)
-  }, [error])
+    if (input === '' && inputRef.current) inputRef.current.style.height = 'auto'
+  }, [input])
+
+  const handleInputChange = useCallback((e) => {
+    setInput(e.target.value)
+    const el = e.target
+    el.style.height = 'auto'
+    el.style.height = `${Math.min(el.scrollHeight, MAX_INPUT_HEIGHT)}px`
+  }, [])
 
   const startRenderer = useCallback(() => {
     if (frameRef.current) return
@@ -859,9 +984,10 @@ export default function App({
       if (timestamp - lastUpdate > 50) {
         if (blocksRef.current.length > 0) {
           setStreamingMsg(prev => prev ? { ...prev, content: blocksRef.current.map(b => b.content).join('') } : prev)
-          const el = containerRef.current
-          if (el && el.scrollHeight - el.scrollTop - el.clientHeight < 150)
-            el.scrollTop = el.scrollHeight
+          if (isNearBottomRef.current) {
+            const el = containerRef.current
+            if (el) el.scrollTop = el.scrollHeight
+          }
         }
         lastUpdate = timestamp
       }
@@ -888,35 +1014,24 @@ export default function App({
     }))
   }, [])
 
-  const handleSend = useCallback(async (text) => {
-    const msg = (text || input).trim()
-    if (!msg || isThinking) return
-
-    if (!fileId) {
-      setError('No document is open — StudyHub needs a document to answer questions about.')
-      return
-    }
-
-    setInput('')
+  // Core streaming routine — does NOT push a user message. Callers
+  // (send / retry / regenerate) decide whether a user bubble is needed.
+  const runAssistant = useCallback(async (question, history) => {
     setError(null)
     resetStream()
     clearStreamingMsg()
     setIsThinking(true)
-    lastMsgRef.current = msg
+    lastMsgRef.current = question
+    lastHistoryRef.current = history
     finalMessageAddedRef.current = false
-
-    const history = messages.map(m => ({ role: m.role, content: m.content }))
-
-    addMessage(currentId, { id: Date.now(), role: 'user', content: msg })
 
     const ctrl = new AbortController()
     abortRef.current = ctrl
-
     setStreamingMsg({ role: 'assistant', content: '', isStreaming: true })
 
     try {
       for await (const { event, data } of streamChat(
-        { fileId, pageNumber: pageNumber != null ? pageNumber : 0, pageText, question: msg, history, mode },
+        { fileId, pageNumber: pageNumber != null ? pageNumber : 0, pageText, question, history, mode },
         ctrl.signal
       )) {
         if (ctrl.signal.aborted) break
@@ -954,7 +1069,22 @@ export default function App({
       abortRef.current = null
       if (!finalMessageAddedRef.current) clearStreamingMsg()
     }
-  }, [input, isThinking, currentId, mode, fileId, pageNumber, pageText, messages, addMessage, resetStream, startRenderer, clearStreamingMsg])
+  }, [currentId, mode, fileId, pageNumber, pageText, addMessage, resetStream, startRenderer, clearStreamingMsg])
+
+  const handleSend = useCallback((text) => {
+    const msg = (text || input).trim()
+    if (!msg || isThinking) return
+
+    if (!fileId) {
+      setError('No document is open — StudyHub needs a document to answer questions about.')
+      return
+    }
+
+    setInput('')
+    const history = messages.map(m => ({ role: m.role, content: m.content }))
+    addMessage(currentId, { id: Date.now(), role: 'user', content: msg })
+    runAssistant(msg, history)
+  }, [input, isThinking, fileId, messages, currentId, addMessage, runAssistant])
 
   const handleStop = useCallback(() => {
     abortRef.current?.abort()
@@ -971,9 +1101,26 @@ export default function App({
     setIsThinking(false)
   }, [currentId, addMessage, resetStream, clearStreamingMsg])
 
+  // Retries the SAME question/history — does not duplicate the user bubble.
   const handleRetry = useCallback(() => {
-    if (lastMsgRef.current) handleSend(lastMsgRef.current)
-  }, [handleSend])
+    if (!lastMsgRef.current || isThinking) return
+    runAssistant(lastMsgRef.current, lastHistoryRef.current)
+  }, [isThinking, runAssistant])
+
+  // Regenerates the latest assistant answer: drops it, then re-runs the
+  // same question against the history that preceded it.
+  const handleRegenerate = useCallback(() => {
+    if (isThinking) return
+    const msgs = currentConv?.messages || []
+    if (!msgs.length || msgs[msgs.length - 1].role !== 'assistant') return
+    const withoutLast = msgs.slice(0, -1)
+    const lastUser = withoutLast[withoutLast.length - 1]
+    if (!lastUser || lastUser.role !== 'user') return
+    const history = withoutLast.slice(0, -1).map(m => ({ role: m.role, content: m.content }))
+
+    setConvs(prev => prev.map(c => c.id === currentId ? { ...c, messages: withoutLast } : c))
+    runAssistant(lastUser.content, history)
+  }, [isThinking, currentConv, currentId, runAssistant])
 
   const handleNewConv = useCallback(() => {
     const c = freshConv()
@@ -1018,17 +1165,17 @@ export default function App({
         isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)}
       />
 
-      <div ref={panelRef} className="studyhub-panel" style={panelStyle}>
+      <div ref={panelRef} className="studyhub-panel" style={panelStyle} role="dialog" aria-label={`${ASSISTANT_NAME} assistant`}>
         {!isFullscreen && <div className="studyhub-drag" aria-hidden="true" />}
 
         <div className="studyhub-header">
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, flex: 1, minWidth: 0 }}>
-            <button onClick={() => setSidebarOpen(true)} className="cir" aria-label="Chats">
+            <button onClick={() => setSidebarOpen(true)} className="cir" aria-label="Open chat history" aria-haspopup="dialog" aria-expanded={sidebarOpen}>
               <Menu size={16} color="#64748b" />
             </button>
             <img
               src={AI_ICON}
-              alt={`${ASSISTANT_NAME} assistant`}
+              alt=""
               style={{ width: 30, height: 30, borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
               loading="lazy"
             />
@@ -1050,25 +1197,25 @@ export default function App({
               isFullscreen={isFullscreen} onToggleFullscreen={() => setIsFullscreen(f => !f)}
               rm={rm}
             />
-            <button onClick={handleClose} className="cir" aria-label="Close" title="Close" style={{ background: '#fef2f2' }}>
+            <button onClick={handleClose} className="cir" aria-label="Close assistant" title="Close" style={{ background: '#fef2f2' }}>
               <X size={16} color="#ef4444" />
             </button>
           </div>
         </div>
 
-        <div className="studyhub-messages" ref={containerRef} role="log" aria-live="polite">
+        <div className="studyhub-messages" ref={containerRef} onScroll={handleScroll} role="log" aria-live="polite">
           {messages.length === 0 && !isThinking && !error && (
             <EmptyState rm={rm} onSelect={p => handleSend(p)} />
           )}
 
           {error && (
-            <div className="err-banner">
+            <div className="err-banner" role="alert" aria-live="assertive">
               <span>{error}</span>
               <div style={{ display: 'flex', gap: 8, flexShrink: 0, alignItems: 'center' }}>
                 <button onClick={handleRetry} style={{ background: 'none', border: 'none', color: C.errC, fontWeight: 600, cursor: 'pointer', fontSize: 12, display: 'flex', alignItems: 'center', gap: 3 }}>
                   <RefreshCw size={11} /> Retry
                 </button>
-                <button onClick={() => setError(null)} style={{ background: 'none', border: 'none', color: C.errC, fontWeight: 700, cursor: 'pointer', fontSize: 14, padding: 0 }}>✕</button>
+                <button onClick={() => setError(null)} aria-label="Dismiss error" style={{ background: 'none', border: 'none', color: C.errC, fontWeight: 700, cursor: 'pointer', fontSize: 14, padding: 0 }}>✕</button>
               </div>
             </div>
           )}
@@ -1080,22 +1227,30 @@ export default function App({
               index={i}
               rm={rm}
               onFollowUp={handleSend}
+              onRegenerate={handleRegenerate}
+              isThinking={isThinking}
               isLastAssistant={msg.role === 'assistant' && (msg.isStreaming || i === lastAssistantIdx)}
             />
           ))}
 
           {isThinking && !(streamingMsg?.content?.length > 0) && <LoadingDots rm={rm} />}
+
+          {showJump && messages.length > 0 && (
+            <JumpToLatestBtn onClick={() => scrollBottom(true)} />
+          )}
         </div>
 
         <div className="studyhub-input-row">
           <div className="studyhub-pill">
-            <input
+            <textarea
               ref={inputRef}
               value={input}
-              onChange={e => setInput(e.target.value)}
+              onChange={handleInputChange}
               onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend() } }}
               placeholder="Ask about this page…"
+              aria-label="Message StudyHub"
               className="studyhub-inp"
+              rows={1}
               autoComplete="off" autoCorrect="on" spellCheck enterKeyHint="send"
             />
             {isThinking

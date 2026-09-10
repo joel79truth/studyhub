@@ -17,6 +17,7 @@ const AdminUpload = () => {
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
   const [uploading, setUploading] = useState(false);
+  const [uploadStage, setUploadStage] = useState('');  // e.g. 'uploading', 'analyzing', 'done'
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
   // Set alongside `error` ONLY when the backend's 400 response for
@@ -133,6 +134,23 @@ useEffect(() => {
     input.click();
   };
 
+  // ── Poll /api/exam/paper-status/:rawPaperId until done or failed ──
+  const pollForPaperStatus = async (rawPaperId, { intervalMs = 3000, maxAttempts = 60 } = {}) => {
+    const headers = await authHeader();
+    for (let attempt = 0; attempt < maxAttempts; attempt++) {
+      try {
+        const res = await fetch(`${BASE_URL}/api/exam/paper-status/${rawPaperId}`, { headers });
+        if (!res.ok) { await new Promise((r) => setTimeout(r, intervalMs)); continue; }
+        const data = await res.json();
+        if (data.status === 'done') return { success: true, ...data };
+        if (data.status === 'failed') return { success: false, error: data.error || 'Extraction failed' };
+        // still 'processing' — keep polling
+      } catch (_) { /* transient network error */ }
+      await new Promise((r) => setTimeout(r, intervalMs));
+    }
+    return { success: false, error: 'Timed out waiting for AI extraction (>3 min). Check the Batch tab.' };
+  };
+
 const handleUploadAndExtract = async () => {
   if (!file) return;
   if (!uploadProgramId || !uploadCourse.trim() || !uploadSemester.trim()) {
@@ -141,6 +159,7 @@ const handleUploadAndExtract = async () => {
     return;
   }
   setUploading(true);
+  setUploadStage('uploading');
   setError(null);
   setErrorRawPaperId(null);
   try {
@@ -150,35 +169,47 @@ const handleUploadAndExtract = async () => {
     formData.append('programId', uploadProgramId);
     formData.append('course', uploadCourse.trim());
     formData.append('semester', uploadSemester.trim());
+
+    // ── Step 1: upload file (fast — returns 202 immediately) ──
+    setUploadStage('uploading');
     const res = await fetch(`${BASE_URL}/api/exam/upload-past-paper`, {
       method: 'POST', headers, body: formData,
     });
     const data = await res.json();
     if (!res.ok) {
-      // Backend still saves + stores the original image even when zero
-      // questions get extracted (see server.js: "No valid questions
-      // extracted..." branch), and returns raw_paper_id for that saved
-      // record so it can be reprocessed instead of re-uploaded from
-      // scratch. Surface it here rather than dropping it on the floor.
       const err = new Error(data.error || 'Upload failed');
       err.rawPaperId = data.raw_paper_id || null;
       throw err;
     }
-    const reviewNote = data.flagged_for_review
-      ? `${data.flagged_for_review} question(s) flagged for review.`
-      : null;
-    setResult({
-      extracted: data.extracted,
-      paperId: data.paper_id,
-      rawPaperId: data.raw_paper_id,
-      reviewNote,
-      documentStatus: 'generating',
-    });
+
+    const rawPaperId = data.raw_paper_id;
+
+    // Clear the file preview immediately since upload is done
     setFile(null);
     setPreview(null);
     if (fileInputRef.current) fileInputRef.current.value = '';
 
-    pollForDocument(data.raw_paper_id, (docState) => {
+    // ── Step 2: poll for AI extraction completion ──
+    setUploadStage('analyzing');
+    const statusResult = await pollForPaperStatus(rawPaperId);
+
+    if (!statusResult.success) {
+      const err = new Error(statusResult.error);
+      err.rawPaperId = rawPaperId;
+      throw err;
+    }
+
+    // ── Step 3: done ──
+    setUploadStage('done');
+    setResult({
+      extracted: statusResult.extracted,
+      paperId: statusResult.paper_id,
+      rawPaperId,
+      reviewNote: null,
+      documentStatus: 'generating',
+    });
+
+    pollForDocument(rawPaperId, (docState) => {
       setResult((prev) => (prev ? { ...prev, documentStatus: docState.status, documentUrl: docState.url } : prev));
     });
   } catch (err) {
@@ -186,8 +217,10 @@ const handleUploadAndExtract = async () => {
     setErrorRawPaperId(err.rawPaperId || null);
   } finally {
     setUploading(false);
+    setUploadStage('');
   }
 };
+
 
   const handleProcessExisting = async () => {
     const trimmedId = existingPaperId.trim();
@@ -281,6 +314,19 @@ const handleUploadAndExtract = async () => {
       if (!res.ok) throw new Error(data.error || 'Batch processing failed');
       setBatchResults(data.results);
 
+      // ── Remove successfully processed papers from the list immediately ──
+      const successIds = new Set(
+        (data.results || []).filter((r) => r.success).map((r) => r.id)
+      );
+      if (successIds.size > 0) {
+        setUnprocessed((prev) => prev.filter((p) => !successIds.has(p.id)));
+        setSelectedIds((prev) => {
+          const next = new Set(prev);
+          successIds.forEach((id) => next.delete(id));
+          return next;
+        });
+      }
+
       data.results.forEach((r) => {
         if (r.success) {
           setDocStatuses((prev) => ({ ...prev, [r.id]: 'generating' }));
@@ -290,6 +336,7 @@ const handleUploadAndExtract = async () => {
         }
       });
 
+      // Full refresh in background to ensure list is accurate
       await loadUnprocessed();
     } catch (err) {
       setBatchError(err.message);
@@ -433,7 +480,11 @@ const handleUploadAndExtract = async () => {
                       >
                         {uploading ? (
                           <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                            <Spinner /> Extracting…
+                            <Spinner />
+                            {uploadStage === 'uploading' && 'Uploading file…'}
+                            {uploadStage === 'analyzing' && 'Analysing with AI (may take ~30s)…'}
+                            {uploadStage === 'done' && 'Done!'}
+                            {!uploadStage && 'Processing…'}
                           </span>
                         ) : 'Upload & Extract'}
                       </button>
@@ -591,6 +642,12 @@ const handleUploadAndExtract = async () => {
                         {p.course && <span>Course: {p.course}</span>}
                         {p.program && <span>Program: {p.program}</span>}
                         {!p.course_id && <span style={{ color: '#b45309' }}>⚠️ No course_id (upload via Single tab to fix)</span>}
+                        {p.processing_status === 'processing' && (
+                          <span style={{ color: '#2563eb', fontWeight: 600 }}>⏳ Currently processing…</span>
+                        )}
+                        {p.processing_status === 'failed' && (
+                          <span style={{ color: '#dc2626', fontWeight: 600 }}>❌ Extraction failed — select to retry</span>
+                        )}
                       </div>
                     </div>
                   </label>

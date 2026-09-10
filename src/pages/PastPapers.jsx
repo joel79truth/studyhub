@@ -1,28 +1,42 @@
-// PastPapers.jsx – v18 (fix: duplicate renderInline + broken AiBlock call)
+// PastPapers.jsx – v19 (AI panel fixes)
 //
-// Changes from v17:
-//  v17 added `import { MathText, renderInline } from './math-fix'` at the
-//  top but LEFT the old local `function renderInline(...)` further down in
-//  the same file — a duplicate top-level identifier, which is a hard
-//  SyntaxError in ES modules (import bindings and top-level declarations
-//  share the same scope). It also left `AiBlock` calling
-//  `isolateBlockMath(normalizeMathDelimiters(content))`, but those two
-//  functions had already been deleted (only their comments remained) —
-//  a guaranteed ReferenceError the moment any AI block rendered.
+// Changes from v18:
+//  AI PANEL CORRECTNESS
+//  - FIXED RACE CONDITION: useAiStream.run() now aborts any in-flight stream
+//    before starting a new one. Previously, switching actions (Explain →
+//    Solve) or sending a new chat message while a prior stream was still
+//    running left the OLD fetch's onToken callbacks writing into the NEW,
+//    just-reset `blocks` array — tokens from two different requests could
+//    interleave into one answer. controllerRef.current is now aborted at
+//    the top of run(), before the reset.
+//  - Added a distinct 'stopped' stream status (separate from 'done'), so a
+//    manually stopped answer is visibly marked as cut off rather than
+//    looking indistinguishable from a completed one. All status checks that
+//    used to gate on 'done' | 'error' (regenerate button, caching completed
+//    results, appending a chat turn) now also accept 'stopped'.
 //
-//  v18 removes both leftovers:
-//   - The local `renderInline` definition is gone; the imported one (which
-//     shares its tokenizer with MathText — see math-fix.jsx) is the only
-//     one now.
-//   - `AiBlock` passes `content` straight into `MarkdownLite`. The cleanup
-//     work (normalizing \( \) / \[ \], pairing $$ blocks, wrapping
-//     undelimited DB macros) all happens inside `renderInline` /
-//     `parseMathSegments` in math-fix.jsx now, in exactly one place.
-//   - The local `MathFallback`, `mathRenderError`, and `tidyPlainText`
-//     helpers are gone too — `mathRenderError` is imported from
-//     math-fix.jsx so there is one copy of that logic, not two.
+//  AI PANEL UX
+//  - Explain/Solve and chat panes now auto-scroll to the streaming content
+//    as tokens arrive (bottomRef + scrollIntoView), instead of leaving new
+//    content to land below the fold with no signal anything is happening.
+//  - Every finished AI answer now has a Copy button (CopyButton), since
+//    "copy this explanation/formula" is a core use case here.
+//  - Streaming AiBlocks now carry aria-live="polite" + role="status" so
+//    screen-reader users get the answer as it streams, not just at the end.
+//  - Chat turns now have their own "Regenerate" action, matching the
+//    Explain/Solve pattern — previously only Explain/Solve could be retried.
+//  - Unified the assistant's displayed name behind a single AI_NAME
+//    constant ("StudyHub") — ThinkingIndicator used to default to "Luna is
+//    thinking" while the composer and empty-chat state said "StudyHub",
+//    which read as two different assistants.
 //
-// (v14–v17 changes retained below for reference)
+// (v14–v18 changes retained below for reference)
+//  v18 removed a duplicate top-level `renderInline` (import + local
+//  definition co-existing — a hard SyntaxError) and a call to two already-
+//  deleted helpers (`isolateBlockMath`/`normalizeMathDelimiters`) inside
+//  AiBlock. All math/delimiter handling now lives once, inside
+//  renderInline -> parseMathSegments in math-fix.jsx.
+//
 //  RESPONSE STRUCTURE / READABILITY
 //  - MarkdownLite paragraph rhythm widened again (space-y-4 → space-y-5) and
 //    line-height nudged up (leading-relaxed/1.625 → leading-[1.7]).
@@ -294,6 +308,13 @@ function normalizeDbQuestion(row, idx) {
     imageUrl: row.image_url || null, needsReview: !!row.needs_review,
   }
 }
+
+// ── AI assistant identity ──────────────────────────────────────
+// FIX: single source of truth for the assistant's display name. Previously
+// ThinkingIndicator defaulted to "Luna is thinking" while the chat composer
+// placeholder and empty-state copy said "StudyHub" — two names for one
+// assistant reads as a bug, not a feature. Everything below reads from here.
+const AI_NAME = 'StudyHub'
 
 // ── Reduced motion / low-data mode ─────────────────────────────
 // This single signal now drives THREE things, not just animation:
@@ -919,6 +940,36 @@ function MarkdownLite({ text }) {
   )
 }
 
+// FIX: extracted copy-to-clipboard control, used on every finished AI answer.
+// Study content (explanations, worked solutions, formulas) is exactly the
+// kind of text people want to paste into their own notes — the panel
+// previously offered no way to do that short of manual text selection.
+const CopyButton = memo(({ text }) => {
+  const [copied, setCopied] = useState(false)
+  const handleCopy = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(text)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 1500)
+    } catch {
+      // Clipboard API can fail (permissions, insecure context) — fail silently,
+      // the button just won't show the "Copied" confirmation.
+    }
+  }, [text])
+  return (
+    <button
+      onClick={handleCopy}
+      className="flex items-center gap-1 text-xs font-semibold text-gray-400 hover:text-indigo-600 transition-colors active:scale-95 h-8 px-1"
+      aria-label="Copy this answer"
+    >
+      {copied
+        ? <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
+        : <span className="w-3 h-3 inline-block border-2 border-current rounded-sm" />}
+      {copied ? 'Copied' : 'Copy'}
+    </button>
+  )
+})
+
 // AiBlock: streaming caret respects reduced-motion — a blinking cursor is pure
 // decoration once we know the device/connection prefers calm UI.
 // v18: no more useMemo/normalizeMathDelimiters/isolateBlockMath here — that
@@ -926,22 +977,34 @@ function MarkdownLite({ text }) {
 // the old local renderInline) and disagreed with itself. `content` now goes
 // straight into MarkdownLite; every bit of delimiter handling happens once,
 // inside renderInline -> parseMathSegments (math-fix.jsx), at render time.
-const AiBlock = memo(({ content, streaming }) => {
+// v19: added aria-live for screen readers while streaming, a "stopped before
+// finishing" notice when the stream was manually cut off, and a Copy button
+// once the block has settled content and isn't actively streaming.
+const AiBlock = memo(({ content, streaming, stopped = false }) => {
   const rm = useReducedMotion()
   return (
-    <div>
+    <div aria-live={streaming ? 'polite' : 'off'} role="status">
       <MarkdownLite text={content} />
       {streaming && <span className={rm ? 'ed-cursor-static' : 'ed-cursor'} />}
+      {stopped && !streaming && (
+        <p className="text-xs text-gray-400 italic mt-1.5">— stopped before finishing —</p>
+      )}
+      {!streaming && content.trim().length > 0 && (
+        <div className="mt-1.5">
+          <CopyButton text={content} />
+        </div>
+      )}
     </div>
   )
 })
 
 // ThinkingIndicator: dots only bounce when motion is allowed; otherwise a plain,
 // still label — same information, no animation cost on a weak GPU or slow link.
-const ThinkingIndicator = memo(({ label = 'Luna is thinking' }) => {
+// v19: default label now reads from AI_NAME instead of a hardcoded, different name.
+const ThinkingIndicator = memo(({ label = `${AI_NAME} is thinking` }) => {
   const rm = useReducedMotion()
   return (
-    <div className="flex items-center gap-2 text-sm text-gray-500 py-3 ed-fade-up">
+    <div className="flex items-center gap-2 text-sm text-gray-500 py-3 ed-fade-up" aria-live="polite">
       <span>{label}</span>
       {!rm && (
         <span className="flex gap-1">
@@ -957,13 +1020,25 @@ const ThinkingIndicator = memo(({ label = 'Luna is thinking' }) => {
 })
 
 // ── AI stream hook ─────────────────────────────────────────────
+// v19: FIX for the cross-request race — run() now aborts any in-flight
+// controller BEFORE resetting state and starting the new fetch. Previously,
+// controllerRef.current was simply overwritten, so the old stream's
+// onToken/onBlockEnd callbacks kept firing after a new action or chat
+// message reset `blocks` — tokens from two different requests could
+// interleave into a single displayed answer. Also added a 'stopped' status,
+// distinct from 'done', so a manually-interrupted answer can be marked as
+// cut off in the UI instead of looking complete.
 function useAiStream() {
   const [blocks, setBlocks] = useState([])
-  const [status, setStatus] = useState('idle')
+  const [status, setStatus] = useState('idle') // idle | thinking | streaming | done | error | stopped
   const [errorMsg, setErrorMsg] = useState(null)
   const controllerRef = useRef(null)
 
   const run = useCallback(async (path, body) => {
+    // FIX: abort whatever was previously in flight before touching state,
+    // so its callbacks can never write into the response we're about to start.
+    controllerRef.current?.abort()
+
     setBlocks([]); setErrorMsg(null); setStatus('thinking')
     const controller = new AbortController()
     controllerRef.current = controller
@@ -999,7 +1074,9 @@ function useAiStream() {
   const stop = useCallback(() => {
     controllerRef.current?.abort()
     setBlocks(prev => prev.map(b => ({ ...b, streaming: false })))
-    setStatus(prev => (prev === 'thinking' || prev === 'streaming' ? 'done' : prev))
+    // FIX: 'stopped' instead of collapsing into 'done' — lets the UI show
+    // "stopped before finishing" rather than implying a complete answer.
+    setStatus(prev => (prev === 'thinking' || prev === 'streaming' ? 'stopped' : prev))
   }, [])
 
   return { blocks, status, errorMsg, run, stop }
@@ -1136,6 +1213,8 @@ const SwipeEdgeChevron = memo(({ side, visible, onClick }) => {
 // Horizontal pill switcher replaces the 2×2 grid.
 // Swipe left/right on the scroll area navigates questions — now with a discoverability
 // hint, edge chevrons, and keyboard arrow support (see fixes above).
+// v19: auto-scroll to streamed content, per-turn chat regenerate, and status
+// checks widened to include the new 'stopped' state.
 function ActionSheetContent({
   question, isSaved, onToggleSave, isFlagged, onFlag,
   isOnline, aiCache, isReviewed, onMarkReviewed,
@@ -1163,6 +1242,11 @@ function ActionSheetContent({
 
   const showSwipeHint = useSwipeHintOnce((questionList?.length ?? 0) > 1)
 
+  // FIX: anchor to auto-scroll toward as tokens stream in, so new content
+  // doesn't land silently below the fold. One anchor is reused by whichever
+  // pane (Explain/Solve or chat) is currently streaming.
+  const bottomRef = useRef(null)
+
   useEffect(() => {
     aiCache.set(question.id, { screen, actionResults, conversation, practiceQuestions })
   }, [question.id, screen, actionResults, conversation, practiceQuestions, aiCache])
@@ -1181,20 +1265,33 @@ function ActionSheetContent({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [question.id, reducedMotion])
 
+  // FIX: widened from ('done' | 'error') to also include 'stopped', so a
+  // manually-stopped Explain/Solve answer still gets cached into
+  // actionResults instead of vanishing when the sheet re-renders.
   useEffect(() => {
     if (!runningAction || runningAction === 'chat') return
-    if (liveStatus === 'done' || liveStatus === 'error') {
+    if (liveStatus === 'done' || liveStatus === 'error' || liveStatus === 'stopped') {
       setActionResults(prev => ({ ...prev, [runningAction]: { blocks: liveBlocks, status: liveStatus, errorMsg: liveError } }))
       setRunningAction(null)
     }
   }, [liveStatus, liveBlocks, liveError, runningAction])
 
+  // FIX: same widening for chat — stopping a chat reply mid-stream should
+  // still commit the partial answer as a conversation turn, not discard it.
   useEffect(() => {
-    if ((liveStatus === 'done' || liveStatus === 'error') && pendingMessage !== null && screen === 'chat' && runningAction === 'chat') {
-      setConversation(prev => [...prev, { id: `${Date.now()}-${prev.length}`, message: pendingMessage, blocks: liveBlocks }])
+    if ((liveStatus === 'done' || liveStatus === 'error' || liveStatus === 'stopped') && pendingMessage !== null && screen === 'chat' && runningAction === 'chat') {
+      setConversation(prev => [...prev, { id: `${Date.now()}-${prev.length}`, message: pendingMessage, blocks: liveBlocks, stopped: liveStatus === 'stopped' }])
       setPendingMessage(null); setRunningAction(null)
     }
   }, [liveStatus, liveBlocks, pendingMessage, screen, runningAction])
+
+  // FIX: auto-scroll toward the newest streamed content while a response is
+  // actively thinking/streaming, for both the action pane and chat pane.
+  useEffect(() => {
+    if (liveStatus === 'streaming' || liveStatus === 'thinking') {
+      bottomRef.current?.scrollIntoView({ block: 'end' })
+    }
+  }, [liveBlocks, liveStatus])
 
   // Keyboard navigation — desktop/trackpad users have no swipe gesture at all,
   // so arrow keys aren't a nice-to-have, they're the only way in for that input mode.
@@ -1263,6 +1360,15 @@ function ActionSheetContent({
     if (!msg || composerBusy) return
     setChatInput(''); setPendingMessage(msg); setRunningAction('chat')
     run('/api/exam/question-action/stream', { action: 'ask', question: questionPayload, message: msg })
+  }
+
+  // FIX: chat turns previously had no retry — only Explain/Solve did. Re-asks
+  // the same message as a fresh request (the new run() call safely aborts
+  // anything still in flight first, so this is never racy).
+  const regenerateChatTurn = (message) => {
+    setRunningAction('chat')
+    setPendingMessage(message)
+    run('/api/exam/question-action/stream', { action: 'ask', question: questionPayload, message })
   }
 
   const errorBanner = (msg, onRetry) => (
@@ -1380,11 +1486,11 @@ function ActionSheetContent({
               )}
               {displayed.blocks.map((b, i) => (
                 <div key={i} className={i > 0 ? 'mt-4 pt-4 border-t border-gray-100' : ''}>
-                  <AiBlock content={b.content} streaming={b.streaming} />
+                  <AiBlock content={b.content} streaming={b.streaming} stopped={displayed.status === 'stopped'} />
                 </div>
               ))}
               {displayed.status === 'thinking' && (
-                <ThinkingIndicator label={screen === 'solve' ? 'Working through it' : 'Luna is thinking'} />
+                <ThinkingIndicator label={screen === 'solve' ? 'Working through it' : `${AI_NAME} is thinking`} />
               )}
               {displayed.status === 'error' && errorBanner(displayed.errorMsg, () => startStream(screen, { force: true }))}
               {actionBusy && (
@@ -1392,11 +1498,14 @@ function ActionSheetContent({
                   <StopCircle className="w-3.5 h-3.5" /> Stop
                 </button>
               )}
-              {(displayed.status === 'done' || displayed.status === 'error') && (
+              {/* FIX: 'stopped' now also offers Regenerate, matching 'done'/'error' */}
+              {(displayed.status === 'done' || displayed.status === 'error' || displayed.status === 'stopped') && (
                 <button onClick={() => startStream(screen, { force: true })} className="mt-2 flex items-center gap-1 text-xs font-semibold text-gray-500 hover:text-indigo-600 transition-colors active:scale-95 h-9">
                   <RotateCcw className="w-3.5 h-3.5" /> Regenerate
                 </button>
               )}
+              {/* Auto-scroll anchor for this pane */}
+              <div ref={screen === 'understand' || screen === 'solve' ? bottomRef : null} />
             </div>
           )}
 
@@ -1407,7 +1516,7 @@ function ActionSheetContent({
                 <div className="text-center py-8">
                   <Sparkles className="w-6 h-6 text-indigo-300 mx-auto mb-2" />
                   <p className="text-sm text-gray-500 max-w-[220px] mx-auto leading-relaxed">
-                    Ask anything about this question — StudyHub answers right here.
+                    Ask anything about this question — {AI_NAME} answers right here.
                   </p>
                 </div>
               )}
@@ -1421,9 +1530,17 @@ function ActionSheetContent({
                   <div>
                     {turn.blocks.map((b, i) => (
                       <div key={i} className={i > 0 ? 'mt-4 pt-4 border-t border-gray-100' : ''}>
-                        <AiBlock content={b.content} streaming={false} />
+                        <AiBlock content={b.content} streaming={false} stopped={!!turn.stopped} />
                       </div>
                     ))}
+                    {/* FIX: chat turns now get their own Regenerate, same as Explain/Solve */}
+                    <button
+                      onClick={() => regenerateChatTurn(turn.message)}
+                      disabled={composerBusy}
+                      className="mt-1.5 flex items-center gap-1 text-xs font-semibold text-gray-500 hover:text-indigo-600 transition-colors active:scale-95 h-8 disabled:opacity-40 disabled:cursor-not-allowed"
+                    >
+                      <RotateCcw className="w-3.5 h-3.5" /> Regenerate
+                    </button>
                   </div>
                 </div>
               ))}
@@ -1437,14 +1554,11 @@ function ActionSheetContent({
                   <div>
                     {liveBlocks.map((b, i) => (
                       <div key={i} className={i > 0 ? 'mt-4 pt-4 border-t border-gray-100' : ''}>
-                        <AiBlock content={b.content} streaming={b.streaming} />
+                        <AiBlock content={b.content} streaming={b.streaming} stopped={liveStatus === 'stopped'} />
                       </div>
                     ))}
                     {liveStatus === 'thinking' && <ThinkingIndicator />}
-                    {liveStatus === 'error' && errorBanner(liveError, () => {
-                      const msg = pendingMessage; setRunningAction('chat')
-                      run('/api/exam/question-action/stream', { action: 'ask', question: questionPayload, message: msg })
-                    })}
+                    {liveStatus === 'error' && errorBanner(liveError, () => regenerateChatTurn(pendingMessage))}
                   </div>
                 </div>
               )}
@@ -1453,6 +1567,8 @@ function ActionSheetContent({
                   <StopCircle className="w-3.5 h-3.5" /> Stop
                 </button>
               )}
+              {/* Auto-scroll anchor for the chat pane */}
+              <div ref={screen === 'chat' ? bottomRef : null} />
             </div>
           )}
 
@@ -1514,7 +1630,7 @@ function ActionSheetContent({
             type="text"
             value={chatInput}
             onChange={(e) => setChatInput(e.target.value)}
-            placeholder="Ask StudyHub about this question…"
+            placeholder={`Ask ${AI_NAME} about this question…`}
             disabled={composerBusy}
             className="flex-1 text-base border border-gray-200 rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent disabled:bg-gray-50 disabled:text-gray-400 transition-all"
           />

@@ -20,6 +20,7 @@ export default function Upload() {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
+  const [uploadStage, setUploadStage] = useState(''); // 'connecting' | 'uploading' | 'saving'
   const [toasts, setToasts] = useState([]);
   const [apiFailed, setApiFailed] = useState(false);
   const [isPicking, setIsPicking] = useState(false);   // prevent double taps
@@ -49,7 +50,8 @@ export default function Upload() {
     return () => subscription?.unsubscribe();
   }, [navigate]);
 
-  // ── Programs ──
+  // ── Programs ──Storageupload · JS
+
   useEffect(() => {
     if (!user) return;
     const loadPrograms = async () => {
@@ -158,56 +160,105 @@ export default function Upload() {
   };
 
   const isFormValid = programInput.trim() !== '' && semester !== '' && subject.trim() !== '' && file !== null;
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!user || !file || !isFormValid) return;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!user || !file || !isFormValid) return;
+  try {
+    const { data: { session } } = await supabase.auth.getSession();
+    const token = session?.access_token;
+    if (!token) throw new Error('No access token');
 
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('program', programInput.trim());
-    formData.append('semester', semester);
-    formData.append('subject', subject.trim());
+    setUploading(true);
+    setUploadProgress(0);
+    setUploadStage('connecting');
 
-    try {
-      const { data: { session } } = await supabase.auth.getSession();
-      const token = session?.access_token;
-      if (!token) throw new Error('No access token');
+    // Step 1: ask the backend where to send the bytes
+    const initRes = await fetch(`${API_BASE_URL}/api/storage/init-upload`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        fileName: file.name,
+        fileSize: file.size,
+        mimeType: file.type,
+        program: programInput.trim(),
+        semester,
+        subject: subject.trim(),
+      }),
+    });
+    const initData = await initRes.json().catch(() => ({}));
+    if (!initRes.ok) throw new Error(initData.message || 'Could not start upload');
 
-      setUploading(true);
-      setUploadProgress(0);
-      const progressInterval = setInterval(() => {
-        setUploadProgress(prev => Math.min(prev + 5, 90));
-      }, 100);
+    let storageRef;
+    setUploadStage('uploading');
 
-      // ✅ FIXED: use your computer's USB tethering IP + port 3000
-      const res = await fetch(`${API_BASE_URL}/upload`, {
-        method: 'POST',
-        headers: { Authorization: `Bearer ${token}` },
-        body: formData,
+    if (initData.storage_type === 'gdrive') {
+      // Step 2a: straight to Google Drive's resumable session — real progress
+      storageRef = await new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('PUT', initData.uploadUrl, true);
+        xhr.setRequestHeader('Content-Type', file.type);
+        xhr.upload.onprogress = (evt) => {
+          if (evt.lengthComputable) setUploadProgress(Math.round((evt.loaded / evt.total) * 100));
+        };
+        xhr.onload = () => {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            try { resolve(JSON.parse(xhr.responseText).id); }
+            catch { reject(new Error('Drive upload finished but returned an unexpected response.')); }
+          } else {
+            reject(new Error(`Drive upload failed (${xhr.status})`));
+          }
+        };
+        xhr.onerror = () => reject(new Error('Network error during Drive upload'));
+        xhr.send(file);
       });
-
-      clearInterval(progressInterval);
-      setUploadProgress(100);
-
-      if (res.ok) {
-        addToast('Upload successful!', `${file.name} has been shared.`, 'success');
-        setProgramInput('');
-        setSemester('');
-        setSubject('');
-        removeFile();
-      } else {
-        const errText = await res.text();
-        throw new Error(errText || 'Upload failed');
-      }
-    } catch (err) {
-      console.error(err);
-      addToast('Upload failed', err.message || 'Please try again later.', 'error');
-    } finally {
-      setUploading(false);
-      setTimeout(() => setUploadProgress(0), 500);
+    } else {
+      // Step 2b: straight to Supabase Storage via the signed upload URL
+      setUploadProgress(50); // no native progress event on this leg — see note below
+      const { error: uploadErr } = await supabase.storage
+        .from(initData.bucket)
+        .uploadToSignedUrl(initData.path, initData.token, file);
+      if (uploadErr) throw uploadErr;
+      storageRef = initData.path;
+      setUploadProgress(90);
     }
-  };
+
+    // Step 3: tell the backend the bytes landed
+    setUploadStage('saving');
+    const completeRes = await fetch(`${API_BASE_URL}/api/storage/complete`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        storage_type: initData.storage_type,
+        storage_ref: storageRef,
+        program: programInput.trim(),
+        semester,
+        subject: subject.trim(),
+        filename: file.name,
+        size: file.size,
+      }),
+    });
+    const completeData = await completeRes.json().catch(() => ({}));
+    if (!completeRes.ok) throw new Error(completeData.message || 'Upload failed');
+
+    setUploadProgress(100);
+    addToast('Upload successful!', `${file.name} has been shared.`, 'success');
+    setProgramInput('');
+    setSemester('');
+    setSubject('');
+    removeFile();
+  } catch (err) {
+    console.error(err);
+    addToast('Upload failed', err.message || 'Please try again later.', 'error');
+  } finally {
+    setUploading(false);
+    setUploadStage('');
+    setTimeout(() => setUploadProgress(0), 500);
+  }
+};
+
+
+
 
   // Click outside dropdown
   useEffect(() => {
@@ -358,7 +409,17 @@ export default function Upload() {
               </button>
               <button type="button" className={styles.btnPrimary} disabled={!isFormValid || uploading} onClick={handleSubmit}>
                 {uploading ? (
-                  <><span>⏳ Uploading...</span><div className={styles.progressOverlay} style={{ width: `${uploadProgress}%` }} /></>
+                  <>
+                    <span>
+                      {uploadStage === 'connecting' && '🔗 Connecting to server...'}
+                      {uploadStage === 'uploading' && uploadProgress > 0 && uploadProgress < 100
+                        ? `📤 Uploading... ${uploadProgress}%`
+                        : uploadStage === 'uploading' ? '📤 Uploading file...'
+                        : uploadStage === 'saving' ? '💾 Saving...'
+                        : '⏳ Uploading...'}
+                    </span>
+                    <div className={styles.progressOverlay} style={{ width: `${uploadProgress}%` }} />
+                  </>
                 ) : (
                   <span>📤 Upload Notes</span>
                 )}
