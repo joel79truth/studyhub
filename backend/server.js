@@ -18,7 +18,7 @@ const rateLimit = require('express-rate-limit');
 const Groq = require('groq-sdk');
 const fetch = require('node-fetch');
 const PDFDocument = require('pdfkit');
-const storageUpload = require('./Storageupload');
+const storageUpload = require('./storageupload');
 // ===================== GEMINI =====================
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
