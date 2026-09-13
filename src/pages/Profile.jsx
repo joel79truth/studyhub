@@ -63,7 +63,7 @@ const LearningTrendGraph = memo(({ sessions }) => {
         ? new Date(s.completed_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
         : `Quiz ${idx + 1}`,
       score: Math.min(100, Math.max(0, s.percentage ?? Math.round(((s.correct_answers || 0) / (s.total_questions || 1)) * 100))),
-      course: s.course_id || 'General',
+      course: String(s.course_name || (s.course_id ? `Course ${s.course_id}` : 'General')),
       totalQ: s.total_questions || 0,
       correct: s.correct_answers || 0,
     }));
@@ -340,7 +340,8 @@ const CourseMasteryBarGraph = memo(({ sessions }) => {
     const map = new Map();
 
     sessions.forEach((s) => {
-      const course = (s.course_id || 'General').toUpperCase().trim();
+      const rawCourse = s.course_name || (s.course_id != null ? `Course ${s.course_id}` : 'General');
+      const course = String(rawCourse || 'General').toUpperCase().trim();
       const score = Math.min(100, Math.max(0, s.percentage ?? Math.round(((s.correct_answers || 0) / (s.total_questions || 1)) * 100)));
       if (!map.has(course)) {
         map.set(course, { course, totalScore: 0, count: 0, scores: [] });
@@ -567,6 +568,16 @@ export default function Profile() {
           bio: currentProfile.bio || '',
         });
 
+        // Fetch courses for friendly name lookup
+        const { data: coursesData } = await supabase
+          .from('courses')
+          .select('id, course_name, course_code');
+
+        const courseLookup = {};
+        (coursesData || []).forEach((c) => {
+          courseLookup[c.id] = c.course_code || c.course_name;
+        });
+
         // Fetch completed quiz sessions
         const { data: sessionsData } = await supabase
           .from('quiz_sessions')
@@ -574,7 +585,14 @@ export default function Profile() {
           .eq('user_id', user.id)
           .order('completed_at', { ascending: true });
 
-        setQuizSessions(sessionsData || []);
+        const enrichedSessions = (sessionsData || []).map((s) => ({
+          ...s,
+          course_name:
+            courseLookup[s.course_id] ||
+            (s.course_id ? `Course ${s.course_id}` : 'General Quiz'),
+        }));
+
+        setQuizSessions(enrichedSessions);
 
         // Fetch official programs list
         const { data: progs } = await supabase
