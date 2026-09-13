@@ -1,10 +1,7 @@
-// components/StudyBot/Chat/ChatMessages.js
-import { useRef, useEffect, useCallback, memo } from 'react';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import Bubble from './Bubble';
+import { useRef, useEffect, useCallback, memo, useState } from 'react';
+import TutorMarkdown from '../../common/TutorMarkdown';
+import { Copy, Check, RotateCcw, Square, Sparkles } from 'lucide-react';
 
-// ---------- Helpers ----------
 function safeString(content) {
   if (typeof content === 'string') return content;
   if (
@@ -18,183 +15,63 @@ function safeString(content) {
   return String(content);
 }
 
-// ---------- Extra styles for elements NOT covered by .ai-response ----------
-const extraStyles = {
-  h4: {
-    fontSize: '16px',
-    lineHeight: 1.45,
-    margin: '15px 0 7px',
-    fontWeight: 600,
-    color: '#374151',
-  },
-  blockquote: {
-    borderLeft: '3px solid #93c5fd',
-    paddingLeft: '13px',
-    color: '#475569',
-    margin: '10px 0 16px',
-    lineHeight: 1.6,
-  },
-  pre: {
-    background: '#f1f5f9',
-    padding: '12px',
-    borderRadius: '10px',
-    overflowX: 'auto',
-    margin: '10px 0 16px',
-    WebkitOverflowScrolling: 'touch',
-    border: '1px solid #e2e8f0',
-  },
-  a: {
-    color: '#4f46e5',
-    textDecoration: 'underline',
-    textUnderlineOffset: '2px',
-    fontWeight: 500,
-  },
-  hr: {
-    border: 0,
-    borderTop: '1px solid #e5e7eb',
-    margin: '18px 0',
-  },
-  tableWrapper: {
-    width: '100%',
-    overflowX: 'auto',
-    WebkitOverflowScrolling: 'touch',
-    margin: '12px 0 16px',
-  },
-  table: {
-    width: '100%',
-    borderCollapse: 'collapse',
-    margin: 0,
-    fontSize: '15px',
-    lineHeight: 1.5,
-  },
-  th: {
-    textAlign: 'left',
-    padding: '8px 10px',
-    borderBottom: '2px solid #dbe3f0',
-    background: '#f8fafc',
-    fontWeight: 700,
-    color: '#374151',
-  },
-  td: {
-    padding: '8px 10px',
-    borderBottom: '1px solid #e5e7eb',
-    verticalAlign: 'top',
-    color: '#374151',
-  },
-  del: {
-    color: '#64748b',
-  },
-};
+// Sub-component for assistant response actions (copy, regenerate)
+const AssistantActionBar = memo(({ text, onCopy, onRegenerate }) => {
+  const [copied, setCopied] = useState(false);
 
-// ---------- Loading animation keyframes (injected once) ----------
-const loadingKeyframes = `
-  @-webkit-keyframes sb-bounce {
-    0%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-5px); }
-  }
-  @-moz-keyframes sb-bounce {
-    0%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-5px); }
-  }
-  @keyframes sb-bounce {
-    0%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-5px); }
-  }
-`;
-
-// ---------- Sub-component for AI message content ----------
-const AIMessageContent = memo(({ text }) => {
-  const content = safeString(text);
+  const handleCopy = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(safeString(text));
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+      onCopy?.(text);
+    } catch {
+      onCopy?.(text);
+    }
+  }, [text, onCopy]);
 
   return (
-    <div className="ai-response">
-      <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        components={{
-          // Elements covered by .ai-response – just render default tags
-          h1: ({ node, ...props }) => <h1 {...props} />,
-          h2: ({ node, ...props }) => <h2 {...props} />,
-          h3: ({ node, ...props }) => <h3 {...props} />,
-          p: ({ node, ...props }) => <p {...props} />,
-          ul: ({ node, ...props }) => <ul {...props} />,
-          ol: ({ node, ...props }) => <ol {...props} />,
-          li: ({ node, ...props }) => <li {...props} />,
-          strong: ({ node, ...props }) => <strong {...props} />,
-
-          // Inline code – uses .ai-response code styling
-          code: ({ node, inline, className, children, ...props }) => {
-            if (inline) {
-              return <code className={className} {...props}>{children}</code>;
-            }
-            // Block code: wrap in <pre> with extra styles
-            return (
-              <pre style={extraStyles.pre}>
-                <code
-                  className={className}
-                  style={{
-                    fontSize: '14px',
-                    lineHeight: 1.55,
-                    fontFamily:
-                      'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace',
-                  }}
-                  {...props}
-                >
-                  {children}
-                </code>
-              </pre>
-            );
-          },
-
-          // Elements NOT covered by .ai-response – apply extra inline styles
-          h4: ({ node, ...props }) => <h4 style={extraStyles.h4} {...props} />,
-          blockquote: ({ node, ...props }) => (
-            <blockquote style={extraStyles.blockquote} {...props} />
-          ),
-          a: ({ node, ...props }) => (
-            <a
-              style={extraStyles.a}
-              target="_blank"
-              rel="noopener noreferrer"
-              {...props}
-            />
-          ),
-          hr: ({ node, ...props }) => <hr style={extraStyles.hr} {...props} />,
-          table: ({ node, ...props }) => (
-            <div style={extraStyles.tableWrapper}>
-              <table style={extraStyles.table} {...props} />
-            </div>
-          ),
-          th: ({ node, ...props }) => <th style={extraStyles.th} {...props} />,
-          td: ({ node, ...props }) => <td style={extraStyles.td} {...props} />,
-          del: ({ node, ...props }) => <del style={extraStyles.del} {...props} />,
-        }}
+    <div className="flex items-center gap-1.5 mt-2.5 pt-2 border-t border-slate-100 text-xs text-slate-500">
+      <button
+        onClick={handleCopy}
+        aria-label="Copy message"
+        className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg hover:bg-slate-100 hover:text-slate-800 transition-colors cursor-pointer text-slate-500 font-medium"
       >
-        {content}
-      </ReactMarkdown>
+        {copied ? (
+          <>
+            <Check className="w-3.5 h-3.5 text-emerald-600" />
+            <span className="text-emerald-600">Copied</span>
+          </>
+        ) : (
+          <>
+            <Copy className="w-3.5 h-3.5" />
+            <span>Copy</span>
+          </>
+        )}
+      </button>
+
+      {onRegenerate && (
+        <button
+          onClick={onRegenerate}
+          aria-label="Regenerate response"
+          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg hover:bg-slate-100 hover:text-slate-800 transition-colors cursor-pointer text-slate-500 font-medium"
+        >
+          <RotateCcw className="w-3.5 h-3.5" />
+          <span>Regenerate</span>
+        </button>
+      )}
     </div>
   );
 });
 
-AIMessageContent.displayName = 'AIMessageContent';
+AssistantActionBar.displayName = 'AssistantActionBar';
 
-// ---------- Main Component ----------
 const ChatMessages = memo(
   ({ messages, loading, error, onStop, onCopy, onRegenerate }) => {
     const containerRef = useRef(null);
     const endRef = useRef(null);
     const isNearBottomRef = useRef(true);
 
-    // Inject keyframes once
-    useEffect(() => {
-      if (!document.getElementById('sb-bounce-style')) {
-        const styleTag = document.createElement('style');
-        styleTag.id = 'sb-bounce-style';
-        styleTag.textContent = loadingKeyframes;
-        document.head.appendChild(styleTag);
-      }
-    }, []);
-
-    // Scroll logic
     const handleScroll = useCallback(() => {
       const container = containerRef.current;
       if (!container) return;
@@ -209,194 +86,93 @@ const ChatMessages = memo(
       }
     }, [messages, loading]);
 
-    const handleCopy = useCallback(
-      (text) => {
-        onCopy?.(safeString(text));
-      },
-      [onCopy]
-    );
-
-    const handleRegenerate = useCallback(
-      (msgId) => {
-        onRegenerate?.(msgId);
-      },
-      [onRegenerate]
-    );
-
     const renderMessage = (msg, index) => {
       const key = msg.id || index;
       const isUser = msg.role === 'user';
       const textContent = isUser ? msg.text : safeString(msg.text);
+      const isLastMessage = index === messages.length - 1;
 
-      return (
-        <div key={key} style={{ position: 'relative', minWidth: 0 }}>
-          <Bubble isUser={isUser}>
-            {isUser ? textContent : <AIMessageContent text={msg.text} />}
-          </Bubble>
-
-          {!isUser && !loading && (
-            <div
-              style={{
-                display: 'flex',
-                gap: '6px',
-                marginTop: '5px',
-                paddingLeft: '32px',
-                alignItems: 'center',
-              }}
-            >
-              <button
-                onClick={() => handleCopy(msg.text)}
-                aria-label="Copy message"
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  color: '#64748b',
-                  fontSize: '12px',
-                  lineHeight: 1,
-                  cursor: 'pointer',
-                  padding: '6px 4px',
-                  borderRadius: '6px',
-                  minHeight: '32px',
-                }}
-              >
-                📋 Copy
-              </button>
-              <button
-                onClick={() => handleRegenerate(msg.id || index)}
-                aria-label="Regenerate response"
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  color: '#64748b',
-                  fontSize: '12px',
-                  lineHeight: 1,
-                  cursor: 'pointer',
-                  padding: '6px 4px',
-                  borderRadius: '6px',
-                  minHeight: '32px',
-                }}
-              >
-                🔄 Regenerate
-              </button>
+      if (isUser) {
+        return (
+          <div key={key} className="flex justify-end w-full">
+            <div className="max-w-[85%] sm:max-w-[75%] px-4 py-2.5 rounded-2xl rounded-tr-xs bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-xs text-[15px] leading-relaxed break-words">
+              {textContent}
             </div>
-          )}
+          </div>
+        );
+      }
+
+      // Assistant / Tutor Message
+      return (
+        <div key={key} className="flex flex-col items-start w-full max-w-[98%] sm:max-w-[92%] my-1.5">
+          {/* Tutor Identity Bar */}
+          <div className="flex items-center gap-2 mb-1.5 px-1">
+            <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-indigo-600 to-blue-500 flex items-center justify-center text-white shadow-xs">
+              <Sparkles className="w-3.5 h-3.5" />
+            </div>
+            <span className="text-xs font-semibold text-slate-800">StudyHub Tutor</span>
+            <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-indigo-50 text-indigo-700 border border-indigo-200/60">
+              Verified Tutor
+            </span>
+          </div>
+
+          {/* Tutor Content Canvas */}
+          <div className="w-full bg-white rounded-2xl rounded-tl-xs p-4 sm:p-5 border border-slate-200/90 shadow-xs">
+            <TutorMarkdown content={textContent} isStreaming={loading && isLastMessage} />
+
+            {!loading && (
+              <AssistantActionBar
+                text={textContent}
+                onCopy={onCopy}
+                onRegenerate={onRegenerate ? () => onRegenerate(msg.id || index) : undefined}
+              />
+            )}
+          </div>
         </div>
       );
     };
 
     return (
-      <>
-        <div
-          ref={containerRef}
-          onScroll={handleScroll}
-          style={{
-            flex: 1,
-            overflowY: 'auto',
-            padding: '14px 12px 8px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '10px',
-            WebkitOverflowScrolling: 'touch',
-          }}
-        >
-          {messages.map(renderMessage)}
+      <div
+        ref={containerRef}
+        onScroll={handleScroll}
+        className="flex-1 overflow-y-auto px-3 sm:px-5 py-4 flex flex-col gap-4"
+        style={{ WebkitOverflowScrolling: 'touch' }}
+      >
+        {messages.map(renderMessage)}
 
-          {loading && (
-            <div
-              style={{
-                display: 'flex',
-                gap: '6px',
-                alignItems: 'flex-end',
-                alignSelf: 'flex-start',
-              }}
+        {loading && (
+          <div className="flex items-center gap-3 py-2 px-1 text-slate-500 text-sm animate-pulse">
+            <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-indigo-500 to-blue-400 flex items-center justify-center text-white shadow-xs">
+              <Sparkles className="w-3.5 h-3.5 animate-spin" style={{ animationDuration: '3s' }} />
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="font-medium text-slate-700">Thinking & reasoning through the concept...</span>
+            </div>
+          </div>
+        )}
+
+        {!loading && error && (
+          <div className="text-xs text-rose-700 bg-rose-50 border border-rose-200 rounded-xl p-3 text-center my-2">
+            {error}
+          </div>
+        )}
+
+        {loading && onStop && (
+          <div className="flex justify-center pt-1">
+            <button
+              onClick={onStop}
+              aria-label="Stop generating"
+              className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold shadow-xs cursor-pointer transition-colors"
             >
-              <div
-                style={{
-                  width: '26px',
-                  height: '26px',
-                  borderRadius: '50%',
-                  background: 'linear-gradient(135deg,#3b82f6,#60a5fa)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                  fontSize: '13px',
-                  marginBottom: '2px',
-                }}
-              >
-                🎓
-              </div>
-              <div
-                style={{
-                  padding: '11px 14px',
-                  background: '#fff',
-                  borderRadius: '16px 16px 16px 4px',
-                  border: '1px solid #e8edf8',
-                  boxShadow: '0 1px 4px rgba(60,100,200,0.09)',
-                  display: 'flex',
-                  gap: '4px',
-                  alignItems: 'center',
-                }}
-              >
-                {[0, 1, 2].map((i) => (
-                  <div
-                    key={i}
-                    style={{
-                      width: '6px',
-                      height: '6px',
-                      borderRadius: '50%',
-                      background: '#93c5fd',
-                      animation: `sb-bounce 1.2s ease-in-out ${i * 0.2}s infinite`,
-                    }}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
+              <Square className="w-3 h-3 text-rose-500 fill-rose-500" />
+              <span>Stop generating</span>
+            </button>
+          </div>
+        )}
 
-          {!loading && error && (
-            <div
-              style={{
-                fontSize: '12px',
-                lineHeight: 1.45,
-                color: '#dc2626',
-                textAlign: 'center',
-                padding: '8px 10px',
-                background: '#fff0f0',
-                borderRadius: '8px',
-                border: '1px solid #fca5a5',
-              }}
-            >
-              {error}
-            </div>
-          )}
-
-          {loading && (
-            <div style={{ textAlign: 'center' }}>
-              <button
-                onClick={onStop}
-                aria-label="Stop generating"
-                style={{
-                  marginTop: '8px',
-                  padding: '7px 16px',
-                  minHeight: '34px',
-                  borderRadius: '12px',
-                  border: '1px solid #d1daf0',
-                  background: '#fff',
-                  color: '#3b82f6',
-                  fontSize: '13px',
-                  fontWeight: '600',
-                  cursor: 'pointer',
-                }}
-              >
-                ⏹ Stop generating
-              </button>
-            </div>
-          )}
-
-          <div ref={endRef} />
-        </div>
-      </>
+        <div ref={endRef} />
+      </div>
     );
   }
 );

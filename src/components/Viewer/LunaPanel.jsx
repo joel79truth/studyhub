@@ -1,32 +1,6 @@
 // ═══════════════════════════════════════════════════════════════
 //  StudyHub – AI Study Assistant  ·  Production  ·  UX-Fixed Edition
 //  Backend: studyhub-router.js (mounted at /api/luna)
-//
-//  FIXES APPLIED IN THIS PASS (see chat writeup for full rationale):
-//   1. Removed outside-click-closes-panel. It fought the core use case
-//      (referencing the page while the assistant is open) and silently
-//      aborted in-flight streams. Closing is now only via the X button,
-//      or Escape (which first exits fullscreen, then closes the sidebar,
-//      then closes the panel — progressive, not accidental).
-//   2. Fixed the outside-click bug where clicking inside the Sidebar
-//      (a separate fixed tree, not inside panelRef) closed the whole
-//      assistant. Moot now that #1 is gone, but noting the root cause.
-//   3. Retry no longer duplicates the user's message — extracted a
-//      runAssistant() that streams a response for a given question／
-//      history WITHOUT re-pushing a user bubble. handleSend pushes the
-//      user bubble once; handleRetry/handleRegenerate reuse runAssistant.
-//   4. Input is now an auto-growing <textarea> (Enter sends, Shift+Enter
-//      inserts a newline), not a single-line <input>.
-//   5. Added a "Regenerate" action on the latest assistant message.
-//   6. Auto-scroll now respects scroll position — if the user has
-//      scrolled up, new content doesn't yank them back down; a floating
-//      "Jump to latest" button appears instead.
-//   7. Accessibility: ConvItem is keyboard-operable, error banner is
-//      role="alert"/aria-live, sidebar is a labelled dialog with basic
-//      focus handling, options menu exposes aria-expanded/aria-haspopup,
-//      icon buttons have larger hit areas, focus-visible outlines added.
-//   8. Error banner no longer auto-dismisses — it stays until the user
-//      retries or closes it, so it can't disappear before being read.
 // ═══════════════════════════════════════════════════════════════
 
 import { useState, useEffect, useRef, useCallback, useMemo, memo } from 'react'
@@ -38,15 +12,12 @@ import { BlockMath } from 'react-katex'
 import 'katex/dist/katex.min.css'
 import { supabase } from '../../supabase'
 import { API_BASE_URL } from '../../lib/apiConfig'
-// Adjust this relative path if your folder layout differs — it should
-// point at the same math-fix.jsx that PastPapers.jsx imports from.
-import { renderInline } from "../../pages/math-fix";
+import { renderInline } from "../../pages/math-fix"
+import TutorMarkdown from '../common/TutorMarkdown'
 
-// ─── Image Path ──────────────────────────────────────────────────
 const AI_ICON = '/Ai.png'
 const ASSISTANT_NAME = 'StudyHub'
 
-// ─── Auth + API base ────────────────────────────────────────────
 const getAuthToken = async () => {
   const { data } = await supabase.auth.getSession()
   return data.session?.access_token || null
@@ -55,14 +26,13 @@ const getAuthToken = async () => {
 const apiUrl = (path) =>
   path.startsWith('/api/') ? `${API_BASE_URL}${path}` : path
 
-// ─── Design tokens (unchanged — theme preserved) ─────────────────
 const C = {
   brand: '#4f46e5',
   brandB: '#3b82f6',
   surface: '#f8fafc',
   border: '#e8edf3',
   text: '#1e293b',
-  muted: '#94a3b8',
+  muted: '#64748b',
   ink: '#0f172a',
   warn: '#b45309',
   warnBg: '#fffbeb',
@@ -77,7 +47,6 @@ const C = {
   badBg: '#fef2f2',
 }
 
-// ─── Constants ──────────────────────────────────────────────────
 const MODES = [
   { key: 'normal', label: 'Normal', emoji: '💬', desc: 'Quick, direct answers' },
   { key: 'teach', label: 'Teach me', emoji: '🧑‍🎓', desc: 'Deep explanations' },
@@ -104,10 +73,9 @@ const INTENT_CHIPS = {
 }
 
 const THINKING_LABEL = 'Thinking…'
-const MAX_INPUT_HEIGHT = 120 // px, before the textarea scrolls internally
-const NEAR_BOTTOM_THRESHOLD = 120 // px from bottom counted as "at bottom"
+const MAX_INPUT_HEIGHT = 120
+const NEAR_BOTTOM_THRESHOLD = 120
 
-// ─── Backend streaming client ──────────────────────────────────
 async function* streamChat({ fileId, pageNumber, pageText, question, history, mode }, signal) {
   const token = await getAuthToken()
   if (!token) {
@@ -140,7 +108,7 @@ async function* streamChat({ fileId, pageNumber, pageText, question, history, mo
       try {
         const body = await res.json()
         if (body?.error) message = body.error
-      } catch { /* non-JSON error body, keep default message */ }
+      } catch { /* non-JSON error body */ }
     }
     yield { event: 'error', data: { message } }
     return
@@ -188,7 +156,6 @@ async function* streamChat({ fileId, pageNumber, pageText, question, history, mo
   }
 }
 
-// ─── Hooks ──────────────────────────────────────────────────────
 function usePrefersReducedMotion() {
   const [pref, setPref] = useState(
     () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -202,7 +169,6 @@ function usePrefersReducedMotion() {
   return pref
 }
 
-// ─── Micro-check extraction ──────────────────────────────────────
 const CHECK_RE = /\[\[CHECK\]\]\s*Q:\s*(.+?)\s*\nA:\s*(.+?)\s*\nB:\s*(.+?)\s*\nANSWER:\s*([AB])\s*\[\[\/CHECK\]\]/is
 
 function extractCheck(content) {
@@ -216,141 +182,26 @@ function extractCheck(content) {
   }
 }
 
-// ─── Math rendering ──────────────────────────────────────────────
 const MathFallback = memo(({ value }) => (
-  <code style={{ background: '#f1f5f9', padding: '1px 5px', borderRadius: 4, fontSize: 12.5, fontFamily: 'ui-monospace,monospace', color: '#7c3aed' }}>{value}</code>
+  <code style={{
+    background: '#f1f5f9', padding: '1px 5px', borderRadius: 4,
+    fontSize: 12.5,
+    fontFamily: 'ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace',
+    letterSpacing: '-0.01em', color: '#7c3aed',
+  }}>{value}</code>
 ))
+
 const MathBlock = memo(({ tex }) => (
   <div style={{ overflowX: 'auto', margin: '4px 0', display: 'flex', justifyContent: 'center' }}>
     <BlockMath math={tex} errorColor={C.errC} renderError={() => <MathFallback value={tex} />} />
   </div>
 ))
 
-// ─── Markdown (delegates inline parsing to the shared renderInline) ─────
 const StudyHubMarkdown = memo(({ content, isStreaming = false }) => {
   if (!content) return null
-
-  const lines = content.split('\n')
-  const els = []
-  let listItems = [], listType = null, k = 0
-  const flush = () => {
-    if (!listItems.length) return
-    const Tag = listType === 'ol' ? 'ol' : 'ul'
-    const tagKey = k++
-    els.push(
-      <Tag key={tagKey} style={{
-        margin: '5px 0',
-        paddingLeft: 20,
-        listStyleType: listType === 'ol' ? 'decimal' : 'disc',
-        listStylePosition: 'outside',
-      }}>
-        {listItems.map((item, j) => (
-          <li key={j} style={{
-            fontSize: 14.5,
-            lineHeight: 1.65,
-            color: C.text,
-            marginTop: j === 0 ? 0 : 3,
-            display: 'list-item',
-          }}>{renderInline(item, `li-${tagKey}-${j}`)}</li>
-        ))}
-      </Tag>
-    )
-    listItems = []; listType = null
-  }
-
-  let i = 0
-  while (i < lines.length) {
-    const line = lines[i]
-    const trimmed = line.trim()
-    if (line.startsWith('### ')) {
-      flush()
-      els.push(
-        <p key={k++} style={{ fontSize: 11.5, fontWeight: 700, color: C.brand, letterSpacing: '0.04em', textTransform: 'uppercase', margin: '10px 0 2px' }}>
-          {line.slice(4)}
-        </p>
-      )
-    }
-    else if (line.startsWith('## ')) {
-      flush()
-      const hKey = k++
-      els.push(
-        <p key={hKey} style={{ fontSize: 13, fontWeight: 700, color: C.ink, margin: '11px 0 3px' }}>
-          {renderInline(line.slice(3), `h2-${hKey}`)}
-        </p>
-      )
-    }
-    else if (line.startsWith('# ')) {
-      flush()
-      const hKey = k++
-      els.push(
-        <p key={hKey} style={{ fontSize: 14, fontWeight: 800, color: C.ink, margin: '12px 0 4px' }}>
-          {renderInline(line.slice(2), `h1-${hKey}`)}
-        </p>
-      )
-    }
-    else if (line.startsWith('```')) {
-      flush()
-      const code = []
-      i++
-      while (i < lines.length && !lines[i].startsWith('```')) { code.push(lines[i]); i++ }
-      els.push(
-        <pre key={k++} style={{ background: '#1e293b', borderRadius: 8, padding: '10px 14px', fontSize: 12.5, overflowX: 'auto', margin: '8px 0', fontFamily: 'ui-monospace,monospace', color: '#e2e8f0', lineHeight: 1.6 }}>
-          <code>{code.join('\n')}</code>
-        </pre>
-      )
-    }
-    // Standalone display equation. No card/border — a model wanting
-    // emphasis uses \boxed{} inside the LaTeX itself.
-    //
-    // Streaming-safe: while the closing "$$" hasn't arrived yet, every
-    // currently-available line is consumed into a single "…" placeholder
-    // instead of letting partial LaTeX render as literal text. Once the
-    // stream is fully done and a block is STILL unclosed (a genuinely
-    // malformed response), it falls back to MathFallback instead of
-    // leaving an unresolvable "…" on screen forever.
-    else if (/^\$\$/.test(trimmed)) {
-      flush()
-      let acc = line
-      let closed = /\$\$[\s\S]*\$\$$/.test(trimmed) && trimmed.length > 4
-      let j = i
-      if (!closed) {
-        for (let look = 1; i + look < lines.length; look++) {
-          acc += '\n' + lines[i + look]
-          if (/\$\$\s*$/.test(lines[i + look].trim())) { j = i + look; closed = true; break }
-        }
-      }
-      if (closed) {
-        const m = acc.trim().match(/^\$\$([\s\S]+?)\$\$$/)
-        if (m) {
-          i = j
-          els.push(<MathBlock key={k++} tex={m[1].trim()} />)
-        } else {
-          i = lines.length - 1
-          els.push(<p key={k++} style={{ margin: els.length ? '6px 0 0' : 0, fontSize: 13, color: C.muted, fontStyle: 'italic' }}>…</p>)
-        }
-      } else if (isStreaming) {
-        i = lines.length - 1
-        els.push(<p key={k++} style={{ margin: els.length ? '6px 0 0' : 0, fontSize: 13, color: C.muted, fontStyle: 'italic' }}>…</p>)
-      } else {
-        i = lines.length - 1
-        els.push(<p key={k++} style={{ margin: els.length ? '6px 0 0' : 0 }}><MathFallback value={acc.trim()} /></p>)
-      }
-    }
-    else if (/^[-*]\s/.test(line)) { if (listType !== 'ul') { flush(); listType = 'ul' }; listItems.push(line.replace(/^[-*]\s/, '')) }
-    else if (/^\d+\.\s/.test(line)) { if (listType !== 'ol') { flush(); listType = 'ol' }; listItems.push(line.replace(/^\d+\.\s/, '')) }
-    else if (line.trim() === '') { flush() }
-    else {
-      flush()
-      const pKey = k++
-      els.push(<p key={pKey} style={{ margin: els.length ? '5px 0 0' : 0, fontSize: 14.5, lineHeight: 1.72, color: C.text }}>{renderInline(line, `p-${pKey}`)}</p>)
-    }
-    i++
-  }
-  flush()
-  return <div style={{ display: 'flex', flexDirection: 'column' }}>{els}</div>
+  return <TutorMarkdown content={content} isStreaming={isStreaming} />
 })
 
-// ─── Streaming cursor ──────────────────────────────────────────
 const Cursor = memo(({ rm }) => (
   <span style={{
     display: 'inline-block', width: 2, height: 14,
@@ -360,7 +211,6 @@ const Cursor = memo(({ rm }) => (
   }} />
 ))
 
-// ─── Micro-check widget ──────────────────────────────────────────
 const MicroCheck = memo(({ check }) => {
   const [picked, setPicked] = useState(null)
   const correct = picked === check.answer
@@ -397,7 +247,6 @@ const MicroCheck = memo(({ check }) => {
         <Option letter="A" label={check.optionA} />
         <Option letter="B" label={check.optionB} />
       </div>
-      {/* aria-live so screen reader users hear the verdict without hunting for it */}
       <p aria-live="polite" style={{ margin: picked !== null ? '8px 0 0' : 0, fontSize: 12.5, fontWeight: 600, color: correct ? C.good : C.bad, minHeight: picked !== null ? undefined : 0 }}>
         {picked !== null ? (correct ? '✓ Correct' : `✗ Not quite — the answer is ${check.answer}.`) : ''}
       </p>
@@ -405,14 +254,12 @@ const MicroCheck = memo(({ check }) => {
   )
 })
 
-// ─── Loading dots ────────────────────────────────────────────────
 const LoadingDots = memo(({ rm }) => (
   <div style={{ display: 'flex', alignItems: 'center', gap: 9, padding: '8px 2px' }} role="status" aria-label="StudyHub is thinking">
     <div style={{ display: 'flex', gap: 5 }}>
       {[0, 1, 2].map(i => (
         <div key={i} style={{
-          width: 6, height: 6, borderRadius: '50%',
-          background: C.brand,
+          width: 6, height: 6, borderRadius: '50%', background: C.brand,
           animation: rm ? 'none' : `dotWave 1.2s ease-in-out ${i * 0.15}s infinite`,
           opacity: rm ? 0.6 : 1,
         }} />
@@ -422,7 +269,6 @@ const LoadingDots = memo(({ rm }) => (
   </div>
 ))
 
-// ─── Follow-up chip ──────────────────────────────────────────────
 const FollowUpChip = memo(({ text, onSelect }) => {
   const [pressed, setPressed] = useState(false)
   return (
@@ -436,15 +282,13 @@ const FollowUpChip = memo(({ text, onSelect }) => {
         fontSize: 12.5, fontWeight: 600, color: '#4338ca', cursor: 'pointer',
         transform: pressed ? 'scale(0.96)' : 'scale(1)',
         transition: 'transform 0.1s cubic-bezier(0.34,1.56,0.64,1), background 0.1s ease',
-        WebkitTapHighlightColor: 'transparent',
-        touchAction: 'manipulation',
+        WebkitTapHighlightColor: 'transparent', touchAction: 'manipulation',
       }}>
       {text}
     </button>
   )
 })
 
-// ─── Copy button ─────────────────────────────────────────────────
 const CopyBtn = memo(({ text }) => {
   const [copied, setCopied] = useState(false)
   const handle = async () => {
@@ -466,7 +310,6 @@ const CopyBtn = memo(({ text }) => {
   )
 })
 
-// ─── Regenerate button ────────────────────────────────────────────
 const RegenerateBtn = memo(({ onClick, disabled }) => (
   <button onClick={onClick} disabled={disabled} title="Regenerate response" aria-label="Regenerate response" style={{
     display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -511,11 +354,13 @@ const MessageBubble = memo(({ msg, index, rm, onFollowUp, onRegenerate, isLastAs
           {msg.content}
         </div>
       ) : (
-        <div style={{ maxWidth: 'min(96%, 540px)', display: 'flex', flexDirection: 'column', gap: 4 }}>
+        <div style={{ maxWidth: 'min(98%, 580px)', width: '100%', display: 'flex', flexDirection: 'column', gap: 4 }}>
           <div style={{
-            background: '#fff', borderLeft: `3px solid ${C.brand}`,
-            borderRadius: '4px 12px 12px 4px',
-            padding: '11px 14px 11px 13px',
+            background: '#ffffff',
+            borderRadius: '16px 16px 16px 4px',
+            padding: '13px 16px',
+            border: '1px solid #e2e8f0',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
           }}>
             <StudyHubMarkdown content={displayText} isStreaming={isStreaming} />
             {isStreaming && <Cursor rm={rm} />}
@@ -546,7 +391,6 @@ const MessageBubble = memo(({ msg, index, rm, onFollowUp, onRegenerate, isLastAs
   )
 })
 
-// ─── Empty state ─────────────────────────────────────────────────
 const EmptyState = memo(({ rm, onSelect }) => (
   <div style={{
     flex: 1, display: 'flex', flexDirection: 'column',
@@ -554,12 +398,7 @@ const EmptyState = memo(({ rm, onSelect }) => (
     gap: 12, padding: '0 24px',
     animation: rm ? 'none' : 'fadeSlideUp 0.35s cubic-bezier(0.22,1,0.36,1) both',
   }}>
-    <img
-      src={AI_ICON}
-      alt=""
-      style={{ width: 52, height: 52, borderRadius: '50%', objectFit: 'cover', boxShadow: '0 6px 24px rgba(99,102,241,.18)' }}
-      loading="lazy"
-    />
+    <img src={AI_ICON} alt="" style={{ width: 52, height: 52, borderRadius: '50%', objectFit: 'cover', boxShadow: '0 6px 24px rgba(99,102,241,.18)' }} loading="lazy" />
     <p style={{ fontWeight: 700, fontSize: 15, margin: 0, color: C.ink, textAlign: 'center' }}>Need help with this page?</p>
     <div style={{ display: 'flex', flexDirection: 'column', gap: 6, width: '100%', maxWidth: 280 }}>
       {STARTER_PROMPTS.map(s => (
@@ -575,7 +414,6 @@ const EmptyState = memo(({ rm, onSelect }) => (
   </div>
 ))
 
-// ─── Options popover ──────────────────────────────────────────────
 const OptionsMenu = memo(({ mode, onModeChange, isFullscreen, onToggleFullscreen, rm }) => {
   const [open, setOpen] = useState(false)
   const ref = useRef(null)
@@ -584,9 +422,7 @@ const OptionsMenu = memo(({ mode, onModeChange, isFullscreen, onToggleFullscreen
   useEffect(() => {
     if (!open) return
     const onPointer = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(false) }
-    const onKey = e => {
-      if (e.key === 'Escape') { setOpen(false); btnRef.current?.focus() }
-    }
+    const onKey = e => { if (e.key === 'Escape') { setOpen(false); btnRef.current?.focus() } }
     document.addEventListener('pointerdown', onPointer)
     document.addEventListener('keydown', onKey)
     return () => {
@@ -597,14 +433,8 @@ const OptionsMenu = memo(({ mode, onModeChange, isFullscreen, onToggleFullscreen
 
   return (
     <div ref={ref} style={{ position: 'relative' }}>
-      <button
-        ref={btnRef}
-        onClick={() => setOpen(o => !o)}
-        className="cir"
-        aria-label="More options"
-        aria-haspopup="menu"
-        aria-expanded={open}
-      >
+      <button ref={btnRef} onClick={() => setOpen(o => !o)} className="cir"
+        aria-label="More options" aria-haspopup="menu" aria-expanded={open}>
         <MoreHorizontal size={16} color="#64748b" />
       </button>
       {open && (
@@ -618,20 +448,22 @@ const OptionsMenu = memo(({ mode, onModeChange, isFullscreen, onToggleFullscreen
           <div style={{ padding: '9px 13px 4px', fontSize: 10.5, fontWeight: 700, color: C.muted, letterSpacing: '0.06em', textTransform: 'uppercase' }}>Mode</div>
           {MODES.map(m => (
             <button key={m.key} role="menuitemradio" aria-checked={mode === m.key}
-              onClick={() => { onModeChange(m.key); setOpen(false); btnRef.current?.focus() }} style={{
-              display: 'flex', alignItems: 'center', gap: 10, width: '100%', padding: '8px 13px',
-              border: 'none', background: mode === m.key ? '#f8faff' : '#fff', cursor: 'pointer', textAlign: 'left',
-            }}>
+              onClick={() => { onModeChange(m.key); setOpen(false); btnRef.current?.focus() }}
+              style={{
+                display: 'flex', alignItems: 'center', gap: 10, width: '100%', padding: '8px 13px',
+                border: 'none', background: mode === m.key ? '#f8faff' : '#fff', cursor: 'pointer', textAlign: 'left',
+              }}>
               <span style={{ fontSize: 15 }}>{m.emoji}</span>
               <span style={{ flex: 1, fontSize: 13, fontWeight: 600, color: C.ink }}>{m.label}</span>
               {mode === m.key && <Check size={13} color={C.brand} />}
             </button>
           ))}
           <div style={{ borderTop: '1px solid #f1f5f9' }} />
-          <button role="menuitem" onClick={() => { onToggleFullscreen(); setOpen(false); btnRef.current?.focus() }} style={{
-            display: 'flex', alignItems: 'center', gap: 10, width: '100%', padding: '9px 13px',
-            border: 'none', background: '#fff', cursor: 'pointer', textAlign: 'left',
-          }}>
+          <button role="menuitem" onClick={() => { onToggleFullscreen(); setOpen(false); btnRef.current?.focus() }}
+            style={{
+              display: 'flex', alignItems: 'center', gap: 10, width: '100%', padding: '9px 13px',
+              border: 'none', background: '#fff', cursor: 'pointer', textAlign: 'left',
+            }}>
             {isFullscreen ? <Minimize2 size={14} color="#64748b" /> : <Maximize2 size={14} color="#64748b" />}
             <span style={{ fontSize: 13, fontWeight: 600, color: C.ink }}>{isFullscreen ? 'Minimise' : 'Expand'}</span>
           </button>
@@ -641,11 +473,8 @@ const OptionsMenu = memo(({ mode, onModeChange, isFullscreen, onToggleFullscreen
   )
 })
 
-// ─── Send / Stop buttons ─────────────────────────────────────────
 const SendButton = memo(({ onClick, disabled }) => (
-  <button
-    onClick={() => { if (!disabled) onClick() }}
-    disabled={disabled} aria-label="Send message"
+  <button onClick={() => { if (!disabled) onClick() }} disabled={disabled} aria-label="Send message"
     style={{
       width: 36, height: 36, borderRadius: '50%', border: 'none', flexShrink: 0,
       background: disabled ? '#e2e8f0' : `linear-gradient(135deg,${C.brand},${C.brandB})`,
@@ -662,14 +491,12 @@ const StopButton = memo(({ onClick }) => (
   <button onClick={onClick} title="Stop generating" aria-label="Stop generating" style={{
     width: 36, height: 36, borderRadius: '50%', border: 'none', flexShrink: 0,
     background: '#fef2f2', display: 'flex', alignItems: 'center', justifyContent: 'center',
-    cursor: 'pointer', boxShadow: '0 0 0 1.5px #fecaca inset',
-    touchAction: 'manipulation',
+    cursor: 'pointer', boxShadow: '0 0 0 1.5px #fecaca inset', touchAction: 'manipulation',
   }}>
     <Square size={12} color="#ef4444" fill="#ef4444" />
   </button>
 ))
 
-// ─── Jump-to-latest button ─────────────────────────────────────────
 const JumpToLatestBtn = memo(({ onClick }) => (
   <button onClick={onClick} aria-label="Jump to latest message" style={{
     position: 'absolute', bottom: 8, left: '50%', transform: 'translateX(-50%)',
@@ -683,14 +510,11 @@ const JumpToLatestBtn = memo(({ onClick }) => (
   </button>
 ))
 
-// ─── Conversation item / sidebar ──────────────────────────────────
 const ConvItem = memo(({ conv, isActive, onSelect, onDelete }) => {
   const [pressed, setPressed] = useState(false)
   return (
     <div
-      role="button"
-      tabIndex={0}
-      aria-current={isActive ? 'true' : undefined}
+      role="button" tabIndex={0} aria-current={isActive ? 'true' : undefined}
       onClick={onSelect}
       onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect() } }}
       onPointerDown={() => setPressed(true)} onPointerUp={() => setPressed(false)} onPointerLeave={() => setPressed(false)}
@@ -703,9 +527,7 @@ const ConvItem = memo(({ conv, isActive, onSelect, onDelete }) => {
       }}>
       <MessageSquare size={15} style={{ flexShrink: 0, opacity: 0.6 }} aria-hidden="true" />
       <span style={{ flex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{conv.title}</span>
-      <button
-        onClick={e => { e.stopPropagation(); onDelete(conv.id) }}
-        aria-label={`Delete "${conv.title}"`}
+      <button onClick={e => { e.stopPropagation(); onDelete(conv.id) }} aria-label={`Delete "${conv.title}"`}
         style={{ background: 'none', border: 'none', color: '#cbd5e1', cursor: 'pointer', padding: 6, borderRadius: 8, display: 'flex', touchAction: 'manipulation' }}>
         <Trash2 size={13} />
       </button>
@@ -731,10 +553,7 @@ const Sidebar = memo(({ convs, currentId, onSelect, onNew, onDelete, isOpen, onC
         <div onClick={onClose} aria-hidden="true" style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,.3)', zIndex: 65, animation: 'fadeIn 0.15s ease both' }} />
       )}
       <div
-        role="dialog"
-        aria-modal="true"
-        aria-label="Chat history"
-        aria-hidden={!isOpen}
+        role="dialog" aria-modal="true" aria-label="Chat history" aria-hidden={!isOpen}
         style={{
           position: 'fixed', top: 0, left: 0, bottom: 0,
           width: 'min(82vw,300px)', background: '#fff',
@@ -769,6 +588,10 @@ const Sidebar = memo(({ convs, currentId, onSelect, onNew, onDelete, isOpen, onC
 })
 
 // ─── CSS ─────────────────────────────────────────────────────────
+// FIX: font-family now correctly lists only 'Inter' (the name Google Fonts
+// actually serves). 'InterVariable' and 'Inter var' are self-hosted package
+// names — the browser skipped them every time and fell through to 'Inter'
+// anyway, so those two entries were dead weight and semantically wrong.
 const CSS = `
   @keyframes panelRise   { from { transform: translateY(36%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
   @keyframes fadeSlideUp { from { transform: translateY(10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
@@ -782,7 +605,9 @@ const CSS = `
   .studyhub-panel {
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
     display: flex; flex-direction: column;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-optical-sizing: auto;
+    letter-spacing: -0.011em;
     animation: panelRise 0.25s cubic-bezier(0.25,1,0.5,1) both;
     background: #fff;
     -webkit-font-smoothing: antialiased;
@@ -834,15 +659,13 @@ const CSS = `
     resize: none; max-height: ${MAX_INPUT_HEIGHT}px; overflow-y: auto;
     padding: 5px 0;
   }
-  .studyhub-inp::placeholder { color: #b0b8c8; }
+  .studyhub-inp::placeholder { color: #8a94a6; }
   .err-banner {
     padding: 10px 13px; background: #fff1f2; border-radius: 11px; border: 1px solid #fecdd3;
     color: #be123c; font-size: 13.5px; line-height: 1.5;
     animation: errorShake 0.35s ease both;
     display: flex; justify-content: space-between; align-items: center; gap: 8px;
   }
-
-  /* Keyboard-focus visibility across custom controls */
   button:focus-visible,
   [role="button"]:focus-visible,
   textarea:focus-visible {
@@ -851,17 +674,34 @@ const CSS = `
   }
 `
 
-// ─── Conversation ID counter ─────────────────────────────────────
 let nextId = 1
 const freshConv = () => ({ id: nextId++, title: 'New Chat', messages: [] })
 
-// ─── Main App ─────────────────────────────────────────────────────
 export default function App({
   fileId = null,
   pageNumber = null,
   pageText = '',
   onClose = null
 }) {
+  useEffect(() => {
+    const font = document.getElementById('studyhub-inter-font')
+    if (font) return
+    const preconnect1 = document.createElement('link')
+    preconnect1.rel = 'preconnect'
+    preconnect1.href = 'https://fonts.googleapis.com'
+    const preconnect2 = document.createElement('link')
+    preconnect2.rel = 'preconnect'
+    preconnect2.href = 'https://fonts.gstatic.com'
+    preconnect2.crossOrigin = 'anonymous'
+    const stylesheet = document.createElement('link')
+    stylesheet.id = 'studyhub-inter-font'
+    stylesheet.rel = 'stylesheet'
+    stylesheet.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap'
+    document.head.appendChild(preconnect1)
+    document.head.appendChild(preconnect2)
+    document.head.appendChild(stylesheet)
+  }, [])
+
   const rm = usePrefersReducedMotion()
 
   const [convs, setConvs] = useState(() => [freshConv()])
@@ -898,10 +738,7 @@ export default function App({
   }, [messages])
 
   const resetStream = useCallback(() => {
-    if (frameRef.current) {
-      cancelAnimationFrame(frameRef.current)
-      frameRef.current = null
-    }
+    if (frameRef.current) { cancelAnimationFrame(frameRef.current); frameRef.current = null }
     blocksRef.current = []
     doneRef.current = false
   }, [])
@@ -921,11 +758,6 @@ export default function App({
     window.dispatchEvent(new CustomEvent('studyhub-close'))
   }, [onClose, resetStream, clearStreamingMsg])
 
-  // Escape is a deliberate, discoverable way to back out — never an
-  // accidental one. It steps down progressively: exit fullscreen, then
-  // close the sidebar, then close the panel. Outside clicks on the host
-  // page intentionally do NOT close the assistant — the user needs to
-  // reference the page while chatting about it.
   useEffect(() => {
     const onKey = (e) => {
       if (e.key !== 'Escape') return
@@ -954,8 +786,6 @@ export default function App({
     setShowJump(!near)
   }, [])
 
-  // Only auto-scroll if the user was already at (or near) the bottom —
-  // otherwise scrolling up to reread something earlier gets yanked away.
   useEffect(() => {
     if (isNearBottomRef.current) requestAnimationFrame(() => scrollBottom(false))
   }, [messages, isThinking, scrollBottom])
@@ -965,7 +795,6 @@ export default function App({
     return () => clearTimeout(t)
   }, [])
 
-  // Reset the textarea's height once its value is cleared (after sending).
   useEffect(() => {
     if (input === '' && inputRef.current) inputRef.current.style.height = 'auto'
   }, [input])
@@ -1014,8 +843,6 @@ export default function App({
     }))
   }, [])
 
-  // Core streaming routine — does NOT push a user message. Callers
-  // (send / retry / regenerate) decide whether a user bubble is needed.
   const runAssistant = useCallback(async (question, history) => {
     setError(null)
     resetStream()
@@ -1074,12 +901,10 @@ export default function App({
   const handleSend = useCallback((text) => {
     const msg = (text || input).trim()
     if (!msg || isThinking) return
-
     if (!fileId) {
       setError('No document is open — StudyHub needs a document to answer questions about.')
       return
     }
-
     setInput('')
     const history = messages.map(m => ({ role: m.role, content: m.content }))
     addMessage(currentId, { id: Date.now(), role: 'user', content: msg })
@@ -1101,14 +926,11 @@ export default function App({
     setIsThinking(false)
   }, [currentId, addMessage, resetStream, clearStreamingMsg])
 
-  // Retries the SAME question/history — does not duplicate the user bubble.
   const handleRetry = useCallback(() => {
     if (!lastMsgRef.current || isThinking) return
     runAssistant(lastMsgRef.current, lastHistoryRef.current)
   }, [isThinking, runAssistant])
 
-  // Regenerates the latest assistant answer: drops it, then re-runs the
-  // same question against the history that preceded it.
   const handleRegenerate = useCallback(() => {
     if (isThinking) return
     const msgs = currentConv?.messages || []
@@ -1117,7 +939,6 @@ export default function App({
     const lastUser = withoutLast[withoutLast.length - 1]
     if (!lastUser || lastUser.role !== 'user') return
     const history = withoutLast.slice(0, -1).map(m => ({ role: m.role, content: m.content }))
-
     setConvs(prev => prev.map(c => c.id === currentId ? { ...c, messages: withoutLast } : c))
     runAssistant(lastUser.content, history)
   }, [isThinking, currentConv, currentId, runAssistant])
@@ -1173,21 +994,15 @@ export default function App({
             <button onClick={() => setSidebarOpen(true)} className="cir" aria-label="Open chat history" aria-haspopup="dialog" aria-expanded={sidebarOpen}>
               <Menu size={16} color="#64748b" />
             </button>
-            <img
-              src={AI_ICON}
-              alt=""
-              style={{ width: 30, height: 30, borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
-              loading="lazy"
-            />
+            <img src={AI_ICON} alt="" style={{ width: 30, height: 30, borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }} loading="lazy" />
             <div style={{ minWidth: 0 }}>
               <div style={{ fontWeight: 700, fontSize: 13.5, color: C.ink, lineHeight: 1.2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 {ASSISTANT_NAME}
               </div>
-              {isThinking ? (
-                <div style={{ fontSize: 10.5, color: C.brand, marginTop: 1 }}>{THINKING_LABEL}</div>
-              ) : (
-                <div style={{ fontSize: 10.5, color: C.muted, marginTop: 1 }}>{currentConv?.title || 'New Chat'}</div>
-              )}
+              {isThinking
+                ? <div style={{ fontSize: 10.5, color: C.brand, marginTop: 1 }}>{THINKING_LABEL}</div>
+                : <div style={{ fontSize: 10.5, color: C.muted, marginTop: 1 }}>{currentConv?.title || 'New Chat'}</div>
+              }
             </div>
           </div>
 

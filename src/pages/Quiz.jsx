@@ -52,6 +52,7 @@ import 'katex/dist/katex.min.css';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { MathText } from './math-fix.jsx';
+import TutorMarkdown from '../components/common/TutorMarkdown';
 import { API_BASE_URL } from '../lib/apiConfig';
 import { trackQuizCompleted } from '../lib/analytics';
 
@@ -463,7 +464,12 @@ const ReviewCard = memo(({ detail, index }) => {
             </div>
           )}
           {detail.explanation && (
-            <div style={S.explanationBox}><Lightbulb size={16} style={{ display: 'inline', marginRight: SPACE.xs }} /> <MathText text={detail.explanation} /></div>
+            <div style={S.explanationBox}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6, fontWeight: 700, color: C.primary }}>
+                <Lightbulb size={16} /> Explanation
+              </div>
+              <TutorMarkdown content={detail.explanation} />
+            </div>
           )}
         </div>
       )}
@@ -577,7 +583,7 @@ const ExplainControl = ({ verdict, onFetch, disabled, disabledHint }) => {
         <div style={S.explanationBox}>
           {loading
             ? <span style={{ color: C.textMuted, fontSize: TYPE.body }}>Thinking…</span>
-            : <MathText text={text[level] || ''} />
+            : <TutorMarkdown content={text[level] || ''} />
           }
           {!loading && (
             <div style={{ marginTop: SPACE.lg, display: 'flex', flexDirection: 'column', gap: SPACE.sm }}>
@@ -647,7 +653,7 @@ const FeedbackCard = ({
       </div>
 
       <div style={{ fontSize: TYPE.body, color: C.text, lineHeight: 1.6, marginBottom: SPACE.md }}>
-        <MathText text={graded.feedback} />
+        <TutorMarkdown content={graded.feedback} />
       </div>
 
       {graded.strengths?.length > 0 && (
@@ -673,7 +679,12 @@ const FeedbackCard = ({
       )}
 
       {hint && (
-        <div style={{ ...S.explanationBox, background: C.warningLight, marginBottom: SPACE.md }}><Lightbulb size={16} style={{ display: 'inline', marginRight: SPACE.xs }} /> Hint: {hint}</div>
+        <div style={{ ...S.explanationBox, background: C.warningLight, marginBottom: SPACE.md }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4, fontWeight: 700, color: '#92400e' }}>
+            <Lightbulb size={16} /> Hint
+          </div>
+          <TutorMarkdown content={hint} />
+        </div>
       )}
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: SPACE.sm, marginBottom: SPACE.md }}>

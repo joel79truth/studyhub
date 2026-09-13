@@ -86,6 +86,7 @@ import {
   Tag, ArrowRight,
 } from 'lucide-react'
 import { MathText, renderInline, mathRenderError } from './math-fix'
+import TutorMarkdown from '../components/common/TutorMarkdown'
 import { API_BASE_URL } from '../lib/apiConfig'
 import { trackPaperViewed, trackSearch } from '../lib/analytics'
 
@@ -857,87 +858,8 @@ const HEADING_STYLE = {
   4: 'text-base font-semibold text-gray-700',  // 16px
 }
 
-function MarkdownLite({ text }) {
-  const blocks = useMemo(() => text.split(/\n{2,}/).filter(Boolean), [text])
-  return (
-    // Paragraph rhythm widened again (space-y-4 → space-y-5) and line-height nudged up
-    // (leading-relaxed/1.625 → leading-[1.7]) — a touch more air between wrapped lines
-    // without going as loose as leading-loose. text-base stays the reading-size floor.
-    <div className="ai-response space-y-5 text-base leading-[1.7] text-gray-800">
-      {blocks.map((block, bi) => {
-        const trimmedBlock = block.trim()
-        const lines = block.split('\n').map(l => l.trim()).filter(Boolean)
-        const isBulleted = lines.length > 0 && lines.every(l => /^[-*]\s+/.test(l))
-        const isNumbered = lines.length > 0 && lines.every(l => /^\d+[.)]\s+/.test(l))
-        // Capture the heading LEVEL (##, ###, ####) instead of a flat boolean —
-        // each level now gets its own style via HEADING_STYLE below.
-        const headingMatch = block.match(/^(#{2,4})\s+(.*)$/s)
-        // A block that is ENTIRELY one $$...$$ display equation gets its own
-        // boxed, centered treatment. renderInline (via parseMathSegments in
-        // math-fix.jsx) would render this correctly too — this branch just
-        // adds the bordered/centered box styling on top for a standalone
-        // equation, which reads better than an inline-flow equation would.
-        const blockMathMatch = trimmedBlock.match(/^\$\$([\s\S]+?)\$\$$/)
-        // Fallback for plain-text equations with NO LaTeX macros and NO $
-        // delimiters at all (e.g. "70000 - 875Tf = 2134.86Tf - 53371.5").
-        // math-fix.jsx's undelimited-macro wrapper only fires when it finds
-        // an actual \command or ^{...}/_{...} — bare arithmetic like this
-        // has neither, so it would otherwise fall through as plain text.
-        // This box is the safety net for exactly that case.
-        const isPlainEquation = !trimmedBlock.includes('$') && lines.length > 0 && lines.length <= 4 && lines.every(l => EQUATION_RE.test(l.trim()))
-
-        if (headingMatch) {
-          const level = headingMatch[1].length
-          const style = HEADING_STYLE[level] || HEADING_STYLE[3]
-          return (
-            // More separation from the block ABOVE (mt-6) than below (first:mt-1) —
-            // Gestalt proximity: a heading should sit closer to what it introduces.
-            <p key={bi} className={`${style} font-display mt-6 first:mt-1`}>
-              {renderInline(headingMatch[2], bi)}
-            </p>
-          )
-        }
-        if (blockMathMatch) return (
-          <div key={bi} className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-4 overflow-x-auto no-scrollbar flex justify-center">
-            <BlockMath math={blockMathMatch[1].trim()} errorColor="#e11d48" renderError={mathRenderError(blockMathMatch[1])} />
-          </div>
-        )
-        // Legacy plain-text equation box — matches body reading size instead of
-        // dropping to text-sm.
-        if (isPlainEquation) return (
-          <div key={bi} className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 font-mono text-base leading-7 tracking-tight text-gray-800 overflow-x-auto no-scrollbar">
-            {lines.map((l, i) => <div key={i}>{l}</div>)}
-          </div>
-        )
-        if (isBulleted) return (
-          <ul key={bi} className="space-y-1.5 pl-1">
-            {lines.map((l, i) => (
-              <li key={i} className="flex gap-2">
-                <span className="text-gray-400 flex-shrink-0 mt-1">•</span>
-                <span>{renderInline(l.replace(/^[-*]\s+/, ''), `${bi}-${i}`)}</span>
-              </li>
-            ))}
-          </ul>
-        )
-        if (isNumbered) return (
-          <ol key={bi} className="space-y-1.5 pl-1">
-            {lines.map((l, i) => {
-              const m = l.match(/^(\d+)[.)]\s+(.*)$/)
-              return (
-                <li key={i} className="flex gap-2">
-                  <span className="text-gray-500 flex-shrink-0 font-semibold tabular-nums">{m?.[1] || i + 1}.</span>
-                  <span>{renderInline(m?.[2] || l, `${bi}-${i}`)}</span>
-                </li>
-              )
-            })}
-          </ol>
-        )
-        return (
-          <p key={bi} style={{ whiteSpace: 'pre-line' }}>{renderInline(block, bi)}</p>
-        )
-      })}
-    </div>
-  )
+function MarkdownLite({ text, isStreaming = false }) {
+  return <TutorMarkdown content={text} isStreaming={isStreaming} />
 }
 
 // FIX: extracted copy-to-clipboard control, used on every finished AI answer.
@@ -983,14 +905,14 @@ const CopyButton = memo(({ text }) => {
 const AiBlock = memo(({ content, streaming, stopped = false }) => {
   const rm = useReducedMotion()
   return (
-    <div aria-live={streaming ? 'polite' : 'off'} role="status">
-      <MarkdownLite text={content} />
+    <div aria-live={streaming ? 'polite' : 'off'} role="status" className="w-full">
+      <TutorMarkdown content={content} isStreaming={streaming} />
       {streaming && <span className={rm ? 'ed-cursor-static' : 'ed-cursor'} />}
       {stopped && !streaming && (
-        <p className="text-xs text-gray-400 italic mt-1.5">— stopped before finishing —</p>
+        <p className="text-xs text-amber-600 italic mt-2">— generation stopped before finishing —</p>
       )}
       {!streaming && content.trim().length > 0 && (
-        <div className="mt-1.5">
+        <div className="mt-3 pt-2 border-t border-gray-100 flex items-center justify-between">
           <CopyButton text={content} />
         </div>
       )}

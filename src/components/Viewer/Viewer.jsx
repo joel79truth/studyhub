@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense, useMemo, useEffect } from 'react';
+import { useState, lazy, Suspense, useMemo, useEffect, useRef, useCallback } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { supabase } from '../../supabase';
 import { useFileLoader } from '../../hooks/useFileLoader';
@@ -36,6 +36,15 @@ const getFileType = (filename) => {
   const ext = String(filename || '').split('.').pop()?.toLowerCase();
   return ext === 'pptx' || ext === 'ppt' ? 'pptx' : 'pdf';
 };
+
+const MIN_SCALE = 0.5;
+const MAX_SCALE = 2.5;
+// How long the viewport has to sit on a page before we bother extracting
+// its text. During a fast scroll/fling, currentPage can cycle through a
+// dozen pages in under a second — firing pdf.js's getTextContent for every
+// one of them is wasted CPU and is what caused the jank. Google's viewer
+// only ever computes a page's text layer once, lazily, not per scroll tick.
+const TEXT_EXTRACT_DEBOUNCE_MS = 200;
 
 export default function Viewer() {
   const navigate = useNavigate();
@@ -124,22 +133,54 @@ export default function Viewer() {
   const baseWidth = useMemo(() => pageSizes[0]?.width || 595, [pageSizes]);
   const renderer = usePdfRenderer(pdf, scale, baseWidth);
 
+  // Per-document cache of already-extracted page text, so re-visiting a
+  // page (scrolling back up, jumping via search) is instant instead of
+  // re-running pdf.js's text extraction again.
+  const textCacheRef = useRef(new Map());
+  const textRequestIdRef = useRef(0);
+
+  useEffect(() => {
+    // New document loaded — old page numbers no longer mean the same text.
+    textCacheRef.current = new Map();
+  }, [pdf]);
+
   useEffect(() => {
     if (!pdf || !numPages) return;
-    let cancelled = false;
-    async function extractText() {
+
+    const cached = textCacheRef.current.get(currentPage);
+    if (cached !== undefined) {
+      setPageText(cached);
+      return;
+    }
+
+    const requestId = ++textRequestIdRef.current;
+    const timer = setTimeout(async () => {
+      // The user may have scrolled past this page again before the debounce
+      // fired; bail without touching state if so.
+      if (requestId !== textRequestIdRef.current) return;
       try {
         const page = await pdf.getPage(currentPage);
         const textContent = await page.getTextContent();
-        const text = textContent.items.map(item => item.str).join(' ');
-        if (!cancelled) setPageText(text);
+        const text = textContent.items.map((item) => item.str).join(' ');
+        if (requestId !== textRequestIdRef.current) return;
+        textCacheRef.current.set(currentPage, text);
+        setPageText(text);
       } catch (err) {
-        if (!cancelled) setPageText('');
+        if (requestId !== textRequestIdRef.current) return;
+        setPageText('');
       }
-    }
-    extractText();
-    return () => { cancelled = true; };
+    }, TEXT_EXTRACT_DEBOUNCE_MS);
+
+    return () => clearTimeout(timer);
   }, [pdf, currentPage, numPages]);
+
+  const handleZoomIn = useCallback(() => {
+    setScale((prev) => Math.min(MAX_SCALE, +(prev + 0.2).toFixed(1)));
+  }, []);
+  const handleZoomOut = useCallback(() => {
+    setScale((prev) => Math.max(MIN_SCALE, +(prev - 0.2).toFixed(1)));
+  }, []);
+  const handleZoomReset = useCallback(() => setScale(1.0), []);
 
   // ── Recovery states (only relevant when state was lost) ──
   if (!fileId && !hasFullState && !rawUrl) {
@@ -261,8 +302,11 @@ export default function Viewer() {
       {fileType === 'pdf' && (
         <ZoomControls
           scale={scale}
-          onZoomIn={() => setScale(prev => Math.min(2.5, +(prev + 0.2).toFixed(1)))}
-          onZoomOut={() => setScale(prev => Math.max(0.5, +(prev - 0.2).toFixed(1)))}
+          minScale={MIN_SCALE}
+          maxScale={MAX_SCALE}
+          onZoomIn={handleZoomIn}
+          onZoomOut={handleZoomOut}
+          onZoomReset={handleZoomReset}
         />
       )}
 
@@ -274,7 +318,7 @@ export default function Viewer() {
             currentPage={currentPage}
             onClose={() => { setShowLuna(false); setIsLunaFullscreen(false); }}
             isFullscreen={isLunaFullscreen}
-            toggleFullscreen={() => setIsLunaFullscreen(p => !p)}
+            toggleFullscreen={() => setIsLunaFullscreen((p) => !p)}
           />
         </Suspense>
       )}

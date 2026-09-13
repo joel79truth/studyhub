@@ -468,42 +468,8 @@ function sanitizeLatex(str) {
 
 function humanizeMathArtifacts(raw) {
   if (!raw) return '';
-  let t = String(raw);
-
-  t = t.replace(/(\d)\s*\/\s*text\{([^{}]*)\}?/gi, '$1 $2');
-  t = t.replace(/(^|[^\\])\btext\{([^{}]*)\}/g, '$1$2');
-
-  t = t.replace(/\$\$([\s\S]*?)\$\$/g, (_, inner) => ` ${inner} `);
-  t = t.replace(/\$([^$]*?)\$/g, (_, inner) => inner);
-
-  for (let i = 0; i < 4; i++) {
-   t = t.replace(/\\d?frac\{([^{}]*)\}\{([^{}]*)\}/g, ' ($1)/($2) ')
-t = t.replace(/\\sqrt\{([^{}]*)\}/g, ' √($1) ')
-  t = t.replace(/\\text\{([^{}]*)\}/g, ' $1 ')
-t = t.replace(/\\mathbf\{([^{}]*)\}/g, ' $1 ')
-t = t.replace(/\\mathrm\{([^{}]*)\}/g, ' $1 ')
-t = t.replace(/\\emph\{([^{}]*)\}/g, ' $1 ')
-    t = t.replace(/\^\{([^{}]*)\}/g, '^($1)');
-    t = t.replace(/_\{([^{}]*)\}/g, '_($1)');
-    
-  }
-
-  t = t.replace(/\\left|\\right/g, '');
-  t = t
-    .replace(/\\times/g, '×').replace(/\\cdot/g, '·')
-    .replace(/\\pm/g, '±').replace(/\\approx/g, '≈')
-    .replace(/\\leq/g, '≤').replace(/\\geq/g, '≥').replace(/\\neq/g, '≠')
-    .replace(/\\infty/g, '∞').replace(/\\circ/g, '°')
-    .replace(/\\mu/g, 'μ').replace(/\\pi/g, 'π').replace(/\\theta/g, 'θ')
-    .replace(/\\rho/g, 'ρ').replace(/\\Delta/g, 'Δ').replace(/\\Omega/g, 'Ω')
-    .replace(/\\rightarrow/g, '→').replace(/\\implies/g, '⇒')
-    .replace(/\\alpha/g, 'α').replace(/\\beta/g, 'β').replace(/\\gamma/g, 'γ')
-    .replace(/\\lambda/g, 'λ').replace(/\\sum/g, 'Σ').replace(/\\int/g, '∫');
-
-  t = t.replace(/\\([a-zA-Z]+)/g, '$1').replace(/[{}]/g, '');
-  t = t.replace(/\\([a-zA-Z]+)/g, '$1').replace(/[{}]/g, '');
- t = t.replace(/[ \t]+/g, ' ');
-  return t;
+  // Preserve full LaTeX syntax now that frontend features high-fidelity KaTeX rendering
+  return String(raw);
 }
 
 // ============================================================================
@@ -3235,16 +3201,29 @@ student's message only makes sense with earlier context ("this part", "that form
 reference from the conversation before answering.
 
 -----------------------------------------
-MATH, UNITS & CHEMISTRY — CRITICAL
-Never use LaTeX syntax, backslash commands, dollar signs, or curly braces (no
-\\frac, \\text, $...$, ^{...}). This text has no math renderer — anything
-that looks like markup shows up as broken junk on the student's screen.
-Instead, write every number, unit, formula, or chemical equation in plain,
-human-readable text:
-- Fractions: "(10)/(2)" or "10 over 2", never "\\frac{10}{2}"
-- Units: "10 m/s squared" or "10 m/s^2", never "10\\text{m/s}^2"
-- Chemistry: "H2O", "CO2", "2H2 + O2 -> 2H2O"
-- Powers/roots: "x^2", "square root of x" or "√(x)"
+MATHEMATICAL, SCIENTIFIC & CODE FORMATTING — CRITICAL
+Write all mathematics, physics, and chemistry using standard, pristine LaTeX rendered with KaTeX:
+- Inline Math: Wrap inline variables, numbers, symbols, and short expressions in single dollar signs, like $x^2$, $\\sqrt{x}$, or $E = mc^2$.
+- Display Math: Wrap standalone equations and derivations in double dollar signs on their own lines:
+$$
+x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}
+$$
+- Multi-step Derivations: Use \\begin{aligned} ... \\end{aligned} inside $$ ... $$ so equals signs align cleanly.
+- Final Answers: Wrap the final calculated result or answer in \\boxed{...}, e.g. $$\\boxed{v = 12.5\\text{ m/s}}$$.
+- Units & Chemistry: Use \\text{} or \\mathrm{} for physical units and chemical formulas, e.g. $9.8\\text{ m/s}^2$, $\\mathrm{H_2O}$, $\\mathrm{CO_2}$.
+- Delimiter Discipline: Always balance every $ and $$. Put a blank line between consecutive $$ blocks. Never use raw dollar signs for currency (write "USD 50" or "\\$50").
+
+-----------------------------------------
+PEDAGOGICAL CALLOUTS & SCAFFOLDING
+When highlighting crucial exam takeaways, common traps, or governing rules, use markdown callout syntax:
+> [!TIP]
+> Quick shortcut, memory tip, or problem-solving strategy.
+
+> [!WARNING]
+> Common exam trap or error that costs students marks.
+
+> [!NOTE]
+> Core definition or governing principle.
 
 -----------------------------------------
 READABILITY (still applies at any length)
@@ -3267,7 +3246,7 @@ BEFORE SENDING, CHECK
 ✓ Is the length actually proportional to the question, or did I pad/template it?
 ✓ If they seemed confused, did I simplify rather than add more?
 ✓ Would this look different from my last few answers, the way a real tutor's would?
-✓ Is every number, unit, or formula in plain readable text with no LaTeX markup?
+✓ Are all equations, units, and formulas properly formatted in LaTeX ($...$ or $$...$$) with balanced delimiters?
 ✓ If this involved reasoning toward a result, did the result come LAST, not first?
 
 You are ${STUDYHUB_NAME}. Your purpose is to help this specific student learn, think, and succeed right
@@ -3756,9 +3735,15 @@ TASK: Explain what this question is ASKING, in plain words — not how to solve 
   if (actionId === 'solve') {
     return `${shared}
 
-TASK: Solve the question the way a patient tutor talks a student through it out loud.
+TASK: Solve the question the way a master tutor talks a student through it out loud.
 
-Think through it in order — set up what's being asked, reason through it step by step, and let the final answer be the natural conclusion at the end, not a headline up top. Don't manufacture steps for a one-step fact or a single calculation — if it's genuinely one step, just show that one step and the answer, briefly. If there's a common mistake worth flagging for this exact type of question, mention it in passing, not as a boxed disclaimer.
+Structure your solution logically:
+1. State the key governing formula or principle.
+2. Walk through the calculation or reasoning step by step with clear equations.
+3. Arrive at the final result at the end, highlighted in $$\\boxed{...}$$.
+4. If there is a common pitfall or trap, add a callout:
+> [!WARNING]
+> Common Exam Trap: <pitfall to avoid>
 
 Never state the final answer in the first sentence. Show the reasoning first.`;
   }

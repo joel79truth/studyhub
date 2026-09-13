@@ -27,6 +27,14 @@ export default function PdfViewer({
   const rendererRef = useRef(renderer);
   const layoutRef = useRef({ pageSizes, pageHeights: [], pageTops: [0] });
 
+  // Tracks the (scale, containerWidth, devicePixelRatio) combination each
+  // currently-attached canvas was last rasterized at. Repositioning a page
+  // (scrolling) should never force a repaint; changing its target
+  // resolution (zoom, container resize, moving the window to a different
+  // DPR display) always should.
+  const lastRenderParamsRef = useRef({ scale, containerWidth, dpr: 1 });
+  const dprRef = useRef(typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1);
+
   useEffect(() => { currentPageRef.current = currentPage; }, [currentPage]);
   useEffect(() => { onPageChangeRef.current = onPageChange; }, [onPageChange]);
   useEffect(() => { rendererRef.current = renderer; }, [renderer]);
@@ -34,16 +42,37 @@ export default function PdfViewer({
   // Update renderer with container width
   useEffect(() => {
     renderer.setContainerWidth(containerWidth);
+    // Let the renderer know the true pixel ratio so it can rasterize at
+    // native resolution instead of CSS-pixel resolution. Optional chaining
+    // keeps this a no-op if the renderer hasn't implemented it yet, but a
+    // canvas-based viewer needs this to match Chrome/Drive's crispness.
+    renderer.setPixelRatio?.(dprRef.current);
   }, [containerWidth, renderer]);
 
+  // Track devicePixelRatio changes (e.g. dragging the window between a
+  // standard and a HiDPI monitor). matchMedia fires once per ratio change
+  // and we re-subscribe with the new ratio each time.
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return;
+    const mq = window.matchMedia(`(resolution: ${dprRef.current}dppx)`);
+    const onChange = () => {
+      dprRef.current = window.devicePixelRatio || 1;
+      rendererRef.current.setPixelRatio?.(dprRef.current);
+      forceRerasterizeVisible();
+    };
+    mq.addEventListener?.('change', onChange);
+    return () => mq.removeEventListener?.('change', onChange);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const pageHeights = useMemo(() => {
-  if (!containerWidth || pageSizes.length === 0) return [];
-  const fallback = pageSizes[0]; // page 1 is always measured first and available
-  return pageSizes.map((size) => {
-    const { width, height } = size || fallback || { width: 1, height: 1.414 }; // last-resort A4-ish ratio
-    return (containerWidth * scale * height) / width;
-  });
-}, [pageSizes, containerWidth, scale]);
+    if (!containerWidth || pageSizes.length === 0) return [];
+    const fallback = pageSizes[0]; // page 1 is always measured first and available
+    return pageSizes.map((size) => {
+      const { width, height } = size || fallback || { width: 1, height: 1.414 }; // last-resort A4-ish ratio
+      return (containerWidth * scale * height) / width;
+    });
+  }, [pageSizes, containerWidth, scale]);
 
   const pageTops = useMemo(() => {
     const tops = [0];
@@ -92,7 +121,10 @@ export default function PdfViewer({
 
     const viewTop = scrollTop;
     const viewBottom = scrollTop + containerHeight;
-    const overscan = containerHeight * 0.5;
+    // Scale overscan with scroll velocity: fast flings pre-attach a wider
+    // band so pages are already painted by the time they reach the
+    // viewport, matching the "never see a blank page" feel of Drive/Chrome.
+    const overscan = containerHeight * (0.5 + Math.min(velocityRef.current * 2, 1.5));
 
     const newVisible = new Set();
     for (let i = 0; i < pageSizes.length; i++) {
@@ -102,20 +134,20 @@ export default function PdfViewer({
     }
 
     // Detach non-visible pages
-    visiblePagesRef.current.forEach(p => {
+    visiblePagesRef.current.forEach((p) => {
       if (!newVisible.has(p)) {
         renderer.detachCanvas(p);
       }
     });
 
     // Attach newly visible pages
-    newVisible.forEach(p => {
+    newVisible.forEach((p) => {
       if (!visiblePagesRef.current.has(p)) {
         const el = pageElsRef.current.get(p);
         if (el) {
           renderer.attachCanvas(p, el);
         } else {
-          console.warn(`❌ Placeholder not found for page ${p}`);
+          console.warn(`Placeholder not found for page ${p}`);
         }
       }
     });
@@ -145,6 +177,18 @@ export default function PdfViewer({
     });
   }, [updateView]);
 
+  // Forces every currently-visible page to detach and re-attach, so the
+  // renderer repaints it at the current scale/DPR instead of leaving a
+  // stale bitmap that the browser just stretches with CSS (the cause of
+  // "zooming makes it blurry" — a repositioned canvas is not a
+  // repainted canvas).
+  const forceRerasterizeVisible = useCallback(() => {
+    const renderer = rendererRef.current;
+    visiblePagesRef.current.forEach((p) => renderer.detachCanvas(p));
+    visiblePagesRef.current = new Set();
+    scheduleUpdate();
+  }, [scheduleUpdate]);
+
   // Attach scroll listener exactly once. Since updateView and
   // scheduleUpdate are now stable, this effect never tears down
   // mid-scroll, so an in-flight visibility update never gets
@@ -166,14 +210,24 @@ export default function PdfViewer({
   }, [scheduleUpdate]);
 
   // Re-run visibility whenever layout actually changes (page sizes
-  // loaded/updated, zoom changed, container resized) — this is a
-  // real, meaningful trigger, unlike currentPage/renderer churn.
+  // loaded/updated, zoom changed, container resized). If scale or
+  // containerWidth specifically changed — not just pageSizes arriving for
+  // the first time — force a repaint of whatever's already on screen.
   useEffect(() => {
-    if (pageHeights.length > 0) {
-      const id = setTimeout(() => scheduleUpdate(), 0);
-      return () => clearTimeout(id);
+    if (pageHeights.length === 0) return;
+
+    const prev = lastRenderParamsRef.current;
+    const paramsChanged = prev.scale !== scale || prev.containerWidth !== containerWidth;
+    lastRenderParamsRef.current = { scale, containerWidth, dpr: dprRef.current };
+
+    if (paramsChanged && visiblePagesRef.current.size > 0) {
+      forceRerasterizeVisible();
+      return;
     }
-  }, [pageHeights, scheduleUpdate]);
+
+    const id = setTimeout(() => scheduleUpdate(), 0);
+    return () => clearTimeout(id);
+  }, [pageHeights, scale, containerWidth, scheduleUpdate, forceRerasterizeVisible]);
 
   const setPageEl = useCallback((pageNum, el) => {
     if (el) pageElsRef.current.set(pageNum, el);
@@ -207,6 +261,8 @@ export default function PdfViewer({
               style={{
                 position: 'absolute', top, left: 0, right: 0, height,
                 display: 'flex', justifyContent: 'center', alignItems: 'center',
+                boxShadow: '0 1px 4px rgba(0,0,0,.15)',
+                background: '#fff',
               }}
               className="page-slot"
             />
