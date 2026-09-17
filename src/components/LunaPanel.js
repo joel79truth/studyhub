@@ -188,12 +188,14 @@ const MessageBubble = React.memo(({ msg, index, reducedMotion }) => {
         <div
           style={{
             maxWidth: 'min(92%, 480px)',
-            background: '#f8fafc',
+            background: '#ffffff',
             border: '1px solid #e8edf3',
             borderRadius: '4px 18px 18px 18px',
             padding: '11px 14px',
             fontSize: 13.5,
             lineHeight: 1.6,
+            color: '#000000',
+            colorScheme: 'light',
           }}
         >
           <MiniMarkdown content={msg.content} />

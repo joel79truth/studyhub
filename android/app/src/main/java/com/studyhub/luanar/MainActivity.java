@@ -7,10 +7,17 @@ import com.getcapacitor.PluginHandle;
 import com.getcapacitor.Plugin;
 import android.content.Intent;
 import android.util.Log;
+import android.os.Bundle;
 import com.getcapacitor.BridgeActivity;
 
 // This interface is CRUCIAL – it tells the plugin you've modified the activity
 public class MainActivity extends BridgeActivity implements ModifiedMainActivityForSocialLoginPlugin {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        registerPlugin(UpdaterPlugin.class);
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

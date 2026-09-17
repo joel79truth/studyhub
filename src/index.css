@@ -57,7 +57,7 @@ body {
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
-  color-scheme: light dark;
+  color-scheme: light;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
@@ -74,7 +74,7 @@ body {
 @media (prefers-color-scheme: dark) {
   :root {
     --text:#000000;
-    --text-h: #f3f4f6;
+    --text-h: #08060d;
     --bg: #16171d;
     --border: #2e303a;
     --code-bg: #1f2028;
@@ -137,4 +137,65 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+/* ==========================================================================
+   AI Tutor Response Formatting - Guaranteed Pure Black (#000000)
+   Strictly protected against device/phone themes, forced dark mode, and WebViews
+   ========================================================================== */
+.tutor-markdown,
+.tutor-markdown * {
+  color-scheme: light !important;
+}
+
+.tutor-markdown,
+.tutor-markdown p,
+.tutor-markdown span,
+.tutor-markdown div,
+.tutor-markdown h1,
+.tutor-markdown h2,
+.tutor-markdown h3,
+.tutor-markdown h4,
+.tutor-markdown h5,
+.tutor-markdown h6,
+.tutor-markdown li,
+.tutor-markdown ul,
+.tutor-markdown ol,
+.tutor-markdown strong,
+.tutor-markdown em,
+.tutor-markdown b,
+.tutor-markdown i,
+.tutor-markdown blockquote,
+.tutor-markdown table,
+.tutor-markdown thead,
+.tutor-markdown tbody,
+.tutor-markdown tr,
+.tutor-markdown th,
+.tutor-markdown td,
+.tutor-markdown label,
+.tutor-markdown section,
+.tutor-markdown article {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+/* Ensure math / KaTeX formulas render in solid pure black */
+.tutor-markdown .katex,
+.tutor-markdown .katex-html,
+.tutor-markdown .katex *,
+.tutor-markdown .katex .base,
+.tutor-markdown .katex-display,
+.tutor-markdown .katex-display * {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+/* Preserve dark background and light readable code for preformatted code blocks */
+.tutor-markdown .code-block-container,
+.tutor-markdown .code-block-container *,
+.tutor-markdown pre,
+.tutor-markdown pre code,
+.tutor-markdown pre span {
+  color: #f1f5f9 !important;
+  -webkit-text-fill-color: #f1f5f9 !important;
 }

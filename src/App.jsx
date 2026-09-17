@@ -27,6 +27,7 @@ import AdminRoute from './components/AdminRoute';
 import InstallPrompt from './components/InstallPrompt';
 import FcmSetup from './components/FcmSetup';
 import AnalyticsTracker from './components/AnalyticsTracker';
+import UpdateChecker from './components/UpdateChecker';
 
 import Viewer from './components/Viewer/Viewer';
 // import { BottomNav } from './components/BottomNav'; // if you want to place it globally
@@ -89,6 +90,7 @@ function App() {
         <InstallPrompt />
         <FcmSetup />
         <AnalyticsTracker />
+        <UpdateChecker />
         {/* Uncomment if you want the bottom nav visible on every page */}
         {/* <BottomNav /> */}
       </BrowserRouter>

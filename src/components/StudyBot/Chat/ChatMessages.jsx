@@ -110,14 +110,17 @@ const ChatMessages = memo(
             <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-indigo-600 to-blue-500 flex items-center justify-center text-white shadow-xs">
               <Sparkles className="w-3.5 h-3.5" />
             </div>
-            <span className="text-xs font-semibold text-slate-800">StudyHub Tutor</span>
+            <span className="text-xs font-semibold text-black" style={{ color: '#000000' }}>StudyHub Tutor</span>
             <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-indigo-50 text-indigo-700 border border-indigo-200/60">
               Verified Tutor
             </span>
           </div>
 
           {/* Tutor Content Canvas */}
-          <div className="w-full bg-white rounded-2xl rounded-tl-xs p-4 sm:p-5 border border-slate-200/90 shadow-xs">
+          <div
+            className="w-full bg-white text-black rounded-2xl rounded-tl-xs p-4 sm:p-5 border border-slate-200/90 shadow-xs"
+            style={{ color: '#000000', backgroundColor: '#ffffff', colorScheme: 'light' }}
+          >
             <TutorMarkdown content={textContent} isStreaming={loading && isLastMessage} />
 
             {!loading && (

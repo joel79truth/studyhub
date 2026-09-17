@@ -26,6 +26,7 @@ import {
   ChevronRight,
   Layers,
   Camera,
+  Settings as SettingsIcon,
 } from 'lucide-react';
 
 const PROFILE_CACHE_KEY = 'studyhub_full_profile_cache';
@@ -195,7 +196,7 @@ const LearningTrendGraph = memo(({ sessions }) => {
       </div>
 
       {/* SVG Chart */}
-      <div className="relative w-full overflow-hidden">
+      <div className="relative w-full">
         <svg
           viewBox={`0 0 ${svgWidth} ${svgHeight}`}
           className="w-full h-auto overflow-visible select-none"
@@ -264,10 +265,10 @@ const LearningTrendGraph = memo(({ sessions }) => {
                 <circle
                   cx={pt.x}
                   cy={pt.y}
-                  r={isHovered ? 6 : 4}
+                  r={isHovered ? 7 : 4.5}
                   fill={isHovered ? '#4338ca' : '#ffffff'}
                   stroke="#4f46e5"
-                  strokeWidth={isHovered ? 3 : 2}
+                  strokeWidth={isHovered ? 3.5 : 2}
                   className="transition-all duration-150"
                 />
               </g>
@@ -299,25 +300,56 @@ const LearningTrendGraph = memo(({ sessions }) => {
           )}
         </svg>
 
-        {/* Floating Tooltip if selected */}
+        {/* Floating Tooltip if selected (smart positioned so it's never clipped) */}
         {activePoint && (
           <div
-            className="absolute z-20 bg-slate-900 text-white text-xs rounded-xl px-3 py-2 shadow-lg pointer-events-none transform -translate-x-1/2 -translate-y-full border border-slate-700"
+            className={`absolute z-30 bg-slate-900 text-white text-xs rounded-xl px-3 py-2 shadow-xl pointer-events-none border border-slate-700 ${
+              activePoint.y < 60 ? 'translate-y-3' : '-translate-y-full -mt-2.5'
+            }`}
             style={{
-              left: `${(activePoint.x / svgWidth) * 100}%`,
+              left: `${Math.max(12, Math.min(88, (activePoint.x / svgWidth) * 100))}%`,
               top: `${(activePoint.y / svgHeight) * 100}%`,
-              marginTop: '-10px',
+              transform: `translateX(-50%) ${activePoint.y < 60 ? 'translateY(12px)' : 'translateY(-100%)'}`,
             }}
           >
             <div className="font-bold text-indigo-300">{activePoint.course}</div>
             <div className="flex items-center gap-2 mt-0.5">
-              <span>Score: <strong className="text-emerald-400">{activePoint.score}%</strong></span>
-              <span className="text-slate-400">({activePoint.correct}/{activePoint.totalQ})</span>
+              <span>Score: <strong className="text-emerald-400 font-bold">{activePoint.score}%</strong></span>
+              <span className="text-slate-300">({activePoint.correct}/{activePoint.totalQ})</span>
             </div>
             <div className="text-[10px] text-slate-400 mt-0.5">{activePoint.date}</div>
           </div>
         )}
       </div>
+
+      {/* Prominent Active Point Detail Card (guaranteed 100% visible and unclipped) */}
+      {activePoint && (
+        <div className="mt-3 p-3.5 rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white shadow-lg border border-indigo-500/30 flex items-center justify-between animate-in fade-in duration-200">
+          <div className="flex items-center gap-3">
+            <div className="w-11 h-11 rounded-xl bg-indigo-600/30 border border-indigo-400/40 flex flex-col items-center justify-center font-bold text-sm text-emerald-400 shrink-0">
+              <span>{activePoint.score}%</span>
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <p className="text-xs font-bold text-white tracking-tight">{activePoint.course}</p>
+                <span className="text-[10px] text-indigo-300 font-semibold px-1.5 py-0.5 rounded bg-indigo-900/70 border border-indigo-700/50">
+                  {activePoint.date}
+                </span>
+              </div>
+              <p className="text-[11px] text-slate-300 mt-0.5">
+                {activePoint.correct} of {activePoint.totalQ} questions correct • {activePoint.score >= 75 ? '🎉 Strong mastery' : activePoint.score >= 50 ? '👍 Passing score' : '⚠️ Review needed'}
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={() => setActivePoint(null)}
+            className="p-1.5 rounded-lg hover:bg-white/10 text-slate-400 hover:text-white transition-colors cursor-pointer"
+            aria-label="Close details"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+      )}
 
       <div className="flex items-center justify-between mt-2 pt-2 border-t border-slate-100 text-[11px] text-slate-500">
         <div className="flex items-center gap-1.5">
@@ -730,6 +762,10 @@ export default function Profile() {
     return { totalQuizzes, totalQ, accuracy, streak };
   }, [quizSessions, profile]);
 
+  const isAdmin = useMemo(() => {
+    return Boolean(profile?.is_admin || profile?.admin);
+  }, [profile]);
+
   if (loading && !profile) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50">
@@ -767,7 +803,14 @@ export default function Profile() {
             <span>Back</span>
           </button>
           <h1 className="text-sm font-bold text-slate-800">Learning Profile & Analytics</h1>
-          <div className="w-14" />
+          <button
+            onClick={() => navigate('/settings')}
+            className="flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-indigo-600 transition-colors cursor-pointer py-1 px-2 rounded-lg hover:bg-slate-100"
+            title="Settings & Updates"
+          >
+            <SettingsIcon className="w-4 h-4" />
+            <span className="hidden sm:inline">Settings</span>
+          </button>
         </div>
       </header>
 
@@ -883,78 +926,132 @@ export default function Profile() {
         {/* 2. Bar Graph (Detailed course-by-course breakdown) */}
         <CourseMasteryBarGraph sessions={quizSessions} />
 
-        {/* My Uploaded Notes Section */}
-        <section className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-xs mb-5">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-2">
-              <span className="p-1.5 rounded-lg bg-amber-50 text-amber-600">
-                <FileText className="w-4 h-4" />
-              </span>
-              <div>
-                <h3 className="text-sm font-bold text-slate-800">My Uploaded Notes</h3>
-                <p className="text-[11px] text-slate-500">{files.length} documents uploaded</p>
+        {/* My Uploaded Notes Section (Visible ONLY to Admins) */}
+        {isAdmin && (
+          <section className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-xs mb-5">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2">
+                <span className="p-1.5 rounded-lg bg-amber-50 text-amber-600">
+                  <FileText className="w-4 h-4" />
+                </span>
+                <div>
+                  <h3 className="text-sm font-bold text-slate-800">My Uploaded Notes</h3>
+                  <p className="text-[11px] text-slate-500">{files.length} documents uploaded</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => navigate('/upload')}
+                  className="flex items-center gap-1 text-xs font-semibold text-slate-600 hover:text-indigo-600 px-2 py-1 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
+                >
+                  <Upload className="w-3.5 h-3.5" />
+                  <span>Upload</span>
+                </button>
+                <button
+                  onClick={() => navigate('/admin/upload')}
+                  className="flex items-center gap-1 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 px-2.5 py-1 rounded-lg shadow-xs transition-colors cursor-pointer"
+                >
+                  <Upload className="w-3.5 h-3.5" />
+                  <span>Admin Upload</span>
+                </button>
               </div>
             </div>
+
+            {files.length > 3 && (
+              <div className="relative mb-3">
+                <Search className="w-4 h-4 absolute left-3 top-2.5 text-slate-400" />
+                <input
+                  type="text"
+                  value={fileSearch}
+                  onChange={(e) => setFileSearch(e.target.value)}
+                  placeholder="Filter your notes..."
+                  className="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-hidden focus:ring-2 focus:ring-indigo-500/20"
+                />
+              </div>
+            )}
+
+            {files.length === 0 ? (
+              <div className="text-center py-6 text-slate-400 text-xs">
+                You haven't uploaded any notes yet.
+              </div>
+            ) : filteredFiles.length === 0 ? (
+              <div className="text-center py-6 text-slate-400 text-xs">
+                No notes match "{fileSearch}"
+              </div>
+            ) : (
+              <div className="space-y-2 max-h-56 overflow-y-auto pr-1">
+                {filteredFiles.map((file) => (
+                  <div
+                    key={file.id}
+                    className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50/70 border border-slate-200/60 hover:bg-slate-50 transition-colors"
+                  >
+                    <div className="flex items-center gap-2.5 min-w-0 pr-2">
+                      <span className="p-1.5 rounded-lg bg-white border border-slate-200 text-slate-600 text-xs">
+                        {file.name?.endsWith('.pdf') ? '📕' : '📄'}
+                      </span>
+                      <div className="min-w-0">
+                        <p className="text-xs font-semibold text-slate-800 truncate">{file.name}</p>
+                        <p className="text-[10px] text-slate-400">{file.subject || 'General'}</p>
+                      </div>
+                    </div>
+                    <a
+                      href={file.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-[11px] font-semibold text-indigo-600 hover:text-indigo-700 px-2 py-1 rounded-md bg-white border border-slate-200 cursor-pointer flex-shrink-0"
+                    >
+                      <span>View</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
+                ))}
+              </div>
+            )}
+          </section>
+        )}
+
+        {/* Admin Upload Tile (Visible ONLY to Admins) */}
+        {isAdmin && (
+          <div className="mb-3">
             <button
-              onClick={() => navigate('/upload')}
-              className="flex items-center gap-1 text-xs font-semibold text-indigo-600 hover:text-indigo-700 cursor-pointer"
+              onClick={() => navigate('/admin/upload')}
+              className="w-full flex items-center justify-between px-4 py-3.5 rounded-2xl bg-gradient-to-r from-purple-50 via-indigo-50 to-blue-50 hover:from-purple-100 hover:to-indigo-100 border border-indigo-200/90 shadow-xs transition-colors cursor-pointer text-left"
             >
-              <Upload className="w-3.5 h-3.5" />
-              <span>Upload New</span>
+              <div className="flex items-center gap-3">
+                <span className="p-2 rounded-xl bg-indigo-600 text-white shadow-xs">
+                  <Upload className="w-4 h-4" />
+                </span>
+                <div>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs font-bold text-indigo-950">Admin Upload Portal</p>
+                    <span className="text-[9px] uppercase font-bold tracking-wider px-1.5 py-0.2 rounded bg-indigo-200 text-indigo-800">Admin</span>
+                  </div>
+                  <p className="text-[11px] text-indigo-700">Upload past papers, course modules, and questions</p>
+                </div>
+              </div>
+              <ChevronRight className="w-4 h-4 text-indigo-500" />
             </button>
           </div>
+        )}
 
-          {files.length > 3 && (
-            <div className="relative mb-3">
-              <Search className="w-4 h-4 absolute left-3 top-2.5 text-slate-400" />
-              <input
-                type="text"
-                value={fileSearch}
-                onChange={(e) => setFileSearch(e.target.value)}
-                placeholder="Filter your notes..."
-                className="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-hidden focus:ring-2 focus:ring-indigo-500/20"
-              />
+        {/* Settings & Updates Link */}
+        <div className="mb-3">
+          <button
+            onClick={() => navigate('/settings')}
+            className="w-full flex items-center justify-between px-4 py-3.5 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200/80 shadow-xs transition-colors cursor-pointer text-left"
+          >
+            <div className="flex items-center gap-3">
+              <span className="p-2 rounded-xl bg-indigo-50 text-indigo-600">
+                <SettingsIcon className="w-4 h-4" />
+              </span>
+              <div>
+                <p className="text-xs font-bold text-slate-800">Settings & App Updates</p>
+                <p className="text-[11px] text-slate-500">Theme, cache, and official release updates</p>
+              </div>
             </div>
-          )}
-
-          {files.length === 0 ? (
-            <div className="text-center py-6 text-slate-400 text-xs">
-              You haven't uploaded any notes yet.
-            </div>
-          ) : filteredFiles.length === 0 ? (
-            <div className="text-center py-6 text-slate-400 text-xs">
-              No notes match "{fileSearch}"
-            </div>
-          ) : (
-            <div className="space-y-2 max-h-56 overflow-y-auto pr-1">
-              {filteredFiles.map((file) => (
-                <div
-                  key={file.id}
-                  className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50/70 border border-slate-200/60 hover:bg-slate-50 transition-colors"
-                >
-                  <div className="flex items-center gap-2.5 min-w-0 pr-2">
-                    <span className="p-1.5 rounded-lg bg-white border border-slate-200 text-slate-600 text-xs">
-                      {file.name?.endsWith('.pdf') ? '📕' : '📄'}
-                    </span>
-                    <div className="min-w-0">
-                      <p className="text-xs font-semibold text-slate-800 truncate">{file.name}</p>
-                      <p className="text-[10px] text-slate-400">{file.subject || 'General'}</p>
-                    </div>
-                  </div>
-                  <a
-                    href={file.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-[11px] font-semibold text-indigo-600 hover:text-indigo-700 px-2 py-1 rounded-md bg-white border border-slate-200 cursor-pointer flex-shrink-0"
-                  >
-                    <span>View</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
-                </div>
-              ))}
-            </div>
-          )}
-        </section>
+            <ChevronRight className="w-4 h-4 text-slate-400" />
+          </button>
+        </div>
 
         {/* Sign Out Button */}
         <div className="pt-2 pb-6">
@@ -1083,19 +1180,20 @@ export default function Profile() {
                   <label className="block text-xs font-semibold text-slate-700 mb-1.5">
                     Semester
                   </label>
-                  <div className="grid grid-cols-2 gap-1.5">
-                    {['1', '2'].map((s) => (
+                  <div className="max-h-32 overflow-y-auto pr-1 flex flex-col gap-1 border border-slate-200/90 rounded-xl p-1.5 bg-slate-50/60 shadow-inner">
+                    {['1', '2', '3', '4', '5', '6', '7', '8'].map((s) => (
                       <button
                         type="button"
                         key={s}
                         onClick={() => setAcademicForm({ ...academicForm, semester: s })}
-                        className={`py-1.5 text-xs font-semibold rounded-lg border transition-all cursor-pointer ${
+                        className={`w-full py-1.5 px-2.5 text-xs font-semibold rounded-lg border transition-all cursor-pointer flex items-center justify-between ${
                           academicForm.semester === s
                             ? 'bg-indigo-600 text-white border-indigo-600 shadow-xs'
-                            : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                            : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
                         }`}
                       >
-                        Sem {s}
+                        <span>Semester {s}</span>
+                        {academicForm.semester === s && <CheckCircle className="w-3.5 h-3.5 text-white shrink-0" />}
                       </button>
                     ))}
                   </div>

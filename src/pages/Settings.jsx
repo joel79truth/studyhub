@@ -1,15 +1,15 @@
+// src/pages/Settings.jsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
-import { auth, db } from '../firebase';
-import { signOut } from 'firebase/auth';
+import { supabase } from '../supabase';
+import { updateService } from '../services/updateService';
+import UpdateModal from '../components/UpdateModal';
 import './Settings.css';
 
 const Settings = () => {
   const navigate = useNavigate();
-  const [user, loadingAuth] = useAuthState(auth);
-  const [userData, setUserData] = useState(null);
+  const [user, setUser] = useState(null);
+  const [loadingAuth, setLoadingAuth] = useState(true);
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem('theme') === 'dark';
   });
@@ -19,19 +19,76 @@ const Settings = () => {
   const [isSaving, setIsSaving] = useState(false);
   const [message, setMessage] = useState({ text: '', type: '' });
 
-  // Load user data
+  // In-app updater states
+  const [versionInfo, setVersionInfo] = useState({ versionName: '...', versionCode: 0 });
+  const [isCheckingUpdate, setIsCheckingUpdate] = useState(false);
+  const [updateStatusText, setUpdateStatusText] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
+  const [availableUpdate, setAvailableUpdate] = useState(null);
+
   useEffect(() => {
-    if (!user) return;
-    const fetchUser = async () => {
-      const snap = await getDoc(doc(db, 'users', user.uid));
-      if (snap.exists()) {
-        const data = snap.data();
-        setUserData(data);
-        setEmail(user.email || '');
-        setProgram(data.program || '');
+    updateService.getInstalledVersion().then(setVersionInfo);
+  }, []);
+
+  // 1. Check Supabase Auth Session
+  useEffect(() => {
+    let isMounted = true;
+
+    const initAuth = async () => {
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (isMounted) {
+          if (session?.user) {
+            setUser(session.user);
+            setEmail(session.user.email || '');
+          }
+          setLoadingAuth(false);
+        }
+      } catch (err) {
+        console.error('[Settings] Error checking session:', err);
+        if (isMounted) setLoadingAuth(false);
       }
     };
-    fetchUser();
+
+    initAuth();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (isMounted) {
+        if (session?.user) {
+          setUser(session.user);
+          setEmail(session.user.email || '');
+        } else {
+          setUser(null);
+        }
+        setLoadingAuth(false);
+      }
+    });
+
+    return () => {
+      isMounted = false;
+      subscription?.unsubscribe();
+    };
+  }, []);
+
+  // 2. Load Profile Data from Supabase
+  useEffect(() => {
+    if (!user) return;
+    const fetchProfile = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('profiles')
+          .select('program')
+          .eq('id', user.id)
+          .maybeSingle();
+
+        if (!error && data?.program) {
+          setProgram(data.program);
+        }
+      } catch (err) {
+        console.warn('[Settings] Failed to load profile:', err);
+      }
+    };
+    fetchProfile();
   }, [user]);
 
   // Apply dark mode
@@ -50,10 +107,15 @@ const Settings = () => {
     setIsSaving(true);
     setMessage({ text: '', type: '' });
     try {
-      await updateDoc(doc(db, 'users', user.uid), {
-        program: program,
-        updatedAt: new Date().toISOString(),
-      });
+      const { error } = await supabase
+        .from('profiles')
+        .update({
+          program: program,
+          updated_at: new Date().toISOString(),
+        })
+        .eq('id', user.id);
+
+      if (error) throw error;
       setMessage({ text: '✅ Profile updated successfully!', type: 'success' });
     } catch (err) {
       console.error(err);
@@ -65,7 +127,7 @@ const Settings = () => {
   const handleLogout = async () => {
     if (window.confirm('Are you sure you want to log out?')) {
       try {
-        await signOut(auth);
+        await supabase.auth.signOut();
         navigate('/login');
       } catch (err) {
         console.error(err);
@@ -80,13 +142,33 @@ const Settings = () => {
       localStorage.removeItem('studyhub_quiz_state');
       localStorage.removeItem('theme');
       setMessage({ text: '✅ Local data cleared. Refresh to see changes.', type: 'success' });
-      // Reload stats if needed – we'll just navigate away and back
       window.location.reload();
     }
   };
 
+  const handleManualUpdateCheck = async () => {
+    setIsCheckingUpdate(true);
+    setUpdateStatusText('');
+    try {
+      const res = await updateService.checkForUpdates({ forceCheck: true });
+      if (res?.hasUpdate) {
+        setAvailableUpdate(res.updateInfo);
+        setModalOpen(true);
+        setUpdateStatusText('');
+      } else if (res?.error) {
+        setUpdateStatusText(`⚠️ Unable to check updates: ${res.error}`);
+      } else {
+        setUpdateStatusText('✨ You are already on the latest version of StudyHub!');
+      }
+    } catch (err) {
+      setUpdateStatusText(`⚠️ Check failed: ${err.message}`);
+    } finally {
+      setIsCheckingUpdate(false);
+    }
+  };
+
   if (loadingAuth) return <div className="settings-loading">Loading…</div>;
-  if (!user) return <div className="settings-loading">Please log in.</div>;
+  if (!user) return <div className="settings-loading">Please log in to access settings.</div>;
 
   return (
     <div className="settings-page">
@@ -107,7 +189,7 @@ const Settings = () => {
         <div className="settings-group">
           <label>Email</label>
           <input type="email" value={email} disabled className="settings-input disabled" />
-          <p className="field-note">Email cannot be changed here. Update via Firebase.</p>
+          <p className="field-note">Email associated with your StudyHub account.</p>
         </div>
         <div className="settings-group">
           <label>Program of Study</label>
@@ -156,7 +238,7 @@ const Settings = () => {
             <span className="toggle-slider"></span>
           </label>
         </div>
-        <p className="field-note">You can also manage notifications from your browser settings.</p>
+        <p className="field-note">You can also manage notifications from your system settings.</p>
       </div>
 
       <div className="settings-card">
@@ -164,7 +246,45 @@ const Settings = () => {
         <button className="btn btn-danger" onClick={clearLocalData}>
           Clear All Local Data
         </button>
-        <p className="field-note">This removes your quiz history and preferences from this device.</p>
+        <p className="field-note">This removes local cached quiz history and preferences from this device.</p>
+      </div>
+
+      <div className="settings-card">
+        <h2>🚀 App Version & Updates</h2>
+        <div className="settings-group" style={{ marginBottom: '12px' }}>
+          <p style={{ margin: '0 0 6px 0', fontSize: '0.95rem', fontWeight: 600 }}>
+            StudyHub LUANAR v{versionInfo.versionName}
+          </p>
+          <p className="text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>
+            Build Code: {versionInfo.versionCode} • {updateService.isAndroid() ? 'Android Native Edition' : 'Web / Browser'}
+          </p>
+        </div>
+
+        {updateStatusText && (
+          <div style={{
+            padding: '10px 14px',
+            borderRadius: '10px',
+            marginBottom: '12px',
+            fontSize: '0.85rem',
+            background: updateStatusText.includes('⚠️') ? '#fee2e2' : '#d1fae5',
+            color: updateStatusText.includes('⚠️') ? '#991b1b' : '#065f46',
+            fontWeight: 500,
+          }}>
+            {updateStatusText}
+          </div>
+        )}
+
+        <button
+          className="btn btn-primary"
+          onClick={handleManualUpdateCheck}
+          disabled={isCheckingUpdate}
+        >
+          <i className={`fas ${isCheckingUpdate ? 'fa-spinner fa-spin' : 'fa-sync-alt'}`}></i>
+          {' '}{isCheckingUpdate ? 'Checking for updates…' : 'Check for Updates'}
+        </button>
+        <p className="field-note" style={{ marginTop: '8px' }}>
+          Checks directly with the official StudyHub release server for improvements and security fixes.
+        </p>
       </div>
 
       <div className="settings-card">
@@ -175,8 +295,16 @@ const Settings = () => {
       </div>
 
       <div className="settings-footer">
-        <p className="text-muted">StudyHub v1.0 • Made with ❤️ for LUANAR</p>
+        <p className="text-muted">StudyHub v{versionInfo.versionName} • Made with ❤️ for LUANAR</p>
       </div>
+
+      <UpdateModal
+        isOpen={modalOpen}
+        updateInfo={availableUpdate}
+        currentVersion={versionInfo}
+        onClose={() => setModalOpen(false)}
+        onDismiss={() => setModalOpen(false)}
+      />
     </div>
   );
 };

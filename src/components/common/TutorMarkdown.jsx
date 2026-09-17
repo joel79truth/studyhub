@@ -53,58 +53,58 @@ const CALLOUT_TYPES = {
   TIP: {
     label: 'Pro Tip',
     icon: Lightbulb,
-    border: 'border-amber-400/60 dark:border-amber-500/50',
-    bg: 'bg-amber-50/80 dark:bg-amber-950/20',
-    text: 'text-amber-900 dark:text-amber-200',
-    badge: 'bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300',
+    border: 'border-amber-400/80',
+    bg: 'bg-amber-50',
+    text: 'text-black',
+    badge: 'bg-amber-100 text-amber-900',
   },
   NOTE: {
     label: 'Key Concept',
     icon: Info,
-    border: 'border-blue-400/60 dark:border-blue-500/50',
-    bg: 'bg-blue-50/80 dark:bg-blue-950/20',
-    text: 'text-blue-900 dark:text-blue-200',
-    badge: 'bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300',
+    border: 'border-blue-400/80',
+    bg: 'bg-blue-50',
+    text: 'text-black',
+    badge: 'bg-blue-100 text-blue-900',
   },
   WARNING: {
     label: 'Common Exam Trap',
     icon: AlertTriangle,
-    border: 'border-rose-400/60 dark:border-rose-500/50',
-    bg: 'bg-rose-50/80 dark:bg-rose-950/20',
-    text: 'text-rose-900 dark:text-rose-200',
-    badge: 'bg-rose-100 dark:bg-rose-900/40 text-rose-800 dark:text-rose-300',
+    border: 'border-rose-400/80',
+    bg: 'bg-rose-50',
+    text: 'text-black',
+    badge: 'bg-rose-100 text-rose-900',
   },
   IMPORTANT: {
     label: 'Important Rule',
     icon: AlertTriangle,
-    border: 'border-amber-500/60 dark:border-amber-500/50',
-    bg: 'bg-amber-50/80 dark:bg-amber-950/20',
-    text: 'text-amber-900 dark:text-amber-200',
-    badge: 'bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300',
+    border: 'border-amber-500/80',
+    bg: 'bg-amber-50',
+    text: 'text-black',
+    badge: 'bg-amber-100 text-amber-900',
   },
   EXAMPLE: {
     label: 'Worked Example',
     icon: BookOpen,
-    border: 'border-indigo-400/60 dark:border-indigo-500/50',
-    bg: 'bg-indigo-50/80 dark:bg-indigo-950/20',
-    text: 'text-indigo-900 dark:text-indigo-200',
-    badge: 'bg-indigo-100 dark:bg-indigo-900/40 text-indigo-800 dark:text-indigo-300',
+    border: 'border-indigo-400/80',
+    bg: 'bg-indigo-50',
+    text: 'text-black',
+    badge: 'bg-indigo-100 text-indigo-900',
   },
   FORMULA: {
     label: 'Governing Formula',
     icon: Calculator,
-    border: 'border-purple-400/60 dark:border-purple-500/50',
-    bg: 'bg-purple-50/80 dark:bg-purple-950/20',
-    text: 'text-purple-900 dark:text-purple-200',
-    badge: 'bg-purple-100 dark:bg-purple-900/40 text-purple-800 dark:text-purple-300',
+    border: 'border-purple-400/80',
+    bg: 'bg-purple-50',
+    text: 'text-black',
+    badge: 'bg-purple-100 text-purple-900',
   },
   ANSWER: {
     label: 'Final Answer',
     icon: CheckCircle2,
-    border: 'border-emerald-400/60 dark:border-emerald-500/50',
-    bg: 'bg-emerald-50/80 dark:bg-emerald-950/20',
-    text: 'text-emerald-900 dark:text-emerald-200',
-    badge: 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-300',
+    border: 'border-emerald-400/80',
+    bg: 'bg-emerald-50',
+    text: 'text-black',
+    badge: 'bg-emerald-100 text-emerald-900',
   },
 };
 
@@ -150,7 +150,7 @@ const CodeBlock = memo(({ language, children }) => {
   }, [codeContent]);
 
   return (
-    <div className="my-4 rounded-xl border border-slate-700/60 bg-slate-900 text-slate-100 overflow-hidden shadow-sm">
+    <div className="code-block-container my-4 rounded-xl border border-slate-700/60 bg-slate-900 text-slate-100 overflow-hidden shadow-sm" style={{ colorScheme: 'dark' }}>
       <div className="flex items-center justify-between px-3.5 py-1.5 bg-slate-950/70 border-b border-slate-800 text-xs text-slate-400 font-mono select-none">
         <span>{language || 'code'}</span>
         <button
@@ -173,7 +173,7 @@ const CodeBlock = memo(({ language, children }) => {
         </button>
       </div>
       <div className="p-3.5 overflow-x-auto text-[13.5px] leading-relaxed font-mono">
-        <code>{children}</code>
+        <code style={{ color: '#f1f5f9' }}>{children}</code>
       </div>
     </div>
   );
@@ -199,7 +199,8 @@ const TutorMarkdown = memo(({ content, isStreaming = false, className = '' }) =>
       }
       return (
         <code
-          className="px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-indigo-700 dark:text-indigo-300 font-mono text-[0.88em] font-medium border border-slate-200/80 dark:border-slate-700/60"
+          className="px-1.5 py-0.5 rounded-md bg-slate-100 text-black font-mono text-[0.88em] font-medium border border-slate-200"
+          style={{ color: '#000000', backgroundColor: '#f1f5f9' }}
           {...props}
         >
           {children}
@@ -223,16 +224,16 @@ const TutorMarkdown = memo(({ content, isStreaming = false, className = '' }) =>
         const { meta } = callout;
         const Icon = meta.icon;
         return (
-          <div className={`my-4 p-4 rounded-xl border ${meta.border} ${meta.bg} shadow-xs transition-all`}>
+          <div className={`my-4 p-4 rounded-xl border ${meta.border} ${meta.bg} shadow-xs text-black transition-all`} style={{ color: '#000000', colorScheme: 'light' }}>
             <div className="flex items-center gap-2 mb-2">
               <span className={`p-1 rounded-md ${meta.badge}`}>
                 <Icon className="w-4 h-4" />
               </span>
-              <span className={`text-xs font-bold uppercase tracking-wider ${meta.text}`}>
+              <span className="text-xs font-bold uppercase tracking-wider text-black" style={{ color: '#000000' }}>
                 {meta.label}
               </span>
             </div>
-            <div className={`text-[14.5px] leading-relaxed ${meta.text}`}>
+            <div className="text-[14.5px] leading-relaxed text-black" style={{ color: '#000000' }}>
               {children}
             </div>
           </div>
@@ -241,7 +242,8 @@ const TutorMarkdown = memo(({ content, isStreaming = false, className = '' }) =>
 
       return (
         <blockquote
-          className="my-3.5 pl-4 border-l-3 border-indigo-400/80 text-slate-700 dark:text-slate-300 italic bg-indigo-50/30 dark:bg-indigo-950/10 py-1.5 rounded-r-lg"
+          className="my-3.5 pl-4 border-l-3 border-indigo-500 text-black italic bg-indigo-50/40 py-1.5 rounded-r-lg"
+          style={{ color: '#000000', colorScheme: 'light' }}
           {...props}
         >
           {children}
@@ -251,65 +253,77 @@ const TutorMarkdown = memo(({ content, isStreaming = false, className = '' }) =>
 
     // Headings
     h1: ({ node, ...props }) => (
-      <h1 className="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-2 tracking-tight flex items-center gap-2" {...props} />
+      <h1 className="text-xl font-bold text-black mt-6 mb-2 tracking-tight flex items-center gap-2" style={{ color: '#000000' }} {...props} />
     ),
     h2: ({ node, ...props }) => (
-      <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mt-5 mb-2 tracking-tight" {...props} />
+      <h2 className="text-lg font-bold text-black mt-5 mb-2 tracking-tight" style={{ color: '#000000' }} {...props} />
     ),
     h3: ({ node, ...props }) => (
-      <h3 className="text-base font-semibold text-slate-800 dark:text-slate-200 mt-4 mb-1.5" {...props} />
+      <h3 className="text-base font-semibold text-black mt-4 mb-1.5" style={{ color: '#000000' }} {...props} />
     ),
     h4: ({ node, ...props }) => (
-      <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mt-3 mb-1" {...props} />
+      <h4 className="text-sm font-semibold text-black mt-3 mb-1" style={{ color: '#000000' }} {...props} />
+    ),
+    h5: ({ node, ...props }) => (
+      <h5 className="text-sm font-medium text-black mt-2 mb-1" style={{ color: '#000000' }} {...props} />
+    ),
+    h6: ({ node, ...props }) => (
+      <h6 className="text-xs font-medium text-black mt-2 mb-1" style={{ color: '#000000' }} {...props} />
     ),
 
-    // Paragraphs with comfortable reading rhythm
+    // Paragraphs with comfortable reading rhythm (pure solid black)
     p: ({ node, ...props }) => (
-      <p className="my-2 text-[15px] leading-[1.72] text-slate-800 dark:text-slate-200 break-words" {...props} />
+      <p className="my-2 text-[15px] leading-[1.72] text-black break-words font-normal" style={{ color: '#000000' }} {...props} />
     ),
 
     // Lists
     ul: ({ node, ...props }) => (
-      <ul className="my-2.5 pl-5 space-y-1.5 list-disc marker:text-indigo-500 text-[15px] leading-relaxed text-slate-800 dark:text-slate-200" {...props} />
+      <ul className="my-2.5 pl-5 space-y-1.5 list-disc marker:text-black text-[15px] leading-relaxed text-black" style={{ color: '#000000' }} {...props} />
     ),
     ol: ({ node, ...props }) => (
-      <ol className="my-2.5 pl-5 space-y-2 list-decimal marker:font-semibold marker:text-indigo-600 dark:marker:text-indigo-400 text-[15px] leading-relaxed text-slate-800 dark:text-slate-200" {...props} />
+      <ol className="my-2.5 pl-5 space-y-2 list-decimal marker:font-semibold marker:text-black text-[15px] leading-relaxed text-black" style={{ color: '#000000' }} {...props} />
     ),
     li: ({ node, ...props }) => (
-      <li className="pl-1" {...props} />
+      <li className="pl-1 text-black" style={{ color: '#000000' }} {...props} />
+    ),
+    strong: ({ node, ...props }) => (
+      <strong className="font-bold text-black" style={{ color: '#000000' }} {...props} />
+    ),
+    em: ({ node, ...props }) => (
+      <em className="italic text-black" style={{ color: '#000000' }} {...props} />
     ),
 
     // Tables
     table: ({ node, ...props }) => (
-      <div className="my-4 w-full overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 shadow-xs">
-        <table className="w-full text-left text-sm border-collapse" {...props} />
+      <div className="my-4 w-full overflow-x-auto rounded-xl border border-slate-200 shadow-xs">
+        <table className="w-full text-left text-sm border-collapse text-black" style={{ color: '#000000' }} {...props} />
       </div>
     ),
     thead: ({ node, ...props }) => (
-      <thead className="bg-slate-50 dark:bg-slate-800/70 text-slate-700 dark:text-slate-200 font-semibold border-b border-slate-200 dark:border-slate-700" {...props} />
+      <thead className="bg-slate-50 text-black font-semibold border-b border-slate-200" style={{ color: '#000000' }} {...props} />
     ),
     tbody: ({ node, ...props }) => (
-      <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300" {...props} />
+      <tbody className="divide-y divide-slate-100 text-black" style={{ color: '#000000' }} {...props} />
     ),
     tr: ({ node, ...props }) => (
-      <tr className="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors" {...props} />
+      <tr className="hover:bg-slate-50/50 transition-colors" {...props} />
     ),
     th: ({ node, ...props }) => (
-      <th className="px-3.5 py-2.5 text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400" {...props} />
+      <th className="px-3.5 py-2.5 text-xs font-semibold uppercase tracking-wider text-black" style={{ color: '#000000' }} {...props} />
     ),
     td: ({ node, ...props }) => (
-      <td className="px-3.5 py-2.5 text-[14px]" {...props} />
+      <td className="px-3.5 py-2.5 text-[14px] text-black" style={{ color: '#000000' }} {...props} />
     ),
 
     // Horizontal Rule
     hr: ({ node, ...props }) => (
-      <hr className="my-5 border-0 border-t border-slate-200 dark:border-slate-800" {...props} />
+      <hr className="my-5 border-0 border-t border-slate-200" {...props} />
     ),
 
     // Links
     a: ({ node, ...props }) => (
       <a
-        className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 font-medium underline underline-offset-3 transition-colors"
+        className="text-indigo-600 hover:text-indigo-700 font-medium underline underline-offset-3 transition-colors"
         target="_blank"
         rel="noopener noreferrer"
         {...props}
@@ -320,19 +334,19 @@ const TutorMarkdown = memo(({ content, isStreaming = false, className = '' }) =>
     span: ({ node, className: spanClass, children, ...props }) => {
       if (spanClass?.includes('katex-display')) {
         return (
-          <span className="block my-3 py-2 px-3 rounded-xl bg-slate-50/90 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 overflow-x-auto no-scrollbar text-center shadow-xs">
-            <span className={spanClass} {...props}>
+          <span className="block my-3 py-2 px-3 rounded-xl bg-slate-50/90 border border-slate-200/80 overflow-x-auto no-scrollbar text-center shadow-xs" style={{ color: '#000000' }}>
+            <span className={spanClass} style={{ color: '#000000' }} {...props}>
               {children}
             </span>
           </span>
         );
       }
-      return <span className={spanClass} {...props}>{children}</span>;
+      return <span className={spanClass} style={{ color: '#000000' }} {...props}>{children}</span>;
     },
   }), []);
 
   return (
-    <div className={`tutor-markdown ${className}`}>
+    <div className={`tutor-markdown text-black ${className}`} style={{ color: '#000000', colorScheme: 'light' }}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm, remarkMath]}
         rehypePlugins={[[rehypeKatex, { strict: false, throwOnError: false, errorColor: '#e11d48' }]]}
