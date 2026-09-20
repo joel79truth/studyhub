@@ -16,6 +16,13 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const { createClient } = require('@supabase/supabase-js');
+const { setGlobalDispatcher, Agent } = require('undici');
+
+setGlobalDispatcher(new Agent({
+  connect: { timeout: 600000 },
+  headersTimeout: 600000,
+  bodyTimeout: 600000,
+}));
 
 // Load .env
 const envPath = path.resolve(__dirname, '..', '.env');
@@ -109,50 +116,28 @@ async function run() {
   const storageFileName = `studyhub-v${versionName}.apk`;
   console.log(`\n⏳ Uploading APK to Supabase Storage bucket "${bucketName}" as "${storageFileName}"...`);
 
-  const axios = require('axios');
-  const https = require('https');
-  const uploadUrl = `${SUPABASE_URL.replace(/\/$/, '')}/storage/v1/object/${bucketName}/${storageFileName}`;
-  const httpsAgent = new https.Agent({ keepAlive: true, timeout: 600000 });
-  
-  let uploaded = false;
-  for (let attempt = 1; attempt <= 3; attempt++) {
-    try {
-      console.log(`⏳ Upload attempt ${attempt}/3 starting stream...`);
-      const stream = fs.createReadStream(resolvedApkPath);
-      await axios.post(uploadUrl, stream, {
-        headers: {
-          'Authorization': `Bearer ${SUPABASE_KEY}`,
-          'apikey': SUPABASE_KEY,
-          'Content-Type': 'application/vnd.android.package-archive',
-          'Content-Length': fileSize,
-          'x-upsert': 'true',
-        },
-        httpsAgent,
-        maxContentLength: Infinity,
-        maxBodyLength: Infinity,
-        timeout: 600000,
-        onUploadProgress: (progressEvent) => {
-          if (progressEvent.total) {
-            const pct = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-            process.stdout.write(`\r[Upload] ${pct}% (${(progressEvent.loaded / (1024 * 1024)).toFixed(1)} MB / ${(progressEvent.total / (1024 * 1024)).toFixed(1)} MB)`);
-          }
-        },
-      });
-      uploaded = true;
-      console.log('\n✅ APK uploaded successfully via Supabase Storage REST endpoint.');
-      break;
-    } catch (err) {
-      console.log('');
-      const errMsg = err.response?.data ? JSON.stringify(err.response.data) : err.message;
-      console.error(`❌ Upload attempt ${attempt} failed: ${errMsg}`);
-      if (attempt === 3) {
-        console.error('All upload attempts exhausted.');
-        process.exit(1);
-      }
-      console.log('Retrying in 2 seconds...');
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-    }
+  const { data: signData, error: signErr } = await supabase.storage
+    .from(bucketName)
+    .createSignedUploadUrl(storageFileName, { upsert: true });
+
+  if (signErr) {
+    console.error('❌ Failed to generate signed upload URL:', signErr.message || signErr);
+    process.exit(1);
   }
+
+  const { data: uploadData, error: uploadErr } = await supabase.storage
+    .from(bucketName)
+    .uploadToSignedUrl(storageFileName, signData.token, fileBuffer, {
+      contentType: 'application/vnd.android.package-archive',
+      upsert: true,
+    });
+
+  if (uploadErr) {
+    console.error('❌ Failed to upload APK to signed URL:', uploadErr.message || uploadErr);
+    process.exit(1);
+  }
+
+  console.log('\n✅ APK uploaded successfully to Supabase Storage.');
 
   console.log('\n⏳ Registering update in "app_updates" table...');
   const { data, error: dbError } = await supabase

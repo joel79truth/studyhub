@@ -74,6 +74,7 @@ function App() {
             <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
             <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
             <Route path="/Request" element={<ProtectedRoute><Request /></ProtectedRoute>} />
+            <Route path="/request" element={<ProtectedRoute><Request /></ProtectedRoute>} />
             <Route path="/programs" element={<ProtectedRoute><Programs /></ProtectedRoute>} />
             <Route path="/program-detail" element={<ProtectedRoute><ProgramDetail /></ProtectedRoute>} />
             <Route path="/program-detail/:program" element={<ProtectedRoute><ProgramDetail /></ProtectedRoute>} />

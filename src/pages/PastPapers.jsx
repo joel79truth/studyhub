@@ -211,10 +211,19 @@ async function writeWithOfflineFallback(fn, queueItem) {
 }
 
 // ── Data layer ────────────────────────────────────────────────
-async function fetchUserProgramId(userId) {
+async function fetchUserAcademicProfile(userId) {
   if (!userId) return null
-  const { data, error } = await supabase.from('profiles').select('program').eq('id', userId).single()
-  if (error) throw error; return data?.program ?? null
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('program, year_of_study, semester')
+    .eq('id', userId)
+    .single()
+  if (error) throw error
+  return {
+    program: data?.program ?? null,
+    year: data?.year_of_study != null ? Number(data.year_of_study) : null,
+    semester: data?.semester != null ? Number(data.semester) : null,
+  }
 }
 async function fetchProgramIdByName(programName) {
   if (!programName) return null
@@ -225,9 +234,16 @@ async function fetchAllPrograms() {
   const { data, error } = await supabase.from('programs').select('*').order('name')
   if (error) throw error; return data || []
 }
-async function fetchCoursesForProgram(programId) {
+async function fetchCoursesForProgram(programId, year = null, semester = null) {
   if (!programId) return []
-  const { data, error } = await supabase.from('courses').select('*').eq('program_id', programId)
+  let query = supabase.from('courses').select('*').eq('program_id', programId)
+  if (semester != null && !isNaN(semester)) {
+    query = query.eq('semester', semester)
+  }
+  if (year != null && !isNaN(year)) {
+    query = query.eq('year', year)
+  }
+  const { data, error } = await query
     .order('year', { ascending: true }).order('semester', { ascending: true })
   if (error) throw error; return data || []
 }
@@ -1338,11 +1354,6 @@ function ActionSheetContent({
             <span className="text-xs text-gray-600 font-semibold flex items-center gap-1">
               <Tag className="w-3 h-3" /> {question.topic}
             </span>
-            {question.needsReview && (
-              <span title="Our team is verifying this question." className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-600 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full cursor-help">
-                <ShieldAlert className="w-3 h-3" /> Under review
-              </span>
-            )}
           </div>
           {/* Action row — HIERARCHY FIX: Mark Done is now the primary, solid action;
               Save and Report are secondary/ghost. A first-time user shouldn't have to
@@ -1706,11 +1717,6 @@ const PaperSubItem = memo(({ label, text, marks, imageUrl, indent, onAskAi, isSa
     <div className="flex items-center justify-between mt-1.5">
       <div className="flex items-center gap-2 flex-wrap">
         {marks != null && <span className="text-sm text-gray-500 font-medium">({marks} marks)</span>}
-        {needsReview && (
-          <span title="Under review — use caution." className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-600 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded-full cursor-help">
-            <ShieldAlert className="w-3 h-3" /> Under review
-          </span>
-        )}
       </div>
       {/* Condensed to two actions only — bookmark + Ask AI */}
       <div className="flex items-center gap-1 flex-shrink-0">
@@ -1737,7 +1743,6 @@ const PaperQuestionBlock = memo(({ group, onOpenQuestion, savedIds, onToggleSave
   const singleQuestion = group.items[0]
   const inline = !hasSubParts ? parseInlineSubParts(singleQuestion?.text) : null
   const leadingStem = hasSubParts ? extractLeadingStem(group.items[0]?.text) : null
-  const groupNeedsReview = group.items.some(q => q.needsReview)
 
   return (
     <div
@@ -1767,11 +1772,6 @@ const PaperQuestionBlock = memo(({ group, onOpenQuestion, savedIds, onToggleSave
             <button onClick={() => onOpenQuestion(singleQuestion)} className="flex items-center gap-1 px-2.5 h-9 rounded-full bg-indigo-50 text-indigo-600 hover:bg-indigo-100 active:scale-90 transition-all text-xs font-semibold">
               <Sparkles className="w-3 h-3" /> Ask AI
             </button>
-            {groupNeedsReview && (
-              <span title="Under review." className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-600 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded-full cursor-help">
-                <ShieldAlert className="w-3 h-3" /> Under review
-              </span>
-            )}
           </div>
         </div>
       ) : (
@@ -2000,13 +2000,96 @@ export default function PastPapers() {
     }
   }, [deferredSearch])
 
+  const isImmersiveRef = useRef(false)
+  const [isImmersive, setIsImmersive] = useState(false)
+  const lastScrollY = useRef(0)
+  const scrollAccumulator = useRef(0)
+  const scrollContainerRef = useRef(null)
+
+  const handleScroll = useCallback((e) => {
+    if (currentView !== 'questions') {
+      if (isImmersiveRef.current) {
+        isImmersiveRef.current = false
+        setIsImmersive(false)
+      }
+      return
+    }
+
+    const currentY = e.currentTarget.scrollTop
+    const diff = currentY - lastScrollY.current
+
+    // Always restore chrome when near the top
+    if (currentY <= 60) {
+      if (isImmersiveRef.current) {
+        isImmersiveRef.current = false
+        setIsImmersive(false)
+      }
+      scrollAccumulator.current = 0
+      lastScrollY.current = currentY
+      return
+    }
+
+    if (diff > 0) {
+      // Deliberate downward scroll
+      scrollAccumulator.current = Math.max(0, scrollAccumulator.current) + diff
+      if (scrollAccumulator.current > 40 && !isImmersiveRef.current) {
+        isImmersiveRef.current = true
+        setIsImmersive(true)
+        scrollAccumulator.current = 0
+      }
+    } else if (diff < 0) {
+      // Deliberate upward scroll
+      scrollAccumulator.current = Math.min(0, scrollAccumulator.current) + diff
+      if (scrollAccumulator.current < -25 && isImmersiveRef.current) {
+        isImmersiveRef.current = false
+        setIsImmersive(false)
+        scrollAccumulator.current = 0
+      }
+    }
+
+    lastScrollY.current = currentY
+  }, [currentView])
+
+  useEffect(() => {
+    if (currentView !== 'questions') {
+      isImmersiveRef.current = false
+      setIsImmersive(false)
+    }
+  }, [currentView])
+
   // Queries
-  const { data: myProgramName } = useQuery({ queryKey: ['myProgramName', user?.id], queryFn: () => fetchUserProgramId(user?.id), enabled: !!user?.id })
-  const { data: myProgramId } = useQuery({ queryKey: ['myProgramId', myProgramName], queryFn: () => fetchProgramIdByName(myProgramName), enabled: !!myProgramName })
-  const { data: myCourses = [], isLoading: myCoursesLoading } = useQuery({ queryKey: ['myCourses', myProgramId], queryFn: () => fetchCoursesForProgram(myProgramId), enabled: !!myProgramId })
+  const { data: myAcademicProfile } = useQuery({
+    queryKey: ['myAcademicProfile', user?.id],
+    queryFn: () => fetchUserAcademicProfile(user?.id),
+    enabled: !!user?.id,
+  })
+  const myProgramName = myAcademicProfile?.program
+  const myYear = myAcademicProfile?.year
+  const mySemester = myAcademicProfile?.semester
+
+  const { data: myProgramId } = useQuery({
+    queryKey: ['myProgramId', myProgramName],
+    queryFn: () => fetchProgramIdByName(myProgramName),
+    enabled: !!myProgramName,
+  })
+
+  const { data: myCourses = [], isLoading: myCoursesLoading } = useQuery({
+    queryKey: ['myCourses', myProgramId, myYear, mySemester],
+    queryFn: async () => {
+      // Fetch courses strictly matching user's current semester and year
+      const courses = await fetchCoursesForProgram(myProgramId, myYear, mySemester)
+      // Fallback to semester-only if year was unassigned in courses table
+      if (!courses.length && myYear != null && mySemester != null) {
+        const semOnly = await fetchCoursesForProgram(myProgramId, null, mySemester)
+        if (semOnly.length) return semOnly
+      }
+      return courses
+    },
+    enabled: !!myProgramId,
+  })
   const myCourseIds = useMemo(() => myCourses.map(c => c.id), [myCourses])
   const myCoursesResolving =
-    (!!user?.id && myProgramName === undefined) ||
+    (!!user?.id && myAcademicProfile === undefined) ||
     (!!myProgramName && myProgramId === undefined) ||
     (!!myProgramId && myCoursesLoading)
 
@@ -2178,10 +2261,18 @@ export default function PastPapers() {
   return (
     <MotionContext.Provider value={reduceMotion}>
       <style>{ANIM_CSS}</style>
-      <div className="h-screen overflow-y-auto bg-white pb-20 lg:pb-0 w-full no-scrollbar">
+      <div
+        ref={scrollContainerRef}
+        onScroll={handleScroll}
+        className="h-screen overflow-y-auto bg-white pb-20 lg:pb-0 w-full no-scrollbar"
+      >
 
         {/* Header */}
-        <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <header
+          className={`sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-transform duration-300 ease-out will-change-transform ${
+            isImmersive ? '-translate-y-full shadow-none pointer-events-none' : 'translate-y-0 shadow-sm'
+          }`}
+        >
           <div className="px-4 py-3 flex items-center justify-between gap-3">
             <div className="flex items-center gap-3 min-w-0">
               {showBack && (
@@ -2215,6 +2306,23 @@ export default function PastPapers() {
                       {savedQuestionIds.size}
                     </span>
                   )}
+                </button>
+              )}
+              {currentView === 'questions' && (
+                <button
+                  onClick={() => {
+                    isImmersiveRef.current = !isImmersive;
+                    setIsImmersive(prev => !prev);
+                  }}
+                  className={`p-2 rounded-xl border transition-all active:scale-90 flex-shrink-0 ${
+                    isImmersive
+                      ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
+                      : 'bg-white border-gray-200 text-gray-600 hover:border-indigo-300 hover:text-indigo-600'
+                  }`}
+                  title={isImmersive ? 'Exit fullscreen reading mode' : 'Fullscreen reading mode'}
+                  aria-label="Toggle Fullscreen"
+                >
+                  {isImmersive ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
                 </button>
               )}
               <div className="relative">
@@ -2273,7 +2381,16 @@ export default function PastPapers() {
           {currentView === 'my-courses' && !showSaved && (
             <>
               <div className="px-4 flex items-center justify-between">
-                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Your courses</p>
+                <div>
+                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Your courses</p>
+                  {(myYear || mySemester) && (
+                    <span className="inline-flex items-center gap-1 mt-0.5 px-2 py-0.5 bg-indigo-50 text-indigo-700 text-[11px] font-bold rounded-md">
+                      {myYear ? `Year ${myYear}` : ''}
+                      {myYear && mySemester ? ' · ' : ''}
+                      {mySemester ? `Semester ${mySemester}` : ''}
+                    </span>
+                  )}
+                </div>
                 <button onClick={goToBrowsePrograms} className="text-sm font-semibold text-indigo-600 hover:underline h-9 flex items-center">
                   Browse other programs →
                 </button>
@@ -2390,7 +2507,30 @@ export default function PastPapers() {
 
         <OfflineToast visible={showOfflineToast} pendingCount={pendingSyncCount} />
         <MilestoneToast visible={!!milestoneMsg} message={milestoneMsg} />
-        <BottomNav />
+        
+        <div
+          className={`transition-transform duration-300 ease-out will-change-transform ${
+            isImmersive ? 'translate-y-32 pointer-events-none' : 'translate-y-0'
+          }`}
+        >
+          <BottomNav />
+        </div>
+
+        {currentView === 'questions' && isImmersive && (
+          <div className="fixed bottom-6 right-6 z-50 ed-fade-up">
+            <button
+              onClick={() => {
+                isImmersiveRef.current = false;
+                setIsImmersive(false);
+              }}
+              className="flex items-center gap-2 px-4 py-2.5 bg-gray-900/90 hover:bg-black text-white backdrop-blur-md text-xs font-semibold rounded-full shadow-2xl transition-all active:scale-95 border border-white/20"
+              title="Exit fullscreen reading mode"
+            >
+              <Minimize2 className="w-3.5 h-3.5 text-indigo-400" />
+              <span>Exit Fullscreen</span>
+            </button>
+          </div>
+        )}
       </div>
     </MotionContext.Provider>
   )

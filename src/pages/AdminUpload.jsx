@@ -23,10 +23,10 @@ const AdminUpload = () => {
   // Set alongside `error` ONLY when the backend's 400 response for
   // "no valid questions extracted" includes a raw_paper_id — the original
   // image was still saved successfully, so we can offer a one-click
-  // reprocess instead of just showing red text with no next step.
   const [errorRawPaperId, setErrorRawPaperId] = useState(null);
   const [dragOver, setDragOver] = useState(false);
   const fileInputRef = useRef(null);
+  const cameraInputRef = useRef(null);
 
   // reprocess-by-id
   const [existingPaperId, setExistingPaperId] = useState('');
@@ -46,7 +46,19 @@ const AdminUpload = () => {
 const [uploadProgramId, setUploadProgramId] = useState('');
 const [uploadCourse, setUploadCourse] = useState('');
 const [uploadSemester, setUploadSemester] = useState('');
+const [uploadYear, setUploadYear] = useState('');
 const [programs, setPrograms] = useState([]); // [{ id, name }]
+
+// ── PDF upload state ──────────────────────────────────────────────────────────
+const [uploadType, setUploadType] = useState('image'); // 'image' | 'pdf'
+const [pdfFile, setPdfFile] = useState(null);
+const [pdfDragOver, setPdfDragOver] = useState(false);
+const [pdfUploading, setPdfUploading] = useState(false);
+const [pdfUploadStage, setPdfUploadStage] = useState(''); // 'uploading' | 'analyzing' | 'done'
+const [pdfResult, setPdfResult] = useState(null);
+const [pdfError, setPdfError] = useState(null);
+const [pdfErrorRawPaperId, setPdfErrorRawPaperId] = useState(null);
+const pdfFileInputRef = useRef(null);
 
 useEffect(() => {
   fetch(`${BASE_URL}/api/programs`)
@@ -99,39 +111,58 @@ useEffect(() => {
     onUpdate({ status: 'timeout' });
   };
 
-  const handleFileChange = (e) => {
-    const selected = e.target.files[0];
+  const processSelectedFile = async (rawFile) => {
+    if (!rawFile) return;
+    let finalFile = rawFile;
+    // If an image (especially high-res mobile camera photo) exceeds 1.5MB, compress it safely to prevent out-of-memory crash
+    if (rawFile.type?.startsWith('image/') && rawFile.size > 1.5 * 1024 * 1024) {
+      try {
+        const imageCompressionModule = await import('browser-image-compression');
+        const imageCompression = imageCompressionModule.default || imageCompressionModule;
+        const compressedBlob = await imageCompression(rawFile, {
+          maxSizeMB: 1.5,
+          maxWidthOrHeight: 1920,
+          useWebWorker: true,
+          fileType: 'image/jpeg',
+        });
+        finalFile = new File([compressedBlob], (rawFile.name || 'photo.jpg').replace(/\.[^/.]+$/, "") + ".jpg", {
+          type: 'image/jpeg',
+        });
+      } catch (compErr) {
+        console.warn('Image compression fallback:', compErr);
+      }
+    }
+    if (preview) URL.revokeObjectURL(preview);
+    setFile(finalFile);
+    setPreview(URL.createObjectURL(finalFile));
+    setResult(null);
+    setError(null);
+    setErrorRawPaperId(null);
+  };
+
+  const handleFileChange = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const selected = e.target.files?.[0];
     if (selected) {
-      if (preview) URL.revokeObjectURL(preview);
-      setFile(selected);
-      setPreview(URL.createObjectURL(selected));
-      setResult(null);
-      setError(null);
-      setErrorRawPaperId(null);
+      await processSelectedFile(selected);
     }
   };
 
-  const handleDrop = (e) => {
+  const handleDrop = async (e) => {
     e.preventDefault();
     setDragOver(false);
-    const dropped = e.dataTransfer.files[0];
+    const dropped = e.dataTransfer.files?.[0];
     if (dropped && dropped.type.startsWith('image/')) {
-      if (preview) URL.revokeObjectURL(preview);
-      setFile(dropped);
-      setPreview(URL.createObjectURL(dropped));
-      setResult(null);
-      setError(null);
-      setErrorRawPaperId(null);
+      await processSelectedFile(dropped);
     }
   };
 
   const handleCameraCapture = () => {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = 'image/*';
-    input.capture = 'environment';
-    input.onchange = (e) => handleFileChange(e);
-    input.click();
+    if (cameraInputRef.current) {
+      cameraInputRef.current.value = '';
+      cameraInputRef.current.click();
+    }
   };
 
   // ── Poll /api/exam/paper-status/:rawPaperId until done or failed ──
@@ -169,6 +200,7 @@ const handleUploadAndExtract = async () => {
     formData.append('programId', uploadProgramId);
     formData.append('course', uploadCourse.trim());
     formData.append('semester', uploadSemester.trim());
+    if (uploadYear.trim()) formData.append('year', uploadYear.trim());
 
     // ── Step 1: upload file (fast — returns 202 immediately) ──
     setUploadStage('uploading');
@@ -183,11 +215,7 @@ const handleUploadAndExtract = async () => {
     }
 
     const rawPaperId = data.raw_paper_id;
-
-    // Clear the file preview immediately since upload is done
-    setFile(null);
-    setPreview(null);
-    if (fileInputRef.current) fileInputRef.current.value = '';
+    console.log('[AdminUpload] Image uploaded successfully. Raw Paper ID:', rawPaperId);
 
     // ── Step 2: poll for AI extraction completion ──
     setUploadStage('analyzing');
@@ -201,6 +229,10 @@ const handleUploadAndExtract = async () => {
 
     // ── Step 3: done ──
     setUploadStage('done');
+    setFile(null);
+    setPreview(null);
+    if (fileInputRef.current) fileInputRef.current.value = '';
+
     setResult({
       extracted: statusResult.extracted,
       paperId: statusResult.paper_id,
@@ -221,6 +253,104 @@ const handleUploadAndExtract = async () => {
   }
 };
 
+// ── PDF upload handlers ───────────────────────────────────────────────────────
+const handlePdfDrop = (e) => {
+  e.preventDefault();
+  setPdfDragOver(false);
+  const dropped = e.dataTransfer.files?.[0];
+  if (dropped && dropped.type === 'application/pdf') {
+    setPdfFile(dropped);
+    setPdfResult(null);
+    setPdfError(null);
+    setPdfErrorRawPaperId(null);
+  }
+};
+
+const handlePdfFileChange = (e) => {
+  const selected = e.target.files?.[0];
+  if (selected && selected.type === 'application/pdf') {
+    setPdfFile(selected);
+    setPdfResult(null);
+    setPdfError(null);
+    setPdfErrorRawPaperId(null);
+  }
+};
+
+const handlePdfUpload = async () => {
+  if (!pdfFile) return;
+  if (!uploadProgramId || !uploadCourse.trim() || !uploadSemester.trim()) {
+    setPdfError('Program, course, and semester are all required.');
+    setPdfErrorRawPaperId(null);
+    return;
+  }
+  if (pdfFile.size > 10 * 1024 * 1024) {
+    setPdfError('PDF file must be under 10 MB.');
+    return;
+  }
+
+  setPdfUploading(true);
+  setPdfUploadStage('uploading');
+  setPdfError(null);
+  setPdfErrorRawPaperId(null);
+
+  try {
+    console.log(`[AdminUpload] Starting PDF upload: "${pdfFile.name}" (${(pdfFile.size / 1024).toFixed(1)} KB)...`);
+    const headers = await authHeader();
+    const formData = new FormData();
+    formData.append('paper', pdfFile);
+    formData.append('programId', uploadProgramId);
+    formData.append('course', uploadCourse.trim());
+    formData.append('semester', uploadSemester.trim());
+    if (uploadYear.trim()) formData.append('year', uploadYear.trim());
+
+    const res = await fetch(`${BASE_URL}/api/exam/upload-past-paper-pdf`, {
+      method: 'POST', headers, body: formData,
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      const err = new Error(data.error || 'Upload failed');
+      err.rawPaperId = data.raw_paper_id || null;
+      throw err;
+    }
+
+    const rawPaperId = data.raw_paper_id;
+    console.log(`[AdminUpload] PDF accepted. Tracking extraction for paper ID: ${rawPaperId}...`);
+
+    // Poll for AI extraction completion
+    setPdfUploadStage('analyzing');
+    const statusResult = await pollForPaperStatus(rawPaperId);
+
+    if (!statusResult.success) {
+      const err = new Error(statusResult.error);
+      err.rawPaperId = rawPaperId;
+      throw err;
+    }
+
+    console.log('[AdminUpload] PDF extraction complete:', statusResult);
+    setPdfUploadStage('done');
+    setPdfFile(null);
+    if (pdfFileInputRef.current) pdfFileInputRef.current.value = '';
+
+    setPdfResult({
+      extracted: statusResult.extracted,
+      paperId: statusResult.paper_id,
+      rawPaperId,
+      reviewNote: null,
+      documentStatus: 'generating',
+    });
+
+    pollForDocument(rawPaperId, (docState) => {
+      setPdfResult((prev) => (prev ? { ...prev, documentStatus: docState.status, documentUrl: docState.url } : prev));
+    });
+  } catch (err) {
+    console.error('[AdminUpload] PDF upload error:', err);
+    setPdfError(err.message);
+    setPdfErrorRawPaperId(err.rawPaperId || null);
+  } finally {
+    setPdfUploading(false);
+    setPdfUploadStage('');
+  }
+};
 
   const handleProcessExisting = async () => {
     const trimmedId = existingPaperId.trim();
@@ -407,100 +537,213 @@ const handleUploadAndExtract = async () => {
 
       {tab === 'single' && (
         <>
-          {/* ── Upload zone ── Principle 2: guide the moment of intent ── */}
-          <Section title="Upload New Image">
-            <div style={{ display: 'flex', gap: '8px', marginBottom: '14px', flexWrap: 'wrap' }}>
-  <select value={uploadProgramId} onChange={e => setUploadProgramId(e.target.value)} style={{ ...uuidInput, flex: '1 1 140px', fontFamily: 'inherit' }}>
-    <option value="">Program…</option>
-    {programs.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}
-  </select>
-  <input type="text" placeholder="Course name…" value={uploadCourse} onChange={e => setUploadCourse(e.target.value)} style={{ ...uuidInput, flex: '1 1 140px', fontFamily: 'inherit' }} />
-  <input type="text" placeholder="Semester…" value={uploadSemester} onChange={e => setUploadSemester(e.target.value)} style={{ ...uuidInput, flex: '1 1 100px', fontFamily: 'inherit' }} />
-</div>
-            <div
-              onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
-              onDragLeave={() => setDragOver(false)}
-              onDrop={handleDrop}
-              onClick={() => !preview && fileInputRef.current?.click()}
-              style={{
-                border: `2px dashed ${dragOver ? '#2563eb' : preview ? '#d1d5db' : '#d1d5db'}`,
-                borderRadius: '12px',
-                background: dragOver ? '#eff6ff' : preview ? '#fafafa' : '#fafafa',
-                transition: 'all 0.15s ease',
-                cursor: preview ? 'default' : 'pointer',
-                padding: preview ? '16px' : '40px 20px',
-                textAlign: 'center',
-              }}
-            >
-              {!preview ? (
-                /* ── Empty state: guide the user ── */
-                <div>
-                  <div style={{ fontSize: '2rem', marginBottom: '8px' }}>📄</div>
-                  <p style={{ fontWeight: 600, color: '#374151', margin: '0 0 4px' }}>
-                    Drop an image here, or choose one
-                  </p>
-                  <p style={{ fontSize: '0.8rem', color: '#9ca3af', margin: '0 0 16px' }}>
-                    PNG, JPG, WEBP supported
-                  </p>
-                  <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', flexWrap: 'wrap' }}>
-                    <button
-                      onClick={(e) => { e.stopPropagation(); fileInputRef.current?.click(); }}
-                      style={btnPrimary}
-                    >
-                      Choose from Gallery
-                    </button>
-                    <button
-                      onClick={(e) => { e.stopPropagation(); handleCameraCapture(); }}
-                      style={btnSecondary}
-                    >
-                      Take Photo
-                    </button>
+          {/* ── Upload Type Toggle ── */}
+          <div style={{ display: 'flex', gap: '4px', background: '#f3f4f6', borderRadius: '10px', padding: '4px', marginBottom: '16px' }}>
+            {[['image', '🖼️ Image'], ['pdf', '📄 PDF']].map(([key, label]) => (
+              <button
+                key={key}
+                onClick={() => { setUploadType(key); setResult(null); setError(null); setPdfResult(null); setPdfError(null); }}
+                style={{
+                  flex: 1, padding: '8px 16px', border: 'none', borderRadius: '7px',
+                  cursor: 'pointer', fontSize: '0.875rem', fontWeight: 600,
+                  transition: 'all 0.15s ease',
+                  background: uploadType === key ? '#fff' : 'transparent',
+                  color: uploadType === key ? '#111827' : '#6b7280',
+                  boxShadow: uploadType === key ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
+                }}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+
+          {/* ── Shared metadata fields ── */}
+          <div style={{ display: 'flex', gap: '8px', marginBottom: '14px', flexWrap: 'wrap' }}>
+            <select value={uploadProgramId} onChange={e => setUploadProgramId(e.target.value)} style={{ ...uuidInput, flex: '1 1 140px', fontFamily: 'inherit' }}>
+              <option value="">Program…</option>
+              {programs.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}
+            </select>
+            <input type="text" placeholder="Course name…" value={uploadCourse} onChange={e => setUploadCourse(e.target.value)} style={{ ...uuidInput, flex: '1 1 140px', fontFamily: 'inherit' }} />
+            <input type="text" placeholder="Semester…" value={uploadSemester} onChange={e => setUploadSemester(e.target.value)} style={{ ...uuidInput, flex: '1 1 80px', fontFamily: 'inherit' }} />
+            <input type="text" placeholder="Year (optional)…" value={uploadYear} onChange={e => setUploadYear(e.target.value)} style={{ ...uuidInput, flex: '1 1 110px', fontFamily: 'inherit' }} />
+          </div>
+
+          {/* ── IMAGE UPLOAD ── */}
+          {uploadType === 'image' && (
+            <Section title="Upload Exam Image">
+              <div
+                onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+                onDragLeave={() => setDragOver(false)}
+                onDrop={handleDrop}
+                onClick={() => !preview && !uploading && fileInputRef.current?.click()}
+                style={{
+                  border: `2px dashed ${dragOver ? '#2563eb' : preview ? '#d1d5db' : '#d1d5db'}`,
+                  borderRadius: '12px',
+                  background: dragOver ? '#eff6ff' : preview ? '#fafafa' : '#fafafa',
+                  transition: 'all 0.15s ease',
+                  cursor: preview || uploading ? 'default' : 'pointer',
+                  padding: preview || uploading ? '20px' : '40px 20px',
+                  textAlign: 'center',
+                }}
+              >
+                {uploading ? (
+                  <div style={{ padding: '16px 12px', textAlign: 'left', maxWidth: '420px', margin: '0 auto' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
+                      <Spinner />
+                      <span style={{ fontWeight: 700, color: '#1d4ed8', fontSize: '0.95rem' }}>AI Processing Image in Progress</span>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.85rem' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: uploadStage === 'uploading' ? '#2563eb' : '#059669', fontWeight: uploadStage === 'uploading' ? 600 : 400 }}>
+                        <span>{uploadStage === 'uploading' ? '⏳' : '✅'}</span>
+                        <span>Step 1: Upload and store exam image</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: uploadStage === 'analyzing' ? '#2563eb' : uploadStage === 'done' ? '#059669' : '#9ca3af', fontWeight: uploadStage === 'analyzing' ? 600 : 400 }}>
+                        <span>{uploadStage === 'analyzing' ? '🧠' : uploadStage === 'done' ? '✅' : '⚪'}</span>
+                        <span>Step 2: AI reading questions, tables & cropping diagrams...</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: uploadStage === 'done' ? '#059669' : '#9ca3af', fontWeight: uploadStage === 'done' ? 600 : 400 }}>
+                        <span>{uploadStage === 'done' ? '✅' : '⚪'}</span>
+                        <span>Step 3: Storing verified questions in database</span>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              ) : (
-                /* ── Preview: confirm & act ── */
-                <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                  <img
-                    src={preview}
-                    alt="Preview"
-                    style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '8px', flexShrink: 0, border: '1px solid #e5e7eb' }}
-                  />
-                  <div style={{ textAlign: 'left', flex: 1 }}>
-                    <p style={{ fontWeight: 600, color: '#111827', margin: '0 0 2px', fontSize: '0.9rem' }}>
-                      {file?.name}
+                ) : !preview ? (
+                  <div>
+                    <div style={{ fontSize: '2rem', marginBottom: '8px' }}>🖼️</div>
+                    <p style={{ fontWeight: 600, color: '#374151', margin: '0 0 4px' }}>
+                      Drop an image here, or choose one
                     </p>
-                    <p style={{ fontSize: '0.78rem', color: '#9ca3af', margin: '0 0 12px' }}>
-                      {file ? (file.size / 1024).toFixed(0) + ' KB' : ''}
+                    <p style={{ fontSize: '0.8rem', color: '#9ca3af', margin: '0 0 16px' }}>
+                      PNG, JPG, WEBP supported
                     </p>
-                    <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                      <button
-                        onClick={handleUploadAndExtract}
-                        disabled={uploading}
-                        style={{ ...btnPrimary, background: uploading ? '#93c5fd' : '#2563eb', cursor: uploading ? 'not-allowed' : 'pointer' }}
-                      >
-                        {uploading ? (
-                          <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                            <Spinner />
-                            {uploadStage === 'uploading' && 'Uploading file…'}
-                            {uploadStage === 'analyzing' && 'Analysing with AI (may take ~30s)…'}
-                            {uploadStage === 'done' && 'Done!'}
-                            {!uploadStage && 'Processing…'}
-                          </span>
-                        ) : 'Upload & Extract'}
+                    <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                      <button onClick={(e) => { e.stopPropagation(); fileInputRef.current?.click(); }} style={btnPrimary}>
+                        Choose from Gallery
                       </button>
-                      <button
-                        onClick={() => { setFile(null); setPreview(null); if (fileInputRef.current) fileInputRef.current.value = ''; }}
-                        style={btnGhost}
-                      >
-                        Remove
+                      <button onClick={(e) => { e.stopPropagation(); handleCameraCapture(); }} style={btnSecondary}>
+                        Take Photo
                       </button>
                     </div>
                   </div>
-                </div>
-              )}
-            </div>
-            <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFileChange} style={{ display: 'none' }} />
-          </Section>
+                ) : (
+                  <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
+                    <img src={preview} alt="Preview" style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '8px', flexShrink: 0, border: '1px solid #e5e7eb' }} />
+                    <div style={{ textAlign: 'left', flex: 1 }}>
+                      <p style={{ fontWeight: 600, color: '#111827', margin: '0 0 2px', fontSize: '0.9rem' }}>{file?.name}</p>
+                      <p style={{ fontSize: '0.78rem', color: '#9ca3af', margin: '0 0 12px' }}>{file ? (file.size / 1024).toFixed(0) + ' KB' : ''}</p>
+                      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                        <button
+                          onClick={handleUploadAndExtract}
+                          disabled={uploading}
+                          style={{ ...btnPrimary, background: uploading ? '#93c5fd' : '#2563eb', cursor: uploading ? 'not-allowed' : 'pointer' }}
+                        >
+                          Upload & Extract
+                        </button>
+                        <button onClick={() => { setFile(null); setPreview(null); if (fileInputRef.current) fileInputRef.current.value = ''; }} style={btnGhost}>
+                          Remove
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+              <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFileChange} style={{ display: 'none' }} />
+              <input ref={cameraInputRef} type="file" accept="image/*" capture="environment" onChange={handleFileChange} style={{ display: 'none' }} />
+            </Section>
+          )}
+
+          {/* ── PDF UPLOAD ── */}
+          {uploadType === 'pdf' && (
+            <Section title="Upload Exam PDF">
+              <p style={hint}>
+                Upload a past exam paper PDF (digital or scanned, max 10 MB). The AI will process all pages, extract tables, format mathematics, and save questions to the database.
+              </p>
+              <div
+                onDragOver={(e) => { e.preventDefault(); setPdfDragOver(true); }}
+                onDragLeave={() => setPdfDragOver(false)}
+                onDrop={handlePdfDrop}
+                onClick={() => !pdfFile && !pdfUploading && pdfFileInputRef.current?.click()}
+                style={{
+                  border: `2px dashed ${pdfDragOver ? '#7c3aed' : pdfFile ? '#d1d5db' : '#d1d5db'}`,
+                  borderRadius: '12px',
+                  background: pdfDragOver ? '#f5f3ff' : pdfFile ? '#fafafa' : '#fafafa',
+                  transition: 'all 0.15s ease',
+                  cursor: pdfFile || pdfUploading ? 'default' : 'pointer',
+                  padding: pdfFile || pdfUploading ? '20px' : '40px 20px',
+                  textAlign: 'center',
+                }}
+              >
+                {pdfUploading ? (
+                  <div style={{ padding: '16px 12px', textAlign: 'left', maxWidth: '420px', margin: '0 auto' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
+                      <Spinner />
+                      <span style={{ fontWeight: 700, color: '#6d28d9', fontSize: '0.95rem' }}>AI PDF Extraction in Progress</span>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.85rem' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: pdfUploadStage === 'uploading' ? '#7c3aed' : '#059669', fontWeight: pdfUploadStage === 'uploading' ? 600 : 400 }}>
+                        <span>{pdfUploadStage === 'uploading' ? '⏳' : '✅'}</span>
+                        <span>Step 1: Uploading PDF to storage</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: pdfUploadStage === 'analyzing' ? '#7c3aed' : pdfUploadStage === 'done' ? '#059669' : '#9ca3af', fontWeight: pdfUploadStage === 'analyzing' ? 600 : 400 }}>
+                        <span>{pdfUploadStage === 'analyzing' ? '🧠' : pdfUploadStage === 'done' ? '✅' : '⚪'}</span>
+                        <span>Step 2: AI reading all pages & extracting tables (may take ~30-45s)...</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: pdfUploadStage === 'done' ? '#059669' : '#9ca3af', fontWeight: pdfUploadStage === 'done' ? 600 : 400 }}>
+                        <span>{pdfUploadStage === 'done' ? '✅' : '⚪'}</span>
+                        <span>Step 3: Storing verified questions in database</span>
+                      </div>
+                    </div>
+                  </div>
+                ) : !pdfFile ? (
+                  <div>
+                    <div style={{ fontSize: '2.2rem', marginBottom: '8px' }}>📄</div>
+                    <p style={{ fontWeight: 600, color: '#374151', margin: '0 0 4px' }}>
+                      Drop a PDF here, or choose one
+                    </p>
+                    <p style={{ fontSize: '0.8rem', color: '#9ca3af', margin: '0 0 16px' }}>
+                      Digital or scanned PDF · Max 10 MB
+                    </p>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); pdfFileInputRef.current?.click(); }}
+                      style={{ ...btnPrimary, background: '#7c3aed' }}
+                    >
+                      Choose PDF
+                    </button>
+                  </div>
+                ) : (
+                  <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
+                    <div style={{
+                      width: 64, height: 64, borderRadius: '10px', background: '#f5f3ff',
+                      border: '1px solid #ddd6fe', flexShrink: 0,
+                      display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                      fontSize: '1.6rem',
+                    }}>
+                      📄
+                    </div>
+                    <div style={{ textAlign: 'left', flex: 1 }}>
+                      <p style={{ fontWeight: 600, color: '#111827', margin: '0 0 2px', fontSize: '0.9rem', wordBreak: 'break-all' }}>{pdfFile.name}</p>
+                      <p style={{ fontSize: '0.78rem', color: '#9ca3af', margin: '0 0 12px' }}>
+                        {(pdfFile.size / 1024).toFixed(0)} KB · PDF
+                      </p>
+                      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                        <button
+                          onClick={handlePdfUpload}
+                          disabled={pdfUploading}
+                          style={{ ...btnPrimary, background: pdfUploading ? '#c4b5fd' : '#7c3aed', cursor: pdfUploading ? 'not-allowed' : 'pointer' }}
+                        >
+                          Upload & Extract
+                        </button>
+                        <button onClick={() => { setPdfFile(null); if (pdfFileInputRef.current) pdfFileInputRef.current.value = ''; }} style={btnGhost}>
+                          Remove
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+              <input ref={pdfFileInputRef} type="file" accept="application/pdf" onChange={handlePdfFileChange} style={{ display: 'none' }} />
+            </Section>
+          )}
 
           {/* ── Reprocess section ── */}
           <Section title="Reprocess Existing Paper" style={{ marginTop: '16px' }}>
@@ -537,7 +780,7 @@ const handleUploadAndExtract = async () => {
             </div>
           </Section>
 
-          {/* ── Principle 3: confident status messages ── */}
+          {/* ── Status messages ── */}
           {result && <SuccessBanner result={result} onDismiss={() => setResult(null)} />}
           {error && (
             <ErrorBanner
@@ -547,10 +790,22 @@ const handleUploadAndExtract = async () => {
               onReprocess={handleReprocessFromError}
             />
           )}
+          {pdfResult && <SuccessBanner result={pdfResult} onDismiss={() => setPdfResult(null)} />}
+          {pdfError && (
+            <ErrorBanner
+              message={pdfError}
+              onDismiss={() => { setPdfError(null); setPdfErrorRawPaperId(null); }}
+              rawPaperId={pdfErrorRawPaperId}
+              onReprocess={handleReprocessFromError}
+            />
+          )}
         </>
       )}
 
+
+
       {tab === 'batch' && (
+
         <div>
           {/* ── Toolbar ── */}
           <div style={{ display: 'flex', gap: '8px', marginBottom: '16px', flexWrap: 'wrap', alignItems: 'center' }}>

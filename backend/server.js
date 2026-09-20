@@ -100,10 +100,10 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 // ----------------------------------------------------------------------------
 // Gemini model selection
 // ----------------------------------------------------------------------------
-const GEMINI_VISION_PRIMARY = process.env.GEMINI_VISION_PRIMARY || 'gemini-3.6-flash';
-const GEMINI_VISION_FALLBACK = process.env.GEMINI_VISION_FALLBACK || 'gemini-3.5-flash';
-const GEMINI_TEXT_MODEL = process.env.GEMINI_TEXT_MODEL || 'gemini-3.6-flash';
-const GEMINI_TEXT_FALLBACK = process.env.GEMINI_TEXT_FALLBACK || 'gemini-3.5-flash';
+const GEMINI_VISION_PRIMARY = process.env.GEMINI_VISION_PRIMARY || 'gemini-flash-latest';
+const GEMINI_VISION_FALLBACK = process.env.GEMINI_VISION_FALLBACK || 'gemini-3.8-flash';
+const GEMINI_TEXT_MODEL = process.env.GEMINI_TEXT_MODEL || 'gemini-flash-latest';
+const GEMINI_TEXT_FALLBACK = process.env.GEMINI_TEXT_FALLBACK || 'gemini-3.8-flash';
 const GROQ_QUESTION_ACTION_MODEL = process.env.GROQ_QUESTION_ACTION_MODEL || 'openai/gpt-oss-120b';
 const GROQ_SOLVE_MODEL = process.env.GROQ_SOLVE_MODEL || 'openai/gpt-oss-20b';
 // Express app
@@ -607,37 +607,70 @@ Only the JSON object, no other text.`;
 // ============================================================================
 async function cropAndUploadDiagram(imageBuffer, { x, y, width, height }, mimeType, questionId) {
   try {
-    const metadata = await sharp(imageBuffer).metadata();
+    if (!imageBuffer) return null;
 
-    // Add 12% padding on each side so tight Gemini estimates don't clip the diagram
-    const padX = Math.round(width * 0.12);
-    const padY = Math.round(height * 0.12);
+    // Auto-orient based on EXIF so crops align 1:1 with Gemini's right-side-up view
+    const normalizedBuffer = await sharp(imageBuffer).rotate().toBuffer();
+    const metadata = await sharp(normalizedBuffer).metadata();
+    const imgW = metadata.width || 1;
+    const imgH = metadata.height || 1;
 
-    x = Math.max(0, Math.round(x) - padX);
-    y = Math.max(0, Math.round(y) - padY);
-    width  = Math.min(Math.round(width)  + padX * 2, metadata.width  - x);
-    height = Math.min(Math.round(height) + padY * 2, metadata.height - y);
+    // Detect if coordinates are normalized (0-1) or absolute pixels
+    let rawX = Number(x) || 0;
+    let rawY = Number(y) || 0;
+    let rawW = Number(width) || 0;
+    let rawH = Number(height) || 0;
 
-    if (width <= 0 || height <= 0) return null;
+    if (rawX <= 1.0 && rawY <= 1.0 && rawW <= 1.0 && rawH <= 1.0) {
+      // If AI passed xmax/ymax instead of width/height
+      if (rawW > rawX && rawX + rawW > 1.05) rawW = rawW - rawX;
+      if (rawH > rawY && rawY + rawH > 1.05) rawH = rawH - rawY;
 
-    const croppedBuffer = await sharp(imageBuffer)
-      .extract({ left: x, top: y, width, height })
+      rawX = Math.round(rawX * imgW);
+      rawY = Math.round(rawY * imgH);
+      rawW = Math.round(rawW * imgW);
+      rawH = Math.round(rawH * imgH);
+    } else {
+      // Already in pixel scale — check if width/height look like absolute x2/y2 coordinates
+      if (rawW > rawX && rawW > imgW * 0.95 && rawX > 10) rawW = rawW - rawX;
+      if (rawH > rawY && rawH > imgH * 0.95 && rawY > 10) rawH = rawH - rawY;
+    }
+
+    // Add generous 15% padding on each side so tight estimates don't clip diagram labels, axes, and captions
+    const padX = Math.round(Math.max(rawW * 0.15, 12));
+    const padY = Math.round(Math.max(rawH * 0.15, 12));
+
+    const cropX = Math.max(0, rawX - padX);
+    const cropY = Math.max(0, rawY - padY);
+    const cropW = Math.min(rawW + padX * 2, imgW - cropX);
+    const cropH = Math.min(rawH + padY * 2, imgH - cropY);
+
+    if (cropW < 25 || cropH < 25) {
+      console.warn(`⚠️  [crop-diagram] Crop dimensions too small (${cropW}x${cropH}px) for question ${questionId}. Skipping.`);
+      return null;
+    }
+
+    const croppedBuffer = await sharp(normalizedBuffer)
+      .extract({ left: cropX, top: cropY, width: cropW, height: cropH })
+      .png({ quality: 90, compressionLevel: 8 })
       .toBuffer();
 
     const filePath = `diagrams/${questionId}.png`;
+    const bucket = process.env.SUPABASE_BUCKET || 'files';
     const { error } = await supabaseAdmin.storage
-      .from(process.env.SUPABASE_BUCKET || 'files')
+      .from(bucket)
       .upload(filePath, croppedBuffer, { contentType: 'image/png', upsert: true });
 
     if (error) throw error;
 
     const publicUrl = supabaseAdmin.storage
-      .from(process.env.SUPABASE_BUCKET || 'files')
+      .from(bucket)
       .getPublicUrl(filePath).data.publicUrl;
 
+    console.log(`🖼️  [crop-diagram] Cropped diagram for Q ${questionId.slice(0, 8)}... (${cropW}x${cropH}px, bbox: [${cropX}, ${cropY}, ${cropW}, ${cropH}]) -> ${publicUrl}`);
     return publicUrl;
   } catch (err) {
-    console.error('Diagram cropping/upload error:', err);
+    console.error(`❌ [crop-diagram] Diagram cropping error for question ${questionId}:`, err.message);
     return null;
   }
 }
@@ -716,17 +749,8 @@ function wordOverlapRatio(a, b) {
 }
 
 function buildExtractionPrompt(expectedCourseName) {
-  return `You are an exam question extractor for LUANAR (Lilongwe University of Agriculture and Natural Resources) past papers.
-The image is a scanned exam paper page. Extract every question on this page as a JSON array.
-
-═══════════════════════════════════════════════════════
-COORDINATE SYSTEM (read carefully — this is critical)
-═══════════════════════════════════════════════════════
-All bounding boxes use NORMALIZED coordinates relative to the image you see:
-  x=0.0 → left edge,   x=1.0 → right edge
-  y=0.0 → top edge,    y=1.0 → bottom edge
-Example: a box in the top-left quarter = { x: 0.0, y: 0.0, width: 0.5, height: 0.5 }
-All values must be floats in the range [0.0, 1.0]. Never use pixel values.
+  return `You are an expert exam question extractor for LUANAR (Lilongwe University of Agriculture and Natural Resources) past papers.
+The image is a scanned exam paper page. Extract every question on this page faithfully into a JSON array.
 
 ═══════════════════════════════════════════════════════
 COURSE IDENTITY (do not change this)
@@ -736,7 +760,46 @@ You are extracting questions FOR this course. Do not rename or replace it.
 SUBJECT MISMATCH SAFETY CHECK: If the paper is CLEARLY a different subject (e.g. it is obviously Horticulture but filed under Chemistry), set "subject_mismatch": true on every question and put a brief guess in "detected_subject". Otherwise set "subject_mismatch": false and omit "detected_subject".
 
 ═══════════════════════════════════════════════════════
-QUESTION GROUPING RULES (most common failure mode)
+TABLES & TABULAR DATA EXTRACTION (CRITICAL REQUIREMENT)
+═══════════════════════════════════════════════════════
+Exam questions frequently contain data tables, experimental readings, comparisons, and matching tables.
+1. NEVER IGNORE OR SKIP TABLES. Every table present in a question must be faithfully captured.
+2. NEVER FLATTEN TABLES into a single unstructured line of text or comma-separated lists.
+3. NEVER TREAT TABLES AS DIAGRAMS. Data tables are TEXT content, NOT diagrams.
+   Do NOT generate diagram_coordinates for text tables. Tables belong inside the "question" field.
+4. FORMAT EVERY TABLE IN CLEAN GFM (GITHUB-FLAVORED MARKDOWN) TABLE SYNTAX inside the "question" string:
+   Example:
+   | Treatment | Nitrogen (kg/ha) | Grain Yield (t/ha) |
+   | :--- | :--- | :--- |
+   | Control | 0 | 2.1 |
+   | T1 | 50 | 3.8 |
+   | T2 | 100 | 4.6 |
+5. PRESERVE EXACT VALUES: numbers, units, negative signs, decimal points, percentages.
+6. TABLE LABELS: If the table has a caption or title like "Table 1: Soil pH levels across sites", put it directly above the table in bold: **Table 1: Soil pH levels across sites**\\n\\n| ... | ... |
+7. BLANK CELLS OR FILL-IN CELLS: If the table has empty cells for the student to fill in, use \`______\` or \`[ ? ]\` inside the markdown cells.
+8. MULTI-COLUMN MATCHING QUESTIONS: Format as a 2-column markdown table:
+   | Column A | Column B |
+   | :--- | :--- |
+   | (i) Photosynthesis | (a) Mitochondria |
+   | (ii) Cellular Respiration | (b) Chloroplast |
+
+═══════════════════════════════════════════════════════
+COORDINATE SYSTEM FOR DIAGRAMS
+═══════════════════════════════════════════════════════
+Only actual visual graphics are diagrams (graphs, charts, biological drawings, circuits, maps, apparatus, geometric figures).
+All bounding boxes use NORMALIZED coordinates relative to the image you see:
+  x=0.0 → left edge,   x=1.0 → right edge
+  y=0.0 → top edge,    y=1.0 → bottom edge
+IMPORTANT DEFINITIONS:
+  "x": normalized distance from the LEFT edge of the image to the LEFT side of the diagram (0.0 to 1.0)
+  "y": normalized distance from the TOP edge of the image to the TOP side of the diagram (0.0 to 1.0)
+  "width": horizontal span of the diagram (width = xmax - x), NOT the xmax coordinate!
+  "height": vertical span of the diagram (height = ymax - y), NOT the ymax coordinate!
+Example: a diagram spanning from 10% to 60% horizontally and 20% to 50% vertically = { "x": 0.10, "y": 0.20, "width": 0.50, "height": 0.30 }
+CRITICAL: Include the diagram labels, axes, and figure captions (e.g. "Figure 1") within the bounding box so the crop is complete and readable.
+
+═══════════════════════════════════════════════════════
+QUESTION GROUPING RULES
 ═══════════════════════════════════════════════════════
 1. PARENT + PARTS → ONE OBJECT.
    If a question has numbered/lettered sub-parts, e.g.:
@@ -747,43 +810,35 @@ QUESTION GROUPING RULES (most common failure mode)
 
 2. NUMBERED MAIN QUESTIONS → SEPARATE OBJECTS.
    Only split at top-level question numbers (1, 2, 3, Q1, Q2 etc.).
-   Sub-letters (a, b, c) or sub-roman numerals (i, ii, iii) always stay inside
-   their parent question's "question" field.
+   Sub-letters (a, b, c) or sub-roman numerals (i, ii, iii) always stay inside their parent question.
 
 3. TWO-COLUMN LAYOUT.
-   Process the LEFT column top-to-bottom first, then the RIGHT column top-to-bottom.
-   Never interleave lines across columns.
+   Process the LEFT column top-to-bottom first, then the RIGHT column top-to-bottom. Never interleave lines.
 
 ═══════════════════════════════════════════════════════
 DIAGRAM ASSIGNMENT RULES
 ═══════════════════════════════════════════════════════
-1. A diagram belongs to the question whose text is CLOSEST to it AND that makes
-   contextual sense (e.g. a circuit diagram → the question asking about a circuit).
-2. SHARED DIAGRAM: If one diagram is referenced by multiple questions,
-   assign it to the FIRST question that references it. Set "diagram_shared": true
-   on that question. Do NOT duplicate the same diagram_coordinates on multiple questions.
-3. If you are uncertain which question a diagram belongs to, still pick the most
-   likely one and set "diagram_uncertain": true.
-4. diagram_coordinates must tightly enclose ONLY the diagram/figure itself
-   (not the question text beside it). Use normalized coordinates.
+1. A diagram belongs to the question whose text is closest to it and contextually references it.
+2. SHARED DIAGRAM: If one diagram is referenced by multiple questions, assign it to the FIRST question that references it. Set "diagram_shared": true.
+3. If uncertain, pick the most likely question and set "diagram_uncertain": true.
+4. REMINDER: Tables and text lists are NOT diagrams. Only graphical drawings, plots, and figures get diagram_coordinates.
 
 ═══════════════════════════════════════════════════════
 QUESTION TYPE
 ═══════════════════════════════════════════════════════
-- "mcq": has (or can fairly be given) a single correct answer. Aim for ~70% of output.
-- "structured": requires an extended written answer or derivation.
+- "mcq": has (or can fairly be given) a single correct answer.
+- "structured": requires an extended written answer, calculation, or derivation.
 - "diagram": requires drawing, labelling, or the question IS the diagram.
-MCQ OPTIONS: each of option_a..option_d must be SHORT (≤8 words / one line).
+MCQ OPTIONS: each of option_a..option_d must be concise.
 
 ═══════════════════════════════════════════════════════
-MATH & LATEX FORMATTING (output is rendered by KaTeX)
+MATH & LATEX FORMATTING (KaTeX compatible)
 ═══════════════════════════════════════════════════════
 - Inline math: $...$ | Block math: $$...$$ (blank line between consecutive blocks)
 - Units: always \\text{}, e.g. $5\\,\\text{m/s}$
 - Backslash before EVERY command: \\frac, \\sqrt, \\text, \\alpha, \\Delta, \\times
-- Every { must have a matching } in the same field
 - Chemical formulas: LaTeX subscripts e.g. $H_2O$
-- Chemical structures: also provide a "smiles" string
+- Chemical structures: also provide a "smiles" string if applicable
 
 ═══════════════════════════════════════════════════════
 OUTPUT FORMAT
@@ -791,11 +846,11 @@ OUTPUT FORMAT
 Return ONLY a JSON array — no markdown fences, no explanation, no extra text.
 Each element:
 {
-  "question_number": "3" | null,          // as printed, e.g. "1", "Q3", "2b" — top-level only
+  "question_number": "3" | null,
   "question_type": "mcq" | "structured" | "diagram",
-  "question": "...",                      // full text incl. all sub-parts joined by \\n
-  "question_bbox": { x, y, width, height },  // normalized, covers question TEXT only
-  "topic": "Irrigation Methods",
+  "question": "...",                      // full text including markdown tables and sub-parts joined by \\n
+  "question_bbox": { "x": 0.0, "y": 0.0, "width": 1.0, "height": 0.2 },
+  "topic": "Soil Classification",
   "marks": 5 | null,
   "year": 2019 | null,
   "subject_mismatch": false,
@@ -803,35 +858,43 @@ Each element:
 
   // MCQ only:
   "option_a": "...", "option_b": "...", "option_c": "...", "option_d": "...",
-  "answer": "A",   // correct letter
+  "answer": "A",
 
   // Structured/diagram only:
-  "answer": "...",   // model answer
-  "smiles": null,    // SMILES string if chemical structure
+  "answer": "...",
 
   // Diagrams:
   "has_diagram": true | false,
-  "diagram_coordinates": { x, y, width, height } | null,  // normalized, diagram box only
+  "diagram_coordinates": { "x": 0.1, "y": 0.2, "width": 0.5, "height": 0.3 } | null,
   "diagram_uncertain": false,
-  "diagram_shared": false,    // true if shared with other questions
+  "diagram_shared": false,
 
   // Optional MCQ conversion of a structured question:
   "mcq_variant": { "question": "...", "option_a": "...", "option_b": "...", "option_c": "...", "option_d": "...", "answer": "A" } | null
 }`;
 }
 
+
 // ============================================================================
-// CORE EXTRACTION (uses Gemini — Pro-tier by default, see model selection above)
+// CORE EXTRACTION (uses Gemini Vision for images and PDFs)
 // ============================================================================
 
 async function extractQuestionsFromImage(imageBuffer, mimeType, expectedCourseName) {
-  const prompt = buildExtractionPrompt(expectedCourseName);
+  console.log(`\n🖼️  [extract-image] Starting AI vision extraction for course: "${expectedCourseName}"...`);
+  const startTime = Date.now();
 
-  const visionBuffer = await compressImageForVision(imageBuffer);
-  const [origMeta, visionMeta] = await Promise.all([
-    sharp(imageBuffer).metadata(),
-    sharp(visionBuffer).metadata(),
+  // Normalize image with EXIF rotation baked into pixels so coords match 1:1
+  const normalizedBuffer = await sharp(imageBuffer).rotate().toBuffer();
+  const [origMeta, visionBuffer] = await Promise.all([
+    sharp(normalizedBuffer).metadata(),
+    compressImageForVision(normalizedBuffer),
   ]);
+
+  const origW = origMeta.width || 1;
+  const origH = origMeta.height || 1;
+  console.log(`📐 [extract-image] Image dimensions: ${origW}x${origH}px (${(imageBuffer.length / 1024).toFixed(1)} KB)`);
+
+  const prompt = buildExtractionPrompt(expectedCourseName);
   const base64Image = visionBuffer.toString('base64');
 
   const contents = [
@@ -845,46 +908,62 @@ async function extractQuestionsFromImage(imageBuffer, mimeType, expectedCourseNa
   ];
 
   try {
+    console.log(`🤖 [extract-image] Sending image to Gemini (${GEMINI_VISION_PRIMARY})...`);
     const text = await callGeminiWithFallback(
       GEMINI_VISION_PRIMARY,
       contents,
       { label: 'extractQuestionsFromImage' }
     );
 
+    console.log(`📥 [extract-image] AI response received in ${((Date.now() - startTime) / 1000).toFixed(2)}s (${text.length} chars)`);
+
     let cleaned = text.replace(/```json|```/g, '').trim();
     let rawQuestions;
     try {
       rawQuestions = JSON5.parse(cleaned);
     } catch (parseErr) {
+      console.error('❌ [extract-image] Failed to parse JSON from Gemini:', cleaned.slice(0, 300));
       throw new Error('Invalid JSON from Gemini: ' + parseErr.message);
     }
 
-    // Convert normalized 0–1 coordinates → absolute pixels of the ORIGINAL image
-    const origW = origMeta.width  || 1;
-    const origH = origMeta.height || 1;
+    if (!Array.isArray(rawQuestions)) {
+      throw new Error('Gemini response was not a JSON array of questions.');
+    }
 
+    // Convert normalized coordinates → absolute pixels of the normalized image
     for (const q of rawQuestions) {
       if (q.diagram_coordinates) {
         const dc = q.diagram_coordinates;
-        // Guard: if values look like pixels already (>1), leave them alone
-        const isNormalized = dc.x <= 1.0 && dc.y <= 1.0 && dc.width <= 1.0 && dc.height <= 1.0;
+        let nx = Number(dc.x) || 0;
+        let ny = Number(dc.y) || 0;
+        let nw = Number(dc.width) || 0;
+        let nh = Number(dc.height) || 0;
+
+        const isNormalized = nx <= 1.0 && ny <= 1.0 && nw <= 1.0 && nh <= 1.0;
         if (isNormalized) {
+          // If Gemini confused width/height with xmax/ymax coordinates:
+          if (nw > nx && nx + nw > 1.05) nw = Math.max(0.02, nw - nx);
+          if (nh > ny && ny + nh > 1.05) nh = Math.max(0.02, nh - ny);
+
+          // Clamp within bounds [0, 1]
+          nx = Math.max(0, Math.min(0.98, nx));
+          ny = Math.max(0, Math.min(0.98, ny));
+          nw = Math.max(0.02, Math.min(1.0 - nx, nw));
+          nh = Math.max(0.02, Math.min(1.0 - ny, nh));
+
           q.diagram_coordinates = {
-            x:      Math.round((dc.x      || 0) * origW),
-            y:      Math.round((dc.y      || 0) * origH),
-            width:  Math.round((dc.width  || 0) * origW),
-            height: Math.round((dc.height || 0) * origH),
+            x:      Math.round(nx * origW),
+            y:      Math.round(ny * origH),
+            width:  Math.round(nw * origW),
+            height: Math.round(nh * origH),
           };
         } else {
-          // Legacy pixel path (shouldn't happen with new prompt, but safe fallback)
-          const scaleX = visionMeta.width  ? origW / visionMeta.width  : 1;
-          const scaleY = visionMeta.height ? origH / visionMeta.height : 1;
-          q.diagram_coordinates = {
-            x:      Math.round((dc.x      || 0) * scaleX),
-            y:      Math.round((dc.y      || 0) * scaleY),
-            width:  Math.round((dc.width  || 0) * scaleX),
-            height: Math.round((dc.height || 0) * scaleY),
-          };
+          // Absolute pixels: clamp to bounds
+          const pxX = Math.max(0, Math.min(origW - 10, nx));
+          const pxY = Math.max(0, Math.min(origH - 10, ny));
+          const pxW = Math.max(10, Math.min(origW - pxX, nw));
+          const pxH = Math.max(10, Math.min(origH - pxY, nh));
+          q.diagram_coordinates = { x: pxX, y: pxY, width: pxW, height: pxH };
         }
       }
     }
@@ -906,11 +985,246 @@ async function extractQuestionsFromImage(imageBuffer, mimeType, expectedCourseNa
       }
     }
 
+    const tablesCount = validQuestions.filter(q => q.question && q.question.includes('|') && q.question.includes('---')).length;
+    const diagramsCount = validQuestions.filter(q => q.has_diagram && q.diagram_coordinates).length;
+    console.log(`✅ [extract-image] Successfully extracted ${validQuestions.length} questions (${tablesCount} with tables, ${diagramsCount} with diagrams)`);
+
     return validQuestions;
   } catch (err) {
-    console.error('Gemini extraction error:', err);
+    console.error('❌ [extract-image] Gemini extraction error:', err.message);
     throw err;
   }
+}
+
+// ============================================================================
+// PDF EXTRACTION (Multimodal Gemini Vision + fallback text processing)
+// ============================================================================
+
+function buildPdfExtractionPrompt(expectedCourseName, yearHint, extractedTextSummary = '') {
+  return `You are an expert exam question extractor for LUANAR (Lilongwe University of Agriculture and Natural Resources) past papers.
+The attached document is a past exam paper in PDF format (may be digital or scanned).
+Extract EVERY exam question on ALL pages faithfully into a JSON array.
+
+═══════════════════════════════════════════════════════
+COURSE IDENTITY (do not change this)
+═══════════════════════════════════════════════════════
+This paper is filed under: "${expectedCourseName}"
+You are extracting questions FOR this course. Do not rename or replace it.
+SUBJECT MISMATCH SAFETY CHECK: If the paper is CLEARLY a different subject set "subject_mismatch": true on every question. Otherwise set "subject_mismatch": false.
+${yearHint ? `The paper year is: ${yearHint}. Use ${yearHint} as the "year" field for all questions unless the paper explicitly states a different academic year.` : ''}
+
+═══════════════════════════════════════════════════════
+TABLES & TABULAR DATA EXTRACTION (CRITICAL REQUIREMENT)
+═══════════════════════════════════════════════════════
+Exam questions frequently contain data tables, experimental readings, comparisons, and matching tables.
+1. NEVER IGNORE OR SKIP TABLES. Every table present in a question must be faithfully captured.
+2. NEVER FLATTEN TABLES into an unreadable single line or comma-separated list.
+3. FORMAT EVERY TABLE IN CLEAN GFM (GITHUB-FLAVORED MARKDOWN) TABLE SYNTAX inside the "question" string (or "answer" string if part of an answer):
+   Example:
+   | Treatment | Nitrogen (kg/ha) | Grain Yield (t/ha) |
+   | :--- | :--- | :--- |
+   | Control | 0 | 2.1 |
+   | T1 | 50 | 3.8 |
+   | T2 | 100 | 4.6 |
+4. PRESERVE EXACT VALUES: all numbers, units, negative signs, decimal points, percentages.
+5. TABLE LABELS: If the table has a caption or title like "Table 1: Soil pH levels across sites", put it directly above the table in bold: **Table 1: Soil pH levels across sites**\\n\\n| ... | ... |
+6. BLANK CELLS OR FILL-IN CELLS: If the table has empty cells for the student to fill in, use \`______\` or \`[ ? ]\` inside the markdown cells.
+7. MULTI-COLUMN MATCHING QUESTIONS: Format as a 2-column markdown table:
+   | Column A | Column B |
+   | :--- | :--- |
+   | (i) Photosynthesis | (a) Mitochondria |
+   | (ii) Cellular Respiration | (b) Chloroplast |
+
+═══════════════════════════════════════════════════════
+QUESTION GROUPING RULES
+═══════════════════════════════════════════════════════
+1. PARENT + PARTS → ONE OBJECT. If a question has sub-parts (a), (b), (c) etc., combine the parent stem AND all sub-parts into a SINGLE "question" string using \\n between parts.
+2. NUMBERED MAIN QUESTIONS → SEPARATE OBJECTS. Only split at top-level numbers (1, 2, 3, Q1, Q2 etc.).
+3. TWO-COLUMN LAYOUT: process left column first, then right column.
+
+═══════════════════════════════════════════════════════
+QUESTION TYPE
+═══════════════════════════════════════════════════════
+- "mcq": has (or can fairly be given) a single correct answer.
+- "structured": requires an extended written answer, calculation, or derivation.
+- "diagram": requires drawing, labelling, or the question IS a diagram.
+MCQ OPTIONS: each of option_a..option_d must be concise.
+
+═══════════════════════════════════════════════════════
+MATH & LATEX FORMATTING (KaTeX compatible)
+═══════════════════════════════════════════════════════
+- Inline math: $...$ | Block math: $$...$$
+- Units: always \\text{}, e.g. $5\\,\\text{m/s}$
+- Backslash before EVERY command: \\frac, \\sqrt, \\text, \\alpha, \\Delta, \\times
+- Chemical formulas: LaTeX subscripts e.g. $H_2O$
+
+═══════════════════════════════════════════════════════
+OUTPUT FORMAT
+═══════════════════════════════════════════════════════
+Return ONLY a JSON array — no markdown fences, no explanation, no extra text.
+Each element:
+{
+  "question_number": "3" | null,
+  "question_type": "mcq" | "structured" | "diagram",
+  "question": "...",                      // full text including markdown tables and sub-parts joined by \\n
+  "topic": "Agricultural Economics",
+  "marks": 5 | null,
+  "year": ${yearHint || 'null'},
+  "subject_mismatch": false,
+
+  // MCQ only:
+  "option_a": "...", "option_b": "...", "option_c": "...", "option_d": "...",
+  "answer": "A",
+
+  // Structured/diagram only:
+  "answer": "...",
+
+  // Note for PDF path:
+  "has_diagram": false,
+  "diagram_coordinates": null
+}
+${extractedTextSummary ? `\n═══════════════════════════════════════════════════════\nTEXT SUMMARY EXTRACTED FROM PDF (reference):\n═══════════════════════════════════════════════════════\n${extractedTextSummary}` : ''}`;
+}
+
+async function extractQuestionsFromPDF(pdfBuffer, expectedCourseName, yearHint) {
+  console.log(`\n📄 [extract-pdf] Starting extraction for "${expectedCourseName}" (${(pdfBuffer.length / 1024).toFixed(1)} KB)...`);
+  const startTime = Date.now();
+
+  // Step 1: Run pdf-parse to inspect embedded text & page count
+  let pdfText = '';
+  let numPages = 1;
+  try {
+    const pdfParse = require('pdf-parse');
+    const pdfData = await pdfParse(pdfBuffer);
+    pdfText = (pdfData.text || '').trim();
+    numPages = pdfData.numpages || 1;
+  } catch (parseErr) {
+    console.warn(`⚠️  [extract-pdf] pdf-parse warning: ${parseErr.message}`);
+  }
+
+  // Step 2: Intelligent PDF Content Detection
+  // If the document has substantial extractable text per page, it is a Digital Text PDF.
+  // If it has 0 or very few characters, it is a Scanned / Image-based PDF (photos of pages).
+  const charsPerPage = numPages > 0 ? Math.round(pdfText.length / numPages) : 0;
+  const isDigitalTextPdf = pdfText.length >= 300 || (numPages > 0 && charsPerPage >= 80);
+
+  let rawAiResponse = null;
+  let extractionMode = '';
+
+  if (isDigitalTextPdf) {
+    // ── PATH A: DIGITAL TEXT PDF (Fast Text Model) ──
+    extractionMode = 'DIGITAL TEXT';
+    console.log(`📑 [extract-pdf] Detected: DIGITAL TEXT PDF (${pdfText.length} chars across ${numPages} pages, ~${charsPerPage} chars/page)`);
+    console.log(`⚡ [extract-pdf] Routing to fast Text AI Pipeline (${GEMINI_TEXT_MODEL})...`);
+
+    const prompt = buildPdfExtractionPrompt(expectedCourseName, yearHint, pdfText);
+    try {
+      rawAiResponse = await callGeminiWithFallback(
+        GEMINI_TEXT_MODEL,
+        [{ text: prompt }],
+        { label: 'extractQuestionsFromPDF:text' }
+      );
+    } catch (textErr) {
+      console.warn(`⚠️  [extract-pdf] Text model extraction failed (${textErr.message}). Falling back to Multimodal Vision...`);
+      // Fallback to Multimodal Vision if text call fails
+      const pdfBase64 = pdfBuffer.toString('base64');
+      rawAiResponse = await callGeminiWithFallback(
+        GEMINI_VISION_PRIMARY,
+        [
+          { text: prompt },
+          { inlineData: { mimeType: 'application/pdf', data: pdfBase64 } }
+        ],
+        { label: 'extractQuestionsFromPDF:vision-fallback' }
+      );
+    }
+  } else {
+    // ── PATH B: SCANNED / IMAGE-BASED PDF (Multimodal Vision Engine) ──
+    extractionMode = 'SCANNED / IMAGE-BASED';
+    console.log(`📑 [extract-pdf] Detected: SCANNED / IMAGE-BASED PDF (only ${pdfText.length} text chars in ${numPages} pages)`);
+    console.log(`👁️  [extract-pdf] Routing to Multimodal Document Vision Engine (${GEMINI_VISION_PRIMARY}) for visual page OCR...`);
+
+    const prompt = buildPdfExtractionPrompt(expectedCourseName, yearHint, pdfText.length > 50 ? pdfText : '');
+    const pdfBase64 = pdfBuffer.toString('base64');
+
+    const multimodalContents = [
+      { text: prompt },
+      {
+        inlineData: {
+          mimeType: 'application/pdf',
+          data: pdfBase64,
+        },
+      },
+    ];
+
+    try {
+      rawAiResponse = await callGeminiWithFallback(
+        GEMINI_VISION_PRIMARY,
+        multimodalContents,
+        { label: 'extractQuestionsFromPDF:multimodal' }
+      );
+    } catch (multimodalErr) {
+      console.warn(`⚠️  [extract-pdf] Multimodal PDF call failed (${multimodalErr.message}).`);
+      if (pdfText.length > 80) {
+        console.log(`🔄 [extract-pdf] Trying text-fallback with ${pdfText.length} characters...`);
+        rawAiResponse = await callGeminiWithFallback(
+          GEMINI_TEXT_MODEL,
+          [{ text: prompt }],
+          { label: 'extractQuestionsFromPDF:text-fallback' }
+        );
+      } else {
+        throw new Error(`Failed to extract from PDF: ${multimodalErr.message}`);
+      }
+    }
+  }
+
+  console.log(`📥 [extract-pdf] AI response received in ${((Date.now() - startTime) / 1000).toFixed(2)}s (${rawAiResponse.length} chars)`);
+
+  // Step 3: Parse and Validate Questions
+  let cleaned = rawAiResponse.replace(/```json|```/g, '').trim();
+  let rawQuestions;
+  try {
+    rawQuestions = JSON5.parse(cleaned);
+  } catch (parseErr) {
+    console.error('❌ [extract-pdf] JSON parse error on AI response snippet:', cleaned.slice(0, 300));
+    throw new Error('Invalid JSON from Gemini (PDF extraction): ' + parseErr.message);
+  }
+
+  if (!Array.isArray(rawQuestions)) {
+    throw new Error('Gemini returned non-array response for PDF extraction.');
+  }
+
+  const normalized = rawQuestions.map(normalizeQuestion).map(sanitizeQuestionFields);
+  const validQuestions = normalized.filter(isValidQuestion);
+
+  for (const q of validQuestions) {
+    q._needsReview = !!q.subject_mismatch;
+    if (yearHint && !q.year) {
+      q.year = parseInt(yearHint, 10) || null;
+    }
+  }
+
+  for (let i = 1; i < validQuestions.length; i++) {
+    const overlap = wordOverlapRatio(validQuestions[i - 1].question, validQuestions[i].question);
+    if (overlap > 0.6) {
+      validQuestions[i]._needsReview = true;
+      validQuestions[i - 1]._needsReview = true;
+    }
+  }
+
+  const tablesCount = validQuestions.filter(q => q.question && q.question.includes('|') && q.question.includes('---')).length;
+  console.log(`✅ [extract-pdf] Extraction complete (${extractionMode}): ${validQuestions.length} questions parsed (${tablesCount} contain formatted tables).`);
+
+  // Print proof samples directly in terminal logs so admin sees what was extracted
+  if (validQuestions.length > 0) {
+    console.log(`\n📋 [extract-pdf] Sample extracted questions preview:`);
+    validQuestions.slice(0, 3).forEach((q, idx) => {
+      const qSnippet = q.question ? q.question.replace(/\n/g, ' ').slice(0, 110) : '';
+      console.log(`   • Q${q.question_number || idx + 1} [${q.topic || 'General'}] (${q.marks ? q.marks + ' marks' : q.question_type}): "${qSnippet}..."`);
+    });
+    console.log(``);
+  }
+
+  return validQuestions;
 }
 
 // ============================================================================
@@ -989,10 +1303,12 @@ async function insertExtractedQuestions(validQuestions, imageBuffer, mimeType, s
   if (mainError) throw mainError;
 
   // Parallelize all diagram cropping + uploads concurrently for speed
+  // NOTE: imageBuffer is null on the PDF text-extraction path — skip cropping in that case
   await Promise.all(
     diagramTasks.map(async (task) => {
       const row = mainData[task.insertIndex];
       if (!row) return;
+      if (!imageBuffer) return; // PDF path: no image to crop from
       const url = await cropAndUploadDiagram(imageBuffer, task.coordinates, mimeType, row.id);
       if (url) {
         await supabaseAdmin.from('past_papers').update({ image_url: url }).eq('id', row.id);
@@ -1350,7 +1666,7 @@ async function sendNotificationToProgram(program, { topic, course, semester }) {
       course,
       program: cleanProgram,
       semester: String(semester),
-      url: `/requested-notes.html?program=${encodeURIComponent(cleanProgram)}&course=${encodeURIComponent(course)}&semester=${semester}&topic=${encodeURIComponent(topic)}`,
+      url: `/Request?program=${encodeURIComponent(cleanProgram)}&course=${encodeURIComponent(course)}&semester=${semester}&topic=${encodeURIComponent(topic)}`,
     },
   };
   const response = await admin.messaging().sendEachForMulticast(message);
@@ -1361,6 +1677,68 @@ async function sendNotificationToProgram(program, { topic, course, semester }) {
     }
   });
   if (invalid.length) await supabaseAdmin.from('fcm_tokens').delete().in('token', invalid);
+}
+
+async function notifyNewNoteUploaded({ program, courseName, filename, semester, fileId }) {
+  try {
+    const cleanProgram = (program || '').trim();
+    const isBasics = !cleanProgram || /basic/i.test(cleanProgram);
+    let tokensQuery = supabaseAdmin.from('fcm_tokens').select('token, program');
+    if (!isBasics) {
+      tokensQuery = tokensQuery.or(`program.eq."${cleanProgram}",program.ilike."%${cleanProgram}%"`);
+    }
+    const { data: tokens, error } = await tokensQuery;
+    if (error || !tokens?.length) return;
+
+    const tokenList = [...new Set(tokens.map(t => t.token).filter(Boolean))];
+    if (!tokenList.length) return;
+
+    const message = {
+      tokens: tokenList,
+      notification: {
+        title: `📄 New Note: ${filename}`,
+        body: `${courseName || 'New resource'} for ${cleanProgram || 'General'} (Sem ${semester || 1}) has been uploaded.`,
+        imageUrl: 'https://studyhub-backend-opdd.onrender.com/icons/icon-192x192.png',
+      },
+      android: {
+        priority: 'high',
+        notification: {
+          icon: 'ic_stat_studyhub',
+          color: '#064e3b',
+          sound: 'default',
+          channelId: 'studyhub_channel',
+          priority: 'high',
+          defaultSound: true,
+          defaultVibrateTimings: true,
+          visibility: 'public',
+          imageUrl: 'https://studyhub-backend-opdd.onrender.com/icons/icon-192x192.png',
+        },
+      },
+      data: {
+        type: 'new_note',
+        program: cleanProgram,
+        course: courseName || '',
+        semester: String(semester || ''),
+        fileId: String(fileId || ''),
+        filename: filename || '',
+        url: `/viewer?fileId=${encodeURIComponent(fileId || '')}`,
+      },
+    };
+    const response = await admin.messaging().sendEachForMulticast(message);
+    const invalid = [];
+    response.responses.forEach((r, i) => {
+      if (!r.success && (r.error?.code?.includes('registration-token-not-registered') || r.error?.code?.includes('invalid-registration-token'))) {
+        invalid.push(tokenList[i]);
+      }
+    });
+    if (invalid.length) await supabaseAdmin.from('fcm_tokens').delete().in('token', invalid);
+  } catch (err) {
+    console.error('[notifyNewNoteUploaded] error:', err);
+  }
+}
+
+if (typeof storageUpload.setNoteUploadedCallback === 'function') {
+  storageUpload.setNoteUploadedCallback(notifyNewNoteUploaded);
 }
 
 async function notifyNewQuestions(programName, courseName, courseId, extractedCount) {
@@ -1516,7 +1894,7 @@ app.post('/api/exam/upload-past-paper', requireAuth, upload.single('paper'), asy
   try {
     if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
 
-    const { programId, program: programName, course: courseName, semester: semesterRaw } = req.body;
+    const { programId, program: programName, course: courseName, semester: semesterRaw, year: yearRaw } = req.body;
     if ((!programId && !programName) || !courseName || !semesterRaw) {
       return res.status(400).json({ error: 'program, course, and semester are required.' });
     }
@@ -1535,17 +1913,25 @@ app.post('/api/exam/upload-past-paper', requireAuth, upload.single('paper'), asy
     }
     const course = await getOrCreateCourse(courseName, program.id, semester);
 
-    const imageBuffer = req.file.buffer;
-    const mimeType = req.file.mimetype;
+    // Auto-rotate image at upload time so orientation is canonical everywhere
+    const imageBuffer = await sharp(req.file.buffer).rotate().toBuffer();
+    const mimeType = 'image/jpeg'; // canonical format after sharp normalize
 
     const pastPaperId = uuidv4();
     const safeName = req.file.originalname.replace(/\s+/g, '_');
     const storagePath = `past-papers/${pastPaperId}-${safeName}`;
     const bucketName = process.env.STORAGE_BUCKET || 'past-paper';
 
+    console.log(`\n======================================================`);
+    console.log(`📥 [upload-image] Received past paper image upload`);
+    console.log(`   File: ${req.file.originalname} (${(req.file.size / 1024).toFixed(1)} KB)`);
+    console.log(`   Program: ${program.name} | Course: ${course.course_name}`);
+    console.log(`   Semester: ${semester} | Year: ${yearRaw || 'Auto-detect'}`);
+    console.log(`======================================================`);
+
     const { error: storageErr } = await supabaseAdmin.storage
       .from(bucketName)
-      .upload(storagePath, imageBuffer, { contentType: mimeType, upsert: false });
+      .upload(storagePath, imageBuffer, { contentType: 'image/jpeg', upsert: false });
     if (storageErr) throw storageErr;
 
     const { data: publicUrlData } = supabaseAdmin.storage.from(bucketName).getPublicUrl(storagePath);
@@ -1560,7 +1946,7 @@ app.post('/api/exam/upload-past-paper', requireAuth, upload.single('paper'), asy
       storage_path: storagePath,
       file_url: fileUrl,
       thumbnail_url: fileUrl,
-      file_type: mimeType,
+      file_type: req.file.mimetype || 'image/jpeg',
       program: program.name,
       program_id: program.id,
       course: course.course_name,
@@ -1570,7 +1956,6 @@ app.post('/api/exam/upload-past-paper', requireAuth, upload.single('paper'), asy
       processing_status: 'processing',
     }));
     if (insertPaperErr && insertPaperErr.message?.includes('processing_status')) {
-      // New columns not yet added — insert without them
       ({ error: insertPaperErr } = await supabaseAdmin.from('past_paper').insert({
         id: pastPaperId,
         file_name: req.file.originalname,
@@ -1578,7 +1963,7 @@ app.post('/api/exam/upload-past-paper', requireAuth, upload.single('paper'), asy
         storage_path: storagePath,
         file_url: fileUrl,
         thumbnail_url: fileUrl,
-        file_type: mimeType,
+        file_type: req.file.mimetype || 'image/jpeg',
         program: program.name,
         program_id: program.id,
         course: course.course_name,
@@ -1600,13 +1985,17 @@ app.post('/api/exam/upload-past-paper', requireAuth, upload.single('paper'), asy
     // ── Run extraction asynchronously (fire-and-forget) ──
     ;(async () => {
       try {
+        console.log(`🚀 [upload-image] Background extraction started for paper ${pastPaperId}...`);
         const validQuestions = await extractQuestionsFromImage(imageBuffer, mimeType, course.course_name);
 
         if (validQuestions.length === 0) {
-          await supabaseAdmin.from('past_paper').update({
-            processing_status: 'failed',
-            processing_error: 'No valid questions extracted.',
-          }).eq('id', pastPaperId).catch(() => {});
+          console.warn(`⚠️  [upload-image] No valid questions extracted for paper ${pastPaperId}`);
+          try {
+            await supabaseAdmin.from('past_paper').update({
+              processing_status: 'failed',
+              processing_error: 'No valid questions extracted from this page.',
+            }).eq('id', pastPaperId);
+          } catch (e) { /* ignore update error */ }
           return;
         }
 
@@ -1619,33 +2008,204 @@ app.post('/api/exam/upload-past-paper', requireAuth, upload.single('paper'), asy
         );
 
         // Update with new columns, fallback if they don't exist yet
-        const updateResult = await supabaseAdmin.from('past_paper').update({
-          processed: true,
-          processing_status: 'done',
-          paper_id: paperId,
-          extracted_count: extracted,
-        }).eq('id', pastPaperId);
-        if (updateResult.error?.message?.includes('processing_status')) {
-          await supabaseAdmin.from('past_paper').update({ processed: true }).eq('id', pastPaperId);
+        try {
+          const updateResult = await supabaseAdmin.from('past_paper').update({
+            processed: true,
+            processing_status: 'done',
+            paper_id: paperId,
+            extracted_count: extracted,
+          }).eq('id', pastPaperId);
+          if (updateResult.error?.message?.includes('processing_status')) {
+            await supabaseAdmin.from('past_paper').update({ processed: true }).eq('id', pastPaperId);
+          }
+        } catch (updateErr) {
+          console.error('[upload-image] Status update error:', updateErr.message);
         }
 
         generatePaperDocument(pastPaperId).catch((docErr) => {
-          console.error(`[upload-past-paper] background document generation failed for ${pastPaperId}:`, docErr.message);
+          console.error(`[upload-image] Background document generation failed for ${pastPaperId}:`, docErr.message);
         });
         notifyNewQuestions(program.name, course.course_name, course.id, extracted).catch(console.error);
 
-        console.log(`[upload-past-paper] done: ${pastPaperId} → ${extracted} questions extracted`);
+        console.log(`🎉 [upload-image] Done: ${pastPaperId} → ${extracted} questions extracted (paper_id: ${paperId})\n`);
       } catch (bgErr) {
-        console.error('[upload-past-paper] background extraction error:', bgErr.message);
-        await supabaseAdmin.from('past_paper').update({
-          processing_status: 'failed',
-          processing_error: bgErr.message,
-        }).eq('id', pastPaperId).catch(() => {});
+        console.error('❌ [upload-image] Background extraction error:', bgErr.message);
+        try {
+          await supabaseAdmin.from('past_paper').update({
+            processing_status: 'failed',
+            processing_error: bgErr.message,
+          }).eq('id', pastPaperId);
+        } catch (dbErr) {
+          console.error('[upload-image] Could not record failure status:', dbErr.message);
+        }
       }
     })();
 
   } catch (err) {
     console.error('Past paper upload error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// ============================================================================
+// PDF UPLOAD ENDPOINT  (Multimodal Gemini Vision + Table Extraction)
+// ============================================================================
+const PDF_SIZE_LIMIT_BYTES = 10 * 1024 * 1024; // 10 MB
+const pdfUpload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: PDF_SIZE_LIMIT_BYTES },
+  fileFilter: (_req, file, cb) => {
+    if (file.mimetype === 'application/pdf') cb(null, true);
+    else cb(new Error('Only PDF files are accepted at this endpoint.'));
+  },
+});
+
+app.post('/api/exam/upload-past-paper-pdf', requireAuth, pdfUpload.single('paper'), async (req, res) => {
+  const uploadStartTime = Date.now();
+  try {
+    if (!req.file) return res.status(400).json({ error: 'No PDF file uploaded' });
+
+    const { programId, program: programName, course: courseName, semester: semesterRaw, year: yearRaw } = req.body;
+    if ((!programId && !programName) || !courseName || !semesterRaw) {
+      return res.status(400).json({ error: 'program, course, and semester are required.' });
+    }
+    const semester = String(semesterRaw).trim();
+    const yearHint = yearRaw ? String(yearRaw).trim() : null;
+
+    let program;
+    if (programId) {
+      const { data, error } = await supabaseAdmin
+        .from('programs').select('id, name').eq('id', programId).maybeSingle();
+      if (error) throw error;
+      if (!data) return res.status(400).json({ error: 'Unknown programId.' });
+      program = data;
+    } else {
+      program = await getOrCreateProgram(programName);
+    }
+    const course = await getOrCreateCourse(courseName, program.id, semester);
+
+    const pdfBuffer = req.file.buffer;
+    const pastPaperId = uuidv4();
+    const safeName = req.file.originalname.replace(/\s+/g, '_');
+    const storagePath = `past-papers/${pastPaperId}-${safeName}`;
+    const bucketName = process.env.STORAGE_BUCKET || 'past-paper';
+
+    console.log(`\n======================================================`);
+    console.log(`📥 [upload-pdf] Received PDF upload request`);
+    console.log(`   File: ${req.file.originalname} (${(req.file.size / 1024).toFixed(1)} KB)`);
+    console.log(`   Program: ${program.name} (ID: ${program.id})`);
+    console.log(`   Course: ${course.course_name} (ID: ${course.id})`);
+    console.log(`   Semester: ${semester} | Year: ${yearHint || 'Auto-detect'}`);
+    console.log(`======================================================`);
+
+    // Upload the raw PDF to Supabase storage
+    console.log(`☁️  [upload-pdf] Uploading PDF to Supabase storage (${storagePath})...`);
+    const { error: storageErr } = await supabaseAdmin.storage
+      .from(bucketName)
+      .upload(storagePath, pdfBuffer, { contentType: 'application/pdf', upsert: false });
+    if (storageErr) throw storageErr;
+
+    const { data: publicUrlData } = supabaseAdmin.storage.from(bucketName).getPublicUrl(storagePath);
+    const fileUrl = publicUrlData?.publicUrl || null;
+    console.log(`✅ [upload-pdf] Stored in bucket '${bucketName}'. Public URL: ${fileUrl}`);
+
+    // Insert past_paper row
+    const { error: insertPaperErr } = await supabaseAdmin.from('past_paper').insert({
+      id: pastPaperId,
+      file_name: req.file.originalname,
+      file_path: storagePath,
+      storage_path: storagePath,
+      file_url: fileUrl,
+      thumbnail_url: fileUrl,
+      file_type: 'application/pdf',
+      program: program.name,
+      program_id: program.id,
+      course: course.course_name,
+      course_id: course.id,
+      semester,
+      processed: false,
+      processing_status: 'processing',
+    });
+    if (insertPaperErr) throw insertPaperErr;
+
+    console.log(`📝 [upload-pdf] Created past_paper row: ${pastPaperId} (status: processing)`);
+
+    // ── Respond 202 immediately ──
+    res.status(202).json({
+      accepted: true,
+      raw_paper_id: pastPaperId,
+      status: 'processing',
+      message: 'PDF saved. AI extraction is running in the background.',
+    });
+
+    // ── Fire-and-forget: extract text, call Gemini, insert questions, notify ──
+    ;(async () => {
+      try {
+        console.log(`🚀 [upload-pdf] Launching AI extraction worker for paper ${pastPaperId}...`);
+        const validQuestions = await extractQuestionsFromPDF(pdfBuffer, course.course_name, yearHint);
+
+        if (!validQuestions || validQuestions.length === 0) {
+          console.warn(`⚠️  [upload-pdf] No valid questions extracted from PDF ${pastPaperId}`);
+          try {
+            await supabaseAdmin.from('past_paper').update({
+              processing_status: 'failed',
+              processing_error: 'No valid questions could be extracted from this PDF.',
+            }).eq('id', pastPaperId);
+          } catch (e) { /* ignore update error */ }
+          return;
+        }
+
+        console.log(`💾 [upload-pdf] Inserting ${validQuestions.length} extracted questions into 'past_papers'...`);
+        // Pass null imageBuffer for PDF path (diagram cropping is skipped for PDFs)
+        const { paperId, extracted } = await insertExtractedQuestions(
+          validQuestions,
+          null,
+          null,
+          pastPaperId,
+          course
+        );
+
+        console.log(`✅ [upload-pdf] Extracted questions saved under paper_id: ${paperId}`);
+
+        try {
+          await supabaseAdmin.from('past_paper').update({
+            processed: true,
+            processing_status: 'done',
+            paper_id: paperId,
+            extracted_count: extracted,
+          }).eq('id', pastPaperId);
+        } catch (dbErr) {
+          console.error('[upload-pdf] Status update error:', dbErr.message);
+        }
+
+        console.log(`📄 [upload-pdf] Queuing printable document generation for ${pastPaperId}...`);
+        generatePaperDocument(pastPaperId).catch((docErr) => {
+          console.error(`[upload-pdf] Document generation failed for ${pastPaperId}:`, docErr.message);
+        });
+
+        console.log(`🔔 [upload-pdf] Sending push notifications for '${course.course_name}' (${extracted} questions)...`);
+        notifyNewQuestions(program.name, course.course_name, course.id, extracted).catch(console.error);
+
+        const elapsedSeconds = ((Date.now() - uploadStartTime) / 1000).toFixed(2);
+        console.log(`🎉 [upload-pdf] PIPELINE COMPLETE for ${pastPaperId} in ${elapsedSeconds}s -> ${extracted} questions extracted!\n`);
+      } catch (bgErr) {
+        console.error(`❌ [upload-pdf] Background extraction failed for ${pastPaperId}:`, bgErr.message);
+        try {
+          await supabaseAdmin.from('past_paper').update({
+            processing_status: 'failed',
+            processing_error: bgErr.message || 'Unknown extraction error',
+          }).eq('id', pastPaperId);
+        } catch (dbErr) {
+          console.error('[upload-pdf] Failed to save error status to DB:', dbErr.message);
+        }
+      }
+    })();
+
+  } catch (err) {
+    if (err.code === 'LIMIT_FILE_SIZE') {
+      return res.status(413).json({ error: 'PDF file exceeds the 10 MB limit.' });
+    }
+    console.error('❌ [upload-pdf] Request error:', err.message);
     res.status(500).json({ error: err.message });
   }
 });
@@ -3614,14 +4174,14 @@ function isGeneralQuestion(question) {
   return false;
 }
 
-const MAX_PAGE_CHARS = 8000;
+const MAX_PAGE_CHARS = 16000;
 function safePageText(text) {
   if (!text) return '';
   return text.length <= MAX_PAGE_CHARS ? text : text.slice(0, MAX_PAGE_CHARS) + '\n... (truncated)';
 }
 
 lunaRouter.post('/chat', requireAuth, async (req, res) => {
-  const { fileId, pageNumber, pageText, question, history, mode = 'normal' } = req.body;
+  const { fileId, pageNumber, pageText, question, history, mode = 'normal', learningProfile, courseContext } = req.body;
 
   if (!fileId || !question)
     return res.status(400).json({ error: 'Missing fileId or question' });
@@ -3641,10 +4201,14 @@ lunaRouter.post('/chat', requireAuth, async (req, res) => {
     const intent = classifyIntent(question);
     const useContext = !isGeneralQuestion(question);
     const contextToSend = useContext ? safePageText(pageText) : null;
-    const systemPrompt = getSystemPrompt(mode, intent.type);
+    let systemPrompt = getSystemPrompt(mode, intent.type);
+
+    if (learningProfile) {
+      systemPrompt += `\n\n## Individual Student Learning Profile\n${learningProfile}\nAlways adapt your vocabulary, depth, real-world analogies, and step-by-step guidance specifically to match this student's learning profile.`;
+    }
 
     const userPrompt = contextToSend
-      ? `CONTEXT (current and nearby pages):\n---\n${contextToSend}\n---\nCurrent page: ${pageNumber}\n\nStudent's question: ${question}`
+      ? `DOCUMENT READING CONTEXT (Multi-Page Window):\n---\n${contextToSend}\n---\nFocal Page: ${pageNumber || 'Unknown'}\n\nStudent's Question: ${question}`
       : `Student's question: ${question}`;
 
     const trimmedHistory = (history || []).slice(-MAX_HISTORY_MESSAGES);

@@ -82,50 +82,71 @@ export default function Upload() {
   // ═══════════════════════════════
   //  NATIVE FILE PICKER – FIXED
   // ═══════════════════════════════
-  const openFilePicker = () => {
-    if (file || isPicking) return;   // already have a file or picker in progress
+  const openFilePicker = (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    if (file || isPicking) return;
     if (Capacitor.isNativePlatform()) {
       pickFileNative();
     } else {
-      fileInputRef.current?.click();
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+        fileInputRef.current.click();
+      }
     }
   };
 
   const pickFileNative = async () => {
     setIsPicking(true);
     try {
+      // First try without reading massive base64 data into memory (streaming via path/webPath)
       const result = await FilePicker.pickFiles({
         types: ['application/pdf', 'application/vnd.openxmlformats-officedocument.presentationml.presentation'],
         multiple: false,
-        readData: true,   // ← get base64 data directly
+        readData: false,
       });
 
-      if (result.files.length === 0) {
+      if (!result.files || result.files.length === 0) {
         setIsPicking(false);
-        return;   // user cancelled
+        return; // user cancelled
       }
 
       const picked = result.files[0];
+      let nativeBlob = null;
 
-      // Convert base64 data to a File object
-      const byteCharacters = atob(picked.data);   // decode base64
-      const byteArrays = [];
-      for (let offset = 0; offset < byteCharacters.length; offset += 512) {
-        const slice = byteCharacters.slice(offset, offset + 512);
-        const byteNumbers = new Array(slice.length);
-        for (let i = 0; i < slice.length; i++) {
-          byteNumbers[i] = slice.charCodeAt(i);
+      if (picked.webPath) {
+        const response = await fetch(picked.webPath);
+        nativeBlob = await response.blob();
+      } else if (picked.path) {
+        const fileSrc = Capacitor.convertFileSrc(picked.path);
+        const response = await fetch(fileSrc);
+        nativeBlob = await response.blob();
+      } else {
+        // Fallback with native fetch for data URI (avoids atob memory spikes)
+        const fallbackResult = await FilePicker.pickFiles({
+          types: ['application/pdf', 'application/vnd.openxmlformats-officedocument.presentationml.presentation'],
+          multiple: false,
+          readData: true,
+        });
+        if (fallbackResult.files?.length && fallbackResult.files[0].data) {
+          const res = await fetch(`data:${fallbackResult.files[0].mimeType || 'application/pdf'};base64,${fallbackResult.files[0].data}`);
+          nativeBlob = await res.blob();
         }
-        const byteArray = new Uint8Array(byteNumbers);
-        byteArrays.push(byteArray);
       }
-      const blob = new Blob(byteArrays, { type: picked.mimeType });
-      const nativeFile = new File([blob], picked.name, { type: picked.mimeType });
 
-      handleFile(nativeFile);
+      if (nativeBlob) {
+        const nativeFile = new File([nativeBlob], picked.name || 'document.pdf', {
+          type: picked.mimeType || nativeBlob.type || 'application/pdf',
+        });
+        handleFile(nativeFile);
+      } else {
+        fileInputRef.current?.click();
+      }
     } catch (error) {
-      console.error('FilePicker error:', error);
-      addToast('File picker failed', error.message || 'Unknown error', 'error');
+      console.warn('Native FilePicker error, falling back to file input:', error);
+      fileInputRef.current?.click();
     } finally {
       setIsPicking(false);
     }
@@ -331,8 +352,7 @@ const handleSubmit = async (e) => {
             </div>
           </div>
 
-          <form onSubmit={(e) => e.preventDefault()} method="post" action="#">
-            <button type="submit" style={{ display: 'none' }} />
+          <form onSubmit={(e) => e.preventDefault()} noValidate>
 
             <div className={styles.formGroup}>
               <label>Program</label>

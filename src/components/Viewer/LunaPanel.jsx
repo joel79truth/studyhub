@@ -7,6 +7,7 @@ import { useState, useEffect, useRef, useCallback, useMemo, memo } from 'react'
 import {
   X, Send, Maximize2, Minimize2, Menu, Plus, Trash2,
   MessageSquare, MoreHorizontal, Check, Copy, RefreshCw, Square, ChevronDown,
+  BookOpen, Sparkles, Sliders, ChevronRight
 } from 'lucide-react'
 import { BlockMath } from 'react-katex'
 import 'katex/dist/katex.min.css'
@@ -14,6 +15,13 @@ import { supabase } from '../../supabase'
 import { API_BASE_URL } from '../../lib/apiConfig'
 import { renderInline } from "../../pages/math-fix"
 import TutorMarkdown from '../common/TutorMarkdown'
+import {
+  getLearningProfile,
+  saveLearningProfile,
+  ACADEMIC_LEVELS,
+  EXPLANATION_STYLES,
+  formatProfileForPrompt
+} from '../../services/learningProfile'
 
 const AI_ICON = '/Ai.png'
 const ASSISTANT_NAME = 'StudyHub'
@@ -76,7 +84,7 @@ const THINKING_LABEL = 'Thinking…'
 const MAX_INPUT_HEIGHT = 120
 const NEAR_BOTTOM_THRESHOLD = 120
 
-async function* streamChat({ fileId, pageNumber, pageText, question, history, mode }, signal) {
+async function* streamChat({ fileId, pageNumber, pageText, question, history, mode, learningProfile, courseContext }, signal) {
   const token = await getAuthToken()
   if (!token) {
     yield { event: 'error', data: { message: 'Your session expired. Please sign in again.' } }
@@ -92,7 +100,7 @@ async function* streamChat({ fileId, pageNumber, pageText, question, history, mo
         Authorization: `Bearer ${token}`,
       },
       signal,
-      body: JSON.stringify({ fileId, pageNumber, pageText, question, history, mode }),
+      body: JSON.stringify({ fileId, pageNumber, pageText, question, history, mode, learningProfile, courseContext }),
     })
   } catch (err) {
     if (err.name === 'AbortError') return
@@ -682,9 +690,17 @@ const freshConv = () => ({ id: nextId++, title: 'New Chat', messages: [] })
 export default function App({
   fileId = null,
   pageNumber = null,
+  currentPage = null,
   pageText = '',
-  onClose = null
+  multiPageContext = null,
+  initialPrompt = '',
+  courseContext = '',
+  onClose = null,
+  isFullscreen: externalIsFullscreen = false,
+  toggleFullscreen: externalToggleFullscreen = null,
 }) {
+  const effectivePageNum = pageNumber ?? currentPage ?? 1
+
   useEffect(() => {
     const font = document.getElementById('studyhub-inter-font')
     if (font) return
@@ -714,9 +730,31 @@ export default function App({
   const [streamingMsg, setStreamingMsg] = useState(null)
   const [error, setError] = useState(null)
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const [isFullscreen, setIsFullscreen] = useState(false)
+  const [isFullscreen, setIsFullscreen] = useState(externalIsFullscreen)
   const [isVisible, setIsVisible] = useState(true)
   const [showJump, setShowJump] = useState(false)
+
+  // Student Learning Profile state
+  const [profile, setProfile] = useState(() => getLearningProfile())
+  const [profileOpen, setProfileOpen] = useState(false)
+
+  useEffect(() => {
+    setIsFullscreen(externalIsFullscreen)
+  }, [externalIsFullscreen])
+
+  // Automatically pre-populate input if launched from selected text
+  useEffect(() => {
+    if (initialPrompt) {
+      setInput(initialPrompt)
+      setTimeout(() => {
+        if (inputRef.current) {
+          inputRef.current.focus()
+          inputRef.current.style.height = 'auto'
+          inputRef.current.style.height = `${Math.min(inputRef.current.scrollHeight, MAX_INPUT_HEIGHT)}px`
+        }
+      }, 50)
+    }
+  }, [initialPrompt])
 
   const inputRef = useRef(null)
   const containerRef = useRef(null)
@@ -858,9 +896,42 @@ export default function App({
     abortRef.current = ctrl
     setStreamingMsg({ role: 'assistant', content: '', isStreaming: true })
 
+    // Build comprehensive multi-page reading context
+    let richPageText = pageText
+    if (multiPageContext) {
+      const parts = []
+      if (multiPageContext.selectedSnippet) {
+        parts.push(`[STUDENT HIGHLIGHTED PASSAGE - PRIMARY FOCUS]:\n"${multiPageContext.selectedSnippet}"`)
+      }
+      if (multiPageContext.prevPage && multiPageContext.prevText) {
+        parts.push(`[PAGE ${multiPageContext.prevPage} (Preceding Page Context)]:\n${multiPageContext.prevText}`)
+      }
+      const focalText = multiPageContext.currentText || pageText
+      if (focalText) {
+        parts.push(`[PAGE ${effectivePageNum} (Current Focal Page)]:\n${focalText}`)
+      }
+      if (multiPageContext.nextPage && multiPageContext.nextText) {
+        parts.push(`[PAGE ${multiPageContext.nextPage} (Succeeding Page Context)]:\n${multiPageContext.nextText}`)
+      }
+      if (parts.length > 0) {
+        richPageText = parts.join('\n\n---\n\n')
+      }
+    }
+
+    const profilePrompt = formatProfileForPrompt(profile, courseContext)
+
     try {
       for await (const { event, data } of streamChat(
-        { fileId, pageNumber: pageNumber != null ? pageNumber : 0, pageText, question, history, mode },
+        {
+          fileId,
+          pageNumber: effectivePageNum,
+          pageText: richPageText,
+          question,
+          history,
+          mode,
+          learningProfile: profilePrompt,
+          courseContext,
+        },
         ctrl.signal
       )) {
         if (ctrl.signal.aborted) break
@@ -898,7 +969,7 @@ export default function App({
       abortRef.current = null
       if (!finalMessageAddedRef.current) clearStreamingMsg()
     }
-  }, [currentId, mode, fileId, pageNumber, pageText, addMessage, resetStream, startRenderer, clearStreamingMsg])
+  }, [currentId, mode, fileId, effectivePageNum, pageText, multiPageContext, profile, courseContext, addMessage, resetStream, startRenderer, clearStreamingMsg])
 
   const handleSend = useCallback((text) => {
     const msg = (text || input).trim()
@@ -1019,6 +1090,159 @@ export default function App({
             </button>
           </div>
         </div>
+
+        {/* Multi-Page AI Reading Context Indicator & Personalization Bar */}
+        <div style={{
+          padding: '6px 12px',
+          background: '#f8fafc',
+          borderBottom: '1px solid #edf2f7',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 6,
+          fontSize: 12,
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, minWidth: 0, overflow: 'hidden' }}>
+            <span style={{
+              background: '#e0e7ff',
+              color: '#4338ca',
+              padding: '2px 7px',
+              borderRadius: 6,
+              fontWeight: 700,
+              fontSize: 10.5,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 4,
+              flexShrink: 0,
+            }}>
+              <BookOpen size={11} />
+              Pages {multiPageContext?.prevPage ? `${multiPageContext.prevPage}–${multiPageContext.nextPage || effectivePageNum}` : `${effectivePageNum}${multiPageContext?.nextPage ? `–${multiPageContext.nextPage}` : ''}`}
+            </span>
+            <span style={{ color: '#64748b', fontSize: 11.5, fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              Focused on Page {effectivePageNum}
+            </span>
+          </div>
+
+          <button
+            onClick={() => setProfileOpen(p => !p)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 4,
+              padding: '3px 8px',
+              background: profileOpen ? '#e0e7ff' : '#f1f5f9',
+              border: 'none',
+              borderRadius: 12,
+              color: '#4338ca',
+              fontSize: 11,
+              fontWeight: 600,
+              cursor: 'pointer',
+              flexShrink: 0,
+            }}
+            title="Personalize explanation style and student level"
+          >
+            <Sparkles size={11} />
+            <span>{EXPLANATION_STYLES.find(s => s.id === profile.explanationStyle)?.label || 'Style'}</span>
+            <Sliders size={10} />
+          </button>
+        </div>
+
+        {/* Expandable Student Learning Profile Settings */}
+        {profileOpen && (
+          <div style={{
+            padding: '12px 14px',
+            background: '#ffffff',
+            borderBottom: '1.5px solid #e0e7ff',
+            animation: 'fadeIn 0.15s ease both',
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+              <span style={{ fontSize: 11, fontWeight: 700, color: '#4338ca', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                Tailor StudyHub to You
+              </span>
+              <button
+                onClick={() => setProfileOpen(false)}
+                style={{ background: 'none', border: 'none', color: '#94a3b8', cursor: 'pointer', fontSize: 12, fontWeight: 600 }}
+              >
+                Done
+              </button>
+            </div>
+
+            <div style={{ fontSize: 11, color: '#64748b', marginBottom: 4, fontWeight: 600 }}>Academic Level</div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5, marginBottom: 10 }}>
+              {ACADEMIC_LEVELS.map(lvl => (
+                <button
+                  key={lvl.id}
+                  onClick={() => {
+                    const updated = saveLearningProfile({ academicLevel: lvl.id });
+                    setProfile(updated);
+                  }}
+                  style={{
+                    padding: '4px 9px',
+                    borderRadius: 8,
+                    border: profile.academicLevel === lvl.id ? '1.5px solid #4f46e5' : '1px solid #e2e8f0',
+                    background: profile.academicLevel === lvl.id ? '#eef2ff' : '#f8fafc',
+                    color: profile.academicLevel === lvl.id ? '#4338ca' : '#475569',
+                    fontSize: 11.5,
+                    fontWeight: profile.academicLevel === lvl.id ? 700 : 500,
+                    cursor: 'pointer',
+                  }}
+                >
+                  {lvl.label}
+                </button>
+              ))}
+            </div>
+
+            <div style={{ fontSize: 11, color: '#64748b', marginBottom: 4, fontWeight: 600 }}>Explanation Style</div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
+              {EXPLANATION_STYLES.map(st => (
+                <button
+                  key={st.id}
+                  onClick={() => {
+                    const updated = saveLearningProfile({ explanationStyle: st.id });
+                    setProfile(updated);
+                  }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 4,
+                    padding: '4px 9px',
+                    borderRadius: 8,
+                    border: profile.explanationStyle === st.id ? '1.5px solid #4f46e5' : '1px solid #e2e8f0',
+                    background: profile.explanationStyle === st.id ? '#eef2ff' : '#f8fafc',
+                    color: profile.explanationStyle === st.id ? '#4338ca' : '#475569',
+                    fontSize: 11.5,
+                    fontWeight: profile.explanationStyle === st.id ? 700 : 500,
+                    cursor: 'pointer',
+                  }}
+                >
+                  <span>{st.icon}</span>
+                  <span>{st.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Selected Excerpt Snippet (if opened via PDF text selection) */}
+        {multiPageContext?.selectedSnippet && (
+          <div style={{
+            margin: '8px 12px 0',
+            padding: '8px 12px',
+            background: '#f0fdf4',
+            borderRadius: 10,
+            border: '1px solid #bbf7d0',
+            fontSize: 12,
+            color: '#166534',
+            lineHeight: 1.4,
+          }}>
+            <span style={{ fontWeight: 700, display: 'block', fontSize: 10.5, color: '#15803d', marginBottom: 2 }}>
+              ✨ SELECTED PASSAGE (PAGE {effectivePageNum}):
+            </span>
+            <span style={{ fontStyle: 'italic' }}>
+              "{multiPageContext.selectedSnippet.length > 150 ? multiPageContext.selectedSnippet.slice(0, 150) + '…' : multiPageContext.selectedSnippet}"
+            </span>
+          </div>
+        )}
 
         <div className="studyhub-messages" ref={containerRef} onScroll={handleScroll} role="log" aria-live="polite">
           {messages.length === 0 && !isThinking && !error && (

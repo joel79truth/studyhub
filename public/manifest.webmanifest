@@ -1,17 +1,60 @@
 {
+  "id": "/",
   "name": "StudyHub LUANAR",
   "short_name": "StudyHub",
-  "description": "Your AI-powered study assistant",
-  "start_url": ".",
+  "description": "Your AI-powered study companion for LUANAR students — past papers, quiz practice, notes, and more.",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#ffffff",
   "theme_color": "#024927",
   "icons": [
     {
-      "src": "/favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
-    
-  ]
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/screenshot-mobile.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "StudyHub Dashboard on mobile"
+    },
+    {
+      "src": "/screenshots/screenshot-desktop.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "StudyHub Dashboard on desktop"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Past Papers",
+      "short_name": "Papers",
+      "url": "/past-papers",
+      "description": "Browse and practice past exam papers",
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Quiz",
+      "short_name": "Quiz",
+      "url": "/quiz",
+      "description": "Start a quiz session",
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
+    }
+  ],
+  "categories": ["education"],
+  "lang": "en"
 }

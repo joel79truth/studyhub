@@ -428,6 +428,20 @@ router.post('/complete', requireAuth, express.json(), async (req, res) => {
 
     if (uploadId) pendingUploads.delete(uploadId);
 
+    if (typeof onNoteUploaded === 'function') {
+      try {
+        Promise.resolve(onNoteUploaded({
+          program,
+          courseName: subject,
+          filename,
+          semester: String(semester),
+          fileId: id,
+        })).catch(err => console.error('[storageUpload] Notification error:', err));
+      } catch (notifErr) {
+        console.error('[storageUpload] Notification trigger error:', notifErr);
+      }
+    }
+
     res.json({ message: 'Upload successful', url, storage_type, id });
   } catch (err) {
     console.error('[storageUpload] complete error:', err);
@@ -445,7 +459,12 @@ router.use((err, req, res, next) => {
   next(err);
 });
 
-module.exports = { router, uploadFileToStorage, requireAuth, validateFile };
+let onNoteUploaded = null;
+function setNoteUploadedCallback(fn) {
+  onNoteUploaded = fn;
+}
+
+module.exports = { router, uploadFileToStorage, requireAuth, validateFile, setNoteUploadedCallback };
 
 // ============================================================================
 // INTEGRATION NOTES

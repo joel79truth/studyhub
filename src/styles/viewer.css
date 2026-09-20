@@ -1,12 +1,16 @@
-/* ─── Keyframes (shared with Luna panel) ─── */
+/* ─── Keyframes (shared with Luna panel & viewer) ─── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes popIn {
   0%   { transform: scale(.6); opacity: 0; }
-  70%  { transform: scale(1.1); }
+  70%  { transform: scale(1.05); }
   100% { transform: scale(1); opacity: 1; }
+}
+@keyframes floatUpSmall {
+  0%   { transform: translateY(6px) scale(0.96); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
 }
 @keyframes breathe {
   0%, 100% { box-shadow: 0 2px 12px rgba(29,78,216,.35); }
@@ -26,24 +30,212 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #f6f7f9;
+  background: #f1f3f6;
   overflow: hidden;
   -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
-/* ─── PDF page placeholders (used by PdfViewer) ─── */
-.page-slot {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #f0f1f3; /* placeholder colour */
+/* ─── PDF Scroll Viewport ─── */
+.pdf-scroll-viewport {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: auto;
+  background: #eef1f5;
+  position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+  touch-action: pan-x pan-y pinch-zoom;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* ─── Rendered page canvas (inserted by renderer) ─── */
-.page-canvas {
-  max-width: 100%;
-  height: auto;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+/* ─── PDF page container / paper cards (Google Docs / Drive aesthetic) ─── */
+.pdf-page-card {
+  position: absolute;
+  background: #ffffff;
   border-radius: 4px;
-  will-change: transform;   /* promote to GPU layer for smooth compositing */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+  user-select: text;
+}
+
+.pdf-page-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+.pdf-page-card.is-active {
+  box-shadow: 0 8px 24px rgba(79, 70, 229, 0.12), 0 2px 6px rgba(0, 0, 0, 0.06), 0 0 0 1.5px rgba(99, 102, 241, 0.3);
+}
+
+/* ─── Page Number Ribbon / Badge ─── */
+.page-number-pill {
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  padding: 2px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  pointer-events: none;
+  letter-spacing: 0.02em;
+}
+
+/* ─── Rendered page canvas ─── */
+.page-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+/* ─── Text Layer (pdfjs text overlay for crisp selection) ─── */
+.textLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  opacity: 1;
+  line-height: 1;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  pointer-events: auto;
+  z-index: 2;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.textLayer :is(span, br) {
+  color: transparent;
+  position: absolute;
+  white-space: pre;
+  cursor: text;
+  transform-origin: 0% 0%;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+/* High-contrast, brand-tinted text selection like modern browsers */
+.textLayer ::selection {
+  background: rgba(79, 70, 229, 0.3) !important;
+  color: transparent !important;
+}
+
+.textLayer ::-moz-selection {
+  background: rgba(79, 70, 229, 0.3) !important;
+  color: transparent !important;
+}
+
+/* ─── Floating "Ask StudyHub" Popover Bar ─── */
+.selection-ask-popover {
+  position: fixed;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  background: rgba(15, 23, 42, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(79, 70, 229, 0.2);
+  transform: translate(-50%, -100%);
+  animation: floatUpSmall 0.18s cubic-bezier(0.16, 1, 0.3, 1) both;
+  white-space: nowrap;
+  pointer-events: auto;
+}
+
+.selection-ask-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.4);
+  transition: all 0.15s ease;
+  touch-action: manipulation;
+}
+
+.selection-ask-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.5);
+  filter: brightness(1.08);
+}
+
+.selection-ask-btn-primary:active {
+  transform: translateY(0);
+}
+
+.selection-ask-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #f1f5f9;
+  border: none;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  touch-action: manipulation;
+}
+
+.selection-ask-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+}
+
+/* Arrow indicator pointing down from floating popover */
+.selection-ask-arrow {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid rgba(15, 23, 42, 0.94);
+}
+
+/* ─── Floating Document Page Status Pill ─── */
+.floating-doc-nav {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 30px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+  pointer-events: auto;
 }

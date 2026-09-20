@@ -1,11 +1,10 @@
 import { useRef, useCallback, useEffect, useMemo } from 'react';
 import { useMemoryPressure } from './useMemoryPressure';
 
-const DEBUG = false; // flip on only when actively debugging
+const DEBUG = false;
 const log = DEBUG ? console.log.bind(console) : () => {};
 
-const MAX_POOL_SIZE = 24; // generous buffer above typical virtualization window
-const DPR = typeof window !== 'undefined' ? (window.devicePixelRatio || 1) : 1;
+const MAX_POOL_SIZE = 24;
 
 export function usePdfRenderer(pdf, scale, baseWidth) {
   const cacheLimit = useMemoryPressure();
@@ -16,9 +15,10 @@ export function usePdfRenderer(pdf, scale, baseWidth) {
   const containerWidthRef = useRef(800);
   const scaleRef = useRef(scale);
   const baseWidthRef = useRef(baseWidth);
+  const dprRef = useRef(typeof window !== 'undefined' ? (window.devicePixelRatio || 1) : 1);
   const pool = useRef([]);
-  const processQueueRef = useRef(() => {}); // avoids closure-ordering issues entirely
-  const visiblePagesRef = useRef(new Set()); // pages PdfViewer says are currently on screen
+  const processQueueRef = useRef(() => {});
+  const visiblePagesRef = useRef(new Set());
 
   useEffect(() => { scaleRef.current = scale; }, [scale]);
   useEffect(() => { baseWidthRef.current = baseWidth; }, [baseWidth]);
@@ -34,6 +34,11 @@ export function usePdfRenderer(pdf, scale, baseWidth) {
       canvas.width = bitmap.width;
       canvas.height = bitmap.height;
     }
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(bitmap, 0, 0);
   }, []);
 
@@ -49,40 +54,29 @@ export function usePdfRenderer(pdf, scale, baseWidth) {
       log(`🔌 Detaching canvas for page ${pageNum}`);
       if (item.canvas.parentNode) item.canvas.parentNode.removeChild(item.canvas);
       item.attachedToPage = null;
-      // Keep pixels – no clearing
     }
   }, []);
 
-  // New public API — PdfViewer calls this whenever its visible range
-  // changes. Used below to make sure eviction never steals a canvas
-  // from a page that's actually on screen right now.
   const setVisiblePages = useCallback((pageNumbers) => {
     visiblePagesRef.current = new Set(pageNumbers);
   }, []);
 
-  // Picks the attached page whose canvas should be sacrificed: the one
-  // that's been touched least recently AND is furthest from the page
-  // currently being requested — and never a page that's currently
-  // visible, regardless of distance/age. This is the fix for pages
-  // going blank while scrolling.
   const pickEvictionTarget = useCallback((requestedPageNum) => {
     let best = null;
     let bestScore = -Infinity;
     const now = Date.now();
     for (const item of pool.current) {
       if (item.attachedToPage === null) continue;
-      if (visiblePagesRef.current.has(item.attachedToPage)) continue; // never evict what's on screen
+      if (visiblePagesRef.current.has(item.attachedToPage)) continue;
       const distance = Math.abs(item.attachedToPage - requestedPageNum);
       const age = now - (item.lastUsed || 0);
-      // Weight distance heavily — never prefer evicting a near page
-      // over a far one just because it was touched a moment later.
       const score = distance * 100000 + age;
       if (score > bestScore) {
         bestScore = score;
         best = item;
       }
     }
-    return best; // null if every attached page is currently visible
+    return best;
   }, []);
 
   // ---- Cache management ----
@@ -111,12 +105,14 @@ export function usePdfRenderer(pdf, scale, baseWidth) {
     }
   }, []);
 
-  // ---- Actual rendering (heavy, offscreen) ----
+  // ---- Actual rendering (crisp, native HiDPI offscreen) ----
   const renderPageAtQuality = useCallback(async (pageNum, quality) => {
     if (!pdf) return null;
 
     const cw = containerWidthRef.current;
     const bw = baseWidthRef.current;
+    const dpr = dprRef.current;
+
     if (cw === 0 || bw === 0) {
       log(`⚠️ renderPageAtQuality: width zero (cw=${cw}, bw=${bw}) – retrying in 100ms`);
       setTimeout(() => {
@@ -129,7 +125,7 @@ export function usePdfRenderer(pdf, scale, baseWidth) {
       return null;
     }
 
-    const renderScale = (cw * scaleRef.current * quality * DPR) / bw;
+    const renderScale = (cw * scaleRef.current * quality * dpr) / bw;
     if (renderScale <= 0) return null;
 
     const cached = cache.current.get(pageNum);
@@ -145,16 +141,23 @@ export function usePdfRenderer(pdf, scale, baseWidth) {
     tasks.current.set(pageNum, () => { cancelled = true; });
 
     try {
-      log(`🖼️ Rendering page ${pageNum} at scale ${renderScale.toFixed(2)} (quality ${quality}, DPR ${DPR})`);
+      log(`🖼️ Rendering page ${pageNum} at scale ${renderScale.toFixed(2)} (quality ${quality}, DPR ${dpr})`);
       const page = await pdf.getPage(pageNum);
       const viewport = page.getViewport({ scale: renderScale });
 
       const offCanvas = document.createElement('canvas');
-      offCanvas.width = viewport.width;
-      offCanvas.height = viewport.height;
+      offCanvas.width = Math.round(viewport.width);
+      offCanvas.height = Math.round(viewport.height);
       const ctx = offCanvas.getContext('2d');
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
 
-      const renderTask = page.render({ canvasContext: ctx, viewport });
+      const renderTask = page.render({
+        canvasContext: ctx,
+        viewport,
+        intent: 'display',
+      });
+
       tasks.current.set(pageNum, () => {
         renderTask.cancel();
         cancelled = true;
@@ -170,7 +173,7 @@ export function usePdfRenderer(pdf, scale, baseWidth) {
       }
 
       cacheSet(pageNum, bitmap, renderScale);
-      log(`✅ Page ${pageNum} rendered`);
+      log(`✅ Page ${pageNum} rendered crisp`);
       return bitmap;
     } catch (err) {
       if (err?.name !== 'RenderingCancelledException') {
@@ -195,11 +198,12 @@ export function usePdfRenderer(pdf, scale, baseWidth) {
       const item = pool.current.find(c => c.attachedToPage === pageNum);
       if (!item) continue;
 
+      const dpr = dprRef.current;
+      const targetScale = (containerWidthRef.current * scaleRef.current * quality * dpr) / baseWidthRef.current;
       const cached = cache.current.get(pageNum);
-      if (cached && Math.abs(cached.renderScale - ((containerWidthRef.current * scaleRef.current * quality * DPR) / baseWidthRef.current)) / cached.renderScale < 0.03) {
+      if (cached && Math.abs(cached.renderScale - targetScale) / cached.renderScale < 0.03) {
         cached.timestamp = Date.now();
         drawToCanvas(cached.bitmap, item.canvas);
-        log(`🎨 Drew cached page ${pageNum} (from queue)`);
         continue;
       }
 
@@ -207,11 +211,7 @@ export function usePdfRenderer(pdf, scale, baseWidth) {
       const currentItem = pool.current.find(c => c.attachedToPage === pageNum);
       if (currentItem && bitmap) {
         drawToCanvas(bitmap, currentItem.canvas);
-        log(`🎨 Drew page ${pageNum}`);
-
-        if (quality < 1) {
-          queue.current.push({ pageNum, quality: 1, priority: 1 });
-        }
+        log(`🎨 Drew page ${pageNum} crisp`);
       }
 
       await new Promise(resolve => setTimeout(resolve, 0));
@@ -223,7 +223,7 @@ export function usePdfRenderer(pdf, scale, baseWidth) {
   useEffect(() => { processQueueRef.current = processQueue; }, [processQueue]);
 
   // ---- Schedule render (public API) ----
-  const scheduleRender = useCallback((pageNum, quality, priority) => {
+  const scheduleRender = useCallback((pageNum, quality = 1.0, priority = 0) => {
     queue.current = queue.current.filter(item => item.pageNum !== pageNum);
     queue.current.push({ pageNum, quality, priority });
     if (!activeRender.current) {
@@ -247,8 +247,8 @@ export function usePdfRenderer(pdf, scale, baseWidth) {
       if (pool.current.length < MAX_POOL_SIZE) {
         const canvas = document.createElement('canvas');
         canvas.className = 'page-canvas';
-        canvas.style.maxWidth = '100%';
-        canvas.style.height = 'auto';
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
         free = { canvas, attachedToPage: null, lastUsed: 0 };
         pool.current.push(free);
       } else {
@@ -258,15 +258,11 @@ export function usePdfRenderer(pdf, scale, baseWidth) {
           free = target;
           free.attachedToPage = null;
         } else {
-          // Every pooled canvas is currently visible and we're at cap —
-          // grow the pool rather than silently failing to render this
-          // page. Should be rare; if this fires a lot, MAX_POOL_SIZE is
-          // smaller than the viewer's actual visible+overscan window.
           log(`⚠️ Pool exhausted with no evictable target — growing pool for page ${pageNum}`);
           const canvas = document.createElement('canvas');
           canvas.className = 'page-canvas';
-          canvas.style.maxWidth = '100%';
-          canvas.style.height = 'auto';
+          canvas.style.width = '100%';
+          canvas.style.height = '100%';
           free = { canvas, attachedToPage: null, lastUsed: 0 };
           pool.current.push(free);
         }
@@ -284,7 +280,8 @@ export function usePdfRenderer(pdf, scale, baseWidth) {
       drawToCanvas(cached.bitmap, free.canvas);
       log(`⚡ Instantly drew cached page ${pageNum}`);
     } else {
-      scheduleRender(pageNum, 0.6, 0);
+      // Direct 1.0 quality render for razor-sharp clarity
+      scheduleRender(pageNum, 1.0, 0);
     }
     return free.canvas;
   }, [getFreeCanvas, detachCanvas, drawToCanvas, scheduleRender, pickEvictionTarget]);
@@ -296,7 +293,20 @@ export function usePdfRenderer(pdf, scale, baseWidth) {
       containerWidthRef.current = w;
       pool.current.forEach(item => {
         if (item.attachedToPage !== null) {
-          scheduleRender(item.attachedToPage, 1, 0);
+          scheduleRender(item.attachedToPage, 1.0, 0);
+        }
+      });
+    }
+  }, [scheduleRender]);
+
+  // ---- Set Pixel Ratio ----
+  const setPixelRatio = useCallback((ratio) => {
+    if (ratio && Math.abs(dprRef.current - ratio) > 0.01) {
+      log(`📱 DPR updated to ${ratio}`);
+      dprRef.current = ratio;
+      pool.current.forEach(item => {
+        if (item.attachedToPage !== null) {
+          scheduleRender(item.attachedToPage, 1.0, 0);
         }
       });
     }
@@ -311,15 +321,12 @@ export function usePdfRenderer(pdf, scale, baseWidth) {
     };
   }, []);
 
-  // Stable object identity across renders — PdfViewer's updateView
-  // depends on `renderer`, and without this memo a new object literal
-  // here would be a new dependency every render even though every
-  // individual function is already stable via useCallback.
   return useMemo(() => ({
     attachCanvas,
     detachCanvas,
     scheduleRender,
     setContainerWidth,
     setVisiblePages,
-  }), [attachCanvas, detachCanvas, scheduleRender, setContainerWidth, setVisiblePages]);
+    setPixelRatio,
+  }), [attachCanvas, detachCanvas, scheduleRender, setContainerWidth, setVisiblePages, setPixelRatio]);
 }

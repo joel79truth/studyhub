@@ -16,8 +16,6 @@ import { trackNotesViewed } from '../../lib/analytics';
 
 const LunaPanel = lazy(() => import('./LunaPanel'));
 
-// Same helpers as Files.jsx / Programs.jsx. TODO: extract to a shared
-// utils/notes.js so there's exactly one copy instead of three.
 const getNotePublicUrl = (note) => {
   if (note.storage_type === 'gdrive' && note.filepath) {
     return `https://drive.google.com/file/d/${note.filepath}/view`;
@@ -38,24 +36,14 @@ const getFileType = (filename) => {
 };
 
 const MIN_SCALE = 0.5;
-const MAX_SCALE = 2.5;
-// How long the viewport has to sit on a page before we bother extracting
-// its text. During a fast scroll/fling, currentPage can cycle through a
-// dozen pages in under a second — firing pdf.js's getTextContent for every
-// one of them is wasted CPU and is what caused the jank. Google's viewer
-// only ever computes a page's text layer once, lazily, not per scroll tick.
-const TEXT_EXTRACT_DEBOUNCE_MS = 200;
+const MAX_SCALE = 3.0;
+const TEXT_EXTRACT_DEBOUNCE_MS = 180;
 
 export default function Viewer() {
   const navigate = useNavigate();
   const { state } = useLocation();
   const [searchParams] = useSearchParams();
 
-  // ✅ Router `state` only lives in memory for the current session — a
-  // hard refresh, a bookmark, a shared link, or a PWA relaunch all land
-  // here with `state` undefined. The URL's ?fileId= is the durable
-  // source of truth; `state` is just a same-session shortcut so the
-  // common case (clicking from Files/Programs) doesn't need a refetch.
   const fileIdFromUrl = searchParams.get('fileId');
   const fileId = state?.fileId || fileIdFromUrl || null;
   const hasFullState = !!state?.url;
@@ -63,10 +51,6 @@ export default function Viewer() {
   const [recovered, setRecovered] = useState(null);
   const [recoveryError, setRecoveryError] = useState(null);
 
-  // Recovery path: we have a fileId but not the rest (url/filename/type)
-  // because state was lost. Fetch the note directly from `notes` by id —
-  // the same id space Files.jsx, Programs.jsx, and studyhub-router.js
-  // all agree on, so this always resolves for a real, existing document.
   useEffect(() => {
     if (hasFullState || !fileId) return;
     let cancelled = false;
@@ -102,14 +86,8 @@ export default function Viewer() {
     }
   }, [filename, fileId]);
 
-  // retryTick: bumping this re-runs useFileLoader's effect without a
-  // hard page reload. Critical for the offline case — a hard reload
-  // while offline can strand the student on a blank browser error
-  // page if there's no service worker precaching the app shell.
   const [retryTick, setRetryTick] = useState(0);
 
-  // CHANGED: also pull loadStage/downloadProgress so LoadingScreen can
-  // show what's actually happening instead of a generic spinner.
   const { blobUrl, fileLoading, fileError, isOffline, loadStage, downloadProgress } = useFileLoader(
     rawUrl, fileId, fileType, filename, retryTick
   );
@@ -130,49 +108,93 @@ export default function Viewer() {
   const [isLunaFullscreen, setIsLunaFullscreen] = useState(false);
   const containerWidth = useContainerWidth();
 
+  // Multi-page context (Previous, Current, Next) for rich AI comprehension
+  const [multiPageContext, setMultiPageContext] = useState({
+    prevPage: null,
+    prevText: '',
+    currentPage: 1,
+    currentText: '',
+    nextPage: null,
+    nextText: '',
+    selectedSnippet: '',
+  });
+  const [initialPrompt, setInitialPrompt] = useState('');
+
   const baseWidth = useMemo(() => pageSizes[0]?.width || 595, [pageSizes]);
   const renderer = usePdfRenderer(pdf, scale, baseWidth);
 
-  // Per-document cache of already-extracted page text, so re-visiting a
-  // page (scrolling back up, jumping via search) is instant instead of
-  // re-running pdf.js's text extraction again.
   const textCacheRef = useRef(new Map());
   const textRequestIdRef = useRef(0);
 
   useEffect(() => {
-    // New document loaded — old page numbers no longer mean the same text.
     textCacheRef.current = new Map();
   }, [pdf]);
 
+  const fetchPageText = useCallback(async (pNum) => {
+    if (!pdf || pNum < 1 || pNum > numPages) return '';
+    if (textCacheRef.current.has(pNum)) return textCacheRef.current.get(pNum);
+    try {
+      const page = await pdf.getPage(pNum);
+      const textContent = await page.getTextContent();
+      const text = textContent.items.map((item) => item.str).join(' ');
+      textCacheRef.current.set(pNum, text);
+      return text;
+    } catch {
+      return '';
+    }
+  }, [pdf, numPages]);
+
+  // Sliding context window: Extract Current, Previous, and Next pages
   useEffect(() => {
     if (!pdf || !numPages) return;
 
-    const cached = textCacheRef.current.get(currentPage);
-    if (cached !== undefined) {
-      setPageText(cached);
-      return;
-    }
-
     const requestId = ++textRequestIdRef.current;
     const timer = setTimeout(async () => {
-      // The user may have scrolled past this page again before the debounce
-      // fired; bail without touching state if so.
       if (requestId !== textRequestIdRef.current) return;
-      try {
-        const page = await pdf.getPage(currentPage);
-        const textContent = await page.getTextContent();
-        const text = textContent.items.map((item) => item.str).join(' ');
-        if (requestId !== textRequestIdRef.current) return;
-        textCacheRef.current.set(currentPage, text);
-        setPageText(text);
-      } catch (err) {
-        if (requestId !== textRequestIdRef.current) return;
-        setPageText('');
-      }
+
+      const prevNum = currentPage > 1 ? currentPage - 1 : null;
+      const nextNum = currentPage < numPages ? currentPage + 1 : null;
+
+      const [currT, prevT, nextT] = await Promise.all([
+        fetchPageText(currentPage),
+        prevNum ? fetchPageText(prevNum) : Promise.resolve(''),
+        nextNum ? fetchPageText(nextNum) : Promise.resolve(''),
+      ]);
+
+      if (requestId !== textRequestIdRef.current) return;
+      setPageText(currT);
+      setMultiPageContext((prev) => ({
+        ...prev,
+        prevPage: prevNum,
+        prevText: prevT,
+        currentPage,
+        currentText: currT,
+        nextPage: nextNum,
+        nextText: nextT,
+      }));
     }, TEXT_EXTRACT_DEBOUNCE_MS);
 
     return () => clearTimeout(timer);
-  }, [pdf, currentPage, numPages]);
+  }, [pdf, currentPage, numPages, fetchPageText]);
+
+  // Handle Ask StudyHub from inline text selection in PdfViewer
+  const handleAskSelection = useCallback((selectedText, pageNum, actionType = 'ask') => {
+    let prompt = '';
+    if (actionType === 'explain') {
+      prompt = `Explain this concept clearly: "${selectedText}"`;
+    } else if (actionType === 'summarize') {
+      prompt = `Summarize this passage and give key takeaways: "${selectedText}"`;
+    } else {
+      prompt = `I need help understanding this: "${selectedText}"`;
+    }
+
+    setInitialPrompt(prompt);
+    setMultiPageContext((prev) => ({
+      ...prev,
+      selectedSnippet: selectedText,
+    }));
+    setShowLuna(true);
+  }, []);
 
   const handleZoomIn = useCallback(() => {
     setScale((prev) => Math.min(MAX_SCALE, +(prev + 0.2).toFixed(1)));
@@ -182,10 +204,8 @@ export default function Viewer() {
   }, []);
   const handleZoomReset = useCallback(() => setScale(1.0), []);
 
-  // ── Recovery states (only relevant when state was lost) ──
+  // ── Recovery states ──
   if (!fileId && !hasFullState && !rawUrl) {
-    // No id anywhere (state, URL) — genuinely nothing to show, not a
-    // loading condition. Distinct from "recovering" below.
     return (
       <ErrorScreen
         message="No document is open. Go back and select a file to view."
@@ -195,8 +215,6 @@ export default function Viewer() {
   }
 
   if (!hasFullState && !recovered && !recoveryError) {
-    // We have a fileId but are still fetching its details from `notes`.
-    // CHANGED: explicit stage instead of the default.
     return <LoadingScreen stage="lookup" />;
   }
 
@@ -214,12 +232,6 @@ export default function Viewer() {
     : fileLoading;
 
   if (showLoading) {
-    // CHANGED: real stage + progress instead of a bare spinner.
-    // While useFileLoader is still working, show its stage
-    // (checking-cache / downloading) with byte progress when known.
-    // Once it's done and we're just waiting on pdf.js to parse the
-    // first page, that's a distinct 'opening' stage with no byte
-    // progress to report (it's CPU parsing, not a network transfer).
     return (
       <LoadingScreen
         stage={fileLoading ? loadStage : 'opening'}
@@ -228,10 +240,6 @@ export default function Viewer() {
     );
   }
 
-  // PPTX rendering depends on a live embedded viewer (Office/Google),
-  // not just having the bytes — caching the blob doesn't make this
-  // work offline. Say so clearly instead of letting it spin forever
-  // or show a blank iframe.
   if (fileType === 'pptx' && !navigator.onLine && !blobUrl) {
     return (
       <ErrorScreen
@@ -294,6 +302,8 @@ export default function Viewer() {
           currentPage={currentPage}
           onPageChange={setCurrentPage}
           renderer={renderer}
+          onAskSelection={handleAskSelection}
+          onScaleChange={setScale}
         />
       ) : (
         <PptxViewer url={blobUrl || rawUrl} scale={scale} />
@@ -314,9 +324,17 @@ export default function Viewer() {
         <Suspense fallback={null}>
           <LunaPanel
             fileId={fileId}
-            pageText={pageText}
+            pageNumber={currentPage}
             currentPage={currentPage}
-            onClose={() => { setShowLuna(false); setIsLunaFullscreen(false); }}
+            pageText={pageText}
+            multiPageContext={multiPageContext}
+            initialPrompt={initialPrompt}
+            courseContext={recovered?.course_name || state?.course || filename}
+            onClose={() => {
+              setShowLuna(false);
+              setIsLunaFullscreen(false);
+              setInitialPrompt('');
+            }}
             isFullscreen={isLunaFullscreen}
             toggleFullscreen={() => setIsLunaFullscreen((p) => !p)}
           />

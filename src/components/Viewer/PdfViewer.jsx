@@ -1,4 +1,10 @@
-import { useEffect, useRef, useCallback, useMemo } from 'react';
+import { useEffect, useRef, useCallback, useMemo, useState } from 'react';
+import * as pdfjs from 'pdfjs-dist';
+import { Sparkles, HelpCircle, FileText } from 'lucide-react';
+
+const PAGE_GAP = 24; // 24px Google-style paper card separation
+const MIN_SCALE = 0.5;
+const MAX_SCALE = 3.0;
 
 export default function PdfViewer({
   pageSizes,
@@ -8,6 +14,8 @@ export default function PdfViewer({
   currentPage,
   onPageChange,
   renderer,
+  onAskSelection,
+  onScaleChange,
 }) {
   const scrollRef = useRef(null);
   const visiblePagesRef = useRef(new Set());
@@ -16,42 +24,43 @@ export default function PdfViewer({
   const velocityRef = useRef(0);
   const rafId = useRef(null);
   const lastTime = useRef(Date.now());
-  const pageElsRef = useRef(new Map()); // pageNum -> placeholder element, avoids querySelector
 
-  // Latest-value refs so the scroll listener effect never needs to
-  // depend on fast-changing props/callbacks and therefore never gets
-  // torn down mid-scroll (which was cancelling in-flight updates and
-  // causing pages to never get attached).
+  const pageElsRef = useRef(new Map());       // pageNum -> card DOM element
+  const textLayerElsRef = useRef(new Map());  // pageNum -> textLayer container DOM element
+  const activeTextTasksRef = useRef(new Map()); // pageNum -> TextLayer instance
+
   const currentPageRef = useRef(currentPage);
   const onPageChangeRef = useRef(onPageChange);
   const rendererRef = useRef(renderer);
-  const layoutRef = useRef({ pageSizes, pageHeights: [], pageTops: [0] });
+  const pdfRef = useRef(pdf);
 
-  // Tracks the (scale, containerWidth, devicePixelRatio) combination each
-  // currently-attached canvas was last rasterized at. Repositioning a page
-  // (scrolling) should never force a repaint; changing its target
-  // resolution (zoom, container resize, moving the window to a different
-  // DPR display) always should.
+  // Tracks selection for floating "Ask StudyHub" popover
+  const [selectionInfo, setSelectionInfo] = useState(null); // { text, pageNum, rect: { top, left, width, height } }
+
+  // Touch pinch-to-zoom refs
+  const touchStateRef = useRef({
+    isPinching: false,
+    initialDistance: 0,
+    initialScale: scale,
+    centerX: 0,
+    centerY: 0,
+  });
+
   const lastRenderParamsRef = useRef({ scale, containerWidth, dpr: 1 });
   const dprRef = useRef(typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1);
 
   useEffect(() => { currentPageRef.current = currentPage; }, [currentPage]);
   useEffect(() => { onPageChangeRef.current = onPageChange; }, [onPageChange]);
   useEffect(() => { rendererRef.current = renderer; }, [renderer]);
+  useEffect(() => { pdfRef.current = pdf; }, [pdf]);
 
-  // Update renderer with container width
+  // Update renderer with container width and pixel ratio
   useEffect(() => {
     renderer.setContainerWidth(containerWidth);
-    // Let the renderer know the true pixel ratio so it can rasterize at
-    // native resolution instead of CSS-pixel resolution. Optional chaining
-    // keeps this a no-op if the renderer hasn't implemented it yet, but a
-    // canvas-based viewer needs this to match Chrome/Drive's crispness.
     renderer.setPixelRatio?.(dprRef.current);
   }, [containerWidth, renderer]);
 
-  // Track devicePixelRatio changes (e.g. dragging the window between a
-  // standard and a HiDPI monitor). matchMedia fires once per ratio change
-  // and we re-subscribe with the new ratio each time.
+  // Track devicePixelRatio changes (e.g. moving across displays)
   useEffect(() => {
     if (typeof window === 'undefined' || !window.matchMedia) return;
     const mq = window.matchMedia(`(resolution: ${dprRef.current}dppx)`);
@@ -62,41 +71,108 @@ export default function PdfViewer({
     };
     mq.addEventListener?.('change', onChange);
     return () => mq.removeEventListener?.('change', onChange);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const pageHeights = useMemo(() => {
-    if (!containerWidth || pageSizes.length === 0) return [];
-    const fallback = pageSizes[0]; // page 1 is always measured first and available
-    return pageSizes.map((size) => {
-      const { width, height } = size || fallback || { width: 1, height: 1.414 }; // last-resort A4-ish ratio
-      return (containerWidth * scale * height) / width;
-    });
-  }, [pageSizes, containerWidth, scale]);
+  // Compute unscaled reference base width
+  const baseWidth = useMemo(() => pageSizes[0]?.width || 595, [pageSizes]);
 
-  const pageTops = useMemo(() => {
-    const tops = [0];
-    for (let i = 0; i < pageHeights.length; i++) tops.push(tops[i] + pageHeights[i]);
-    return tops;
-  }, [pageHeights]);
+  // Calculate layout with proper page widths and vertical card gutters (PAGE_GAP)
+  const layout = useMemo(() => {
+    if (!containerWidth || pageSizes.length === 0) {
+      return { pageHeights: [], pageWidths: [], pageTops: [PAGE_GAP], totalHeight: 0 };
+    }
 
+    const fallback = pageSizes[0] || { width: 595, height: 842 };
+    const pageHeights = [];
+    const pageWidths = [];
+    const pageTops = [PAGE_GAP];
+
+    for (let i = 0; i < pageSizes.length; i++) {
+      const size = pageSizes[i] || fallback;
+      const { width, height } = size;
+      // Target display CSS width for this page
+      const targetWidth = Math.round((containerWidth * scale * width) / baseWidth);
+      const targetHeight = Math.round((targetWidth * height) / width);
+
+      pageWidths.push(targetWidth);
+      pageHeights.push(targetHeight);
+      pageTops.push(pageTops[i] + targetHeight + PAGE_GAP);
+    }
+
+    const totalHeight = pageTops[pageTops.length - 1] || 0;
+    return { pageHeights, pageWidths, pageTops, totalHeight };
+  }, [pageSizes, containerWidth, scale, baseWidth]);
+
+  const layoutRef = useRef(layout);
   useEffect(() => {
-    layoutRef.current = { pageSizes, pageHeights, pageTops };
-  }, [pageSizes, pageHeights, pageTops]);
+    layoutRef.current = layout;
+  }, [layout]);
 
-  const totalHeight = pageTops[pageTops.length - 1] || 0;
+  // ── Render Text Layer for a visible page ────────────────────────────────
+  const renderTextLayer = useCallback(async (pageNum) => {
+    const doc = pdfRef.current;
+    if (!doc) return;
 
-  // Stable across the component's lifetime — reads everything it
-  // needs from refs, so its identity never has to change and the
-  // scroll listener never has to be rebuilt.
+    const container = textLayerElsRef.current.get(pageNum);
+    if (!container) return;
+
+    // If already rendered for current scale, skip re-render
+    if (container.dataset.renderedScale === String(scale) && container.children.length > 0) {
+      return;
+    }
+
+    // Cancel any in-flight text layer render for this page
+    if (activeTextTasksRef.current.has(pageNum)) {
+      try {
+        activeTextTasksRef.current.get(pageNum).cancel();
+      } catch (_) {}
+      activeTextTasksRef.current.delete(pageNum);
+    }
+
+    try {
+      const page = await doc.getPage(pageNum);
+      const { pageWidths } = layoutRef.current;
+      const targetCssWidth = pageWidths[pageNum - 1] || containerWidth;
+      const basePageWidth = page.view ? page.view[2] - page.view[0] : 595;
+      const viewportScale = targetCssWidth / basePageWidth;
+      const viewport = page.getViewport({ scale: viewportScale });
+
+      container.innerHTML = '';
+      container.style.width = `${Math.round(viewport.width)}px`;
+      container.style.height = `${Math.round(viewport.height)}px`;
+      container.style.setProperty('--total-scale-factor', viewport.scale);
+      if (pdfjs.setLayerDimensions) {
+        try { pdfjs.setLayerDimensions(container, viewport); } catch (_) {}
+      }
+
+      const textContent = await page.getTextContent();
+      const textLayer = new pdfjs.TextLayer({
+        textContentSource: textContent,
+        container,
+        viewport,
+      });
+
+      activeTextTasksRef.current.set(pageNum, textLayer);
+      await textLayer.render();
+      container.dataset.renderedScale = String(scale);
+    } catch (err) {
+      if (err?.name !== 'AbortException' && err?.name !== 'RenderingCancelledException') {
+        // Silently catch cancellations during scroll
+      }
+    } finally {
+      activeTextTasksRef.current.delete(pageNum);
+    }
+  }, [containerWidth, scale]);
+
+  // ── Update View & Virtualization ─────────────────────────────────────────
   const updateView = useCallback(() => {
     const container = scrollRef.current;
     if (!container) return;
 
-    const { pageSizes, pageTops } = layoutRef.current;
+    const { pageTops, totalHeight } = layoutRef.current;
     const renderer = rendererRef.current;
-
     const containerHeight = container.clientHeight;
+
     if (containerHeight === 0) {
       setTimeout(() => {
         if (rafId.current) cancelAnimationFrame(rafId.current);
@@ -121,53 +197,54 @@ export default function PdfViewer({
 
     const viewTop = scrollTop;
     const viewBottom = scrollTop + containerHeight;
-    // Scale overscan with scroll velocity: fast flings pre-attach a wider
-    // band so pages are already painted by the time they reach the
-    // viewport, matching the "never see a blank page" feel of Drive/Chrome.
-    const overscan = containerHeight * (0.5 + Math.min(velocityRef.current * 2, 1.5));
+    const overscan = containerHeight * (0.6 + Math.min(velocityRef.current * 2, 1.6));
 
     const newVisible = new Set();
-    for (let i = 0; i < pageSizes.length; i++) {
+    const pageCount = pageSizes.length;
+    for (let i = 0; i < pageCount; i++) {
       const top = pageTops[i];
-      const bottom = pageTops[i + 1];
-      if (bottom >= viewTop - overscan && top <= viewBottom + overscan) newVisible.add(i + 1);
+      const bottom = pageTops[i + 1] - PAGE_GAP;
+      if (bottom >= viewTop - overscan && top <= viewBottom + overscan) {
+        newVisible.add(i + 1);
+      }
     }
 
-    // Detach non-visible pages
+    // Detach canvases for pages leaving viewport
     visiblePagesRef.current.forEach((p) => {
       if (!newVisible.has(p)) {
         renderer.detachCanvas(p);
       }
     });
 
-    // Attach newly visible pages
+    // Attach canvases and render text layers for newly visible pages
     newVisible.forEach((p) => {
       if (!visiblePagesRef.current.has(p)) {
         const el = pageElsRef.current.get(p);
         if (el) {
           renderer.attachCanvas(p, el);
-        } else {
-          console.warn(`Placeholder not found for page ${p}`);
+          renderTextLayer(p);
         }
       }
     });
     visiblePagesRef.current = newVisible;
-
-    // Let the renderer's canvas pool know what's actually on screen,
-    // so eviction never steals a canvas from a visible page even
-    // under pool pressure.
     renderer.setVisiblePages?.(Array.from(newVisible));
 
-    // Calculate current page (center of viewport)
+    // Calculate current page (closest to center of viewport)
     const center = viewTop + containerHeight / 2;
-    let current = 1, minDist = Infinity;
-    for (let i = 0; i < pageSizes.length; i++) {
-      const pageCenter = (pageTops[i] + pageTops[i + 1]) / 2;
+    let current = 1;
+    let minDist = Infinity;
+    for (let i = 0; i < pageCount; i++) {
+      const pageCenter = (pageTops[i] + pageTops[i + 1] - PAGE_GAP) / 2;
       const dist = Math.abs(pageCenter - center);
-      if (dist < minDist) { minDist = dist; current = i + 1; }
+      if (dist < minDist) {
+        minDist = dist;
+        current = i + 1;
+      }
     }
-    if (current !== currentPageRef.current) onPageChangeRef.current(current);
-  }, []); // stable forever — everything it needs comes from refs
+    if (current !== currentPageRef.current) {
+      onPageChangeRef.current(current);
+    }
+  }, [pageSizes.length, renderTextLayer]);
 
   const scheduleUpdate = useCallback(() => {
     if (rafId.current) return;
@@ -177,31 +254,29 @@ export default function PdfViewer({
     });
   }, [updateView]);
 
-  // Forces every currently-visible page to detach and re-attach, so the
-  // renderer repaints it at the current scale/DPR instead of leaving a
-  // stale bitmap that the browser just stretches with CSS (the cause of
-  // "zooming makes it blurry" — a repositioned canvas is not a
-  // repainted canvas).
   const forceRerasterizeVisible = useCallback(() => {
     const renderer = rendererRef.current;
-    visiblePagesRef.current.forEach((p) => renderer.detachCanvas(p));
+    visiblePagesRef.current.forEach((p) => {
+      renderer.detachCanvas(p);
+      // Clean up textLayer data so it re-renders at new scale
+      const tEl = textLayerElsRef.current.get(p);
+      if (tEl) {
+        tEl.innerHTML = '';
+        delete tEl.dataset.renderedScale;
+      }
+    });
     visiblePagesRef.current = new Set();
     scheduleUpdate();
   }, [scheduleUpdate]);
 
-  // Attach scroll listener exactly once. Since updateView and
-  // scheduleUpdate are now stable, this effect never tears down
-  // mid-scroll, so an in-flight visibility update never gets
-  // cancelled by cancelAnimationFrame before it can attach pages.
+  // Scroll listener
   useEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
     const onScroll = () => scheduleUpdate();
     container.addEventListener('scroll', onScroll, { passive: true });
     requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        scheduleUpdate();
-      });
+      requestAnimationFrame(() => scheduleUpdate());
     });
     return () => {
       container.removeEventListener('scroll', onScroll);
@@ -209,12 +284,9 @@ export default function PdfViewer({
     };
   }, [scheduleUpdate]);
 
-  // Re-run visibility whenever layout actually changes (page sizes
-  // loaded/updated, zoom changed, container resized). If scale or
-  // containerWidth specifically changed — not just pageSizes arriving for
-  // the first time — force a repaint of whatever's already on screen.
+  // Re-run visibility on layout/scale/size updates
   useEffect(() => {
-    if (pageHeights.length === 0) return;
+    if (layout.pageHeights.length === 0) return;
 
     const prev = lastRenderParamsRef.current;
     const paramsChanged = prev.scale !== scale || prev.containerWidth !== containerWidth;
@@ -227,48 +299,266 @@ export default function PdfViewer({
 
     const id = setTimeout(() => scheduleUpdate(), 0);
     return () => clearTimeout(id);
-  }, [pageHeights, scale, containerWidth, scheduleUpdate, forceRerasterizeVisible]);
+  }, [layout, scale, containerWidth, scheduleUpdate, forceRerasterizeVisible]);
+
+  // ── Text Selection & Floating "Ask StudyHub" Bar ────────────────────────
+  const checkTextSelection = useCallback(() => {
+    const sel = window.getSelection();
+    if (!sel || sel.isCollapsed) {
+      setSelectionInfo(null);
+      return;
+    }
+
+    const selectedText = sel.toString().trim();
+    if (selectedText.length < 2) {
+      setSelectionInfo(null);
+      return;
+    }
+
+    // Check if selection anchor is within one of our text layers
+    let node = sel.anchorNode;
+    let textLayerEl = null;
+    while (node && node !== document.body) {
+      if (node.classList && node.classList.contains('textLayer')) {
+        textLayerEl = node;
+        break;
+      }
+      node = node.parentNode;
+    }
+
+    if (!textLayerEl) {
+      setSelectionInfo(null);
+      return;
+    }
+
+    const pageNum = parseInt(textLayerEl.dataset.page, 10) || currentPageRef.current;
+    const range = sel.getRangeAt(0);
+    const rect = range.getBoundingClientRect();
+
+    if (rect.width === 0 && rect.height === 0) {
+      setSelectionInfo(null);
+      return;
+    }
+
+    setSelectionInfo({
+      text: selectedText,
+      pageNum,
+      rect: {
+        top: Math.max(12, rect.top - 10),
+        left: rect.left + rect.width / 2,
+        width: rect.width,
+        height: rect.height,
+      },
+    });
+  }, []);
+
+  useEffect(() => {
+    const handleMouseUp = () => {
+      setTimeout(checkTextSelection, 30);
+    };
+    const handleKeyUp = () => {
+      setTimeout(checkTextSelection, 30);
+    };
+    const handleSelectionChange = () => {
+      const sel = window.getSelection();
+      if (!sel || sel.isCollapsed) {
+        setSelectionInfo(null);
+      }
+    };
+
+    document.addEventListener('selectionchange', handleSelectionChange);
+    window.addEventListener('mouseup', handleMouseUp);
+    window.addEventListener('keyup', handleKeyUp);
+    window.addEventListener('touchend', handleMouseUp);
+
+    return () => {
+      document.removeEventListener('selectionchange', handleSelectionChange);
+      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('keyup', handleKeyUp);
+      window.removeEventListener('touchend', handleMouseUp);
+    };
+  }, [checkTextSelection]);
+
+  // ── Touch Pinch-to-Zoom Gesture ──────────────────────────────────────────
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const onTouchStart = (e) => {
+      if (e.touches.length === 2) {
+        const t1 = e.touches[0];
+        const t2 = e.touches[1];
+        const dist = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+        touchStateRef.current = {
+          isPinching: true,
+          initialDistance: dist,
+          initialScale: scale,
+          centerX: (t1.clientX + t2.clientX) / 2,
+          centerY: (t1.clientY + t2.clientY) / 2,
+        };
+      }
+    };
+
+    const onTouchMove = (e) => {
+      if (!touchStateRef.current.isPinching || e.touches.length !== 2) return;
+      e.preventDefault(); // Prevent default browser zoom to handle custom smooth PDF zoom
+
+      const t1 = e.touches[0];
+      const t2 = e.touches[1];
+      const dist = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+      const ratio = dist / (touchStateRef.current.initialDistance || 1);
+      const nextScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, +(touchStateRef.current.initialScale * ratio).toFixed(2)));
+
+      if (Math.abs(nextScale - scale) > 0.04 && onScaleChange) {
+        onScaleChange(nextScale);
+      }
+    };
+
+    const onTouchEnd = (e) => {
+      if (touchStateRef.current.isPinching && e.touches.length < 2) {
+        touchStateRef.current.isPinching = false;
+      }
+    };
+
+    // Desktop Trackpad Pinch / Ctrl+Wheel
+    const onWheel = (e) => {
+      if (e.ctrlKey) {
+        e.preventDefault();
+        const delta = -e.deltaY * 0.005;
+        const nextScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, +(scale + delta).toFixed(2)));
+        if (onScaleChange) onScaleChange(nextScale);
+      }
+    };
+
+    container.addEventListener('touchstart', onTouchStart, { passive: true });
+    container.addEventListener('touchmove', onTouchMove, { passive: false });
+    container.addEventListener('touchend', onTouchEnd, { passive: true });
+    container.addEventListener('wheel', onWheel, { passive: false });
+
+    return () => {
+      container.removeEventListener('touchstart', onTouchStart);
+      container.removeEventListener('touchmove', onTouchMove);
+      container.removeEventListener('touchend', onTouchEnd);
+      container.removeEventListener('wheel', onWheel);
+    };
+  }, [scale, onScaleChange]);
 
   const setPageEl = useCallback((pageNum, el) => {
     if (el) pageElsRef.current.set(pageNum, el);
     else pageElsRef.current.delete(pageNum);
   }, []);
 
+  const setTextLayerEl = useCallback((pageNum, el) => {
+    if (el) {
+      textLayerElsRef.current.set(pageNum, el);
+      // Re-trigger text render if page is already visible
+      if (visiblePagesRef.current.has(pageNum)) {
+        renderTextLayer(pageNum);
+      }
+    } else {
+      textLayerElsRef.current.delete(pageNum);
+    }
+  }, [renderTextLayer]);
+
+  const handleActionClick = (actionType) => {
+    if (!selectionInfo) return;
+    const { text, pageNum } = selectionInfo;
+    setSelectionInfo(null);
+    window.getSelection()?.removeAllRanges();
+
+    if (onAskSelection) {
+      onAskSelection(text, pageNum, actionType);
+    }
+  };
+
   return (
-    <div
-      ref={scrollRef}
-      style={{
-        flex: 1,
-        overflowY: 'auto',
-        overflowX: 'hidden',
-        background: '#e2e5ea',
-        position: 'relative',
-        scrollbarWidth: 'none',
-        padding: '20px 0',
-        minHeight: 0,
-      }}
-    >
-      <div style={{ height: totalHeight, position: 'relative' }}>
+    <div ref={scrollRef} className="pdf-scroll-viewport">
+      {/* Total vertical scroll space with pages absolutely positioned */}
+      <div
+        style={{
+          height: layout.totalHeight,
+          position: 'relative',
+          minWidth: '100%',
+          width: 'fit-content',
+          margin: '0 auto',
+          paddingBottom: 40,
+        }}
+      >
         {pageSizes.map((_, i) => {
           const pageNum = i + 1;
-          const top = pageTops[i];
-          const height = pageHeights[i];
+          const top = layout.pageTops[i];
+          const height = layout.pageHeights[i] || 800;
+          const width = layout.pageWidths[i] || (containerWidth * scale);
+          const isActive = pageNum === currentPage;
+
           return (
             <div
               key={pageNum}
               data-page={pageNum}
               ref={(el) => setPageEl(pageNum, el)}
+              className={`pdf-page-card ${isActive ? 'is-active' : ''}`}
               style={{
-                position: 'absolute', top, left: 0, right: 0, height,
-                display: 'flex', justifyContent: 'center', alignItems: 'center',
-                boxShadow: '0 1px 4px rgba(0,0,0,.15)',
-                background: '#fff',
+                position: 'absolute',
+                top,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width,
+                height,
               }}
-              className="page-slot"
-            />
+            >
+              {/* Text Layer (pdfjs text elements for crisp selection) */}
+              <div
+                ref={(el) => setTextLayerEl(pageNum, el)}
+                data-page={pageNum}
+                className="textLayer"
+              />
+
+              {/* Page Number Ribbon (subtle Google-style page indicator) */}
+              <div className="page-number-pill">
+                Page {pageNum} of {pageSizes.length}
+              </div>
+            </div>
           );
         })}
       </div>
+
+      {/* Floating "Ask StudyHub" Popover Bar */}
+      {selectionInfo && (
+        <div
+          className="selection-ask-popover"
+          style={{
+            top: selectionInfo.rect.top,
+            left: selectionInfo.rect.left,
+          }}
+          onMouseDown={(e) => e.preventDefault()} // Prevent losing selection on click
+        >
+          <button
+            type="button"
+            className="selection-ask-btn-primary"
+            onClick={() => handleActionClick('ask')}
+          >
+            <Sparkles size={14} />
+            Ask StudyHub
+          </button>
+          <button
+            type="button"
+            className="selection-ask-btn-secondary"
+            onClick={() => handleActionClick('explain')}
+          >
+            <HelpCircle size={13} />
+            Explain
+          </button>
+          <button
+            type="button"
+            className="selection-ask-btn-secondary"
+            onClick={() => handleActionClick('summarize')}
+          >
+            <FileText size={13} />
+            Summary
+          </button>
+          <div className="selection-ask-arrow" />
+        </div>
+      )}
     </div>
   );
 }

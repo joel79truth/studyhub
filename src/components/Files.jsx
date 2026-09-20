@@ -210,9 +210,13 @@ const FileCard = memo(({ file, onPress, onStartDownload, onCancelDownload, onRem
           </span>
         </div>
         <div className="mt-3">
-          <h4 className="text-sm font-bold text-slate-800 truncate">{file.course_name || file.filename}</h4>
+          <h4 className="text-sm font-bold text-slate-800 truncate" title={file.filename || file.course_name}>
+            {file.filename || file.course_name}
+          </h4>
           <div className="flex items-center justify-between mt-1">
-            <p className="text-[10px] text-slate-400 truncate w-24">{file.program || 'General'}</p>
+            <p className="text-[10px] text-slate-500 font-medium truncate w-28" title={file.course_name || file.program}>
+              {file.course_name || file.program || 'General'}
+            </p>
             <div className="flex items-center">
               {isDownloading ? (
                 <button onClick={handleDownloadTap} className="flex items-center gap-1 p-1 text-blue-600" title="Cancel download" aria-label={`Cancel download of ${file.filename}`}>

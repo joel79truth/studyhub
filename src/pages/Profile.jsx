@@ -695,11 +695,17 @@ export default function Profile() {
       const semesterNum = parseInt(academicForm.semester, 10) || 1;
       const yearNum = parseInt(academicForm.year_of_study, 10) || 1;
 
+      // Auto-correct: Year 1 Sem 1/2 → Basics (LUANAR policy)
+      let effectiveProgram = academicForm.program.trim();
+      if (yearNum === 1 && (semesterNum === 1 || semesterNum === 2) && !/^basics$/i.test(effectiveProgram)) {
+        effectiveProgram = 'Basics';
+      }
+
       const { error } = await supabase
         .from('profiles')
         .update({
           name: academicForm.name.trim(),
-          program: academicForm.program.trim(),
+          program: effectiveProgram,
           year_of_study: yearNum,
           semester: semesterNum,
           campus: academicForm.campus,
@@ -713,7 +719,7 @@ export default function Profile() {
       const updated = {
         ...profile,
         name: academicForm.name.trim(),
-        program: academicForm.program.trim(),
+        program: effectiveProgram,
         year_of_study: yearNum,
         semester: semesterNum,
         campus: academicForm.campus,
@@ -721,9 +727,15 @@ export default function Profile() {
       };
 
       setProfile(updated);
+      // Keep the form in sync with the effective (possibly corrected) value
+      setAcademicForm(prev => ({ ...prev, program: effectiveProgram }));
       writeProfileCache({ userId: user.id, profile: updated, files });
       setShowAcademicModal(false);
-      showToast('Academic profile updated successfully!');
+      showToast(
+        effectiveProgram === 'Basics' && academicForm.program.trim() !== effectiveProgram
+          ? 'Academic profile updated — programme set to Basics (Year 1 policy).'
+          : 'Academic profile updated successfully!'
+      );
     } catch (err) {
       console.error(err);
       showToast('Failed to save profile details', 'error');
@@ -1199,6 +1211,25 @@ export default function Profile() {
                   </div>
                 </div>
               </div>
+
+              {/* Basics auto-correction notice */}
+              {(() => {
+                const yr = parseInt(academicForm.year_of_study, 10);
+                const sem = parseInt(academicForm.semester, 10);
+                const notBasics = academicForm.program && !/^basics$/i.test(academicForm.program.trim());
+                if (yr === 1 && (sem === 1 || sem === 2) && notBasics) {
+                  return (
+                    <div className="flex items-start gap-2 px-3 py-2.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-800">
+                      <span className="mt-0.5 shrink-0">ℹ️</span>
+                      <span>
+                        Year 1 students in Semester 1 or 2 follow the <strong>Basics</strong> curriculum at LUANAR.
+                        Your programme will be automatically set to <strong>Basics</strong> when you save.
+                      </span>
+                    </div>
+                  );
+                }
+                return null;
+              })()}
 
               {/* Campus */}
               <div>

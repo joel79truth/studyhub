@@ -799,6 +799,20 @@ const Home = () => {
     });
   }, [navigate, showToast]);
 
+  // ── Basics auto-correction ────────────────────────────────────────────────
+  // All Year 1 students take Basics (Sem 1 & 2) at LUANAR regardless of their
+  // enrolled programme. Silently correct the stored programme to "Basics" so
+  // their course and past-paper feeds show the right content.
+  const resolveEffectiveProgram = useCallback((rawProgram, semStr, yearStr) => {
+    const yr = parseInt(yearStr, 10);
+    const sem = parseInt(semStr, 10);
+    const isBasics = /^basics$/i.test((rawProgram || '').trim());
+    if (yr === 1 && (sem === 1 || sem === 2) && !isBasics) {
+      return 'Basics';
+    }
+    return rawProgram;
+  }, []);
+
   const handleProfileSubmit = useCallback(async (e) => {
     e.preventDefault();
     if (!navigator.onLine) {
@@ -823,9 +837,12 @@ const Home = () => {
       if (!ok) throw new Error('Your session was invalid and has been cleared — please sign in again.');
       const { data: { session: liveSession } } = await supabase.auth.getSession();
       if (!liveSession?.user) throw new Error('Your session expired — please sign in again.');
-      const updateData = { id: liveSession.user.id, program: program.trim(), semester: semesterNum, year_of_study: yearNum, role, updated_at: new Date().toISOString() };
+      // Auto-correct: Year 1 Sem 1/2 → Basics
+      const effectiveProgram = resolveEffectiveProgram(program, semester, year);
+      const updateData = { id: liveSession.user.id, program: effectiveProgram.trim(), semester: semesterNum, year_of_study: yearNum, role, updated_at: new Date().toISOString() };
       const { error } = await supabase.from('profiles').upsert(updateData, { onConflict: 'id' }).select();
       if (error) throw error;
+      setProgram(effectiveProgram);
       setShowProfileForm(false);
       setUserData(prev => ({ ...prev, program: updateData.program, semester: updateData.semester, year: updateData.year_of_study, role: updateData.role }));
       await loadUserProfile(liveSession.user);
@@ -834,7 +851,7 @@ const Home = () => {
       setProfileError(err.message || 'Failed to save profile. Please try again.');
       if (err.message?.includes('session was invalid') || err.message?.includes('session expired')) navigate('/login', { replace: true });
     } finally { setProfileSubmitting(false); }
-  }, [program, semester, year, role, lecturerCode, LECTURER_SECRET, loadUserProfile, navigate]);
+  }, [program, semester, year, role, lecturerCode, LECTURER_SECRET, loadUserProfile, navigate, resolveEffectiveProgram]);
 
   const currentHint = ACTIVITY_HINTS[hintIdx];
 
@@ -918,6 +935,24 @@ const Home = () => {
                   </select>
                   {fieldErrors.year && <p className="text-red-500 text-xs mt-1" role="alert">Select a valid year (1–4)</p>}
                 </div>
+                {/* Basics auto-correction notice */}
+                {(() => {
+                  const yr = parseInt(year, 10);
+                  const sem = parseInt(semester, 10);
+                  const notBasics = program && !/^basics$/i.test(program.trim());
+                  if (yr === 1 && (sem === 1 || sem === 2) && notBasics) {
+                    return (
+                      <div className="mb-4 flex items-start gap-2 px-3 py-2.5 rounded-lg bg-amber-50 border border-amber-200 text-xs text-amber-800">
+                        <span className="mt-0.5 shrink-0">ℹ️</span>
+                        <span>
+                          Year 1 students in Semester 1 or 2 follow the <strong>Basics</strong> curriculum at LUANAR.
+                          Your programme will be set to <strong>Basics</strong> automatically so you see the right courses.
+                        </span>
+                      </div>
+                    );
+                  }
+                  return null;
+                })()}
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700 mb-1">Role <span className="text-red-500">*</span></label>
                   <select value={role} onChange={(e) => setRole(e.target.value)}
