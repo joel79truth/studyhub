@@ -55,6 +55,7 @@ import { MathText } from './math-fix.jsx';
 import TutorMarkdown from '../components/common/TutorMarkdown';
 import { API_BASE_URL } from '../lib/apiConfig';
 import { trackQuizCompleted } from '../lib/analytics';
+import { recordQuizResult } from '../services/learningIntelligence';
 
 import {
   BookOpen,
@@ -876,6 +877,26 @@ const Quiz = () => {
     const id = setInterval(() => setCheckingMsgIdx(i => (i + 1) % CHECKING_MESSAGES.length), 1400);
     return () => clearInterval(id);
   }, [checkingIndex]);
+
+  // ── Record quiz results into Learning Intelligence ────────────────────────
+  // Fires once when a quiz finishes (phase transitions to 'done').
+  // Captures weak/strong topics so the home dashboard can surface personalized
+  // nudges and Luna can open with relevant context.
+  useEffect(() => {
+    if (phase !== 'done' || !results) return;
+    const { percentage, details } = results;
+    const courseName = currentSubjectId ? (subjects[currentSubjectId]?.title || '') : '';
+    const strongTopics = [...new Set(details.filter(d => d.isCorrect).map(d => d.topic).filter(Boolean))];
+    const weakTopicsList = [...new Set(details.filter(d => !d.isCorrect).map(d => d.topic).filter(Boolean))];
+    recordQuizResult({
+      percentage,
+      strongTopics,
+      weakTopics: weakTopicsList,
+      courseName,
+      courseId: currentSubjectId || '',
+      quizMode,
+    });
+  }, [phase, results]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ── Derived data ────────────────────────────────────────────
   const subjectList = useMemo(() => Object.values(subjects), [subjects]);

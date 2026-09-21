@@ -46,7 +46,7 @@ export async function fetchMessages(sessionId) {
   return res.json();
 }
 
-export function sendMessageStream(sessionId, message, { onToken, onDone, onError, signal }) {
+export function sendMessageStream(sessionId, message, { onToken, onDone, onError, signal, learningContext = '' }) {
   // For streaming, we need to attach the token inside the fetch call
   const startStream = async () => {
     try {
@@ -55,7 +55,12 @@ export function sendMessageStream(sessionId, message, { onToken, onDone, onError
       const response = await fetch(`${BASE_URL}/sessions/${sessionId}/messages`, {
         method: 'POST',
         headers,
-        body: JSON.stringify({ message }),
+        body: JSON.stringify({
+          message,
+          // Learning intelligence context — injected into the AI system prompt
+          // when available; ignored by backends that don't support it yet.
+          ...(learningContext ? { learningContext } : {}),
+        }),
         signal,
       });
 

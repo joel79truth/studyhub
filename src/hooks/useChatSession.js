@@ -8,6 +8,7 @@ import {
   sendMessageStream,
 } from '../services/api';
 import { trackAiChatPrompt } from '../lib/analytics';
+import { getLunaContext } from '../services/learningIntelligence';
 
 export function useChatSession() {
   const [sessions, setSessions] = useState([]);
@@ -90,6 +91,9 @@ export function useChatSession() {
 
     sendMessageStream(currentSessionId, text, {
       signal: controller.signal,
+      // Inject the student's quiz performance context so the AI can tailor
+      // its response. getLunaContext() reads from localStorage — safe offline.
+      learningContext: getLunaContext(),
       onToken: (token) => {
         setMessages(prev => {
           const updated = [...prev];

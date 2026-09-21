@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { X, Send, Minimize2, Maximize2, BookOpen, Menu } from 'lucide-react';
 import LunaOrb from './LunaOrb';
 import MiniMarkdown from './MiniMarkdown';
+import { getRecentWeakTopics, getLastQuizSummary } from '../services/learningIntelligence';
 
 // ─── constants (unchanged) ─────────────────────────────────────────────
 const QUICK_ACTIONS = [
@@ -251,21 +252,38 @@ const SendButton = ({ onClick, disabled }) => {
 };
 
 const EmptyState = React.memo(({ userLevel, reducedMotion }) => {
-  const content = {
-    new: {
-      title: '👋 Welcome to Luna!',
-      desc: 'I\'m here to help you understand this page. Try a quick action below or ask me anything.',
-    },
-    returning: {
-      title: '✨ Welcome back!',
-      desc: 'Ready to dive deeper? Ask a follow‑up or pick a shortcut to continue learning.',
-    },
-    power: {
+  // Read quiz context synchronously from localStorage — never blocks render
+  const weakTopics = useMemo(() => getRecentWeakTopics(), []);
+  const lastQuiz = useMemo(() => getLastQuizSummary(), []);
+
+  // Determine which state to show (priority: aware > power > returning > new)
+  const content = useMemo(() => {
+    if (weakTopics.length > 0 && lastQuiz) {
+      // 4th state: Luna is aware of your recent struggles
+      const topicList = weakTopics.slice(0, 2).join(' and ');
+      return {
+        title: `📚 Let's tackle ${topicList}`,
+        desc: `You scored ${lastQuiz.percentage}% on ${lastQuiz.courseName || 'your last quiz'}. I can help you clear up ${weakTopics[0]} right now — just ask!`,
+        accent: true,
+      };
+    }
+    if (userLevel === 'power') return {
       title: '🚀 You\'re on a roll!',
       desc: 'Let\'s push further. Try a challenging prompt or explore advanced concepts.',
-    },
-  };
-  const { title, desc } = content[userLevel] || content.new;
+      accent: false,
+    };
+    if (userLevel === 'returning') return {
+      title: '✨ Welcome back!',
+      desc: 'Ready to dive deeper? Ask a follow‑up or pick a shortcut to continue learning.',
+      accent: false,
+    };
+    return {
+      title: '👋 Welcome to Luna!',
+      desc: 'I\'m here to help you understand this page. Try a quick action below or ask me anything.',
+      accent: false,
+    };
+  }, [weakTopics, lastQuiz, userLevel]);
+
   return (
     <div
       style={{
@@ -278,19 +296,23 @@ const EmptyState = React.memo(({ userLevel, reducedMotion }) => {
       <div
         style={{
           width: 56, height: 56, borderRadius: '50%',
-          background: 'linear-gradient(135deg,#eff6ff,#e0e7ff)',
+          background: content.accent
+            ? 'linear-gradient(135deg,#fef3c7,#fed7aa)'
+            : 'linear-gradient(135deg,#eff6ff,#e0e7ff)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          boxShadow: '0 4px 18px rgba(99,102,241,.18)',
+          boxShadow: content.accent
+            ? '0 4px 18px rgba(251,146,60,.25)'
+            : '0 4px 18px rgba(99,102,241,.18)',
           animation: reducedMotion ? 'none' : 'orbFloat 3s ease-in-out infinite',
         }}
       >
-        <BookOpen size={22} color="#4f46e5" />
+        <BookOpen size={22} color={content.accent ? '#d97706' : '#4f46e5'} />
       </div>
       <p style={{ fontWeight: 700, fontSize: 15, margin: 0, color: '#111', textAlign: 'center' }}>
-        {title}
+        {content.title}
       </p>
       <p style={{ fontSize: 12.5, color: '#9ca3af', textAlign: 'center', margin: 0, lineHeight: 1.6, maxWidth: '260px' }}>
-        {desc}
+        {content.desc}
       </p>
     </div>
   );

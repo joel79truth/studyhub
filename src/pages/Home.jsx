@@ -10,6 +10,11 @@ import { ensureConsistentSession } from '../lib/authGuard';
 import {
   Target, FileText, TrendingUp, RefreshCw, Flame, ChevronRight, WifiOff,
 } from 'lucide-react';
+import {
+  getSmartRecommendations,
+  getLevelUpSuggestion,
+  dismissLevelUpSuggestion,
+} from '../services/learningIntelligence';
 
 const DEV = import.meta.env.DEV;
 const log = DEV ? console.log : () => {};
@@ -58,13 +63,30 @@ const writeCache = (partial) => {
 };
 
 // ─── Activity hints — timed to feel present without being frantic ────────────
-const ACTIVITY_HINTS = [
+// For users with quiz history these are data-driven (e.g. "Retry Organic Chemistry").
+// For new users we fall back to the static set so the cards are never empty.
+const STATIC_ACTIVITY_HINTS = [
   { emoji: '🧠', text: 'Practice a quiz', cta: 'Start now', route: '/quiz' },
   { emoji: '📄', text: 'Explore past papers', cta: 'Open', route: '/papers' },
   { emoji: '📈', text: 'Review weak areas', cta: 'See topics', route: '/course' },
   { emoji: '🤖', text: 'Ask the AI anything', cta: 'Ask now', route: '/AiChat' },
   { emoji: '📅', text: 'Check your timetable', cta: 'View', route: '/timetable' },
 ];
+
+function buildActivityHints(recommendations) {
+  if (!recommendations || recommendations.length === 0) return STATIC_ACTIVITY_HINTS;
+  // Build data-driven hints from the first 2 recommendations, then pad with static
+  const dynamic = recommendations.slice(0, 2).map(r => ({
+    emoji: r.emoji,
+    text: `${r.type === 'retry' ? 'Retry' : 'Review'} ${r.topic}`,
+    cta: r.cta,
+    route: r.route,
+  }));
+  // Fill remaining slots with static hints that haven't been used
+  const used = new Set(dynamic.map(d => d.text));
+  const remaining = STATIC_ACTIVITY_HINTS.filter(h => !used.has(h.text));
+  return [...dynamic, ...remaining].slice(0, 5);
+}
 
 // ─── Streak flow — a real sequence, so a numbered/ordered treatment is earned ─
 const STREAK_STEPS = [
@@ -275,6 +297,119 @@ const TapAffordance = () => (
   <ChevronRight className="absolute bottom-2.5 right-2.5 w-3.5 h-3.5 text-gray-300" aria-hidden="true" />
 );
 
+// ─── Level-Up Banner ─────────────────────────────────────────────────────────
+// Shown once when the student consistently scores > 80% or < 50%.
+// Dismissed via an X, stored in localStorage so it never re-appears.
+// UX: Positive framing, non-modal, dismissable — doesn't block flow.
+const LevelUpBanner = memo(({ suggestion, onDismiss, onAction }) => {
+  const isLevelUp = suggestion.type === 'level_up';
+  return (
+    <div
+      className="relative rounded-xl border px-4 py-3 ed-fade-up flex items-start gap-3"
+      style={{
+        background: isLevelUp
+          ? 'linear-gradient(135deg, #eef2ff 0%, #f5f3ff 100%)'
+          : 'linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%)',
+        borderColor: isLevelUp ? '#c7d2fe' : '#fde68a',
+        animationDelay: '0.16s',
+      }}
+      role="status"
+      aria-label={suggestion.message}
+    >
+      <span className="text-xl flex-shrink-0 mt-0.5" aria-hidden="true">{suggestion.emoji}</span>
+      <div className="flex-1 min-w-0">
+        <p className="text-sm font-semibold text-gray-900 leading-snug">{suggestion.message}</p>
+        <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">{suggestion.sub}</p>
+        <button
+          onClick={() => onAction(suggestion.route)}
+          className="mt-2 text-xs font-semibold text-blue-600 underline underline-offset-2 active:opacity-70 transition-opacity"
+          aria-label={suggestion.cta}
+        >
+          {suggestion.cta} →
+        </button>
+      </div>
+      <button
+        onClick={onDismiss}
+        className="flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-full hover:bg-black/5 active:scale-90 transition-transform text-gray-400 hover:text-gray-600"
+        aria-label="Dismiss"
+      >
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M1 1l10 10M11 1L1 11" />
+        </svg>
+      </button>
+    </div>
+  );
+});
+
+// ─── Recommended For You ──────────────────────────────────────────────────────
+// Surfaces personalized retry/review nudges based on quiz history.
+// Only renders when there's at least 1 recommendation (hidden for new users).
+// UX: Data-driven copy ("You scored 42%"), contextual, non-interruptive.
+const RecommendationCard = memo(({ rec, onAction }) => {
+  const isRetry = rec.type === 'retry';
+  return (
+    <div
+      className="bg-white border border-gray-100 rounded-xl p-3.5 flex items-center gap-3 active:scale-[0.98] transition-transform cursor-pointer"
+      onClick={() => onAction(rec.route, rec.courseId)}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => e.key === 'Enter' && onAction(rec.route, rec.courseId)}
+      aria-label={`${rec.pill}: ${rec.topic} — ${rec.message}`}
+    >
+      {/* Emoji icon in pill-styled container */}
+      <div
+        className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-lg"
+        style={{ background: rec.pillColor.bg }}
+        aria-hidden="true"
+      >
+        {rec.emoji}
+      </div>
+
+      <div className="flex-1 min-w-0">
+        {/* Pill label */}
+        <span
+          className="text-[10px] font-bold uppercase tracking-wide"
+          style={{ color: rec.pillColor.fg }}
+        >
+          {rec.pill}
+        </span>
+        {/* Topic name */}
+        <p className="text-sm font-semibold text-gray-900 leading-tight truncate mt-0.5">{rec.topic}</p>
+        {/* Supporting context message */}
+        <p className="text-xs text-gray-400 mt-0.5 leading-snug">{rec.message}</p>
+      </div>
+
+      {/* CTA chevron */}
+      <div className="flex flex-col items-end gap-1 flex-shrink-0">
+        <span
+          className="text-[10px] font-semibold whitespace-nowrap"
+          style={{ color: isRetry ? rec.pillColor.fg : '#2563eb' }}
+        >
+          {rec.cta}
+        </span>
+        <ChevronRight className="w-3.5 h-3.5 text-gray-300" aria-hidden="true" />
+      </div>
+    </div>
+  );
+});
+
+const RecommendedForYou = memo(({ recommendations, onAction }) => {
+  if (!recommendations || recommendations.length === 0) return null;
+  return (
+    <div className="ed-fade-up" style={{ animationDelay: '0.17s' }}>
+      <div className="mb-3">
+        <h2 className="text-base font-semibold text-gray-900">Recommended for You</h2>
+        <p className="text-[11px] text-gray-400 mt-0.5">Based on your recent quiz performance</p>
+      </div>
+      <div className="space-y-2.5">
+        {recommendations.map((rec, i) => (
+          <RecommendationCard key={`${rec.type}-${rec.topic}-${i}`} rec={rec} onAction={onAction} />
+        ))}
+      </div>
+    </div>
+  );
+});
+
 // ─── Streak Card ──────────────────────────────────────────────────────────────
 const StreakCard = memo(({ streak, onTap, hint, showHint, onHintAction }) => {
   const isHot = streak >= 7;
@@ -463,6 +598,11 @@ const Home = () => {
   const [filesEmpty, setFilesEmpty] = useState(false);
   const [toast, setToast] = useState(null);
 
+  // ── Smart personalization state ────────────────────────────────────────────
+  // Loaded from localStorage synchronously on mount — never blocks render.
+  const [recommendations, setRecommendations] = useState(() => getSmartRecommendations());
+  const [levelUpSuggestion, setLevelUpSuggestion] = useState(() => getLevelUpSuggestion());
+
   // FIX: real connectivity state, so we can (a) skip network calls that
   // would just hang/fail offline, (b) avoid treating "no network" as
   // "no session" (which used to force a redirect to /login), and
@@ -505,6 +645,23 @@ const Home = () => {
     return () => clearTimeout(t);
   }, [searchQuery]);
 
+  // ── Refresh personalization when user returns from quiz ────────────────────
+  // Listens for the custom event dispatched by recordQuizResult, and also
+  // re-reads on tab focus so coming back from /quiz always shows fresh data.
+  useEffect(() => {
+    const refresh = () => {
+      setRecommendations(getSmartRecommendations());
+      setLevelUpSuggestion(getLevelUpSuggestion());
+    };
+    window.addEventListener('studyhub-profile-updated', refresh);
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') refresh();
+    });
+    return () => {
+      window.removeEventListener('studyhub-profile-updated', refresh);
+    };
+  }, []);
+
   // FIX: track online/offline explicitly and re-sync the moment we come
   // back online, instead of only ever trying once on mount.
   useEffect(() => {
@@ -530,7 +687,8 @@ const Home = () => {
     const showNext = () => {
       setShowHint(false);
       setTimeout(() => {
-        idx = (idx + 1) % ACTIVITY_HINTS.length;
+        const hintCount = buildActivityHints(recommendations).length;
+        idx = (idx + 1) % hintCount;
         target = target === 0 ? 1 : 0;
         setHintIdx(idx);
         setHintTarget(target);
@@ -542,7 +700,7 @@ const Home = () => {
     const firstTimer = setTimeout(showNext, FIRST_HINT_DELAY_MS);
     const interval = setInterval(showNext, HINT_CYCLE_MS);
     return () => { clearTimeout(firstTimer); clearInterval(interval); };
-  }, []);
+  }, [recommendations]); // re-run when recommendations change so hints stay fresh
 
   const LECTURER_SECRET = import.meta.env.VITE_LECTURER_SECRET || 'LUANAR-FACULTY-2026';
 
@@ -783,6 +941,21 @@ const Home = () => {
 
   const handleNavigation = useCallback((path) => navigate(path), [navigate]);
 
+  // Handler for recommendation card taps — navigates to quiz with course pre-selected
+  const handleRecommendationAction = useCallback((route, courseId) => {
+    if (courseId) {
+      navigate(route, { state: { subjectId: courseId } });
+    } else {
+      navigate(route);
+    }
+  }, [navigate]);
+
+  // Dismiss the level-up banner and persist the dismissal
+  const handleLevelUpDismiss = useCallback(() => {
+    dismissLevelUpSuggestion();
+    setLevelUpSuggestion(null);
+  }, []);
+
   const handleFileClick = useCallback((file) => {
     const url = getNotePublicUrl(file);
     if (!url) {
@@ -853,7 +1026,10 @@ const Home = () => {
     } finally { setProfileSubmitting(false); }
   }, [program, semester, year, role, lecturerCode, LECTURER_SECRET, loadUserProfile, navigate, resolveEffectiveProgram]);
 
-  const currentHint = ACTIVITY_HINTS[hintIdx];
+  const currentHint = useMemo(
+    () => buildActivityHints(recommendations)[hintIdx] ?? STATIC_ACTIVITY_HINTS[0],
+    [recommendations, hintIdx]
+  );
 
   // ─── Cold-start skeleton ───────────────────────────────────────────────────
   if (!authReady && loading) {
@@ -1125,6 +1301,21 @@ const Home = () => {
               onHintAction={handleNavigation}
             />
           </div>
+
+          {/* ── Level-Up Banner ── only shown when suggestion exists and not dismissed */}
+          {levelUpSuggestion && (
+            <LevelUpBanner
+              suggestion={levelUpSuggestion}
+              onDismiss={handleLevelUpDismiss}
+              onAction={handleNavigation}
+            />
+          )}
+
+          {/* ── Recommended For You ── only shown when quiz history exists */}
+          <RecommendedForYou
+            recommendations={recommendations}
+            onAction={handleRecommendationAction}
+          />
 
           <div className="ed-fade-up" style={{ animationDelay: '0.14s' }}>
             <div className="mb-3">
