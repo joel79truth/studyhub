@@ -3899,7 +3899,7 @@ const chatLimiter = rateLimit({
 });
 
 app.post('/api/chat/sessions/:id/messages', requireAuth, chatLimiter, async (req, res) => {
-  const { message } = req.body;
+  const { message, learningContext } = req.body;
   if (!message) return res.status(400).json({ error: 'Message text required.' });
 
   const sessionId = req.params.id;
@@ -3924,7 +3924,14 @@ app.post('/api/chat/sessions/:id/messages', requireAuth, chatLimiter, async (req
       });
 
     const context = await getStudentContext(userId);
-    const systemContent = buildSystemPrompt(context);
+    let systemContent = buildSystemPrompt(context);
+
+    // Append client-side learning intelligence context (quiz weak areas, recent
+    // scores) when the frontend has sent it. Placed after the main system prompt
+    // so it adds specificity without overriding the existing LUANAR persona.
+    if (learningContext && typeof learningContext === 'string' && learningContext.trim()) {
+      systemContent += `\n\n-----------------------------------------\nRECENT QUIZ PERFORMANCE (from student device)\n${learningContext.trim()}\nUse this to make your response more relevant — address weak areas proactively when appropriate.`;
+    }
 
     const { data: history } = await supabaseAdmin
       .from('chat_messages')
