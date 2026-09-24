@@ -15,6 +15,10 @@ import {
   getLevelUpSuggestion,
   dismissLevelUpSuggestion,
 } from '../services/learningIntelligence';
+import {
+  trackRecommendationClicked,
+  trackLevelUpInteracted,
+} from '../lib/analytics';
 
 const DEV = import.meta.env.DEV;
 const log = DEV ? console.log : () => {};
@@ -321,7 +325,10 @@ const LevelUpBanner = memo(({ suggestion, onDismiss, onAction }) => {
         <p className="text-sm font-semibold text-gray-900 leading-snug">{suggestion.message}</p>
         <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">{suggestion.sub}</p>
         <button
-          onClick={() => onAction(suggestion.route)}
+          onClick={() => {
+            trackLevelUpInteracted({ type: suggestion.type, action: 'accepted' });
+            onAction(suggestion.route);
+          }}
           className="mt-2 text-xs font-semibold text-blue-600 underline underline-offset-2 active:opacity-70 transition-opacity"
           aria-label={suggestion.cta}
         >
@@ -350,10 +357,10 @@ const RecommendationCard = memo(({ rec, onAction }) => {
   return (
     <div
       className="bg-white border border-gray-100 rounded-xl p-3.5 flex items-center gap-3 active:scale-[0.98] transition-transform cursor-pointer"
-      onClick={() => onAction(rec.route, rec.courseId)}
+      onClick={() => onAction(rec.route, rec.courseId, rec)}
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => e.key === 'Enter' && onAction(rec.route, rec.courseId)}
+      onKeyDown={(e) => e.key === 'Enter' && onAction(rec.route, rec.courseId, rec)}
       aria-label={`${rec.pill}: ${rec.topic} — ${rec.message}`}
     >
       {/* Emoji icon in pill-styled container */}
@@ -942,7 +949,14 @@ const Home = () => {
   const handleNavigation = useCallback((path) => navigate(path), [navigate]);
 
   // Handler for recommendation card taps — navigates to quiz with course pre-selected
-  const handleRecommendationAction = useCallback((route, courseId) => {
+  const handleRecommendationAction = useCallback((route, courseId, rec) => {
+    if (rec) {
+      trackRecommendationClicked({
+        type: rec.type,
+        topic: rec.topic,
+        courseName: rec.courseName,
+      });
+    }
     if (courseId) {
       navigate(route, { state: { subjectId: courseId } });
     } else {
@@ -952,9 +966,15 @@ const Home = () => {
 
   // Dismiss the level-up banner and persist the dismissal
   const handleLevelUpDismiss = useCallback(() => {
+    if (levelUpSuggestion) {
+      trackLevelUpInteracted({
+        type: levelUpSuggestion.type,
+        action: 'dismissed',
+      });
+    }
     dismissLevelUpSuggestion();
     setLevelUpSuggestion(null);
-  }, []);
+  }, [levelUpSuggestion]);
 
   const handleFileClick = useCallback((file) => {
     const url = getNotePublicUrl(file);

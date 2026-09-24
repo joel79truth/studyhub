@@ -1,7 +1,7 @@
 // src/lib/analytics.js
 // Google Analytics 4 (GA4) integration for StudyHub Web & Capacitor Android
 
-export const GA_MEASUREMENT_ID = 'G-8YPDKR3B3F';
+export const GA_MEASUREMENT_ID = 'G-7MKTE9Z1SD';
 
 /**
  * Safely call window.gtag if initialized
@@ -64,12 +64,21 @@ export function trackPaperViewed({ id, title, course, program, semester } = {}) 
   });
 }
 
-export function trackQuizCompleted({ course, score, total, percentage } = {}) {
+export function trackQuizCompleted({ course, score, total, percentage, mode } = {}) {
   trackEvent('quiz_completed', {
     course_name: course,
     score: score || 0,
     total_questions: total || 0,
     percentage: percentage || Math.round(((score || 0) / (total || 1)) * 100),
+    quiz_mode: mode || 'study',
+  });
+}
+
+export function trackQuizStarted({ course, mode, questionCount } = {}) {
+  trackEvent('quiz_started', {
+    course_name: course,
+    quiz_mode: mode || 'study',
+    question_count: questionCount || 10,
   });
 }
 
@@ -81,6 +90,13 @@ export function trackNotesViewed({ filename, subject, program } = {}) {
   });
 }
 
+export function trackNotesDownloaded({ filename, subject } = {}) {
+  trackEvent('notes_downloaded', {
+    filename,
+    subject,
+  });
+}
+
 export function trackSearch({ query, section = 'general' } = {}) {
   if (!query || !query.trim()) return;
   trackEvent('search', {
@@ -89,8 +105,29 @@ export function trackSearch({ query, section = 'general' } = {}) {
   });
 }
 
-export function trackAiChatPrompt() {
+export function trackAiChatPrompt({ source = 'studybot', hasContext = false } = {}) {
   trackEvent('ai_chat_message', {
+    source,
+    has_context: hasContext,
     timestamp: new Date().toISOString(),
   });
+}
+
+export function trackRecommendationClicked({ type, topic, courseName } = {}) {
+  trackEvent('recommendation_clicked', {
+    rec_type: type,
+    topic,
+    course_name: courseName,
+  });
+}
+
+export function trackLevelUpInteracted({ type, action } = {}) {
+  trackEvent('levelup_banner_interacted', {
+    suggestion_type: type,
+    action, // 'accepted' or 'dismissed'
+  });
+}
+
+export function trackTimetableViewed() {
+  trackEvent('timetable_viewed');
 }

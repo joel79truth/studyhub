@@ -7,6 +7,7 @@ import {
   listDownloadIds,
   hasRoomFor,
 } from '../utils/downloadStore';
+import { trackNotesDownloaded } from '../lib/analytics';
 
 // Module-level store so every component (list row, viewer, badge) sees
 // the same state instantly without prop-drilling or context.
@@ -69,6 +70,11 @@ export function useDownloadManager() {
     controllers.set(file.id, controller);
     progressMap.set(file.id, 0);
     notify();
+
+    trackNotesDownloaded({
+      filename: file.filename || file.title || file.course_name || 'Document',
+      subject: file.course_name || file.subject || '',
+    });
 
     try {
       const url = getUrl(file);

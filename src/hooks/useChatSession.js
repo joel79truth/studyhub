@@ -76,7 +76,8 @@ export function useChatSession() {
 
   const send = useCallback((text) => {
     if (!currentSessionId || loading) return;
-    trackAiChatPrompt();
+    const context = getLunaContext();
+    trackAiChatPrompt({ source: 'studybot', hasContext: !!context });
     if (abortControllerRef.current) abortControllerRef.current.abort();
     const controller = new AbortController();
     abortControllerRef.current = controller;

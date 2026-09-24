@@ -896,6 +896,13 @@ const Quiz = () => {
       courseId: currentSubjectId || '',
       quizMode,
     });
+    trackQuizCompleted({
+      course: courseName,
+      score: results.correct,
+      total: results.total,
+      percentage,
+      mode: quizMode,
+    });
   }, [phase, results]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ── Derived data ────────────────────────────────────────────

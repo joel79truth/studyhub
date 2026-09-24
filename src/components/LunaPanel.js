@@ -3,6 +3,7 @@ import { X, Send, Minimize2, Maximize2, BookOpen, Menu } from 'lucide-react';
 import LunaOrb from './LunaOrb';
 import MiniMarkdown from './MiniMarkdown';
 import { getRecentWeakTopics, getLastQuizSummary } from '../services/learningIntelligence';
+import { trackAiChatPrompt } from '../lib/analytics';
 
 // ─── constants (unchanged) ─────────────────────────────────────────────
 const QUICK_ACTIONS = [
@@ -378,6 +379,7 @@ const LunaPanel = ({
     (text) => {
       const msg = text || input;
       if (!msg.trim() || isLoading) return;
+      trackAiChatPrompt({ source: 'luna' });
       // We need to generate an AI response – we'll simulate it.
       // In a real app, call your LLM API and then call onSendMessage(userMsg, aiMsg).
       // For demo, we'll create a dummy response.
