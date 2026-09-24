@@ -116,24 +116,54 @@ async function run() {
   const storageFileName = `studyhub-v${versionName}.apk`;
   console.log(`\n⏳ Uploading APK to Supabase Storage bucket "${bucketName}" as "${storageFileName}"...`);
 
-  const { data: signData, error: signErr } = await supabase.storage
-    .from(bucketName)
-    .createSignedUploadUrl(storageFileName, { upsert: true });
+  let uploadSucceeded = false;
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    console.log(`⏳ Upload attempt ${attempt}/3...`);
+    try {
+      // Try direct upload with service role key first
+      const { data: directData, error: directErr } = await supabase.storage
+        .from(bucketName)
+        .upload(storageFileName, fileBuffer, {
+          contentType: 'application/vnd.android.package-archive',
+          upsert: true,
+        });
 
-  if (signErr) {
-    console.error('❌ Failed to generate signed upload URL:', signErr.message || signErr);
-    process.exit(1);
+      if (!directErr) {
+        uploadSucceeded = true;
+        break;
+      }
+
+      console.warn(`Direct upload attempt failed (${directErr.message}). Trying signed upload URL...`);
+
+      // Fallback: signed upload URL
+      const { data: signData, error: signErr } = await supabase.storage
+        .from(bucketName)
+        .createSignedUploadUrl(storageFileName, { upsert: true });
+
+      if (signErr) throw signErr;
+
+      const { error: uploadErr } = await supabase.storage
+        .from(bucketName)
+        .uploadToSignedUrl(storageFileName, signData.token, fileBuffer, {
+          contentType: 'application/vnd.android.package-archive',
+          upsert: true,
+        });
+
+      if (uploadErr) throw uploadErr;
+
+      uploadSucceeded = true;
+      break;
+    } catch (err) {
+      console.error(`Attempt ${attempt} error:`, err.message || err);
+      if (attempt < 3) {
+        console.log('Waiting 3s before retrying...');
+        await new Promise(r => setTimeout(r, 3000));
+      }
+    }
   }
 
-  const { data: uploadData, error: uploadErr } = await supabase.storage
-    .from(bucketName)
-    .uploadToSignedUrl(storageFileName, signData.token, fileBuffer, {
-      contentType: 'application/vnd.android.package-archive',
-      upsert: true,
-    });
-
-  if (uploadErr) {
-    console.error('❌ Failed to upload APK to signed URL:', uploadErr.message || uploadErr);
+  if (!uploadSucceeded) {
+    console.error('❌ Failed to upload APK to Supabase Storage after 3 attempts.');
     process.exit(1);
   }
 
