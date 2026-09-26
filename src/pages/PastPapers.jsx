@@ -2261,11 +2261,13 @@ export default function PastPapers() {
   return (
     <MotionContext.Provider value={reduceMotion}>
       <style>{ANIM_CSS}</style>
-      <div
-        ref={scrollContainerRef}
-        onScroll={handleScroll}
-        className="h-screen overflow-y-auto bg-white pb-20 lg:pb-0 w-full no-scrollbar"
-      >
+      <div className="relative h-screen h-[100dvh] w-full overflow-hidden bg-white flex flex-col">
+        {/* Main scrollable body */}
+        <div
+          ref={scrollContainerRef}
+          onScroll={handleScroll}
+          className="flex-1 overflow-y-auto bg-white w-full no-scrollbar pb-32 lg:pb-6"
+        >
 
         {/* Header */}
         <header
@@ -2490,6 +2492,7 @@ export default function PastPapers() {
           )}
         </div>
 
+        {/* ActionSheet and Toasts outside scroll container */}
         <ActionSheet
           question={activeEntry?.question ?? null}
           questionList={activeEntry?.list ?? null}
@@ -2507,31 +2510,35 @@ export default function PastPapers() {
 
         <OfflineToast visible={showOfflineToast} pendingCount={pendingSyncCount} />
         <MilestoneToast visible={!!milestoneMsg} message={milestoneMsg} />
-        
-        <div
-          className={`transition-transform duration-300 ease-out will-change-transform ${
-            isImmersive ? 'translate-y-32 pointer-events-none' : 'translate-y-0'
-          }`}
-        >
+      </div>
+
+      {/* Bottom Navigation - Fixed and separated from scroll */}
+      <div
+        className={`fixed bottom-0 left-0 right-0 z-40 transition-transform duration-300 ease-out pointer-events-none ${
+          currentView === 'questions' && isImmersive ? 'translate-y-32' : 'translate-y-0'
+        }`}
+      >
+        <div className="pointer-events-auto">
           <BottomNav />
         </div>
-
-        {currentView === 'questions' && isImmersive && (
-          <div className="fixed bottom-6 right-6 z-50 ed-fade-up">
-            <button
-              onClick={() => {
-                isImmersiveRef.current = false;
-                setIsImmersive(false);
-              }}
-              className="flex items-center gap-2 px-4 py-2.5 bg-gray-900/90 hover:bg-black text-white backdrop-blur-md text-xs font-semibold rounded-full shadow-2xl transition-all active:scale-95 border border-white/20"
-              title="Exit fullscreen reading mode"
-            >
-              <Minimize2 className="w-3.5 h-3.5 text-indigo-400" />
-              <span>Exit Fullscreen</span>
-            </button>
-          </div>
-        )}
       </div>
+
+      {currentView === 'questions' && isImmersive && (
+        <div className="fixed bottom-6 right-6 z-50 ed-fade-up">
+          <button
+            onClick={() => {
+              isImmersiveRef.current = false;
+              setIsImmersive(false);
+            }}
+            className="flex items-center gap-2 px-4 py-2.5 bg-gray-900/90 hover:bg-black text-white backdrop-blur-md text-xs font-semibold rounded-full shadow-2xl transition-all active:scale-95 border border-white/20"
+            title="Exit fullscreen reading mode"
+          >
+            <Minimize2 className="w-3.5 h-3.5 text-indigo-400" />
+            <span>Exit Fullscreen</span>
+          </button>
+        </div>
+      )}
+    </div>
     </MotionContext.Provider>
   )
 }
