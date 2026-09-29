@@ -27,6 +27,7 @@ import {
   Layers,
   Camera,
   Settings as SettingsIcon,
+  Activity,
 } from 'lucide-react';
 
 const PROFILE_CACHE_KEY = 'studyhub_full_profile_cache';
@@ -1020,6 +1021,30 @@ export default function Profile() {
               </div>
             )}
           </section>
+        )}
+
+        {/* Admin Live Activity & Analytics Tile (Visible ONLY to Admins) */}
+        {isAdmin && (
+          <div className="mb-3">
+            <button
+              onClick={() => navigate('/admin/live')}
+              className="w-full flex items-center justify-between px-4 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 hover:from-emerald-100 hover:to-teal-100 border border-emerald-200/90 shadow-xs transition-colors cursor-pointer text-left"
+            >
+              <div className="flex items-center gap-3">
+                <span className="p-2 rounded-xl bg-emerald-600 text-white shadow-xs">
+                  <Activity className="w-4 h-4 animate-pulse" />
+                </span>
+                <div>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-xs font-bold text-emerald-950">Live Active Users & Retention</p>
+                    <span className="text-[9px] uppercase font-bold tracking-wider px-1.5 py-0.2 rounded bg-emerald-200 text-emerald-800">Live</span>
+                  </div>
+                  <p className="text-[11px] text-emerald-700">Real-time user actions, retention cohorts, and feature engagement</p>
+                </div>
+              </div>
+              <ChevronRight className="w-4 h-4 text-emerald-500" />
+            </button>
+          </div>
         )}
 
         {/* Admin Upload Tile (Visible ONLY to Admins) */}

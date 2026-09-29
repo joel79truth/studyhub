@@ -879,32 +879,30 @@ Each element:
 // CORE EXTRACTION (uses Gemini Vision for images and PDFs)
 // ============================================================================
 
-async function extractQuestionsFromImage(imageBuffer, mimeType, expectedCourseName) {
-  console.log(`\n🖼️  [extract-image] Starting AI vision extraction for course: "${expectedCourseName}"...`);
+async function extractQuestionsFromImage(imageInput, mimeType, expectedCourseName) {
+  const buffers = Array.isArray(imageInput) ? imageInput : [imageInput];
+  console.log(`\n🖼️  [extract-image] Starting AI vision extraction for course: "${expectedCourseName}" across ${buffers.length} page(s)...`);
   const startTime = Date.now();
 
-  // Normalize image with EXIF rotation baked into pixels so coords match 1:1
-  const normalizedBuffer = await sharp(imageBuffer).rotate().toBuffer();
-  const [origMeta, visionBuffer] = await Promise.all([
-    sharp(normalizedBuffer).metadata(),
-    compressImageForVision(normalizedBuffer),
-  ]);
-
-  const origW = origMeta.width || 1;
-  const origH = origMeta.height || 1;
-  console.log(`📐 [extract-image] Image dimensions: ${origW}x${origH}px (${(imageBuffer.length / 1024).toFixed(1)} KB)`);
+  // Normalize all image pages with EXIF rotation and compress for Gemini Vision
+  const visionParts = await Promise.all(
+    buffers.map(async (buf, idx) => {
+      const normalized = await sharp(buf).rotate().toBuffer();
+      const compressed = await compressImageForVision(normalized);
+      console.log(`📐 [extract-image] Page ${idx + 1} compressed to ${(compressed.length / 1024).toFixed(1)} KB`);
+      return {
+        inlineData: {
+          mimeType: 'image/jpeg',
+          data: compressed.toString('base64'),
+        },
+      };
+    })
+  );
 
   const prompt = buildExtractionPrompt(expectedCourseName);
-  const base64Image = visionBuffer.toString('base64');
-
   const contents = [
     { text: prompt },
-    {
-      inlineData: {
-        mimeType: 'image/jpeg',
-        data: base64Image,
-      },
-    },
+    ...visionParts,
   ];
 
   try {
@@ -1890,9 +1888,13 @@ app.post('/api/chat', async (req, res) => {
 // PAST PAPER EXTRACTION ROUTES (Gemini — GEMINI_VISION_PRIMARY / FALLBACK)
 // ============================================================================
 
-app.post('/api/exam/upload-past-paper', requireAuth, upload.single('paper'), async (req, res) => {
+app.post('/api/exam/upload-past-paper', requireAuth, upload.any(), async (req, res) => {
   try {
-    if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
+    const rawFiles = (req.files && req.files.length > 0) ? req.files : (req.file ? [req.file] : []);
+    if (rawFiles.length === 0) return res.status(400).json({ error: 'No file uploaded' });
+
+    const filesToProcess = rawFiles.slice(0, 5);
+    const primaryFile = filesToProcess[0];
 
     const { programId, program: programName, course: courseName, semester: semesterRaw, year: yearRaw } = req.body;
     if ((!programId && !programName) || !courseName || !semesterRaw) {
@@ -1913,25 +1915,29 @@ app.post('/api/exam/upload-past-paper', requireAuth, upload.single('paper'), asy
     }
     const course = await getOrCreateCourse(courseName, program.id, semester);
 
-    // Auto-rotate image at upload time so orientation is canonical everywhere
-    const imageBuffer = await sharp(req.file.buffer).rotate().toBuffer();
+    // Auto-rotate all images at upload time
+    const imageBuffers = await Promise.all(
+      filesToProcess.map((f) => sharp(f.buffer).rotate().toBuffer())
+    );
+    const primaryImageBuffer = imageBuffers[0];
     const mimeType = 'image/jpeg'; // canonical format after sharp normalize
 
     const pastPaperId = uuidv4();
-    const safeName = req.file.originalname.replace(/\s+/g, '_');
+    const safeName = primaryFile.originalname.replace(/\s+/g, '_');
     const storagePath = `past-papers/${pastPaperId}-${safeName}`;
     const bucketName = process.env.STORAGE_BUCKET || 'past-paper';
 
     console.log(`\n======================================================`);
-    console.log(`📥 [upload-image] Received past paper image upload`);
-    console.log(`   File: ${req.file.originalname} (${(req.file.size / 1024).toFixed(1)} KB)`);
+    console.log(`📥 [upload-image] Received past paper image upload (${filesToProcess.length} page(s))`);
+    console.log(`   Primary file: ${primaryFile.originalname} (${(primaryFile.size / 1024).toFixed(1)} KB)`);
+    console.log(`   Total pages: ${filesToProcess.length} (up to 5 limit)`);
     console.log(`   Program: ${program.name} | Course: ${course.course_name}`);
     console.log(`   Semester: ${semester} | Year: ${yearRaw || 'Auto-detect'}`);
     console.log(`======================================================`);
 
     const { error: storageErr } = await supabaseAdmin.storage
       .from(bucketName)
-      .upload(storagePath, imageBuffer, { contentType: 'image/jpeg', upsert: false });
+      .upload(storagePath, primaryImageBuffer, { contentType: 'image/jpeg', upsert: false });
     if (storageErr) throw storageErr;
 
     const { data: publicUrlData } = supabaseAdmin.storage.from(bucketName).getPublicUrl(storagePath);
@@ -1985,8 +1991,8 @@ app.post('/api/exam/upload-past-paper', requireAuth, upload.single('paper'), asy
     // ── Run extraction asynchronously (fire-and-forget) ──
     ;(async () => {
       try {
-        console.log(`🚀 [upload-image] Background extraction started for paper ${pastPaperId}...`);
-        const validQuestions = await extractQuestionsFromImage(imageBuffer, mimeType, course.course_name);
+        console.log(`🚀 [upload-image] Background extraction started for paper ${pastPaperId} (${imageBuffers.length} page(s))...`);
+        const validQuestions = await extractQuestionsFromImage(imageBuffers, mimeType, course.course_name);
 
         if (validQuestions.length === 0) {
           console.warn(`⚠️  [upload-image] No valid questions extracted for paper ${pastPaperId}`);
@@ -2001,7 +2007,7 @@ app.post('/api/exam/upload-past-paper', requireAuth, upload.single('paper'), asy
 
         const { paperId, extracted, flaggedForReview } = await insertExtractedQuestions(
           validQuestions,
-          imageBuffer,
+          primaryImageBuffer,
           mimeType,
           pastPaperId,
           course

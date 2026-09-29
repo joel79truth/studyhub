@@ -20,6 +20,7 @@ const Settings = lazy(() => import('./pages/Settings'));
 const Request = lazy(() => import('./pages/Request'));
 const AiChat = lazy(() => import('./pages/AiChat'));
 const AdminUpload = lazy(() => import('./pages/AdminUpload'));
+const AdminLive = lazy(() => import('./pages/AdminLive'));
 
 // ─── Components ────────────────────────────────────────────
 import ProtectedRoute from './components/ProtectedRoute';
@@ -83,6 +84,8 @@ function App() {
             <Route path="/viewer" element={<ProtectedRoute><Viewer /></ProtectedRoute>} />
             <Route path="/file-viewer" element={<ProtectedRoute><Viewer /></ProtectedRoute>} />
             <Route path="/admin/upload" element={<AdminRoute><AdminUpload /></AdminRoute>} />
+            <Route path="/admin/live" element={<AdminRoute><AdminLive /></AdminRoute>} />
+            <Route path="/admin/analytics" element={<AdminRoute><AdminLive /></AdminRoute>} />
             <Route path="/AiChat" element={<ProtectedRoute><AiChat /></ProtectedRoute>} />
             <Route path="/timetable" element={<Timetable />} />
 

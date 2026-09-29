@@ -131,3 +131,24 @@ export function trackLevelUpInteracted({ type, action } = {}) {
 export function trackTimetableViewed() {
   trackEvent('timetable_viewed');
 }
+
+/**
+ * Dispatch an active study action event so Realtime Presence updates immediately.
+ * @param {string} action - e.g. "Solving Quiz: BIO 101 Q3", "Reading Soil Science notes"
+ * @param {string} category - e.g. "quiz", "notes", "past_papers", "ai_chat", "browse"
+ */
+export function updateCurrentAction(action, category = 'browse') {
+  if (typeof window !== 'undefined') {
+    window.__currentStudyAction = { action, category, updatedAt: Date.now() };
+    window.dispatchEvent(new CustomEvent('studyhub_action_change', {
+      detail: { action, category }
+    }));
+  }
+}
+
+export function getCurrentAction() {
+  if (typeof window !== 'undefined' && window.__currentStudyAction) {
+    return window.__currentStudyAction;
+  }
+  return { action: 'Browsing StudyHub', category: 'browse', updatedAt: Date.now() };
+}

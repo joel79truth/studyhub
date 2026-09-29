@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabase';
 import { API_BASE_URL } from '../lib/apiConfig';
 
@@ -11,22 +12,19 @@ const BASE_URL = API_BASE_URL;
 // ─────────────────────────────────────────────────────────────────────────────
 
 const AdminUpload = () => {
+  const navigate = useNavigate();
   const [tab, setTab] = useState('single');
 
-  // single upload
-  const [file, setFile] = useState(null);
-  const [preview, setPreview] = useState(null);
+  // Multi-image upload (up to 5 pages)
+  const [files, setFiles] = useState([]);
+  const [previews, setPreviews] = useState([]);
   const [uploading, setUploading] = useState(false);
   const [uploadStage, setUploadStage] = useState('');  // e.g. 'uploading', 'analyzing', 'done'
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
-  // Set alongside `error` ONLY when the backend's 400 response for
-  // "no valid questions extracted" includes a raw_paper_id — the original
-  // image was still saved successfully, so we can offer a one-click
   const [errorRawPaperId, setErrorRawPaperId] = useState(null);
   const [dragOver, setDragOver] = useState(false);
   const fileInputRef = useRef(null);
-  const cameraInputRef = useRef(null);
 
   // reprocess-by-id
   const [existingPaperId, setExistingPaperId] = useState('');
@@ -71,8 +69,12 @@ useEffect(() => {
 
 
   useEffect(() => {
-    return () => { if (preview) URL.revokeObjectURL(preview); };
-  }, [preview]);
+    return () => {
+      previews.forEach((p) => {
+        if (p?.url) URL.revokeObjectURL(p.url);
+      });
+    };
+  }, [previews]);
 
   const authHeader = async () => {
     const token = (await supabase.auth.getSession()).data.session?.access_token;
@@ -111,10 +113,9 @@ useEffect(() => {
     onUpdate({ status: 'timeout' });
   };
 
-  const processSelectedFile = async (rawFile) => {
-    if (!rawFile) return;
+  const compressOneImage = async (rawFile) => {
+    if (!rawFile) return null;
     let finalFile = rawFile;
-    // If an image (especially high-res mobile camera photo) exceeds 1.5MB, compress it safely to prevent out-of-memory crash
     if (rawFile.type?.startsWith('image/') && rawFile.size > 1.5 * 1024 * 1024) {
       try {
         const imageCompressionModule = await import('browser-image-compression');
@@ -132,38 +133,100 @@ useEffect(() => {
         console.warn('Image compression fallback:', compErr);
       }
     }
-    if (preview) URL.revokeObjectURL(preview);
-    setFile(finalFile);
-    setPreview(URL.createObjectURL(finalFile));
+    return finalFile;
+  };
+
+  const addFiles = async (newRawFiles) => {
+    if (!newRawFiles || newRawFiles.length === 0) return;
+    const incoming = Array.from(newRawFiles).filter((f) => f.type?.startsWith('image/'));
+    if (incoming.length === 0) return;
+
+    const availableSlots = 5 - files.length;
+    if (availableSlots <= 0) {
+      setError('Maximum 5 pages allowed per exam paper. Remove a page before adding another.');
+      return;
+    }
+
+    const toProcess = incoming.slice(0, availableSlots);
+    if (incoming.length > availableSlots) {
+      setError(`Notice: Only ${availableSlots} more page(s) could be selected (max 5 pages per exam).`);
+    } else {
+      setError(null);
+    }
+
+    const compressed = (await Promise.all(toProcess.map(compressOneImage))).filter(Boolean);
+    const newPreviews = compressed.map((f) => ({
+      file: f,
+      url: URL.createObjectURL(f),
+      name: f.name,
+      size: (f.size / 1024).toFixed(0) + ' KB',
+    }));
+
+    setFiles((prev) => [...prev, ...compressed]);
+    setPreviews((prev) => [...prev, ...newPreviews]);
     setResult(null);
-    setError(null);
     setErrorRawPaperId(null);
   };
 
-  const handleFileChange = async (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    const selected = e.target.files?.[0];
-    if (selected) {
-      await processSelectedFile(selected);
+  const removeFileAt = (index) => {
+    setPreviews((prev) => {
+      if (prev[index]?.url) URL.revokeObjectURL(prev[index].url);
+      return prev.filter((_, i) => i !== index);
+    });
+    setFiles((prev) => prev.filter((_, i) => i !== index));
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  };
+
+  const moveFile = (fromIndex, toIndex) => {
+    if (toIndex < 0 || toIndex >= files.length) return;
+    setFiles((prev) => {
+      const next = [...prev];
+      const [item] = next.splice(fromIndex, 1);
+      next.splice(toIndex, 0, item);
+      return next;
+    });
+    setPreviews((prev) => {
+      const next = [...prev];
+      const [item] = next.splice(fromIndex, 1);
+      next.splice(toIndex, 0, item);
+      return next;
+    });
+  };
+
+  const clearAllFiles = () => {
+    previews.forEach((p) => {
+      if (p?.url) URL.revokeObjectURL(p.url);
+    });
+    setFiles([]);
+    setPreviews([]);
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  };
+
+  const handleFileChange = (e) => {
+    // Snapshot the FileList synchronously — Android WebView clears it after
+    // an async yield, so we must grab the array before any await.
+    const snapshotted = e.target.files ? Array.from(e.target.files) : [];
+    // Reset the input value so the same file can be re-selected after removal,
+    // and so the camera can be opened again without a stale value blocking it.
+    e.target.value = '';
+    if (snapshotted.length > 0) {
+      addFiles(snapshotted); // deliberately not awaited — state updates are batched
     }
   };
 
   const handleDrop = async (e) => {
     e.preventDefault();
     setDragOver(false);
-    const dropped = e.dataTransfer.files?.[0];
-    if (dropped && dropped.type.startsWith('image/')) {
-      await processSelectedFile(dropped);
+    if (e.dataTransfer.files) {
+      await addFiles(e.dataTransfer.files);
     }
   };
 
-  const handleCameraCapture = () => {
-    if (cameraInputRef.current) {
-      cameraInputRef.current.value = '';
-      cameraInputRef.current.click();
-    }
-  };
+  // NOTE: the camera <input capture="environment"> is embedded INSIDE the Take Photo
+  // button using the overlay pattern (opacity:0, absolute fill). This means the user's
+  // finger tap lands directly on the real input element — a genuine user gesture —
+  // which prevents the Android/Capacitor WebView from treating it as a synthetic click
+  // and doing a full page reload when the camera app returns.
 
   // ── Poll /api/exam/paper-status/:rawPaperId until done or failed ──
   const pollForPaperStatus = async (rawPaperId, { intervalMs = 3000, maxAttempts = 60 } = {}) => {
@@ -183,7 +246,7 @@ useEffect(() => {
   };
 
 const handleUploadAndExtract = async () => {
-  if (!file) return;
+  if (files.length === 0) return;
   if (!uploadProgramId || !uploadCourse.trim() || !uploadSemester.trim()) {
     setError('Program, course, and semester are all required.');
     setErrorRawPaperId(null);
@@ -196,7 +259,12 @@ const handleUploadAndExtract = async () => {
   try {
     const headers = await authHeader();
     const formData = new FormData();
-    formData.append('paper', file);
+    // Pass each image under 'papers' and first image under 'paper' for backward compatibility
+    files.forEach((f) => {
+      formData.append('papers', f);
+    });
+    formData.append('paper', files[0]);
+    formData.append('pagesCount', String(files.length));
     formData.append('programId', uploadProgramId);
     formData.append('course', uploadCourse.trim());
     formData.append('semester', uploadSemester.trim());
@@ -215,7 +283,7 @@ const handleUploadAndExtract = async () => {
     }
 
     const rawPaperId = data.raw_paper_id;
-    console.log('[AdminUpload] Image uploaded successfully. Raw Paper ID:', rawPaperId);
+    console.log('[AdminUpload] Images uploaded successfully. Raw Paper ID:', rawPaperId);
 
     // ── Step 2: poll for AI extraction completion ──
     setUploadStage('analyzing');
@@ -229,9 +297,7 @@ const handleUploadAndExtract = async () => {
 
     // ── Step 3: done ──
     setUploadStage('done');
-    setFile(null);
-    setPreview(null);
-    if (fileInputRef.current) fileInputRef.current.value = '';
+    clearAllFiles();
 
     setResult({
       extracted: statusResult.extracted,
@@ -491,13 +557,35 @@ const handlePdfUpload = async () => {
     // ── Shell now forces pure white background and light colour scheme ──
     <div style={shell}>
       {/* ── Header ── */}
-      <div style={{ marginBottom: '28px' }}>
-        <p style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.1em', color: '#6b7280', textTransform: 'uppercase', marginBottom: '4px' }}>
-          Admin Panel
-        </p>
-        <h1 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#111827', margin: 0 }}>
-          Past Paper Extraction
-        </h1>
+      <div style={{ marginBottom: '28px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '12px' }}>
+        <div>
+          <p style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.1em', color: '#6b7280', textTransform: 'uppercase', marginBottom: '4px' }}>
+            Admin Panel
+          </p>
+          <h1 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#111827', margin: 0 }}>
+            Past Paper Extraction
+          </h1>
+        </div>
+        <button
+          onClick={() => navigate('/admin/live')}
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '8px 16px',
+            background: '#059669',
+            color: '#ffffff',
+            borderRadius: '10px',
+            border: 'none',
+            fontSize: '0.85rem',
+            fontWeight: 600,
+            cursor: 'pointer',
+            boxShadow: '0 2px 5px rgba(5,150,105,0.25)',
+          }}
+        >
+          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#34d399', animation: 'pulse 1.5s infinite' }}></span>
+          <span>Live Users Command Center</span>
+        </button>
       </div>
 
       {/* ── Tabs ── Principle 4: visual rhythm, clear active state ── */}
@@ -568,21 +656,21 @@ const handlePdfUpload = async () => {
             <input type="text" placeholder="Year (optional)…" value={uploadYear} onChange={e => setUploadYear(e.target.value)} style={{ ...uuidInput, flex: '1 1 110px', fontFamily: 'inherit' }} />
           </div>
 
-          {/* ── IMAGE UPLOAD ── */}
+          {/* ── IMAGE UPLOAD (MULTIPLE PAGES UP TO 5) ── */}
           {uploadType === 'image' && (
-            <Section title="Upload Exam Image">
+            <Section title="Upload Exam Pages (Up to 5 Images)">
               <div
                 onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
                 onDragLeave={() => setDragOver(false)}
                 onDrop={handleDrop}
-                onClick={() => !preview && !uploading && fileInputRef.current?.click()}
+                onClick={() => previews.length === 0 && !uploading && fileInputRef.current?.click()}
                 style={{
-                  border: `2px dashed ${dragOver ? '#2563eb' : preview ? '#d1d5db' : '#d1d5db'}`,
+                  border: `2px dashed ${dragOver ? '#2563eb' : previews.length > 0 ? '#d1d5db' : '#d1d5db'}`,
                   borderRadius: '12px',
-                  background: dragOver ? '#eff6ff' : preview ? '#fafafa' : '#fafafa',
+                  background: dragOver ? '#eff6ff' : previews.length > 0 ? '#fafafa' : '#fafafa',
                   transition: 'all 0.15s ease',
-                  cursor: preview || uploading ? 'default' : 'pointer',
-                  padding: preview || uploading ? '20px' : '40px 20px',
+                  cursor: previews.length > 0 || uploading ? 'default' : 'pointer',
+                  padding: previews.length > 0 || uploading ? '20px' : '40px 20px',
                   textAlign: 'center',
                 }}
               >
@@ -590,16 +678,18 @@ const handlePdfUpload = async () => {
                   <div style={{ padding: '16px 12px', textAlign: 'left', maxWidth: '420px', margin: '0 auto' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
                       <Spinner />
-                      <span style={{ fontWeight: 700, color: '#1d4ed8', fontSize: '0.95rem' }}>AI Processing Image in Progress</span>
+                      <span style={{ fontWeight: 700, color: '#1d4ed8', fontSize: '0.95rem' }}>
+                        AI Processing {files.length} Exam Page(s) in Progress
+                      </span>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.85rem' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: uploadStage === 'uploading' ? '#2563eb' : '#059669', fontWeight: uploadStage === 'uploading' ? 600 : 400 }}>
                         <span>{uploadStage === 'uploading' ? '⏳' : '✅'}</span>
-                        <span>Step 1: Upload and store exam image</span>
+                        <span>Step 1: Storing {files.length} exam image(s)</span>
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: uploadStage === 'analyzing' ? '#2563eb' : uploadStage === 'done' ? '#059669' : '#9ca3af', fontWeight: uploadStage === 'analyzing' ? 600 : 400 }}>
                         <span>{uploadStage === 'analyzing' ? '🧠' : uploadStage === 'done' ? '✅' : '⚪'}</span>
-                        <span>Step 2: AI reading questions, tables & cropping diagrams...</span>
+                        <span>Step 2: AI reading all pages, tables & cropping diagrams...</span>
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: uploadStage === 'done' ? '#059669' : '#9ca3af', fontWeight: uploadStage === 'done' ? 600 : 400 }}>
                         <span>{uploadStage === 'done' ? '✅' : '⚪'}</span>
@@ -607,48 +697,222 @@ const handlePdfUpload = async () => {
                       </div>
                     </div>
                   </div>
-                ) : !preview ? (
+                ) : previews.length === 0 ? (
                   <div>
                     <div style={{ fontSize: '2rem', marginBottom: '8px' }}>🖼️</div>
                     <p style={{ fontWeight: 600, color: '#374151', margin: '0 0 4px' }}>
-                      Drop an image here, or choose one
+                      Drop exam images here, or choose 1 to 5 pages
                     </p>
                     <p style={{ fontSize: '0.8rem', color: '#9ca3af', margin: '0 0 16px' }}>
-                      PNG, JPG, WEBP supported
+                      Multi-page exams supported (Max 5 images: PNG, JPG, WEBP)
                     </p>
                     <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', flexWrap: 'wrap' }}>
                       <button onClick={(e) => { e.stopPropagation(); fileInputRef.current?.click(); }} style={btnPrimary}>
-                        Choose from Gallery
+                        Choose Pages from Gallery
                       </button>
-                      <button onClick={(e) => { e.stopPropagation(); handleCameraCapture(); }} style={btnSecondary}>
-                        Take Photo
+                      {/* ── Take Photo button: the <input capture> is embedded INSIDE the button
+                          with opacity:0 and absolute fill so the user's tap lands directly on
+                          the real file input — a genuine user gesture. This prevents the
+                          Android/Capacitor WebView page-reload bug caused by programmatic
+                          .click() calls on hidden capture inputs. ── */}
+                      <button
+                        type="button"
+                        style={{ ...btnSecondary, position: 'relative', overflow: 'hidden' }}
+                      >
+                        📷 Take Photo
+                        <input
+                          type="file"
+                          accept="image/*"
+                          capture="environment"
+                          onChange={handleFileChange}
+                          style={{
+                            position: 'absolute',
+                            inset: 0,
+                            opacity: 0,
+                            cursor: 'pointer',
+                            width: '100%',
+                            height: '100%',
+                            fontSize: 0,
+                          }}
+                        />
                       </button>
                     </div>
                   </div>
                 ) : (
-                  <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                    <img src={preview} alt="Preview" style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '8px', flexShrink: 0, border: '1px solid #e5e7eb' }} />
-                    <div style={{ textAlign: 'left', flex: 1 }}>
-                      <p style={{ fontWeight: 600, color: '#111827', margin: '0 0 2px', fontSize: '0.9rem' }}>{file?.name}</p>
-                      <p style={{ fontSize: '0.78rem', color: '#9ca3af', margin: '0 0 12px' }}>{file ? (file.size / 1024).toFixed(0) + ' KB' : ''}</p>
-                      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px', flexWrap: 'wrap', gap: '8px' }}>
+                      <div style={{ textAlign: 'left' }}>
+                        <span style={{ fontWeight: 700, color: '#111827', fontSize: '0.92rem' }}>
+                          {previews.length} of 5 Exam Pages Selected
+                        </span>
+                        <p style={{ margin: '2px 0 0', fontSize: '0.75rem', color: '#6b7280' }}>
+                          Drag or use arrows to order pages. The AI will extract all questions across these pages.
+                        </p>
+                      </div>
+                      <div style={{ display: 'flex', gap: '8px' }}>
+                        {previews.length < 5 && (
+                          <button
+                            type="button"
+                            onClick={() => fileInputRef.current?.click()}
+                            style={{ ...btnSecondary, padding: '5px 12px', fontSize: '0.78rem' }}
+                          >
+                            + Add Page ({5 - previews.length} left)
+                          </button>
+                        )}
                         <button
-                          onClick={handleUploadAndExtract}
-                          disabled={uploading}
-                          style={{ ...btnPrimary, background: uploading ? '#93c5fd' : '#2563eb', cursor: uploading ? 'not-allowed' : 'pointer' }}
+                          type="button"
+                          onClick={clearAllFiles}
+                          style={{ ...btnGhost, padding: '5px 10px', fontSize: '0.78rem' }}
                         >
-                          Upload & Extract
-                        </button>
-                        <button onClick={() => { setFile(null); setPreview(null); if (fileInputRef.current) fileInputRef.current.value = ''; }} style={btnGhost}>
-                          Remove
+                          Clear All
                         </button>
                       </div>
+                    </div>
+
+                    {/* Multi-page grid */}
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', gap: '12px', marginBottom: '16px' }}>
+                      {previews.map((item, idx) => (
+                        <div
+                          key={idx}
+                          style={{
+                            border: '1px solid #e5e7eb',
+                            borderRadius: '10px',
+                            padding: '8px',
+                            background: '#ffffff',
+                            position: 'relative',
+                            textAlign: 'left',
+                            boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
+                          }}
+                        >
+                          <div style={{ position: 'relative', height: '110px', overflow: 'hidden', borderRadius: '6px', background: '#f3f4f6', marginBottom: '6px' }}>
+                            <img
+                              src={item.url}
+                              alt={`Page ${idx + 1}`}
+                              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                            />
+                            <span
+                              style={{
+                                position: 'absolute',
+                                top: '4px',
+                                left: '4px',
+                                background: 'rgba(17, 24, 39, 0.85)',
+                                color: '#ffffff',
+                                fontSize: '0.68rem',
+                                fontWeight: 700,
+                                padding: '2px 6px',
+                                borderRadius: '4px',
+                              }}
+                            >
+                              Page {idx + 1}
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => removeFileAt(idx)}
+                              style={{
+                                position: 'absolute',
+                                top: '4px',
+                                right: '4px',
+                                background: '#ef4444',
+                                color: '#ffffff',
+                                border: 'none',
+                                borderRadius: '50%',
+                                width: '20px',
+                                height: '20px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                fontSize: '0.75rem',
+                                cursor: 'pointer',
+                                fontWeight: 'bold',
+                              }}
+                              title="Remove page"
+                            >
+                              ✕
+                            </button>
+                          </div>
+
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <span style={{ fontSize: '0.7rem', color: '#6b7280', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '65px' }}>
+                              {item.size}
+                            </span>
+                            <div style={{ display: 'flex', gap: '3px' }}>
+                              <button
+                                type="button"
+                                disabled={idx === 0}
+                                onClick={() => moveFile(idx, idx - 1)}
+                                style={{
+                                  padding: '2px 6px',
+                                  fontSize: '0.7rem',
+                                  border: '1px solid #d1d5db',
+                                  borderRadius: '4px',
+                                  background: idx === 0 ? '#f3f4f6' : '#ffffff',
+                                  cursor: idx === 0 ? 'not-allowed' : 'pointer',
+                                  color: idx === 0 ? '#9ca3af' : '#111827',
+                                }}
+                                title="Move earlier"
+                              >
+                                ◀
+                              </button>
+                              <button
+                                type="button"
+                                disabled={idx === previews.length - 1}
+                                onClick={() => moveFile(idx, idx + 1)}
+                                style={{
+                                  padding: '2px 6px',
+                                  fontSize: '0.7rem',
+                                  border: '1px solid #d1d5db',
+                                  borderRadius: '4px',
+                                  background: idx === previews.length - 1 ? '#f3f4f6' : '#ffffff',
+                                  cursor: idx === previews.length - 1 ? 'not-allowed' : 'pointer',
+                                  color: idx === previews.length - 1 ? '#9ca3af' : '#111827',
+                                }}
+                                title="Move later"
+                              >
+                                ▶
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+
+                      {/* Add page slot if under limit */}
+                      {previews.length < 5 && (
+                        <div
+                          onClick={() => fileInputRef.current?.click()}
+                          style={{
+                            border: '2px dashed #d1d5db',
+                            borderRadius: '10px',
+                            minHeight: '140px',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            cursor: 'pointer',
+                            color: '#6b7280',
+                            background: '#fafafa',
+                            padding: '12px',
+                          }}
+                        >
+                          <span style={{ fontSize: '1.5rem', marginBottom: '4px' }}>➕</span>
+                          <span style={{ fontSize: '0.75rem', fontWeight: 600 }}>Add Page {previews.length + 1}</span>
+                          <span style={{ fontSize: '0.68rem', color: '#9ca3af' }}>up to 5</span>
+                        </div>
+                      )}
+                    </div>
+
+                    <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-start', flexWrap: 'wrap' }}>
+                      <button
+                        onClick={handleUploadAndExtract}
+                        disabled={uploading}
+                        style={{ ...btnPrimary, background: uploading ? '#93c5fd' : '#2563eb', cursor: uploading ? 'not-allowed' : 'pointer', padding: '10px 20px', fontSize: '0.9rem' }}
+                      >
+                        Upload & Extract All {previews.length} Pages
+                      </button>
                     </div>
                   </div>
                 )}
               </div>
-              <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFileChange} style={{ display: 'none' }} />
-              <input ref={cameraInputRef} type="file" accept="image/*" capture="environment" onChange={handleFileChange} style={{ display: 'none' }} />
+              <input ref={fileInputRef} type="file" id="gallery-input" accept="image/*" multiple onChange={handleFileChange} style={{ display: 'none' }} />
             </Section>
           )}
 
