@@ -1923,7 +1923,7 @@ app.post('/api/exam/upload-past-paper', requireAuth, upload.any(), async (req, r
     const mimeType = 'image/jpeg'; // canonical format after sharp normalize
 
     const pastPaperId = uuidv4();
-    const safeName = primaryFile.originalname.replace(/\s+/g, '_');
+    const safeName = (primaryFile.originalname || 'exam-paper.jpg').replace(/\s+/g, '_');
     const storagePath = `past-papers/${pastPaperId}-${safeName}`;
     const bucketName = process.env.STORAGE_BUCKET || 'past-paper';
 
@@ -1947,12 +1947,12 @@ app.post('/api/exam/upload-past-paper', requireAuth, upload.any(), async (req, r
     let insertPaperErr;
     ({ error: insertPaperErr } = await supabaseAdmin.from('past_paper').insert({
       id: pastPaperId,
-      file_name: req.file.originalname,
+      file_name: primaryFile.originalname || 'exam-paper.jpg',
       file_path: storagePath,
       storage_path: storagePath,
       file_url: fileUrl,
       thumbnail_url: fileUrl,
-      file_type: req.file.mimetype || 'image/jpeg',
+      file_type: primaryFile.mimetype || 'image/jpeg',
       program: program.name,
       program_id: program.id,
       course: course.course_name,
@@ -1964,12 +1964,12 @@ app.post('/api/exam/upload-past-paper', requireAuth, upload.any(), async (req, r
     if (insertPaperErr && insertPaperErr.message?.includes('processing_status')) {
       ({ error: insertPaperErr } = await supabaseAdmin.from('past_paper').insert({
         id: pastPaperId,
-        file_name: req.file.originalname,
+        file_name: primaryFile.originalname || 'exam-paper.jpg',
         file_path: storagePath,
         storage_path: storagePath,
         file_url: fileUrl,
         thumbnail_url: fileUrl,
-        file_type: req.file.mimetype || 'image/jpeg',
+        file_type: primaryFile.mimetype || 'image/jpeg',
         program: program.name,
         program_id: program.id,
         course: course.course_name,
