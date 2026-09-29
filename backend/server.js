@@ -884,10 +884,20 @@ async function extractQuestionsFromImage(imageInput, mimeType, expectedCourseNam
   console.log(`\n🖼️  [extract-image] Starting AI vision extraction for course: "${expectedCourseName}" across ${buffers.length} page(s)...`);
   const startTime = Date.now();
 
+  let origW = 1200;
+  let origH = 1600;
+
   // Normalize all image pages with EXIF rotation and compress for Gemini Vision
   const visionParts = await Promise.all(
     buffers.map(async (buf, idx) => {
       const normalized = await sharp(buf).rotate().toBuffer();
+      if (idx === 0) {
+        try {
+          const meta = await sharp(normalized).metadata();
+          if (meta.width) origW = meta.width;
+          if (meta.height) origH = meta.height;
+        } catch (_) {}
+      }
       const compressed = await compressImageForVision(normalized);
       console.log(`📐 [extract-image] Page ${idx + 1} compressed to ${(compressed.length / 1024).toFixed(1)} KB`);
       return {
