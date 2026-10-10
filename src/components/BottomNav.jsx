@@ -26,15 +26,11 @@
 //     self-clears — no risk of a route getting silently "stuck" blocked.
 
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Home, FileText, BookOpen, Brain } from 'lucide-react';
 import { memo, useState, useCallback, useRef } from 'react';
+import { PRIMARY_NAV } from '../config/navigation';
 
-const navItems = [
-  { to: '/',         icon: Home,     label: 'Home'   },
-  { to: '/papers',   icon: FileText, label: 'Papers' },
-  { to: '/programs', icon: BookOpen, label: 'Notes'  },
-  { to: '/quiz',     icon: Brain,    label: 'Quiz'   },
-];
+// Use the shared primary navigation list
+const navItems = PRIMARY_NAV;
 
 // Minimum time between two fires to the same path, to swallow duplicate
 // pointer events some browsers emit for a single physical touch.
@@ -77,6 +73,7 @@ export const BottomNav = memo(function BottomNav() {
 
   return (
     <nav
+      data-bottom-nav="true"
       style={{
         position: 'fixed',
         // Float above the iPhone home indicator instead of overlapping it
@@ -86,6 +83,7 @@ export const BottomNav = memo(function BottomNav() {
         zIndex: 50,
         touchAction: 'manipulation', // kills the 300ms tap delay
       }}
+      className="md:hidden"
     >
       <div
         style={{

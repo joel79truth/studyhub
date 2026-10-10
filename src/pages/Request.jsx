@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { supabase } from '../supabase';
-import { BottomNav } from '../components/BottomNav';
 import { API_BASE_URL } from '../lib/apiConfig';
 import {
   FileText, PlusCircle, Clock, Search, BookOpen, GraduationCap,
@@ -216,7 +215,7 @@ export default function RequestNotes() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50/60 pb-20 lg:pb-0 w-full flex flex-col font-sans">
+    <div className="h-full overflow-y-auto bg-slate-50/60 pb-24 md:pb-6 w-full flex flex-col font-sans">
       {/* ─── Header ─── */}
       <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-100 px-4 py-3.5 flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -228,7 +227,7 @@ export default function RequestNotes() {
             <ArrowLeft className="w-5 h-5" />
           </button>
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-xl flex items-center justify-center overflow-hidden flex-shrink-0 shadow-sm">
+            <div className="md:hidden w-8 h-8 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-xl flex items-center justify-center overflow-hidden flex-shrink-0 shadow-sm">
               <img src="/images/luanar7.png" alt="LUANAR" className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; }} />
             </div>
             <div>
@@ -604,9 +603,6 @@ export default function RequestNotes() {
           <span>{toast.message}</span>
         </div>
       )}
-
-      {/* Bottom Nav */}
-      <BottomNav />
     </div>
   );
 }

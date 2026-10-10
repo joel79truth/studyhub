@@ -47,7 +47,6 @@ import React, {
 } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { supabase } from '../supabase';
-import { BottomNav } from '../components/BottomNav';
 import 'katex/dist/katex.min.css';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 
@@ -2340,9 +2339,8 @@ const Quiz = () => {
   // ─── Main render ─────────────────────────────────────────────
   if (loading) {
     return (
-      <div style={{ minHeight: '100vh', background: C.bg, paddingBottom: 80, display: 'flex', flexDirection: 'column', fontFamily: FONT_STACK, lineHeight: 1.5 }}>
-        <div style={{ flex: 1, overflowY: 'auto' }}>{screen === 'home' ? <HomeSkeleton /> : <SetupSkeleton />}</div>
-        <BottomNav />
+      <div style={{ height: '100%', background: C.bg, display: 'flex', flexDirection: 'column', fontFamily: FONT_STACK, lineHeight: 1.5 }}>
+        <div className="pb-24 md:pb-6" style={{ flex: 1, overflowY: 'auto' }}>{screen === 'home' ? <HomeSkeleton /> : <SetupSkeleton />}</div>
       </div>
     );
   }
@@ -2375,8 +2373,8 @@ const Quiz = () => {
 
   return (
     <QuizErrorBoundary>
-      <div style={{ minHeight: '100vh', background: C.bg, display: 'flex', flexDirection: 'column', fontFamily: FONT_STACK, lineHeight: 1.5 }}>
-        <div style={{ flex: 1, overflowY: 'auto', paddingBottom: '80px' }}>
+      <div style={{ height: '100%', background: C.bg, display: 'flex', flexDirection: 'column', fontFamily: FONT_STACK, lineHeight: 1.5 }}>
+        <div className="pb-24 md:pb-6" style={{ flex: 1, overflowY: 'auto' }}>
           {screen === 'home'    && renderHome()}
           {screen === 'setup'   && renderSetup()}
           {screen === 'quiz'    && (quizMode === 'study' ? renderStudyQuestion() : renderExamQuestion())}
@@ -2409,7 +2407,6 @@ const Quiz = () => {
         )}
 
         <Toast toasts={toasts} removeToast={removeToast} />
-        <BottomNav />
       </div>
     </QuizErrorBoundary>
   );

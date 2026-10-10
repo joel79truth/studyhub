@@ -5,7 +5,6 @@ import {
   CheckCircle2, FileClock, Coffee, GraduationCap, Compass,
 } from 'lucide-react';
 import { format, parseISO, isBefore, differenceInCalendarDays } from 'date-fns';
-import { BottomNav } from '../components/BottomNav';
 
 // ─── Academic calendar data ───────────────────────────────────────────────
 // Transcribed from the published 2026/2027 University Calendar (pages 2–3).
@@ -251,9 +250,9 @@ const Timetable = () => {
   }, [sortedEvents, now, nextExam]);
 
   return (
-    <div className="h-screen flex flex-col bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden">
+    <div className="h-full flex flex-col bg-slate-50 overflow-hidden">
       {/* Header */}
-      <div className="flex-shrink-0 sticky top-0 z-30 bg-white/92 backdrop-blur-md border-b border-gray-100 px-4 py-3 flex items-center gap-2">
+      <div className="flex-shrink-0 sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-gray-100 px-4 py-3 flex items-center gap-2">
         <button
           onClick={() => navigate(-1)}
           aria-label="Go back"
@@ -265,7 +264,7 @@ const Timetable = () => {
       </div>
 
       <div className="flex-1 overflow-y-auto" style={{ WebkitOverflowScrolling: 'touch' }}>
-        <div className="px-4 py-4 pb-32 space-y-4">
+        <div className="px-4 py-4 pb-24 md:pb-6 space-y-4">
 
           {/* Exam countdown hero */}
           <div className="bg-white border border-gray-100 rounded-2xl p-5">
@@ -340,8 +339,6 @@ const Timetable = () => {
 
         </div>
       </div>
-
-      <BottomNav />
     </div>
   );
 };

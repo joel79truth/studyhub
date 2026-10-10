@@ -31,7 +31,7 @@ import AnalyticsTracker from './components/AnalyticsTracker';
 import UpdateChecker from './components/UpdateChecker';
 
 import Viewer from './components/Viewer/Viewer';
-// import { BottomNav } from './components/BottomNav'; // if you want to place it globally
+import { AppShell } from './components/AppShell';
 
 // ─── React Query client ────────────────────────────────────
 // REMOVED: queryClient is no longer created here. It now lives in
@@ -69,25 +69,33 @@ function App() {
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/login" element={<Login />} />
-            <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-            <Route path="/papers" element={<ProtectedRoute><PastPapers /></ProtectedRoute>} />
-            <Route path="/course" element={<ProtectedRoute><Course /></ProtectedRoute>} />
-            <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
-            <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-            <Route path="/Request" element={<ProtectedRoute><Request /></ProtectedRoute>} />
-            <Route path="/request" element={<ProtectedRoute><Request /></ProtectedRoute>} />
-            <Route path="/programs" element={<ProtectedRoute><Programs /></ProtectedRoute>} />
-            <Route path="/program-detail" element={<ProtectedRoute><ProgramDetail /></ProtectedRoute>} />
-            <Route path="/program-detail/:program" element={<ProtectedRoute><ProgramDetail /></ProtectedRoute>} />
-            <Route path="/upload" element={<ProtectedRoute><Upload /></ProtectedRoute>} />
-            <Route path="/quiz" element={<ProtectedRoute><Quiz /></ProtectedRoute>} />
+
+            {/* Standalone viewers and full-screen utilities */}
             <Route path="/viewer" element={<ProtectedRoute><Viewer /></ProtectedRoute>} />
             <Route path="/file-viewer" element={<ProtectedRoute><Viewer /></ProtectedRoute>} />
+
+            {/* Admin routes */}
             <Route path="/admin/upload" element={<AdminRoute><AdminUpload /></AdminRoute>} />
             <Route path="/admin/live" element={<AdminRoute><AdminLive /></AdminRoute>} />
             <Route path="/admin/analytics" element={<AdminRoute><AdminLive /></AdminRoute>} />
-            <Route path="/AiChat" element={<ProtectedRoute><AiChat /></ProtectedRoute>} />
-            <Route path="/timetable" element={<Timetable />} />
+
+            {/* Main Application Shell with persistent sidebar & navigation */}
+            <Route element={<ProtectedRoute><AppShell /></ProtectedRoute>}>
+              <Route path="/" element={<Home />} />
+              <Route path="/papers" element={<PastPapers />} />
+              <Route path="/programs" element={<Programs />} />
+              <Route path="/course" element={<Course />} />
+              <Route path="/program-detail" element={<ProgramDetail />} />
+              <Route path="/program-detail/:program" element={<ProgramDetail />} />
+              <Route path="/quiz" element={<Quiz />} />
+              <Route path="/timetable" element={<Timetable />} />
+              <Route path="/request" element={<Request />} />
+              <Route path="/Request" element={<Request />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/upload" element={<Upload />} />
+              <Route path="/AiChat" element={<AiChat />} />
+            </Route>
 
           </Routes>
         </Suspense>
@@ -95,8 +103,6 @@ function App() {
         <FcmSetup />
         <AnalyticsTracker />
         <UpdateChecker />
-        {/* Uncomment if you want the bottom nav visible on every page */}
-        {/* <BottomNav /> */}
       </BrowserRouter>
     </PersistQueryClientProvider>
   );

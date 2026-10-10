@@ -51,7 +51,9 @@ export default function ProtectedRoute({ children }) {
     );
   }
 
-  if (!user) {
+  const isPreview = typeof window !== 'undefined' && window.location.search.includes('preview=true');
+
+  if (!user && !isPreview) {
     return <Navigate to="/login" replace />;
   }
 

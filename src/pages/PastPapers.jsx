@@ -72,7 +72,6 @@ import {
   useDeferredValue, useTransition, memo, createContext, useContext,
 } from 'react'
 import { supabase } from '../supabase'
-import { BottomNav } from '../components/BottomNav'
 import { useQuery } from '@tanstack/react-query'
 import { InlineMath, BlockMath } from 'react-katex'
 import 'katex/dist/katex.min.css'
@@ -83,12 +82,35 @@ import {
   Trophy, Search, Inbox, Frown, WifiOff, X, Send,
   Maximize2, Minimize2, ArrowLeft, ChevronRight, ChevronLeft,
   GraduationCap, BookOpen, AlarmClock, Quote, TrendingUp, CircleDot,
-  Tag, ArrowRight,
+  Tag, ArrowRight, PanelRight, Image as ImageIcon, ZoomIn, ZoomOut,
+  SlidersHorizontal,
 } from 'lucide-react'
+import * as pdfjs from 'pdfjs-dist'
+import workerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
 import { MathText, renderInline, mathRenderError } from './math-fix'
 import TutorMarkdown from '../components/common/TutorMarkdown'
 import { API_BASE_URL } from '../lib/apiConfig'
 import { trackPaperViewed, trackSearch } from '../lib/analytics'
+
+if (pdfjs?.GlobalWorkerOptions) {
+  pdfjs.GlobalWorkerOptions.workerSrc = workerUrl;
+}
+
+// ── Desktop breakpoint hook ───────────────────────────────────
+// Returns true when viewport is ≥1024px. Does NOT affect mobile render.
+function useIsDesktop() {
+  const [isDesktop, setIsDesktop] = useState(() => {
+    if (typeof window === 'undefined') return false
+    return window.matchMedia('(min-width: 1024px)').matches
+  })
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)')
+    const handler = (e) => setIsDesktop(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
+  return isDesktop
+}
 
 // ── API layer ─────────────────────────────────────────────────
 const API_BASE = API_BASE_URL
@@ -212,7 +234,7 @@ async function writeWithOfflineFallback(fn, queueItem) {
 
 // ── Data layer ────────────────────────────────────────────────
 async function fetchUserAcademicProfile(userId) {
-  if (!userId) return null
+  if (!userId || userId === 'preview-user-id') return null
   const { data, error } = await supabase
     .from('profiles')
     .select('program, year_of_study, semester')
@@ -249,14 +271,44 @@ async function fetchCoursesForProgram(programId, year = null, semester = null) {
 }
 async function fetchQuestionsForCourseIds(courseIds) {
   if (!courseIds?.length) return []
+  try {
+    const { data, error } = await supabase
+      .from('past_papers')
+      .select('*, courses ( id, course_code, course_name, semester, year, program_id ), past_paper:past_paper_id ( id, file_url, file_type, file_name )')
+      .in('course_id', courseIds).order('created_at', { ascending: false })
+    if (!error && data) return data
+  } catch (_) {}
   const { data, error } = await supabase
     .from('past_papers')
     .select('*, courses ( id, course_code, course_name, semester, year, program_id )')
     .in('course_id', courseIds).order('created_at', { ascending: false })
   if (error) throw error; return data || []
 }
+async function fetchAllRecentQuestions(limit = 200) {
+  try {
+    const { data, error } = await supabase
+      .from('past_papers')
+      .select('*, courses ( id, course_code, course_name, semester, year, program_id ), past_paper:past_paper_id ( id, file_url, file_type, file_name )')
+      .order('created_at', { ascending: false })
+      .limit(limit)
+    if (!error && data) return data
+  } catch (_) {}
+  const { data, error } = await supabase
+    .from('past_papers')
+    .select('*, courses ( id, course_code, course_name, semester, year, program_id )')
+    .order('created_at', { ascending: false })
+    .limit(limit)
+  return data || []
+}
 async function fetchQuestionsForPaper(paperId) {
   if (!paperId) return []
+  try {
+    const { data, error } = await supabase
+      .from('past_papers')
+      .select('*, past_paper:past_paper_id ( id, file_url, file_type, file_name )')
+      .eq('paper_id', paperId).order('created_at', { ascending: true })
+    if (!error && data) return data
+  } catch (_) {}
   const { data, error } = await supabase
     .from('past_papers').select('*').eq('paper_id', paperId).order('created_at', { ascending: true })
   if (error) throw error; return data || []
@@ -272,7 +324,9 @@ function groupQuestionsIntoPapers(rows) {
         courseName: row.courses?.course_name || row.course || 'Unknown course',
         courseCode: row.courses?.course_code || null,
         year: row.year, extractedAt: row.created_at,
+        semester: row.courses?.semester || null,
         questionCount: 0, totalMarks: 0, topics: new Set(),
+        pastPaper: row.past_paper || null,
       }
     }
     const p = byPaper[key]
@@ -280,6 +334,8 @@ function groupQuestionsIntoPapers(rows) {
     if (typeof row.marks === 'number') p.totalMarks += row.marks
     if (row.topic) p.topics.add(row.topic)
     if (p.year == null && row.year != null) p.year = row.year
+    if (!p.semester && row.courses?.semester) p.semester = row.courses.semester
+    if (!p.pastPaper && row.past_paper) p.pastPaper = row.past_paper
   }
   return Object.values(byPaper).map(p => ({ ...p, topics: [...p.topics] }))
 }
@@ -313,6 +369,8 @@ function normalizeDbQuestion(row, idx) {
   return {
     id: row.id, paperId: row.paper_id || null,
     number: row.question_number || leading?.number || String(idx + 1),
+    pageNumber: row.page_number != null ? Number(row.page_number) : null,
+    pastPaper: row.past_paper || null,
     marks: typeof row.marks === 'number' ? row.marks : null,
     text: leading ? leading.rest : rawQuestion,
     topic: row.topic || 'General', year: row.year || null,
@@ -652,6 +710,385 @@ const CourseThumbnailCard = memo(({ courseName, courseCode, paperCount, reviewed
         )}
       </div>
       <ChevronRight className="w-4 h-4 text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+    </div>
+  )
+})
+
+// ── Paper Card for List View ──────────────────────────────────
+const PaperCard = memo(({ paper, reviewedCount = 0, onClick, delay = 0 }) => {
+  const rm = useReducedMotion()
+  const hasScan = Boolean(paper.pastPaper?.file_url)
+  const isPdf = paper.pastPaper?.file_type === 'application/pdf' || (paper.pastPaper?.file_url && paper.pastPaper.file_url.toLowerCase().includes('.pdf'))
+  const scanBadge = isPdf ? 'PDF Scan' : (hasScan ? 'Scanned Image' : null)
+  const pct = paper.questionCount > 0 ? Math.round((reviewedCount / paper.questionCount) * 100) : 0
+
+  return (
+    <div
+      onClick={onClick}
+      className={`group bg-white border border-slate-200/90 hover:border-[#024927] rounded-2xl p-4 sm:p-5 flex flex-col justify-between cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition-all duration-150 will-change-transform ${rm ? '' : 'ed-fade-up'}`}
+      style={rm ? undefined : { animationDelay: `${delay}ms` }}
+    >
+      <div>
+        <div className="flex items-start justify-between gap-2 mb-2.5">
+          <div className="flex items-center gap-1.5 flex-wrap">
+            {paper.courseCode && (
+              <span className="text-[11px] font-bold px-2 py-0.5 bg-[#024927]/10 text-[#024927] rounded-md tracking-wider">
+                {paper.courseCode}
+              </span>
+            )}
+            {paper.year && (
+              <span className="text-[11px] font-semibold px-2 py-0.5 bg-slate-100 text-slate-700 rounded-md">
+                {paper.year}
+              </span>
+            )}
+            {paper.semester && (
+              <span className="text-[11px] font-medium px-2 py-0.5 bg-slate-50 text-slate-600 rounded-md">
+                Sem {paper.semester}
+              </span>
+            )}
+          </div>
+          {scanBadge && (
+            <span className="text-[10px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full flex items-center gap-1 flex-shrink-0">
+              <FileText className="w-3 h-3 text-[#024927]" /> {scanBadge}
+            </span>
+          )}
+        </div>
+
+        <h3 className="font-bold text-slate-900 text-base leading-snug group-hover:text-[#024927] transition-colors line-clamp-2">
+          {paper.courseName}
+        </h3>
+
+        {paper.topics?.length > 0 && (
+          <p className="text-xs text-slate-500 mt-2 line-clamp-1">
+            {paper.topics.slice(0, 3).join(' · ')}{paper.topics.length > 3 ? ` +${paper.topics.length - 3}` : ''}
+          </p>
+        )}
+      </div>
+
+      <div className="mt-4 pt-3 border-t border-slate-100">
+        {reviewedCount > 0 && (
+          <div className="mb-2.5">
+            <div className="flex items-center justify-between text-[11px] font-semibold mb-1">
+              <span className="text-emerald-700 flex items-center gap-0.5">
+                <CheckCheck className="w-3 h-3" /> {reviewedCount} of {paper.questionCount} done
+              </span>
+              <span className="text-slate-500">{pct}%</span>
+            </div>
+            <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+              <div className="h-full bg-emerald-600 rounded-full" style={{ width: `${pct}%` }} />
+            </div>
+          </div>
+        )}
+        <div className="flex items-center justify-between text-xs font-semibold text-slate-600">
+          <span className="flex items-center gap-1 text-slate-700">
+            <FileText className="w-3.5 h-3.5 text-[#024927]" />
+            {paper.questionCount} Questions {paper.totalMarks > 0 ? `· ${paper.totalMarks} Marks` : ''}
+          </span>
+          <span className="text-[#024927] font-bold flex items-center gap-0.5 group-hover:translate-x-0.5 transition-transform">
+            Open <ArrowRight className="w-3.5 h-3.5" />
+          </span>
+        </div>
+      </div>
+    </div>
+  )
+})
+
+// ── Reusable [Image | Text] Segmented Toggle ──────────────────
+const ViewModeToggle = memo(({ viewMode, onChange, hasImageScan }) => {
+  if (!hasImageScan) return null
+
+  return (
+    <div className="inline-flex p-1 bg-slate-100/90 rounded-xl text-xs font-semibold border border-slate-200/80 shadow-inner">
+      <button
+        onClick={() => onChange('text')}
+        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all ${
+          viewMode === 'text'
+            ? 'bg-white text-[#024927] font-bold shadow-xs'
+            : 'text-slate-600 hover:text-slate-900'
+        }`}
+      >
+        <FileText className="w-3.5 h-3.5" />
+        <span>Text Mode</span>
+      </button>
+      <button
+        onClick={() => onChange('image')}
+        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all ${
+          viewMode === 'image'
+            ? 'bg-white text-[#024927] font-bold shadow-xs'
+            : 'text-slate-600 hover:text-slate-900'
+        }`}
+      >
+        <ImageIcon className="w-3.5 h-3.5" />
+        <span>Scanned Image</span>
+      </button>
+    </div>
+  )
+})
+
+// ── Scanned Image / PDF Viewer with Pinch-to-Zoom ──────────────
+const ScannedImageViewer = memo(({ fileUrl, fileType, currentPage = 1, onPageChange, initialPage = 1 }) => {
+  const isPdf = fileType === 'application/pdf' || (typeof fileUrl === 'string' && fileUrl.toLowerCase().includes('.pdf'))
+  const [page, setPage] = useState(initialPage || currentPage || 1)
+  const [totalPages, setTotalPages] = useState(1)
+  const [pdfDoc, setPdfDoc] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [loadError, setLoadError] = useState(null)
+  const [scale, setScale] = useState(1.0)
+
+  const canvasRef = useRef(null)
+  const containerRef = useRef(null)
+  const renderTaskRef = useRef(null)
+  const touchDistRef = useRef(null)
+
+  useEffect(() => {
+    if (initialPage && initialPage !== page) {
+      setPage(initialPage)
+    }
+  }, [initialPage])
+
+  // Load PDF document if applicable
+  useEffect(() => {
+    if (!isPdf || !fileUrl) {
+      setLoading(false)
+      setTotalPages(1)
+      return
+    }
+
+    let isCancelled = false
+    setLoading(true)
+    setLoadError(null)
+
+    pdfjs.getDocument({ url: fileUrl }).promise
+      .then((doc) => {
+        if (isCancelled) return
+        setPdfDoc(doc)
+        setTotalPages(doc.numPages || 1)
+        setLoading(false)
+      })
+      .catch((err) => {
+        if (isCancelled) return
+        console.error('Failed to load PDF in ScannedImageViewer:', err)
+        setLoadError(err.message || 'Could not load scanned document')
+        setLoading(false)
+      })
+
+    return () => { isCancelled = true }
+  }, [fileUrl, isPdf])
+
+  // Render PDF page on canvas
+  useEffect(() => {
+    if (!isPdf || !pdfDoc || loading) return
+
+    let isCancelled = false
+    const targetPageNum = Math.min(Math.max(1, page), totalPages || 1)
+
+    // Cancel in-flight render task
+    if (renderTaskRef.current) {
+      try { renderTaskRef.current.cancel() } catch (_) {}
+    }
+
+    pdfDoc.getPage(targetPageNum).then((pdfPage) => {
+      if (isCancelled) return
+      const canvas = canvasRef.current
+      const container = containerRef.current
+      if (!canvas) return
+
+      const baseViewport = pdfPage.getViewport({ scale: 1.0 })
+      const containerWidth = container ? container.clientWidth - 32 : 600
+      const fitScale = Math.min(Math.max(0.6, containerWidth / baseViewport.width), 2.0)
+      const viewport = pdfPage.getViewport({ scale: fitScale * scale })
+
+      const dpr = typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1
+      canvas.width = Math.floor(viewport.width * dpr)
+      canvas.height = Math.floor(viewport.height * dpr)
+      canvas.style.width = `${Math.floor(viewport.width)}px`
+      canvas.style.height = `${Math.floor(viewport.height)}px`
+
+      const ctx = canvas.getContext('2d')
+      ctx.scale(dpr, dpr)
+
+      const renderTask = pdfPage.render({ canvasContext: ctx, viewport })
+      renderTaskRef.current = renderTask
+
+      renderTask.promise.catch((err) => {
+        if (err.name !== 'RenderingCancelledException') {
+          console.warn('Canvas render error:', err)
+        }
+      })
+    })
+
+    return () => {
+      isCancelled = true
+      if (renderTaskRef.current) {
+        try { renderTaskRef.current.cancel() } catch (_) {}
+      }
+    }
+  }, [pdfDoc, page, totalPages, scale, isPdf, loading])
+
+  const handlePrev = () => {
+    if (page > 1) {
+      const next = page - 1
+      setPage(next)
+      onPageChange?.(next)
+    }
+  }
+
+  const handleNext = () => {
+    if (page < totalPages) {
+      const next = page + 1
+      setPage(next)
+      onPageChange?.(next)
+    }
+  }
+
+  const zoomIn = () => setScale(s => Math.min(3.0, Math.round((s + 0.25) * 100) / 100))
+  const zoomOut = () => setScale(s => Math.max(0.6, Math.round((s - 0.25) * 100) / 100))
+  const resetZoom = () => setScale(1.0)
+
+  // Touch pinch-to-zoom handlers
+  const onTouchStart = (e) => {
+    if (e.touches.length === 2) {
+      touchDistRef.current = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      )
+    }
+  }
+
+  const onTouchMove = (e) => {
+    if (e.touches.length === 2 && touchDistRef.current) {
+      const currentDist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      )
+      const ratio = currentDist / touchDistRef.current
+      setScale(prev => Math.min(3.0, Math.max(0.6, prev * ratio)))
+      touchDistRef.current = currentDist
+    }
+  }
+
+  const onTouchEnd = () => {
+    touchDistRef.current = null
+  }
+
+  if (loadError) {
+    return (
+      <div className="p-8 text-center bg-slate-50 rounded-2xl border border-slate-200 m-4">
+        <Frown className="w-8 h-8 text-rose-500 mx-auto mb-2" />
+        <p className="font-bold text-slate-800 text-sm">Could not load scanned document</p>
+        <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">{loadError}</p>
+        {fileUrl && (
+          <a
+            href={fileUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 mt-4 text-xs font-semibold px-4 py-2 bg-[#024927] text-white rounded-xl hover:bg-[#046c3b]"
+          >
+            Open source file directly →
+          </a>
+        )}
+      </div>
+    )
+  }
+
+  return (
+    <div className="flex flex-col h-full bg-slate-100/70 select-none overflow-hidden">
+      {/* Top Floating Toolbar */}
+      <div className="sticky top-0 z-20 bg-white/95 backdrop-blur-md px-4 py-2.5 border-b border-slate-200/80 flex items-center justify-between gap-3 shadow-xs">
+        {/* Page navigation */}
+        <div className="flex items-center gap-1.5">
+          <button
+            onClick={handlePrev}
+            disabled={page <= 1}
+            className="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 disabled:opacity-30 disabled:pointer-events-none transition-all"
+            title="Previous Page"
+            aria-label="Previous Page"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+
+          <span className="text-xs font-bold text-slate-800 px-2 py-1 bg-slate-100 rounded-lg">
+            Page {page} of {totalPages}
+          </span>
+
+          <button
+            onClick={handleNext}
+            disabled={page >= totalPages}
+            className="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 disabled:opacity-30 disabled:pointer-events-none transition-all"
+            title="Next Page"
+            aria-label="Next Page"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
+
+        {/* Zoom controls */}
+        <div className="flex items-center gap-1">
+          <button
+            onClick={zoomOut}
+            disabled={scale <= 0.6}
+            className="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 disabled:opacity-30 transition-all"
+            title="Zoom Out"
+            aria-label="Zoom Out"
+          >
+            <ZoomOut className="w-4 h-4" />
+          </button>
+
+          <span className="text-[11px] font-bold text-slate-600 min-w-[42px] text-center">
+            {Math.round(scale * 100)}%
+          </span>
+
+          <button
+            onClick={zoomIn}
+            disabled={scale >= 3.0}
+            className="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 disabled:opacity-30 transition-all"
+            title="Zoom In"
+            aria-label="Zoom In"
+          >
+            <ZoomIn className="w-4 h-4" />
+          </button>
+
+          {scale !== 1.0 && (
+            <button
+              onClick={resetZoom}
+              className="px-2 h-8 flex items-center gap-1 text-[11px] font-semibold rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 transition-all ml-1"
+              title="Reset Zoom"
+            >
+              <RotateCcw className="w-3 h-3" /> Reset
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Main Canvas / Image Area */}
+      <div
+        ref={containerRef}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+        className="flex-1 overflow-auto p-4 sm:p-6 flex items-start justify-center"
+      >
+        {loading ? (
+          <div className="flex flex-col items-center justify-center py-20 text-slate-400 gap-3">
+            <div className="w-8 h-8 border-3 border-[#024927] border-t-transparent rounded-full animate-spin" />
+            <p className="text-xs font-semibold">Rendering scanned paper…</p>
+          </div>
+        ) : isPdf ? (
+          <div className="bg-white shadow-lg rounded-xl overflow-hidden border border-slate-300/80 transition-transform duration-75">
+            <canvas ref={canvasRef} className="block mx-auto" />
+          </div>
+        ) : (
+          <div className="bg-white shadow-lg rounded-xl overflow-hidden border border-slate-300/80 transition-transform duration-75 max-w-full">
+            <img
+              src={fileUrl}
+              alt={`Page ${page}`}
+              className="max-w-full h-auto object-contain block mx-auto"
+              style={{ transform: `scale(${scale})`, transformOrigin: 'top center' }}
+              loading="lazy"
+            />
+          </div>
+        )}
+      </div>
     </div>
   )
 })
@@ -1595,10 +2032,14 @@ function ActionSheetContent({
 }
 
 // ── Action sheet wrapper ──────────────────────────────────────
+// On mobile/tablet: bottom sheet (unchanged behaviour).
+// On desktop (≥1024px): fixed right-side panel — no overlay, question list
+//   stays visible on the left. Pass isDesktop=true to enable panel mode.
 const ActionSheet = memo(({
   question, questionList, onClose,
   savedIds, onToggleSave, flaggedIds, onFlag,
   isOnline, aiCache, reviewedIds, onMarkReviewed, onNavigate,
+  isDesktop = false,
 }) => {
   const [sheetSize, setSheetSize] = useState('half')
   useEffect(() => { setSheetSize('half') }, [question?.id])
@@ -1616,6 +2057,51 @@ const ActionSheet = memo(({
   const hasPrev = currentIndex > 0
   const hasNext = currentIndex >= 0 && currentIndex < (questionList?.length ?? 0) - 1
 
+  const sharedContent = (
+    <ActionSheetContent
+      key={question.id}
+      question={question}
+      isSaved={savedIds?.has(question.id)}
+      onToggleSave={() => onToggleSave(question)}
+      isFlagged={flaggedIds?.has(question.id)}
+      onFlag={() => onFlag(question)}
+      isOnline={isOnline}
+      aiCache={aiCache}
+      isReviewed={reviewedIds?.has(question.id)}
+      onMarkReviewed={() => onMarkReviewed(question)}
+      hasPrev={hasPrev}
+      hasNext={hasNext}
+      onPrev={() => hasPrev && onNavigate(questionList[currentIndex - 1])}
+      onNext={() => hasNext && onNavigate(questionList[currentIndex + 1])}
+      questionList={questionList}
+    />
+  )
+
+  // ── Desktop side panel ──────────────────────────────────────
+  if (isDesktop) {
+    return (
+      <div className="flex flex-col h-full bg-white border-l border-slate-200 overflow-hidden">
+        {/* Panel header */}
+        <div className="flex items-center justify-between px-4 py-3 border-b border-slate-100 flex-shrink-0">
+          <div className="flex items-center gap-2">
+            <PanelRight className="w-4 h-4 text-slate-400" />
+            <span className="text-sm font-semibold text-slate-700">AI Study Panel</span>
+          </div>
+          <button
+            onClick={onClose}
+            className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#024927]"
+            title="Close panel (Esc)"
+            aria-label="Close AI panel"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+        {sharedContent}
+      </div>
+    )
+  }
+
+  // ── Mobile / tablet bottom sheet ───────────────────────────
   return (
     <>
       <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[90]" onClick={onClose} />
@@ -1635,24 +2121,7 @@ const ActionSheet = memo(({
               {isFull ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
             </button>
           </div>
-
-          <ActionSheetContent
-            key={question.id}
-            question={question}
-            isSaved={savedIds?.has(question.id)}
-            onToggleSave={() => onToggleSave(question)}
-            isFlagged={flaggedIds?.has(question.id)}
-            onFlag={() => onFlag(question)}
-            isOnline={isOnline}
-            aiCache={aiCache}
-            isReviewed={reviewedIds?.has(question.id)}
-            onMarkReviewed={() => onMarkReviewed(question)}
-            hasPrev={hasPrev}
-            hasNext={hasNext}
-            onPrev={() => hasPrev && onNavigate(questionList[currentIndex - 1])}
-            onNext={() => hasNext && onNavigate(questionList[currentIndex + 1])}
-            questionList={questionList}
-          />
+          {sharedContent}
         </div>
       </div>
     </>
@@ -1708,36 +2177,51 @@ const BookmarkBtn = memo(({ isSaved, onToggle }) => (
 ))
 
 // content-visibility: auto defers paint for off-screen question blocks — key perf win on slow devices
-const PaperSubItem = memo(({ label, text, marks, imageUrl, indent, onAskAi, isSaved, onToggleSave, needsReview, altLabel }) => (
+const PaperSubItem = memo(({ label, text, marks, imageUrl, indent, onAskAi, isSaved, onToggleSave, needsReview, altLabel, pageNumber, onViewOriginal, hasImageScan }) => (
   <div className={indent ? 'pl-4' : ''} style={{ contentVisibility: 'auto', containIntrinsicSize: '0 80px' }}>
-    <p className="text-base sm:text-[17px] text-gray-800 leading-relaxed">
-      {label && <span className="font-semibold text-gray-600 mr-1.5">{label}.</span>}
-      <MathText text={text} />
-    </p>
-    <div className="flex items-center justify-between mt-1.5">
+    <div className="max-w-[70ch]">
+      <p className="text-[17px] text-slate-800 leading-[1.65] font-normal font-sans">
+        {label && <span className="font-bold text-slate-700 mr-2">{label}.</span>}
+        <MathText text={text} />
+      </p>
+    </div>
+    <div className="flex items-center justify-between mt-2 max-w-[70ch] flex-wrap gap-2">
       <div className="flex items-center gap-2 flex-wrap">
-        {marks != null && <span className="text-sm text-gray-500 font-medium">({marks} marks)</span>}
+        {marks != null && <span className="text-xs text-slate-500 font-semibold bg-slate-100 px-2 py-0.5 rounded">({marks} marks)</span>}
+        {pageNumber && hasImageScan && (
+          <button
+            onClick={() => onViewOriginal?.(pageNumber)}
+            className="text-xs font-semibold text-[#024927] hover:text-[#046c3b] hover:underline flex items-center gap-1 min-h-[30px]"
+            title={`View original scanned page (Page ${pageNumber})`}
+          >
+            <ImageIcon className="w-3.5 h-3.5" />
+            <span>View original (p. {pageNumber}) →</span>
+          </button>
+        )}
+        {pageNumber && !hasImageScan && (
+          <span className="text-xs text-slate-400 font-medium">Page {pageNumber}</span>
+        )}
       </div>
       {/* Condensed to two actions only — bookmark + Ask AI */}
       <div className="flex items-center gap-1 flex-shrink-0">
         <BookmarkBtn isSaved={isSaved} onToggle={onToggleSave} />
         <button
           onClick={onAskAi}
-          className="flex items-center gap-1 px-2.5 h-9 rounded-full bg-indigo-50 text-indigo-600 hover:bg-indigo-100 active:scale-90 transition-all text-xs font-semibold"
+          className="flex items-center gap-1 px-3 h-8 rounded-full bg-[#024927]/10 text-[#024927] hover:bg-[#024927]/20 active:scale-95 transition-all text-xs font-semibold"
         >
           <Sparkles className="w-3 h-3" /> Ask AI
         </button>
       </div>
     </div>
     {imageUrl && (
-      <div className="mt-2 rounded-xl overflow-hidden border border-gray-100 bg-gray-50">
+      <div className="mt-3 rounded-xl overflow-hidden border border-slate-200 bg-slate-50 max-w-[70ch]">
         <img src={imageUrl} alt={`Figure for question ${altLabel}`} className="w-full h-auto object-contain" loading="lazy" />
       </div>
     )}
   </div>
 ))
 
-const PaperQuestionBlock = memo(({ group, onOpenQuestion, savedIds, onToggleSave, delay = 0 }) => {
+const PaperQuestionBlock = memo(({ group, onOpenQuestion, savedIds, onToggleSave, delay = 0, onViewOriginal, hasImageScan }) => {
   const rm = useReducedMotion()
   const hasSubParts = group.items.length > 1
   const singleQuestion = group.items[0]
@@ -1749,35 +2233,58 @@ const PaperQuestionBlock = memo(({ group, onOpenQuestion, savedIds, onToggleSave
       className={rm ? '' : 'ed-fade-up'}
       style={{ ...(rm ? undefined : { animationDelay: `${delay}ms` }), contentVisibility: 'auto', containIntrinsicSize: '0 160px' }}
     >
-      <p className="font-bold text-gray-800 text-lg font-display mb-3">Question {group.number}:</p>
+      <div className="flex items-center justify-between mb-2 max-w-[70ch]">
+        <p className="font-bold text-slate-900 text-lg font-display">Question {group.number}:</p>
+        {singleQuestion?.pageNumber && hasImageScan && (
+          <button
+            onClick={() => onViewOriginal?.(singleQuestion.pageNumber)}
+            className="text-xs font-semibold text-[#024927] hover:underline flex items-center gap-1"
+          >
+            <ImageIcon className="w-3.5 h-3.5" /> p. {singleQuestion.pageNumber}
+          </button>
+        )}
+      </div>
+
       {inline ? (
-        <div>
-          <p className="text-base sm:text-[17px] text-gray-800 leading-relaxed"><MathText text={inline.stem} /></p>
-          {singleQuestion.marks != null && <p className="text-sm text-gray-500 font-medium mt-0.5">({singleQuestion.marks} marks)</p>}
-          <div className="mt-2 space-y-3 pl-4">
+        <div className="max-w-[70ch]">
+          <p className="text-[17px] text-slate-800 leading-[1.65] font-normal"><MathText text={inline.stem} /></p>
+          {singleQuestion.marks != null && <p className="text-xs text-slate-500 font-semibold mt-1 bg-slate-100 inline-block px-2 py-0.5 rounded">({singleQuestion.marks} marks)</p>}
+          <div className="mt-3 space-y-3 pl-4">
             {inline.items.map((it) => (
-              <p key={it.letter} className="text-base sm:text-[17px] text-gray-800 leading-relaxed">
-                <span className="font-semibold text-gray-600 mr-1.5">{it.letter}.</span>
+              <p key={it.letter} className="text-[17px] text-slate-800 leading-[1.65]">
+                <span className="font-bold text-slate-700 mr-2">{it.letter}.</span>
                 <MathText text={it.text} />
               </p>
             ))}
           </div>
           {singleQuestion.imageUrl && (
-            <div className="mt-2 rounded-xl overflow-hidden border border-gray-100 bg-gray-50">
+            <div className="mt-3 rounded-xl overflow-hidden border border-slate-200 bg-slate-50">
               <img src={singleQuestion.imageUrl} alt={`Figure for Q${group.number}`} className="w-full h-auto object-contain" loading="lazy" />
             </div>
           )}
-          <div className="flex items-center gap-2 mt-2.5 flex-wrap">
-            <BookmarkBtn isSaved={savedIds?.has(singleQuestion.id)} onToggle={() => onToggleSave(singleQuestion)} />
-            <button onClick={() => onOpenQuestion(singleQuestion)} className="flex items-center gap-1 px-2.5 h-9 rounded-full bg-indigo-50 text-indigo-600 hover:bg-indigo-100 active:scale-90 transition-all text-xs font-semibold">
-              <Sparkles className="w-3 h-3" /> Ask AI
-            </button>
+          <div className="flex items-center justify-between gap-2 mt-3 pt-2 border-t border-slate-100 flex-wrap">
+            <div className="flex items-center gap-2">
+              {singleQuestion.pageNumber && hasImageScan && (
+                <button
+                  onClick={() => onViewOriginal?.(singleQuestion.pageNumber)}
+                  className="text-xs font-semibold text-[#024927] hover:text-[#046c3b] hover:underline flex items-center gap-1 min-h-[30px]"
+                >
+                  <ImageIcon className="w-3.5 h-3.5" /> View original (p. {singleQuestion.pageNumber}) →
+                </button>
+              )}
+            </div>
+            <div className="flex items-center gap-1">
+              <BookmarkBtn isSaved={savedIds?.has(singleQuestion.id)} onToggle={() => onToggleSave(singleQuestion)} />
+              <button onClick={() => onOpenQuestion(singleQuestion)} className="flex items-center gap-1 px-3 h-8 rounded-full bg-[#024927]/10 text-[#024927] hover:bg-[#024927]/20 active:scale-90 transition-all text-xs font-semibold">
+                <Sparkles className="w-3 h-3" /> Ask AI
+              </button>
+            </div>
           </div>
         </div>
       ) : (
         <div>
-          {leadingStem && <p className="text-base sm:text-[17px] text-gray-800 leading-relaxed mb-3"><MathText text={leadingStem.stem} /></p>}
-          <div className="space-y-4">
+          {leadingStem && <p className="text-[17px] text-slate-800 leading-[1.65] font-normal mb-3 max-w-[70ch]"><MathText text={leadingStem.stem} /></p>}
+          <div className="space-y-5">
             {group.items.map((q, i) => {
               const label = subLetterOf(q.number) || (hasSubParts ? String.fromCharCode(97 + i) : null)
               const displayText = (leadingStem && i === 0) ? leadingStem.rest : q.text
@@ -1787,6 +2294,9 @@ const PaperQuestionBlock = memo(({ group, onOpenQuestion, savedIds, onToggleSave
                   indent={hasSubParts} onAskAi={() => onOpenQuestion(q)}
                   isSaved={savedIds?.has(q.id)} onToggleSave={() => onToggleSave(q)}
                   needsReview={q.needsReview} altLabel={`${group.number}${label || ''}`}
+                  pageNumber={q.pageNumber}
+                  onViewOriginal={onViewOriginal}
+                  hasImageScan={hasImageScan}
                 />
               )
             })}
@@ -1803,18 +2313,18 @@ const ReviewProgressBar = memo(({ reviewed, total }) => {
   const pct = Math.min(100, Math.round((reviewed / total) * 100))
   return (
     <div className="px-4 sm:px-8 pt-3 max-w-3xl mx-auto w-full">
-      <div className="flex items-center justify-between text-xs font-semibold text-gray-500 mb-1.5">
-        <span className="flex items-center gap-1"><CheckCheck className="w-3.5 h-3.5 text-indigo-400" /> {reviewed} of {total} done</span>
-        <span className={pct === 100 ? 'text-emerald-500 font-bold' : ''}>{pct}%</span>
+      <div className="flex items-center justify-between text-xs font-semibold text-slate-500 mb-1.5">
+        <span className="flex items-center gap-1 text-slate-700"><CheckCheck className="w-3.5 h-3.5 text-emerald-600" /> {reviewed} of {total} done</span>
+        <span className={pct === 100 ? 'text-emerald-700 font-bold' : ''}>{pct}%</span>
       </div>
-      <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
-        <div className={`h-full rounded-full transition-all duration-500 ${pct === 100 ? 'bg-emerald-400' : 'bg-indigo-500'}`} style={{ width: `${pct}%` }} />
+      <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+        <div className={`h-full rounded-full transition-all duration-500 ${pct === 100 ? 'bg-emerald-600' : 'bg-[#024927]'}`} style={{ width: `${pct}%` }} />
       </div>
     </div>
   )
 })
 
-// ── Question list view ────────────────────────────────────────
+// ── Question list view (with Text & Scanned Image toggle) ─────
 const GROUP_PAGE_SIZE = 5
 
 const QuestionListView = memo(({ paper, onOpenQuestion, savedIds, reviewedIds, onToggleSave }) => {
@@ -1823,11 +2333,46 @@ const QuestionListView = memo(({ paper, onOpenQuestion, savedIds, reviewedIds, o
     queryFn: () => fetchQuestionsForPaper(paper?.paperId),
     enabled: !!paper?.paperId, staleTime: 5 * 60 * 1000,
   })
+
   const questions = useMemo(() => rawRows.map(normalizeDbQuestion).sort(naturalQuestionSort), [rawRows])
   const groups = useMemo(() => groupQuestionsForPaper(questions), [questions])
   const reviewedCount = useMemo(() => questions.filter(q => reviewedIds?.has(q.id)).length, [questions, reviewedIds])
   const [visibleGroupCount, setVisibleGroupCount] = useState(GROUP_PAGE_SIZE)
   useEffect(() => { setVisibleGroupCount(GROUP_PAGE_SIZE) }, [paper?.paperId])
+
+  // Detect scanned source paper
+  const paperSource = useMemo(() => {
+    if (paper?.pastPaper?.file_url) return paper.pastPaper
+    const found = rawRows.find(r => r.past_paper?.file_url)
+    return found?.past_paper || null
+  }, [paper, rawRows])
+
+  const hasImageScan = Boolean(paperSource?.file_url)
+
+  // Remembered view mode: 'text' or 'image'
+  const [viewMode, setViewMode] = useState(() => {
+    try {
+      const saved = localStorage.getItem('sh_paper_view_mode')
+      return saved === 'image' ? 'image' : 'text'
+    } catch {
+      return 'text'
+    }
+  })
+
+  // If paper has no scanned file, strictly force text mode
+  const effectiveViewMode = hasImageScan ? viewMode : 'text'
+
+  const handleModeChange = useCallback((mode) => {
+    setViewMode(mode)
+    try { localStorage.setItem('sh_paper_view_mode', mode) } catch (_) {}
+  }, [])
+
+  const [currentImagePage, setCurrentImagePage] = useState(1)
+
+  const handleJumpToPage = useCallback((pageNum) => {
+    if (pageNum) setCurrentImagePage(pageNum)
+    handleModeChange('image')
+  }, [handleModeChange])
 
   if (isLoading) return <div className="px-4 pt-2 space-y-3">{Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)}</div>
   if (error) return <ErrorState onRetry={() => refetch()} message={error.message} />
@@ -1838,40 +2383,82 @@ const QuestionListView = memo(({ paper, onOpenQuestion, savedIds, reviewedIds, o
       <p className="text-sm text-gray-500 mt-1.5 max-w-xs mx-auto leading-relaxed">This paper hasn't been processed yet. Check back soon.</p>
     </div>
   )
+
   const visibleGroups = groups.slice(0, visibleGroupCount)
   const hasMore = visibleGroupCount < groups.length
+
   return (
     <div className="pb-4">
+      {/* Top Review Progress Bar */}
       <ReviewProgressBar reviewed={reviewedCount} total={questions.length} />
-      <div className="bg-white border-t border-b border-gray-100 px-4 sm:px-8 py-5 sm:py-6 w-full mt-3">
-        <div className="divide-y divide-gray-100 max-w-3xl mx-auto">
-          {visibleGroups.map((group, i) => (
-            <div key={group.number} className={i === 0 ? 'pb-6' : 'py-6'}>
-              <PaperQuestionBlock
-                group={group}
-                onOpenQuestion={(q) => onOpenQuestion(q, questions)}
-                savedIds={savedIds}
-                onToggleSave={onToggleSave}
-                delay={Math.min(i * 40, 200)}
-              />
+
+      {/* Segmented View Mode Toggle: [Text Mode | Scanned Image] */}
+      {hasImageScan && (
+        <div className="px-4 sm:px-8 pt-3 pb-2 max-w-3xl mx-auto flex items-center justify-between gap-3 flex-wrap">
+          <ViewModeToggle
+            viewMode={effectiveViewMode}
+            onChange={handleModeChange}
+            hasImageScan={hasImageScan}
+          />
+          <div className="text-xs text-slate-500 flex items-center gap-1.5 font-medium">
+            {effectiveViewMode === 'text' ? (
+              <span>Typography formatted for reading</span>
+            ) : (
+              <span>Original document · pinch or use controls to zoom</span>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* ── IMAGE MODE: Scanned Document Viewer ────────────────── */}
+      {effectiveViewMode === 'image' && hasImageScan ? (
+        <div className="px-4 sm:px-8 mt-2 max-w-4xl mx-auto">
+          <div className="h-[68vh] sm:h-[74vh] rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-xs">
+            <ScannedImageViewer
+              fileUrl={paperSource.file_url}
+              fileType={paperSource.file_type}
+              currentPage={currentImagePage}
+              initialPage={currentImagePage}
+              onPageChange={setCurrentImagePage}
+            />
+          </div>
+        </div>
+      ) : (
+        /* ── TEXT MODE: Reflowable Academic Typography ─────────── */
+        <>
+          <div className="bg-white border-t border-b border-gray-100 px-4 sm:px-8 py-5 sm:py-6 w-full mt-3">
+            <div className="divide-y divide-gray-100 max-w-3xl mx-auto">
+              {visibleGroups.map((group, i) => (
+                <div key={group.number} className={i === 0 ? 'pb-6' : 'py-6'}>
+                  <PaperQuestionBlock
+                    group={group}
+                    onOpenQuestion={(q) => onOpenQuestion(q, questions)}
+                    savedIds={savedIds}
+                    onToggleSave={onToggleSave}
+                    delay={Math.min(i * 40, 200)}
+                    onViewOriginal={handleJumpToPage}
+                    hasImageScan={hasImageScan}
+                  />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        {!hasMore && (
-          <p className="text-center text-[11px] font-semibold tracking-wider text-gray-400 uppercase pt-6 max-w-3xl mx-auto">
-            — End of Question Paper —
-          </p>
-        )}
-      </div>
-      {hasMore && (
-        <div className="flex justify-center px-4 pt-4">
-          <button
-            onClick={() => setVisibleGroupCount(c => c + GROUP_PAGE_SIZE)}
-            className="px-5 h-11 bg-white border border-indigo-200 text-indigo-600 text-sm font-semibold rounded-xl hover:bg-indigo-50 active:scale-95 transition-all shadow-sm"
-          >
-            Show more ({groups.length - visibleGroupCount} left)
-          </button>
-        </div>
+            {!hasMore && (
+              <p className="text-center text-[11px] font-semibold tracking-wider text-gray-400 uppercase pt-6 max-w-3xl mx-auto">
+                — End of Question Paper —
+              </p>
+            )}
+          </div>
+          {hasMore && (
+            <div className="flex justify-center px-4 pt-4">
+              <button
+                onClick={() => setVisibleGroupCount(c => c + GROUP_PAGE_SIZE)}
+                className="px-5 h-11 bg-white border border-[#024927]/20 text-[#024927] hover:bg-emerald-50 text-sm font-semibold rounded-xl active:scale-95 transition-all shadow-xs"
+              >
+                Show more ({groups.length - visibleGroupCount} left)
+              </button>
+            </div>
+          )}
+        </>
       )}
     </div>
   )
@@ -1918,10 +2505,13 @@ const SavedQuestionsView = memo(({ savedIds, allQuestionRows, onOpenQuestion, on
 
 // ── Main component ────────────────────────────────────────────
 export default function PastPapers() {
+  const isPreview = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('preview') === 'true'
   const [user, setUser] = useState(null)
+  const effectiveUser = user || (isPreview ? { id: 'preview-user-id', email: 'student@luanar.ac.mw' } : null)
   const [authLoading, setAuthLoading] = useState(true)
   const reduceMotion = useMotionPreference()
   const [, startTransition] = useTransition()
+  const isDesktop = useIsDesktop()
 
   useEffect(() => {
     let mounted = true
@@ -1945,6 +2535,10 @@ export default function PastPapers() {
   })
   const [studyMode, setStudyMode] = useState('papers')
   const [showSaved, setShowSaved] = useState(false)
+  const [papersViewTab, setPapersViewTab] = useState('papers')
+  const [selectedYear, setSelectedYear] = useState('all')
+  const [selectedSemester, setSelectedSemester] = useState('all')
+  const [selectedCourseFilter, setSelectedCourseFilter] = useState('all')
 
   const [searchQuery, setSearchQuery] = useState('')
   const deferredSearch = useDeferredValue(searchQuery)
@@ -2095,8 +2689,8 @@ export default function PastPapers() {
 
   const { data: myQuestionRows = [], isLoading: myPapersLoading, error: myPapersError, refetch: refetchMyPapers } = useQuery({
     queryKey: ['myQuestions', myCourseIds],
-    queryFn: () => fetchQuestionsForCourseIds(myCourseIds),
-    enabled: myCourseIds.length > 0, staleTime: 5 * 60 * 1000,
+    queryFn: () => myCourseIds.length > 0 ? fetchQuestionsForCourseIds(myCourseIds) : fetchAllRecentQuestions(),
+    staleTime: 5 * 60 * 1000,
   })
   const myPapers = useMemo(() => groupQuestionsIntoPapers(myQuestionRows), [myQuestionRows])
   const myPapersByCourse = useMemo(() => groupPapersByCourse(myPapers), [myPapers])
@@ -2110,6 +2704,40 @@ export default function PastPapers() {
     return out
   }, [myPapersByCourse, deferredSearch])
 
+  const availableYears = useMemo(() => {
+    const years = new Set()
+    myPapers.forEach(p => { if (p.year) years.add(p.year) })
+    return Array.from(years).sort((a, b) => b - a)
+  }, [myPapers])
+
+  const filteredPapersList = useMemo(() => {
+    return myPapers.filter(paper => {
+      if (deferredSearch) {
+        const q = deferredSearch.toLowerCase()
+        const matchName = paper.courseName?.toLowerCase().includes(q)
+        const matchCode = paper.courseCode?.toLowerCase().includes(q)
+        const matchTopic = paper.topics?.some(t => t.toLowerCase().includes(q))
+        if (!matchName && !matchCode && !matchTopic) return false
+      }
+      if (selectedYear !== 'all' && String(paper.year) !== String(selectedYear)) return false
+      if (selectedSemester !== 'all' && String(paper.semester) !== String(selectedSemester)) return false
+      if (selectedCourseFilter !== 'all' && String(paper.courseId) !== String(selectedCourseFilter)) return false
+      return true
+    })
+  }, [myPapers, deferredSearch, selectedYear, selectedSemester, selectedCourseFilter])
+
+  const handleOpenPaper = useCallback((paper) => {
+    const course = myCourses.find(c => String(c.id) === String(paper.courseId)) || {
+      id: paper.courseId,
+      course_name: paper.courseName,
+      course_code: paper.courseCode,
+    }
+    setCurrentCourse(course)
+    setCurrentPaper(paper)
+    setCurrentView('questions')
+    setStudyMode('papers')
+  }, [myCourses])
+
   const { data: allPrograms = [], isLoading: programsLoading, error: programsError, refetch: refetchPrograms } = useQuery({
     queryKey: ['allPrograms'], queryFn: fetchAllPrograms, enabled: browsingAll,
   })
@@ -2117,19 +2745,29 @@ export default function PastPapers() {
     queryKey: ['browseCourses', currentProgram?.id], queryFn: () => fetchCoursesForProgram(currentProgram?.id), enabled: !!currentProgram?.id,
   })
   const { data: coursePaperRows = [], isLoading: coursePapersLoading, error: coursePapersError, refetch: refetchCoursePapers } = useQuery({
-    queryKey: ['coursePapers', currentCourse?.id],
-    queryFn: () => fetchQuestionsForCourseIds(currentCourse?.id ? [currentCourse.id] : []),
-    enabled: !!currentCourse?.id,
+    queryKey: ['coursePapers', currentCourse?.id, currentPaper?.paperId],
+    queryFn: async () => {
+      if (currentCourse?.id) {
+        const rows = await fetchQuestionsForCourseIds([currentCourse.id])
+        if (rows.length) return rows
+      }
+      if (currentPaper?.paperId) {
+        return await fetchQuestionsForPaper(currentPaper.paperId)
+      }
+      return []
+    },
+    enabled: !!currentCourse?.id || !!currentPaper?.paperId,
   })
   const coursePapers = useMemo(() => groupQuestionsIntoPapers(coursePaperRows), [coursePaperRows])
   const sortedCoursePapers = useMemo(() => sortPapersRecentFirst(coursePapers), [coursePapers])
 
   useEffect(() => {
     if (currentView !== 'questions') return
-    if (!sortedCoursePapers.length) { if (currentPaper) setCurrentPaper(null); return }
+    if (coursePapersLoading) return
+    if (!sortedCoursePapers.length) return
     const stillValid = currentPaper && sortedCoursePapers.some(p => p.paperId === currentPaper.paperId)
     if (!stillValid) setCurrentPaper(sortedCoursePapers[0])
-  }, [sortedCoursePapers, currentView])
+  }, [sortedCoursePapers, currentView, coursePapersLoading, currentPaper])
 
   useEffect(() => { sessionStorage.setItem('ppView', currentView) }, [currentView])
   useEffect(() => { try { sessionStorage.setItem('ppCurrentPaper', JSON.stringify(currentPaper)) } catch {} }, [currentPaper])
@@ -2261,284 +2899,551 @@ export default function PastPapers() {
   return (
     <MotionContext.Provider value={reduceMotion}>
       <style>{ANIM_CSS}</style>
-      <div className="relative h-screen h-[100dvh] w-full overflow-hidden bg-white flex flex-col">
-        {/* Main scrollable body */}
-        <div
-          ref={scrollContainerRef}
-          onScroll={handleScroll}
-          className="flex-1 overflow-y-auto bg-white w-full no-scrollbar pb-32 lg:pb-6"
-        >
 
-        {/* Header */}
-        <header
-          className={`sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-transform duration-300 ease-out will-change-transform ${
+      {/* ── DESKTOP QUESTIONS VIEW: two-column split ─────────── */}
+      {isDesktop && currentView === 'questions' ? (
+        <div className="relative h-full w-full overflow-hidden bg-slate-50 flex flex-col">
+          {/* Header */}
+          <header className={`flex-shrink-0 sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-transform duration-300 ease-out will-change-transform ${
             isImmersive ? '-translate-y-full shadow-none pointer-events-none' : 'translate-y-0 shadow-sm'
-          }`}
-        >
-          <div className="px-4 py-3 flex items-center justify-between gap-3">
-            <div className="flex items-center gap-3 min-w-0">
-              {showBack && (
-                <button className="w-11 h-11 flex items-center justify-center hover:bg-indigo-50 rounded-xl transition-colors active:scale-90 flex-shrink-0" onClick={handleBack} aria-label="Go back">
-                  <ArrowLeft className="w-5 h-5 text-gray-700" />
-                </button>
-              )}
-              <div className="flex items-center gap-2.5 min-w-0">
-                <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-xl flex items-center justify-center flex-shrink-0 overflow-hidden">
-                  <img src="/images/luanar7.png" alt="Logo" className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none' }} />
+          }`}>
+            <div className="px-4 py-3 flex items-center justify-between gap-3">
+              <div className="flex items-center gap-3 min-w-0">
+                {showBack && (
+                  <button className="w-9 h-9 flex items-center justify-center hover:bg-slate-100 rounded-xl transition-colors active:scale-90 flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#024927]" onClick={handleBack} aria-label="Go back">
+                    <ArrowLeft className="w-4 h-4 text-slate-600" />
+                  </button>
+                )}
+                <div className="min-w-0">
+                  <h1 className="text-base font-bold text-slate-900 truncate leading-tight">
+                    {currentCourse?.course_name || 'Past Papers'}
+                  </h1>
+                  {currentCourse?.course_code && (
+                    <p className="text-xs text-slate-500 leading-tight">{currentCourse.course_code}</p>
+                  )}
                 </div>
-                <h1 className="text-lg font-bold tracking-tight font-display truncate">
-                  <span className="text-gray-800">Past</span>
-                  <span className="text-indigo-600"> Papers</span>
-                </h1>
                 {!isOnline && <span className="text-[11px] bg-amber-500 text-white px-2 py-0.5 rounded-full font-bold flex-shrink-0">Offline</span>}
               </div>
-            </div>
-            <div className="flex items-center gap-2 flex-shrink-0">
-              {currentView === 'my-courses' && (
+              <div className="flex items-center gap-2 flex-shrink-0">
                 <button
-                  onClick={() => setShowSaved(s => !s)}
-                  className={`flex items-center gap-1 px-2.5 h-9 rounded-full border text-sm font-semibold transition-all active:scale-95 ${
-                    showSaved ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white text-gray-600 border-gray-200 hover:border-indigo-300 hover:text-indigo-600'
-                  }`}
-                >
-                  {showSaved ? <BookmarkCheck className="w-3.5 h-3.5" /> : <Bookmark className="w-3.5 h-3.5" />}
-                  Saved
-                  {savedQuestionIds.size > 0 && (
-                    <span className={`text-[11px] font-bold px-1.5 rounded-full ${showSaved ? 'bg-white/20 text-white' : 'bg-indigo-100 text-indigo-600'}`}>
-                      {savedQuestionIds.size}
-                    </span>
-                  )}
-                </button>
-              )}
-              {currentView === 'questions' && (
-                <button
-                  onClick={() => {
-                    isImmersiveRef.current = !isImmersive;
-                    setIsImmersive(prev => !prev);
-                  }}
-                  className={`p-2 rounded-xl border transition-all active:scale-90 flex-shrink-0 ${
-                    isImmersive
-                      ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
-                      : 'bg-white border-gray-200 text-gray-600 hover:border-indigo-300 hover:text-indigo-600'
+                  onClick={() => { isImmersiveRef.current = !isImmersive; setIsImmersive(prev => !prev); }}
+                  className={`p-2 rounded-xl border transition-all active:scale-90 flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#024927] ${
+                    isImmersive ? 'bg-[#024927] text-white border-[#024927] shadow-sm' : 'bg-white border-slate-200 text-slate-600 hover:border-[#024927]/30 hover:text-[#024927]'
                   }`}
                   title={isImmersive ? 'Exit fullscreen reading mode' : 'Fullscreen reading mode'}
                   aria-label="Toggle Fullscreen"
                 >
                   {isImmersive ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
                 </button>
-              )}
-              <div className="relative">
-                <Search className="w-4 h-4 absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-300 pointer-events-none" />
-                <input
-                  type="text"
-                  placeholder={searchPlaceholder}
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-8 pr-3 py-1.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent w-32 sm:w-44 transition-all"
-                />
-                {searchQuery && (
-                  <button onClick={() => setSearchQuery('')} className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 w-5 h-5 flex items-center justify-center">
-                    <X className="w-3.5 h-3.5" />
-                  </button>
-                )}
+                <div className="relative">
+                  <Search className="w-4 h-4 absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-300 pointer-events-none" />
+                  <input
+                    type="text"
+                    placeholder="Search…"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="pl-8 pr-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#024927] focus:border-transparent w-48 transition-all"
+                  />
+                  {searchQuery && (
+                    <button onClick={() => setSearchQuery('')} className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 w-5 h-5 flex items-center justify-center">
+                      <X className="w-3.5 h-3.5" />
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
+            <StudyModeBar activeMode={studyMode} onChange={setStudyMode} />
+          </header>
 
-          {currentView === 'questions' && <StudyModeBar activeMode={studyMode} onChange={setStudyMode} />}
-        </header>
-
-        {/* Breadcrumb */}
-        {currentView !== 'my-courses' && (
-          <div className="flex items-center gap-1 px-4 pt-2 pb-1 text-xs text-gray-500 overflow-x-auto no-scrollbar whitespace-nowrap">
-            <button onClick={goToMyCourses} className="hover:text-indigo-600 transition-colors font-medium min-h-[36px] flex items-center">My Courses</button>
+          {/* Breadcrumb */}
+          <div className="flex-shrink-0 flex items-center gap-1 px-4 py-1.5 text-xs text-slate-500 border-b border-slate-100 bg-white overflow-x-auto no-scrollbar whitespace-nowrap">
+            <button onClick={goToMyCourses} className="hover:text-[#024927] transition-colors font-medium min-h-[32px] flex items-center">My Courses</button>
             {browsingAll && (
               <>
                 <ChevronRight className="w-3 h-3 opacity-30 flex-shrink-0" />
-                <button onClick={currentView !== 'programs' ? goToBrowsePrograms : undefined} className={`min-h-[36px] flex items-center ${currentView !== 'programs' ? 'hover:text-indigo-600 transition-colors font-medium' : 'text-gray-700 font-semibold'}`}>
-                  Programs
-                </button>
+                <button onClick={currentView !== 'programs' ? goToBrowsePrograms : undefined} className={`min-h-[32px] flex items-center ${currentView !== 'programs' ? 'hover:text-[#024927] transition-colors font-medium' : 'text-slate-700 font-semibold'}`}>Programs</button>
               </>
             )}
             {browsingAll && currentProgram && (
               <>
                 <ChevronRight className="w-3 h-3 opacity-30 flex-shrink-0" />
-                <button onClick={currentView !== 'courses' ? () => goToBrowseCourses(currentProgram) : undefined} className={`min-h-[36px] flex items-center ${currentView !== 'courses' ? 'hover:text-indigo-600 transition-colors font-medium' : 'text-gray-700 font-semibold'}`}>
-                  {currentProgram.name}
-                </button>
+                <button onClick={currentView !== 'courses' ? () => goToBrowseCourses(currentProgram) : undefined} className={`min-h-[32px] flex items-center ${currentView !== 'courses' ? 'hover:text-[#024927] transition-colors font-medium' : 'text-slate-700 font-semibold'}`}>{currentProgram.name}</button>
               </>
             )}
             {currentCourse && (
               <>
                 <ChevronRight className="w-3 h-3 opacity-30 flex-shrink-0" />
-                <span className="text-gray-700 font-semibold truncate max-w-[150px]">{currentCourse.course_name}</span>
+                <span className="text-slate-700 font-semibold truncate max-w-[200px]">{currentCourse.course_name}</span>
               </>
             )}
           </div>
-        )}
 
-        {/* Content */}
-        <div className="py-3 space-y-3">
+          {/* Two-column body */}
+          <div className="flex-1 flex overflow-hidden min-h-0">
+            {/* Left: Question list */}
+            <div
+              ref={scrollContainerRef}
+              onScroll={handleScroll}
+              className={`overflow-y-auto bg-white no-scrollbar transition-all duration-300 ${activeEntry ? 'w-[55%] border-r border-slate-200' : 'w-full'}`}
+            >
+              <div className="pb-6">
+                {studyMode === 'papers' && (
+                  coursePapersLoading ? (
+                    <div className="px-6 pt-4 space-y-3">{Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)}</div>
+                  ) : coursePapersError ? (
+                    <ErrorState onRetry={() => refetchCoursePapers()} message={coursePapersError.message} />
+                  ) : !sortedCoursePapers.length && !currentPaper ? (
+                    <EmptyState label="No past papers for this course yet" />
+                  ) : (
+                    <>
+                      {sortedCoursePapers.length > 0 && (
+                        <PaperSwitcher papers={sortedCoursePapers} currentPaperId={currentPaper?.paperId} onSelect={setCurrentPaper} />
+                      )}
+                      {currentPaper && (
+                        <QuestionListView
+                          paper={currentPaper}
+                          onOpenQuestion={handleOpenQuestion}
+                          savedIds={savedQuestionIds}
+                          reviewedIds={reviewedIds}
+                          onToggleSave={handleToggleSave}
+                        />
+                      )}
+                    </>
+                  )
+                )}
+                {studyMode === 'exam-focus' && (
+                  <ExamFocusPanel courseId={currentCourse?.id} onOpenSampleQuestion={(q) => handleOpenQuestion(q)} />
+                )}
+                {studyMode === 'last-minute' && (
+                  <LastMinutePanel courseId={currentCourse?.id} onOpenQuestion={handleOpenQuestion} />
+                )}
+              </div>
+            </div>
 
-          {currentView === 'my-courses' && !showSaved && (
-            <>
-              <div className="px-4 flex items-center justify-between">
-                <div>
-                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Your courses</p>
-                  {(myYear || mySemester) && (
-                    <span className="inline-flex items-center gap-1 mt-0.5 px-2 py-0.5 bg-indigo-50 text-indigo-700 text-[11px] font-bold rounded-md">
-                      {myYear ? `Year ${myYear}` : ''}
-                      {myYear && mySemester ? ' · ' : ''}
-                      {mySemester ? `Semester ${mySemester}` : ''}
-                    </span>
+            {/* Right: AI Panel (desktop only, inline) */}
+            {activeEntry && (
+              <div className="w-[45%] flex-shrink-0 overflow-hidden flex flex-col">
+                <ActionSheet
+                  question={activeEntry.question}
+                  questionList={activeEntry.list}
+                  onClose={() => setActiveEntry(null)}
+                  savedIds={savedQuestionIds}
+                  onToggleSave={handleToggleSave}
+                  flaggedIds={flaggedIds}
+                  onFlag={handleFlagQuestion}
+                  isOnline={isOnline}
+                  aiCache={aiCache}
+                  reviewedIds={reviewedIds}
+                  onMarkReviewed={handleMarkReviewed}
+                  onNavigate={(q) => setActiveEntry(prev => prev ? { ...prev, question: q } : null)}
+                  isDesktop={true}
+                />
+              </div>
+            )}
+
+            {/* Empty panel placeholder when no question selected */}
+            {!activeEntry && (
+              <div className="hidden lg:flex flex-col items-center justify-center w-0 overflow-hidden opacity-0 pointer-events-none select-none" aria-hidden="true" />
+            )}
+          </div>
+
+          <OfflineToast visible={showOfflineToast} pendingCount={pendingSyncCount} />
+          <MilestoneToast visible={!!milestoneMsg} message={milestoneMsg} />
+        </div>
+
+      ) : (
+        /* ── MOBILE / TABLET + LIST VIEWS ─────────────────────── */
+        <div className="relative h-full w-full overflow-hidden bg-white flex flex-col">
+          {/* Main scrollable body */}
+          <div
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
+            className="flex-1 overflow-y-auto bg-white w-full no-scrollbar pb-24 md:pb-6"
+          >
+
+          {/* Header */}
+          <header
+            className={`sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-transform duration-300 ease-out will-change-transform ${
+              isImmersive ? '-translate-y-full shadow-none pointer-events-none' : 'translate-y-0 shadow-sm'
+            }`}
+          >
+            <div className="px-4 py-3 flex items-center justify-between gap-3">
+              <div className="flex items-center gap-3 min-w-0">
+                {showBack && (
+                  <button className="w-11 h-11 flex items-center justify-center hover:bg-indigo-50 rounded-xl transition-colors active:scale-90 flex-shrink-0" onClick={handleBack} aria-label="Go back">
+                    <ArrowLeft className="w-5 h-5 text-gray-700" />
+                  </button>
+                )}
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <div className="md:hidden w-8 h-8 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-xl flex items-center justify-center flex-shrink-0 overflow-hidden">
+                    <img src="/images/luanar7.png" alt="Logo" className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none' }} />
+                  </div>
+                  <h1 className="text-lg font-bold tracking-tight font-display truncate">
+                    <span className="text-gray-800">Past</span>
+                    <span className="text-indigo-600"> Papers</span>
+                  </h1>
+                  {!isOnline && <span className="text-[11px] bg-amber-500 text-white px-2 py-0.5 rounded-full font-bold flex-shrink-0">Offline</span>}
+                </div>
+              </div>
+              <div className="flex items-center gap-2 flex-shrink-0">
+                {currentView === 'my-courses' && (
+                  <button
+                    onClick={() => setShowSaved(s => !s)}
+                    className={`flex items-center gap-1 px-2.5 h-9 rounded-full border text-sm font-semibold transition-all active:scale-95 ${
+                      showSaved ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white text-gray-600 border-gray-200 hover:border-indigo-300 hover:text-indigo-600'
+                    }`}
+                  >
+                    {showSaved ? <BookmarkCheck className="w-3.5 h-3.5" /> : <Bookmark className="w-3.5 h-3.5" />}
+                    Saved
+                    {savedQuestionIds.size > 0 && (
+                      <span className={`text-[11px] font-bold px-1.5 rounded-full ${showSaved ? 'bg-white/20 text-white' : 'bg-indigo-100 text-indigo-600'}`}>
+                        {savedQuestionIds.size}
+                      </span>
+                    )}
+                  </button>
+                )}
+                {currentView === 'questions' && (
+                  <button
+                    onClick={() => {
+                      isImmersiveRef.current = !isImmersive;
+                      setIsImmersive(prev => !prev);
+                    }}
+                    className={`p-2 rounded-xl border transition-all active:scale-90 flex-shrink-0 ${
+                      isImmersive
+                        ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
+                        : 'bg-white border-gray-200 text-gray-600 hover:border-indigo-300 hover:text-indigo-600'
+                    }`}
+                    title={isImmersive ? 'Exit fullscreen reading mode' : 'Fullscreen reading mode'}
+                    aria-label="Toggle Fullscreen"
+                  >
+                    {isImmersive ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
+                  </button>
+                )}
+                <div className="relative">
+                  <Search className="w-4 h-4 absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-300 pointer-events-none" />
+                  <input
+                    type="text"
+                    placeholder={searchPlaceholder}
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="pl-8 pr-3 py-1.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent w-32 sm:w-44 transition-all"
+                  />
+                  {searchQuery && (
+                    <button onClick={() => setSearchQuery('')} className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 w-5 h-5 flex items-center justify-center">
+                      <X className="w-3.5 h-3.5" />
+                    </button>
                   )}
                 </div>
-                <button onClick={goToBrowsePrograms} className="text-sm font-semibold text-indigo-600 hover:underline h-9 flex items-center">
-                  Browse other programs →
-                </button>
               </div>
-              {authLoading ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 px-4">{Array.from({ length: 2 }).map((_, i) => <SkeletonCard key={i} />)}</div>
-              ) : !user ? (
-                <EmptyState label="Sign in to see your courses" sub="Your past papers and revision progress are saved to your account." action={{ label: 'Sign in', onClick: () => window.location.href = '/auth' }} />
-              ) : myCoursesResolving || myPapersLoading ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 px-4">{Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)}</div>
-              ) : myPapersError ? (
-                <ErrorState onRetry={() => refetchMyPapers()} message={myPapersError.message} />
-              ) : myCourseIds.length === 0 ? (
-                <EmptyState label="No courses found for your program yet" sub="Check back soon — new programs are added regularly." />
-              ) : Object.keys(filteredMyPapersByCourse).length === 0 ? (
-                <EmptyState label="No matching courses" isSearch />
-              ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 px-4">
-                  {Object.entries(filteredMyPapersByCourse).map(([courseId, group], idx) => {
-                    const course = myCourses.find(c => String(c.id) === String(courseId)) || { id: courseId, course_name: group.courseName, course_code: group.courseCode }
-                    const courseQIds = myQuestionRows.filter(r => String(r.course_id) === String(courseId)).map(r => r.id)
-                    return (
-                      <CourseThumbnailCard
-                        key={courseId}
-                        courseName={group.courseName}
-                        courseCode={group.courseCode}
-                        paperCount={group.papers.length}
-                        reviewedCount={reviewedCountFor(courseQIds)}
-                        totalCount={courseQIds.length}
-                        onClick={() => goToCourseDetail(course)}
-                        delay={Math.min(idx * 35, 200)}
-                      />
-                    )
-                  })}
+            </div>
+
+            {currentView === 'questions' && <StudyModeBar activeMode={studyMode} onChange={setStudyMode} />}
+          </header>
+
+          {/* Breadcrumb */}
+          {currentView !== 'my-courses' && (
+            <div className="flex-shrink-0 flex items-center gap-1 px-4 py-1.5 text-xs text-slate-500 border-b border-slate-100 bg-white overflow-x-auto no-scrollbar whitespace-nowrap">
+              <button onClick={goToMyCourses} className="hover:text-[#024927] transition-colors font-medium min-h-[32px] flex items-center">My Courses</button>
+              {browsingAll && (
+                <>
+                  <ChevronRight className="w-3 h-3 opacity-30 flex-shrink-0" />
+                  <button onClick={currentView !== 'programs' ? goToBrowsePrograms : undefined} className={`min-h-[32px] flex items-center ${currentView !== 'programs' ? 'hover:text-[#024927] transition-colors font-medium' : 'text-slate-700 font-semibold'}`}>
+                    Programs
+                  </button>
+                </>
+              )}
+              {browsingAll && currentProgram && (
+                <>
+                  <ChevronRight className="w-3 h-3 opacity-30 flex-shrink-0" />
+                  <button onClick={currentView !== 'courses' ? () => goToBrowseCourses(currentProgram) : undefined} className={`min-h-[32px] flex items-center ${currentView !== 'courses' ? 'hover:text-[#024927] transition-colors font-medium' : 'text-slate-700 font-semibold'}`}>
+                    {currentProgram.name}
+                  </button>
+                </>
+              )}
+              {currentCourse && (
+                <>
+                  <ChevronRight className="w-3 h-3 opacity-30 flex-shrink-0" />
+                  <span className="text-slate-700 font-semibold truncate max-w-[200px]">{currentCourse.course_name}</span>
+                </>
+              )}
+            </div>
+          )}
+
+          {/* Content */}
+          <div className="space-y-3">
+
+            {currentView === 'my-courses' && !showSaved && (
+              <>
+                <div className="px-4 flex items-center justify-between gap-3 flex-wrap">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Past Papers</p>
+                      {(myYear || mySemester) && (
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#024927]/10 text-[#024927] text-[11px] font-bold rounded-md">
+                          {myYear ? `Year ${myYear}` : ''}
+                          {myYear && mySemester ? ' · ' : ''}
+                          {mySemester ? `Semester ${mySemester}` : ''}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-sm font-semibold text-slate-800 mt-0.5">
+                      {myProgramName || 'Your Curriculum'}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <div className="inline-flex p-1 bg-slate-100 rounded-xl text-xs font-semibold border border-slate-200">
+                      <button
+                        onClick={() => setPapersViewTab('papers')}
+                        className={`px-3 py-1.5 rounded-lg transition-all ${
+                          papersViewTab === 'papers'
+                            ? 'bg-white text-[#024927] font-bold shadow-xs'
+                            : 'text-slate-600 hover:text-slate-900'
+                        }`}
+                      >
+                        Papers List ({filteredPapersList.length})
+                      </button>
+                      <button
+                        onClick={() => setPapersViewTab('courses')}
+                        className={`px-3 py-1.5 rounded-lg transition-all ${
+                          papersViewTab === 'courses'
+                            ? 'bg-white text-[#024927] font-bold shadow-xs'
+                            : 'text-slate-600 hover:text-slate-900'
+                        }`}
+                      >
+                        By Course ({Object.keys(filteredMyPapersByCourse).length})
+                      </button>
+                    </div>
+
+                    <button onClick={goToBrowsePrograms} className="text-xs font-semibold text-[#024927] hover:underline h-8 flex items-center">
+                      Browse other programs →
+                    </button>
+                  </div>
                 </div>
-              )}
-            </>
-          )}
 
-          {currentView === 'my-courses' && showSaved && (
-            <SavedQuestionsView
-              savedIds={savedQuestionIds}
-              allQuestionRows={myQuestionRows}
-              onOpenQuestion={handleOpenQuestion}
-              onToggleSave={handleToggleSave}
-              reviewedIds={reviewedIds}
-            />
-          )}
+                {/* Filters Row */}
+                {papersViewTab === 'papers' && (
+                  <div className="px-4 py-2 flex items-center gap-2 overflow-x-auto no-scrollbar flex-wrap">
+                    <div className="flex items-center gap-1.5 text-xs text-slate-500 font-semibold mr-1">
+                      <SlidersHorizontal className="w-3.5 h-3.5 text-slate-400" />
+                      <span>Filters:</span>
+                    </div>
 
-          {currentView === 'programs' && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 px-4">
-              {programsLoading ? Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)
-                : programsError ? <ErrorState onRetry={() => refetchPrograms()} message={programsError.message} />
-                : renderPrograms()}
-            </div>
-          )}
+                    {/* Year Filter */}
+                    <select
+                      value={selectedYear}
+                      onChange={(e) => setSelectedYear(e.target.value)}
+                      className="text-xs font-semibold bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#024927] focus:border-transparent"
+                    >
+                      <option value="all">All Years</option>
+                      {availableYears.map(y => (
+                        <option key={y} value={y}>{y}</option>
+                      ))}
+                    </select>
 
-          {currentView === 'courses' && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 px-4">
-              {coursesLoading ? Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)
-                : coursesError ? <ErrorState onRetry={() => refetchCourses()} message={coursesError.message} />
-                : renderCourses()}
-            </div>
-          )}
+                    {/* Semester Filter */}
+                    <select
+                      value={selectedSemester}
+                      onChange={(e) => setSelectedSemester(e.target.value)}
+                      className="text-xs font-semibold bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#024927] focus:border-transparent"
+                    >
+                      <option value="all">All Semesters</option>
+                      <option value="1">Semester 1</option>
+                      <option value="2">Semester 2</option>
+                    </select>
 
-          {currentView === 'questions' && (
-            <>
-              {studyMode === 'papers' && (
-                coursePapersLoading ? (
-                  <div className="px-4 pt-2 space-y-3">{Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)}</div>
-                ) : coursePapersError ? (
-                  <ErrorState onRetry={() => refetchCoursePapers()} message={coursePapersError.message} />
-                ) : !sortedCoursePapers.length ? (
-                  <EmptyState label="No past papers for this course yet" />
-                ) : (
-                  <>
-                    <PaperSwitcher papers={sortedCoursePapers} currentPaperId={currentPaper?.paperId} onSelect={setCurrentPaper} />
-                    {currentPaper && (
-                      <QuestionListView
-                        paper={currentPaper}
-                        onOpenQuestion={handleOpenQuestion}
-                        savedIds={savedQuestionIds}
-                        reviewedIds={reviewedIds}
-                        onToggleSave={handleToggleSave}
-                      />
+                    {/* Course Filter */}
+                    {myCourses.length > 0 && (
+                      <select
+                        value={selectedCourseFilter}
+                        onChange={(e) => setSelectedCourseFilter(e.target.value)}
+                        className="text-xs font-semibold bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#024927] focus:border-transparent max-w-[200px] truncate"
+                      >
+                        <option value="all">All Courses</option>
+                        {myCourses.map(c => (
+                          <option key={c.id} value={c.id}>{c.course_name}</option>
+                        ))}
+                      </select>
                     )}
-                  </>
-                )
-              )}
-              {studyMode === 'exam-focus' && (
-                <ExamFocusPanel courseId={currentCourse?.id} onOpenSampleQuestion={(q) => handleOpenQuestion(q)} />
-              )}
-              {studyMode === 'last-minute' && (
-                <LastMinutePanel courseId={currentCourse?.id} onOpenQuestion={handleOpenQuestion} />
-              )}
-            </>
-          )}
+
+                    {(selectedYear !== 'all' || selectedSemester !== 'all' || selectedCourseFilter !== 'all' || deferredSearch) && (
+                      <button
+                        onClick={() => {
+                          setSelectedYear('all')
+                          setSelectedSemester('all')
+                          setSelectedCourseFilter('all')
+                          setSearchQuery('')
+                        }}
+                        className="text-xs font-bold text-rose-600 hover:text-rose-700 hover:underline px-2 py-1.5 min-h-[32px] flex items-center"
+                      >
+                        Reset
+                      </button>
+                    )}
+                  </div>
+                )}
+
+                {authLoading ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 px-4">{Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)}</div>
+                ) : !effectiveUser ? (
+                  <EmptyState label="Sign in to see your courses" sub="Your past papers and revision progress are saved to your account." action={{ label: 'Sign in', onClick: () => window.location.href = '/auth' }} />
+                ) : (myCoursesResolving && !isPreview) || myPapersLoading ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 px-4">{Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)}</div>
+                ) : myPapersError ? (
+                  <ErrorState onRetry={() => refetchMyPapers()} message={myPapersError.message} />
+                ) : myPapers.length === 0 ? (
+                  <EmptyState label="No past papers found" sub="Check back soon — new papers are added regularly." />
+                ) : papersViewTab === 'papers' ? (
+                  filteredPapersList.length === 0 ? (
+                    <EmptyState
+                      label="No past papers match your filters"
+                      sub="Try adjusting your year, semester, or search query."
+                      action={{
+                        label: 'Clear Filters',
+                        onClick: () => { setSelectedYear('all'); setSelectedSemester('all'); setSelectedCourseFilter('all'); setSearchQuery(''); }
+                      }}
+                    />
+                  ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 px-4">
+                      {filteredPapersList.map((paper, idx) => {
+                        const courseQIds = myQuestionRows.filter(r => String(r.paper_id) === String(paper.paperId)).map(r => r.id)
+                        const reviewed = reviewedCountFor(courseQIds)
+                        return (
+                          <PaperCard
+                            key={paper.paperId}
+                            paper={paper}
+                            reviewedCount={reviewed}
+                            onClick={() => handleOpenPaper(paper)}
+                            delay={Math.min(idx * 35, 200)}
+                          />
+                        )
+                      })}
+                    </div>
+                  )
+                ) : (
+                  Object.keys(filteredMyPapersByCourse).length === 0 ? (
+                    <EmptyState label="No matching courses" isSearch />
+                  ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 px-4">
+                      {Object.entries(filteredMyPapersByCourse).map(([courseId, group], idx) => {
+                        const course = myCourses.find(c => String(c.id) === String(courseId)) || { id: courseId, course_name: group.courseName, course_code: group.courseCode }
+                        const courseQIds = myQuestionRows.filter(r => String(r.course_id) === String(courseId)).map(r => r.id)
+                        return (
+                          <CourseThumbnailCard
+                            key={courseId}
+                            courseName={group.courseName}
+                            courseCode={group.courseCode}
+                            paperCount={group.papers.length}
+                            reviewedCount={reviewedCountFor(courseQIds)}
+                            totalCount={courseQIds.length}
+                            onClick={() => goToCourseDetail(course)}
+                            delay={Math.min(idx * 35, 200)}
+                          />
+                        )
+                      })}
+                    </div>
+                  )
+                )}
+              </>
+            )}
+
+            {currentView === 'my-courses' && showSaved && (
+              <SavedQuestionsView
+                savedIds={savedQuestionIds}
+                allQuestionRows={myQuestionRows}
+                onOpenQuestion={handleOpenQuestion}
+                onToggleSave={handleToggleSave}
+                reviewedIds={reviewedIds}
+              />
+            )}
+
+            {currentView === 'programs' && (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 px-4">
+                {programsLoading ? Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)
+                  : programsError ? <ErrorState onRetry={() => refetchPrograms()} message={programsError.message} />
+                  : renderPrograms()}
+              </div>
+            )}
+
+            {currentView === 'courses' && (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 px-4">
+                {coursesLoading ? Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)
+                  : coursesError ? <ErrorState onRetry={() => refetchCourses()} message={coursesError.message} />
+                  : renderCourses()}
+              </div>
+            )}
+
+            {currentView === 'questions' && (
+              <>
+                {studyMode === 'papers' && (
+                  coursePapersLoading ? (
+                    <div className="px-4 pt-2 space-y-3">{Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)}</div>
+                  ) : coursePapersError ? (
+                    <ErrorState onRetry={() => refetchCoursePapers()} message={coursePapersError.message} />
+                  ) : !sortedCoursePapers.length ? (
+                    <EmptyState label="No past papers for this course yet" />
+                  ) : (
+                    <>
+                      <PaperSwitcher papers={sortedCoursePapers} currentPaperId={currentPaper?.paperId} onSelect={setCurrentPaper} />
+                      {currentPaper && (
+                        <QuestionListView
+                          paper={currentPaper}
+                          onOpenQuestion={handleOpenQuestion}
+                          savedIds={savedQuestionIds}
+                          reviewedIds={reviewedIds}
+                          onToggleSave={handleToggleSave}
+                        />
+                      )}
+                    </>
+                  )
+                )}
+                {studyMode === 'exam-focus' && (
+                  <ExamFocusPanel courseId={currentCourse?.id} onOpenSampleQuestion={(q) => handleOpenQuestion(q)} />
+                )}
+                {studyMode === 'last-minute' && (
+                  <LastMinutePanel courseId={currentCourse?.id} onOpenQuestion={handleOpenQuestion} />
+                )}
+              </>
+            )}
+          </div>
+
+          {/* ActionSheet (mobile/tablet bottom sheet) */}
+          <ActionSheet
+            question={activeEntry?.question ?? null}
+            questionList={activeEntry?.list ?? null}
+            onClose={() => setActiveEntry(null)}
+            savedIds={savedQuestionIds}
+            onToggleSave={handleToggleSave}
+            flaggedIds={flaggedIds}
+            onFlag={handleFlagQuestion}
+            isOnline={isOnline}
+            aiCache={aiCache}
+            reviewedIds={reviewedIds}
+            onMarkReviewed={handleMarkReviewed}
+            onNavigate={(q) => setActiveEntry(prev => prev ? { ...prev, question: q } : null)}
+            isDesktop={false}
+          />
+
+          <OfflineToast visible={showOfflineToast} pendingCount={pendingSyncCount} />
+          <MilestoneToast visible={!!milestoneMsg} message={milestoneMsg} />
         </div>
 
-        {/* ActionSheet and Toasts outside scroll container */}
-        <ActionSheet
-          question={activeEntry?.question ?? null}
-          questionList={activeEntry?.list ?? null}
-          onClose={() => setActiveEntry(null)}
-          savedIds={savedQuestionIds}
-          onToggleSave={handleToggleSave}
-          flaggedIds={flaggedIds}
-          onFlag={handleFlagQuestion}
-          isOnline={isOnline}
-          aiCache={aiCache}
-          reviewedIds={reviewedIds}
-          onMarkReviewed={handleMarkReviewed}
-          onNavigate={(q) => setActiveEntry(prev => prev ? { ...prev, question: q } : null)}
-        />
-
-        <OfflineToast visible={showOfflineToast} pendingCount={pendingSyncCount} />
-        <MilestoneToast visible={!!milestoneMsg} message={milestoneMsg} />
+        {currentView === 'questions' && isImmersive && (
+          <div className="fixed bottom-6 right-6 z-50 ed-fade-up">
+            <button
+              onClick={() => {
+                isImmersiveRef.current = false;
+                setIsImmersive(false);
+              }}
+              className="flex items-center gap-2 px-4 py-2.5 bg-gray-900/90 hover:bg-black text-white backdrop-blur-md text-xs font-semibold rounded-full shadow-2xl transition-all active:scale-95 border border-white/20"
+              title="Exit fullscreen reading mode"
+            >
+              <Minimize2 className="w-3.5 h-3.5 text-indigo-400" />
+              <span>Exit Fullscreen</span>
+            </button>
+          </div>
+        )}
       </div>
-
-      {/* Bottom Navigation - Fixed and separated from scroll */}
-      <div
-        className={`fixed bottom-0 left-0 right-0 z-40 transition-transform duration-300 ease-out pointer-events-none ${
-          currentView === 'questions' && isImmersive ? 'translate-y-32' : 'translate-y-0'
-        }`}
-      >
-        <div className="pointer-events-auto">
-          <BottomNav />
-        </div>
-      </div>
-
-      {currentView === 'questions' && isImmersive && (
-        <div className="fixed bottom-6 right-6 z-50 ed-fade-up">
-          <button
-            onClick={() => {
-              isImmersiveRef.current = false;
-              setIsImmersive(false);
-            }}
-            className="flex items-center gap-2 px-4 py-2.5 bg-gray-900/90 hover:bg-black text-white backdrop-blur-md text-xs font-semibold rounded-full shadow-2xl transition-all active:scale-95 border border-white/20"
-            title="Exit fullscreen reading mode"
-          >
-            <Minimize2 className="w-3.5 h-3.5 text-indigo-400" />
-            <span>Exit Fullscreen</span>
-          </button>
-        </div>
       )}
-    </div>
     </MotionContext.Provider>
   )
 }

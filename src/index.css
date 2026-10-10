@@ -36,6 +36,39 @@ body {
   box-sizing: border-box;
 }
 
+/* -------- STUDYHUB DESIGN TOKENS -------- */
+:root {
+  --brand-green: #024927;
+  --brand-green-dark: #01331b;
+  --brand-green-light: #0a6b3b;
+  --brand-green-surface: #f0fdf4;
+  --brand-green-border: #bbf7d0;
+
+  --surface-canvas: #f8fafc;
+  --surface-card: #ffffff;
+  --surface-subtle: #f1f5f9;
+  --surface-border: #e2e8f0;
+
+  --content-title: #0f172a;
+  --content-body: #334155;
+  --content-muted: #64748b;
+  --content-subtle: #94a3b8;
+
+  --radius-card: 18px;
+  --radius-button: 12px;
+
+  --shadow-resting: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 4px 12px -2px rgba(0, 0, 0, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+  --shadow-raised: 0 12px 24px -4px rgba(0, 0, 0, 0.08), 0 4px 8px -2px rgba(0, 0, 0, 0.04);
+}
+
+/* Ensure bottom nav is strictly hidden on tablet and desktop (>= 768px) */
+@media (min-width: 768px) {
+  [data-bottom-nav] {
+    display: none !important;
+  }
+}
+
 /* -------- LIGHT THEME VARIABLES -------- */
 :root {
   --text: #000000;

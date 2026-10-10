@@ -10,7 +10,6 @@ import React, {
 } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabase';
-import { BottomNav } from '../components/BottomNav';
 import { useQuery } from '@tanstack/react-query';
 import { useIsDownloaded, useDownloadProgress, useDownloadManager } from '../hooks/useDownloadManager';
 
@@ -802,27 +801,27 @@ export default function Programs() {
   const isDataReady = !showSkeleton;
 
   return (
-    <div className="h-screen flex flex-col bg-gradient-to-br from-blue-50 via-gray-50 to-purple-50">
-      <header className="flex-shrink-0 sticky top-0 z-30 bg-white/80 backdrop-blur-xl border-b border-gray-200/60 shadow-sm px-4 sm:px-6 py-3 flex items-center justify-between">
+    <div className="h-full flex flex-col bg-slate-50">
+      <header className="flex-shrink-0 sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs px-4 sm:px-6 py-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center overflow-hidden shadow-sm border border-blue-700/20">
+          <div className="md:hidden w-8 h-8 bg-gradient-to-br from-[#024927] to-[#046c3b] rounded-lg flex items-center justify-center overflow-hidden shadow-xs">
             <img src="/images/luanar7.png" alt="LUANAR Logo" className="w-full h-full object-cover" onError={(e) => e.currentTarget.style.display = 'none'} />
           </div>
-          <h1 className="text-xl font-bold tracking-tight flex items-center">
-            <span className="text-gray-800">Study</span><span className="text-blue-600">Notes</span>
+          <h1 className="text-lg md:text-xl font-bold tracking-tight text-slate-900 flex items-center gap-2">
+            <span>Study Notes</span>
             {isPending && (
-              <span className="ml-2 inline-block w-2.5 h-2.5 bg-blue-500 rounded-full animate-pulse will-change-transform" />
+              <span className="inline-block w-2.5 h-2.5 bg-[#024927] rounded-full animate-pulse will-change-transform" />
             )}
           </h1>
         </div>
         <div className="flex items-center gap-3">
           {viewMode === 'allPrograms' && (
             <div className="relative hidden xs:block">
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">🔍</span>
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">🔍</span>
               <input
                 type="text"
                 placeholder="Search programs..."
-                className="pl-9 pr-4 py-2 bg-gray-100/80 border-transparent focus:bg-white border focus:border-blue-300 rounded-xl text-sm focus:outline-none focus:ring-4 focus:ring-blue-500/10 w-40 sm:w-64"
+                className="pl-9 pr-4 py-2 bg-slate-100 border-transparent focus:bg-white border focus:border-[#024927] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#024927]/20 w-40 sm:w-64"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 aria-label="Search programs"
@@ -831,10 +830,10 @@ export default function Programs() {
           )}
           <button
             onClick={handleToggleView}
-            className={`px-4 py-2 text-sm font-semibold rounded-xl transition-all active:scale-95 ${
+            className={`px-4 py-2 text-sm font-semibold rounded-xl transition-all active:scale-95 cursor-pointer ${
               viewMode === 'allPrograms'
-                ? 'bg-gray-800 text-white hover:bg-gray-900 shadow-md'
-                : 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 shadow-md shadow-blue-500/20'
+                ? 'bg-slate-900 text-white hover:bg-black shadow-xs'
+                : 'bg-[#024927] text-white hover:bg-[#035930] shadow-xs'
             }`}
           >
             {viewMode === 'allPrograms' ? 'My Courses' : 'Browse All'}
@@ -845,8 +844,7 @@ export default function Programs() {
       <main
         ref={scrollRef}
         onScroll={saveScroll}
-        className="flex-1 overflow-y-auto w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8"
-        style={{ paddingBottom: '80px' }}
+        className="flex-1 overflow-y-auto w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8 pb-24 md:pb-8"
       >
         {!isDataReady ? (
           <CoursesSkeleton />
@@ -898,8 +896,6 @@ export default function Programs() {
           />
         )}
       </main>
-
-      <BottomNav className="flex-shrink-0" />
 
       {toast && <Toast message={toast} onClose={() => setToast(null)} />}
     </div>
