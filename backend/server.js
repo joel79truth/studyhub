@@ -301,6 +301,34 @@ async function requireAuth(req, res, next) {
   }
 }
 
+async function requireAdmin(req, res, next) {
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader?.startsWith('Bearer ')) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+    const token = authHeader.split(' ')[1];
+    const { data: { user }, error } = await supabase.auth.getUser(token);
+    if (error || !user) throw new Error('Unauthorized');
+
+    const { data: profile, error: profErr } = await supabaseAdmin
+      .from('profiles')
+      .select('is_admin')
+      .eq('id', user.id)
+      .maybeSingle();
+
+    if (profErr || !profile?.is_admin) {
+      return res.status(403).json({ error: 'Forbidden: Admin access required.' });
+    }
+
+    req.user = user;
+    next();
+  } catch (err) {
+    console.error('Admin auth error:', err);
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+}
+
 // NOTE: the old flat updateTopicMastery(userId, topic, correct, course) that
 // used to live here has been removed — it was a duplicate declaration.
 // Plain `function` declarations of the same name silently overwrite each
@@ -1898,7 +1926,7 @@ app.post('/api/chat', async (req, res) => {
 // PAST PAPER EXTRACTION ROUTES (Gemini — GEMINI_VISION_PRIMARY / FALLBACK)
 // ============================================================================
 
-app.post('/api/exam/upload-past-paper', requireAuth, upload.any(), async (req, res) => {
+app.post('/api/exam/upload-past-paper', requireAdmin, upload.any(), async (req, res) => {
   try {
     const rawFiles = (req.files && req.files.length > 0) ? req.files : (req.file ? [req.file] : []);
     if (rawFiles.length === 0) return res.status(400).json({ error: 'No file uploaded' });
@@ -2076,7 +2104,7 @@ const pdfUpload = multer({
   },
 });
 
-app.post('/api/exam/upload-past-paper-pdf', requireAuth, pdfUpload.single('paper'), async (req, res) => {
+app.post('/api/exam/upload-past-paper-pdf', requireAdmin, pdfUpload.single('paper'), async (req, res) => {
   const uploadStartTime = Date.now();
   try {
     if (!req.file) return res.status(400).json({ error: 'No PDF file uploaded' });
@@ -2306,7 +2334,7 @@ async function processInBatches(items, concurrency, worker) {
   return results;
 }
 
-app.post('/api/exam/batch-upload-past-papers', requireAuth, async (req, res) => {
+app.post('/api/exam/batch-upload-past-papers', requireAdmin, async (req, res) => {
   try {
     const { paperIds } = req.body;
     if (!Array.isArray(paperIds) || paperIds.length === 0) {
