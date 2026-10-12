@@ -84,6 +84,8 @@ import {
   GraduationCap, BookOpen, AlarmClock, Quote, TrendingUp, CircleDot,
   Tag, ArrowRight, PanelRight, Image as ImageIcon, ZoomIn, ZoomOut,
   SlidersHorizontal,
+  User,
+  Loader2,
 } from 'lucide-react'
 import * as pdfjs from 'pdfjs-dist'
 import workerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
@@ -269,12 +271,31 @@ async function fetchCoursesForProgram(programId, year = null, semester = null) {
     .order('year', { ascending: true }).order('semester', { ascending: true })
   if (error) throw error; return data || []
 }
+async function fetchPublicNames(ids) {
+  if (!ids?.length) return {}
+  try {
+    const res = await apiGet(`/api/profiles/public-names?ids=${encodeURIComponent(ids.join(','))}`)
+    return res?.profiles || {}
+  } catch {
+    return {}
+  }
+}
+
+function formatUploaderName(rawName) {
+  if (!rawName || typeof rawName !== 'string') return ''
+  const parts = rawName.trim().split(/\s+/).filter(Boolean)
+  if (parts.length === 1) return parts[0].charAt(0).toUpperCase() + parts[0].slice(1).toLowerCase()
+  const first = parts[0].charAt(0).toUpperCase() + parts[0].slice(1).toLowerCase()
+  const lastInitial = parts[parts.length - 1].charAt(0).toUpperCase() + '.'
+  return `${first} ${lastInitial}`
+}
+
 async function fetchQuestionsForCourseIds(courseIds) {
   if (!courseIds?.length) return []
   try {
     const { data, error } = await supabase
       .from('past_papers')
-      .select('*, courses ( id, course_code, course_name, semester, year, program_id ), past_paper:past_paper_id ( id, file_url, file_type, file_name )')
+      .select('*, courses ( id, course_code, course_name, semester, year, program_id ), past_paper:past_paper_id ( id, file_url, file_type, file_name, uploaded_by, processing_status, kind, title, page_count )')
       .in('course_id', courseIds).order('created_at', { ascending: false })
     if (!error && data) return data
   } catch (_) {}
@@ -288,7 +309,7 @@ async function fetchAllRecentQuestions(limit = 200) {
   try {
     const { data, error } = await supabase
       .from('past_papers')
-      .select('*, courses ( id, course_code, course_name, semester, year, program_id ), past_paper:past_paper_id ( id, file_url, file_type, file_name )')
+      .select('*, courses ( id, course_code, course_name, semester, year, program_id ), past_paper:past_paper_id ( id, file_url, file_type, file_name, uploaded_by, processing_status, kind, title, page_count )')
       .order('created_at', { ascending: false })
       .limit(limit)
     if (!error && data) return data
@@ -305,7 +326,7 @@ async function fetchQuestionsForPaper(paperId) {
   try {
     const { data, error } = await supabase
       .from('past_papers')
-      .select('*, past_paper:past_paper_id ( id, file_url, file_type, file_name )')
+      .select('*, past_paper:past_paper_id ( id, file_url, file_type, file_name, uploaded_by, processing_status, kind, title, page_count )')
       .eq('paper_id', paperId).order('created_at', { ascending: true })
     if (!error && data) return data
   } catch (_) {}
@@ -327,6 +348,10 @@ function groupQuestionsIntoPapers(rows) {
         semester: row.courses?.semester || null,
         questionCount: 0, totalMarks: 0, topics: new Set(),
         pastPaper: row.past_paper || null,
+        uploadedBy: row.past_paper?.uploaded_by || null,
+        processingStatus: row.past_paper?.processing_status || 'done',
+        kind: row.past_paper?.kind || 'paper',
+        title: row.past_paper?.title || null,
       }
     }
     const p = byPaper[key]
@@ -335,7 +360,13 @@ function groupQuestionsIntoPapers(rows) {
     if (row.topic) p.topics.add(row.topic)
     if (p.year == null && row.year != null) p.year = row.year
     if (!p.semester && row.courses?.semester) p.semester = row.courses.semester
-    if (!p.pastPaper && row.past_paper) p.pastPaper = row.past_paper
+    if (!p.pastPaper && row.past_paper) {
+      p.pastPaper = row.past_paper
+      if (row.past_paper.uploaded_by) p.uploadedBy = row.past_paper.uploaded_by
+      if (row.past_paper.processing_status) p.processingStatus = row.past_paper.processing_status
+      if (row.past_paper.kind) p.kind = row.past_paper.kind
+      if (row.past_paper.title) p.title = row.past_paper.title
+    }
   }
   return Object.values(byPaper).map(p => ({ ...p, topics: [...p.topics] }))
 }
@@ -761,6 +792,13 @@ const PaperCard = memo(({ paper, reviewedCount = 0, onClick, delay = 0 }) => {
         {paper.topics?.length > 0 && (
           <p className="text-xs text-slate-500 mt-2 line-clamp-1">
             {paper.topics.slice(0, 3).join(' · ')}{paper.topics.length > 3 ? ` +${paper.topics.length - 3}` : ''}
+          </p>
+        )}
+
+        {paper.uploaderLabel && (
+          <p className="text-[11px] text-slate-500 mt-2 flex items-center gap-1 font-medium">
+            <User className="w-3 h-3 text-slate-400" />
+            <span>Uploaded by {paper.uploaderLabel}</span>
           </p>
         )}
       </div>
@@ -2349,13 +2387,14 @@ const QuestionListView = memo(({ paper, onOpenQuestion, savedIds, reviewedIds, o
 
   const hasImageScan = Boolean(paperSource?.file_url)
 
-  // Remembered view mode: 'text' or 'image'
+  // Remembered view mode: 'image' by default if scanned, else 'text'
   const [viewMode, setViewMode] = useState(() => {
     try {
       const saved = localStorage.getItem('sh_paper_view_mode')
-      return saved === 'image' ? 'image' : 'text'
+      if (saved === 'text' || saved === 'image') return saved
+      return 'image'
     } catch {
-      return 'text'
+      return 'image'
     }
   })
 
@@ -2376,13 +2415,24 @@ const QuestionListView = memo(({ paper, onOpenQuestion, savedIds, reviewedIds, o
 
   if (isLoading) return <div className="px-4 pt-2 space-y-3">{Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)}</div>
   if (error) return <ErrorState onRetry={() => refetch()} message={error.message} />
-  if (!questions.length) return (
-    <div className="px-4 py-20 text-center ed-fade-up">
-      <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gray-50 flex items-center justify-center text-gray-300"><FileText className="w-7 h-7" /></div>
-      <p className="font-semibold text-gray-800 text-base font-display">No extracted questions yet</p>
-      <p className="text-sm text-gray-500 mt-1.5 max-w-xs mx-auto leading-relaxed">This paper hasn't been processed yet. Check back soon.</p>
-    </div>
-  )
+  if (!questions.length) {
+    const isProcessing = paperSource?.processing_status === 'processing' || paper?.processingStatus === 'processing'
+    return (
+      <div className="px-4 py-20 text-center ed-fade-up">
+        <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gray-50 flex items-center justify-center text-gray-300">
+          {isProcessing ? <Loader2 className="w-7 h-7 text-[#024927] animate-spin" /> : <FileText className="w-7 h-7" />}
+        </div>
+        <p className="font-semibold text-gray-800 text-base font-display">
+          {isProcessing ? 'Text processing…' : 'No extracted questions yet'}
+        </p>
+        <p className="text-sm text-gray-500 mt-1.5 max-w-xs mx-auto leading-relaxed">
+          {isProcessing
+            ? 'We are extracting and indexing questions from this document. You can still read the original document in image mode.'
+            : "This paper hasn't been processed yet. Check back soon."}
+        </p>
+      </div>
+    )
+  }
 
   const visibleGroups = groups.slice(0, visibleGroupCount)
   const hasMore = visibleGroupCount < groups.length
@@ -2692,7 +2742,31 @@ export default function PastPapers() {
     queryFn: () => myCourseIds.length > 0 ? fetchQuestionsForCourseIds(myCourseIds) : fetchAllRecentQuestions(),
     staleTime: 5 * 60 * 1000,
   })
-  const myPapers = useMemo(() => groupQuestionsIntoPapers(myQuestionRows), [myQuestionRows])
+  const rawMyPapers = useMemo(() => groupQuestionsIntoPapers(myQuestionRows), [myQuestionRows])
+
+  // Collect unique uploaded_by UUIDs across all papers
+  const allUploaderIds = useMemo(() => {
+    const ids = new Set()
+    for (const p of rawMyPapers) {
+      if (p.uploadedBy) ids.add(p.uploadedBy)
+    }
+    return Array.from(ids)
+  }, [rawMyPapers])
+
+  const { data: publicNamesMap = {} } = useQuery({
+    queryKey: ['publicNames', allUploaderIds],
+    queryFn: () => fetchPublicNames(allUploaderIds),
+    enabled: allUploaderIds.length > 0,
+    staleTime: 30 * 60 * 1000,
+  })
+
+  const myPapers = useMemo(() => {
+    return rawMyPapers.map(p => ({
+      ...p,
+      uploaderLabel: p.uploadedBy ? (publicNamesMap[p.uploadedBy] || null) : null,
+    }))
+  }, [rawMyPapers, publicNamesMap])
+
   const myPapersByCourse = useMemo(() => groupPapersByCourse(myPapers), [myPapers])
   const filteredMyPapersByCourse = useMemo(() => {
     if (!deferredSearch) return myPapersByCourse
@@ -2758,7 +2832,13 @@ export default function PastPapers() {
     },
     enabled: !!currentCourse?.id || !!currentPaper?.paperId,
   })
-  const coursePapers = useMemo(() => groupQuestionsIntoPapers(coursePaperRows), [coursePaperRows])
+  const rawCoursePapers = useMemo(() => groupQuestionsIntoPapers(coursePaperRows), [coursePaperRows])
+  const coursePapers = useMemo(() => {
+    return rawCoursePapers.map(p => ({
+      ...p,
+      uploaderLabel: p.uploadedBy ? (publicNamesMap[p.uploadedBy] || null) : null,
+    }))
+  }, [rawCoursePapers, publicNamesMap])
   const sortedCoursePapers = useMemo(() => sortPapersRecentFirst(coursePapers), [coursePapers])
 
   useEffect(() => {
@@ -2918,9 +2998,17 @@ export default function PastPapers() {
                   <h1 className="text-base font-bold text-slate-900 truncate leading-tight">
                     {currentCourse?.course_name || 'Past Papers'}
                   </h1>
-                  {currentCourse?.course_code && (
-                    <p className="text-xs text-slate-500 leading-tight">{currentCourse.course_code}</p>
-                  )}
+                  <div className="flex items-center gap-2 flex-wrap">
+                    {currentCourse?.course_code && (
+                      <p className="text-xs text-slate-500 leading-tight">{currentCourse.course_code}</p>
+                    )}
+                    {currentPaper?.uploaderLabel && (
+                      <span className="text-[11px] text-slate-500 flex items-center gap-1 font-medium bg-slate-100 px-2 py-0.5 rounded-md">
+                        <User className="w-3 h-3 text-slate-400" />
+                        Uploaded by {currentPaper.uploaderLabel}
+                      </span>
+                    )}
+                  </div>
                 </div>
                 {!isOnline && <span className="text-[11px] bg-amber-500 text-white px-2 py-0.5 rounded-full font-bold flex-shrink-0">Offline</span>}
               </div>
@@ -3164,6 +3252,12 @@ export default function PastPapers() {
                 <>
                   <ChevronRight className="w-3 h-3 opacity-30 flex-shrink-0" />
                   <span className="text-slate-700 font-semibold truncate max-w-[200px]">{currentCourse.course_name}</span>
+                  {currentPaper?.uploaderLabel && (
+                    <span className="text-[10px] text-slate-500 font-medium bg-slate-100 px-1.5 py-0.5 rounded ml-1 flex items-center gap-1">
+                      <User className="w-2.5 h-2.5 text-slate-400" />
+                      {currentPaper.uploaderLabel}
+                    </span>
+                  )}
                 </>
               )}
             </div>

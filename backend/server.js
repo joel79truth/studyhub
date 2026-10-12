@@ -2604,6 +2604,28 @@ app.get('/api/exam/unprocessed-papers', requireAuth, async (req, res) => {
   }
 });
 
+app.get('/api/profiles/public-names', requireAuth, async (req, res) => {
+  try {
+    const idsParam = req.query.ids;
+    if (!idsParam) return res.json({ profiles: {} });
+    const ids = Array.isArray(idsParam) ? idsParam : idsParam.split(',').filter(Boolean);
+    if (!ids.length) return res.json({ profiles: {} });
+
+    const { data, error } = await supabaseAdmin
+      .from('profiles')
+      .select('id, name')
+      .in('id', ids.slice(0, 100));
+
+    if (error) throw error;
+    const map = {};
+    for (const p of data || []) {
+      map[p.id] = formatUploaderName(p.name);
+    }
+    res.json({ profiles: map });
+  } catch (err) {
+    console.error('profiles public-names fetch error:', err);
+    res.status(500).json({ error: err.message });
+});
 
 app.post('/api/exam/generate-document/:pastPaperId', requireAuth, async (req, res) => {
   try {
