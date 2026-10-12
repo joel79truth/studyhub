@@ -1,5 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {
+  FileText,
+  BookOpen,
+  Camera,
+  Image as ImageIcon,
+  UploadCloud,
+  AlertTriangle,
+  CheckCircle,
+  XCircle,
+  RefreshCw,
+  Trash2,
+  ChevronLeft,
+  ChevronRight,
+  Eye,
+  Plus
+} from 'lucide-react';
 import { supabase } from '../supabase';
 import { API_BASE_URL } from '../lib/apiConfig';
 
@@ -46,6 +62,15 @@ const [uploadCourse, setUploadCourse] = useState('');
 const [uploadSemester, setUploadSemester] = useState('');
 const [uploadYear, setUploadYear] = useState('');
 const [programs, setPrograms] = useState([]); // [{ id, name }]
+
+// ── Redesign: Content Kind & Source Type ──
+const [contentKind, setContentKind] = useState('paper'); // 'paper' | 'tutorial'
+const [sourceType, setSourceType] = useState('photos'); // 'photos' | 'typed_pdf'
+const [tutorialTitle, setTutorialTitle] = useState('');
+const [examType, setExamType] = useState('end_sem'); // 'mid_sem' | 'end_sem' | 'test' | 'assignment'
+const [duplicateWarning, setDuplicateWarning] = useState(null);
+const [checkingDuplicate, setCheckingDuplicate] = useState(false);
+const [uploadProgress, setUploadProgress] = useState(0);
 
 // ── PDF upload state ──────────────────────────────────────────────────────────
 const [uploadType, setUploadType] = useState('image'); // 'image' | 'pdf'
@@ -141,15 +166,15 @@ useEffect(() => {
     const incoming = Array.from(newRawFiles).filter((f) => f.type?.startsWith('image/'));
     if (incoming.length === 0) return;
 
-    const availableSlots = 5 - files.length;
+    const availableSlots = 12 - files.length;
     if (availableSlots <= 0) {
-      setError('Maximum 5 pages allowed per exam paper. Remove a page before adding another.');
+      setError('Maximum 12 pages allowed per upload. Remove a page before adding another.');
       return;
     }
 
     const toProcess = incoming.slice(0, availableSlots);
     if (incoming.length > availableSlots) {
-      setError(`Notice: Only ${availableSlots} more page(s) could be selected (max 5 pages per exam).`);
+      setError(`Notice: Only ${availableSlots} more page(s) could be selected (max 12 pages per upload).`);
     } else {
       setError(null);
     }
@@ -245,21 +270,87 @@ useEffect(() => {
     return { success: false, error: 'Timed out waiting for AI extraction (>3 min). Check the Batch tab.' };
   };
 
+const checkDuplicate = async (courseName, sem, exType, yr) => {
+  if (!courseName || !courseName.trim()) return;
+  setCheckingDuplicate(true);
+  try {
+    let query = supabase
+      .from('past_paper')
+      .select('id, course, semester, exam_type, Mid, year, file_name')
+      .ilike('course', courseName.trim());
+
+    if (sem) query = query.eq('semester', String(sem).trim());
+    const { data, error: qErr } = await query;
+    if (qErr || !data || data.length === 0) {
+      setDuplicateWarning(null);
+      return;
+    }
+
+    const normTargetExType = exType ? exType.toLowerCase() : null;
+    const targetYr = yr ? parseInt(yr, 10) : null;
+
+    const matches = data.filter((row) => {
+      const rowMid = (row.exam_type || row.Mid || '').toLowerCase();
+      let matchExType = true;
+      if (normTargetExType) {
+        if (normTargetExType === 'end_sem') {
+          matchExType = rowMid.includes('end');
+        } else if (normTargetExType === 'mid_sem') {
+          matchExType = rowMid.includes('mid');
+        } else if (normTargetExType === 'test') {
+          matchExType = rowMid.includes('test') || rowMid.includes('quiz');
+        } else if (normTargetExType === 'assignment') {
+          matchExType = rowMid.includes('assign');
+        }
+      }
+      let matchYr = true;
+      if (targetYr && row.year) {
+        matchYr = targetYr === row.year;
+      }
+      return matchExType && matchYr;
+    });
+
+    if (matches.length > 0) {
+      setDuplicateWarning({
+        count: matches.length,
+        match: matches[0],
+      });
+    } else {
+      setDuplicateWarning(null);
+    }
+  } catch (err) {
+    console.warn('Duplicate check error:', err);
+  } finally {
+    setCheckingDuplicate(false);
+  }
+};
+
 const handleUploadAndExtract = async () => {
   if (files.length === 0) return;
-  if (!uploadProgramId || !uploadCourse.trim() || !uploadSemester.trim()) {
-    setError('Program, course, and semester are all required.');
+  if (!uploadProgramId || !uploadCourse.trim()) {
+    setError('Program and course name are required.');
     setErrorRawPaperId(null);
     return;
   }
+  if (contentKind === 'paper' && !uploadSemester.trim()) {
+    setError('Semester is required for past papers.');
+    setErrorRawPaperId(null);
+    return;
+  }
+  if (contentKind === 'tutorial' && !tutorialTitle.trim()) {
+    setError('Tutorial title/number is required (e.g. "Tutorial 1").');
+    setErrorRawPaperId(null);
+    return;
+  }
+
   setUploading(true);
   setUploadStage('uploading');
+  setUploadProgress(20);
   setError(null);
   setErrorRawPaperId(null);
   try {
     const headers = await authHeader();
     const formData = new FormData();
-    // Pass each image under 'papers' and first image under 'paper' for backward compatibility
     files.forEach((f) => {
       formData.append('papers', f);
     });
@@ -267,11 +358,18 @@ const handleUploadAndExtract = async () => {
     formData.append('pagesCount', String(files.length));
     formData.append('programId', uploadProgramId);
     formData.append('course', uploadCourse.trim());
-    formData.append('semester', uploadSemester.trim());
+    formData.append('semester', uploadSemester.trim() || '1');
     if (uploadYear.trim()) formData.append('year', uploadYear.trim());
+    formData.append('kind', contentKind);
+    formData.append('sourceType', 'photos');
+    if (contentKind === 'tutorial') {
+      formData.append('title', tutorialTitle.trim());
+    } else {
+      formData.append('examType', examType);
+    }
 
-    // ── Step 1: upload file (fast — returns 202 immediately) ──
-    setUploadStage('uploading');
+    // ── Step 1: upload file (backend converts JPEGs into 1 PDF with pdfkit) ──
+    setUploadProgress(40);
     const res = await fetch(`${BASE_URL}/api/exam/upload-past-paper`, {
       method: 'POST', headers, body: formData,
     });
@@ -283,10 +381,26 @@ const handleUploadAndExtract = async () => {
     }
 
     const rawPaperId = data.raw_paper_id;
-    console.log('[AdminUpload] Images uploaded successfully. Raw Paper ID:', rawPaperId);
+    setUploadProgress(65);
 
-    // ── Step 2: poll for AI extraction completion ──
+    // If tutorial, view-first — no question splitting
+    if (contentKind === 'tutorial') {
+      setUploadStage('done');
+      setUploadProgress(100);
+      clearAllFiles();
+      setResult({
+        extracted: 0,
+        paperId: rawPaperId,
+        rawPaperId,
+        reviewNote: null,
+        isTutorial: true,
+      });
+      return;
+    }
+
+    // ── Step 2: poll for AI extraction completion for past papers ──
     setUploadStage('analyzing');
+    setUploadProgress(80);
     const statusResult = await pollForPaperStatus(rawPaperId);
 
     if (!statusResult.success) {
@@ -297,6 +411,7 @@ const handleUploadAndExtract = async () => {
 
     // ── Step 3: done ──
     setUploadStage('done');
+    setUploadProgress(100);
     clearAllFiles();
 
     setResult({
@@ -344,8 +459,18 @@ const handlePdfFileChange = (e) => {
 
 const handlePdfUpload = async () => {
   if (!pdfFile) return;
-  if (!uploadProgramId || !uploadCourse.trim() || !uploadSemester.trim()) {
-    setPdfError('Program, course, and semester are all required.');
+  if (!uploadProgramId || !uploadCourse.trim()) {
+    setPdfError('Program and course name are required.');
+    setPdfErrorRawPaperId(null);
+    return;
+  }
+  if (contentKind === 'paper' && !uploadSemester.trim()) {
+    setPdfError('Semester is required for past papers.');
+    setPdfErrorRawPaperId(null);
+    return;
+  }
+  if (contentKind === 'tutorial' && !tutorialTitle.trim()) {
+    setPdfError('Tutorial title/number is required (e.g. "Tutorial 1").');
     setPdfErrorRawPaperId(null);
     return;
   }
@@ -356,19 +481,27 @@ const handlePdfUpload = async () => {
 
   setPdfUploading(true);
   setPdfUploadStage('uploading');
+  setUploadProgress(30);
   setPdfError(null);
   setPdfErrorRawPaperId(null);
 
   try {
-    console.log(`[AdminUpload] Starting PDF upload: "${pdfFile.name}" (${(pdfFile.size / 1024).toFixed(1)} KB)...`);
     const headers = await authHeader();
     const formData = new FormData();
     formData.append('paper', pdfFile);
     formData.append('programId', uploadProgramId);
     formData.append('course', uploadCourse.trim());
-    formData.append('semester', uploadSemester.trim());
+    formData.append('semester', uploadSemester.trim() || '1');
     if (uploadYear.trim()) formData.append('year', uploadYear.trim());
+    formData.append('kind', contentKind);
+    formData.append('sourceType', 'typed_pdf');
+    if (contentKind === 'tutorial') {
+      formData.append('title', tutorialTitle.trim());
+    } else {
+      formData.append('examType', examType);
+    }
 
+    setUploadProgress(60);
     const res = await fetch(`${BASE_URL}/api/exam/upload-past-paper-pdf`, {
       method: 'POST', headers, body: formData,
     });
@@ -380,10 +513,27 @@ const handlePdfUpload = async () => {
     }
 
     const rawPaperId = data.raw_paper_id;
-    console.log(`[AdminUpload] PDF accepted. Tracking extraction for paper ID: ${rawPaperId}...`);
+    setUploadProgress(75);
 
-    // Poll for AI extraction completion
+    // Tutorials are view-first
+    if (contentKind === 'tutorial') {
+      setPdfUploadStage('done');
+      setUploadProgress(100);
+      setPdfFile(null);
+      if (pdfFileInputRef.current) pdfFileInputRef.current.value = '';
+      setPdfResult({
+        extracted: 0,
+        paperId: rawPaperId,
+        rawPaperId,
+        reviewNote: null,
+        isTutorial: true,
+      });
+      return;
+    }
+
+    // Poll for AI extraction completion for papers
     setPdfUploadStage('analyzing');
+    setUploadProgress(85);
     const statusResult = await pollForPaperStatus(rawPaperId);
 
     if (!statusResult.success) {
@@ -392,8 +542,8 @@ const handlePdfUpload = async () => {
       throw err;
     }
 
-    console.log('[AdminUpload] PDF extraction complete:', statusResult);
     setPdfUploadStage('done');
+    setUploadProgress(100);
     setPdfFile(null);
     if (pdfFileInputRef.current) pdfFileInputRef.current.value = '';
 
@@ -625,40 +775,207 @@ const handlePdfUpload = async () => {
 
       {tab === 'single' && (
         <>
-          {/* ── Upload Type Toggle ── */}
-          <div style={{ display: 'flex', gap: '4px', background: '#f3f4f6', borderRadius: '10px', padding: '4px', marginBottom: '16px' }}>
-            {[['image', '🖼️ Image'], ['pdf', '📄 PDF']].map(([key, label]) => (
+          {/* ── Content Kind Toggle: Past Paper vs Tutorial ── */}
+          <div style={{ display: 'flex', gap: '6px', background: '#f3f4f6', borderRadius: '12px', padding: '4px', marginBottom: '16px' }}>
+            {[
+              { key: 'paper', label: 'Past Paper', icon: FileText, desc: 'Question splitting & quiz practice' },
+              { key: 'tutorial', label: 'Tutorial', icon: BookOpen, desc: 'View-first with Ask AI per page' },
+            ].map(({ key, label, icon: Icon, desc }) => (
               <button
                 key={key}
-                onClick={() => { setUploadType(key); setResult(null); setError(null); setPdfResult(null); setPdfError(null); }}
+                type="button"
+                onClick={() => { setContentKind(key); setResult(null); setError(null); }}
                 style={{
-                  flex: 1, padding: '8px 16px', border: 'none', borderRadius: '7px',
-                  cursor: 'pointer', fontSize: '0.875rem', fontWeight: 600,
+                  flex: 1,
+                  padding: '10px 14px',
+                  border: 'none',
+                  borderRadius: '9px',
+                  cursor: 'pointer',
+                  fontSize: '0.875rem',
+                  fontWeight: 600,
                   transition: 'all 0.15s ease',
-                  background: uploadType === key ? '#fff' : 'transparent',
-                  color: uploadType === key ? '#111827' : '#6b7280',
-                  boxShadow: uploadType === key ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
+                  background: contentKind === key ? '#ffffff' : 'transparent',
+                  color: contentKind === key ? '#111827' : '#6b7280',
+                  boxShadow: contentKind === key ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
                 }}
               >
-                {label}
+                <Icon size={18} color={contentKind === key ? '#2563eb' : '#6b7280'} />
+                <span>{label}</span>
               </button>
             ))}
           </div>
 
-          {/* ── Shared metadata fields ── */}
-          <div style={{ display: 'flex', gap: '8px', marginBottom: '14px', flexWrap: 'wrap' }}>
-            <select value={uploadProgramId} onChange={e => setUploadProgramId(e.target.value)} style={{ ...uuidInput, flex: '1 1 140px', fontFamily: 'inherit' }}>
-              <option value="">Program…</option>
-              {programs.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}
-            </select>
-            <input type="text" placeholder="Course name…" value={uploadCourse} onChange={e => setUploadCourse(e.target.value)} style={{ ...uuidInput, flex: '1 1 140px', fontFamily: 'inherit' }} />
-            <input type="text" placeholder="Semester…" value={uploadSemester} onChange={e => setUploadSemester(e.target.value)} style={{ ...uuidInput, flex: '1 1 80px', fontFamily: 'inherit' }} />
-            <input type="text" placeholder="Year (optional)…" value={uploadYear} onChange={e => setUploadYear(e.target.value)} style={{ ...uuidInput, flex: '1 1 110px', fontFamily: 'inherit' }} />
+          {/* ── Source Type Selection: Photos vs Typed PDF ── */}
+          <div style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
+            <button
+              type="button"
+              onClick={() => { setSourceType('photos'); setUploadType('image'); }}
+              style={{
+                flex: 1,
+                padding: '8px 12px',
+                borderRadius: '8px',
+                border: `1.5px solid ${sourceType === 'photos' ? '#2563eb' : '#e5e7eb'}`,
+                background: sourceType === 'photos' ? '#eff6ff' : '#ffffff',
+                color: sourceType === 'photos' ? '#1d4ed8' : '#374151',
+                fontSize: '0.85rem',
+                fontWeight: 600,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '6px',
+              }}
+            >
+              <Camera size={16} />
+              <span>Camera / Photos (up to 12)</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => { setSourceType('typed_pdf'); setUploadType('pdf'); }}
+              style={{
+                flex: 1,
+                padding: '8px 12px',
+                borderRadius: '8px',
+                border: `1.5px solid ${sourceType === 'typed_pdf' ? '#2563eb' : '#e5e7eb'}`,
+                background: sourceType === 'typed_pdf' ? '#eff6ff' : '#ffffff',
+                color: sourceType === 'typed_pdf' ? '#1d4ed8' : '#374151',
+                fontSize: '0.85rem',
+                fontWeight: 600,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '6px',
+              }}
+            >
+              <UploadCloud size={16} />
+              <span>PDF Document</span>
+            </button>
           </div>
 
-          {/* ── IMAGE UPLOAD (MULTIPLE PAGES UP TO 5) ── */}
-          {uploadType === 'image' && (
-            <Section title="Upload Exam Pages (Up to 5 Images)">
+          {/* ── Metadata Fields ── */}
+          <Section title={contentKind === 'paper' ? 'Past Paper Details' : 'Tutorial Details'} style={{ marginBottom: '16px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                <select
+                  value={uploadProgramId}
+                  onChange={(e) => setUploadProgramId(e.target.value)}
+                  style={{ ...uuidInput, flex: '1 1 180px', fontFamily: 'inherit' }}
+                >
+                  <option value="">Select Program…</option>
+                  {programs.map((p) => (
+                    <option key={p.id} value={p.id}>{p.name}</option>
+                  ))}
+                </select>
+
+                <input
+                  type="text"
+                  placeholder="Course name (e.g. Soil Science)…"
+                  value={uploadCourse}
+                  onChange={(e) => {
+                    setUploadCourse(e.target.value);
+                    if (contentKind === 'paper') checkDuplicate(e.target.value, uploadSemester, examType, uploadYear);
+                  }}
+                  onBlur={() => {
+                    if (contentKind === 'paper') checkDuplicate(uploadCourse, uploadSemester, examType, uploadYear);
+                  }}
+                  style={{ ...uuidInput, flex: '2 1 200px', fontFamily: 'inherit' }}
+                />
+              </div>
+
+              {contentKind === 'paper' ? (
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  <select
+                    value={uploadSemester}
+                    onChange={(e) => {
+                      setUploadSemester(e.target.value);
+                      checkDuplicate(uploadCourse, e.target.value, examType, uploadYear);
+                    }}
+                    style={{ ...uuidInput, flex: '1 1 120px', fontFamily: 'inherit' }}
+                  >
+                    <option value="">Semester…</option>
+                    {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => (
+                      <option key={s} value={String(s)}>Semester {s}</option>
+                    ))}
+                  </select>
+
+                  <select
+                    value={examType}
+                    onChange={(e) => {
+                      setExamType(e.target.value);
+                      checkDuplicate(uploadCourse, uploadSemester, e.target.value, uploadYear);
+                    }}
+                    style={{ ...uuidInput, flex: '1 1 150px', fontFamily: 'inherit' }}
+                  >
+                    <option value="end_sem">End of Semester</option>
+                    <option value="mid_sem">Mid-Semester</option>
+                    <option value="test">Test</option>
+                    <option value="assignment">Assignment</option>
+                  </select>
+
+                  <input
+                    type="text"
+                    placeholder="Year (e.g. 2024)…"
+                    value={uploadYear}
+                    onChange={(e) => {
+                      setUploadYear(e.target.value);
+                      checkDuplicate(uploadCourse, uploadSemester, examType, e.target.value);
+                    }}
+                    style={{ ...uuidInput, flex: '1 1 110px', fontFamily: 'inherit' }}
+                  />
+                </div>
+              ) : (
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  <input
+                    type="text"
+                    placeholder="Tutorial title / number (e.g. Tutorial 2 - Photosynthesis)…"
+                    value={tutorialTitle}
+                    onChange={(e) => setTutorialTitle(e.target.value)}
+                    style={{ ...uuidInput, flex: '3 1 240px', fontFamily: 'inherit' }}
+                  />
+                  <select
+                    value={uploadSemester}
+                    onChange={(e) => setUploadSemester(e.target.value)}
+                    style={{ ...uuidInput, flex: '1 1 120px', fontFamily: 'inherit' }}
+                  >
+                    <option value="1">Semester 1</option>
+                    {[2, 3, 4, 5, 6, 7, 8].map((s) => (
+                      <option key={s} value={String(s)}>Semester {s}</option>
+                    ))}
+                  </select>
+                </div>
+              )}
+
+              {/* Duplicate Detection Warning Banner */}
+              {contentKind === 'paper' && duplicateWarning && (
+                <div style={{
+                  background: '#fffbeb',
+                  border: '1px solid #fde68a',
+                  borderRadius: '10px',
+                  padding: '12px 14px',
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: '10px',
+                  marginTop: '4px'
+                }}>
+                  <AlertTriangle size={20} color="#b45309" style={{ flexShrink: 0, marginTop: '2px' }} />
+                  <div style={{ fontSize: '0.84rem', color: '#92400e', lineHeight: 1.4 }}>
+                    <strong>Possible Duplicate Warning:</strong> A past paper for <strong>{duplicateWarning.match.course}</strong> (Sem {duplicateWarning.match.semester}, {duplicateWarning.match.Mid || duplicateWarning.match.exam_type}{duplicateWarning.match.year ? ` ${duplicateWarning.match.year}` : ''}) is already in the database.
+                    <br />
+                    <span style={{ fontSize: '0.78rem', color: '#78350f' }}>You can still proceed if this is a different sitting or revised copy.</span>
+                  </div>
+                </div>
+              )}
+            </div>
+          </Section>
+
+          {/* ── IMAGE UPLOAD (MULTIPLE PAGES UP TO 12) ── */}
+          {sourceType === 'photos' && (
+            <Section title={`Upload Pages (Up to 12 Photos)`}>
               <div
                 onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
                 onDragLeave={() => setDragOver(false)}
@@ -679,47 +996,54 @@ const handlePdfUpload = async () => {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
                       <Spinner />
                       <span style={{ fontWeight: 700, color: '#1d4ed8', fontSize: '0.95rem' }}>
-                        AI Processing {files.length} Exam Page(s) in Progress
+                        Uploading & Processing {files.length} Page(s)...
                       </span>
                     </div>
+
+                    {/* Progress Bar */}
+                    <div style={{ width: '100%', height: '6px', background: '#e5e7eb', borderRadius: '3px', overflow: 'hidden', marginBottom: '14px' }}>
+                      <div style={{ width: `${uploadProgress}%`, height: '100%', background: '#2563eb', transition: 'width 0.3s ease' }} />
+                    </div>
+
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.85rem' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: uploadStage === 'uploading' ? '#2563eb' : '#059669', fontWeight: uploadStage === 'uploading' ? 600 : 400 }}>
-                        <span>{uploadStage === 'uploading' ? '⏳' : '✅'}</span>
-                        <span>Step 1: Storing {files.length} exam image(s)</span>
+                        {uploadStage === 'uploading' ? <RefreshCw size={15} className="animate-spin" /> : <CheckCircle size={15} color="#059669" />}
+                        <span>Step 1: Merging photos into 1 PDF with pdfkit</span>
                       </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: uploadStage === 'analyzing' ? '#2563eb' : uploadStage === 'done' ? '#059669' : '#9ca3af', fontWeight: uploadStage === 'analyzing' ? 600 : 400 }}>
-                        <span>{uploadStage === 'analyzing' ? '🧠' : uploadStage === 'done' ? '✅' : '⚪'}</span>
-                        <span>Step 2: AI reading all pages, tables & cropping diagrams...</span>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: uploadStage === 'done' ? '#059669' : '#9ca3af', fontWeight: uploadStage === 'done' ? 600 : 400 }}>
-                        <span>{uploadStage === 'done' ? '✅' : '⚪'}</span>
-                        <span>Step 3: Storing verified questions in database</span>
-                      </div>
+                      {contentKind === 'paper' && (
+                        <>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: uploadStage === 'analyzing' ? '#2563eb' : uploadStage === 'done' ? '#059669' : '#9ca3af', fontWeight: uploadStage === 'analyzing' ? 600 : 400 }}>
+                            {uploadStage === 'analyzing' ? <RefreshCw size={15} className="animate-spin" /> : uploadStage === 'done' ? <CheckCircle size={15} color="#059669" /> : <span style={{ width: 15, display: 'inline-block' }}>•</span>}
+                            <span>Step 2: AI reading questions & cropping diagrams</span>
+                          </div>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: uploadStage === 'done' ? '#059669' : '#9ca3af', fontWeight: uploadStage === 'done' ? 600 : 400 }}>
+                            {uploadStage === 'done' ? <CheckCircle size={15} color="#059669" /> : <span style={{ width: 15, display: 'inline-block' }}>•</span>}
+                            <span>Step 3: Storing verified questions in database</span>
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
                 ) : previews.length === 0 ? (
                   <div>
-                    <div style={{ fontSize: '2rem', marginBottom: '8px' }}>🖼️</div>
+                    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '12px' }}>
+                      <ImageIcon size={44} color="#9ca3af" />
+                    </div>
                     <p style={{ fontWeight: 600, color: '#374151', margin: '0 0 4px' }}>
-                      Drop exam images here, or choose 1 to 5 pages
+                      Drop pages here, or choose 1 to 12 photos
                     </p>
                     <p style={{ fontSize: '0.8rem', color: '#9ca3af', margin: '0 0 16px' }}>
-                      Multi-page exams supported (Max 5 images: PNG, JPG, WEBP)
+                      All photos will be compressed and merged into a single PDF
                     </p>
                     <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', flexWrap: 'wrap' }}>
                       <button onClick={(e) => { e.stopPropagation(); fileInputRef.current?.click(); }} style={btnPrimary}>
-                        Choose Pages from Gallery
+                        <ImageIcon size={16} /> Choose from Gallery
                       </button>
-                      {/* ── Take Photo button: the <input capture> is embedded INSIDE the button
-                          with opacity:0 and absolute fill so the user's tap lands directly on
-                          the real file input — a genuine user gesture. This prevents the
-                          Android/Capacitor WebView page-reload bug caused by programmatic
-                          .click() calls on hidden capture inputs. ── */}
                       <button
                         type="button"
                         style={{ ...btnSecondary, position: 'relative', overflow: 'hidden' }}
                       >
-                        📷 Take Photo
+                        <Camera size={16} /> Take Photo
                         <input
                           type="file"
                           accept="image/*"
@@ -743,20 +1067,20 @@ const handlePdfUpload = async () => {
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px', flexWrap: 'wrap', gap: '8px' }}>
                       <div style={{ textAlign: 'left' }}>
                         <span style={{ fontWeight: 700, color: '#111827', fontSize: '0.92rem' }}>
-                          {previews.length} of 5 Exam Pages Selected
+                          {previews.length} of 12 Pages Selected
                         </span>
                         <p style={{ margin: '2px 0 0', fontSize: '0.75rem', color: '#6b7280' }}>
-                          Drag or use arrows to order pages. The AI will extract all questions across these pages.
+                          Reorder or remove pages before uploading.
                         </p>
                       </div>
                       <div style={{ display: 'flex', gap: '8px' }}>
-                        {previews.length < 5 && (
+                        {previews.length < 12 && (
                           <button
                             type="button"
                             onClick={() => fileInputRef.current?.click()}
                             style={{ ...btnSecondary, padding: '5px 12px', fontSize: '0.78rem' }}
                           >
-                            + Add Page ({5 - previews.length} left)
+                            <Plus size={14} /> Add Page ({12 - previews.length} left)
                           </button>
                         )}
                         <button
@@ -816,18 +1140,16 @@ const handlePdfUpload = async () => {
                                 color: '#ffffff',
                                 border: 'none',
                                 borderRadius: '50%',
-                                width: '20px',
-                                height: '20px',
+                                width: '22px',
+                                height: '22px',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                                fontSize: '0.75rem',
                                 cursor: 'pointer',
-                                fontWeight: 'bold',
                               }}
                               title="Remove page"
                             >
-                              ✕
+                              <Trash2 size={12} />
                             </button>
                           </div>
 
@@ -851,7 +1173,7 @@ const handlePdfUpload = async () => {
                                 }}
                                 title="Move earlier"
                               >
-                                ◀
+                                <ChevronLeft size={13} />
                               </button>
                               <button
                                 type="button"
@@ -868,7 +1190,7 @@ const handlePdfUpload = async () => {
                                 }}
                                 title="Move later"
                               >
-                                ▶
+                                <ChevronRight size={13} />
                               </button>
                             </div>
                           </div>
@@ -876,7 +1198,7 @@ const handlePdfUpload = async () => {
                       ))}
 
                       {/* Add page slot if under limit */}
-                      {previews.length < 5 && (
+                      {previews.length < 12 && (
                         <div
                           onClick={() => fileInputRef.current?.click()}
                           style={{
@@ -893,9 +1215,9 @@ const handlePdfUpload = async () => {
                             padding: '12px',
                           }}
                         >
-                          <span style={{ fontSize: '1.5rem', marginBottom: '4px' }}>➕</span>
+                          <Plus size={24} color="#6b7280" style={{ marginBottom: '4px' }} />
                           <span style={{ fontSize: '0.75rem', fontWeight: 600 }}>Add Page {previews.length + 1}</span>
-                          <span style={{ fontSize: '0.68rem', color: '#9ca3af' }}>up to 5</span>
+                          <span style={{ fontSize: '0.68rem', color: '#9ca3af' }}>up to 12</span>
                         </div>
                       )}
                     </div>
@@ -906,7 +1228,10 @@ const handlePdfUpload = async () => {
                         disabled={uploading}
                         style={{ ...btnPrimary, background: uploading ? '#93c5fd' : '#2563eb', cursor: uploading ? 'not-allowed' : 'pointer', padding: '10px 20px', fontSize: '0.9rem' }}
                       >
-                        Upload & Extract All {previews.length} Pages
+                        <UploadCloud size={18} />
+                        {contentKind === 'tutorial'
+                          ? `Upload Tutorial (${previews.length} Pages)`
+                          : `Upload & Extract Questions (${previews.length} Pages)`}
                       </button>
                     </div>
                   </div>
@@ -1246,36 +1571,39 @@ const Section = ({ title, children, style }) => (
   </div>
 );
 
-// Principle 3: confident status — answers the question before it's asked
 const SuccessBanner = ({ result, onDismiss }) => (
   <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '12px', padding: '16px', marginTop: '16px', display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-    <span style={{ fontSize: '1.3rem', flexShrink: 0 }}>✅</span>
+    <CheckCircle size={22} color="#15803d" style={{ flexShrink: 0, marginTop: '2px' }} />
     <div style={{ flex: 1 }}>
       <p style={{ fontWeight: 700, color: '#15803d', margin: '0 0 2px', fontSize: '0.9rem' }}>
-        {result.reprocessed ? 'Paper reprocessed successfully' : 'Extraction complete'}
+        {result.isTutorial
+          ? 'Tutorial uploaded successfully'
+          : result.reprocessed
+          ? 'Paper reprocessed successfully'
+          : 'Extraction complete'}
       </p>
       <p style={{ color: '#166534', margin: 0, fontSize: '0.85rem' }}>
-        {result.extracted} questions extracted · Paper ID:{' '}
+        {result.isTutorial ? 'Ready to view' : `${result.extracted} questions extracted`} · ID:{' '}
         <span style={{ fontFamily: 'monospace', fontSize: '0.8rem' }}>{result.paperId}</span>
-        {result.reviewNote && <span style={{ color: '#b45309' }}> · ⚠️ {result.reviewNote}</span>}
+        {result.reviewNote && <span style={{ color: '#b45309' }}> · {result.reviewNote}</span>}
       </p>
       {result.documentStatus === 'generating' && (
-        <p style={{ color: '#6b7280', margin: '6px 0 0', fontSize: '0.8rem' }}>⏳ Generating printable document…</p>
+        <p style={{ color: '#6b7280', margin: '6px 0 0', fontSize: '0.8rem' }}>Generating printable document…</p>
       )}
       {result.documentStatus === 'ready' && (
         <p style={{ color: '#166534', margin: '6px 0 0', fontSize: '0.8rem' }}>
-          📄 Document ready —{' '}
+          Document ready —{' '}
           <a href={result.documentUrl} target="_blank" rel="noreferrer" style={{ color: '#2563eb', fontWeight: 600 }}>view</a>
         </p>
       )}
       {result.documentStatus === 'failed' && (
         <p style={{ color: '#dc2626', margin: '6px 0 0', fontSize: '0.8rem' }}>
-          ❌ Document generation failed. You can retry from the Past Papers page, or re-upload.
+          Document generation failed. You can retry from the Past Papers page, or re-upload.
         </p>
       )}
       {result.documentStatus === 'timeout' && (
         <p style={{ color: '#b45309', margin: '6px 0 0', fontSize: '0.8rem' }}>
-          ⚠️ Still generating — check back on the Past Papers page shortly.
+          Still generating — check back on the Past Papers page shortly.
         </p>
       )}
     </div>
@@ -1288,7 +1616,7 @@ const SuccessBanner = ({ result, onDismiss }) => (
 // error path where the backend guarantees the original was still saved.
 const ErrorBanner = ({ message, onDismiss, style, rawPaperId, onReprocess }) => (
   <div style={{ background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '12px', padding: '16px', marginTop: '16px', display: 'flex', gap: '12px', alignItems: 'flex-start', ...style }}>
-    <span style={{ fontSize: '1.1rem', flexShrink: 0 }}>❌</span>
+    <XCircle size={20} color="#dc2626" style={{ flexShrink: 0, marginTop: '2px' }} />
     <div style={{ flex: 1 }}>
       <p style={{ color: '#dc2626', margin: 0, fontSize: '0.875rem' }}>{message}</p>
       {rawPaperId && (
