@@ -745,87 +745,83 @@ const CourseThumbnailCard = memo(({ courseName, courseCode, paperCount, reviewed
   )
 })
 
-// ── Paper Card for List View ──────────────────────────────────
-const PaperCard = memo(({ paper, reviewedCount = 0, onClick, delay = 0 }) => {
-  const rm = useReducedMotion()
+// ── Paper Card for List View (Institutional, Calm, High Data-Ink) ──
+const PaperCard = memo(({ paper, onClick }) => {
   const hasScan = Boolean(paper.pastPaper?.file_url)
   const isPdf = paper.pastPaper?.file_type === 'application/pdf' || (paper.pastPaper?.file_url && paper.pastPaper.file_url.toLowerCase().includes('.pdf'))
-  const scanBadge = isPdf ? 'PDF Scan' : (hasScan ? 'Scanned Image' : null)
-  const pct = paper.questionCount > 0 ? Math.round((reviewedCount / paper.questionCount) * 100) : 0
+  const formatLabel = isPdf ? 'PDF' : (hasScan ? 'Scan' : 'Text')
+
+  const examTypeLabel = useMemo(() => {
+    const raw = paper.pastPaper?.exam_type || paper.pastPaper?.Mid
+    if (!raw) return null
+    const lower = String(raw).toLowerCase()
+    if (lower.includes('end')) return 'End of Semester'
+    if (lower.includes('mid')) return 'Mid Semester'
+    if (lower.includes('test')) return 'Class Test'
+    if (lower.includes('assign')) return 'Assignment'
+    return raw
+  }, [paper.pastPaper])
 
   return (
     <div
       onClick={onClick}
-      className={`group bg-white border border-slate-200/90 hover:border-[#024927] rounded-2xl p-4 sm:p-5 flex flex-col justify-between cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition-all duration-150 will-change-transform ${rm ? '' : 'ed-fade-up'}`}
-      style={rm ? undefined : { animationDelay: `${delay}ms` }}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(); } }}
+      className="group bg-white border border-slate-200 hover:border-[#024927] rounded-xl p-4 sm:p-5 flex flex-col justify-between cursor-pointer hover:shadow-xs transition-colors duration-150 text-left min-h-[120px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#024927]"
     >
       <div>
-        <div className="flex items-start justify-between gap-2 mb-2.5">
+        {/* Top Meta Row */}
+        <div className="flex items-center justify-between gap-2 text-xs text-slate-500 mb-2">
           <div className="flex items-center gap-1.5 flex-wrap">
             {paper.courseCode && (
-              <span className="text-[11px] font-bold px-2 py-0.5 bg-[#024927]/10 text-[#024927] rounded-md tracking-wider">
+              <span className="font-bold text-[#024927] bg-[#024927]/10 px-2 py-0.5 rounded text-[11px] tracking-wide">
                 {paper.courseCode}
               </span>
             )}
             {paper.year && (
-              <span className="text-[11px] font-semibold px-2 py-0.5 bg-slate-100 text-slate-700 rounded-md">
+              <span className="font-semibold text-slate-700">
                 {paper.year}
               </span>
             )}
-            {paper.semester && (
-              <span className="text-[11px] font-medium px-2 py-0.5 bg-slate-50 text-slate-600 rounded-md">
-                Sem {paper.semester}
-              </span>
+            {examTypeLabel && (
+              <>
+                <span className="text-slate-300">·</span>
+                <span className="text-slate-600 font-medium">
+                  {examTypeLabel}
+                </span>
+              </>
             )}
           </div>
-          {scanBadge && (
-            <span className="text-[10px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full flex items-center gap-1 flex-shrink-0">
-              <FileText className="w-3 h-3 text-[#024927]" /> {scanBadge}
-            </span>
-          )}
+
+          <span className="text-[11px] font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+            {formatLabel}
+          </span>
         </div>
 
+        {/* Course Title */}
         <h3 className="font-bold text-slate-900 text-base leading-snug group-hover:text-[#024927] transition-colors line-clamp-2">
           {paper.courseName}
         </h3>
 
-        {paper.topics?.length > 0 && (
-          <p className="text-xs text-slate-500 mt-2 line-clamp-1">
-            {paper.topics.slice(0, 3).join(' · ')}{paper.topics.length > 3 ? ` +${paper.topics.length - 3}` : ''}
-          </p>
-        )}
-
+        {/* Uploader Attribution */}
         {paper.uploaderLabel && (
-          <p className="text-[11px] text-slate-500 mt-2 flex items-center gap-1 font-medium">
+          <p className="text-xs text-slate-500 mt-2 flex items-center gap-1">
             <User className="w-3 h-3 text-slate-400" />
             <span>Uploaded by {paper.uploaderLabel}</span>
           </p>
         )}
       </div>
 
-      <div className="mt-4 pt-3 border-t border-slate-100">
-        {reviewedCount > 0 && (
-          <div className="mb-2.5">
-            <div className="flex items-center justify-between text-[11px] font-semibold mb-1">
-              <span className="text-emerald-700 flex items-center gap-0.5">
-                <CheckCheck className="w-3 h-3" /> {reviewedCount} of {paper.questionCount} done
-              </span>
-              <span className="text-slate-500">{pct}%</span>
-            </div>
-            <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
-              <div className="h-full bg-emerald-600 rounded-full" style={{ width: `${pct}%` }} />
-            </div>
-          </div>
-        )}
-        <div className="flex items-center justify-between text-xs font-semibold text-slate-600">
-          <span className="flex items-center gap-1 text-slate-700">
-            <FileText className="w-3.5 h-3.5 text-[#024927]" />
-            {paper.questionCount} Questions {paper.totalMarks > 0 ? `· ${paper.totalMarks} Marks` : ''}
-          </span>
-          <span className="text-[#024927] font-bold flex items-center gap-0.5 group-hover:translate-x-0.5 transition-transform">
-            Open <ArrowRight className="w-3.5 h-3.5" />
-          </span>
-        </div>
+      {/* Footer Info */}
+      <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-600 font-medium">
+        <span>
+          {paper.questionCount > 0 ? `${paper.questionCount} Questions` : 'Full Paper'}
+          {paper.totalMarks > 0 ? ` · ${paper.totalMarks} Marks` : ''}
+        </span>
+        <span className="text-[#024927] font-semibold flex items-center gap-1 group-hover:translate-x-0.5 transition-transform min-h-[32px]">
+          Read Paper <ArrowRight className="w-3.5 h-3.5" />
+        </span>
       </div>
     </div>
   )
@@ -3273,120 +3269,54 @@ export default function PastPapers() {
                 <div className="px-4 flex items-center justify-between gap-3 flex-wrap">
                   <div>
                     <div className="flex items-center gap-2">
-                      <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Past Papers</p>
+                      <h2 className="text-base font-bold text-slate-900 tracking-tight">Your Courses & Papers</h2>
                       {(myYear || mySemester) && (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#024927]/10 text-[#024927] text-[11px] font-bold rounded-md">
+                        <span className="inline-flex items-center px-2 py-0.5 bg-[#024927]/10 text-[#024927] text-[11px] font-bold rounded-md">
                           {myYear ? `Year ${myYear}` : ''}
                           {myYear && mySemester ? ' · ' : ''}
-                          {mySemester ? `Semester ${mySemester}` : ''}
+                          {mySemester ? `Sem ${mySemester}` : ''}
                         </span>
                       )}
                     </div>
-                    <p className="text-sm font-semibold text-slate-800 mt-0.5">
-                      {myProgramName || 'Your Curriculum'}
+                    <p className="text-xs text-slate-500 mt-0.5">
+                      {myProgramName || 'Curriculum past examination papers'}
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <div className="inline-flex p-1 bg-slate-100 rounded-xl text-xs font-semibold border border-slate-200">
-                      <button
-                        onClick={() => setPapersViewTab('papers')}
-                        className={`px-3 py-1.5 rounded-lg transition-all ${
-                          papersViewTab === 'papers'
-                            ? 'bg-white text-[#024927] font-bold shadow-xs'
-                            : 'text-slate-600 hover:text-slate-900'
-                        }`}
-                      >
-                        Papers List ({filteredPapersList.length})
-                      </button>
-                      <button
-                        onClick={() => setPapersViewTab('courses')}
-                        className={`px-3 py-1.5 rounded-lg transition-all ${
-                          papersViewTab === 'courses'
-                            ? 'bg-white text-[#024927] font-bold shadow-xs'
-                            : 'text-slate-600 hover:text-slate-900'
-                        }`}
-                      >
-                        By Course ({Object.keys(filteredMyPapersByCourse).length})
-                      </button>
-                    </div>
-
-                    <button onClick={goToBrowsePrograms} className="text-xs font-semibold text-[#024927] hover:underline h-8 flex items-center">
-                      Browse other programs →
-                    </button>
-                  </div>
+                  <button onClick={goToBrowsePrograms} className="text-xs font-semibold text-[#024927] hover:underline h-9 px-2 flex items-center">
+                    Browse all programs →
+                  </button>
                 </div>
 
-                {/* Filters Row */}
-                {papersViewTab === 'papers' && (
-                  <div className="px-4 py-2 flex items-center gap-2 overflow-x-auto no-scrollbar flex-wrap">
-                    <div className="flex items-center gap-1.5 text-xs text-slate-500 font-semibold mr-1">
-                      <SlidersHorizontal className="w-3.5 h-3.5 text-slate-400" />
-                      <span>Filters:</span>
-                    </div>
-
-                    {/* Year Filter */}
-                    <select
-                      value={selectedYear}
-                      onChange={(e) => setSelectedYear(e.target.value)}
-                      className="text-xs font-semibold bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#024927] focus:border-transparent"
+                {/* Course Filter Chips (Hick's Law: instant recognition, 44px tap targets) */}
+                {myCourses.length > 0 && (
+                  <div className="px-4 flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1">
+                    <button
+                      onClick={() => setSelectedCourseFilter('all')}
+                      className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap min-h-[36px] transition-colors ${
+                        selectedCourseFilter === 'all'
+                          ? 'bg-[#024927] text-white'
+                          : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300'
+                      }`}
                     >
-                      <option value="all">All Years</option>
-                      {availableYears.map(y => (
-                        <option key={y} value={y}>{y}</option>
-                      ))}
-                    </select>
-
-                    {/* Semester Filter */}
-                    <select
-                      value={selectedSemester}
-                      onChange={(e) => setSelectedSemester(e.target.value)}
-                      className="text-xs font-semibold bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#024927] focus:border-transparent"
-                    >
-                      <option value="all">All Semesters</option>
-                      <option value="1">Semester 1</option>
-                      <option value="2">Semester 2</option>
-                    </select>
-
-                    {/* Course Filter */}
-                    {myCourses.length > 0 && (
-                      <select
-                        value={selectedCourseFilter}
-                        onChange={(e) => setSelectedCourseFilter(e.target.value)}
-                        className="text-xs font-semibold bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#024927] focus:border-transparent max-w-[200px] truncate"
-                      >
-                        <option value="all">All Courses</option>
-                        {myCourses.map(c => (
-                          <option key={c.id} value={c.id}>{c.course_name}</option>
-                        ))}
-                      </select>
-                    )}
-
-                    {/* Content Type Filter */}
-                    <select
-                      value={selectedKind}
-                      onChange={(e) => setSelectedKind(e.target.value)}
-                      className="text-xs font-semibold bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#024927] focus:border-transparent"
-                    >
-                      <option value="all">All Materials</option>
-                      <option value="paper">Past Papers Only</option>
-                      <option value="tutorial">Tutorials Only</option>
-                    </select>
-
-                    {(selectedYear !== 'all' || selectedSemester !== 'all' || selectedCourseFilter !== 'all' || selectedKind !== 'all' || deferredSearch) && (
-                      <button
-                        onClick={() => {
-                          setSelectedYear('all')
-                          setSelectedSemester('all')
-                          setSelectedCourseFilter('all')
-                          setSelectedKind('all')
-                          setSearchQuery('')
-                        }}
-                        className="text-xs font-bold text-rose-600 hover:text-rose-700 hover:underline px-2 py-1.5 min-h-[32px] flex items-center"
-                      >
-                        Reset
-                      </button>
-                    )}
+                      All ({filteredPapersList.length})
+                    </button>
+                    {myCourses.map((c) => {
+                      const isSelected = String(selectedCourseFilter) === String(c.id)
+                      return (
+                        <button
+                          key={c.id}
+                          onClick={() => setSelectedCourseFilter(isSelected ? 'all' : c.id)}
+                          className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap min-h-[36px] transition-colors ${
+                            isSelected
+                              ? 'bg-[#024927] text-white'
+                              : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300'
+                          }`}
+                        >
+                          {c.course_code || c.course_name}
+                        </button>
+                      )
+                    })}
                   </div>
                 )}
 
@@ -3419,9 +3349,7 @@ export default function PastPapers() {
                           <PaperCard
                             key={paper.paperId}
                             paper={paper}
-                            reviewedCount={reviewed}
                             onClick={() => handleOpenPaper(paper)}
-                            delay={Math.min(idx * 35, 200)}
                           />
                         )
                       })}
