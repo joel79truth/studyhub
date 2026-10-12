@@ -430,12 +430,19 @@ router.post('/complete', requireAuth, express.json(), async (req, res) => {
 
     if (typeof onNoteUploaded === 'function') {
       try {
+        let uploaderName = null;
+        try {
+          const { data: prof } = await supabaseAdmin.from('profiles').select('name').eq('id', req.user.id).maybeSingle();
+          uploaderName = prof?.name || null;
+        } catch (_) {}
+
         Promise.resolve(onNoteUploaded({
           program,
           courseName: subject,
           filename,
           semester: String(semester),
           fileId: id,
+          uploaderName,
         })).catch(err => console.error('[storageUpload] Notification error:', err));
       } catch (notifErr) {
         console.error('[storageUpload] Notification trigger error:', notifErr);
