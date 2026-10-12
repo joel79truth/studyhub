@@ -2589,6 +2589,7 @@ export default function PastPapers() {
   const [selectedYear, setSelectedYear] = useState('all')
   const [selectedSemester, setSelectedSemester] = useState('all')
   const [selectedCourseFilter, setSelectedCourseFilter] = useState('all')
+  const [selectedKind, setSelectedKind] = useState('all') // 'all' | 'paper' | 'tutorial'
 
   const [searchQuery, setSearchQuery] = useState('')
   const deferredSearch = useDeferredValue(searchQuery)
@@ -2796,9 +2797,10 @@ export default function PastPapers() {
       if (selectedYear !== 'all' && String(paper.year) !== String(selectedYear)) return false
       if (selectedSemester !== 'all' && String(paper.semester) !== String(selectedSemester)) return false
       if (selectedCourseFilter !== 'all' && String(paper.courseId) !== String(selectedCourseFilter)) return false
+      if (selectedKind !== 'all' && (paper.kind || 'paper') !== selectedKind) return false
       return true
     })
-  }, [myPapers, deferredSearch, selectedYear, selectedSemester, selectedCourseFilter])
+  }, [myPapers, deferredSearch, selectedYear, selectedSemester, selectedCourseFilter, selectedKind])
 
   const handleOpenPaper = useCallback((paper) => {
     const course = myCourses.find(c => String(c.id) === String(paper.courseId)) || {
@@ -3360,12 +3362,24 @@ export default function PastPapers() {
                       </select>
                     )}
 
-                    {(selectedYear !== 'all' || selectedSemester !== 'all' || selectedCourseFilter !== 'all' || deferredSearch) && (
+                    {/* Content Type Filter */}
+                    <select
+                      value={selectedKind}
+                      onChange={(e) => setSelectedKind(e.target.value)}
+                      className="text-xs font-semibold bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#024927] focus:border-transparent"
+                    >
+                      <option value="all">All Materials</option>
+                      <option value="paper">Past Papers Only</option>
+                      <option value="tutorial">Tutorials Only</option>
+                    </select>
+
+                    {(selectedYear !== 'all' || selectedSemester !== 'all' || selectedCourseFilter !== 'all' || selectedKind !== 'all' || deferredSearch) && (
                       <button
                         onClick={() => {
                           setSelectedYear('all')
                           setSelectedSemester('all')
                           setSelectedCourseFilter('all')
+                          setSelectedKind('all')
                           setSearchQuery('')
                         }}
                         className="text-xs font-bold text-rose-600 hover:text-rose-700 hover:underline px-2 py-1.5 min-h-[32px] flex items-center"

@@ -21,6 +21,7 @@ const Request = lazy(() => import('./pages/Request'));
 const AiChat = lazy(() => import('./pages/AiChat'));
 const AdminUpload = lazy(() => import('./pages/AdminUpload'));
 const AdminLive = lazy(() => import('./pages/AdminLive'));
+const Tutorials = lazy(() => import('./pages/Tutorials'));
 
 // ─── Components ────────────────────────────────────────────
 import ProtectedRoute from './components/ProtectedRoute';
@@ -89,6 +90,7 @@ function App() {
               <Route path="/program-detail/:program" element={<ProgramDetail />} />
               <Route path="/quiz" element={<Quiz />} />
               <Route path="/timetable" element={<Timetable />} />
+              <Route path="/tutorials" element={<Tutorials />} />
               <Route path="/request" element={<Request />} />
               <Route path="/Request" element={<Request />} />
               <Route path="/profile" element={<Profile />} />
