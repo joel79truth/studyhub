@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabase';
 import { useQuery } from '@tanstack/react-query';
 import { useIsDownloaded, useDownloadProgress, useDownloadManager } from '../hooks/useDownloadManager';
+import PDFThumbnail from '../components/PDFThumbnail';
 
 // ─── Helpers ──────────────────────────────────────────────
 const normalizeName = (name) => String(name || '').trim().toLowerCase();
@@ -215,11 +216,19 @@ const FileListItem = memo(({ file, onFileClick, onStartDownload, onCancelDownloa
   // A small status cue (like an order's "just placed" flag) instead
   // of every file looking identical regardless of how fresh it is.
   const fresh = isRecent(file.uploadedAtRaw);
+  const publicUrl = getNotePublicUrl(file);
+  const isPdf = Boolean(file?.filename?.toLowerCase().endsWith('.pdf') && publicUrl);
 
   return (
     <div className="group relative flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:bg-white hover:shadow-sm hover:border-blue-100 transition-colors mb-3">
-      <div className="w-10 h-10 flex-shrink-0 bg-blue-50/50 rounded-lg flex items-center justify-center border border-blue-100/50">
-        <FileIcon filename={file.filename} />
+      <div className={`flex-shrink-0 rounded-lg overflow-hidden border flex items-center justify-center ${
+        isPdf ? 'w-14 h-14 border-slate-200 bg-slate-100' : 'w-10 h-10 bg-blue-50/50 border-blue-100/50'
+      }`}>
+        {isPdf ? (
+          <PDFThumbnail url={publicUrl} scale={0.2} />
+        ) : (
+          <FileIcon filename={file.filename} />
+        )}
       </div>
 
       <button
@@ -804,24 +813,24 @@ export default function Programs() {
     <div className="h-full flex flex-col bg-slate-50">
       <header className="flex-shrink-0 sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs px-4 sm:px-6 py-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="md:hidden w-8 h-8 bg-gradient-to-br from-[#024927] to-[#046c3b] rounded-lg flex items-center justify-center overflow-hidden shadow-xs">
+          <div className="md:hidden w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center overflow-hidden shadow-xs">
             <img src="/images/luanar7.png" alt="LUANAR Logo" className="w-full h-full object-cover" onError={(e) => e.currentTarget.style.display = 'none'} />
           </div>
           <h1 className="text-lg md:text-xl font-bold tracking-tight text-slate-900 flex items-center gap-2">
             <span>Study Notes</span>
             {isPending && (
-              <span className="inline-block w-2.5 h-2.5 bg-[#024927] rounded-full animate-pulse will-change-transform" />
+              <span className="inline-block w-2.5 h-2.5 bg-blue-600 rounded-full animate-pulse will-change-transform" />
             )}
           </h1>
         </div>
         <div className="flex items-center gap-3">
           {viewMode === 'allPrograms' && (
             <div className="relative hidden xs:block">
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">🔍</span>
+              <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
               <input
                 type="text"
                 placeholder="Search programs..."
-                className="pl-9 pr-4 py-2 bg-slate-100 border-transparent focus:bg-white border focus:border-[#024927] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#024927]/20 w-40 sm:w-64"
+                className="pl-9 pr-4 py-2 bg-slate-100 border-transparent focus:bg-white border focus:border-blue-600 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/20 w-40 sm:w-64"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 aria-label="Search programs"
@@ -830,10 +839,10 @@ export default function Programs() {
           )}
           <button
             onClick={handleToggleView}
-            className={`px-4 py-2 text-sm font-semibold rounded-xl transition-all active:scale-95 cursor-pointer ${
+            className={`min-h-[44px] px-4 py-2 text-sm font-semibold rounded-xl transition-all active:scale-95 cursor-pointer ${
               viewMode === 'allPrograms'
                 ? 'bg-slate-900 text-white hover:bg-black shadow-xs'
-                : 'bg-[#024927] text-white hover:bg-[#035930] shadow-xs'
+                : 'bg-blue-600 text-white hover:bg-blue-700 shadow-xs'
             }`}
           >
             {viewMode === 'allPrograms' ? 'My Courses' : 'Browse All'}

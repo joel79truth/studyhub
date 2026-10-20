@@ -257,7 +257,7 @@ const UserAvatar = memo(({ src, initials, size = 8, className = '' }) => {
     );
   }
   return (
-    <div className={`w-${size} h-${size} rounded-full border-2 border-blue-500 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold text-xs ${className}`}>
+    <div className={`w-${size} h-${size} rounded-full border-2 border-blue-500 bg-blue-600 flex items-center justify-center text-white font-semibold text-xs ${className}`}>
       {initials}
     </div>
   );
@@ -278,18 +278,18 @@ const DashboardSkeleton = memo(() => (
 
 // ─── Empty Files State — no upload option for regular users ──────────────────
 const EmptyFilesState = memo(({ onBrowse }) => (
-  <div className="flex flex-col items-center justify-center py-10 px-4 text-center bg-white border border-dashed border-slate-200 rounded-2xl ed-fade-up shadow-xs">
-    <div className="w-12 h-12 bg-emerald-50 text-[#024927] border border-emerald-100 rounded-2xl flex items-center justify-center mb-3.5 shadow-2xs">
-      <svg className="w-6 h-6 text-[#024927]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+  <div className="flex flex-col items-center justify-center py-10 px-4 text-center bg-white border border-dashed border-gray-200 rounded-2xl ed-fade-up">
+    <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-4">
+      <svg className="w-7 h-7 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
         <path d="M6.5 2H20v20l-5.5-6-5.5 6V2Z"/>
       </svg>
     </div>
-    <h3 className="text-sm font-bold text-slate-900 mb-1">No notes yet for your programme</h3>
-    <p className="text-xs text-slate-500 mb-4 max-w-xs font-normal">Notes for your programme will appear here once they're uploaded.</p>
+    <h3 className="text-sm font-semibold text-gray-900 mb-1">No notes yet for your programme</h3>
+    <p className="text-xs text-gray-500 mb-5 max-w-xs">Notes for your programme will appear here once they're available.</p>
     <button
       onClick={onBrowse}
-      className="px-5 py-2.5 bg-[#024927] hover:bg-[#035930] text-white text-xs font-bold rounded-xl active:scale-95 shadow-xs transition-all duration-150"
+      className="px-5 py-2.5 min-h-[44px] bg-blue-600 text-white text-xs font-semibold rounded-lg active:scale-95 transition-transform"
     >
       Browse All Courses
     </button>
@@ -417,65 +417,58 @@ const RecommendedForYou = memo(({ recommendations, onAction }) => {
 });
 
 // ─── Streak Card ──────────────────────────────────────────────────────────────
-const StreakCard = memo(({ streak, onTap, hint, showHint, onHintAction, isRightRail = false }) => {
+const StreakCard = memo(({ streak, onTap, hint, showHint, onHintAction }) => {
   const isHot = streak >= 7;
   const isMilestone = streak > 0 && streak % 7 === 0;
   const daysToNext = streak > 0 ? (isMilestone ? 7 : 7 - (streak % 7)) : 7;
 
   return (
     <div
-      className={`relative bg-white border rounded-2xl overflow-hidden shadow-xs hover:shadow-md hover:border-slate-300 transition-all duration-200 ${
-        isHot ? 'border-amber-200/90 bg-gradient-to-br from-white to-amber-50/30' : 'border-slate-200/80'
-      }`}
-      style={{ height: isRightRail ? 'auto' : 96, minHeight: isRightRail ? 130 : 96 }}
+      className={`relative bg-white border rounded-xl overflow-hidden ${isHot ? 'border-orange-200' : 'border-gray-100'}`}
+      style={{ height: 96 }}
     >
       {isHot && <div className="ed-glow ed-glow-orange" aria-hidden="true" />}
+      {isHot && <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-red-50/20 pointer-events-none" />}
 
       <button
         type="button"
         onClick={onTap}
         aria-label="View streak details"
-        className={`w-full text-left transition-opacity duration-300 flex flex-col justify-between ${
-          isRightRail ? 'p-5 gap-3' : 'absolute inset-0 p-3'
-        }`}
+        className="absolute inset-0 p-3 flex flex-col justify-between w-full text-left transition-opacity duration-300"
         style={{ opacity: showHint ? 0 : 1, pointerEvents: showHint ? 'none' : 'auto' }}
       >
         <div className="flex items-center justify-between">
-          <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider">Learning Streak</h3>
-          <div className="w-8 h-8 rounded-xl bg-amber-50 border border-amber-200/60 flex items-center justify-center flex-shrink-0 shadow-2xs">
-            <span className="block text-base leading-none ed-flame">🔥</span>
+          <h3 className="text-xs font-medium text-gray-500">Learning Streak</h3>
+          <div className="p-1.5 rounded-lg bg-orange-50 text-orange-600">
+            <svg className="w-4 h-4 text-orange-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
           </div>
         </div>
         <div>
-          <div key={streak} className="text-2xl lg:text-3xl font-extrabold text-slate-900 tracking-tight leading-none ed-pop">
-            {streak} <span className="text-sm lg:text-base font-semibold text-slate-500">days</span>
-          </div>
+          <div key={streak} className="text-xl font-bold text-gray-900 ed-pop">{streak} <span className="text-sm font-semibold">days</span></div>
           {isMilestone
-            ? <p className="text-[11px] font-bold text-amber-700 bg-amber-50 border border-amber-200/60 rounded-lg px-2 py-0.5 mt-2 w-max">Milestone reached! 🎉</p>
+            ? <p className="text-[10px] font-semibold text-orange-500">Milestone reached</p>
             : streak > 0
-              ? <p className="text-[11px] text-slate-400 font-medium mt-1">{daysToNext}d to next milestone</p>
-              : <p className="text-[11px] text-[#024927] font-semibold mt-1">Tap to learn more →</p>
+              ? <p className="text-[10px] text-gray-400">{daysToNext}d to next milestone</p>
+              : <p className="text-[10px] text-blue-600 font-medium">Tap to learn more</p>
           }
         </div>
-        {!showHint && !isRightRail && <TapAffordance />}
+        {!showHint && <TapAffordance />}
       </button>
 
       <button
         type="button"
         onClick={() => hint && onHintAction && onHintAction(hint.route)}
         aria-label={hint ? hint.text : 'Suggested action'}
-        className={`w-full text-left transition-opacity duration-300 flex flex-col justify-between ${
-          isRightRail ? 'p-5 gap-3 absolute inset-0' : 'absolute inset-0 p-3'
-        }`}
+        className="absolute inset-0 p-3 flex flex-col justify-between w-full text-left transition-opacity duration-300"
         style={{ opacity: showHint ? 1 : 0, pointerEvents: showHint ? 'auto' : 'none' }}
       >
         <div className="flex items-center justify-between">
-          <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider">Try this</h3>
-          <span className="text-lg leading-none">{hint?.emoji}</span>
+          <h3 className="text-xs font-medium text-gray-500">Try this</h3>
+          <span className="text-base leading-none">{hint?.emoji}</span>
         </div>
         <div>
-          <p className="text-sm font-bold text-slate-900 leading-tight">{hint?.text}</p>
-          <p className="text-xs text-[#024927] font-bold mt-1">{hint?.cta} →</p>
+          <p className="text-sm font-semibold text-gray-800 leading-tight">{hint?.text}</p>
+          <p className="text-[10px] text-blue-600 font-semibold mt-0.5">{hint?.cta} →</p>
         </div>
       </button>
     </div>
@@ -519,7 +512,7 @@ const StreakSheet = memo(({ open, onClose }) => {
 
         <div className="h-px bg-gray-100 mb-4" />
         <p className="text-xs text-gray-400 mb-5 text-center">Each return = +1 streak. Miss a day and it resets. Every 7 days is a milestone.</p>
-        <button onClick={onClose} className="w-full bg-[#024927] hover:bg-[#035930] text-white font-semibold py-3 rounded-xl active:scale-[0.98] transition-transform text-sm shadow-xs">
+        <button onClick={onClose} className="w-full min-h-[44px] bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl active:scale-[0.98] transition-transform text-sm">
           Let's go — start a quiz
         </button>
       </div>
@@ -528,7 +521,7 @@ const StreakSheet = memo(({ open, onClose }) => {
 });
 
 // ─── Exam Countdown Card ────────────────────────────────────────────────────
-const ExamCountdownCard = memo(({ daysLeft, daysDelta, hint, showHint, onHintAction, onPrimaryAction, isRightRail = false }) => {
+const ExamCountdownCard = memo(({ daysLeft, daysDelta, hint, showHint, onHintAction, onPrimaryAction }) => {
   const SEMESTER_DAYS = 120;
   const progress = daysLeft > 0
     ? Math.max(4, Math.min(96, ((SEMESTER_DAYS - daysLeft) / SEMESTER_DAYS) * 100))
@@ -538,10 +531,8 @@ const ExamCountdownCard = memo(({ daysLeft, daysDelta, hint, showHint, onHintAct
 
   return (
     <div
-      className={`relative bg-white border rounded-2xl overflow-hidden shadow-xs hover:shadow-md hover:border-slate-300 transition-all duration-200 ${
-        isUrgent ? 'border-blue-200/90 bg-gradient-to-br from-white to-blue-50/30' : 'border-slate-200/80'
-      }`}
-      style={{ height: isRightRail ? 'auto' : 96, minHeight: isRightRail ? 130 : 96 }}
+      className={`relative bg-white border rounded-xl overflow-hidden ${isUrgent ? 'border-blue-300/60' : 'border-gray-100'}`}
+      style={{ height: 96 }}
     >
       {isUrgent && <div className="ed-glow ed-glow-blue" aria-hidden="true" />}
 
@@ -549,50 +540,44 @@ const ExamCountdownCard = memo(({ daysLeft, daysDelta, hint, showHint, onHintAct
         type="button"
         onClick={onPrimaryAction}
         aria-label="View exam timetable"
-        className={`w-full text-left transition-opacity duration-300 flex flex-col justify-between ${
-          isRightRail ? 'p-5 gap-3' : 'absolute inset-0 p-3'
-        }`}
+        className="absolute inset-0 p-3 flex flex-col justify-between w-full text-left transition-opacity duration-300"
         style={{ opacity: showHint ? 0 : 1, pointerEvents: showHint ? 'none' : 'auto' }}
       >
         <div className="flex items-center justify-between">
-          <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider">Days Until Exams</h3>
-          <div className="w-8 h-8 rounded-xl bg-blue-50 border border-blue-200/60 flex items-center justify-center flex-shrink-0 shadow-2xs">
-            <span className="text-blue-600 font-bold">{ExamIconSvg}</span>
+          <h3 className="text-xs font-medium text-gray-500">Days Until Exams</h3>
+          <div className="p-1.5 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500">
+            {ExamIconSvg}
           </div>
         </div>
         <div>
-          <div key={daysLeft} className="text-2xl lg:text-3xl font-extrabold text-slate-900 tracking-tight leading-none mb-1 ed-pop">
-            {daysLeft} <span className="text-sm lg:text-base font-semibold text-slate-500">days</span>
-          </div>
-          {daysDelta && <p className="text-[11px] text-slate-400 font-medium mb-1.5">{daysDelta}</p>}
+          <div key={daysLeft} className="text-xl font-bold text-gray-900 ed-pop leading-none mb-0.5">{daysLeft}</div>
+          {daysDelta && <p className="text-[10px] text-gray-400 mb-1.5">{daysDelta}</p>}
           {daysLeft > 0 && (
-            <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden mt-1.5">
+            <div className="h-1 bg-gray-100 rounded-full overflow-hidden">
               <div
-                className={`h-full rounded-full ed-progress ${isClose ? 'bg-gradient-to-r from-blue-600 to-indigo-600' : 'bg-gradient-to-r from-blue-500 to-cyan-500'}`}
+                className={`h-full rounded-full ed-progress ${isClose ? 'bg-gradient-to-r from-blue-500 to-purple-500' : 'bg-gradient-to-r from-blue-400 to-cyan-400'}`}
                 style={{ width: `${progress}%` }}
               />
             </div>
           )}
         </div>
-        {!showHint && !isRightRail && <TapAffordance />}
+        {!showHint && <TapAffordance />}
       </button>
 
       <button
         type="button"
         onClick={() => hint && onHintAction && onHintAction(hint.route)}
         aria-label={hint ? hint.text : 'Suggested action'}
-        className={`w-full text-left transition-opacity duration-300 flex flex-col justify-between ${
-          isRightRail ? 'p-5 gap-3 absolute inset-0' : 'absolute inset-0 p-3'
-        }`}
+        className="absolute inset-0 p-3 flex flex-col justify-between w-full text-left transition-opacity duration-300"
         style={{ opacity: showHint ? 1 : 0, pointerEvents: showHint ? 'auto' : 'none' }}
       >
         <div className="flex items-center justify-between">
-          <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider">Quick action</h3>
-          <span className="text-lg leading-none">{hint?.emoji}</span>
+          <h3 className="text-xs font-medium text-gray-500">Quick action</h3>
+          <span className="text-base leading-none">{hint?.emoji}</span>
         </div>
         <div>
-          <p className="text-sm font-bold text-slate-900 leading-tight">{hint?.text}</p>
-          <p className="text-xs text-[#024927] font-bold mt-1">{hint?.cta} →</p>
+          <p className="text-sm font-semibold text-gray-800 leading-tight">{hint?.text}</p>
+          <p className="text-[10px] text-blue-600 font-semibold mt-0.5">{hint?.cta} →</p>
         </div>
       </button>
     </div>
@@ -1070,8 +1055,7 @@ const Home = () => {
     return (
       <div className="h-full flex flex-col bg-slate-50">
         <StyleInjector />
-        {/* Mobile-only skeleton header */}
-        <div className="md:hidden flex-shrink-0 sticky top-0 z-30 bg-white border-b border-gray-100 px-4 py-3">
+        <div className="flex-shrink-0 sticky top-0 z-30 bg-white border-b border-gray-100 px-4 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 bg-gray-100 rounded-lg animate-pulse" />
@@ -1080,8 +1064,8 @@ const Home = () => {
             <div className="w-8 h-8 bg-gray-100 rounded-full animate-pulse" />
           </div>
         </div>
-        <div className="flex-1 overflow-y-auto px-4 py-4 pb-24 md:pb-6"><DashboardSkeleton /></div>
-      </div>
+        <div className="flex-1 overflow-y-auto px-4 py-4"><DashboardSkeleton /></div>
+              </div>
     );
   }
 
@@ -1095,405 +1079,374 @@ const Home = () => {
   // ─── Profile form ──────────────────────────────────────────────────────────
   if (showProfileForm) {
     return (
-      <div className="h-full overflow-y-auto flex flex-col bg-gradient-to-br from-blue-50 to-purple-50">
-          <StyleInjector />
-          {!isOnline && <OfflineBanner />}
-          <div className="flex-1 overflow-y-auto flex items-center justify-center p-4">
-            <div className="w-full max-w-md bg-white rounded-2xl shadow-xl border border-white/50 overflow-hidden ed-fade-up">
-              <div className="bg-gradient-to-br from-blue-500 to-purple-600 px-6 py-5 text-center">
-                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 backdrop-blur-sm">
-                  <span className="text-2xl">✍️</span>
-                </div>
-                <h2 className="text-xl font-bold text-white">Complete your profile</h2>
-                <p className="text-sm text-white/80 mt-1">Just a few details to personalise your dashboard</p>
-                <div className="mt-3 inline-flex items-center gap-2 bg-white/15 rounded-full px-3 py-1">
-                  <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-                  </svg>
-                  <span className="text-xs text-white font-medium">Takes 30 seconds</span>
-                </div>
+      <div className="h-full flex flex-col bg-slate-50">
+        <StyleInjector />
+        {!isOnline && <OfflineBanner />}
+        <div className="flex-1 overflow-y-auto flex items-center justify-center p-4">
+          <div className="w-full max-w-md bg-white rounded-2xl shadow-xl border border-white/50 overflow-hidden ed-fade-up">
+            <div className="bg-blue-600 px-6 py-5 text-center">
+              <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 backdrop-blur-sm">
+                <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
               </div>
-              <div className="p-6">
-                {profileError && (
-                  <div className="mb-4 px-3 py-2.5 rounded-lg bg-red-50 border border-red-200 text-sm text-red-700" role="alert">{profileError}</div>
+              <h2 className="text-xl font-bold text-white">Complete your profile</h2>
+              <p className="text-sm text-white/80 mt-1">Just a few details to personalise your dashboard</p>
+              <div className="mt-3 inline-flex items-center gap-2 bg-white/15 rounded-full px-3 py-1">
+                <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                </svg>
+                <span className="text-xs text-white font-medium">Takes 30 seconds</span>
+              </div>
+            </div>
+            <div className="p-6">
+              {profileError && (
+                <div className="mb-4 px-3 py-2.5 rounded-lg bg-red-50 border border-red-200 text-sm text-red-700" role="alert">{profileError}</div>
+              )}
+              <form onSubmit={handleProfileSubmit}>
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Programme of study <span className="text-red-500">*</span></label>
+                  <select value={program} onChange={(e) => setProgram(e.target.value)}
+                    className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 transition ${fieldErrors.program ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}>
+                    <option value="">— Select programme —</option>
+                    {programs.map((p) => <option key={p.id} value={p.name}>{p.name} ({p.campus})</option>)}
+                  </select>
+                  {fieldErrors.program && <p className="text-red-500 text-xs mt-1" role="alert">Program is required</p>}
+                </div>
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Semester <span className="text-red-500">*</span></label>
+                  <select value={semester} onChange={(e) => setSemester(e.target.value)}
+                    className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 transition ${fieldErrors.semester ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}>
+                    <option value="">Select semester</option>
+                    {[1,2,3,4,5,6,7,8].map(s => <option key={s} value={s}>Semester {s}</option>)}
+                  </select>
+                  {fieldErrors.semester && <p className="text-red-500 text-xs mt-1" role="alert">Select a valid semester (1–8)</p>}
+                </div>
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Year of study <span className="text-red-500">*</span></label>
+                  <select value={year} onChange={(e) => setYear(e.target.value)}
+                    className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 transition ${fieldErrors.year ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}>
+                    <option value="">Select year</option>
+                    {[1,2,3,4].map(y => <option key={y} value={y}>Year {y}</option>)}
+                  </select>
+                  {fieldErrors.year && <p className="text-red-500 text-xs mt-1" role="alert">Select a valid year (1–4)</p>}
+                </div>
+                {/* Basics auto-correction notice */}
+                {(() => {
+                  const yr = parseInt(year, 10);
+                  const sem = parseInt(semester, 10);
+                  const notBasics = program && !/^basics$/i.test(program.trim());
+                  if (yr === 1 && (sem === 1 || sem === 2) && notBasics) {
+                    return (
+                      <div className="mb-4 flex items-start gap-2 px-3 py-2.5 rounded-lg bg-amber-50 border border-amber-200 text-xs text-amber-800">
+                        <span className="mt-0.5 shrink-0">ℹ️</span>
+                        <span>
+                          Year 1 students in Semester 1 or 2 follow the <strong>Basics</strong> curriculum at LUANAR.
+                          Your programme will be set to <strong>Basics</strong> automatically so you see the right courses.
+                        </span>
+                      </div>
+                    );
+                  }
+                  return null;
+                })()}
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Role <span className="text-red-500">*</span></label>
+                  <select value={role} onChange={(e) => setRole(e.target.value)}
+                    className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 transition ${fieldErrors.role ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}>
+                    <option value="">Choose role</option>
+                    <option value="Student">Student</option>
+                    <option value="Lecturer">Lecturer</option>
+                  </select>
+                  {fieldErrors.role && <p className="text-red-500 text-xs mt-1" role="alert">Role is mandatory</p>}
+                </div>
+                {role === 'Lecturer' && (
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Lecturer authorization code</label>
+                    <input type="password" value={lecturerCode} onChange={(e) => setLecturerCode(e.target.value)}
+                      className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 transition ${fieldErrors.code ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+                      placeholder="Enter secure code" />
+                    <p className="text-xs text-gray-500 mt-1.5">
+                      Sent to your faculty email.{' '}
+                      <a href="mailto:admin@luanar.ac.mw" className="text-blue-600 underline underline-offset-2">Need help?</a>
+                    </p>
+                    {fieldErrors.code && <p className="text-red-500 text-xs mt-1" role="alert">Invalid lecturer code</p>}
+                  </div>
                 )}
-                <form onSubmit={handleProfileSubmit}>
-                  <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Programme of study <span className="text-red-500">*</span></label>
-                    <select value={program} onChange={(e) => setProgram(e.target.value)}
-                      className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.program ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}>
-                      <option value="">— Select programme —</option>
-                      {programs.map((p) => <option key={p.id} value={p.name}>{p.name} ({p.campus})</option>)}
-                    </select>
-                    {fieldErrors.program && <p className="text-red-500 text-xs mt-1" role="alert">Program is required</p>}
-                  </div>
-                  <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Semester <span className="text-red-500">*</span></label>
-                    <select value={semester} onChange={(e) => setSemester(e.target.value)}
-                      className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.semester ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}>
-                      <option value="">Select semester</option>
-                      {[1,2,3,4,5,6,7,8].map(s => <option key={s} value={s}>Semester {s}</option>)}
-                    </select>
-                    {fieldErrors.semester && <p className="text-red-500 text-xs mt-1" role="alert">Select a valid semester (1–8)</p>}
-                  </div>
-                  <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Year of study <span className="text-red-500">*</span></label>
-                    <select value={year} onChange={(e) => setYear(e.target.value)}
-                      className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.year ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}>
-                      <option value="">Select year</option>
-                      {[1,2,3,4].map(y => <option key={y} value={y}>Year {y}</option>)}
-                    </select>
-                    {fieldErrors.year && <p className="text-red-500 text-xs mt-1" role="alert">Select a valid year (1–4)</p>}
-                  </div>
-                  {/* Basics auto-correction notice */}
-                  {(() => {
-                    const yr = parseInt(year, 10);
-                    const sem = parseInt(semester, 10);
-                    const notBasics = program && !/^basics$/i.test(program.trim());
-                    if (yr === 1 && (sem === 1 || sem === 2) && notBasics) {
-                      return (
-                        <div className="mb-4 flex items-start gap-2 px-3 py-2.5 rounded-lg bg-amber-50 border border-amber-200 text-xs text-amber-800">
-                          <span className="mt-0.5 shrink-0">ℹ️</span>
-                          <span>
-                            Year 1 students in Semester 1 or 2 follow the <strong>Basics</strong> curriculum at LUANAR.
-                            Your programme will be set to <strong>Basics</strong> automatically so you see the right courses.
-                          </span>
-                        </div>
-                      );
-                    }
-                    return null;
-                  })()}
-                  <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Role <span className="text-red-500">*</span></label>
-                    <select value={role} onChange={(e) => setRole(e.target.value)}
-                      className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.role ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}>
-                      <option value="">Choose role</option>
-                      <option value="Student">Student</option>
-                      <option value="Lecturer">Lecturer</option>
-                    </select>
-                    {fieldErrors.role && <p className="text-red-500 text-xs mt-1" role="alert">Role is mandatory</p>}
-                  </div>
-                  {role === 'Lecturer' && (
-                    <div className="mb-4">
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Lecturer authorization code</label>
-                      <input type="password" value={lecturerCode} onChange={(e) => setLecturerCode(e.target.value)}
-                        className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${fieldErrors.code ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
-                        placeholder="Enter secure code" />
-                      <p className="text-xs text-gray-500 mt-1.5">
-                        Sent to your faculty email.{' '}
-                        <a href="mailto:admin@luanar.ac.mw" className="text-blue-500 underline underline-offset-2">Need help?</a>
-                      </p>
-                      {fieldErrors.code && <p className="text-red-500 text-xs mt-1" role="alert">Invalid lecturer code</p>}
-                    </div>
-                  )}
-                  <button type="submit" disabled={profileSubmitting || !isOnline}
-                    className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 rounded-lg transition-all active:scale-[0.98] disabled:opacity-70">
-                    {profileSubmitting ? (
-                      <span className="flex items-center justify-center gap-2">
-                        <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
-                        </svg>
-                        Saving…
-                      </span>
-                    ) : !isOnline ? 'Connect to the internet to continue' : '🚀 Access Dashboard'}
-                  </button>
-                </form>
-              </div>
+                <button type="submit" disabled={profileSubmitting || !isOnline}
+                  className="w-full bg-blue-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 rounded-lg transition-all active:scale-[0.98] disabled:opacity-70">
+                  {profileSubmitting ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
+                      </svg>
+                      Saving…
+                    </span>
+                  ) : !isOnline ? 'Connect to the internet to continue' : '🚀 Access Dashboard'}
+                </button>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
+              </div>
     );
   }
 
   // ==================== MAIN DASHBOARD ====================
   return (
-    <div className="flex flex-col min-h-0 h-full overflow-y-auto bg-slate-50">
+    <div className="h-full flex flex-col bg-slate-50 overflow-hidden">
       <StyleInjector />
 
-        {/* ── MOBILE HEADER (hidden at md+) ──
-            Sticky top bar: hamburger, brand logo, profile avatar.
-            The scroll-collapse greeting is also scoped to mobile only.
-            No changes from original mobile behaviour. */}
-        <div
-          className="md:hidden flex-shrink-0 sticky top-0 z-30 bg-white border-b border-gray-100"
-          style={{ boxShadow: isScrolled ? '0 1px 8px rgba(0,0,0,0.06)' : 'none' }}
-        >
-          {!isOnline && <OfflineBanner />}
-          <div className="flex items-center justify-between px-4 py-3">
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => setSidebarOpen(!sidebarOpen)}
-                className="p-2 -ml-2 hover:bg-gray-100 active:scale-90 rounded-lg transition-colors duration-100"
-                aria-label="Toggle menu"
-              >
-                <div className="flex flex-col gap-[4.5px] w-5">
-                  <span className="block h-0.5 w-5 bg-gray-700 rounded-full" />
-                  <span className="block h-0.5 w-5 bg-gray-700 rounded-full" />
-                  <span className="block h-0.5 w-5 bg-gray-700 rounded-full" />
-                </div>
-              </button>
-
-              <div className="flex items-center gap-2">
-                <div className="rounded-lg overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600 flex-shrink-0 w-8 h-8">
-                  <img src="/images/luanar7.png" alt="LUANAR" className="w-full h-full object-cover" loading="eager" />
-                </div>
-                <h1 className="font-semibold leading-none flex items-baseline gap-1.5 text-[17px]" style={{ letterSpacing: '-0.01em' }}>
-                  <span className="text-gray-900">StudyHub</span>
-                  <span className="text-green-700 font-medium text-[0.6em] tracking-[0.12em]">LUANAR</span>
-                </h1>
+      {/* ── MOBILE HEADER ──
+          FIX: dropped `backdrop-blur-md`. A blurred sticky header sitting
+          above scrolling content has to recompute the blur of whatever is
+          now behind it on *every single frame* of the scroll — this is one
+          of the most common causes of scroll jank on mid/low-end phones,
+          independent of anything React is doing. A solid, near-opaque
+          background gives the same "floating header" read for a fraction
+          of the GPU cost.
+          FIX: the header no longer resizes anything (padding, logo size,
+          font-size) as you scroll — those were layout-affecting properties
+          animated via inline styles, which forces a reflow on every toggle.
+          The only things that change now are: a shadow (paint-only) and
+          the greeting block's presence (opacity + max-height, and gated by
+          the hysteresis thresholds above so it can't flicker). */}
+      <div
+        className="lg:hidden flex-shrink-0 sticky top-0 z-30 bg-white border-b border-gray-100"
+        style={{ boxShadow: isScrolled ? '0 1px 8px rgba(0,0,0,0.06)' : 'none' }}
+      >
+        {!isOnline && <OfflineBanner />}
+        <div className="flex items-center justify-between px-4 py-3">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              className="p-2 -ml-2 hover:bg-gray-100 active:scale-90 rounded-lg transition-colors duration-100 min-w-[44px] min-h-[44px] flex items-center justify-center"
+              aria-label="Toggle menu"
+            >
+              <div className="flex flex-col gap-[4.5px] w-5">
+                <span className="block h-0.5 w-5 bg-gray-700 rounded-full" />
+                <span className="block h-0.5 w-5 bg-gray-700 rounded-full" />
+                <span className="block h-0.5 w-5 bg-gray-700 rounded-full" />
               </div>
-            </div>
-
-            <button onClick={() => handleNavigation('/profile')} className="flex flex-col items-center px-1.5 py-1 -mr-1 active:scale-90 transition-transform duration-100">
-              <UserAvatar src={profilePicSrc} initials={initials} size={8} />
-              <span className="text-[9px] font-bold text-blue-500 mt-0.5 leading-none">You</span>
             </button>
-          </div>
 
-          {/* Collapsible greeting on mobile scroll */}
-          <div
-            className="overflow-hidden transition-[max-height,opacity] duration-150 ease-out"
-            style={{ maxHeight: isScrolled ? 0 : 64, opacity: isScrolled ? 0 : 1 }}
-          >
-            <div className="px-4 pb-3 text-center">
-              <h2 className="text-sm font-medium text-gray-900">
-                {greeting.timeGreeting}, <span className="font-bold">{displayName}</span> 👋
-              </h2>
-              <p className="text-xs text-gray-500 mt-0.5">{greeting.subtext}</p>
-            </div>
-          </div>
-        </div>
-
-        {/* ── TABLET / DESKTOP PAGE HEADER (hidden below md) ──
-            Greeting + search bar, shown once in the main feed column.
-            The brand logo and nav links live in the AppShell sidebar/rail. */}
-        <div className="hidden md:block flex-shrink-0 px-6 lg:px-8 pt-6 pb-5 border-b border-slate-200/80 bg-white">
-          {!isOnline && <div className="-mx-6 lg:-mx-8 -mt-6 mb-4"><OfflineBanner /></div>}
-          <div className="flex items-center justify-between gap-4 ed-fade-up">
-            <div className="min-w-0">
-              <h1 className="text-xl lg:text-2xl font-bold text-slate-900 leading-tight tracking-tight">
-                {greeting.timeGreeting}, <span className="text-slate-900">{displayName}</span> 👋
+            <div className="flex items-center gap-2">
+              <div className="rounded-lg overflow-hidden bg-blue-600 flex-shrink-0 w-8 h-8">
+                <img src="/images/luanar7.png" alt="LUANAR" className="w-full h-full object-cover" loading="eager" />
+              </div>
+              <h1 className="font-semibold leading-none flex items-baseline gap-1.5 text-[17px]" style={{ letterSpacing: '-0.01em' }}>
+                <span className="text-gray-900">StudyHub</span>
+                <span className="text-blue-600 font-medium text-[0.6em] tracking-[0.12em]">LUANAR</span>
               </h1>
-              <p className="text-xs lg:text-sm text-slate-500 mt-0.5 truncate font-normal">{greeting.subtext}</p>
-            </div>
-            {/* Search bar */}
-            <div className="relative flex-shrink-0 w-64 lg:w-80">
-              <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-              </svg>
-              <input
-                type="text"
-                placeholder="Search courses, topics..."
-                className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#024927] focus:border-[#024927] text-sm text-slate-900 placeholder:text-slate-400 transition-all shadow-2xs"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
             </div>
           </div>
+
+          <button onClick={() => handleNavigation('/profile')} className="flex flex-col items-center px-1.5 py-1 -mr-1 active:scale-90 transition-transform duration-100 min-w-[44px] min-h-[44px] justify-center">
+            <UserAvatar src={profilePicSrc} initials={initials} size={8} />
+            <span className="text-[9px] font-bold text-blue-600 mt-0.5 leading-none">You</span>
+          </button>
         </div>
 
-        {/* ── SCROLLABLE CONTENT ──
-            Single scroll region. On desktop we split into a two-column grid:
-              - Left/main feed column (AI card, nudges, files) — grows to fill space
-              - Right utility rail (exam countdown + streak) — fixed width
-            On mobile/tablet (<lg) everything stacks vertically as before. */}
+        {/* Greeting — collapses via opacity + max-height only (no reflow of
+            surrounding elements' own box), gated by hysteresis so it can
+            only fire once per real scroll gesture, not per jittery pixel. */}
         <div
-          ref={scrollContainerRef}
-          className="flex-1 overflow-y-auto overflow-x-hidden"
-          style={{ WebkitOverflowScrolling: 'touch', overscrollBehaviorY: 'contain' }}
+          className="overflow-hidden transition-[max-height,opacity] duration-150 ease-out"
+          style={{ maxHeight: isScrolled ? 0 : 64, opacity: isScrolled ? 0 : 1 }}
         >
-          {/* Content wrapper: max-width on desktop, consistent gutters */}
-          <div className="w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-
-            {/* ── Desktop two-column grid ── */}
-            <div className="lg:grid lg:grid-cols-[1fr_300px] lg:gap-8 lg:items-start pt-4 lg:pt-6 pb-24 md:pb-16 lg:pb-10">
-
-              {/* ── Main feed column ── */}
-              <div className="space-y-4 lg:space-y-5">
-
-                {/* AI Study Assistant card */}
-                <div className="ed-fade-up" style={{ animationDelay: '0.04s' }}>
-                  <AiStudyAssistantCard onAskClick={() => navigate('/AiChat')} description={getPersonalizedDescription} />
-                </div>
-
-                {/* Stat cards row — visible only on mobile/tablet (desktop: moved to right rail) */}
-                <div className="lg:hidden grid grid-cols-2 gap-3 ed-fade-up" style={{ animationDelay: '0.09s' }}>
-                  <ExamCountdownCard
-                    daysLeft={daysLeft}
-                    daysDelta={daysDelta}
-                    hint={hintTarget === 0 ? currentHint : null}
-                    showHint={showHint && hintTarget === 0}
-                    onHintAction={handleNavigation}
-                    onPrimaryAction={() => handleNavigation('/timetable')}
-                  />
-                  <StreakCard
-                    streak={streak}
-                    onTap={() => setStreakSheetOpen(true)}
-                    hint={hintTarget === 1 ? currentHint : null}
-                    showHint={showHint && hintTarget === 1}
-                    onHintAction={handleNavigation}
-                  />
-                </div>
-
-                {/* Level-Up Banner — conditional */}
-                {levelUpSuggestion && (
-                  <LevelUpBanner
-                    suggestion={levelUpSuggestion}
-                    onDismiss={handleLevelUpDismiss}
-                    onAction={handleNavigation}
-                  />
-                )}
-
-                {/* Recommended For You — conditional */}
-                <RecommendedForYou
-                  recommendations={recommendations}
-                  onAction={handleRecommendationAction}
-                />
-
-                {/* Recent notes — "Pick up where you left off" */}
-                <div className="ed-fade-up" style={{ animationDelay: '0.14s' }}>
-                  <div className="mb-3">
-                    <h2 className="text-base font-bold text-slate-900 tracking-tight">Pick up where you left off</h2>
-                    <p className="text-[11px] text-slate-400 font-medium mt-0.5">Recently uploaded for your programme</p>
-                  </div>
-                  <Files
-                    searchQuery={debouncedSearch}
-                    limit={6}
-                    onFileClick={handleFileClick}
-                    profile={userData}
-                    onEmpty={() => setFilesEmpty(true)}
-                    emptyState={<EmptyFilesState onBrowse={() => handleNavigation('/course')} />}
-                  />
-                </div>
-
-              </div>{/* /main feed column */}
-
-              {/* ── Right utility rail (desktop only, ≥1024px) ── */}
-              <aside className="hidden lg:flex flex-col gap-4 sticky top-6">
-                {/* Exam countdown */}
-                <div className="ed-fade-up" style={{ animationDelay: '0.09s' }}>
-                  <ExamCountdownCard
-                    daysLeft={daysLeft}
-                    daysDelta={daysDelta}
-                    hint={hintTarget === 0 ? currentHint : null}
-                    showHint={showHint && hintTarget === 0}
-                    onHintAction={handleNavigation}
-                    onPrimaryAction={() => handleNavigation('/timetable')}
-                    isRightRail
-                  />
-                </div>
-                {/* Streak */}
-                <div className="ed-fade-up" style={{ animationDelay: '0.12s' }}>
-                  <StreakCard
-                    streak={streak}
-                    onTap={() => setStreakSheetOpen(true)}
-                    hint={hintTarget === 1 ? currentHint : null}
-                    showHint={showHint && hintTarget === 1}
-                    onHintAction={handleNavigation}
-                    isRightRail
-                  />
-                </div>
-              </aside>
-
-            </div>{/* /two-column grid */}
-          </div>{/* /max-width wrapper */}
-        </div>{/* /scroll region */}
-
-        <Toast toast={toast} onDismiss={dismissToast} onAction={handleToastAction} />
-        <StreakSheet open={streakSheetOpen} onClose={() => setStreakSheetOpen(false)} />
-
-        {/* ── Mobile drawer overlay + drawer (unchanged from original) ── */}
-        {sidebarOpen && (
-          <div className="md:hidden fixed inset-0 bg-black/50 z-40 backdrop-blur-[2px]" onClick={() => setSidebarOpen(false)} />
-        )}
-
-        {/* Mobile slide-out drawer */}
-        <div
-          className={`md:hidden fixed top-0 left-0 h-full w-64 bg-white border-r border-gray-100 transform z-50 flex flex-col ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}
-          style={{ transition: 'transform 0.2s ease-out', willChange: 'transform' }}
-        >
-          <div className="flex justify-between items-center p-4 border-b border-gray-100">
-            <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-lg overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600">
-                <img src="/images/luanar7.png" alt="LUANAR" className="w-full h-full object-cover" />
-              </div>
-              <span className="text-sm font-bold text-gray-900">Menu</span>
-            </div>
-            <button onClick={() => setSidebarOpen(false)} className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-100" aria-label="Close">
-              <svg className="w-4 h-4 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="m18 6-12 12"/><path d="m6 6 12 12"/>
-              </svg>
-            </button>
-          </div>
-
-          <div className="px-4 py-3">
-            <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-100">
-              <div className="w-9 h-9 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm">{initials}</div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-gray-900 truncate">{displayName}</p>
-                <p className="text-xs text-gray-400 truncate">{userData?.role || 'Student'}</p>
-              </div>
-            </div>
-          </div>
-
-          <nav className="flex-1 px-4 overflow-y-auto space-y-4">
-            <div>
-              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 px-1">Study</p>
-              <ul className="space-y-1">
-                {[
-                  {
-                    path: '/timetable', label: 'Timetable',
-                    icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>,
-                  },
-                  {
-                    path: '/Request', label: 'Request Notes',
-                    icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21,13.89 7,23 12,20 17,23 15.79,13.88"/></svg>,
-                  },
-                ].map(({ path, label, icon }) => (
-                  <li key={path}>
-                    <button
-                      onClick={() => { handleNavigation(path); setSidebarOpen(false); }}
-                      className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-50 text-gray-700 text-sm transition-colors duration-100 active:scale-95 text-left"
-                    >
-                      {icon}{label}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 px-1">Account</p>
-              <ul className="space-y-1">
-                {[
-                  {
-                    path: '/profile', label: 'Profile',
-                    icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>,
-                  },
-                  {
-                    path: '/settings', label: 'Settings & Updates',
-                    icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>,
-                  },
-                ].map(({ path, label, icon }) => (
-                  <li key={path}>
-                    <button
-                      onClick={() => { handleNavigation(path); setSidebarOpen(false); }}
-                      className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-50 text-gray-700 text-sm transition-colors duration-100 active:scale-95 text-left"
-                    >
-                      {icon}{label}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </nav>
-
-          <div className="p-4 border-t border-gray-100">
-            <p className="text-[10px] text-gray-300 text-center">© 2026 StudyHub LUANAR</p>
+          <div className="px-4 pb-3 text-center">
+            <h2 className="text-sm font-medium text-gray-900">
+              {greeting.timeGreeting}, <span className="font-bold">{displayName}</span>
+            </h2>
+            <p className="text-xs text-gray-500 mt-0.5">{greeting.subtext}</p>
           </div>
         </div>
-
       </div>
+
+      {/* DESKTOP HEADER */}
+      <div className="hidden lg:block flex-shrink-0 px-6 py-6 space-y-4">
+        {!isOnline && <div className="-mx-6 -mt-6 mb-2"><OfflineBanner /></div>}
+        <div className="ed-fade-up">
+          <h1 className="text-2xl font-semibold text-gray-900" style={{ letterSpacing: '-0.01em' }}>
+            {greeting.timeGreeting}, <span className="font-bold">{displayName}</span>
+          </h1>
+          <p className="text-sm text-gray-500 mt-1">{greeting.subtext}</p>
+        </div>
+        <div className="relative max-w-md">
+          <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input
+            type="text"
+            placeholder="Search courses, topics..."
+            className="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm placeholder:text-gray-400 transition-shadow"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
+      </div>
+
+      {/* ── SCROLLABLE CONTENT ──
+          FIX: this is the single, only scrolling region in the tree (the
+          header above is a flex sibling with flex-shrink-0, not part of
+          the scroll flow), which is the right pattern for smooth native
+          scrolling. `overscroll-behavior-y: contain` stops the browser
+          from chaining an overscroll bounce up to the page behind it. */}
+      <div
+        ref={scrollContainerRef}
+        className="flex-1 overflow-y-auto overflow-x-hidden"
+        style={{ WebkitOverflowScrolling: 'touch', overscrollBehaviorY: 'contain' }}
+      >
+        <div className="px-4 lg:px-6 space-y-4 pt-2 pb-32">
+
+          <div className="ed-fade-up" style={{ animationDelay: '0.04s' }}>
+            <AiStudyAssistantCard onAskClick={() => navigate('/AiChat')} description={getPersonalizedDescription} />
+          </div>
+
+          <div className="grid grid-cols-2 gap-3 ed-fade-up" style={{ animationDelay: '0.09s' }}>
+            <ExamCountdownCard
+              daysLeft={daysLeft}
+              daysDelta={daysDelta}
+              hint={hintTarget === 0 ? currentHint : null}
+              showHint={showHint && hintTarget === 0}
+              onHintAction={handleNavigation}
+              onPrimaryAction={() => handleNavigation('/timetable')}
+            />
+            <StreakCard
+              streak={streak}
+              onTap={() => setStreakSheetOpen(true)}
+              hint={hintTarget === 1 ? currentHint : null}
+              showHint={showHint && hintTarget === 1}
+              onHintAction={handleNavigation}
+            />
+          </div>
+
+          {/* ── Level-Up Banner ── only shown when suggestion exists and not dismissed */}
+          {levelUpSuggestion && (
+            <LevelUpBanner
+              suggestion={levelUpSuggestion}
+              onDismiss={handleLevelUpDismiss}
+              onAction={handleNavigation}
+            />
+          )}
+
+          {/* ── Recommended For You ── only shown when quiz history exists */}
+          <RecommendedForYou
+            recommendations={recommendations}
+            onAction={handleRecommendationAction}
+          />
+
+          <div className="ed-fade-up" style={{ animationDelay: '0.14s' }}>
+            <div className="mb-3">
+              <h2 className="text-base font-semibold text-gray-900">Pick up where you left off</h2>
+              <p className="text-[11px] text-gray-400 mt-0.5">Recently uploaded for your programme</p>
+            </div>
+            <Files
+              searchQuery={debouncedSearch}
+              limit={6}
+              onFileClick={handleFileClick}
+              profile={userData}
+              onEmpty={() => setFilesEmpty(true)}
+              emptyState={<EmptyFilesState onBrowse={() => handleNavigation('/course')} />}
+            />
+          </div>
+
+        </div>
+      </div>
+
+            <Toast toast={toast} onDismiss={dismissToast} onAction={handleToastAction} />
+      <StreakSheet open={streakSheetOpen} onClose={() => setStreakSheetOpen(false)} />
+
+      {sidebarOpen && (
+        <div className="lg:hidden fixed inset-0 bg-black/50 z-40 backdrop-blur-[2px]" onClick={() => setSidebarOpen(false)} />
+      )}
+
+      {/* Sidebar */}
+      <div className={`lg:hidden fixed top-0 left-0 h-full w-64 bg-white border-r border-gray-100 transform z-50 flex flex-col ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}
+        style={{ transition: 'transform 0.2s ease-out', willChange: 'transform' }}
+      >
+        <div className="flex justify-between items-center p-4 border-b border-gray-100">
+          <div className="flex items-center gap-2">
+            <div className="w-7 h-7 rounded-lg overflow-hidden bg-blue-600">
+              <img src="/images/luanar7.png" alt="LUANAR" className="w-full h-full object-cover" />
+            </div>
+            <span className="text-sm font-bold text-gray-900">Menu</span>
+          </div>
+          <button onClick={() => setSidebarOpen(false)} className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-100" aria-label="Close">
+            <svg className="w-4 h-4 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="m18 6-12 12"/><path d="m6 6 12 12"/>
+            </svg>
+          </button>
+        </div>
+
+        <div className="px-4 py-3">
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-100">
+            <div className="w-9 h-9 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">{initials}</div>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-semibold text-gray-900 truncate">{displayName}</p>
+              <p className="text-xs text-gray-400 truncate">{userData?.role || 'Student'}</p>
+            </div>
+          </div>
+        </div>
+
+        <nav className="flex-1 px-4 overflow-y-auto space-y-4">
+          <div>
+            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 px-1">Study</p>
+            <ul className="space-y-1">
+              {[
+                {
+                  path: '/tutorials', label: 'Tutorials',
+                  icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>,
+                },
+                {
+                  path: '/timetable', label: 'Timetable',
+                  icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>,
+                },
+                {
+                  path: '/Request', label: 'Request Notes',
+                  icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21,13.89 7,23 12,20 17,23 15.79,13.88"/></svg>,
+                },
+              ].map(({ path, label, icon }) => (
+                <li key={path}>
+                  <button
+                    onClick={() => { handleNavigation(path); setSidebarOpen(false); }}
+                    className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-50 text-gray-700 text-sm transition-colors duration-100 active:scale-95 text-left"
+                  >
+                    {icon}{label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 px-1">Account</p>
+            <ul className="space-y-1">
+              {[
+                {
+                  path: '/profile', label: 'Profile',
+                  icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>,
+                },
+                {
+                  path: '/settings', label: 'Settings & Updates',
+                  icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>,
+                },
+              ].map(({ path, label, icon }) => (
+                <li key={path}>
+                  <button
+                    onClick={() => { handleNavigation(path); setSidebarOpen(false); }}
+                    className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-50 text-gray-700 text-sm transition-colors duration-100 active:scale-95 text-left"
+                  >
+                    {icon}{label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </nav>
+
+        <div className="p-4 border-t border-gray-100">
+          <p className="text-[10px] text-gray-300 text-center">© 2026 StudyHub LUANAR</p>
+        </div>
+      </div>
+    </div>
   );
 };
 

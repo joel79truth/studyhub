@@ -72,6 +72,7 @@ import {
   useDeferredValue, useTransition, memo, createContext, useContext,
 } from 'react'
 import { supabase } from '../supabase'
+import { BottomNav } from '../components/BottomNav'
 import { useQuery } from '@tanstack/react-query'
 import { InlineMath, BlockMath } from 'react-katex'
 import 'katex/dist/katex.min.css'
@@ -82,37 +83,14 @@ import {
   Trophy, Search, Inbox, Frown, WifiOff, X, Send,
   Maximize2, Minimize2, ArrowLeft, ChevronRight, ChevronLeft,
   GraduationCap, BookOpen, AlarmClock, Quote, TrendingUp, CircleDot,
-  Tag, ArrowRight, PanelRight, Image as ImageIcon, ZoomIn, ZoomOut,
-  SlidersHorizontal,
-  User,
-  Loader2,
+  Tag, ArrowRight, Image as ImageIcon, MessageCircleQuestion,
 } from 'lucide-react'
-import * as pdfjs from 'pdfjs-dist'
-import workerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
+import GoogleLensIcon from '../components/GoogleLensIcon'
 import { MathText, renderInline, mathRenderError } from './math-fix'
 import TutorMarkdown from '../components/common/TutorMarkdown'
+import ActualPaperView from '../components/ActualPaperView'
 import { API_BASE_URL } from '../lib/apiConfig'
 import { trackPaperViewed, trackSearch } from '../lib/analytics'
-
-if (pdfjs?.GlobalWorkerOptions) {
-  pdfjs.GlobalWorkerOptions.workerSrc = workerUrl;
-}
-
-// ── Desktop breakpoint hook ───────────────────────────────────
-// Returns true when viewport is ≥1024px. Does NOT affect mobile render.
-function useIsDesktop() {
-  const [isDesktop, setIsDesktop] = useState(() => {
-    if (typeof window === 'undefined') return false
-    return window.matchMedia('(min-width: 1024px)').matches
-  })
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 1024px)')
-    const handler = (e) => setIsDesktop(e.matches)
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
-  }, [])
-  return isDesktop
-}
 
 // ── API layer ─────────────────────────────────────────────────
 const API_BASE = API_BASE_URL
@@ -236,7 +214,7 @@ async function writeWithOfflineFallback(fn, queueItem) {
 
 // ── Data layer ────────────────────────────────────────────────
 async function fetchUserAcademicProfile(userId) {
-  if (!userId || userId === 'preview-user-id') return null
+  if (!userId) return null
   const { data, error } = await supabase
     .from('profiles')
     .select('program, year_of_study, semester')
@@ -271,68 +249,59 @@ async function fetchCoursesForProgram(programId, year = null, semester = null) {
     .order('year', { ascending: true }).order('semester', { ascending: true })
   if (error) throw error; return data || []
 }
-async function fetchPublicNames(ids) {
-  if (!ids?.length) return {}
+async function fetchQuestionsForCourseIds(courseIds) {
+  if (!courseIds?.length) return []
+  const cacheKey = 'sh_cq_' + [...courseIds].sort().join('_')
   try {
-    const res = await apiGet(`/api/profiles/public-names?ids=${encodeURIComponent(ids.join(','))}`)
-    return res?.profiles || {}
-  } catch {
-    return {}
+    const { data, error } = await supabase
+      .from('past_papers')
+      .select('*, courses ( id, course_code, course_name, semester, year, program_id )')
+      .in('course_id', courseIds).order('created_at', { ascending: false })
+    if (error) throw error
+    if (data?.length) {
+      try {
+        localStorage.setItem(cacheKey, JSON.stringify(data))
+        // Group by paper_id and cache individual papers for instant 0ms access
+        const byPaper = {}
+        data.forEach(r => {
+          if (r.paper_id) {
+            if (!byPaper[r.paper_id]) byPaper[r.paper_id] = []
+            byPaper[r.paper_id].push(r)
+          }
+        })
+        Object.entries(byPaper).forEach(([pid, rows]) => {
+          localStorage.setItem('sh_pq_' + pid, JSON.stringify(rows))
+        })
+      } catch {}
+    }
+    return data || []
+  } catch (err) {
+    try {
+      const cached = localStorage.getItem(cacheKey)
+      if (cached) return JSON.parse(cached)
+    } catch {}
+    throw err
   }
 }
 
-function formatUploaderName(rawName) {
-  if (!rawName || typeof rawName !== 'string') return ''
-  const parts = rawName.trim().split(/\s+/).filter(Boolean)
-  if (parts.length === 1) return parts[0].charAt(0).toUpperCase() + parts[0].slice(1).toLowerCase()
-  const first = parts[0].charAt(0).toUpperCase() + parts[0].slice(1).toLowerCase()
-  const lastInitial = parts[parts.length - 1].charAt(0).toUpperCase() + '.'
-  return `${first} ${lastInitial}`
-}
-
-async function fetchQuestionsForCourseIds(courseIds) {
-  if (!courseIds?.length) return []
-  try {
-    const { data, error } = await supabase
-      .from('past_papers')
-      .select('*, courses ( id, course_code, course_name, semester, year, program_id ), past_paper:past_paper_id ( id, file_url, file_type, file_name, uploaded_by, processing_status, kind, title, page_count )')
-      .in('course_id', courseIds).order('created_at', { ascending: false })
-    if (!error && data) return data
-  } catch (_) {}
-  const { data, error } = await supabase
-    .from('past_papers')
-    .select('*, courses ( id, course_code, course_name, semester, year, program_id )')
-    .in('course_id', courseIds).order('created_at', { ascending: false })
-  if (error) throw error; return data || []
-}
-async function fetchAllRecentQuestions(limit = 200) {
-  try {
-    const { data, error } = await supabase
-      .from('past_papers')
-      .select('*, courses ( id, course_code, course_name, semester, year, program_id ), past_paper:past_paper_id ( id, file_url, file_type, file_name, uploaded_by, processing_status, kind, title, page_count )')
-      .order('created_at', { ascending: false })
-      .limit(limit)
-    if (!error && data) return data
-  } catch (_) {}
-  const { data, error } = await supabase
-    .from('past_papers')
-    .select('*, courses ( id, course_code, course_name, semester, year, program_id )')
-    .order('created_at', { ascending: false })
-    .limit(limit)
-  return data || []
-}
 async function fetchQuestionsForPaper(paperId) {
   if (!paperId) return []
+  const cacheKey = 'sh_pq_' + paperId
   try {
     const { data, error } = await supabase
-      .from('past_papers')
-      .select('*, past_paper:past_paper_id ( id, file_url, file_type, file_name, uploaded_by, processing_status, kind, title, page_count )')
-      .eq('paper_id', paperId).order('created_at', { ascending: true })
-    if (!error && data) return data
-  } catch (_) {}
-  const { data, error } = await supabase
-    .from('past_papers').select('*').eq('paper_id', paperId).order('created_at', { ascending: true })
-  if (error) throw error; return data || []
+      .from('past_papers').select('*').eq('paper_id', paperId).order('created_at', { ascending: true })
+    if (error) throw error
+    if (data?.length) {
+      try { localStorage.setItem(cacheKey, JSON.stringify(data)) } catch {}
+    }
+    return data || []
+  } catch (err) {
+    try {
+      const cached = localStorage.getItem(cacheKey)
+      if (cached) return JSON.parse(cached)
+    } catch {}
+    throw err
+  }
 }
 
 function groupQuestionsIntoPapers(rows) {
@@ -345,13 +314,8 @@ function groupQuestionsIntoPapers(rows) {
         courseName: row.courses?.course_name || row.course || 'Unknown course',
         courseCode: row.courses?.course_code || null,
         year: row.year, extractedAt: row.created_at,
-        semester: row.courses?.semester || null,
         questionCount: 0, totalMarks: 0, topics: new Set(),
-        pastPaper: row.past_paper || null,
-        uploadedBy: row.past_paper?.uploaded_by || null,
-        processingStatus: row.past_paper?.processing_status || 'done',
-        kind: row.past_paper?.kind || 'paper',
-        title: row.past_paper?.title || null,
+        pastPaperId: row.past_paper_id || null,
       }
     }
     const p = byPaper[key]
@@ -359,14 +323,7 @@ function groupQuestionsIntoPapers(rows) {
     if (typeof row.marks === 'number') p.totalMarks += row.marks
     if (row.topic) p.topics.add(row.topic)
     if (p.year == null && row.year != null) p.year = row.year
-    if (!p.semester && row.courses?.semester) p.semester = row.courses.semester
-    if (!p.pastPaper && row.past_paper) {
-      p.pastPaper = row.past_paper
-      if (row.past_paper.uploaded_by) p.uploadedBy = row.past_paper.uploaded_by
-      if (row.past_paper.processing_status) p.processingStatus = row.past_paper.processing_status
-      if (row.past_paper.kind) p.kind = row.past_paper.kind
-      if (row.past_paper.title) p.title = row.past_paper.title
-    }
+    if (!p.pastPaperId && row.past_paper_id) p.pastPaperId = row.past_paper_id
   }
   return Object.values(byPaper).map(p => ({ ...p, topics: [...p.topics] }))
 }
@@ -400,8 +357,6 @@ function normalizeDbQuestion(row, idx) {
   return {
     id: row.id, paperId: row.paper_id || null,
     number: row.question_number || leading?.number || String(idx + 1),
-    pageNumber: row.page_number != null ? Number(row.page_number) : null,
-    pastPaper: row.past_paper || null,
     marks: typeof row.marks === 'number' ? row.marks : null,
     text: leading ? leading.rest : rawQuestion,
     topic: row.topic || 'General', year: row.year || null,
@@ -707,9 +662,8 @@ const CourseCard = memo(({ course, onClick, delay = 0 }) => {
     </div>
   )
 })
-const CourseThumbnailCard = memo(({ courseName, courseCode, paperCount, reviewedCount = 0, totalCount = 0, onClick, delay = 0 }) => {
+const CourseThumbnailCard = memo(({ courseName, courseCode, paperCount, onClick, delay = 0 }) => {
   const rm = useReducedMotion()
-  const pct = totalCount > 0 ? Math.round((reviewedCount / totalCount) * 100) : 0
   return (
     <div
       className={`group bg-white border border-indigo-100 rounded-2xl p-4 flex items-center gap-4 cursor-pointer hover:border-indigo-400 hover:shadow-lg hover:shadow-indigo-100 hover:-translate-y-0.5 transition-all will-change-transform ${rm ? '' : 'ed-fade-up'}`}
@@ -728,423 +682,66 @@ const CourseThumbnailCard = memo(({ courseName, courseCode, paperCount, reviewed
       <div className="flex-1 min-w-0">
         <h3 className="font-semibold text-gray-800 truncate font-display">{courseName}</h3>
         <p className="text-sm text-gray-500">{courseCode ? `${courseCode} · ` : ''}{paperCount} {paperCount === 1 ? 'paper' : 'papers'}</p>
-        {reviewedCount > 0 && (
-          <div className="mt-1.5">
-            <div className="flex items-center justify-between text-[11px] font-semibold mb-0.5">
-              <span className="text-indigo-500 flex items-center gap-0.5"><CheckCheck className="w-3 h-3" /> {reviewedCount} done</span>
-              <span className="text-gray-500">{pct}%</span>
-            </div>
-            <div className="h-1 bg-gray-100 rounded-full overflow-hidden">
-              <div className="h-full bg-indigo-400 rounded-full" style={{ width: `${pct}%` }} />
-            </div>
-          </div>
-        )}
       </div>
       <ChevronRight className="w-4 h-4 text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
     </div>
   )
 })
 
-// ── Paper Card for List View (Institutional, Calm, High Data-Ink) ──
-const PaperCard = memo(({ paper, onClick }) => {
-  const hasScan = Boolean(paper.pastPaper?.file_url)
-  const isPdf = paper.pastPaper?.file_type === 'application/pdf' || (paper.pastPaper?.file_url && paper.pastPaper.file_url.toLowerCase().includes('.pdf'))
-  const formatLabel = isPdf ? 'PDF' : (hasScan ? 'Scan' : 'Text')
-
-  const examTypeLabel = useMemo(() => {
-    const raw = paper.pastPaper?.exam_type || paper.pastPaper?.Mid
-    if (!raw) return null
-    const lower = String(raw).toLowerCase()
-    if (lower.includes('end')) return 'End of Semester'
-    if (lower.includes('mid')) return 'Mid Semester'
-    if (lower.includes('test')) return 'Class Test'
-    if (lower.includes('assign')) return 'Assignment'
-    return raw
-  }, [paper.pastPaper])
-
+// ── Paper Toolbar with Year Switcher & Format Toggle ───────────
+const PaperToolbar = memo(({ papers, currentPaperId, onSelect, viewFormat = 'extracted', onFormatChange }) => {
   return (
-    <div
-      onClick={onClick}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(); } }}
-      className="group bg-white border border-slate-200 hover:border-[#024927] rounded-xl p-4 sm:p-5 flex flex-col justify-between cursor-pointer hover:shadow-xs transition-colors duration-150 text-left min-h-[120px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#024927]"
-    >
-      <div>
-        {/* Top Meta Row */}
-        <div className="flex items-center justify-between gap-2 text-xs text-slate-500 mb-2">
-          <div className="flex items-center gap-1.5 flex-wrap">
-            {paper.courseCode && (
-              <span className="font-bold text-[#024927] bg-[#024927]/10 px-2 py-0.5 rounded text-[11px] tracking-wide">
-                {paper.courseCode}
-              </span>
-            )}
-            {paper.year && (
-              <span className="font-semibold text-slate-700">
-                {paper.year}
-              </span>
-            )}
-            {examTypeLabel && (
-              <>
-                <span className="text-slate-300">·</span>
-                <span className="text-slate-600 font-medium">
-                  {examTypeLabel}
-                </span>
-              </>
-            )}
-          </div>
-
-          <span className="text-[11px] font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
-            {formatLabel}
-          </span>
-        </div>
-
-        {/* Course Title */}
-        <h3 className="font-bold text-slate-900 text-base leading-snug group-hover:text-[#024927] transition-colors line-clamp-2">
-          {paper.courseName}
-        </h3>
-
-        {/* Uploader Attribution */}
-        {paper.uploaderLabel && (
-          <p className="text-xs text-slate-500 mt-2 flex items-center gap-1">
-            <User className="w-3 h-3 text-slate-400" />
-            <span>Uploaded by {paper.uploaderLabel}</span>
-          </p>
-        )}
-      </div>
-
-      {/* Footer Info */}
-      <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-600 font-medium">
-        <span>
-          {paper.questionCount > 0 ? `${paper.questionCount} Questions` : 'Full Paper'}
-          {paper.totalMarks > 0 ? ` · ${paper.totalMarks} Marks` : ''}
-        </span>
-        <span className="text-[#024927] font-semibold flex items-center gap-1 group-hover:translate-x-0.5 transition-transform min-h-[32px]">
-          Read Paper <ArrowRight className="w-3.5 h-3.5" />
-        </span>
-      </div>
-    </div>
-  )
-})
-
-// ── Reusable [Image | Text] Segmented Toggle ──────────────────
-const ViewModeToggle = memo(({ viewMode, onChange, hasImageScan }) => {
-  if (!hasImageScan) return null
-
-  return (
-    <div className="inline-flex p-1 bg-slate-100/90 rounded-xl text-xs font-semibold border border-slate-200/80 shadow-inner">
-      <button
-        onClick={() => onChange('text')}
-        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all ${
-          viewMode === 'text'
-            ? 'bg-white text-[#024927] font-bold shadow-xs'
-            : 'text-slate-600 hover:text-slate-900'
-        }`}
-      >
-        <FileText className="w-3.5 h-3.5" />
-        <span>Text Mode</span>
-      </button>
-      <button
-        onClick={() => onChange('image')}
-        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all ${
-          viewMode === 'image'
-            ? 'bg-white text-[#024927] font-bold shadow-xs'
-            : 'text-slate-600 hover:text-slate-900'
-        }`}
-      >
-        <ImageIcon className="w-3.5 h-3.5" />
-        <span>Scanned Image</span>
-      </button>
-    </div>
-  )
-})
-
-// ── Scanned Image / PDF Viewer with Pinch-to-Zoom ──────────────
-const ScannedImageViewer = memo(({ fileUrl, fileType, currentPage = 1, onPageChange, initialPage = 1 }) => {
-  const isPdf = fileType === 'application/pdf' || (typeof fileUrl === 'string' && fileUrl.toLowerCase().includes('.pdf'))
-  const [page, setPage] = useState(initialPage || currentPage || 1)
-  const [totalPages, setTotalPages] = useState(1)
-  const [pdfDoc, setPdfDoc] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [loadError, setLoadError] = useState(null)
-  const [scale, setScale] = useState(1.0)
-
-  const canvasRef = useRef(null)
-  const containerRef = useRef(null)
-  const renderTaskRef = useRef(null)
-  const touchDistRef = useRef(null)
-
-  useEffect(() => {
-    if (initialPage && initialPage !== page) {
-      setPage(initialPage)
-    }
-  }, [initialPage])
-
-  // Load PDF document if applicable
-  useEffect(() => {
-    if (!isPdf || !fileUrl) {
-      setLoading(false)
-      setTotalPages(1)
-      return
-    }
-
-    let isCancelled = false
-    setLoading(true)
-    setLoadError(null)
-
-    pdfjs.getDocument({ url: fileUrl }).promise
-      .then((doc) => {
-        if (isCancelled) return
-        setPdfDoc(doc)
-        setTotalPages(doc.numPages || 1)
-        setLoading(false)
-      })
-      .catch((err) => {
-        if (isCancelled) return
-        console.error('Failed to load PDF in ScannedImageViewer:', err)
-        setLoadError(err.message || 'Could not load scanned document')
-        setLoading(false)
-      })
-
-    return () => { isCancelled = true }
-  }, [fileUrl, isPdf])
-
-  // Render PDF page on canvas
-  useEffect(() => {
-    if (!isPdf || !pdfDoc || loading) return
-
-    let isCancelled = false
-    const targetPageNum = Math.min(Math.max(1, page), totalPages || 1)
-
-    // Cancel in-flight render task
-    if (renderTaskRef.current) {
-      try { renderTaskRef.current.cancel() } catch (_) {}
-    }
-
-    pdfDoc.getPage(targetPageNum).then((pdfPage) => {
-      if (isCancelled) return
-      const canvas = canvasRef.current
-      const container = containerRef.current
-      if (!canvas) return
-
-      const baseViewport = pdfPage.getViewport({ scale: 1.0 })
-      const containerWidth = container ? container.clientWidth - 32 : 600
-      const fitScale = Math.min(Math.max(0.6, containerWidth / baseViewport.width), 2.0)
-      const viewport = pdfPage.getViewport({ scale: fitScale * scale })
-
-      const dpr = typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1
-      canvas.width = Math.floor(viewport.width * dpr)
-      canvas.height = Math.floor(viewport.height * dpr)
-      canvas.style.width = `${Math.floor(viewport.width)}px`
-      canvas.style.height = `${Math.floor(viewport.height)}px`
-
-      const ctx = canvas.getContext('2d')
-      ctx.scale(dpr, dpr)
-
-      const renderTask = pdfPage.render({ canvasContext: ctx, viewport })
-      renderTaskRef.current = renderTask
-
-      renderTask.promise.catch((err) => {
-        if (err.name !== 'RenderingCancelledException') {
-          console.warn('Canvas render error:', err)
-        }
-      })
-    })
-
-    return () => {
-      isCancelled = true
-      if (renderTaskRef.current) {
-        try { renderTaskRef.current.cancel() } catch (_) {}
-      }
-    }
-  }, [pdfDoc, page, totalPages, scale, isPdf, loading])
-
-  const handlePrev = () => {
-    if (page > 1) {
-      const next = page - 1
-      setPage(next)
-      onPageChange?.(next)
-    }
-  }
-
-  const handleNext = () => {
-    if (page < totalPages) {
-      const next = page + 1
-      setPage(next)
-      onPageChange?.(next)
-    }
-  }
-
-  const zoomIn = () => setScale(s => Math.min(3.0, Math.round((s + 0.25) * 100) / 100))
-  const zoomOut = () => setScale(s => Math.max(0.6, Math.round((s - 0.25) * 100) / 100))
-  const resetZoom = () => setScale(1.0)
-
-  // Touch pinch-to-zoom handlers
-  const onTouchStart = (e) => {
-    if (e.touches.length === 2) {
-      touchDistRef.current = Math.hypot(
-        e.touches[0].clientX - e.touches[1].clientX,
-        e.touches[0].clientY - e.touches[1].clientY
-      )
-    }
-  }
-
-  const onTouchMove = (e) => {
-    if (e.touches.length === 2 && touchDistRef.current) {
-      const currentDist = Math.hypot(
-        e.touches[0].clientX - e.touches[1].clientX,
-        e.touches[0].clientY - e.touches[1].clientY
-      )
-      const ratio = currentDist / touchDistRef.current
-      setScale(prev => Math.min(3.0, Math.max(0.6, prev * ratio)))
-      touchDistRef.current = currentDist
-    }
-  }
-
-  const onTouchEnd = () => {
-    touchDistRef.current = null
-  }
-
-  if (loadError) {
-    return (
-      <div className="p-8 text-center bg-slate-50 rounded-2xl border border-slate-200 m-4">
-        <Frown className="w-8 h-8 text-rose-500 mx-auto mb-2" />
-        <p className="font-bold text-slate-800 text-sm">Could not load scanned document</p>
-        <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">{loadError}</p>
-        {fileUrl && (
-          <a
-            href={fileUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 mt-4 text-xs font-semibold px-4 py-2 bg-[#024927] text-white rounded-xl hover:bg-[#046c3b]"
-          >
-            Open source file directly →
-          </a>
-        )}
-      </div>
-    )
-  }
-
-  return (
-    <div className="flex flex-col h-full bg-slate-100/70 select-none overflow-hidden">
-      {/* Top Floating Toolbar */}
-      <div className="sticky top-0 z-20 bg-white/95 backdrop-blur-md px-4 py-2.5 border-b border-slate-200/80 flex items-center justify-between gap-3 shadow-xs">
-        {/* Page navigation */}
-        <div className="flex items-center gap-1.5">
-          <button
-            onClick={handlePrev}
-            disabled={page <= 1}
-            className="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 disabled:opacity-30 disabled:pointer-events-none transition-all"
-            title="Previous Page"
-            aria-label="Previous Page"
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </button>
-
-          <span className="text-xs font-bold text-slate-800 px-2 py-1 bg-slate-100 rounded-lg">
-            Page {page} of {totalPages}
-          </span>
-
-          <button
-            onClick={handleNext}
-            disabled={page >= totalPages}
-            className="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 disabled:opacity-30 disabled:pointer-events-none transition-all"
-            title="Next Page"
-            aria-label="Next Page"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </button>
-        </div>
-
-        {/* Zoom controls */}
-        <div className="flex items-center gap-1">
-          <button
-            onClick={zoomOut}
-            disabled={scale <= 0.6}
-            className="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 disabled:opacity-30 transition-all"
-            title="Zoom Out"
-            aria-label="Zoom Out"
-          >
-            <ZoomOut className="w-4 h-4" />
-          </button>
-
-          <span className="text-[11px] font-bold text-slate-600 min-w-[42px] text-center">
-            {Math.round(scale * 100)}%
-          </span>
-
-          <button
-            onClick={zoomIn}
-            disabled={scale >= 3.0}
-            className="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 disabled:opacity-30 transition-all"
-            title="Zoom In"
-            aria-label="Zoom In"
-          >
-            <ZoomIn className="w-4 h-4" />
-          </button>
-
-          {scale !== 1.0 && (
+    <div className="px-4 sm:px-8 pt-2 pb-1 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5">
+      {/* Paper year chips (if multiple papers) - compact height & concise labels */}
+      {papers.length > 1 ? (
+        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+          {papers.map((p) => (
             <button
-              onClick={resetZoom}
-              className="px-2 h-8 flex items-center gap-1 text-[11px] font-semibold rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 transition-all ml-1"
-              title="Reset Zoom"
+              key={p.paperId}
+              onClick={() => onSelect(p)}
+              className={`flex-shrink-0 px-2.5 h-7 rounded-lg text-[11px] font-bold whitespace-nowrap border transition-all active:scale-95 ${
+                p.paperId === currentPaperId
+                  ? 'bg-indigo-600 border-indigo-600 text-white shadow-sm'
+                  : 'bg-white border-slate-200 text-slate-600 hover:border-indigo-200 hover:text-indigo-600'
+              }`}
+              title={`${p.year || 'Paper'} (${p.questionCount} Qs)`}
             >
-              <RotateCcw className="w-3 h-3" /> Reset
+              {p.year || 'Paper'}
             </button>
-          )}
+          ))}
         </div>
-      </div>
+      ) : <div />}
 
-      {/* Main Canvas / Image Area */}
-      <div
-        ref={containerRef}
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
-        className="flex-1 overflow-auto p-4 sm:p-6 flex items-start justify-center"
-      >
-        {loading ? (
-          <div className="flex flex-col items-center justify-center py-20 text-slate-400 gap-3">
-            <div className="w-8 h-8 border-3 border-[#024927] border-t-transparent rounded-full animate-spin" />
-            <p className="text-xs font-semibold">Rendering scanned paper…</p>
-          </div>
-        ) : isPdf ? (
-          <div className="bg-white shadow-lg rounded-xl overflow-hidden border border-slate-300/80 transition-transform duration-75">
-            <canvas ref={canvasRef} className="block mx-auto" />
-          </div>
-        ) : (
-          <div className="bg-white shadow-lg rounded-xl overflow-hidden border border-slate-300/80 transition-transform duration-75 max-w-full">
-            <img
-              src={fileUrl}
-              alt={`Page ${page}`}
-              className="max-w-full h-auto object-contain block mx-auto"
-              style={{ transform: `scale(${scale})`, transformOrigin: 'top center' }}
-              loading="lazy"
-            />
-          </div>
-        )}
-      </div>
-    </div>
-  )
-})
+      {/* Segmented Control: Extracted Text vs Actual Paper Image */}
+      {onFormatChange && (
+        <div className="inline-flex p-0.5 bg-slate-100 rounded-xl border border-slate-200/80 self-start sm:self-auto flex-shrink-0">
+          <button
+            onClick={() => onFormatChange('extracted')}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+              viewFormat === 'extracted'
+                ? 'bg-white text-indigo-700 shadow-sm'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+            aria-label="View Extracted Text"
+          >
+            <FileText className="w-3.5 h-3.5" />
+            <span>Extracted Text</span>
+          </button>
 
-// ── Paper year pill switcher ───────────────────────────────────
-const PaperSwitcher = memo(({ papers, currentPaperId, onSelect }) => {
-  if (papers.length < 2) return null
-  return (
-    <div className="flex gap-2 px-4 sm:px-8 pt-3 pb-1 overflow-x-auto no-scrollbar">
-      {papers.map((p) => (
-        <button
-          key={p.paperId}
-          onClick={() => onSelect(p)}
-          className={`flex-shrink-0 px-3.5 h-9 rounded-full text-sm font-semibold whitespace-nowrap border transition-all active:scale-95 ${
-            p.paperId === currentPaperId
-              ? 'bg-indigo-600 border-indigo-600 text-white shadow-sm shadow-indigo-200'
-              : 'bg-white border-gray-200 text-gray-600 hover:border-indigo-300 hover:text-indigo-600'
-          }`}
-        >
-          {p.year || 'Paper'} · {p.questionCount} Qs
-        </button>
-      ))}
+          <button
+            onClick={() => onFormatChange('actual')}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+              viewFormat === 'actual'
+                ? 'bg-white text-indigo-700 shadow-sm'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+            aria-label="View Actual Paper Image"
+          >
+            <ImageIcon className="w-3.5 h-3.5" />
+            <span>Actual Paper</span>
+          </button>
+        </div>
+      )}
     </div>
   )
 })
@@ -1407,23 +1004,11 @@ const AiBlock = memo(({ content, streaming, stopped = false }) => {
   )
 })
 
-// ThinkingIndicator: dots only bounce when motion is allowed; otherwise a plain,
-// still label — same information, no animation cost on a weak GPU or slow link.
-// v19: default label now reads from AI_NAME instead of a hardcoded, different name.
-const ThinkingIndicator = memo(({ label = `${AI_NAME} is thinking` }) => {
-  const rm = useReducedMotion()
+// Simple Thinking... text line (no bouncing dots animation)
+const ThinkingIndicator = memo(({ label = 'Thinking...' }) => {
   return (
-    <div className="flex items-center gap-2 text-sm text-gray-500 py-3 ed-fade-up" aria-live="polite">
-      <span>{label}</span>
-      {!rm && (
-        <span className="flex gap-1">
-          {[0, 150, 300].map(d => (
-            <span key={d} className="w-1.5 h-1.5 rounded-full bg-indigo-300"
-              style={{ animation: 'ed-thinking-dot 1.1s ease-in-out infinite', animationDelay: `${d}ms` }} />
-          ))}
-        </span>
-      )}
-      {rm && <span className="text-gray-300">…</span>}
+    <div className="text-xs text-slate-400 font-medium py-2" aria-live="polite">
+      {label}
     </div>
   )
 })
@@ -1537,40 +1122,6 @@ function useSwipeHintOnce(enabled) {
   return show
 }
 
-// ── Action pill switcher (replaces the 2×2 menu grid) ────────
-const AI_ACTIONS = [
-  { id: 'understand', icon: Lightbulb,     label: 'Explain' },
-  { id: 'solve',      icon: PenLine,       label: 'Solve' },
-  { id: 'practice',   icon: RefreshCcw,    label: 'Practice' },
-  { id: 'chat',       icon: MessageCircle, label: 'Ask' },
-]
-
-const ActionPillBar = memo(({ screen, onSwitch, actionResults }) => (
-  <div className="flex gap-1.5 overflow-x-auto no-scrollbar pt-1 pb-2">
-    {AI_ACTIONS.map((a) => {
-      const Icon = a.icon
-      const active = screen === a.id
-      const done = !!actionResults[a.id]
-      return (
-        <button
-          key={a.id}
-          onClick={() => onSwitch(a.id)}
-          className={`flex items-center gap-1.5 px-3 h-9 rounded-full text-sm font-semibold whitespace-nowrap transition-all active:scale-95 flex-shrink-0 border ${
-            active
-              ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm shadow-indigo-200'
-              : done
-                ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
-                : 'bg-white text-gray-600 border-gray-200 hover:border-indigo-300 hover:text-indigo-600'
-          }`}
-        >
-          <Icon className="w-3.5 h-3.5" />
-          {a.label}
-          {done && !active && <CheckCircle2 className="w-3 h-3 text-emerald-400" />}
-        </button>
-      )
-    })}
-  </div>
-))
 
 // ── Dot position indicator (replaces Prev/Next bar) ──────────
 const DotIndicator = memo(({ questionList, currentId }) => {
@@ -1617,94 +1168,104 @@ const SwipeEdgeChevron = memo(({ side, visible, onClick }) => {
   )
 })
 
+// ── Student Message Bubble (Clean, compact, brand green tint, 40px thumbnail chip, 6-line clamp) ──
+const StudentBubble = memo(({ message, pageNumber, thumbnailUrl }) => {
+  const [expanded, setExpanded] = useState(false)
+  const isLong = (message?.length || 0) > 250 || (message?.match(/\n/g) || []).length > 5
+
+  return (
+    <div className="flex justify-end">
+      <div className="max-w-[80%] w-fit px-3 py-2 text-[14px] leading-[1.4] rounded-[12px] bg-blue-50 border border-blue-200 text-blue-950 shadow-none">
+        {pageNumber != null && (
+          <div className="flex items-center gap-2 mb-1.5 pb-1 border-b border-blue-200/80">
+            {thumbnailUrl ? (
+              <img src={thumbnailUrl} alt={`Page ${pageNumber}`} className="w-10 h-10 object-cover rounded-md border border-blue-200 flex-shrink-0" />
+            ) : (
+              <div className="w-10 h-10 rounded-md bg-blue-100 flex items-center justify-center text-xs font-bold text-blue-600 flex-shrink-0">
+                P.{pageNumber}
+              </div>
+            )}
+            <span className="text-xs font-semibold text-blue-600">Page {pageNumber}</span>
+          </div>
+        )}
+        <div className={!expanded && isLong ? 'line-clamp-6' : ''}>
+          {message}
+        </div>
+        {isLong && (
+          <button
+            type="button"
+            onClick={() => setExpanded(prev => !prev)}
+            className="mt-1 text-xs font-semibold text-blue-600 underline hover:text-blue-950 cursor-pointer"
+          >
+            {expanded ? 'Show less' : 'Show more'}
+          </button>
+        )}
+      </div>
+    </div>
+  )
+})
+
 // ── Action sheet content ──────────────────────────────────────
-// REDESIGNED: no more "menu" screen. Opens directly to Explain.
-// Horizontal pill switcher replaces the 2×2 grid.
-// Swipe left/right on the scroll area navigates questions — now with a discoverability
-// hint, edge chevrons, and keyboard arrow support (see fixes above).
-// v19: auto-scroll to streamed content, per-turn chat regenerate, and status
-// checks widened to include the new 'stopped' state.
 function ActionSheetContent({
   question, isSaved, onToggleSave, isFlagged, onFlag,
   isOnline, aiCache, isReviewed, onMarkReviewed,
   hasPrev, hasNext, onPrev, onNext, questionList,
+  paperContext,
 }) {
-  const reducedMotion = useReducedMotion()
   const cached = aiCache.get(question.id)
-  // Default directly to 'understand' (no menu screen)
-  const [screen, setScreen] = useState(cached?.screen || 'understand')
-  const [actionResults, setActionResults] = useState(cached?.actionResults || {})
   const [runningAction, setRunningAction] = useState(null)
   const { blocks: liveBlocks, status: liveStatus, errorMsg: liveError, run, stop } = useAiStream()
 
   const [conversation, setConversation] = useState(cached?.conversation || [])
   const [pendingMessage, setPendingMessage] = useState(null)
+  const [pendingPageNumber, setPendingPageNumber] = useState(null)
+  const [pendingThumbnailUrl, setPendingThumbnailUrl] = useState(null)
   const [chatInput, setChatInput] = useState('')
 
-  const [practiceQuestions, setPracticeQuestions] = useState(cached?.practiceQuestions || null)
-  const [practiceLoading, setPracticeLoading] = useState(false)
-  const [practiceError, setPracticeError] = useState(null)
-
-  // "Mark Done" now offers next-question as a dismissible toast instead of forcing it.
-  const [showDone, setShowDone] = useState(false)
-  const [showNextOffer, setShowNextOffer] = useState(false)
-
-  const showSwipeHint = useSwipeHintOnce((questionList?.length ?? 0) > 1)
-
-  // FIX: anchor to auto-scroll toward as tokens stream in, so new content
-  // doesn't land silently below the fold. One anchor is reused by whichever
-  // pane (Explain/Solve or chat) is currently streaming.
+  const showSwipeHint = useSwipeHintOnce(!paperContext && (questionList?.length ?? 0) > 1)
   const bottomRef = useRef(null)
+  const scrollContainerRef = useRef(null)
+  const isAtBottomRef = useRef(true)
+
+  const handleScroll = useCallback((e) => {
+    const { scrollTop, scrollHeight, clientHeight } = e.currentTarget
+    isAtBottomRef.current = scrollHeight - scrollTop - clientHeight < 60
+  }, [])
 
   useEffect(() => {
-    aiCache.set(question.id, { screen, actionResults, conversation, practiceQuestions })
-  }, [question.id, screen, actionResults, conversation, practiceQuestions, aiCache])
+    aiCache.set(question.id, { conversation })
+  }, [question.id, conversation, aiCache])
 
   useEffect(() => () => { stop() }, [stop])
 
-  // Auto-start Explain when opening a question with no cached result —
-  // BUT skip on a detected slow/metered connection (reducedMotion also covers
-  // saveData / 2G). Streaming an unrequested answer on a poor connection spends
-  // the user's data without asking; show a manual trigger instead.
+  // Commit completed/stopped chat turn into conversation history
   useEffect(() => {
-    if (screen === 'understand' && !actionResults.understand && !runningAction && !reducedMotion) {
-      setRunningAction('understand')
-      run('/api/exam/question-action/stream', { action: 'understand', question: questionPayload })
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [question.id, reducedMotion])
-
-  // FIX: widened from ('done' | 'error') to also include 'stopped', so a
-  // manually-stopped Explain/Solve answer still gets cached into
-  // actionResults instead of vanishing when the sheet re-renders.
-  useEffect(() => {
-    if (!runningAction || runningAction === 'chat') return
-    if (liveStatus === 'done' || liveStatus === 'error' || liveStatus === 'stopped') {
-      setActionResults(prev => ({ ...prev, [runningAction]: { blocks: liveBlocks, status: liveStatus, errorMsg: liveError } }))
+    if ((liveStatus === 'done' || liveStatus === 'error' || liveStatus === 'stopped') && pendingMessage !== null && runningAction === 'chat') {
+      setConversation(prev => [...prev, {
+        id: `${Date.now()}-${prev.length}`,
+        message: pendingMessage,
+        pageNumber: pendingPageNumber,
+        thumbnailUrl: pendingThumbnailUrl,
+        blocks: liveBlocks,
+        stopped: liveStatus === 'stopped',
+      }])
+      setPendingMessage(null)
+      setPendingPageNumber(null)
+      setPendingThumbnailUrl(null)
       setRunningAction(null)
     }
-  }, [liveStatus, liveBlocks, liveError, runningAction])
+  }, [liveStatus, liveBlocks, pendingMessage, pendingPageNumber, pendingThumbnailUrl, runningAction])
 
-  // FIX: same widening for chat — stopping a chat reply mid-stream should
-  // still commit the partial answer as a conversation turn, not discard it.
+  // Smart auto-scroll: scroll toward newly streamed tokens unless user has scrolled up to read
   useEffect(() => {
-    if ((liveStatus === 'done' || liveStatus === 'error' || liveStatus === 'stopped') && pendingMessage !== null && screen === 'chat' && runningAction === 'chat') {
-      setConversation(prev => [...prev, { id: `${Date.now()}-${prev.length}`, message: pendingMessage, blocks: liveBlocks, stopped: liveStatus === 'stopped' }])
-      setPendingMessage(null); setRunningAction(null)
-    }
-  }, [liveStatus, liveBlocks, pendingMessage, screen, runningAction])
-
-  // FIX: auto-scroll toward the newest streamed content while a response is
-  // actively thinking/streaming, for both the action pane and chat pane.
-  useEffect(() => {
-    if (liveStatus === 'streaming' || liveStatus === 'thinking') {
-      bottomRef.current?.scrollIntoView({ block: 'end' })
+    if ((liveStatus === 'streaming' || liveStatus === 'thinking') && isAtBottomRef.current) {
+      bottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' })
     }
   }, [liveBlocks, liveStatus])
 
-  // Keyboard navigation — desktop/trackpad users have no swipe gesture at all,
-  // so arrow keys aren't a nice-to-have, they're the only way in for that input mode.
+  // Keyboard navigation for desktop users
   useEffect(() => {
+    if (paperContext) return
     const onKey = (e) => {
       if (e.target instanceof HTMLElement && ['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return
       if (e.key === 'ArrowLeft' && hasPrev) onPrev()
@@ -1712,7 +1273,7 @@ function ActionSheetContent({
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [hasPrev, hasNext, onPrev, onNext])
+  }, [hasPrev, hasNext, onPrev, onNext, paperContext])
 
   const questionPayload = useMemo(() => ({
     id: question.id, paperId: question.paperId || null,
@@ -1720,64 +1281,50 @@ function ActionSheetContent({
     marks: question.marks, topic: question.topic,
   }), [question])
 
-  const startStream = (actionId, { force = false } = {}) => {
-    setScreen(actionId)
-    if (!force && actionResults[actionId]) return
-    setRunningAction(actionId)
-    run('/api/exam/question-action/stream', { action: actionId, question: questionPayload })
-  }
-
-  const loadPractice = async ({ force = false } = {}) => {
-    setScreen('practice')
-    if (!force && practiceQuestions) return
-    setPracticeLoading(true); setPracticeError(null)
-    try {
-      const { result } = await apiPostJson('/api/exam/question-action/practice', { question: questionPayload })
-      setPracticeQuestions(result)
-    } catch (err) { setPracticeError(err.message) }
-    finally { setPracticeLoading(false) }
-  }
-
-  const handleSwitch = (actionId) => {
-    if (actionId === 'understand') return startStream('understand')
-    if (actionId === 'solve') return startStream('solve')
-    if (actionId === 'practice') return loadPractice()
-    if (actionId === 'chat') setScreen('chat')
-  }
-
-  // FIXED: no forced timeout-based navigation. Mark the question done, briefly
-  // celebrate, then OFFER the next question via a dismissible toast — the student
-  // keeps control of when (or whether) to move on, per Nielsen's "user control and freedom".
-  const handleMarkReviewed = () => {
-    if (isReviewed) return
-    setShowDone(true)
-    onMarkReviewed()
-    setTimeout(() => setShowDone(false), 900)
-    if (hasNext) setShowNextOffer(true)
-  }
-
-  const displayed = (runningAction === screen && runningAction !== 'chat')
-    ? { blocks: liveBlocks, status: liveStatus, errorMsg: liveError }
-    : (actionResults[screen] || { blocks: [], status: 'idle', errorMsg: null })
-
   const composerBusy = runningAction === 'chat' && (liveStatus === 'thinking' || liveStatus === 'streaming')
-  const actionBusy = displayed.status === 'thinking' || displayed.status === 'streaming'
 
-  const submitComposer = (e) => {
-    e.preventDefault()
-    const msg = chatInput.trim()
-    if (!msg || composerBusy) return
-    setChatInput(''); setPendingMessage(msg); setRunningAction('chat')
-    run('/api/exam/question-action/stream', { action: 'ask', question: questionPayload, message: msg })
+  const sendMessage = useCallback((msg) => {
+    const defaultPrompt = paperContext ? 'Explain what this page asks and how to approach each question.' : 'Explain this question.'
+    const trimmed = (typeof msg === 'string' && msg.trim()) || (paperContext ? defaultPrompt : '')
+    if (!trimmed || composerBusy) return
+    setChatInput('')
+    setPendingMessage(trimmed)
+    setPendingPageNumber(paperContext?.pageNumber || null)
+    setPendingThumbnailUrl(paperContext?.thumbnailUrl || null)
+    setRunningAction('chat')
+
+    const payload = paperContext
+      ? {
+          mode: 'page_image',
+          paperId: question.paperId || paperContext.paperId,
+          pageNumber: paperContext.pageNumber || 1,
+          question: trimmed,
+          imageBase64: paperContext.imageBase64 || null,
+          fileUrl: paperContext.fileUrl || null,
+          action: 'ask',
+          message: trimmed,
+        }
+      : {
+          action: 'ask',
+          mode: 'text',
+          question: questionPayload,
+          message: trimmed,
+        }
+
+    run('/api/exam/question-action/stream', payload)
+  }, [composerBusy, paperContext, question, questionPayload, run])
+
+  const regenerateChatTurn = (message) => {
+    sendMessage(message)
   }
 
-  // FIX: chat turns previously had no retry — only Explain/Solve did. Re-asks
-  // the same message as a fresh request (the new run() call safely aborts
-  // anything still in flight first, so this is never racy).
-  const regenerateChatTurn = (message) => {
-    setRunningAction('chat')
-    setPendingMessage(message)
-    run('/api/exam/question-action/stream', { action: 'ask', question: questionPayload, message })
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (paperContext && !chatInput.trim()) {
+      sendMessage('')
+    } else {
+      sendMessage(chatInput)
+    }
   }
 
   const errorBanner = (msg, onRetry) => (
@@ -1791,14 +1338,31 @@ function ActionSheetContent({
     </div>
   )
 
-  // Swipe handler — attached to scrollable content div
-  const swipe = useSwipeNav(onPrev, onNext, hasPrev, hasNext)
+  const quickStartSuggestions = paperContext
+    ? [
+        `Explain what Page ${paperContext.pageNumber || 1} asks and how to approach it`,
+        `Solve Question 1 on Page ${paperContext.pageNumber || 1} step-by-step`,
+        'Give me key tips to answer these questions',
+      ]
+    : [
+        'Explain this question',
+        'Help me solve it step-by-step',
+        'Give me a hint',
+      ]
 
   return (
     <>
-      <div className="flex-1 overflow-y-auto no-scrollbar relative" {...swipe}>
-
-        {/* One-time swipe-gesture hint — teaches, then disappears for good */}
+      {/* Scrollable message list (Part C: flex: 1, min-height: 0, touch-scrolling, contain) */}
+      <div
+        ref={scrollContainerRef}
+        onScroll={handleScroll}
+        className="flex-1 min-h-0 overflow-y-auto no-scrollbar relative"
+        style={{
+          WebkitOverflowScrolling: 'touch',
+          overscrollBehavior: 'contain',
+        }}
+      >
+        {/* Swipe hint */}
         {showSwipeHint && (
           <div className="sticky top-0 z-10 flex justify-center pt-2 pointer-events-none">
             <span className="ed-swipe-hint bg-gray-900/85 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg">
@@ -1807,273 +1371,208 @@ function ActionSheetContent({
           </div>
         )}
 
-        {/* Persistent low-weight edge chevrons — desktop only (touch users have the gesture itself) */}
-        <SwipeEdgeChevron side="left" visible={hasPrev} onClick={onPrev} />
-        <SwipeEdgeChevron side="right" visible={hasNext} onClick={onNext} />
+        {/* Edge chevrons */}
+        {!paperContext && <SwipeEdgeChevron side="left" visible={hasPrev} onClick={onPrev} />}
+        {!paperContext && <SwipeEdgeChevron side="right" visible={hasNext} onClick={onNext} />}
 
-        {/* Question header */}
-        <div className="px-5 pt-2 pb-4 border-b border-gray-100">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Question {question.number || ''}</span>
-            <span className="text-sm text-gray-500 font-medium">{question.marks != null ? `${question.marks} marks` : ''}</span>
-          </div>
-          {/* Question text — text-base font-normal for readability */}
-          <p className="text-base text-gray-800 leading-relaxed">
-            <MathText text={question.text} />
-          </p>
-          <div className="flex items-center justify-between mt-3 gap-2 flex-wrap">
-            <span className="text-xs text-gray-600 font-semibold flex items-center gap-1">
-              <Tag className="w-3 h-3" /> {question.topic}
-            </span>
-          </div>
-          {/* Action row — HIERARCHY FIX: Mark Done is now the primary, solid action;
-              Save and Report are secondary/ghost. A first-time user shouldn't have to
-              read three equal-weight buttons to find the one they'll use most. */}
-          <div className="flex items-center gap-2 mt-3 flex-wrap">
-            {/* Mark Done — primary */}
-            <button
-              onClick={handleMarkReviewed}
-              disabled={isReviewed}
-              className={`flex items-center gap-1.5 text-xs font-semibold h-9 px-4 rounded-full transition-all active:scale-95 ${
-                isReviewed || showDone
-                  ? 'bg-emerald-50 text-emerald-600 border border-emerald-200 cursor-default'
-                  : 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm shadow-indigo-200'
-              }`}
-            >
-              <CheckCheck className={`w-3.5 h-3.5 ${showDone ? 'ed-done-pop' : ''}`} />
-              {isReviewed || showDone ? 'Done!' : 'Mark done'}
-            </button>
-
-            {/* Save — secondary/ghost */}
-            <button
-              onClick={onToggleSave}
-              className={`flex items-center gap-1 text-xs font-medium h-9 px-3 rounded-full transition-all active:scale-95 ${
-                isSaved ? 'text-indigo-600' : 'text-gray-500 hover:text-indigo-500'
-              }`}
-            >
-              {isSaved ? <BookmarkCheck className="w-3.5 h-3.5" /> : <Bookmark className="w-3.5 h-3.5" />}
-              {isSaved ? 'Saved' : 'Save'}
-            </button>
-
-            {/* Report — secondary/ghost, least frequently used */}
-            <button
-              onClick={onFlag}
-              disabled={isFlagged}
-              className={`flex items-center gap-1 text-xs font-medium h-9 px-3 rounded-full transition-all active:scale-95 ${
-                isFlagged ? 'text-gray-400 cursor-default' : 'text-gray-500 hover:text-rose-500'
-              }`}
-            >
-              <Flag className="w-3 h-3" /> {isFlagged ? 'Reported' : 'Report'}
-            </button>
-          </div>
-        </div>
-
-        {/* Action pill switcher — replaces 2×2 menu grid */}
-        <div className="px-5 pt-3">
-          <ActionPillBar screen={screen} onSwitch={handleSwitch} actionResults={actionResults} />
-        </div>
-
-        {/* Content */}
-        <div className="px-5 pb-3">
-
-          {/* Explain / Solve */}
-          {(screen === 'understand' || screen === 'solve') && (
-            <div className="pt-2">
-              {/* Manual trigger shown instead of auto-streaming when on a slow/metered connection */}
-              {screen === 'understand' && reducedMotion && !actionResults.understand && displayed.status === 'idle' && (
-                <button
-                  onClick={() => startStream('understand', { force: true })}
-                  className="w-full flex items-center justify-center gap-2 text-sm font-semibold text-indigo-600 bg-indigo-50 border border-indigo-200 rounded-xl h-11 hover:bg-indigo-100 active:scale-[0.99] transition-all"
-                >
-                  <Lightbulb className="w-4 h-4" /> Generate explanation
-                </button>
-              )}
-              {displayed.blocks.map((b, i) => (
-                <div key={i} className={i > 0 ? 'mt-4 pt-4 border-t border-gray-100' : ''}>
-                  <AiBlock content={b.content} streaming={b.streaming} stopped={displayed.status === 'stopped'} />
+        {/* Top Context Card */}
+        <div className="px-5 pt-3 pb-3 border-b border-gray-100 bg-slate-50/50 flex-shrink-0">
+          {paperContext ? (
+            <div className="flex items-start gap-3">
+              <div className="flex-shrink-0 w-12 h-14 sm:w-14 sm:h-16 rounded-xl overflow-hidden border border-slate-200 bg-white shadow-sm flex items-center justify-center">
+                {paperContext.thumbnailUrl ? (
+                  <img
+                    src={paperContext.thumbnailUrl}
+                    alt={paperContext.paperTitle}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <FileText className="w-6 h-6 text-indigo-400" />
+                )}
+              </div>
+              <div className="flex-1 min-w-0">
+                <span className="inline-block text-[10px] font-bold text-blue-600 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-full uppercase tracking-wider mb-1">
+                  Page {paperContext.pageNumber || 1} of {paperContext.numPages || 1}
+                </span>
+                <h3 className="text-sm font-bold text-gray-800 leading-snug line-clamp-2">
+                  {paperContext.paperTitle}
+                </h3>
+                <p className="text-xs text-gray-500 mt-0.5">
+                  Exam scan context active
+                </p>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <div className="flex items-center justify-between mb-1.5">
+                <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                  Question {question.number || ''}
+                </span>
+                {question.marks != null && (
+                  <span className="text-xs text-gray-500 font-medium">{question.marks} marks</span>
+                )}
+              </div>
+              <p className="text-sm text-gray-800 leading-relaxed line-clamp-3">
+                <MathText text={question.text} />
+              </p>
+              <div className="flex items-center justify-between mt-2.5 gap-2 flex-wrap">
+                {question.topic ? (
+                  <span className="text-[11px] text-gray-600 font-semibold flex items-center gap-1">
+                    <Tag className="w-3 h-3 text-indigo-500" /> {question.topic}
+                  </span>
+                ) : <span />}
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={onToggleSave}
+                    className={`flex items-center gap-1.5 text-xs font-semibold h-7 px-2.5 rounded-full border transition-all active:scale-95 ${
+                      isSaved
+                        ? 'bg-indigo-50 border-indigo-200 text-indigo-700'
+                        : 'bg-white border-gray-200 text-gray-600 hover:border-indigo-200 hover:text-indigo-600'
+                    }`}
+                  >
+                    {isSaved ? <BookmarkCheck className="w-3 h-3" /> : <Bookmark className="w-3 h-3" />}
+                    <span>{isSaved ? 'Saved' : 'Save'}</span>
+                  </button>
+                  <button
+                    onClick={onFlag}
+                    disabled={isFlagged}
+                    className={`flex items-center gap-1.5 text-xs font-medium h-7 px-2 rounded-full transition-all active:scale-95 ${
+                      isFlagged ? 'text-gray-400 cursor-default' : 'text-gray-500 hover:text-rose-500'
+                    }`}
+                  >
+                    <Flag className="w-3 h-3" />
+                    <span>{isFlagged ? 'Reported' : 'Report'}</span>
+                  </button>
                 </div>
-              ))}
-              {displayed.status === 'thinking' && (
-                <ThinkingIndicator label={screen === 'solve' ? 'Working through it' : `${AI_NAME} is thinking`} />
-              )}
-              {displayed.status === 'error' && errorBanner(displayed.errorMsg, () => startStream(screen, { force: true }))}
-              {actionBusy && (
-                <button onClick={stop} className="mt-3 flex items-center gap-1 text-xs font-semibold text-rose-500 hover:text-rose-600 transition-colors active:scale-95 h-9">
-                  <StopCircle className="w-3.5 h-3.5" /> Stop
-                </button>
-              )}
-              {/* FIX: 'stopped' now also offers Regenerate, matching 'done'/'error' */}
-              {(displayed.status === 'done' || displayed.status === 'error' || displayed.status === 'stopped') && (
-                <button onClick={() => startStream(screen, { force: true })} className="mt-2 flex items-center gap-1 text-xs font-semibold text-gray-500 hover:text-indigo-600 transition-colors active:scale-95 h-9">
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Chat turns area */}
+        <div className="px-5 py-4">
+          {/* Empty state: clean, one short line, no big illustration */}
+          {conversation.length === 0 && pendingMessage === null && (
+            <div className="py-6 text-center">
+              <p className="text-sm font-medium text-slate-600 mb-4">
+                {paperContext ? `Ask about Page ${paperContext.pageNumber || 1}` : 'Ask about this question'}
+              </p>
+              <div className="space-y-2 max-w-md mx-auto">
+                {quickStartSuggestions.map((suggestion) => (
+                  <button
+                    key={suggestion}
+                    onClick={() => sendMessage(suggestion)}
+                    className="w-full text-left px-3.5 py-2.5 bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-xl text-xs sm:text-sm text-slate-700 hover:text-blue-600 font-medium transition-all active:scale-[0.99] flex items-center justify-between group"
+                  >
+                    <span>{suggestion}</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-0.5 transition-all" />
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Past turns */}
+          {conversation.map((turn) => (
+            <div key={turn.id} className="space-y-2 mb-5">
+              <StudentBubble
+                message={turn.message}
+                pageNumber={turn.pageNumber}
+                thumbnailUrl={turn.thumbnailUrl}
+              />
+              <div className="text-[15px] leading-relaxed text-slate-800">
+                {turn.blocks.map((b, i) => (
+                  <div key={i} className={i > 0 ? 'mt-4 pt-4 border-t border-gray-100' : ''}>
+                    <AiBlock content={b.content} streaming={false} stopped={!!turn.stopped} />
+                  </div>
+                ))}
+                <button
+                  onClick={() => regenerateChatTurn(turn.message)}
+                  disabled={composerBusy}
+                  className="mt-1.5 flex items-center gap-1 text-xs font-semibold text-gray-400 hover:text-blue-600 transition-colors active:scale-95 h-8 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+                >
                   <RotateCcw className="w-3.5 h-3.5" /> Regenerate
                 </button>
-              )}
-              {/* Auto-scroll anchor for this pane */}
-              <div ref={screen === 'understand' || screen === 'solve' ? bottomRef : null} />
+              </div>
+            </div>
+          ))}
+
+          {/* Live stream turn */}
+          {pendingMessage !== null && (
+            <div className="space-y-2 mb-5">
+              <StudentBubble
+                message={pendingMessage}
+                pageNumber={pendingPageNumber}
+                thumbnailUrl={pendingThumbnailUrl}
+              />
+              <div className="text-[15px] leading-relaxed text-slate-800">
+                {liveBlocks.map((b, i) => (
+                  <div key={i} className={i > 0 ? 'mt-4 pt-4 border-t border-gray-100' : ''}>
+                    <AiBlock content={b.content} streaming={b.streaming} stopped={liveStatus === 'stopped'} />
+                  </div>
+                ))}
+                {liveStatus === 'thinking' && <ThinkingIndicator />}
+                {liveStatus === 'error' && errorBanner(liveError, () => regenerateChatTurn(pendingMessage))}
+              </div>
             </div>
           )}
 
-          {/* Chat */}
-          {screen === 'chat' && (
-            <div className="pt-2 space-y-4">
-              {conversation.length === 0 && pendingMessage === null && (
-                <div className="text-center py-8">
-                  <Sparkles className="w-6 h-6 text-indigo-300 mx-auto mb-2" />
-                  <p className="text-sm text-gray-500 max-w-[220px] mx-auto leading-relaxed">
-                    Ask anything about this question — {AI_NAME} answers right here.
-                  </p>
-                </div>
-              )}
-              {conversation.map((turn) => (
-                <div key={turn.id} className="space-y-2.5">
-                  <div className="flex justify-end">
-                    <div className="max-w-[85%] bg-indigo-600 text-white text-base leading-relaxed rounded-2xl rounded-tr-sm px-4 py-2.5">
-                      {turn.message}
-                    </div>
-                  </div>
-                  <div>
-                    {turn.blocks.map((b, i) => (
-                      <div key={i} className={i > 0 ? 'mt-4 pt-4 border-t border-gray-100' : ''}>
-                        <AiBlock content={b.content} streaming={false} stopped={!!turn.stopped} />
-                      </div>
-                    ))}
-                    {/* FIX: chat turns now get their own Regenerate, same as Explain/Solve */}
-                    <button
-                      onClick={() => regenerateChatTurn(turn.message)}
-                      disabled={composerBusy}
-                      className="mt-1.5 flex items-center gap-1 text-xs font-semibold text-gray-500 hover:text-indigo-600 transition-colors active:scale-95 h-8 disabled:opacity-40 disabled:cursor-not-allowed"
-                    >
-                      <RotateCcw className="w-3.5 h-3.5" /> Regenerate
-                    </button>
-                  </div>
-                </div>
-              ))}
-              {pendingMessage !== null && (
-                <div className="space-y-2.5">
-                  <div className="flex justify-end">
-                    <div className="max-w-[85%] bg-indigo-600 text-white text-base leading-relaxed rounded-2xl rounded-tr-sm px-4 py-2.5">
-                      {pendingMessage}
-                    </div>
-                  </div>
-                  <div>
-                    {liveBlocks.map((b, i) => (
-                      <div key={i} className={i > 0 ? 'mt-4 pt-4 border-t border-gray-100' : ''}>
-                        <AiBlock content={b.content} streaming={b.streaming} stopped={liveStatus === 'stopped'} />
-                      </div>
-                    ))}
-                    {liveStatus === 'thinking' && <ThinkingIndicator />}
-                    {liveStatus === 'error' && errorBanner(liveError, () => regenerateChatTurn(pendingMessage))}
-                  </div>
-                </div>
-              )}
-              {composerBusy && (
-                <button onClick={stop} className="flex items-center gap-1 text-xs font-semibold text-rose-500 hover:text-rose-600 transition-colors active:scale-95 h-9">
-                  <StopCircle className="w-3.5 h-3.5" /> Stop
-                </button>
-              )}
-              {/* Auto-scroll anchor for the chat pane */}
-              <div ref={screen === 'chat' ? bottomRef : null} />
-            </div>
+          {composerBusy && (
+            <button
+              onClick={stop}
+              className="flex items-center gap-1 text-xs font-semibold text-rose-500 hover:text-rose-600 transition-colors active:scale-95 h-9 cursor-pointer"
+            >
+              <StopCircle className="w-3.5 h-3.5" /> Stop generating
+            </button>
           )}
 
-          {/* Practice */}
-          {screen === 'practice' && (
-            <div className="pt-2 space-y-2.5">
-              {!practiceLoading && (practiceQuestions?.length || practiceError) && (
-                <div className="flex items-start gap-2 bg-violet-50 border border-violet-200 rounded-xl px-3 py-2.5 mb-1">
-                  <Sparkles className="w-4 h-4 text-violet-500 flex-shrink-0 mt-0.5" />
-                  <p className="text-xs text-violet-700 font-medium leading-snug">
-                    AI-generated practice — similar style, not from an actual past paper.
-                  </p>
-                </div>
-              )}
-              {practiceLoading && (
-                <>
-                  <ThinkingIndicator label="Generating similar questions" />
-                  {Array.from({ length: 2 }).map((_, i) => <SkeletonCard key={i} />)}
-                </>
-              )}
-              {practiceError && (
-                <div className="rounded-xl border border-rose-200 bg-rose-50 p-3.5 text-sm text-rose-700 ed-pop-in">
-                  <p className="font-semibold mb-1">Couldn't generate questions</p>
-                  <p className="text-xs opacity-80 mb-2">{practiceError}</p>
-                  <button onClick={() => loadPractice({ force: true })} className="text-xs font-semibold text-rose-700 underline active:scale-95 h-9">Try again</button>
-                </div>
-              )}
-              {practiceQuestions?.map((pq, i) => (
-                <div key={i} className="rounded-xl border border-dashed border-violet-200 bg-violet-50/40 p-3.5 ed-pop-in" style={{ animationDelay: `${i * 80}ms` }}>
-                  <div className="flex items-start justify-between gap-2 mb-1.5">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-violet-500 flex items-center gap-1">
-                      <Sparkles className="w-3 h-3" /> Practice {i + 1}
-                    </span>
-                    {pq.marks != null && <span className="text-[11px] text-gray-500 font-medium">{pq.marks} marks</span>}
-                  </div>
-                  {/* Practice question text — font-normal, body reading size */}
-                  <p className="text-base text-gray-900 leading-relaxed"><MathText text={pq.text} /></p>
-                  {pq.hint && (
-                    <p className="text-xs text-gray-600 mt-1.5 flex items-start gap-1">
-                      <Lightbulb className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" /> {pq.hint}
-                    </p>
-                  )}
-                </div>
-              ))}
-              {!practiceLoading && (
-                <button onClick={() => loadPractice({ force: true })} className="mt-1 flex items-center gap-1 text-xs font-semibold text-indigo-600 hover:underline active:scale-95 h-9">
-                  <RotateCcw className="w-3.5 h-3.5" /> New set
-                </button>
-              )}
-            </div>
-          )}
+          <div ref={bottomRef} />
         </div>
       </div>
 
-      {/* Chat composer — pinned to bottom, only in chat mode */}
-      {screen === 'chat' && (
-        <form onSubmit={submitComposer} className="flex-shrink-0 border-t border-gray-100 px-4 py-3 flex items-center gap-2 bg-white">
-          <input
-            type="text"
-            value={chatInput}
-            onChange={(e) => setChatInput(e.target.value)}
-            placeholder={`Ask ${AI_NAME} about this question…`}
-            disabled={composerBusy}
-            className="flex-1 text-base border border-gray-200 rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent disabled:bg-gray-50 disabled:text-gray-400 transition-all"
-          />
-          {composerBusy ? (
-            <button type="button" onClick={stop} className="w-11 h-11 flex-shrink-0 flex items-center justify-center bg-rose-50 text-rose-500 rounded-xl hover:bg-rose-100 active:scale-95 transition-all">
-              <StopCircle className="w-5 h-5" />
-            </button>
-          ) : (
-            <button type="submit" disabled={!chatInput.trim()} className="w-11 h-11 flex-shrink-0 flex items-center justify-center bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 active:scale-95 transition-all disabled:opacity-40 disabled:cursor-not-allowed">
-              <Send className="w-4 h-4" />
-            </button>
-          )}
-        </form>
-      )}
+      {/* Dot position indicator */}
+      {!paperContext && <DotIndicator questionList={questionList} currentId={question.id} />}
 
-      {/* Dot position indicator — replaces Prev/Next bar */}
-      <DotIndicator questionList={questionList} currentId={question.id} />
-
-      {/* Offered next-question action — replaces the old forced auto-advance timeout */}
-      <ActionToast
-        visible={showNextOffer}
-        message="Marked done"
-        actionLabel={hasNext ? 'Next question' : null}
-        onAction={() => { setShowNextOffer(false); onNext() }}
-        onDismiss={() => setShowNextOffer(false)}
-      />
+      {/* Pinned chat composer (fixed bottom input bar) */}
+      <form onSubmit={handleSubmit} className="flex-shrink-0 border-t border-gray-100 px-3.5 py-2.5 flex items-center gap-2 bg-white pb-safe">
+        <input
+          type="text"
+          value={chatInput}
+          onChange={(e) => setChatInput(e.target.value)}
+          placeholder={paperContext ? `Ask about Page ${paperContext.pageNumber || 1}… (Enter to explain)` : 'Ask anything about this question…'}
+          disabled={composerBusy}
+          className="flex-1 text-sm sm:text-base border border-gray-200 rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-transparent disabled:bg-gray-50 disabled:text-gray-400 transition-all"
+        />
+        {composerBusy ? (
+          <button
+            type="button"
+            onClick={stop}
+            className="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-rose-50 text-rose-500 rounded-xl hover:bg-rose-100 active:scale-95 transition-all cursor-pointer"
+            title="Stop generating"
+          >
+            <StopCircle className="w-5 h-5" />
+          </button>
+        ) : (
+          <button
+            type="submit"
+            disabled={!paperContext && !chatInput.trim()}
+            className="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-blue-600 text-white rounded-xl hover:bg-blue-700 active:scale-95 transition-all disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+            title={paperContext && !chatInput.trim() ? "Explain this page" : "Send message"}
+          >
+            <Send className="w-4 h-4" />
+          </button>
+        )}
+      </form>
     </>
   )
 }
 
 // ── Action sheet wrapper ──────────────────────────────────────
-// On mobile/tablet: bottom sheet (unchanged behaviour).
-// On desktop (≥1024px): fixed right-side panel — no overlay, question list
-//   stays visible on the left. Pass isDesktop=true to enable panel mode.
 const ActionSheet = memo(({
   question, questionList, onClose,
   savedIds, onToggleSave, flaggedIds, onFlag,
   isOnline, aiCache, reviewedIds, onMarkReviewed, onNavigate,
-  isDesktop = false,
+  paperContext,
 }) => {
   const [sheetSize, setSheetSize] = useState('half')
   useEffect(() => { setSheetSize('half') }, [question?.id])
@@ -2091,71 +1590,69 @@ const ActionSheet = memo(({
   const hasPrev = currentIndex > 0
   const hasNext = currentIndex >= 0 && currentIndex < (questionList?.length ?? 0) - 1
 
-  const sharedContent = (
-    <ActionSheetContent
-      key={question.id}
-      question={question}
-      isSaved={savedIds?.has(question.id)}
-      onToggleSave={() => onToggleSave(question)}
-      isFlagged={flaggedIds?.has(question.id)}
-      onFlag={() => onFlag(question)}
-      isOnline={isOnline}
-      aiCache={aiCache}
-      isReviewed={reviewedIds?.has(question.id)}
-      onMarkReviewed={() => onMarkReviewed(question)}
-      hasPrev={hasPrev}
-      hasNext={hasNext}
-      onPrev={() => hasPrev && onNavigate(questionList[currentIndex - 1])}
-      onNext={() => hasNext && onNavigate(questionList[currentIndex + 1])}
-      questionList={questionList}
-    />
-  )
-
-  // ── Desktop side panel ──────────────────────────────────────
-  if (isDesktop) {
-    return (
-      <div className="flex flex-col h-full bg-white border-l border-slate-200 overflow-hidden">
-        {/* Panel header */}
-        <div className="flex items-center justify-between px-4 py-3 border-b border-slate-100 flex-shrink-0">
-          <div className="flex items-center gap-2">
-            <PanelRight className="w-4 h-4 text-slate-400" />
-            <span className="text-sm font-semibold text-slate-700">AI Study Panel</span>
-          </div>
-          <button
-            onClick={onClose}
-            className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#024927]"
-            title="Close panel (Esc)"
-            aria-label="Close AI panel"
-          >
-            <X className="w-4 h-4" />
-          </button>
-        </div>
-        {sharedContent}
-      </div>
-    )
-  }
-
-  // ── Mobile / tablet bottom sheet ───────────────────────────
   return (
     <>
-      <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[90]" onClick={onClose} />
-      <div className={`fixed z-[100] ed-slide-up ${isFull ? 'inset-0' : 'bottom-0 left-0 right-0'}`}>
-        <div className={`bg-white shadow-2xl max-w-lg mx-auto overflow-hidden flex flex-col w-full ${isFull ? 'h-[100dvh] rounded-none' : 'rounded-t-3xl h-[72vh] sm:h-[76vh]'}`}>
-          {/* Sheet handle row */}
-          <div className="flex items-center justify-between px-3 pt-3 pb-1 flex-shrink-0">
-            <button onClick={onClose} className="w-11 h-11 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 active:scale-90 transition-all">
-              <X className="w-5 h-5" />
-            </button>
-            <div className="w-10 h-1 bg-gray-200 rounded-full" />
+      {/* On desktop (Edge Copilot sidebar style), overlay is hidden so user can read paper unimpeded */}
+      <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[90] lg:hidden" onClick={onClose} />
+      <div
+        className={`fixed z-[100] transition-all duration-300 ease-out ${
+          isFull
+            ? 'inset-0 lg:inset-y-0 lg:right-0 lg:left-auto lg:w-[680px]'
+            : 'bottom-0 left-0 right-0 ed-slide-up lg:inset-y-0 lg:right-0 lg:left-auto lg:w-[460px] xl:w-[500px]'
+        }`}
+      >
+        <div
+          className={`bg-white shadow-2xl overflow-hidden flex flex-col w-full h-full border-slate-200 ${
+            isFull
+              ? 'h-[100dvh] rounded-none'
+              : 'rounded-t-2xl sm:rounded-2xl lg:rounded-none h-[100dvh] sm:h-[88dvh] lg:h-full max-h-[100dvh] max-w-lg lg:max-w-none mx-auto lg:border-l'
+          }`}
+        >
+          {/* Edge Copilot style header */}
+          <div className="flex items-center justify-between px-3 pt-2.5 pb-2 flex-shrink-0 border-b border-gray-100 bg-slate-50/70">
+            <div className="flex items-center gap-2">
+              <button
+                onClick={onClose}
+                className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:bg-gray-200/70 hover:text-gray-800 active:scale-90 transition-all cursor-pointer"
+                title="Close AI Assistant"
+              >
+                <X className="w-4 h-4" />
+              </button>
+              <div className="flex items-center gap-1.5 text-xs font-bold text-gray-700">
+                <MessageCircleQuestion className="w-4 h-4 text-blue-600" />
+                <span>{paperContext ? 'Paper AI Assistant' : 'AI Assistant'}</span>
+              </div>
+            </div>
+
+            <div className="w-10 h-1 bg-gray-200 rounded-full lg:hidden" />
+
             <button
               onClick={() => setSheetSize(isFull ? 'half' : 'full')}
-              className="w-11 h-11 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 active:scale-90 transition-all"
-              title={isFull ? 'Minimize' : 'Expand'}
+              className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-400 hover:bg-gray-200/70 hover:text-gray-700 active:scale-90 transition-all cursor-pointer"
+              title={isFull ? 'Standard width' : 'Expand panel'}
             >
               {isFull ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
             </button>
           </div>
-          {sharedContent}
+
+          <ActionSheetContent
+            key={question.id}
+            question={question}
+            isSaved={savedIds?.has(question.id)}
+            onToggleSave={() => onToggleSave(question)}
+            isFlagged={flaggedIds?.has(question.id)}
+            onFlag={() => onFlag(question)}
+            isOnline={isOnline}
+            aiCache={aiCache}
+            isReviewed={reviewedIds?.has(question.id)}
+            onMarkReviewed={() => onMarkReviewed(question)}
+            hasPrev={hasPrev}
+            hasNext={hasNext}
+            onPrev={() => hasPrev && onNavigate(questionList[currentIndex - 1])}
+            onNext={() => hasNext && onNavigate(questionList[currentIndex + 1])}
+            questionList={questionList}
+            paperContext={paperContext}
+          />
         </div>
       </div>
     </>
@@ -2200,62 +1697,76 @@ function extractLeadingStem(text) {
 
 const BookmarkBtn = memo(({ isSaved, onToggle }) => (
   <button
-    onClick={onToggle}
-    className="w-9 h-9 flex items-center justify-center rounded-lg transition-all active:scale-90 hover:bg-gray-50"
+    onClick={(e) => {
+      e.stopPropagation()
+      onToggle()
+    }}
+    className="w-8 h-8 flex items-center justify-center rounded-lg transition-all active:scale-90 hover:bg-slate-100 text-slate-400 hover:text-indigo-600"
     title={isSaved ? 'Remove from saved' : 'Save for revision'}
+    aria-label={isSaved ? 'Remove from saved' : 'Save for revision'}
   >
     {isSaved
-      ? <BookmarkCheck className="w-4 h-4 text-indigo-500" />
-      : <Bookmark className="w-4 h-4 text-gray-300 hover:text-indigo-400" />}
+      ? <BookmarkCheck className="w-4 h-4 text-indigo-600 fill-indigo-100" />
+      : <Bookmark className="w-4 h-4 text-slate-300 hover:text-indigo-500" />}
   </button>
 ))
 
 // content-visibility: auto defers paint for off-screen question blocks — key perf win on slow devices
-const PaperSubItem = memo(({ label, text, marks, imageUrl, indent, onAskAi, isSaved, onToggleSave, needsReview, altLabel, pageNumber, onViewOriginal, hasImageScan }) => (
-  <div className={indent ? 'pl-4' : ''} style={{ contentVisibility: 'auto', containIntrinsicSize: '0 80px' }}>
-    <div className="max-w-[70ch]">
-      <p className="text-[17px] text-slate-800 leading-[1.65] font-normal font-sans">
-        {label && <span className="font-bold text-slate-700 mr-2">{label}.</span>}
+const PaperSubItem = memo(({ label, text, marks, imageUrl, indent, onAskAi, isSaved, onToggleSave, needsReview, altLabel }) => (
+  <div
+    onClick={onAskAi}
+    role="button"
+    tabIndex={0}
+    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onAskAi(); } }}
+    className={`group/sub cursor-pointer rounded-xl p-2.5 -mx-2 transition-all hover:bg-slate-50/80 active:bg-slate-100/80 ${indent ? 'pl-4' : ''}`}
+    style={{ contentVisibility: 'auto', containIntrinsicSize: '0 80px' }}
+  >
+    <div>
+      <p className="text-base sm:text-[17px] text-gray-800 leading-relaxed">
+        {label && <span className="font-semibold text-gray-600 mr-1.5">{label}.</span>}
         <MathText text={text} />
       </p>
+      {marks != null && (
+        <span className="inline-block mt-1 text-xs font-semibold text-slate-400">
+          ({marks} marks)
+        </span>
+      )}
     </div>
-    <div className="flex items-center justify-between mt-2 max-w-[70ch] flex-wrap gap-2">
-      <div className="flex items-center gap-2 flex-wrap">
-        {marks != null && <span className="text-xs text-slate-500 font-semibold bg-slate-100 px-2 py-0.5 rounded">({marks} marks)</span>}
-        {pageNumber && hasImageScan && (
-          <button
-            onClick={() => onViewOriginal?.(pageNumber)}
-            className="text-xs font-semibold text-[#024927] hover:text-[#046c3b] hover:underline flex items-center gap-1 min-h-[30px]"
-            title={`View original scanned page (Page ${pageNumber})`}
-          >
-            <ImageIcon className="w-3.5 h-3.5" />
-            <span>View original (p. {pageNumber}) →</span>
-          </button>
-        )}
-        {pageNumber && !hasImageScan && (
-          <span className="text-xs text-slate-400 font-medium">Page {pageNumber}</span>
-        )}
-      </div>
-      {/* Condensed to two actions only — bookmark + Ask AI */}
-      <div className="flex items-center gap-1 flex-shrink-0">
-        <BookmarkBtn isSaved={isSaved} onToggle={onToggleSave} />
-        <button
-          onClick={onAskAi}
-          className="flex items-center gap-1 px-3 h-8 rounded-full bg-[#024927]/10 text-[#024927] hover:bg-[#024927]/20 active:scale-95 transition-all text-xs font-semibold"
-        >
-          <Sparkles className="w-3 h-3" /> Ask AI
-        </button>
-      </div>
-    </div>
+
     {imageUrl && (
-      <div className="mt-3 rounded-xl overflow-hidden border border-slate-200 bg-slate-50 max-w-[70ch]">
+      <div className="mt-2 rounded-xl overflow-hidden border border-gray-100 bg-gray-50">
         <img src={imageUrl} alt={`Figure for question ${altLabel}`} className="w-full h-auto object-contain" loading="lazy" />
       </div>
     )}
+
+    {/* Bottom action row: Save & Ask AI */}
+    <div className="flex items-center gap-2 mt-2.5 pt-2 border-t border-slate-100" onClick={(e) => e.stopPropagation()}>
+      <button
+        onClick={(e) => { e.stopPropagation(); onToggleSave(); }}
+        className={`flex items-center gap-1.5 text-xs font-semibold h-7 px-2.5 rounded-lg border transition-all active:scale-95 ${
+          isSaved
+            ? 'bg-indigo-50 border-indigo-200 text-indigo-700'
+            : 'bg-white border-slate-200 text-slate-600 hover:border-indigo-200 hover:text-indigo-600'
+        }`}
+        title={isSaved ? 'Remove from saved' : 'Save for revision'}
+      >
+        {isSaved ? <BookmarkCheck className="w-3.5 h-3.5 text-indigo-600" /> : <Bookmark className="w-3.5 h-3.5 text-slate-400" />}
+        <span>{isSaved ? 'Saved' : 'Save'}</span>
+      </button>
+
+      <button
+        onClick={(e) => { e.stopPropagation(); onAskAi(); }}
+        className="flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-800 bg-blue-50/80 hover:bg-blue-100 border border-blue-100 h-7 px-2.5 rounded-lg transition-all active:scale-95"
+        title="Ask about this question"
+      >
+        <GoogleLensIcon size={14} className="text-blue-600" />
+        <span>Ask</span>
+      </button>
+    </div>
   </div>
 ))
 
-const PaperQuestionBlock = memo(({ group, onOpenQuestion, savedIds, onToggleSave, delay = 0, onViewOriginal, hasImageScan }) => {
+const PaperQuestionBlock = memo(({ group, onOpenQuestion, savedIds, onToggleSave, delay = 0 }) => {
   const rm = useReducedMotion()
   const hasSubParts = group.items.length > 1
   const singleQuestion = group.items[0]
@@ -2267,58 +1778,63 @@ const PaperQuestionBlock = memo(({ group, onOpenQuestion, savedIds, onToggleSave
       className={rm ? '' : 'ed-fade-up'}
       style={{ ...(rm ? undefined : { animationDelay: `${delay}ms` }), contentVisibility: 'auto', containIntrinsicSize: '0 160px' }}
     >
-      <div className="flex items-center justify-between mb-2 max-w-[70ch]">
-        <p className="font-bold text-slate-900 text-lg font-display">Question {group.number}:</p>
-        {singleQuestion?.pageNumber && hasImageScan && (
-          <button
-            onClick={() => onViewOriginal?.(singleQuestion.pageNumber)}
-            className="text-xs font-semibold text-[#024927] hover:underline flex items-center gap-1"
-          >
-            <ImageIcon className="w-3.5 h-3.5" /> p. {singleQuestion.pageNumber}
-          </button>
-        )}
+      <div className="flex items-center justify-between mb-2">
+        <p className="font-bold text-gray-800 text-lg font-display">Question {group.number}:</p>
       </div>
 
       {inline ? (
-        <div className="max-w-[70ch]">
-          <p className="text-[17px] text-slate-800 leading-[1.65] font-normal"><MathText text={inline.stem} /></p>
-          {singleQuestion.marks != null && <p className="text-xs text-slate-500 font-semibold mt-1 bg-slate-100 inline-block px-2 py-0.5 rounded">({singleQuestion.marks} marks)</p>}
-          <div className="mt-3 space-y-3 pl-4">
+        <div
+          onClick={() => onOpenQuestion(singleQuestion)}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onOpenQuestion(singleQuestion); } }}
+          className="group/q cursor-pointer rounded-xl p-2.5 -mx-2 transition-all hover:bg-slate-50/80 active:bg-slate-100/80"
+        >
+          <p className="text-base sm:text-[17px] text-gray-800 leading-relaxed"><MathText text={inline.stem} /></p>
+          {singleQuestion.marks != null && <p className="text-xs font-semibold text-slate-400 mt-0.5">({singleQuestion.marks} marks)</p>}
+          <div className="mt-2 space-y-2.5 pl-4">
             {inline.items.map((it) => (
-              <p key={it.letter} className="text-[17px] text-slate-800 leading-[1.65]">
-                <span className="font-bold text-slate-700 mr-2">{it.letter}.</span>
+              <p key={it.letter} className="text-base sm:text-[17px] text-gray-800 leading-relaxed">
+                <span className="font-semibold text-gray-600 mr-1.5">{it.letter}.</span>
                 <MathText text={it.text} />
               </p>
             ))}
           </div>
           {singleQuestion.imageUrl && (
-            <div className="mt-3 rounded-xl overflow-hidden border border-slate-200 bg-slate-50">
+            <div className="mt-2 rounded-xl overflow-hidden border border-gray-100 bg-gray-50">
               <img src={singleQuestion.imageUrl} alt={`Figure for Q${group.number}`} className="w-full h-auto object-contain" loading="lazy" />
             </div>
           )}
-          <div className="flex items-center justify-between gap-2 mt-3 pt-2 border-t border-slate-100 flex-wrap">
-            <div className="flex items-center gap-2">
-              {singleQuestion.pageNumber && hasImageScan && (
-                <button
-                  onClick={() => onViewOriginal?.(singleQuestion.pageNumber)}
-                  className="text-xs font-semibold text-[#024927] hover:text-[#046c3b] hover:underline flex items-center gap-1 min-h-[30px]"
-                >
-                  <ImageIcon className="w-3.5 h-3.5" /> View original (p. {singleQuestion.pageNumber}) →
-                </button>
-              )}
-            </div>
-            <div className="flex items-center gap-1">
-              <BookmarkBtn isSaved={savedIds?.has(singleQuestion.id)} onToggle={() => onToggleSave(singleQuestion)} />
-              <button onClick={() => onOpenQuestion(singleQuestion)} className="flex items-center gap-1 px-3 h-8 rounded-full bg-[#024927]/10 text-[#024927] hover:bg-[#024927]/20 active:scale-90 transition-all text-xs font-semibold">
-                <Sparkles className="w-3 h-3" /> Ask AI
-              </button>
-            </div>
+
+          {/* Bottom action row for inline question */}
+          <div className="flex items-center gap-2 mt-3 pt-2 border-t border-slate-100" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={(e) => { e.stopPropagation(); onToggleSave(singleQuestion); }}
+              className={`flex items-center gap-1.5 text-xs font-semibold h-7 px-2.5 rounded-lg border transition-all active:scale-95 ${
+                savedIds?.has(singleQuestion.id)
+                  ? 'bg-indigo-50 border-indigo-200 text-indigo-700'
+                  : 'bg-white border-slate-200 text-slate-600 hover:border-indigo-200 hover:text-indigo-600'
+              }`}
+              title={savedIds?.has(singleQuestion.id) ? 'Remove from saved' : 'Save for revision'}
+            >
+              {savedIds?.has(singleQuestion.id) ? <BookmarkCheck className="w-3.5 h-3.5 text-indigo-600" /> : <Bookmark className="w-3.5 h-3.5 text-slate-400" />}
+              <span>{savedIds?.has(singleQuestion.id) ? 'Saved' : 'Save'}</span>
+            </button>
+
+            <button
+              onClick={(e) => { e.stopPropagation(); onOpenQuestion(singleQuestion); }}
+              className="flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-800 bg-blue-50/80 hover:bg-blue-100 border border-blue-100 h-7 px-2.5 rounded-lg transition-all active:scale-95"
+              title="Ask AI about this question"
+            >
+              <GoogleLensIcon className="w-3.5 h-3.5 text-blue-600" />
+              <span>Ask AI</span>
+            </button>
           </div>
         </div>
       ) : (
         <div>
-          {leadingStem && <p className="text-[17px] text-slate-800 leading-[1.65] font-normal mb-3 max-w-[70ch]"><MathText text={leadingStem.stem} /></p>}
-          <div className="space-y-5">
+          {leadingStem && <p className="text-base sm:text-[17px] text-gray-800 leading-relaxed mb-3"><MathText text={leadingStem.stem} /></p>}
+          <div className="space-y-1">
             {group.items.map((q, i) => {
               const label = subLetterOf(q.number) || (hasSubParts ? String.fromCharCode(97 + i) : null)
               const displayText = (leadingStem && i === 0) ? leadingStem.rest : q.text
@@ -2328,9 +1844,6 @@ const PaperQuestionBlock = memo(({ group, onOpenQuestion, savedIds, onToggleSave
                   indent={hasSubParts} onAskAi={() => onOpenQuestion(q)}
                   isSaved={savedIds?.has(q.id)} onToggleSave={() => onToggleSave(q)}
                   needsReview={q.needsReview} altLabel={`${group.number}${label || ''}`}
-                  pageNumber={q.pageNumber}
-                  onViewOriginal={onViewOriginal}
-                  hasImageScan={hasImageScan}
                 />
               )
             })}
@@ -2341,170 +1854,68 @@ const PaperQuestionBlock = memo(({ group, onOpenQuestion, savedIds, onToggleSave
   )
 })
 
-// ── Review progress bar ───────────────────────────────────────
-const ReviewProgressBar = memo(({ reviewed, total }) => {
-  if (!total) return null
-  const pct = Math.min(100, Math.round((reviewed / total) * 100))
-  return (
-    <div className="px-4 sm:px-8 pt-3 max-w-3xl mx-auto w-full">
-      <div className="flex items-center justify-between text-xs font-semibold text-slate-500 mb-1.5">
-        <span className="flex items-center gap-1 text-slate-700"><CheckCheck className="w-3.5 h-3.5 text-emerald-600" /> {reviewed} of {total} done</span>
-        <span className={pct === 100 ? 'text-emerald-700 font-bold' : ''}>{pct}%</span>
-      </div>
-      <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
-        <div className={`h-full rounded-full transition-all duration-500 ${pct === 100 ? 'bg-emerald-600' : 'bg-[#024927]'}`} style={{ width: `${pct}%` }} />
-      </div>
-    </div>
-  )
-})
-
-// ── Question list view (with Text & Scanned Image toggle) ─────
+// ── Question list view ────────────────────────────────────────
 const GROUP_PAGE_SIZE = 5
 
 const QuestionListView = memo(({ paper, onOpenQuestion, savedIds, reviewedIds, onToggleSave }) => {
   const { data: rawRows = [], isLoading, error, refetch } = useQuery({
     queryKey: ['paperQuestions', paper?.paperId],
     queryFn: () => fetchQuestionsForPaper(paper?.paperId),
-    enabled: !!paper?.paperId, staleTime: 5 * 60 * 1000,
+    initialData: () => {
+      try {
+        const cached = localStorage.getItem('sh_pq_' + paper?.paperId)
+        return cached ? JSON.parse(cached) : undefined
+      } catch { return undefined }
+    },
+    enabled: !!paper?.paperId, staleTime: 10 * 60 * 1000,
   })
-
   const questions = useMemo(() => rawRows.map(normalizeDbQuestion).sort(naturalQuestionSort), [rawRows])
   const groups = useMemo(() => groupQuestionsForPaper(questions), [questions])
-  const reviewedCount = useMemo(() => questions.filter(q => reviewedIds?.has(q.id)).length, [questions, reviewedIds])
   const [visibleGroupCount, setVisibleGroupCount] = useState(GROUP_PAGE_SIZE)
   useEffect(() => { setVisibleGroupCount(GROUP_PAGE_SIZE) }, [paper?.paperId])
 
-  // Detect scanned source paper
-  const paperSource = useMemo(() => {
-    if (paper?.pastPaper?.file_url) return paper.pastPaper
-    const found = rawRows.find(r => r.past_paper?.file_url)
-    return found?.past_paper || null
-  }, [paper, rawRows])
-
-  const hasImageScan = Boolean(paperSource?.file_url)
-
-  // Remembered view mode: 'image' by default if scanned, else 'text'
-  const [viewMode, setViewMode] = useState(() => {
-    try {
-      const saved = localStorage.getItem('sh_paper_view_mode')
-      if (saved === 'text' || saved === 'image') return saved
-      return 'image'
-    } catch {
-      return 'image'
-    }
-  })
-
-  // If paper has no scanned file, strictly force text mode
-  const effectiveViewMode = hasImageScan ? viewMode : 'text'
-
-  const handleModeChange = useCallback((mode) => {
-    setViewMode(mode)
-    try { localStorage.setItem('sh_paper_view_mode', mode) } catch (_) {}
-  }, [])
-
-  const [currentImagePage, setCurrentImagePage] = useState(1)
-
-  const handleJumpToPage = useCallback((pageNum) => {
-    if (pageNum) setCurrentImagePage(pageNum)
-    handleModeChange('image')
-  }, [handleModeChange])
-
   if (isLoading) return <div className="px-4 pt-2 space-y-3">{Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)}</div>
   if (error) return <ErrorState onRetry={() => refetch()} message={error.message} />
-  if (!questions.length) {
-    const isProcessing = paperSource?.processing_status === 'processing' || paper?.processingStatus === 'processing'
-    return (
-      <div className="px-4 py-20 text-center ed-fade-up">
-        <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gray-50 flex items-center justify-center text-gray-300">
-          {isProcessing ? <Loader2 className="w-7 h-7 text-[#024927] animate-spin" /> : <FileText className="w-7 h-7" />}
-        </div>
-        <p className="font-semibold text-gray-800 text-base font-display">
-          {isProcessing ? 'Text processing…' : 'No extracted questions yet'}
-        </p>
-        <p className="text-sm text-gray-500 mt-1.5 max-w-xs mx-auto leading-relaxed">
-          {isProcessing
-            ? 'We are extracting and indexing questions from this document. You can still read the original document in image mode.'
-            : "This paper hasn't been processed yet. Check back soon."}
-        </p>
-      </div>
-    )
-  }
-
+  if (!questions.length) return (
+    <div className="px-4 py-20 text-center ed-fade-up">
+      <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gray-50 flex items-center justify-center text-gray-300"><FileText className="w-7 h-7" /></div>
+      <p className="font-semibold text-gray-800 text-base font-display">No extracted questions yet</p>
+      <p className="text-sm text-gray-500 mt-1.5 max-w-xs mx-auto leading-relaxed">This paper hasn't been processed yet. Check back soon.</p>
+    </div>
+  )
   const visibleGroups = groups.slice(0, visibleGroupCount)
   const hasMore = visibleGroupCount < groups.length
-
   return (
     <div className="pb-4">
-      {/* Top Review Progress Bar */}
-      <ReviewProgressBar reviewed={reviewedCount} total={questions.length} />
-
-      {/* Segmented View Mode Toggle: [Text Mode | Scanned Image] */}
-      {hasImageScan && (
-        <div className="px-4 sm:px-8 pt-3 pb-2 max-w-3xl mx-auto flex items-center justify-between gap-3 flex-wrap">
-          <ViewModeToggle
-            viewMode={effectiveViewMode}
-            onChange={handleModeChange}
-            hasImageScan={hasImageScan}
-          />
-          <div className="text-xs text-slate-500 flex items-center gap-1.5 font-medium">
-            {effectiveViewMode === 'text' ? (
-              <span>Typography formatted for reading</span>
-            ) : (
-              <span>Original document · pinch or use controls to zoom</span>
-            )}
-          </div>
-        </div>
-      )}
-
-      {/* ── IMAGE MODE: Scanned Document Viewer ────────────────── */}
-      {effectiveViewMode === 'image' && hasImageScan ? (
-        <div className="px-4 sm:px-8 mt-2 max-w-4xl mx-auto">
-          <div className="h-[68vh] sm:h-[74vh] rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-xs">
-            <ScannedImageViewer
-              fileUrl={paperSource.file_url}
-              fileType={paperSource.file_type}
-              currentPage={currentImagePage}
-              initialPage={currentImagePage}
-              onPageChange={setCurrentImagePage}
-            />
-          </div>
-        </div>
-      ) : (
-        /* ── TEXT MODE: Reflowable Academic Typography ─────────── */
-        <>
-          <div className="bg-white border-t border-b border-gray-100 px-4 sm:px-8 py-5 sm:py-6 w-full mt-3">
-            <div className="divide-y divide-gray-100 max-w-3xl mx-auto">
-              {visibleGroups.map((group, i) => (
-                <div key={group.number} className={i === 0 ? 'pb-6' : 'py-6'}>
-                  <PaperQuestionBlock
-                    group={group}
-                    onOpenQuestion={(q) => onOpenQuestion(q, questions)}
-                    savedIds={savedIds}
-                    onToggleSave={onToggleSave}
-                    delay={Math.min(i * 40, 200)}
-                    onViewOriginal={handleJumpToPage}
-                    hasImageScan={hasImageScan}
-                  />
-                </div>
-              ))}
+      <div className="bg-white border-t border-b border-gray-100 px-4 sm:px-8 py-5 sm:py-6 w-full mt-1">
+        <div className="divide-y divide-gray-100 max-w-3xl mx-auto">
+          {visibleGroups.map((group, i) => (
+            <div key={group.number} className={i === 0 ? 'pb-6' : 'py-6'}>
+              <PaperQuestionBlock
+                group={group}
+                onOpenQuestion={(q) => onOpenQuestion(q, questions)}
+                savedIds={savedIds}
+                onToggleSave={onToggleSave}
+                delay={Math.min(i * 40, 200)}
+              />
             </div>
-            {!hasMore && (
-              <p className="text-center text-[11px] font-semibold tracking-wider text-gray-400 uppercase pt-6 max-w-3xl mx-auto">
-                — End of Question Paper —
-              </p>
-            )}
-          </div>
-          {hasMore && (
-            <div className="flex justify-center px-4 pt-4">
-              <button
-                onClick={() => setVisibleGroupCount(c => c + GROUP_PAGE_SIZE)}
-                className="px-5 h-11 bg-white border border-[#024927]/20 text-[#024927] hover:bg-emerald-50 text-sm font-semibold rounded-xl active:scale-95 transition-all shadow-xs"
-              >
-                Show more ({groups.length - visibleGroupCount} left)
-              </button>
-            </div>
-          )}
-        </>
+          ))}
+        </div>
+        {!hasMore && (
+          <p className="text-center text-[11px] font-semibold tracking-wider text-gray-400 uppercase pt-6 max-w-3xl mx-auto">
+            — End of Question Paper —
+          </p>
+        )}
+      </div>
+      {hasMore && (
+        <div className="flex justify-center px-4 pt-4">
+          <button
+            onClick={() => setVisibleGroupCount(c => c + GROUP_PAGE_SIZE)}
+            className="px-5 h-11 bg-white border border-indigo-200 text-indigo-600 text-sm font-semibold rounded-xl hover:bg-indigo-50 active:scale-95 transition-all shadow-sm"
+          >
+            Show more ({groups.length - visibleGroupCount} left)
+          </button>
+        </div>
       )}
     </div>
   )
@@ -2538,8 +1949,8 @@ const SavedQuestionsView = memo(({ savedIds, allQuestionRows, onOpenQuestion, on
             </div>
             <div className="flex flex-col items-end gap-2 flex-shrink-0">
               <BookmarkBtn isSaved onToggle={() => onToggleSave(q)} />
-              <button onClick={() => onOpenQuestion(q, savedQuestions)} className="flex items-center gap-1 px-2.5 h-9 rounded-full bg-indigo-50 text-indigo-600 hover:bg-indigo-100 active:scale-90 transition-all text-xs font-semibold whitespace-nowrap">
-                <Sparkles className="w-3 h-3" /> Ask AI
+              <button onClick={() => onOpenQuestion(q, savedQuestions)} className="flex items-center gap-1 px-2.5 h-9 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-100 active:scale-90 transition-all text-xs font-semibold whitespace-nowrap">
+                <GoogleLensIcon size={14} className="text-blue-600" /> Ask
               </button>
             </div>
           </div>
@@ -2551,13 +1962,10 @@ const SavedQuestionsView = memo(({ savedIds, allQuestionRows, onOpenQuestion, on
 
 // ── Main component ────────────────────────────────────────────
 export default function PastPapers() {
-  const isPreview = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('preview') === 'true'
   const [user, setUser] = useState(null)
-  const effectiveUser = user || (isPreview ? { id: 'preview-user-id', email: 'student@luanar.ac.mw' } : null)
   const [authLoading, setAuthLoading] = useState(true)
   const reduceMotion = useMotionPreference()
   const [, startTransition] = useTransition()
-  const isDesktop = useIsDesktop()
 
   useEffect(() => {
     let mounted = true
@@ -2580,12 +1988,8 @@ export default function PastPapers() {
     try { return JSON.parse(sessionStorage.getItem('ppCurrentPaper') || 'null') } catch { return null }
   })
   const [studyMode, setStudyMode] = useState('papers')
+  const [paperViewFormat, setPaperViewFormat] = useState('extracted') // 'extracted' | 'actual'
   const [showSaved, setShowSaved] = useState(false)
-  const [papersViewTab, setPapersViewTab] = useState('papers')
-  const [selectedYear, setSelectedYear] = useState('all')
-  const [selectedSemester, setSelectedSemester] = useState('all')
-  const [selectedCourseFilter, setSelectedCourseFilter] = useState('all')
-  const [selectedKind, setSelectedKind] = useState('all') // 'all' | 'paper' | 'tutorial'
 
   const [searchQuery, setSearchQuery] = useState('')
   const deferredSearch = useDeferredValue(searchQuery)
@@ -2736,34 +2140,17 @@ export default function PastPapers() {
 
   const { data: myQuestionRows = [], isLoading: myPapersLoading, error: myPapersError, refetch: refetchMyPapers } = useQuery({
     queryKey: ['myQuestions', myCourseIds],
-    queryFn: () => myCourseIds.length > 0 ? fetchQuestionsForCourseIds(myCourseIds) : fetchAllRecentQuestions(),
-    staleTime: 5 * 60 * 1000,
+    queryFn: () => fetchQuestionsForCourseIds(myCourseIds),
+    initialData: () => {
+      if (!myCourseIds.length) return undefined
+      try {
+        const cached = localStorage.getItem('sh_cq_' + [...myCourseIds].sort().join('_'))
+        return cached ? JSON.parse(cached) : undefined
+      } catch { return undefined }
+    },
+    enabled: myCourseIds.length > 0, staleTime: 5 * 60 * 1000,
   })
-  const rawMyPapers = useMemo(() => groupQuestionsIntoPapers(myQuestionRows), [myQuestionRows])
-
-  // Collect unique uploaded_by UUIDs across all papers
-  const allUploaderIds = useMemo(() => {
-    const ids = new Set()
-    for (const p of rawMyPapers) {
-      if (p.uploadedBy) ids.add(p.uploadedBy)
-    }
-    return Array.from(ids)
-  }, [rawMyPapers])
-
-  const { data: publicNamesMap = {} } = useQuery({
-    queryKey: ['publicNames', allUploaderIds],
-    queryFn: () => fetchPublicNames(allUploaderIds),
-    enabled: allUploaderIds.length > 0,
-    staleTime: 30 * 60 * 1000,
-  })
-
-  const myPapers = useMemo(() => {
-    return rawMyPapers.map(p => ({
-      ...p,
-      uploaderLabel: p.uploadedBy ? (publicNamesMap[p.uploadedBy] || null) : null,
-    }))
-  }, [rawMyPapers, publicNamesMap])
-
+  const myPapers = useMemo(() => groupQuestionsIntoPapers(myQuestionRows), [myQuestionRows])
   const myPapersByCourse = useMemo(() => groupPapersByCourse(myPapers), [myPapers])
   const filteredMyPapersByCourse = useMemo(() => {
     if (!deferredSearch) return myPapersByCourse
@@ -2775,41 +2162,6 @@ export default function PastPapers() {
     return out
   }, [myPapersByCourse, deferredSearch])
 
-  const availableYears = useMemo(() => {
-    const years = new Set()
-    myPapers.forEach(p => { if (p.year) years.add(p.year) })
-    return Array.from(years).sort((a, b) => b - a)
-  }, [myPapers])
-
-  const filteredPapersList = useMemo(() => {
-    return myPapers.filter(paper => {
-      if (deferredSearch) {
-        const q = deferredSearch.toLowerCase()
-        const matchName = paper.courseName?.toLowerCase().includes(q)
-        const matchCode = paper.courseCode?.toLowerCase().includes(q)
-        const matchTopic = paper.topics?.some(t => t.toLowerCase().includes(q))
-        if (!matchName && !matchCode && !matchTopic) return false
-      }
-      if (selectedYear !== 'all' && String(paper.year) !== String(selectedYear)) return false
-      if (selectedSemester !== 'all' && String(paper.semester) !== String(selectedSemester)) return false
-      if (selectedCourseFilter !== 'all' && String(paper.courseId) !== String(selectedCourseFilter)) return false
-      if (selectedKind !== 'all' && (paper.kind || 'paper') !== selectedKind) return false
-      return true
-    })
-  }, [myPapers, deferredSearch, selectedYear, selectedSemester, selectedCourseFilter, selectedKind])
-
-  const handleOpenPaper = useCallback((paper) => {
-    const course = myCourses.find(c => String(c.id) === String(paper.courseId)) || {
-      id: paper.courseId,
-      course_name: paper.courseName,
-      course_code: paper.courseCode,
-    }
-    setCurrentCourse(course)
-    setCurrentPaper(paper)
-    setCurrentView('questions')
-    setStudyMode('papers')
-  }, [myCourses])
-
   const { data: allPrograms = [], isLoading: programsLoading, error: programsError, refetch: refetchPrograms } = useQuery({
     queryKey: ['allPrograms'], queryFn: fetchAllPrograms, enabled: browsingAll,
   })
@@ -2817,35 +2169,64 @@ export default function PastPapers() {
     queryKey: ['browseCourses', currentProgram?.id], queryFn: () => fetchCoursesForProgram(currentProgram?.id), enabled: !!currentProgram?.id,
   })
   const { data: coursePaperRows = [], isLoading: coursePapersLoading, error: coursePapersError, refetch: refetchCoursePapers } = useQuery({
-    queryKey: ['coursePapers', currentCourse?.id, currentPaper?.paperId],
-    queryFn: async () => {
-      if (currentCourse?.id) {
-        const rows = await fetchQuestionsForCourseIds([currentCourse.id])
-        if (rows.length) return rows
-      }
-      if (currentPaper?.paperId) {
-        return await fetchQuestionsForPaper(currentPaper.paperId)
-      }
-      return []
+    queryKey: ['coursePapers', currentCourse?.id],
+    queryFn: () => fetchQuestionsForCourseIds(currentCourse?.id ? [currentCourse.id] : []),
+    initialData: () => {
+      if (!currentCourse?.id) return undefined
+      try {
+        const cached = localStorage.getItem('sh_cq_' + currentCourse.id)
+        return cached ? JSON.parse(cached) : undefined
+      } catch { return undefined }
     },
-    enabled: !!currentCourse?.id || !!currentPaper?.paperId,
+    enabled: !!currentCourse?.id,
   })
-  const rawCoursePapers = useMemo(() => groupQuestionsIntoPapers(coursePaperRows), [coursePaperRows])
-  const coursePapers = useMemo(() => {
-    return rawCoursePapers.map(p => ({
-      ...p,
-      uploaderLabel: p.uploadedBy ? (publicNamesMap[p.uploadedBy] || null) : null,
-    }))
-  }, [rawCoursePapers, publicNamesMap])
+  const coursePapers = useMemo(() => groupQuestionsIntoPapers(coursePaperRows), [coursePaperRows])
   const sortedCoursePapers = useMemo(() => sortPapersRecentFirst(coursePapers), [coursePapers])
+
+  // Background prefetch: save paper scan files before user even thinks about switching format
+  useEffect(() => {
+    if (!sortedCoursePapers?.length) return
+    const prefetchScanFiles = async () => {
+      for (const p of sortedCoursePapers.slice(0, 3)) {
+        if (!p?.paperId) continue
+        try {
+          const cacheKey = `sh_file_meta_${p.paperId}`
+          let fileUrl = null
+          const cached = localStorage.getItem(cacheKey)
+          if (cached) {
+            fileUrl = JSON.parse(cached)?.file_url
+          } else {
+            const { data } = await supabase
+              .from('past_paper')
+              .select('id, file_url, file_name, file_type, thumbnail_url, page_count, title, course, year')
+              .eq('paper_id', p.paperId)
+              .maybeSingle()
+            if (data?.file_url) {
+              localStorage.setItem(cacheKey, JSON.stringify(data))
+              fileUrl = data.file_url
+            }
+          }
+          if (fileUrl && 'caches' in window) {
+            const cache = await caches.open('studyhub-papers-v1')
+            const match = await cache.match(fileUrl)
+            if (!match) {
+              fetch(fileUrl, { mode: 'cors' }).then(res => {
+                if (res.ok) cache.put(fileUrl, res)
+              }).catch(() => {})
+            }
+          }
+        } catch {}
+      }
+    }
+    prefetchScanFiles()
+  }, [sortedCoursePapers])
 
   useEffect(() => {
     if (currentView !== 'questions') return
-    if (coursePapersLoading) return
-    if (!sortedCoursePapers.length) return
+    if (!sortedCoursePapers.length) { if (currentPaper) setCurrentPaper(null); return }
     const stillValid = currentPaper && sortedCoursePapers.some(p => p.paperId === currentPaper.paperId)
     if (!stillValid) setCurrentPaper(sortedCoursePapers[0])
-  }, [sortedCoursePapers, currentView, coursePapersLoading, currentPaper])
+  }, [sortedCoursePapers, currentView])
 
   useEffect(() => { sessionStorage.setItem('ppView', currentView) }, [currentView])
   useEffect(() => { try { sessionStorage.setItem('ppCurrentPaper', JSON.stringify(currentPaper)) } catch {} }, [currentPaper])
@@ -2916,8 +2297,22 @@ export default function PastPapers() {
   }, [])
 
   const handleOpenQuestion = useCallback((question, list = null) => {
-    setActiveEntry({ question, list })
+    setActiveEntry({ question, list, paperContext: null })
   }, [])
+
+  const handleAskPaper = useCallback((paperContext) => {
+    const effectivePaperId = paperContext?.paperId || currentPaper?.paperId || null
+    const syntheticQuestion = {
+      id: `paper_${effectivePaperId || 'unknown'}`,
+      paperId: effectivePaperId,
+      text: `${currentPaper?.courseName || paperContext?.paperTitle || ''} ${currentPaper?.year || ''} Past Paper`,
+      course: currentPaper?.courseName || null,
+      marks: null,
+      topic: null,
+      number: 'Paper',
+    }
+    setActiveEntry({ question: syntheticQuestion, list: null, paperContext })
+  }, [currentPaper])
 
   const handleMarkReviewed = useCallback((question) => {
     setReviewedIds(prev => {
@@ -2977,509 +2372,285 @@ export default function PastPapers() {
   return (
     <MotionContext.Provider value={reduceMotion}>
       <style>{ANIM_CSS}</style>
+      <div className="relative h-screen h-[100dvh] w-full overflow-hidden bg-white flex flex-col">
+        {/* Main scrollable body */}
+        <div
+          ref={scrollContainerRef}
+          onScroll={handleScroll}
+          className="flex-1 overflow-y-auto bg-white w-full no-scrollbar pb-32 lg:pb-6"
+        >
 
-      {/* ── DESKTOP QUESTIONS VIEW: two-column split ─────────── */}
-      {isDesktop && currentView === 'questions' ? (
-        <div className="relative h-full w-full overflow-hidden bg-slate-50 flex flex-col">
-          {/* Header */}
-          <header className={`flex-shrink-0 sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-transform duration-300 ease-out will-change-transform ${
+        {/* Header */}
+        <header
+          className={`sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-transform duration-300 ease-out will-change-transform ${
             isImmersive ? '-translate-y-full shadow-none pointer-events-none' : 'translate-y-0 shadow-sm'
-          }`}>
-            <div className="px-4 py-3 flex items-center justify-between gap-3">
-              <div className="flex items-center gap-3 min-w-0">
-                {showBack && (
-                  <button className="w-9 h-9 flex items-center justify-center hover:bg-slate-100 rounded-xl transition-colors active:scale-90 flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#024927]" onClick={handleBack} aria-label="Go back">
-                    <ArrowLeft className="w-4 h-4 text-slate-600" />
-                  </button>
-                )}
-                <div className="min-w-0">
-                  <h1 className="text-base font-bold text-slate-900 truncate leading-tight">
-                    {currentCourse?.course_name || 'Past Papers'}
-                  </h1>
-                  <div className="flex items-center gap-2 flex-wrap">
-                    {currentCourse?.course_code && (
-                      <p className="text-xs text-slate-500 leading-tight">{currentCourse.course_code}</p>
-                    )}
-                    {currentPaper?.uploaderLabel && (
-                      <span className="text-[11px] text-slate-500 flex items-center gap-1 font-medium bg-slate-100 px-2 py-0.5 rounded-md">
-                        <User className="w-3 h-3 text-slate-400" />
-                        Uploaded by {currentPaper.uploaderLabel}
-                      </span>
-                    )}
-                  </div>
+          }`}
+        >
+          <div className="px-4 py-3 flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3 min-w-0">
+              {showBack && (
+                <button className="w-11 h-11 flex items-center justify-center hover:bg-indigo-50 rounded-xl transition-colors active:scale-90 flex-shrink-0" onClick={handleBack} aria-label="Go back">
+                  <ArrowLeft className="w-5 h-5 text-gray-700" />
+                </button>
+              )}
+              <div className="flex items-center gap-2.5 min-w-0">
+                <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-xl flex items-center justify-center flex-shrink-0 overflow-hidden">
+                  <img src="/images/luanar7.png" alt="Logo" className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none' }} />
                 </div>
+                <h1 className="text-lg font-bold tracking-tight font-display truncate">
+                  <span className="text-gray-800">Past</span>
+                  <span className="text-indigo-600"> Papers</span>
+                </h1>
                 {!isOnline && <span className="text-[11px] bg-amber-500 text-white px-2 py-0.5 rounded-full font-bold flex-shrink-0">Offline</span>}
               </div>
-              <div className="flex items-center gap-2 flex-shrink-0">
+            </div>
+            <div className="flex items-center gap-2 flex-shrink-0">
+              {currentView === 'my-courses' && (
                 <button
-                  onClick={() => { isImmersiveRef.current = !isImmersive; setIsImmersive(prev => !prev); }}
-                  className={`p-2 rounded-xl border transition-all active:scale-90 flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#024927] ${
-                    isImmersive ? 'bg-[#024927] text-white border-[#024927] shadow-sm' : 'bg-white border-slate-200 text-slate-600 hover:border-[#024927]/30 hover:text-[#024927]'
+                  onClick={() => setShowSaved(s => !s)}
+                  className={`flex items-center gap-1 px-2.5 h-9 rounded-full border text-sm font-semibold transition-all active:scale-95 ${
+                    showSaved ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white text-gray-600 border-gray-200 hover:border-indigo-300 hover:text-indigo-600'
+                  }`}
+                >
+                  {showSaved ? <BookmarkCheck className="w-3.5 h-3.5" /> : <Bookmark className="w-3.5 h-3.5" />}
+                  Saved
+                  {savedQuestionIds.size > 0 && (
+                    <span className={`text-[11px] font-bold px-1.5 rounded-full ${showSaved ? 'bg-white/20 text-white' : 'bg-indigo-100 text-indigo-600'}`}>
+                      {savedQuestionIds.size}
+                    </span>
+                  )}
+                </button>
+              )}
+              {currentView === 'questions' && (
+                <button
+                  onClick={() => {
+                    isImmersiveRef.current = !isImmersive;
+                    setIsImmersive(prev => !prev);
+                  }}
+                  className={`p-2 rounded-xl border transition-all active:scale-90 flex-shrink-0 ${
+                    isImmersive
+                      ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
+                      : 'bg-white border-gray-200 text-gray-600 hover:border-indigo-300 hover:text-indigo-600'
                   }`}
                   title={isImmersive ? 'Exit fullscreen reading mode' : 'Fullscreen reading mode'}
                   aria-label="Toggle Fullscreen"
                 >
                   {isImmersive ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
                 </button>
-                <div className="relative">
-                  <Search className="w-4 h-4 absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-300 pointer-events-none" />
-                  <input
-                    type="text"
-                    placeholder="Search…"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-8 pr-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#024927] focus:border-transparent w-48 transition-all"
-                  />
-                  {searchQuery && (
-                    <button onClick={() => setSearchQuery('')} className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 w-5 h-5 flex items-center justify-center">
-                      <X className="w-3.5 h-3.5" />
-                    </button>
-                  )}
-                </div>
+              )}
+              <div className="relative">
+                <Search className="w-4 h-4 absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-300 pointer-events-none" />
+                <input
+                  type="text"
+                  placeholder={searchPlaceholder}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-8 pr-3 py-1.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent w-32 sm:w-44 transition-all"
+                />
+                {searchQuery && (
+                  <button onClick={() => setSearchQuery('')} className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 w-5 h-5 flex items-center justify-center">
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                )}
               </div>
             </div>
-            <StudyModeBar activeMode={studyMode} onChange={setStudyMode} />
-          </header>
+          </div>
+        </header>
 
-          {/* Breadcrumb */}
-          <div className="flex-shrink-0 flex items-center gap-1 px-4 py-1.5 text-xs text-slate-500 border-b border-slate-100 bg-white overflow-x-auto no-scrollbar whitespace-nowrap">
-            <button onClick={goToMyCourses} className="hover:text-[#024927] transition-colors font-medium min-h-[32px] flex items-center">My Courses</button>
+        {/* Breadcrumb */}
+        {currentView !== 'my-courses' && (
+          <div className="flex items-center gap-1 px-4 pt-2 pb-1 text-xs text-gray-500 overflow-x-auto no-scrollbar whitespace-nowrap">
+            <button onClick={goToMyCourses} className="hover:text-indigo-600 transition-colors font-medium min-h-[36px] flex items-center">My Courses</button>
             {browsingAll && (
               <>
                 <ChevronRight className="w-3 h-3 opacity-30 flex-shrink-0" />
-                <button onClick={currentView !== 'programs' ? goToBrowsePrograms : undefined} className={`min-h-[32px] flex items-center ${currentView !== 'programs' ? 'hover:text-[#024927] transition-colors font-medium' : 'text-slate-700 font-semibold'}`}>Programs</button>
+                <button onClick={currentView !== 'programs' ? goToBrowsePrograms : undefined} className={`min-h-[36px] flex items-center ${currentView !== 'programs' ? 'hover:text-indigo-600 transition-colors font-medium' : 'text-gray-700 font-semibold'}`}>
+                  Programs
+                </button>
               </>
             )}
             {browsingAll && currentProgram && (
               <>
                 <ChevronRight className="w-3 h-3 opacity-30 flex-shrink-0" />
-                <button onClick={currentView !== 'courses' ? () => goToBrowseCourses(currentProgram) : undefined} className={`min-h-[32px] flex items-center ${currentView !== 'courses' ? 'hover:text-[#024927] transition-colors font-medium' : 'text-slate-700 font-semibold'}`}>{currentProgram.name}</button>
+                <button onClick={currentView !== 'courses' ? () => goToBrowseCourses(currentProgram) : undefined} className={`min-h-[36px] flex items-center ${currentView !== 'courses' ? 'hover:text-indigo-600 transition-colors font-medium' : 'text-gray-700 font-semibold'}`}>
+                  {currentProgram.name}
+                </button>
               </>
             )}
             {currentCourse && (
               <>
                 <ChevronRight className="w-3 h-3 opacity-30 flex-shrink-0" />
-                <span className="text-slate-700 font-semibold truncate max-w-[200px]">{currentCourse.course_name}</span>
+                <span className="text-gray-700 font-semibold truncate max-w-[150px]">{currentCourse.course_name}</span>
               </>
             )}
           </div>
+        )}
 
-          {/* Two-column body */}
-          <div className="flex-1 flex overflow-hidden min-h-0">
-            {/* Left: Question list */}
-            <div
-              ref={scrollContainerRef}
-              onScroll={handleScroll}
-              className={`overflow-y-auto bg-white no-scrollbar transition-all duration-300 ${activeEntry ? 'w-[55%] border-r border-slate-200' : 'w-full'}`}
-            >
-              <div className="pb-6">
-                {studyMode === 'papers' && (
-                  coursePapersLoading ? (
-                    <div className="px-6 pt-4 space-y-3">{Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)}</div>
-                  ) : coursePapersError ? (
-                    <ErrorState onRetry={() => refetchCoursePapers()} message={coursePapersError.message} />
-                  ) : !sortedCoursePapers.length && !currentPaper ? (
-                    <EmptyState label="No past papers for this course yet" />
-                  ) : (
-                    <>
-                      {sortedCoursePapers.length > 0 && (
-                        <PaperSwitcher papers={sortedCoursePapers} currentPaperId={currentPaper?.paperId} onSelect={setCurrentPaper} />
-                      )}
-                      {currentPaper && (
-                        <QuestionListView
-                          paper={currentPaper}
-                          onOpenQuestion={handleOpenQuestion}
-                          savedIds={savedQuestionIds}
-                          reviewedIds={reviewedIds}
-                          onToggleSave={handleToggleSave}
-                        />
-                      )}
-                    </>
-                  )
-                )}
-                {studyMode === 'exam-focus' && (
-                  <ExamFocusPanel courseId={currentCourse?.id} onOpenSampleQuestion={(q) => handleOpenQuestion(q)} />
-                )}
-                {studyMode === 'last-minute' && (
-                  <LastMinutePanel courseId={currentCourse?.id} onOpenQuestion={handleOpenQuestion} />
-                )}
-              </div>
-            </div>
+        {/* Content */}
+        <div className="py-3 space-y-3">
 
-            {/* Right: AI Panel (desktop only, inline) */}
-            {activeEntry && (
-              <div className="w-[45%] flex-shrink-0 overflow-hidden flex flex-col">
-                <ActionSheet
-                  question={activeEntry.question}
-                  questionList={activeEntry.list}
-                  onClose={() => setActiveEntry(null)}
-                  savedIds={savedQuestionIds}
-                  onToggleSave={handleToggleSave}
-                  flaggedIds={flaggedIds}
-                  onFlag={handleFlagQuestion}
-                  isOnline={isOnline}
-                  aiCache={aiCache}
-                  reviewedIds={reviewedIds}
-                  onMarkReviewed={handleMarkReviewed}
-                  onNavigate={(q) => setActiveEntry(prev => prev ? { ...prev, question: q } : null)}
-                  isDesktop={true}
-                />
-              </div>
-            )}
-
-            {/* Empty panel placeholder when no question selected */}
-            {!activeEntry && (
-              <div className="hidden lg:flex flex-col items-center justify-center w-0 overflow-hidden opacity-0 pointer-events-none select-none" aria-hidden="true" />
-            )}
-          </div>
-
-          <OfflineToast visible={showOfflineToast} pendingCount={pendingSyncCount} />
-          <MilestoneToast visible={!!milestoneMsg} message={milestoneMsg} />
-        </div>
-
-      ) : (
-        /* ── MOBILE / TABLET + LIST VIEWS ─────────────────────── */
-        <div className="relative h-full w-full overflow-hidden bg-white flex flex-col">
-          {/* Main scrollable body */}
-          <div
-            ref={scrollContainerRef}
-            onScroll={handleScroll}
-            className="flex-1 overflow-y-auto bg-white w-full no-scrollbar pb-24 md:pb-6"
-          >
-
-          {/* Header */}
-          <header
-            className={`sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-transform duration-300 ease-out will-change-transform ${
-              isImmersive ? '-translate-y-full shadow-none pointer-events-none' : 'translate-y-0 shadow-sm'
-            }`}
-          >
-            <div className="px-4 py-3 flex items-center justify-between gap-3">
-              <div className="flex items-center gap-3 min-w-0">
-                {showBack && (
-                  <button className="w-11 h-11 flex items-center justify-center hover:bg-indigo-50 rounded-xl transition-colors active:scale-90 flex-shrink-0" onClick={handleBack} aria-label="Go back">
-                    <ArrowLeft className="w-5 h-5 text-gray-700" />
-                  </button>
-                )}
-                <div className="flex items-center gap-2.5 min-w-0">
-                  <div className="md:hidden w-8 h-8 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-xl flex items-center justify-center flex-shrink-0 overflow-hidden">
-                    <img src="/images/luanar7.png" alt="Logo" className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none' }} />
-                  </div>
-                  <h1 className="text-lg font-bold tracking-tight font-display truncate">
-                    <span className="text-gray-800">Past</span>
-                    <span className="text-indigo-600"> Papers</span>
-                  </h1>
-                  {!isOnline && <span className="text-[11px] bg-amber-500 text-white px-2 py-0.5 rounded-full font-bold flex-shrink-0">Offline</span>}
-                </div>
-              </div>
-              <div className="flex items-center gap-2 flex-shrink-0">
-                {currentView === 'my-courses' && (
-                  <button
-                    onClick={() => setShowSaved(s => !s)}
-                    className={`flex items-center gap-1 px-2.5 h-9 rounded-full border text-sm font-semibold transition-all active:scale-95 ${
-                      showSaved ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white text-gray-600 border-gray-200 hover:border-indigo-300 hover:text-indigo-600'
-                    }`}
-                  >
-                    {showSaved ? <BookmarkCheck className="w-3.5 h-3.5" /> : <Bookmark className="w-3.5 h-3.5" />}
-                    Saved
-                    {savedQuestionIds.size > 0 && (
-                      <span className={`text-[11px] font-bold px-1.5 rounded-full ${showSaved ? 'bg-white/20 text-white' : 'bg-indigo-100 text-indigo-600'}`}>
-                        {savedQuestionIds.size}
-                      </span>
-                    )}
-                  </button>
-                )}
-                {currentView === 'questions' && (
-                  <button
-                    onClick={() => {
-                      isImmersiveRef.current = !isImmersive;
-                      setIsImmersive(prev => !prev);
-                    }}
-                    className={`p-2 rounded-xl border transition-all active:scale-90 flex-shrink-0 ${
-                      isImmersive
-                        ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
-                        : 'bg-white border-gray-200 text-gray-600 hover:border-indigo-300 hover:text-indigo-600'
-                    }`}
-                    title={isImmersive ? 'Exit fullscreen reading mode' : 'Fullscreen reading mode'}
-                    aria-label="Toggle Fullscreen"
-                  >
-                    {isImmersive ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
-                  </button>
-                )}
-                <div className="relative">
-                  <Search className="w-4 h-4 absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-300 pointer-events-none" />
-                  <input
-                    type="text"
-                    placeholder={searchPlaceholder}
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-8 pr-3 py-1.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent w-32 sm:w-44 transition-all"
-                  />
-                  {searchQuery && (
-                    <button onClick={() => setSearchQuery('')} className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 w-5 h-5 flex items-center justify-center">
-                      <X className="w-3.5 h-3.5" />
-                    </button>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            {currentView === 'questions' && <StudyModeBar activeMode={studyMode} onChange={setStudyMode} />}
-          </header>
-
-          {/* Breadcrumb */}
-          {currentView !== 'my-courses' && (
-            <div className="flex-shrink-0 flex items-center gap-1 px-4 py-1.5 text-xs text-slate-500 border-b border-slate-100 bg-white overflow-x-auto no-scrollbar whitespace-nowrap">
-              <button onClick={goToMyCourses} className="hover:text-[#024927] transition-colors font-medium min-h-[32px] flex items-center">My Courses</button>
-              {browsingAll && (
-                <>
-                  <ChevronRight className="w-3 h-3 opacity-30 flex-shrink-0" />
-                  <button onClick={currentView !== 'programs' ? goToBrowsePrograms : undefined} className={`min-h-[32px] flex items-center ${currentView !== 'programs' ? 'hover:text-[#024927] transition-colors font-medium' : 'text-slate-700 font-semibold'}`}>
-                    Programs
-                  </button>
-                </>
-              )}
-              {browsingAll && currentProgram && (
-                <>
-                  <ChevronRight className="w-3 h-3 opacity-30 flex-shrink-0" />
-                  <button onClick={currentView !== 'courses' ? () => goToBrowseCourses(currentProgram) : undefined} className={`min-h-[32px] flex items-center ${currentView !== 'courses' ? 'hover:text-[#024927] transition-colors font-medium' : 'text-slate-700 font-semibold'}`}>
-                    {currentProgram.name}
-                  </button>
-                </>
-              )}
-              {currentCourse && (
-                <>
-                  <ChevronRight className="w-3 h-3 opacity-30 flex-shrink-0" />
-                  <span className="text-slate-700 font-semibold truncate max-w-[200px]">{currentCourse.course_name}</span>
-                  {currentPaper?.uploaderLabel && (
-                    <span className="text-[10px] text-slate-500 font-medium bg-slate-100 px-1.5 py-0.5 rounded ml-1 flex items-center gap-1">
-                      <User className="w-2.5 h-2.5 text-slate-400" />
-                      {currentPaper.uploaderLabel}
+          {currentView === 'my-courses' && !showSaved && (
+            <>
+              <div className="px-4 flex items-center justify-between">
+                <div>
+                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Your courses</p>
+                  {(myYear || mySemester) && (
+                    <span className="inline-flex items-center gap-1 mt-0.5 px-2 py-0.5 bg-indigo-50 text-indigo-700 text-[11px] font-bold rounded-md">
+                      {myYear ? `Year ${myYear}` : ''}
+                      {myYear && mySemester ? ' · ' : ''}
+                      {mySemester ? `Semester ${mySemester}` : ''}
                     </span>
                   )}
-                </>
+                </div>
+                <button onClick={goToBrowsePrograms} className="text-sm font-semibold text-indigo-600 hover:underline h-9 flex items-center">
+                  Browse other programs →
+                </button>
+              </div>
+              {authLoading ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 px-4">{Array.from({ length: 2 }).map((_, i) => <SkeletonCard key={i} />)}</div>
+              ) : !user ? (
+                <EmptyState label="Sign in to see your courses" sub="Your past papers and revision progress are saved to your account." action={{ label: 'Sign in', onClick: () => window.location.href = '/auth' }} />
+              ) : myCoursesResolving || myPapersLoading ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 px-4">{Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)}</div>
+              ) : myPapersError ? (
+                <ErrorState onRetry={() => refetchMyPapers()} message={myPapersError.message} />
+              ) : myCourseIds.length === 0 ? (
+                <EmptyState label="No courses found for your program yet" sub="Check back soon — new programs are added regularly." />
+              ) : Object.keys(filteredMyPapersByCourse).length === 0 ? (
+                <EmptyState label="No matching courses" isSearch />
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 px-4">
+                  {Object.entries(filteredMyPapersByCourse).map(([courseId, group], idx) => {
+                    const course = myCourses.find(c => String(c.id) === String(courseId)) || { id: courseId, course_name: group.courseName, course_code: group.courseCode }
+                    const courseQIds = myQuestionRows.filter(r => String(r.course_id) === String(courseId)).map(r => r.id)
+                    return (
+                      <CourseThumbnailCard
+                        key={courseId}
+                        courseName={group.courseName}
+                        courseCode={group.courseCode}
+                        paperCount={group.papers.length}
+                        onClick={() => goToCourseDetail(course)}
+                        delay={Math.min(idx * 35, 200)}
+                      />
+                    )
+                  })}
+                </div>
               )}
+            </>
+          )}
+
+          {currentView === 'my-courses' && showSaved && (
+            <SavedQuestionsView
+              savedIds={savedQuestionIds}
+              allQuestionRows={myQuestionRows}
+              onOpenQuestion={handleOpenQuestion}
+              onToggleSave={handleToggleSave}
+              reviewedIds={reviewedIds}
+            />
+          )}
+
+          {currentView === 'programs' && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 px-4">
+              {programsLoading ? Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)
+                : programsError ? <ErrorState onRetry={() => refetchPrograms()} message={programsError.message} />
+                : renderPrograms()}
             </div>
           )}
 
-          {/* Content */}
-          <div className="space-y-3">
+          {currentView === 'courses' && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 px-4">
+              {coursesLoading ? Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)
+                : coursesError ? <ErrorState onRetry={() => refetchCourses()} message={coursesError.message} />
+                : renderCourses()}
+            </div>
+          )}
 
-            {currentView === 'my-courses' && !showSaved && (
+          {currentView === 'questions' && (
+            coursePapersLoading ? (
+              <div className="px-4 pt-2 space-y-3">{Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)}</div>
+            ) : coursePapersError ? (
+              <ErrorState onRetry={() => refetchCoursePapers()} message={coursePapersError.message} />
+            ) : !sortedCoursePapers.length ? (
+              <EmptyState label="No past papers for this course yet" />
+            ) : (
               <>
-                <div className="px-4 flex items-center justify-between gap-3 flex-wrap">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <h2 className="text-base font-bold text-slate-900 tracking-tight">Your Courses & Papers</h2>
-                      {(myYear || mySemester) && (
-                        <span className="inline-flex items-center px-2 py-0.5 bg-[#024927]/10 text-[#024927] text-[11px] font-bold rounded-md">
-                          {myYear ? `Year ${myYear}` : ''}
-                          {myYear && mySemester ? ' · ' : ''}
-                          {mySemester ? `Sem ${mySemester}` : ''}
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-xs text-slate-500 mt-0.5">
-                      {myProgramName || 'Curriculum past examination papers'}
-                    </p>
-                  </div>
-
-                  <button onClick={goToBrowsePrograms} className="text-xs font-semibold text-[#024927] hover:underline h-9 px-2 flex items-center">
-                    Browse all programs →
-                  </button>
-                </div>
-
-                {/* Course Filter Chips (Hick's Law: instant recognition, 44px tap targets) */}
-                {myCourses.length > 0 && (
-                  <div className="px-4 flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1">
-                    <button
-                      onClick={() => setSelectedCourseFilter('all')}
-                      className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap min-h-[36px] transition-colors ${
-                        selectedCourseFilter === 'all'
-                          ? 'bg-[#024927] text-white'
-                          : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300'
-                      }`}
-                    >
-                      All ({filteredPapersList.length})
-                    </button>
-                    {myCourses.map((c) => {
-                      const isSelected = String(selectedCourseFilter) === String(c.id)
-                      return (
-                        <button
-                          key={c.id}
-                          onClick={() => setSelectedCourseFilter(isSelected ? 'all' : c.id)}
-                          className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap min-h-[36px] transition-colors ${
-                            isSelected
-                              ? 'bg-[#024927] text-white'
-                              : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300'
-                          }`}
-                        >
-                          {c.course_code || c.course_name}
-                        </button>
-                      )
-                    })}
-                  </div>
-                )}
-
-                {authLoading ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 px-4">{Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)}</div>
-                ) : !effectiveUser ? (
-                  <EmptyState label="Sign in to see your courses" sub="Your past papers and revision progress are saved to your account." action={{ label: 'Sign in', onClick: () => window.location.href = '/auth' }} />
-                ) : (myCoursesResolving && !isPreview) || myPapersLoading ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 px-4">{Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)}</div>
-                ) : myPapersError ? (
-                  <ErrorState onRetry={() => refetchMyPapers()} message={myPapersError.message} />
-                ) : myPapers.length === 0 ? (
-                  <EmptyState label="No past papers found" sub="Check back soon — new papers are added regularly." />
-                ) : papersViewTab === 'papers' ? (
-                  filteredPapersList.length === 0 ? (
-                    <EmptyState
-                      label="No past papers match your filters"
-                      sub="Try adjusting your year, semester, or search query."
-                      action={{
-                        label: 'Clear Filters',
-                        onClick: () => { setSelectedYear('all'); setSelectedSemester('all'); setSelectedCourseFilter('all'); setSearchQuery(''); }
-                      }}
+                <PaperToolbar
+                  papers={sortedCoursePapers}
+                  currentPaperId={currentPaper?.paperId}
+                  onSelect={setCurrentPaper}
+                  viewFormat={paperViewFormat}
+                  onFormatChange={setPaperViewFormat}
+                />
+                {currentPaper && (
+                  paperViewFormat === 'actual' ? (
+                    <ActualPaperView
+                      paper={currentPaper}
+                      onSwitchToText={() => setPaperViewFormat('extracted')}
+                      onAskPaper={handleAskPaper}
                     />
                   ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 px-4">
-                      {filteredPapersList.map((paper, idx) => {
-                        const courseQIds = myQuestionRows.filter(r => String(r.paper_id) === String(paper.paperId)).map(r => r.id)
-                        const reviewed = reviewedCountFor(courseQIds)
-                        return (
-                          <PaperCard
-                            key={paper.paperId}
-                            paper={paper}
-                            onClick={() => handleOpenPaper(paper)}
-                          />
-                        )
-                      })}
-                    </div>
-                  )
-                ) : (
-                  Object.keys(filteredMyPapersByCourse).length === 0 ? (
-                    <EmptyState label="No matching courses" isSearch />
-                  ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 px-4">
-                      {Object.entries(filteredMyPapersByCourse).map(([courseId, group], idx) => {
-                        const course = myCourses.find(c => String(c.id) === String(courseId)) || { id: courseId, course_name: group.courseName, course_code: group.courseCode }
-                        const courseQIds = myQuestionRows.filter(r => String(r.course_id) === String(courseId)).map(r => r.id)
-                        return (
-                          <CourseThumbnailCard
-                            key={courseId}
-                            courseName={group.courseName}
-                            courseCode={group.courseCode}
-                            paperCount={group.papers.length}
-                            reviewedCount={reviewedCountFor(courseQIds)}
-                            totalCount={courseQIds.length}
-                            onClick={() => goToCourseDetail(course)}
-                            delay={Math.min(idx * 35, 200)}
-                          />
-                        )
-                      })}
-                    </div>
+                    <QuestionListView
+                      paper={currentPaper}
+                      onOpenQuestion={handleOpenQuestion}
+                      savedIds={savedQuestionIds}
+                      reviewedIds={reviewedIds}
+                      onToggleSave={handleToggleSave}
+                    />
                   )
                 )}
               </>
-            )}
-
-            {currentView === 'my-courses' && showSaved && (
-              <SavedQuestionsView
-                savedIds={savedQuestionIds}
-                allQuestionRows={myQuestionRows}
-                onOpenQuestion={handleOpenQuestion}
-                onToggleSave={handleToggleSave}
-                reviewedIds={reviewedIds}
-              />
-            )}
-
-            {currentView === 'programs' && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 px-4">
-                {programsLoading ? Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)
-                  : programsError ? <ErrorState onRetry={() => refetchPrograms()} message={programsError.message} />
-                  : renderPrograms()}
-              </div>
-            )}
-
-            {currentView === 'courses' && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 px-4">
-                {coursesLoading ? Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)
-                  : coursesError ? <ErrorState onRetry={() => refetchCourses()} message={coursesError.message} />
-                  : renderCourses()}
-              </div>
-            )}
-
-            {currentView === 'questions' && (
-              <>
-                {studyMode === 'papers' && (
-                  coursePapersLoading ? (
-                    <div className="px-4 pt-2 space-y-3">{Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)}</div>
-                  ) : coursePapersError ? (
-                    <ErrorState onRetry={() => refetchCoursePapers()} message={coursePapersError.message} />
-                  ) : !sortedCoursePapers.length ? (
-                    <EmptyState label="No past papers for this course yet" />
-                  ) : (
-                    <>
-                      <PaperSwitcher papers={sortedCoursePapers} currentPaperId={currentPaper?.paperId} onSelect={setCurrentPaper} />
-                      {currentPaper && (
-                        <QuestionListView
-                          paper={currentPaper}
-                          onOpenQuestion={handleOpenQuestion}
-                          savedIds={savedQuestionIds}
-                          reviewedIds={reviewedIds}
-                          onToggleSave={handleToggleSave}
-                        />
-                      )}
-                    </>
-                  )
-                )}
-                {studyMode === 'exam-focus' && (
-                  <ExamFocusPanel courseId={currentCourse?.id} onOpenSampleQuestion={(q) => handleOpenQuestion(q)} />
-                )}
-                {studyMode === 'last-minute' && (
-                  <LastMinutePanel courseId={currentCourse?.id} onOpenQuestion={handleOpenQuestion} />
-                )}
-              </>
-            )}
-          </div>
-
-          {/* ActionSheet (mobile/tablet bottom sheet) */}
-          <ActionSheet
-            question={activeEntry?.question ?? null}
-            questionList={activeEntry?.list ?? null}
-            onClose={() => setActiveEntry(null)}
-            savedIds={savedQuestionIds}
-            onToggleSave={handleToggleSave}
-            flaggedIds={flaggedIds}
-            onFlag={handleFlagQuestion}
-            isOnline={isOnline}
-            aiCache={aiCache}
-            reviewedIds={reviewedIds}
-            onMarkReviewed={handleMarkReviewed}
-            onNavigate={(q) => setActiveEntry(prev => prev ? { ...prev, question: q } : null)}
-            isDesktop={false}
-          />
-
-          <OfflineToast visible={showOfflineToast} pendingCount={pendingSyncCount} />
-          <MilestoneToast visible={!!milestoneMsg} message={milestoneMsg} />
+            )
+          )}
         </div>
 
-        {currentView === 'questions' && isImmersive && (
-          <div className="fixed bottom-6 right-6 z-50 ed-fade-up">
-            <button
-              onClick={() => {
-                isImmersiveRef.current = false;
-                setIsImmersive(false);
-              }}
-              className="flex items-center gap-2 px-4 py-2.5 bg-gray-900/90 hover:bg-black text-white backdrop-blur-md text-xs font-semibold rounded-full shadow-2xl transition-all active:scale-95 border border-white/20"
-              title="Exit fullscreen reading mode"
-            >
-              <Minimize2 className="w-3.5 h-3.5 text-indigo-400" />
-              <span>Exit Fullscreen</span>
-            </button>
-          </div>
-        )}
+        {/* ActionSheet and Toasts outside scroll container */}
+        <ActionSheet
+          question={activeEntry?.question ?? null}
+          questionList={activeEntry?.list ?? null}
+          paperContext={activeEntry?.paperContext ?? null}
+          onClose={() => setActiveEntry(null)}
+          savedIds={savedQuestionIds}
+          onToggleSave={handleToggleSave}
+          flaggedIds={flaggedIds}
+          onFlag={handleFlagQuestion}
+          isOnline={isOnline}
+          aiCache={aiCache}
+          reviewedIds={reviewedIds}
+          onMarkReviewed={handleMarkReviewed}
+          onNavigate={(q) => setActiveEntry(prev => prev ? { ...prev, question: q } : null)}
+        />
+
+        <OfflineToast visible={showOfflineToast} pendingCount={pendingSyncCount} />
+        <MilestoneToast visible={!!milestoneMsg} message={milestoneMsg} />
       </div>
+
+      {/* Bottom Navigation - Fixed and separated from scroll */}
+      <div
+        className={`fixed bottom-0 left-0 right-0 z-40 transition-transform duration-300 ease-out pointer-events-none ${
+          currentView === 'questions' && isImmersive ? 'translate-y-32' : 'translate-y-0'
+        }`}
+      >
+        <div className="pointer-events-auto">
+          <BottomNav />
+        </div>
+      </div>
+
+      {currentView === 'questions' && isImmersive && (
+        <div className="fixed bottom-6 right-6 z-50 ed-fade-up">
+          <button
+            onClick={() => {
+              isImmersiveRef.current = false;
+              setIsImmersive(false);
+            }}
+            className="flex items-center gap-2 px-4 py-2.5 bg-gray-900/90 hover:bg-black text-white backdrop-blur-md text-xs font-semibold rounded-full shadow-2xl transition-all active:scale-95 border border-white/20"
+            title="Exit fullscreen reading mode"
+          >
+            <Minimize2 className="w-3.5 h-3.5 text-indigo-400" />
+            <span>Exit Fullscreen</span>
+          </button>
+        </div>
       )}
+    </div>
     </MotionContext.Provider>
   )
 }

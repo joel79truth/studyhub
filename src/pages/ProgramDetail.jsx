@@ -9,6 +9,7 @@ import React, {
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import { supabase } from '../supabase';
 import { useQuery } from '@tanstack/react-query';
+import PDFThumbnail from '../components/PDFThumbnail';
 
 // ─── Read status hook (localStorage) ─────────────────────
 function useReadStatus() {
@@ -138,10 +139,19 @@ const FileListItem = memo(({ file, onFileClick, onDownload, onCopyLink, isRead, 
     setMenuOpen(false);
   };
 
+  const publicUrl = getNotePublicUrl(file);
+  const isPdf = Boolean(file?.filename?.toLowerCase().endsWith('.pdf') && publicUrl);
+
   return (
     <div className="group relative flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:bg-white hover:shadow-sm hover:border-blue-100 transition-colors mb-3">
-      <div className="w-10 h-10 flex-shrink-0 bg-blue-50/50 rounded-lg flex items-center justify-center border border-blue-100/50">
-        <FileIcon filename={file.filename} />
+      <div className={`flex-shrink-0 rounded-lg overflow-hidden border flex items-center justify-center ${
+        isPdf ? 'w-14 h-14 border-slate-200 bg-slate-100' : 'w-10 h-10 bg-blue-50/50 border-blue-100/50'
+      }`}>
+        {isPdf ? (
+          <PDFThumbnail url={publicUrl} scale={0.2} />
+        ) : (
+          <FileIcon filename={file.filename} />
+        )}
       </div>
 
       <button

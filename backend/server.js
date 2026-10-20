@@ -86,10 +86,12 @@ const drive = google.drive({
 });
 
 // Groq AI client — for text-only tasks (chat, studybot, structured grading, explanations)
+let groq = null;
 if (!process.env.GROQ_API_KEY) {
   console.warn('⚠️  GROQ_API_KEY not set. Text-only AI features will fail.');
+} else {
+  groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 }
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 // ===================== GEMINI client =====================
 if (!process.env.GEMINI_API_KEY) {
@@ -137,7 +139,8 @@ app.use(cors({
   credentials: true,
 }));
 
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve frontend build if dist directory exists
@@ -1699,13 +1702,140 @@ app.post('/submit-request', async (req, res) => {
       },
     ]);
     if (error) throw error;
-    sendNotificationToProgram(program, { topic, course, semester }).catch(console.error);
+    notifyAdminsOfRequest({ topic, course, program, semester, email, notes }).catch(console.error);
     res.json({ message: 'Request submitted successfully' });
   } catch (err) {
     console.error('Request error:', err);
     res.status(500).json({ message: 'Failed to submit request' });
   }
 });
+
+
+async function notifyAdminsOfRequest({ topic, course, program, semester, email, notes }) {
+  try {
+    const { data: admins, error: adminErr } = await supabaseAdmin
+      .from('profiles')
+      .select('id')
+      .or('is_admin.eq.true,role.eq.admin');
+    if (adminErr || !admins?.length) return;
+
+    const adminUids = admins.map(a => a.id);
+    const { data: tokens, error: tokenErr } = await supabaseAdmin
+      .from('fcm_tokens')
+      .select('token')
+      .in('uid', adminUids);
+    if (tokenErr || !tokens?.length) return;
+
+    const tokenList = [...new Set(tokens.map(t => t.token).filter(Boolean))];
+    if (!tokenList.length) return;
+
+    const cleanProgram = (program || '').trim();
+    const message = {
+      tokens: tokenList,
+      notification: {
+        title: '📝 New Request: ' + topic,
+        body: course + ' - ' + (cleanProgram || 'General') + ' Sem ' + semester,
+        imageUrl: 'https://studyhub-backend-opdd.onrender.com/icons/icon-192x192.png',
+      },
+      android: {
+        priority: 'high',
+        notification: {
+          icon: 'ic_stat_studyhub',
+          color: '#2563eb',
+          sound: 'default',
+          channelId: 'studyhub_channel',
+          priority: 'high',
+          defaultSound: true,
+          defaultVibrateTimings: true,
+          visibility: 'public',
+          imageUrl: 'https://studyhub-backend-opdd.onrender.com/icons/icon-192x192.png',
+        },
+      },
+      data: {
+        type: 'request',
+        topic: String(topic || ''),
+        course: String(course || ''),
+        program: cleanProgram,
+        semester: String(semester),
+        url: '/Request?program=' + encodeURIComponent(cleanProgram) + '&course=' + encodeURIComponent(course || '') + '&semester=' + semester + '&topic=' + encodeURIComponent(topic || ''),
+      },
+    };
+    const response = await admin.messaging().sendEachForMulticast(message);
+    const invalid = [];
+    response.responses.forEach((r, i) => {
+      if (!r.success && (r.error?.code?.includes('registration-token-not-registered') || r.error?.code?.includes('invalid-registration-token'))) {
+        invalid.push(tokenList[i]);
+      }
+    });
+    if (invalid.length) await supabaseAdmin.from('fcm_tokens').delete().in('token', invalid);
+  } catch (err) {
+    console.error('[notifyAdminsOfRequest] error:', err);
+  }
+}
+
+async function notifyUploadToAllUsers({ type, uploaderName, uploaderUid, filename, courseName, id }) {
+  try {
+    let tokensQuery = supabaseAdmin.from('fcm_tokens').select('token, uid');
+    if (uploaderUid) {
+      tokensQuery = tokensQuery.neq('uid', uploaderUid);
+    }
+    const { data: tokens, error } = await tokensQuery;
+    if (error || !tokens?.length) return;
+
+    const tokenList = [...new Set(tokens.filter(t => !uploaderUid || t.uid !== uploaderUid).map(t => t.token).filter(Boolean))];
+    if (!tokenList.length) return;
+
+    const formattedUploader = formatUploaderName(uploaderName) || 'a student';
+    // Exact requested text: "<Type> uploaded by <uploader name>"
+    const notificationText = type + ' uploaded by ' + formattedUploader;
+
+    let targetUrl = '/';
+    if (type === 'Tutorial') targetUrl = '/tutorials';
+    else if (type === 'Past paper') targetUrl = '/papers';
+    else if (type === 'Notes' && id) targetUrl = '/viewer?fileId=' + encodeURIComponent(id);
+
+    const message = {
+      tokens: tokenList,
+      notification: {
+        title: 'StudyHub',
+        body: notificationText,
+        imageUrl: 'https://studyhub-backend-opdd.onrender.com/icons/icon-192x192.png',
+      },
+      android: {
+        priority: 'high',
+        notification: {
+          icon: 'ic_stat_studyhub',
+          color: '#2563eb',
+          sound: 'default',
+          channelId: 'studyhub_channel',
+          priority: 'high',
+          defaultSound: true,
+          defaultVibrateTimings: true,
+          visibility: 'public',
+          imageUrl: 'https://studyhub-backend-opdd.onrender.com/icons/icon-192x192.png',
+        },
+      },
+      data: {
+        type: 'upload',
+        uploadType: String(type || ''),
+        title: 'StudyHub',
+        body: notificationText,
+        url: targetUrl,
+      },
+    };
+    const response = await admin.messaging().sendEachForMulticast(message);
+    const invalid = [];
+    response.responses.forEach((r, i) => {
+      if (!r.success && (r.error?.code?.includes('registration-token-not-registered') || r.error?.code?.includes('invalid-registration-token'))) {
+        invalid.push(tokenList[i]);
+      }
+    });
+    if (invalid.length) await supabaseAdmin.from('fcm_tokens').delete().in('token', invalid);
+    console.log('[notifyUploadToAllUsers] Sent "' + notificationText + '" to ' + response.successCount + '/' + tokenList.length + ' devices.');
+  } catch (err) {
+    console.error('[notifyUploadToAllUsers] error:', err);
+  }
+}
 
 async function sendNotificationToProgram(program, { topic, course, semester }) {
   const cleanProgram = (program || '').trim();
@@ -1829,7 +1959,16 @@ async function notifyNewNoteUploaded({ program, courseName, filename, semester, 
 }
 
 if (typeof storageUpload.setNoteUploadedCallback === 'function') {
-  storageUpload.setNoteUploadedCallback(notifyNewNoteUploaded);
+  storageUpload.setNoteUploadedCallback(({ program, courseName, filename, semester, fileId, uploaderName, uploaderUid }) => {
+  notifyUploadToAllUsers({
+    type: 'Notes',
+    uploaderName,
+    uploaderUid,
+    filename,
+    courseName,
+    id: fileId,
+  }).catch(console.error);
+});
 }
 
 async function notifyNewQuestions(programName, courseName, courseId, extractedCount, uploaderName) {
@@ -2078,6 +2217,7 @@ app.post('/api/exam/upload-past-paper', requireAdmin, upload.any(), async (req, 
 
     const rowData = {
       id: pastPaperId,
+      original_filename: (filesToProcess[0]?.originalname || req.file?.originalname || `${(course.course_name || 'Exam').replace(/\s+/g, '_')}_${filesToProcess.length}pages.pdf`),
       file_name: `${(course.course_name || 'Exam').replace(/\s+/g, '_')}_${filesToProcess.length}pages.pdf`,
       file_path: storagePath,
       storage_path: storagePath,
@@ -2107,9 +2247,18 @@ app.post('/api/exam/upload-past-paper', requireAdmin, upload.any(), async (req, 
       console.warn('Insert warning with new columns, trying fallback:', insertPaperErr.message);
       delete rowData.year;
       delete rowData.exam_type;
+      delete rowData.original_filename;
       const { error: fallbackErr } = await supabaseAdmin.from('past_paper').insert(rowData);
       if (fallbackErr) throw fallbackErr;
     }
+
+    notifyUploadToAllUsers({
+      type: kind === 'tutorial' ? 'Tutorial' : 'Past paper',
+      uploaderName,
+      uploaderUid: req.user?.id,
+      courseName: course.course_name,
+      id: pastPaperId,
+    }).catch(console.error);
 
     // Tutorials: view-first, no question splitting needed
     if (kind === 'tutorial') {
@@ -2290,6 +2439,7 @@ app.post('/api/exam/upload-past-paper-pdf', requireAdmin, pdfUpload.single('pape
 
     const rowData = {
       id: pastPaperId,
+      original_filename: req.file.originalname,
       file_name: req.file.originalname,
       file_path: storagePath,
       storage_path: storagePath,
@@ -2318,11 +2468,20 @@ app.post('/api/exam/upload-past-paper-pdf', requireAdmin, pdfUpload.single('pape
       console.warn('PDF insert warning with new columns, trying fallback:', insertPaperErr.message);
       delete rowData.year;
       delete rowData.exam_type;
+      delete rowData.original_filename;
       const { error: fallbackErr } = await supabaseAdmin.from('past_paper').insert(rowData);
       if (fallbackErr) throw fallbackErr;
     }
 
     console.log(`📝 [upload-pdf] Created past_paper row: ${pastPaperId} (status: ${rowData.processing_status})`);
+
+    notifyUploadToAllUsers({
+      type: kind === 'tutorial' ? 'Tutorial' : 'Past paper',
+      uploaderName,
+      uploaderUid: req.user?.id,
+      courseName: course.course_name,
+      id: pastPaperId,
+    }).catch(console.error);
 
     // Tutorials: return immediately, view-first
     if (kind === 'tutorial') {
@@ -2625,6 +2784,7 @@ app.get('/api/profiles/public-names', requireAuth, async (req, res) => {
   } catch (err) {
     console.error('profiles public-names fetch error:', err);
     res.status(500).json({ error: err.message });
+  }
 });
 
 app.post('/api/exam/generate-document/:pastPaperId', requireAuth, async (req, res) => {
@@ -4555,62 +4715,317 @@ TASK: Answer the student's own follow-up message about this exam question. Read 
   throw new Error(`No system prompt for streaming action: ${actionId}`);
 }
 
-// ── Understand / Solve / Ask — streamed, plain markdown ──────────
+// ── Understand / Solve / Ask — streamed, plain markdown + multi-modal page images ──────────
 app.post('/api/exam/question-action/stream', requireAuth, questionActionLimiter, async (req, res) => {
-  const { action, question, message } = req.body;
+  const mode = req.body.mode || (req.body.paperContext || req.body.question?.paperContext ? 'page_image' : 'text');
+  const paperId = req.body.paperId || req.body.question?.paperId || req.body.question?.paperContext?.paperId;
+  const pageNumber = req.body.pageNumber != null
+    ? Number(req.body.pageNumber)
+    : (req.body.paperContext?.pageNumber != null
+      ? Number(req.body.paperContext.pageNumber)
+      : (req.body.question?.paperContext?.pageNumber != null
+        ? Number(req.body.question.paperContext.pageNumber)
+        : null));
+  const studentQuestion = (typeof req.body.question === 'string' ? req.body.question : req.body.message) || '';
+  const imageBase64 = req.body.imageBase64 || req.body.paperContext?.imageBase64 || req.body.question?.paperContext?.imageBase64;
+  const action = req.body.action || 'ask';
+  const legacyQuestion = typeof req.body.question === 'object' ? req.body.question : null;
 
-  if (!action || !question?.text) {
-    return res.status(400).json({ error: 'Missing action or question.text' });
-  }
-  if (!['understand', 'solve', 'ask'].includes(action)) {
-    return res.status(400).json({ error: "Use /attempt or /practice for this action" });
-  }
-  if (action === 'ask' && !message?.trim()) {
-    return res.status(400).json({ error: 'Missing message for ask action' });
-  }
-
-  try {
-    const model = action === 'solve' ? GROQ_SOLVE_MODEL : GROQ_QUESTION_ACTION_MODEL;
-    const systemPrompt = getQuestionActionSystemPrompt(action);
-    const userPrompt = action === 'ask'
-      ? `Exam question context (${question.marks ?? '?'} marks, topic: ${question.topic || 'General'}):\n${question.text}\n\nStudent's message: ${message.trim()}`
-      : `Question (${question.marks ?? '?'} marks, topic: ${question.topic || 'General'}):\n${question.text}`;
-
-    res.writeHead(200, {
-      'Content-Type': 'text/event-stream; charset=utf-8',
-      'Cache-Control': 'no-cache, no-transform',
-      Connection: 'keep-alive',
-      'X-Accel-Buffering': 'no',
-    });
-
-    sendSSE(res, 'meta', { action, model, assistant: STUDYHUB_NAME });
-
-    const stream = await groq.chat.completions.create({
-      model,
-      messages: [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: userPrompt },
-      ],
-      temperature: action === 'solve' ? 0.5 : 0.6,
-      max_tokens: 1200,
-      stream: true,
-    });
-
-    await streamMarkdown(res, stream);
-
-    console.log(`[question-action:${action}] model=${model} question=${question.text?.slice(0, 40)}...`);
-    sendSSE(res, 'done', {});
-    res.end();
-  } catch (err) {
-    console.error('[question-action/stream] error:', err);
-    if (!res.headersSent) {
-      return res.status(500).json({ error: err.message });
+  // ── TEXT-ONLY MODE (Single questions or non-image requests) ──
+  if (mode !== 'page_image') {
+    if (!legacyQuestion?.text && !studentQuestion.trim()) {
+      return res.status(400).json({ error: 'Missing question text or student message', code: 'MISSING_TEXT' });
     }
+    if (!['understand', 'solve', 'ask'].includes(action)) {
+      return res.status(400).json({ error: 'Use /attempt or /practice for this action', code: 'INVALID_ACTION' });
+    }
+
     try {
-      sendSSE(res, 'error', { message: 'Something went wrong. Please try again.' });
+      const qText = legacyQuestion?.text || studentQuestion;
+      const qMarks = legacyQuestion?.marks ?? '?';
+      const qTopic = legacyQuestion?.topic || 'General';
+      const model = action === 'solve' ? GROQ_SOLVE_MODEL : GROQ_QUESTION_ACTION_MODEL;
+      const systemPrompt = getQuestionActionSystemPrompt(action);
+      const userPrompt = action === 'ask'
+        ? `Exam question context (${qMarks} marks, topic: ${qTopic}):\n${qText}\n\nStudent's message: ${studentQuestion.trim() || 'Explain this question.'}`
+        : `Question (${qMarks} marks, topic: ${qTopic}):\n${qText}`;
+
+      res.writeHead(200, {
+        'Content-Type': 'text/event-stream; charset=utf-8',
+        'Cache-Control': 'no-cache, no-transform',
+        Connection: 'keep-alive',
+        'X-Accel-Buffering': 'no',
+      });
+
+      sendSSE(res, 'meta', { action, model, assistant: STUDYHUB_NAME });
+
+      const stream = await groq.chat.completions.create({
+        model,
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: userPrompt },
+        ],
+        temperature: action === 'solve' ? 0.5 : 0.6,
+        max_tokens: 1200,
+        stream: true,
+      });
+
+      await streamMarkdown(res, stream);
+      console.log(`[question-action:${action}] model=${model} text=${qText?.slice(0, 40)}...`);
       sendSSE(res, 'done', {});
-    } catch (_) {}
-    res.end();
+      return res.end();
+    } catch (err) {
+      console.error('[question-action/stream text-mode] error:', err);
+      if (!res.headersSent) {
+        return res.status(500).json({ error: err.message || 'Stream generation failed', code: 'TEXT_STREAM_ERROR' });
+      }
+      try {
+        sendSSE(res, 'error', { message: 'Something went wrong. Please try again.' });
+        sendSSE(res, 'done', {});
+      } catch (_) {}
+      return res.end();
+    }
+  }
+
+  // ── MULTI-MODAL PAGE IMAGE MODE (Actual Paper Scan + Questions) ──
+  const userQuery = studentQuestion.trim() || 'Explain what this page asks and how to approach each question.';
+
+  // [DIAG-A] Log incoming payload
+  console.log('[DIAG] Received payload:', JSON.stringify({
+    mode, paperId, pageNumber,
+    studentQuestion: studentQuestion.slice(0, 80),
+    hasImageBase64: !!imageBase64,
+    imageBase64Prefix: imageBase64?.slice(0, 40),
+    action,
+  }));
+
+  // 1. Fetch extracted OCR question text for this paper + pageNumber
+  let ocrQuestions = [];
+  if (paperId) {
+    try {
+      let query = supabaseAdmin.from('past_papers').select('question, question_number, marks, topic, page_number');
+      if (pageNumber != null) {
+        query = query.or(`paper_id.eq.${paperId},past_paper_id.eq.${paperId}`).eq('page_number', pageNumber);
+      } else {
+        query = query.or(`paper_id.eq.${paperId},past_paper_id.eq.${paperId}`);
+      }
+      let { data, error: ocrErr } = await query;
+
+      // Fallback: if no questions found matching specific pageNumber, check for unpaginated questions for this paper
+      if ((!data || data.length === 0) && pageNumber != null) {
+        const fallbackRes = await supabaseAdmin
+          .from('past_papers')
+          .select('question, question_number, marks, topic, page_number')
+          .or(`paper_id.eq.${paperId},past_paper_id.eq.${paperId}`);
+        if (fallbackRes.data && fallbackRes.data.length > 0) {
+          data = fallbackRes.data;
+        }
+      }
+
+      // [DIAG-A] Log OCR query result
+      console.log('[DIAG] OCR query result:', JSON.stringify({
+        paperId, pageNumber,
+        rowCount: data?.length || 0,
+        ocrError: ocrErr?.message || null,
+        firstRow: data?.[0] ? { page_number: data[0].page_number, question_number: data[0].question_number, question: data[0].question?.slice(0, 60) } : null,
+      }));
+      if (data && data.length) ocrQuestions = data;
+    } catch (dbErr) {
+      console.warn('[question-action/stream] DB OCR query error:', dbErr.message);
+    }
+  }
+
+  let ocrContextText = '';
+  if (ocrQuestions.length > 0) {
+    ocrContextText = '\n\n[OCR Extracted Text for this page (supporting context, may contain OCR errors; the image is the source of truth)]:\n' +
+      ocrQuestions.map((q) => `• Question ${q.question_number || ''} (${q.marks != null ? q.marks + ' marks' : ''}): ${q.question}`).join('\n\n');
+  } else if (legacyQuestion?.text && !legacyQuestion.text.includes('Past Paper')) {
+    ocrContextText = `\n\n[Extracted Text]:\n${legacyQuestion.text}`;
+  }
+
+  // 2. Load page image (check server storage/database first)
+  let imageBuffer = null;
+  let imageMime = 'image/jpeg';
+
+  if (paperId && pageNumber != null) {
+    try {
+      console.log('[DIAG] Fetching page image from past_papers for paperId:', paperId, 'page:', pageNumber);
+      const { data: qImg, error: imgErr } = await supabaseAdmin
+        .from('past_papers')
+        .select('image_url')
+        .or(`paper_id.eq.${paperId},past_paper_id.eq.${paperId}`)
+        .eq('page_number', pageNumber)
+        .not('image_url', 'is', null)
+        .limit(1);
+      console.log('[DIAG] past_papers image_url result:', qImg?.[0]?.image_url?.slice(0, 100) || 'NOT FOUND', 'err:', imgErr?.message || null);
+
+      if (qImg && qImg[0]?.image_url) {
+        const resp = await axios.get(qImg[0].image_url, { responseType: 'arraybuffer', timeout: 8000 });
+        imageBuffer = Buffer.from(resp.data);
+        imageMime = resp.headers['content-type'] || 'image/jpeg';
+        console.log('[DIAG] past_papers image fetched, bytes:', imageBuffer.length);
+      }
+    } catch (e) {
+      console.debug('[question-action/stream] Failed fetching page image from past_papers table:', e.message);
+    }
+  }
+
+  if (!imageBuffer && paperId) {
+    try {
+      console.log('[DIAG] Fetching past_paper file record for paperId:', paperId);
+      const { data: pRec, error: pErr } = await supabaseAdmin
+        .from('past_paper')
+        .select('file_url, file_type, storage_path')
+        .or(`id.eq.${paperId},paper_id.eq.${paperId}`)
+        .maybeSingle();
+      console.log('[DIAG] past_paper record:', JSON.stringify({ file_url: pRec?.file_url?.slice(0, 100), file_type: pRec?.file_type, storage_path: pRec?.storage_path?.slice(0, 80), err: pErr?.message || null }));
+
+      const isImageFile = pRec?.file_url && (
+        pRec.file_type?.includes('image') ||
+        /jpe?g|png|webp|gif/i.test(pRec.file_type || '') ||
+        /[._](jpe?g|png|webp|gif)/i.test(pRec.file_url)
+      );
+
+      if (isImageFile) {
+        const resp = await axios.get(pRec.file_url, { responseType: 'arraybuffer', timeout: 10000 });
+        imageBuffer = Buffer.from(resp.data);
+        imageMime = resp.headers['content-type'] || 'image/jpeg';
+        console.log('[DIAG] past_paper image fetched, bytes:', imageBuffer.length);
+      } else {
+        console.log('[DIAG] past_paper file_type is NOT image (expected for PDF) — skipping server download.');
+      }
+    } catch (e) {
+      console.debug('[question-action/stream] Failed fetching image from past_paper table:', e.message);
+    }
+  }
+
+  // 3. Fallback to client-provided fileUrl or imageBase64
+  const clientFileUrl = req.body.fileUrl || req.body.paperContext?.fileUrl;
+  if (!imageBuffer && clientFileUrl && /[._](jpe?g|png|webp|gif)/i.test(clientFileUrl)) {
+    try {
+      const resp = await axios.get(clientFileUrl, { responseType: 'arraybuffer', timeout: 10000 });
+      imageBuffer = Buffer.from(resp.data);
+      imageMime = resp.headers['content-type'] || 'image/jpeg';
+      console.log('[DIAG] client fileUrl image fetched, bytes:', imageBuffer.length);
+    } catch (e) {
+      console.warn('[question-action/stream] Failed fetching client fileUrl:', e.message);
+    }
+  }
+
+  if (!imageBuffer && imageBase64) {
+    try {
+      const match = imageBase64.match(/^data:([^;]+);base64,(.+)$/);
+      if (match) {
+        imageMime = match[1];
+        imageBuffer = Buffer.from(match[2], 'base64');
+      } else {
+        imageBuffer = Buffer.from(imageBase64, 'base64');
+      }
+    } catch (e) {
+      console.warn('[question-action/stream] Failed parsing client imageBase64:', e.message);
+    }
+  }
+
+  // System prompt: step-by-step lecturer, LaTeX math, concise
+  const LECTURER_SYSTEM_PROMPT = `You are an encouraging university lecturer helping a student review an exam past paper page.
+Guidelines:
+1. Answer step by step. Show working clearly for calculations or derivations.
+2. Use LaTeX for math: inline math in $...$ and standalone equations in $$...$$.
+3. Keep answers concise, clear, and direct. Do not pad with filler.
+4. If the image is unreadable or unclear, clearly state so and ask for a clearer page instead of guessing.
+5. The image is the primary source of truth; any provided OCR text is secondary reference and may contain OCR errors.`;
+
+  res.writeHead(200, {
+    'Content-Type': 'text/event-stream; charset=utf-8',
+    'Cache-Control': 'no-cache, no-transform',
+    Connection: 'keep-alive',
+    'X-Accel-Buffering': 'no',
+  });
+
+  // Safe fallback to text-only with extracted questions if image fails or is unavailable
+  const runTextFallback = async (notice) => {
+    try {
+      sendSSE(res, 'meta', { action: 'ask', model: GROQ_QUESTION_ACTION_MODEL, assistant: STUDYHUB_NAME });
+      sendSSE(res, 'block_start', { type: 'markdown' });
+      if (notice) {
+        sendSSE(res, 'token', { content: notice });
+      }
+      const fallbackPrompt = `${userQuery}${ocrContextText || '\n\n(No OCR text available for this page)'}`;
+      const stream = await groq.chat.completions.create({
+        model: GROQ_QUESTION_ACTION_MODEL,
+        messages: [
+          { role: 'system', content: LECTURER_SYSTEM_PROMPT },
+          { role: 'user', content: fallbackPrompt },
+        ],
+        temperature: 0.6,
+        max_tokens: 1200,
+        stream: true,
+      });
+      await streamMarkdown(res, stream);
+      sendSSE(res, 'done', {});
+    } catch (fbErr) {
+      console.error('[question-action/stream] Text fallback failed:', fbErr.message);
+      sendSSE(res, 'error', { message: 'Failed to generate answer. Please try again.' });
+      sendSSE(res, 'done', {});
+    }
+    return res.end();
+  };
+
+  if (!imageBuffer) {
+    console.log('[DIAG] No imageBuffer. imageBase64 was:', imageBase64 ? `present (${imageBase64.length} chars)` : 'null/missing');
+    console.log('[DIAG] ocrContextText length:', ocrContextText.length, 'ocrQuestions count:', ocrQuestions.length);
+    console.log(`[question-action/stream] No image buffer for paperId=${paperId} page=${pageNumber}; falling back to OCR text.`);
+    return runTextFallback('*(Note: Page scan image was not accessible. Responding using extracted text.)*\n\n');
+  }
+
+  // 4. Send image + text to Gemini vision model with fallback candidates
+  const visionCandidates = Array.from(new Set([
+    process.env.GEMINI_VISION_PRIMARY,
+    process.env.GEMINI_VISION_FALLBACK,
+    'gemini-2.5-flash',
+    'gemini-flash-latest',
+    'gemini-1.5-flash',
+  ].filter(Boolean)));
+
+  let streamSucceeded = false;
+  for (const candidateModel of visionCandidates) {
+    try {
+      sendSSE(res, 'meta', { action: 'ask', model: candidateModel, assistant: STUDYHUB_NAME });
+      sendSSE(res, 'block_start', { type: 'markdown' });
+
+      const model = genAI.getGenerativeModel({
+        model: candidateModel,
+        systemInstruction: LECTURER_SYSTEM_PROMPT,
+      });
+
+      const promptText = `Student Question: ${userQuery}${ocrContextText}`;
+      const imagePart = {
+        inlineData: {
+          mimeType: imageMime.startsWith('image/') ? imageMime : 'image/jpeg',
+          data: imageBuffer.toString('base64'),
+        },
+      };
+
+      const streamResult = await model.generateContentStream([promptText, imagePart]);
+      for await (const chunk of streamResult.stream) {
+        const text = chunk.text();
+        if (text) {
+          sendSSE(res, 'token', { content: normalizeMathDelimiters(text) });
+        }
+      }
+      sendSSE(res, 'block_end', { type: 'markdown' });
+      sendSSE(res, 'done', {});
+      res.end();
+      streamSucceeded = true;
+      break;
+    } catch (visionErr) {
+      console.warn(`[question-action/stream] Vision candidate ${candidateModel} failed:`, visionErr.message);
+    }
+  }
+
+  if (!streamSucceeded) {
+    console.error('[question-action/stream] All vision candidates failed, retrying text fallback');
+    return runTextFallback('*(Note: Could not process page image directly. Responding using extracted text.)*\n\n');
   }
 });
 

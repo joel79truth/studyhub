@@ -36,19 +36,13 @@ export default function AiStudyAssistantCard({
   );
 
   return (
-    <div className="w-full bg-gradient-to-r from-[#024927] via-[#035930] to-[#046c3b] text-white p-5 md:p-7 rounded-[20px] md:rounded-2xl flex flex-col gap-3 font-sans shadow-sm hover:shadow-md transition-shadow duration-200 relative overflow-hidden">
-      {/* Subtle ambient glow ring on wide viewports */}
-      <div className="hidden lg:block absolute -right-8 -top-8 w-48 h-48 bg-white/5 rounded-full blur-2xl pointer-events-none" />
-
-      <div className="flex items-center justify-between relative z-10">
-        <div className="flex flex-col gap-1.5 flex-1 min-w-0 pr-3">
-          <span className="text-[10px] md:text-[11px] font-bold tracking-wider uppercase text-emerald-200 bg-white/10 px-2.5 py-0.5 rounded-full w-max">
-            AI Study Assistant • Sage
-          </span>
-          <h3 className="text-lg md:text-2xl font-bold tracking-tight text-white leading-snug mt-0.5">
+    <div className="w-full bg-[#024927] text-white p-4 rounded-[20px] flex flex-col gap-3 font-sans shadow-md">
+      <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-1.5 flex-1 min-w-0 pr-2">
+          <h3 className="text-[17px] font-bold tracking-wide text-white">
             {title}
           </h3>
-          <p className="text-xs md:text-sm text-emerald-100/90 font-medium leading-relaxed max-w-lg">
+          <p className="text-[11px] text-gray-200/90 font-medium leading-tight">
             {description}
           </p>
           <button
@@ -56,18 +50,17 @@ export default function AiStudyAssistantCard({
             onClick={handleClick}
             disabled={clicked}
             style={{ touchAction: 'manipulation' }} // kills the 300ms tap delay
-            className={`mt-2.5 w-max bg-white text-[#024927] text-xs md:text-sm font-bold px-5 py-2.5 rounded-xl transition-all duration-150 cursor-pointer select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white shadow-xs ${
+            className={`mt-2 w-max min-h-[44px] inline-flex items-center justify-center bg-white text-[#024927] text-[12px] font-bold px-5 py-2 rounded-full transition-colors cursor-pointer select-none ${
               clicked
                 ? 'opacity-50 cursor-not-allowed'
-                : 'hover:bg-emerald-50 hover:shadow active:scale-95'
+                : 'hover:bg-gray-100 active:scale-95'
             }`}
             type="button"
           >
             {clicked ? 'Processing…' : buttonText}
           </button>
         </div>
-
-        <div className="w-[84px] h-[84px] md:w-28 md:h-28 bg-[#0b2416]/50 rounded-full flex flex-col items-center justify-center border border-emerald-500/20 shadow-inner flex-shrink-0 p-2">
+        <div className="w-[80px] h-[80px] bg-[#111c24] rounded-full flex flex-col items-center justify-center border border-[#1b2a36] shadow-inner ml-2 flex-shrink-0">
           <img
             src="/images/Ai.png"
             alt="AI Assistant Robot"
@@ -76,15 +69,14 @@ export default function AiStudyAssistantCard({
           />
         </div>
       </div>
-
       {suggestions.length > 0 && (
-        <div className="flex flex-wrap gap-2 pt-1 relative z-10">
+        <div className="flex flex-wrap gap-2">
           {suggestions.slice(0, 4).map((s, i) => (
             <button
               key={i}
               onClick={() => onSuggestionClick(s)}
               type="button"
-              className="text-[11px] font-medium px-3 py-1.5 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors cursor-pointer truncate max-w-[160px]"
+              className="min-h-[44px] inline-flex items-center text-[11px] font-medium px-3 py-1.5 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors cursor-pointer truncate max-w-[160px]"
               title={s}
             >
               {s}

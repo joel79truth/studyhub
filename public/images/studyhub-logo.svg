@@ -1,0 +1,56 @@
+<svg width="400" height="120" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="sh-logo-glow-react" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" floodColor="rgba(170, 59, 255, 0.45)" floodOpacity="0.6"/>
+    </filter>
+    <linearGradient id="sh-logo-p-react" x1="18" y1="18" x2="102" y2="106" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#aa3bff"/>
+      <stop offset="50%" stopColor="#6366f1"/>
+      <stop offset="100%" stopColor="#4c1d95"/>
+    </linearGradient>
+    <linearGradient id="sh-logo-s-react" x1="102" y1="24" x2="30" y2="108" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#c084fc"/>
+      <stop offset="60%" stopColor="#aa3bff"/>
+      <stop offset="100%" stopColor="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="sh-logo-c-react" x1="60" y1="24" x2="60" y2="94" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#38bdf8"/>
+      <stop offset="40%" stopColor="#ffffff"/>
+      <stop offset="100%" stopColor="#aa3bff"/>
+    </linearGradient>
+    <linearGradient id="sh-logo-h-react" x1="30" y1="20" x2="80" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#ffffff" stopOpacity="0.45"/>
+      <stop offset="100%" stopColor="#ffffff" stopOpacity="0"/>
+    </linearGradient>
+    <linearGradient id="sh-text-grad-react" x1="220" y1="40" x2="320" y2="70" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#aa3bff"/>
+      <stop offset="50%" stopColor="#c084fc"/>
+      <stop offset="100%" stopColor="#6366f1"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(10, 0)">
+    <path d="M60 8 L100 24 C100 68 84 96 60 112 C36 96 20 68 20 24 Z" fill="rgba(170, 59, 255, 0.08)" stroke="#aa3bff" strokeOpacity="0.25" strokeWidth="1.5" strokeDasharray="4 2"/>
+    <g filter="url(#sh-logo-glow-react)">
+      <path d="M60 86 C48 78 30 74 24 50 C20 34 32 24 44 26 C52 27.5 57 32 60 40 C56 50 54 64 60 86 Z" fill="url(#sh-logo-p-react)"/>
+      <path d="M60 86 C48 78 30 74 24 50 C20 34 32 24 44 26 C52 27.5 57 32 60 40 Z" fill="url(#sh-logo-h-react)"/>
+      <path d="M60 86 C72 78 90 74 96 50 C100 34 88 24 76 26 C68 27.5 63 32 60 40 C64 50 66 64 60 86 Z" fill="url(#sh-logo-s-react)"/>
+      <path d="M60 22 L71 44 C66 43 64 45 60 52 C56 45 54 43 49 44 Z" fill="url(#sh-logo-c-react)"/>
+      <path d="M60 52 L68 64 C64 63 62 65 60 70 C58 65 56 63 52 64 Z" fill="#ffffff" fillOpacity="0.9"/>
+      <path d="M60 70 L66 80 C63 79.5 62 81 60 85 C58 81 57 79.5 54 80 Z" fill="#38bdf8"/>
+      <g transform="translate(60, 16)">
+        <path d="M0 -6 C0.5 -1.5 1.5 -0.5 6 0 C1.5 0.5 0.5 1.5 0 6 C-0.5 1.5 -1.5 0.5 -6 0 C-1.5 -0.5 -0.5 -1.5 0 -6 Z" fill="#ffffff"/>
+        <circle cx="0" cy="0" r="1.8" fill="#38bdf8"/>
+      </g>
+      <path d="M44 94 C52 98 68 98 76 94 C71 100 49 100 44 94 Z" fill="#aa3bff" fillOpacity="0.75"/>
+    </g>
+  </g>
+
+  <text x="140" y="66" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="44" font-weight="700" fill="#0f172a" letter-spacing="-0.03em">Study</text>
+  <text x="264" y="66" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="44" font-weight="800" fill="url(#sh-text-grad-react)" letter-spacing="-0.03em">Hub</text>
+
+  <g transform="translate(142, 90)">
+    <circle cx="2" cy="-4" r="2" fill="#aa3bff"/>
+    <text x="12" y="0" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#64748b" letter-spacing="0.26em">ACCESS · LEARN · IMPROVE</text>
+  </g>
+</svg>

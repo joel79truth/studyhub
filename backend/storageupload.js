@@ -443,6 +443,7 @@ router.post('/complete', requireAuth, express.json(), async (req, res) => {
           semester: String(semester),
           fileId: id,
           uploaderName,
+          uploaderUid: req.user.id,
         })).catch(err => console.error('[storageUpload] Notification error:', err));
       } catch (notifErr) {
         console.error('[storageUpload] Notification trigger error:', notifErr);

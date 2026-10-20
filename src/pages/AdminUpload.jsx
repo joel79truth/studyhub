@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useQueryClient } from '@tanstack/react-query';
 import {
   FileText,
   BookOpen,
@@ -29,6 +30,8 @@ const BASE_URL = API_BASE_URL;
 
 const AdminUpload = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const queryClient = useQueryClient();
   const [tab, setTab] = useState('single');
 
   // Multi-image upload (up to 5 pages)
@@ -64,8 +67,10 @@ const [uploadYear, setUploadYear] = useState('');
 const [programs, setPrograms] = useState([]); // [{ id, name }]
 
 // ── Redesign: Content Kind & Source Type ──
-const [contentKind, setContentKind] = useState('paper'); // 'paper' | 'tutorial'
-const [sourceType, setSourceType] = useState('photos'); // 'photos' | 'typed_pdf'
+const initialKind = location.state?.defaultKind || location.state?.kind || 'paper';
+const initialSource = (location.state?.defaultType === 'pdf' || initialKind === 'tutorial') ? 'typed_pdf' : 'photos';
+const [contentKind, setContentKind] = useState(initialKind);
+const [sourceType, setSourceType] = useState(initialSource);
 const [tutorialTitle, setTutorialTitle] = useState('');
 const [examType, setExamType] = useState('end_sem'); // 'mid_sem' | 'end_sem' | 'test' | 'assignment'
 const [duplicateWarning, setDuplicateWarning] = useState(null);
@@ -73,7 +78,7 @@ const [checkingDuplicate, setCheckingDuplicate] = useState(false);
 const [uploadProgress, setUploadProgress] = useState(0);
 
 // ── PDF upload state ──────────────────────────────────────────────────────────
-const [uploadType, setUploadType] = useState('image'); // 'image' | 'pdf'
+const [uploadType, setUploadType] = useState((location.state?.defaultType === 'pdf' || initialKind === 'tutorial') ? 'pdf' : 'image');
 const [pdfFile, setPdfFile] = useState(null);
 const [pdfDragOver, setPdfDragOver] = useState(false);
 const [pdfUploading, setPdfUploading] = useState(false);
@@ -385,6 +390,7 @@ const handleUploadAndExtract = async () => {
 
     // If tutorial, view-first — no question splitting
     if (contentKind === 'tutorial') {
+      queryClient.invalidateQueries({ queryKey: ['tutorialsList'] });
       setUploadStage('done');
       setUploadProgress(100);
       clearAllFiles();
@@ -517,6 +523,7 @@ const handlePdfUpload = async () => {
 
     // Tutorials are view-first
     if (contentKind === 'tutorial') {
+      queryClient.invalidateQueries({ queryKey: ['tutorialsList'] });
       setPdfUploadStage('done');
       setUploadProgress(100);
       setPdfFile(null);

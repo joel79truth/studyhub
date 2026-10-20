@@ -10,7 +10,7 @@
 //   2. "No document is open" in StudyHub chat (fileId was wrong)
 // ============================================================
 import React, {
-  useState, useEffect, useCallback, useMemo, useRef,
+  useState, useEffect, useCallback, useMemo,
   useDeferredValue, memo,
 } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -19,6 +19,7 @@ import { useQuery } from '@tanstack/react-query';
 import {
   Grid3x3, List, FileText, Download, CheckCircle, RefreshCcw, X
 } from 'lucide-react';
+import PDFThumbnail from './PDFThumbnail';
 import { useIsDownloaded, useDownloadProgress, useDownloadManager } from '../hooks/useDownloadManager';
 
 // ─── Helpers ──────────────────────────────────────────────
@@ -125,53 +126,6 @@ const useAuthFallback = (skip) => {
   return { profile, loading };
 };
 
-// ─── PDF Thumbnail ────────────────────────────────────────
-const PDFThumbnail = memo(({ url }) => {
-  const [thumbnail, setThumbnail] = useState(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) { setIsVisible(true); observer.disconnect(); }
-    }, { threshold: 0.1 });
-    if (containerRef.current) observer.observe(containerRef.current);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!isVisible || !url || thumbnail) return;
-    let cancelled = false;
-    (async () => {
-      try {
-        const pdfjs = await import('pdfjs-dist/legacy/build/pdf.min.mjs');
-        const loadingTask = pdfjs.getDocument({ url, disableAutoFetch: true });
-        const pdf = await loadingTask.promise;
-        if (cancelled) return;
-        const page = await pdf.getPage(1);
-        const viewport = page.getViewport({ scale: 0.2 });
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
-        await page.render({ canvasContext: context, viewport }).promise;
-        if (!cancelled) setThumbnail(canvas.toDataURL('image/jpeg', 0.6));
-        pdf.destroy();
-      } catch (e) { /* silent fail */ }
-    })();
-    return () => { cancelled = true; };
-  }, [isVisible, url, thumbnail]);
-
-  return (
-    <div ref={containerRef} className="w-full h-full flex items-center justify-center">
-      {thumbnail ? (
-        <img src={thumbnail} alt="" className="w-full h-full object-cover" />
-      ) : (
-        <FileText size={32} className="text-slate-200" />
-      )}
-    </div>
-  );
-});
 
 // ─── File Card ────────────────────────────────────────────
 const FileCard = memo(({ file, onPress, onStartDownload, onCancelDownload, onRemoveDownload }) => {
