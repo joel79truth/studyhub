@@ -1,6 +1,7 @@
 import { useState, lazy, Suspense, useMemo, useEffect, useRef, useCallback } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { supabase } from '../../supabase';
+import { getDocument } from '../../lib/storageCore';
 import { useFileLoader } from '../../hooks/useFileLoader';
 import { usePdfLoader } from '../../hooks/usePdfLoader';
 import { usePdfRenderer } from '../../hooks/usePdfRenderer';
@@ -56,6 +57,23 @@ export default function Viewer() {
     let cancelled = false;
     setRecoveryError(null);
     (async () => {
+      try {
+        const localDoc = await getDocument(fileId);
+        if (cancelled) return;
+        if (localDoc) {
+          setRecovered({
+            id: fileId,
+            filename: localDoc.filename,
+            course_name: localDoc.course,
+            fileType: localDoc.fileType || 'pdf',
+          });
+          return;
+        }
+      } catch (_) {}
+      if (!navigator.onLine) {
+        if (!cancelled) setRecoveryError('You are offline and this document is not saved locally.');
+        return;
+      }
       const { data, error } = await supabase
         .from('notes')
         .select('id, filename, url, filepath, storage_type, course_name, semester, program')

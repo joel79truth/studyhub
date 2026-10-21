@@ -5,7 +5,7 @@ import { supabase } from '../supabase';
 import { useNavigate, Navigate } from 'react-router-dom';
 import AiStudyAssistantCard from '../components/AiCard';
 import Files from '../components/Files';
-import { ensureConsistentSession } from '../lib/authGuard';
+import { ensureConsistentSession, getOfflineSessionSnapshot } from '../lib/authGuard';
 import {
   Target, FileText, TrendingUp, RefreshCw, Flame, ChevronRight, WifiOff,
 } from 'lucide-react';
@@ -746,11 +746,12 @@ const Home = () => {
     // stop loading rather than showing a form we can't submit anyway.
     if (!navigator.onLine) {
       const cached = readCache();
-      if (cached?.userData && lastFetchedUserId.current !== null) {
+      if (cached?.userData) {
         setUserData(cached.userData);
         setStreak(cached.streak ?? 0);
         setDaysLeft(cached.daysLeft ?? 0);
         setDaysDelta(cached.daysDelta ?? '');
+        setShowProfileForm(false);
       }
       calculateExamCountdown(); // pure client-side math, always safe
       setLoading(false);
@@ -1072,7 +1073,8 @@ const Home = () => {
   // FIX: don't force a logout redirect purely because we're offline and
   // have no live `user` object yet — if we have a cached session/profile,
   // ride on that instead of bouncing to /login.
-  if (authReady && !user && !loading && (isOnline || !initialCache?.userData)) {
+  const hasOfflineAuth = !isOnline && (readCache()?.userData || getOfflineSessionSnapshot());
+  if (authReady && !user && !loading && !hasOfflineAuth) {
     return <Navigate to="/login" replace />;
   }
 

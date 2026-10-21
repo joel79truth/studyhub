@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabase';
 import { updateService } from '../services/updateService';
 import UpdateModal from '../components/UpdateModal';
+import { getStorageQuota, listDocuments, deleteDocument } from '../lib/storageCore';
 import './Settings.css';
 
 const Settings = () => {
@@ -25,9 +26,17 @@ const Settings = () => {
   const [updateStatusText, setUpdateStatusText] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
   const [availableUpdate, setAvailableUpdate] = useState(null);
+  const [storageInfo, setStorageInfo] = useState({ usedMB: 0, totalMB: 0, percent: 0, fileCount: 0 });
+  const [clearingStorage, setClearingStorage] = useState(false);
 
   useEffect(() => {
     updateService.getInstalledVersion().then(setVersionInfo);
+    const loadStorage = async () => {
+      const quota = await getStorageQuota();
+      const docs = await listDocuments();
+      setStorageInfo({ ...quota, fileCount: docs.length });
+    };
+    loadStorage();
   }, []);
 
   // 1. Check Supabase Auth Session
@@ -239,6 +248,37 @@ const Settings = () => {
           </label>
         </div>
         <p className="field-note">You can also manage notifications from your system settings.</p>
+      </div>
+
+      <div className="settings-card">
+        <h2>📦 Offline Storage & Downloads</h2>
+        <div style={{ marginBottom: '14px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', marginBottom: '6px' }}>
+            <span><strong>{storageInfo.fileCount}</strong> saved document{storageInfo.fileCount === 1 ? '' : 's'}</span>
+            <span className="text-muted">{storageInfo.usedMB} MB used</span>
+          </div>
+          <div style={{ width: '100%', height: '8px', background: '#e2e8f0', borderRadius: '4px', overflow: 'hidden' }}>
+            <div style={{ width: `${Math.max(2, storageInfo.percent)}%`, height: '100%', background: '#059669', transition: 'width 0.3s' }} />
+          </div>
+        </div>
+        <button
+          className="btn btn-secondary"
+          disabled={clearingStorage || storageInfo.fileCount === 0}
+          onClick={async () => {
+            if (window.confirm('Delete all offline downloaded documents to free up storage?')) {
+              setClearingStorage(true);
+              const docs = await listDocuments();
+              for (const d of docs) await deleteDocument(d.fileId);
+              const quota = await getStorageQuota();
+              setStorageInfo({ ...quota, fileCount: 0 });
+              setClearingStorage(false);
+              setMessage({ text: 'Offline documents removed.', type: 'success' });
+            }
+          }}
+        >
+          {clearingStorage ? 'Cleaning...' : 'Free Up Offline Documents'}
+        </button>
+        <p className="field-note">Manage files downloaded for zero-data offline reading.</p>
       </div>
 
       <div className="settings-card">

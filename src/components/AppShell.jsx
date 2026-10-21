@@ -17,6 +17,7 @@ import {
   PanelLeftOpen,
 } from 'lucide-react';
 import { supabase } from '../supabase';
+import { useOnlineStatus } from '../hooks/useOnlineStatus';
 import { BottomNav } from './BottomNav';
 import {
   PRIMARY_NAV,

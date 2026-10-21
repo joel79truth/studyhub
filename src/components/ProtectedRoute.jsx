@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { supabase } from '../supabase';
+import { getOfflineSessionSnapshot, saveOfflineSessionSnapshot } from '../lib/authGuard';
 
 export default function ProtectedRoute({ children }) {
   const [user, setUser] = useState(null);
@@ -9,18 +10,35 @@ export default function ProtectedRoute({ children }) {
   useEffect(() => {
     let isMounted = true;
 
-    // 1. Conclusively check the current session state first
+    // 1. Conclusively check current session state (with offline grace fallback)
     const initializeAuth = async () => {
       try {
         const { data: { session } } = await supabase.auth.getSession();
+        if (session) {
+          saveOfflineSessionSnapshot(session);
+        }
         if (isMounted) {
-          setUser(session?.user ?? null);
-          setAuthReady(true); // Conclusively marked ready after the active check resolves
+          let activeUser = session?.user ?? null;
+          if (!activeUser && typeof navigator !== 'undefined' && !navigator.onLine) {
+            const offlineSnap = getOfflineSessionSnapshot();
+            if (offlineSnap?.user) {
+              activeUser = offlineSnap.user;
+            }
+          }
+          setUser(activeUser);
+          setAuthReady(true);
         }
       } catch (err) {
         console.error("Auth check failed:", err);
         if (isMounted) {
-          setUser(null);
+          let activeUser = null;
+          if (typeof navigator !== 'undefined' && !navigator.onLine) {
+            const offlineSnap = getOfflineSessionSnapshot();
+            if (offlineSnap?.user) {
+              activeUser = offlineSnap.user;
+            }
+          }
+          setUser(activeUser);
           setAuthReady(true);
         }
       }
@@ -28,10 +46,22 @@ export default function ProtectedRoute({ children }) {
 
     initializeAuth();
 
-    // 2. Continuous subscription for subsequent session changes (Sign out, Token refresh, etc.)
+    // 2. Continuous subscription for subsequent session changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       if (isMounted) {
-        setUser(session?.user ?? null);
+        if (session) {
+          saveOfflineSessionSnapshot(session);
+          setUser(session.user);
+        } else if (typeof navigator !== 'undefined' && !navigator.onLine) {
+          const offlineSnap = getOfflineSessionSnapshot();
+          if (offlineSnap?.user) {
+            setUser(offlineSnap.user);
+          } else {
+            setUser(null);
+          }
+        } else {
+          setUser(null);
+        }
         setAuthReady(true); 
       }
     });
@@ -42,7 +72,7 @@ export default function ProtectedRoute({ children }) {
     };
   }, []);
 
-  // Visual anchor: Holds the screen layout stable until Supabase finishes reading local storage
+  // Visual anchor: Holds screen layout stable until auth resolution
   if (!authReady) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">

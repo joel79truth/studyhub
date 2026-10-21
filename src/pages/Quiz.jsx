@@ -47,6 +47,7 @@ import React, {
 } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { supabase } from '../supabase';
+import { saveQuizBank, getQuizBank, enqueueSyncItem } from '../lib/storageCore';
 import 'katex/dist/katex.min.css';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 
@@ -245,11 +246,11 @@ async function flushPendingSubmissions(baseUrl, token) {
 // ─── sessionStorage cache (subjects list only — safe to lose on tab close) ──
 const QUIZ_SETUP_CACHE_KEY = 'quizSetupCache';
 const readQuizSetupCache = () => {
-  try { const raw = sessionStorage.getItem(QUIZ_SETUP_CACHE_KEY); return raw ? JSON.parse(raw) : null; }
+  try { const raw = localStorage.getItem(QUIZ_SETUP_CACHE_KEY); return raw ? JSON.parse(raw) : null; }
   catch { return null; }
 };
 const writeQuizSetupCache = (data) => {
-  try { sessionStorage.setItem(QUIZ_SETUP_CACHE_KEY, JSON.stringify(data)); } catch {}
+  try { localStorage.setItem(QUIZ_SETUP_CACHE_KEY, JSON.stringify(data)); } catch {}
 };
 
 // ─── FIX (P0): in-progress quiz state — localStorage, not sessionStorage ───

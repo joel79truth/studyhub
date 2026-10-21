@@ -1,28 +1,75 @@
 import { supabase } from '../supabase';
 
+const OFFLINE_SESSION_KEY = 'studyhub_auth_session';
+
+/**
+ * Save an offline session snapshot to localStorage so the app can verify
+ * identity and render personal data even when completely disconnected.
+ */
+export function saveOfflineSessionSnapshot(session) {
+  if (!session?.user) return;
+  try {
+    const snapshot = {
+      user: {
+        id: session.user.id,
+        email: session.user.email,
+        user_metadata: session.user.user_metadata || {},
+      },
+      savedAt: Date.now(),
+      expiresAt: session.expires_at ? session.expires_at * 1000 : Date.now() + 30 * 24 * 60 * 60 * 1000,
+    };
+    localStorage.setItem(OFFLINE_SESSION_KEY, JSON.stringify(snapshot));
+  } catch (err) {
+    console.warn('[authGuard] Could not save offline session snapshot:', err);
+  }
+}
+
+/**
+ * Retrieve the offline session snapshot. Returns null if absent.
+ */
+export function getOfflineSessionSnapshot() {
+  try {
+    const raw = localStorage.getItem(OFFLINE_SESSION_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    // Allow up to 30 days of offline grace period
+    const GRACE_PERIOD_MS = 30 * 24 * 60 * 60 * 1000;
+    if (parsed.savedAt && (Date.now() - parsed.savedAt > GRACE_PERIOD_MS)) {
+      return null;
+    }
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Clear the offline session snapshot on explicit sign-out or corrupted token.
+ */
+export function clearOfflineSessionSnapshot() {
+  try {
+    localStorage.removeItem(OFFLINE_SESSION_KEY);
+  } catch {}
+}
+
 /**
  * Detects a corrupted Supabase session where the stored `user.id` doesn't
- * match the `sub` claim embedded in the stored `access_token`. This can
- * happen when a redirect-based OAuth flow overlaps with an existing session
- * (e.g. switching Google accounts, multiple tabs completing sign-in at
- * once, or a token refresh landing between two auth state updates).
+ * match the `sub` claim embedded in the stored `access_token`.
  *
- * Every RLS policy in this app checks `auth.uid() = id`. Postgres derives
- * `auth.uid()` from the access token's `sub` claim — NOT from anything in
- * the client's `user` object — so a corrupted session causes every
- * insert/update to fail with 42501 even though the app "looks" signed in
- * correctly (userData renders, displayName shows up, etc).
- *
- * Call this once after any SIGNED_IN / USER_UPDATED event, and once on
- * app/page load before trusting an existing session.
- *
- * @returns {Promise<boolean>} true if the session is healthy or absent,
- *   false if it was corrupted and has been cleared (caller should treat
- *   this as signed-out and redirect to /login).
+ * Safe for offline: if the user is offline, trusts the offline session snapshot
+ * instead of forcing a sign-out.
  */
 export async function ensureConsistentSession() {
+  if (typeof navigator !== 'undefined' && !navigator.onLine) {
+    const offlineSnap = getOfflineSessionSnapshot();
+    return !!offlineSnap;
+  }
+
   const { data: { session } } = await supabase.auth.getSession();
-  if (!session) return true; // no session = nothing to validate
+  if (!session) {
+    const offlineSnap = getOfflineSessionSnapshot();
+    return !!offlineSnap;
+  }
 
   try {
     const payload = JSON.parse(atob(session.access_token.split('.')[1]));
@@ -31,11 +78,15 @@ export async function ensureConsistentSession() {
         'Corrupted Supabase session detected (user.id !== access_token sub). Forcing sign-out.',
         { userId: session.user.id, tokenSub: payload.sub }
       );
+      clearOfflineSessionSnapshot();
       await supabase.auth.signOut();
       return false;
     }
+    // Save healthy session snapshot
+    saveOfflineSessionSnapshot(session);
   } catch (e) {
     console.error('Failed to decode/validate session token — forcing sign-out.', e);
+    clearOfflineSessionSnapshot();
     await supabase.auth.signOut();
     return false;
   }

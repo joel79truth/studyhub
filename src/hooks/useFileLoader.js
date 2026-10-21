@@ -3,6 +3,7 @@ import { supabase } from '../supabase';
 import { API_BASE_URL } from '../lib/apiConfig';
 import { saveFileOffline, getOfflineFile } from '../utils/offlineStorage';
 import { getDownload } from '../utils/downloadStore';
+import { getDocument as getUnifiedDocument, saveDocument as saveUnifiedDocument } from '../lib/storageCore';
 
 
 const DEBUG = false;

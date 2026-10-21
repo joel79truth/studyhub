@@ -38,7 +38,6 @@ export function usePdfRenderer(pdf, scale, baseWidth) {
     canvas.style.height = '100%';
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = 'high';
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(bitmap, 0, 0);
   }, []);
 
@@ -207,6 +206,9 @@ export function usePdfRenderer(pdf, scale, baseWidth) {
         continue;
       }
 
+      if (cached?.bitmap) {
+        drawToCanvas(cached.bitmap, item.canvas);
+      }
       const bitmap = await renderPageAtQuality(pageNum, quality);
       const currentItem = pool.current.find(c => c.attachedToPage === pageNum);
       if (currentItem && bitmap) {
@@ -276,11 +278,15 @@ export function usePdfRenderer(pdf, scale, baseWidth) {
     log(`✅ Attached canvas for page ${pageNum}`);
 
     const cached = cache.current.get(pageNum);
-    if (cached) {
+    if (cached?.bitmap) {
       drawToCanvas(cached.bitmap, free.canvas);
       log(`⚡ Instantly drew cached page ${pageNum}`);
+      const dpr = dprRef.current;
+      const targetScale = (containerWidthRef.current * scaleRef.current * 1.0 * dpr) / baseWidthRef.current;
+      if (Math.abs(cached.renderScale - targetScale) / targetScale > 0.05) {
+        scheduleRender(pageNum, 1.0, 0);
+      }
     } else {
-      // Direct 1.0 quality render for razor-sharp clarity
       scheduleRender(pageNum, 1.0, 0);
     }
     return free.canvas;

@@ -1773,7 +1773,7 @@ async function notifyAdminsOfRequest({ topic, course, program, semester, email, 
   }
 }
 
-async function notifyUploadToAllUsers({ type, uploaderName, uploaderUid, filename, courseName, id }) {
+async function notifyUploadToAllUsers({ type, uploaderName, uploaderUid, filename, courseName, id, program, semester }) {
   try {
     let tokensQuery = supabaseAdmin.from('fcm_tokens').select('token, uid');
     if (uploaderUid) {

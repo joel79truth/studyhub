@@ -9,6 +9,10 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
       workbox: {
+        maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
+        navigateFallback: '/index.html',
+        navigateFallbackDenylist: [/^\/(api|upload|events|save-token)/],
+        cleanupOutdatedCaches: true,
         importScripts: ['firebase-push-sw.js'], // unchanged — your push setup
         // ADDED: tells the service worker how to handle live requests,
         // not just the precached app shell.

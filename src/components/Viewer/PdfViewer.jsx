@@ -137,23 +137,32 @@ export default function PdfViewer({
       const viewportScale = targetCssWidth / basePageWidth;
       const viewport = page.getViewport({ scale: viewportScale });
 
-      container.innerHTML = '';
-      container.style.width = `${Math.round(viewport.width)}px`;
-      container.style.height = `${Math.round(viewport.height)}px`;
-      container.style.setProperty('--total-scale-factor', viewport.scale);
+      const tempContainer = document.createElement('div');
+      tempContainer.className = 'textLayer';
+      tempContainer.style.width = `${Math.round(viewport.width)}px`;
+      tempContainer.style.height = `${Math.round(viewport.height)}px`;
+      tempContainer.style.setProperty('--total-scale-factor', viewport.scale);
+      tempContainer.style.setProperty('--scale-factor', viewport.scale);
       if (pdfjs.setLayerDimensions) {
-        try { pdfjs.setLayerDimensions(container, viewport); } catch (_) {}
+        try { pdfjs.setLayerDimensions(tempContainer, viewport); } catch (_) {}
       }
 
       const textContent = await page.getTextContent();
       const textLayer = new pdfjs.TextLayer({
         textContentSource: textContent,
-        container,
+        container: tempContainer,
         viewport,
       });
 
       activeTextTasksRef.current.set(pageNum, textLayer);
       await textLayer.render();
+
+      // Atomic swap to prevent flickering text
+      container.replaceChildren(...tempContainer.childNodes);
+      container.style.width = tempContainer.style.width;
+      container.style.height = tempContainer.style.height;
+      container.style.setProperty('--total-scale-factor', viewport.scale);
+      container.style.setProperty('--scale-factor', viewport.scale);
       container.dataset.renderedScale = String(scale);
     } catch (err) {
       if (err?.name !== 'AbortException' && err?.name !== 'RenderingCancelledException') {
