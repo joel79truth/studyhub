@@ -4,6 +4,8 @@ import { supabase } from '../supabase';
 import { API_BASE_URL } from '../lib/apiConfig';
 import { Capacitor } from '@capacitor/core';
 import { FilePicker } from '@capawesome/capacitor-file-picker';
+import { generateFileThumbnail } from '../utils/thumbnailHelper';
+import { showNotificationBanner } from '../utils/notificationBannerService';
 import styles from './Upload.module.css';
 
 export default function Upload() {
@@ -246,6 +248,14 @@ const handleSubmit = async (e) => {
 
     // Step 3: tell the backend the bytes landed
     setUploadStage('saving');
+
+    let thumbDataUrl = null;
+    try {
+      thumbDataUrl = await generateFileThumbnail(file, 450);
+    } catch (tErr) {
+      console.warn('[Upload] Failed to generate local thumbnail:', tErr);
+    }
+
     const completeRes = await fetch(`${API_BASE_URL}/api/storage/complete`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
@@ -257,6 +267,7 @@ const handleSubmit = async (e) => {
         subject: subject.trim(),
         filename: file.name,
         size: file.size,
+        thumbnail_data: thumbDataUrl,
       }),
     });
     const completeData = await completeRes.json().catch(() => ({}));
@@ -264,6 +275,19 @@ const handleSubmit = async (e) => {
 
     setUploadProgress(100);
     addToast('Upload successful!', `${file.name} has been shared.`, 'success');
+
+    // Show the notification banner immediately for the uploaded thing with its image
+    showNotificationBanner({
+      type: 'notes',
+      uploadType: 'Notes',
+      title: 'New Notes Uploaded',
+      program: programInput.trim(),
+      course: subject.trim(),
+      semester,
+      filename: file.name,
+      imageUrl: thumbDataUrl || completeData.thumbnail_url || null,
+      url: completeData?.id ? `/viewer?fileId=${encodeURIComponent(completeData.id)}` : '/',
+    });
     setProgramInput('');
     setSemester('');
     setSubject('');

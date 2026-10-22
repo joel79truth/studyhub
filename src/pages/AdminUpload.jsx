@@ -19,6 +19,9 @@ import {
 } from 'lucide-react';
 import { supabase } from '../supabase';
 import { API_BASE_URL } from '../lib/apiConfig';
+import { cleanPhoto, buildA4PdfFromPages } from '../services/scannerService';
+import { generateFileThumbnail } from '../utils/thumbnailHelper';
+import { showNotificationBanner } from '../utils/notificationBannerService';
 
 const BASE_URL = API_BASE_URL;
 
@@ -101,7 +104,8 @@ useEffect(() => {
   useEffect(() => {
     return () => {
       previews.forEach((p) => {
-        if (p?.url) URL.revokeObjectURL(p.url);
+        if (p?.originalUrl) URL.revokeObjectURL(p.originalUrl);
+        if (p?.cleanedUrl && p.cleanedUrl !== p.originalUrl) URL.revokeObjectURL(p.cleanedUrl);
       });
     };
   }, [previews]);
@@ -112,12 +116,7 @@ useEffect(() => {
   };
 
   // ── Poll GET /api/exam/paper-document/:pastPaperId until the background
-  // PDF generation resolves to 'ready' or 'failed'. The endpoint returns
-  // the LATEST attempt regardless of status (not just ready ones), so
-  // 'failed' is a real, distinguishable terminal state — not indistinguishable
-  // from "still working" or "not started". 'timeout' means we stopped polling
-  // while it was still 'generating' (or no row existed yet) — genuinely
-  // unknown, not a failure. ──
+  // PDF generation resolves to 'ready' or 'failed'.
   const pollForDocument = async (rawPaperId, onUpdate, { intervalMs = 2000, maxAttempts = 15 } = {}) => {
     const headers = await authHeader();
     for (let attempt = 0; attempt < maxAttempts; attempt++) {
@@ -132,38 +131,12 @@ useEffect(() => {
         }
         if (doc?.status === 'failed') {
           onUpdate({ status: 'failed' });
-          return; // won't resolve itself — stop polling
+          return;
         }
-        // doc.status === 'generating', or doc is null (not started yet) — keep polling
-      } catch (_) {
-        // transient network error — keep polling
-      }
+      } catch (_) {}
       await new Promise((r) => setTimeout(r, intervalMs));
     }
     onUpdate({ status: 'timeout' });
-  };
-
-  const compressOneImage = async (rawFile) => {
-    if (!rawFile) return null;
-    let finalFile = rawFile;
-    if (rawFile.type?.startsWith('image/') && rawFile.size > 1.5 * 1024 * 1024) {
-      try {
-        const imageCompressionModule = await import('browser-image-compression');
-        const imageCompression = imageCompressionModule.default || imageCompressionModule;
-        const compressedBlob = await imageCompression(rawFile, {
-          maxSizeMB: 1.5,
-          maxWidthOrHeight: 1920,
-          useWebWorker: true,
-          fileType: 'image/jpeg',
-        });
-        finalFile = new File([compressedBlob], (rawFile.name || 'photo.jpg').replace(/\.[^/.]+$/, "") + ".jpg", {
-          type: 'image/jpeg',
-        });
-      } catch (compErr) {
-        console.warn('Image compression fallback:', compErr);
-      }
-    }
-    return finalFile;
   };
 
   const addFiles = async (newRawFiles) => {
@@ -171,7 +144,7 @@ useEffect(() => {
     const incoming = Array.from(newRawFiles).filter((f) => f.type?.startsWith('image/'));
     if (incoming.length === 0) return;
 
-    const availableSlots = 12 - files.length;
+    const availableSlots = 12 - previews.length;
     if (availableSlots <= 0) {
       setError('Maximum 12 pages allowed per upload. Remove a page before adding another.');
       return;
@@ -184,37 +157,92 @@ useEffect(() => {
       setError(null);
     }
 
-    const compressed = (await Promise.all(toProcess.map(compressOneImage))).filter(Boolean);
-    const newPreviews = compressed.map((f) => ({
-      file: f,
-      url: URL.createObjectURL(f),
-      name: f.name,
-      size: (f.size / 1024).toFixed(0) + ' KB',
-    }));
+    // Create placeholder page items immediately
+    const newItems = toProcess.map((f, i) => {
+      const url = URL.createObjectURL(f);
+      return {
+        id: `${Date.now()}_${Math.random()}_${i}`,
+        originalFile: f,
+        originalBlob: f,
+        originalUrl: url,
+        cleanedBlob: f,
+        cleanedUrl: url,
+        useOriginal: false,
+        showCleaned: true,
+        cleaning: true,
+        cleaningStage: 'Loading document scanner…',
+        name: f.name,
+        size: (f.size / 1024).toFixed(0) + ' KB',
+        error: null,
+      };
+    });
 
-    setFiles((prev) => [...prev, ...compressed]);
-    setPreviews((prev) => [...prev, ...newPreviews]);
+    setPreviews((prev) => [...prev, ...newItems]);
     setResult(null);
     setErrorRawPaperId(null);
+
+    // Process one page at a time with OpenCV in the worker
+    for (const item of newItems) {
+      try {
+        const cleanResult = await cleanPhoto(item.originalFile, (stageInfo) => {
+          setPreviews((prev) =>
+            prev.map((p) => (p.id === item.id ? { ...p, cleaningStage: stageInfo.message } : p))
+          );
+        });
+
+        setPreviews((prev) =>
+          prev.map((p) => {
+            if (p.id !== item.id) return p;
+            return {
+              ...p,
+              cleaning: false,
+              cleaningStage: '',
+              cleanedBlob: cleanResult.cleanedBlob,
+              cleanedUrl: cleanResult.cleanedUrl,
+              useOriginal: cleanResult.useOriginal || false,
+              error: cleanResult.error || null,
+              size: ((cleanResult.cleanedBlob?.size || item.originalFile.size) / 1024).toFixed(0) + ' KB',
+            };
+          })
+        );
+      } catch (err) {
+        setPreviews((prev) =>
+          prev.map((p) =>
+            p.id === item.id
+              ? { ...p, cleaning: false, useOriginal: true, error: err.message || 'Cleanup error' }
+              : p
+          )
+        );
+      }
+    }
+  };
+
+  const toggleShowCleaned = (id) => {
+    setPreviews((prev) =>
+      prev.map((p) => (p.id === id ? { ...p, showCleaned: !p.showCleaned } : p))
+    );
+  };
+
+  const toggleUseOriginal = (id) => {
+    setPreviews((prev) =>
+      prev.map((p) => (p.id === id ? { ...p, useOriginal: !p.useOriginal } : p))
+    );
   };
 
   const removeFileAt = (index) => {
     setPreviews((prev) => {
-      if (prev[index]?.url) URL.revokeObjectURL(prev[index].url);
+      const target = prev[index];
+      if (target?.originalUrl) URL.revokeObjectURL(target.originalUrl);
+      if (target?.cleanedUrl && target.cleanedUrl !== target.originalUrl) {
+        URL.revokeObjectURL(target.cleanedUrl);
+      }
       return prev.filter((_, i) => i !== index);
     });
-    setFiles((prev) => prev.filter((_, i) => i !== index));
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
   const moveFile = (fromIndex, toIndex) => {
-    if (toIndex < 0 || toIndex >= files.length) return;
-    setFiles((prev) => {
-      const next = [...prev];
-      const [item] = next.splice(fromIndex, 1);
-      next.splice(toIndex, 0, item);
-      return next;
-    });
+    if (toIndex < 0 || toIndex >= previews.length) return;
     setPreviews((prev) => {
       const next = [...prev];
       const [item] = next.splice(fromIndex, 1);
@@ -225,7 +253,10 @@ useEffect(() => {
 
   const clearAllFiles = () => {
     previews.forEach((p) => {
-      if (p?.url) URL.revokeObjectURL(p.url);
+      if (p?.originalUrl) URL.revokeObjectURL(p.originalUrl);
+      if (p?.cleanedUrl && p.cleanedUrl !== p.originalUrl) {
+        URL.revokeObjectURL(p.cleanedUrl);
+      }
     });
     setFiles([]);
     setPreviews([]);
@@ -331,7 +362,7 @@ const checkDuplicate = async (courseName, sem, exType, yr) => {
 };
 
 const handleUploadAndExtract = async () => {
-  if (files.length === 0) return;
+  if (previews.length === 0) return;
   if (!uploadProgramId || !uploadCourse.trim()) {
     setError('Program and course name are required.');
     setErrorRawPaperId(null);
@@ -348,35 +379,50 @@ const handleUploadAndExtract = async () => {
     return;
   }
 
+  // Check if any page is still in the middle of scanner cleaning
+  if (previews.some((p) => p.cleaning)) {
+    setError('Please wait a moment for all pages to finish scan cleanup.');
+    return;
+  }
+
   setUploading(true);
-  setUploadStage('uploading');
-  setUploadProgress(20);
+  setUploadStage('compiling');
+  setUploadProgress(30);
   setError(null);
   setErrorRawPaperId(null);
+
   try {
+    const cleanCourse = uploadCourse.trim().replace(/\s+/g, '_');
+    const pdfFilename = `${cleanCourse}_Exam_${previews.length}pages.pdf`;
+
+    // Step 1: Compile multi-page A4 PDF from cleaned (or original) pages client-side
+    const compiledPdfFile = await buildA4PdfFromPages(previews, pdfFilename);
+    const firstThumb = previews[0]?.useOriginal ? previews[0]?.originalUrl : (previews[0]?.cleanedUrl || previews[0]?.originalUrl);
+
+    setUploadStage('uploading');
+    setUploadProgress(65);
+
     const headers = await authHeader();
     const formData = new FormData();
-    files.forEach((f) => {
-      formData.append('papers', f);
-    });
-    formData.append('paper', files[0]);
-    formData.append('pagesCount', String(files.length));
+    formData.append('paper', compiledPdfFile);
+    formData.append('pagesCount', String(previews.length));
     formData.append('programId', uploadProgramId);
     formData.append('course', uploadCourse.trim());
     formData.append('semester', uploadSemester.trim() || '1');
     if (uploadYear.trim()) formData.append('year', uploadYear.trim());
     formData.append('kind', contentKind);
-    formData.append('sourceType', 'photos');
+    formData.append('sourceType', 'scan');
+    if (firstThumb) formData.append('thumbnailData', firstThumb);
     if (contentKind === 'tutorial') {
       formData.append('title', tutorialTitle.trim());
     } else {
       formData.append('examType', examType);
     }
 
-    // ── Step 1: upload file (backend converts JPEGs into 1 PDF with pdfkit) ──
-    setUploadProgress(40);
-    const res = await fetch(`${BASE_URL}/api/exam/upload-past-paper`, {
-      method: 'POST', headers, body: formData,
+    const res = await fetch(`${BASE_URL}/api/exam/upload-past-paper-pdf`, {
+      method: 'POST',
+      headers,
+      body: formData,
     });
     const data = await res.json();
     if (!res.ok) {
@@ -386,50 +432,44 @@ const handleUploadAndExtract = async () => {
     }
 
     const rawPaperId = data.raw_paper_id;
-    setUploadProgress(65);
+    const progName = programs.find(p => p.id === uploadProgramId)?.name || '';
+    setUploadStage('done');
+    setUploadProgress(100);
+    clearAllFiles();
 
-    // If tutorial, view-first — no question splitting
+    // Trigger visual notification banner with the uploaded image
+    showNotificationBanner({
+      type: contentKind === 'tutorial' ? 'tutorial' : 'paper',
+      uploadType: contentKind === 'tutorial' ? 'Tutorial' : 'Past paper',
+      title: contentKind === 'tutorial' ? 'New Tutorial Uploaded' : 'New Past Paper Uploaded',
+      program: progName,
+      course: uploadCourse.trim(),
+      semester: uploadSemester.trim() || '1',
+      filename: pdfFilename,
+      imageUrl: firstThumb || data.thumbnail_url || null,
+      url: contentKind === 'tutorial' ? '/tutorials' : '/papers',
+    });
+
     if (contentKind === 'tutorial') {
       queryClient.invalidateQueries({ queryKey: ['tutorialsList'] });
-      setUploadStage('done');
-      setUploadProgress(100);
-      clearAllFiles();
       setResult({
         extracted: 0,
         paperId: rawPaperId,
         rawPaperId,
         reviewNote: null,
         isTutorial: true,
+        message: 'Tutorial uploaded successfully.',
       });
       return;
     }
 
-    // ── Step 2: poll for AI extraction completion for past papers ──
-    setUploadStage('analyzing');
-    setUploadProgress(80);
-    const statusResult = await pollForPaperStatus(rawPaperId);
-
-    if (!statusResult.success) {
-      const err = new Error(statusResult.error);
-      err.rawPaperId = rawPaperId;
-      throw err;
-    }
-
-    // ── Step 3: done ──
-    setUploadStage('done');
-    setUploadProgress(100);
-    clearAllFiles();
-
+    // Past paper: uploaded with pending status, extraction deferred to Batch tab
     setResult({
-      extracted: statusResult.extracted,
-      paperId: statusResult.paper_id,
+      extracted: 0,
+      paperId: rawPaperId,
       rawPaperId,
       reviewNote: null,
-      documentStatus: 'generating',
-    });
-
-    pollForDocument(rawPaperId, (docState) => {
-      setResult((prev) => (prev ? { ...prev, documentStatus: docState.status, documentUrl: docState.url } : prev));
+      message: 'Paper uploaded. Extract it from the Batch tab.',
     });
   } catch (err) {
     setError(err.message);
@@ -487,12 +527,20 @@ const handlePdfUpload = async () => {
 
   setPdfUploading(true);
   setPdfUploadStage('uploading');
-  setUploadProgress(30);
+  setUploadProgress(50);
   setPdfError(null);
   setPdfErrorRawPaperId(null);
 
   try {
     const headers = await authHeader();
+
+    let thumbDataUrl = null;
+    try {
+      thumbDataUrl = await generateFileThumbnail(pdfFile, 450);
+    } catch (tErr) {
+      console.warn('[AdminUpload] Failed to generate PDF thumbnail:', tErr);
+    }
+
     const formData = new FormData();
     formData.append('paper', pdfFile);
     formData.append('programId', uploadProgramId);
@@ -501,15 +549,17 @@ const handlePdfUpload = async () => {
     if (uploadYear.trim()) formData.append('year', uploadYear.trim());
     formData.append('kind', contentKind);
     formData.append('sourceType', 'typed_pdf');
+    if (thumbDataUrl) formData.append('thumbnailData', thumbDataUrl);
     if (contentKind === 'tutorial') {
       formData.append('title', tutorialTitle.trim());
     } else {
       formData.append('examType', examType);
     }
 
-    setUploadProgress(60);
     const res = await fetch(`${BASE_URL}/api/exam/upload-past-paper-pdf`, {
-      method: 'POST', headers, body: formData,
+      method: 'POST',
+      headers,
+      body: formData,
     });
     const data = await res.json();
     if (!res.ok) {
@@ -519,51 +569,45 @@ const handlePdfUpload = async () => {
     }
 
     const rawPaperId = data.raw_paper_id;
-    setUploadProgress(75);
+    const progName = programs.find(p => p.id === uploadProgramId)?.name || '';
+    setPdfUploadStage('done');
+    setUploadProgress(100);
+    setPdfFile(null);
+    if (pdfFileInputRef.current) pdfFileInputRef.current.value = '';
 
-    // Tutorials are view-first
+    // Trigger visual notification banner with the uploaded image
+    showNotificationBanner({
+      type: contentKind === 'tutorial' ? 'tutorial' : 'paper',
+      uploadType: contentKind === 'tutorial' ? 'Tutorial' : 'Past paper',
+      title: contentKind === 'tutorial' ? 'New Tutorial Uploaded' : 'New Past Paper Uploaded',
+      program: progName,
+      course: uploadCourse.trim(),
+      semester: uploadSemester.trim() || '1',
+      filename: pdfFile.name,
+      imageUrl: thumbDataUrl || data.thumbnail_url || null,
+      url: contentKind === 'tutorial' ? '/tutorials' : '/papers',
+    });
+
     if (contentKind === 'tutorial') {
       queryClient.invalidateQueries({ queryKey: ['tutorialsList'] });
-      setPdfUploadStage('done');
-      setUploadProgress(100);
-      setPdfFile(null);
-      if (pdfFileInputRef.current) pdfFileInputRef.current.value = '';
       setPdfResult({
         extracted: 0,
         paperId: rawPaperId,
         rawPaperId,
         reviewNote: null,
         isTutorial: true,
+        message: 'Tutorial uploaded successfully.',
       });
       return;
     }
 
-    // Poll for AI extraction completion for papers
-    setPdfUploadStage('analyzing');
-    setUploadProgress(85);
-    const statusResult = await pollForPaperStatus(rawPaperId);
-
-    if (!statusResult.success) {
-      const err = new Error(statusResult.error);
-      err.rawPaperId = rawPaperId;
-      throw err;
-    }
-
-    setPdfUploadStage('done');
-    setUploadProgress(100);
-    setPdfFile(null);
-    if (pdfFileInputRef.current) pdfFileInputRef.current.value = '';
-
+    // Past paper: uploaded with pending status, extraction deferred to Batch tab
     setPdfResult({
-      extracted: statusResult.extracted,
-      paperId: statusResult.paper_id,
+      extracted: 0,
+      paperId: rawPaperId,
       rawPaperId,
       reviewNote: null,
-      documentStatus: 'generating',
-    });
-
-    pollForDocument(rawPaperId, (docState) => {
-      setPdfResult((prev) => (prev ? { ...prev, documentStatus: docState.status, documentUrl: docState.url } : prev));
+      message: 'Paper uploaded. Extract it from the Batch tab.',
     });
   } catch (err) {
     console.error('[AdminUpload] PDF upload error:', err);
@@ -730,17 +774,17 @@ const handlePdfUpload = async () => {
             alignItems: 'center',
             gap: '8px',
             padding: '8px 16px',
-            background: '#059669',
+            background: '#2563eb',
             color: '#ffffff',
             borderRadius: '10px',
             border: 'none',
             fontSize: '0.85rem',
             fontWeight: 600,
             cursor: 'pointer',
-            boxShadow: '0 2px 5px rgba(5,150,105,0.25)',
+            boxShadow: '0 2px 5px rgba(37,99,235,0.25)',
           }}
         >
-          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#34d399', animation: 'pulse 1.5s infinite' }}></span>
+          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#93c5fd', animation: 'pulse 1.5s infinite' }}></span>
           <span>Live Users Command Center</span>
         </button>
       </div>
@@ -1003,7 +1047,7 @@ const handlePdfUpload = async () => {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
                       <Spinner />
                       <span style={{ fontWeight: 700, color: '#1d4ed8', fontSize: '0.95rem' }}>
-                        Uploading & Processing {files.length} Page(s)...
+                        Uploading {previews.length} Page(s)...
                       </span>
                     </div>
 
@@ -1013,22 +1057,14 @@ const handlePdfUpload = async () => {
                     </div>
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.85rem' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: uploadStage === 'uploading' ? '#2563eb' : '#059669', fontWeight: uploadStage === 'uploading' ? 600 : 400 }}>
-                        {uploadStage === 'uploading' ? <RefreshCw size={15} className="animate-spin" /> : <CheckCircle size={15} color="#059669" />}
-                        <span>Step 1: Merging photos into 1 PDF with pdfkit</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: uploadStage === 'compiling' ? '#2563eb' : '#1d4ed8', fontWeight: uploadStage === 'compiling' ? 600 : 400 }}>
+                        {uploadStage === 'compiling' ? <RefreshCw size={15} className="animate-spin" /> : <CheckCircle size={15} color="#2563eb" />}
+                        <span>Compiling pages into standard A4 PDF</span>
                       </div>
-                      {contentKind === 'paper' && (
-                        <>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: uploadStage === 'analyzing' ? '#2563eb' : uploadStage === 'done' ? '#059669' : '#9ca3af', fontWeight: uploadStage === 'analyzing' ? 600 : 400 }}>
-                            {uploadStage === 'analyzing' ? <RefreshCw size={15} className="animate-spin" /> : uploadStage === 'done' ? <CheckCircle size={15} color="#059669" /> : <span style={{ width: 15, display: 'inline-block' }}>•</span>}
-                            <span>Step 2: AI reading questions & cropping diagrams</span>
-                          </div>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: uploadStage === 'done' ? '#059669' : '#9ca3af', fontWeight: uploadStage === 'done' ? 600 : 400 }}>
-                            {uploadStage === 'done' ? <CheckCircle size={15} color="#059669" /> : <span style={{ width: 15, display: 'inline-block' }}>•</span>}
-                            <span>Step 3: Storing verified questions in database</span>
-                          </div>
-                        </>
-                      )}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: uploadStage === 'uploading' ? '#2563eb' : uploadStage === 'done' ? '#1d4ed8' : '#9ca3af', fontWeight: uploadStage === 'uploading' ? 600 : 400 }}>
+                        {uploadStage === 'uploading' ? <RefreshCw size={15} className="animate-spin" /> : uploadStage === 'done' ? <CheckCircle size={15} color="#2563eb" /> : <span style={{ width: 15, display: 'inline-block' }}>•</span>}
+                        <span>Uploading document to storage</span>
+                      </div>
                     </div>
                   </div>
                 ) : previews.length === 0 ? (
@@ -1040,7 +1076,7 @@ const handlePdfUpload = async () => {
                       Drop pages here, or choose 1 to 12 photos
                     </p>
                     <p style={{ fontSize: '0.8rem', color: '#9ca3af', margin: '0 0 16px' }}>
-                      All photos will be compressed and merged into a single PDF
+                      Photos are cleaned with OpenCV scanner and compiled into an A4 PDF
                     </p>
                     <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', flexWrap: 'wrap' }}>
                       <button onClick={(e) => { e.stopPropagation(); fileInputRef.current?.click(); }} style={btnPrimary}>
@@ -1077,7 +1113,7 @@ const handlePdfUpload = async () => {
                           {previews.length} of 12 Pages Selected
                         </span>
                         <p style={{ margin: '2px 0 0', fontSize: '0.75rem', color: '#6b7280' }}>
-                          Reorder or remove pages before uploading.
+                          Preview cleaned scans, toggle original, or reorder pages before uploading.
                         </p>
                       </div>
                       <div style={{ display: 'flex', gap: '8px' }}>
@@ -1101,25 +1137,26 @@ const handlePdfUpload = async () => {
                     </div>
 
                     {/* Multi-page grid */}
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', gap: '12px', marginBottom: '16px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: '14px', marginBottom: '16px' }}>
                       {previews.map((item, idx) => (
                         <div
-                          key={idx}
+                          key={item.id || idx}
                           style={{
                             border: '1px solid #e5e7eb',
                             borderRadius: '10px',
-                            padding: '8px',
+                            padding: '10px',
                             background: '#ffffff',
                             position: 'relative',
                             textAlign: 'left',
                             boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
                           }}
                         >
-                          <div style={{ position: 'relative', height: '110px', overflow: 'hidden', borderRadius: '6px', background: '#f3f4f6', marginBottom: '6px' }}>
+                          {/* Image preview with before/after toggle */}
+                          <div style={{ position: 'relative', height: '140px', overflow: 'hidden', borderRadius: '6px', background: '#f3f4f6', marginBottom: '8px' }}>
                             <img
-                              src={item.url}
+                              src={item.useOriginal || !item.showCleaned ? item.originalUrl : item.cleanedUrl}
                               alt={`Page ${idx + 1}`}
-                              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                              style={{ width: '100%', height: '100%', objectFit: 'contain', background: '#fff' }}
                             />
                             <span
                               style={{
@@ -1136,6 +1173,21 @@ const handlePdfUpload = async () => {
                             >
                               Page {idx + 1}
                             </span>
+                            <span
+                              style={{
+                                position: 'absolute',
+                                bottom: '4px',
+                                left: '4px',
+                                background: item.useOriginal ? '#4b5563' : item.showCleaned ? '#1d4ed8' : '#374151',
+                                color: '#ffffff',
+                                fontSize: '0.65rem',
+                                fontWeight: 600,
+                                padding: '2px 6px',
+                                borderRadius: '4px',
+                              }}
+                            >
+                              {item.useOriginal ? 'Original' : item.showCleaned ? 'Cleaned' : 'Original view'}
+                            </span>
                             <button
                               type="button"
                               onClick={() => removeFileAt(idx)}
@@ -1143,7 +1195,7 @@ const handlePdfUpload = async () => {
                                 position: 'absolute',
                                 top: '4px',
                                 right: '4px',
-                                background: '#ef4444',
+                                background: '#dc2626',
                                 color: '#ffffff',
                                 border: 'none',
                                 borderRadius: '50%',
@@ -1158,10 +1210,75 @@ const handlePdfUpload = async () => {
                             >
                               <Trash2 size={12} />
                             </button>
+
+                            {/* Cleaning overlay */}
+                            {item.cleaning && (
+                              <div
+                                style={{
+                                  position: 'absolute',
+                                  inset: 0,
+                                  background: 'rgba(255, 255, 255, 0.92)',
+                                  display: 'flex',
+                                  flexDirection: 'column',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  padding: '8px',
+                                  textAlign: 'center',
+                                }}
+                              >
+                                <Spinner dark />
+                                <span style={{ fontSize: '0.72rem', color: '#1d4ed8', fontWeight: 600, marginTop: '6px' }}>
+                                  {item.cleaningStage || 'Cleaning scan…'}
+                                </span>
+                              </div>
+                            )}
                           </div>
 
-                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <span style={{ fontSize: '0.7rem', color: '#6b7280', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '65px' }}>
+                          {/* Controls: View Cleaned / View Original toggle & Use original checkbox */}
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginBottom: '8px' }}>
+                            {!item.useOriginal && (
+                              <button
+                                type="button"
+                                disabled={item.cleaning}
+                                onClick={() => toggleShowCleaned(item.id)}
+                                style={{
+                                  padding: '3px 6px',
+                                  fontSize: '0.72rem',
+                                  fontWeight: 600,
+                                  border: '1px solid #d1d5db',
+                                  borderRadius: '4px',
+                                  background: '#f9fafb',
+                                  color: '#1d4ed8',
+                                  cursor: item.cleaning ? 'not-allowed' : 'pointer',
+                                }}
+                              >
+                                {item.showCleaned ? 'View Original' : 'View Cleaned'}
+                              </button>
+                            )}
+
+                            <label
+                              style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '6px',
+                                fontSize: '0.72rem',
+                                color: '#374151',
+                                cursor: 'pointer',
+                              }}
+                            >
+                              <input
+                                type="checkbox"
+                                checked={item.useOriginal}
+                                onChange={() => toggleUseOriginal(item.id)}
+                                style={{ accentColor: '#2563eb' }}
+                              />
+                              <span>Use original</span>
+                            </label>
+                          </div>
+
+                          {/* Page footer: size & reorder buttons */}
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '4px', borderTop: '1px solid #f3f4f6' }}>
+                            <span style={{ fontSize: '0.7rem', color: '#6b7280', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                               {item.size}
                             </span>
                             <div style={{ display: 'flex', gap: '3px' }}>
@@ -1211,7 +1328,7 @@ const handlePdfUpload = async () => {
                           style={{
                             border: '2px dashed #d1d5db',
                             borderRadius: '10px',
-                            minHeight: '140px',
+                            minHeight: '160px',
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
@@ -1232,13 +1349,19 @@ const handlePdfUpload = async () => {
                     <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-start', flexWrap: 'wrap' }}>
                       <button
                         onClick={handleUploadAndExtract}
-                        disabled={uploading}
-                        style={{ ...btnPrimary, background: uploading ? '#93c5fd' : '#2563eb', cursor: uploading ? 'not-allowed' : 'pointer', padding: '10px 20px', fontSize: '0.9rem' }}
+                        disabled={uploading || previews.some((p) => p.cleaning)}
+                        style={{
+                          ...btnPrimary,
+                          background: (uploading || previews.some((p) => p.cleaning)) ? '#93c5fd' : '#2563eb',
+                          cursor: (uploading || previews.some((p) => p.cleaning)) ? 'not-allowed' : 'pointer',
+                          padding: '10px 20px',
+                          fontSize: '0.9rem',
+                        }}
                       >
                         <UploadCloud size={18} />
                         {contentKind === 'tutorial'
                           ? `Upload Tutorial (${previews.length} Pages)`
-                          : `Upload & Extract Questions (${previews.length} Pages)`}
+                          : `Upload Past Paper (${previews.length} Pages)`}
                       </button>
                     </div>
                   </div>
@@ -1252,7 +1375,7 @@ const handlePdfUpload = async () => {
           {uploadType === 'pdf' && (
             <Section title="Upload Exam PDF">
               <p style={hint}>
-                Upload a past exam paper PDF (digital or scanned, max 10 MB). The AI will process all pages, extract tables, format mathematics, and save questions to the database.
+                Upload a past exam paper PDF (digital or scanned, max 10 MB). Extraction is processed from the Batch tab.
               </p>
               <div
                 onDragOver={(e) => { e.preventDefault(); setPdfDragOver(true); }}
@@ -1260,9 +1383,9 @@ const handlePdfUpload = async () => {
                 onDrop={handlePdfDrop}
                 onClick={() => !pdfFile && !pdfUploading && pdfFileInputRef.current?.click()}
                 style={{
-                  border: `2px dashed ${pdfDragOver ? '#7c3aed' : pdfFile ? '#d1d5db' : '#d1d5db'}`,
+                  border: `2px dashed ${pdfDragOver ? '#2563eb' : pdfFile ? '#d1d5db' : '#d1d5db'}`,
                   borderRadius: '12px',
-                  background: pdfDragOver ? '#f5f3ff' : pdfFile ? '#fafafa' : '#fafafa',
+                  background: pdfDragOver ? '#eff6ff' : pdfFile ? '#fafafa' : '#fafafa',
                   transition: 'all 0.15s ease',
                   cursor: pdfFile || pdfUploading ? 'default' : 'pointer',
                   padding: pdfFile || pdfUploading ? '20px' : '40px 20px',
@@ -1273,26 +1396,17 @@ const handlePdfUpload = async () => {
                   <div style={{ padding: '16px 12px', textAlign: 'left', maxWidth: '420px', margin: '0 auto' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
                       <Spinner />
-                      <span style={{ fontWeight: 700, color: '#6d28d9', fontSize: '0.95rem' }}>AI PDF Extraction in Progress</span>
+                      <span style={{ fontWeight: 700, color: '#1d4ed8', fontSize: '0.95rem' }}>Uploading PDF to storage...</span>
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.85rem' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: pdfUploadStage === 'uploading' ? '#7c3aed' : '#059669', fontWeight: pdfUploadStage === 'uploading' ? 600 : 400 }}>
-                        <span>{pdfUploadStage === 'uploading' ? '⏳' : '✅'}</span>
-                        <span>Step 1: Uploading PDF to storage</span>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: pdfUploadStage === 'analyzing' ? '#7c3aed' : pdfUploadStage === 'done' ? '#059669' : '#9ca3af', fontWeight: pdfUploadStage === 'analyzing' ? 600 : 400 }}>
-                        <span>{pdfUploadStage === 'analyzing' ? '🧠' : pdfUploadStage === 'done' ? '✅' : '⚪'}</span>
-                        <span>Step 2: AI reading all pages & extracting tables (may take ~30-45s)...</span>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: pdfUploadStage === 'done' ? '#059669' : '#9ca3af', fontWeight: pdfUploadStage === 'done' ? 600 : 400 }}>
-                        <span>{pdfUploadStage === 'done' ? '✅' : '⚪'}</span>
-                        <span>Step 3: Storing verified questions in database</span>
-                      </div>
+                    <div style={{ width: '100%', height: '6px', background: '#e5e7eb', borderRadius: '3px', overflow: 'hidden', marginBottom: '14px' }}>
+                      <div style={{ width: `${uploadProgress}%`, height: '100%', background: '#2563eb', transition: 'width 0.3s ease' }} />
                     </div>
                   </div>
                 ) : !pdfFile ? (
                   <div>
-                    <div style={{ fontSize: '2.2rem', marginBottom: '8px' }}>📄</div>
+                    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '12px' }}>
+                      <FileText size={40} color="#9ca3af" />
+                    </div>
                     <p style={{ fontWeight: 600, color: '#374151', margin: '0 0 4px' }}>
                       Drop a PDF here, or choose one
                     </p>
@@ -1301,7 +1415,7 @@ const handlePdfUpload = async () => {
                     </p>
                     <button
                       onClick={(e) => { e.stopPropagation(); pdfFileInputRef.current?.click(); }}
-                      style={{ ...btnPrimary, background: '#7c3aed' }}
+                      style={{ ...btnPrimary, background: '#2563eb' }}
                     >
                       Choose PDF
                     </button>
@@ -1309,12 +1423,11 @@ const handlePdfUpload = async () => {
                 ) : (
                   <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
                     <div style={{
-                      width: 64, height: 64, borderRadius: '10px', background: '#f5f3ff',
-                      border: '1px solid #ddd6fe', flexShrink: 0,
+                      width: 56, height: 56, borderRadius: '10px', background: '#eff6ff',
+                      border: '1px solid #bfdbfe', flexShrink: 0,
                       display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                      fontSize: '1.6rem',
                     }}>
-                      📄
+                      <FileText size={28} color="#2563eb" />
                     </div>
                     <div style={{ textAlign: 'left', flex: 1 }}>
                       <p style={{ fontWeight: 600, color: '#111827', margin: '0 0 2px', fontSize: '0.9rem', wordBreak: 'break-all' }}>{pdfFile.name}</p>
@@ -1325,9 +1438,9 @@ const handlePdfUpload = async () => {
                         <button
                           onClick={handlePdfUpload}
                           disabled={pdfUploading}
-                          style={{ ...btnPrimary, background: pdfUploading ? '#c4b5fd' : '#7c3aed', cursor: pdfUploading ? 'not-allowed' : 'pointer' }}
+                          style={{ ...btnPrimary, background: pdfUploading ? '#93c5fd' : '#2563eb', cursor: pdfUploading ? 'not-allowed' : 'pointer' }}
                         >
-                          Upload & Extract
+                          Upload Past Paper
                         </button>
                         <button onClick={() => { setPdfFile(null); if (pdfFileInputRef.current) pdfFileInputRef.current.value = ''; }} style={btnGhost}>
                           Remove
@@ -1377,7 +1490,7 @@ const handlePdfUpload = async () => {
           </Section>
 
           {/* ── Status messages ── */}
-          {result && <SuccessBanner result={result} onDismiss={() => setResult(null)} />}
+          {result && <SuccessBanner result={result} onDismiss={() => setResult(null)} onGoToBatch={() => setTab('batch')} />}
           {error && (
             <ErrorBanner
               message={error}
@@ -1386,7 +1499,7 @@ const handlePdfUpload = async () => {
               onReprocess={handleReprocessFromError}
             />
           )}
-          {pdfResult && <SuccessBanner result={pdfResult} onDismiss={() => setPdfResult(null)} />}
+          {pdfResult && <SuccessBanner result={pdfResult} onDismiss={() => setPdfResult(null)} onGoToBatch={() => setTab('batch')} />}
           {pdfError && (
             <ErrorBanner
               message={pdfError}
@@ -1446,7 +1559,9 @@ const handlePdfUpload = async () => {
             ) : unprocessed.length === 0 ? (
               /* ── Empty state: principle 1 — meet the user where they are ── */
               <div style={{ padding: '48px 24px', textAlign: 'center' }}>
-                <div style={{ fontSize: '2rem', marginBottom: '8px' }}>✅</div>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '8px' }}>
+                  <CheckCircle size={28} color="#2563eb" />
+                </div>
                 <p style={{ fontWeight: 600, color: '#111827', margin: '0 0 4px' }}>All caught up</p>
                 <p style={{ fontSize: '0.85rem', color: '#9ca3af', margin: 0 }}>No unprocessed papers in storage.</p>
               </div>
@@ -1479,8 +1594,8 @@ const handlePdfUpload = async () => {
                         style={{ width: '44px', height: '44px', objectFit: 'cover', borderRadius: '6px', flexShrink: 0, border: '1px solid #e5e7eb' }}
                       />
                     ) : (
-                      <div style={{ width: '44px', height: '44px', borderRadius: '6px', background: '#f3f4f6', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}>
-                        📄
+                      <div style={{ width: '44px', height: '44px', borderRadius: '6px', background: '#eff6ff', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <FileText size={20} color="#2563eb" />
                       </div>
                     )}
                     {/* ── Show paper ID, semester, course, program ── */}
@@ -1492,12 +1607,15 @@ const handlePdfUpload = async () => {
                         {p.semester && <span>Semester: {p.semester}</span>}
                         {p.course && <span>Course: {p.course}</span>}
                         {p.program && <span>Program: {p.program}</span>}
-                        {!p.course_id && <span style={{ color: '#b45309' }}>⚠️ No course_id (upload via Single tab to fix)</span>}
+                        {!p.course_id && <span style={{ color: '#b45309' }}>Notice: No course_id (upload via Single tab to fix)</span>}
+                        {p.processing_status === 'pending' && (
+                          <span style={{ color: '#2563eb', fontWeight: 600 }}>Pending extraction</span>
+                        )}
                         {p.processing_status === 'processing' && (
-                          <span style={{ color: '#2563eb', fontWeight: 600 }}>⏳ Currently processing…</span>
+                          <span style={{ color: '#2563eb', fontWeight: 600 }}>Currently processing…</span>
                         )}
                         {p.processing_status === 'failed' && (
-                          <span style={{ color: '#dc2626', fontWeight: 600 }}>❌ Extraction failed — select to retry</span>
+                          <span style={{ color: '#dc2626', fontWeight: 600 }}>Extraction failed — select to retry</span>
                         )}
                       </div>
                     </div>
@@ -1525,17 +1643,19 @@ const handlePdfUpload = async () => {
                       gap: '12px',
                       padding: '12px 16px',
                       borderBottom: i < batchResults.length - 1 ? '1px solid #f3f4f6' : 'none',
-                      background: r.success ? '#f0fdf4' : '#fef2f2',
+                      background: r.success ? '#eff6ff' : '#fef2f2',
                     }}
                   >
-                    <span style={{ fontSize: '1.1rem', flexShrink: 0 }}>{r.success ? '✅' : '❌'}</span>
+                    <span style={{ flexShrink: 0, display: 'flex', alignItems: 'center' }}>
+                      {r.success ? <CheckCircle size={18} color="#2563eb" /> : <XCircle size={18} color="#dc2626" />}
+                    </span>
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <p style={{ fontSize: '0.78rem', fontFamily: 'monospace', color: '#374151', margin: '0 0 2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                         {r.id}
                       </p>
                       {r.success ? (
                         <>
-                          <p style={{ fontSize: '0.8rem', color: '#15803d', margin: 0 }}>
+                          <p style={{ fontSize: '0.8rem', color: '#1d4ed8', margin: 0, fontWeight: 500 }}>
                             {r.extracted} questions extracted
                             {r.flagged_for_review ? ` · ${r.flagged_for_review} flagged for review` : ''}
                           </p>
@@ -1543,12 +1663,12 @@ const handlePdfUpload = async () => {
                             <p style={{
                               fontSize: '0.75rem',
                               margin: '2px 0 0',
-                              color: docStatuses[r.id] === 'ready' ? '#15803d' : docStatuses[r.id] === 'failed' ? '#dc2626' : '#6b7280',
+                              color: docStatuses[r.id] === 'ready' ? '#1d4ed8' : docStatuses[r.id] === 'failed' ? '#dc2626' : '#6b7280',
                             }}>
-                              {docStatuses[r.id] === 'generating' && '⏳ Document generating…'}
-                              {docStatuses[r.id] === 'ready' && '📄 Document ready'}
-                              {docStatuses[r.id] === 'failed' && '❌ Document generation failed'}
-                              {docStatuses[r.id] === 'timeout' && '⚠️ Still generating (check later)'}
+                              {docStatuses[r.id] === 'generating' && 'Document generating…'}
+                              {docStatuses[r.id] === 'ready' && 'Document ready'}
+                              {docStatuses[r.id] === 'failed' && 'Document generation failed'}
+                              {docStatuses[r.id] === 'timeout' && 'Still generating (check later)'}
                             </p>
                           )}
                         </>
@@ -1578,40 +1698,46 @@ const Section = ({ title, children, style }) => (
   </div>
 );
 
-const SuccessBanner = ({ result, onDismiss }) => (
-  <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '12px', padding: '16px', marginTop: '16px', display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-    <CheckCircle size={22} color="#15803d" style={{ flexShrink: 0, marginTop: '2px' }} />
+const SuccessBanner = ({ result, onDismiss, onGoToBatch }) => (
+  <div style={{ background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '16px', marginTop: '16px', display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+    <CheckCircle size={22} color="#2563eb" style={{ flexShrink: 0, marginTop: '2px' }} />
     <div style={{ flex: 1 }}>
-      <p style={{ fontWeight: 700, color: '#15803d', margin: '0 0 2px', fontSize: '0.9rem' }}>
-        {result.isTutorial
+      <p style={{ fontWeight: 700, color: '#1e40af', margin: '0 0 2px', fontSize: '0.9rem' }}>
+        {result.message
+          ? result.message
+          : result.isTutorial
           ? 'Tutorial uploaded successfully'
           : result.reprocessed
           ? 'Paper reprocessed successfully'
-          : 'Extraction complete'}
+          : 'Paper uploaded. Extract it from the Batch tab.'}
       </p>
-      <p style={{ color: '#166534', margin: 0, fontSize: '0.85rem' }}>
-        {result.isTutorial ? 'Ready to view' : `${result.extracted} questions extracted`} · ID:{' '}
-        <span style={{ fontFamily: 'monospace', fontSize: '0.8rem' }}>{result.paperId}</span>
-        {result.reviewNote && <span style={{ color: '#b45309' }}> · {result.reviewNote}</span>}
-      </p>
-      {result.documentStatus === 'generating' && (
-        <p style={{ color: '#6b7280', margin: '6px 0 0', fontSize: '0.8rem' }}>Generating printable document…</p>
-      )}
-      {result.documentStatus === 'ready' && (
-        <p style={{ color: '#166534', margin: '6px 0 0', fontSize: '0.8rem' }}>
-          Document ready —{' '}
-          <a href={result.documentUrl} target="_blank" rel="noreferrer" style={{ color: '#2563eb', fontWeight: 600 }}>view</a>
+      {result.paperId && (
+        <p style={{ color: '#1d4ed8', margin: '2px 0 0', fontSize: '0.82rem' }}>
+          ID: <span style={{ fontFamily: 'monospace', fontSize: '0.78rem' }}>{result.paperId}</span>
+          {result.extracted > 0 && <span> · {result.extracted} questions extracted</span>}
         </p>
       )}
-      {result.documentStatus === 'failed' && (
-        <p style={{ color: '#dc2626', margin: '6px 0 0', fontSize: '0.8rem' }}>
-          Document generation failed. You can retry from the Past Papers page, or re-upload.
-        </p>
-      )}
-      {result.documentStatus === 'timeout' && (
-        <p style={{ color: '#b45309', margin: '6px 0 0', fontSize: '0.8rem' }}>
-          Still generating — check back on the Past Papers page shortly.
-        </p>
+      {!result.isTutorial && onGoToBatch && (
+        <button
+          type="button"
+          onClick={onGoToBatch}
+          style={{
+            marginTop: '8px',
+            padding: '5px 12px',
+            background: '#ffffff',
+            border: '1px solid #bfdbfe',
+            borderRadius: '6px',
+            color: '#2563eb',
+            fontSize: '0.8rem',
+            fontWeight: 600,
+            cursor: 'pointer',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '4px',
+          }}
+        >
+          Go to Batch tab →
+        </button>
       )}
     </div>
     <button onClick={onDismiss} style={{ background: 'none', border: 'none', color: '#6b7280', cursor: 'pointer', fontSize: '1rem', padding: '0', flexShrink: 0 }}>✕</button>

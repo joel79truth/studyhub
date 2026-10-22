@@ -1,9 +1,10 @@
 import { useEffect, useRef } from 'react';
 import { Capacitor } from '@capacitor/core';
-import { getMessaging, getToken, isSupported } from 'firebase/messaging';
+import { getMessaging, getToken, isSupported, onMessage } from 'firebase/messaging';
 import { app } from '../firebase';
 import { supabase } from '../supabase';
 import { API_BASE_URL } from '../lib/apiConfig';
+import { showNotificationBanner } from '../utils/notificationBannerService';
 
 const BASE_URL = API_BASE_URL;
 const VAPID_KEY = 'BKolFxr4YYRukImWVT8_YPOgyrIDk0y0xPvIS-FIwH6adpzl9fr8bvhLmfie-5KUyONylN7u96fgz4pbyrT5q6A';
@@ -81,6 +82,19 @@ async function registerNative(userId) {
   });
   await PushNotifications.addListener('pushNotificationReceived', (notification) => {
     console.log('[FCM] push received in foreground:', notification);
+    const data = notification?.data || {};
+    showNotificationBanner({
+      title: notification?.title || data.title,
+      body: notification?.body || data.body,
+      type: data.type || data.uploadType || 'upload',
+      uploadType: data.uploadType,
+      program: data.program,
+      course: data.course,
+      semester: data.semester,
+      filename: data.filename,
+      imageUrl: data.imageUrl || notification?.largeBody || null,
+      url: data.url || '/',
+    });
   });
   await PushNotifications.addListener('pushNotificationActionPerformed', (action) => {
     console.log('[FCM] push notification tapped:', action);
@@ -113,6 +127,29 @@ async function registerWeb(userId) {
 
   const swRegistration = await navigator.serviceWorker.ready;
   const messaging = getMessaging(app);
+
+  try {
+    onMessage(messaging, (payload) => {
+      console.log('[FCM] web foreground push received:', payload);
+      const data = payload?.data || {};
+      const notif = payload?.notification || {};
+      showNotificationBanner({
+        title: notif.title || data.title,
+        body: notif.body || data.body,
+        type: data.type || data.uploadType || 'upload',
+        uploadType: data.uploadType,
+        program: data.program,
+        course: data.course,
+        semester: data.semester,
+        filename: data.filename,
+        imageUrl: notif.image || notif.imageUrl || data.imageUrl || null,
+        url: data.url || '/',
+      });
+    });
+  } catch (onMsgErr) {
+    console.warn('[FCM] onMessage setup error:', onMsgErr);
+  }
+
   const currentToken = await getToken(messaging, {
     vapidKey: VAPID_KEY,
     serviceWorkerRegistration: swRegistration,

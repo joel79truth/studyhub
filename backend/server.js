@@ -1773,7 +1773,7 @@ async function notifyAdminsOfRequest({ topic, course, program, semester, email, 
   }
 }
 
-async function notifyUploadToAllUsers({ type, uploaderName, uploaderUid, filename, courseName, id, program, semester }) {
+async function notifyUploadToAllUsers({ type, uploaderName, uploaderUid, filename, courseName, id, program, semester, imageUrl }) {
   try {
     let tokensQuery = supabaseAdmin.from('fcm_tokens').select('token, uid');
     if (uploaderUid) {
@@ -1785,9 +1785,27 @@ async function notifyUploadToAllUsers({ type, uploaderName, uploaderUid, filenam
     const tokenList = [...new Set(tokens.filter(t => !uploaderUid || t.uid !== uploaderUid).map(t => t.token).filter(Boolean))];
     if (!tokenList.length) return;
 
-    const formattedUploader = formatUploaderName(uploaderName) || 'a student';
-    // Exact requested text: "<Type> uploaded by <uploader name>"
-    const notificationText = type + ' uploaded by ' + formattedUploader;
+    const cleanProgram = (program || '').trim();
+    const cleanCourse = (courseName || '').trim();
+    const cleanSem = semester ? String(semester).trim() : '1';
+    const cleanFilename = (filename || '').trim();
+
+    let notificationTitle = 'StudyHub';
+    let notificationText = '';
+
+    if (type === 'Notes') {
+      notificationTitle = 'New Notes Uploaded';
+      notificationText = `New notes uploaded for : ${cleanProgram || 'All Programs'}, ${cleanCourse || 'General'}, Semester ${cleanSem}` + (cleanFilename ? `\nFile: ${cleanFilename}` : '');
+    } else if (type === 'Past paper') {
+      notificationTitle = 'New Past Paper Uploaded';
+      notificationText = `New past paper uploaded for : ${cleanProgram || 'All Programs'}, ${cleanCourse || 'General'}, Semester ${cleanSem}` + (cleanFilename ? `\nFile: ${cleanFilename}` : '');
+    } else if (type === 'Tutorial') {
+      notificationTitle = 'New Tutorial Uploaded';
+      notificationText = `New tutorial uploaded for : ${cleanProgram || 'All Programs'}, ${cleanCourse || 'General'}, Semester ${cleanSem}` + (cleanFilename ? `\nFile: ${cleanFilename}` : '');
+    } else {
+      const formattedUploader = formatUploaderName(uploaderName) || 'a student';
+      notificationText = type + ' uploaded by ' + formattedUploader;
+    }
 
     let targetUrl = '/';
     if (type === 'Tutorial') targetUrl = '/tutorials';
@@ -1797,9 +1815,9 @@ async function notifyUploadToAllUsers({ type, uploaderName, uploaderUid, filenam
     const message = {
       tokens: tokenList,
       notification: {
-        title: 'StudyHub',
+        title: notificationTitle,
         body: notificationText,
-        imageUrl: 'https://studyhub-backend-opdd.onrender.com/icons/icon-192x192.png',
+        ...(imageUrl ? { imageUrl } : {}),
       },
       android: {
         priority: 'high',
@@ -1812,16 +1830,35 @@ async function notifyUploadToAllUsers({ type, uploaderName, uploaderUid, filenam
           defaultSound: true,
           defaultVibrateTimings: true,
           visibility: 'public',
-          imageUrl: 'https://studyhub-backend-opdd.onrender.com/icons/icon-192x192.png',
+          ...(imageUrl ? { imageUrl } : {}),
         },
       },
       data: {
         type: 'upload',
         uploadType: String(type || ''),
-        title: 'StudyHub',
+        title: notificationTitle,
         body: notificationText,
+        program: cleanProgram,
+        course: cleanCourse,
+        semester: cleanSem,
+        filename: cleanFilename,
+        ...(imageUrl ? { imageUrl: String(imageUrl) } : {}),
         url: targetUrl,
+        id: String(id || ''),
       },
+      ...(imageUrl ? {
+        webpush: {
+          notification: {
+            title: notificationTitle,
+            body: notificationText,
+            image: imageUrl,
+            icon: '/icons/icon-192x192.png',
+          },
+          fcmOptions: {
+            link: targetUrl,
+          },
+        },
+      } : {}),
     };
     const response = await admin.messaging().sendEachForMulticast(message);
     const invalid = [];
@@ -1898,7 +1935,7 @@ function formatUploaderName(rawName) {
   return `${first} ${lastInitial}`;
 }
 
-async function notifyNewNoteUploaded({ program, courseName, filename, semester, fileId, uploaderName }) {
+async function notifyNewNoteUploaded({ program, courseName, filename, semester, fileId, uploaderName, imageUrl }) {
   try {
     const cleanProgram = (program || '').trim();
     const isBasics = !cleanProgram || /basic/i.test(cleanProgram);
@@ -1912,38 +1949,61 @@ async function notifyNewNoteUploaded({ program, courseName, filename, semester, 
     const tokenList = [...new Set(tokens.map(t => t.token).filter(Boolean))];
     if (!tokenList.length) return;
 
-    const uploaderLabel = uploaderName ? ` by ${formatUploaderName(uploaderName)}` : '';
+    const cleanCourse = (courseName || '').trim();
+    const cleanSem = semester ? String(semester).trim() : '1';
+    const cleanFilename = (filename || '').trim();
+
+    const notificationTitle = 'New Notes Uploaded';
+    const notificationText = `New notes uploaded for : ${cleanProgram || 'General'}, ${cleanCourse || 'General'}, Semester ${cleanSem}` + (cleanFilename ? `\nFile: ${cleanFilename}` : '');
+
+    const targetUrl = `/viewer?fileId=${encodeURIComponent(fileId || '')}`;
 
     const message = {
       tokens: tokenList,
       notification: {
-        title: `📄 New Note: ${filename}`,
-        body: `${courseName || 'New resource'} for ${cleanProgram || 'General'} (Sem ${semester || 1}) has been uploaded${uploaderLabel}.`,
-        imageUrl: 'https://studyhub-backend-opdd.onrender.com/icons/icon-192x192.png',
+        title: notificationTitle,
+        body: notificationText,
+        ...(imageUrl ? { imageUrl } : {}),
       },
       android: {
         priority: 'high',
         notification: {
           icon: 'ic_stat_studyhub',
-          color: '#064e3b',
+          color: '#2563eb',
           sound: 'default',
           channelId: 'studyhub_channel',
           priority: 'high',
           defaultSound: true,
           defaultVibrateTimings: true,
           visibility: 'public',
-          imageUrl: 'https://studyhub-backend-opdd.onrender.com/icons/icon-192x192.png',
+          ...(imageUrl ? { imageUrl } : {}),
         },
       },
       data: {
         type: 'new_note',
+        title: notificationTitle,
+        body: notificationText,
         program: cleanProgram,
-        course: courseName || '',
-        semester: String(semester || ''),
+        course: cleanCourse,
+        semester: cleanSem,
         fileId: String(fileId || ''),
-        filename: filename || '',
-        url: `/viewer?fileId=${encodeURIComponent(fileId || '')}`,
+        filename: cleanFilename,
+        ...(imageUrl ? { imageUrl: String(imageUrl) } : {}),
+        url: targetUrl,
       },
+      ...(imageUrl ? {
+        webpush: {
+          notification: {
+            title: notificationTitle,
+            body: notificationText,
+            image: imageUrl,
+            icon: '/icons/icon-192x192.png',
+          },
+          fcmOptions: {
+            link: targetUrl,
+          },
+        },
+      } : {}),
     };
     const response = await admin.messaging().sendEachForMulticast(message);
     const invalid = [];
@@ -1959,16 +2019,20 @@ async function notifyNewNoteUploaded({ program, courseName, filename, semester, 
 }
 
 if (typeof storageUpload.setNoteUploadedCallback === 'function') {
-  storageUpload.setNoteUploadedCallback(({ program, courseName, filename, semester, fileId, uploaderName, uploaderUid }) => {
-  notifyUploadToAllUsers({
-    type: 'Notes',
-    uploaderName,
-    uploaderUid,
-    filename,
-    courseName,
-    id: fileId,
-  }).catch(console.error);
-});
+  storageUpload.setNoteUploadedCallback(({ program, courseName, filename, semester, fileId, uploaderName, uploaderUid, thumbnailUrl, fileUrl }) => {
+    const noteImageUrl = thumbnailUrl || (fileUrl && fileUrl.match(/\.(jpg|jpeg|png|webp)/i) ? fileUrl : null);
+    notifyUploadToAllUsers({
+      type: 'Notes',
+      uploaderName,
+      uploaderUid,
+      filename,
+      courseName,
+      id: fileId,
+      program,
+      semester,
+      imageUrl: noteImageUrl,
+    }).catch(console.error);
+  });
 }
 
 async function notifyNewQuestions(programName, courseName, courseId, extractedCount, uploaderName) {
@@ -2215,6 +2279,18 @@ app.post('/api/exam/upload-past-paper', requireAdmin, upload.any(), async (req, 
       } catch (_) {}
     }
 
+    // Generate lightweight thumbnail from page 1 image
+    let thumbnailUrl = null;
+    try {
+      const thumbBuffer = await sharp(primaryImageBuffer).resize({ width: 600, withoutEnlargement: true }).jpeg({ quality: 80 }).toBuffer();
+      const thumbPath = `past-papers/thumbnails/${pastPaperId}-thumb.jpg`;
+      await supabaseAdmin.storage.from(bucketName).upload(thumbPath, thumbBuffer, { contentType: 'image/jpeg', upsert: true });
+      const { data: thumbData } = supabaseAdmin.storage.from(bucketName).getPublicUrl(thumbPath);
+      thumbnailUrl = thumbData?.publicUrl || null;
+    } catch (tErr) {
+      console.warn('[upload-image] thumbnail generation error:', tErr.message);
+    }
+
     const rowData = {
       id: pastPaperId,
       original_filename: (filesToProcess[0]?.originalname || req.file?.originalname || `${(course.course_name || 'Exam').replace(/\s+/g, '_')}_${filesToProcess.length}pages.pdf`),
@@ -2222,7 +2298,7 @@ app.post('/api/exam/upload-past-paper', requireAdmin, upload.any(), async (req, 
       file_path: storagePath,
       storage_path: storagePath,
       file_url: fileUrl,
-      thumbnail_url: fileUrl,
+      thumbnail_url: thumbnailUrl || fileUrl,
       file_type: 'application/pdf',
       program: program.name,
       program_id: program.id,
@@ -2230,12 +2306,14 @@ app.post('/api/exam/upload-past-paper', requireAdmin, upload.any(), async (req, 
       course_id: course.id,
       semester,
       processed: kind === 'tutorial',
-      processing_status: kind === 'tutorial' ? 'done' : 'processing',
+      processing_status: kind === 'tutorial' ? 'done' : 'pending',
       kind,
       title,
       source_type: sourceType,
       page_count: filesToProcess.length,
       uploaded_by: req.user?.id || null,
+      extracted_count: 0,
+      processing_error: null,
       year: parsedYear,
       exam_type: canonicalExamType,
       Mid: legacyMid,
@@ -2243,8 +2321,11 @@ app.post('/api/exam/upload-past-paper', requireAdmin, upload.any(), async (req, 
 
     let { error: insertPaperErr } = await supabaseAdmin.from('past_paper').insert(rowData);
     if (insertPaperErr) {
-      // Fallback if year or exam_type column not added yet
+      // Fallback if year or exam_type column not added yet, or source_type constraint
       console.warn('Insert warning with new columns, trying fallback:', insertPaperErr.message);
+      if (rowData.source_type === 'scan') {
+        rowData.source_type = 'scanned_pdf';
+      }
       delete rowData.year;
       delete rowData.exam_type;
       delete rowData.original_filename;
@@ -2258,6 +2339,10 @@ app.post('/api/exam/upload-past-paper', requireAdmin, upload.any(), async (req, 
       uploaderUid: req.user?.id,
       courseName: course.course_name,
       id: pastPaperId,
+      program: program.name,
+      semester,
+      filename: rowData.original_filename || rowData.file_name,
+      imageUrl: thumbnailUrl,
     }).catch(console.error);
 
     // Tutorials: view-first, no question splitting needed
@@ -2271,69 +2356,14 @@ app.post('/api/exam/upload-past-paper', requireAdmin, upload.any(), async (req, 
       });
     }
 
-    // ── Respond immediately for papers so the client doesn't block ──
-    res.status(202).json({
+    // ── Respond with pending status — AI extraction done from Batch tab ──
+    return res.status(200).json({
       accepted: true,
       raw_paper_id: pastPaperId,
-      status: 'processing',
-      message: 'Photos merged into PDF. AI extraction is running in the background.',
+      status: 'pending',
+      message: 'Paper uploaded. Extract it from the Batch tab.',
+      file_url: fileUrl,
     });
-
-    // ── Run extraction asynchronously on the ORIGINAL IMAGES ──
-    ;(async () => {
-      try {
-        console.log(`🚀 [upload-image] Background extraction started for paper ${pastPaperId} (${imageBuffers.length} page(s))...`);
-        const validQuestions = await extractQuestionsFromImage(imageBuffers, mimeType, course.course_name, parsedYear ? String(parsedYear) : null);
-
-        if (validQuestions.length === 0) {
-          console.warn(`⚠️  [upload-image] No valid questions extracted for paper ${pastPaperId}`);
-          try {
-            await supabaseAdmin.from('past_paper').update({
-              processing_status: 'failed',
-              processing_error: 'No valid questions extracted from this page.',
-            }).eq('id', pastPaperId);
-          } catch (e) { /* ignore update error */ }
-          return;
-        }
-
-        const { paperId, extracted } = await insertExtractedQuestions(
-          validQuestions,
-          primaryImageBuffer,
-          mimeType,
-          pastPaperId,
-          course
-        );
-
-        try {
-          await supabaseAdmin.from('past_paper').update({
-            processed: true,
-            processing_status: 'done',
-            paper_id: paperId,
-            extracted_count: extracted,
-          }).eq('id', pastPaperId);
-        } catch (updateErr) {
-          console.error('[upload-image] Status update error:', updateErr.message);
-        }
-
-        generatePaperDocument(pastPaperId).catch((docErr) => {
-          console.error(`[upload-image] Background document generation failed for ${pastPaperId}:`, docErr.message);
-        });
-        notifyNewQuestions(program.name, course.course_name, course.id, extracted, uploaderName).catch(console.error);
-
-        console.log(`🎉 [upload-image] Done: ${pastPaperId} → ${extracted} questions extracted (paper_id: ${paperId})\n`);
-      } catch (bgErr) {
-        console.error('❌ [upload-image] Background extraction error:', bgErr.message);
-        try {
-          await supabaseAdmin.from('past_paper').update({
-            processing_status: 'failed',
-            processing_error: bgErr.message,
-          }).eq('id', pastPaperId);
-        } catch (dbErr) {
-          console.error('[upload-image] Could not record failure status:', dbErr.message);
-        }
-      }
-    })();
-
   } catch (err) {
     console.error('Past paper upload error:', err);
     res.status(500).json({ error: err.message });
@@ -2437,6 +2467,21 @@ app.post('/api/exam/upload-past-paper-pdf', requireAdmin, pdfUpload.single('pape
       } catch (_) {}
     }
 
+    // Check if client provided thumbnail preview image
+    let thumbnailUrl = null;
+    if (req.body.thumbnailData && typeof req.body.thumbnailData === 'string' && req.body.thumbnailData.startsWith('data:image/')) {
+      try {
+        const base64Data = req.body.thumbnailData.replace(/^data:image\/\w+;base64,/, '');
+        const thumbBuf = Buffer.from(base64Data, 'base64');
+        const thumbPath = `past-papers/thumbnails/${pastPaperId}-thumb.jpg`;
+        await supabaseAdmin.storage.from(bucketName).upload(thumbPath, thumbBuf, { contentType: 'image/jpeg', upsert: true });
+        const { data: thumbData } = supabaseAdmin.storage.from(bucketName).getPublicUrl(thumbPath);
+        thumbnailUrl = thumbData?.publicUrl || null;
+      } catch (tErr) {
+        console.warn('[upload-pdf] thumbnail upload error:', tErr.message);
+      }
+    }
+
     const rowData = {
       id: pastPaperId,
       original_filename: req.file.originalname,
@@ -2444,20 +2489,22 @@ app.post('/api/exam/upload-past-paper-pdf', requireAdmin, pdfUpload.single('pape
       file_path: storagePath,
       storage_path: storagePath,
       file_url: fileUrl,
-      thumbnail_url: fileUrl,
+      thumbnail_url: thumbnailUrl || fileUrl,
       file_type: 'application/pdf',
       program: program.name,
       program_id: program.id,
       course: course.course_name,
       course_id: course.id,
       semester,
-      processed: kind === 'tutorial',
-      processing_status: kind === 'tutorial' ? 'done' : 'processing',
+      processed: false,
+      processing_status: kind === 'tutorial' ? 'done' : 'pending',
       kind,
       title,
       source_type: sourceType,
       page_count: numPages,
       uploaded_by: req.user?.id || null,
+      extracted_count: 0,
+      processing_error: null,
       year: parsedYear,
       exam_type: canonicalExamType,
       Mid: legacyMid,
@@ -2466,6 +2513,9 @@ app.post('/api/exam/upload-past-paper-pdf', requireAdmin, pdfUpload.single('pape
     let { error: insertPaperErr } = await supabaseAdmin.from('past_paper').insert(rowData);
     if (insertPaperErr) {
       console.warn('PDF insert warning with new columns, trying fallback:', insertPaperErr.message);
+      if (rowData.source_type === 'scan') {
+        rowData.source_type = 'scanned_pdf';
+      }
       delete rowData.year;
       delete rowData.exam_type;
       delete rowData.original_filename;
@@ -2481,6 +2531,10 @@ app.post('/api/exam/upload-past-paper-pdf', requireAdmin, pdfUpload.single('pape
       uploaderUid: req.user?.id,
       courseName: course.course_name,
       id: pastPaperId,
+      program: program.name,
+      semester,
+      filename: rowData.original_filename || rowData.file_name,
+      imageUrl: thumbnailUrl,
     }).catch(console.error);
 
     // Tutorials: return immediately, view-first
@@ -2491,80 +2545,19 @@ app.post('/api/exam/upload-past-paper-pdf', requireAdmin, pdfUpload.single('pape
         status: 'done',
         message: 'Tutorial uploaded and ready.',
         file_url: fileUrl,
+        thumbnail_url: thumbnailUrl,
       });
     }
 
-    // ── Respond 202 immediately for papers ──
-    res.status(202).json({
+    // ── Respond with pending status — AI extraction done from Batch tab ──
+    return res.status(200).json({
       accepted: true,
       raw_paper_id: pastPaperId,
-      status: 'processing',
-      message: 'PDF saved. AI extraction is running in the background.',
+      status: 'pending',
+      message: 'Paper uploaded. Extract it from the Batch tab.',
+      file_url: fileUrl,
+      thumbnail_url: thumbnailUrl,
     });
-
-    // ── Fire-and-forget: extract text, call Gemini, insert questions, notify ──
-    ;(async () => {
-      try {
-        console.log(`🚀 [upload-pdf] Launching AI extraction worker for paper ${pastPaperId}...`);
-        const validQuestions = await extractQuestionsFromPDF(pdfBuffer, course.course_name, yearHint);
-
-        if (!validQuestions || validQuestions.length === 0) {
-          console.warn(`⚠️  [upload-pdf] No valid questions extracted from PDF ${pastPaperId}`);
-          try {
-            await supabaseAdmin.from('past_paper').update({
-              processing_status: 'failed',
-              processing_error: 'No valid questions could be extracted from this PDF.',
-            }).eq('id', pastPaperId);
-          } catch (e) { /* ignore update error */ }
-          return;
-        }
-
-        console.log(`💾 [upload-pdf] Inserting ${validQuestions.length} extracted questions into 'past_papers'...`);
-        // Pass null imageBuffer for PDF path (diagram cropping is skipped for PDFs)
-        const { paperId, extracted } = await insertExtractedQuestions(
-          validQuestions,
-          null,
-          null,
-          pastPaperId,
-          course
-        );
-
-        console.log(`✅ [upload-pdf] Extracted questions saved under paper_id: ${paperId}`);
-
-        try {
-          await supabaseAdmin.from('past_paper').update({
-            processed: true,
-            processing_status: 'done',
-            paper_id: paperId,
-            extracted_count: extracted,
-          }).eq('id', pastPaperId);
-        } catch (dbErr) {
-          console.error('[upload-pdf] Status update error:', dbErr.message);
-        }
-
-        console.log(`📄 [upload-pdf] Queuing printable document generation for ${pastPaperId}...`);
-        generatePaperDocument(pastPaperId).catch((docErr) => {
-          console.error(`[upload-pdf] Document generation failed for ${pastPaperId}:`, docErr.message);
-        });
-
-        console.log(`🔔 [upload-pdf] Sending push notifications for '${course.course_name}' (${extracted} questions)...`);
-        notifyNewQuestions(program.name, course.course_name, course.id, extracted, uploaderName).catch(console.error);
-
-        const elapsedSeconds = ((Date.now() - uploadStartTime) / 1000).toFixed(2);
-        console.log(`🎉 [upload-pdf] PIPELINE COMPLETE for ${pastPaperId} in ${elapsedSeconds}s -> ${extracted} questions extracted!\n`);
-      } catch (bgErr) {
-        console.error(`❌ [upload-pdf] Background extraction failed for ${pastPaperId}:`, bgErr.message);
-        try {
-          await supabaseAdmin.from('past_paper').update({
-            processing_status: 'failed',
-            processing_error: bgErr.message || 'Unknown extraction error',
-          }).eq('id', pastPaperId);
-        } catch (dbErr) {
-          console.error('[upload-pdf] Failed to save error status to DB:', dbErr.message);
-        }
-      }
-    })();
-
   } catch (err) {
     if (err.code === 'LIMIT_FILE_SIZE') {
       return res.status(413).json({ error: 'PDF file exceeds the 10 MB limit.' });
@@ -2677,14 +2670,18 @@ app.post('/api/exam/batch-upload-past-papers', requireAdmin, async (req, res) =>
       }
 
       const { buffer, mimeType } = await fetchRawPaperImage(rawPaperId);
-      const validQuestions = await extractQuestionsFromImage(buffer, mimeType, paperRecord.course);
-      if (validQuestions.length === 0) {
+      const isPdf = mimeType === 'application/pdf' || (buffer && buffer.length > 4 && buffer.slice(0, 4).toString() === '%PDF');
+      const validQuestions = isPdf
+        ? await extractQuestionsFromPDF(buffer, paperRecord.course, paperRecord.year ? String(paperRecord.year) : null)
+        : await extractQuestionsFromImage(buffer, mimeType, paperRecord.course, paperRecord.year ? String(paperRecord.year) : null);
+
+      if (!validQuestions || validQuestions.length === 0) {
         return { success: false, error: 'No valid questions extracted' };
       }
       const { paperId, extracted, flaggedForReview } = await insertExtractedQuestions(
         validQuestions,
-        buffer,
-        mimeType,
+        isPdf ? null : buffer,
+        isPdf ? null : mimeType,
         rawPaperId,
         { id: paperRecord.course_id, course_name: paperRecord.course }
       );
@@ -2693,6 +2690,7 @@ app.post('/api/exam/batch-upload-past-papers', requireAdmin, async (req, res) =>
         processing_status: 'done',
         paper_id: paperId,
         extracted_count: extracted,
+        processing_error: null,
       }).eq('id', rawPaperId);
 
       generatePaperDocument(rawPaperId).catch((docErr) => {

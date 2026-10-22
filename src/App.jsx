@@ -30,6 +30,7 @@ import InstallPrompt from './components/InstallPrompt';
 import FcmSetup from './components/FcmSetup';
 import AnalyticsTracker from './components/AnalyticsTracker';
 import UpdateChecker from './components/UpdateChecker';
+import NotificationBanner from './components/NotificationBanner';
 
 import Viewer from './components/Viewer/Viewer';
 import { AppShell } from './components/AppShell';
@@ -105,6 +106,7 @@ function App() {
         <FcmSetup />
         <AnalyticsTracker />
         <UpdateChecker />
+        <NotificationBanner />
       </BrowserRouter>
     </PersistQueryClientProvider>
   );

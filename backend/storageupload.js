@@ -408,6 +408,28 @@ router.post('/complete', requireAuth, express.json(), async (req, res) => {
     }
 
     const id = uuidv4();
+
+    // Process and save thumbnail image if provided
+    let thumbnailUrl = null;
+    if (req.body.thumbnail_data && typeof req.body.thumbnail_data === 'string' && req.body.thumbnail_data.startsWith('data:image/')) {
+      try {
+        const base64Data = req.body.thumbnail_data.replace(/^data:image\/\w+;base64,/, '');
+        const thumbBuf = Buffer.from(base64Data, 'base64');
+        const thumbPath = `thumbnails/${id}-thumb.jpg`;
+        await supabaseAdmin.storage.from(SUPABASE_BUCKET).upload(thumbPath, thumbBuf, { contentType: 'image/jpeg', upsert: true });
+        const { data: thumbData } = supabaseAdmin.storage.from(SUPABASE_BUCKET).getPublicUrl(thumbPath);
+        thumbnailUrl = thumbData?.publicUrl || null;
+      } catch (tErr) {
+        console.warn('[storageUpload] thumbnail upload error:', tErr.message);
+      }
+    } else if (req.body.thumbnail_url) {
+      thumbnailUrl = req.body.thumbnail_url;
+    } else if (storage_type === 'gdrive') {
+      thumbnailUrl = `https://lh3.googleusercontent.com/u/0/d/${storage_ref}=w500`;
+    } else if (url && url.match(/\.(jpg|jpeg|png|webp)/i)) {
+      thumbnailUrl = url;
+    }
+
     const { error: dbError } = await supabaseAdmin.from('notes').insert([
       {
         id,
@@ -444,13 +466,15 @@ router.post('/complete', requireAuth, express.json(), async (req, res) => {
           fileId: id,
           uploaderName,
           uploaderUid: req.user.id,
+          thumbnailUrl,
+          fileUrl: url,
         })).catch(err => console.error('[storageUpload] Notification error:', err));
       } catch (notifErr) {
         console.error('[storageUpload] Notification trigger error:', notifErr);
       }
     }
 
-    res.json({ message: 'Upload successful', url, storage_type, id });
+    res.json({ message: 'Upload successful', url, storage_type, id, thumbnail_url: thumbnailUrl });
   } catch (err) {
     console.error('[storageUpload] complete error:', err);
     const status = err.status || 500;
