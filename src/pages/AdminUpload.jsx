@@ -447,7 +447,9 @@ const handleUploadAndExtract = async () => {
       semester: uploadSemester.trim() || '1',
       filename: pdfFilename,
       imageUrl: firstThumb || data.thumbnail_url || null,
-      url: contentKind === 'tutorial' ? '/tutorials' : '/papers',
+      url: contentKind === 'tutorial'
+        ? '/tutorials'
+        : `/papers?courseId=${data.course_id || ''}&paperId=${rawPaperId}&format=actual`,
     });
 
     if (contentKind === 'tutorial') {

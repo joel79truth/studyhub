@@ -1773,7 +1773,7 @@ async function notifyAdminsOfRequest({ topic, course, program, semester, email, 
   }
 }
 
-async function notifyUploadToAllUsers({ type, uploaderName, uploaderUid, filename, courseName, id, program, semester, imageUrl }) {
+async function notifyUploadToAllUsers({ type, uploaderName, uploaderUid, filename, courseName, courseId, id, program, semester, imageUrl }) {
   try {
     let tokensQuery = supabaseAdmin.from('fcm_tokens').select('token, uid');
     if (uploaderUid) {
@@ -1809,7 +1809,13 @@ async function notifyUploadToAllUsers({ type, uploaderName, uploaderUid, filenam
 
     let targetUrl = '/';
     if (type === 'Tutorial') targetUrl = '/tutorials';
-    else if (type === 'Past paper') targetUrl = '/papers';
+    else if (type === 'Past paper') {
+      const q = [];
+      if (courseId) q.push(`courseId=${encodeURIComponent(courseId)}`);
+      if (id) q.push(`paperId=${encodeURIComponent(id)}`);
+      q.push('format=actual');
+      targetUrl = `/papers?${q.join('&')}`;
+    }
     else if (type === 'Notes' && id) targetUrl = '/viewer?fileId=' + encodeURIComponent(id);
 
     const message = {
@@ -2338,6 +2344,7 @@ app.post('/api/exam/upload-past-paper', requireAdmin, upload.any(), async (req, 
       uploaderName,
       uploaderUid: req.user?.id,
       courseName: course.course_name,
+      courseId: course.id,
       id: pastPaperId,
       program: program.name,
       semester,
@@ -2353,6 +2360,7 @@ app.post('/api/exam/upload-past-paper', requireAdmin, upload.any(), async (req, 
         status: 'done',
         message: 'Tutorial uploaded and ready.',
         file_url: fileUrl,
+        course_id: course.id,
       });
     }
 
@@ -2363,6 +2371,7 @@ app.post('/api/exam/upload-past-paper', requireAdmin, upload.any(), async (req, 
       status: 'pending',
       message: 'Paper uploaded. Extract it from the Batch tab.',
       file_url: fileUrl,
+      course_id: course.id,
     });
   } catch (err) {
     console.error('Past paper upload error:', err);
@@ -2530,6 +2539,7 @@ app.post('/api/exam/upload-past-paper-pdf', requireAdmin, pdfUpload.single('pape
       uploaderName,
       uploaderUid: req.user?.id,
       courseName: course.course_name,
+      courseId: course.id,
       id: pastPaperId,
       program: program.name,
       semester,
@@ -2546,6 +2556,7 @@ app.post('/api/exam/upload-past-paper-pdf', requireAdmin, pdfUpload.single('pape
         message: 'Tutorial uploaded and ready.',
         file_url: fileUrl,
         thumbnail_url: thumbnailUrl,
+        course_id: course.id,
       });
     }
 
@@ -2557,6 +2568,7 @@ app.post('/api/exam/upload-past-paper-pdf', requireAdmin, pdfUpload.single('pape
       message: 'Paper uploaded. Extract it from the Batch tab.',
       file_url: fileUrl,
       thumbnail_url: thumbnailUrl,
+      course_id: course.id,
     });
   } catch (err) {
     if (err.code === 'LIMIT_FILE_SIZE') {

@@ -71,6 +71,7 @@ import {
   useState, useEffect, useCallback, useMemo, useRef,
   useDeferredValue, useTransition, memo, createContext, useContext,
 } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { supabase } from '../supabase'
 import { BottomNav } from '../components/BottomNav'
 import { useQuery } from '@tanstack/react-query'
@@ -304,18 +305,55 @@ async function fetchQuestionsForPaper(paperId) {
   }
 }
 
-function groupQuestionsIntoPapers(rows) {
+async function fetchPastPaperDocsForCourseIds(courseIds) {
+  if (!courseIds?.length) return []
+  const cacheKey = 'sh_docs_' + [...courseIds].sort().join('_')
+  try {
+    const { data, error } = await supabase
+      .from('past_paper')
+      .select('id, paper_id, course_id, course, semester, year, file_url, file_name, file_type, thumbnail_url, page_count, title, exam_type, created_at, processing_status, extracted_count, source_type')
+      .in('course_id', courseIds)
+      .order('created_at', { ascending: false })
+    if (error) throw error
+    if (data?.length) {
+      try { localStorage.setItem(cacheKey, JSON.stringify(data)) } catch {}
+    }
+    return data || []
+  } catch (err) {
+    try {
+      const cached = localStorage.getItem(cacheKey)
+      if (cached) return JSON.parse(cached)
+    } catch {}
+    return []
+  }
+}
+
+function groupQuestionsAndDocsIntoPapers(rows = [], docs = [], courseContext = null) {
   const byPaper = {}
+
+  // 1. Group questions from past_papers
   for (const row of rows) {
-    const key = row.paper_id
+    const key = row.paper_id || row.past_paper_id
+    if (!key) continue
     if (!byPaper[key]) {
       byPaper[key] = {
-        paperId: key, courseId: row.course_id,
-        courseName: row.courses?.course_name || row.course || 'Unknown course',
-        courseCode: row.courses?.course_code || null,
-        year: row.year, extractedAt: row.created_at,
-        questionCount: 0, totalMarks: 0, topics: new Set(),
+        paperId: row.paper_id || key,
+        courseId: row.course_id,
+        courseName: row.courses?.course_name || row.course || courseContext?.course_name || 'Unknown course',
+        courseCode: row.courses?.course_code || courseContext?.course_code || null,
+        year: row.year,
+        extractedAt: row.created_at,
+        questionCount: 0,
+        totalMarks: 0,
+        topics: new Set(),
         pastPaperId: row.past_paper_id || null,
+        fileUrl: null,
+        fileName: null,
+        fileType: null,
+        thumbnailUrl: null,
+        pageCount: null,
+        processingStatus: 'done',
+        isPending: false,
       }
     }
     const p = byPaper[key]
@@ -325,8 +363,78 @@ function groupQuestionsIntoPapers(rows) {
     if (p.year == null && row.year != null) p.year = row.year
     if (!p.pastPaperId && row.past_paper_id) p.pastPaperId = row.past_paper_id
   }
+
+  // 2. Merge uploaded documents from past_paper table
+  for (const doc of docs) {
+    let existingKey = null
+    if (doc.paper_id && byPaper[doc.paper_id]) {
+      existingKey = doc.paper_id
+    } else if (doc.id && byPaper[doc.id]) {
+      existingKey = doc.id
+    } else {
+      for (const [k, v] of Object.entries(byPaper)) {
+        if (v.pastPaperId === doc.id) {
+          existingKey = k
+          break
+        }
+      }
+    }
+
+    const isPendingDoc = doc.processing_status === 'pending' || (doc.processing_status !== 'done' && (doc.extracted_count === 0 || !doc.paper_id))
+
+    if (existingKey) {
+      const p = byPaper[existingKey]
+      p.pastPaperId = doc.id
+      p.fileUrl = doc.file_url || p.fileUrl
+      p.fileName = doc.file_name || p.fileName
+      p.fileType = doc.file_type || p.fileType
+      p.thumbnailUrl = doc.thumbnail_url || p.thumbnailUrl
+      p.pageCount = doc.page_count || p.pageCount
+      p.title = doc.title || p.title
+      p.examType = doc.exam_type || p.examType
+      p.sourceType = doc.source_type || p.sourceType
+      p.processingStatus = doc.processing_status || p.processingStatus
+      if (doc.year != null) p.year = doc.year
+      if (p.paperId && doc.file_url) {
+        try { localStorage.setItem(`sh_file_meta_${p.paperId}`, JSON.stringify(doc)) } catch {}
+      }
+    } else {
+      const docKey = doc.paper_id || doc.id
+      byPaper[docKey] = {
+        paperId: docKey,
+        pastPaperId: doc.id,
+        courseId: doc.course_id,
+        courseName: doc.course || courseContext?.course_name || 'Unknown course',
+        courseCode: courseContext?.course_code || null,
+        year: doc.year,
+        extractedAt: doc.created_at,
+        questionCount: doc.extracted_count || 0,
+        totalMarks: 0,
+        topics: new Set(),
+        title: doc.title || null,
+        examType: doc.exam_type || null,
+        fileUrl: doc.file_url || null,
+        fileName: doc.file_name || null,
+        fileType: doc.file_type || (doc.file_url?.endsWith('.pdf') ? 'application/pdf' : null),
+        thumbnailUrl: doc.thumbnail_url || null,
+        pageCount: doc.page_count || null,
+        sourceType: doc.source_type || null,
+        processingStatus: doc.processing_status || 'pending',
+        isPending: isPendingDoc,
+      }
+      if (doc.file_url) {
+        try { localStorage.setItem(`sh_file_meta_${docKey}`, JSON.stringify(doc)) } catch {}
+      }
+    }
+  }
+
   return Object.values(byPaper).map(p => ({ ...p, topics: [...p.topics] }))
 }
+
+function groupQuestionsIntoPapers(rows, docs = [], courseContext = null) {
+  return groupQuestionsAndDocsIntoPapers(rows, docs, courseContext)
+}
+
 function groupPapersByCourse(papers) {
   const groups = {}
   for (const p of papers) {
@@ -336,10 +444,18 @@ function groupPapersByCourse(papers) {
   }
   return groups
 }
+
 function sortPapersRecentFirst(papers) {
-  return [...papers].sort((a, b) =>
-    (b.year || 0) - (a.year || 0) || new Date(b.extractedAt || 0) - new Date(a.extractedAt || 0)
-  )
+  return [...papers].sort((a, b) => {
+    const timeA = new Date(a.extractedAt || 0).getTime()
+    const timeB = new Date(b.extractedAt || 0).getTime()
+    const yrA = a.year || 0
+    const yrB = b.year || 0
+    if (yrA && yrB && yrA !== yrB) {
+      return yrB - yrA
+    }
+    return timeB - timeA
+  })
 }
 function naturalQuestionSort(a, b) {
   const na = parseInt(String(a.number ?? '').match(/\d+/)?.[0] ?? '9999', 10)
@@ -695,20 +811,24 @@ const PaperToolbar = memo(({ papers, currentPaperId, onSelect, viewFormat = 'ext
       {/* Paper year chips (if multiple papers) - compact height & concise labels */}
       {papers.length > 1 ? (
         <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
-          {papers.map((p) => (
-            <button
-              key={p.paperId}
-              onClick={() => onSelect(p)}
-              className={`flex-shrink-0 px-2.5 h-7 rounded-lg text-[11px] font-bold whitespace-nowrap border transition-all active:scale-95 ${
-                p.paperId === currentPaperId
-                  ? 'bg-indigo-600 border-indigo-600 text-white shadow-sm'
-                  : 'bg-white border-slate-200 text-slate-600 hover:border-indigo-200 hover:text-indigo-600'
-              }`}
-              title={`${p.year || 'Paper'} (${p.questionCount} Qs)`}
-            >
-              {p.year || 'Paper'}
-            </button>
-          ))}
+          {papers.map((p) => {
+            const label = p.title || (p.year ? String(p.year) : (p.examType ? p.examType : 'Paper'))
+            return (
+              <button
+                key={p.paperId}
+                onClick={() => onSelect(p)}
+                className={`flex-shrink-0 px-2.5 h-7 rounded-lg text-[11px] font-bold whitespace-nowrap border transition-all active:scale-95 ${
+                  p.paperId === currentPaperId
+                    ? 'bg-indigo-600 border-indigo-600 text-white shadow-sm'
+                    : 'bg-white border-slate-200 text-slate-600 hover:border-indigo-200 hover:text-indigo-600'
+                }`}
+                title={`${label} (${p.questionCount} Qs)${p.isPending ? ' - Pending Extraction' : ''}`}
+              >
+                {label}
+                {p.isPending ? ' (Pending)' : ''}
+              </button>
+            )
+          })}
         </div>
       ) : <div />}
 
@@ -1857,7 +1977,7 @@ const PaperQuestionBlock = memo(({ group, onOpenQuestion, savedIds, onToggleSave
 // ── Question list view ────────────────────────────────────────
 const GROUP_PAGE_SIZE = 5
 
-const QuestionListView = memo(({ paper, onOpenQuestion, savedIds, reviewedIds, onToggleSave }) => {
+const QuestionListView = memo(({ paper, onOpenQuestion, savedIds, reviewedIds, onToggleSave, onSwitchToActual }) => {
   const { data: rawRows = [], isLoading, error, refetch } = useQuery({
     queryKey: ['paperQuestions', paper?.paperId],
     queryFn: () => fetchQuestionsForPaper(paper?.paperId),
@@ -1877,10 +1997,27 @@ const QuestionListView = memo(({ paper, onOpenQuestion, savedIds, reviewedIds, o
   if (isLoading) return <div className="px-4 pt-2 space-y-3">{Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)}</div>
   if (error) return <ErrorState onRetry={() => refetch()} message={error.message} />
   if (!questions.length) return (
-    <div className="px-4 py-20 text-center ed-fade-up">
-      <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gray-50 flex items-center justify-center text-gray-300"><FileText className="w-7 h-7" /></div>
-      <p className="font-semibold text-gray-800 text-base font-display">No extracted questions yet</p>
-      <p className="text-sm text-gray-500 mt-1.5 max-w-xs mx-auto leading-relaxed">This paper hasn't been processed yet. Check back soon.</p>
+    <div className="px-4 py-16 text-center ed-fade-up max-w-sm mx-auto">
+      <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
+        <FileText className="w-7 h-7" />
+      </div>
+      <p className="font-semibold text-gray-900 text-base font-display">
+        {paper?.isPending ? 'Questions Pending Extraction' : 'No Extracted Questions Yet'}
+      </p>
+      <p className="text-sm text-gray-500 mt-1.5 leading-relaxed">
+        {paper?.isPending
+          ? 'This paper is ready to view in high resolution. Extract questions anytime from the Batch Upload tab.'
+          : "Questions have not been digitally extracted yet, but the actual cleaned paper is available to read."}
+      </p>
+      {onSwitchToActual && (
+        <button
+          onClick={onSwitchToActual}
+          className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-all shadow-sm active:scale-95"
+        >
+          <ImageIcon className="w-4 h-4" />
+          <span>View Actual Cleaned Paper</span>
+        </button>
+      )}
     </div>
   )
   const visibleGroups = groups.slice(0, visibleGroupCount)
@@ -1978,6 +2115,11 @@ export default function PastPapers() {
     return () => { mounted = false; listener.subscription.unsubscribe() }
   }, [])
 
+  const [searchParams] = useSearchParams()
+  const deepCourseId = searchParams.get('courseId')
+  const deepPaperId = searchParams.get('paperId') || searchParams.get('pastPaperId')
+  const deepFormat = searchParams.get('format')
+
   const [currentView, setCurrentView] = useState(() => {
     try { return sessionStorage.getItem('ppView') || 'my-courses' } catch { return 'my-courses' }
   })
@@ -1988,7 +2130,7 @@ export default function PastPapers() {
     try { return JSON.parse(sessionStorage.getItem('ppCurrentPaper') || 'null') } catch { return null }
   })
   const [studyMode, setStudyMode] = useState('papers')
-  const [paperViewFormat, setPaperViewFormat] = useState('extracted') // 'extracted' | 'actual'
+  const [paperViewFormat, setPaperViewFormat] = useState(() => deepFormat || 'extracted') // 'extracted' | 'actual'
   const [showSaved, setShowSaved] = useState(false)
 
   const [searchQuery, setSearchQuery] = useState('')
@@ -2150,7 +2292,19 @@ export default function PastPapers() {
     },
     enabled: myCourseIds.length > 0, staleTime: 5 * 60 * 1000,
   })
-  const myPapers = useMemo(() => groupQuestionsIntoPapers(myQuestionRows), [myQuestionRows])
+  const { data: myCourseDocs = [] } = useQuery({
+    queryKey: ['myCourseDocs', myCourseIds],
+    queryFn: () => fetchPastPaperDocsForCourseIds(myCourseIds),
+    initialData: () => {
+      if (!myCourseIds.length) return undefined
+      try {
+        const cached = localStorage.getItem('sh_docs_' + [...myCourseIds].sort().join('_'))
+        return cached ? JSON.parse(cached) : undefined
+      } catch { return undefined }
+    },
+    enabled: myCourseIds.length > 0, staleTime: 5 * 60 * 1000,
+  })
+  const myPapers = useMemo(() => groupQuestionsAndDocsIntoPapers(myQuestionRows, myCourseDocs), [myQuestionRows, myCourseDocs])
   const myPapersByCourse = useMemo(() => groupPapersByCourse(myPapers), [myPapers])
   const filteredMyPapersByCourse = useMemo(() => {
     if (!deferredSearch) return myPapersByCourse
@@ -2180,27 +2334,59 @@ export default function PastPapers() {
     },
     enabled: !!currentCourse?.id,
   })
-  const coursePapers = useMemo(() => groupQuestionsIntoPapers(coursePaperRows), [coursePaperRows])
+  const { data: coursePaperDocs = [], refetch: refetchCourseDocs } = useQuery({
+    queryKey: ['coursePaperDocs', currentCourse?.id],
+    queryFn: () => fetchPastPaperDocsForCourseIds(currentCourse?.id ? [currentCourse.id] : []),
+    initialData: () => {
+      if (!currentCourse?.id) return undefined
+      try {
+        const cached = localStorage.getItem('sh_docs_' + currentCourse.id)
+        return cached ? JSON.parse(cached) : undefined
+      } catch { return undefined }
+    },
+    enabled: !!currentCourse?.id,
+  })
+  const coursePapers = useMemo(() => groupQuestionsAndDocsIntoPapers(coursePaperRows, coursePaperDocs, currentCourse), [coursePaperRows, coursePaperDocs, currentCourse])
   const sortedCoursePapers = useMemo(() => sortPapersRecentFirst(coursePapers), [coursePapers])
+
+  // Handle URL deep linking for courseId, paperId, format
+  useEffect(() => {
+    if (!deepCourseId) return
+    const cid = parseInt(deepCourseId, 10) || deepCourseId
+    const foundCourse = myCourses.find(c => String(c.id) === String(cid))
+    if (foundCourse) {
+      setCurrentCourse(foundCourse)
+      setCurrentView('questions')
+      if (deepFormat) setPaperViewFormat(deepFormat)
+    } else {
+      supabase.from('courses').select('*').eq('id', cid).maybeSingle().then(({ data }) => {
+        if (data) {
+          setCurrentCourse(data)
+          setCurrentView('questions')
+          if (deepFormat) setPaperViewFormat(deepFormat)
+        }
+      })
+    }
+  }, [deepCourseId, myCourses, deepFormat])
 
   // Background prefetch: save paper scan files before user even thinks about switching format
   useEffect(() => {
     if (!sortedCoursePapers?.length) return
     const prefetchScanFiles = async () => {
       for (const p of sortedCoursePapers.slice(0, 3)) {
-        if (!p?.paperId) continue
+        if (!p?.paperId && !p?.pastPaperId) continue
         try {
-          const cacheKey = `sh_file_meta_${p.paperId}`
-          let fileUrl = null
+          const cacheKey = `sh_file_meta_${p.paperId || p.pastPaperId}`
+          let fileUrl = p.fileUrl || null
           const cached = localStorage.getItem(cacheKey)
-          if (cached) {
+          if (!fileUrl && cached) {
             fileUrl = JSON.parse(cached)?.file_url
-          } else {
-            const { data } = await supabase
-              .from('past_paper')
-              .select('id, file_url, file_name, file_type, thumbnail_url, page_count, title, course, year')
-              .eq('paper_id', p.paperId)
-              .maybeSingle()
+          }
+          if (!fileUrl) {
+            const query = p.pastPaperId
+              ? supabase.from('past_paper').select('id, file_url, file_name, file_type, thumbnail_url, page_count, title, course, year').eq('id', p.pastPaperId)
+              : supabase.from('past_paper').select('id, file_url, file_name, file_type, thumbnail_url, page_count, title, course, year').eq('paper_id', p.paperId)
+            const { data } = await query.maybeSingle()
             if (data?.file_url) {
               localStorage.setItem(cacheKey, JSON.stringify(data))
               fileUrl = data.file_url
@@ -2224,9 +2410,21 @@ export default function PastPapers() {
   useEffect(() => {
     if (currentView !== 'questions') return
     if (!sortedCoursePapers.length) { if (currentPaper) setCurrentPaper(null); return }
+    if (deepPaperId) {
+      const match = sortedCoursePapers.find(p => String(p.paperId) === String(deepPaperId) || String(p.pastPaperId) === String(deepPaperId))
+      if (match) {
+        setCurrentPaper(match)
+        if (match.isPending || deepFormat === 'actual') setPaperViewFormat('actual')
+        return
+      }
+    }
     const stillValid = currentPaper && sortedCoursePapers.some(p => p.paperId === currentPaper.paperId)
-    if (!stillValid) setCurrentPaper(sortedCoursePapers[0])
-  }, [sortedCoursePapers, currentView])
+    if (!stillValid) {
+      const first = sortedCoursePapers[0]
+      setCurrentPaper(first)
+      if (first.isPending) setPaperViewFormat('actual')
+    }
+  }, [sortedCoursePapers, currentView, deepPaperId, deepFormat])
 
   useEffect(() => { sessionStorage.setItem('ppView', currentView) }, [currentView])
   useEffect(() => { try { sessionStorage.setItem('ppCurrentPaper', JSON.stringify(currentPaper)) } catch {} }, [currentPaper])
@@ -2577,7 +2775,10 @@ export default function PastPapers() {
                 <PaperToolbar
                   papers={sortedCoursePapers}
                   currentPaperId={currentPaper?.paperId}
-                  onSelect={setCurrentPaper}
+                  onSelect={(p) => {
+                    setCurrentPaper(p)
+                    if (p.isPending) setPaperViewFormat('actual')
+                  }}
                   viewFormat={paperViewFormat}
                   onFormatChange={setPaperViewFormat}
                 />
@@ -2595,6 +2796,7 @@ export default function PastPapers() {
                       savedIds={savedQuestionIds}
                       reviewedIds={reviewedIds}
                       onToggleSave={handleToggleSave}
+                      onSwitchToActual={() => setPaperViewFormat('actual')}
                     />
                   )
                 )}

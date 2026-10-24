@@ -192,11 +192,27 @@ export default function ActualPaperView({ paper, onSwitchToText, onAskPaper }) {
   });
 
   const [rawPaper, setRawPaper] = useState(() => {
-    // Check localStorage metadata cache first for instant 0ms load
+    // 1. Direct props priority: if paper has fileUrl or file_url, use it immediately!
+    if (paper?.fileUrl || paper?.file_url) {
+      return {
+        id: paper.pastPaperId || paper.id || paper.paperId,
+        file_url: paper.fileUrl || paper.file_url,
+        file_name: paper.fileName || paper.file_name || 'Exam Paper',
+        file_type: paper.fileType || paper.file_type || (String(paper.fileUrl || paper.file_url).toLowerCase().includes('.pdf') ? 'application/pdf' : 'image'),
+        page_count: paper.pageCount || paper.page_count || 1,
+        title: paper.title || paper.courseName,
+        course: paper.courseName || paper.course,
+        year: paper.year,
+      };
+    }
+    // 2. Check localStorage metadata cache for instant 0ms load (ignore stale image fallbacks)
     if (paper?.paperId) {
       try {
         const cached = localStorage.getItem(`sh_file_meta_${paper.paperId}`);
-        return cached ? JSON.parse(cached) : null;
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          if (parsed?.file_url && parsed.file_type !== 'image') return parsed;
+        }
       } catch {
         return null;
       }
@@ -232,17 +248,21 @@ export default function ActualPaperView({ paper, onSwitchToText, onAskPaper }) {
     try {
       let found = null;
 
-      // Try matching by paper_id first
-      if (paper.paperId) {
-        const { data } = await supabase
-          .from('past_paper')
-          .select('id, file_url, file_name, file_type, thumbnail_url, page_count, title, course, year')
-          .eq('paper_id', paper.paperId)
-          .maybeSingle();
-        if (data?.file_url) found = data;
+      // 1. Direct check: if paper already has fileUrl or file_url, use it!
+      if (paper.fileUrl || paper.file_url) {
+        found = {
+          id: paper.pastPaperId || paper.id || paper.paperId,
+          file_url: paper.fileUrl || paper.file_url,
+          file_name: paper.fileName || paper.file_name || 'Exam Paper',
+          file_type: paper.fileType || paper.file_type || (String(paper.fileUrl || paper.file_url).toLowerCase().includes('.pdf') ? 'application/pdf' : 'image'),
+          page_count: paper.pageCount || paper.page_count || 1,
+          title: paper.title || paper.courseName,
+          course: paper.courseName || paper.course,
+          year: paper.year,
+        };
       }
 
-      // Try matching by pastPaperId if not found
+      // 2. Try matching by pastPaperId first (direct primary key in past_paper)
       if (!found && paper.pastPaperId) {
         const { data } = await supabase
           .from('past_paper')
@@ -252,19 +272,42 @@ export default function ActualPaperView({ paper, onSwitchToText, onAskPaper }) {
         if (data?.file_url) found = data;
       }
 
-      // Fallback: match by course and year
-      if (!found && paper.courseId && paper.year) {
+      // 3. Try matching by paper_id in past_paper
+      if (!found && paper.paperId) {
         const { data } = await supabase
           .from('past_paper')
           .select('id, file_url, file_name, file_type, thumbnail_url, page_count, title, course, year')
-          .eq('course_id', paper.courseId)
-          .eq('year', paper.year)
-          .limit(1)
+          .eq('paper_id', paper.paperId)
           .maybeSingle();
         if (data?.file_url) found = data;
       }
 
-      // Fallback: check if questions have cropped page images
+      // 4. Try matching by paper.paperId as primary key id in past_paper
+      if (!found && paper.paperId) {
+        const { data } = await supabase
+          .from('past_paper')
+          .select('id, file_url, file_name, file_type, thumbnail_url, page_count, title, course, year')
+          .eq('id', paper.paperId)
+          .maybeSingle();
+        if (data?.file_url) found = data;
+      }
+
+      // 5. Fallback: match by course and year (prefer PDF files over old images if multiple exist)
+      if (!found && paper.courseId) {
+        let query = supabase
+          .from('past_paper')
+          .select('id, file_url, file_name, file_type, thumbnail_url, page_count, title, course, year')
+          .eq('course_id', paper.courseId)
+          .order('created_at', { ascending: false });
+        if (paper.year) query = query.eq('year', paper.year);
+        const { data } = await query.limit(5);
+        if (data?.length) {
+          const pdfMatch = data.find(d => (d.file_type || '').includes('pdf') || (d.file_url || '').toLowerCase().includes('.pdf'));
+          found = pdfMatch || data[0];
+        }
+      }
+
+      // 6. Last resort: check if questions have cropped page images
       if (!found && paper.paperId) {
         const { data: questions } = await supabase
           .from('past_papers')
@@ -298,8 +341,21 @@ export default function ActualPaperView({ paper, onSwitchToText, onAskPaper }) {
   }, [paper]);
 
   useEffect(() => {
+    if (paper?.fileUrl || paper?.file_url) {
+      setRawPaper({
+        id: paper.pastPaperId || paper.id || paper.paperId,
+        file_url: paper.fileUrl || paper.file_url,
+        file_name: paper.fileName || paper.file_name || 'Exam Paper',
+        file_type: paper.fileType || paper.file_type || (String(paper.fileUrl || paper.file_url).toLowerCase().includes('.pdf') ? 'application/pdf' : 'image'),
+        page_count: paper.pageCount || paper.page_count || 1,
+        title: paper.title || paper.courseName,
+        course: paper.courseName || paper.course,
+        year: paper.year,
+      });
+      setLoading(false);
+    }
     fetchPaperFile();
-  }, [fetchPaperFile]);
+  }, [fetchPaperFile, paper]);
 
   // Determine file kind
   const fileUrl = rawPaper?.file_url || null;

@@ -25,22 +25,22 @@ export const updateService = {
   async getInstalledVersion() {
     if (!Capacitor.isNativePlatform()) {
       return {
-        versionName: '1.3.1 (Web)',
-        versionCode: 14,
+        versionName: '1.3.2 (Web)',
+        versionCode: 15,
       };
     }
 
     try {
       const info = await App.getInfo();
       return {
-        versionName: info.version || '1.3.1',
-        versionCode: parseInt(info.build, 10) || 14,
+        versionName: info.version || '1.3.2',
+        versionCode: parseInt(info.build, 10) || 15,
       };
     } catch (err) {
       console.warn('[UpdateService] Could not read App.getInfo():', err);
       return {
-        versionName: '1.3.1',
-        versionCode: 14,
+        versionName: '1.3.2',
+        versionCode: 15,
       };
     }
   },
