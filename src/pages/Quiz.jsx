@@ -1,4 +1,4 @@
-﻿// ============================================================
+// ============================================================
 // Quiz.jsx â€” Study Mode / Exam Mode architecture (Phases 2â€“31)
 //
 // v16 â€” UX audit round 2 (priority fixes):
@@ -2348,7 +2348,7 @@ const Quiz = () => {
         </div>
       </div>
     );
-  }, [results, prevSession, currentSubjectId, weakTopics, subjectList, startTopicPractice, isSubmitting, isProcessing]);
+  }, [results, prevSession, currentSubjectId, weakTopics, subjectList, startTopicPractice, isSubmitting, isProcessing, subjects, user]);
 
   // â”€â”€â”€ Main render â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   if (loading) {

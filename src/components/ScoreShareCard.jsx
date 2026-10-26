@@ -69,10 +69,9 @@ export default function ScoreShareCard({
   const [saved, setSaved] = useState(false);
   const [sharing, setSharing] = useState(false);
 
-  // Only render for ≥60 %
-  if (percentage < 60) return null;
-
-  const meta = GRADE_META[gradeLetter] || GRADE_META['B'];
+  // Show for ALL scores — the card adapts tone per grade tier.
+  // (Hiding it below 60% felt punishing; every result is shareable.)
+  const meta = GRADE_META[gradeLetter] || GRADE_META['C'];
   const today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
   const displayName = userName ? userName.split(' ')[0] : null;
 
