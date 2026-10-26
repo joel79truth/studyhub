@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 import { supabase } from '../supabase';
 import { API_BASE_URL } from '../lib/apiConfig';
-import { cleanPhoto, buildA4PdfFromPages } from '../services/scannerService';
+import { cleanPhoto, buildA4PdfFromPages, warmScannerWorker } from '../services/scannerService';
 import { generateFileThumbnail } from '../utils/thumbnailHelper';
 import { showNotificationBanner } from '../utils/notificationBannerService';
 
@@ -98,6 +98,12 @@ useEffect(() => {
     .catch(() => {});
 }, []);
 
+// Optimization 3: Warm the scanner worker as soon as the upload screen mounts
+// so OpenCV is already initialised before the admin picks any photos.
+useEffect(() => {
+  warmScannerWorker();
+}, []);
+
 
 
 
@@ -157,7 +163,7 @@ useEffect(() => {
       setError(null);
     }
 
-    // Create placeholder page items immediately
+    // Opt 4: Show originals instantly — placeholder state is 'queued'
     const newItems = toProcess.map((f, i) => {
       const url = URL.createObjectURL(f);
       return {
@@ -167,10 +173,10 @@ useEffect(() => {
         originalUrl: url,
         cleanedBlob: f,
         cleanedUrl: url,
-        useOriginal: false,
+        useOriginal: true,   // show original until cleaned
         showCleaned: true,
         cleaning: true,
-        cleaningStage: 'Loading document scanner…',
+        cleaningStage: 'Queued…',
         name: f.name,
         size: (f.size / 1024).toFixed(0) + ' KB',
         error: null,
@@ -181,8 +187,13 @@ useEffect(() => {
     setResult(null);
     setErrorRawPaperId(null);
 
-    // Process one page at a time with OpenCV in the worker
+    // Opt 4: Clean pages one-at-a-time in the background; UI shows original immediately.
     for (const item of newItems) {
+      // Mark this page as actively cleaning
+      setPreviews((prev) =>
+        prev.map((p) => (p.id === item.id ? { ...p, cleaningStage: 'Starting scan cleanup…' } : p))
+      );
+
       try {
         const cleanResult = await cleanPhoto(item.originalFile, (stageInfo) => {
           setPreviews((prev) =>
@@ -199,7 +210,9 @@ useEffect(() => {
               cleaningStage: '',
               cleanedBlob: cleanResult.cleanedBlob,
               cleanedUrl: cleanResult.cleanedUrl,
+              // If cleanup succeeded show cleaned; if it fell back show original
               useOriginal: cleanResult.useOriginal || false,
+              showCleaned: !cleanResult.useOriginal,
               error: cleanResult.error || null,
               size: ((cleanResult.cleanedBlob?.size || item.originalFile.size) / 1024).toFixed(0) + ' KB',
             };
@@ -209,7 +222,7 @@ useEffect(() => {
         setPreviews((prev) =>
           prev.map((p) =>
             p.id === item.id
-              ? { ...p, cleaning: false, useOriginal: true, error: err.message || 'Cleanup error' }
+              ? { ...p, cleaning: false, useOriginal: true, showCleaned: false, error: err.message || 'Cleanup error' }
               : p
           )
         );
@@ -1219,7 +1232,7 @@ const handlePdfUpload = async () => {
                                 style={{
                                   position: 'absolute',
                                   inset: 0,
-                                  background: 'rgba(255, 255, 255, 0.92)',
+                                  background: 'rgba(255, 255, 255, 0.88)',
                                   display: 'flex',
                                   flexDirection: 'column',
                                   alignItems: 'center',
@@ -1228,8 +1241,17 @@ const handlePdfUpload = async () => {
                                   textAlign: 'center',
                                 }}
                               >
-                                <Spinner dark />
-                                <span style={{ fontSize: '0.72rem', color: '#1d4ed8', fontWeight: 600, marginTop: '6px' }}>
+                                {item.cleaningStage === 'Queued…' ? (
+                                  <span style={{ fontSize: '1.1rem' }}>⏳</span>
+                                ) : (
+                                  <Spinner dark />
+                                )}
+                                <span style={{
+                                  fontSize: '0.72rem',
+                                  color: item.cleaningStage === 'Queued…' ? '#6b7280' : '#1d4ed8',
+                                  fontWeight: 600,
+                                  marginTop: '6px'
+                                }}>
                                   {item.cleaningStage || 'Cleaning scan…'}
                                 </span>
                               </div>

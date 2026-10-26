@@ -1,0 +1,45 @@
+{
+  "initTimeMs": 10229.112799999999,
+  "testPhoto": {
+    "width": 1932,
+    "height": 2576,
+    "timings": {
+      "mat_creation": 26.262399999999616,
+      "edge_detection": 1049.5903999999991,
+      "resize_and_gray": 166.07190000000082,
+      "background_estimate": 14032.813199999999,
+      "local_contrast": 9543.526700000002,
+      "cc_and_masking": 717.6509000000005,
+      "render": 41.836300000002666,
+      "deskew_search": 1132.0098999999973,
+      "rotate": 321.428899999999,
+      "final_tidy": 5890.405899999998,
+      "rgba_transfer_pack": 58.664199999999255,
+      "jpeg_encode": 90.85199999999895,
+      "pdf_build": 139.02509999999893
+    },
+    "totalMs": 33212.9846,
+    "bestAngle": -0.1
+  },
+  "phone12Mp": {
+    "width": 1932,
+    "height": 2576,
+    "timings": {
+      "mat_creation": 7.005299999997078,
+      "edge_detection": 1648.1913000000059,
+      "resize_and_gray": 1172.2621,
+      "background_estimate": 14316.3658,
+      "local_contrast": 6633.4663999999975,
+      "cc_and_masking": 246.91879999999946,
+      "render": 27.036799999987124,
+      "deskew_search": 1086.2268999999942,
+      "rotate": 204.26879999999073,
+      "final_tidy": 12171.191900000005,
+      "rgba_transfer_pack": 53.87390000000596,
+      "jpeg_encode": 137.82180000000517,
+      "pdf_build": 190.5905999999959
+    },
+    "totalMs": 37900.60539999999,
+    "bestAngle": -0.1
+  }
+}

@@ -1,7 +1,17 @@
 /**
- * scanner.worker.js - Document Scanner Web Worker
- * Runs OpenCV.js and jscanify off-thread to clean photos of past papers.
+ * scanner.worker.js - High-Performance Document Scanner Web Worker
+ * Uses OpenCV.js and jscanify off-thread to clean photos of past papers.
+ *
+ * Performance-optimised:
+ * - Low-res background estimate (4x downscaled, INTER_LINEAR upscale)
+ * - Low-res local contrast blur (4x downscaled, INTER_LINEAR upscale)
+ * - Coarse-to-fine deskew search (0.25x mask, skip if |angle| < 0.3 deg)
+ * - Fast component lookup table and low-res proximity dilation for tidy despeckle
+ * - OffscreenCanvas direct JPEG encoding in worker
+ * - In-place Mat operations & rigorous memory management
  */
+
+const DEBUG_TIMING = false;
 
 let cvReady = false;
 let cvInitPromise = null;
@@ -15,7 +25,6 @@ function initOpenCV() {
       self.Module = {
         onRuntimeInitialized: () => {
           cvReady = true;
-          // Load jscanify if available
           try {
             importScripts('/vendor/jscanify.min.js');
           } catch (e) {
@@ -53,16 +62,31 @@ self.onmessage = async (e) => {
       if (!cv || !cv.Mat) throw new Error('OpenCV runtime unavailable');
 
       const { imageData, originalWidth, originalHeight } = payload;
-      const result = processDocument(cv, imageData, originalWidth, originalHeight);
-      self.postMessage({
-        type: 'success',
-        id,
-        result: {
-          width: result.width,
-          height: result.height,
-          data: result.data, // Uint8ClampedArray
-        }
-      }, [result.data.buffer]);
+      const result = await processDocument(cv, imageData, originalWidth, originalHeight);
+
+      if (result.jpegBuffer) {
+        self.postMessage({
+          type: 'success',
+          id,
+          result: {
+            width: result.width,
+            height: result.height,
+            jpegBuffer: result.jpegBuffer,
+            isJpeg: true
+          }
+        }, [result.jpegBuffer]);
+      } else {
+        self.postMessage({
+          type: 'success',
+          id,
+          result: {
+            width: result.width,
+            height: result.height,
+            data: result.data, // Uint8ClampedArray
+            isJpeg: false
+          }
+        }, [result.data.buffer]);
+      }
     } catch (err) {
       console.error('[scanner.worker] processing error:', err);
       self.postMessage({ type: 'error', id, error: err.message || 'Processing failed' });
@@ -71,16 +95,20 @@ self.onmessage = async (e) => {
 };
 
 /**
- * Clean a single document photo
+ * Clean a single document photo with optimized stages
  */
-function processDocument(cv, inputImageData, srcW, srcH) {
-  // Create cv.Mat from raw RGBA ImageData
+async function processDocument(cv, inputImageData, srcW, srcH) {
+  const timings = DEBUG_TIMING ? {} : null;
+  const tStart = DEBUG_TIMING ? performance.now() : 0;
+
+  // Create cv.Mat from input RGBA
   let src = new cv.Mat(srcH, srcW, cv.CV_8UC4);
   src.data.set(inputImageData.data || inputImageData);
 
   let paperMat = null;
 
-  // Page-edge detection: use jscanify before Step 1
+  // Page-edge detection: jscanify contour detection
+  const tEdge = DEBUG_TIMING ? performance.now() : 0;
   try {
     const JScanify = self.jscanify || (typeof jscanify !== 'undefined' ? jscanify : null);
     if (JScanify) {
@@ -89,7 +117,6 @@ function processDocument(cv, inputImageData, srcW, srcH) {
       if (contour) {
         const contourArea = cv.contourArea(contour);
         const totalArea = srcW * srcH;
-        // Accept contour if it spans at least 25% of camera frame
         if (contourArea >= 0.25 * totalArea) {
           const corners = scanner.getCornerPoints(contour);
           if (corners && corners.topLeftCorner && corners.topRightCorner && corners.bottomLeftCorner && corners.bottomRightCorner) {
@@ -119,6 +146,7 @@ function processDocument(cv, inputImageData, srcW, srcH) {
   } catch (jErr) {
     console.warn('[scanner.worker] Edge detection fallback to full frame:', jErr);
   }
+  if (DEBUG_TIMING) timings['edge_detection'] = performance.now() - tEdge;
 
   if (!paperMat) {
     paperMat = src;
@@ -126,50 +154,78 @@ function processDocument(cv, inputImageData, srcW, srcH) {
     src.delete();
   }
 
-  // Scale rule: kernel sizes (31, 51, 61) and sigma 25 are in pixels.
-  // Process at a long edge of 2576 px.
+  // Ensure long edge is capped to 2576
+  const tResize = DEBUG_TIMING ? performance.now() : 0;
   const curMaxEdge = Math.max(paperMat.cols, paperMat.rows);
-  const scale = 2576 / curMaxEdge;
-  const targetW = Math.round(paperMat.cols * scale);
-  const targetH = Math.round(paperMat.rows * scale);
-
-  let resized = new cv.Mat();
-  cv.resize(paperMat, resized, new cv.Size(targetW, targetH), 0, 0, cv.INTER_AREA);
-  paperMat.delete();
-
-  // Convert to grayscale
   let g = new cv.Mat();
-  cv.cvtColor(resized, g, cv.COLOR_RGBA2GRAY);
-  resized.delete();
 
-  // Step 1: Flatten lighting
-  // Kernel sizes scaled if long edge differs from 2576 (here long edge is exactly 2576)
-  const kCloseSize = 31;
-  const kMedianSize = 51;
-  const kGaussSize = 61;
-  const sigma = 25;
+  if (curMaxEdge > 2576) {
+    const scale = 2576 / curMaxEdge;
+    const targetW = Math.round(paperMat.cols * scale);
+    const targetH = Math.round(paperMat.rows * scale);
+    let resized = new cv.Mat();
+    cv.resize(paperMat, resized, new cv.Size(targetW, targetH), 0, 0, cv.INTER_AREA);
+    paperMat.delete();
+    cv.cvtColor(resized, g, cv.COLOR_RGBA2GRAY);
+    resized.delete();
+  } else {
+    cv.cvtColor(paperMat, g, cv.COLOR_RGBA2GRAY);
+    paperMat.delete();
+  }
+  if (DEBUG_TIMING) timings['resize_and_gray'] = performance.now() - tResize;
 
-  let k = cv.getStructuringElement(cv.MORPH_ELLIPSE, new cv.Size(kCloseSize, kCloseSize));
-  let bgClose = new cv.Mat();
-  cv.morphologyEx(g, bgClose, cv.MORPH_CLOSE, k);
-  k.delete();
+  const w = g.cols;
+  const h = g.rows;
+  const numPixels = w * h;
 
-  let bgMedian = new cv.Mat();
-  cv.medianBlur(bgClose, bgMedian, kMedianSize);
-  bgClose.delete();
+  // === OPTIMIZATION 1: Low-res background estimate (4x downscaled) ===
+  const tBg = DEBUG_TIMING ? performance.now() : 0;
+  const sw = Math.round(w / 4);
+  const sh = Math.round(h / 4);
 
+  let gSmall = new cv.Mat();
+  cv.resize(g, gSmall, new cv.Size(sw, sh), 0, 0, cv.INTER_AREA);
+
+  // Scaled odd kernels: 31/4 -> 7, 51/4 -> 13, 61/4 -> 15
+  let kClose = cv.getStructuringElement(cv.MORPH_ELLIPSE, new cv.Size(7, 7));
+  let bgCloseSmall = new cv.Mat();
+  cv.morphologyEx(gSmall, bgCloseSmall, cv.MORPH_CLOSE, kClose);
+  kClose.delete();
+
+  let bgMedianSmall = new cv.Mat();
+  cv.medianBlur(bgCloseSmall, bgMedianSmall, 13);
+  bgCloseSmall.delete();
+
+  let bgSmall = new cv.Mat();
+  cv.GaussianBlur(bgMedianSmall, bgSmall, new cv.Size(15, 15), 0, 0, cv.BORDER_DEFAULT);
+  bgMedianSmall.delete();
+  gSmall.delete();
+
+  // Upscale back to full size with INTER_LINEAR
   let bg = new cv.Mat();
-  cv.GaussianBlur(bgMedian, bg, new cv.Size(kGaussSize, kGaussSize), 0, 0, cv.BORDER_DEFAULT);
-  bgMedian.delete();
+  cv.resize(bgSmall, bg, new cv.Size(w, h), 0, 0, cv.INTER_LINEAR);
+  bgSmall.delete();
 
+  // Divide full-size g by bg: norm = (g / bg) * 255
   let norm = new cv.Mat();
   cv.divide(g, bg, norm, 255.0, cv.CV_8U);
   bg.delete();
   g.delete();
+  if (DEBUG_TIMING) timings['background_estimate'] = performance.now() - tBg;
 
-  // Step 2: Local contrast (positive = darker than surroundings)
+  // === OPTIMIZATION 1: Low-res local contrast blur ===
+  const tContrast = DEBUG_TIMING ? performance.now() : 0;
+  let normSmall = new cv.Mat();
+  cv.resize(norm, normSmall, new cv.Size(sw, sh), 0, 0, cv.INTER_AREA);
+
+  let blurSmall = new cv.Mat();
+  // sigma 25 / 4 = 6.25
+  cv.GaussianBlur(normSmall, blurSmall, new cv.Size(0, 0), 6.25, 6.25, cv.BORDER_DEFAULT);
+  normSmall.delete();
+
   let blur = new cv.Mat();
-  cv.GaussianBlur(norm, blur, new cv.Size(0, 0), sigma, sigma, cv.BORDER_DEFAULT);
+  cv.resize(blurSmall, blur, new cv.Size(w, h), 0, 0, cv.INTER_LINEAR);
+  blurSmall.delete();
 
   let blurF = new cv.Mat();
   let normF = new cv.Mat();
@@ -180,11 +236,10 @@ function processDocument(cv, inputImageData, srcW, srcH) {
   blur.delete();
   blurF.delete();
   normF.delete();
+  if (DEBUG_TIMING) timings['local_contrast'] = performance.now() - tContrast;
 
-  // Step 3: Keep real ink only, drop faint back-page text
-  const h = diffF.rows;
-  const w = diffF.cols;
-  const numPixels = h * w;
+  // Thresholds 16 (soft) and 48 (strong) - strictly maintained
+  const tCC = DEBUG_TIMING ? performance.now() : 0;
   const diffData = diffF.data32F;
 
   let softMat = new cv.Mat.zeros(h, w, cv.CV_8U);
@@ -236,11 +291,10 @@ function processDocument(cv, inputImageData, srcW, srcH) {
   cv.dilate(maskMat, dilatedMask, k3);
   k3.delete();
   maskMat.delete();
+  if (DEBUG_TIMING) timings['cc_and_masking'] = performance.now() - tCC;
 
-  // Step 4: Render
-  // ink = np.clip(diff * (255.0/55.0), 0, 255)
-  // out = np.where(mask, 255 - ink, 255).astype(np.uint8)
-  // out = np.clip((out.astype(np.float32) - 30) * (255.0/(225-30)), 0, 255).astype(np.uint8)
+  // Render text with contrast stretching
+  const tRender = DEBUG_TIMING ? performance.now() : 0;
   const dMaskData = dilatedMask.data;
   let outMat = new cv.Mat(h, w, cv.CV_8U);
   const outData = outMat.data;
@@ -263,10 +317,10 @@ function processDocument(cv, inputImageData, srcW, srcH) {
   }
   dilatedMask.delete();
   diffF.delete();
+  if (DEBUG_TIMING) timings['render'] = performance.now() - tRender;
 
-  // Step 5: Deskew
-  // Try angles -4..+4 in 0.1 steps on a 0.4x downscaled dark-pixel mask (norm < 140)
-  // Pick angle with highest variance of row sums, rotate with INTER_CUBIC, borderValue 255
+  // === OPTIMIZATION 2: Coarse-to-fine deskew on 0.25x mask ===
+  const tDeskew = DEBUG_TIMING ? performance.now() : 0;
   let darkMask = new cv.Mat.zeros(h, w, cv.CV_8U);
   const darkData = darkMask.data;
   const normData = norm.data;
@@ -277,19 +331,14 @@ function processDocument(cv, inputImageData, srcW, srcH) {
   }
   norm.delete();
 
-  const sw = Math.round(w * 0.4);
-  const sh = Math.round(h * 0.4);
   let darkSmall = new cv.Mat();
   cv.resize(darkMask, darkSmall, new cv.Size(sw, sh), 0, 0, cv.INTER_NEAREST);
   darkMask.delete();
 
   const sCenter = new cv.Point(sw / 2, sh / 2);
-  let bestAngle = 0;
-  let maxVar = -1;
   let rotSmall = new cv.Mat();
 
-  for (let a = -40; a <= 40; a++) {
-    const angle = a * 0.1;
+  const evalVariance = (angle) => {
     let rotM = cv.getRotationMatrix2D(sCenter, angle, 1.0);
     cv.warpAffine(darkSmall, rotSmall, rotM, new cv.Size(sw, sh), cv.INTER_NEAREST, cv.BORDER_CONSTANT, new cv.Scalar(0, 0, 0, 0));
     rotM.delete();
@@ -307,17 +356,38 @@ function processDocument(cv, inputImageData, srcW, srcH) {
       sqSum += rowSum * rowSum;
     }
     const mean = sum / sh;
-    const variance = (sqSum / sh) - (mean * mean);
-    if (variance > maxVar) {
-      maxVar = variance;
-      bestAngle = angle;
+    return (sqSum / sh) - (mean * mean);
+  };
+
+  // Coarse search: -4 to +4 in 1.0 deg steps (9 steps)
+  let coarseBestAngle = 0;
+  let maxVar = -1;
+  for (let a = -4; a <= 4; a += 1.0) {
+    const v = evalVariance(a);
+    if (v > maxVar) {
+      maxVar = v;
+      coarseBestAngle = a;
+    }
+  }
+
+  // Fine search: +/- 1 around coarse best in 0.1 deg steps (21 steps)
+  let bestAngle = coarseBestAngle;
+  for (let step = -10; step <= 10; step++) {
+    const a = coarseBestAngle + (step * 0.1);
+    if (a < -4.0 || a > 4.0) continue;
+    const v = evalVariance(a);
+    if (v > maxVar) {
+      maxVar = v;
+      bestAngle = a;
     }
   }
   rotSmall.delete();
   darkSmall.delete();
+  if (DEBUG_TIMING) timings['deskew_search'] = performance.now() - tDeskew;
 
+  // Skip rotation entirely if |angle| < 0.3 degrees
   let deskewed = new cv.Mat();
-  if (Math.abs(bestAngle) >= 0.05) {
+  if (Math.abs(bestAngle) >= 0.3) {
     const center = new cv.Point(w / 2, h / 2);
     let rotMatrix = cv.getRotationMatrix2D(center, bestAngle, 1.0);
     cv.warpAffine(outMat, deskewed, rotMatrix, new cv.Size(w, h), cv.INTER_CUBIC, cv.BORDER_CONSTANT, new cv.Scalar(255, 255, 255, 255));
@@ -327,12 +397,13 @@ function processDocument(cv, inputImageData, srcW, srcH) {
     deskewed = outMat;
   }
 
-  // Step 6: Final tidy
-  // Outer 2% border set to white (255)
+  // === OPTIMIZATION 7: Faster tidy despeckle with precomputed lookup table ===
+  const tTidy = DEBUG_TIMING ? performance.now() : 0;
   const borderX = Math.round(w * 0.02);
   const borderY = Math.round(h * 0.02);
   const dData = deskewed.data;
 
+  // Clear outer 2% margin
   for (let r = 0; r < h; r++) {
     const rowOffset = r * w;
     const isEdgeRow = r < borderY || r >= h - borderY;
@@ -343,7 +414,6 @@ function processDocument(cv, inputImageData, srcW, srcH) {
     }
   }
 
-  // Remove isolated connected components under 40 px not near other ink
   let inkBinary = new cv.Mat.zeros(h, w, cv.CV_8U);
   const inkData = inkBinary.data;
   for (let idx = 0; idx < numPixels; idx++) {
@@ -357,42 +427,53 @@ function processDocument(cv, inputImageData, srcW, srcH) {
   let finalCentroids = new cv.Mat();
   const numFinalCC = cv.connectedComponentsWithStats(inkBinary, finalLabels, finalStats, finalCentroids, 8, cv.CV_32S);
 
+  // Fast precomputed component classification (avoids million-call bridge overhead)
+  const isMainComponent = new Uint8Array(numFinalCC);
+  const removeComponent = new Uint8Array(numFinalCC);
+  for (let i = 1; i < numFinalCC; i++) {
+    const area = finalStats.intAt(i, cv.CC_STAT_AREA);
+    if (area >= 40) isMainComponent[i] = 1;
+    else removeComponent[i] = 1;
+  }
+
   let mainInkMask = new cv.Mat.zeros(h, w, cv.CV_8U);
   const mainInkData = mainInkMask.data;
   const finalLblData = finalLabels.data32S;
 
   for (let idx = 0; idx < numPixels; idx++) {
     const l = finalLblData[idx];
-    if (l > 0 && finalStats.intAt(l, cv.CC_STAT_AREA) >= 40) {
+    if (isMainComponent[l]) {
       mainInkData[idx] = 255;
     }
   }
 
-  let kNear = cv.getStructuringElement(cv.MORPH_ELLIPSE, new cv.Size(31, 31));
-  let dilatedMain = new cv.Mat();
-  cv.dilate(mainInkMask, dilatedMain, kNear);
-  kNear.delete();
+  // Morphological proximity dilation on low-res mask for speed
+  let mainSmall = new cv.Mat();
+  cv.resize(mainInkMask, mainSmall, new cv.Size(sw, sh), 0, 0, cv.INTER_NEAREST);
   mainInkMask.delete();
 
-  const dMainData = dilatedMain.data;
-  const removeComponent = new Uint8Array(numFinalCC);
-  for (let i = 1; i < numFinalCC; i++) {
-    if (finalStats.intAt(i, cv.CC_STAT_AREA) < 40) {
-      removeComponent[i] = 1;
-    }
-  }
+  let kNear = cv.getStructuringElement(cv.MORPH_ELLIPSE, new cv.Size(7, 7)); // 31 / 4 ~ 7
+  let dilatedSmall = new cv.Mat();
+  cv.dilate(mainSmall, dilatedSmall, kNear);
+  kNear.delete();
+  mainSmall.delete();
 
+  let dilatedMain = new cv.Mat();
+  cv.resize(dilatedSmall, dilatedMain, new cv.Size(w, h), 0, 0, cv.INTER_NEAREST);
+  dilatedSmall.delete();
+
+  const dMainData = dilatedMain.data;
   for (let idx = 0; idx < numPixels; idx++) {
     const l = finalLblData[idx];
-    if (l > 0 && removeComponent[l] && dMainData[idx]) {
-      removeComponent[l] = 0; // component is near other ink
+    if (removeComponent[l] && dMainData[idx]) {
+      removeComponent[l] = 0; // component is near main text
     }
   }
   dilatedMain.delete();
 
   for (let idx = 0; idx < numPixels; idx++) {
     const l = finalLblData[idx];
-    if (l > 0 && removeComponent[l]) {
+    if (removeComponent[l]) {
       dData[idx] = 255;
     }
   }
@@ -401,8 +482,10 @@ function processDocument(cv, inputImageData, srcW, srcH) {
   finalLabels.delete();
   finalStats.delete();
   finalCentroids.delete();
+  if (DEBUG_TIMING) timings['final_tidy'] = performance.now() - tTidy;
 
-  // Convert to RGBA Uint8ClampedArray for browser consumption
+  // === OPTIMIZATION 8: Encode JPEG in worker if OffscreenCanvas is available ===
+  let jpegBuffer = null;
   const rgbaOut = new Uint8ClampedArray(w * h * 4);
   for (let i = 0; i < numPixels; i++) {
     const v = dData[i];
@@ -412,12 +495,32 @@ function processDocument(cv, inputImageData, srcW, srcH) {
     rgbaOut[offset + 2] = v;
     rgbaOut[offset + 3] = 255;
   }
-
   deskewed.delete();
+
+  if (typeof OffscreenCanvas !== 'undefined') {
+    try {
+      const offscreen = new OffscreenCanvas(w, h);
+      const ctx = offscreen.getContext('2d');
+      const imgData = new ImageData(rgbaOut, w, h);
+      ctx.putImageData(imgData, 0, 0);
+      if (typeof offscreen.convertToBlob === 'function') {
+        const blob = await offscreen.convertToBlob({ type: 'image/jpeg', quality: 0.85 });
+        jpegBuffer = await blob.arrayBuffer();
+      }
+    } catch (encErr) {
+      console.warn('[scanner.worker] OffscreenCanvas JPEG encode fallback:', encErr);
+    }
+  }
+
+  if (DEBUG_TIMING) {
+    timings['total'] = performance.now() - tStart;
+    console.table(timings);
+  }
 
   return {
     width: w,
     height: h,
+    jpegBuffer,
     data: rgbaOut
   };
 }

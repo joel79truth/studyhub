@@ -1,6 +1,13 @@
 /**
  * scannerService.js
  * Client-side document scanner cleanup & A4 PDF generation.
+ *
+ * Performance-optimised:
+ * - Warm worker pre-load on mount
+ * - Early input capping (max 2576 long edge before memory allocation)
+ * - Worker direct JPEG encoding (OffscreenCanvas)
+ * - Transferable ArrayBuffers
+ * - 20-second timeout fallback per page
  */
 
 let workerInstance = null;
@@ -76,10 +83,55 @@ export function getScannerWorker() {
 }
 
 /**
- * Convert a File or Blob into an ImageData object
+ * Pre-warm the scanner worker early (called on AdminUpload mount)
+ */
+export function warmScannerWorker() {
+  try {
+    getScannerWorker().catch((err) => {
+      console.warn('[scannerService] Warm-up warning:', err);
+    });
+  } catch (e) {
+    // ignore
+  }
+}
+
+/**
+ * Convert a File or Blob into an ImageData object,
+ * capping long edge early to 2576 px to avoid huge memory allocations.
  */
 export async function fileToImageData(file) {
-  const bitmap = await createImageBitmap(file);
+  let bitmap;
+  // First get original dimensions
+  const initialBitmap = await createImageBitmap(file);
+  const origW = initialBitmap.width;
+  const origH = initialBitmap.height;
+  const maxEdge = Math.max(origW, origH);
+
+  let targetW = origW;
+  let targetH = origH;
+
+  if (maxEdge > 2576) {
+    const scale = 2576 / maxEdge;
+    targetW = Math.round(origW * scale);
+    targetH = Math.round(origH * scale);
+  }
+
+  // If resizing is needed and supported by createImageBitmap
+  try {
+    if (targetW !== origW || targetH !== origH) {
+      bitmap = await createImageBitmap(file, {
+        resizeWidth: targetW,
+        resizeHeight: targetH,
+        resizeQuality: 'high',
+      });
+      if (typeof initialBitmap.close === 'function') initialBitmap.close();
+    } else {
+      bitmap = initialBitmap;
+    }
+  } catch (e) {
+    bitmap = initialBitmap;
+  }
+
   const canvas = typeof OffscreenCanvas !== 'undefined'
     ? new OffscreenCanvas(bitmap.width, bitmap.height)
     : document.createElement('canvas');
@@ -87,28 +139,32 @@ export async function fileToImageData(file) {
   canvas.width = bitmap.width;
   canvas.height = bitmap.height;
   const ctx = canvas.getContext('2d', { willReadFrequently: true });
-  ctx.drawImage(bitmap, 0, 0);
-  const imageData = ctx.getImageData(0, 0, bitmap.width, bitmap.height);
+  ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   if (typeof bitmap.close === 'function') bitmap.close();
+
   return { imageData, width: canvas.width, height: canvas.height };
 }
 
 /**
  * Clean a single photo using OpenCV in the Web Worker.
- * If cleanup fails for any reason, falls back to original image so upload still succeeds.
+ * Includes a 20-second timeout fallback: if cleanup exceeds 20s or fails,
+ * it returns useOriginal: true so the upload continues seamlessly.
  */
 export async function cleanPhoto(file, onProgress) {
   const originalUrl = URL.createObjectURL(file);
+  const CLEANUP_TIMEOUT_MS = 20000; // 20s speed gate fallback
 
-  try {
-    onProgress?.({ stage: 'loading_opencv', message: 'Loading document scanner...' });
+  const runCleanup = async () => {
+    onProgress?.({ stage: 'loading_opencv', message: 'Starting document scanner...' });
     const worker = await getScannerWorker();
 
-    onProgress?.({ stage: 'preparing', message: 'Preparing image...' });
+    onProgress?.({ stage: 'preparing', message: 'Scaling and preparing image...' });
     const { imageData, width, height } = await fileToImageData(file);
 
     onProgress?.({ stage: 'cleaning', message: 'Flattening lighting & cleaning ink...' });
     const reqId = nextMsgId++;
+
     const processPromise = new Promise((res, rej) => {
       pendingRequests.set(reqId, { res, rej });
     });
@@ -125,23 +181,29 @@ export async function cleanPhoto(file, onProgress) {
 
     const cleanedResult = await processPromise;
 
-    onProgress?.({ stage: 'encoding', message: 'Rendering preview...' });
-    // Convert RGBA Uint8ClampedArray back to JPEG blob
-    const canvas = typeof OffscreenCanvas !== 'undefined'
-      ? new OffscreenCanvas(cleanedResult.width, cleanedResult.height)
-      : document.createElement('canvas');
-
-    canvas.width = cleanedResult.width;
-    canvas.height = cleanedResult.height;
-    const ctx = canvas.getContext('2d');
-    const outImgData = new ImageData(cleanedResult.data, cleanedResult.width, cleanedResult.height);
-    ctx.putImageData(outImgData, 0, 0);
+    onProgress?.({ stage: 'encoding', message: 'Finalizing preview...' });
 
     let cleanedBlob = null;
-    if (typeof canvas.convertToBlob === 'function') {
-      cleanedBlob = await canvas.convertToBlob({ type: 'image/jpeg', quality: 0.85 });
+    if (cleanedResult.isJpeg && cleanedResult.jpegBuffer) {
+      // Direct JPEG from worker (no extra canvas encode!)
+      cleanedBlob = new Blob([cleanedResult.jpegBuffer], { type: 'image/jpeg' });
     } else {
-      cleanedBlob = await new Promise((r) => canvas.toBlob(r, 'image/jpeg', 0.85));
+      // Fallback canvas encode
+      const canvas = typeof OffscreenCanvas !== 'undefined'
+        ? new OffscreenCanvas(cleanedResult.width, cleanedResult.height)
+        : document.createElement('canvas');
+
+      canvas.width = cleanedResult.width;
+      canvas.height = cleanedResult.height;
+      const ctx = canvas.getContext('2d');
+      const outImgData = new ImageData(cleanedResult.data, cleanedResult.width, cleanedResult.height);
+      ctx.putImageData(outImgData, 0, 0);
+
+      if (typeof canvas.convertToBlob === 'function') {
+        cleanedBlob = await canvas.convertToBlob({ type: 'image/jpeg', quality: 0.85 });
+      } else {
+        cleanedBlob = await new Promise((r) => canvas.toBlob(r, 'image/jpeg', 0.85));
+      }
     }
 
     const cleanedUrl = URL.createObjectURL(cleanedBlob);
@@ -156,8 +218,23 @@ export async function cleanPhoto(file, onProgress) {
       width: cleanedResult.width,
       height: cleanedResult.height,
     };
+  };
+
+  // Timeout promise
+  let timeoutTimer = null;
+  const timeoutPromise = new Promise((_, reject) => {
+    timeoutTimer = setTimeout(() => {
+      reject(new Error('Cleanup timed out after 20 seconds; keeping original image'));
+    }, CLEANUP_TIMEOUT_MS);
+  });
+
+  try {
+    const result = await Promise.race([runCleanup(), timeoutPromise]);
+    clearTimeout(timeoutTimer);
+    return result;
   } catch (err) {
-    console.warn('[scannerService] Cleanup failed, falling back to original:', err);
+    clearTimeout(timeoutTimer);
+    console.warn('[scannerService] Cleanup fallback to original:', err.message || err);
     return {
       success: false,
       cleanedBlob: file,
@@ -165,7 +242,7 @@ export async function cleanPhoto(file, onProgress) {
       originalBlob: file,
       originalUrl,
       useOriginal: true,
-      error: err.message,
+      error: err.message || 'Cleanup error',
     };
   }
 }
