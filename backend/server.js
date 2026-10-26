@@ -1880,6 +1880,157 @@ async function notifyUploadToAllUsers({ type, uploaderName, uploaderUid, filenam
   }
 }
 
+// ============================================================================
+// EXAM MILESTONE NOTIFICATION DISPATCHER (2026/2027 LUANAR CALENDAR)
+//
+// Cadence Strategy (Accelerating Threshold Model):
+// Avoids spamming students every 2 days when exams are 38+ days away. Instead,
+// frequency accelerates dynamically as the December 3 exam date approaches:
+//   - >30 days out: Major milestones (30 days)
+//   - 14–30 days:   Weekly checks (21 days, 14 days)
+//   - 7–14 days:    Every 3–4 days (10 days, 7 days)
+//   - Final 7 days: High frequency (5 days, 3 days Grace Period, 2 days, 1 day, Day 0)
+// ============================================================================
+
+const EXAM_MILESTONES = {
+  30: {
+    title: '📅 1 Month Until Exams',
+    body: 'End-Semester Exams commence in 30 days on Dec 3. Organize your lecture notes and start early!',
+  },
+  21: {
+    title: '🧠 3 Weeks to Exams',
+    body: 'Time to test your knowledge! Try a quick 5-question practice quiz on StudyHub.',
+  },
+  14: {
+    title: '⏳ 2 Weeks Until Exams',
+    body: '14 days remaining. Review your weak topics and practice past exam papers.',
+  },
+  10: {
+    title: '🎯 10 Days to Exam Season',
+    body: 'Dedicate 20 minutes today to review your toughest course on StudyHub.',
+  },
+  7: {
+    title: '⚠️ 1 Week Until Exams',
+    body: '7 days left before exams commence across all LUANAR campuses. Focus on summaries!',
+  },
+  5: {
+    title: '⚡ 5 Days to Exams',
+    body: 'Practice with real exam questions in Exam Mode to test yourself under timed pressure.',
+  },
+  3: {
+    title: '☕ Grace Period Begins',
+    body: '3 days to exams. Consolidate your core formulas and protect your rest and sleep.',
+  },
+  2: {
+    title: '🔥 48 Hours Remaining',
+    body: '2 days until papers start. Double-check your exam timetable and venues.',
+  },
+  1: {
+    title: '🌟 Exams Start Tomorrow',
+    body: 'You have prepared for this. Avoid late-night cramming, rest well, and walk in confident!',
+  },
+  0: {
+    title: '🎓 Exams Begin Today',
+    body: 'End-Semester Exams are officially underway across LUANAR. Best of luck on your papers!',
+  },
+};
+
+let lastSentExamNotificationKey = null;
+
+async function checkAndSendExamMilestones(force = false) {
+  try {
+    const examDate = new Date(2026, 11, 3);
+    const now = new Date();
+    // Malawi CAT is UTC+2
+    const catDateStr = new Date(now.getTime() + 2 * 3600 * 1000).toISOString().split('T')[0];
+    const diffDays = Math.ceil((examDate - now) / (1000 * 60 * 60 * 24));
+
+    const milestone = EXAM_MILESTONES[diffDays];
+    if (!milestone && !force) {
+      return { sent: false, reason: `No milestone configured for ${diffDays} days left` };
+    }
+
+    const payload = milestone || {
+      title: `📅 ${diffDays} Days Until Exams`,
+      body: `Keep up your study momentum on StudyHub LUANAR — ${diffDays} days left until Dec 3!`,
+    };
+
+    const notificationKey = `${catDateStr}_milestone_${diffDays}`;
+    if (!force && lastSentExamNotificationKey === notificationKey) {
+      return { sent: false, reason: 'Already sent milestone notification today' };
+    }
+
+    const { data: tokens, error } = await supabaseAdmin.from('fcm_tokens').select('token');
+    if (error || !tokens?.length) return { sent: false, reason: 'No tokens found' };
+
+    const tokenList = [...new Set(tokens.map(t => t.token).filter(Boolean))];
+    if (!tokenList.length) return { sent: false, reason: 'No valid device tokens' };
+
+    const message = {
+      tokens: tokenList,
+      notification: {
+        title: payload.title,
+        body: payload.body,
+        imageUrl: 'https://studyhub-backend-opdd.onrender.com/icons/icon-192x192.png',
+      },
+      android: {
+        priority: 'high',
+        notification: {
+          icon: 'ic_stat_studyhub',
+          color: '#2563eb',
+          sound: 'default',
+          channelId: 'studyhub_channel',
+          priority: 'high',
+          defaultSound: true,
+          defaultVibrateTimings: true,
+          visibility: 'public',
+          imageUrl: 'https://studyhub-backend-opdd.onrender.com/icons/icon-192x192.png',
+        },
+      },
+      data: {
+        type: 'exam_countdown',
+        daysLeft: String(diffDays),
+        title: payload.title,
+        body: payload.body,
+        url: '/timetable',
+      },
+      webpush: {
+        notification: {
+          title: payload.title,
+          body: payload.body,
+          icon: 'https://studyhub-backend-opdd.onrender.com/icons/icon-192x192.png',
+        },
+      },
+    };
+
+    const response = await admin.messaging().sendEachForMulticast(message);
+    const invalid = [];
+    response.responses.forEach((r, i) => {
+      if (!r.success && (r.error?.code?.includes('registration-token-not-registered') || r.error?.code?.includes('invalid-registration-token'))) {
+        invalid.push(tokenList[i]);
+      }
+    });
+    if (invalid.length) await supabaseAdmin.from('fcm_tokens').delete().in('token', invalid);
+
+    lastSentExamNotificationKey = notificationKey;
+    console.log(`[ExamMilestones] Sent "${payload.title}" to ${response.successCount}/${tokenList.length} devices.`);
+    return { sent: true, diffDays, successCount: response.successCount, total: tokenList.length };
+  } catch (err) {
+    console.error('[checkAndSendExamMilestones] error:', err);
+    return { sent: false, error: err.message };
+  }
+}
+
+// Scheduled daily check: inspects every hour, runs at 8:00 AM CAT (06:00 UTC)
+setInterval(() => {
+  const now = new Date();
+  const utcHours = now.getUTCHours();
+  // 6 UTC = 8 AM CAT (Malawi local time)
+  if (utcHours === 6) {
+    checkAndSendExamMilestones().catch(e => console.error('[ExamCron] error:', e));
+  }
+}, 60 * 60 * 1000);
+
 async function sendNotificationToProgram(program, { topic, course, semester }) {
   const cleanProgram = (program || '').trim();
   const isBasics = !cleanProgram || /basic/i.test(cleanProgram);
@@ -3920,7 +4071,7 @@ async function getStudentContext(userId) {
   const { data: profile, error: profileErr } = await supabaseAdmin
     .from('profiles')
     .select(
-      'program, name, semester, year_of_study, streak, last_active, quizzes_completed, accuracy_rate, total_questions, total_correct, daily_counts, badges'
+      'program, name, semester, year_of_study, streak, last_active, quizzes_completed, accuracy_rate, total_questions, total_correct, daily_counts, badges, campus'
     )
     .eq('id', userId)
     .maybeSingle();
@@ -4012,6 +4163,7 @@ async function getStudentContext(userId) {
   const ctx = {
     name: profile?.name || '',
     program: profile?.program || '',
+    campus: profile?.campus || '',
     semester: profile?.semester || '',
     yearOfStudy: profile?.year_of_study || '',
     courses,
@@ -4043,6 +4195,7 @@ function buildSystemPrompt(context) {
   const {
     name,
     program,
+    campus,
     semester,
     yearOfStudy,
     courses,
@@ -4065,7 +4218,8 @@ function buildSystemPrompt(context) {
   const profile = [];
 
   if (name) profile.push(`• Name: ${s(name)}`);
-  if (program) profile.push(`• Programme: ${s(program)} (Year ${yearOfStudy || "Unknown"}, Semester ${semester || "Unknown"})`);
+  if (program) profile.push(`• Programme: ${s(program)} at LUANAR (Year ${yearOfStudy || "Unknown"}, Semester ${semester || "Unknown"})${campus ? ` — ${s(campus)} Campus` : ""}`);
+  if (campus && !program) profile.push(`• Campus: ${s(campus)} Campus`);
   if (courses?.length) profile.push(`• Current Courses: ${courses.map(s).join(", ")}`);
   if (strengths?.length) profile.push(`• Strong Areas: ${strengths.join(", ")}`);
   if (weaknesses?.length) profile.push(`• Areas Needing Practice: ${weaknesses.map(w => `${w.topic} (${Math.round(w.mastery * 100)}% mastery)`).join(", ")}`);
@@ -4081,7 +4235,12 @@ STUDYHUB SYSTEM PROMPT
 
 IDENTITY & PURPOSE
 
-You are ${STUDYHUB_NAME}, the AI study companion inside the StudyHub app.
+You are ${STUDYHUB_NAME}, the dedicated academic AI study companion inside StudyHub LUANAR, built for students at Lilongwe University of Agriculture and Natural Resources (LUANAR) in Malawi across all campuses: Bunda Campus (main), NRC Campus (Natural Resources College), City Campus, and ODeL (Open, Distance & e-Learning).
+
+LUANAR CURRICULUM & LOCAL CONTEXT:
+- Core Academic Faculties: Faculty of Agriculture, Faculty of Natural Resources, Faculty of Development Studies, Faculty of Food & Human Sciences, and Faculty of Veterinary Medicine. Note that Year 1 (Semester 1 & 2) students take the common foundational "Basics" curriculum.
+- Regional & Malawian Applicability: When offering examples or applying concepts in agriculture, agribusiness, ecology, resource management, or animal health, anchor them in authentic Malawian and regional scenarios (e.g. Lake Malawi and Shire River aquatic ecosystems; local cropping patterns like maize, groundnuts, soya, and tobacco; Lilongwe and Bunda agro-ecological zones; ADMARC and local market dynamics; tropical livestock health) rather than unfamiliar foreign examples.
+- Assessment Awareness: Help students prepare thoroughly for Continuous Assessments (CAs) and End-of-Semester Examinations with clear, step-by-step reasoning.
 You are not customer support. You are not a search engine. You are not a template that fills in blanks.
 Your job is not "answer the question" — it's to move THIS student from wherever they currently are
 (confused, half-right, stuck, or just curious) toward real understanding, one message at a time.
@@ -5213,6 +5372,13 @@ if (fs.existsSync(distPath)) {
 // ============================================================================
 
 const PORT = process.env.PORT || 3000;
+
+app.post('/api/cron/exam-reminders', async (req, res) => {
+  const force = req.query.force === 'true' || req.body?.force === true;
+  const result = await checkAndSendExamMilestones(force);
+  res.json(result);
+});
+
 app.listen(PORT, '0.0.0.0', () => console.log(`✅ Server running on port ${PORT}`));
 
 // ============================================================================

@@ -376,6 +376,26 @@ const handleSubmit = async (e) => {
             </div>
           </div>
 
+          {/* Contributor context banner — helps lecturers & students understand
+               the value of uploading; surfaces the shared-knowledge angle.  */}
+          <div style={{
+            margin: '0 0 20px',
+            padding: '12px 14px',
+            borderRadius: 12,
+            background: 'linear-gradient(135deg,#eff6ff 0%,#f0fdf4 100%)',
+            border: '1px solid #bfdbfe',
+            display: 'flex', gap: 10, alignItems: 'flex-start',
+            fontSize: 12.5, lineHeight: 1.55, color: '#1e3a5f',
+          }}>
+            <span style={{ fontSize: 20, flexShrink: 0, marginTop: 1 }}>📂</span>
+            <div>
+              <strong>Uploading as a lecturer or contributor?</strong> Your notes go live instantly for
+              all LUANAR students — no approval wait. Label your file clearly (Program → Semester → Subject)
+              so students can find it during exam prep.{' '}
+              <span style={{ color: '#2563eb', fontWeight: 600 }}>Every upload earns you a Contributor badge.</span>
+            </div>
+          </div>
+
           <form onSubmit={(e) => e.preventDefault()} noValidate>
 
             <div className={styles.formGroup}>

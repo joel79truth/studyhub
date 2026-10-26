@@ -1,44 +1,44 @@
-// ============================================================
-// Quiz.jsx — Study Mode / Exam Mode architecture (Phases 2–31)
+﻿// ============================================================
+// Quiz.jsx â€” Study Mode / Exam Mode architecture (Phases 2â€“31)
 //
-// v16 — UX audit round 2 (priority fixes):
-//   P0 • Dead-end error screens now carry a real CTA (Go to Settings / Retry)
+// v16 â€” UX audit round 2 (priority fixes):
+//   P0 â€¢ Dead-end error screens now carry a real CTA (Go to Settings / Retry)
 //        instead of prose with nowhere to go.
-//   P0 • "Resume session" moved from sessionStorage → localStorage with a
+//   P0 â€¢ "Resume session" moved from sessionStorage â†’ localStorage with a
 //        6-hour expiry, so it survives an actual tab/app close instead of
 //        silently failing at the exact moment it's needed.
-//   P0 • Setup screen now shows an inline "no questions yet" banner with a
+//   P0 â€¢ Setup screen now shows an inline "no questions yet" banner with a
 //        CTA instead of a fire-and-forget toast.
-//   P1 • MCQ options, textarea, and photo upload are now disabled while an
-//        answer is being graded — no more editing an answer mid-grade.
-//   P1 • Grade colors for D/F switched from alarm-red to warm amber/orange
+//   P1 â€¢ MCQ options, textarea, and photo upload are now disabled while an
+//        answer is being graded â€” no more editing an answer mid-grade.
+//   P1 â€¢ Grade colors for D/F switched from alarm-red to warm amber/orange
 //        so the color channel matches the growth-mindset copy instead of
 //        contradicting it.
-//   P2 • Added a "What's the difference?" expander on the Study/Exam picker
+//   P2 â€¢ Added a "What's the difference?" expander on the Study/Exam picker
 //        so first-timers aren't guessing at a consequential choice.
-//   P2 • Exam grading screen now shows "X of Y graded" with a real progress
+//   P2 â€¢ Exam grading screen now shows "X of Y graded" with a real progress
 //        bar, not just cycling copy over an indeterminate spinner.
-//   P3 • Attempt number is now visible on the FeedbackCard itself, and the
+//   P3 â€¢ Attempt number is now visible on the FeedbackCard itself, and the
 //        retry button relabels once a fresh question is about to be served.
 //
-// v16.1 — UX polish (end‑of‑quiz & grading feedback):
-//   • Study Mode: "Continue" → "See Results" on the last question.
-//   • Checking / marking messages expanded with encouraging, progress‑oriented
+// v16.1 â€” UX polish (endâ€‘ofâ€‘quiz & grading feedback):
+//   â€¢ Study Mode: "Continue" â†’ "See Results" on the last question.
+//   â€¢ Checking / marking messages expanded with encouraging, progressâ€‘oriented
 //     phrases and animated dots for a more responsive feel.
 //
-// v15 — UX/UI audit fixes applied:
-//   • Inter font loaded for reading-quality typography
-//   • explanationBox text 13px → 16px, lineHeight → 1.75
-//   • Escalation buttons 11px → 13px
-//   • ReviewCard chevron direction corrected (ChevronDown/Up)
-//   • Failure-state copy → growth-mindset language
-//   • Uncertain verdict label + copy reframed
-//   • Continue button deduped arrow icon
-//   • checkAnswer card pulse + spinner during AI grading
-//   • Results CTA buttons moved above review list
-//   • Home stats consolidated into a single compact strip
-//   • ExplainControl progressive disclosure fixed per level
-//   • Exit button icon-text gap made consistent
+// v15 â€” UX/UI audit fixes applied:
+//   â€¢ Inter font loaded for reading-quality typography
+//   â€¢ explanationBox text 13px â†’ 16px, lineHeight â†’ 1.75
+//   â€¢ Escalation buttons 11px â†’ 13px
+//   â€¢ ReviewCard chevron direction corrected (ChevronDown/Up)
+//   â€¢ Failure-state copy â†’ growth-mindset language
+//   â€¢ Uncertain verdict label + copy reframed
+//   â€¢ Continue button deduped arrow icon
+//   â€¢ checkAnswer card pulse + spinner during AI grading
+//   â€¢ Results CTA buttons moved above review list
+//   â€¢ Home stats consolidated into a single compact strip
+//   â€¢ ExplainControl progressive disclosure fixed per level
+//   â€¢ Exit button icon-text gap made consistent
 //
 // ============================================================
 import React, {
@@ -102,8 +102,9 @@ import {
   Settings as SettingsIcon,
   Info,
 } from 'lucide-react';
+import ScoreShareCard from '../components/ScoreShareCard';
 
-// ─── Design tokens ──────────────────────────────────────────
+// â”€â”€â”€ Design tokens â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const C = {
   bg: '#f0f6ff', card: '#ffffff',
   primary: '#2563eb', primaryDark: '#1d4ed8',
@@ -134,7 +135,7 @@ const CATEGORY_PALETTE = [
   { bg: '#f0f9ff', fg: '#0891b2' }, { bg: '#fef2f2', fg: '#dc2626' },
 ];
 
-// ─── Verdict presentation ───────────────────────────────────
+// â”€â”€â”€ Verdict presentation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const VERDICT_META = {
   correct:   { icon: Check,       label: 'Correct',             color: C.success,   bg: C.successLight },
   partial:   { icon: Minus,       label: 'Almost there',        color: C.partial,   bg: C.partialLight },
@@ -142,7 +143,7 @@ const VERDICT_META = {
   uncertain: { icon: HelpCircle,  label: 'Need more detail',    color: C.uncertain, bg: C.uncertainLight },
 };
 
-// ─── Static style objects ──────────────────────────────────
+// â”€â”€â”€ Static style objects â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const S = {
   pageMax: { maxWidth: 480, margin: '0 auto' },
   backBtn: {
@@ -192,7 +193,7 @@ const S = {
   },
 };
 
-// ─── In-memory cache ────────────────────────────────────────
+// â”€â”€â”€ In-memory cache â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const quizCache = new Map();
 const QUIZ_CACHE_MAX_ENTRIES = 20;
 const setQuizCacheEntry = (key, value) => {
@@ -208,7 +209,7 @@ const invalidateSubjectCache = (courseId) => {
   }
 };
 
-// ─── Pending-submission queue (Exam Mode) ──────────────────
+// â”€â”€â”€ Pending-submission queue (Exam Mode) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const PENDING_SUBMISSIONS_KEY = 'studyhub_pending_submissions';
 const readPendingSubmissions = () => {
   try { return JSON.parse(localStorage.getItem(PENDING_SUBMISSIONS_KEY) || '[]'); }
@@ -243,7 +244,7 @@ async function flushPendingSubmissions(baseUrl, token) {
   return { flushed, remaining: stillPending.length };
 }
 
-// ─── sessionStorage cache (subjects list only — safe to lose on tab close) ──
+// â”€â”€â”€ sessionStorage cache (subjects list only â€” safe to lose on tab close) â”€â”€
 const QUIZ_SETUP_CACHE_KEY = 'quizSetupCache';
 const readQuizSetupCache = () => {
   try { const raw = localStorage.getItem(QUIZ_SETUP_CACHE_KEY); return raw ? JSON.parse(raw) : null; }
@@ -253,7 +254,7 @@ const writeQuizSetupCache = (data) => {
   try { localStorage.setItem(QUIZ_SETUP_CACHE_KEY, JSON.stringify(data)); } catch {}
 };
 
-// ─── FIX (P0): in-progress quiz state — localStorage, not sessionStorage ───
+// â”€â”€â”€ FIX (P0): in-progress quiz state â€” localStorage, not sessionStorage â”€â”€â”€
 const QUIZ_RESUME_KEY = 'studyhub_quiz_state';
 const QUIZ_RESUME_MAX_AGE_MS = 6 * 60 * 60 * 1000; // 6 hours
 const readQuizResume = () => {
@@ -272,7 +273,7 @@ const writeQuizResume = (data) => {
 };
 const clearQuizResume = () => { try { localStorage.removeItem(QUIZ_RESUME_KEY); } catch {} };
 
-// ─── Error Boundary ─────────────────────────────────────────
+// â”€â”€â”€ Error Boundary â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 class QuizErrorBoundary extends React.Component {
   constructor(props) { super(props); this.state = { hasError: false, error: null }; }
   static getDerivedStateFromError(error) { return { hasError: true, error }; }
@@ -289,7 +290,7 @@ class QuizErrorBoundary extends React.Component {
   }
 }
 
-// ─── SMILES Canvas ──────────────────────────────────────────
+// â”€â”€â”€ SMILES Canvas â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const SmilesCanvas = memo(({ smiles, width = 280, height = 180 }) => {
   const ref = useRef(null);
   const [err, setErr] = useState(false);
@@ -312,7 +313,7 @@ const SmilesCanvas = memo(({ smiles, width = 280, height = 180 }) => {
   return <canvas ref={ref} width={width} height={height} style={{ maxWidth: '100%', borderRadius: 8 }} />;
 });
 
-// ─── Question Display ───────────────────────────────────────
+// â”€â”€â”€ Question Display â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const QuestionDisplay = memo(({ question, hideDiagram }) => {
   const { question: text, latex_math, smiles, image_url, question_type } = question;
   const isDiagram = question_type === 'diagram';
@@ -341,7 +342,7 @@ const QuestionDisplay = memo(({ question, hideDiagram }) => {
   );
 });
 
-// ─── Helpers ─────────────────────────────────────────────────
+// â”€â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const shuffle = (arr) => {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -387,7 +388,7 @@ const BADGES = [
   { id: '100_questions', label: '100 Questions', icon: Book, check: s => s.totalQ >= 100 },
 ];
 
-// ─── Toast ────────────────────────────────────────────────────
+// â”€â”€â”€ Toast â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const Toast = memo(({ toasts, removeToast }) => (
   <div style={{ position: 'fixed', bottom: 90, right: SPACE.lg, zIndex: 9999, display: 'flex', flexDirection: 'column', gap: SPACE.sm }}>
     {toasts.map(t => (
@@ -399,13 +400,13 @@ const Toast = memo(({ toasts, removeToast }) => (
       }}>
         <span style={{ flex: 1 }}>{t.message}</span>
         <button onClick={() => removeToast(t.id)} aria-label="Dismiss"
-          style={{ background: 'none', border: 'none', color: '#fff', cursor: 'pointer', fontSize: 18, lineHeight: 1, width: TAP, height: TAP, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>×</button>
+          style={{ background: 'none', border: 'none', color: '#fff', cursor: 'pointer', fontSize: 18, lineHeight: 1, width: TAP, height: TAP, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>Ã—</button>
       </div>
     ))}
   </div>
 ));
 
-// ─── Quiz reducer ────────────────────────────────────────────
+// â”€â”€â”€ Quiz reducer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const initState = { questions: [], currentIndex: 0, answers: {}, phase: 'idle', results: null };
 
 function reducer(state, action) {
@@ -430,7 +431,7 @@ function reducer(state, action) {
   }
 }
 
-// ─── Review Card (Exam Mode results) ───────────────────────
+// â”€â”€â”€ Review Card (Exam Mode results) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const ReviewCard = memo(({ detail, index }) => {
   const [open, setOpen] = useState(false);
   return (
@@ -439,7 +440,7 @@ const ReviewCard = memo(({ detail, index }) => {
         style={{ width: '100%', padding: '14px 16px', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: SPACE.md, textAlign: 'left', minHeight: TAP }}>
         <span style={{ fontSize: 18 }}>{detail.isCorrect ? <Check size={18} color={C.success} /> : <X size={18} color={C.error} />}</span>
         <span style={{ flex: 1, fontSize: TYPE.body, color: C.text, fontWeight: WEIGHT.medium, lineHeight: 1.5 }}>
-          Q{index + 1}: <MathText text={(detail.question || '').substring(0, 80) + ((detail.question || '').length > 80 ? '…' : '')} />
+          Q{index + 1}: <MathText text={(detail.question || '').substring(0, 80) + ((detail.question || '').length > 80 ? 'â€¦' : '')} />
         </span>
         <span style={{ color: C.textMuted }}>
           {open ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
@@ -478,7 +479,7 @@ const ReviewCard = memo(({ detail, index }) => {
   );
 });
 
-// ─── Skeletons ──────────────────────────────────────────────
+// â”€â”€â”€ Skeletons â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const HomeSkeleton = () => (
   <div style={{ ...S.pageMax, padding: `${SPACE.xl}px ${SPACE.lg}px ${SPACE.xl}px` }}>
     <div style={{ marginBottom: SPACE.xl }}>
@@ -526,24 +527,24 @@ const SetupSkeleton = () => (
   </div>
 );
 
-// ─── Marking / checking messages ─────────────────────────────
+// â”€â”€â”€ Marking / checking messages â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const MARKING_MESSAGES = [
-  'Reviewing all your answers…',
-  'Marking each question…',
-  'Checking your reasoning and approach…',
-  'Identifying strengths and areas to improve…',
-  'Recording weak spots for your next session…',
-  'Compiling your results…',
+  'Reviewing all your answersâ€¦',
+  'Marking each questionâ€¦',
+  'Checking your reasoning and approachâ€¦',
+  'Identifying strengths and areas to improveâ€¦',
+  'Recording weak spots for your next sessionâ€¦',
+  'Compiling your resultsâ€¦',
 ];
 
 const CHECKING_MESSAGES = [
-  'Reviewing your answer…',
-  'Marking your work…',
-  'Checking your reasoning…',
-  'Finalising feedback…',
+  'Reviewing your answerâ€¦',
+  'Marking your workâ€¦',
+  'Checking your reasoningâ€¦',
+  'Finalising feedbackâ€¦',
 ];
 
-// ─── Why control (Phase 8/9) ────────────────────────────────
+// â”€â”€â”€ Why control (Phase 8/9) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const ExplainControl = ({ verdict, onFetch, disabled, disabledHint }) => {
   const [level, setLevel] = useState(0);
   const [text, setText] = useState({});
@@ -583,7 +584,7 @@ const ExplainControl = ({ verdict, onFetch, disabled, disabledHint }) => {
       {level > 0 && (
         <div style={S.explanationBox}>
           {loading
-            ? <span style={{ color: C.textMuted, fontSize: TYPE.body }}>Thinking…</span>
+            ? <span style={{ color: C.textMuted, fontSize: TYPE.body }}>Thinkingâ€¦</span>
             : <TutorMarkdown content={text[level] || ''} />
           }
           {!loading && (
@@ -614,11 +615,11 @@ const ExplainControl = ({ verdict, onFetch, disabled, disabledHint }) => {
   );
 };
 
-// ─── Feedback Card (Phase 7) ────────────────────────────────
+// â”€â”€â”€ Feedback Card (Phase 7) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // FIX (P3): accepts `attemptNumber` and surfaces it directly on the card,
 // plus relabels the retry action once the next retry will swap in a fresh
 // question (matches the tryAgain logic: swap happens once count >= 2).
-// FIX (v16.1): added `isLastQuestion` prop to change "Continue" → "See Results".
+// FIX (v16.1): added `isLastQuestion` prop to change "Continue" â†’ "See Results".
 // FIX (v17): added `loading` prop so the primary action gives immediate
 // feedback instead of appearing to do nothing while results are saved.
 const FeedbackCard = ({
@@ -675,7 +676,7 @@ const FeedbackCard = ({
       {graded.verdict === 'uncertain' && (
         <div style={{ fontSize: TYPE.micro, color: C.uncertain, marginBottom: SPACE.md, lineHeight: 1.6, padding: '10px 12px', background: C.uncertainLight, borderRadius: 8 }}>
           <HelpCircle size={14} style={{ display: 'inline', marginRight: SPACE.xs }} />
-          We need a bit more detail to assess your answer — try adding one more sentence explaining your reasoning. For drawings, a clearer photo helps. This attempt won't count against your mastery.
+          We need a bit more detail to assess your answer â€” try adding one more sentence explaining your reasoning. For drawings, a clearer photo helps. This attempt won't count against your mastery.
         </div>
       )}
 
@@ -699,7 +700,7 @@ const FeedbackCard = ({
           <button onClick={onHint} disabled={hintLoading || loading}
             style={{ padding: '10px 16px', borderRadius: 20, border: `1px solid ${C.warning}55`, background: '#fff', color: C.warning, fontSize: TYPE.label, fontWeight: WEIGHT.medium, cursor: (hintLoading || loading) ? 'default' : 'pointer', minHeight: TAP, opacity: loading ? 0.6 : 1 }}>
             {hintLoading
-              ? <><Loader2 size={14} style={{ display: 'inline', marginRight: SPACE.xs }} /> Loading hint…</>
+              ? <><Loader2 size={14} style={{ display: 'inline', marginRight: SPACE.xs }} /> Loading hintâ€¦</>
               : <><Lightbulb size={14} style={{ display: 'inline', marginRight: SPACE.xs }} /> Hint</>
             }
           </button>
@@ -720,7 +721,7 @@ const FeedbackCard = ({
       <button onClick={onContinue} disabled={loading}
         style={{ ...S.primaryBtn, background: loading ? C.disabled : C.primary, fontSize: TYPE.h3, cursor: loading ? 'default' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: SPACE.sm }}>
         {loading
-          ? <><Loader2 size={18} className="animate-spin" /> {isLastQuestion ? 'Preparing your results…' : 'Loading…'}</>
+          ? <><Loader2 size={18} className="animate-spin" /> {isLastQuestion ? 'Preparing your resultsâ€¦' : 'Loadingâ€¦'}</>
           : <><ArrowRight size={18} /> {isLastQuestion ? 'See Results' : 'Continue'}</>
         }
       </button>
@@ -728,7 +729,7 @@ const FeedbackCard = ({
   );
 };
 
-// ─── Mode select card (Phase 2) ─────────────────────────────
+// â”€â”€â”€ Mode select card (Phase 2) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const ModeCard = ({ icon: Icon, title, subtitle, selected, onClick }) => (
   <button onClick={onClick}
     style={{
@@ -745,7 +746,7 @@ const ModeCard = ({ icon: Icon, title, subtitle, selected, onClick }) => (
   </button>
 );
 
-// ─── Progressive-disclosure option row (setup screen) ───────
+// â”€â”€â”€ Progressive-disclosure option row (setup screen) â”€â”€â”€â”€â”€â”€â”€
 // A single "default" option is shown as a full ModeCard; anything else
 // lives behind a one-line "Show other options" toggle. Selecting a
 // non-default option keeps that section expanded on return, so the
@@ -763,14 +764,14 @@ const DisclosureToggle = ({ expanded, onClick, expandLabel, collapseLabel }) => 
   </button>
 );
 
-// ─── Main Quiz Component ────────────────────────────────────
+// â”€â”€â”€ Main Quiz Component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const Quiz = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const [isPending, startTransition] = useTransition();
 
-  // ── ONE-TIME CLICK RULE (processing guard) ──────────────────
+  // â”€â”€ ONE-TIME CLICK RULE (processing guard) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const processingRef = useRef(new Set());
   const [processing, setProcessing] = useState(new Set());
 
@@ -788,7 +789,7 @@ const Quiz = () => {
 
   const isProcessing = useCallback((id) => processing.has(id), [processing]);
 
-  // ── Other state ──────────────────────────────────────────────
+  // â”€â”€ Other state â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const initialSetupCache = useMemo(readQuizSetupCache, []);
 
   const [screen, setScreen] = useState('home');
@@ -800,7 +801,7 @@ const Quiz = () => {
   const [currentSubjectId, setCurrentSubjectId] = useState(null);
   const [setupCount, setSetupCount] = useState(10);
   // Multiple Choice is the default, always-visible question style (FIX: was
-  // 'auto' plus a first-timer-only override — now consistent for everyone).
+  // 'auto' plus a first-timer-only override â€” now consistent for everyone).
   const [setupMode, setSetupMode] = useState('mcq');
   const [modeExpanded, setModeExpanded] = useState(false);
   const [styleExpanded, setStyleExpanded] = useState(false);
@@ -878,7 +879,7 @@ const Quiz = () => {
     return () => clearInterval(id);
   }, [checkingIndex]);
 
-  // ── Record quiz results into Learning Intelligence ────────────────────────
+  // â”€â”€ Record quiz results into Learning Intelligence â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   // Fires once when a quiz finishes (phase transitions to 'done').
   // Captures weak/strong topics so the home dashboard can surface personalized
   // nudges and Luna can open with relevant context.
@@ -905,7 +906,7 @@ const Quiz = () => {
     });
   }, [phase, results]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // ── Derived data ────────────────────────────────────────────
+  // â”€â”€ Derived data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const subjectList = useMemo(() => Object.values(subjects), [subjects]);
   const subjColorMap = useMemo(
     () => Object.fromEntries(subjectList.map((s, i) => [s.id, CATEGORY_PALETTE[i % CATEGORY_PALETTE.length]])),
@@ -931,7 +932,7 @@ const Quiz = () => {
     return subjectsWithMeta.filter(s => s.title.toLowerCase().includes(q) || (s.code || '').toLowerCase().includes(q));
   }, [subjectsWithMeta, subjectSearch]);
 
-  // ── React Query ─────────────────────────────────────────────
+  // â”€â”€ React Query â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const fetchUserStats = useCallback(async (uid) => {
     if (!uid) return null;
     const { data: profile } = await supabase
@@ -983,7 +984,7 @@ const Quiz = () => {
     setPrevSession(recentSessionsData[1] || null);
   }, [recentSessionsData]);
 
-  // ── Load user + subjects ────────────────────────────────────
+  // â”€â”€ Load user + subjects â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const loadUser = useCallback(async (authUser) => {
     if (!authUser) { setErrorType('generic'); setError('You are not logged in.'); setLoading(false); return; }
     setUser(authUser);
@@ -1002,7 +1003,7 @@ const Quiz = () => {
       const { data: prog } = await supabase.from('programs').select('id').eq('name', profile.program).maybeSingle();
       if (!prog) {
         setErrorType('settings');
-        throw new Error(`We couldn't find the program "${profile.program}" — please re-check it in Settings.`);
+        throw new Error(`We couldn't find the program "${profile.program}" â€” please re-check it in Settings.`);
       }
       const { data: courses, error: ce } = await supabase.from('courses').select('id, course_name, course_code')
         .eq('program_id', prog.id).eq('semester', parseInt(profile.semester, 10));
@@ -1066,14 +1067,14 @@ const Quiz = () => {
     }
   }, [location, subjects]);
 
-  // ── Auth helper ──────────────────────────────────────────
+  // â”€â”€ Auth helper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const getToken = useCallback(async () => {
     const { data: { session } } = await supabase.auth.getSession();
     return session?.access_token || null;
   }, []);
   const apiBase = API_BASE_URL;
 
-  // ── Fetch questions ─────────────────────────────────────────
+  // â”€â”€ Fetch questions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const fetchQuestions = useCallback(async (courseId, mode, count) => {
     const cacheKey = `${courseId}_${mode}_${count}`;
     const cached = quizCache.get(cacheKey);
@@ -1185,7 +1186,7 @@ const Quiz = () => {
     }
   }, [addToast, getToken, apiBase, startProcessing, stopProcessing]);
 
-  // ── Answer handlers ─────────────────────────────────────────
+  // â”€â”€ Answer handlers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const setMcq = useCallback((index, optionIndex) => { dispatch({ type: 'ANSWER', index, value: optionIndex }); }, []);
   const setStructured = useCallback((index, text) => {
     setTextAnswers(p => ({ ...p, [index]: text }));
@@ -1205,7 +1206,7 @@ const Quiz = () => {
     } catch { addToast('Image processing failed', 'error'); }
   }, [addToast]);
 
-  // ── Check Answer (Study Mode) ────────────────────────────────
+  // â”€â”€ Check Answer (Study Mode) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const checkAnswer = useCallback(async (index) => {
     const actionId = `check_${index}`;
     if (!startProcessing(actionId)) return;
@@ -1240,18 +1241,18 @@ const Quiz = () => {
             body: JSON.stringify({ questionId: q.id, questionText: q.question, correctAnswer: q.answer, userAnswer: userText, imageBase64: ans.image, attemptNumber, topic: q.topic, courseId: currentSubjectId }),
             signal: AbortSignal.timeout(20000),
           });
-          graded = res.ok ? await res.json() : { verdict: 'uncertain', confidence: 0, score: 0, strengths: [], missing_concepts: [], error_type: 'uncertain', feedback: "We need a bit more detail — try adding notes to your drawing.", retry_recommended: true };
+          graded = res.ok ? await res.json() : { verdict: 'uncertain', confidence: 0, score: 0, strengths: [], missing_concepts: [], error_type: 'uncertain', feedback: "We need a bit more detail â€” try adding notes to your drawing.", retry_recommended: true };
         } else {
           const res = await fetch(`${apiBase}/api/exam/grade`, {
             method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
             body: JSON.stringify({ questionId: q.id, questionText: q.question, correctAnswer: q.answer, userAnswer: userText, attemptNumber, topic: q.topic, courseId: currentSubjectId }),
             signal: AbortSignal.timeout(12000),
           });
-          graded = res.ok ? await res.json() : { verdict: 'uncertain', confidence: 0, score: 0, strengths: [], missing_concepts: [], error_type: 'uncertain', feedback: "We need a bit more detail — try expanding your answer.", retry_recommended: true };
+          graded = res.ok ? await res.json() : { verdict: 'uncertain', confidence: 0, score: 0, strengths: [], missing_concepts: [], error_type: 'uncertain', feedback: "We need a bit more detail â€” try expanding your answer.", retry_recommended: true };
         }
       }
     } catch {
-      graded = { verdict: 'uncertain', confidence: 0, score: 0, strengths: [], missing_concepts: [], error_type: 'uncertain', feedback: "Couldn't reach the server — check your connection and try again.", retry_recommended: true };
+      graded = { verdict: 'uncertain', confidence: 0, score: 0, strengths: [], missing_concepts: [], error_type: 'uncertain', feedback: "Couldn't reach the server â€” check your connection and try again.", retry_recommended: true };
     }
 
     setFeedbackByIndex(p => ({ ...p, [index]: graded }));
@@ -1293,11 +1294,11 @@ const Quiz = () => {
           dispatch({ type: 'SWAP_CURRENT', question: { ...question, question_type: q.question_type } });
           setTextAnswers(p => { const n = { ...p }; delete n[index]; return n; });
           setImageData(p => { const n = { ...p }; delete n[index]; return n; });
-          addToast('New question, same concept — give it a shot.', 'info');
+          addToast('New question, same concept â€” give it a shot.', 'info');
         } else {
-          addToast("Couldn't generate a similar question — try this one again.", 'info');
+          addToast("Couldn't generate a similar question â€” try this one again.", 'info');
         }
-      } catch { addToast("Couldn't generate a similar question — try this one again.", 'info'); }
+      } catch { addToast("Couldn't generate a similar question â€” try this one again.", 'info'); }
       finally { setCheckingIndex(null); }
     }
     setFeedbackByIndex(p => { const n = { ...p }; delete n[index]; return n; });
@@ -1409,7 +1410,7 @@ const Quiz = () => {
     }
   }, [currentIndex, questions.length, startProcessing, stopProcessing, finishStudySession]);
 
-  // ── Grade structured / diagram (Exam Mode fallback grader) ──
+  // â”€â”€ Grade structured / diagram (Exam Mode fallback grader) â”€â”€
   const gradeStructured = useCallback(async (questionText, correctAnswer, userAnswer, token, userImage) => {
     if (userImage) {
       try {
@@ -1426,7 +1427,7 @@ const Quiz = () => {
         }
       } catch {}
       if (!userAnswer?.trim()) {
-        return { correct: false, explanation: `Could not auto-grade your drawing — flagged for review. Correct answer: ${correctAnswer}`, needsManualReview: true };
+        return { correct: false, explanation: `Could not auto-grade your drawing â€” flagged for review. Correct answer: ${correctAnswer}`, needsManualReview: true };
       }
     }
     if (!userAnswer?.trim()) return { correct: false, explanation: `No answer provided. Correct answer: ${correctAnswer}` };
@@ -1451,12 +1452,12 @@ const Quiz = () => {
     if (!caWords.length) return { correct: ua === ca, explanation: ua === ca ? 'Correct!' : `Incorrect. Correct answer: ${correctAnswer}` };
     const intersection = caWords.filter(w => uaWords.some(uw => uw.includes(w) || w.includes(uw)));
     const score = intersection.length / caWords.length;
-    if (score >= 0.5) return { correct: true, explanation: 'Good – you covered the key concepts.' };
+    if (score >= 0.5) return { correct: true, explanation: 'Good â€“ you covered the key concepts.' };
     if (score >= 0.25) return { correct: false, explanation: `Partial match. Full answer: ${correctAnswer}` };
     return { correct: false, explanation: `Incorrect. Correct answer: ${correctAnswer}` };
   }, [apiBase]);
 
-  // ── Exam Mode submit ─────────────────────────────────────────
+  // â”€â”€ Exam Mode submit â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const submitQuiz = useCallback(async () => {
     const actionId = 'submitQuiz';
     if (!startProcessing(actionId)) return;
@@ -1527,7 +1528,7 @@ const Quiz = () => {
         })
       );
     }
-    if (queuedCount > 0) addToast(`Saved offline — ${queuedCount} answer${queuedCount === 1 ? '' : 's'} will sync when you're back online.`, 'info');
+    if (queuedCount > 0) addToast(`Saved offline â€” ${queuedCount} answer${queuedCount === 1 ? '' : 's'} will sync when you're back online.`, 'info');
 
     await persistResults(correctCount, total, details);
     invalidateSubjectCache(currentSubjectId);
@@ -1573,7 +1574,7 @@ const Quiz = () => {
     });
   }, [user, currentSubjectId, queryClient]);
 
-  // ── Screen transitions ───────────────────────────────────────
+  // â”€â”€ Screen transitions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const goToSetup = useCallback((subjectId) => {
     const actionId = `goToSetup_${subjectId}`;
     if (!startProcessing(actionId)) return;
@@ -1587,7 +1588,7 @@ const Quiz = () => {
     startTransition(() => setScreen('home'));
   }, [startProcessing]);
 
-  // ── Render: Home ─────────────────────────────────────────────
+  // â”€â”€ Render: Home â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const renderHome = useCallback(() => {
     const name = user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'Student';
     const avgMastery = weakTopics.length ? weakTopics.reduce((sum, w) => sum + w.mastery, 0) / weakTopics.length : 0.5;
@@ -1607,8 +1608,8 @@ const Quiz = () => {
     const userSegment = statsLoading ? null : (stats.completed === 0 ? 'new' : (stats.completed < 5 && stats.streak < 2 ? 'returning' : 'power'));
     const isEstablished = userSegment && userSegment !== 'new';
     const subtitle =
-      userSegment === 'new' ? "Let's get your first quiz done — pick a subject below to begin." :
-      userSegment === 'returning' ? 'Good to see you again — keep the momentum going.' :
+      userSegment === 'new' ? "Let's get your first quiz done â€” pick a subject below to begin." :
+      userSegment === 'returning' ? 'Good to see you again â€” keep the momentum going.' :
       userSegment === 'power' ? "You're on a roll. Let's keep pushing that mastery up." : '';
 
     return (
@@ -1624,7 +1625,7 @@ const Quiz = () => {
             <Target size={32} color={C.primary} />
             <div>
               <div style={{ fontSize: TYPE.h3, fontWeight: WEIGHT.bold, color: C.text }}>Welcome to StudyHub!</div>
-              <div style={{ fontSize: TYPE.label, color: C.textMuted, marginTop: 2, lineHeight: 1.5 }}>Pick a subject below and start with 5–10 questions to see where you stand.</div>
+              <div style={{ fontSize: TYPE.label, color: C.textMuted, marginTop: 2, lineHeight: 1.5 }}>Pick a subject below and start with 5â€“10 questions to see where you stand.</div>
             </div>
           </div>
         )}
@@ -1697,7 +1698,7 @@ const Quiz = () => {
             <div style={{ ...S.cardSoft, padding: `${SPACE.lg}px ${SPACE.lg2}px`, marginBottom: SPACE.lg }}>
               <div style={{ fontSize: TYPE.micro, color: C.textMuted, fontWeight: WEIGHT.bold, letterSpacing: '0.04em', marginBottom: SPACE.xs }}><Target size={14} style={{ display: 'inline', marginRight: SPACE.xs }} /> BEST NEXT PRACTICE</div>
               <div style={{ fontSize: TYPE.label, color: C.text, lineHeight: 1.6 }}>
-                <strong>{worst.course}</strong> — <strong>{worst.topic}</strong> ({Math.round(worst.mastery * 100)}% mastery).
+                <strong>{worst.course}</strong> â€” <strong>{worst.topic}</strong> ({Math.round(worst.mastery * 100)}% mastery).
               </div>
               {worstCourseId ? (
                 <button onClick={() => startTopicPractice(worstCourseId, worst.topic)} disabled={isSubmitting || isProcessing(`practice_${worstCourseId}_${worst.topic}`)}
@@ -1719,7 +1720,7 @@ const Quiz = () => {
                             return (
                               <button key={w.topic} onClick={() => cId && startTopicPractice(cId, w.topic)}
                                 style={{ padding: '6px 12px', borderRadius: 20, background: C.errorLight, color: C.error, fontSize: TYPE.micro, fontWeight: WEIGHT.regular, border: 'none', cursor: cId ? 'pointer' : 'default', minHeight: 32 }}>
-                                {w.topic} · {Math.round(w.mastery * 100)}%
+                                {w.topic} Â· {Math.round(w.mastery * 100)}%
                               </button>
                             );
                           })}
@@ -1739,7 +1740,7 @@ const Quiz = () => {
 
         {subjectList.length > 4 && (
           <div style={{ marginBottom: SPACE.md }}>
-            <input value={subjectSearch} onChange={e => setSubjectSearch(e.target.value)} placeholder="Search your subjects…"
+            <input value={subjectSearch} onChange={e => setSubjectSearch(e.target.value)} placeholder="Search your subjectsâ€¦"
               style={{ width: '100%', padding: '12px 14px', borderRadius: 12, border: `1.5px solid ${C.border}`, fontSize: TYPE.body, color: C.text, background: C.card, boxSizing: 'border-box', outline: 'none', minHeight: TAP }} />
           </div>
         )}
@@ -1774,7 +1775,7 @@ const Quiz = () => {
     );
   }, [user, stats, statsLoading, weakTopics, todayAnswered, lastSession, subjects, subjectList, filteredSubjects, subjColorMap, subjectSearch, goToSetup, startTopicPractice, isSubmitting, isProcessing]);
 
-  // ── Render: Setup ────────────────────────────────────────────
+  // â”€â”€ Render: Setup â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const renderSetup = useCallback(() => {
     const subj = subjects[currentSubjectId];
     if (!subj) return <div style={{ padding: SPACE.xxl, color: C.error, fontSize: TYPE.body }}>Subject not found.</div>;
@@ -1807,10 +1808,10 @@ const Quiz = () => {
           </div>
         )}
 
-        {/* ── Practice Mode: Study is the default, always-visible option.
+        {/* â”€â”€ Practice Mode: Study is the default, always-visible option.
              Exam lives behind a one-click disclosure so the common path
              (Study) needs zero extra clicks, and switching to Exam needs
-             exactly one. ── */}
+             exactly one. â”€â”€ */}
         <div style={{ marginBottom: SPACE.xl }}>
           <div style={{ fontSize: TYPE.body, fontWeight: WEIGHT.medium, color: C.text, marginBottom: SPACE.md }}>Practice Mode</div>
 
@@ -1834,14 +1835,14 @@ const Quiz = () => {
           {showModeExplain && (
             <div style={{ marginTop: SPACE.sm, padding: '12px 14px', borderRadius: 10, background: '#f8fafc', border: `1px solid ${C.border}`, fontSize: TYPE.micro, color: C.textMuted, lineHeight: 1.6 }}>
               <strong style={{ color: C.text }}>Study:</strong> see feedback after each question, get hints, and retry before moving on. Best while you're still learning the material.<br /><br />
-              <strong style={{ color: C.text }}>Exam:</strong> answer all questions first, no feedback until you submit — closer to the real thing. Best once you want to test yourself under pressure.
+              <strong style={{ color: C.text }}>Exam:</strong> answer all questions first, no feedback until you submit â€” closer to the real thing. Best once you want to test yourself under pressure.
             </div>
           )}
         </div>
 
-        {/* ── Question Style: Multiple Choice is the default, always-visible
+        {/* â”€â”€ Question Style: Multiple Choice is the default, always-visible
              option. Mixed and Written & Diagrams live behind the same
-             disclosure pattern. ── */}
+             disclosure pattern. â”€â”€ */}
         <div style={{ marginBottom: SPACE.xl }}>
           <div style={{ fontSize: TYPE.body, fontWeight: WEIGHT.medium, color: C.text, marginBottom: SPACE.md }}>Question Style</div>
 
@@ -1850,7 +1851,7 @@ const Quiz = () => {
             <CheckCircle size={22} color={setupMode === 'mcq' ? C.primary : C.text} style={{ marginTop: 2 }} />
             <div style={{ flex: 1 }}>
               <div style={{ fontSize: TYPE.body, fontWeight: WEIGHT.medium, color: setupMode === 'mcq' ? C.primary : C.text }}>Multiple Choice</div>
-              <div style={{ fontSize: TYPE.label, color: C.textMuted, marginTop: 2, lineHeight: 1.5 }}>Tick-box questions only — fast practice with instant results</div>
+              <div style={{ fontSize: TYPE.label, color: C.textMuted, marginTop: 2, lineHeight: 1.5 }}>Tick-box questions only â€” fast practice with instant results</div>
             </div>
             {setupMode === 'mcq' && <Check size={18} color={C.primary} style={{ marginTop: 2 }} />}
           </button>
@@ -1862,7 +1863,7 @@ const Quiz = () => {
                 <Target size={22} color={setupMode === 'auto' ? C.primary : C.text} style={{ marginTop: 2 }} />
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: TYPE.body, fontWeight: WEIGHT.medium, color: setupMode === 'auto' ? C.primary : C.text }}>Mixed Questions</div>
-                  <div style={{ fontSize: TYPE.label, color: C.textMuted, marginTop: 2, lineHeight: 1.5 }}>A combination of multiple choice and written — full exam preparation</div>
+                  <div style={{ fontSize: TYPE.label, color: C.textMuted, marginTop: 2, lineHeight: 1.5 }}>A combination of multiple choice and written â€” full exam preparation</div>
                 </div>
                 {setupMode === 'auto' && <Check size={18} color={C.primary} style={{ marginTop: 2 }} />}
               </button>
@@ -1872,7 +1873,7 @@ const Quiz = () => {
                 <PenTool size={22} color={setupMode === 'structured' ? C.primary : C.text} style={{ marginTop: 2 }} />
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: TYPE.body, fontWeight: WEIGHT.medium, color: setupMode === 'structured' ? C.primary : C.text }}>Written &amp; Diagrams</div>
-                  <div style={{ fontSize: TYPE.label, color: C.textMuted, marginTop: 2, lineHeight: 1.5 }}>Open-ended and drawing questions — marked automatically</div>
+                  <div style={{ fontSize: TYPE.label, color: C.textMuted, marginTop: 2, lineHeight: 1.5 }}>Open-ended and drawing questions â€” marked automatically</div>
                 </div>
                 {setupMode === 'structured' && <Check size={18} color={C.primary} style={{ marginTop: 2 }} />}
               </button>
@@ -1902,13 +1903,13 @@ const Quiz = () => {
         <button onClick={() => startQuiz(currentSubjectId, setupMode, setupCount)} disabled={isSubmitting || isProcessing('startQuiz')}
           style={{ ...S.primaryBtn, background: (isSubmitting || isProcessing('startQuiz')) ? C.disabled : C.primary, fontSize: TYPE.h3lg, cursor: (isSubmitting || isProcessing('startQuiz')) ? 'default' : 'pointer' }}>
           {isSubmitting || isProcessing('startQuiz') ? <Loader2 size={20} className="animate-spin" style={{ display: 'inline', marginRight: SPACE.sm }} /> : null}
-          {(isSubmitting || isProcessing('startQuiz')) ? 'Loading questions…' : (quizMode === 'study' ? 'Start Studying' : 'Enter Exam Room')}
+          {(isSubmitting || isProcessing('startQuiz')) ? 'Loading questionsâ€¦' : (quizMode === 'study' ? 'Start Studying' : 'Enter Exam Room')}
         </button>
       </div>
     );
   }, [subjects, currentSubjectId, setupMode, setupCount, isSubmitting, startQuiz, goToHome, modeExpanded, styleExpanded, showModeExplain, quizMode, setupError, navigate, isProcessing]);
 
-  // ── Render: Study Mode question screen ───────────────────────
+  // â”€â”€ Render: Study Mode question screen â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const renderStudyQuestion = useCallback(() => {
     if (!questions.length) return null;
     const q = questions[currentIndex];
@@ -1980,7 +1981,7 @@ const Quiz = () => {
               <div style={{ marginBottom: SPACE.lg, opacity: isChecking ? 0.6 : 1, transition: 'opacity 0.2s ease' }}>
                 <div style={{ fontSize: TYPE.micro, color: C.textMuted, fontWeight: WEIGHT.bold, letterSpacing: '0.05em', marginBottom: SPACE.sm }}>YOUR ANSWER</div>
                 <textarea rows={5} value={textValue} onChange={e => setStructured(currentIndex, e.target.value)} disabled={isChecking}
-                  placeholder="Type your answer…"
+                  placeholder="Type your answerâ€¦"
                   style={{ width: '100%', padding: SPACE.md2, borderRadius: 12, border: `2px solid ${C.border}`, fontSize: TYPE.body, lineHeight: 1.6, resize: 'vertical', fontFamily: 'inherit', color: C.text, background: isChecking ? '#f8fafc' : C.card, boxSizing: 'border-box', outline: 'none' }} />
                 <label style={{ display: 'inline-flex', alignItems: 'center', gap: SPACE.sm, marginTop: SPACE.md, padding: '12px 16px', borderRadius: 10, border: `1.5px dashed ${C.primary}`, color: C.primary, fontSize: TYPE.label, fontWeight: WEIGHT.medium, cursor: isChecking ? 'default' : 'pointer', background: C.primaryMuted, minHeight: TAP, pointerEvents: isChecking ? 'none' : 'auto' }}>
                   <Camera size={18} /> {hasImage ? 'Replace photo' : 'Add photo'}
@@ -2042,7 +2043,7 @@ const Quiz = () => {
     );
   }, [questions, currentIndex, answers, textAnswers, imageData, feedbackByIndex, checkingIndex, checkingMsgIdx, hintByIndex, hintLoadingIndex, attempts, finishingSession, setMcq, setStructured, handleImageUpload, checkAnswer, tryAgain, fetchHint, fetchExplain, continueAfterFeedback, showExitConfirm, isProcessing]);
 
-  // ── Render: Exam Mode question screen ───────────────────────
+  // â”€â”€ Render: Exam Mode question screen â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const renderExamQuestion = useCallback(() => {
     if (!questions.length) return null;
     if (phase === 'grading') {
@@ -2057,7 +2058,7 @@ const Quiz = () => {
             .dot-pulse { animation: dot-pulse 1.4s infinite; font-size: 28px; line-height: 1; display: inline-block; }
           `}</style>
           <ClipboardList size={56} color={C.primary} />
-          <div style={{ fontSize: TYPE.h3lg, fontWeight: WEIGHT.bold, color: C.text }}>Marking your paper…</div>
+          <div style={{ fontSize: TYPE.h3lg, fontWeight: WEIGHT.bold, color: C.text }}>Marking your paperâ€¦</div>
           <div style={{ width: '100%', maxWidth: 260 }}>
             <div style={S.progressTrack(6)}>
               <div style={{ ...S.progressFill(C.primary), width: `${gradPct}%` }} />
@@ -2074,7 +2075,7 @@ const Quiz = () => {
               <span className="dot-pulse" style={{ animationDelay: '0.4s' }}>.</span>
             </span>
           </div>
-          <div style={{ fontSize: TYPE.micro, color: C.textLight, textAlign: 'center', maxWidth: 260, lineHeight: 1.5 }}>You can stay on this screen — your paper is being marked now.</div>
+          <div style={{ fontSize: TYPE.micro, color: C.textLight, textAlign: 'center', maxWidth: 260, lineHeight: 1.5 }}>You can stay on this screen â€” your paper is being marked now.</div>
         </div>
       );
     }
@@ -2130,7 +2131,7 @@ const Quiz = () => {
         ) : (
           <div style={{ marginBottom: SPACE.md }}>
             <textarea rows={5} value={textValue} onChange={e => setStructured(currentIndex, e.target.value)}
-              placeholder={isDiagram ? 'Add notes or labels… then attach your drawing below' : 'Type your answer here…'}
+              placeholder={isDiagram ? 'Add notes or labelsâ€¦ then attach your drawing below' : 'Type your answer hereâ€¦'}
               style={{ width: '100%', padding: SPACE.md2, borderRadius: 12, border: `2px solid ${C.border}`, fontSize: TYPE.body, lineHeight: 1.6, resize: 'vertical', fontFamily: 'inherit', color: C.text, background: C.card, boxSizing: 'border-box', outline: 'none' }} />
             <label style={{ display: 'inline-flex', alignItems: 'center', gap: SPACE.sm, marginTop: SPACE.md, padding: '12px 16px', borderRadius: 10, border: `1.5px dashed ${C.primary}`, color: C.primary, fontSize: TYPE.label, fontWeight: WEIGHT.medium, cursor: 'pointer', background: C.primaryMuted, minHeight: TAP }}>
               <Paperclip size={18} /> {hasImage ? 'Replace drawing' : 'Attach drawing'}
@@ -2146,7 +2147,7 @@ const Quiz = () => {
         )}
 
         <div style={{ ...S.cardSoft, padding: `${SPACE.md2}px ${SPACE.lg}px`, marginBottom: SPACE.lg }}>
-          <div style={{ fontSize: TYPE.micro, color: C.textMuted, marginBottom: SPACE.md, fontWeight: WEIGHT.medium, letterSpacing: '0.04em' }}>QUESTION OVERVIEW — {answeredCount}/{total} answered</div>
+          <div style={{ fontSize: TYPE.micro, color: C.textMuted, marginBottom: SPACE.md, fontWeight: WEIGHT.medium, letterSpacing: '0.04em' }}>QUESTION OVERVIEW â€” {answeredCount}/{total} answered</div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: SPACE.sm }}>
             {questions.map((_, idx) => {
               const ans = answers[idx];
@@ -2174,7 +2175,7 @@ const Quiz = () => {
         <button onClick={() => setShowConfirmSubmit(true)} disabled={isProcessing('submitQuiz')}
           style={{ ...S.primaryBtn, background: isProcessing('submitQuiz') ? C.disabled : C.success, fontSize: TYPE.h3lg, boxShadow: '0 4px 14px rgba(5,150,105,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: SPACE.sm }}>
           {isProcessing('submitQuiz') ? <Loader2 size={20} className="animate-spin" /> : <Send size={20} />}
-          {isProcessing('submitQuiz') ? 'Submitting…' : `Submit Exam Paper (${answeredCount}/${total} answered)`}
+          {isProcessing('submitQuiz') ? 'Submittingâ€¦' : `Submit Exam Paper (${answeredCount}/${total} answered)`}
         </button>
 
         {showExitConfirm && (
@@ -2182,7 +2183,7 @@ const Quiz = () => {
             <div style={S.modalCard}>
               <DoorClosed size={44} style={{ margin: '0 auto', display: 'block', marginBottom: SPACE.md }} />
               <h3 style={S.modalTitle}>Exit Exam?</h3>
-              <p style={S.modalBody}>Your progress is saved — you can resume exactly where you left off.</p>
+              <p style={S.modalBody}>Your progress is saved â€” you can resume exactly where you left off.</p>
               <div style={S.modalRow}>
                 <button onClick={() => setShowExitConfirm(false)} style={S.modalBtnGhost}>Keep going</button>
                 <button onClick={() => { setShowExitConfirm(false); startTransition(() => setScreen('setup')); }}
@@ -2208,7 +2209,7 @@ const Quiz = () => {
                 <button onClick={submitQuiz} disabled={isProcessing('submitQuiz')}
                   style={{ flex: 1, padding: '13px', borderRadius: 12, background: isProcessing('submitQuiz') ? C.disabled : C.success, color: '#fff', border: 'none', fontWeight: WEIGHT.bold, cursor: isProcessing('submitQuiz') ? 'default' : 'pointer', fontSize: TYPE.label, minHeight: TAP, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: SPACE.xs }}>
                   {isProcessing('submitQuiz') ? <Loader2 size={16} className="animate-spin" /> : <Check size={16} />}
-                  {isProcessing('submitQuiz') ? 'Submitting…' : 'Submit'}
+                  {isProcessing('submitQuiz') ? 'Submittingâ€¦' : 'Submit'}
                 </button>
               </div>
             </div>
@@ -2218,7 +2219,7 @@ const Quiz = () => {
     );
   }, [questions, phase, currentIndex, answers, textAnswers, imageData, setMcq, setStructured, handleImageUpload, submitQuiz, showConfirmSubmit, showExitConfirm, markingMsgIndex, gradingProgress, isProcessing]);
 
-  // ── Render: Results ──────────────────────────────────────────
+  // â”€â”€ Render: Results â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const renderResults = useCallback(() => {
     if (!results) return null;
     const { correct, total, percentage, details, studyMeta } = results;
@@ -2251,7 +2252,7 @@ const Quiz = () => {
           <div style={{ ...S.progressTrack(8), marginTop: SPACE.lg }}><div style={{ ...S.progressFill(grade.color), width: `${percentage}%` }} /></div>
           {delta != null && (
             <div style={{ marginTop: SPACE.md, fontSize: TYPE.label, fontWeight: WEIGHT.medium, color: delta >= 0 ? C.success : C.textMuted }}>
-              {delta > 0 ? <><ArrowRight size={14} style={{ display: 'inline' }} /> {delta} percentage points since last time</> : delta < 0 ? `${Math.abs(delta)} points down vs last time — keep at it` : 'Same as last time'}
+              {delta > 0 ? <><ArrowRight size={14} style={{ display: 'inline' }} /> {delta} percentage points since last time</> : delta < 0 ? `${Math.abs(delta)} points down vs last time â€” keep at it` : 'Same as last time'}
             </div>
           )}
         </div>
@@ -2310,7 +2311,7 @@ const Quiz = () => {
               <button onClick={() => courseId && startTopicPractice(courseId, targetTopic)} disabled={!courseId || isSubmitting || isProcessing(practiceId)}
                 style={{ ...S.primaryBtn, background: C.primary, fontSize: TYPE.body }}>
                 {isSubmitting || isProcessing(practiceId) ? <Loader2 size={16} className="animate-spin" style={{ display: 'inline', marginRight: SPACE.xs }} /> : null}
-                {isSubmitting || isProcessing(practiceId) ? 'Loading…' : 'Practice weak areas'}
+                {isSubmitting || isProcessing(practiceId) ? 'Loadingâ€¦' : 'Practice weak areas'}
               </button>
             </div>
           );
@@ -2326,6 +2327,18 @@ const Quiz = () => {
             style={{ padding: '14px', borderRadius: 14, background: 'none', color: C.primary, border: `2px solid ${C.primary}`, fontWeight: WEIGHT.medium, fontSize: TYPE.h3, cursor: 'pointer', minHeight: TAP, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: SPACE.sm }}>
             <Home size={20} /> Back to Dashboard
           </button>
+          {/* ScoreShareCard — screenshot-ready viral score card (≥60% only).
+               Replaces old plain WhatsApp link; now has Save Image + Share. */}
+          <ScoreShareCard
+            percentage={percentage}
+            gradeLetter={grade.letter}
+            gradeLabel={grade.label}
+            gradeColor={grade.color}
+            correct={correct}
+            total={total}
+            subjectName={subjects[currentSubjectId]?.title || 'Quiz'}
+            userName={user?.user_metadata?.full_name || user?.email || null}
+          />
         </div>
 
         {/* Full review list now below the CTAs */}
@@ -2337,7 +2350,7 @@ const Quiz = () => {
     );
   }, [results, prevSession, currentSubjectId, weakTopics, subjectList, startTopicPractice, isSubmitting, isProcessing]);
 
-  // ─── Main render ─────────────────────────────────────────────
+  // â”€â”€â”€ Main render â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   if (loading) {
     return (
       <div style={{ height: '100%', background: C.bg, display: 'flex', flexDirection: 'column', fontFamily: FONT_STACK, lineHeight: 1.5 }}>
@@ -2359,7 +2372,7 @@ const Quiz = () => {
             </button>
             <button onClick={() => window.location.reload()}
               style={{ padding: '10px 24px', borderRadius: 12, background: 'none', border: `1px solid ${C.border}`, color: C.text, fontWeight: WEIGHT.medium, cursor: 'pointer', fontSize: TYPE.label, minHeight: TAP, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: SPACE.xs }}>
-              <RotateCw size={16} /> I've fixed it — Retry
+              <RotateCw size={16} /> I've fixed it â€” Retry
             </button>
           </>
         ) : (

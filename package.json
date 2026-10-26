@@ -36,6 +36,7 @@
     "firebase-admin": "^11.11.1",
     "framer-motion": "^12.43.0",
     "groq-sdk": "^1.4.0",
+    "html2canvas": "^1.4.1",
     "idb": "^8.0.3",
     "idb-keyval": "^6.3.0",
     "jszip": "^3.10.1",

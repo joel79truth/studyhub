@@ -13,6 +13,8 @@ import { supabase } from '../supabase';
 import { useQuery } from '@tanstack/react-query';
 import { useIsDownloaded, useDownloadProgress, useDownloadManager } from '../hooks/useDownloadManager';
 import PDFThumbnail from '../components/PDFThumbnail';
+import OfflineCoursePackModal from '../components/OfflineCoursePackModal';
+import { DownloadCloud } from 'lucide-react';
 
 // ─── Helpers ──────────────────────────────────────────────
 const normalizeName = (name) => String(name || '').trim().toLowerCase();
@@ -306,12 +308,76 @@ const FileListItem = memo(({ file, onFileClick, onStartDownload, onCancelDownloa
   );
 });
 
+// ─── Faculty Taxonomies & Mapping ──────────────────────────
+const FACULTIES = [
+  { id: 'all', label: 'All', icon: '🏛️' },
+  { id: 'agriculture', label: 'Agriculture', icon: '🌾' },
+  { id: 'natural-resources', label: 'Natural Resources', icon: '🌿' },
+  { id: 'development-studies', label: 'Development Studies', icon: '📊' },
+  { id: 'food-sciences', label: 'Food Sciences', icon: '🥗' },
+  { id: 'applied-sciences', label: 'Applied Sciences', icon: '🔬' },
+  { id: 'basics', label: 'Basics & Bridging', icon: '🎓' },
+];
+
+const getProgramFaculty = (name = '') => {
+  const n = String(name || '').toLowerCase();
+  if (n === 'basics' || n.includes('basic studies') || n.includes('bridging')) return 'basics';
+  if (n.includes('food') || n.includes('nutrition')) return 'food-sciences';
+  if (n.includes('aquaculture') || n.includes('fisheries') || n.includes('forestry') || n.includes('wildlife') || n.includes('ecotourism') || n.includes('environmental')) return 'natural-resources';
+  if (n.includes('economics') || n.includes('agribusiness') || n.includes('extension') || n.includes('rural development') || n.includes('education') || n.includes('entrepreneurship')) return 'development-studies';
+  if (n.includes('computer science') || n.includes('textile') || n.includes('physics') || n.includes('chemistry') || n.includes('biology') || n.includes('mathematics') || n.includes('applied sciences')) return 'applied-sciences';
+  return 'agriculture'; // default fallback for crop, soil, animal, agronomy, irrigation, general agriculture
+};
+
+// ─── Offline Education Tip Banner ─────────────────────────
+const OfflineNoticeBanner = memo(({ onDismiss }) => {
+  return (
+    <div className="mb-5 bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-blue-500/10 border border-emerald-200/80 rounded-2xl p-4 sm:p-4.5 relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+      <div className="flex items-start gap-3 min-w-0">
+        <span className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center flex-shrink-0 shadow-xs">
+          <DownloadCloud size={20} />
+        </span>
+        <div>
+          <div className="flex items-center gap-2">
+            <h4 className="text-sm font-bold text-slate-900">Zero-Data Offline Mode</h4>
+            <span className="text-[10px] font-bold px-1.5 py-0.5 bg-emerald-100 text-emerald-700 rounded-md">TIP</span>
+          </div>
+          <p className="text-xs text-slate-600 mt-0.5 leading-relaxed">
+            Save mobile data by downloading course packs while on Wi-Fi. Once saved, you can study anytime with <strong>no active internet connection</strong>.
+          </p>
+        </div>
+      </div>
+      <button
+        onClick={onDismiss}
+        className="self-end sm:self-center px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold border border-slate-200/80 transition-colors shadow-xs flex-shrink-0 cursor-pointer"
+        aria-label="Dismiss offline tip"
+      >
+        Got it
+      </button>
+    </div>
+  );
+});
+
 // ─── View Components ──────────────────────────────────────
 const CoursesView = memo(({
   courses, courseCounts, userProgram, userSemester, onCourseClick, onBrowseAll,
   totalCourseCount, courseQuery, onCourseQueryChange, lastViewedCourse,
 }) => {
   const navigate = useNavigate();
+  const [offlineTipDismissed, setOfflineTipDismissed] = useState(() => {
+    try {
+      return localStorage.getItem('studyhub_offline_pack_tip_dismissed') === 'true';
+    } catch {
+      return false;
+    }
+  });
+
+  const handleDismissOfflineTip = () => {
+    setOfflineTipDismissed(true);
+    try {
+      localStorage.setItem('studyhub_offline_pack_tip_dismissed', 'true');
+    } catch {}
+  };
 
   if (!userProgram || !userSemester) {
     return (
@@ -349,6 +415,8 @@ const CoursesView = memo(({
 
   return (
     <div>
+      {!offlineTipDismissed && <OfflineNoticeBanner onDismiss={handleDismissOfflineTip} />}
+
       {totalCourseCount > 6 && (
         <div className="relative mb-5 max-w-sm">
           <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">🔍</span>
@@ -407,16 +475,26 @@ const CoursesView = memo(({
   );
 });
 
-const FilesView = memo(({ course, files, onBack, fileActions, readFiles }) => (
+const FilesView = memo(({ course, files, onBack, fileActions, readFiles, onOpenPackModal }) => (
   <div>
     <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
       <div>
-        <button onClick={onBack} className="text-sm font-semibold text-blue-600 hover:text-blue-800 active:scale-95 flex items-center gap-1.5 mb-3 px-3 py-1.5 -ml-3 rounded-lg hover:bg-blue-50 transition-transform">
+        <button onClick={onBack} className="text-sm font-semibold text-blue-600 hover:text-blue-800 active:scale-95 flex items-center gap-1.5 mb-3 px-3 py-1.5 -ml-3 rounded-lg hover:bg-blue-50 transition-transform cursor-pointer">
           ← Back to courses
         </button>
         <h2 className="text-2xl font-bold text-gray-900">{course}</h2>
         <p className="text-sm text-gray-500 mt-1">🟢 {files.length} {files.length === 1 ? 'file' : 'files'}</p>
       </div>
+      {files.length > 0 && (
+        <button
+          onClick={onOpenPackModal}
+          className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-bold border border-emerald-200/80 transition-all active:scale-95 cursor-pointer shadow-xs"
+          title="Save all notes in this course for offline use"
+        >
+          <DownloadCloud size={16} />
+          <span>Save Course Pack</span>
+        </button>
+      )}
     </div>
     {files.length > 0 ? (
       files.map((file) => (
@@ -436,50 +514,116 @@ const FilesView = memo(({ course, files, onBack, fileActions, readFiles }) => (
   </div>
 ));
 
-const AllProgramsView = memo(({ programs, programCounts, isLoading, onProgramClick, searchQuery }) => (
-  <div>
-    <div className="mb-6">
-      <h2 className="text-2xl font-bold text-gray-900">All Programs</h2>
-      <p className="text-gray-500 mt-1">Explore materials across all disciplines.</p>
-    </div>
+const AllProgramsView = memo(({ programItems, isLoading, onProgramClick, searchQuery }) => {
+  const [selectedFaculty, setSelectedFaculty] = useState('all');
 
-    {isLoading ? (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {[1, 2, 3, 4, 5, 6].map((i) => (
-          <div key={i} className="bg-white/80 border border-gray-200 rounded-2xl p-5 h-[104px] animate-pulse" />
-        ))}
+  const facultyCounts = useMemo(() => {
+    const counts = { all: (programItems || []).length };
+    (programItems || []).forEach(p => {
+      counts[p.faculty] = (counts[p.faculty] || 0) + 1;
+    });
+    return counts;
+  }, [programItems]);
+
+  const filtered = useMemo(() => {
+    return (programItems || []).filter(p => {
+      const matchesFaculty = selectedFaculty === 'all' || p.faculty === selectedFaculty;
+      const matchesSearch = !searchQuery || normalizeName(p.name).includes(normalizeName(searchQuery));
+      return matchesFaculty && matchesSearch;
+    });
+  }, [programItems, selectedFaculty, searchQuery]);
+
+  return (
+    <div>
+      <div className="mb-5">
+        <h2 className="text-2xl font-bold text-slate-900 tracking-tight">LUANAR Programs</h2>
+        <p className="text-sm text-slate-500 mt-1">Explore course materials categorized across all academic faculties.</p>
       </div>
-    ) : programs.length === 0 ? (
-      <div className="text-center py-16 bg-white/50 rounded-2xl border border-dashed">
-        <div className="text-4xl mb-4">📚</div>
-        <h3 className="text-lg font-semibold text-gray-800">No programs found</h3>
-      </div>
-    ) : (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {programs.map((program) => {
-          const count = programCounts[program] || 0;
+
+      {/* ── Faculty Filter Pills ── */}
+      <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-5 -mx-4 px-4 sm:mx-0 sm:px-0 no-scrollbar">
+        {FACULTIES.map(f => {
+          const count = facultyCounts[f.id] || 0;
+          const isSelected = selectedFaculty === f.id;
           return (
-            <div
-              key={program}
-              className="group bg-white/80 border border-gray-200 rounded-2xl p-5 hover:shadow-xl hover:-translate-y-1 hover:border-blue-200 active:scale-[0.98] transition-all cursor-pointer"
-              onClick={() => onProgramClick(program)}
+            <button
+              key={f.id}
+              onClick={() => setSelectedFaculty(f.id)}
+              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
+                isSelected
+                  ? 'bg-blue-600 text-white shadow-xs scale-[1.02]'
+                  : 'bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/80 shadow-xs'
+              }`}
             >
-              <h3 className="font-semibold text-gray-800 text-lg line-clamp-2">{program}</h3>
-              <div className="mt-4 flex items-center justify-between">
-                <span className="text-xs font-medium text-blue-600 bg-blue-50 px-3 py-1.5 rounded-lg">
-                  {count} {count === 1 ? 'Resource' : 'Resources'}
-                </span>
-                <span className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
-                </span>
-              </div>
-            </div>
+              <span>{f.icon}</span>
+              <span>{f.label}</span>
+              <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
+                isSelected ? 'bg-blue-500/80 text-white' : 'bg-slate-100 text-slate-500'
+              }`}>
+                {count}
+              </span>
+            </button>
           );
         })}
       </div>
-    )}
-  </div>
-));
+
+      {isLoading ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {[1, 2, 3, 4, 5, 6].map((i) => (
+            <div key={i} className="bg-white border border-slate-200/80 rounded-2xl p-5 h-[110px] animate-pulse" />
+          ))}
+        </div>
+      ) : filtered.length === 0 ? (
+        <div className="text-center py-16 bg-white/60 rounded-2xl border border-dashed border-slate-300">
+          <div className="text-4xl mb-3">🔍</div>
+          <h3 className="text-base font-bold text-slate-800">No matching programs found</h3>
+          <p className="text-xs text-slate-500 mt-1">Try selecting another faculty tab or clearing your search.</p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {filtered.map((program) => {
+            return (
+              <div
+                key={program.name}
+                className="group bg-white border border-slate-200/80 rounded-2xl p-4.5 hover:shadow-lg hover:-translate-y-0.5 hover:border-blue-300 active:scale-[0.98] transition-all cursor-pointer flex flex-col justify-between min-h-[120px]"
+                onClick={() => onProgramClick(program.name)}
+              >
+                <div>
+                  <div className="flex items-center gap-1.5 flex-wrap mb-2">
+                    {program.campus && (
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-slate-100 text-slate-600">
+                        {program.campus} Campus
+                      </span>
+                    )}
+                    {program.level && (
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-600">
+                        {program.level}
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="font-semibold text-slate-900 text-sm sm:text-[15px] leading-snug line-clamp-2 group-hover:text-blue-600 transition-colors">
+                    {program.name}
+                  </h3>
+                </div>
+
+                <div className="mt-4 flex items-center justify-between border-t border-slate-100 pt-2.5">
+                  <span className={`text-xs font-semibold px-2.5 py-1 rounded-lg ${
+                    program.count > 0 ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-50 text-slate-500'
+                  }`}>
+                    {program.count} {program.count === 1 ? 'Resource' : 'Resources'}
+                  </span>
+                  <span className="w-7 h-7 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+});
 
 // ─── Skeleton ──────────────────────────────────────────────
 const CoursesSkeleton = () => (
@@ -535,6 +679,12 @@ const fetchUserNotes = async (program, semester) => {
   return (data || []).map(mapNote);
 };
 
+const fetchOfficialPrograms = async () => {
+  const { data, error } = await supabase.from('programs').select('name, campus, level').order('name');
+  if (error) throw error;
+  return data || [];
+};
+
 const fetchProgramCounts = async () => {
   const { data, error } = await supabase.from('notes').select('program');
   if (error) throw error;
@@ -571,6 +721,7 @@ export default function Programs() {
   const [selectedCourse, setSelectedCourse] = useState(initialUiState.selectedCourse);
   const [searchQuery, setSearchQuery] = useState(initialUiState.searchQuery);
   const [courseQuery, setCourseQuery] = useState('');
+  const [packModalOpen, setPackModalOpen] = useState(false);
   const [toast, setToast] = useState(null);
 
   const [lastViewedCourse, setLastViewedCourse] = useState(() => {
@@ -680,16 +831,41 @@ export default function Programs() {
     return courses.filter((c) => normalizeName(c).includes(q));
   }, [courses, courseQuery]);
 
-  const allProgramNames = useMemo(
-    () => Object.keys(programCounts).sort(),
-    [programCounts]
-  );
+  const allProgramItems = useMemo(() => {
+    const map = new Map();
 
-  const filteredPrograms = useMemo(() => {
-    if (!searchQuery) return allProgramNames;
-    const q = normalizeName(searchQuery);
-    return allProgramNames.filter((p) => normalizeName(p).includes(q));
-  }, [allProgramNames, searchQuery]);
+    // 1. Seed with official university curriculum
+    (officialPrograms || []).forEach(p => {
+      if (!p?.name) return;
+      const key = p.name.trim();
+      map.set(key, {
+        name: key,
+        campus: p.campus || 'LUANAR',
+        level: p.level || (key.startsWith('Diploma') ? 'Diploma' : key.startsWith('Certificate') ? 'Certificate' : 'Degree'),
+        faculty: getProgramFaculty(key),
+        count: programCounts[key] || 0,
+      });
+    });
+
+    // 2. Include any program from notes that might not be in the official list
+    Object.keys(programCounts).forEach(key => {
+      const cleanKey = key.trim();
+      if (!cleanKey) return;
+      if (!map.has(cleanKey)) {
+        map.set(cleanKey, {
+          name: cleanKey,
+          campus: 'LUANAR',
+          level: cleanKey.startsWith('Diploma') ? 'Diploma' : cleanKey.startsWith('Certificate') ? 'Certificate' : 'Degree',
+          faculty: getProgramFaculty(cleanKey),
+          count: programCounts[cleanKey] || 0,
+        });
+      } else {
+        map.get(cleanKey).count = programCounts[cleanKey] || 0;
+      }
+    });
+
+    return Array.from(map.values()).sort((a, b) => a.name.localeCompare(b.name));
+  }, [officialPrograms, programCounts]);
 
   const scrollRef = useRef(null);
   useLayoutEffect(() => {
@@ -871,9 +1047,8 @@ export default function Programs() {
           </div>
         ) : viewMode === 'allPrograms' ? (
           <AllProgramsView
-            programs={filteredPrograms}
-            programCounts={programCounts}
-            isLoading={programCountsLoading && allProgramNames.length === 0}
+            programItems={allProgramItems}
+            isLoading={(programCountsLoading || officialProgramsLoading) && allProgramItems.length === 0}
             onProgramClick={handleProgramClick}
             searchQuery={searchQuery}
           />
@@ -884,6 +1059,7 @@ export default function Programs() {
             onBack={handleBackToCourses}
             fileActions={fileActions}
             readFiles={readFiles}
+            onOpenPackModal={() => setPackModalOpen(true)}
           />
         ) : (
           <CoursesView
@@ -905,6 +1081,13 @@ export default function Programs() {
           />
         )}
       </main>
+
+      <OfflineCoursePackModal
+        isOpen={packModalOpen}
+        onClose={() => setPackModalOpen(false)}
+        courseName={selectedCourse}
+        notes={courseFiles}
+      />
 
       {toast && <Toast message={toast} onClose={() => setToast(null)} />}
     </div>
