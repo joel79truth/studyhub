@@ -9,6 +9,7 @@ import {
   Brain,
   Calendar,
   HelpCircle,
+  Trophy,
   User,
   Settings,
 } from 'lucide-react';
@@ -23,6 +24,7 @@ export const PRIMARY_NAV = [
 
 // Secondary items from the mobile drawer
 export const SECONDARY_NAV = [
+  { to: '/leaderboard', label: 'Leaderboard', icon: Trophy,   end: false },
   { to: '/tutorials', label: 'Tutorials',     icon: BookOpen,   end: false },
   { to: '/timetable', label: 'Timetable',     icon: Calendar,   end: false },
   { to: '/request',   label: 'Request Notes', icon: HelpCircle, end: false },

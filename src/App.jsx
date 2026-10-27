@@ -19,6 +19,7 @@ const Course = lazy(() => import('./pages/Course'));
 const Settings = lazy(() => import('./pages/Settings'));
 const Request = lazy(() => import('./pages/Request'));
 const AiChat = lazy(() => import('./pages/AiChat'));
+const LeaderboardPage = lazy(() => import('./pages/LeaderboardPage'));
 const AdminUpload = lazy(() => import('./pages/AdminUpload'));
 const AdminLive = lazy(() => import('./pages/AdminLive'));
 const Tutorials = lazy(() => import('./pages/Tutorials'));
@@ -98,6 +99,7 @@ function App() {
               <Route path="/settings" element={<Settings />} />
               <Route path="/upload" element={<Upload />} />
               <Route path="/AiChat" element={<AiChat />} />
+              <Route path="/leaderboard" element={<LeaderboardPage />} />
             </Route>
 
           </Routes>

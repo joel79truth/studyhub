@@ -5,7 +5,6 @@ import { supabase } from '../supabase';
 import { useNavigate, Navigate } from 'react-router-dom';
 import AiStudyAssistantCard from '../components/AiCard';
 import Files from '../components/Files';
-import Leaderboard from '../components/Leaderboard';
 import { ensureConsistentSession, getOfflineSessionSnapshot } from '../lib/authGuard';
 import {
   Target, FileText, TrendingUp, RefreshCw, Flame, ChevronRight, WifiOff,
@@ -1313,10 +1312,6 @@ const Home = () => {
               onHintAction={handleNavigation}
               onPrimaryAction={() => handleNavigation('/timetable')}
             />
-            {/* Leaderboard — compact 5-row version on Home for social proof + retention */}
-            <div style={{ background: '#ffffff', borderRadius: 16, padding: '16px 16px 14px', marginTop: 8, boxShadow: '0 1px 8px rgba(0,0,0,0.06)', border: '1px solid #e2e8f0' }}>
-              <Leaderboard userId={user?.id} userProgram={userData?.program} compact={true} />
-            </div>
             <StreakCard
               streak={streak}
               onTap={() => setStreakSheetOpen(true)}
