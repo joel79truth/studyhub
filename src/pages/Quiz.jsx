@@ -103,6 +103,7 @@ import {
   Info,
 } from 'lucide-react';
 import ScoreShareCard from '../components/ScoreShareCard';
+import { submitLeaderboardScore } from '../services/leaderboardService';
 
 // â”€â”€â”€ Design tokens â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const C = {
@@ -896,6 +897,20 @@ const Quiz = () => {
       courseName,
       courseId: currentSubjectId || '',
       quizMode,
+    });
+    // Fire-and-forget: update leaderboard (non-blocking, fails silently offline)
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (!session?.user) return;
+      supabase.from('profiles').select('name,program,campus').eq('id', session.user.id).single()
+        .then(({ data: profile }) => {
+          submitLeaderboardScore({
+            userId: session.user.id,
+            displayName: profile?.name || session.user.user_metadata?.full_name || session.user.email,
+            program: profile?.program || '',
+            campus: profile?.campus || '',
+            percentage,
+          });
+        });
     });
     trackQuizCompleted({
       course: courseName,
