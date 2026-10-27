@@ -3,6 +3,11 @@
  * ─────────────────────────────────────────────────────────────────────
  * Writes a completed quiz result into the Supabase leaderboard tables.
  *
+ * Ranking formula:
+ *   composite_score = (avg_score × 0.7) + LEAST(quizzes × 3, 30)
+ *   - 70% accuracy + 30% volume (volume capped at 10 quizzes = 30pts)
+ *   - Tiebreaker: earliest updated_at (first to achieve the score wins)
+ *
  * Called from Quiz.jsx alongside recordQuizResult() — fire-and-forget,
  * never blocks the results screen. Fails silently on network issues
  * so offline students are unaffected.
@@ -14,32 +19,29 @@ import { supabase } from '../supabase';
 // Get Monday of the current ISO week (YYYY-MM-DD)
 function getWeekStart() {
   const now = new Date();
-  const day = now.getDay(); // 0 = Sun, 1 = Mon …
-  const diff = (day === 0 ? -6 : 1 - day); // shift to Monday
+  const day = now.getDay();
+  const diff = (day === 0 ? -6 : 1 - day);
   const monday = new Date(now);
   monday.setDate(now.getDate() + diff);
   monday.setHours(0, 0, 0, 0);
-  return monday.toISOString().split('T')[0]; // YYYY-MM-DD
+  return monday.toISOString().split('T')[0];
+}
+
+// Composite score: 70% accuracy + 30% volume (volume capped at 30pts)
+function computeComposite(avgScore, quizzes) {
+  return Math.round(((avgScore * 0.7) + Math.min(quizzes * 3, 30)) * 100) / 100;
 }
 
 /**
  * Upsert this quiz result into both leaderboard tables.
- *
- * @param {object} p
- * @param {string}  p.userId      - Supabase auth user ID
- * @param {string}  p.displayName - User's full name (will be masked in UI)
- * @param {string}  p.program     - e.g. "BSc Agronomy"
- * @param {string}  p.campus      - e.g. "Bunda"
- * @param {number}  p.percentage  - 0–100
  */
 export async function submitLeaderboardScore({ userId, displayName, program, campus, percentage }) {
   if (!userId || percentage == null) return;
 
   const weekStart = getWeekStart();
 
-  // ── Weekly table: rolling average + count ─────────────────────────
+  // ── Weekly table ──────────────────────────────────────────────────
   try {
-    // Fetch current weekly row first (for running average calculation)
     const { data: existing } = await supabase
       .from('quiz_scores')
       .select('score, quizzes')
@@ -49,13 +51,15 @@ export async function submitLeaderboardScore({ userId, displayName, program, cam
 
     let newScore, newQuizzes;
     if (existing) {
-      // Update running average: (old_avg * old_n + new_score) / (old_n + 1)
       newQuizzes = existing.quizzes + 1;
       newScore = ((existing.score * existing.quizzes) + percentage) / newQuizzes;
     } else {
       newScore = percentage;
       newQuizzes = 1;
     }
+
+    const roundedScore = Math.round(newScore * 100) / 100;
+    const composite = computeComposite(roundedScore, newQuizzes);
 
     await supabase
       .from('quiz_scores')
@@ -65,16 +69,16 @@ export async function submitLeaderboardScore({ userId, displayName, program, cam
         display_name: displayName || 'Anonymous',
         program: program || '',
         campus: campus || '',
-        score: Math.round(newScore * 100) / 100,
+        score: roundedScore,
         quizzes: newQuizzes,
+        composite_score: composite,
         updated_at: new Date().toISOString(),
       }, { onConflict: 'user_id,week_start' });
   } catch (err) {
-    // Non-fatal — leaderboard is supplementary
     console.warn('Leaderboard weekly upsert failed (non-fatal):', err?.message);
   }
 
-  // ── All-time table: same rolling average ──────────────────────────
+  // ── All-time table ────────────────────────────────────────────────
   try {
     const { data: atExisting } = await supabase
       .from('quiz_scores_alltime')
@@ -91,6 +95,9 @@ export async function submitLeaderboardScore({ userId, displayName, program, cam
       atQuizzes = 1;
     }
 
+    const roundedAtScore = Math.round(atScore * 100) / 100;
+    const atComposite = computeComposite(roundedAtScore, atQuizzes);
+
     await supabase
       .from('quiz_scores_alltime')
       .upsert({
@@ -98,8 +105,9 @@ export async function submitLeaderboardScore({ userId, displayName, program, cam
         display_name: displayName || 'Anonymous',
         program: program || '',
         campus: campus || '',
-        score: Math.round(atScore * 100) / 100,
+        score: roundedAtScore,
         quizzes: atQuizzes,
+        composite_score: atComposite,
         updated_at: new Date().toISOString(),
       }, { onConflict: 'user_id' });
   } catch (err) {

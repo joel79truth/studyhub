@@ -140,10 +140,11 @@ function LeaderRow({ rank, entry, isCurrentUser }) {
       {/* Score + quizzes */}
       <div style={{ textAlign: 'right', flexShrink: 0 }}>
         <div style={{ fontSize: 16, fontWeight: 800, color: meta ? meta.color : C.text }}>
-          {entry.score}%
+          {entry.composite_score ?? entry.score}
+          <span style={{ fontSize: 10, fontWeight: 500, color: C.textMuted, marginLeft: 2 }}>pts</span>
         </div>
         <div style={{ fontSize: 10, color: C.textMuted, marginTop: 1 }}>
-          {entry.quizzes} quiz{entry.quizzes !== 1 ? 'zes' : ''}
+          avg {entry.score}% · {entry.quizzes} quiz{entry.quizzes !== 1 ? 'zes' : ''}
         </div>
       </div>
     </div>
@@ -188,8 +189,9 @@ export default function Leaderboard({ userId, userProgram, compact = false }) {
 
       let query = supabase
         .from('quiz_scores')
-        .select('user_id, display_name, program, campus, score, quizzes, updated_at')
-        .order('score', { ascending: false })
+        .select('user_id, display_name, program, campus, score, quizzes, composite_score, updated_at')
+        .order('composite_score', { ascending: false })
+        .order('updated_at', { ascending: true })
         .limit(compact ? 5 : 10);
 
       if (activeTab === 0) {
@@ -198,13 +200,13 @@ export default function Leaderboard({ userId, userProgram, compact = false }) {
       } else if (activeTab === 2 && userProgram) {
         // My Program
         query = query.eq('program', userProgram).gte('week_start', from.split('T')[0]);
-      }
-      // Tab 1 = All Time — no date filter, uses all_time_score column
-      if (activeTab === 1) {
+      } else if (activeTab === 1) {
+        // Tab 1 = All Time — no date filter
         query = supabase
           .from('quiz_scores_alltime')
-          .select('user_id, display_name, program, campus, score, quizzes')
-          .order('score', { ascending: false })
+          .select('user_id, display_name, program, campus, score, quizzes, composite_score')
+          .order('composite_score', { ascending: false })
+          .order('updated_at', { ascending: true })
           .limit(compact ? 5 : 10);
       }
 
