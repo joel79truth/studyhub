@@ -94,6 +94,27 @@ export async function deleteDownload(fileId) {
   }
 }
 
+export async function getAllDownloads() {
+  const db = await getDb();
+  if (!db) return [];
+  try {
+    const records = (await db.getAll(STORE)) || [];
+    return records.map(r => ({
+      id: r.fileId,
+      filename: r.filename || 'Document',
+      course_name: r.course || 'Course Note',
+      course: r.course,
+      size: r.size,
+      downloadedAt: r.downloadedAt,
+      fileType: r.fileType || 'pdf',
+      storage_type: 'offline',
+    }));
+  } catch (err) {
+    console.warn('Failed to get all downloads:', err);
+    return [];
+  }
+}
+
 export async function listDownloadIds() {
   const db = await getDb();
   if (!db) return [];

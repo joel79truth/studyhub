@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabase';
 import { useQuery } from '@tanstack/react-query';
 import { useIsDownloaded, useDownloadProgress, useDownloadManager } from '../hooks/useDownloadManager';
+import { getAllDownloads } from '../utils/downloadStore';
 import PDFThumbnail from '../components/PDFThumbnail';
 import OfflineCoursePackModal from '../components/OfflineCoursePackModal';
 import { DownloadCloud } from 'lucide-react';
@@ -705,7 +706,7 @@ export default function Programs() {
   const STORAGE_KEY = 'programs_page_state';
   const getInitialState = () => {
     try {
-      const stored = sessionStorage.getItem(STORAGE_KEY);
+      const stored = localStorage.getItem(STORAGE_KEY) || sessionStorage.getItem(STORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored);
         if (['courses', 'files', 'allPrograms'].includes(parsed.viewMode)) {
@@ -729,7 +730,7 @@ export default function Programs() {
   });
 
   useEffect(() => {
-    sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ viewMode, selectedCourse, searchQuery }));
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ viewMode, selectedCourse, searchQuery })); } catch {}
   }, [viewMode, selectedCourse, searchQuery]);
 
   const { data: profile, isLoading: profileLoading } = useQuery({
@@ -739,7 +740,7 @@ export default function Programs() {
     gcTime: 10 * 60 * 1000,
     initialData: () => {
       try {
-        const cached = sessionStorage.getItem('profileCache');
+        const cached = localStorage.getItem('profileCache');
         return cached ? JSON.parse(cached) : undefined;
       } catch { return undefined; }
     },
@@ -747,7 +748,7 @@ export default function Programs() {
 
   useEffect(() => {
     if (profile) {
-      try { sessionStorage.setItem('profileCache', JSON.stringify(profile)); } catch {}
+      try { localStorage.setItem('profileCache', JSON.stringify(profile)); } catch {}
     }
   }, [profile]);
 
@@ -765,7 +766,7 @@ export default function Programs() {
     gcTime: 10 * 60 * 1000,
     initialData: () => {
       try {
-        const cached = sessionStorage.getItem('userNotesCache');
+        const cached = localStorage.getItem('userNotesCache');
         if (!cached) return undefined;
         const parsed = JSON.parse(cached);
         if (parsed.program === userProgram && parsed.semester === userSemester) {
@@ -779,7 +780,7 @@ export default function Programs() {
   useEffect(() => {
     if (!userProgram || !userSemester) return;
     try {
-      sessionStorage.setItem('userNotesCache', JSON.stringify({
+      localStorage.setItem('userNotesCache', JSON.stringify({
         program: userProgram, semester: userSemester, data: userNotes,
       }));
     } catch {}

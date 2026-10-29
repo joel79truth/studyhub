@@ -128,6 +128,22 @@ const UserAvatar = memo(({ src, initials = 'U', size = 8 }) => {
 export const AppShell = memo(function AppShell() {
   const navigate = useNavigate();
   const location = useLocation();
+  const isOnline = useOnlineStatus();
+  const [wasOffline, setWasOffline] = useState(false);
+  const [showReconnected, setShowReconnected] = useState(false);
+
+  useEffect(() => {
+    if (!isOnline) {
+      setWasOffline(true);
+    } else if (wasOffline) {
+      setShowReconnected(true);
+      const timer = setTimeout(() => {
+        setShowReconnected(false);
+        setWasOffline(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [isOnline, wasOffline]);
 
   // Tablet drawer expansion state (768–1023px)
   const [tabletExpanded, setTabletExpanded] = useState(false);
@@ -369,6 +385,17 @@ export const AppShell = memo(function AppShell() {
 
       {/* ─── MAIN CONTENT VIEWPORT ─── */}
       <div className="flex-1 flex flex-col min-w-0 h-full overflow-y-auto relative">
+        {!isOnline && (
+          <div className="bg-amber-600 text-white text-[11.5px] font-semibold py-1.5 px-3 text-center flex items-center justify-center gap-1.5 select-none shadow-sm z-30 flex-shrink-0">
+            <span className="w-2 h-2 rounded-full bg-amber-200 animate-pulse" />
+            <span>Offline Mode &bull; Your saved notes, quizzes &amp; timetable are ready</span>
+          </div>
+        )}
+        {showReconnected && (
+          <div className="bg-emerald-600 text-white text-[11.5px] font-semibold py-1.5 px-3 text-center flex items-center justify-center gap-1.5 select-none shadow-sm z-30 flex-shrink-0">
+            <span>&bull; Connection restored</span>
+          </div>
+        )}
         <Outlet />
 
         {/* ─── MOBILE BOTTOM NAV (<768px ONLY) ─── */}

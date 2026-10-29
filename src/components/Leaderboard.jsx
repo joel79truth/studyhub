@@ -180,6 +180,7 @@ export default function Leaderboard({ userId, userProgram, compact = false }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [totalParticipants, setTotalParticipants] = useState(0);
+  const [isOfflineSnapshot, setIsOfflineSnapshot] = useState(false);
 
   const fetchLeaderboard = useCallback(async () => {
     setLoading(true);
@@ -214,6 +215,14 @@ export default function Leaderboard({ userId, userProgram, compact = false }) {
       if (qErr) throw qErr;
 
       setRows(data || []);
+      setIsOfflineSnapshot(false);
+      try {
+        localStorage.setItem('sh_leaderboard_' + activeTab, JSON.stringify({
+          rows: data || [],
+          count,
+          cachedAt: Date.now(),
+        }));
+      } catch {}
 
       // Find current user rank
       if (userId && data) {
@@ -240,8 +249,21 @@ export default function Leaderboard({ userId, userProgram, compact = false }) {
       setTotalParticipants(count || 0);
 
     } catch (err) {
-      console.error('Leaderboard fetch error:', err);
-      setError('Could not load leaderboard right now.');
+      console.warn('Leaderboard fetch failed, checking offline cache:', err);
+      try {
+        const cached = localStorage.getItem('sh_leaderboard_' + activeTab);
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          if (parsed.rows && parsed.rows.length > 0) {
+            setRows(parsed.rows);
+            setTotalParticipants(parsed.count || parsed.rows.length);
+            setIsOfflineSnapshot(true);
+            setError(null);
+            return;
+          }
+        }
+      } catch {}
+      setError(!navigator.onLine ? 'You are offline with no saved leaderboard yet.' : 'Could not load leaderboard right now.');
     } finally {
       setLoading(false);
     }
@@ -257,6 +279,14 @@ export default function Leaderboard({ userId, userProgram, compact = false }) {
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <Trophy size={20} color={C.gold} />
           <span style={{ fontSize: 16, fontWeight: 700, color: C.text }}>Leaderboard</span>
+          {isOfflineSnapshot && (
+            <span style={{
+              fontSize: 10, color: '#d97706', background: '#fef3c7',
+              borderRadius: 20, padding: '2px 8px', fontWeight: 600,
+            }}>
+              ⚡ Offline Snapshot
+            </span>
+          )}
           {totalParticipants > 0 && (
             <span style={{
               fontSize: 11, color: C.textMuted, background: '#f1f5f9',

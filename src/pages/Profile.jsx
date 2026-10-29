@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef, memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabase';
+import { getOfflineSessionSnapshot } from '../lib/authGuard';
 import {
   ArrowLeft,
   User,
@@ -34,7 +35,7 @@ const PROFILE_CACHE_KEY = 'studyhub_full_profile_cache';
 
 const readProfileCache = () => {
   try {
-    const raw = sessionStorage.getItem(PROFILE_CACHE_KEY);
+    const raw = localStorage.getItem(PROFILE_CACHE_KEY);
     return raw ? JSON.parse(raw) : null;
   } catch {
     return null;
@@ -43,7 +44,7 @@ const readProfileCache = () => {
 
 const writeProfileCache = (data) => {
   try {
-    sessionStorage.setItem(PROFILE_CACHE_KEY, JSON.stringify(data));
+    localStorage.setItem(PROFILE_CACHE_KEY, JSON.stringify(data));
   } catch {}
 };
 
@@ -536,14 +537,27 @@ export default function Profile() {
   useEffect(() => {
     let mounted = true;
     const initAuth = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session?.user) {
-        try { sessionStorage.removeItem(PROFILE_CACHE_KEY); } catch {}
-        navigate('/login');
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (session?.user) {
+          if (mounted) setUser(session.user);
+          return;
+        }
+      } catch (e) {
+        console.warn('Session check failed:', e);
+      }
+
+      // Offline fallback: check offline session snapshot
+      const offlineSnap = getOfflineSessionSnapshot();
+      if (offlineSnap?.user) {
+        if (mounted) setUser(offlineSnap.user);
         return;
       }
-      if (mounted) {
-        setUser(session.user);
+
+      // Only redirect to login if genuinely not logged in AND online
+      if (navigator.onLine) {
+        try { localStorage.removeItem(PROFILE_CACHE_KEY); } catch {}
+        navigate('/login');
       }
     };
 
@@ -565,6 +579,16 @@ export default function Profile() {
     if (!user) return;
 
     const loadData = async () => {
+      if (!navigator.onLine) {
+        const c = readProfileCache();
+        if (c?.profile) {
+          setProfile(c.profile);
+          if (c.files) setFiles(c.files);
+        }
+        setLoading(false);
+        return;
+      }
+
       try {
         setLoading(true);
 
