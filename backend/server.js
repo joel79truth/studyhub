@@ -1730,16 +1730,24 @@ async function notifyAdminsOfRequest({ topic, course, program, semester, email, 
     if (!tokenList.length) return;
 
     const cleanProgram = (program || '').trim();
+    const cleanCourse = (course || '').trim();
+    const cleanSem = semester ? String(semester).trim() : '1';
+    const notifTitle = `📝 New Request: ${topic}`;
+    const notifBody = `${cleanProgram || 'General'} • Semester ${cleanSem}\nCourse: ${cleanCourse || 'General'}`;
+    const reqUrl = '/Request?program=' + encodeURIComponent(cleanProgram) + '&course=' + encodeURIComponent(cleanCourse) + '&semester=' + cleanSem + '&topic=' + encodeURIComponent(topic || '');
+
     const message = {
       tokens: tokenList,
       notification: {
-        title: '📝 New Request: ' + topic,
-        body: course + ' - ' + (cleanProgram || 'General') + ' Sem ' + semester,
+        title: notifTitle,
+        body: notifBody,
         imageUrl: 'https://studyhub-backend-opdd.onrender.com/icons/icon-192x192.png',
       },
       android: {
         priority: 'high',
         notification: {
+          title: notifTitle,
+          body: notifBody,
           icon: 'ic_stat_studyhub',
           color: '#2563eb',
           sound: 'default',
@@ -1754,10 +1762,20 @@ async function notifyAdminsOfRequest({ topic, course, program, semester, email, 
       data: {
         type: 'request',
         topic: String(topic || ''),
-        course: String(course || ''),
+        course: String(cleanCourse),
         program: cleanProgram,
-        semester: String(semester),
-        url: '/Request?program=' + encodeURIComponent(cleanProgram) + '&course=' + encodeURIComponent(course || '') + '&semester=' + semester + '&topic=' + encodeURIComponent(topic || ''),
+        semester: String(cleanSem),
+        url: reqUrl,
+      },
+      webpush: {
+        notification: {
+          title: notifTitle,
+          body: notifBody,
+          icon: 'https://studyhub-backend-opdd.onrender.com/icons/icon-192x192.png',
+        },
+        fcmOptions: {
+          link: reqUrl,
+        },
       },
     };
     const response = await admin.messaging().sendEachForMulticast(message);
@@ -1791,21 +1809,20 @@ async function notifyUploadToAllUsers({ type, uploaderName, uploaderUid, filenam
     const cleanFilename = (filename || '').trim();
 
     let notificationTitle = 'StudyHub';
-    let notificationText = '';
-
     if (type === 'Notes') {
-      notificationTitle = 'New Notes Uploaded';
-      notificationText = `New notes uploaded for : ${cleanProgram || 'All Programs'}, ${cleanCourse || 'General'}, Semester ${cleanSem}` + (cleanFilename ? `\nFile: ${cleanFilename}` : '');
+      notificationTitle = cleanCourse ? `📚 New Notes: ${cleanCourse}` : '📚 New Notes Uploaded';
     } else if (type === 'Past paper') {
-      notificationTitle = 'New Past Paper Uploaded';
-      notificationText = `New past paper uploaded for : ${cleanProgram || 'All Programs'}, ${cleanCourse || 'General'}, Semester ${cleanSem}` + (cleanFilename ? `\nFile: ${cleanFilename}` : '');
+      notificationTitle = cleanCourse ? `📝 New Past Paper: ${cleanCourse}` : '📝 New Past Paper Uploaded';
     } else if (type === 'Tutorial') {
-      notificationTitle = 'New Tutorial Uploaded';
-      notificationText = `New tutorial uploaded for : ${cleanProgram || 'All Programs'}, ${cleanCourse || 'General'}, Semester ${cleanSem}` + (cleanFilename ? `\nFile: ${cleanFilename}` : '');
+      notificationTitle = cleanCourse ? `🎥 New Tutorial: ${cleanCourse}` : '🎥 New Tutorial Uploaded';
     } else {
-      const formattedUploader = formatUploaderName(uploaderName) || 'a student';
-      notificationText = type + ' uploaded by ' + formattedUploader;
+      notificationTitle = cleanCourse ? `📁 New ${type}: ${cleanCourse}` : `📁 New ${type} Uploaded`;
     }
+
+    const progLabel = cleanProgram || 'All Programs';
+    const semLabel = `Semester ${cleanSem}`;
+    const fileLabel = cleanFilename ? `\nFile: ${cleanFilename}` : '';
+    const notificationText = `${progLabel} • ${semLabel}${fileLabel}`;
 
     let targetUrl = '/';
     if (type === 'Tutorial') targetUrl = '/tutorials';
@@ -1828,6 +1845,8 @@ async function notifyUploadToAllUsers({ type, uploaderName, uploaderUid, filenam
       android: {
         priority: 'high',
         notification: {
+          title: notificationTitle,
+          body: notificationText,
           icon: 'ic_stat_studyhub',
           color: '#2563eb',
           sound: 'default',
@@ -1852,19 +1871,17 @@ async function notifyUploadToAllUsers({ type, uploaderName, uploaderUid, filenam
         url: targetUrl,
         id: String(id || ''),
       },
-      ...(imageUrl ? {
-        webpush: {
-          notification: {
-            title: notificationTitle,
-            body: notificationText,
-            image: imageUrl,
-            icon: '/icons/icon-192x192.png',
-          },
-          fcmOptions: {
-            link: targetUrl,
-          },
+      webpush: {
+        notification: {
+          title: notificationTitle,
+          body: notificationText,
+          icon: '/icons/icon-192x192.png',
+          ...(imageUrl ? { image: imageUrl } : {}),
         },
-      } : {}),
+        fcmOptions: {
+          link: targetUrl,
+        },
+      },
     };
     const response = await admin.messaging().sendEachForMulticast(message);
     const invalid = [];
@@ -2043,16 +2060,24 @@ async function sendNotificationToProgram(program, { topic, course, semester }) {
   const tokenList = [...new Set(tokens.map(t => t.token).filter(Boolean))];
   if (!tokenList.length) return;
 
+  const cleanCourse = (course || '').trim();
+  const cleanSem = semester ? String(semester).trim() : '1';
+  const notifTitle = `📝 New Request: ${topic}`;
+  const notifBody = `${cleanProgram || 'General'} • Semester ${cleanSem}\nCourse: ${cleanCourse || 'General'}`;
+  const targetUrl = `/Request?program=${encodeURIComponent(cleanProgram)}&course=${encodeURIComponent(cleanCourse)}&semester=${cleanSem}&topic=${encodeURIComponent(topic)}`;
+
   const message = {
     tokens: tokenList,
     notification: {
-      title: `📝 New Request: ${topic}`,
-      body: `${course} - ${cleanProgram || 'General'} Sem ${semester}`,
+      title: notifTitle,
+      body: notifBody,
       imageUrl: 'https://studyhub-backend-opdd.onrender.com/icons/icon-192x192.png',
     },
     android: {
       priority: 'high',
       notification: {
+        title: notifTitle,
+        body: notifBody,
         icon: 'ic_stat_studyhub',
         color: '#064e3b',
         sound: 'default',
@@ -2067,10 +2092,20 @@ async function sendNotificationToProgram(program, { topic, course, semester }) {
     data: {
       type: 'request',
       topic,
-      course,
+      course: cleanCourse,
       program: cleanProgram,
-      semester: String(semester),
-      url: `/Request?program=${encodeURIComponent(cleanProgram)}&course=${encodeURIComponent(course)}&semester=${semester}&topic=${encodeURIComponent(topic)}`,
+      semester: String(cleanSem),
+      url: targetUrl,
+    },
+    webpush: {
+      notification: {
+        title: notifTitle,
+        body: notifBody,
+        icon: 'https://studyhub-backend-opdd.onrender.com/icons/icon-192x192.png',
+      },
+      fcmOptions: {
+        link: targetUrl,
+      },
     },
   };
   const response = await admin.messaging().sendEachForMulticast(message);
@@ -2110,8 +2145,11 @@ async function notifyNewNoteUploaded({ program, courseName, filename, semester, 
     const cleanSem = semester ? String(semester).trim() : '1';
     const cleanFilename = (filename || '').trim();
 
-    const notificationTitle = 'New Notes Uploaded';
-    const notificationText = `New notes uploaded for : ${cleanProgram || 'General'}, ${cleanCourse || 'General'}, Semester ${cleanSem}` + (cleanFilename ? `\nFile: ${cleanFilename}` : '');
+    const notificationTitle = cleanCourse ? `📚 New Notes: ${cleanCourse}` : '📚 New Notes Uploaded';
+    const progLabel = cleanProgram || 'All Programs';
+    const semLabel = `Semester ${cleanSem}`;
+    const fileLabel = cleanFilename ? `\nFile: ${cleanFilename}` : '';
+    const notificationText = `${progLabel} • ${semLabel}${fileLabel}`;
 
     const targetUrl = `/viewer?fileId=${encodeURIComponent(fileId || '')}`;
 
@@ -2125,6 +2163,8 @@ async function notifyNewNoteUploaded({ program, courseName, filename, semester, 
       android: {
         priority: 'high',
         notification: {
+          title: notificationTitle,
+          body: notificationText,
           icon: 'ic_stat_studyhub',
           color: '#2563eb',
           sound: 'default',
@@ -2148,19 +2188,17 @@ async function notifyNewNoteUploaded({ program, courseName, filename, semester, 
         ...(imageUrl ? { imageUrl: String(imageUrl) } : {}),
         url: targetUrl,
       },
-      ...(imageUrl ? {
-        webpush: {
-          notification: {
-            title: notificationTitle,
-            body: notificationText,
-            image: imageUrl,
-            icon: '/icons/icon-192x192.png',
-          },
-          fcmOptions: {
-            link: targetUrl,
-          },
+      webpush: {
+        notification: {
+          title: notificationTitle,
+          body: notificationText,
+          icon: '/icons/icon-192x192.png',
+          ...(imageUrl ? { image: imageUrl } : {}),
         },
-      } : {}),
+        fcmOptions: {
+          link: targetUrl,
+        },
+      },
     };
     const response = await admin.messaging().sendEachForMulticast(message);
     const invalid = [];
@@ -2192,8 +2230,8 @@ if (typeof storageUpload.setNoteUploadedCallback === 'function') {
   });
 }
 
-async function notifyNewQuestions(programName, courseName, courseId, extractedCount, uploaderName) {
-  console.log('[notifyNewQuestions] called with:', { programName: JSON.stringify(programName), courseName, courseId, extractedCount, uploaderName });
+async function notifyNewQuestions(programName, courseName, courseId, extractedCount, uploaderName, semester) {
+  console.log('[notifyNewQuestions] called with:', { programName: JSON.stringify(programName), courseName, courseId, extractedCount, uploaderName, semester });
 
   if (!extractedCount || extractedCount <= 0) {
     console.log('[notifyNewQuestions] skipped — extractedCount is 0 or falsy');
@@ -2201,6 +2239,8 @@ async function notifyNewQuestions(programName, courseName, courseId, extractedCo
   }
 
   const cleanProgram = (programName || '').trim();
+  const cleanCourse = (courseName || '').trim();
+  const cleanSem = semester ? String(semester).trim() : '1';
   const isBasics = !cleanProgram || /basic/i.test(cleanProgram);
 
   let tokensQuery = supabaseAdmin.from('fcm_tokens').select('token, program');
@@ -2219,18 +2259,22 @@ async function notifyNewQuestions(programName, courseName, courseId, extractedCo
   const tokenList = [...new Set(tokens.map(t => t.token).filter(Boolean))];
   if (!tokenList.length) return;
 
-  const uploaderLabel = uploaderName ? ` by ${formatUploaderName(uploaderName)}` : '';
+  const notificationTitle = `🎯 New Quiz: ${cleanCourse || 'Practice Test'}`;
+  const notificationBody = `${cleanProgram || 'All Programs'} • Semester ${cleanSem}\n${extractedCount} new question${extractedCount === 1 ? '' : 's'} added — tap to practice!`;
+  const targetUrl = `/quiz?courseId=${encodeURIComponent(courseId || '')}`;
 
   const message = {
     tokens: tokenList,
     notification: {
-      title: `🎯 New Quiz Available: ${courseName}`,
-      body: `${extractedCount} new question${extractedCount === 1 ? '' : 's'} added${uploaderLabel} — tap to practice.`,
+      title: notificationTitle,
+      body: notificationBody,
       imageUrl: 'https://studyhub-backend-opdd.onrender.com/icons/icon-192x192.png',
     },
     android: {
       priority: 'high',
       notification: {
+        title: notificationTitle,
+        body: notificationBody,
         icon: 'ic_stat_studyhub',
         color: '#064e3b',
         sound: 'default',
@@ -2244,10 +2288,23 @@ async function notifyNewQuestions(programName, courseName, courseId, extractedCo
     },
     data: {
       type: 'new_questions',
+      title: notificationTitle,
+      body: notificationBody,
       program: cleanProgram,
-      course: courseName,
+      course: cleanCourse,
+      semester: cleanSem,
       courseId: String(courseId || ''),
-      url: `/quiz?courseId=${encodeURIComponent(courseId || '')}`,
+      url: targetUrl,
+    },
+    webpush: {
+      notification: {
+        title: notificationTitle,
+        body: notificationBody,
+        icon: 'https://studyhub-backend-opdd.onrender.com/icons/icon-192x192.png',
+      },
+      fcmOptions: {
+        link: targetUrl,
+      },
     },
   };
   const response = await admin.messaging().sendEachForMulticast(message);
@@ -2823,7 +2880,7 @@ app.post('/api/exam/batch-upload-past-papers', requireAdmin, async (req, res) =>
     const results = await processInBatches(paperIds, 2, async (rawPaperId) => {
       const { data: paperRecord, error: paperErr } = await supabaseAdmin
         .from('past_paper')
-        .select('course_id, course, program_id')
+        .select('course_id, course, program_id, semester')
         .eq('id', rawPaperId)
         .maybeSingle();
       if (paperErr) throw paperErr;
@@ -2862,7 +2919,7 @@ app.post('/api/exam/batch-upload-past-papers', requireAdmin, async (req, res) =>
 
       return {
   success: true, paper_id: paperId, extracted, flagged_for_review: flaggedForReview,
-  course_id: paperRecord.course_id, course_name: paperRecord.course, program_id: paperRecord.program_id,
+  course_id: paperRecord.course_id, course_name: paperRecord.course, program_id: paperRecord.program_id, semester: paperRecord.semester,
 };
     });
 
@@ -2870,7 +2927,7 @@ app.post('/api/exam/batch-upload-past-papers', requireAdmin, async (req, res) =>
     for (const r of results) {
       if (r.success && r.extracted > 0) {
         if (!courseTotals[r.course_id]) {
-          courseTotals[r.course_id] = { extracted: 0, course_name: r.course_name, program_id: r.program_id };
+          courseTotals[r.course_id] = { extracted: 0, course_name: r.course_name, program_id: r.program_id, semester: r.semester };
         }
         courseTotals[r.course_id].extracted += r.extracted;
       }
@@ -2882,7 +2939,7 @@ app.post('/api/exam/batch-upload-past-papers', requireAdmin, async (req, res) =>
       const programNameById = Object.fromEntries((programsData || []).map(p => [p.id, p.name]));
       for (const [courseId, agg] of Object.entries(courseTotals)) {
         const programName = programNameById[agg.program_id];
-        if (programName) notifyNewQuestions(programName, agg.course_name, courseId, agg.extracted).catch(console.error);
+        if (programName) notifyNewQuestions(programName, agg.course_name, courseId, agg.extracted, null, agg.semester).catch(console.error);
       }
     }
 
