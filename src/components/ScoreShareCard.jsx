@@ -113,7 +113,7 @@ export default function ScoreShareCard({
     const msg = encodeURIComponent(
       `🎓 I just scored ${percentage}% on *${subjectName}* using StudyHub LUANAR!\n\n` +
       `📚 Free past papers, AI tutor, practice quizzes & notes — all in one app.\n\n` +
-      `Get it 👉 https://studyhub-luanar.web.app`
+      `Get it 👉 https://studyhub-backend-opdd.onrender.com`
     );
     window.open(`https://wa.me/?text=${msg}`, '_blank', 'noopener,noreferrer');
     setTimeout(() => setSharing(false), 2000);
@@ -225,7 +225,7 @@ export default function ScoreShareCard({
           marginTop: 18, textAlign: 'center',
           fontSize: 11, opacity: 0.55, letterSpacing: '0.05em',
         }}>
-          studyhub-luanar.web.app — Free for all LUANAR students
+          studyhub-backend-opdd.onrender.com — Free for all LUANAR students
         </div>
       </div>
 

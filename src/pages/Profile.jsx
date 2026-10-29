@@ -1121,7 +1121,7 @@ export default function Profile() {
         <div className="pt-2">
           {(() => {
             const msg = encodeURIComponent(
-              `🎓 Hey! I'm using StudyHub LUANAR for exam prep — past papers, AI tutor, notes & quizzes, all free.\n\nCheck it out 👉 https://studyhub-luanar.web.app`
+              `🎓 Hey! I'm using StudyHub LUANAR for exam prep — past papers, AI tutor, notes & quizzes, all free.\n\nCheck it out 👉 https://studyhub-backend-opdd.onrender.com`
             );
             return (
               <a
