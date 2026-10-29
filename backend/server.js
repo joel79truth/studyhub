@@ -1822,7 +1822,8 @@ async function notifyUploadToAllUsers({ type, uploaderName, uploaderUid, filenam
     const progLabel = cleanProgram || 'All Programs';
     const semLabel = `Semester ${cleanSem}`;
     const fileLabel = cleanFilename ? `\nFile: ${cleanFilename}` : '';
-    const notificationText = `${progLabel} • ${semLabel}${fileLabel}`;
+    const uploaderLabel = uploaderName ? `\nUploaded by: ${formatUploaderName(uploaderName)}` : '';
+    const notificationText = `${progLabel} • ${semLabel}${fileLabel}${uploaderLabel}`;
 
     let targetUrl = '/';
     if (type === 'Tutorial') targetUrl = '/tutorials';
@@ -2149,7 +2150,8 @@ async function notifyNewNoteUploaded({ program, courseName, filename, semester, 
     const progLabel = cleanProgram || 'All Programs';
     const semLabel = `Semester ${cleanSem}`;
     const fileLabel = cleanFilename ? `\nFile: ${cleanFilename}` : '';
-    const notificationText = `${progLabel} • ${semLabel}${fileLabel}`;
+    const uploaderLabel = uploaderName ? `\nUploaded by: ${formatUploaderName(uploaderName)}` : '';
+    const notificationText = `${progLabel} • ${semLabel}${fileLabel}${uploaderLabel}`;
 
     const targetUrl = `/viewer?fileId=${encodeURIComponent(fileId || '')}`;
 
@@ -2260,7 +2262,8 @@ async function notifyNewQuestions(programName, courseName, courseId, extractedCo
   if (!tokenList.length) return;
 
   const notificationTitle = `🎯 New Quiz: ${cleanCourse || 'Practice Test'}`;
-  const notificationBody = `${cleanProgram || 'All Programs'} • Semester ${cleanSem}\n${extractedCount} new question${extractedCount === 1 ? '' : 's'} added — tap to practice!`;
+  const uploaderSuffix = uploaderName ? ` by ${formatUploaderName(uploaderName)}` : '';
+  const notificationBody = `${cleanProgram || 'All Programs'} • Semester ${cleanSem}\n${extractedCount} new question${extractedCount === 1 ? '' : 's'} added${uploaderSuffix} — tap to practice!`;
   const targetUrl = `/quiz?courseId=${encodeURIComponent(courseId || '')}`;
 
   const message = {
