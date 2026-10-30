@@ -797,6 +797,28 @@ export default function Programs() {
     gcTime: 15 * 60 * 1000,
   });
 
+  const {
+    data: officialPrograms = [],
+    isLoading: officialProgramsLoading,
+  } = useQuery({
+    queryKey: ['officialPrograms'],
+    queryFn: fetchOfficialPrograms,
+    staleTime: 24 * 60 * 60 * 1000,
+    gcTime: 24 * 60 * 60 * 1000,
+    initialData: () => {
+      try {
+        const cached = localStorage.getItem('officialProgramsCache');
+        return cached ? JSON.parse(cached) : undefined;
+      } catch { return undefined; }
+    },
+  });
+
+  useEffect(() => {
+    if (officialPrograms && officialPrograms.length > 0) {
+      try { localStorage.setItem('officialProgramsCache', JSON.stringify(officialPrograms)); } catch {}
+    }
+  }, [officialPrograms]);
+
   const [readFiles, setReadFiles] = useState(() => {
     try { return JSON.parse(localStorage.getItem('readFiles') || '{}'); } catch { return {}; }
   });

@@ -15,9 +15,11 @@ import { Outlet, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import {
   PanelLeftClose,
   PanelLeftOpen,
+  Share2,
 } from 'lucide-react';
 import { supabase } from '../supabase';
 import { useOnlineStatus } from '../hooks/useOnlineStatus';
+import { shareStudyHub } from '../utils/shareApp';
 import { BottomNav } from './BottomNav';
 import {
   PRIMARY_NAV,
@@ -259,6 +261,23 @@ export const AppShell = memo(function AppShell() {
           </NavSection>
         </nav>
 
+        {/* Share StudyHub Button */}
+        <div className="flex-shrink-0 px-3.5 pb-2 pt-1 border-t border-slate-100">
+          <button
+            onClick={() => shareStudyHub()}
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border border-emerald-200/60 bg-emerald-50/70 hover:bg-emerald-100/80 text-emerald-800 transition-all duration-150 text-sm font-semibold select-none cursor-pointer group shadow-2xs"
+            title="Invite a classmate to StudyHub"
+          >
+            <span className="w-8 h-8 rounded-lg bg-[#25D366] text-white flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform shadow-xs">
+              <Share2 size={16} strokeWidth={2.2} />
+            </span>
+            <div className="flex-1 text-left min-w-0">
+              <p className="text-xs font-bold leading-tight text-emerald-950">Share StudyHub</p>
+              <p className="text-[10.5px] text-emerald-600 font-medium leading-tight mt-0.5 truncate">Invite classmates</p>
+            </div>
+          </button>
+        </div>
+
         {/* User profile card at the bottom */}
         <div className="flex-shrink-0 border-t border-slate-100 p-3">
           <button
@@ -311,6 +330,18 @@ export const AppShell = memo(function AppShell() {
             ))}
           </ul>
         </nav>
+
+        {/* Tablet Slim Rail Share Button */}
+        <div className="flex-shrink-0 py-2 border-t border-slate-100 flex justify-center">
+          <button
+            onClick={() => shareStudyHub()}
+            title="Share StudyHub"
+            aria-label="Share StudyHub"
+            className="flex items-center justify-center w-11 h-11 mx-auto rounded-xl text-white bg-[#25D366] hover:bg-[#20ba59] transition-all shadow-xs select-none cursor-pointer hover:scale-105 active:scale-95"
+          >
+            <Share2 size={18} strokeWidth={2.2} />
+          </button>
+        </div>
 
         {/* Profile avatar at the bottom */}
         <div className="flex-shrink-0 border-t border-slate-100 py-3 flex justify-center">
@@ -366,6 +397,23 @@ export const AppShell = memo(function AppShell() {
                 ))}
               </NavSection>
             </nav>
+
+            {/* Share StudyHub Button */}
+            <div className="px-3.5 pb-2 pt-1 border-t border-slate-100 flex-shrink-0">
+              <button
+                onClick={() => { shareStudyHub(); setTabletExpanded(false); }}
+                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border border-emerald-200/60 bg-emerald-50/70 hover:bg-emerald-100/80 text-emerald-800 transition-all duration-150 text-sm font-semibold select-none cursor-pointer group shadow-2xs"
+                title="Invite a classmate to StudyHub"
+              >
+                <span className="w-8 h-8 rounded-lg bg-[#25D366] text-white flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform shadow-xs">
+                  <Share2 size={16} strokeWidth={2.2} />
+                </span>
+                <div className="flex-1 text-left min-w-0">
+                  <p className="text-xs font-bold leading-tight text-emerald-950">Share StudyHub</p>
+                  <p className="text-[10.5px] text-emerald-600 font-medium leading-tight mt-0.5 truncate">Invite classmates</p>
+                </div>
+              </button>
+            </div>
 
             <div className="p-3 border-t border-slate-100 flex-shrink-0">
               <button

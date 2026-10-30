@@ -7,8 +7,9 @@ import AiStudyAssistantCard from '../components/AiCard';
 import Files from '../components/Files';
 import { ensureConsistentSession, getOfflineSessionSnapshot } from '../lib/authGuard';
 import {
-  Target, FileText, TrendingUp, RefreshCw, Flame, ChevronRight, WifiOff,
+  Target, FileText, TrendingUp, RefreshCw, Flame, ChevronRight, WifiOff, Share2,
 } from 'lucide-react';
+import { shareStudyHub } from '../utils/shareApp';
 import {
   getSmartRecommendations,
   getLevelUpSuggestion,
@@ -1443,6 +1444,23 @@ const Home = () => {
             </ul>
           </div>
         </nav>
+
+        {/* Share StudyHub Button */}
+        <div className="px-4 pb-2 pt-1 border-t border-gray-100 flex-shrink-0">
+          <button
+            onClick={() => { shareStudyHub(); setSidebarOpen(false); }}
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border border-emerald-200/60 bg-emerald-50/70 hover:bg-emerald-100/80 text-emerald-800 transition-all duration-150 text-sm font-semibold select-none cursor-pointer group shadow-2xs"
+            title="Invite a classmate to StudyHub"
+          >
+            <span className="w-8 h-8 rounded-lg bg-[#25D366] text-white flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform shadow-xs">
+              <Share2 size={16} strokeWidth={2.2} />
+            </span>
+            <div className="flex-1 text-left min-w-0">
+              <p className="text-xs font-bold leading-tight text-emerald-950">Share StudyHub</p>
+              <p className="text-[10.5px] text-emerald-600 font-medium leading-tight mt-0.5 truncate">Invite classmates</p>
+            </div>
+          </button>
+        </div>
 
         <div className="p-4 border-t border-gray-100">
           <p className="text-[10px] text-gray-300 text-center">© 2026 StudyHub LUANAR</p>

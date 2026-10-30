@@ -47,6 +47,7 @@ import React, {
 } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { supabase } from '../supabase';
+import { getOfflineSessionSnapshot } from '../lib/authGuard';
 import { saveQuizBank, getQuizBank, enqueueSyncItem } from '../lib/storageCore';
 import 'katex/dist/katex.min.css';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
@@ -253,6 +254,27 @@ const readQuizSetupCache = () => {
 };
 const writeQuizSetupCache = (data) => {
   try { localStorage.setItem(QUIZ_SETUP_CACHE_KEY, JSON.stringify(data)); } catch {}
+};
+
+const QUIZ_OFFLINE_STORAGE_PREFIX = 'studyhub_offline_quiz_';
+const saveOfflineQuizQuestions = (cacheKey, courseId, questions) => {
+  try {
+    localStorage.setItem(`${QUIZ_OFFLINE_STORAGE_PREFIX}${cacheKey}`, JSON.stringify(questions));
+    if (courseId) {
+      localStorage.setItem(`${QUIZ_OFFLINE_STORAGE_PREFIX}course_${courseId}`, JSON.stringify(questions));
+    }
+  } catch {}
+};
+const getOfflineQuizFallback = (cacheKey, courseId) => {
+  try {
+    const direct = localStorage.getItem(`${QUIZ_OFFLINE_STORAGE_PREFIX}${cacheKey}`);
+    if (direct) return JSON.parse(direct);
+    if (courseId) {
+      const courseFallback = localStorage.getItem(`${QUIZ_OFFLINE_STORAGE_PREFIX}course_${courseId}`);
+      if (courseFallback) return JSON.parse(courseFallback);
+    }
+  } catch {}
+  return [];
 };
 
 // â”€â”€â”€ FIX (P0): in-progress quiz state â€” localStorage, not sessionStorage â”€â”€â”€
@@ -1031,11 +1053,122 @@ const Quiz = () => {
         setErrorType('settings');
         setError('No courses found for your program and semester. Double-check them in Settings, or check back once your courses are added.');
       }
-        } catch (err) {
+    } catch (err) {
+      // Offline fallback: try reading cached subjects setup
+      const cached = readQuizSetupCache();
+      if (cached?.userId === authUser.id && cached.subjects && Object.keys(cached.subjects).length > 0) {
+        setSubjects(cached.subjects);
+      } else {
+        setError(err.message);
+      }
+    } finally { setLoading(false); }
+  }, []);
+
+  useEffect(() => {
+    let mounted = true;
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (mounted) {
+        const currentUser = session?.user || getOfflineSessionSnapshot();
+        loadUser(currentUser ?? null);
+      }
+    });
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((ev, session) => {
+      if (!mounted) return;
+      if (ev === 'SIGNED_IN' || ev === 'TOKEN_REFRESHED') loadUser(session?.user);
+      if (ev === 'SIGNED_OUT') {
+        setErrorType('generic');
+        setError('You have been signed out.');
+        try { sessionStorage.removeItem(QUIZ_SETUP_CACHE_KEY); } catch {}
+      }
+    });
+    return () => { mounted = false; subscription?.unsubscribe(); };
+  }, [loadUser]);
+
+  useEffect(() => {
+    const saved = readQuizResume();
+    if (saved?.questions?.length > 0) { setPendingResume(saved); setShowResumeModal(true); }
+  }, []);
+
+  useEffect(() => {
+    const tryFlush = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      const token = session?.access_token;
+      if (!token) return;
+      const base = API_BASE_URL;
+      const { flushed } = await flushPendingSubmissions(base, token);
+      if (flushed > 0) addToast(`Synced ${flushed} saved answer${flushed === 1 ? '' : 's'}`, 'success');
+    };
+    tryFlush();
+    window.addEventListener('online', tryFlush);
+    return () => window.removeEventListener('online', tryFlush);
+  }, [addToast]);
+
+  useEffect(() => {
+    if (phase === 'active' && questions.length > 0) {
+      writeQuizResume({ questions, currentIndex, answers, subjectId: currentSubjectId, quizMode });
+    } else {
+      clearQuizResume();
+    }
+  }, [phase, questions, currentIndex, answers, currentSubjectId, quizMode]);
+
+  useEffect(() => {
+    const st = location.state;
+    if (st?.subjectId && subjects[st.subjectId]) {
+      setCurrentSubjectId(st.subjectId);
+      startTransition(() => setScreen('setup'));
+      window.history.replaceState({}, '');
+    }
+  }, [location, subjects]);
+
+  // ── Auth helper ──────────────────────────────────────────
+  const getToken = useCallback(async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    return session?.access_token || null;
+  }, []);
+  const apiBase = API_BASE_URL;
+
+  // ── Fetch questions ──────────────────────────────────────
+  const fetchQuestions = useCallback(async (courseId, mode, count) => {
+    const cacheKey = `${courseId}_${mode}_${count}`;
+    const cached = quizCache.get(cacheKey);
+    const now = Date.now();
+    const CACHE_TTL = 5 * 60 * 1000;
+    if (cached && (now - cached.timestamp < CACHE_TTL)) return cached.data;
+    try {
+      const token = await getToken();
+      if (!token) throw new Error('Not authenticated');
+      const url = `${apiBase}/api/exam/quiz?mode=${mode}&count=${count}&courseId=${courseId}`;
+      const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+      if (!res.ok) throw new Error(await res.text());
+      const data = await res.json();
+      const transformed = data.questions.map(r => {
+        if (r.question_type !== 'mcq') {
+          return {
+            id: r.id, question: r.question || '', question_type: r.question_type || 'mcq',
+            options: [], correct_answer_index: null, answer: r.answer || '',
+            explanation: r.explanation || '', topic: r.topic || 'General', course: r.course || 'Unknown',
+            marks: r.marks || 1, latex_math: r.latex_math || null, smiles: r.smiles || null, image_url: r.image_url || null,
+          };
+        }
+        const rawOptions = [r.option_a, r.option_b, r.option_c, r.option_d].map(o => o || '');
+        const correctRawIndex = ['A', 'B', 'C', 'D'].indexOf((r.answer || '').trim().toUpperCase());
+        const withIndex = rawOptions.map((text, i) => ({ text, wasCorrect: i === correctRawIndex }));
+        const shuffled = shuffle(withIndex);
+        return {
+          id: r.id, question: r.question || '', question_type: 'mcq',
+          options: shuffled.map(o => o.text), correct_answer_index: shuffled.findIndex(o => o.wasCorrect),
+          answer: r.answer || '', explanation: r.explanation || '', topic: r.topic || 'General', course: r.course || 'Unknown',
+          marks: r.marks || 1, latex_math: r.latex_math || null, smiles: r.smiles || null, image_url: r.image_url || null,
+        };
+      });
+      setQuizCacheEntry(cacheKey, { data: transformed, timestamp: now });
+      saveOfflineQuizQuestions(cacheKey, courseId, transformed);
+      return transformed;
+    } catch (err) {
       console.warn('Adaptive quiz network failed, checking offline cache:', err);
       const offlineQuestions = getOfflineQuizFallback(cacheKey, courseId);
       if (offlineQuestions && offlineQuestions.length > 0) {
-        addToast('⚡ Playing saved offline questions  offline mode', 'info');
+        addToast('⚡ Playing saved offline questions — offline mode', 'info');
         return offlineQuestions;
       }
       addToast(navigator.onLine ? 'Could not load quiz. Please try again.' : 'You are offline. Connect once to save quizzes.', 'error');
