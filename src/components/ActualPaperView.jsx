@@ -15,7 +15,7 @@
 
 import React, { useState, useEffect, useRef, useMemo, memo, useCallback } from 'react';
 import * as pdfjs from 'pdfjs-dist';
-import workerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
+import workerUrl from 'pdfjs-dist/legacy/build/pdf.worker.min.mjs?url';
 import { supabase } from '../supabase';
 import {
   MessageCircleQuestion,

@@ -23,6 +23,42 @@
     <meta name="apple-mobile-web-app-title" content="StudyHub" />
     <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
 
+    <!-- Polyfills for Uint8Array.prototype.toHex & Promise.withResolvers (for older Android WebViews & mobile browsers) -->
+    <script>
+      if (typeof Uint8Array !== 'undefined') {
+        if (!Uint8Array.prototype.toHex) {
+          Uint8Array.prototype.toHex = function () {
+            var hex = '';
+            for (var i = 0; i < this.length; i++) {
+              hex += this[i].toString(16).padStart(2, '0');
+            }
+            return hex;
+          };
+        }
+        if (!Uint8Array.fromHex) {
+          Uint8Array.fromHex = function (hex) {
+            if (typeof hex !== 'string') throw new TypeError('Expected a string');
+            if (hex.length % 2 !== 0) throw new RangeError('Expected an even length hex string');
+            var bytes = new Uint8Array(hex.length / 2);
+            for (var i = 0; i < bytes.length; i++) {
+              bytes[i] = parseInt(hex.substr(i * 2, 2), 16);
+            }
+            return bytes;
+          };
+        }
+      }
+      if (typeof Promise !== 'undefined' && !Promise.withResolvers) {
+        Promise.withResolvers = function () {
+          var resolve, reject;
+          var promise = new Promise(function (res, rej) {
+            resolve = res;
+            reject = rej;
+          });
+          return { promise: promise, resolve: resolve, reject: reject };
+        };
+      }
+    </script>
+
     <!-- Google Analytics (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7MKTE9Z1SD"></script>
     <script>

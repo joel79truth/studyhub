@@ -11,7 +11,7 @@
 
 import { useState, useEffect, useRef, memo } from 'react';
 import * as pdfjs from 'pdfjs-dist';
-import workerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
+import workerUrl from 'pdfjs-dist/legacy/build/pdf.worker.min.mjs?url';
 import { FileText } from 'lucide-react';
 
 // Setup pdfjs worker once at module level
