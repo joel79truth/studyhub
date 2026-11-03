@@ -28,6 +28,7 @@ import * as pdfjs from 'pdfjs-dist';
 import workerUrl from 'pdfjs-dist/legacy/build/pdf.worker.min.mjs?url';
 import { supabase } from '../supabase';
 import { saveFileOffline, getOfflineFile, deleteOfflineFile } from '../utils/offlineStorage';
+import { downloadFileToDevice, verifyFileExistsOnDevice } from '../services/deviceDownloadService';
 
 // ─── pdfjs worker ─────────────────────────────────────────────────────────────
 pdfjs.GlobalWorkerOptions.workerSrc = workerUrl;
@@ -716,6 +717,14 @@ export default function Viewer() {
       });
       const blob = await res.blob();
       await saveFileOffline(fileId, blob, { name: filename, fileType, originalUrl: rawUrl });
+
+      // Also save to public Documents/StudyHub so it's accessible in phone's Files app
+      await downloadFileToDevice({
+        fileId,
+        fileName: filename,
+        fileUrl: rawUrl || proxiedUrl,
+      });
+
       setIsOffline(true);
     } catch {
       alert('Could not save file for offline use.');
@@ -975,41 +984,40 @@ export default function Viewer() {
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
-          <PopButton
-            onClick={handleToggleOffline}
-            disabled={isSaving}
-            style={{
-              display: 'flex', alignItems: 'center', gap: 6,
-              padding: '6px 13px', borderRadius: 20,
-              border: `1px solid ${isOffline ? '#bbf7d0' : '#e2e8f0'}`,
-              background: isOffline ? '#f0fdf4' : '#f8fafc',
-              fontSize: 11.5, fontWeight: 600,
-              color: isOffline ? '#16a34a' : '#6b7280',
-            }}
-          >
-            {isSaving
-              ? <Loader2 size={13} style={{ animation: 'spin 1s linear infinite' }} />
-              : isOffline
-              ? <CheckCircle size={13} color="#16a34a" />
-              : <Download size={13} />
-            }
-            {isSaving ? 'Saving…' : isOffline ? 'Saved' : 'Save Offline'}
-          </PopButton>
-
-          <PopButton
-            onClick={() => setShowLuna(true)}
-            style={{
-              display: 'flex', alignItems: 'center', gap: 8,
-              padding: '8px 18px', borderRadius: 24,
-              background: 'linear-gradient(135deg, #1d4ed8, #3b82f6)',
-              fontSize: 13, fontWeight: 700, color: '#fff',
-              animation: showLuna ? 'none' : 'breathe 2.5s ease-in-out infinite',
-              boxShadow: '0 2px 12px rgba(29,78,216,.35)',
-            }}
-          >
-            <Sparkles size={15} fill="#fff" color="#fff" />
-            Ask Luna
-          </PopButton>
+          {isOffline ? (
+            <span
+              style={{
+                display: 'flex', alignItems: 'center', gap: 6,
+                padding: '6px 13px', borderRadius: 20,
+                border: '1px solid #bbf7d0',
+                background: '#f0fdf4',
+                fontSize: 11.5, fontWeight: 600,
+                color: '#16a34a',
+              }}
+            >
+              <CheckCircle size={13} color="#16a34a" />
+              Downloaded
+            </span>
+          ) : (
+            <PopButton
+              onClick={handleToggleOffline}
+              disabled={isSaving}
+              style={{
+                display: 'flex', alignItems: 'center', gap: 6,
+                padding: '6px 13px', borderRadius: 20,
+                border: '1px solid #e2e8f0',
+                background: '#f8fafc',
+                fontSize: 11.5, fontWeight: 600,
+                color: '#6b7280',
+              }}
+            >
+              {isSaving
+                ? <Loader2 size={13} style={{ animation: 'spin 1s linear infinite' }} />
+                : <Download size={13} />
+              }
+              {isSaving ? 'Saving…' : 'Download'}
+            </PopButton>
+          )}
         </div>
       </header>
 

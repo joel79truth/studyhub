@@ -1,173 +1,180 @@
-// hooks/useDownloadManager.js
+// src/hooks/useDownloadManager.js
 import { useCallback, useSyncExternalStore } from 'react';
 import {
-  putDownload,
-  getDownload,
-  deleteDownload,
-  listDownloadIds,
-  hasRoomFor,
-} from '../utils/downloadStore';
+  downloadFileToDevice,
+  isFileDownloadedSync,
+  getDownloadProgress,
+  getDownloadError,
+  cancelDeviceDownload,
+  removeDownloadedFile,
+  subscribeToDownloads,
+  verifyFileExistsOnDevice,
+  buildNoteFileName,
+  buildPaperFileName,
+} from '../services/deviceDownloadService';
 import { trackNotesDownloaded } from '../lib/analytics';
 
-// Module-level store so every component (list row, viewer, badge) sees
-// the same state instantly without prop-drilling or context.
-const downloadedIds = new Set();
-const progressMap = new Map(); // fileId -> number (0-100) | 'indeterminate'
-const controllers = new Map(); // fileId -> AbortController, so downloads are cancellable
-const listeners = new Set();
-
-const notify = () => listeners.forEach((l) => l());
-const subscribe = (cb) => {
-  listeners.add(cb);
-  return () => listeners.delete(cb);
-};
-
-let hydrated = false;
-let storeUnavailable = false;
-
-async function hydrate() {
-  if (hydrated) return;
-  hydrated = true;
-  try {
-    const ids = await listDownloadIds();
-    ids.forEach((id) => downloadedIds.add(id));
-  } catch (e) {
-    console.warn('Could not hydrate downloads — offline downloads may be unavailable:', e);
-    storeUnavailable = true;
-  }
-  notify();
-}
-hydrate();
-
+/**
+ * Hook to reactively check if a file is already downloaded to the device.
+ * Automatically checks and hides the download button once downloaded.
+ */
 export function useIsDownloaded(fileId) {
-  return useSyncExternalStore(subscribe, () => downloadedIds.has(fileId));
+  return useSyncExternalStore(
+    subscribeToDownloads,
+    () => isFileDownloadedSync(fileId),
+    () => isFileDownloadedSync(fileId)
+  );
 }
 
-// Returns: number (0-100), 'indeterminate' (in progress, size unknown), or null (idle)
+/**
+ * Hook to reactively track download progress (0-100 or null if idle).
+ */
 export function useDownloadProgress(fileId) {
-  return useSyncExternalStore(subscribe, () => progressMap.get(fileId) ?? null);
+  return useSyncExternalStore(
+    subscribeToDownloads,
+    () => getDownloadProgress(fileId),
+    () => null
+  );
+}
+
+/**
+ * Hook to reactively get download error for a file.
+ */
+export function useDownloadError(fileId) {
+  return useSyncExternalStore(
+    subscribeToDownloads,
+    () => getDownloadError(fileId),
+    () => null
+  );
 }
 
 export function useDownloadsAvailable() {
-  return useSyncExternalStore(subscribe, () => !storeUnavailable);
+  return true;
 }
 
 export function useDownloadManager() {
+  /**
+   * Start downloading a single file to public Documents/StudyHub.
+   */
   const startDownload = useCallback(async (file, getUrl, fetchImpl) => {
-    if (storeUnavailable) {
-      return { ok: false, reason: 'unavailable', message: 'Downloads aren\u2019t available on this device.' };
+    if (!file) return { ok: false, message: 'Invalid file provided.' };
+
+    const fileId = file.id || file.fileId || file.paperId || file.pastPaperId;
+    if (!fileId) return { ok: false, message: 'Missing file ID.' };
+
+    let fileUrl = '';
+    if (typeof getUrl === 'function') {
+      try { fileUrl = getUrl(file); } catch {}
     }
-    if (downloadedIds.has(file.id)) {
-      return { ok: true, alreadyDownloaded: true };
-    }
-    if (progressMap.has(file.id)) {
-      // A tap landed while a download from an earlier tap is still running —
-      // ignore it rather than starting a second, duplicate fetch.
-      return { ok: false, reason: 'in_progress' };
+    if (!fileUrl) {
+      fileUrl = file.fileUrl || file.file_url || file.url || file.downloadUrl;
     }
 
-    const controller = new AbortController();
-    controllers.set(file.id, controller);
-    progressMap.set(file.id, 0);
-    notify();
+    if (!fileUrl) {
+      return { ok: false, reason: 'missing_url', message: 'No downloadable link available for this file.' };
+    }
+
+    // Determine clean human-readable name
+    let fileName = file.filename || file.fileName;
+    if (!fileName) {
+      if (file.year || file.course_code || file.paperNumber || file.paperId) {
+        fileName = buildPaperFileName(file, fileUrl);
+      } else {
+        fileName = buildNoteFileName(file);
+      }
+    }
 
     trackNotesDownloaded({
-      filename: file.filename || file.title || file.course_name || 'Document',
-      subject: file.course_name || file.subject || '',
+      filename: fileName,
+      subject: file.course || file.course_name || file.subject || 'StudyHub',
     });
 
-    try {
-      const url = getUrl(file);
-      const res = await fetchImpl(url, { signal: controller.signal });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await downloadFileToDevice({
+      fileId,
+      fileName,
+      fileUrl,
+    });
+  }, []);
 
-      const total = Number(res.headers.get('content-length')) || 0;
-      if (!total) progressMap.set(file.id, 'indeterminate');
+  /**
+   * Download multiple files (e.g. for Notes page).
+   * Runs through the selected files, skipping already downloaded files.
+   * If one file fails, others still complete and the failed ones can be retried.
+   */
+  const downloadMultiple = useCallback(async (fileList = [], { getUrl, onFileComplete, onFileError } = {}) => {
+    if (!Array.isArray(fileList) || fileList.length === 0) {
+      return { total: 0, completed: 0, failed: 0, skipped: 0 };
+    }
 
-      const reader = res.body.getReader();
-      const chunks = [];
-      let received = 0;
+    let completed = 0;
+    let failed = 0;
+    let skipped = 0;
+    const failedItems = [];
 
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        chunks.push(value);
-        received += value.length;
-        progressMap.set(
-          file.id,
-          total ? Math.min(99, Math.round((received / total) * 100)) : 'indeterminate'
-        );
-        notify();
+    for (const item of fileList) {
+      const id = item.id || item.fileId;
+      if (isFileDownloadedSync(id)) {
+        skipped++;
+        continue;
       }
 
-      const blob = new Blob(chunks);
-
-      // Check space before the write, not after — a failed write after
-      // a full download is a worse experience than an upfront warning.
-      const roomOk = await hasRoomFor(blob.size);
-      if (!roomOk) {
-        progressMap.delete(file.id);
-        notify();
-        return {
-          ok: false,
-          reason: 'quota',
-          message: 'Not enough storage on your device. Free up some space and try again.',
-        };
+      let url = '';
+      if (typeof getUrl === 'function') {
+        try { url = getUrl(item); } catch {}
+      }
+      if (!url) {
+        url = item.fileUrl || item.file_url || item.url;
       }
 
-      const result = await putDownload(file.id, blob, {
-        filename: file.filename,
-        course: file.course,
-        fileType: file.filename?.split('.').pop()?.toLowerCase(),
+      if (!url) {
+        failed++;
+        failedItems.push({ item, reason: 'No downloadable URL' });
+        continue;
+      }
+
+      let fileName = item.filename || item.fileName || buildNoteFileName(item);
+      const res = await downloadFileToDevice({
+        fileId: id,
+        fileName,
+        fileUrl: url,
       });
 
-      progressMap.delete(file.id);
-
-      if (!result.ok) {
-        notify();
-        return {
-          ok: false,
-          reason: result.reason,
-          message:
-            result.reason === 'quota'
-              ? 'Not enough storage on your device. Free up some space and try again.'
-              : 'Couldn\u2019t save this file. Please try again.',
-        };
+      if (res.ok) {
+        completed++;
+        if (onFileComplete) onFileComplete(item);
+      } else {
+        failed++;
+        failedItems.push({ item, error: res.message || res.error });
+        if (onFileError) onFileError(item, res);
       }
-
-      downloadedIds.add(file.id);
-      notify();
-      return { ok: true };
-    } catch (err) {
-      progressMap.delete(file.id);
-      notify();
-
-      if (err.name === 'AbortError') {
-        return { ok: false, cancelled: true };
-      }
-
-      const message = !navigator.onLine
-        ? 'You\u2019re offline — connect to the internet and try again.'
-        : `Couldn\u2019t download ${file.filename || 'this file'}. Check your connection and try again.`;
-
-      return { ok: false, reason: 'network', message, error: err.message };
-    } finally {
-      controllers.delete(file.id);
     }
+
+    return {
+      total: fileList.length,
+      completed,
+      failed,
+      skipped,
+      failedItems,
+    };
   }, []);
 
   const cancelDownload = useCallback((fileId) => {
-    controllers.get(fileId)?.abort();
+    cancelDeviceDownload(fileId);
   }, []);
 
   const removeDownload = useCallback(async (fileId) => {
-    const removed = await deleteDownload(fileId);
-    if (removed) {
-      downloadedIds.delete(fileId);
-      notify();
-    }
-    return removed;
+    return await removeDownloadedFile(fileId);
   }, []);
 
-  return { startDownload, cancelDownload, removeDownload };
+  const verifyExistence = useCallback(async (fileId) => {
+    return await verifyFileExistsOnDevice(fileId);
+  }, []);
+
+  return {
+    startDownload,
+    downloadMultiple,
+    cancelDownload,
+    removeDownload,
+    verifyExistence,
+  };
 }

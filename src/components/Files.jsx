@@ -180,9 +180,10 @@ const FileCard = memo(({ file, onPress, onStartDownload, onCancelDownload, onRem
                   <X size={11} />
                 </button>
               ) : isDownloaded ? (
-                <button onClick={handleDownloadTap} className="p-1 text-green-500 hover:text-red-500" title="Downloaded — tap to remove" aria-label={`Remove download of ${file.filename}`}>
-                  <CheckCircle size={14} />
-                </button>
+                <span className="flex items-center gap-1 text-[10px] font-semibold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-100 select-none" title="Downloaded to Documents/StudyHub">
+                  <CheckCircle size={11} className="text-emerald-600" />
+                  <span>Saved</span>
+                </span>
               ) : (
                 <button onClick={handleDownloadTap} className="p-1 text-slate-400 hover:text-blue-600" title="Download for offline use" aria-label={`Download ${file.filename}`}>
                   <Download size={14} />

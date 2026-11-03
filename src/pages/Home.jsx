@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import { supabase } from '../supabase';
 import { useNavigate, Navigate } from 'react-router-dom';
-import AiStudyAssistantCard from '../components/AiCard';
+// AiStudyAssistantCard preserved in ../components/AiCard for future restoration
 import Files from '../components/Files';
 import { ensureConsistentSession, getOfflineSessionSnapshot } from '../lib/authGuard';
 import {
@@ -73,7 +73,7 @@ const STATIC_ACTIVITY_HINTS = [
   { emoji: '🧠', text: 'Practice a quiz', cta: 'Start now', route: '/quiz' },
   { emoji: '📄', text: 'Explore past papers', cta: 'Open', route: '/papers' },
   { emoji: '📈', text: 'Review weak areas', cta: 'See topics', route: '/course' },
-  { emoji: '🤖', text: 'Ask the AI anything', cta: 'Ask now', route: '/AiChat' },
+  { emoji: '📚', text: 'Browse study notes', cta: 'View', route: '/programs' },
   { emoji: '📅', text: 'Check your timetable', cta: 'View', route: '/timetable' },
 ];
 
@@ -1299,10 +1299,6 @@ const Home = () => {
         style={{ WebkitOverflowScrolling: 'touch', overscrollBehaviorY: 'contain' }}
       >
         <div className="px-4 lg:px-6 space-y-4 pt-2 pb-32">
-
-          <div className="ed-fade-up" style={{ animationDelay: '0.04s' }}>
-            <AiStudyAssistantCard onAskClick={() => navigate('/AiChat')} description={getPersonalizedDescription} />
-          </div>
 
           <div className="grid grid-cols-2 gap-3 ed-fade-up" style={{ animationDelay: '0.09s' }}>
             <ExamCountdownCard

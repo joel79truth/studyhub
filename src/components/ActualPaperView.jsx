@@ -27,8 +27,15 @@ import {
   Loader2,
   X,
   Download,
+  Check,
 } from 'lucide-react';
-import GoogleLensIcon from './GoogleLensIcon';
+import {
+  useIsDownloaded,
+  useDownloadProgress,
+  useDownloadError,
+  useDownloadManager,
+} from '../hooks/useDownloadManager';
+import { buildPaperFileName } from '../services/deviceDownloadService';
 
 // Setup worker once at module level
 pdfjs.GlobalWorkerOptions.workerSrc = workerUrl;
@@ -381,6 +388,56 @@ export default function ActualPaperView({ paper, onSwitchToText, onAskPaper }) {
     );
   }, [fileUrl, rawPaper?.file_type]);
 
+  // ── Download Integration ──────────────────────────────────────────────────
+  const paperId = paper?.paperId || paper?.id || rawPaper?.id || rawPaper?.paper_id || null;
+  const isDownloaded = useIsDownloaded(paperId);
+  const downloadProgress = useDownloadProgress(paperId);
+  const downloadError = useDownloadError(paperId);
+  const { startDownload, verifyExistence } = useDownloadManager();
+  const [downloadFeedback, setDownloadFeedback] = useState(null);
+
+  const isDownloading = downloadProgress !== null;
+
+  // Verify file still exists on the phone's physical storage on mount/change
+  useEffect(() => {
+    if (paperId) {
+      verifyExistence(paperId);
+    }
+  }, [paperId, verifyExistence]);
+
+  // Sync external errors
+  useEffect(() => {
+    if (downloadError) {
+      setDownloadFeedback({ type: 'error', message: downloadError });
+    }
+  }, [downloadError]);
+
+  const handleDownloadPaper = useCallback(async () => {
+    if (!paperId || !fileUrl) {
+      setDownloadFeedback({ type: 'error', message: 'Paper file URL not available to download.' });
+      return;
+    }
+    setDownloadFeedback(null);
+    const fileName = buildPaperFileName(paper || rawPaper, fileUrl);
+    const res = await startDownload(
+      {
+        id: paperId,
+        filename: fileName,
+        fileUrl,
+        course: paper?.courseName || paper?.course || rawPaper?.course,
+        year: paper?.year || rawPaper?.year,
+      },
+      () => fileUrl
+    );
+
+    if (res.ok) {
+      setDownloadFeedback({ type: 'success', message: 'Saved to Documents/StudyHub' });
+      setTimeout(() => setDownloadFeedback(null), 4000);
+    } else if (!res.cancelled) {
+      setDownloadFeedback({ type: 'error', message: res.message || 'Download failed. Tap retry.' });
+    }
+  }, [paperId, fileUrl, paper, rawPaper, startDownload]);
+
   // 2. If it's a PDF, load the PDF document with Cache API caching
   useEffect(() => {
     if (!isPdf || !fileUrl) {
@@ -655,7 +712,7 @@ export default function ActualPaperView({ paper, onSwitchToText, onAskPaper }) {
 
   return (
     <div ref={containerRef} className="w-full flex flex-col items-center max-w-full overflow-hidden">
-      {/* ── Slim Toolbar: Full Page icon button & Ask button on the right ── */}
+      {/* ── Slim Toolbar: Full Page icon button & Download button on the right ── */}
       <div className="w-full flex items-center justify-end gap-2.5 px-3 sm:px-6 py-2 flex-shrink-0 z-20">
         <button
           type="button"
@@ -674,31 +731,66 @@ export default function ActualPaperView({ paper, onSwitchToText, onAskPaper }) {
           )}
         </button>
 
-        {onAskPaper && (
+        {isDownloaded ? (
+          <span
+            className="min-h-[40px] h-[38px] px-[14px] text-[13px] font-[600] rounded-[10px] text-emerald-700 bg-emerald-50 border border-emerald-200 flex items-center gap-1.5 shadow-none select-none"
+            title="Saved to Documents/StudyHub"
+          >
+            <Check size={16} className="text-emerald-600 stroke-[2.5]" />
+            <span>Downloaded</span>
+          </span>
+        ) : (
           <button
             type="button"
-            onClick={async () => {
-              const imageBase64 = await getPageImageBase64(currentPageNumber);
-              onAskPaper({
-                mode: 'page_image',
-                type: isPdf ? 'pdf' : 'image',
-                pageNumber: currentPageNumber,
-                imageBase64: imageBase64 || null,
-                thumbnailUrl: imageBase64 || (isPdf ? (thumbnailDataUrl || fileUrl) : fileUrl),
-                fileUrl,
-                numPages: isPdf ? (pdfDoc?.numPages || 1) : 1,
-                paperTitle: `${paper?.courseName || 'Past Paper'}${paper?.year ? ` ${paper.year}` : ''}`,
-                paperId: paper?.paperId || paper?.id || rawPaper?.paper_id || rawPaper?.id || null,
-              });
-            }}
-            aria-label="Ask about this paper"
-            className="min-h-[40px] h-[38px] px-[14px] text-[14px] font-[500] rounded-[10px] text-blue-600 bg-blue-50 border border-blue-200 active:bg-blue-100 hover:bg-blue-100/60 transition-colors flex items-center gap-1.5 shadow-none outline-none select-none cursor-pointer"
+            onClick={handleDownloadPaper}
+            disabled={isDownloading || !fileUrl}
+            aria-label="Download paper"
+            className="min-h-[40px] h-[38px] px-[14px] text-[14px] font-[500] rounded-[10px] text-blue-600 bg-blue-50 border border-blue-200 active:bg-blue-100 hover:bg-blue-100/60 transition-colors flex items-center gap-1.5 shadow-none outline-none select-none cursor-pointer disabled:opacity-70"
+            title="Download actual paper to phone"
           >
-            <GoogleLensIcon size={18} className="text-blue-600" />
-            <span>Ask</span>
+            {isDownloading ? (
+              <>
+                <Loader2 size={16} className="animate-spin text-blue-600" />
+                <span>{downloadProgress > 0 ? `${downloadProgress}%` : 'Downloading…'}</span>
+              </>
+            ) : (
+              <>
+                <Download size={16} className="text-blue-600" />
+                <span>Download</span>
+              </>
+            )}
           </button>
         )}
       </div>
+
+      {/* Download Status Banner (Progress / Success / Friendly Error with Retry) */}
+      {downloadFeedback && (
+        <div className="w-full px-3 sm:px-6 mb-2">
+          <div className={`flex items-center justify-between text-xs font-medium px-3.5 py-2.5 rounded-xl border ${
+            downloadFeedback.type === 'success'
+              ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
+              : 'bg-red-50 border-red-200 text-red-800'
+          }`}>
+            <div className="flex items-center gap-2 min-w-0">
+              {downloadFeedback.type === 'success' ? (
+                <Check size={15} className="text-emerald-600 flex-shrink-0" />
+              ) : (
+                <AlertCircle size={15} className="text-red-500 flex-shrink-0" />
+              )}
+              <span className="truncate">{downloadFeedback.message}</span>
+            </div>
+            {downloadFeedback.type === 'error' && (
+              <button
+                type="button"
+                onClick={handleDownloadPaper}
+                className="ml-3 font-semibold text-blue-600 hover:text-blue-800 underline flex-shrink-0 cursor-pointer"
+              >
+                Retry
+              </button>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* ── Document Container (Responsive, edge-to-edge on mobile, with pinch-to-zoom) ── */}
       <div

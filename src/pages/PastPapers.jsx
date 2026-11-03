@@ -86,7 +86,7 @@ import {
   GraduationCap, BookOpen, AlarmClock, Quote, TrendingUp, CircleDot,
   Tag, ArrowRight, Image as ImageIcon, MessageCircleQuestion,
 } from 'lucide-react'
-import GoogleLensIcon from '../components/GoogleLensIcon'
+// GoogleLensIcon preserved in ../components/GoogleLensIcon for future restoration
 import { MathText, renderInline, mathRenderError } from './math-fix'
 import TutorMarkdown from '../components/common/TutorMarkdown'
 import ActualPaperView from '../components/ActualPaperView'
@@ -1859,7 +1859,7 @@ const PaperSubItem = memo(({ label, text, marks, imageUrl, indent, onAskAi, isSa
       </div>
     )}
 
-    {/* Bottom action row: Save & Ask AI */}
+    {/* Bottom action row: Save */}
     <div className="flex items-center gap-2 mt-2.5 pt-2 border-t border-slate-100" onClick={(e) => e.stopPropagation()}>
       <button
         onClick={(e) => { e.stopPropagation(); onToggleSave(); }}
@@ -1872,15 +1872,6 @@ const PaperSubItem = memo(({ label, text, marks, imageUrl, indent, onAskAi, isSa
       >
         {isSaved ? <BookmarkCheck className="w-3.5 h-3.5 text-indigo-600" /> : <Bookmark className="w-3.5 h-3.5 text-slate-400" />}
         <span>{isSaved ? 'Saved' : 'Save'}</span>
-      </button>
-
-      <button
-        onClick={(e) => { e.stopPropagation(); onAskAi(); }}
-        className="flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-800 bg-blue-50/80 hover:bg-blue-100 border border-blue-100 h-7 px-2.5 rounded-lg transition-all active:scale-95"
-        title="Ask about this question"
-      >
-        <GoogleLensIcon size={14} className="text-blue-600" />
-        <span>Ask</span>
       </button>
     </div>
   </div>
@@ -1939,15 +1930,6 @@ const PaperQuestionBlock = memo(({ group, onOpenQuestion, savedIds, onToggleSave
             >
               {savedIds?.has(singleQuestion.id) ? <BookmarkCheck className="w-3.5 h-3.5 text-indigo-600" /> : <Bookmark className="w-3.5 h-3.5 text-slate-400" />}
               <span>{savedIds?.has(singleQuestion.id) ? 'Saved' : 'Save'}</span>
-            </button>
-
-            <button
-              onClick={(e) => { e.stopPropagation(); onOpenQuestion(singleQuestion); }}
-              className="flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-800 bg-blue-50/80 hover:bg-blue-100 border border-blue-100 h-7 px-2.5 rounded-lg transition-all active:scale-95"
-              title="Ask AI about this question"
-            >
-              <GoogleLensIcon className="w-3.5 h-3.5 text-blue-600" />
-              <span>Ask AI</span>
             </button>
           </div>
         </div>
@@ -2086,9 +2068,6 @@ const SavedQuestionsView = memo(({ savedIds, allQuestionRows, onOpenQuestion, on
             </div>
             <div className="flex flex-col items-end gap-2 flex-shrink-0">
               <BookmarkBtn isSaved onToggle={() => onToggleSave(q)} />
-              <button onClick={() => onOpenQuestion(q, savedQuestions)} className="flex items-center gap-1 px-2.5 h-9 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-100 active:scale-90 transition-all text-xs font-semibold whitespace-nowrap">
-                <GoogleLensIcon size={14} className="text-blue-600" /> Ask
-              </button>
             </div>
           </div>
         </div>

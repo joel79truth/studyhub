@@ -11,11 +11,17 @@ import React, {
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabase';
 import { useQuery } from '@tanstack/react-query';
-import { useIsDownloaded, useDownloadProgress, useDownloadManager } from '../hooks/useDownloadManager';
+import {
+  useIsDownloaded,
+  useDownloadProgress,
+  useDownloadError,
+  useDownloadManager,
+} from '../hooks/useDownloadManager';
+import { isFileDownloadedSync } from '../services/deviceDownloadService';
 import { getAllDownloads } from '../utils/downloadStore';
 import PDFThumbnail from '../components/PDFThumbnail';
-import OfflineCoursePackModal from '../components/OfflineCoursePackModal';
-import { DownloadCloud } from 'lucide-react';
+// OfflineCoursePackModal preserved in ../components/OfflineCoursePackModal for future restoration
+import { DownloadCloud, Download, Check, Loader2, AlertCircle, CheckCircle } from 'lucide-react';
 
 // ─── Helpers ──────────────────────────────────────────────
 const normalizeName = (name) => String(name || '').trim().toLowerCase();
@@ -163,7 +169,22 @@ const DownloadMenuItem = memo(({ file, onStartDownload, onCancelDownload, onRemo
 });
 
 // ─── File List Item ───────────────────────────────────────
-const FileListItem = memo(({ file, onFileClick, onStartDownload, onCancelDownload, onRemoveDownload, onCopyLink, onToggleRead, isRead }) => {
+const FileListItem = memo(({
+  file,
+  isSelected,
+  onToggleSelect,
+  onFileClick,
+  onStartDownload,
+  onCancelDownload,
+  onRemoveDownload,
+  onCopyLink,
+  onToggleRead,
+  isRead,
+}) => {
+  const isDownloaded = useIsDownloaded(file.id);
+  const progress = useDownloadProgress(file.id);
+  const downloadError = useDownloadError(file.id);
+  const isDownloading = progress !== null;
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
@@ -216,16 +237,28 @@ const FileListItem = memo(({ file, onFileClick, onStartDownload, onCancelDownloa
     setMenuOpen(false);
   };
 
-  // A small status cue (like an order's "just placed" flag) instead
-  // of every file looking identical regardless of how fresh it is.
   const fresh = isRecent(file.uploadedAtRaw);
   const publicUrl = getNotePublicUrl(file);
   const isPdf = Boolean(file?.filename?.toLowerCase().endsWith('.pdf') && publicUrl);
 
   return (
-    <div className="group relative flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:bg-white hover:shadow-sm hover:border-blue-100 transition-colors mb-3">
+    <div className="group relative flex items-center gap-3 sm:gap-4 p-3.5 sm:p-4 bg-white border border-gray-100 rounded-xl hover:bg-white hover:shadow-xs hover:border-blue-100 transition-all mb-3">
+      {/* Checkbox for multi-select (hidden/skipped if already downloaded) */}
+      {!isDownloaded && (
+        <div className="flex-shrink-0 flex items-center pr-0.5" onClick={(e) => e.stopPropagation()}>
+          <input
+            type="checkbox"
+            checked={Boolean(isSelected)}
+            onChange={() => onToggleSelect && onToggleSelect(file.id)}
+            className="w-4 h-4 rounded text-blue-600 focus:ring-blue-500 cursor-pointer accent-blue-600"
+            aria-label={`Select ${file.filename}`}
+          />
+        </div>
+      )}
+
+      {/* Thumbnail */}
       <div className={`flex-shrink-0 rounded-lg overflow-hidden border flex items-center justify-center ${
-        isPdf ? 'w-14 h-14 border-slate-200 bg-slate-100' : 'w-10 h-10 bg-blue-50/50 border-blue-100/50'
+        isPdf ? 'w-12 h-12 sm:w-14 sm:h-14 border-slate-200 bg-slate-100' : 'w-10 h-10 bg-blue-50/50 border-blue-100/50'
       }`}>
         {isPdf ? (
           <PDFThumbnail url={publicUrl} scale={0.2} />
@@ -234,18 +267,18 @@ const FileListItem = memo(({ file, onFileClick, onStartDownload, onCancelDownloa
         )}
       </div>
 
+      {/* Title & Metadata */}
       <button
         className="flex-1 min-w-0 text-left cursor-pointer"
         onClick={() => onFileClick(file)}
         aria-label={`Open ${file.filename}`}
       >
         <div className="flex items-center gap-2 min-w-0">
-          <p className={`text-[15px] font-semibold truncate transition-colors ${isRead ? 'text-gray-400 line-through' : 'text-gray-800 group-hover:text-blue-600'}`}>
+          <p className={`text-[14px] sm:text-[15px] font-semibold truncate transition-colors ${isRead ? 'text-gray-400 line-through' : 'text-gray-800 group-hover:text-blue-600'}`}>
             {file.filename || 'Untitled'}
           </p>
-          <DownloadBadge fileId={file.id} />
           {fresh && !isRead && (
-            <span className="flex-shrink-0 text-[10px] font-bold px-1.5 py-0.5 bg-green-100 text-green-600 rounded-md">NEW</span>
+            <span className="flex-shrink-0 text-[9px] font-bold px-1.5 py-0.5 bg-green-100 text-green-700 rounded-md">NEW</span>
           )}
         </div>
         <div className="flex items-center gap-2 mt-1">
@@ -258,52 +291,89 @@ const FileListItem = memo(({ file, onFileClick, onStartDownload, onCancelDownloa
             </span>
           )}
           {file.uploadDate && (
-            <span className="text-xs text-gray-400">📅 {file.uploadDate}</span>
+            <span className="text-xs text-gray-400 hidden xs:inline">📅 {file.uploadDate}</span>
           )}
         </div>
       </button>
 
-      <div className="relative">
-        <button
-          ref={buttonRef}
-          className={`p-2 rounded-lg transition-colors active:scale-90 ${menuOpen ? 'bg-blue-50 text-blue-600' : 'text-gray-400 hover:bg-gray-100 hover:text-gray-600'}`}
-          onClick={toggleMenu}
-          aria-label={`Options for ${file.filename}`}
-          aria-haspopup="true"
-          aria-expanded={menuOpen}
-        >
-          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-            <circle cx="12" cy="5" r="2" />
-            <circle cx="12" cy="12" r="2" />
-            <circle cx="12" cy="19" r="2" />
-          </svg>
-        </button>
-
-        {menuOpen && (
-          <div
-            ref={menuRef}
-            className="absolute right-0 mt-2 w-52 bg-white rounded-xl shadow-xl border border-gray-100 py-1.5 z-30"
-            role="menu"
+      {/* Action Row: Individual Download button or Downloaded status indicator */}
+      <div className="flex items-center gap-2 flex-shrink-0">
+        {isDownloaded ? (
+          <span
+            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 select-none"
+            title="Saved to Documents/StudyHub"
           >
-            <DownloadMenuItem
-              file={file}
-              onStartDownload={wrappedStartDownload}
-              onCancelDownload={wrappedCancelDownload}
-              onRemoveDownload={wrappedRemoveDownload}
-            />
-            <button className="w-full px-4 py-2.5 text-sm text-left hover:bg-blue-50 flex items-center gap-3" onClick={handleCopyLink} role="menuitem">
-              🔗 Copy Link
-            </button>
-            <div className="h-px bg-gray-100 my-1 mx-2" />
-            <button
-              className={`w-full px-4 py-2.5 text-sm text-left flex items-center gap-3 ${isRead ? 'hover:bg-orange-50' : 'hover:bg-green-50'}`}
-              onClick={(e) => handleAction(e, onToggleRead)}
-              role="menuitem"
-            >
-              {isRead ? 'Start Quiz' : 'Quiz'}
-            </button>
+            <Check size={14} className="text-emerald-600 stroke-[2.5]" />
+            <span>Downloaded</span>
+          </span>
+        ) : isDownloading ? (
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200 select-none">
+            <Loader2 size={13} className="animate-spin text-blue-600" />
+            <span>{typeof progress === 'number' && progress > 0 ? `${progress}%` : 'Saving…'}</span>
           </div>
+        ) : downloadError ? (
+          <button
+            onClick={(e) => { e.stopPropagation(); onStartDownload(file); }}
+            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold bg-red-50 text-red-600 border border-red-200 hover:bg-red-100 transition-colors cursor-pointer"
+            title="Download failed. Tap to retry."
+          >
+            <AlertCircle size={13} />
+            <span>Retry</span>
+          </button>
+        ) : (
+          <button
+            onClick={(e) => { e.stopPropagation(); onStartDownload(file); }}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-blue-600 bg-blue-50 hover:bg-blue-100 border border-blue-200 active:scale-95 transition-all cursor-pointer"
+            title="Download file to phone"
+          >
+            <Download size={14} />
+            <span className="hidden sm:inline">Download</span>
+          </button>
         )}
+
+        {/* 3-dots Menu for other actions */}
+        <div className="relative">
+          <button
+            ref={buttonRef}
+            className={`p-1.5 sm:p-2 rounded-lg transition-colors active:scale-90 ${menuOpen ? 'bg-blue-50 text-blue-600' : 'text-gray-400 hover:bg-gray-100 hover:text-gray-600'}`}
+            onClick={toggleMenu}
+            aria-label={`Options for ${file.filename}`}
+            aria-haspopup="true"
+            aria-expanded={menuOpen}
+          >
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="12" cy="5" r="2" />
+              <circle cx="12" cy="12" r="2" />
+              <circle cx="12" cy="19" r="2" />
+            </svg>
+          </button>
+
+          {menuOpen && (
+            <div
+              ref={menuRef}
+              className="absolute right-0 mt-2 w-52 bg-white rounded-xl shadow-xl border border-gray-100 py-1.5 z-30"
+              role="menu"
+            >
+              <DownloadMenuItem
+                file={file}
+                onStartDownload={wrappedStartDownload}
+                onCancelDownload={wrappedCancelDownload}
+                onRemoveDownload={wrappedRemoveDownload}
+              />
+              <button className="w-full px-4 py-2.5 text-sm text-left hover:bg-blue-50 flex items-center gap-3" onClick={handleCopyLink} role="menuitem">
+                🔗 Copy Link
+              </button>
+              <div className="h-px bg-gray-100 my-1 mx-2" />
+              <button
+                className={`w-full px-4 py-2.5 text-sm text-left flex items-center gap-3 ${isRead ? 'hover:bg-orange-50' : 'hover:bg-green-50'}`}
+                onClick={(e) => handleAction(e, onToggleRead)}
+                role="menuitem"
+              >
+                {isRead ? 'Start Quiz' : 'Quiz'}
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -476,44 +546,130 @@ const CoursesView = memo(({
   );
 });
 
-const FilesView = memo(({ course, files, onBack, fileActions, readFiles, onOpenPackModal }) => (
-  <div>
-    <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
-      <div>
-        <button onClick={onBack} className="text-sm font-semibold text-blue-600 hover:text-blue-800 active:scale-95 flex items-center gap-1.5 mb-3 px-3 py-1.5 -ml-3 rounded-lg hover:bg-blue-50 transition-transform cursor-pointer">
-          ← Back to courses
-        </button>
-        <h2 className="text-2xl font-bold text-gray-900">{course}</h2>
-        <p className="text-sm text-gray-500 mt-1">🟢 {files.length} {files.length === 1 ? 'file' : 'files'}</p>
+const FilesView = memo(({ course, files, onBack, fileActions, readFiles, onDownloadSelected }) => {
+  const [selectedIds, setSelectedIds] = useState(() => new Set());
+  const [isBulkDownloading, setIsBulkDownloading] = useState(false);
+
+  // Filter downloadable files (non-downloaded files)
+  const downloadableFiles = useMemo(() => {
+    return files.filter(f => !isFileDownloadedSync(f.id));
+  }, [files]);
+
+  const allSelected = downloadableFiles.length > 0 && downloadableFiles.every(f => selectedIds.has(f.id));
+  const selectedCount = selectedIds.size;
+
+  const handleToggleSelect = useCallback((fileId) => {
+    setSelectedIds(prev => {
+      const next = new Set(prev);
+      if (next.has(fileId)) next.delete(fileId);
+      else next.add(fileId);
+      return next;
+    });
+  }, []);
+
+  const handleSelectAll = useCallback(() => {
+    if (allSelected) {
+      setSelectedIds(new Set());
+    } else {
+      setSelectedIds(new Set(downloadableFiles.map(f => f.id)));
+    }
+  }, [allSelected, downloadableFiles]);
+
+  const handleBulkDownload = async () => {
+    const toDownload = files.filter(f => selectedIds.has(f.id) && !isFileDownloadedSync(f.id));
+    if (toDownload.length === 0) return;
+
+    setIsBulkDownloading(true);
+    try {
+      if (onDownloadSelected) {
+        await onDownloadSelected(toDownload);
+      }
+      // Untick successfully downloaded
+      setSelectedIds(prev => {
+        const next = new Set(prev);
+        toDownload.forEach(f => {
+          if (isFileDownloadedSync(f.id)) next.delete(f.id);
+        });
+        return next;
+      });
+    } finally {
+      setIsBulkDownloading(false);
+    }
+  };
+
+  return (
+    <div>
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-4">
+        <div>
+          <button onClick={onBack} className="text-sm font-semibold text-blue-600 hover:text-blue-800 active:scale-95 flex items-center gap-1.5 mb-2 px-3 py-1.5 -ml-3 rounded-lg hover:bg-blue-50 transition-transform cursor-pointer">
+            ← Back to courses
+          </button>
+          <h2 className="text-2xl font-bold text-gray-900">{course}</h2>
+          <p className="text-sm text-gray-500 mt-0.5">🟢 {files.length} {files.length === 1 ? 'file' : 'files'}</p>
+        </div>
+
+        {/* Multi-download action button */}
+        {selectedCount > 0 && (
+          <button
+            onClick={handleBulkDownload}
+            disabled={isBulkDownloading}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 disabled:opacity-70 text-white text-xs font-bold shadow-sm transition-all active:scale-95 cursor-pointer self-start sm:self-auto"
+          >
+            {isBulkDownloading ? (
+              <>
+                <Loader2 size={15} className="animate-spin text-white" />
+                <span>Downloading…</span>
+              </>
+            ) : (
+              <>
+                <Download size={15} />
+                <span>Download selected ({selectedCount})</span>
+              </>
+            )}
+          </button>
+        )}
       </div>
-      {files.length > 0 && (
-        <button
-          onClick={onOpenPackModal}
-          className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-bold border border-emerald-200/80 transition-all active:scale-95 cursor-pointer shadow-xs"
-          title="Save all notes in this course for offline use"
-        >
-          <DownloadCloud size={16} />
-          <span>Save Course Pack</span>
-        </button>
+
+      {/* Select All Bar */}
+      {files.length > 0 && downloadableFiles.length > 0 && (
+        <div className="flex items-center justify-between bg-white border border-slate-200/90 rounded-xl px-4 py-2.5 mb-4 text-xs shadow-xs">
+          <label className="flex items-center gap-2.5 cursor-pointer font-semibold text-slate-700 select-none">
+            <input
+              type="checkbox"
+              checked={allSelected}
+              onChange={handleSelectAll}
+              className="w-4 h-4 rounded text-blue-600 focus:ring-blue-500 cursor-pointer accent-blue-600"
+            />
+            <span>Select all ({downloadableFiles.length})</span>
+          </label>
+          {selectedCount > 0 && (
+            <span className="text-slate-500 font-medium">
+              {selectedCount} selected
+            </span>
+          )}
+        </div>
+      )}
+
+      {files.length > 0 ? (
+        files.map((file) => (
+          <FileListItem
+            key={file.id}
+            file={file}
+            isSelected={selectedIds.has(file.id)}
+            onToggleSelect={handleToggleSelect}
+            {...fileActions}
+            isRead={!!readFiles[file.id]}
+          />
+        ))
+      ) : (
+        <div className="text-center py-16 bg-white/50 rounded-2xl border border-dashed">
+          <div className="text-4xl mb-4">📭</div>
+          <h3 className="text-lg font-semibold text-gray-800">No files yet</h3>
+        </div>
       )}
     </div>
-    {files.length > 0 ? (
-      files.map((file) => (
-        <FileListItem
-          key={file.id}
-          file={file}
-          {...fileActions}
-          isRead={!!readFiles[file.id]}
-        />
-      ))
-    ) : (
-      <div className="text-center py-16 bg-white/50 rounded-2xl border border-dashed">
-        <div className="text-4xl mb-4">📭</div>
-        <h3 className="text-lg font-semibold text-gray-800">No files yet</h3>
-      </div>
-    )}
-  </div>
-));
+  );
+});
 
 const AllProgramsView = memo(({ programItems, isLoading, onProgramClick, searchQuery }) => {
   const [selectedFaculty, setSelectedFaculty] = useState('all');
@@ -722,7 +878,6 @@ export default function Programs() {
   const [selectedCourse, setSelectedCourse] = useState(initialUiState.selectedCourse);
   const [searchQuery, setSearchQuery] = useState(initialUiState.searchQuery);
   const [courseQuery, setCourseQuery] = useState('');
-  const [packModalOpen, setPackModalOpen] = useState(false);
   const [toast, setToast] = useState(null);
 
   const [lastViewedCourse, setLastViewedCourse] = useState(() => {
@@ -953,7 +1108,7 @@ export default function Programs() {
     });
   }, [navigate]);
 
-  const { startDownload, cancelDownload, removeDownload } = useDownloadManager();
+  const { startDownload, downloadMultiple, cancelDownload, removeDownload } = useDownloadManager();
 
   const handleStartDownload = useCallback(async (file) => {
     const url = getNotePublicUrl(file);
@@ -962,13 +1117,30 @@ export default function Programs() {
     const result = await startDownload(
       file,
       () => url,
-      (u, opts) => fetch(u, opts) // forward the abort signal, or cancel never actually stops anything
+      (u, opts) => fetch(u, opts)
     );
 
-    if (!result.ok && !result.cancelled && result.reason !== 'in_progress') {
+    if (result.ok) {
+      setToast('Saved to Documents/StudyHub');
+    } else if (!result.cancelled && result.reason !== 'in_progress') {
       setToast(result.message || `Couldn't download ${file.filename}. Check your connection and try again.`);
     }
   }, [startDownload]);
+
+  const handleDownloadSelected = useCallback(async (filesToDownload) => {
+    const res = await downloadMultiple(filesToDownload, {
+      getUrl: (f) => getNotePublicUrl(f),
+      onFileError: (f, err) => {
+        setToast(`Error downloading ${f.filename || 'file'}: ${err.message || 'Failed'}`);
+      },
+    });
+
+    if (res.completed > 0) {
+      setToast(`Downloaded ${res.completed} file${res.completed > 1 ? 's' : ''} to Documents/StudyHub`);
+    } else if (res.failed > 0) {
+      setToast('Some files failed to download. Tap Retry to try again.');
+    }
+  }, [downloadMultiple]);
 
   const handleCancelDownload = useCallback((fileId) => {
     cancelDownload(fileId);
