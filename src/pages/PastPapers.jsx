@@ -72,7 +72,7 @@ import {
   useDeferredValue, useTransition, memo, createContext, useContext,
 } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { supabase } from '../supabase'
+import { supabase, normalizeSupabaseUrl } from '../supabase'
 import { BottomNav } from '../components/BottomNav'
 import { useQuery } from '@tanstack/react-query'
 import { InlineMath, BlockMath } from 'react-katex'
@@ -169,8 +169,11 @@ async function fetchLastMinute(courseId) {
   return apiGet(`/api/exam/last-minute?courseId=${encodeURIComponent(courseId)}&limit=30`)
 }
 async function fetchSavedQuestionIds() {
-  try { const { savedQuestionIds } = await apiGet('/api/exam/saved-questions'); return savedQuestionIds || [] }
-  catch { return null }
+  try {
+    const local = JSON.parse(localStorage.getItem('savedQuestions') || '[]')
+    const res = await apiGet('/api/exam/saved-questions').catch(() => ({ savedQuestionIds: local }))
+    return res?.savedQuestionIds || local
+  } catch { return [] }
 }
 async function saveQuestionOnServer(q) {
   return apiPostJson('/api/exam/saved-questions', { questionId: q.id, paperId: q.paperId || null })
@@ -254,11 +257,17 @@ async function fetchQuestionsForCourseIds(courseIds) {
   if (!courseIds?.length) return []
   const cacheKey = 'sh_cq_' + [...courseIds].sort().join('_')
   try {
-    const { data, error } = await supabase
-      .from('past_papers')
-      .select('*, courses ( id, course_code, course_name, semester, year, program_id )')
-      .in('course_id', courseIds).order('created_at', { ascending: false })
-    if (error) throw error
+    const [qRes, cRes] = await Promise.all([
+      supabase.from('past_papers').select('*').in('course_id', courseIds).order('created_at', { ascending: false }),
+      supabase.from('courses').select('id, course_code, course_name, semester, year, program_id').in('id', courseIds)
+    ])
+    if (qRes.error) throw qRes.error
+
+    const courseMap = new Map((cRes.data || []).map(c => [c.id, c]))
+    const data = (qRes.data || []).map(row => ({
+      ...row,
+      courses: courseMap.get(row.course_id) || null
+    }))
     if (data?.length) {
       try {
         localStorage.setItem(cacheKey, JSON.stringify(data))
@@ -2356,10 +2365,10 @@ export default function PastPapers() {
         if (!p?.paperId && !p?.pastPaperId) continue
         try {
           const cacheKey = `sh_file_meta_${p.paperId || p.pastPaperId}`
-          let fileUrl = p.fileUrl || null
+          let fileUrl = normalizeSupabaseUrl(p.fileUrl || null)
           const cached = localStorage.getItem(cacheKey)
           if (!fileUrl && cached) {
-            fileUrl = JSON.parse(cached)?.file_url
+            fileUrl = normalizeSupabaseUrl(JSON.parse(cached)?.file_url)
           }
           if (!fileUrl) {
             const query = p.pastPaperId
@@ -2367,8 +2376,8 @@ export default function PastPapers() {
               : supabase.from('past_paper').select('id, file_url, file_name, file_type, thumbnail_url, page_count, title, course, year').eq('paper_id', p.paperId)
             const { data } = await query.maybeSingle()
             if (data?.file_url) {
-              localStorage.setItem(cacheKey, JSON.stringify(data))
-              fileUrl = data.file_url
+              fileUrl = normalizeSupabaseUrl(data.file_url)
+              localStorage.setItem(cacheKey, JSON.stringify({ ...data, file_url: fileUrl }))
             }
           }
           if (fileUrl && 'caches' in window) {

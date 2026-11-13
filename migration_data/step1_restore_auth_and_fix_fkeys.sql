@@ -1,0 +1,2153 @@
+-- ============================================================================
+-- 1. DROP RESTRICTIVE FOREIGN KEY CONSTRAINTS
+-- ============================================================================
+ALTER TABLE public.profiles DROP CONSTRAINT IF EXISTS profiles_id_fkey;
+ALTER TABLE public.past_paper DROP CONSTRAINT IF EXISTS past_paper_uploaded_by_fkey;
+
+-- ============================================================================
+-- 2. INSERT AUTH USERS
+-- ============================================================================
+INSERT INTO auth.users (
+  id,
+  instance_id,
+  email,
+  encrypted_password,
+  email_confirmed_at,
+  raw_app_meta_data,
+  raw_user_meta_data,
+  created_at,
+  updated_at,
+  role,
+  aud
+) VALUES 
+(
+    '9d2b3f82-7396-4d3b-808a-cd63d8b85f36'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'manueljohn836@gmail.com',
+    '$2a$10$f61GnylJj3XfsbN9xI0HNOsgGttOY3ivQ.LxBdfCR922uU7iH9FzW',
+    '2026-06-26 17:12:43.164937+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Manuel John","email_verified":true,"old_firebase_uid":"2IUtMlTZ2kNT2y71YVlLcRf9Pf02"}'::jsonb,
+    '2026-06-26 17:12:43.160934+00'::timestamptz,
+    '2026-06-26 17:33:29.708032+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '6c4efc68-235a-44b7-a2f3-0acb106a34d7'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'kapyolamikaya@gmail.com',
+    '$2a$10$egapS1CJqHNkx3BZIN9YHOkvnoN2HSRJNYKy5zmiTevyVbUe.M98q',
+    '2026-06-26 17:12:37.001597+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Mikaya kapyola ","email_verified":true,"old_firebase_uid":"1SvsmNMX9oVyTjb3LRcs722IoN53"}'::jsonb,
+    '2026-06-26 17:12:36.995727+00'::timestamptz,
+    '2026-06-26 17:33:24.735423+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'ca2db239-665e-473a-a3e7-e5589f4dac8d'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'galatiagawani277@gmail.com',
+    '$2a$10$LoA8nQ8m837cp8YGfp1.bO4paqO20U7j.Weuyd6T0svKVAl6qfM7i',
+    '2026-06-26 17:12:44.918258+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Galatia Gawani","email_verified":true,"old_firebase_uid":"2U05uLfbTNeNyQeaR1rnzDLw5VE3"}'::jsonb,
+    '2026-06-26 17:12:44.914964+00'::timestamptz,
+    '2026-06-26 17:33:30.937311+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'c3fdacee-65f5-4592-80c7-0adc9b3ba997'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'wayakelvin986@gmail.com',
+    '$2a$10$vMKq/If0LNN3EP1fHQqPGeTLzC/rL9qMUb7QbalcHVEZ/8DC7Eve2',
+    '2026-06-26 17:12:38.56177+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Kelvin Waya","email_verified":true,"old_firebase_uid":"1n3fUkTBr7VXMn1Bgqq5HhuNTUr2"}'::jsonb,
+    '2026-06-26 17:12:38.552689+00'::timestamptz,
+    '2026-06-26 17:33:26.063179+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '9f1f4528-fb85-41fd-acf1-4b8c0fb1735a'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'kamowajephah@gmail.com',
+    '$2a$10$FIe.zDLWXTB4FpZcTmaPk.9bxHeYbw.R2TvnPrQmNgJFjDxPKbGxq',
+    '2026-06-26 17:12:58.972774+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Jephah Kamowa","email_verified":true,"old_firebase_uid":"51fIVPli3rbrW9nfasU226XYaNb2"}'::jsonb,
+    '2026-06-26 17:12:58.967648+00'::timestamptz,
+    '2026-06-26 17:33:41.76676+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'fd800671-bbab-4e56-b0e2-015f5e8316e1'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'valanimayamiko@gmail.com',
+    '$2a$10$lAARYt521Q1wpYEbyUxd3O.Rs1yOVT2h1xaPcNW8iHEVHMtLKVzAC',
+    '2026-06-26 17:12:40.112152+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"1tUGAqVqQ5W4kdoDu7j2tSnWucf1"}'::jsonb,
+    '2026-06-26 17:12:40.106951+00'::timestamptz,
+    '2026-06-26 17:33:27.192414+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '2844baba-f9fa-4743-a25c-70fb57f771e2'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'lenardchristopher220@gmail.cok',
+    '$2a$10$3nXdXTyAYOlxM/OIWLgAI.V1Lr1CXmbFBfViKZI0Zluz2Rs/t8g0m',
+    '2026-06-26 17:12:46.420709+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"2VqJau7lmVUIV25SOWiCCywWJ7H2"}'::jsonb,
+    '2026-06-26 17:12:46.416596+00'::timestamptz,
+    '2026-06-26 17:33:32.28814+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'e07a6c54-d799-402a-8b83-f551b2723e1e'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'gm1388965@gmail.com',
+    '$2a$10$6DlGZ9VM3MhjEno.LnVN6OZQ9bEznzCd8c0pEtJ6hiK6xk3lEJIiO',
+    '2026-06-26 17:12:57.403485+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Godfrey Michael","email_verified":true,"old_firebase_uid":"4znri27W2wQet1Ndq89lVFkbzdY2"}'::jsonb,
+    '2026-06-26 17:12:57.400541+00'::timestamptz,
+    '2026-06-26 17:33:40.568244+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'e650ec07-140a-4762-8548-385042c1cb77'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'januaryinnocent60@gmail.com',
+    '$2a$10$jGihJgGQSPHqLasvbvop5efGScTGEKCPb2TOB4eouBfmocTkRE7CC',
+    '2026-06-26 17:12:54.411924+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Innocent January","email_verified":true,"old_firebase_uid":"4T9IxYsTiIMvNx5446Ikdg2Xrw53"}'::jsonb,
+    '2026-06-26 17:12:54.408252+00'::timestamptz,
+    '2026-06-26 17:33:38.247664+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '4ce36b48-19e8-4a26-bbfd-0883ee800168'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'nyimbiriprecious2@gmail.com',
+    '$2a$10$IIrnGHFwdOSnwXY.eJdZZOnDT6l2ChB35pt4poGRXqvWQuqMe/4xa',
+    '2026-06-26 17:12:51.166916+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Precious Nyimbiri","email_verified":true,"old_firebase_uid":"3lJCb6xhCGPLZ4pmDfVeprneL3G3"}'::jsonb,
+    '2026-06-26 17:12:51.162723+00'::timestamptz,
+    '2026-06-26 17:33:35.946833+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '255abb32-3be7-4d0e-bca5-b124731d135e'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'pindanikelvin25@gmail.com',
+    '$2a$10$3OrZ7eCJ7XMXkVYqNuJvWeZI47bsRDhex6QDiTaCuUPuvnGjhjWY2',
+    '2026-06-26 17:12:47.936104+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Kelvin Pindani","email_verified":true,"old_firebase_uid":"3Ac8bXAgtkZMZldYFr8LbaqE04A2"}'::jsonb,
+    '2026-06-26 17:12:47.933274+00'::timestamptz,
+    '2026-06-26 17:33:33.613781+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '0c370421-6a4c-40d2-8c5d-eccc7756f9c8'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'bridgetmangisa@gmail.com',
+    '$2a$10$IMg4ZRSHPnegP7Ha4Fbvt.IGe9dJW/Grm5XYwdSmt.1.xYN7it3ra',
+    '2026-06-26 17:12:35.462039+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"8yCVMpaKAsh3UvfzRhAlfSmxJdl2"}'::jsonb,
+    '2026-06-26 17:12:35.455844+00'::timestamptz,
+    '2026-06-26 17:34:00.503187+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'c9aac4a7-2dfb-48be-aafd-ef3eb6190fac'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'kennedynyirenda100@gmail.com',
+    '$2a$10$ETXOqUhDH4T8B/9ulpwouupz1BeqtUE521.DtxYt.YO.wUL9NObRq',
+    '2026-06-26 17:13:02.220019+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"57gOZpz1IvbwRih5RCiWbFmamPr1"}'::jsonb,
+    '2026-06-26 17:13:02.217057+00'::timestamptz,
+    '2026-06-26 17:33:44.107515+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '5a9ff060-6c3f-408d-bca6-489ee90244e6'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'babrangwiri32@gmail.com',
+    '$2a$10$zdj84SRpNuYOEB26GKqJ1...JjCqlc9MbwAjgenRzZrmRrIgKGDcW',
+    '2026-06-26 17:13:03.764802+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"59Pxod3yBXaeZehYCIC90K5CwC03"}'::jsonb,
+    '2026-06-26 17:13:03.758401+00'::timestamptz,
+    '2026-06-26 17:33:45.308884+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'ef7c092a-9550-45ba-b9aa-da0509a1cc7d'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'gomangosamuel6@gmail.com',
+    '$2a$10$1q3uVgRac5a7rsQXRg1ruOcQWzBI4eVeQ4DrltFcKLhxGOnUV7Xbe',
+    '2026-06-26 17:13:05.338985+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Samuel Gomango","email_verified":true,"old_firebase_uid":"5E6UTmFiKhSrScx3cGg5sRf6Rkg1"}'::jsonb,
+    '2026-06-26 17:13:05.335266+00'::timestamptz,
+    '2026-06-26 17:33:46.488299+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '4cdccc29-ee54-4269-93a4-ab9bfa69bba6'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'manyusamelicy8@gmail.com',
+    '$2a$10$5b/kci8M7IHdxB5JPTbj3OPzYuTfWBoCYbmG.Bl3pjOlIEP6L1ZgS',
+    '2026-06-26 17:12:33.879349+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"0SY8AqtTdwVQKAs4JvkU4Q66q1k2"}'::jsonb,
+    '2026-06-26 17:12:33.831031+00'::timestamptz,
+    '2026-06-26 17:33:22.351018+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '6c8bd796-5394-4602-a277-16378f8a1e3b'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'yamikaninankhuni@gmail.com',
+    '$2a$10$022sCTYVeCQqn4VtVAfTXuKO96Ucp.84eufi29RH3CI/h5vupMSca',
+    '2026-06-26 17:13:12.205283+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"6QCBN8A8MmOWA4gPDmdq2WYn0453"}'::jsonb,
+    '2026-06-26 17:13:12.201599+00'::timestamptz,
+    '2026-06-26 17:33:51.148605+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '1d3e9642-293b-4e13-9e36-02a261de7724'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'patrickwestonbanda@gmail.com',
+    '$2a$10$w9sM5xn/1CS0uIRuURpMWOwefPcBIq/eUyvwrCjhW5gW88CEfmEjW',
+    '2026-06-26 17:13:30.839688+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"uupaR79zoeSzNthJ2y9yEwdSzVE3"}'::jsonb,
+    '2026-06-26 17:13:30.836323+00'::timestamptz,
+    '2026-06-26 17:38:59.987044+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'b3b3c65b-68a8-4e9a-8d61-f936ea0697a0'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'whitemoffat2@gmail.com',
+    '$2a$10$rdwMhWMbaOolYdIzIgp5iOyBzg2MPWAPnn9rCrcnPbwRNVDOjEaKa',
+    '2026-06-26 17:13:13.736683+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Moffat White","email_verified":true,"old_firebase_uid":"6V97j41pD0MZYXklLEbOx7k7gz33"}'::jsonb,
+    '2026-06-26 17:13:13.733824+00'::timestamptz,
+    '2026-06-26 17:33:52.380088+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'b1e8fa19-eebb-4b58-ac3e-77f6470be648'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'kasawsmphatso@gmail.com',
+    '$2a$10$9FsvN7D1bi92RBftEvMNUe9BrpcjE44iL6SghxGn3Ec8dUrmCACqG',
+    '2026-06-26 17:13:28.918478+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"TARCA 265","email_verified":true,"old_firebase_uid":"9bYebawJcvaiu9EpfgJHYZkGx6V2"}'::jsonb,
+    '2026-06-26 17:13:28.914583+00'::timestamptz,
+    '2026-06-26 17:34:02.824374+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'e4f51183-83e9-46ea-85a0-4f4008c391bf'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'kuthyolamacklean@gmail.com',
+    '$2a$10$QFE7pfU.B0f2mqtEC/n/x.Mzw5x8BunS5wETBGZOx6cDZQOaN16su',
+    '2026-06-26 17:13:21.730598+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"McLean kuthyola","email_verified":true,"old_firebase_uid":"7nZEoUJcAYe9NFR4mbhRCCfhVqi2"}'::jsonb,
+    '2026-06-26 17:13:21.727244+00'::timestamptz,
+    '2026-06-26 17:33:58.215312+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'daa6c9e5-6785-48e7-ac98-ab7d0b5486ba'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'omkandawire19@gmail.com',
+    '$2a$10$RfU/wa4yjpeR/mY4.yD5YOxeHDzXWGvgrdU3NNxgBvF.96YFFFnNe',
+    '2026-06-26 17:13:15.245904+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Osward Mkandawire","email_verified":true,"old_firebase_uid":"6jDNYO7NmuSwH9gkx2udA1F7dji1"}'::jsonb,
+    '2026-06-26 17:13:15.242214+00'::timestamptz,
+    '2026-06-26 17:33:53.51753+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'b184abda-e503-4553-bcd7-96f83fb84d71'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'tapiwachiwaula@gmail.com',
+    '$2a$10$rZzJ9dazVyLEU.Gw38nIwOD.oyE7hVO0IT6kpeVwezCSL6ItZK8MO',
+    '2026-06-26 17:13:23.269321+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Tapiwa Chiwaula","email_verified":true,"old_firebase_uid":"8U5ECqmazePAFSmDbNqjmcGM9Xe2"}'::jsonb,
+    '2026-06-26 17:13:23.266426+00'::timestamptz,
+    '2026-06-26 17:33:59.350491+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '958b0e07-34b2-40be-92a6-dab0af8dcf5e'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'ngwiraclive00@gmail.com',
+    '$2a$10$DHJiJiXCqSNChhKaQF4/ZOYz2VYPQtRhi2S5i8mBTqu8vJCwNALJe',
+    '2026-06-26 17:13:18.655298+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"6l1qU8e5ZbZTi3F4PwiIIkINaQw2"}'::jsonb,
+    '2026-06-26 17:13:18.652407+00'::timestamptz,
+    '2026-06-26 17:33:55.828877+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'c884b773-5b2c-421b-84fd-7b61bd1ca73a'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'masulanijoseph95@gmail.com',
+    '$2a$10$4RGjZo.Cdhp6.qPOT.rDTu38hCnmPPbNfW1c3.Pw1izDPBHThfYaO',
+    '2026-06-26 17:13:39.200106+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Joseph Masulani","email_verified":true,"old_firebase_uid":"AakvIjEfhOUrVGLmgFAocgozfOl1"}'::jsonb,
+    '2026-06-26 17:13:39.197375+00'::timestamptz,
+    '2026-06-26 17:34:06.864899+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'd0cd4368-b460-49ad-a2aa-099db8624e6c'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'chiccokaliwo77@gmail.com',
+    '$2a$10$mpJb0REiHziVZ6/2m2ZyGOq7.hnFdUwEej4R8F8llULHrqTA3HWmO',
+    '2026-06-26 17:13:27.237802+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Chicco Kaliwo","email_verified":true,"old_firebase_uid":"9WZNiZul1mReOuPco3a0ptBeOIr1"}'::jsonb,
+    '2026-06-26 17:13:27.235035+00'::timestamptz,
+    '2026-06-26 17:34:01.674827+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '3a0a4d5f-5292-4136-a9b9-f17cfdb137fa'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'siyamandaphillip23@gmail.com',
+    '$2a$10$ltXzn2/qkJ8xnbK7AZqEye0TpGUAAmgO37gOz1NGr0GdXy88DTdau',
+    '2026-06-26 17:13:44.172627+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Phillip Siyamanda","email_verified":true,"old_firebase_uid":"AvSXtCCF2AVRyWrnU0P01eIeqP52"}'::jsonb,
+    '2026-06-26 17:13:44.169057+00'::timestamptz,
+    '2026-06-26 17:34:09.226158+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '0c1c850f-a2e7-449a-b4e6-edd92907f14f'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'victormuwa76@gmail.com',
+    '$2a$10$IgRVUt6D2.2G3DsrOmzIpOH81GyxDo/OTlpLfeL1zbxi8x/CxmEOi',
+    '2026-06-26 17:13:41.280854+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"Aik1aaTOI0cMbulc3PmV2KHrBO22"}'::jsonb,
+    '2026-06-26 17:13:41.277993+00'::timestamptz,
+    '2026-06-26 17:34:08.073869+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'b977adc2-28e9-4b67-a093-bf0009d27b22'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'phillipdereckkabango@gmail.com',
+    '$2a$10$w1me89psbjyfbDwHtXsBAOOC5Bu8HCoDqIE2fM2x5v/Ea495eFWaq',
+    '2026-06-26 17:13:50.704065+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"BKUlr2Ze7pW98pmbwStauEKAEmX2"}'::jsonb,
+    '2026-06-26 17:13:50.700332+00'::timestamptz,
+    '2026-06-26 17:34:11.553692+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '7bc4d406-fdbe-42e2-a78c-75769e18d655'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'dullahmathews@gmail.com',
+    '$2a$10$jnJNOWs4pJlXY5SOtUERLuQTnn58fbzvH44rxoi5FnfrUjsI/fKru',
+    '2026-06-26 17:13:54.414603+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Mathews Dullah","email_verified":true,"old_firebase_uid":"BRdveNVizpfnanMCUawDsnCZg0k2"}'::jsonb,
+    '2026-06-26 17:13:54.411801+00'::timestamptz,
+    '2026-06-26 17:34:12.697937+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '49bc4f5d-bcfc-4370-b6ba-10f3d074264b'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'mannuchisi9@gmail.com',
+    '$2a$10$IOmrj6oqaL/Jpjr4RTwTQ..2Wajvzuk9OBaL6dMSlj7UD5vt4La/a',
+    '2026-06-26 17:13:06.878964+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"5Sk02PIaXbTckYLWf3h0IeTBzA13"}'::jsonb,
+    '2026-06-26 17:13:06.876258+00'::timestamptz,
+    '2026-06-26 17:33:47.654288+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '3906e70c-6a90-4367-9c98-1c485f670681'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'brightchimdima7@gmail.com',
+    '$2a$10$zLxDfeA3HA8Sy78Fh0F6dOpP0GXLSj7xpgteJDUMymLWurEF1oxwe',
+    '2026-06-26 17:13:08.493+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"5sEmQRpM4vOq2bN0lu6qDhPoIv43"}'::jsonb,
+    '2026-06-26 17:13:08.489922+00'::timestamptz,
+    '2026-06-26 17:33:48.852928+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '44871239-9a1d-4dd8-8c00-505eb7144861'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'motseyekha@gmail.com',
+    '$2a$10$/vuCkMmZ4HCwfRz8mOTZVu/qmkP5YEm1z2I9wFumIJDMJTDfneCoy',
+    '2026-06-26 17:14:21.064366+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Okumi Yekha","email_verified":true,"old_firebase_uid":"DKQ2nVUrL4Ue9WmWoI8ZA5x7tZr1"}'::jsonb,
+    '2026-06-26 17:14:21.059731+00'::timestamptz,
+    '2026-06-26 17:34:23.60116+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'd2b5eca7-5ab8-4d43-9c60-9e515fa88be9'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'palanjeh@gmail.com',
+    '$2a$10$Yr9IDZVA35CNzfFoAtbAiur/FIeFVc8VMYfixmi2DuAiwe/MSJxzi',
+    '2026-06-26 17:14:47.291251+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Hope Palanje","email_verified":true,"old_firebase_uid":"FWflRyFZvKefHMqiiU2fAJfaqtX2"}'::jsonb,
+    '2026-06-26 17:14:47.287212+00'::timestamptz,
+    '2026-06-26 17:34:35.346519+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '02698964-cf24-4e24-b7e3-5b5deeb9d22d'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'bandasam76@gmail.com',
+    '$2a$10$vDotZnLhtd3wyFeEqvv7Levk01ymXJ5ifdJ9EZ17EItv5tXFcvXRe',
+    '2026-06-26 17:14:10.023382+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Sam Semu","email_verified":true,"old_firebase_uid":"CbnBSIRAQ8Ygf7TqSEhj5Jj1TvD3"}'::jsonb,
+    '2026-06-26 17:14:10.020045+00'::timestamptz,
+    '2026-06-26 17:34:18.849136+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '2a0b5367-d99c-45c6-b0c4-b71c62c62952'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'manganigetrude2@gmail.com',
+    '$2a$10$MKzz8pOkwKqByXeUNcTFse4YrnKnpi/FGcqqy/Ho5uWLCZ89ONBv2',
+    '2026-06-26 17:14:31.888761+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Getrude Mangani","email_verified":true,"old_firebase_uid":"E2OGuYmp3XPiaSgAHbIpziSknXv2"}'::jsonb,
+    '2026-06-26 17:14:31.876911+00'::timestamptz,
+    '2026-06-26 17:34:28.291964+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'ea05643f-dcf0-4311-8c61-c3ee67565189'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'baipatience2010@gmail.com',
+    '$2a$10$JcxmVjhpsQNRaUv6NCSrpOeu2sglchCCxS7adwUyoF4vzKRER1FTW',
+    '2026-06-26 17:14:23.050245+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Bai scotts ","email_verified":true,"old_firebase_uid":"DbDprh2orrR5NopZMiWvlmfRjtu1"}'::jsonb,
+    '2026-06-26 17:14:23.047264+00'::timestamptz,
+    '2026-06-26 17:34:24.754757+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'eb1c96ba-4e70-4fff-973a-ff1a4891903c'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'gomondachiyanjano@gmail.com',
+    '$2a$10$/ogA65ewJcrODfd.jmtKmepRqoXaRi0bEN0GYU8Yoa9AAcGGQq9S2',
+    '2026-06-26 17:14:15.606024+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Chiyanjano Gomonda","email_verified":true,"old_firebase_uid":"CqH3hBQS60Y1C9b8C1OY6avzXJn2"}'::jsonb,
+    '2026-06-26 17:14:15.603287+00'::timestamptz,
+    '2026-06-26 17:34:21.274153+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '5e17916f-0b9a-4f5d-b4cd-24e29059ad74'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'moureechinsewu@gmail.com',
+    '$2a$10$QLuZYH9jhTlRqif0tBKpcOC6uAs4ywYwFlq3cftD6GEsJviFX/D0i',
+    '2026-06-26 17:14:18.208796+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"DJayNiAeFTNH6wQWJYb1E8VR5Vt1"}'::jsonb,
+    '2026-06-26 17:14:18.205928+00'::timestamptz,
+    '2026-06-26 17:34:22.417711+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '13618c30-de31-48fd-af84-7dd68b4daf37'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'kumembemaya@gmail.com',
+    '$2a$10$fJ8PCVG/geyA0ihWYx6JouhKFruu1wbxc7F75TZGOcwYM.5rGYHUO',
+    '2026-06-26 17:14:27.970473+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Maya Kumalembe","email_verified":true,"old_firebase_uid":"DlO2QN1yAKPh1DvQUZgLd4C4XUK2"}'::jsonb,
+    '2026-06-26 17:14:27.962721+00'::timestamptz,
+    '2026-06-26 17:34:27.077274+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '2437a035-633d-4c91-905e-8cf04d153554'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'yonasjohn82@gmail.com',
+    '$2a$10$WgZY6ekV7ENUPp8wgLgSreXS89W9HELrhotSTndntUSI1oRW8cDAa',
+    '2026-06-26 17:14:43.43226+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"John Yonas","email_verified":true,"old_firebase_uid":"F0wdYEObsEYUCKfdFVWLyDY5jd72"}'::jsonb,
+    '2026-06-26 17:14:43.42957+00'::timestamptz,
+    '2026-06-26 17:34:34.174966+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '23df26ff-bebe-41e5-9019-9dd6e43932b9'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'bandavincent323@gmail.com',
+    '$2a$10$sCSjG0rlJVMIXgE.vCRTwegvfGhMx/XHrVfe2tOdlsG7TQ44Mhame',
+    '2026-06-26 17:14:40.4078+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Vincent Banda","email_verified":true,"old_firebase_uid":"EzQCmJoU3tRUWgVVNgxld9CXcFj1"}'::jsonb,
+    '2026-06-26 17:14:40.403788+00'::timestamptz,
+    '2026-06-26 17:34:33.056127+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '769f958f-feed-4208-b30d-f00f5e6ae623'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'kalingagift40@gmail.com',
+    '$2a$10$LwmU7WZizzHFEAfNfInQ0ezdpBVFNX8HztT9SvNKPgqMn7ML4d476',
+    '2026-06-26 17:14:33.90653+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"v8AChcf9ZVRx1hn87ojLuG567dg1"}'::jsonb,
+    '2026-06-26 17:14:33.894064+00'::timestamptz,
+    '2026-06-26 17:39:01.186201+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '8d39a240-6e52-49d6-b954-7356db8c328f'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'yamikanimangwaya43@gmail.com',
+    '$2a$10$q2JKp9uBYAgrefmV5sTO.OXSAnawJG.5tveqC9tEc2C8LAS.0eTdK',
+    '2026-06-26 17:14:59.528258+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Yamikani Mangwaya","email_verified":true,"old_firebase_uid":"FmbjtaY3APfLP6yL80Q7t1KZrZp1"}'::jsonb,
+    '2026-06-26 17:14:59.524048+00'::timestamptz,
+    '2026-06-26 17:34:37.69426+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '02c393bc-d247-45cd-bf28-db659bff9f2a'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'tamiandalama@gmail.com',
+    '$2a$10$0Glr/XJp18JkkVemnZLyW.RS8OarVmDXK0CuQYKqgHGDyRKe9nw8u',
+    '2026-06-26 17:14:00.7937+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Tamia Ndalama","email_verified":true,"old_firebase_uid":"C3GFG3rpPWMhZ8cwVapwmze7UUI3"}'::jsonb,
+    '2026-06-26 17:14:00.790276+00'::timestamptz,
+    '2026-06-26 17:34:13.903922+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'a3551fc0-cfc6-4bdb-b414-7a41fe73f581'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'connexyamikani4@gmail.com',
+    '$2a$10$sdtgVJeT9bKgLev8s3ieG.4Ke7gb/wTOLtLI4QOjUbFPxhhkL.JNW',
+    '2026-06-26 17:14:02.614246+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Yamikani Connex","email_verified":true,"old_firebase_uid":"C3tV2Se1ggRdDv8lXdywyxG08Em1"}'::jsonb,
+    '2026-06-26 17:14:02.611544+00'::timestamptz,
+    '2026-06-26 17:34:15.104771+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'c57ab5ad-092b-4371-81c6-6752e0c4ab8e'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'chirwakennedy426@gmail.com',
+    '$2a$10$J.uMR4/96ArPnDNaGmR4EOiICv3.tH61QGCkV/VW12yFVHWhSYrkG',
+    '2026-06-26 17:15:52.554639+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Kennedy Chirwa","email_verified":true,"old_firebase_uid":"HTp1aUn5BZeEE5lYYlCElbFG5FH3"}'::jsonb,
+    '2026-06-26 17:15:52.55184+00'::timestamptz,
+    '2026-06-26 17:34:48.579868+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'cc6055cb-f638-4e34-8c50-4d6db550423b'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'tonicgondwe@gmail.com',
+    '$2a$10$.K8raZuoVSam0YzcsEVcJupwLqb7XDN9e8aBCJ3i8ZIEas8p8.TRC',
+    '2026-06-26 17:15:37.740762+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Tonic Gondwe","email_verified":true,"old_firebase_uid":"GrYQ6whKZXOk8SRZushkTwcR88S2"}'::jsonb,
+    '2026-06-26 17:15:37.735742+00'::timestamptz,
+    '2026-06-26 17:34:42.654118+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '8f69e8b0-2bf3-4aa2-80f1-f200e747ceb2'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'peterkondwani826@gmail.com',
+    '$2a$10$n4D9/gJzNdvjVONsUZzTRu7FjectEvC6K1X588jCxH4NhdBhVFk6m',
+    '2026-06-26 17:16:14.92311+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Peter Kondwani","email_verified":true,"old_firebase_uid":"JPmvf7zO4zPBuIYcvBXTSQicwlR2"}'::jsonb,
+    '2026-06-26 17:16:14.920383+00'::timestamptz,
+    '2026-06-26 17:35:01.730736+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '39aefb71-f15b-4953-9670-478d287c7a10'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'dealssquive@gmail.com',
+    '$2a$10$JQiRCAtPpxcnURrqVoB2R.q5fZIiGWA9OvAgJeMAd3Yxczca/kjgy',
+    '2026-06-26 17:15:43.76743+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Squive Deals","email_verified":true,"old_firebase_uid":"Gu7RBTOr4LbZYdglvMDKbe7fA6E3"}'::jsonb,
+    '2026-06-26 17:15:43.764673+00'::timestamptz,
+    '2026-06-26 17:34:43.984235+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'bf57141f-8e0b-4009-8b36-683394e2e13c'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'ykamuyambeni5@gmail.com',
+    '$2a$10$NB0MvrEnlww1waqP1WmSSe.4kMiUkU7olG2PdbvHbIsiPAB6h5nRW',
+    '2026-06-26 17:16:03.345199+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Yankho Kamuyambeni","email_verified":true,"old_firebase_uid":"IB5OAbW2MBbMDtbNCpor7PvErq43"}'::jsonb,
+    '2026-06-26 17:16:03.342558+00'::timestamptz,
+    '2026-06-26 17:34:54.555719+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '37d9abeb-d32d-49c7-b3ff-b39d3593a821'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'faithsciller@gmail.com',
+    '$2a$10$rKA5Qr4Sc7vzuiKM4aII.OVjbOAhjnb7Eop62tRVgyF42dLhHxDJS',
+    '2026-06-26 17:15:54.919546+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"HY5VW6ur3weUmffrNmR2D1aU2he2"}'::jsonb,
+    '2026-06-26 17:15:54.916821+00'::timestamptz,
+    '2026-06-26 17:34:49.776113+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'ad49caf3-ad92-4059-b5b1-b0afa3e0ea24'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'shakirahchikoti410@gmail.com',
+    '$2a$10$Rb0jEbh47kIsj6EAnfWTC.JO2OcYy5cfiEsLq.nvlkghFH7dmr3jC',
+    '2026-06-26 17:15:47.571277+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"H4QZVtsmKGN9F6HTT9JyNHfFN1n1"}'::jsonb,
+    '2026-06-26 17:15:47.568099+00'::timestamptz,
+    '2026-06-26 17:34:46.294427+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '56864dfa-a2ce-4dea-8459-d86d36e0e506'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'kunkwenzuz@gmail.com',
+    '$2a$10$Z9BBelW0Kg53UDsShbObw.XzYaJ07rHJkTrgVhsGJkDRjzWhEOS9S',
+    '2026-06-26 17:15:57.150085+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Zindaba Kunkwenzu","email_verified":true,"old_firebase_uid":"HeS1vZJx9XYd4g1xCOOSy3q8s2u2"}'::jsonb,
+    '2026-06-26 17:15:57.143991+00'::timestamptz,
+    '2026-06-26 17:34:50.944111+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '4237c0f9-4e2a-4723-bc63-9d681f7b11f3'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'witnessmpinganjira90@gmail.com',
+    '$2a$10$qgefZ55XlzeCCwbJyZIOle3M7Np2mmPNTF0.NE2J65NaC/bA.wXG.',
+    '2026-06-26 17:15:50.609622+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Witness Mpinganjira","email_verified":true,"old_firebase_uid":"H9gmvE1asLaQ7tavFg365LhcJOE2"}'::jsonb,
+    '2026-06-26 17:15:50.606855+00'::timestamptz,
+    '2026-06-26 17:34:47.457271+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '13b60f2b-00db-4b5a-92cd-b76bce78052c'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'michaelmvula133@gmail.com',
+    '$2a$10$xhzrupejwbDv4baPR3ntJenSB3c09ypjT4An1OM1sR2YdB4KpStRe',
+    '2026-06-26 17:16:09.046554+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"MICHAEL MVULA","email_verified":true,"old_firebase_uid":"J54nrqjApUUwDUpnUdklXcYpett2"}'::jsonb,
+    '2026-06-26 17:16:09.041773+00'::timestamptz,
+    '2026-06-26 17:34:58.049288+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '4c1ef23d-c57d-489c-975f-fa1031f7209c'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'monicaphiri155@gmail.com',
+    '$2a$10$zGz8MmNabyXScPbTaUzLzeDU9ULUSnzR4Yjg/gMgEDfR7pfjw8LYy',
+    '2026-06-26 17:16:07.141088+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"IUhvWKBDR0blz6A0WMf9hmUbelJ2"}'::jsonb,
+    '2026-06-26 17:16:07.138418+00'::timestamptz,
+    '2026-06-26 17:34:56.912171+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '9ec9cc08-70d6-439a-8ce9-1c094c3cb48b'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'archangelkaputa@email.com',
+    '$2a$10$pLuCa5E5hPkkUxyzjOpCCenD37pbr1zwSnj7kgDyttuxXiT/9myeu',
+    '2026-06-26 17:15:59.281339+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"HjJFUOgi51fToD5Vys85VWh2lHG2"}'::jsonb,
+    '2026-06-26 17:15:59.277661+00'::timestamptz,
+    '2026-06-26 17:34:52.155004+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'b285b1ae-2b6c-4c7a-a578-654b14f769cc'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'collingschikhwakhwa@gmail.com',
+    '$2a$10$X0bPk/SyfplqDHTYmM3RgOvuVLvAjltjn3q9oc.ckBDtIhKCawrXG',
+    '2026-06-26 17:16:12.997794+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Collings Chikhwakhwa","email_verified":true,"old_firebase_uid":"JA40rqq0kDdQVimlomGgkrZkAas2"}'::jsonb,
+    '2026-06-26 17:16:12.995021+00'::timestamptz,
+    '2026-06-26 17:35:00.372059+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'f9b8d77e-d402-442c-ac89-a774fd48a3f6'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'preciousmalexander@gmail.com',
+    '$2a$10$Oa2s00RvMYUzT66dnY3RUeclCJ0ECuCpl2CjGM6CQ.t.OjHo9g/yq',
+    '2026-06-26 17:16:11.102821+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Precious M Alexander","email_verified":true,"old_firebase_uid":"J6aHQCN7FcWptoA0bLjlHiDYwGy2"}'::jsonb,
+    '2026-06-26 17:16:11.09991+00'::timestamptz,
+    '2026-06-26 17:34:59.232118+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '817f25bf-e478-44bf-a2d1-07e8b211769c'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'lenardchristopher220@gmail.com',
+    '$2a$10$jRim6.OIFUqDCmqzAstSZ.u64.nrma4d6wwTt0Uel7JXup5YiBNIy',
+    '2026-06-26 17:16:19.086776+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Christopher Lenard","email_verified":true,"old_firebase_uid":"Jgjg0mEQREOD6eEGvfdGXpqQ39l1"}'::jsonb,
+    '2026-06-26 17:16:19.084144+00'::timestamptz,
+    '2026-06-26 17:35:04.168598+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '87894fcb-5e85-4e63-bc8e-0c631f4d9714'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'alfredlukejnr@gmail.com',
+    '$2a$10$uuoUvYD9QRqEg4x4yFzBheb/9vhebJ0JCs9bs9./RTRuFfwKCBrpu',
+    '2026-06-26 17:15:07.787982+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Alfred Luke","email_verified":true,"old_firebase_uid":"GFkqb9QM47WLHUlWb7vH3jKNU9f1"}'::jsonb,
+    '2026-06-26 17:15:07.784682+00'::timestamptz,
+    '2026-06-26 17:34:39.138009+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'ce66a1ca-2781-4091-8d0c-07f528539037'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'sandsonlonjezo@gmail.com',
+    '$2a$10$q0mHkbwtl9HxrvPytD8jNOivWVGC.cc4huXktGSuumusgt8KQeOwG',
+    '2026-06-26 17:15:17.226459+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Sandson Lonjezo","email_verified":true,"old_firebase_uid":"GVfychUAjxQA29bVpKFVexZ1hLk1"}'::jsonb,
+    '2026-06-26 17:15:17.223382+00'::timestamptz,
+    '2026-06-26 17:34:40.259827+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'c9d6a2d2-6d42-45c6-ac2c-b7ac9157e8c2'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'stuartchiwalira314@gmail.com',
+    'null',
+    '2026-10-27 14:50:30.002108+00'::timestamptz,
+    '{"provider":"google","providers":["google"]}'::jsonb,
+    '{"iss":"https://accounts.google.com","sub":"113930163405949325311","name":"Stuart Chiwalira","email":"stuartchiwalira314@gmail.com","picture":"https://lh3.googleusercontent.com/a/ACg8ocLtBFwMUeooPAuA-ASDwxT60WBSFlFi45F6qI9inKStk1NtyQ=s96-c","full_name":"Stuart Chiwalira","avatar_url":"https://lh3.googleusercontent.com/a/ACg8ocLtBFwMUeooPAuA-ASDwxT60WBSFlFi45F6qI9inKStk1NtyQ=s96-c","provider_id":"113930163405949325311","email_verified":true,"phone_verified":false}'::jsonb,
+    '2026-10-27 14:50:29.92011+00'::timestamptz,
+    '2026-10-27 14:50:30.080691+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'ac032e5e-7244-48b9-ba5d-e25af6428bc5'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'kalitio527@gmail.com',
+    '$2a$10$Mmzrr5bxoXJz0wypKTXge.EljvsutaKMkwwRglpyoav2o8cqoloI2',
+    '2026-06-26 17:16:34.500737+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Tio Kali","email_verified":true,"old_firebase_uid":"LgdFZbUci7PiQTU5vZrNAjFN7rN2"}'::jsonb,
+    '2026-06-26 17:16:34.497198+00'::timestamptz,
+    '2026-06-26 17:35:13.574526+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '69e48a24-f86f-4789-a95d-b755d3ed5e28'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'edwinmatumba7@gmail.com',
+    '$2a$10$tSwd8szMpr6D8p/MItJo2eZi5kQh0/0Q1faEeNZ2fy4NIBpqHXSWK',
+    '2026-06-26 17:16:24.781403+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"KE47c5E7YiXdNFQDGRYVjFlwE683"}'::jsonb,
+    '2026-06-26 17:16:24.76917+00'::timestamptz,
+    '2026-06-26 17:35:07.807207+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '92bc7b95-7acf-4ace-aca9-ff85089fc7ad'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'giftkumbukani0@gmail.com',
+    '$2a$10$fe6zKgbhh8bRvoGgU//aYeOTHCmLSAIICzPLm7Z.BolCq6EhQSy3q',
+    '2026-06-26 17:16:54.591613+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"NjsCkaKl6Xf9RGHM7yQlxwStyEl2"}'::jsonb,
+    '2026-06-26 17:16:54.588267+00'::timestamptz,
+    '2026-06-26 17:35:25.473603+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'a95b9548-8090-4369-88f0-7c0a06069a16'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'noticedavid7@gmail.com',
+    '$2a$10$PnWT4moZAeUb318FBlI8tu2GjzV4KxTwXRXi.GaKE1pHw7p.eU9QK',
+    '2026-06-26 17:16:26.776168+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"David Notice","email_verified":true,"old_firebase_uid":"KeeoMXcqXUbmzbCzh2ic4jl1QYC2"}'::jsonb,
+    '2026-06-26 17:16:26.76762+00'::timestamptz,
+    '2026-06-26 17:35:08.947074+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '5084060c-1527-4a01-9924-03cbf803cccd'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'masebomyless@gmail.com',
+    '$2a$10$7NBIYJz.DGZFLJDwRNQJfO.g40a8c/EvdrPYy/K6O/O8bzdaKltx.',
+    '2026-06-26 17:16:42.919697+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"MTNXAT0WJhS3Ym2ZUGv3TGeqyMp2"}'::jsonb,
+    '2026-06-26 17:16:42.915655+00'::timestamptz,
+    '2026-06-26 17:35:18.454179+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '9d6acd60-93a6-421d-a4e7-6eed06d1db2d'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'deborahphilip733@gmail.com',
+    '$2a$10$VYE1tWtSiRG3pTqbEX6Zc.Rkh3IoXDUmRfQ.1bTpRzOARzN5ZyWNi',
+    '2026-06-26 17:16:36.5805+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Deborah Philip","email_verified":true,"old_firebase_uid":"LrLUr78lPWNH7qZGHLTe17gdFQq1"}'::jsonb,
+    '2026-06-26 17:16:36.573735+00'::timestamptz,
+    '2026-06-26 17:35:14.729464+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'a7b59bff-7153-4a83-9485-2f85dc323c2c'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'fostinolucy@gmail.com',
+    '$2a$10$3BhJdgKRmeb2sX9xAFm6UO9bDsgd1zV/034o3dsEh56eH3FKEG5gS',
+    '2026-06-26 17:16:28.799991+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Monica Dickson","email_verified":true,"old_firebase_uid":"KktGWEQbdKRYddgW0WDcBaIuMxC3"}'::jsonb,
+    '2026-06-26 17:16:28.796678+00'::timestamptz,
+    '2026-06-26 17:35:10.143587+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '61060115-26cc-4123-9c5a-2bf97a318f7c'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'nzalaligiven@gmail.com',
+    '$2a$10$AE.o7bJWuoYEJXDluXSm0uayR4Kzg1LhPVt.ORatZjL357AwSMOqm',
+    '2026-06-26 17:16:30.703096+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Given Nzalali","email_verified":true,"old_firebase_uid":"L2JDeNTBHsRgH5nwuzKorajOpYJ3"}'::jsonb,
+    '2026-06-26 17:16:30.698323+00'::timestamptz,
+    '2026-06-26 17:35:11.300816+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'de37dcf2-9351-4456-a4aa-c8a2cae132cb'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'dennismlongoti822@gmail.com',
+    '$2a$10$3qsmA39DQfHnBNaHD0.Lp.sM4b/OyTDnxosAw5uVqIsDkupnltC1C',
+    '2026-06-26 17:16:38.996389+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Dennis Mlongoti","email_verified":true,"old_firebase_uid":"M4Y3IBegb2N2KuJZRl5AL7xPm462"}'::jsonb,
+    '2026-06-26 17:16:38.993562+00'::timestamptz,
+    '2026-06-26 17:35:15.939444+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '2d72d398-e7cd-439d-908c-dd69bc0d3c28'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'chifundodiston4@gmail.com',
+    '$2a$10$9/YLRUg3xonP75DTjCQ2Ke.LPLxj6B8rL2Tz0BZPPQ8Tqtyi61ozm',
+    '2026-06-26 17:16:32.546385+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"LDcWiEe2K5ZVZxxm0Uzjz3PiBb73"}'::jsonb,
+    '2026-06-26 17:16:32.543647+00'::timestamptz,
+    '2026-06-26 17:35:12.454557+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '59c8c42e-fd6e-48da-b9c3-d255edb031c0'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'charlesdikayina@gmail.com',
+    '$2a$10$EJ.XpxUn73r9aq0aFpM32OTvny6atpYHEQ/iDDocLtYmrJHgTcFuu',
+    '2026-06-26 17:16:48.497471+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Dikayina Charles","email_verified":true,"old_firebase_uid":"N9QK9NYlHlNJW89NCRfuMDVYuuD3"}'::jsonb,
+    '2026-06-26 17:16:48.491989+00'::timestamptz,
+    '2026-06-26 17:35:21.980478+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'bb61095d-c224-435e-8100-c4364d04e592'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'blessingsmunthalimhone@gmail.com',
+    '$2a$10$NUkcq1TMKcVJN.uCoW3Gw.y7DP.7P1qPw/qbcOPrhX.dWeDg90ycW',
+    '2026-06-26 17:16:46.615618+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Blessings Munthali mhone","email_verified":true,"old_firebase_uid":"N3sPmmfJKbX8p1YJx5nGEyWUDaH3"}'::jsonb,
+    '2026-06-26 17:16:46.612867+00'::timestamptz,
+    '2026-06-26 17:35:20.860143+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'a5856e30-5567-4134-a992-f4196a5525ea'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'moffatchimwemwe1@gmail.com',
+    '$2a$10$/wtd2df1xGeiGs2niiCFk.AXwLoO24PXmnVQHSvGrqYx8qyeVnLGy',
+    '2026-06-26 17:16:41.042247+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"M9PDgVOayTPjQId5WuSve8ld0Jy1"}'::jsonb,
+    '2026-06-26 17:16:41.037271+00'::timestamptz,
+    '2026-06-26 17:35:17.223162+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'f043b1c5-d356-44dc-9fc3-a8efc81b84a6'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'rhonexpopular@gmail.com',
+    '$2a$10$I4emZC6bceNMKXcmjU8yXu1JbxOrYw4f3mdpPqypgX6H9qr.znAVe',
+    '2026-06-26 17:16:52.618344+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Popular rhonex","email_verified":true,"old_firebase_uid":"NY4FqCMd1nevwA8H4eea0DUjZkw2"}'::jsonb,
+    '2026-06-26 17:16:52.615721+00'::timestamptz,
+    '2026-06-26 17:35:24.30519+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'e2657d83-560f-404b-a478-becae470bcc3'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'augustinevanexmsukwa@gmail.com',
+    '$2a$10$4rog3..SXwWDEGrqezaaU.gEKsJigXFVD932ekyFKuOFKVWnPbZzq',
+    '2026-06-26 17:16:56.410304+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Augustine vanex Msukwa","email_verified":true,"old_firebase_uid":"NkU2aLddg4NEiFGIiOqcz4utKKv2"}'::jsonb,
+    '2026-06-26 17:16:56.407448+00'::timestamptz,
+    '2026-06-26 17:35:26.652214+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '4641456b-7139-4fa0-b099-93eea264de6d'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'florencekaliati21@gmail.com',
+    '$2a$10$kM8xmu3MFFHX9lCg6krKaeCtrXHYXzXY76EGQokema2X/y7nFwtBK',
+    '2026-06-26 17:16:22.885015+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"florence Kaliati21","email_verified":true,"old_firebase_uid":"JxPWxvQd9zSlOLLW6nQeMdqZPxq1"}'::jsonb,
+    '2026-06-26 17:16:22.879996+00'::timestamptz,
+    '2026-06-26 17:35:06.648765+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '7606d36f-c876-4605-8c56-60b9d15cf37e'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'jaliwekumsinda7@gmail.com',
+    '$2a$10$lIbmFn8amSE/XTuC4vdOOOYMOeazOptncj53szVtsE6v41/0al9Si',
+    '2026-06-26 17:17:09.131824+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Jaliwe Kumsinda","email_verified":true,"old_firebase_uid":"OKwfKvDkrHdNh7SpwQiSOjKTgFw1"}'::jsonb,
+    '2026-06-26 17:17:09.127831+00'::timestamptz,
+    '2026-06-26 17:35:32.651029+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '68bd7afe-cc36-47c2-ab4f-31575d5f3fda'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'gelevaziommame@gmail.com',
+    '$2a$10$xpjAQgfW4qYi7/yDPDtKj.6D3B/ochgxIz/18DaRqcBMJxoRnudhK',
+    '2026-06-26 17:17:38.351728+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"gelevazio mmame","email_verified":true,"old_firebase_uid":"T8YGXh3z0bg2ly5VeZQAHLgMmzn1"}'::jsonb,
+    '2026-06-26 17:17:38.348422+00'::timestamptz,
+    '2026-06-26 17:35:51.014382+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '21705cea-2ce2-4ca2-a67f-c09b07d8a1b3'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'andrewsamson271@gmail.com',
+    'null',
+    '2026-10-06 04:54:15.041985+00'::timestamptz,
+    '{"provider":"google","providers":["google"]}'::jsonb,
+    '{"iss":"https://accounts.google.com","sub":"111654349965068704176","name":"Andrew Samson","email":"andrewsamson271@gmail.com","picture":"https://lh3.googleusercontent.com/a/ACg8ocLqKB5_dHYd_hImXNJyBMCqYu4ItRvw0LQW-x9R1765NoEmww=s96-c","full_name":"Andrew Samson","avatar_url":"https://lh3.googleusercontent.com/a/ACg8ocLqKB5_dHYd_hImXNJyBMCqYu4ItRvw0LQW-x9R1765NoEmww=s96-c","provider_id":"111654349965068704176","email_verified":true,"phone_verified":false}'::jsonb,
+    '2026-10-06 04:54:15.020699+00'::timestamptz,
+    '2026-10-24 10:31:58.962152+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '3aa55306-c8d0-4f2d-8f95-b9f90984b1b7'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'gausiisaac527@gmail.com',
+    '$2a$10$Tz4j7gy4uTEkZL5HHCDACOEzzKkD3cNmr/E6Ujpj7MITUX1PJeTEW',
+    '2026-06-26 17:17:26.928809+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Isaac Gausi","email_verified":true,"old_firebase_uid":"Qo94HwU9ujMmrhoyPyxRpbQVc043"}'::jsonb,
+    '2026-06-26 17:17:26.926102+00'::timestamptz,
+    '2026-06-26 17:35:43.427309+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'ede63a30-d946-40e1-b58e-c9b5c2209928'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'cheyochrispine564@gmail.com',
+    '$2a$10$7YfxEX3GzpvsouiRcMGI.OJHe/.7slAJFLcaWB6LKTsS2vgKRaM4C',
+    '2026-06-26 17:17:21.35207+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"Pkv1vADdevd57C1fAfoFa1429S82"}'::jsonb,
+    '2026-06-26 17:17:21.348774+00'::timestamptz,
+    '2026-06-26 17:35:39.790281+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'feb7d332-410e-4a65-a8ad-7e15b71d5260'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'merrieumar47@gmail.com',
+    '$2a$10$gPe9u0tgqkID5maxYTryWOAdqzz52ivukf8dmhQJEO3/hb6BizFHG',
+    '2026-06-26 17:17:13.578502+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"P3rTdHXS5cfKQjSAbUzA7KrkYxa2"}'::jsonb,
+    '2026-06-26 17:17:13.575781+00'::timestamptz,
+    '2026-06-26 17:35:35.149625+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'f0da4837-038b-4c3e-80b3-7f7d649edb72'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'nkhongozachikumbu@gmail.com',
+    '$2a$10$wrQylwM4Hg6jGkvygGs16OCGdYN7uXKb1uEU2UMwSuboNfBxBZexC',
+    '2026-06-26 17:17:15.512847+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Alexander C Nkhongoza (Richard)","email_verified":true,"old_firebase_uid":"PFByoVdiH3e1qnrBEBtbL5zQmOA2"}'::jsonb,
+    '2026-06-26 17:17:15.508543+00'::timestamptz,
+    '2026-06-26 17:35:36.373082+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'aa691585-3730-4bc4-b95b-7fb9b99d1654'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'esthandie@gmail.com',
+    '$2a$10$w8WeTwn2iTTvW8zkRk6CwegcRuJzhrjLdubmOX1BCfKf1wQFfrITu',
+    '2026-06-26 17:17:23.247454+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Esther Kalonda","email_verified":true,"old_firebase_uid":"Q2ikeS09tUWZwRZeKoEPqCaYofE2"}'::jsonb,
+    '2026-06-26 17:17:23.244727+00'::timestamptz,
+    '2026-06-26 17:35:40.993192+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    'acc8d4ba-2f70-49ab-ba46-63ec1d810c45'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'rexchambo25@gmail.com',
+    '$2a$10$CSd4jrU0g5YxchHpREp7UeyTquxgxzN0o/EVnjEF5U0npQzyrmdQS',
+    '2026-06-26 17:17:17.565959+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Rex Chambo","email_verified":true,"old_firebase_uid":"PZiM3gcqIlQMjAtG7cKY947MkhR2"}'::jsonb,
+    '2026-06-26 17:17:17.563145+00'::timestamptz,
+    '2026-06-26 17:35:37.493112+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '2c22f8d3-36a0-4b03-80ff-4bee7045bc90'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'studentmarket35@gmail.com',
+    '$2a$10$v8YiuwALMw9i7DXlKPoGmetjBE0AYnXFLyURTsY9jGTdAW.KUmD8e',
+    '2026-06-26 17:17:32.520304+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"RsoiuBsE4NeXFf2JAL1WTVkNVB33"}'::jsonb,
+    '2026-06-26 17:17:32.517497+00'::timestamptz,
+    '2026-06-26 17:35:47.221766+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '9a194176-da30-4b3e-85f4-1821c0cf92c3'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'sothinimkwembe2@gmail.com',
+    '$2a$10$7qhSZiZNhr0fCBI6pkEtq.lmiV.Cbd54u3N/edQZ7jnsxtf9lHzfS',
+    '2026-06-26 17:17:25.086537+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"Q7J69IJaeBVhoudj3WYxp0skMf92"}'::jsonb,
+    '2026-06-26 17:17:25.083902+00'::timestamptz,
+    '2026-06-26 17:35:42.176289+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '4a0dabe6-bbbe-4b60-9cd2-f291f3a6fe66'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'stanleymarusa79@gmail.com',
+    '$2a$10$X9QuFiBmb6C3fnjfdDXjx./lmUdoGTuuoZJegmmI2jSbV2h2NWPd6',
+    '2026-06-26 17:17:36.296511+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Stanley Marusa","email_verified":true,"old_firebase_uid":"SjPUbqwQMHYioQKycQ2IysVRWs32"}'::jsonb,
+    '2026-06-26 17:17:36.293378+00'::timestamptz,
+    '2026-06-26 17:35:49.826606+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '9b0e9d07-d510-4b20-a600-9000f26a27a9'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'chirwadivineglory@gmail.com',
+    '$2a$10$QBB.dnnuaRoKxjgH6i0vLe9.fdKubcvGUQdSIHVHZhlMGB.g4vwyC',
+    '2026-06-26 17:17:34.423111+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Divineglory Chirwa","email_verified":true,"old_firebase_uid":"S6PM2ZehamVb1IPwuNFPoDITscl2"}'::jsonb,
+    '2026-06-26 17:17:34.420429+00'::timestamptz,
+    '2026-06-26 17:35:48.381206+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '3a67bf21-6096-4532-83ec-cbda149d58e5'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'chakulangirajuliet@gmail.com',
+    '$2a$10$tYWalr0lp2Js.15PrZxK9eVyaOfQQTGzZVirWVLGzhJPJV6T7In/K',
+    '2026-06-26 17:17:40.320621+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Juliet Chakulangira","email_verified":true,"old_firebase_uid":"TEyG8qEer5eWfhbHsGiLrP7cE1m1"}'::jsonb,
+    '2026-06-26 17:17:40.317264+00'::timestamptz,
+    '2026-06-26 17:35:52.233556+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '0185b211-86e1-4c92-bbc6-fbbd81ec5590'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'kanyamazephaniah@gmail.com',
+    '$2a$10$VCTxv3nSQVvjsc0Veq.iAufml.DMEw88oDv2lRyY0NX1zcVmZrVve',
+    '2026-06-26 17:17:42.229305+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"ZEPHANIAH KANYAMa","email_verified":true,"old_firebase_uid":"TEyfkeWZMpTBfd11YCiZYadClYy2"}'::jsonb,
+    '2026-06-26 17:17:42.225948+00'::timestamptz,
+    '2026-06-26 17:35:53.413336+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '994f912d-f1d9-4b9e-9170-e8d19525ad63'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'muwabrian80@gmail.com',
+    '$2a$10$lEvWlGi92H7z949UolBs8.Z9XWMNgGUye1P1n.krFEharQdtQm5PG',
+    '2026-06-26 17:17:02.383903+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"O2czFaQjNLQlPXBIyKXRU2pA04o1"}'::jsonb,
+    '2026-06-26 17:17:02.381004+00'::timestamptz,
+    '2026-06-26 17:35:30.346351+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '682b3117-acb5-4dc2-92fc-32e5f5227c0a'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'mosesphiri164@gmail.com',
+    '$2a$10$SN03nJ0zR8z58nbBxK59KOORarB3AyDAjLYEVLACqYE3AKBr3bL9e',
+    '2026-06-26 17:17:04.483467+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Moses","email_verified":true,"old_firebase_uid":"O7aw8XQJEjRgL6mORzdczY5WrVz1"}'::jsonb,
+    '2026-06-26 17:17:04.480727+00'::timestamptz,
+    '2026-06-26 17:35:31.504514+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '4c246308-a1d9-4c18-bdd9-3476517672e4'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'masinarose03@gmail.com',
+    '$2a$10$eT81Og4wg098nWZVmEeNtuPVQJuEs3XvAs62e9rb7NiesWZ6OHuzy',
+    '2026-06-26 17:17:57.804033+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"Rose Masina","email_verified":true,"old_firebase_uid":"UkbOj1ncZBcEql8uvCzZwX6ZXjT2"}'::jsonb,
+    '2026-06-26 17:17:57.799882+00'::timestamptz,
+    '2026-06-26 17:36:03.283638+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '7a0ad8e1-3e33-4e86-81cc-850933d260fe'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'blaccajames11@gmail.com',
+    '$2a$10$zc0ix12WKb47gBZOgDo6SeIuTRjIbXYwBSVZYkhJRoz8lwxRPph4e',
+    '2026-06-26 17:17:48.294605+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"UNY3BiqWxBh6Gd6SD1nIW3tnIoW2"}'::jsonb,
+    '2026-06-26 17:17:48.291924+00'::timestamptz,
+    '2026-06-26 17:35:57.328739+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  ),
+(
+    '198edc80-493d-49fa-8856-9ebb3554f57d'::uuid,
+    '00000000-0000-0000-0000-000000000000'::uuid,
+    'kelvinibrahim2007@gmail.com',
+    '$2a$10$Aj65ts7sdQigFdVyOwutCOGr/9EIN4I/z6AxalCHOxG7mdZ5xuc6i',
+    '2026-06-26 17:17:50.16621+00'::timestamptz,
+    '{"provider":"email","providers":["email"]}'::jsonb,
+    '{"full_name":"","email_verified":true,"old_firebase_uid":"UNqT4o0wBygsx3ymU6G94CNniEI3"}'::jsonb,
+    '2026-06-26 17:17:50.163333+00'::timestamptz,
+    '2026-06-26 17:35:58.553432+00'::timestamptz,
+    'authenticated',
+    'authenticated'
+  )
+ON CONFLICT (id) DO UPDATE SET
+  email = EXCLUDED.email,
+  encrypted_password = EXCLUDED.encrypted_password,
+  email_confirmed_at = EXCLUDED.email_confirmed_at,
+  raw_app_meta_data = EXCLUDED.raw_app_meta_data,
+  raw_user_meta_data = EXCLUDED.raw_user_meta_data,
+  updated_at = EXCLUDED.updated_at;
+
+-- ============================================================================
+-- 3. INSERT AUTH IDENTITIES
+-- ============================================================================
+INSERT INTO auth.identities (
+  id,
+  user_id,
+  identity_data,
+  provider,
+  created_at,
+  updated_at
+)
+SELECT 
+  v.id::uuid,
+  v.user_id::uuid,
+  v.identity_data::jsonb,
+  v.provider::text,
+  v.created_at::timestamptz,
+  v.updated_at::timestamptz
+FROM (VALUES 
+(
+    '9d2b3f82-7396-4d3b-808a-cd63d8b85f36'::uuid,
+    '9d2b3f82-7396-4d3b-808a-cd63d8b85f36'::uuid,
+    '{"sub":"9d2b3f82-7396-4d3b-808a-cd63d8b85f36","email":"manueljohn836@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:12:43.160934+00'::timestamptz,
+    '2026-06-26 17:33:29.708032+00'::timestamptz
+  ),
+(
+    '6c4efc68-235a-44b7-a2f3-0acb106a34d7'::uuid,
+    '6c4efc68-235a-44b7-a2f3-0acb106a34d7'::uuid,
+    '{"sub":"6c4efc68-235a-44b7-a2f3-0acb106a34d7","email":"kapyolamikaya@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:12:36.995727+00'::timestamptz,
+    '2026-06-26 17:33:24.735423+00'::timestamptz
+  ),
+(
+    'ca2db239-665e-473a-a3e7-e5589f4dac8d'::uuid,
+    'ca2db239-665e-473a-a3e7-e5589f4dac8d'::uuid,
+    '{"sub":"ca2db239-665e-473a-a3e7-e5589f4dac8d","email":"galatiagawani277@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:12:44.914964+00'::timestamptz,
+    '2026-06-26 17:33:30.937311+00'::timestamptz
+  ),
+(
+    'c3fdacee-65f5-4592-80c7-0adc9b3ba997'::uuid,
+    'c3fdacee-65f5-4592-80c7-0adc9b3ba997'::uuid,
+    '{"sub":"c3fdacee-65f5-4592-80c7-0adc9b3ba997","email":"wayakelvin986@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:12:38.552689+00'::timestamptz,
+    '2026-06-26 17:33:26.063179+00'::timestamptz
+  ),
+(
+    '9f1f4528-fb85-41fd-acf1-4b8c0fb1735a'::uuid,
+    '9f1f4528-fb85-41fd-acf1-4b8c0fb1735a'::uuid,
+    '{"sub":"9f1f4528-fb85-41fd-acf1-4b8c0fb1735a","email":"kamowajephah@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:12:58.967648+00'::timestamptz,
+    '2026-06-26 17:33:41.76676+00'::timestamptz
+  ),
+(
+    'fd800671-bbab-4e56-b0e2-015f5e8316e1'::uuid,
+    'fd800671-bbab-4e56-b0e2-015f5e8316e1'::uuid,
+    '{"sub":"fd800671-bbab-4e56-b0e2-015f5e8316e1","email":"valanimayamiko@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:12:40.106951+00'::timestamptz,
+    '2026-06-26 17:33:27.192414+00'::timestamptz
+  ),
+(
+    '2844baba-f9fa-4743-a25c-70fb57f771e2'::uuid,
+    '2844baba-f9fa-4743-a25c-70fb57f771e2'::uuid,
+    '{"sub":"2844baba-f9fa-4743-a25c-70fb57f771e2","email":"lenardchristopher220@gmail.cok"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:12:46.416596+00'::timestamptz,
+    '2026-06-26 17:33:32.28814+00'::timestamptz
+  ),
+(
+    'e07a6c54-d799-402a-8b83-f551b2723e1e'::uuid,
+    'e07a6c54-d799-402a-8b83-f551b2723e1e'::uuid,
+    '{"sub":"e07a6c54-d799-402a-8b83-f551b2723e1e","email":"gm1388965@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:12:57.400541+00'::timestamptz,
+    '2026-06-26 17:33:40.568244+00'::timestamptz
+  ),
+(
+    'e650ec07-140a-4762-8548-385042c1cb77'::uuid,
+    'e650ec07-140a-4762-8548-385042c1cb77'::uuid,
+    '{"sub":"e650ec07-140a-4762-8548-385042c1cb77","email":"januaryinnocent60@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:12:54.408252+00'::timestamptz,
+    '2026-06-26 17:33:38.247664+00'::timestamptz
+  ),
+(
+    '4ce36b48-19e8-4a26-bbfd-0883ee800168'::uuid,
+    '4ce36b48-19e8-4a26-bbfd-0883ee800168'::uuid,
+    '{"sub":"4ce36b48-19e8-4a26-bbfd-0883ee800168","email":"nyimbiriprecious2@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:12:51.162723+00'::timestamptz,
+    '2026-06-26 17:33:35.946833+00'::timestamptz
+  ),
+(
+    '255abb32-3be7-4d0e-bca5-b124731d135e'::uuid,
+    '255abb32-3be7-4d0e-bca5-b124731d135e'::uuid,
+    '{"sub":"255abb32-3be7-4d0e-bca5-b124731d135e","email":"pindanikelvin25@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:12:47.933274+00'::timestamptz,
+    '2026-06-26 17:33:33.613781+00'::timestamptz
+  ),
+(
+    '0c370421-6a4c-40d2-8c5d-eccc7756f9c8'::uuid,
+    '0c370421-6a4c-40d2-8c5d-eccc7756f9c8'::uuid,
+    '{"sub":"0c370421-6a4c-40d2-8c5d-eccc7756f9c8","email":"bridgetmangisa@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:12:35.455844+00'::timestamptz,
+    '2026-06-26 17:34:00.503187+00'::timestamptz
+  ),
+(
+    'c9aac4a7-2dfb-48be-aafd-ef3eb6190fac'::uuid,
+    'c9aac4a7-2dfb-48be-aafd-ef3eb6190fac'::uuid,
+    '{"sub":"c9aac4a7-2dfb-48be-aafd-ef3eb6190fac","email":"kennedynyirenda100@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:13:02.217057+00'::timestamptz,
+    '2026-06-26 17:33:44.107515+00'::timestamptz
+  ),
+(
+    '5a9ff060-6c3f-408d-bca6-489ee90244e6'::uuid,
+    '5a9ff060-6c3f-408d-bca6-489ee90244e6'::uuid,
+    '{"sub":"5a9ff060-6c3f-408d-bca6-489ee90244e6","email":"babrangwiri32@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:13:03.758401+00'::timestamptz,
+    '2026-06-26 17:33:45.308884+00'::timestamptz
+  ),
+(
+    'ef7c092a-9550-45ba-b9aa-da0509a1cc7d'::uuid,
+    'ef7c092a-9550-45ba-b9aa-da0509a1cc7d'::uuid,
+    '{"sub":"ef7c092a-9550-45ba-b9aa-da0509a1cc7d","email":"gomangosamuel6@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:13:05.335266+00'::timestamptz,
+    '2026-06-26 17:33:46.488299+00'::timestamptz
+  ),
+(
+    '4cdccc29-ee54-4269-93a4-ab9bfa69bba6'::uuid,
+    '4cdccc29-ee54-4269-93a4-ab9bfa69bba6'::uuid,
+    '{"sub":"4cdccc29-ee54-4269-93a4-ab9bfa69bba6","email":"manyusamelicy8@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:12:33.831031+00'::timestamptz,
+    '2026-06-26 17:33:22.351018+00'::timestamptz
+  ),
+(
+    '6c8bd796-5394-4602-a277-16378f8a1e3b'::uuid,
+    '6c8bd796-5394-4602-a277-16378f8a1e3b'::uuid,
+    '{"sub":"6c8bd796-5394-4602-a277-16378f8a1e3b","email":"yamikaninankhuni@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:13:12.201599+00'::timestamptz,
+    '2026-06-26 17:33:51.148605+00'::timestamptz
+  ),
+(
+    '1d3e9642-293b-4e13-9e36-02a261de7724'::uuid,
+    '1d3e9642-293b-4e13-9e36-02a261de7724'::uuid,
+    '{"sub":"1d3e9642-293b-4e13-9e36-02a261de7724","email":"patrickwestonbanda@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:13:30.836323+00'::timestamptz,
+    '2026-06-26 17:38:59.987044+00'::timestamptz
+  ),
+(
+    'b3b3c65b-68a8-4e9a-8d61-f936ea0697a0'::uuid,
+    'b3b3c65b-68a8-4e9a-8d61-f936ea0697a0'::uuid,
+    '{"sub":"b3b3c65b-68a8-4e9a-8d61-f936ea0697a0","email":"whitemoffat2@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:13:13.733824+00'::timestamptz,
+    '2026-06-26 17:33:52.380088+00'::timestamptz
+  ),
+(
+    'b1e8fa19-eebb-4b58-ac3e-77f6470be648'::uuid,
+    'b1e8fa19-eebb-4b58-ac3e-77f6470be648'::uuid,
+    '{"sub":"b1e8fa19-eebb-4b58-ac3e-77f6470be648","email":"kasawsmphatso@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:13:28.914583+00'::timestamptz,
+    '2026-06-26 17:34:02.824374+00'::timestamptz
+  ),
+(
+    'e4f51183-83e9-46ea-85a0-4f4008c391bf'::uuid,
+    'e4f51183-83e9-46ea-85a0-4f4008c391bf'::uuid,
+    '{"sub":"e4f51183-83e9-46ea-85a0-4f4008c391bf","email":"kuthyolamacklean@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:13:21.727244+00'::timestamptz,
+    '2026-06-26 17:33:58.215312+00'::timestamptz
+  ),
+(
+    'daa6c9e5-6785-48e7-ac98-ab7d0b5486ba'::uuid,
+    'daa6c9e5-6785-48e7-ac98-ab7d0b5486ba'::uuid,
+    '{"sub":"daa6c9e5-6785-48e7-ac98-ab7d0b5486ba","email":"omkandawire19@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:13:15.242214+00'::timestamptz,
+    '2026-06-26 17:33:53.51753+00'::timestamptz
+  ),
+(
+    'b184abda-e503-4553-bcd7-96f83fb84d71'::uuid,
+    'b184abda-e503-4553-bcd7-96f83fb84d71'::uuid,
+    '{"sub":"b184abda-e503-4553-bcd7-96f83fb84d71","email":"tapiwachiwaula@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:13:23.266426+00'::timestamptz,
+    '2026-06-26 17:33:59.350491+00'::timestamptz
+  ),
+(
+    '958b0e07-34b2-40be-92a6-dab0af8dcf5e'::uuid,
+    '958b0e07-34b2-40be-92a6-dab0af8dcf5e'::uuid,
+    '{"sub":"958b0e07-34b2-40be-92a6-dab0af8dcf5e","email":"ngwiraclive00@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:13:18.652407+00'::timestamptz,
+    '2026-06-26 17:33:55.828877+00'::timestamptz
+  ),
+(
+    'c884b773-5b2c-421b-84fd-7b61bd1ca73a'::uuid,
+    'c884b773-5b2c-421b-84fd-7b61bd1ca73a'::uuid,
+    '{"sub":"c884b773-5b2c-421b-84fd-7b61bd1ca73a","email":"masulanijoseph95@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:13:39.197375+00'::timestamptz,
+    '2026-06-26 17:34:06.864899+00'::timestamptz
+  ),
+(
+    'd0cd4368-b460-49ad-a2aa-099db8624e6c'::uuid,
+    'd0cd4368-b460-49ad-a2aa-099db8624e6c'::uuid,
+    '{"sub":"d0cd4368-b460-49ad-a2aa-099db8624e6c","email":"chiccokaliwo77@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:13:27.235035+00'::timestamptz,
+    '2026-06-26 17:34:01.674827+00'::timestamptz
+  ),
+(
+    '3a0a4d5f-5292-4136-a9b9-f17cfdb137fa'::uuid,
+    '3a0a4d5f-5292-4136-a9b9-f17cfdb137fa'::uuid,
+    '{"sub":"3a0a4d5f-5292-4136-a9b9-f17cfdb137fa","email":"siyamandaphillip23@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:13:44.169057+00'::timestamptz,
+    '2026-06-26 17:34:09.226158+00'::timestamptz
+  ),
+(
+    '0c1c850f-a2e7-449a-b4e6-edd92907f14f'::uuid,
+    '0c1c850f-a2e7-449a-b4e6-edd92907f14f'::uuid,
+    '{"sub":"0c1c850f-a2e7-449a-b4e6-edd92907f14f","email":"victormuwa76@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:13:41.277993+00'::timestamptz,
+    '2026-06-26 17:34:08.073869+00'::timestamptz
+  ),
+(
+    'b977adc2-28e9-4b67-a093-bf0009d27b22'::uuid,
+    'b977adc2-28e9-4b67-a093-bf0009d27b22'::uuid,
+    '{"sub":"b977adc2-28e9-4b67-a093-bf0009d27b22","email":"phillipdereckkabango@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:13:50.700332+00'::timestamptz,
+    '2026-06-26 17:34:11.553692+00'::timestamptz
+  ),
+(
+    '7bc4d406-fdbe-42e2-a78c-75769e18d655'::uuid,
+    '7bc4d406-fdbe-42e2-a78c-75769e18d655'::uuid,
+    '{"sub":"7bc4d406-fdbe-42e2-a78c-75769e18d655","email":"dullahmathews@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:13:54.411801+00'::timestamptz,
+    '2026-06-26 17:34:12.697937+00'::timestamptz
+  ),
+(
+    '49bc4f5d-bcfc-4370-b6ba-10f3d074264b'::uuid,
+    '49bc4f5d-bcfc-4370-b6ba-10f3d074264b'::uuid,
+    '{"sub":"49bc4f5d-bcfc-4370-b6ba-10f3d074264b","email":"mannuchisi9@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:13:06.876258+00'::timestamptz,
+    '2026-06-26 17:33:47.654288+00'::timestamptz
+  ),
+(
+    '3906e70c-6a90-4367-9c98-1c485f670681'::uuid,
+    '3906e70c-6a90-4367-9c98-1c485f670681'::uuid,
+    '{"sub":"3906e70c-6a90-4367-9c98-1c485f670681","email":"brightchimdima7@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:13:08.489922+00'::timestamptz,
+    '2026-06-26 17:33:48.852928+00'::timestamptz
+  ),
+(
+    '44871239-9a1d-4dd8-8c00-505eb7144861'::uuid,
+    '44871239-9a1d-4dd8-8c00-505eb7144861'::uuid,
+    '{"sub":"44871239-9a1d-4dd8-8c00-505eb7144861","email":"motseyekha@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:14:21.059731+00'::timestamptz,
+    '2026-06-26 17:34:23.60116+00'::timestamptz
+  ),
+(
+    'd2b5eca7-5ab8-4d43-9c60-9e515fa88be9'::uuid,
+    'd2b5eca7-5ab8-4d43-9c60-9e515fa88be9'::uuid,
+    '{"sub":"d2b5eca7-5ab8-4d43-9c60-9e515fa88be9","email":"palanjeh@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:14:47.287212+00'::timestamptz,
+    '2026-06-26 17:34:35.346519+00'::timestamptz
+  ),
+(
+    '02698964-cf24-4e24-b7e3-5b5deeb9d22d'::uuid,
+    '02698964-cf24-4e24-b7e3-5b5deeb9d22d'::uuid,
+    '{"sub":"02698964-cf24-4e24-b7e3-5b5deeb9d22d","email":"bandasam76@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:14:10.020045+00'::timestamptz,
+    '2026-06-26 17:34:18.849136+00'::timestamptz
+  ),
+(
+    '2a0b5367-d99c-45c6-b0c4-b71c62c62952'::uuid,
+    '2a0b5367-d99c-45c6-b0c4-b71c62c62952'::uuid,
+    '{"sub":"2a0b5367-d99c-45c6-b0c4-b71c62c62952","email":"manganigetrude2@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:14:31.876911+00'::timestamptz,
+    '2026-06-26 17:34:28.291964+00'::timestamptz
+  ),
+(
+    'ea05643f-dcf0-4311-8c61-c3ee67565189'::uuid,
+    'ea05643f-dcf0-4311-8c61-c3ee67565189'::uuid,
+    '{"sub":"ea05643f-dcf0-4311-8c61-c3ee67565189","email":"baipatience2010@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:14:23.047264+00'::timestamptz,
+    '2026-06-26 17:34:24.754757+00'::timestamptz
+  ),
+(
+    'eb1c96ba-4e70-4fff-973a-ff1a4891903c'::uuid,
+    'eb1c96ba-4e70-4fff-973a-ff1a4891903c'::uuid,
+    '{"sub":"eb1c96ba-4e70-4fff-973a-ff1a4891903c","email":"gomondachiyanjano@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:14:15.603287+00'::timestamptz,
+    '2026-06-26 17:34:21.274153+00'::timestamptz
+  ),
+(
+    '5e17916f-0b9a-4f5d-b4cd-24e29059ad74'::uuid,
+    '5e17916f-0b9a-4f5d-b4cd-24e29059ad74'::uuid,
+    '{"sub":"5e17916f-0b9a-4f5d-b4cd-24e29059ad74","email":"moureechinsewu@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:14:18.205928+00'::timestamptz,
+    '2026-06-26 17:34:22.417711+00'::timestamptz
+  ),
+(
+    '13618c30-de31-48fd-af84-7dd68b4daf37'::uuid,
+    '13618c30-de31-48fd-af84-7dd68b4daf37'::uuid,
+    '{"sub":"13618c30-de31-48fd-af84-7dd68b4daf37","email":"kumembemaya@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:14:27.962721+00'::timestamptz,
+    '2026-06-26 17:34:27.077274+00'::timestamptz
+  ),
+(
+    '2437a035-633d-4c91-905e-8cf04d153554'::uuid,
+    '2437a035-633d-4c91-905e-8cf04d153554'::uuid,
+    '{"sub":"2437a035-633d-4c91-905e-8cf04d153554","email":"yonasjohn82@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:14:43.42957+00'::timestamptz,
+    '2026-06-26 17:34:34.174966+00'::timestamptz
+  ),
+(
+    '23df26ff-bebe-41e5-9019-9dd6e43932b9'::uuid,
+    '23df26ff-bebe-41e5-9019-9dd6e43932b9'::uuid,
+    '{"sub":"23df26ff-bebe-41e5-9019-9dd6e43932b9","email":"bandavincent323@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:14:40.403788+00'::timestamptz,
+    '2026-06-26 17:34:33.056127+00'::timestamptz
+  ),
+(
+    '769f958f-feed-4208-b30d-f00f5e6ae623'::uuid,
+    '769f958f-feed-4208-b30d-f00f5e6ae623'::uuid,
+    '{"sub":"769f958f-feed-4208-b30d-f00f5e6ae623","email":"kalingagift40@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:14:33.894064+00'::timestamptz,
+    '2026-06-26 17:39:01.186201+00'::timestamptz
+  ),
+(
+    '8d39a240-6e52-49d6-b954-7356db8c328f'::uuid,
+    '8d39a240-6e52-49d6-b954-7356db8c328f'::uuid,
+    '{"sub":"8d39a240-6e52-49d6-b954-7356db8c328f","email":"yamikanimangwaya43@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:14:59.524048+00'::timestamptz,
+    '2026-06-26 17:34:37.69426+00'::timestamptz
+  ),
+(
+    '02c393bc-d247-45cd-bf28-db659bff9f2a'::uuid,
+    '02c393bc-d247-45cd-bf28-db659bff9f2a'::uuid,
+    '{"sub":"02c393bc-d247-45cd-bf28-db659bff9f2a","email":"tamiandalama@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:14:00.790276+00'::timestamptz,
+    '2026-06-26 17:34:13.903922+00'::timestamptz
+  ),
+(
+    'a3551fc0-cfc6-4bdb-b414-7a41fe73f581'::uuid,
+    'a3551fc0-cfc6-4bdb-b414-7a41fe73f581'::uuid,
+    '{"sub":"a3551fc0-cfc6-4bdb-b414-7a41fe73f581","email":"connexyamikani4@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:14:02.611544+00'::timestamptz,
+    '2026-06-26 17:34:15.104771+00'::timestamptz
+  ),
+(
+    'c57ab5ad-092b-4371-81c6-6752e0c4ab8e'::uuid,
+    'c57ab5ad-092b-4371-81c6-6752e0c4ab8e'::uuid,
+    '{"sub":"c57ab5ad-092b-4371-81c6-6752e0c4ab8e","email":"chirwakennedy426@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:15:52.55184+00'::timestamptz,
+    '2026-06-26 17:34:48.579868+00'::timestamptz
+  ),
+(
+    'cc6055cb-f638-4e34-8c50-4d6db550423b'::uuid,
+    'cc6055cb-f638-4e34-8c50-4d6db550423b'::uuid,
+    '{"sub":"cc6055cb-f638-4e34-8c50-4d6db550423b","email":"tonicgondwe@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:15:37.735742+00'::timestamptz,
+    '2026-06-26 17:34:42.654118+00'::timestamptz
+  ),
+(
+    '8f69e8b0-2bf3-4aa2-80f1-f200e747ceb2'::uuid,
+    '8f69e8b0-2bf3-4aa2-80f1-f200e747ceb2'::uuid,
+    '{"sub":"8f69e8b0-2bf3-4aa2-80f1-f200e747ceb2","email":"peterkondwani826@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:16:14.920383+00'::timestamptz,
+    '2026-06-26 17:35:01.730736+00'::timestamptz
+  ),
+(
+    '39aefb71-f15b-4953-9670-478d287c7a10'::uuid,
+    '39aefb71-f15b-4953-9670-478d287c7a10'::uuid,
+    '{"sub":"39aefb71-f15b-4953-9670-478d287c7a10","email":"dealssquive@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:15:43.764673+00'::timestamptz,
+    '2026-06-26 17:34:43.984235+00'::timestamptz
+  ),
+(
+    'bf57141f-8e0b-4009-8b36-683394e2e13c'::uuid,
+    'bf57141f-8e0b-4009-8b36-683394e2e13c'::uuid,
+    '{"sub":"bf57141f-8e0b-4009-8b36-683394e2e13c","email":"ykamuyambeni5@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:16:03.342558+00'::timestamptz,
+    '2026-06-26 17:34:54.555719+00'::timestamptz
+  ),
+(
+    '37d9abeb-d32d-49c7-b3ff-b39d3593a821'::uuid,
+    '37d9abeb-d32d-49c7-b3ff-b39d3593a821'::uuid,
+    '{"sub":"37d9abeb-d32d-49c7-b3ff-b39d3593a821","email":"faithsciller@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:15:54.916821+00'::timestamptz,
+    '2026-06-26 17:34:49.776113+00'::timestamptz
+  ),
+(
+    'ad49caf3-ad92-4059-b5b1-b0afa3e0ea24'::uuid,
+    'ad49caf3-ad92-4059-b5b1-b0afa3e0ea24'::uuid,
+    '{"sub":"ad49caf3-ad92-4059-b5b1-b0afa3e0ea24","email":"shakirahchikoti410@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:15:47.568099+00'::timestamptz,
+    '2026-06-26 17:34:46.294427+00'::timestamptz
+  ),
+(
+    '56864dfa-a2ce-4dea-8459-d86d36e0e506'::uuid,
+    '56864dfa-a2ce-4dea-8459-d86d36e0e506'::uuid,
+    '{"sub":"56864dfa-a2ce-4dea-8459-d86d36e0e506","email":"kunkwenzuz@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:15:57.143991+00'::timestamptz,
+    '2026-06-26 17:34:50.944111+00'::timestamptz
+  ),
+(
+    '4237c0f9-4e2a-4723-bc63-9d681f7b11f3'::uuid,
+    '4237c0f9-4e2a-4723-bc63-9d681f7b11f3'::uuid,
+    '{"sub":"4237c0f9-4e2a-4723-bc63-9d681f7b11f3","email":"witnessmpinganjira90@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:15:50.606855+00'::timestamptz,
+    '2026-06-26 17:34:47.457271+00'::timestamptz
+  ),
+(
+    '13b60f2b-00db-4b5a-92cd-b76bce78052c'::uuid,
+    '13b60f2b-00db-4b5a-92cd-b76bce78052c'::uuid,
+    '{"sub":"13b60f2b-00db-4b5a-92cd-b76bce78052c","email":"michaelmvula133@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:16:09.041773+00'::timestamptz,
+    '2026-06-26 17:34:58.049288+00'::timestamptz
+  ),
+(
+    '4c1ef23d-c57d-489c-975f-fa1031f7209c'::uuid,
+    '4c1ef23d-c57d-489c-975f-fa1031f7209c'::uuid,
+    '{"sub":"4c1ef23d-c57d-489c-975f-fa1031f7209c","email":"monicaphiri155@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:16:07.138418+00'::timestamptz,
+    '2026-06-26 17:34:56.912171+00'::timestamptz
+  ),
+(
+    '9ec9cc08-70d6-439a-8ce9-1c094c3cb48b'::uuid,
+    '9ec9cc08-70d6-439a-8ce9-1c094c3cb48b'::uuid,
+    '{"sub":"9ec9cc08-70d6-439a-8ce9-1c094c3cb48b","email":"archangelkaputa@email.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:15:59.277661+00'::timestamptz,
+    '2026-06-26 17:34:52.155004+00'::timestamptz
+  ),
+(
+    'b285b1ae-2b6c-4c7a-a578-654b14f769cc'::uuid,
+    'b285b1ae-2b6c-4c7a-a578-654b14f769cc'::uuid,
+    '{"sub":"b285b1ae-2b6c-4c7a-a578-654b14f769cc","email":"collingschikhwakhwa@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:16:12.995021+00'::timestamptz,
+    '2026-06-26 17:35:00.372059+00'::timestamptz
+  ),
+(
+    'f9b8d77e-d402-442c-ac89-a774fd48a3f6'::uuid,
+    'f9b8d77e-d402-442c-ac89-a774fd48a3f6'::uuid,
+    '{"sub":"f9b8d77e-d402-442c-ac89-a774fd48a3f6","email":"preciousmalexander@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:16:11.09991+00'::timestamptz,
+    '2026-06-26 17:34:59.232118+00'::timestamptz
+  ),
+(
+    '817f25bf-e478-44bf-a2d1-07e8b211769c'::uuid,
+    '817f25bf-e478-44bf-a2d1-07e8b211769c'::uuid,
+    '{"sub":"817f25bf-e478-44bf-a2d1-07e8b211769c","email":"lenardchristopher220@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:16:19.084144+00'::timestamptz,
+    '2026-06-26 17:35:04.168598+00'::timestamptz
+  ),
+(
+    '87894fcb-5e85-4e63-bc8e-0c631f4d9714'::uuid,
+    '87894fcb-5e85-4e63-bc8e-0c631f4d9714'::uuid,
+    '{"sub":"87894fcb-5e85-4e63-bc8e-0c631f4d9714","email":"alfredlukejnr@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:15:07.784682+00'::timestamptz,
+    '2026-06-26 17:34:39.138009+00'::timestamptz
+  ),
+(
+    'ce66a1ca-2781-4091-8d0c-07f528539037'::uuid,
+    'ce66a1ca-2781-4091-8d0c-07f528539037'::uuid,
+    '{"sub":"ce66a1ca-2781-4091-8d0c-07f528539037","email":"sandsonlonjezo@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:15:17.223382+00'::timestamptz,
+    '2026-06-26 17:34:40.259827+00'::timestamptz
+  ),
+(
+    'c9d6a2d2-6d42-45c6-ac2c-b7ac9157e8c2'::uuid,
+    'c9d6a2d2-6d42-45c6-ac2c-b7ac9157e8c2'::uuid,
+    '{"sub":"c9d6a2d2-6d42-45c6-ac2c-b7ac9157e8c2","email":"stuartchiwalira314@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-10-27 14:50:29.92011+00'::timestamptz,
+    '2026-10-27 14:50:30.080691+00'::timestamptz
+  ),
+(
+    'ac032e5e-7244-48b9-ba5d-e25af6428bc5'::uuid,
+    'ac032e5e-7244-48b9-ba5d-e25af6428bc5'::uuid,
+    '{"sub":"ac032e5e-7244-48b9-ba5d-e25af6428bc5","email":"kalitio527@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:16:34.497198+00'::timestamptz,
+    '2026-06-26 17:35:13.574526+00'::timestamptz
+  ),
+(
+    '69e48a24-f86f-4789-a95d-b755d3ed5e28'::uuid,
+    '69e48a24-f86f-4789-a95d-b755d3ed5e28'::uuid,
+    '{"sub":"69e48a24-f86f-4789-a95d-b755d3ed5e28","email":"edwinmatumba7@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:16:24.76917+00'::timestamptz,
+    '2026-06-26 17:35:07.807207+00'::timestamptz
+  ),
+(
+    '92bc7b95-7acf-4ace-aca9-ff85089fc7ad'::uuid,
+    '92bc7b95-7acf-4ace-aca9-ff85089fc7ad'::uuid,
+    '{"sub":"92bc7b95-7acf-4ace-aca9-ff85089fc7ad","email":"giftkumbukani0@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:16:54.588267+00'::timestamptz,
+    '2026-06-26 17:35:25.473603+00'::timestamptz
+  ),
+(
+    'a95b9548-8090-4369-88f0-7c0a06069a16'::uuid,
+    'a95b9548-8090-4369-88f0-7c0a06069a16'::uuid,
+    '{"sub":"a95b9548-8090-4369-88f0-7c0a06069a16","email":"noticedavid7@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:16:26.76762+00'::timestamptz,
+    '2026-06-26 17:35:08.947074+00'::timestamptz
+  ),
+(
+    '5084060c-1527-4a01-9924-03cbf803cccd'::uuid,
+    '5084060c-1527-4a01-9924-03cbf803cccd'::uuid,
+    '{"sub":"5084060c-1527-4a01-9924-03cbf803cccd","email":"masebomyless@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:16:42.915655+00'::timestamptz,
+    '2026-06-26 17:35:18.454179+00'::timestamptz
+  ),
+(
+    '9d6acd60-93a6-421d-a4e7-6eed06d1db2d'::uuid,
+    '9d6acd60-93a6-421d-a4e7-6eed06d1db2d'::uuid,
+    '{"sub":"9d6acd60-93a6-421d-a4e7-6eed06d1db2d","email":"deborahphilip733@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:16:36.573735+00'::timestamptz,
+    '2026-06-26 17:35:14.729464+00'::timestamptz
+  ),
+(
+    'a7b59bff-7153-4a83-9485-2f85dc323c2c'::uuid,
+    'a7b59bff-7153-4a83-9485-2f85dc323c2c'::uuid,
+    '{"sub":"a7b59bff-7153-4a83-9485-2f85dc323c2c","email":"fostinolucy@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:16:28.796678+00'::timestamptz,
+    '2026-06-26 17:35:10.143587+00'::timestamptz
+  ),
+(
+    '61060115-26cc-4123-9c5a-2bf97a318f7c'::uuid,
+    '61060115-26cc-4123-9c5a-2bf97a318f7c'::uuid,
+    '{"sub":"61060115-26cc-4123-9c5a-2bf97a318f7c","email":"nzalaligiven@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:16:30.698323+00'::timestamptz,
+    '2026-06-26 17:35:11.300816+00'::timestamptz
+  ),
+(
+    'de37dcf2-9351-4456-a4aa-c8a2cae132cb'::uuid,
+    'de37dcf2-9351-4456-a4aa-c8a2cae132cb'::uuid,
+    '{"sub":"de37dcf2-9351-4456-a4aa-c8a2cae132cb","email":"dennismlongoti822@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:16:38.993562+00'::timestamptz,
+    '2026-06-26 17:35:15.939444+00'::timestamptz
+  ),
+(
+    '2d72d398-e7cd-439d-908c-dd69bc0d3c28'::uuid,
+    '2d72d398-e7cd-439d-908c-dd69bc0d3c28'::uuid,
+    '{"sub":"2d72d398-e7cd-439d-908c-dd69bc0d3c28","email":"chifundodiston4@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:16:32.543647+00'::timestamptz,
+    '2026-06-26 17:35:12.454557+00'::timestamptz
+  ),
+(
+    '59c8c42e-fd6e-48da-b9c3-d255edb031c0'::uuid,
+    '59c8c42e-fd6e-48da-b9c3-d255edb031c0'::uuid,
+    '{"sub":"59c8c42e-fd6e-48da-b9c3-d255edb031c0","email":"charlesdikayina@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:16:48.491989+00'::timestamptz,
+    '2026-06-26 17:35:21.980478+00'::timestamptz
+  ),
+(
+    'bb61095d-c224-435e-8100-c4364d04e592'::uuid,
+    'bb61095d-c224-435e-8100-c4364d04e592'::uuid,
+    '{"sub":"bb61095d-c224-435e-8100-c4364d04e592","email":"blessingsmunthalimhone@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:16:46.612867+00'::timestamptz,
+    '2026-06-26 17:35:20.860143+00'::timestamptz
+  ),
+(
+    'a5856e30-5567-4134-a992-f4196a5525ea'::uuid,
+    'a5856e30-5567-4134-a992-f4196a5525ea'::uuid,
+    '{"sub":"a5856e30-5567-4134-a992-f4196a5525ea","email":"moffatchimwemwe1@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:16:41.037271+00'::timestamptz,
+    '2026-06-26 17:35:17.223162+00'::timestamptz
+  ),
+(
+    'f043b1c5-d356-44dc-9fc3-a8efc81b84a6'::uuid,
+    'f043b1c5-d356-44dc-9fc3-a8efc81b84a6'::uuid,
+    '{"sub":"f043b1c5-d356-44dc-9fc3-a8efc81b84a6","email":"rhonexpopular@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:16:52.615721+00'::timestamptz,
+    '2026-06-26 17:35:24.30519+00'::timestamptz
+  ),
+(
+    'e2657d83-560f-404b-a478-becae470bcc3'::uuid,
+    'e2657d83-560f-404b-a478-becae470bcc3'::uuid,
+    '{"sub":"e2657d83-560f-404b-a478-becae470bcc3","email":"augustinevanexmsukwa@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:16:56.407448+00'::timestamptz,
+    '2026-06-26 17:35:26.652214+00'::timestamptz
+  ),
+(
+    '4641456b-7139-4fa0-b099-93eea264de6d'::uuid,
+    '4641456b-7139-4fa0-b099-93eea264de6d'::uuid,
+    '{"sub":"4641456b-7139-4fa0-b099-93eea264de6d","email":"florencekaliati21@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:16:22.879996+00'::timestamptz,
+    '2026-06-26 17:35:06.648765+00'::timestamptz
+  ),
+(
+    '7606d36f-c876-4605-8c56-60b9d15cf37e'::uuid,
+    '7606d36f-c876-4605-8c56-60b9d15cf37e'::uuid,
+    '{"sub":"7606d36f-c876-4605-8c56-60b9d15cf37e","email":"jaliwekumsinda7@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:17:09.127831+00'::timestamptz,
+    '2026-06-26 17:35:32.651029+00'::timestamptz
+  ),
+(
+    '68bd7afe-cc36-47c2-ab4f-31575d5f3fda'::uuid,
+    '68bd7afe-cc36-47c2-ab4f-31575d5f3fda'::uuid,
+    '{"sub":"68bd7afe-cc36-47c2-ab4f-31575d5f3fda","email":"gelevaziommame@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:17:38.348422+00'::timestamptz,
+    '2026-06-26 17:35:51.014382+00'::timestamptz
+  ),
+(
+    '21705cea-2ce2-4ca2-a67f-c09b07d8a1b3'::uuid,
+    '21705cea-2ce2-4ca2-a67f-c09b07d8a1b3'::uuid,
+    '{"sub":"21705cea-2ce2-4ca2-a67f-c09b07d8a1b3","email":"andrewsamson271@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-10-06 04:54:15.020699+00'::timestamptz,
+    '2026-10-24 10:31:58.962152+00'::timestamptz
+  ),
+(
+    '3aa55306-c8d0-4f2d-8f95-b9f90984b1b7'::uuid,
+    '3aa55306-c8d0-4f2d-8f95-b9f90984b1b7'::uuid,
+    '{"sub":"3aa55306-c8d0-4f2d-8f95-b9f90984b1b7","email":"gausiisaac527@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:17:26.926102+00'::timestamptz,
+    '2026-06-26 17:35:43.427309+00'::timestamptz
+  ),
+(
+    'ede63a30-d946-40e1-b58e-c9b5c2209928'::uuid,
+    'ede63a30-d946-40e1-b58e-c9b5c2209928'::uuid,
+    '{"sub":"ede63a30-d946-40e1-b58e-c9b5c2209928","email":"cheyochrispine564@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:17:21.348774+00'::timestamptz,
+    '2026-06-26 17:35:39.790281+00'::timestamptz
+  ),
+(
+    'feb7d332-410e-4a65-a8ad-7e15b71d5260'::uuid,
+    'feb7d332-410e-4a65-a8ad-7e15b71d5260'::uuid,
+    '{"sub":"feb7d332-410e-4a65-a8ad-7e15b71d5260","email":"merrieumar47@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:17:13.575781+00'::timestamptz,
+    '2026-06-26 17:35:35.149625+00'::timestamptz
+  ),
+(
+    'f0da4837-038b-4c3e-80b3-7f7d649edb72'::uuid,
+    'f0da4837-038b-4c3e-80b3-7f7d649edb72'::uuid,
+    '{"sub":"f0da4837-038b-4c3e-80b3-7f7d649edb72","email":"nkhongozachikumbu@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:17:15.508543+00'::timestamptz,
+    '2026-06-26 17:35:36.373082+00'::timestamptz
+  ),
+(
+    'aa691585-3730-4bc4-b95b-7fb9b99d1654'::uuid,
+    'aa691585-3730-4bc4-b95b-7fb9b99d1654'::uuid,
+    '{"sub":"aa691585-3730-4bc4-b95b-7fb9b99d1654","email":"esthandie@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:17:23.244727+00'::timestamptz,
+    '2026-06-26 17:35:40.993192+00'::timestamptz
+  ),
+(
+    'acc8d4ba-2f70-49ab-ba46-63ec1d810c45'::uuid,
+    'acc8d4ba-2f70-49ab-ba46-63ec1d810c45'::uuid,
+    '{"sub":"acc8d4ba-2f70-49ab-ba46-63ec1d810c45","email":"rexchambo25@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:17:17.563145+00'::timestamptz,
+    '2026-06-26 17:35:37.493112+00'::timestamptz
+  ),
+(
+    '2c22f8d3-36a0-4b03-80ff-4bee7045bc90'::uuid,
+    '2c22f8d3-36a0-4b03-80ff-4bee7045bc90'::uuid,
+    '{"sub":"2c22f8d3-36a0-4b03-80ff-4bee7045bc90","email":"studentmarket35@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:17:32.517497+00'::timestamptz,
+    '2026-06-26 17:35:47.221766+00'::timestamptz
+  ),
+(
+    '9a194176-da30-4b3e-85f4-1821c0cf92c3'::uuid,
+    '9a194176-da30-4b3e-85f4-1821c0cf92c3'::uuid,
+    '{"sub":"9a194176-da30-4b3e-85f4-1821c0cf92c3","email":"sothinimkwembe2@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:17:25.083902+00'::timestamptz,
+    '2026-06-26 17:35:42.176289+00'::timestamptz
+  ),
+(
+    '4a0dabe6-bbbe-4b60-9cd2-f291f3a6fe66'::uuid,
+    '4a0dabe6-bbbe-4b60-9cd2-f291f3a6fe66'::uuid,
+    '{"sub":"4a0dabe6-bbbe-4b60-9cd2-f291f3a6fe66","email":"stanleymarusa79@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:17:36.293378+00'::timestamptz,
+    '2026-06-26 17:35:49.826606+00'::timestamptz
+  ),
+(
+    '9b0e9d07-d510-4b20-a600-9000f26a27a9'::uuid,
+    '9b0e9d07-d510-4b20-a600-9000f26a27a9'::uuid,
+    '{"sub":"9b0e9d07-d510-4b20-a600-9000f26a27a9","email":"chirwadivineglory@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:17:34.420429+00'::timestamptz,
+    '2026-06-26 17:35:48.381206+00'::timestamptz
+  ),
+(
+    '3a67bf21-6096-4532-83ec-cbda149d58e5'::uuid,
+    '3a67bf21-6096-4532-83ec-cbda149d58e5'::uuid,
+    '{"sub":"3a67bf21-6096-4532-83ec-cbda149d58e5","email":"chakulangirajuliet@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:17:40.317264+00'::timestamptz,
+    '2026-06-26 17:35:52.233556+00'::timestamptz
+  ),
+(
+    '0185b211-86e1-4c92-bbc6-fbbd81ec5590'::uuid,
+    '0185b211-86e1-4c92-bbc6-fbbd81ec5590'::uuid,
+    '{"sub":"0185b211-86e1-4c92-bbc6-fbbd81ec5590","email":"kanyamazephaniah@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:17:42.225948+00'::timestamptz,
+    '2026-06-26 17:35:53.413336+00'::timestamptz
+  ),
+(
+    '994f912d-f1d9-4b9e-9170-e8d19525ad63'::uuid,
+    '994f912d-f1d9-4b9e-9170-e8d19525ad63'::uuid,
+    '{"sub":"994f912d-f1d9-4b9e-9170-e8d19525ad63","email":"muwabrian80@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:17:02.381004+00'::timestamptz,
+    '2026-06-26 17:35:30.346351+00'::timestamptz
+  ),
+(
+    '682b3117-acb5-4dc2-92fc-32e5f5227c0a'::uuid,
+    '682b3117-acb5-4dc2-92fc-32e5f5227c0a'::uuid,
+    '{"sub":"682b3117-acb5-4dc2-92fc-32e5f5227c0a","email":"mosesphiri164@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:17:04.480727+00'::timestamptz,
+    '2026-06-26 17:35:31.504514+00'::timestamptz
+  ),
+(
+    '4c246308-a1d9-4c18-bdd9-3476517672e4'::uuid,
+    '4c246308-a1d9-4c18-bdd9-3476517672e4'::uuid,
+    '{"sub":"4c246308-a1d9-4c18-bdd9-3476517672e4","email":"masinarose03@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:17:57.799882+00'::timestamptz,
+    '2026-06-26 17:36:03.283638+00'::timestamptz
+  ),
+(
+    '7a0ad8e1-3e33-4e86-81cc-850933d260fe'::uuid,
+    '7a0ad8e1-3e33-4e86-81cc-850933d260fe'::uuid,
+    '{"sub":"7a0ad8e1-3e33-4e86-81cc-850933d260fe","email":"blaccajames11@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:17:48.291924+00'::timestamptz,
+    '2026-06-26 17:35:57.328739+00'::timestamptz
+  ),
+(
+    '198edc80-493d-49fa-8856-9ebb3554f57d'::uuid,
+    '198edc80-493d-49fa-8856-9ebb3554f57d'::uuid,
+    '{"sub":"198edc80-493d-49fa-8856-9ebb3554f57d","email":"kelvinibrahim2007@gmail.com"}'::jsonb,
+    'email'::text,
+    '2026-06-26 17:17:50.163333+00'::timestamptz,
+    '2026-06-26 17:35:58.553432+00'::timestamptz
+  )
+) AS v(id, user_id, identity_data, provider, created_at, updated_at)
+WHERE NOT EXISTS (
+  SELECT 1 FROM auth.identities i WHERE i.id::text = v.id::text
+);

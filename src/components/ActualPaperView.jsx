@@ -16,7 +16,7 @@
 import React, { useState, useEffect, useRef, useMemo, memo, useCallback } from 'react';
 import * as pdfjs from 'pdfjs-dist';
 import workerUrl from 'pdfjs-dist/legacy/build/pdf.worker.min.mjs?url';
-import { supabase } from '../supabase';
+import { supabase, normalizeSupabaseUrl } from '../supabase';
 import {
   MessageCircleQuestion,
   Maximize2,
@@ -231,6 +231,7 @@ export default function ActualPaperView({ paper, onSwitchToText, onAskPaper }) {
   const [pdfDoc, setPdfDoc] = useState(null);
   const [pdfLoading, setPdfLoading] = useState(false);
   const [pdfError, setPdfError] = useState(null);
+  const [imageError, setImageError] = useState(false);
   const [isFullPage, setIsFullPage] = useState(false);
   const [fullPageZoom, setFullPageZoom] = useState(1.0);
   const [thumbnailDataUrl, setThumbnailDataUrl] = useState(null);
@@ -365,7 +366,7 @@ export default function ActualPaperView({ paper, onSwitchToText, onAskPaper }) {
   }, [fetchPaperFile, paper]);
 
   // Determine file kind
-  const fileUrl = rawPaper?.file_url || null;
+  const fileUrl = normalizeSupabaseUrl(rawPaper?.file_url) || null;
   const isPdf = useMemo(() => {
     if (!fileUrl) return false;
     const lower = fileUrl.toLowerCase();
@@ -479,8 +480,14 @@ export default function ActualPaperView({ paper, onSwitchToText, onAskPaper }) {
         }
       } catch (err) {
         if (!cancelled) {
-          console.error('[ActualPaperView] PDF load error:', err);
-          setPdfError(err.message || 'Failed to load paper PDF');
+          const isNotFound = err?.status === 400 || err?.status === 404 || String(err?.message || '').includes('400') || String(err?.message || '').includes('404');
+          if (isNotFound) {
+            console.warn('[ActualPaperView] File scan currently unavailable in storage:', fileUrl);
+            setPdfError('This paper scan is currently unavailable or undergoing transfer. Please check back shortly.');
+          } else {
+            console.error('[ActualPaperView] PDF load error:', err);
+            setPdfError(err.message || 'Failed to load paper PDF');
+          }
           setPdfLoading(false);
         }
       }
@@ -816,15 +823,19 @@ export default function ActualPaperView({ paper, onSwitchToText, onAskPaper }) {
                 <p className="text-xs text-slate-500 font-medium">Rendering PDF pages...</p>
               </div>
             ) : pdfError ? (
-              <div className="p-8 text-center bg-rose-50 border border-rose-100 rounded-xl my-4 max-w-md w-full">
-                <AlertCircle className="w-6 h-6 text-rose-500 mx-auto mb-2" />
-                <p className="text-xs font-bold text-rose-700">Failed to render PDF document</p>
-                <p className="text-[11px] text-slate-500 mt-1">{pdfError}</p>
+              <div className="p-8 text-center bg-blue-50/70 border border-blue-100 rounded-2xl my-4 max-w-md w-full shadow-xs">
+                <FileText className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+                <p className="text-sm font-bold text-gray-900">Original Document Scan Unavailable</p>
+                <p className="text-xs text-gray-500 mt-1 leading-relaxed">
+                  The physical scan for this paper was not found in storage, but all questions, options, and full solutions are ready in Questions Mode!
+                </p>
                 <button
+                  type="button"
                   onClick={onSwitchToText}
-                  className="mt-3 px-4 py-1.5 bg-indigo-600 text-white text-xs font-bold rounded-lg shadow-sm"
+                  className="mt-4 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-xs font-semibold rounded-xl shadow-xs transition-colors cursor-pointer inline-flex items-center gap-1.5"
                 >
-                  View Extracted Text
+                  <FileText className="w-4 h-4" />
+                  <span>Practice Questions & Solutions</span>
                 </button>
               </div>
             ) : (
@@ -849,7 +860,7 @@ export default function ActualPaperView({ paper, onSwitchToText, onAskPaper }) {
                 ))}
               </div>
             )
-          ) : isImage ? (
+          ) : isImage && !imageError ? (
             <div
               className="group relative bg-white shadow-md rounded-xl overflow-hidden border border-slate-200/90 my-3 sm:my-5 mx-auto w-full cursor-pointer"
               style={{ maxWidth: scale <= 1.0 ? '100%' : `${Math.round(620 * scale)}px` }}
@@ -874,16 +885,23 @@ export default function ActualPaperView({ paper, onSwitchToText, onAskPaper }) {
                 alt={`${paper?.courseName || 'Past Paper'} original scan`}
                 className="w-full h-auto object-contain block mx-auto"
                 loading="eager"
+                onError={() => setImageError(true)}
               />
             </div>
           ) : (
-            <div className="p-8 text-center bg-white border border-slate-200 rounded-xl my-4">
-              <p className="text-sm font-semibold text-slate-800">Unsupported preview format</p>
+            <div className="p-8 text-center bg-blue-50/70 border border-blue-100 rounded-2xl my-4 max-w-md w-full shadow-xs">
+              <FileText className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+              <p className="text-sm font-bold text-gray-900">Original Scan Unavailable</p>
+              <p className="text-xs text-gray-500 mt-1 leading-relaxed">
+                The image or document for this paper is currently unavailable in storage, but all questions, options, and full solutions are ready in Questions Mode!
+              </p>
               <button
+                type="button"
                 onClick={onSwitchToText}
-                className="mt-3 px-4 py-2 bg-indigo-600 text-white text-xs font-bold rounded-xl"
+                className="mt-4 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-xs font-semibold rounded-xl shadow-xs transition-colors cursor-pointer inline-flex items-center gap-1.5"
               >
-                View Extracted Text
+                <FileText className="w-4 h-4" />
+                <span>Practice Questions & Solutions</span>
               </button>
             </div>
           )}
@@ -924,16 +942,33 @@ export default function ActualPaperView({ paper, onSwitchToText, onAskPaper }) {
                 <Minimize2 size={18} strokeWidth={1.75} />
               </button>
 
-              <a
-                href={fileUrl}
-                download
-                target="_blank"
-                rel="noreferrer"
-                className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white active:scale-95 transition-all"
-                title="Open / Download original file"
-              >
-                <Download className="w-4 h-4" />
-              </a>
+              {isDownloaded ? (
+                <span
+                  className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 flex items-center gap-1.5 select-none"
+                  title="Saved to Documents/StudyHub"
+                >
+                  <Check size={14} className="text-emerald-400 stroke-[2.5]" />
+                  <span>Downloaded</span>
+                </span>
+              ) : (
+                <button
+                  type="button"
+                  onClick={handleDownloadPaper}
+                  disabled={isDownloading || !fileUrl}
+                  className="p-2 rounded-xl bg-white/10 hover:bg-white/20 active:scale-95 text-white transition-all cursor-pointer flex items-center gap-1.5 text-xs font-semibold disabled:opacity-70"
+                  title="Download actual paper to phone"
+                  aria-label="Download actual paper to phone"
+                >
+                  {isDownloading ? (
+                    <Loader2 size={15} className="animate-spin text-white" />
+                  ) : (
+                    <Download size={15} className="text-white" />
+                  )}
+                  <span className="hidden sm:inline">
+                    {isDownloading ? (downloadProgress > 0 ? `${downloadProgress}%` : 'Saving…') : 'Download'}
+                  </span>
+                </button>
+              )}
             </div>
           </div>
 

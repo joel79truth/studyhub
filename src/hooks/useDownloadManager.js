@@ -11,6 +11,7 @@ import {
   verifyFileExistsOnDevice,
   buildNoteFileName,
   buildPaperFileName,
+  getAllDownloadedIds,
 } from '../services/deviceDownloadService';
 import { trackNotesDownloaded } from '../lib/analytics';
 
@@ -23,6 +24,17 @@ export function useIsDownloaded(fileId) {
     subscribeToDownloads,
     () => isFileDownloadedSync(fileId),
     () => isFileDownloadedSync(fileId)
+  );
+}
+
+/**
+ * Hook to reactively get the full array of downloaded file IDs.
+ */
+export function useAllDownloadedIds() {
+  return useSyncExternalStore(
+    subscribeToDownloads,
+    getAllDownloadedIds,
+    () => []
   );
 }
 

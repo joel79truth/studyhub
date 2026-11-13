@@ -1037,14 +1037,76 @@ const Quiz = () => {
         setError('Please set your program and semester in Settings first.');
         setLoading(false); return;
       }
-      const { data: prog } = await supabase.from('programs').select('id').eq('name', profile.program).maybeSingle();
-      if (!prog) {
-        setErrorType('settings');
-        throw new Error(`We couldn't find the program "${profile.program}" â€” please re-check it in Settings.`);
+      // 1. Try exact match
+      let prog = null;
+      const { data: exactProg } = await supabase.from('programs').select('id, name').eq('name', profile.program).maybeSingle();
+      if (exactProg) {
+        prog = exactProg;
+      } else if (profile.program) {
+        // 2. Try fuzzy / keyword match (e.g. "irrigation", "computer science", "agriculture")
+        const cleanKeyword = profile.program
+          .replace(/^(bachelor of (science|arts) in|bsc in|diploma in)\s+/i, '')
+          .split('/')[0]
+          .trim();
+        const { data: progList } = await supabase
+          .from('programs')
+          .select('id, name')
+          .ilike('name', `%${cleanKeyword || profile.program}%`)
+          .limit(1);
+        if (progList && progList.length > 0) {
+          prog = progList[0];
+        }
       }
-      const { data: courses, error: ce } = await supabase.from('courses').select('id, course_name, course_code')
-        .eq('program_id', prog.id).eq('semester', parseInt(profile.semester, 10));
-      if (ce) { setErrorType('generic'); throw new Error(ce.message); }
+
+      // 3. Fallback: if not found in programs table, check program_aliases
+      if (!prog && profile.program) {
+        const { data: aliasRow } = await supabase
+          .from('program_aliases')
+          .select('program_id')
+          .ilike('alias', `%${profile.program}%`)
+          .maybeSingle();
+        if (aliasRow?.program_id) {
+          const { data: p } = await supabase.from('programs').select('id, name').eq('id', aliasRow.program_id).maybeSingle();
+          if (p) prog = p;
+        }
+      }
+
+      // 4. Fetch courses for this program and semester
+      let courses = [];
+      if (prog?.id) {
+        const semNum = parseInt(profile.semester, 10);
+        let query = supabase.from('courses').select('id, course_name, course_code').eq('program_id', prog.id);
+        if (!isNaN(semNum)) query = query.eq('semester', semNum);
+        const { data: semCourses } = await query;
+        if (semCourses && semCourses.length > 0) {
+          courses = semCourses;
+        } else {
+          // If no courses for this specific semester, load all courses for this program
+          const { data: anyCourses } = await supabase.from('courses').select('id, course_name, course_code').eq('program_id', prog.id);
+          if (anyCourses && anyCourses.length > 0) courses = anyCourses;
+        }
+      }
+
+      // 5. If still no courses found from courses table, source from past_paper / notes!
+      if (!courses || courses.length === 0) {
+        const { data: paperCourses } = await supabase
+          .from('past_paper')
+          .select('course_id, course')
+          .not('course', 'is', null)
+          .limit(30);
+        if (paperCourses && paperCourses.length > 0) {
+          const seen = new Set();
+          courses = [];
+          paperCourses.forEach((pc, idx) => {
+            const cName = String(pc.course || '').trim();
+            if (cName && !seen.has(cName.toLowerCase())) {
+              seen.add(cName.toLowerCase());
+              courses.push({ id: pc.course_id || idx + 1000, course_name: cName, course_code: '' });
+            }
+          });
+        }
+      }
+
       const map = {};
       (courses || []).forEach(c => { map[c.id] = { id: c.id, title: c.course_name, code: c.course_code }; });
       setSubjects(map);
@@ -1627,10 +1689,17 @@ const Quiz = () => {
     setStats(prev => ({ ...prev, totalQ: newTotalQ, totalCorrect: newTotalCorrect, completed: newCompleted, streak: newStreak, lastActivity: todayStr, badges: newBadges }));
     setTodayAnswered(daily[todayStr] || 0);
 
-    await supabase.from('quiz_sessions').insert({
-      user_id: user.id, course_id: currentSubjectId, total_questions: total, correct_answers: correct,
-      percentage: Math.round((correct / total) * 100), completed_at: new Date().toISOString(),
-    });
+    const parsedCourseId = Number(currentSubjectId);
+    const validCourseId = Number.isInteger(parsedCourseId) && parsedCourseId > 0 ? parsedCourseId : null;
+
+    try {
+      await supabase.from('quiz_sessions').insert({
+        user_id: user.id, course_id: validCourseId, total_questions: total, correct_answers: correct,
+        percentage: Math.round((correct / total) * 100), completed_at: new Date().toISOString(),
+      });
+    } catch (sessionErr) {
+      console.warn('Failed to record quiz session:', sessionErr);
+    }
   }, [user, currentSubjectId, queryClient]);
 
   // â”€â”€ Screen transitions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€

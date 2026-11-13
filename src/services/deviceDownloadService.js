@@ -2,18 +2,25 @@
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { Capacitor } from '@capacitor/core';
 import { Toast } from '@capacitor/toast';
+import { normalizeSupabaseUrl } from '../supabase';
 
 const REGISTRY_STORAGE_KEY = 'studyhub_downloaded_files_registry';
 const SUBFOLDER = 'StudyHub';
 
 // In-memory cache of verified downloaded file IDs
 const downloadedIdsSet = new Set();
+let cachedDownloadedIdsArray = [];
 const progressMap = new Map(); // fileId -> number (0-100)
 const errorMap = new Map();    // fileId -> string | null
 const activeControllers = new Map(); // fileId -> AbortController
 const listeners = new Set();
 
+const updateCachedIds = () => {
+  cachedDownloadedIdsArray = Array.from(downloadedIdsSet);
+};
+
 const notifyListeners = () => {
+  updateCachedIds();
   listeners.forEach((fn) => {
     try { fn(); } catch (e) { console.error('Listener error:', e); }
   });
@@ -85,12 +92,23 @@ export function buildPaperFileName(paper, fileUrl = '') {
  * Build a clean note filename
  */
 export function buildNoteFileName(note, defaultExt = 'pdf') {
-  if (note?.filename && note.filename.includes('.')) {
-    return sanitizeFileName(note.filename);
+  const course = note?.course || note?.course_name;
+  let baseName = note?.filename || note?.title || 'Document';
+  let ext = defaultExt;
+  if (baseName.includes('.')) {
+    const parts = baseName.split('.');
+    ext = parts.pop() || defaultExt;
+    baseName = parts.join('.');
   }
-  const course = sanitizeFileName(note?.course || note?.course_name || 'Note');
-  const title = sanitizeFileName(note?.title || note?.filename || 'Document');
-  return `LUANAR_${course}_${title}.${defaultExt}`.replace(/_+/g, '_');
+  const cleanCourse = course ? sanitizeFileName(course) : '';
+  const cleanTitle = sanitizeFileName(baseName);
+  if (cleanCourse && !cleanTitle.toLowerCase().startsWith('luanar')) {
+    return `LUANAR_${cleanCourse}_${cleanTitle}.${ext}`.replace(/_+/g, '_');
+  }
+  if (!cleanTitle.toLowerCase().startsWith('luanar')) {
+    return `LUANAR_${cleanTitle}.${ext}`.replace(/_+/g, '_');
+  }
+  return `${cleanTitle}.${ext}`.replace(/_+/g, '_');
 }
 
 /**
@@ -130,10 +148,11 @@ export async function verifyFileExistsOnDevice(fileId) {
   }
 
   if (Capacitor.isNativePlatform()) {
+    const primaryDir = record.directory === 'Downloads' ? Directory.Downloads : Directory.Documents;
     try {
       await Filesystem.stat({
         path: record.relativePath,
-        directory: Directory.Documents,
+        directory: primaryDir,
       });
       if (!downloadedIdsSet.has(fileId)) {
         downloadedIdsSet.add(fileId);
@@ -141,12 +160,26 @@ export async function verifyFileExistsOnDevice(fileId) {
       }
       return true;
     } catch {
-      // User deleted the file from phone's Files app!
-      delete registry[fileId];
-      saveRegistry(registry);
-      downloadedIdsSet.delete(fileId);
-      notifyListeners();
-      return false;
+      // Check alternative directory in case it was saved or moved
+      const altDir = primaryDir === Directory.Documents ? Directory.Downloads : Directory.Documents;
+      try {
+        await Filesystem.stat({
+          path: record.relativePath,
+          directory: altDir,
+        });
+        if (!downloadedIdsSet.has(fileId)) {
+          downloadedIdsSet.add(fileId);
+          notifyListeners();
+        }
+        return true;
+      } catch {
+        // User deleted the file from phone's Files app!
+        delete registry[fileId];
+        saveRegistry(registry);
+        downloadedIdsSet.delete(fileId);
+        notifyListeners();
+        return false;
+      }
     }
   } else {
     // Web environment: file is considered downloaded if recorded
@@ -198,6 +231,7 @@ export async function downloadFileToDevice({
   if (!fileId || !fileUrl) {
     return { ok: false, reason: 'missing_params', message: 'Missing file information to download.' };
   }
+  fileUrl = normalizeSupabaseUrl(fileUrl);
 
   // If already downloaded and verified
   const exists = await verifyFileExistsOnDevice(fileId);
@@ -235,15 +269,26 @@ export async function downloadFileToDevice({
 
   try {
     if (Capacitor.isNativePlatform()) {
-      // 1. Ensure StudyHub directory exists in public Documents
+      let targetDir = Directory.Documents;
+      let targetDirLabel = 'Documents';
+
+      // 1. Ensure StudyHub directory exists in public Documents (with Downloads fallback)
       try {
         await Filesystem.mkdir({
           path: SUBFOLDER,
           directory: Directory.Documents,
           recursive: true,
         });
-      } catch {
-        // Directory might already exist
+      } catch (err) {
+        try {
+          await Filesystem.mkdir({
+            path: SUBFOLDER,
+            directory: Directory.Downloads,
+            recursive: true,
+          });
+          targetDir = Directory.Downloads;
+          targetDirLabel = 'Downloads';
+        } catch (_) {}
       }
 
       // 2. Set up progress listener
@@ -261,13 +306,13 @@ export async function downloadFileToDevice({
         console.warn('[DeviceDownload] Progress listener attach error:', e);
       }
 
-      // 3. Download directly to public Documents/StudyHub
+      // 3. Download directly to public storage
       let downloadResult;
       try {
         downloadResult = await Filesystem.downloadFile({
           url: fileUrl,
           path: relativePath,
-          directory: Directory.Documents,
+          directory: targetDir,
           recursive: true,
           progress: true,
         });
@@ -293,7 +338,7 @@ export async function downloadFileToDevice({
         downloadResult = await Filesystem.writeFile({
           path: relativePath,
           data: base64Data,
-          directory: Directory.Documents,
+          directory: targetDir,
           recursive: true,
         });
       } finally {
@@ -308,6 +353,7 @@ export async function downloadFileToDevice({
         id: fileId,
         fileName: cleanName,
         relativePath,
+        directory: targetDirLabel,
         downloadedAt: Date.now(),
         uri: downloadResult?.path || downloadResult?.uri || relativePath,
       };
@@ -322,7 +368,7 @@ export async function downloadFileToDevice({
       // Show success toast on native
       try {
         await Toast.show({
-          text: 'Saved to Documents/StudyHub',
+          text: `Saved to ${targetDirLabel}/StudyHub`,
           duration: 'short',
           position: 'bottom',
         });
@@ -330,8 +376,8 @@ export async function downloadFileToDevice({
 
       return {
         ok: true,
-        path: `Documents/${relativePath}`,
-        message: 'Saved to Documents/StudyHub',
+        path: `${targetDirLabel}/${relativePath}`,
+        message: `Saved to ${targetDirLabel}/StudyHub`,
       };
     } else {
       // Web fallback: download via browser anchor
@@ -415,6 +461,9 @@ export async function downloadFileToDevice({
     } else if (errStr.includes('quota') || errStr.includes('space') || errStr.includes('enospc')) {
       reason = 'quota';
       userMsg = 'Not enough space on device. Free up storage and retry.';
+    } else if (errStr.includes('400') || errStr.includes('404') || errStr.includes('not found') || errStr.includes('nosuchkey')) {
+      reason = 'unavailable';
+      userMsg = 'This file is currently unavailable or being transferred.';
     }
 
     errorMap.set(fileId, userMsg);
@@ -452,10 +501,11 @@ export async function removeDownloadedFile(fileId) {
   if (!record) return false;
 
   if (Capacitor.isNativePlatform()) {
+    const dir = record.directory === 'Downloads' ? Directory.Downloads : Directory.Documents;
     try {
       await Filesystem.deleteFile({
         path: record.relativePath,
-        directory: Directory.Documents,
+        directory: dir,
       });
     } catch (e) {
       console.warn('[DeviceDownload] Delete file warning:', e);
@@ -486,5 +536,5 @@ export function getDownloadError(fileId) {
 }
 
 export function getAllDownloadedIds() {
-  return Array.from(downloadedIdsSet);
+  return cachedDownloadedIdsArray;
 }

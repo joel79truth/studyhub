@@ -7,9 +7,16 @@ import React, {
   useLayoutEffect, useDeferredValue, memo, useTransition,
 } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
-import { supabase } from '../supabase';
+import { supabase, normalizeSupabaseUrl } from '../supabase';
 import { useQuery } from '@tanstack/react-query';
 import PDFThumbnail from '../components/PDFThumbnail';
+import {
+  useIsDownloaded,
+  useDownloadProgress,
+  useDownloadError,
+  useDownloadManager,
+} from '../hooks/useDownloadManager';
+import { Download, Check, Loader2, AlertCircle } from 'lucide-react';
 
 // ─── Read status hook (localStorage) ─────────────────────
 function useReadStatus() {
@@ -39,10 +46,10 @@ const getNotePublicUrl = (note) => {
   }
   if (note.filepath && note.storage_type !== 'gdrive') {
     const { data } = supabase.storage.from('notes').getPublicUrl(note.filepath);
-    if (data?.publicUrl) return data.publicUrl;
+    if (data?.publicUrl) return normalizeSupabaseUrl(data.publicUrl);
   }
   if (note.url && (note.url.startsWith('http://') || note.url.startsWith('https://'))) {
-    return note.url;
+    return normalizeSupabaseUrl(note.url);
   }
   return null;
 };
@@ -106,6 +113,18 @@ const FileIcon = memo(({ filename }) => {
 
 // ─── FileListItem ─────────────────────────────
 const FileListItem = memo(({ file, onFileClick, onDownload, onCopyLink, isRead, onToggleRead }) => {
+  const isDownloaded = useIsDownloaded(file.id);
+  const progress = useDownloadProgress(file.id);
+  const downloadError = useDownloadError(file.id);
+  const isDownloading = progress !== null;
+  const { verifyExistence } = useDownloadManager();
+
+  useEffect(() => {
+    if (file?.id) {
+      verifyExistence(file.id);
+    }
+  }, [file?.id, verifyExistence]);
+
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
@@ -174,44 +193,82 @@ const FileListItem = memo(({ file, onFileClick, onDownload, onCopyLink, isRead, 
         </div>
       </button>
 
-      <div className="relative">
-        <button
-          ref={buttonRef}
-          className={`p-2 rounded-lg transition-colors active:scale-90 ${menuOpen ? 'bg-blue-50 text-blue-600' : 'text-gray-400 hover:bg-gray-100 hover:text-gray-600'}`}
-          onClick={toggleMenu}
-          aria-label={`Options for ${file.filename}`}
-          aria-haspopup="true"
-          aria-expanded={menuOpen}
-        >
-          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-            <circle cx="12" cy="5" r="2" />
-            <circle cx="12" cy="12" r="2" />
-            <circle cx="12" cy="19" r="2" />
-          </svg>
-        </button>
-
-        {menuOpen && (
-          <div
-            ref={menuRef}
-            className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-100 py-1.5 z-30"
-            role="menu"
+      {/* Individual Download button or Downloaded status indicator */}
+      <div className="flex items-center gap-2 flex-shrink-0">
+        {isDownloaded ? (
+          <span
+            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 select-none"
+            title="Saved to Documents/StudyHub"
           >
-            <button className="w-full px-4 py-2.5 text-sm text-left hover:bg-blue-50 flex items-center gap-3" onClick={(e) => handleAction(e, onDownload)} role="menuitem">
-              ⬇️ Download
-            </button>
-            <button className="w-full px-4 py-2.5 text-sm text-left hover:bg-blue-50 flex items-center gap-3" onClick={(e) => handleAction(e, onCopyLink)} role="menuitem">
-              🔗 Copy Link
-            </button>
-            <div className="h-px bg-gray-100 my-1 mx-2" />
-            <button
-              className={`w-full px-4 py-2.5 text-sm text-left flex items-center gap-3 ${isRead ? 'hover:bg-orange-50' : 'hover:bg-green-50'}`}
-              onClick={(e) => handleAction(e, onToggleRead)}
-              role="menuitem"
-            >
-              {isRead ? '📖 Mark as Unread' : '✅ Mark as Read'}
-            </button>
+            <Check size={14} className="text-emerald-600 stroke-[2.5]" />
+            <span>Downloaded</span>
+          </span>
+        ) : isDownloading ? (
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200 select-none">
+            <Loader2 size={13} className="animate-spin text-blue-600" />
+            <span>{typeof progress === 'number' && progress > 0 ? `${progress}%` : 'Saving…'}</span>
           </div>
+        ) : downloadError ? (
+          <button
+            onClick={(e) => { e.stopPropagation(); onDownload(file); }}
+            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold bg-red-50 text-red-600 border border-red-200 hover:bg-red-100 transition-colors cursor-pointer"
+            title="Download failed. Tap to retry."
+          >
+            <AlertCircle size={13} />
+            <span>Retry</span>
+          </button>
+        ) : (
+          <button
+            onClick={(e) => { e.stopPropagation(); onDownload(file); }}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-blue-600 bg-blue-50 hover:bg-blue-100 border border-blue-200 active:scale-95 transition-all cursor-pointer"
+            title="Download file to phone"
+          >
+            <Download size={14} />
+            <span className="hidden sm:inline">Download</span>
+          </button>
         )}
+
+        <div className="relative">
+          <button
+            ref={buttonRef}
+            className={`p-2 rounded-lg transition-colors active:scale-90 ${menuOpen ? 'bg-blue-50 text-blue-600' : 'text-gray-400 hover:bg-gray-100 hover:text-gray-600'}`}
+            onClick={toggleMenu}
+            aria-label={`Options for ${file.filename}`}
+            aria-haspopup="true"
+            aria-expanded={menuOpen}
+          >
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="12" cy="5" r="2" />
+              <circle cx="12" cy="12" r="2" />
+              <circle cx="12" cy="19" r="2" />
+            </svg>
+          </button>
+
+          {menuOpen && (
+            <div
+              ref={menuRef}
+              className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-100 py-1.5 z-30"
+              role="menu"
+            >
+              {!isDownloaded && (
+                <button className="w-full px-4 py-2.5 text-sm text-left hover:bg-blue-50 flex items-center gap-3" onClick={(e) => handleAction(e, onDownload)} role="menuitem">
+                  ⬇️ Download
+                </button>
+              )}
+              <button className="w-full px-4 py-2.5 text-sm text-left hover:bg-blue-50 flex items-center gap-3" onClick={(e) => handleAction(e, onCopyLink)} role="menuitem">
+                🔗 Copy Link
+              </button>
+              <div className="h-px bg-gray-100 my-1 mx-2" />
+              <button
+                className={`w-full px-4 py-2.5 text-sm text-left flex items-center gap-3 ${isRead ? 'hover:bg-orange-50' : 'hover:bg-green-50'}`}
+                onClick={(e) => handleAction(e, onToggleRead)}
+                role="menuitem"
+              >
+                {isRead ? '📖 Mark as Unread' : '✅ Mark as Read'}
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -386,18 +443,26 @@ export default function ProgramDetail() {
     navigate('/viewer', { state: { url, filename: file.filename || 'Document' } });
   }, [navigate, addToast]);
 
-  const handleDownload = useCallback((file) => {
+  const { startDownload } = useDownloadManager();
+
+  const handleDownload = useCallback(async (file) => {
     const url = getNotePublicUrl(file);
     if (!url) { addToast('No downloadable link.', 'error'); return; }
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = file.filename || 'download';
-    link.target = '_blank';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    addToast('Download started.', 'success');
-  }, [addToast]);
+    const result = await startDownload(
+      {
+        id: file.id,
+        filename: file.filename,
+        course: file.course,
+      },
+      () => url
+    );
+
+    if (result.ok) {
+      addToast('Saved to Documents/StudyHub', 'success');
+    } else if (!result.cancelled) {
+      addToast(result.message || 'Download failed. Please retry.', 'error');
+    }
+  }, [startDownload, addToast]);
 
   const handleCopyLink = useCallback((file) => {
     const url = getNotePublicUrl(file);

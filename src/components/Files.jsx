@@ -14,7 +14,7 @@ import React, {
   useDeferredValue, memo,
 } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { supabase } from '../supabase';
+import { supabase, normalizeSupabaseUrl } from '../supabase';
 import { useQuery } from '@tanstack/react-query';
 import {
   Grid3x3, List, FileText, Download, CheckCircle, RefreshCcw, X
@@ -44,10 +44,10 @@ const getNotePublicUrl = (note) => {
   }
   if (note.filepath && note.storage_type !== 'gdrive') {
     const { data } = supabase.storage.from('notes').getPublicUrl(note.filepath);
-    if (data?.publicUrl) return data.publicUrl;
+    if (data?.publicUrl) return normalizeSupabaseUrl(data.publicUrl);
   }
   if (note.url && (note.url.startsWith('http://') || note.url.startsWith('https://'))) {
-    return note.url;
+    return normalizeSupabaseUrl(note.url);
   }
   return null;
 };
@@ -132,6 +132,14 @@ const FileCard = memo(({ file, onPress, onStartDownload, onCancelDownload, onRem
   const isDownloaded = useIsDownloaded(file.id);
   const progress = useDownloadProgress(file.id);
   const isDownloading = progress !== null;
+  const { verifyExistence } = useDownloadManager();
+
+  // Verify file still exists on device on mount
+  useEffect(() => {
+    if (file?.id) {
+      verifyExistence(file.id);
+    }
+  }, [file?.id, verifyExistence]);
   const fileType = useMemo(() => getFileType(file.filename), [file.filename]);
   const publicUrl = useMemo(() => getNotePublicUrl(file), [file]);
 
@@ -182,7 +190,7 @@ const FileCard = memo(({ file, onPress, onStartDownload, onCancelDownload, onRem
               ) : isDownloaded ? (
                 <span className="flex items-center gap-1 text-[10px] font-semibold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-100 select-none" title="Downloaded to Documents/StudyHub">
                   <CheckCircle size={11} className="text-emerald-600" />
-                  <span>Saved</span>
+                  <span>Downloaded</span>
                 </span>
               ) : (
                 <button onClick={handleDownloadTap} className="p-1 text-slate-400 hover:text-blue-600" title="Download for offline use" aria-label={`Download ${file.filename}`}>

@@ -6,6 +6,7 @@
 
 const HISTORY_KEY = 'studyhub_quiz_history';
 const LEVEL_UP_DISMISSED_KEY = 'studyhub_levelup_dismissed';
+const DISMISSED_RECS_KEY = 'studyhub_dismissed_recommendations';
 const MAX_HISTORY_ENTRIES = 50;
 
 // ─── Read / Write helpers ────────────────────────────────────────────────────
@@ -74,10 +75,32 @@ export function recordQuizResult({ percentage, strongTopics = [], weakTopics = [
   } catch {}
 }
 
+export function getDismissedRecommendations() {
+  try {
+    const raw = localStorage.getItem(DISMISSED_RECS_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
+}
+
+export function dismissRecommendation(id) {
+  try {
+    const list = getDismissedRecommendations();
+    if (!list.includes(id)) {
+      list.push(id);
+      localStorage.setItem(DISMISSED_RECS_KEY, JSON.stringify(list));
+    }
+  } catch {}
+}
+
 // ─── Smart Recommendations ────────────────────────────────────────────────────
 /**
  * Returns an array of up to 3 personalized recommendation objects for the home feed.
- * Each item: { type, topic, courseName, courseId, score, daysSince, message, emoji, cta, route }
+ * Weak topics (score < 60%) become RETRY cards.
+ * Strong topics not seen in 5+ days become DUE FOR REVIEW cards.
+ * Dismissed cards (via X button) are omitted.
+ * Each item: { id, type, topic, courseName, courseId, score, daysSince, message, emoji, cta, route }
  */
 export function getSmartRecommendations() {
   const history = readHistory();
@@ -87,14 +110,17 @@ export function getSmartRecommendations() {
   const MS_PER_DAY = 86_400_000;
   const recommendations = [];
   const seen = new Set(); // avoid duplicate topics
+  const dismissed = new Set(getDismissedRecommendations());
 
   // 1. RETRY — weak topics from recent sessions (score < 60%)
   for (const entry of history.slice(0, 10)) {
     for (const topic of entry.weakTopics) {
-      if (seen.has(topic)) continue;
+      const recId = `retry_${entry.courseId || ''}_${topic}`;
+      if (seen.has(topic) || dismissed.has(recId)) continue;
       seen.add(topic);
       const daysSince = Math.round((now - entry.timestamp) / MS_PER_DAY);
       recommendations.push({
+        id: recId,
         type: 'retry',
         topic,
         courseName: entry.courseName,
@@ -119,11 +145,13 @@ export function getSmartRecommendations() {
   const recentTopics = new Set(history.slice(0, 3).flatMap(e => [...e.strongTopics, ...e.weakTopics]));
   for (const entry of history.slice(3, 15)) {
     for (const topic of entry.strongTopics) {
-      if (seen.has(topic) || recentTopics.has(topic)) continue;
+      const recId = `review_${entry.courseId || ''}_${topic}`;
+      if (seen.has(topic) || recentTopics.has(topic) || dismissed.has(recId)) continue;
       const daysSince = Math.round((now - entry.timestamp) / MS_PER_DAY);
       if (daysSince < 5) continue;
       seen.add(topic);
       recommendations.push({
+        id: recId,
         type: 'review',
         topic,
         courseName: entry.courseName,

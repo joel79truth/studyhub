@@ -7,13 +7,14 @@ import { useNavigate, Navigate } from 'react-router-dom';
 import Files from '../components/Files';
 import { ensureConsistentSession, getOfflineSessionSnapshot } from '../lib/authGuard';
 import {
-  Target, FileText, TrendingUp, RefreshCw, Flame, ChevronRight, WifiOff, Share2,
+  Target, FileText, TrendingUp, RefreshCw, Flame, ChevronRight, WifiOff, Share2, X,
 } from 'lucide-react';
 import { shareStudyHub } from '../utils/shareApp';
 import {
   getSmartRecommendations,
   getLevelUpSuggestion,
   dismissLevelUpSuggestion,
+  dismissRecommendation,
 } from '../services/learningIntelligence';
 import {
   trackRecommendationClicked,
@@ -352,11 +353,11 @@ const LevelUpBanner = memo(({ suggestion, onDismiss, onAction }) => {
 // Surfaces personalized retry/review nudges based on quiz history.
 // Only renders when there's at least 1 recommendation (hidden for new users).
 // UX: Data-driven copy ("You scored 42%"), contextual, non-interruptive.
-const RecommendationCard = memo(({ rec, onAction }) => {
+const RecommendationCard = memo(({ rec, onAction, onDismiss }) => {
   const isRetry = rec.type === 'retry';
   return (
     <div
-      className="bg-white border border-gray-100 rounded-xl p-3.5 flex items-center gap-3 active:scale-[0.98] transition-transform cursor-pointer"
+      className="relative bg-white border border-gray-100 rounded-xl p-3.5 flex items-center gap-3 active:scale-[0.98] transition-transform cursor-pointer group"
       onClick={() => onAction(rec.route, rec.courseId, rec)}
       role="button"
       tabIndex={0}
@@ -372,7 +373,7 @@ const RecommendationCard = memo(({ rec, onAction }) => {
         {rec.emoji}
       </div>
 
-      <div className="flex-1 min-w-0">
+      <div className="flex-1 min-w-0 pr-1">
         {/* Pill label */}
         <span
           className="text-[10px] font-bold uppercase tracking-wide"
@@ -386,21 +387,37 @@ const RecommendationCard = memo(({ rec, onAction }) => {
         <p className="text-xs text-gray-400 mt-0.5 leading-snug">{rec.message}</p>
       </div>
 
-      {/* CTA chevron */}
-      <div className="flex flex-col items-end gap-1 flex-shrink-0">
-        <span
-          className="text-[10px] font-semibold whitespace-nowrap"
-          style={{ color: isRetry ? rec.pillColor.fg : '#2563eb' }}
-        >
-          {rec.cta}
-        </span>
-        <ChevronRight className="w-3.5 h-3.5 text-gray-300" aria-hidden="true" />
+      {/* CTA chevron & Dismiss button */}
+      <div className="flex items-center gap-2 flex-shrink-0">
+        <div className="flex flex-col items-end gap-1">
+          <span
+            className="text-[10px] font-semibold whitespace-nowrap"
+            style={{ color: isRetry ? rec.pillColor.fg : '#2563eb' }}
+          >
+            {rec.cta}
+          </span>
+          <ChevronRight className="w-3.5 h-3.5 text-gray-300" aria-hidden="true" />
+        </div>
+        {onDismiss && (
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onDismiss(rec);
+            }}
+            className="w-7 h-7 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition-colors"
+            title="Dismiss recommendation"
+            aria-label={`Dismiss recommendation for ${rec.topic}`}
+          >
+            <X className="w-4 h-4" />
+          </button>
+        )}
       </div>
     </div>
   );
 });
 
-const RecommendedForYou = memo(({ recommendations, onAction }) => {
+const RecommendedForYou = memo(({ recommendations, onAction, onDismiss }) => {
   if (!recommendations || recommendations.length === 0) return null;
   return (
     <div className="ed-fade-up" style={{ animationDelay: '0.17s' }}>
@@ -410,7 +427,12 @@ const RecommendedForYou = memo(({ recommendations, onAction }) => {
       </div>
       <div className="space-y-2.5">
         {recommendations.map((rec, i) => (
-          <RecommendationCard key={`${rec.type}-${rec.topic}-${i}`} rec={rec} onAction={onAction} />
+          <RecommendationCard
+            key={rec.id || `${rec.type}-${rec.topic}-${i}`}
+            rec={rec}
+            onAction={onAction}
+            onDismiss={onDismiss}
+          />
         ))}
       </div>
     </div>
@@ -965,6 +987,14 @@ const Home = () => {
     }
   }, [navigate]);
 
+  // Dismiss a smart recommendation card and persist the dismissal
+  const handleDismissRecommendation = useCallback((rec) => {
+    if (!rec) return;
+    const recId = rec.id || `${rec.type}_${rec.courseId || ''}_${rec.topic}`;
+    dismissRecommendation(recId);
+    setRecommendations((prev) => prev.filter((r) => (r.id || `${r.type}_${r.courseId || ''}_${r.topic}`) !== recId));
+  }, []);
+
   // Dismiss the level-up banner and persist the dismissal
   const handleLevelUpDismiss = useCallback(() => {
     if (levelUpSuggestion) {
@@ -1331,6 +1361,7 @@ const Home = () => {
           <RecommendedForYou
             recommendations={recommendations}
             onAction={handleRecommendationAction}
+            onDismiss={handleDismissRecommendation}
           />
 
           <div className="ed-fade-up" style={{ animationDelay: '0.14s' }}>

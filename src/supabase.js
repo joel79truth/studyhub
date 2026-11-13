@@ -12,3 +12,8 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
     detectSessionInUrl: true,
   },
 });
+
+export function normalizeSupabaseUrl(url) {
+  if (!url || typeof url !== 'string') return url;
+  return url.replace(/qosudbigoxwzbdqkdecz\.supabase\.co/g, 'hlxoojajdzsjietcwvop.supabase.co');
+}

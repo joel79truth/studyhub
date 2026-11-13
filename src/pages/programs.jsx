@@ -9,10 +9,11 @@ import React, {
   useLayoutEffect, useTransition, memo,
 } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { supabase } from '../supabase';
+import { supabase, normalizeSupabaseUrl } from '../supabase';
 import { useQuery } from '@tanstack/react-query';
 import {
   useIsDownloaded,
+  useAllDownloadedIds,
   useDownloadProgress,
   useDownloadError,
   useDownloadManager,
@@ -20,7 +21,7 @@ import {
 import { isFileDownloadedSync } from '../services/deviceDownloadService';
 import { getAllDownloads } from '../utils/downloadStore';
 import PDFThumbnail from '../components/PDFThumbnail';
-// OfflineCoursePackModal preserved in ../components/OfflineCoursePackModal for future restoration
+import OfflineCoursePackModal from '../components/OfflineCoursePackModal';
 import { DownloadCloud, Download, Check, Loader2, AlertCircle, CheckCircle } from 'lucide-react';
 
 // ─── Helpers ──────────────────────────────────────────────
@@ -37,10 +38,10 @@ const getNotePublicUrl = (note) => {
   }
   if (note.filepath && note.storage_type !== 'gdrive') {
     const { data } = supabase.storage.from('notes').getPublicUrl(note.filepath);
-    if (data?.publicUrl) return data.publicUrl;
+    if (data?.publicUrl) return normalizeSupabaseUrl(data.publicUrl);
   }
   if (note.url && (note.url.startsWith('http://') || note.url.startsWith('https://'))) {
-    return note.url;
+    return normalizeSupabaseUrl(note.url);
   }
   return null;
 };
@@ -185,6 +186,15 @@ const FileListItem = memo(({
   const progress = useDownloadProgress(file.id);
   const downloadError = useDownloadError(file.id);
   const isDownloading = progress !== null;
+  const { verifyExistence } = useDownloadManager();
+
+  // Verify file still exists on device on mount
+  useEffect(() => {
+    if (file?.id) {
+      verifyExistence(file.id);
+    }
+  }, [file?.id, verifyExistence]);
+
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
@@ -414,7 +424,7 @@ const OfflineNoticeBanner = memo(({ onDismiss }) => {
             <span className="text-[10px] font-bold px-1.5 py-0.5 bg-emerald-100 text-emerald-700 rounded-md">TIP</span>
           </div>
           <p className="text-xs text-slate-600 mt-0.5 leading-relaxed">
-            Save mobile data by downloading course packs while on Wi-Fi. Once saved, you can study anytime with <strong>no active internet connection</strong>.
+            Save mobile data by downloading notes while on Wi-Fi. Once saved, you can study anytime with <strong>no active internet connection</strong>.
           </p>
         </div>
       </div>
@@ -549,11 +559,13 @@ const CoursesView = memo(({
 const FilesView = memo(({ course, files, onBack, fileActions, readFiles, onDownloadSelected }) => {
   const [selectedIds, setSelectedIds] = useState(() => new Set());
   const [isBulkDownloading, setIsBulkDownloading] = useState(false);
+  const downloadedIds = useAllDownloadedIds();
 
-  // Filter downloadable files (non-downloaded files)
+  // Filter downloadable files (non-downloaded files) reactively
   const downloadableFiles = useMemo(() => {
-    return files.filter(f => !isFileDownloadedSync(f.id));
-  }, [files]);
+    const downloadedSet = new Set(downloadedIds);
+    return files.filter(f => !downloadedSet.has(f.id));
+  }, [files, downloadedIds]);
 
   const allSelected = downloadableFiles.length > 0 && downloadableFiles.every(f => selectedIds.has(f.id));
   const selectedCount = selectedIds.size;
@@ -576,7 +588,8 @@ const FilesView = memo(({ course, files, onBack, fileActions, readFiles, onDownl
   }, [allSelected, downloadableFiles]);
 
   const handleBulkDownload = async () => {
-    const toDownload = files.filter(f => selectedIds.has(f.id) && !isFileDownloadedSync(f.id));
+    const downloadedSet = new Set(downloadedIds);
+    const toDownload = files.filter(f => selectedIds.has(f.id) && !downloadedSet.has(f.id));
     if (toDownload.length === 0) return;
 
     setIsBulkDownloading(true);
@@ -800,15 +813,23 @@ const CoursesSkeleton = () => (
 
 // ─── Query functions (module scope — stable references, no re-creation) ──
 const fetchProfile = async () => {
-  const { data: { session } } = await supabase.auth.getSession();
-  if (!session) return null;
-  const { data, error } = await supabase
-    .from('profiles')
-    .select('program, semester')
-    .eq('id', session.user.id)
-    .single();
-  if (error) throw error;
-  return data || { program: '', semester: '' };
+  try {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session?.user) return null;
+    const { data, error } = await supabase
+      .from('profiles')
+      .select('program, semester')
+      .eq('id', session.user.id)
+      .maybeSingle();
+    if (error) {
+      console.warn('fetchProfile error:', error);
+      return null;
+    }
+    return data || { program: '', semester: '' };
+  } catch (e) {
+    console.warn('fetchProfile caught:', e);
+    return null;
+  }
 };
 
 const mapNote = (n) => ({
@@ -826,14 +847,34 @@ const mapNote = (n) => ({
 });
 
 const fetchUserNotes = async (program, semester) => {
-  const { data, error } = await supabase
-    .from('notes')
-    .select('id, filename, program, semester, course_name, size, uploaded_at, url, filepath, storage_type')
-    .ilike('program', `%${program}%`)
-    .eq('semester', semester)
-    .order('uploaded_at', { ascending: false });
-  if (error) throw error;
-  return (data || []).map(mapNote);
+  try {
+    if (!program) return [];
+    const sem = semester != null ? String(semester).trim() : '';
+    const cleanProg = program
+      .replace(/^(bachelor of (science|arts) in|bsc in|diploma in)\s+/i, '')
+      .split('/')[0]
+      .trim();
+
+    const { data, error } = await supabase
+      .from('notes')
+      .select('id, filename, program, semester, course_name, size, uploaded_at, url, filepath, storage_type')
+      .ilike('program', `%${cleanProg || program}%`)
+      .order('uploaded_at', { ascending: false });
+
+    if (error) {
+      console.warn('fetchUserNotes error:', error);
+      return [];
+    }
+
+    if (sem && data && data.length > 0) {
+      const semMatches = data.filter((n) => String(n.semester).trim() === sem);
+      if (semMatches.length > 0) return semMatches.map(mapNote);
+    }
+    return (data || []).map(mapNote);
+  } catch (err) {
+    console.warn('fetchUserNotes catch:', err);
+    return [];
+  }
 };
 
 const fetchOfficialPrograms = async () => {
@@ -1177,7 +1218,7 @@ export default function Programs() {
     return userNotes.filter((n) => normalizeName(n.course) === normalizeName(selectedCourse));
   }, [userNotes, selectedCourse]);
 
-  const showSkeleton = (profileLoading && !profile) || (notesLoading && !userNotes.length && !!userProgram);
+  const showSkeleton = profileLoading && !profile;
   const isDataReady = !showSkeleton;
 
   return (
@@ -1254,7 +1295,7 @@ export default function Programs() {
             onBack={handleBackToCourses}
             fileActions={fileActions}
             readFiles={readFiles}
-            onOpenPackModal={() => setPackModalOpen(true)}
+            onDownloadSelected={handleDownloadSelected}
           />
         ) : (
           <CoursesView
@@ -1276,13 +1317,6 @@ export default function Programs() {
           />
         )}
       </main>
-
-      <OfflineCoursePackModal
-        isOpen={packModalOpen}
-        onClose={() => setPackModalOpen(false)}
-        courseName={selectedCourse}
-        notes={courseFiles}
-      />
 
       {toast && <Toast message={toast} onClose={() => setToast(null)} />}
     </div>

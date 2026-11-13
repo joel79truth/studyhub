@@ -236,7 +236,7 @@ export default function Leaderboard({ userId, userProgram, compact = false }) {
             .from(activeTab === 1 ? 'quiz_scores_alltime' : 'quiz_scores')
             .select('user_id, display_name, program, score, quizzes')
             .eq('user_id', userId)
-            .single();
+            .maybeSingle();
           setMyEntry(mine || null);
           setMyRank(null); // not in top 10
         }

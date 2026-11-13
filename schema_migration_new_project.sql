@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS public.past_paper (
   created_at timestamptz DEFAULT now(),
   processed boolean DEFAULT false,
   program_id integer,
-  course_id bigint,
+  course_id bigint REFERENCES public.courses(id) ON DELETE SET NULL,
   processing_status text,
   processing_error text,
   paper_id text,
@@ -151,7 +151,7 @@ CREATE TABLE IF NOT EXISTS public.paper_questions (
   explanation text,
   needs_review boolean DEFAULT false,
   question_number text,
-  course_id bigint,
+  course_id bigint REFERENCES public.courses(id) ON DELETE SET NULL,
   past_paper_id uuid REFERENCES public.past_paper(id) ON DELETE CASCADE,
   no_source_paper boolean DEFAULT false,
   detected_subject text,
@@ -422,6 +422,10 @@ CREATE POLICY "messages_write" ON public.messages FOR INSERT WITH CHECK (true);
 ALTER TABLE public.user_progress ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "user_progress_read" ON public.user_progress FOR SELECT USING (auth.uid() = user_id);
 CREATE POLICY "user_progress_write" ON public.user_progress FOR ALL USING (auth.uid() = user_id);
+
+ALTER TABLE public.quiz_sessions ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "quiz_sessions_read" ON public.quiz_sessions FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "quiz_sessions_write" ON public.quiz_sessions FOR INSERT WITH CHECK (auth.uid() = user_id);
 
 -- 15. Auto-create Profile on Sign-up Trigger
 CREATE OR REPLACE FUNCTION public.handle_new_user()

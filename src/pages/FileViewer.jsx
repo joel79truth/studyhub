@@ -26,7 +26,7 @@ import {
 } from 'lucide-react';
 import * as pdfjs from 'pdfjs-dist';
 import workerUrl from 'pdfjs-dist/legacy/build/pdf.worker.min.mjs?url';
-import { supabase } from '../supabase';
+import { supabase, normalizeSupabaseUrl } from '../supabase';
 import { saveFileOffline, getOfflineFile, deleteOfflineFile } from '../utils/offlineStorage';
 import { downloadFileToDevice, verifyFileExistsOnDevice } from '../services/deviceDownloadService';
 
@@ -58,6 +58,7 @@ const getAuthToken = async () => {
 
 const getProxiedUrl = (rawUrl) => {
   if (!rawUrl) return rawUrl;
+  rawUrl = normalizeSupabaseUrl(rawUrl);
   const isExternal =
     rawUrl.includes('drive.google.com') || rawUrl.includes('supabase.co');
   if (isExternal) {
@@ -525,7 +526,7 @@ export default function Viewer() {
   const { state } = useLocation();
 
   const filename = state?.filename || 'Document';
-  const rawUrl   = state?.url      || null;
+  const rawUrl   = normalizeSupabaseUrl(state?.url || null);
   const fileId   = state?.fileId   || null;
   const fileType = state?.fileType || null; // 'pdf' | 'pptx'
   const context  = state?.context  || {};
@@ -576,10 +577,16 @@ export default function Viewer() {
   // ── Keep messagesRef in sync ──
   useEffect(() => { messagesRef.current = messages; }, [messages]);
 
-  // ── Check offline availability ──
+  // ── Check offline availability and verify existence on phone ──
   useEffect(() => {
     if (!fileId) return;
-    getOfflineFile(fileId).then((cached) => setIsOffline(!!cached));
+    verifyFileExistsOnDevice(fileId).then((exists) => {
+      if (exists) {
+        setIsOffline(true);
+      } else {
+        getOfflineFile(fileId).then((cached) => setIsOffline(!!cached));
+      }
+    });
   }, [fileId]);
 
   // ── Load file ──

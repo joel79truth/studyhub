@@ -107,13 +107,19 @@ const IndetermRing = memo(({ size = 28, stroke = 2.5 }) => {
 const SaveOfflineButton = memo(({ fileUrl, filename, fileId, courseName }) => {
   const isDownloaded = useIsDownloaded(fileId)
   const progress = useDownloadProgress(fileId) // number | 'indeterminate' | null
-  const { startDownload, cancelDownload } = useDownloadManager()
+  const { startDownload, cancelDownload, verifyExistence } = useDownloadManager()
   const [pressed, pressHandlers] = usePress()
   const [hovered, setHovered] = useState(false)
   const [errorFlash, setErrorFlash] = useState(false)
 
   const isDownloading = progress !== null
   const indeterminate = progress === 'indeterminate'
+
+  // On mount: verify the file still exists on disk — clears the Downloaded
+  // badge if the user deleted it from the Files app.
+  useEffect(() => {
+    if (fileId) verifyExistence(fileId)
+  }, [fileId, verifyExistence])
 
   const handleClick = useCallback(async () => {
     if (isDownloading) return // tap-to-cancel could go here later; for now, ignore mid-download taps
@@ -459,7 +465,7 @@ const ViewerHeader = memo(({
               fileId={fileId}
             />
           )}
-          <LunaBtn onClick={onAskLuna} />
+          {/* LunaBtn preserved for future restoration */}
         </div>
       </header>
     </>

@@ -47,7 +47,7 @@ export async function submitLeaderboardScore({ userId, displayName, program, cam
       .select('score, quizzes')
       .eq('user_id', userId)
       .eq('week_start', weekStart)
-      .single();
+      .maybeSingle();
 
     let newScore, newQuizzes;
     if (existing) {
@@ -84,7 +84,7 @@ export async function submitLeaderboardScore({ userId, displayName, program, cam
       .from('quiz_scores_alltime')
       .select('score, quizzes')
       .eq('user_id', userId)
-      .single();
+      .maybeSingle();
 
     let atScore, atQuizzes;
     if (atExisting) {

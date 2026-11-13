@@ -13,6 +13,7 @@ import { useState, useEffect, useRef, memo } from 'react';
 import * as pdfjs from 'pdfjs-dist';
 import workerUrl from 'pdfjs-dist/legacy/build/pdf.worker.min.mjs?url';
 import { FileText } from 'lucide-react';
+import { normalizeSupabaseUrl } from '../supabase';
 
 // Setup pdfjs worker once at module level
 pdfjs.GlobalWorkerOptions.workerSrc = workerUrl;
@@ -52,7 +53,8 @@ function getGDriveId(url) {
   return match ? match[1] : null;
 }
 
-const PDFThumbnail = memo(({ url, scale = 0.4 }) => {
+const PDFThumbnail = memo(({ url: rawUrl, scale = 0.4 }) => {
+  const url = normalizeSupabaseUrl(rawUrl);
   const gDriveId = getGDriveId(url);
   const [thumbnail, setThumbnail] = useState(() => thumbCache.get(url) || null);
   const [isVisible, setIsVisible] = useState(false);

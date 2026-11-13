@@ -6,9 +6,14 @@
 import React, { useState, useMemo, memo, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { supabase } from '../supabase';
+import { supabase, normalizeSupabaseUrl } from '../supabase';
 import { API_BASE_URL } from '../lib/apiConfig';
 import PDFThumbnail from '../components/PDFThumbnail';
+import {
+  useIsDownloaded,
+  useDownloadProgress,
+  useDownloadManager,
+} from '../hooks/useDownloadManager';
 import {
   BookOpen,
   Search,
@@ -19,6 +24,9 @@ import {
   Upload,
   ArrowLeft,
   X,
+  Download,
+  Check,
+  Loader2,
 } from 'lucide-react';
 
 // ─── Data fetching ────────────────────────────────────────────────────────────
@@ -128,7 +136,17 @@ export function getDisplayFilename(tutorial) {
 
 // ─── Single Tutorial Card (matching Files.jsx layout and alignment) ──────────
 
-const TutorialCard = memo(({ tutorial, uploaderName, onOpen }) => {
+const TutorialCard = memo(({ tutorial, uploaderName, onOpen, onStartDownload }) => {
+  const isDownloaded = useIsDownloaded(tutorial?.id);
+  const progress = useDownloadProgress(tutorial?.id);
+  const isDownloading = progress !== null;
+  const { verifyExistence } = useDownloadManager();
+
+  useEffect(() => {
+    if (tutorial?.id) {
+      verifyExistence(tutorial.id);
+    }
+  }, [tutorial?.id, verifyExistence]);
   const courseName = tutorial.courses?.course_name || tutorial.course || 'General';
   const courseCode = tutorial.courses?.course_code || null;
   const pageCount  = tutorial.page_count || 0;
@@ -139,12 +157,12 @@ const TutorialCard = memo(({ tutorial, uploaderName, onOpen }) => {
 
   const pdfUrl = useMemo(() => {
     if (tutorial?.file_url && (tutorial.file_url.startsWith('http://') || tutorial.file_url.startsWith('https://'))) {
-      return tutorial.file_url;
+      return normalizeSupabaseUrl(tutorial.file_url);
     }
     const path = tutorial?.storage_path || tutorial?.file_path;
     if (path) {
       const { data } = supabase.storage.from('past-papers').getPublicUrl(path);
-      if (data?.publicUrl) return data.publicUrl;
+      if (data?.publicUrl) return normalizeSupabaseUrl(data.publicUrl);
     }
     return null;
   }, [tutorial?.file_url, tutorial?.storage_path, tutorial?.file_path]);
@@ -202,14 +220,40 @@ const TutorialCard = memo(({ tutorial, uploaderName, onOpen }) => {
             </div>
           </div>
 
-          {/* Footer: uploader / date metadata */}
+          {/* Footer: uploader / date metadata & Download action */}
           <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
-            <span className="truncate max-w-[130px]" title={uploaderName || dateLabel || ''}>
+            <span className="truncate max-w-[85px] sm:max-w-[110px]" title={uploaderName || dateLabel || ''}>
               {uploaderName || dateLabel || ''}
             </span>
-            <span className="text-blue-600 font-bold flex items-center gap-0.5 flex-shrink-0">
-              Open <ChevronRight className="w-3.5 h-3.5" />
-            </span>
+            <div className="flex items-center gap-1.5 flex-shrink-0">
+              {isDownloading ? (
+                <span className="flex items-center gap-1 text-[10px] font-semibold text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded border border-blue-100 select-none" onClick={(e) => e.stopPropagation()}>
+                  <Loader2 size={11} className="animate-spin text-blue-600" />
+                  <span>{typeof progress === 'number' && progress > 0 ? progress + '%' : '…'}</span>
+                </span>
+              ) : isDownloaded ? (
+                <span className="flex items-center gap-1 text-[10px] font-semibold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-100 select-none" title="Saved to Documents/StudyHub" onClick={(e) => e.stopPropagation()}>
+                  <Check size={11} className="text-emerald-600 stroke-[2.5]" />
+                  <span>Downloaded</span>
+                </span>
+              ) : (
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (onStartDownload) onStartDownload(tutorial, pdfUrl);
+                  }}
+                  className="p-1 text-slate-400 hover:text-blue-600 active:scale-95 transition-all cursor-pointer"
+                  title="Download tutorial to phone"
+                  aria-label={'Download ' + fileName}
+                >
+                  <Download size={13} />
+                </button>
+              )}
+              <span className="text-blue-600 font-bold flex items-center gap-0.5">
+                Open <ChevronRight className="w-3.5 h-3.5" />
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -348,6 +392,22 @@ export default function Tutorials() {
   }, [tutorials, selectedCourse, searchQuery]);
 
   const hasFilter = searchQuery.trim() !== '' || selectedCourse !== 'all';
+
+  // ── Download handling ──
+  const { startDownload } = useDownloadManager();
+  const handleStartDownload = useCallback(async (tutorial, fileUrl) => {
+    if (!fileUrl) return;
+    const fileName = getDisplayFilename(tutorial);
+    await startDownload(
+      {
+        id: tutorial.id,
+        filename: fileName,
+        fileUrl,
+        course: tutorial.courses?.course_name || tutorial.course || '',
+      },
+      () => fileUrl
+    );
+  }, [startDownload]);
 
   // ── Navigation ──
   const handleOpenTutorial = useCallback((tutorial) => {
@@ -507,6 +567,7 @@ export default function Tutorials() {
                   tutorial={tut}
                   uploaderName={tut.uploaded_by ? (publicNames[tut.uploaded_by] || null) : null}
                   onOpen={() => handleOpenTutorial(tut)}
+                  onStartDownload={handleStartDownload}
                 />
               ))}
             </div>

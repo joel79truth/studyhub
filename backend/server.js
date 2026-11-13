@@ -3311,6 +3311,62 @@ app.get('/api/exam/last-minute', requireAuth, async (req, res) => {
   } catch (err) {
     console.error('[exam/last-minute] error:', err);
     res.status(500).json({ error: err.message });
+
+// ── GET /api/exam/saved-questions ──────────────────────────────────────
+app.get('/api/exam/saved-questions', requireAuth, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const { data, error } = await supabaseAdmin
+      .from('user_progress')
+      .select('question_id')
+      .eq('user_id', userId)
+      .eq('question_type', 'saved');
+    if (error) throw error;
+    res.json({ savedQuestionIds: (data || []).map(r => r.question_id) });
+  } catch (err) {
+    res.json({ savedQuestionIds: [] });
+  }
+});
+
+// ── POST /api/exam/saved-questions ─────────────────────────────────────
+app.post('/api/exam/saved-questions', requireAuth, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const { questionId, paperId } = req.body;
+    if (!questionId) return res.status(400).json({ error: 'questionId required' });
+    await supabaseAdmin
+      .from('user_progress')
+      .upsert({
+        user_id: userId,
+        question_id: questionId,
+        question_type: 'saved',
+        topic: paperId || null,
+        last_reviewed: new Date().toISOString()
+      }, { onConflict: 'user_id,question_id' });
+    res.json({ ok: true });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// ── POST /api/exam/saved-questions/remove ──────────────────────────────
+app.post('/api/exam/saved-questions/remove', requireAuth, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const { questionId } = req.body;
+    if (!questionId) return res.status(400).json({ error: 'questionId required' });
+    await supabaseAdmin
+      .from('user_progress')
+      .delete()
+      .eq('user_id', userId)
+      .eq('question_id', questionId)
+      .eq('question_type', 'saved');
+    res.json({ ok: true });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
   }
 });
 
