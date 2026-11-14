@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import PDFThumbnail from './PDFThumbnail';
 import { useIsDownloaded, useDownloadProgress, useDownloadManager } from '../hooks/useDownloadManager';
+import { isFileDownloadedSync } from '../services/deviceDownloadService';
 
 // ─── Helpers ──────────────────────────────────────────────
 

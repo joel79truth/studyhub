@@ -2659,16 +2659,36 @@ app.post('/api/exam/upload-past-paper-pdf', requireAdmin, pdfUpload.single('pape
     console.log(`   Semester: ${semester} | Year: ${yearHint || 'Auto-detect'} | ExamType: ${canonicalExamType || 'None'}`);
     console.log(`======================================================`);
 
-    // Upload the raw PDF to Supabase storage
-    console.log(`☁️  [upload-pdf] Uploading PDF to Supabase storage (${storagePath})...`);
-    const { error: storageErr } = await supabaseAdmin.storage
-      .from(bucketName)
-      .upload(storagePath, pdfBuffer, { contentType: 'application/pdf', upsert: false });
-    if (storageErr) throw storageErr;
+    // Upload the raw PDF to Google Drive storage (preferred), falling back to Supabase
+    let fileUrl = null;
+    if (typeof storageUpload?.uploadToDriveWithRetry === 'function' && process.env.GOOGLE_REFRESH_TOKEN) {
+      try {
+        console.log(`☁️  [upload-pdf] Uploading PDF to Google Drive storage (${safeName})...`);
+        const driveRes = await storageUpload.uploadToDriveWithRetry({
+          buffer: pdfBuffer,
+          originalname: `${pastPaperId}-${safeName}`,
+          mimetype: 'application/pdf',
+        });
+        if (driveRes?.data?.id) {
+          fileUrl = `/api/drive/${driveRes.data.id}`;
+          console.log(`✅ [upload-pdf] Stored in Google Drive. ID: ${driveRes.data.id}, proxy: ${fileUrl}`);
+        }
+      } catch (gErr) {
+        console.warn(`[upload-pdf] Google Drive upload failed, falling back to Supabase:`, gErr.message);
+      }
+    }
 
-    const { data: publicUrlData } = supabaseAdmin.storage.from(bucketName).getPublicUrl(storagePath);
-    const fileUrl = publicUrlData?.publicUrl || null;
-    console.log(`✅ [upload-pdf] Stored in bucket '${bucketName}'. Public URL: ${fileUrl}`);
+    if (!fileUrl) {
+      console.log(`☁️  [upload-pdf] Uploading PDF to Supabase storage (${storagePath})...`);
+      const { error: storageErr } = await supabaseAdmin.storage
+        .from(bucketName)
+        .upload(storagePath, pdfBuffer, { contentType: 'application/pdf', upsert: false });
+      if (storageErr) throw storageErr;
+
+      const { data: publicUrlData } = supabaseAdmin.storage.from(bucketName).getPublicUrl(storagePath);
+      fileUrl = publicUrlData?.publicUrl || null;
+      console.log(`✅ [upload-pdf] Stored in bucket '${bucketName}'. Public URL: ${fileUrl}`);
+    }
 
     // Detect page count using pdf-parse if possible
     let numPages = null;

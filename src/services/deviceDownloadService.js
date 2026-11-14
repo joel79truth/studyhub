@@ -3,6 +3,7 @@ import { Filesystem, Directory } from '@capacitor/filesystem';
 import { Capacitor } from '@capacitor/core';
 import { Toast } from '@capacitor/toast';
 import { normalizeSupabaseUrl } from '../supabase';
+import { saveFileOffline } from '../utils/offlineStorage';
 
 const REGISTRY_STORAGE_KEY = 'studyhub_downloaded_files_registry';
 const SUBFOLDER = 'StudyHub';
@@ -416,6 +417,12 @@ export async function downloadFileToDevice({
       a.click();
       document.body.removeChild(a);
       setTimeout(() => URL.revokeObjectURL(blobUrl), 2000);
+
+      try {
+        await saveFileOffline(fileId, blob, { fileName: cleanName });
+      } catch (offlineErr) {
+        console.warn('[DeviceDownload] Cache offline fallback error:', offlineErr);
+      }
 
       const registry = getRegistry();
       registry[fileId] = {

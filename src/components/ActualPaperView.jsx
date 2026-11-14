@@ -366,12 +366,16 @@ export default function ActualPaperView({ paper, onSwitchToText, onAskPaper }) {
   }, [fetchPaperFile, paper]);
 
   // Determine file kind
-  const fileUrl = normalizeSupabaseUrl(rawPaper?.file_url) || null;
+  const rawUrl = rawPaper?.file_url;
+  const fileUrl = rawUrl?.startsWith('/api/')
+    ? `${import.meta.env.VITE_API_URL || ''}${rawUrl}`
+    : (normalizeSupabaseUrl(rawUrl) || null);
+
   const isPdf = useMemo(() => {
     if (!fileUrl) return false;
     const lower = fileUrl.toLowerCase();
     const type = (rawPaper?.file_type || '').toLowerCase();
-    return lower.includes('.pdf') || type.includes('pdf');
+    return lower.includes('.pdf') || type.includes('pdf') || lower.includes('/api/drive');
   }, [fileUrl, rawPaper?.file_type]);
 
   const isImage = useMemo(() => {
@@ -738,15 +742,7 @@ export default function ActualPaperView({ paper, onSwitchToText, onAskPaper }) {
           )}
         </button>
 
-        {isDownloaded ? (
-          <span
-            className="min-h-[40px] h-[38px] px-[14px] text-[13px] font-[600] rounded-[10px] text-emerald-700 bg-emerald-50 border border-emerald-200 flex items-center gap-1.5 shadow-none select-none"
-            title="Saved to Documents/StudyHub"
-          >
-            <Check size={16} className="text-emerald-600 stroke-[2.5]" />
-            <span>Downloaded</span>
-          </span>
-        ) : (
+        {isDownloaded ? null : (
           <button
             type="button"
             onClick={handleDownloadPaper}

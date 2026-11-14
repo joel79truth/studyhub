@@ -991,21 +991,7 @@ export default function Viewer() {
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
-          {isOffline ? (
-            <span
-              style={{
-                display: 'flex', alignItems: 'center', gap: 6,
-                padding: '6px 13px', borderRadius: 20,
-                border: '1px solid #bbf7d0',
-                background: '#f0fdf4',
-                fontSize: 11.5, fontWeight: 600,
-                color: '#16a34a',
-              }}
-            >
-              <CheckCircle size={13} color="#16a34a" />
-              Downloaded
-            </span>
-          ) : (
+          {isOffline ? null : (
             <PopButton
               onClick={handleToggleOffline}
               disabled={isSaving}

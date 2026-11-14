@@ -36,7 +36,7 @@ const https = require('https');
 // ============================================================================
 // CONFIG
 // ============================================================================
-const GDRIVE_THRESHOLD_BYTES = 5 * 1024 * 1024;   // >5MB -> Google Drive
+const GDRIVE_THRESHOLD_BYTES = 0;   // 0 = All uploads go directly to Google Drive storage
 const MAX_FILE_SIZE_BYTES = 50 * 1024 * 1024;     // hard cap, enforced server-side
 const ALLOWED_MIME_TYPES = new Set([
   'application/pdf',
@@ -161,7 +161,7 @@ async function uploadToDriveWithRetry(file, maxRetries = 3, baseDelay = 500) {
 // this instead of re-implementing the size-based routing branch.
 async function uploadFileToStorage(file, { folderPath } = {}) {
   const filePath = buildFilePath({ folderPath, fileName: file.originalname });
-  const useDrive = file.size > GDRIVE_THRESHOLD_BYTES;
+  const useDrive = file.size >= GDRIVE_THRESHOLD_BYTES;
 
   if (useDrive) {
     const driveRes = await uploadToDriveWithRetry(file);
@@ -277,7 +277,7 @@ router.post('/init-upload', requireAuth, express.json(), async (req, res) => {
 
     const folderPath = `${program}/${semester}/${subject}`;
     const uploadId = uuidv4();
-    const useDrive = size > GDRIVE_THRESHOLD_BYTES;
+    const useDrive = size >= GDRIVE_THRESHOLD_BYTES;
 
     if (useDrive) {
       const accessToken = await getDriveAccessToken();
@@ -496,7 +496,16 @@ function setNoteUploadedCallback(fn) {
   onNoteUploaded = fn;
 }
 
-module.exports = { router, uploadFileToStorage, requireAuth, validateFile, setNoteUploadedCallback };
+module.exports = {
+  router,
+  uploadFileToStorage,
+  uploadToDriveWithRetry,
+  getDriveAccessToken,
+  drive,
+  requireAuth,
+  validateFile,
+  setNoteUploadedCallback,
+};
 
 // ============================================================================
 // INTEGRATION NOTES

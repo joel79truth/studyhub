@@ -1132,23 +1132,6 @@ export default function Programs() {
     navigate(`/program-detail?program=${encodeURIComponent(program)}`);
   }, [navigate]);
 
-  const handleFileClick = useCallback((file) => {
-    const url = getNotePublicUrl(file);
-    if (!url) {
-      setToast('File URL not available.');
-      return;
-    }
-    navigate('/viewer', {
-      state: {
-        fileId: file.id,
-        filename: file.filename || 'Document',
-        fileType: getFileType(file.filename), // ← was missing; Viewer always defaulted to 'pdf' without this
-        url,
-        context: { course: file.course, semester: file.semester, program: file.program }
-      },
-    });
-  }, [navigate]);
-
   const { startDownload, downloadMultiple, cancelDownload, removeDownload } = useDownloadManager();
 
   const handleStartDownload = useCallback(async (file) => {
@@ -1167,6 +1150,31 @@ export default function Programs() {
       setToast(result.message || `Couldn't download ${file.filename}. Check your connection and try again.`);
     }
   }, [startDownload]);
+
+  const handleFileClick = useCallback((file) => {
+    const isDownloaded = isFileDownloadedSync(file.id);
+    if (!isDownloaded) {
+      // WhatsApp style: Must download to phone before viewing
+      handleStartDownload(file);
+      setToast(`Downloading ${file.filename || 'file'} to phone...`);
+      return;
+    }
+
+    const url = getNotePublicUrl(file);
+    if (!url) {
+      setToast('File URL not available.');
+      return;
+    }
+    navigate('/viewer', {
+      state: {
+        fileId: file.id,
+        filename: file.filename || 'Document',
+        fileType: getFileType(file.filename),
+        url,
+        context: { course: file.course, semester: file.semester, program: file.program }
+      },
+    });
+  }, [handleStartDownload, navigate]);
 
   const handleDownloadSelected = useCallback(async (filesToDownload) => {
     const res = await downloadMultiple(filesToDownload, {
