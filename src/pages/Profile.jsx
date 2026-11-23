@@ -29,6 +29,7 @@ import {
   Camera,
   Settings as SettingsIcon,
   Activity,
+  Lock,
 } from 'lucide-react';
 
 const PROFILE_CACHE_KEY = 'studyhub_full_profile_cache';
@@ -803,6 +804,14 @@ export default function Profile() {
     return Boolean(profile?.is_admin || profile?.admin);
   }, [profile]);
 
+  const isLecturer = useMemo(() => {
+    return Boolean(String(profile?.role || '').toLowerCase() === 'lecturer');
+  }, [profile]);
+
+  const isContributor = useMemo(() => {
+    return Boolean(isAdmin || isLecturer);
+  }, [isAdmin, isLecturer]);
+
   if (loading && !profile) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50">
@@ -918,6 +927,29 @@ export default function Profile() {
                   "{profile.bio}"
                 </p>
               )}
+
+              {/* Action Buttons: Unified Contributor Portal */}
+              <div className="flex flex-wrap items-center gap-2 mt-4 pt-3 border-t border-slate-100">
+                {isContributor ? (
+                  <button
+                    onClick={() => navigate('/upload')}
+                    className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer"
+                    title="Open Unified Contributor Portal"
+                  >
+                    <Upload className="w-3.5 h-3.5" />
+                    <span>Contributor Portal</span>
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => navigate('/upload')}
+                    className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors cursor-pointer border border-slate-200/80"
+                    title="Lecturer & Contributor Portal"
+                  >
+                    <Lock className="w-3.5 h-3.5 text-slate-500" />
+                    <span>Lecturer Portal</span>
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </section>
@@ -963,8 +995,8 @@ export default function Profile() {
         {/* 2. Bar Graph (Detailed course-by-course breakdown) */}
         <CourseMasteryBarGraph sessions={quizSessions} />
 
-        {/* My Uploaded Notes Section (Visible ONLY to Admins) */}
-        {isAdmin && (
+        {/* My Uploaded Notes Section */}
+        {(isAdmin || files.length > 0) && (
           <section className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-xs mb-5">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
@@ -977,19 +1009,23 @@ export default function Profile() {
                 </div>
               </div>
               <div className="flex items-center gap-2">
+                {isAdmin && (
+                  <button
+                    onClick={() => navigate('/admin/upload')}
+                    className="flex items-center gap-1 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 px-2.5 py-1 rounded-lg shadow-xs transition-colors cursor-pointer"
+                    title="Open Admin Upload Page"
+                  >
+                    <Upload className="w-3.5 h-3.5" />
+                    <span>Admin</span>
+                  </button>
+                )}
                 <button
                   onClick={() => navigate('/upload')}
-                  className="flex items-center gap-1 text-xs font-semibold text-slate-600 hover:text-indigo-600 px-2 py-1 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
+                  className="flex items-center gap-1 text-xs font-semibold text-slate-600 hover:text-indigo-600 px-2 py-1 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer border border-slate-200"
+                  title="Open Upload Notes Page"
                 >
-                  <Upload className="w-3.5 h-3.5" />
-                  <span>Upload</span>
-                </button>
-                <button
-                  onClick={() => navigate('/admin/upload')}
-                  className="flex items-center gap-1 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 px-2.5 py-1 rounded-lg shadow-xs transition-colors cursor-pointer"
-                >
-                  <Upload className="w-3.5 h-3.5" />
-                  <span>Admin Upload</span>
+                  <FileText className="w-3.5 h-3.5" />
+                  <span>Upload Notes</span>
                 </button>
               </div>
             </div>
@@ -1071,11 +1107,11 @@ export default function Profile() {
           </div>
         )}
 
-        {/* Admin Upload Tile (Visible ONLY to Admins) */}
-        {isAdmin && (
+        {/* Contributor Portal Tile */}
+        {isContributor ? (
           <div className="mb-3">
             <button
-              onClick={() => navigate('/admin/upload')}
+              onClick={() => navigate('/upload')}
               className="w-full flex items-center justify-between px-4 py-3.5 rounded-2xl bg-gradient-to-r from-purple-50 via-indigo-50 to-blue-50 hover:from-purple-100 hover:to-indigo-100 border border-indigo-200/90 shadow-xs transition-colors cursor-pointer text-left"
             >
               <div className="flex items-center gap-3">
@@ -1084,13 +1120,33 @@ export default function Profile() {
                 </span>
                 <div>
                   <div className="flex items-center gap-1.5">
-                    <p className="text-xs font-bold text-indigo-950">Admin Upload Portal</p>
-                    <span className="text-[9px] uppercase font-bold tracking-wider px-1.5 py-0.2 rounded bg-indigo-200 text-indigo-800">Admin</span>
+                    <p className="text-xs font-bold text-indigo-950">Resource Contributor Portal</p>
+                    <span className="text-[9px] uppercase font-bold tracking-wider px-1.5 py-0.2 rounded bg-indigo-200 text-indigo-800">
+                      {isAdmin ? 'Admin' : 'Lecturer'}
+                    </span>
                   </div>
-                  <p className="text-[11px] text-indigo-700">Upload past papers, course modules, and questions</p>
+                  <p className="text-[11px] text-indigo-700">Contribute notes, past exam papers & tutorials</p>
                 </div>
               </div>
               <ChevronRight className="w-4 h-4 text-indigo-500" />
+            </button>
+          </div>
+        ) : (
+          <div className="mb-3">
+            <button
+              onClick={() => navigate('/upload')}
+              className="w-full flex items-center justify-between px-4 py-3.5 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200/80 shadow-xs transition-colors cursor-pointer text-left"
+            >
+              <div className="flex items-center gap-3">
+                <span className="p-2 rounded-xl bg-slate-100 text-slate-600">
+                  <Lock className="w-4 h-4" />
+                </span>
+                <div>
+                  <p className="text-xs font-bold text-slate-800">Lecturer Contributor Portal</p>
+                  <p className="text-[11px] text-slate-500">Enter lecturer access password to contribute materials</p>
+                </div>
+              </div>
+              <ChevronRight className="w-4 h-4 text-slate-400" />
             </button>
           </div>
         )}

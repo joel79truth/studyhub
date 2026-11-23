@@ -78,6 +78,7 @@ function App() {
             <Route path="/file-viewer" element={<ProtectedRoute><Viewer /></ProtectedRoute>} />
 
             {/* Admin routes */}
+            <Route path="/admin" element={<AdminRoute><AdminLive /></AdminRoute>} />
             <Route path="/admin/upload" element={<AdminRoute><AdminUpload /></AdminRoute>} />
             <Route path="/admin/live" element={<AdminRoute><AdminLive /></AdminRoute>} />
             <Route path="/admin/analytics" element={<AdminRoute><AdminLive /></AdminRoute>} />

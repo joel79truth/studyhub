@@ -332,6 +332,48 @@ async function requireAdmin(req, res, next) {
   }
 }
 
+async function requireContributor(req, res, next) {
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader?.startsWith('Bearer ')) {
+      return res.status(401).json({ error: 'Unauthorized: Missing token.' });
+    }
+    const token = authHeader.split(' ')[1];
+    const { data: { user }, error } = await supabase.auth.getUser(token);
+    if (error || !user) throw new Error('Unauthorized');
+
+    const metaRole = String(user.app_metadata?.role || user.user_metadata?.role || '').toLowerCase();
+    const metaIsAdmin = Boolean(user.user_metadata?.is_admin || user.app_metadata?.is_admin);
+
+    if (metaRole === 'admin' || metaRole === 'lecturer' || metaIsAdmin) {
+      req.user = user;
+      req.userRole = (metaRole === 'admin' || metaIsAdmin) ? 'admin' : 'lecturer';
+      return next();
+    }
+
+    const { data: profile } = await supabaseAdmin
+      .from('profiles')
+      .select('is_admin, role, admin')
+      .eq('id', user.id)
+      .maybeSingle();
+
+    const role = String(profile?.role || '').toLowerCase();
+    const isAdmin = Boolean(profile?.is_admin === true || profile?.admin === true || role === 'admin');
+    const isLecturer = role === 'lecturer';
+
+    if (isAdmin || isLecturer) {
+      req.user = user;
+      req.userRole = isAdmin ? 'admin' : 'lecturer';
+      return next();
+    }
+
+    return res.status(403).json({ error: 'Forbidden: Lecturer or Admin contributor access required.' });
+  } catch (err) {
+    console.error('Contributor auth error:', err);
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+}
+
 // NOTE: the old flat updateTopicMastery(userId, topic, correct, course) that
 // used to live here has been removed — it was a duplicate declaration.
 // Plain `function` declarations of the same name silently overwrite each
@@ -1616,6 +1658,149 @@ app.post('/save-token', requireAuth, async (req, res) => {
 });
 
 app.use('/api/storage', storageUpload.router);
+
+// Wire helpers to storageUpload module
+if (typeof storageUpload.setHelpers === 'function') {
+  storageUpload.setHelpers({
+    getOrCreateProgram,
+    getOrCreateCourse,
+    notifyUploadToAllUsers,
+    normalizeExamType,
+    canonicalToLegacyMid,
+  });
+}
+
+// Rate limiter for lecturer password verification (max 10 attempts per 15 min per IP)
+const lecturerLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  message: { error: 'Too many password attempts. Please wait 15 minutes before trying again.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+// POST /api/auth/lecturer-verify — Secure server-side lecturer authentication
+app.post('/api/auth/lecturer-verify', lecturerLimiter, async (req, res) => {
+  try {
+    const { password, name, email } = req.body || {};
+    const configuredRaw = process.env.LECTURER_ACCESS_KEY || process.env.LECTURER_ACCESS_PASSWORD || 'studyhub-lecturer-2026,studyhub-lecturer-2025';
+    const allowedKeys = configuredRaw
+      .split(',')
+      .map(k => String(k || '').toLowerCase().replace(/[^a-z0-9]/g, ''))
+      .filter(Boolean);
+
+    // Accept standard keys for 2026 and 2025 in any format (spaces, hyphens, case-insensitive)
+    allowedKeys.push('studyhublecturer2026');
+    allowedKeys.push('studyhublecturer2025');
+
+    const inputKey = String(password || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+
+    if (!inputKey || !allowedKeys.includes(inputKey)) {
+      return res.status(401).json({
+        error: 'Incorrect lecturer access password. Please check your department credentials and try again.',
+      });
+    }
+
+    // 1. If client already has a valid Supabase auth token, upgrade their profile to 'lecturer'
+    const authHeader = req.headers.authorization;
+    if (authHeader?.startsWith('Bearer ')) {
+      const token = authHeader.split(' ')[1];
+      const { data: { user }, error: tokenErr } = await supabase.auth.getUser(token);
+      if (!tokenErr && user) {
+        await supabaseAdmin.from('profiles').upsert({
+          id: user.id,
+          role: 'lecturer',
+          name: name ? String(name).trim() : (user.user_metadata?.full_name || user.email || 'Lecturer'),
+          email: user.email,
+        }, { onConflict: 'id' });
+
+        await supabaseAdmin.auth.admin.updateUserById(user.id, {
+          user_metadata: { ...user.user_metadata, role: 'lecturer' },
+        }).catch(() => {});
+
+        return res.json({
+          success: true,
+          role: 'lecturer',
+          user: { id: user.id, email: user.email, role: 'lecturer', name: name || user.user_metadata?.full_name },
+        });
+      }
+    }
+
+    // 2. If client is not signed in yet, issue an authenticated session for lecturer
+    const targetEmail = (email && String(email).trim().toLowerCase()) || 'lecturer@studyhub.luanar.ac.mw';
+    let { data: { users } } = await supabaseAdmin.auth.admin.listUsers();
+    let lecturerUser = users?.find((u) => u.email === targetEmail);
+
+    if (!lecturerUser) {
+      const createRes = await supabaseAdmin.auth.admin.createUser({
+        email: targetEmail,
+        email_confirm: true,
+        user_metadata: { role: 'lecturer', full_name: name || 'LUANAR Lecturer' },
+      });
+      lecturerUser = createRes.data?.user;
+    } else {
+      await supabaseAdmin.auth.admin.updateUserById(lecturerUser.id, {
+        user_metadata: { ...lecturerUser.user_metadata, role: 'lecturer' },
+      }).catch(() => {});
+    }
+
+    if (!lecturerUser) {
+      return res.status(500).json({ error: 'Failed to initialize lecturer identity.' });
+    }
+
+    await supabaseAdmin.from('profiles').upsert({
+      id: lecturerUser.id,
+      email: lecturerUser.email,
+      name: name ? String(name).trim() : (lecturerUser.user_metadata?.full_name || 'LUANAR Lecturer'),
+      role: 'lecturer',
+    }, { onConflict: 'id' });
+
+    const linkRes = await supabaseAdmin.auth.admin.generateLink({
+      type: 'magiclink',
+      email: targetEmail,
+    });
+
+    const tokenHash = linkRes.data?.properties?.hashed_token;
+
+    return res.json({
+      success: true,
+      role: 'lecturer',
+      token_hash: tokenHash,
+      email: targetEmail,
+    });
+  } catch (err) {
+    console.error('[lecturer-verify] error:', err);
+    res.status(500).json({ error: 'Internal verification error. Please try again.' });
+  }
+});
+
+// GET /api/auth/contributor-status — Check current user's contributor role
+app.get('/api/auth/contributor-status', requireAuth, async (req, res) => {
+  try {
+    const metaRole = String(req.user.app_metadata?.role || req.user.user_metadata?.role || '').toLowerCase();
+    const metaIsAdmin = Boolean(req.user.user_metadata?.is_admin || req.user.app_metadata?.is_admin);
+
+    const { data: profile } = await supabaseAdmin
+      .from('profiles')
+      .select('is_admin, role, admin')
+      .eq('id', req.user.id)
+      .maybeSingle();
+
+    const role = String(profile?.role || metaRole || '').toLowerCase();
+    const isAdmin = Boolean(profile?.is_admin === true || profile?.admin === true || role === 'admin' || metaIsAdmin);
+    const isLecturer = role === 'lecturer';
+    const isContributor = isAdmin || isLecturer;
+
+    res.json({
+      isContributor,
+      role: isAdmin ? 'admin' : (isLecturer ? 'lecturer' : 'student'),
+      isAdmin,
+      isLecturer,
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to check contributor status' });
+  }
+});
 app.get('/api/drive/:fileId', async (req, res) => {
   try {
     const driveRes = await drive.files.get(
@@ -2403,7 +2588,7 @@ app.post('/api/chat', async (req, res) => {
 // PAST PAPER EXTRACTION ROUTES (Gemini — GEMINI_VISION_PRIMARY / FALLBACK)
 // ============================================================================
 
-app.post('/api/exam/upload-past-paper', requireAdmin, upload.any(), async (req, res) => {
+app.post('/api/exam/upload-past-paper', requireContributor, upload.any(), async (req, res) => {
   try {
     const rawFiles = (req.files && req.files.length > 0) ? req.files : (req.file ? [req.file] : []);
     if (rawFiles.length === 0) return res.status(400).json({ error: 'No file uploaded' });
@@ -2603,7 +2788,7 @@ const pdfUpload = multer({
   },
 });
 
-app.post('/api/exam/upload-past-paper-pdf', requireAdmin, pdfUpload.single('paper'), async (req, res) => {
+app.post('/api/exam/upload-past-paper-pdf', requireContributor, pdfUpload.single('paper'), async (req, res) => {
   const uploadStartTime = Date.now();
   try {
     if (!req.file) return res.status(400).json({ error: 'No PDF file uploaded' });
@@ -5515,13 +5700,16 @@ app.post('/api/cron/exam-reminders', async (req, res) => {
   res.json(result);
 });
 
-app.listen(PORT, '0.0.0.0', () => console.log(`✅ Server running on port ${PORT}`));
+if (require.main === module) {
+  app.listen(PORT, '0.0.0.0', () => console.log(`✅ Server running on port ${PORT}`));
+}
 
 // ============================================================================
 // EXPORTS
 // ============================================================================
 
 module.exports = {
+  app,
   sanitizeLatex,
   resolveCourse,
   wordOverlapRatio,

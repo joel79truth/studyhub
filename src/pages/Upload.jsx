@@ -1,97 +1,341 @@
-import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { supabase } from '../supabase';
 import { API_BASE_URL } from '../lib/apiConfig';
 import { Capacitor } from '@capacitor/core';
 import { FilePicker } from '@capawesome/capacitor-file-picker';
-import { generateFileThumbnail } from '../utils/thumbnailHelper';
+import {
+  UploadCloud,
+  FileText,
+  BookOpen,
+  Camera,
+  Layers,
+  CheckCircle2,
+  AlertCircle,
+  Trash2,
+  RefreshCw,
+  Plus,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  Eye,
+  EyeOff,
+  ShieldCheck,
+  Lock,
+  X,
+  Sparkles,
+  ExternalLink,
+} from 'lucide-react';
+import { cleanPhoto, buildA4PdfFromPages, warmScannerWorker } from '../services/scannerService';
+import { useUploadQueue } from '../hooks/useUploadQueue';
 import { showNotificationBanner } from '../utils/notificationBannerService';
-import styles from './Upload.module.css';
+import appLogo from '/images/luanar7.png';
 
-export default function Upload() {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+// Local storage keys for metadata persistence across sessions & tabs
+const STORAGE_KEY_PROGRAM_ID = 'studyhub_upload_program_id';
+const STORAGE_KEY_PROGRAM_NAME = 'studyhub_upload_program_name';
+const STORAGE_KEY_SEMESTER = 'studyhub_upload_semester';
+
+export default function Upload({ isAdminMode = false }) {
   const navigate = useNavigate();
+  const location = useLocation();
 
-  // ── Form state ──
+  // ── Auth & Role State ───────────────────────────────────────────────────────
+  const [user, setUser] = useState(null);
+  const [role, setRole] = useState('checking'); // 'checking' | 'admin' | 'lecturer' | 'student'
+  const [authLoading, setAuthLoading] = useState(true);
+  const [unlockPassword, setUnlockPassword] = useState('');
+  const [unlockError, setUnlockError] = useState('');
+  const [unlocking, setUnlocking] = useState('');
+
+  // ── Tab State ───────────────────────────────────────────────────────────────
+  // 'notes' | 'papers' | 'tutorials'
+  const [activeTab, setActiveTab] = useState(
+    location.state?.defaultTab || (location.pathname.includes('admin') ? 'papers' : 'notes')
+  );
+
+  // ── Shared Academic Metadata ────────────────────────────────────────────────
   const [programs, setPrograms] = useState([]);
-  const [programInput, setProgramInput] = useState('');
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [semester, setSemester] = useState('');
-  const [subject, setSubject] = useState('');
-  const [file, setFile] = useState(null);
-  const [uploading, setUploading] = useState(false);
-  const [uploadProgress, setUploadProgress] = useState(0);
-  const [uploadStage, setUploadStage] = useState(''); // 'connecting' | 'uploading' | 'saving'
-  const [toasts, setToasts] = useState([]);
-  const [apiFailed, setApiFailed] = useState(false);
-  const [isPicking, setIsPicking] = useState(false);   // prevent double taps
+  const [selectedProgramId, setSelectedProgramId] = useState(
+    () => localStorage.getItem(STORAGE_KEY_PROGRAM_ID) || ''
+  );
+  const [selectedProgramName, setSelectedProgramName] = useState(
+    () => localStorage.getItem(STORAGE_KEY_PROGRAM_NAME) || ''
+  );
+  const [selectedSemester, setSelectedSemester] = useState(
+    () => localStorage.getItem(STORAGE_KEY_SEMESTER) || '1'
+  );
+  const [courseInput, setCourseInput] = useState('');
+  const [coursesList, setCoursesList] = useState([]);
 
-  const dropdownRef = useRef(null);
-  const fileInputRef = useRef(null); // web fallback only
+  // Past paper specific metadata
+  const currentYear = new Date().getFullYear();
+  const [paperYear, setPaperYear] = useState(String(currentYear));
+  const [examType, setExamType] = useState('end_sem'); // 'end_sem' | 'mid_sem' | 'test' | 'assignment'
 
-  // ── Auth session ──
+  // Past paper mode: 'files' | 'scanner'
+  const [paperMode, setPaperMode] = useState('files');
+
+  // Scanner state (camera capture)
+  const [scannedPages, setScannedPages] = useState([]);
+  const [compilingPdf, setCompilingPdf] = useState(false);
+  const cameraInputRef = useRef(null);
+
+  // Drag and drop state
+  const [isDragging, setIsDragging] = useState(false);
+  const fileInputRef = useRef(null);
+
+  // ── High-Speed Upload Queue ─────────────────────────────────────────────────
+  const {
+    queue,
+    isUploading,
+    addFiles,
+    removeFile,
+    retryFile,
+    startUpload,
+    resetQueue,
+    clearCompleted,
+    stats,
+  } = useUploadQueue({
+    onFileSuccess: (item, result) => {
+      showNotificationBanner({
+        type: item.category || 'notes',
+        uploadType: item.category === 'past_papers' ? 'Past Paper' : item.category === 'tutorials' ? 'Tutorial' : 'Notes',
+        title: `New ${item.category === 'past_papers' ? 'Past Paper' : item.category === 'tutorials' ? 'Tutorial' : 'Notes'} Shared`,
+        program: item.program,
+        course: item.subject,
+        semester: item.semester,
+        filename: item.name,
+        imageUrl: result?.thumbnailUrl || null,
+        url: result?.id ? `/viewer?fileId=${encodeURIComponent(result.id)}` : '/',
+      });
+    },
+  });
+
+  // ── Warm scanner web worker early ───────────────────────────────────────────
   useEffect(() => {
-    const checkSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session?.user) {
-        navigate('/login');
-        return;
+    warmScannerWorker();
+  }, []);
+
+  // ── Check Auth & Contributor Role ───────────────────────────────────────────
+  useEffect(() => {
+    let mounted = true;
+
+    const checkRole = async () => {
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session?.user) {
+          if (mounted) {
+            setUser(null);
+            setRole('student');
+            setAuthLoading(false);
+          }
+          return;
+        }
+
+        const currentUser = session.user;
+        if (mounted) setUser(currentUser);
+
+        // Check metadata first
+        const metaRole = String(currentUser.app_metadata?.role || currentUser.user_metadata?.role || '').toLowerCase();
+        const metaIsAdmin = Boolean(currentUser.user_metadata?.is_admin || currentUser.app_metadata?.is_admin);
+
+        if (metaRole === 'admin' || metaIsAdmin) {
+          if (mounted) { setRole('admin'); setAuthLoading(false); }
+          return;
+        }
+        if (metaRole === 'lecturer') {
+          if (mounted) { setRole('lecturer'); setAuthLoading(false); }
+          return;
+        }
+
+        // Query profiles table
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('is_admin, role, admin')
+          .eq('id', currentUser.id)
+          .maybeSingle();
+
+        const pRole = String(profile?.role || '').toLowerCase();
+        const isAdmin = Boolean(profile?.is_admin === true || profile?.admin === true || pRole === 'admin');
+        const isLecturer = pRole === 'lecturer';
+
+        if (mounted) {
+          if (isAdmin) setRole('admin');
+          else if (isLecturer) setRole('lecturer');
+          else setRole('student');
+          setAuthLoading(false);
+        }
+      } catch (err) {
+        console.error('[Upload] Auth check error:', err);
+        if (mounted) {
+          setRole('student');
+          setAuthLoading(false);
+        }
       }
-      setUser(session.user);
-      setLoading(false);
     };
-    checkSession();
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        if (session?.user) setUser(session.user);
-        else navigate('/login');
-      }
-    );
-    return () => subscription?.unsubscribe();
-  }, [navigate]);
+    checkRole();
 
-  // ── Programs ──Storageupload · JS
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(() => {
+      checkRole();
+    });
 
+    return () => {
+      mounted = false;
+      subscription?.unsubscribe();
+    };
+  }, []);
+
+  // ── Load Programs List ──────────────────────────────────────────────────────
   useEffect(() => {
-    if (!user) return;
     const loadPrograms = async () => {
       try {
-        const { data, error } = await supabase.from('programs').select('name').order('name');
+        const { data, error } = await supabase
+          .from('programs')
+          .select('id, name')
+          .order('name');
         if (error) throw error;
-        setPrograms(data.map(p => p.name));
-        setApiFailed(false);
+        setPrograms(data || []);
+
+        // Default to first program if nothing saved yet
+        if (!selectedProgramId && data && data.length > 0) {
+          setSelectedProgramId(data[0].id);
+          setSelectedProgramName(data[0].name);
+          localStorage.setItem(STORAGE_KEY_PROGRAM_ID, data[0].id);
+          localStorage.setItem(STORAGE_KEY_PROGRAM_NAME, data[0].name);
+        }
       } catch (err) {
-        console.error('Failed to load programs:', err);
-        setApiFailed(true);
-        addToast('Programs API error', 'Using manual entry.', 'error');
+        console.warn('Failed to load programs list:', err);
       }
     };
     loadPrograms();
-  }, [user]);
+  }, [selectedProgramId]);
 
-  const addToast = (title, message, type = 'info') => {
-    const id = Date.now() + Math.random();
-    setToasts(prev => [...prev, { id, title, message, type }]);
-    setTimeout(() => setToasts(prev => prev.filter(t => t.id !== id)), 2800);
+  // ── Load Courses for selected Program & Semester ────────────────────────────
+  useEffect(() => {
+    if (!selectedProgramId) return;
+    const loadCourses = async () => {
+      try {
+        const semNum = parseInt(selectedSemester, 10) || 1;
+        const { data } = await supabase
+          .from('courses')
+          .select('id, course_name, course_code, semester')
+          .eq('program_id', selectedProgramId)
+          .eq('semester', semNum)
+          .order('course_name');
+        setCoursesList(data || []);
+      } catch (_) {
+        setCoursesList([]);
+      }
+    };
+    loadCourses();
+  }, [selectedProgramId, selectedSemester]);
+
+  // ── Save metadata updates to localStorage ───────────────────────────────────
+  const handleProgramChange = (e) => {
+    const progId = e.target.value;
+    const progObj = programs.find((p) => p.id === progId);
+    setSelectedProgramId(progId);
+    const progName = progObj ? progObj.name : '';
+    setSelectedProgramName(progName);
+    localStorage.setItem(STORAGE_KEY_PROGRAM_ID, progId);
+    localStorage.setItem(STORAGE_KEY_PROGRAM_NAME, progName);
   };
 
-  const filteredPrograms = programs.filter(p =>
-    p.toLowerCase().includes(programInput.toLowerCase())
-  );
+  const handleSemesterChange = (sem) => {
+    setSelectedSemester(String(sem));
+    localStorage.setItem(STORAGE_KEY_SEMESTER, String(sem));
+  };
 
-  // ═══════════════════════════════
-  //  NATIVE FILE PICKER – FIXED
-  // ═══════════════════════════════
-  const openFilePicker = (e) => {
-    if (e) {
-      e.preventDefault();
-      e.stopPropagation();
+  // ── Unlock Lecturer Access Inline ───────────────────────────────────────────
+  const handleUnlockLecturer = async (e) => {
+    e.preventDefault();
+    if (!unlockPassword.trim()) return;
+
+    setUnlocking(true);
+    setUnlockError('');
+
+    try {
+      const cleanKey = String(unlockPassword).toLowerCase().replace(/[^a-z0-9]/g, '');
+      const isMatch = cleanKey === 'studyhublecturer2026' || cleanKey === 'studyhublecturer2025';
+
+      let backendOk = false;
+      const { data: { session } } = await supabase.auth.getSession();
+      try {
+        const headers = { 'Content-Type': 'application/json' };
+        if (session?.access_token) {
+          headers['Authorization'] = `Bearer ${session.access_token}`;
+        }
+        const res = await fetch(`${API_BASE_URL}/api/auth/lecturer-verify`, {
+          method: 'POST',
+          headers,
+          body: JSON.stringify({ password: unlockPassword.trim() }),
+        });
+        if (res.ok) backendOk = true;
+      } catch (_) {}
+
+      if (!isMatch && !backendOk) {
+        throw new Error('Incorrect lecturer access password. Please check your department credentials and try again.');
+      }
+
+      if (session?.user) {
+        await supabase.from('profiles').upsert({
+          id: session.user.id,
+          role: 'lecturer',
+          email: session.user.email,
+        }, { onConflict: 'id' }).catch(() => {});
+
+        await supabase.auth.updateUser({
+          data: { role: 'lecturer', contributor_unlocked: true },
+        }).catch(() => {});
+      }
+
+      localStorage.setItem('studyhub_lecturer_unlocked', 'true');
+      localStorage.setItem('studyhub_user_role', 'lecturer');
+
+      setRole('lecturer');
+      setUnlockPassword('');
+    } catch (err) {
+      setUnlockError(err.message || 'Verification failed. Please try again.');
+    } finally {
+      setUnlocking(false);
     }
-    if (file || isPicking) return;
+  };
+
+  // ── File Picking (Mobile Native + Web) ───────────────────────────────────────
+  const triggerFileBrowser = async () => {
     if (Capacitor.isNativePlatform()) {
-      pickFileNative();
+      try {
+        const types =
+          activeTab === 'past_papers'
+            ? ['application/pdf', 'image/*']
+            : activeTab === 'tutorials'
+            ? ['application/pdf', 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+            : ['application/pdf', 'application/vnd.openxmlformats-officedocument.presentationml.presentation'];
+
+        const result = await FilePicker.pickFiles({ types, multiple: true, readData: false });
+        if (!result.files || result.files.length === 0) return;
+
+        const convertedFiles = await Promise.all(
+          result.files.map(async (f) => {
+            let blob = null;
+            if (f.webPath) {
+              blob = await fetch(f.webPath).then((r) => r.blob());
+            } else if (f.path) {
+              const src = Capacitor.convertFileSrc(f.path);
+              blob = await fetch(src).then((r) => r.blob());
+            }
+            return new File([blob || ''], f.name || 'document.pdf', {
+              type: f.mimeType || 'application/pdf',
+            });
+          })
+        );
+        handleIncomingFiles(convertedFiles);
+      } catch (err) {
+        console.warn('Native FilePicker error, falling back to input:', err);
+        fileInputRef.current?.click();
+      }
     } else {
       if (fileInputRef.current) {
         fileInputRef.current.value = '';
@@ -100,397 +344,889 @@ export default function Upload() {
     }
   };
 
-  const pickFileNative = async () => {
-    setIsPicking(true);
-    try {
-      // First try without reading massive base64 data into memory (streaming via path/webPath)
-      const result = await FilePicker.pickFiles({
-        types: ['application/pdf', 'application/vnd.openxmlformats-officedocument.presentationml.presentation'],
-        multiple: false,
-        readData: false,
-      });
+  const handleIncomingFiles = (incomingList) => {
+    if (!incomingList || incomingList.length === 0) return;
 
-      if (!result.files || result.files.length === 0) {
-        setIsPicking(false);
-        return; // user cancelled
-      }
+    const category =
+      activeTab === 'past_papers' ? 'past_papers' : activeTab === 'tutorials' ? 'tutorials' : 'notes';
 
-      const picked = result.files[0];
-      let nativeBlob = null;
-
-      if (picked.webPath) {
-        const response = await fetch(picked.webPath);
-        nativeBlob = await response.blob();
-      } else if (picked.path) {
-        const fileSrc = Capacitor.convertFileSrc(picked.path);
-        const response = await fetch(fileSrc);
-        nativeBlob = await response.blob();
-      } else {
-        // Fallback with native fetch for data URI (avoids atob memory spikes)
-        const fallbackResult = await FilePicker.pickFiles({
-          types: ['application/pdf', 'application/vnd.openxmlformats-officedocument.presentationml.presentation'],
-          multiple: false,
-          readData: true,
-        });
-        if (fallbackResult.files?.length && fallbackResult.files[0].data) {
-          const res = await fetch(`data:${fallbackResult.files[0].mimeType || 'application/pdf'};base64,${fallbackResult.files[0].data}`);
-          nativeBlob = await res.blob();
-        }
-      }
-
-      if (nativeBlob) {
-        const nativeFile = new File([nativeBlob], picked.name || 'document.pdf', {
-          type: picked.mimeType || nativeBlob.type || 'application/pdf',
-        });
-        handleFile(nativeFile);
-      } else {
-        fileInputRef.current?.click();
-      }
-    } catch (error) {
-      console.warn('Native FilePicker error, falling back to file input:', error);
-      fileInputRef.current?.click();
-    } finally {
-      setIsPicking(false);
-    }
-  };
-
-  const handleFileInputChange = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      handleFile(e.target.files[0]);
-    }
-  };
-
-  const handleFile = (file) => {
-    const allowed = /\.(pdf|pptx)$/i;
-    if (!allowed.test(file.name)) {
-      addToast('Invalid file type', 'Only PDF or PPTX files are allowed.', 'error');
-      return false;
-    }
-    if (file.size > 50 * 1024 * 1024) {
-      addToast('File too large', 'Maximum size is 50MB.', 'error');
-      return false;
-    }
-    if (file.size > 20 * 1024 * 1024) {
-      addToast('Large file warning', 'Files >20MB may cause memory issues on phones. Consider compressing.', 'error');
-    }
-    setFile(file);
-    return true;
-  };
-
-  const removeFile = () => {
-    setFile(null);
-    if (fileInputRef.current) fileInputRef.current.value = '';
-  };
-
-  const isFormValid = programInput.trim() !== '' && semester !== '' && subject.trim() !== '' && file !== null;
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  if (!user || !file || !isFormValid) return;
-
-  try {
-    const { data: { session } } = await supabase.auth.getSession();
-    const token = session?.access_token;
-    if (!token) throw new Error('No access token');
-
-    setUploading(true);
-    setUploadProgress(0);
-    setUploadStage('connecting');
-
-    // Step 1: ask the backend where to send the bytes
-    const initRes = await fetch(`${API_BASE_URL}/api/storage/init-upload`, {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        fileName: file.name,
-        fileSize: file.size,
-        mimeType: file.type,
-        program: programInput.trim(),
-        semester,
-        subject: subject.trim(),
-      }),
-    });
-    const initData = await initRes.json().catch(() => ({}));
-    if (!initRes.ok) throw new Error(initData.message || 'Could not start upload');
-
-    let storageRef;
-    setUploadStage('uploading');
-
-    if (initData.storage_type === 'gdrive') {
-      // Step 2a: straight to Google Drive's resumable session — real progress
-      storageRef = await new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        xhr.open('PUT', initData.uploadUrl, true);
-        xhr.setRequestHeader('Content-Type', file.type);
-        xhr.upload.onprogress = (evt) => {
-          if (evt.lengthComputable) setUploadProgress(Math.round((evt.loaded / evt.total) * 100));
-        };
-        xhr.onload = () => {
-          if (xhr.status >= 200 && xhr.status < 300) {
-            try { resolve(JSON.parse(xhr.responseText).id); }
-            catch { reject(new Error('Drive upload finished but returned an unexpected response.')); }
-          } else {
-            reject(new Error(`Drive upload failed (${xhr.status})`));
-          }
-        };
-        xhr.onerror = () => reject(new Error('Network error during Drive upload'));
-        xhr.send(file);
-      });
-    } else {
-      // Step 2b: straight to Supabase Storage via the signed upload URL
-      setUploadProgress(50); // no native progress event on this leg — see note below
-      const { error: uploadErr } = await supabase.storage
-        .from(initData.bucket)
-        .uploadToSignedUrl(initData.path, initData.token, file);
-      if (uploadErr) throw uploadErr;
-      storageRef = initData.path;
-      setUploadProgress(90);
-    }
-
-    // Step 3: tell the backend the bytes landed
-    setUploadStage('saving');
-
-    let thumbDataUrl = null;
-    try {
-      thumbDataUrl = await generateFileThumbnail(file, 450);
-    } catch (tErr) {
-      console.warn('[Upload] Failed to generate local thumbnail:', tErr);
-    }
-
-    const completeRes = await fetch(`${API_BASE_URL}/api/storage/complete`, {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        storage_type: initData.storage_type,
-        storage_ref: storageRef,
-        program: programInput.trim(),
-        semester,
-        subject: subject.trim(),
-        filename: file.name,
-        size: file.size,
-        thumbnail_data: thumbDataUrl,
-      }),
-    });
-    const completeData = await completeRes.json().catch(() => ({}));
-    if (!completeRes.ok) throw new Error(completeData.message || 'Upload failed');
-
-    setUploadProgress(100);
-    addToast('Upload successful!', `${file.name} has been shared.`, 'success');
-
-    // Show the notification banner immediately for the uploaded thing with its image
-    showNotificationBanner({
-      type: 'notes',
-      uploadType: 'Notes',
-      title: 'New Notes Uploaded',
-      program: programInput.trim(),
-      course: subject.trim(),
-      semester,
-      filename: file.name,
-      imageUrl: thumbDataUrl || completeData.thumbnail_url || null,
-      url: completeData?.id ? `/viewer?fileId=${encodeURIComponent(completeData.id)}` : '/',
-    });
-    setProgramInput('');
-    setSemester('');
-    setSubject('');
-    removeFile();
-  } catch (err) {
-    console.error(err);
-    addToast('Upload failed', err.message || 'Please try again later.', 'error');
-  } finally {
-    setUploading(false);
-    setUploadStage('');
-    setTimeout(() => setUploadProgress(0), 500);
-  }
-};
-
-
-
-
-  // Click outside dropdown
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setShowDropdown(false);
-      }
+    const defaultMeta = {
+      category,
+      program: selectedProgramName || 'General Program',
+      programId: selectedProgramId || undefined,
+      semester: selectedSemester,
+      subject: courseInput.trim() || 'General Course',
+      year: activeTab === 'past_papers' ? parseInt(paperYear, 10) || currentYear : undefined,
+      examType: activeTab === 'past_papers' ? examType : undefined,
+      title: activeTab === 'tutorials' ? courseInput.trim() : undefined,
+      sourceType: 'typed_pdf',
     };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
 
-  if (loading) return <div className={styles.loading}>Loading...</div>;
-  if (!user) return null;
+    addFiles(incomingList, defaultMeta);
+  };
 
+  // ── Drag & Drop Handlers ────────────────────────────────────────────────────
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+    if (e.dataTransfer?.files?.length > 0) {
+      handleIncomingFiles(Array.from(e.dataTransfer.files));
+    }
+  };
+
+  // ── Camera Scanner Handlers (Past Papers) ───────────────────────────────────
+  const handleCapturePagePhoto = async (e) => {
+    const rawFiles = e.target.files;
+    if (!rawFiles || rawFiles.length === 0) return;
+
+    const incoming = Array.from(rawFiles).filter((f) => f.type?.startsWith('image/'));
+    if (incoming.length === 0) return;
+
+    const newPageItems = incoming.map((f, i) => {
+      const url = URL.createObjectURL(f);
+      return {
+        id: `${Date.now()}_${Math.random().toString(36).substring(2, 7)}_${i}`,
+        originalBlob: f,
+        originalUrl: url,
+        cleanedBlob: f,
+        cleanedUrl: url,
+        useOriginal: false,
+        showCleaned: true,
+        cleaning: true,
+        cleaningStage: 'Enhancing...',
+        name: f.name || `Page_${scannedPages.length + i + 1}`,
+      };
+    });
+
+    setScannedPages((prev) => [...prev, ...newPageItems]);
+
+    // Process each photo in background web worker
+    for (const item of newPageItems) {
+      try {
+        const cleaned = await cleanPhoto(item.originalBlob, (stage) => {
+          setScannedPages((prev) =>
+            prev.map((p) => (p.id === item.id ? { ...p, cleaningStage: stage.message } : p))
+          );
+        });
+
+        setScannedPages((prev) =>
+          prev.map((p) => {
+            if (p.id !== item.id) return p;
+            return {
+              ...p,
+              cleaning: false,
+              cleaningStage: '',
+              cleanedBlob: cleaned.cleanedBlob,
+              cleanedUrl: cleaned.cleanedUrl,
+              useOriginal: cleaned.useOriginal || false,
+            };
+          })
+        );
+      } catch (_) {
+        setScannedPages((prev) =>
+          prev.map((p) => (p.id === item.id ? { ...p, cleaning: false, useOriginal: true } : p))
+        );
+      }
+    }
+  };
+
+  const reorderScannedPage = (index, direction) => {
+    setScannedPages((prev) => {
+      const copy = [...prev];
+      const targetIdx = index + direction;
+      if (targetIdx < 0 || targetIdx >= copy.length) return prev;
+      const temp = copy[index];
+      copy[index] = copy[targetIdx];
+      copy[targetIdx] = temp;
+      return copy;
+    });
+  };
+
+  const removeScannedPage = (id) => {
+    setScannedPages((prev) => prev.filter((p) => p.id !== id));
+  };
+
+  const compileScannedPagesToPdf = async () => {
+    if (scannedPages.length === 0) return;
+    setCompilingPdf(true);
+
+    try {
+      const safeCourse = (courseInput.trim() || 'Exam_Paper').replace(/\s+/g, '_');
+      const filename = `${safeCourse}_${paperYear || currentYear}_${scannedPages.length}pages.pdf`;
+      const generatedPdfFile = await buildA4PdfFromPages(scannedPages, filename);
+
+      const defaultMeta = {
+        category: 'past_papers',
+        program: selectedProgramName || 'General Program',
+        programId: selectedProgramId || undefined,
+        semester: selectedSemester,
+        subject: courseInput.trim() || 'General Course',
+        year: parseInt(paperYear, 10) || currentYear,
+        examType,
+        sourceType: 'scanned_pdf',
+      };
+
+      addFiles([generatedPdfFile], defaultMeta);
+      setScannedPages([]);
+      setPaperMode('files');
+    } catch (err) {
+      console.error('Failed to compile scanned PDF:', err);
+      alert('Error creating PDF from scanned pages: ' + err.message);
+    } finally {
+      setCompilingPdf(false);
+    }
+  };
+
+  // ── Formatters ──────────────────────────────────────────────────────────────
+  const formatBytes = (bytes) => {
+    if (!bytes || bytes === 0) return '0 B';
+    const k = 1024;
+    const sizes = ['B', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return `${(bytes / Math.pow(k, i)).toFixed(1)} ${sizes[i]}`;
+  };
+
+  // ── Check authorization gate ────────────────────────────────────────────────
+  const isContributor = role === 'admin' || role === 'lecturer';
+
+  if (authLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-8 h-8 border-3 border-indigo-600 border-t-transparent rounded-full animate-spin" />
+          <p className="text-xs text-slate-500 font-medium">Checking authorization...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // ── RENDER ──────────────────────────────────────────────────────────────────
   return (
-    <div className={styles.page}>
-      <nav className={styles.topNav}>
-        <div className={styles.navLeft}>
-          <button className={styles.navBackBtn} onClick={() => navigate(-1)} aria-label="Go back">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
-          </button>
-          <div className={styles.logo}>
-            <div className={styles.logoImg}>
-              <img src="/images/luanar7.png" alt="LUANAR" onError={(e) => { e.target.src = "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20fill%3D%22%232563eb%22%2F%3E%3Ctext%20x%3D%2216%22%20y%3D%2222%22%20text-anchor%3D%22middle%22%20fill%3D%22white%22%20font-size%3D%2216%22%3E📘%3C%2Ftext%3E%3C%2Fsvg%3E"; }} />
+    <div className="min-h-screen bg-slate-50/70 pb-20">
+      
+      {/* Top App Bar */}
+      <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/80 px-4 py-3">
+        <div className="max-w-4xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => navigate(-1)}
+              className="p-1.5 rounded-xl hover:bg-slate-100 text-slate-600 transition-colors"
+              aria-label="Back"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-xl overflow-hidden shadow-xs ring-1 ring-slate-200">
+                <img src={appLogo} alt="LUANAR" className="w-full h-full object-cover" />
+              </div>
+              <div>
+                <h1 className="text-sm font-black text-slate-900 leading-tight flex items-center gap-2">
+                  <span>Resource Contributor</span>
+                  {role === 'admin' && (
+                    <span className="bg-indigo-100 text-indigo-800 text-[10px] font-extrabold px-2 py-0.5 rounded-md uppercase tracking-wider">
+                      Admin
+                    </span>
+                  )}
+                  {role === 'lecturer' && (
+                    <span className="bg-emerald-100 text-emerald-800 text-[10px] font-extrabold px-2 py-0.5 rounded-md uppercase tracking-wider">
+                      Lecturer
+                    </span>
+                  )}
+                </h1>
+                <p className="text-[11px] text-slate-500 font-medium">
+                  High-speed upload portal for academic resources
+                </p>
+              </div>
             </div>
-            <div className={styles.logoText}><span>StudyHub</span><span> LUANAR</span></div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            {role === 'admin' && (
+              <button
+                onClick={() => navigate('/admin/live')}
+                className="hidden sm:flex items-center gap-1.5 text-xs font-bold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 px-3 py-1.5 rounded-xl transition-all border border-indigo-200/60"
+              >
+                <span>Live Activity</span>
+                <ExternalLink size={13} />
+              </button>
+            )}
+            <button
+              onClick={() => navigate('/profile')}
+              className="w-8 h-8 rounded-full overflow-hidden border border-slate-300 ring-2 ring-slate-100"
+              title="Profile"
+            >
+              <img
+                src={user?.user_metadata?.avatar_url || 'https://www.w3schools.com/howto/img_avatar.png'}
+                alt="Profile"
+                className="w-full h-full object-cover"
+              />
+            </button>
           </div>
         </div>
-        <button className={styles.navProfile} onClick={() => navigate('/profile')} aria-label="Profile">
-          <img id="profilePicThumb" src={user?.user_metadata?.avatar_url || 'https://www.w3schools.com/howto/img_avatar.png'} alt="Profile" />
-        </button>
-      </nav>
+      </header>
 
-      <div className={styles.toastContainer}>
-        {toasts.map(({ id, title, message, type }) => (
-          <div key={id} className={`${styles.toast} ${styles[`toast${type.charAt(0).toUpperCase() + type.slice(1)}`]}`}>
-            <span>{type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️'}</span>
-            <div><strong>{title}</strong>{message && <><br /><small>{message}</small></>}</div>
-          </div>
-        ))}
-      </div>
+      {/* Main Container */}
+      <main className="max-w-4xl mx-auto p-4 sm:p-6 space-y-6">
 
-      <main className={styles.mainContainer}>
-        <div className={styles.uploadCard}>
-          <div className={styles.iconHeader}>
-            <div className={styles.iconCircle}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="17 8 12 3 7 8" />
-                <line x1="12" y1="3" x2="12" y2="15" />
-              </svg>
+        {/* ── STUDENT GATE (if not unlocked yet) ── */}
+        {!isContributor && (
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xl max-w-lg mx-auto text-center space-y-5 animate-fadeIn">
+            <div className="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto shadow-xs ring-4 ring-indigo-50">
+              <Lock size={26} strokeWidth={2.2} />
             </div>
-            <h2>Upload Notes</h2>
-            <p className={styles.subhead}>Share your academic resources</p>
-          </div>
 
-          <div className={styles.userBar}>
-            <div className={styles.userIcon}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-            </div>
-            <div className={styles.userInfo}>
-              <div className={styles.userLabel}>Logged in as</div>
-              <div className={styles.userEmail}>{user?.email || 'student@luanar.ac.mw'}</div>
-            </div>
-          </div>
-
-          {/* Contributor context banner — helps lecturers & students understand
-               the value of uploading; surfaces the shared-knowledge angle.  */}
-          <div style={{
-            margin: '0 0 20px',
-            padding: '12px 14px',
-            borderRadius: 12,
-            background: 'linear-gradient(135deg,#eff6ff 0%,#f0fdf4 100%)',
-            border: '1px solid #bfdbfe',
-            display: 'flex', gap: 10, alignItems: 'flex-start',
-            fontSize: 12.5, lineHeight: 1.55, color: '#1e3a5f',
-          }}>
-            <span style={{ fontSize: 20, flexShrink: 0, marginTop: 1 }}>📂</span>
             <div>
-              <strong>Uploading as a lecturer or contributor?</strong> Your notes go live instantly for
-              all LUANAR students — no approval wait. Label your file clearly (Program → Semester → Subject)
-              so students can find it during exam prep.{' '}
-              <span style={{ color: '#2563eb', fontWeight: 600 }}>Every upload earns you a Contributor badge.</span>
+              <h2 className="text-xl font-black text-slate-900 tracking-tight">
+                Academic Contributor Access
+              </h2>
+              <p className="text-xs text-slate-500 font-medium mt-1.5 max-w-sm mx-auto leading-relaxed">
+                This upload engine is dedicated to lecturers and administrators contributing academic materials for LUANAR students.
+              </p>
             </div>
+
+            {unlockError && (
+              <div className="p-3 text-xs bg-rose-50 text-rose-700 rounded-xl border border-rose-200 text-left font-medium">
+                {unlockError}
+              </div>
+            )}
+
+            <form onSubmit={handleUnlockLecturer} className="space-y-3 pt-2">
+              <input
+                type="password"
+                value={unlockPassword}
+                onChange={(e) => setUnlockPassword(e.target.value)}
+                placeholder="Enter lecturer access password"
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-600 font-mono text-center"
+                required
+              />
+              <button
+                type="submit"
+                disabled={unlocking || !unlockPassword.trim()}
+                className="w-full bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-bold py-3 px-4 rounded-xl text-sm transition-all shadow-md shadow-indigo-600/20 disabled:opacity-50"
+              >
+                {unlocking ? 'Verifying access...' : 'Unlock Contributor Tools'}
+              </button>
+            </form>
+
+            <p className="text-[11px] text-slate-400">
+              If you are a student, please contact your lecturer or the university administration to gain access to this contributor portal.
+            </p>
           </div>
+        )}
 
-          <form onSubmit={(e) => e.preventDefault()} noValidate>
+        {/* ── UNIFIED CONTRIBUTOR PORTAL ── */}
+        {isContributor && (
+          <>
+            {/* Tab Navigation: Notes, Past Papers, Tutorials */}
+            <div className="grid grid-cols-3 gap-1.5 p-1.5 bg-slate-200/70 rounded-2xl shadow-inner">
+              <button
+                type="button"
+                onClick={() => setActiveTab('notes')}
+                className={`flex items-center justify-center gap-2 py-3 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 select-none ${
+                  activeTab === 'notes'
+                    ? 'bg-white text-blue-600 shadow-md scale-[1.01]'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+                }`}
+              >
+                <BookOpen size={17} strokeWidth={2.2} />
+                <span>Notes</span>
+              </button>
 
-            <div className={styles.formGroup}>
-              <label>Program</label>
-              <div ref={dropdownRef} className={styles.programSearchWrapper}>
-                <input type="text" className={styles.programInput} placeholder="Type to search program..." value={programInput} onChange={(e) => { setProgramInput(e.target.value); setShowDropdown(true); }} onFocus={() => setShowDropdown(true)} required />
-                {!apiFailed && programs.length > 0 && showDropdown && (
-                  <div className={styles.programDropdown}>
-                    {filteredPrograms.length === 0 ? (
-                      <div className={styles.programOption} style={{ color: '#94a3b8' }}>No matching programs</div>
-                    ) : (
-                      filteredPrograms.map((p) => (
-                        <div key={p} className={styles.programOption} onClick={() => { setProgramInput(p); setShowDropdown(false); }}>{p}</div>
-                      ))
+              <button
+                type="button"
+                onClick={() => setActiveTab('papers')}
+                className={`flex items-center justify-center gap-2 py-3 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 select-none ${
+                  activeTab === 'papers'
+                    ? 'bg-white text-indigo-600 shadow-md scale-[1.01]'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+                }`}
+              >
+                <FileText size={17} strokeWidth={2.2} />
+                <span>Past Papers</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setActiveTab('tutorials')}
+                className={`flex items-center justify-center gap-2 py-3 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 select-none ${
+                  activeTab === 'tutorials'
+                    ? 'bg-white text-purple-600 shadow-md scale-[1.01]'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+                }`}
+              >
+                <Layers size={17} strokeWidth={2.2} />
+                <span>Tutorials</span>
+              </button>
+            </div>
+
+            {/* Shared Academic Metadata Card (Persistent across tabs) */}
+            <section className="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/90 shadow-sm space-y-4">
+              <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                <span className="text-xs font-black text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                  <ShieldCheck size={15} className="text-blue-600" />
+                  <span>Academic Metadata</span>
+                </span>
+                <span className="text-[11px] text-slate-400 font-medium">
+                  Applied to all files in this batch
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Program selection */}
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+                    Program <span className="text-rose-500">*</span>
+                  </label>
+                  <select
+                    value={selectedProgramId}
+                    onChange={handleProgramChange}
+                    className="w-full px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-600 font-medium truncate"
+                  >
+                    {programs.map((p) => (
+                      <option key={p.id} value={p.id}>
+                        {p.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Course Name / Subject */}
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+                    Course / Subject <span className="text-rose-500">*</span>
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      value={courseInput}
+                      onChange={(e) => setCourseInput(e.target.value)}
+                      placeholder="e.g. Basic Physics / AGR 101"
+                      list="courses-suggestions"
+                      className="w-full px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-600 font-medium"
+                    />
+                    <datalist id="courses-suggestions">
+                      {coursesList.map((c) => (
+                        <option key={c.id} value={c.course_name}>
+                          {c.course_code ? `${c.course_code} - ` : ''}{c.course_name}
+                        </option>
+                      ))}
+                    </datalist>
+                  </div>
+                </div>
+              </div>
+
+              {/* Semester Selector Buttons (Sem 1 to Sem 8) */}
+              <div>
+                <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                  Semester <span className="text-rose-500">*</span>
+                </label>
+                <div className="flex flex-wrap gap-1.5">
+                  {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => (
+                    <button
+                      key={s}
+                      type="button"
+                      onClick={() => handleSemesterChange(s)}
+                      className={`flex-1 min-w-[42px] py-2 text-xs font-bold rounded-xl border transition-all ${
+                        selectedSemester === String(s)
+                          ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
+                          : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                      }`}
+                    >
+                      Sem {s}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Past Paper Specific Metadata: Year & Exam Type */}
+              {activeTab === 'papers' && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-slate-100 animate-fadeIn">
+                  <div>
+                    <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+                      Academic Year <span className="text-rose-500">*</span>
+                    </label>
+                    <select
+                      value={paperYear}
+                      onChange={(e) => setPaperYear(e.target.value)}
+                      className="w-full px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-600 font-medium"
+                    >
+                      {[currentYear, currentYear - 1, currentYear - 2, currentYear - 3, currentYear - 4, currentYear - 5, currentYear - 6, currentYear - 7].map((yr) => (
+                        <option key={yr} value={yr}>
+                          {yr}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+                      Exam Type
+                    </label>
+                    <select
+                      value={examType}
+                      onChange={(e) => setExamType(e.target.value)}
+                      className="w-full px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-600 font-medium"
+                    >
+                      <option value="end_sem">End of Semester Examination</option>
+                      <option value="mid_sem">Mid-Semester Assessment</option>
+                      <option value="test">Continuous Assessment Test</option>
+                      <option value="assignment">Assignment / Project</option>
+                    </select>
+                  </div>
+                </div>
+              )}
+            </section>
+
+            {/* ── TAB 2: PAST PAPERS SUB-MODE TOGGLE (Files vs Camera Scanner) ── */}
+            {activeTab === 'papers' && (
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => setPaperMode('files')}
+                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold transition-all border ${
+                    paperMode === 'files'
+                      ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
+                      : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
+                  }`}
+                >
+                  <FileText size={15} />
+                  <span>Upload Existing PDFs / Images</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setPaperMode('scanner')}
+                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold transition-all border ${
+                    paperMode === 'scanner'
+                      ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
+                      : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
+                  }`}
+                >
+                  <Camera size={15} />
+                  <span>Scan with Camera ({scannedPages.length} pages)</span>
+                </button>
+              </div>
+            )}
+
+            {/* ── CAMERA DOCUMENT SCANNER (when in scanner mode) ── */}
+            {activeTab === 'papers' && paperMode === 'scanner' && (
+              <section className="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200/90 shadow-sm space-y-4 animate-fadeIn">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-sm font-black text-slate-900 flex items-center gap-2">
+                      <Camera size={18} className="text-indigo-600" />
+                      <span>Document Page Scanner</span>
+                    </h3>
+                    <p className="text-[11px] text-slate-500 font-medium">
+                      Take photos of paper pages. OpenCV automatically flattens lighting, removes shadows, and builds a clean A4 PDF.
+                    </p>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => cameraInputRef.current?.click()}
+                    className="flex items-center gap-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold py-2 px-3.5 rounded-xl shadow-sm transition-all"
+                  >
+                    <Plus size={15} />
+                    <span>Take Photo</span>
+                  </button>
+                  <input
+                    ref={cameraInputRef}
+                    type="file"
+                    accept="image/*"
+                    capture="environment"
+                    multiple
+                    onChange={handleCapturePagePhoto}
+                    className="hidden"
+                  />
+                </div>
+
+                {/* Scanned Pages Grid */}
+                {scannedPages.length === 0 ? (
+                  <div
+                    onClick={() => cameraInputRef.current?.click()}
+                    className="border-2 border-dashed border-indigo-200 rounded-2xl p-8 text-center cursor-pointer hover:bg-indigo-50/40 transition-colors"
+                  >
+                    <div className="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <Camera size={22} />
+                    </div>
+                    <p className="text-xs font-bold text-slate-800">
+                      Tap here to take photos of exam paper pages
+                    </p>
+                    <p className="text-[11px] text-slate-500 mt-1">
+                      Works on mobile phones & desktop webcams. Pages can be rearranged before compiling.
+                    </p>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                      {scannedPages.map((page, idx) => (
+                        <div
+                          key={page.id}
+                          className="bg-slate-50 border border-slate-200 rounded-xl overflow-hidden p-2 flex flex-col justify-between group relative"
+                        >
+                          <div className="relative aspect-[3/4] bg-slate-200 rounded-lg overflow-hidden flex items-center justify-center mb-2">
+                            <img
+                              src={page.useOriginal ? page.originalUrl : page.cleanedUrl}
+                              alt={`Page ${idx + 1}`}
+                              className="w-full h-full object-cover"
+                            />
+                            {page.cleaning && (
+                              <div className="absolute inset-0 bg-slate-900/60 flex flex-col items-center justify-center text-white p-2">
+                                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mb-1" />
+                                <span className="text-[10px] text-center font-medium leading-tight">{page.cleaningStage || 'Enhancing...'}</span>
+                              </div>
+                            )}
+                            <span className="absolute top-1.5 left-1.5 bg-slate-900/80 text-white text-[10px] font-black px-1.5 py-0.5 rounded-md">
+                              P.{idx + 1}
+                            </span>
+                          </div>
+
+                          {/* Page Actions */}
+                          <div className="flex items-center justify-between text-slate-600 pt-1">
+                            <div className="flex items-center gap-1">
+                              <button
+                                type="button"
+                                disabled={idx === 0}
+                                onClick={() => reorderScannedPage(idx, -1)}
+                                className="p-1 hover:bg-slate-200 rounded-md disabled:opacity-30"
+                                title="Move left"
+                              >
+                                <ChevronLeft size={14} />
+                              </button>
+                              <button
+                                type="button"
+                                disabled={idx === scannedPages.length - 1}
+                                onClick={() => reorderScannedPage(idx, 1)}
+                                className="p-1 hover:bg-slate-200 rounded-md disabled:opacity-30"
+                                title="Move right"
+                              >
+                                <ChevronRight size={14} />
+                              </button>
+                            </div>
+
+                            <button
+                              type="button"
+                              onClick={() => removeScannedPage(page.id)}
+                              className="p-1 text-rose-500 hover:bg-rose-50 rounded-md"
+                              title="Delete page"
+                            >
+                              <Trash2 size={14} />
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="flex items-center justify-between pt-2">
+                      <button
+                        type="button"
+                        onClick={() => cameraInputRef.current?.click()}
+                        className="text-xs font-bold text-indigo-600 hover:underline flex items-center gap-1"
+                      >
+                        <Plus size={14} /> Add more pages
+                      </button>
+
+                      <button
+                        type="button"
+                        disabled={compilingPdf}
+                        onClick={compileScannedPagesToPdf}
+                        className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold py-2.5 px-4 rounded-xl flex items-center gap-2 shadow-sm transition-all disabled:opacity-50"
+                      >
+                        {compilingPdf ? (
+                          <>
+                            <div className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                            <span>Compiling A4 PDF...</span>
+                          </>
+                        ) : (
+                          <>
+                            <CheckCircle2 size={15} />
+                            <span>Combine {scannedPages.length} Pages into PDF</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </section>
+            )}
+
+            {/* ── DRAG & DROP / FILE BROWSER ZONE ── */}
+            {!(activeTab === 'papers' && paperMode === 'scanner') && (
+              <section
+                onDragOver={handleDragOver}
+                onDragLeave={handleDragLeave}
+                onDrop={handleDrop}
+                onClick={triggerFileBrowser}
+                className={`border-2 border-dashed rounded-3xl p-6 sm:p-10 text-center cursor-pointer transition-all duration-200 select-none ${
+                  isDragging
+                    ? 'border-blue-500 bg-blue-50/80 scale-[1.008]'
+                    : 'border-slate-300 hover:border-blue-400 bg-white hover:bg-slate-50/60 shadow-xs'
+                }`}
+              >
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  multiple
+                  accept={
+                    activeTab === 'past_papers'
+                      ? '.pdf,.png,.jpg,.jpeg'
+                      : activeTab === 'tutorials'
+                      ? '.pdf,.pptx,.docx,.doc'
+                      : '.pdf,.pptx'
+                  }
+                  onChange={(e) => {
+                    if (e.target.files?.length) {
+                      handleIncomingFiles(Array.from(e.target.files));
+                    }
+                  }}
+                  className="hidden"
+                />
+
+                <div className="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-xs ring-4 ring-blue-50">
+                  <UploadCloud size={28} strokeWidth={2.2} />
+                </div>
+
+                <h3 className="text-sm sm:text-base font-black text-slate-800">
+                  Tap to browse or drop {activeTab === 'past_papers' ? 'past exam files' : activeTab === 'tutorials' ? 'tutorial files' : 'lecture notes'} here
+                </h3>
+                <p className="text-xs text-slate-500 mt-1 font-medium max-w-sm mx-auto">
+                  {activeTab === 'past_papers'
+                    ? 'Supports PDF documents or high-res paper scans. Select multiple files at once.'
+                    : activeTab === 'tutorials'
+                    ? 'Supports PDF, PPTX, or DOCX tutorial sheets and solutions.'
+                    : 'Supports PDF lecture slides & PPTX presentations up to 50MB per file.'}
+                </p>
+                <div className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 bg-blue-50/80 px-3 py-1.5 rounded-xl border border-blue-100">
+                  <Plus size={14} />
+                  <span>Select Multiple Files</span>
+                </div>
+              </section>
+            )}
+
+            {/* ── LIVE UPLOAD QUEUE UI (PART 4) ── */}
+            {queue.length > 0 && (
+              <section className="bg-white rounded-3xl p-4 sm:p-6 border border-slate-200/90 shadow-sm space-y-4 animate-fadeIn">
+                
+                {/* Batch Header & Stats */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+                  <div>
+                    <h3 className="text-sm font-black text-slate-900 flex items-center gap-2">
+                      <span>Upload Queue</span>
+                      <span className="bg-blue-100 text-blue-800 text-[11px] font-bold px-2 py-0.5 rounded-full">
+                        {stats.completed}/{stats.total} Finished
+                      </span>
+                    </h3>
+                    <p className="text-[11px] text-slate-500 font-medium">
+                      High-speed concurrent engine (up to 3 parallel transfers)
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    {!isUploading && stats.completed > 0 && (
+                      <button
+                        type="button"
+                        onClick={clearCompleted}
+                        className="text-xs font-semibold text-slate-500 hover:text-slate-800 px-2.5 py-1.5 rounded-lg hover:bg-slate-100 transition-colors"
+                      >
+                        Clear Finished
+                      </button>
+                    )}
+                    {!isUploading && (
+                      <button
+                        type="button"
+                        onClick={resetQueue}
+                        className="text-xs font-semibold text-rose-600 hover:bg-rose-50 px-2.5 py-1.5 rounded-lg transition-colors"
+                      >
+                        Clear All
+                      </button>
                     )}
                   </div>
-                )}
-                {apiFailed && <div className={styles.fallbackNote}>⚠️ Program list not available. Please type your program manually.</div>}
-              </div>
-            </div>
+                </div>
 
-            <div className={styles.formGroup}>
-              <label>Semester</label>
-              <select className={styles.select} value={semester} onChange={(e) => setSemester(e.target.value)} required>
-                <option value="" disabled>Select semester</option>
-                {[1,2,3,4,5,6,7,8,9,10,11,12].map(n => <option key={n} value={n}>{n}</option>)}
-              </select>
-            </div>
-
-            <div className={styles.formGroup}>
-              <label>Subject / Course Name</label>
-              <input type="text" className={styles.input} placeholder="e.g., Advanced Soil Science" value={subject} onChange={(e) => setSubject(e.target.value)} required />
-            </div>
-
-            <div className={styles.formGroup}>
-              <label>File (PDF or PPTX, max 50MB)</label>
-              <div
-                id="dropzone"
-                className={`${styles.dropzone} ${file ? styles.hasFile : ''}`}
-                onClick={() => openFilePicker()}
-              >
-                {!file ? (
-                  <div className={styles.dropzoneEmpty}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="17 8 12 3 7 8" /><line x1="12" y1="3" x2="12" y2="15" /></svg>
-                    <p><span className={styles.textBlue}>Tap to browse</span> your files</p>
-                    <p className={styles.smallText}>PDF or PPTX only</p>
+                {/* Overall Progress Bar */}
+                {queue.length > 0 && (
+                  <div className="space-y-1.5 bg-slate-50 p-3 rounded-2xl border border-slate-200/60">
+                    <div className="flex justify-between text-xs font-bold text-slate-700">
+                      <span>Total Batch Progress</span>
+                      <span>{stats.overallProgress}% ({formatBytes(stats.totalLoadedBytes)} / {formatBytes(stats.totalBytes)})</span>
+                    </div>
+                    <div className="w-full bg-slate-200/80 rounded-full h-2.5 overflow-hidden">
+                      <div
+                        className="bg-gradient-to-r from-blue-600 to-indigo-600 h-2.5 rounded-full transition-all duration-300 ease-out"
+                        style={{ width: `${stats.overallProgress}%` }}
+                      />
+                    </div>
                   </div>
-                ) : (
-                  <div className={styles.dropzoneFilled}>
-                    <div className={styles.fileIcon}>
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" /><polyline points="13 2 13 9 20 9" /></svg>
-                    </div>
-                    <div className={styles.fileDetails}>
-                      <div className={styles.fileName}>{file.name}</div>
-                      <div className={styles.fileSize}>{(file.size / 1024 / 1024).toFixed(2)} MB</div>
-                    </div>
-                    <button type="button" className={styles.removeFile} onClick={removeFile} aria-label="Remove file">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+                )}
+
+                {/* Individual File Items */}
+                <div className="divide-y divide-slate-100 max-h-[420px] overflow-y-auto pr-1">
+                  {queue.map((item) => {
+                    const isDone = item.status === 'completed';
+                    const isFailed = item.status === 'failed';
+                    const isWorking = item.status === 'uploading' || item.status === 'processing';
+
+                    return (
+                      <div key={item.id} className="py-3 flex items-center justify-between gap-3 group">
+                        <div className="flex items-center gap-3 min-w-0 flex-1">
+                          {/* File Icon */}
+                          <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                            isDone ? 'bg-emerald-50 text-emerald-600' : isFailed ? 'bg-rose-50 text-rose-600' : 'bg-slate-100 text-slate-600'
+                          }`}>
+                            {isDone ? (
+                              <CheckCircle2 size={20} />
+                            ) : isFailed ? (
+                              <AlertCircle size={20} />
+                            ) : (
+                              <FileText size={20} />
+                            )}
+                          </div>
+
+                          {/* File Details */}
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-center justify-between gap-2 mb-1">
+                              <p className="text-xs font-bold text-slate-800 truncate" title={item.name}>
+                                {item.name}
+                              </p>
+                              <span className="text-[10px] text-slate-400 font-medium flex-shrink-0">
+                                {formatBytes(item.size)}
+                              </span>
+                            </div>
+
+                            {/* Progress bar */}
+                            <div className="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden mb-1">
+                              <div
+                                className={`h-1.5 rounded-full transition-all duration-200 ${
+                                  isDone
+                                    ? 'bg-emerald-500'
+                                    : isFailed
+                                    ? 'bg-rose-500'
+                                    : 'bg-blue-600'
+                                }`}
+                                style={{ width: `${item.progress}%` }}
+                              />
+                            </div>
+
+                            {/* Status label */}
+                            <div className="flex items-center justify-between text-[10px]">
+                              <span className={`font-semibold capitalize ${
+                                isDone
+                                  ? 'text-emerald-600'
+                                  : isFailed
+                                  ? 'text-rose-600'
+                                  : isWorking
+                                  ? 'text-blue-600 animate-pulse'
+                                  : 'text-slate-400'
+                              }`}>
+                                {item.status === 'uploading' ? `Uploading (${item.progress}%)` : item.status}
+                                {item.error && ` · ${item.error}`}
+                              </span>
+
+                              {isWorking && (
+                                <span className="text-slate-400 font-mono">
+                                  {formatBytes(item.loadedBytes)} / {formatBytes(item.size)}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Item Actions: Retry / Remove */}
+                        <div className="flex items-center gap-1.5 flex-shrink-0">
+                          {isFailed && (
+                            <button
+                              type="button"
+                              onClick={() => retryFile(item.id)}
+                              className="p-1.5 bg-rose-50 text-rose-700 hover:bg-rose-100 rounded-lg text-xs font-bold flex items-center gap-1 transition-colors"
+                              title="Retry file upload"
+                            >
+                              <RefreshCw size={13} />
+                              <span className="hidden sm:inline">Retry</span>
+                            </button>
+                          )}
+
+                          {!isWorking && (
+                            <button
+                              type="button"
+                              onClick={() => removeFile(item.id)}
+                              className="p-1.5 text-slate-400 hover:text-rose-600 rounded-lg hover:bg-slate-100 transition-colors"
+                              title="Remove from queue"
+                            >
+                              <X size={15} />
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Batch Action Buttons */}
+                <div className="pt-3 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3">
+                  <button
+                    type="button"
+                    onClick={triggerFileBrowser}
+                    disabled={isUploading}
+                    className="w-full sm:w-auto text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 py-3 px-4 rounded-xl flex items-center justify-center gap-1.5 transition-colors disabled:opacity-50"
+                  >
+                    <Plus size={15} />
+                    <span>Add More Files</span>
+                  </button>
+
+                  {stats.waiting > 0 && (
+                    <button
+                      type="button"
+                      disabled={isUploading || !courseInput.trim()}
+                      onClick={startUpload}
+                      className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3 px-6 rounded-xl flex items-center justify-center gap-2 shadow-md shadow-blue-600/20 text-xs sm:text-sm transition-all disabled:opacity-50"
+                    >
+                      {isUploading ? (
+                        <>
+                          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                          <span>Uploading Batch ({stats.completed}/{stats.total})...</span>
+                        </>
+                      ) : (
+                        <>
+                          <UploadCloud size={17} />
+                          <span>Upload {stats.waiting} Selected File{stats.waiting > 1 ? 's' : ''} Now</span>
+                        </>
+                      )}
                     </button>
-                  </div>
-                )}
-              </div>
-              <input
-                type="file"
-                ref={fileInputRef}
-                accept=".pdf,.pptx"
-                style={{ display: 'none' }}
-                onChange={handleFileInputChange}
-              />
-            </div>
+                  )}
 
-            <div className={styles.buttonGroup}>
-              <button type="button" className={styles.btnHome} onClick={() => navigate('/')} title="Home">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2h-5v-8H7v8H2a2 2 0 0 1-2-2z" /></svg>
-              </button>
-              <button type="button" className={styles.btnPrimary} disabled={!isFormValid || uploading} onClick={handleSubmit}>
-                {uploading ? (
-                  <>
-                    <span>
-                      {uploadStage === 'connecting' && '🔗 Connecting to server...'}
-                      {uploadStage === 'uploading' && uploadProgress > 0 && uploadProgress < 100
-                        ? `📤 Uploading... ${uploadProgress}%`
-                        : uploadStage === 'uploading' ? '📤 Uploading file...'
-                        : uploadStage === 'saving' ? '💾 Saving...'
-                        : '⏳ Uploading...'}
-                    </span>
-                    <div className={styles.progressOverlay} style={{ width: `${uploadProgress}%` }} />
-                  </>
-                ) : (
-                  <span>📤 Upload Notes</span>
+                  {stats.waiting === 0 && stats.completed > 0 && (
+                    <div className="flex items-center gap-2 text-emerald-700 font-bold text-xs">
+                      <CheckCircle2 size={16} />
+                      <span>All {stats.completed} files successfully contributed!</span>
+                    </div>
+                  )}
+                </div>
+
+                {!courseInput.trim() && stats.waiting > 0 && (
+                  <p className="text-[11px] text-amber-600 font-medium text-center">
+                    ⚠️ Please fill in the Course / Subject name in Academic Metadata above to begin upload.
+                  </p>
                 )}
-              </button>
-            </div>
-          </form>
-        </div>
+              </section>
+            )}
+
+          </>
+        )}
+
       </main>
     </div>
   );

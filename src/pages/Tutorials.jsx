@@ -328,7 +328,7 @@ export default function Tutorials() {
           .select('is_admin, role')
           .eq('id', user.id)
           .maybeSingle();
-        if (!cancelled) setIsAdmin(Boolean(data?.is_admin || data?.role === 'admin'));
+        if (!cancelled) setIsAdmin(Boolean(data?.is_admin || data?.role === 'admin' || data?.role === 'lecturer'));
       } catch { /* stay false */ }
     })();
     return () => { cancelled = true; };
@@ -429,8 +429,8 @@ export default function Tutorials() {
   }, []);
 
   const handleGoToUpload = useCallback(() => {
-    navigate('/admin/upload', {
-      state: { defaultKind: 'tutorial', defaultType: 'pdf' },
+    navigate('/upload', {
+      state: { defaultTab: 'tutorials' },
     });
   }, [navigate]);
 
