@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Download, Smartphone, Share2, PlusSquare, X } from 'lucide-react';
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
@@ -36,12 +37,13 @@ function wasDismissedRecently() {
 function markDismissed() {
   try {
     localStorage.setItem(DISMISS_KEY, String(Date.now()));
-  } catch {}
+  } catch { /* ignore storage errors */ }
 }
 
 // ─── Main Component ──────────────────────────────────────────────────────────
 
 export default function InstallPrompt() {
+  const { pathname } = useLocation();
   const [installEvent, setInstallEvent] = useState(null);   // Android / Chrome
   const [showIOSGuide, setShowIOSGuide] = useState(false);  // iOS Safari
   const [visible, setVisible] = useState(false);
@@ -97,8 +99,17 @@ export default function InstallPrompt() {
     setShowIOSGuide(false);
   }, []);
 
-  // Nothing to show
-  if (installed || dismissed || !visible) return null;
+  // Never overlap login, contributor upload, or admin workflows on small mobile screens
+  if (
+    installed ||
+    dismissed ||
+    !visible ||
+    pathname.startsWith('/upload') ||
+    pathname.startsWith('/admin') ||
+    pathname.startsWith('/login')
+  ) {
+    return null;
+  }
 
   // ── iOS Safari: manual guide sheet ────────────────────────────────────────
   if (isIOS() && isSafari() && !installEvent) {

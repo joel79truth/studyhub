@@ -32,15 +32,15 @@ if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
 }
 
 const BUCKET = 'app-updates';
-const VERSION_CODE = 23;
-const VERSION_NAME = '1.4.0';
+const VERSION_CODE = 24;
+const VERSION_NAME = '1.4.1';
 const APK_STORAGE_PATH = `studyhub-v${VERSION_NAME}-build${VERSION_CODE}.apk`;
 const APK_LOCAL_PATH = resolve(
   __dirname,
   '../android/app/build/outputs/apk/release/app-release.apk'
 );
 const RELEASE_NOTES =
-  'StudyHub v1.4.0 (build 23) - Complete Lecturer Contributor Portal with dual-path login, password authorization with Google account linking, high-speed direct upload queue for Notes, Past Papers & Tutorials, and mobile camera scanner.';
+  'StudyHub v1.4.1 (build 24) - Direct Lecturer Role & Admin Verification, unified Student setup directly on login page (no home modal), and direct access to notes upload without redundant password prompt.';
 
 // ── Main ─────────────────────────────────────────────────────────────────────
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);

@@ -6,6 +6,7 @@ import { useNavigate, Navigate } from 'react-router-dom';
 // AiStudyAssistantCard preserved in ../components/AiCard for future restoration
 import Files from '../components/Files';
 import { ensureConsistentSession, getOfflineSessionSnapshot } from '../lib/authGuard';
+import { API_BASE_URL } from '../lib/apiConfig';
 import {
   Target, FileText, TrendingUp, RefreshCw, Flame, ChevronRight, WifiOff, Share2, X,
 } from 'lucide-react';
@@ -648,17 +649,6 @@ const Home = () => {
   const scrollContainerRef = useRef(null);
   const profilePicSrc = useMemo(() => localStorage.getItem('userProfilePic') || '', []);
 
-  const [showProfileForm, setShowProfileForm] = useState(false);
-  const [program, setProgram] = useState('');
-  const [semester, setSemester] = useState('');
-  const [year, setYear] = useState('');
-  const [role, setRole] = useState('');
-  const [lecturerCode, setLecturerCode] = useState('');
-  const [programs, setPrograms] = useState([]);
-  const [fieldErrors, setFieldErrors] = useState({ program: false, semester: false, year: false, role: false, code: false });
-  const [profileSubmitting, setProfileSubmitting] = useState(false);
-  const [profileError, setProfileError] = useState('');
-
   const fetchRequestId = useRef(0);
   const lastFetchedUserId = useRef(null);
 
@@ -691,23 +681,6 @@ const Home = () => {
     };
   }, []);
 
-  // FIX: track online/offline explicitly and re-sync the moment we come
-  // back online, instead of only ever trying once on mount.
-  useEffect(() => {
-    const goOnline = () => {
-      setIsOnline(true);
-      if (user) loadUserProfile(user);
-    };
-    const goOffline = () => setIsOnline(false);
-    window.addEventListener('online', goOnline);
-    window.addEventListener('offline', goOffline);
-    return () => {
-      window.removeEventListener('online', goOnline);
-      window.removeEventListener('offline', goOffline);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
-
   // Activity hint rotation
   useEffect(() => {
     let idx = 0;
@@ -731,20 +704,19 @@ const Home = () => {
     return () => { clearTimeout(firstTimer); clearInterval(interval); };
   }, [recommendations]); // re-run when recommendations change so hints stay fresh
 
-  const LECTURER_SECRET = import.meta.env.VITE_LECTURER_SECRET || 'LUANAR-FACULTY-2026';
-
-  const loadPrograms = useCallback(async () => {
-    if (!navigator.onLine) return; // FIX: don't fire a doomed request offline
-    try {
-      const { data, error } = await supabase.from('programs').select('id, name, campus, level').order('name', { ascending: true });
-      if (error) throw error;
-      setPrograms(data || []);
-    } catch (err) { console.error('Failed to load programs:', err); }
+  // ── Basics auto-correction ────────────────────────────────────────────────
+  // All Year 1 students take Basics (Sem 1 & 2) at LUANAR regardless of their
+  // enrolled programme. Programmatically enforce "Basics" so course and
+  // past-paper feeds never see contradictory Year 1 Sem 1/2 combinations.
+  const resolveEffectiveProgram = useCallback((rawProgram, semStr, yearStr) => {
+    const yr = parseInt(yearStr, 10);
+    const sem = parseInt(semStr, 10);
+    const isBasics = /^basics$/i.test((rawProgram || '').trim());
+    if (yr === 1 && (sem === 1 || sem === 2) && !isBasics) {
+      return 'Basics';
+    }
+    return rawProgram;
   }, []);
-
-  useEffect(() => {
-    if (showProfileForm && programs.length === 0) loadPrograms();
-  }, [showProfileForm, programs.length, loadPrograms]);
 
   // Exam countdown — December 3, 2026
   const calculateExamCountdown = useCallback(() => {
@@ -759,14 +731,9 @@ const Home = () => {
     return { diffDays, delta };
   }, []);
 
-  const loadUserProfile = useCallback(async (authUser) => {
-    // FIX: offline short-circuit. Previously any failed fetch here (which
-    // is guaranteed offline) fell into the catch block and forced
-    // showProfileForm(true) — i.e. an offline user got bounced into a
-    // "complete your profile" form instead of their cached dashboard.
-    // If we have a cached profile for this exact user, trust it and stop;
-    // if we don't, there is nothing useful we can do offline, so just
-    // stop loading rather than showing a form we can't submit anyway.
+  const loadUserProfile = useCallback(async (authUser, accessToken = null) => {
+    // FIX: offline short-circuit. Previously any failed fetch here fell into
+    // the catch block instead of rendering the cached dashboard immediately.
     if (!navigator.onLine) {
       const cached = readCache();
       if (cached?.userData) {
@@ -774,7 +741,6 @@ const Home = () => {
         setStreak(cached.streak ?? 0);
         setDaysLeft(cached.daysLeft ?? 0);
         setDaysDelta(cached.daysDelta ?? '');
-        setShowProfileForm(false);
       }
       calculateExamCountdown(); // pure client-side math, always safe
       setLoading(false);
@@ -784,48 +750,115 @@ const Home = () => {
     const currentRequestId = ++fetchRequestId.current;
     lastFetchedUserId.current = authUser.id;
     try {
+      // Complete pending Web OAuth lecturer upgrade via opaque server grant (never password)
+      const rawPendingLecturer = localStorage.getItem('studyhub_pending_lecturer');
+      if (rawPendingLecturer) {
+        try {
+          const pendingLecturer = JSON.parse(rawPendingLecturer);
+          const token = accessToken || (await supabase.auth.getSession()).data?.session?.access_token;
+          if (pendingLecturer?.grant && token && (!pendingLecturer.ts || Date.now() - pendingLecturer.ts < 10 * 60 * 1000)) {
+            const verifyRes = await fetch(`${API_BASE_URL}/api/auth/lecturer-verify`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify({ verificationGrant: pendingLecturer.grant }),
+            });
+            if (verifyRes.ok) {
+              const displayName = pendingLecturer.name || authUser.user_metadata?.full_name || authUser.email?.split('@')[0] || 'Lecturer';
+              await supabase.from('profiles').upsert({
+                id: authUser.id,
+                role: 'Lecturer',
+                is_admin: true,
+                name: displayName,
+                email: authUser.email,
+                profile_complete: true,
+                updated_at: new Date().toISOString(),
+              }, { onConflict: 'id' });
+              await supabase.auth.updateUser({
+                data: { role: 'lecturer', is_admin: true, admin: true, full_name: displayName },
+              }).catch(() => {});
+              localStorage.removeItem('studyhub_pending_lecturer');
+              if (currentRequestId !== fetchRequestId.current) return;
+              navigate('/admin/upload', { replace: true });
+              return;
+            }
+          }
+        } catch (lecturerErr) {
+          console.error('Failed to complete pending lecturer verification:', lecturerErr);
+        } finally {
+          localStorage.removeItem('studyhub_pending_lecturer');
+        }
+      }
+
+      // Complete pending Web OAuth student academic profile saved before Google redirect
+      let hydratedPendingStudent = null;
+      const pendingProg = localStorage.getItem('studyhub_pending_program');
+      if (pendingProg) {
+        const pendingProgId = localStorage.getItem('studyhub_pending_program_id');
+        const pendingYear = localStorage.getItem('studyhub_pending_year');
+        const pendingSem = localStorage.getItem('studyhub_pending_semester');
+        const yrNum = Math.min(5, Math.max(1, parseInt(pendingYear, 10) || 1));
+        const semNum = Math.min(8, Math.max(1, parseInt(pendingSem, 10) || 1));
+        const effectiveProg = resolveEffectiveProgram(pendingProg, semNum, yrNum);
+        const displayName = authUser.user_metadata?.full_name || authUser.email?.split('@')[0] || 'Student';
+        await supabase.from('profiles').upsert({
+          id: authUser.id,
+          program: effectiveProg,
+          year_of_study: yrNum,
+          semester: semNum,
+          role: 'Student',
+          profile_complete: true,
+          email: authUser.email,
+          name: displayName,
+          updated_at: new Date().toISOString(),
+        }, { onConflict: 'id' }).catch(() => {});
+        await supabase.auth.updateUser({
+          data: {
+            program: effectiveProg,
+            program_id: effectiveProg === 'Basics' ? undefined : pendingProgId || undefined,
+            year: yrNum,
+            semester: semNum,
+            role: 'student',
+          },
+        }).catch(() => {});
+        hydratedPendingStudent = { program: effectiveProg, semester: semNum, year: yrNum, role: 'Student' };
+        localStorage.removeItem('studyhub_pending_program');
+        localStorage.removeItem('studyhub_pending_program_id');
+        localStorage.removeItem('studyhub_pending_year');
+        localStorage.removeItem('studyhub_pending_semester');
+      }
+
       const { data: profile, error } = await supabase.from('profiles').select('*').eq('id', authUser.id).maybeSingle();
       if (error) throw error;
       if (currentRequestId !== fetchRequestId.current) return;
 
-      if (!profile) {
-        setShowProfileForm(true);
-        setUserData({ displayName: authUser.user_metadata?.full_name || authUser.email, email: authUser.email });
-        setLoading(false);
-        return;
+      const fallbackSemester = hydratedPendingStudent?.semester || profile?.semester || authUser.user_metadata?.semester || 1;
+      const fallbackYear = hydratedPendingStudent?.year || profile?.year_of_study || authUser.user_metadata?.year || 1;
+      const rawProgram = hydratedPendingStudent?.program || profile?.program || authUser.user_metadata?.program || localStorage.getItem('studyhub_upload_program_name') || 'Basics';
+      const fallbackProgram = resolveEffectiveProgram(rawProgram, fallbackSemester, fallbackYear);
+      const fallbackRole = hydratedPendingStudent?.role || profile?.role || authUser.user_metadata?.role || 'Student';
+
+      // Keep DB consistent if an older Year 1 Sem 1/2 record had a non-Basics program
+      if (profile && profile.program && fallbackProgram !== profile.program) {
+        supabase.from('profiles').update({ program: fallbackProgram }).eq('id', authUser.id)
+          .then(({ error: fixErr }) => { if (fixErr) console.error('Basics sync failed:', fixErr); });
       }
 
-      const hasProgram = profile.program && profile.program.trim().length > 0;
-      const hasSemester = profile.semester > 0 && profile.semester <= 8;
-      const hasYear = profile.year_of_study > 0 && profile.year_of_study <= 4;
-      const hasRole = profile.role === 'Student' || profile.role === 'Lecturer';
-      const isComplete = hasProgram && hasSemester && hasYear && hasRole;
-
-      if (!isComplete) {
-        setShowProfileForm(true);
-        setUserData({ displayName: authUser.user_metadata?.full_name || authUser.email, email: authUser.email, program: profile.program || '', semester: profile.semester ?? '', year: profile.year_of_study ?? '', role: profile.role || '' });
-        setProgram(profile.program || '');
-        setSemester(profile.semester ?? '');
-        setYear(profile.year_of_study ?? '');
-        setRole(profile.role || '');
-        setLoading(false);
-        return;
-      }
-
-      setShowProfileForm(false);
       const nextUserData = {
-        displayName: authUser.user_metadata?.full_name || authUser.email,
+        displayName: authUser.user_metadata?.full_name || authUser.email?.split('@')[0] || 'Student',
         email: authUser.email,
-        program: profile.program,
-        semester: profile.semester,
-        year: profile.year_of_study,
-        role: profile.role,
+        program: fallbackProgram,
+        semester: fallbackSemester,
+        year: fallbackYear,
+        role: fallbackRole,
       };
       setUserData(nextUserData);
 
       const today = new Date().toDateString();
-      const lastActive = profile.last_active ? new Date(profile.last_active).toDateString() : null;
-      let newStreak = profile.streak || 0;
+      const lastActive = profile?.last_active ? new Date(profile.last_active).toDateString() : null;
+      let newStreak = profile?.streak || 0;
       const wasAlreadyActiveToday = lastActive === today;
       if (!wasAlreadyActiveToday) {
         newStreak = lastActive === new Date(Date.now() - 86400000).toDateString() ? newStreak + 1 : 1;
@@ -838,29 +871,44 @@ const Home = () => {
       setLoading(false);
     } catch (err) {
       console.error('Error loading profile:', err);
-      // FIX: only send the person into the "complete your profile" form
-      // on a real response from the backend. A network-level failure
-      // (offline, DNS hiccup, flaky connection) should fall back to
-      // whatever we already have cached, not require re-entering profile
-      // data the person already submitted before.
-      const looksLikeNetworkFailure = !navigator.onLine || err?.message?.toLowerCase().includes('fetch');
-      if (looksLikeNetworkFailure) {
-        const cached = readCache();
-        if (cached?.userData) {
-          setUserData(cached.userData);
-          setStreak(cached.streak ?? 0);
-          setDaysLeft(cached.daysLeft ?? 0);
-          setDaysDelta(cached.daysDelta ?? '');
-          setShowProfileForm(false);
-        } else {
-          setShowProfileForm(true);
-        }
+      const cached = readCache();
+      if (cached?.userData) {
+        setUserData(cached.userData);
+        setStreak(cached.streak ?? 0);
+        setDaysLeft(cached.daysLeft ?? 0);
+        setDaysDelta(cached.daysDelta ?? '');
       } else {
-        setShowProfileForm(true);
+        const fbYear = authUser.user_metadata?.year || 1;
+        const fbSem = authUser.user_metadata?.semester || 1;
+        setUserData({
+          displayName: authUser.user_metadata?.full_name || authUser.email?.split('@')[0] || 'Student',
+          email: authUser.email,
+          program: resolveEffectiveProgram(authUser.user_metadata?.program || 'Basics', fbSem, fbYear),
+          semester: fbSem,
+          year: fbYear,
+          role: authUser.user_metadata?.role || 'Student',
+        });
       }
       setLoading(false);
     }
-  }, [calculateExamCountdown]);
+  }, [calculateExamCountdown, navigate, resolveEffectiveProgram]);
+
+  // FIX: track online/offline explicitly and re-sync the moment we come
+  // back online, instead of only ever trying once on mount.
+  useEffect(() => {
+    const goOnline = () => {
+      setIsOnline(true);
+      if (user) loadUserProfile(user);
+    };
+    const goOffline = () => setIsOnline(false);
+    window.addEventListener('online', goOnline);
+    window.addEventListener('offline', goOffline);
+    return () => {
+      window.removeEventListener('online', goOnline);
+      window.removeEventListener('offline', goOffline);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, loadUserProfile]);
 
   useEffect(() => {
     let mounted = true;
@@ -884,7 +932,7 @@ const Home = () => {
               const ok = await ensureConsistentSession();
               if (!mounted) return;
               if (!ok) {
-                setUser(null); setUserData(null); setShowProfileForm(false);
+                setUser(null); setUserData(null);
                 localStorage.removeItem(CACHE_KEY);
                 lastFetchedUserId.current = null;
                 setLoading(false);
@@ -892,13 +940,13 @@ const Home = () => {
               }
               const { data: { session: liveSession } } = await supabase.auth.getSession();
               if (!mounted) return;
-              if (liveSession?.user) loadUserProfile(liveSession.user);
+              if (liveSession?.user) loadUserProfile(liveSession.user, liveSession.access_token);
               else setLoading(false);
             })();
           }
         }
       } else if (event === 'SIGNED_OUT' || !session) {
-        setUser(null); setUserData(null); setShowProfileForm(false);
+        setUser(null); setUserData(null);
         localStorage.removeItem(CACHE_KEY); lastFetchedUserId.current = null; setLoading(false);
       }
       setAuthReady(true);
@@ -1023,60 +1071,6 @@ const Home = () => {
     });
   }, [navigate, showToast]);
 
-  // ── Basics auto-correction ────────────────────────────────────────────────
-  // All Year 1 students take Basics (Sem 1 & 2) at LUANAR regardless of their
-  // enrolled programme. Silently correct the stored programme to "Basics" so
-  // their course and past-paper feeds show the right content.
-  const resolveEffectiveProgram = useCallback((rawProgram, semStr, yearStr) => {
-    const yr = parseInt(yearStr, 10);
-    const sem = parseInt(semStr, 10);
-    const isBasics = /^basics$/i.test((rawProgram || '').trim());
-    if (yr === 1 && (sem === 1 || sem === 2) && !isBasics) {
-      return 'Basics';
-    }
-    return rawProgram;
-  }, []);
-
-  const handleProfileSubmit = useCallback(async (e) => {
-    e.preventDefault();
-    if (!navigator.onLine) {
-      setProfileError("You're offline — connect to the internet to save your profile.");
-      return;
-    }
-    setProfileError('');
-    setFieldErrors({ program: false, semester: false, year: false, role: false, code: false });
-    const errors = { program: false, semester: false, year: false, role: false, code: false };
-    let valid = true;
-    if (!program || program.trim().length === 0) { errors.program = true; valid = false; }
-    const semesterNum = parseInt(semester, 10);
-    if (isNaN(semesterNum) || semesterNum < 1 || semesterNum > 8) { errors.semester = true; valid = false; }
-    const yearNum = parseInt(year, 10);
-    if (isNaN(yearNum) || yearNum < 1 || yearNum > 4) { errors.year = true; valid = false; }
-    if (!role) { errors.role = true; valid = false; }
-    if (role === 'Lecturer' && lecturerCode !== LECTURER_SECRET) { errors.code = true; valid = false; }
-    if (!valid) { setFieldErrors(errors); return; }
-    setProfileSubmitting(true);
-    try {
-      const ok = await ensureConsistentSession();
-      if (!ok) throw new Error('Your session was invalid and has been cleared — please sign in again.');
-      const { data: { session: liveSession } } = await supabase.auth.getSession();
-      if (!liveSession?.user) throw new Error('Your session expired — please sign in again.');
-      // Auto-correct: Year 1 Sem 1/2 → Basics
-      const effectiveProgram = resolveEffectiveProgram(program, semester, year);
-      const updateData = { id: liveSession.user.id, program: effectiveProgram.trim(), semester: semesterNum, year_of_study: yearNum, role, updated_at: new Date().toISOString() };
-      const { error } = await supabase.from('profiles').upsert(updateData, { onConflict: 'id' }).select();
-      if (error) throw error;
-      setProgram(effectiveProgram);
-      setShowProfileForm(false);
-      setUserData(prev => ({ ...prev, program: updateData.program, semester: updateData.semester, year: updateData.year_of_study, role: updateData.role }));
-      await loadUserProfile(liveSession.user);
-    } catch (err) {
-      console.error('Profile update error:', err);
-      setProfileError(err.message || 'Failed to save profile. Please try again.');
-      if (err.message?.includes('session was invalid') || err.message?.includes('session expired')) navigate('/login', { replace: true });
-    } finally { setProfileSubmitting(false); }
-  }, [program, semester, year, role, lecturerCode, LECTURER_SECRET, loadUserProfile, navigate, resolveEffectiveProgram]);
-
   const currentHint = useMemo(
     () => buildActivityHints(recommendations)[hintIdx] ?? STATIC_ACTIVITY_HINTS[0],
     [recommendations, hintIdx]
@@ -1107,120 +1101,6 @@ const Home = () => {
   const hasOfflineAuth = !isOnline && (readCache()?.userData || getOfflineSessionSnapshot());
   if (authReady && !user && !loading && !hasOfflineAuth) {
     return <Navigate to="/login" replace />;
-  }
-
-  // ─── Profile form ──────────────────────────────────────────────────────────
-  if (showProfileForm) {
-    return (
-      <div className="h-full flex flex-col bg-slate-50">
-        <StyleInjector />
-        {!isOnline && <OfflineBanner />}
-        <div className="flex-1 overflow-y-auto flex items-center justify-center p-4">
-          <div className="w-full max-w-md bg-white rounded-2xl shadow-xl border border-white/50 overflow-hidden ed-fade-up">
-            <div className="bg-blue-600 px-6 py-5 text-center">
-              <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 backdrop-blur-sm">
-                <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-              </div>
-              <h2 className="text-xl font-bold text-white">Complete your profile</h2>
-              <p className="text-sm text-white/80 mt-1">Just a few details to personalise your dashboard</p>
-              <div className="mt-3 inline-flex items-center gap-2 bg-white/15 rounded-full px-3 py-1">
-                <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-                </svg>
-                <span className="text-xs text-white font-medium">Takes 30 seconds</span>
-              </div>
-            </div>
-            <div className="p-6">
-              {profileError && (
-                <div className="mb-4 px-3 py-2.5 rounded-lg bg-red-50 border border-red-200 text-sm text-red-700" role="alert">{profileError}</div>
-              )}
-              <form onSubmit={handleProfileSubmit}>
-                <div className="mb-4">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Programme of study <span className="text-red-500">*</span></label>
-                  <select value={program} onChange={(e) => setProgram(e.target.value)}
-                    className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 transition ${fieldErrors.program ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}>
-                    <option value="">— Select programme —</option>
-                    {programs.map((p) => <option key={p.id} value={p.name}>{p.name} ({p.campus})</option>)}
-                  </select>
-                  {fieldErrors.program && <p className="text-red-500 text-xs mt-1" role="alert">Program is required</p>}
-                </div>
-                <div className="mb-4">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Semester <span className="text-red-500">*</span></label>
-                  <select value={semester} onChange={(e) => setSemester(e.target.value)}
-                    className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 transition ${fieldErrors.semester ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}>
-                    <option value="">Select semester</option>
-                    {[1,2,3,4,5,6,7,8].map(s => <option key={s} value={s}>Semester {s}</option>)}
-                  </select>
-                  {fieldErrors.semester && <p className="text-red-500 text-xs mt-1" role="alert">Select a valid semester (1–8)</p>}
-                </div>
-                <div className="mb-4">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Year of study <span className="text-red-500">*</span></label>
-                  <select value={year} onChange={(e) => setYear(e.target.value)}
-                    className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 transition ${fieldErrors.year ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}>
-                    <option value="">Select year</option>
-                    {[1,2,3,4].map(y => <option key={y} value={y}>Year {y}</option>)}
-                  </select>
-                  {fieldErrors.year && <p className="text-red-500 text-xs mt-1" role="alert">Select a valid year (1–4)</p>}
-                </div>
-                {/* Basics auto-correction notice */}
-                {(() => {
-                  const yr = parseInt(year, 10);
-                  const sem = parseInt(semester, 10);
-                  const notBasics = program && !/^basics$/i.test(program.trim());
-                  if (yr === 1 && (sem === 1 || sem === 2) && notBasics) {
-                    return (
-                      <div className="mb-4 flex items-start gap-2 px-3 py-2.5 rounded-lg bg-amber-50 border border-amber-200 text-xs text-amber-800">
-                        <span className="mt-0.5 shrink-0">ℹ️</span>
-                        <span>
-                          Year 1 students in Semester 1 or 2 follow the <strong>Basics</strong> curriculum at LUANAR.
-                          Your programme will be set to <strong>Basics</strong> automatically so you see the right courses.
-                        </span>
-                      </div>
-                    );
-                  }
-                  return null;
-                })()}
-                <div className="mb-4">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Role <span className="text-red-500">*</span></label>
-                  <select value={role} onChange={(e) => setRole(e.target.value)}
-                    className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 transition ${fieldErrors.role ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}>
-                    <option value="">Choose role</option>
-                    <option value="Student">Student</option>
-                    <option value="Lecturer">Lecturer</option>
-                  </select>
-                  {fieldErrors.role && <p className="text-red-500 text-xs mt-1" role="alert">Role is mandatory</p>}
-                </div>
-                {role === 'Lecturer' && (
-                  <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Lecturer authorization code</label>
-                    <input type="password" value={lecturerCode} onChange={(e) => setLecturerCode(e.target.value)}
-                      className={`w-full px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 transition ${fieldErrors.code ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
-                      placeholder="Enter secure code" />
-                    <p className="text-xs text-gray-500 mt-1.5">
-                      Sent to your faculty email.{' '}
-                      <a href="mailto:admin@luanar.ac.mw" className="text-blue-600 underline underline-offset-2">Need help?</a>
-                    </p>
-                    {fieldErrors.code && <p className="text-red-500 text-xs mt-1" role="alert">Invalid lecturer code</p>}
-                  </div>
-                )}
-                <button type="submit" disabled={profileSubmitting || !isOnline}
-                  className="w-full bg-blue-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 rounded-lg transition-all active:scale-[0.98] disabled:opacity-70">
-                  {profileSubmitting ? (
-                    <span className="flex items-center justify-center gap-2">
-                      <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
-                      </svg>
-                      Saving…
-                    </span>
-                  ) : !isOnline ? 'Connect to the internet to continue' : '🚀 Access Dashboard'}
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-              </div>
-    );
   }
 
   // ==================== MAIN DASHBOARD ====================

@@ -73,9 +73,10 @@ function App() {
           <Routes>
             <Route path="/login" element={<Login />} />
 
-            {/* Standalone viewers and full-screen utilities */}
+            {/* Standalone viewers, contributor portal, and full-screen utilities */}
             <Route path="/viewer" element={<ProtectedRoute><Viewer /></ProtectedRoute>} />
             <Route path="/file-viewer" element={<ProtectedRoute><Viewer /></ProtectedRoute>} />
+            <Route path="/upload" element={<ProtectedRoute><Upload /></ProtectedRoute>} />
 
             {/* Admin routes */}
             <Route path="/admin" element={<AdminRoute><AdminLive /></AdminRoute>} />
@@ -98,7 +99,6 @@ function App() {
               <Route path="/Request" element={<Request />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/settings" element={<Settings />} />
-              <Route path="/upload" element={<Upload />} />
               <Route path="/AiChat" element={<AiChat />} />
               <Route path="/leaderboard" element={<LeaderboardPage />} />
             </Route>

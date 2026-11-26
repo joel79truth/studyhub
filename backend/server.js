@@ -1679,10 +1679,13 @@ const lecturerLimiter = rateLimit({
   legacyHeaders: false,
 });
 
+// Short-lived single-use verification grants for OAuth round-trips (5 min TTL)
+const pendingLecturerGrants = new Map();
+
 // POST /api/auth/lecturer-verify — Secure server-side lecturer authentication
 app.post('/api/auth/lecturer-verify', lecturerLimiter, async (req, res) => {
   try {
-    const { password, name, email } = req.body || {};
+    const { password, name, email, verifyOnly, verificationGrant } = req.body || {};
     const configuredRaw = process.env.LECTURER_ACCESS_KEY || process.env.LECTURER_ACCESS_PASSWORD || 'studyhub-lecturer-2026,studyhub-lecturer-2025';
     const allowedKeys = configuredRaw
       .split(',')
@@ -1693,9 +1696,21 @@ app.post('/api/auth/lecturer-verify', lecturerLimiter, async (req, res) => {
     allowedKeys.push('studyhublecturer2026');
     allowedKeys.push('studyhublecturer2025');
 
+    // Prune expired verification grants
+    const now = Date.now();
+    for (const [k, exp] of pendingLecturerGrants) {
+      if (exp < now) pendingLecturerGrants.delete(k);
+    }
+
+    const grantValid = Boolean(
+      verificationGrant &&
+      pendingLecturerGrants.has(verificationGrant) &&
+      pendingLecturerGrants.get(verificationGrant) >= now
+    );
+
     const inputKey = String(password || '').toLowerCase().replace(/[^a-z0-9]/g, '');
 
-    if (!inputKey || !allowedKeys.includes(inputKey)) {
+    if (!grantValid && (!inputKey || !allowedKeys.includes(inputKey))) {
       return res.status(401).json({
         error: 'Incorrect lecturer access password. Please check your department credentials and try again.',
       });
@@ -1707,23 +1722,35 @@ app.post('/api/auth/lecturer-verify', lecturerLimiter, async (req, res) => {
       const token = authHeader.split(' ')[1];
       const { data: { user }, error: tokenErr } = await supabase.auth.getUser(token);
       if (!tokenErr && user) {
+        if (grantValid) pendingLecturerGrants.delete(verificationGrant);
         await supabaseAdmin.from('profiles').upsert({
           id: user.id,
           role: 'lecturer',
+          is_admin: true,
+          admin: true,
           name: name ? String(name).trim() : (user.user_metadata?.full_name || user.email || 'Lecturer'),
           email: user.email,
+          updated_at: new Date().toISOString(),
         }, { onConflict: 'id' });
 
         await supabaseAdmin.auth.admin.updateUserById(user.id, {
-          user_metadata: { ...user.user_metadata, role: 'lecturer' },
+          user_metadata: { ...user.user_metadata, role: 'lecturer', is_admin: true, admin: true },
         }).catch(() => {});
 
         return res.json({
           success: true,
           role: 'lecturer',
-          user: { id: user.id, email: user.email, role: 'lecturer', name: name || user.user_metadata?.full_name },
+          is_admin: true,
+          user: { id: user.id, email: user.email, role: 'lecturer', is_admin: true, name: name || user.user_metadata?.full_name },
         });
       }
+    }
+
+    // Pre-OAuth / pre-account-picker password validation without creating a dummy user
+    if (verifyOnly && !email) {
+      const grant = uuidv4();
+      pendingLecturerGrants.set(grant, now + 5 * 60 * 1000);
+      return res.json({ success: true, verified: true, verificationGrant: grant });
     }
 
     // 2. If client is not signed in yet, issue an authenticated session for lecturer
@@ -1735,12 +1762,12 @@ app.post('/api/auth/lecturer-verify', lecturerLimiter, async (req, res) => {
       const createRes = await supabaseAdmin.auth.admin.createUser({
         email: targetEmail,
         email_confirm: true,
-        user_metadata: { role: 'lecturer', full_name: name || 'LUANAR Lecturer' },
+        user_metadata: { role: 'lecturer', is_admin: true, admin: true, full_name: name || 'LUANAR Lecturer' },
       });
       lecturerUser = createRes.data?.user;
     } else {
       await supabaseAdmin.auth.admin.updateUserById(lecturerUser.id, {
-        user_metadata: { ...lecturerUser.user_metadata, role: 'lecturer' },
+        user_metadata: { ...lecturerUser.user_metadata, role: 'lecturer', is_admin: true, admin: true },
       }).catch(() => {});
     }
 
@@ -1753,6 +1780,9 @@ app.post('/api/auth/lecturer-verify', lecturerLimiter, async (req, res) => {
       email: lecturerUser.email,
       name: name ? String(name).trim() : (lecturerUser.user_metadata?.full_name || 'LUANAR Lecturer'),
       role: 'lecturer',
+      is_admin: true,
+      admin: true,
+      updated_at: new Date().toISOString(),
     }, { onConflict: 'id' });
 
     const linkRes = await supabaseAdmin.auth.admin.generateLink({

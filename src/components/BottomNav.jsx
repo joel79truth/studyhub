@@ -25,13 +25,13 @@
 //     (e.g. duplicate pointer events on some hybrid devices), and it always
 //     self-clears — no risk of a route getting silently "stuck" blocked.
 
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { memo, useState, useCallback, useRef } from 'react';
 import { PRIMARY_NAV, SECONDARY_NAV, ACCOUNT_NAV } from '../config/navigation';
 import { MoreHorizontal, X } from 'lucide-react';
 
 // Use the shared primary navigation list
-const navItems = PRIMARY_NAV;
+// BottomNav uses shared PRIMARY_NAV below
 
 // Minimum time between two fires to the same path, to swallow duplicate
 // pointer events some browsers emit for a single physical touch.
@@ -105,6 +105,7 @@ function MoreSheet({ open, onClose, onNavigate }) {
 
 export const BottomNav = memo(function BottomNav() {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const lastFiredRef = useRef({ to: null, at: 0 });
   const [pressedPath, setPressedPath] = useState(null);
   const [moreOpen, setMoreOpen] = useState(false);
@@ -131,6 +132,11 @@ export const BottomNav = memo(function BottomNav() {
     e.preventDefault();
     fire(to);
   }, [fire]);
+
+  // Never render bottom nav anywhere inside contributor or admin workflows
+  if (pathname.startsWith('/upload') || pathname.startsWith('/admin')) {
+    return null;
+  }
 
   return (
     <>

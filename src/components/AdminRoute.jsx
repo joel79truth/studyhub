@@ -28,7 +28,10 @@ const AdminRoute = ({ children }) => {
         const metaAdmin = Boolean(
           user.app_metadata?.role === 'admin' ||
           user.user_metadata?.role === 'admin' ||
-          user.user_metadata?.is_admin === true
+          user.user_metadata?.is_admin === true ||
+          user.user_metadata?.admin === true ||
+          user.app_metadata?.role === 'lecturer' ||
+          user.user_metadata?.role === 'lecturer'
         );
 
         if (metaAdmin) {
@@ -46,10 +49,12 @@ const AdminRoute = ({ children }) => {
           .eq('id', user.id)
           .maybeSingle();
 
+        const pRole = String(profile?.role || '').toLowerCase();
         const hasAdminRole = Boolean(
           profile?.is_admin === true ||
-          String(profile?.role || '').toLowerCase() === 'admin' ||
-          profile?.admin === true
+          profile?.admin === true ||
+          pRole === 'admin' ||
+          pRole === 'lecturer'
         );
 
         if (hasAdminRole) {

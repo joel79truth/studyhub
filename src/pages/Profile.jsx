@@ -723,7 +723,7 @@ export default function Profile() {
 
       // Auto-correct: Year 1 Sem 1/2 → Basics (LUANAR policy)
       let effectiveProgram = academicForm.program.trim();
-      if (yearNum === 1 && (semesterNum === 1 || semesterNum === 2) && !/^basics$/i.test(effectiveProgram)) {
+      if (yearNum === 1 && (semesterNum === 1 || semesterNum === 2)) {
         effectiveProgram = 'Basics';
       }
 
@@ -741,6 +741,14 @@ export default function Profile() {
         .eq('id', user.id);
 
       if (error) throw error;
+
+      await supabase.auth.updateUser({
+        data: {
+          program: effectiveProgram,
+          year: yearNum,
+          semester: semesterNum,
+        },
+      }).catch(() => {});
 
       const updated = {
         ...profile,
@@ -1265,39 +1273,65 @@ export default function Profile() {
                     </button>
                   )}
                 </div>
-                {!customProgramMode && programsList.length > 0 ? (
-                  <select
-                    value={academicForm.program}
-                    onChange={(e) => {
-                      if (e.target.value === '__custom__') {
-                        setCustomProgramMode(true);
-                      } else {
+                {(() => {
+                  const lockedBasics =
+                    parseInt(academicForm.year_of_study, 10) === 1 &&
+                    [1, 2].includes(parseInt(academicForm.semester, 10));
+                  const displayProgram = lockedBasics ? 'Basics' : academicForm.program;
+
+                  if (!customProgramMode && programsList.length > 0) {
+                    return (
+                      <select
+                        value={displayProgram}
+                        disabled={lockedBasics}
+                        onChange={(e) => {
+                          if (lockedBasics) {
+                            setAcademicForm((prev) => ({ ...prev, program: 'Basics' }));
+                            return;
+                          }
+                          if (e.target.value === '__custom__') {
+                            setCustomProgramMode(true);
+                          } else {
+                            setAcademicForm({ ...academicForm, program: e.target.value });
+                          }
+                        }}
+                        className="w-full px-3.5 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-indigo-500/20 disabled:bg-emerald-50/70 disabled:text-emerald-900 disabled:border-emerald-200 disabled:cursor-not-allowed"
+                      >
+                        <option value="">— Select your programme —</option>
+                        {lockedBasics && !programsList.some((p) => /^basics$/i.test(p.name)) && (
+                          <option value="Basics">Basics (Year 1 Sem 1 &amp; 2)</option>
+                        )}
+                        {programsList.map((prog) => (
+                          <option key={prog.id} value={prog.name}>
+                            {prog.name} ({prog.campus || 'LUANAR'})
+                          </option>
+                        ))}
+                        <option value="__custom__">✏️ Other (Type custom programme)...</option>
+                      </select>
+                    );
+                  }
+
+                  return (
+                    <input
+                      type="text"
+                      value={displayProgram}
+                      readOnly={lockedBasics}
+                      disabled={lockedBasics}
+                      onChange={(e) => {
+                        if (lockedBasics) return;
                         setAcademicForm({ ...academicForm, program: e.target.value });
-                      }
-                    }}
-                    className="w-full px-3.5 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-indigo-500/20"
-                  >
-                    <option value="">— Select your programme —</option>
-                    {programsList.map((prog) => (
-                      <option key={prog.id} value={prog.name}>
-                        {prog.name} ({prog.campus || 'LUANAR'})
-                      </option>
-                    ))}
-                    <option value="__custom__">✏️ Other (Type custom programme)...</option>
-                  </select>
-                ) : (
-                  <input
-                    type="text"
-                    value={academicForm.program}
-                    onChange={(e) => setAcademicForm({ ...academicForm, program: e.target.value })}
-                    placeholder="e.g. BSc in Agricultural Economics"
-                    className="w-full px-3.5 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-indigo-500/20"
-                  />
-                )}
+                      }}
+                      placeholder="e.g. BSc in Agricultural Economics"
+                      className="w-full px-3.5 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-indigo-500/20 disabled:bg-emerald-50/70 disabled:text-emerald-900 disabled:border-emerald-200 disabled:cursor-not-allowed"
+                    />
+                  );
+                })()}
                 <p className="text-[10px] text-slate-400 mt-1">
-                  {customProgramMode
-                    ? 'Enter your custom programme name'
-                    : 'Choose from official LUANAR curriculum or enter custom'}
+                  {parseInt(academicForm.year_of_study, 10) === 1 && [1, 2].includes(parseInt(academicForm.semester, 10))
+                    ? 'Locked to Basics for Year 1 Semester 1 & 2'
+                    : customProgramMode
+                      ? 'Enter your custom programme name'
+                      : 'Choose from official LUANAR curriculum or enter custom'}
                 </p>
               </div>
 
@@ -1312,7 +1346,15 @@ export default function Profile() {
                       <button
                         type="button"
                         key={y}
-                        onClick={() => setAcademicForm({ ...academicForm, year_of_study: y })}
+                        onClick={() => {
+                          const isBasicsRule = y === '1' && [1, 2].includes(parseInt(academicForm.semester, 10));
+                          if (isBasicsRule) setCustomProgramMode(false);
+                          setAcademicForm((prev) => ({
+                            ...prev,
+                            year_of_study: y,
+                            program: isBasicsRule ? 'Basics' : prev.program,
+                          }));
+                        }}
                         className={`py-1.5 text-xs font-semibold rounded-lg border transition-all cursor-pointer ${
                           academicForm.year_of_study === y
                             ? 'bg-indigo-600 text-white border-indigo-600 shadow-xs'
@@ -1334,7 +1376,15 @@ export default function Profile() {
                       <button
                         type="button"
                         key={s}
-                        onClick={() => setAcademicForm({ ...academicForm, semester: s })}
+                        onClick={() => {
+                          const isBasicsRule = parseInt(academicForm.year_of_study, 10) === 1 && (s === '1' || s === '2');
+                          if (isBasicsRule) setCustomProgramMode(false);
+                          setAcademicForm((prev) => ({
+                            ...prev,
+                            semester: s,
+                            program: isBasicsRule ? 'Basics' : prev.program,
+                          }));
+                        }}
                         className={`w-full py-1.5 px-2.5 text-xs font-semibold rounded-lg border transition-all cursor-pointer flex items-center justify-between ${
                           academicForm.semester === s
                             ? 'bg-indigo-600 text-white border-indigo-600 shadow-xs'
@@ -1353,14 +1403,12 @@ export default function Profile() {
               {(() => {
                 const yr = parseInt(academicForm.year_of_study, 10);
                 const sem = parseInt(academicForm.semester, 10);
-                const notBasics = academicForm.program && !/^basics$/i.test(academicForm.program.trim());
-                if (yr === 1 && (sem === 1 || sem === 2) && notBasics) {
+                if (yr === 1 && (sem === 1 || sem === 2)) {
                   return (
-                    <div className="flex items-start gap-2 px-3 py-2.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-800">
-                      <span className="mt-0.5 shrink-0">ℹ️</span>
+                    <div className="flex items-start gap-2 px-3 py-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900">
+                      <span className="mt-0.5 shrink-0">✓</span>
                       <span>
-                        Year 1 students in Semester 1 or 2 follow the <strong>Basics</strong> curriculum at LUANAR.
-                        Your programme will be automatically set to <strong>Basics</strong> when you save.
+                        Year 1 Semester {sem} automatically sets your programme to <strong>Basics</strong> per LUANAR curriculum policy.
                       </span>
                     </div>
                   );

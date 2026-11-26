@@ -2,12 +2,13 @@
  * scannerService.js
  * Client-side document scanner cleanup & A4 PDF generation.
  *
- * Performance-optimised:
- * - Warm worker pre-load on mount
- * - Early input capping (max 2576 long edge before memory allocation)
- * - Worker direct JPEG encoding (OffscreenCanvas)
- * - Transferable ArrayBuffers
- * - 20-second timeout fallback per page
+ * Performance & low-end mobile optimisations:
+ * - Lazy worker warm-up (only when Past Papers scanner/images are used)
+ * - Single-decode resize via canvas (avoids double memory spike & EXIF resize quirks)
+ * - Adaptive resolution cap on <=2GB RAM devices (2048px vs 2576px)
+ * - Direct JPEG encoding in Web Worker with Transferable ArrayBuffers
+ * - 25-second timeout fallback per page + safe original fallback
+ * - Explicit rotation helper for user orientation correction
  */
 
 let workerInstance = null;
@@ -25,16 +26,16 @@ export async function loadPdfLib() {
   return new Promise((resolve, reject) => {
     const existing = document.getElementById('pdf-lib-script');
     if (existing) {
-      existing.addEventListener('load', () => resolve(window.PDFLib));
-      existing.addEventListener('error', (e) => reject(e));
       if (window.PDFLib) return resolve(window.PDFLib);
+      existing.addEventListener('load', () => resolve(window.PDFLib), { once: true });
+      existing.addEventListener('error', (e) => reject(e), { once: true });
       return;
     }
     const script = document.createElement('script');
     script.id = 'pdf-lib-script';
     script.src = '/vendor/pdf-lib.min.js';
     script.onload = () => resolve(window.PDFLib);
-    script.onerror = (err) => reject(new Error('Failed to load pdf-lib: ' + err.message));
+    script.onerror = (err) => reject(new Error('Failed to load pdf-lib: ' + (err?.message || 'network error')));
     document.head.appendChild(script);
   });
 }
@@ -70,11 +71,19 @@ export function getScannerWorker() {
 
       workerInstance.onerror = (err) => {
         console.error('[scannerService] Worker error:', err);
+        workerReadyPromise = null;
+        workerInstance = null;
+        for (const [, pending] of pendingRequests) {
+          pending.rej(new Error('Document scanner worker failed'));
+        }
+        pendingRequests.clear();
         reject(err);
       };
 
       workerInstance.postMessage({ type: 'init' });
     } catch (err) {
+      workerReadyPromise = null;
+      workerInstance = null;
       reject(err);
     }
   });
@@ -83,86 +92,173 @@ export function getScannerWorker() {
 }
 
 /**
- * Pre-warm the scanner worker early (called on AdminUpload mount)
+ * Pre-warm the scanner worker when Past Papers scanner/image flow is opened
  */
 export function warmScannerWorker() {
   try {
     getScannerWorker().catch((err) => {
       console.warn('[scannerService] Warm-up warning:', err);
     });
-  } catch (e) {
+  } catch {
     // ignore
   }
 }
 
 /**
- * Convert a File or Blob into an ImageData object,
- * capping long edge early to 2576 px to avoid huge memory allocations.
+ * Decode an image Blob/File into a single downscaled Canvas/ImageData without double-decoding.
  */
-export async function fileToImageData(file) {
-  let bitmap;
-  // First get original dimensions
-  const initialBitmap = await createImageBitmap(file);
-  const origW = initialBitmap.width;
-  const origH = initialBitmap.height;
-  const maxEdge = Math.max(origW, origH);
+async function decodeImageSource(file) {
+  const isLowMem = typeof navigator !== 'undefined' && navigator.deviceMemory && navigator.deviceMemory <= 2;
+  const maxLongEdge = isLowMem ? 2048 : 2576;
 
-  let targetW = origW;
-  let targetH = origH;
+  if (typeof createImageBitmap === 'function') {
+    const bitmap = await createImageBitmap(file);
+    try {
+      const origW = bitmap.width;
+      const origH = bitmap.height;
+      const maxEdge = Math.max(origW, origH);
+      let targetW = origW;
+      let targetH = origH;
 
-  if (maxEdge > 2576) {
-    const scale = 2576 / maxEdge;
-    targetW = Math.round(origW * scale);
-    targetH = Math.round(origH * scale);
-  }
+      if (maxEdge > maxLongEdge) {
+        const scale = maxLongEdge / maxEdge;
+        targetW = Math.max(1, Math.round(origW * scale));
+        targetH = Math.max(1, Math.round(origH * scale));
+      }
 
-  // If resizing is needed and supported by createImageBitmap
-  try {
-    if (targetW !== origW || targetH !== origH) {
-      bitmap = await createImageBitmap(file, {
-        resizeWidth: targetW,
-        resizeHeight: targetH,
-        resizeQuality: 'high',
-      });
-      if (typeof initialBitmap.close === 'function') initialBitmap.close();
-    } else {
-      bitmap = initialBitmap;
+      const canvas = typeof OffscreenCanvas !== 'undefined'
+        ? new OffscreenCanvas(targetW, targetH)
+        : document.createElement('canvas');
+      canvas.width = targetW;
+      canvas.height = targetH;
+
+      const ctx = canvas.getContext('2d', { willReadFrequently: true });
+      ctx.drawImage(bitmap, 0, 0, targetW, targetH);
+      const imageData = ctx.getImageData(0, 0, targetW, targetH);
+      return { imageData, width: targetW, height: targetH };
+    } finally {
+      if (typeof bitmap.close === 'function') bitmap.close();
     }
-  } catch (e) {
-    bitmap = initialBitmap;
   }
 
-  const canvas = typeof OffscreenCanvas !== 'undefined'
-    ? new OffscreenCanvas(bitmap.width, bitmap.height)
+  // Fallback for browsers without createImageBitmap
+  const url = URL.createObjectURL(file);
+  try {
+    const img = await new Promise((resolve, reject) => {
+      const el = new Image();
+      el.onload = () => resolve(el);
+      el.onerror = () => reject(new Error('Could not decode image'));
+      el.src = url;
+    });
+
+    const origW = img.naturalWidth || img.width;
+    const origH = img.naturalHeight || img.height;
+    const maxEdge = Math.max(origW, origH);
+    let targetW = origW;
+    let targetH = origH;
+
+    if (maxEdge > maxLongEdge) {
+      const scale = maxLongEdge / maxEdge;
+      targetW = Math.max(1, Math.round(origW * scale));
+      targetH = Math.max(1, Math.round(origH * scale));
+    }
+
+    const canvas = document.createElement('canvas');
+    canvas.width = targetW;
+    canvas.height = targetH;
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    ctx.drawImage(img, 0, 0, targetW, targetH);
+    const imageData = ctx.getImageData(0, 0, targetW, targetH);
+    return { imageData, width: targetW, height: targetH };
+  } finally {
+    URL.revokeObjectURL(url);
+  }
+}
+
+export async function fileToImageData(file) {
+  return decodeImageSource(file);
+}
+
+/**
+ * Rotate any image Blob/File by 90/180/270 degrees (used for manual orientation fix on original fallback)
+ */
+export async function rotateImageBlob(blob, degrees = 90) {
+  const normDeg = ((Number(degrees) || 0) % 360 + 360) % 360;
+  if (normDeg === 0) return blob;
+
+  const { imageData, width, height } = await decodeImageSource(blob);
+  const srcCanvas = typeof OffscreenCanvas !== 'undefined'
+    ? new OffscreenCanvas(width, height)
     : document.createElement('canvas');
+  srcCanvas.width = width;
+  srcCanvas.height = height;
+  srcCanvas.getContext('2d').putImageData(imageData, 0, 0);
 
-  canvas.width = bitmap.width;
-  canvas.height = bitmap.height;
-  const ctx = canvas.getContext('2d', { willReadFrequently: true });
-  ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
-  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-  if (typeof bitmap.close === 'function') bitmap.close();
+  const swap = normDeg === 90 || normDeg === 270;
+  const dstW = swap ? height : width;
+  const dstH = swap ? width : height;
 
-  return { imageData, width: canvas.width, height: canvas.height };
+  const dstCanvas = typeof OffscreenCanvas !== 'undefined'
+    ? new OffscreenCanvas(dstW, dstH)
+    : document.createElement('canvas');
+  dstCanvas.width = dstW;
+  dstCanvas.height = dstH;
+
+  const ctx = dstCanvas.getContext('2d');
+  ctx.translate(dstW / 2, dstH / 2);
+  ctx.rotate((normDeg * Math.PI) / 180);
+  ctx.drawImage(srcCanvas, -width / 2, -height / 2);
+
+  if (typeof dstCanvas.convertToBlob === 'function') {
+    return dstCanvas.convertToBlob({ type: 'image/jpeg', quality: 0.88 });
+  }
+  return new Promise((r) => dstCanvas.toBlob(r, 'image/jpeg', 0.88));
+}
+
+/**
+ * Compress an oversized raw image before embedding in PDF (prevents low-end phone OOM)
+ */
+async function ensureEmbeddableImageBytes(blob) {
+  const MAX_RAW_EMBED_BYTES = 2.5 * 1024 * 1024;
+  const isJpegOrPng = blob.type === 'image/jpeg' || blob.type === 'image/jpg' || blob.type === 'image/png';
+  if (isJpegOrPng && blob.size <= MAX_RAW_EMBED_BYTES) {
+    return { bytes: await blob.arrayBuffer(), isPng: blob.type === 'image/png' };
+  }
+
+  const { imageData, width, height } = await decodeImageSource(blob);
+  const canvas = typeof OffscreenCanvas !== 'undefined'
+    ? new OffscreenCanvas(width, height)
+    : document.createElement('canvas');
+  canvas.width = width;
+  canvas.height = height;
+  canvas.getContext('2d').putImageData(imageData, 0, 0);
+
+  let jpegBlob;
+  if (typeof canvas.convertToBlob === 'function') {
+    jpegBlob = await canvas.convertToBlob({ type: 'image/jpeg', quality: 0.85 });
+  } else {
+    jpegBlob = await new Promise((r) => canvas.toBlob(r, 'image/jpeg', 0.85));
+  }
+  return { bytes: await jpegBlob.arrayBuffer(), isPng: false };
 }
 
 /**
  * Clean a single photo using OpenCV in the Web Worker.
- * Includes a 20-second timeout fallback: if cleanup exceeds 20s or fails,
+ * Includes a 25-second timeout fallback: if cleanup exceeds 25s or fails,
  * it returns useOriginal: true so the upload continues seamlessly.
  */
-export async function cleanPhoto(file, onProgress) {
+export async function cleanPhoto(file, onProgress, { rotationDeg = 0 } = {}) {
   const originalUrl = URL.createObjectURL(file);
-  const CLEANUP_TIMEOUT_MS = 20000; // 20s speed gate fallback
+  const CLEANUP_TIMEOUT_MS = 25000;
 
   const runCleanup = async () => {
-    onProgress?.({ stage: 'loading_opencv', message: 'Starting document scanner...' });
+    onProgress?.({ stage: 'loading_opencv', message: 'Starting scanner...' });
     const worker = await getScannerWorker();
 
-    onProgress?.({ stage: 'preparing', message: 'Scaling and preparing image...' });
+    onProgress?.({ stage: 'preparing', message: 'Preparing page...' });
     const { imageData, width, height } = await fileToImageData(file);
 
-    onProgress?.({ stage: 'cleaning', message: 'Flattening lighting & cleaning ink...' });
+    onProgress?.({ stage: 'cleaning', message: 'Detecting edges & cleaning...' });
     const reqId = nextMsgId++;
 
     const processPromise = new Promise((res, rej) => {
@@ -176,19 +272,18 @@ export async function cleanPhoto(file, onProgress) {
         imageData,
         originalWidth: width,
         originalHeight: height,
+        rotationDeg,
       }
     }, [imageData.data.buffer]);
 
     const cleanedResult = await processPromise;
 
-    onProgress?.({ stage: 'encoding', message: 'Finalizing preview...' });
+    onProgress?.({ stage: 'encoding', message: 'Rendering preview...' });
 
-    let cleanedBlob = null;
+    let cleanedBlob;
     if (cleanedResult.isJpeg && cleanedResult.jpegBuffer) {
-      // Direct JPEG from worker (no extra canvas encode!)
       cleanedBlob = new Blob([cleanedResult.jpegBuffer], { type: 'image/jpeg' });
     } else {
-      // Fallback canvas encode
       const canvas = typeof OffscreenCanvas !== 'undefined'
         ? new OffscreenCanvas(cleanedResult.width, cleanedResult.height)
         : document.createElement('canvas');
@@ -220,11 +315,10 @@ export async function cleanPhoto(file, onProgress) {
     };
   };
 
-  // Timeout promise
   let timeoutTimer = null;
   const timeoutPromise = new Promise((_, reject) => {
     timeoutTimer = setTimeout(() => {
-      reject(new Error('Cleanup timed out after 20 seconds; keeping original image'));
+      reject(new Error('Cleanup timed out; keeping original image'));
     }, CLEANUP_TIMEOUT_MS);
   });
 
@@ -260,30 +354,26 @@ export async function buildA4PdfFromPages(pages, filename = 'scanned_paper.pdf')
   // A4 dimensions in points (72 DPI)
   const A4_WIDTH = 595.28;
   const A4_HEIGHT = 841.89;
-  const MARGIN = 20; // 20pt white margin on all sides
+  const MARGIN = 20;
   const AVAIL_WIDTH = A4_WIDTH - MARGIN * 2;
   const AVAIL_HEIGHT = A4_HEIGHT - MARGIN * 2;
 
   for (const page of pages) {
-    const blobToEmbed = page.useOriginal ? page.originalBlob : page.cleanedBlob;
-    const arrayBuffer = await blobToEmbed.arrayBuffer();
-
-    let embeddedImage;
-    if (blobToEmbed.type === 'image/png') {
-      embeddedImage = await pdfDoc.embedPng(arrayBuffer);
-    } else {
-      embeddedImage = await pdfDoc.embedJpg(arrayBuffer);
+    let blobToEmbed = page.useOriginal ? page.originalBlob : page.cleanedBlob;
+    if (page.useOriginal && page.rotationDeg) {
+      blobToEmbed = await rotateImageBlob(blobToEmbed, page.rotationDeg);
     }
+
+    const { bytes, isPng } = await ensureEmbeddableImageBytes(blobToEmbed);
+    const embeddedImage = isPng ? await pdfDoc.embedPng(bytes) : await pdfDoc.embedJpg(bytes);
 
     const imgWidth = embeddedImage.width;
     const imgHeight = embeddedImage.height;
 
-    // Calculate scaling to fit within available page area
     const scale = Math.min(AVAIL_WIDTH / imgWidth, AVAIL_HEIGHT / imgHeight);
     const drawWidth = imgWidth * scale;
     const drawHeight = imgHeight * scale;
 
-    // Center on page
     const x = (A4_WIDTH - drawWidth) / 2;
     const y = (A4_HEIGHT - drawHeight) / 2;
 
